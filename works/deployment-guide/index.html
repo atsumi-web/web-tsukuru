@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webサイト公開・運用マニュアル | Special Bonus Content</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 簡易ロック用のスタイル */
+        #lock-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: #fff;
+            flex-direction: column;
+        }
+        .lock-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            color: #333;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .lock-box h2 { margin-top: 0; font-size: 20px; color: #1e293b; }
+        .lock-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .lock-btn {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        .lock-btn:hover { background: #1d4ed8; }
+        .error-msg { color: #ef4444; font-size: 14px; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- ロック画面 -->
+    <div id="lock-screen">
+        <div class="lock-box">
+            <h2>🔒 シークレットコンテンツ</h2>
+            <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                このページは購入者限定特典です。<br>
+                パスワードを入力してご覧ください。
+            </p>
+            <input type="password" id="password" placeholder="Pass: secret">
+            <button class="lock-btn" onclick="checkPass()">Webサイト公開手順を見る</button>
+            <p class="error-msg" id="error-msg">パスワードが間違っています</p>
+        </div>
+    </div>
+
+    <!-- メインコンテンツ (最初は非表示) -->
+    <div id="main-content" style="display:none;">
+        <header class="doc-header">
+            <div class="container">
+                <h1>Webサイト公開・運用マニュアル</h1>
+                <span class="tag">保存版</span>
+            </div>
+        </header>
+
+        <div class="doc-container">
+            <aside class="sidebar">
+                <nav class="toc">
+                    <h3>目次</h3>
+                    <ul>
+                        <li><a href="#intro">はじめに</a></li>
+                        <li><a href="#chapter1">GitHubの準備</a></li>
+                        <li><a href="#chapter2">Cloudflareでの公開手順</a></li>
+                        <li><a href="#chapter3">2回目以降の更新方法</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="content">
+                <section id="intro">
+                    <h2>はじめに</h2>
+                    <p>このマニュアルでは、作成したWebサイトを**無料で、プロフェッショナルな環境（Cloudflare Pages）**で公開する手順を解説します。</p>
+                    <div class="alert">
+                        <strong>本書のポイント</strong>
+                        <ul>
+                            <li>VS Codeから直接アップロードする方法</li>
+                            <li>失敗しやすい「画面の選び方」を実際の画像付きで解説</li>
+                            <li>ずっと無料で使い続けるための設定</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="chapter1">
+                    <h2>Step 1: GitHubの準備</h2>
+                    <p>Webサイトのデータを保存するための「倉庫（リポジトリ）」をGitHub上に作ります。</p>
+                    
+                    <div class="step-card">
+                        <h3>1. 新しいリポジトリを作成</h3>
+                        <p>GitHubにログインし、「Start a new repository」または右上の「+」アイコンから新規作成画面を開きます。</p>
+                        <div class="img-box">
+                            <img src="images/01_github_create.png" alt="GitHub作成画面">
+                        </div>
+                        <ul class="check-list">
+                            <li><strong>Repository name</strong>: 好きな名前を入力（例: web-tsukuru）</li>
+                            <li><strong>Public</strong>: 選択</li>
+                            <li>他のチェックボックス（READMEなど）は全て<strong>空欄のまま</strong>にするのがコツです！</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>2. VS Codeと連携</h3>
+                        <p>VS Codeに戻り、作成したレポジトリのURLを登録してデータを送信（プッシュ）します。</p>
+                        <p class="note">※ 初回のみコマンド操作が必要ですが、2回目以降はボタン一つで更新できます。</p>
+                    </div>
+                </section>
+                
+                </section>
+
+                <section id="chapter2">
+                    <h2>Step 2: Cloudflareでの公開手順</h2>
+                    <p>ここが一番の難関ですが、画像通りに進めれば大丈夫です。</p>
+
+                    <div class="step-card">
+                        <h3>1. Workers & Pagesを開く</h3>
+                        <p>Cloudflareのダッシュボードにログインし、左メニューから「Workers & Pages」を探します。</p>
+                        <div class="img-box">
+                            <img src="images/03_cf_menu_hidden.png" alt="メニューの場所">
+                        </div>
+                        <p class="note">※ 見つからない場合は、検索バーに「pages」と入力すると早いです。</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>2. アプリケーションの作成</h3>
+                        <p>画面右上の青いボタン「アプリケーションを作成する」をクリックします。</p>
+                        <div class="img-box">
+                            <img src="images/04_cf_workers_pages.png" alt="作成ボタン">
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>3. 【重要】タブの切り替え</h3>
+                        <p>ここが最大のつまづきポイントです！<br>デフォルトでは「Workers（プログラム）」を作る画面になっていますが、私たちは「Pages（Webサイト）」を作りたいので、<strong>必ずタブを切り替えてください。</strong></p>
+                        
+                        <!-- NG例 -->
+                        <div class="img-box bad">
+                            <img src="images/07_wrong_worker.png" alt="間違い：Worker作成画面">
+                        </div>
+                        <p>▲ これは間違い！「Workerを作成」という画面だったら、タブが違います。</p>
+
+                        <!-- 正解手順 -->
+                        <p>上のタブで「Pages」を選び、「Git に接続」をクリックします。</p>
+                        <div class="img-box">
+                            <img src="images/09_start_pages.png" alt="正解：Pages作成画面">
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>4. リポジトリの選択</h3>
+                        <p>GitHubと連携し、先ほど作った「web-tsukuru」リポジトリを選択して「セットアップの開始」を押します。</p>
+                        <div class="img-box">
+                            <img src="images/10_select_repo.png" alt="リポジトリ選択">
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>5. デプロイ（公開）</h3>
+                        <p>設定画面になりますが、<strong>何も変更せずに</strong>一番下の「保存してデプロイ」をクリックします。</p>
+                        <div class="img-box">
+                            <img src="images/11_build_settings.png" alt="ビルド設定">
+                        </div>
+                        <p>成功画面が出れば完了です！お疲れ様でした。</p>
+                        <div class="img-box">
+                            <img src="images/12_success.png" alt="成功画面">
+                        </div>
+                    </div>
+                </section>
+
+                <section id="chapter3">
+                    <h2>2回目以降の更新方法</h2>
+                    <p>一度設定してしまえば、あとは簡単です。</p>
+                    <ol>
+                        <li>VS Codeでファイルを修正・保存する。</li>
+                        <li>Source Controlメニュー（左の枝分かれアイコン）を開く。</li>
+                        <li>メッセージ（例: 「修正」）を入力して「コミット」を押す。</li>
+                        <li>「変更の同期（プッシュ）」を押す。</li>
+                    </ol>
+                    <p>これだけで、数分後には自動的にWebサイトが更新されます。Cloudflareの画面を開く必要すらありません。</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 簡易パスワードロック (実運用ではサーバーサイド認証推奨ですが、特典としてはこれで十分です)
+        function checkPass() {
+            const input = document.getElementById('password').value;
+            const error = document.getElementById('error-msg');
+            
+            // パスワードは仮で 'secret' にしています
+            if(input === 'secret') {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                window.scrollTo(0, 0);
+            } else {
+                error.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
