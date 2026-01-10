@@ -265,13 +265,25 @@
     </div>
 
     <script>
-        // 簡易パスワードロック (実運用ではサーバーサイド認証推奨ですが、特典としてはこれで十分です)
-        function checkPass() {
+        // パスワードをハッシュ化して比較する関数 (ソースを見てもパスワードがバレないように対策)
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function checkPass() {
             const input = document.getElementById('password').value;
             const error = document.getElementById('error-msg');
             
-            // パスワードは仮で 'secret' にしています
-            if(input === 'secret') {
+            // 入力された値をハッシュ化して照合
+            const hash = await sha256(input);
+            
+            // 'secret' のSHA-256ハッシュ値
+            const correct = '2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b';
+
+            if(hash === correct) {
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
                 window.scrollTo(0, 0);
