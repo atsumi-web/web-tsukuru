@@ -215,14 +215,50 @@
 
                 <section id="chapter3">
                     <h2>2回目以降の更新方法</h2>
-                    <p>一度設定してしまえば、あとは簡単です。</p>
-                    <ol>
-                        <li>VS Codeでファイルを修正・保存する。</li>
-                        <li>Source Controlメニュー（左の枝分かれアイコン）を開く。</li>
-                        <li>メッセージ（例: 「修正」）を入力して「コミット」を押す。</li>
-                        <li>「変更の同期（プッシュ）」を押す。</li>
-                    </ol>
-                    <p>これだけで、数分後には自動的にWebサイトが更新されます。Cloudflareの画面を開く必要すらありません。</p>
+                    <p>一度設定してしまえば、あとは簡単です。VS Codeから数クリックで更新できます。</p>
+
+                    <div class="step-card">
+                        <h3>1. 修正と保存</h3>
+                        <p>VS Codeでファイルを修正し、忘れずに保存（<span class="key">Ctrl</span> + <span class="key">S</span>）します。</p>
+                        <div class="img-box">
+                            <img src="images/13_vscode_edit.png" alt="修正画面">
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>2. ソース管理を開く</h3>
+                        <p>左側のメニューから「枝分かれのアイコン（ソース管理）」をクリックします。</p>
+                        <div class="img-box">
+                            <img src="images/14_git_icon.png" alt="ソース管理アイコン">
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>3. メッセージ入力とコミット</h3>
+                        <p>変更内容のメモ（例：「画像修正」など）を入力し、「コミット」ボタンを押します。</p>
+                        <div class="img-box">
+                            <img src="images/15_git_message.png" alt="メッセージ入力">
+                        </div>
+                        <div class="img-box" style="margin-top:10px;">
+                            <img src="images/16_git_commit.png" alt="コミットボタン">
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>4. プッシュ（同期）</h3>
+                        <p>「変更の同期（プッシュ）」という青いボタンが出てくるので、これをクリックします。</p>
+                        <div class="img-box">
+                            <img src="images/17_git_push.png" alt="プッシュボタン">
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>完了！</h3>
+                        <p>これでサーバーに送信されました。数分待つとサイトが自動更新されます。</p>
+                        <div class="img-box">
+                            <img src="images/18_update_done.png" alt="完了">
+                        </div>
+                    </div>
                 </section>
             </main>
         </div>
