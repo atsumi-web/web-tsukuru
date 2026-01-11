@@ -1023,7 +1023,7 @@ a:hover {
     }
     
     .logo img {
-        height: 34px; /* モバイルでも少し存在感を出す */
+        height: 50px; /* 40px -> 50px (余白が多いため、思い切って大きく) */
     }
 
     /* Hero Responsive */
