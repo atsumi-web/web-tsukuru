@@ -1032,5 +1032,26 @@ a:hover {
     }
     .profile-image img {
         box-shadow: 10px 10px 0 var(--bg-light);
+        width: 100%; /* Ensure visibility */
+        height: auto;
+        display: block;
     }
+    
+    /* Fix CTA text width */
+    .google-form-btn {
+        width: 100%;
+        padding: 20px 10px; /* Reduce side padding to allow more text space */
+        box-sizing: border-box;
+    }
+    .google-form-btn strong {
+        font-size: 15px; /* Slightly smaller text to prevent wrapping */
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Fix Tax Size Global */
+.c-value .tax {
+    font-size: 0.5em !important; /* Force smaller size relative to price */
+    font-weight: normal;
 }
