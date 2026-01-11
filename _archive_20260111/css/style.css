@@ -751,157 +751,31 @@ a:hover {
     margin-bottom: 15px;
 }
 
-/* Animation & Utility */
-.js-fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.js-fade-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.no-scroll {
-    overflow: hidden;
-}
-
-.hamburger-btn {
-    display: none; /* Default hidden on desktop */
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-    padding: 0;
-}
-
-/* Enhanced Campaign Box */
-.campaign-box {
-    position: relative;
-    background: #fff;
-    padding: 60px;
-    max-width: 800px;
-    margin: 0 auto 100px;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15); /* Soft Gold Shadow */
-    border-radius: 2px;
-}
-
-.campaign-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 2px;
-    padding: 2px; /* Border width */
-    background: linear-gradient(45deg, #C5A059, #f3e5c2, #C5A059);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
-/* Overwrite previous after pseudo if needed or keep for double border effect. 
-   Creating a cleaner single border look might be better. 
-   Removing the old ::after style via replacement might be tricky without multiple chunks.
-   So I will just ensure this looks good. */
-
 /* Responsive */
 @media (max-width: 768px) {
-    /* Mobile Header & Nav */
-    .header-inner {
-        padding: 0 20px;
-    }
-
-    .hamburger-btn {
-        display: block;
-        width: 30px;
-        height: 22px;
-        position: relative;
-    }
-
-    .hamburger-btn span {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #333;
-        transition: all 0.3s;
-    }
-
-    .hamburger-btn span:nth-child(1) { top: 0; }
-    .hamburger-btn span:nth-child(2) { top: 10px; }
-    .hamburger-btn span:nth-child(3) { bottom: 0; }
-
-    .hamburger-btn.is-active span:nth-child(1) {
-        transform: rotate(45deg);
-        top: 10px;
-    }
-    .hamburger-btn.is-active span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger-btn.is-active span:nth-child(3) {
-        transform: rotate(-45deg);
-        bottom: 10px;
-    }
-
-    .site-nav {
-        display: flex; /* Need flex for centering */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(5px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        transform: translateX(100%);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 1000; /* Behind hamburger */
-        padding-top: 60px; /* Space for header */
-        pointer-events: none;
-    }
-
-    .site-nav.is-active {
-        transform: translateX(0);
-        pointer-events: auto;
-    }
-
-    .site-nav a {
-        margin-left: 0;
-        font-size: 18px;
-        font-family: var(--font-mincho);
-    }
-    
+    /* Mobile Header Fix */
     .site-nav a:not(.nav-btn) {
-        display: block; /* Override default cleanup */
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+        display: none;
     }
-    
-    .site-nav.is-active a:not(.nav-btn) {
-        opacity: 1;
-        transform: translateY(0);
+    .header-inner {
+        padding: 0 15px;
     }
-
     .logo {
-        font-size: 18px;
-        z-index: 1001; /* Ensure logo is visible */
-        position: relative;
+        font-size: 16px;
+        gap: 8px;
     }
-    
     .logo img {
-        height: 26px;
+        height: 24px;
+    }
+    .nav-btn {
+        padding: 8px 14px;
+        font-size: 11px;
+        margin-left: 0;
     }
 
-    /* Hero Responsive */
     .hero {
         flex-direction: column;
         height: auto;
-        padding-top: 80px; /* Header space */
         padding-bottom: 60px;
     }
     .hero-bg, .hero-content {
@@ -911,83 +785,41 @@ a:hover {
     .hero-bg {
         height: 300px;
         margin-bottom: 40px;
-        width: 100%;
-        padding: 0;
-    }
-    .hero-bg img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
     }
     .hero-content {
         padding: 0 20px;
     }
     .hero-title {
         font-size: 32px;
-        margin-bottom: 30px;
-    }
-    .hero-sub {
-        margin-bottom: 15px;
     }
     .hero-actions {
         flex-direction: column;
-        gap: 15px;
     }
     .hero-btn {
         width: 100%;
         box-sizing: border-box;
     }
-
-    /* General Mobile Adjustments */
-    .intro-section { padding: 80px 0; }
-    .feature-section { padding: 80px 0; }
-    .works-section { padding: 80px 0; }
-    
     .intro-lead h3 {
         font-size: 24px;
-        margin-bottom: 40px;
     }
     .pain-list, .step-list, .plan-grid-mini {
         flex-direction: column;
         align-items: center;
     }
-    .pain-item {
-        width: 100%;
-        max-width: 320px;
-        box-sizing: border-box;
-    }
     .step-item:not(:last-child)::after {
         content: '↓';
         right: 50%;
         top: auto;
-        bottom: -25px;
+        bottom: -20px;
         transform: translateX(50%);
     }
-    .step-list {
-        gap: 30px;
-    }
     .step-item {
-        margin-bottom: 10px;
+        margin-bottom: 30px;
     }
-    
     .campaign-box {
         padding: 40px 20px;
     }
     .c-value {
         font-size: 36px;
-    }
-    .c-action-area {
-        gap: 30px;
-    }
-    
-    .profile-inner {
-        flex-direction: column;
-    }
-    .profile-image {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .profile-image img {
-        box-shadow: 10px 10px 0 var(--bg-light);
     }
 }
