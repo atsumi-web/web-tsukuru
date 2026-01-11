@@ -144,12 +144,15 @@ a:hover {
 
 /* Hero */
 .hero {
-    height: 100vh;
-    min-height: 700px;
+    /* height: 100vh; Removed to allow scrolling on small screens/long text */
+    min-height: 100vh;
+    padding-top: 100px; /* Space for fixed header + breathing room */
+    padding-bottom: 60px;
     position: relative;
     display: flex;
     align-items: center;
     background-color: var(--bg-light); /* 明るいグレー背景に戻す */
+    box-sizing: border-box; /* Ensure padding is included in height */
 }
 
 .hero-bg {
@@ -940,6 +943,7 @@ a:hover {
     .hero {
         flex-direction: column;
         height: auto;
+        min-height: auto; /* Reset desktop min-height */
         padding-top: 80px; /* Header space */
         padding-bottom: 60px;
     }
