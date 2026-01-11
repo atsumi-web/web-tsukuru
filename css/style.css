@@ -252,7 +252,7 @@ a:hover {
     width: 260px;
     text-align: center;
     padding: 30px 25px;
-    background: #fff;
+    background: #f9f9f9; /* Subtle gray background */
     border: 1px solid #eee;
     border-radius: 4px;
 }
@@ -267,6 +267,7 @@ a:hover {
     font-family: var(--font-mincho);
     font-size: 20px;
     margin-top: 60px;
+    text-align: center; /* Center alignment */
 }
 
 .intro-mechanism strong {
@@ -640,6 +641,7 @@ a:hover {
     margin: 0 auto;
     text-align: center;
     padding: 40px;
+    background: #fdfdfd; /* Very subtle background for visual separation */
     border: 1px dashed #ddd; /* 控えめな境界線 */
 }
 
@@ -674,18 +676,6 @@ a:hover {
     gap: 60px;
 }
 
-.profile-image {
-    flex: 1;
-    max-width: 300px;
-}
-
-.profile-image img {
-    width: 100%;
-    border-radius: 4px; /* あえて少し角を残して知的に */
-    filter: sepia(0.05); /* ほんの少し温かみを */
-    box-shadow: 20px 20px 0 var(--bg-light);
-}
-
 .profile-content {
     flex: 1.5;
 }
@@ -697,12 +687,27 @@ a:hover {
     color: var(--accent-color);
     margin-bottom: 20px;
     text-transform: uppercase;
+    text-align: center; /* Keep center as requested */
+}
+
+.profile-image {
+    flex: 1;
+    max-width: 300px;
+    margin: 0; /* Reset margin */
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: 4px;
+    filter: sepia(0.05);
+    box-shadow: 20px 20px 0 var(--bg-light);
 }
 
 .profile-content h3 {
     font-size: 26px;
     margin-bottom: 30px;
     line-height: 1.6;
+    text-align: center; /* User requested "Heading in the middle" */
 }
 
 .profile-content p {
@@ -717,17 +722,8 @@ a:hover {
     font-family: var(--font-mincho);
     font-size: 20px;
     color: var(--text-color);
-}
-
-@media (max-width: 768px) {
-    .profile-inner {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .profile-image {
-        max-width: 100%;
-        width: 80%;
-    }
+    text-align: right; /* Sign looks better right aligned or keep default */
+    display: block;
 }
 
 /* Contact */
