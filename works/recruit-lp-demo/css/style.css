@@ -1,0 +1,1931 @@
+:root {
+  /* Modern Artisan Palette (鉄紺 & 鳶色) */
+  --color-primary: #1e293b; /* Slate 800 - 深みのある鉄紺グレー */
+  --color-primary-light: #334155; /* Slate 700 */
+  --color-accent: #c2410c; /* Orange 700 - 鮮やかすぎない、渋みのある鳶色 */
+  --color-accent-hover: #9a3412; /* Orange 800 */
+  --color-bg: #fafaf9; /* Stone 50 - 温かみのある石材のような白 */
+  --color-surface: #ffffff;
+  --color-text-main: #1c1917; /* Stone 900 */
+  --color-text-sub: #57534e; /* Stone 500 */
+  --color-border: #e7e5e4; /* Stone 200 */
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Animation */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Layout Utilities */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Header */
+.header {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem var(--spacing-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.1rem; /* Slightly smaller for mobile safe */
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+/* Hide Nav Links on Mobile but keep Button */
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav a:not(.btn) {
+  display: none;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .logo {
+      font-size: 1.25rem;
+  }
+  .nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .nav a:not(.btn) {
+    font-size: 0.95rem;
+    color: var(--color-text-sub);
+    font-weight: 500;
+    display: block; /* Show links */
+  }
+  .nav a:not(.btn):hover {
+    color: var(--color-primary);
+  }
+}
+
+/* Hero Section */
+.hero {
+  padding: 8rem 0 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    padding-top: 10rem;
+  }
+}
+
+.hero-badge {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #475569;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+.block-text {
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-sub);
+  margin-bottom: 2.5rem;
+}
+
+.highlight {
+  color: var(--color-primary);
+  background: linear-gradient(transparent 60%, #fff7ed 60%);
+  font-weight: 700;
+}
+
+.cta-note {
+  font-size: 0.875rem;
+  color: var(--color-text-sub);
+  margin-top: 0.75rem;
+}
+
+.hero-img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--shadow-xl);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Problem Section */
+.section-problem {
+  background-color: white;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .problem-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.problem-card {
+  background: var(--color-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: var(--transition-normal);
+}
+
+.problem-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.problem-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.problem-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.problem-card p {
+  color: var(--color-text-sub);
+  font-size: 0.95rem;
+}
+
+/* Solution Section */
+.section-solution {
+  text-align: center;
+}
+
+.solution-header .badge {
+  display: inline-block;
+  color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.section-desc {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--color-text-sub);
+}
+
+/* Footer */
+.footer {
+  background: var(--color-primary);
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* -------------------
+   New Recruit Sections
+------------------- */
+
+/* Merit (formerly Problem) reused styles but tweaked */
+.section-merit {
+    background-color: white;
+}
+
+/* Split Layout (Atmosphere & Interview) */
+.split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .split-layout {
+        flex-direction: row;
+        gap: 5rem;
+    }
+    .split-layout.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.split-image {
+    flex: 1;
+}
+
+.split-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: var(--shadow-xl);
+}
+
+.split-text {
+    flex: 1;
+}
+
+.split-text .badge {
+    display: inline-block;
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.split-text h2, 
+.split-text h3 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.interview-role {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--color-primary-light);
+    border-left: 4px solid var(--color-accent);
+    padding-left: 1rem;
+}
+
+/* Requirements Table */
+.section-requirements {
+    background-color: var(--color-bg);
+}
+
+.requirements-table {
+    border-top: 1px solid var(--color-border);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.requirements-table dl {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 600px) {
+    .requirements-table dl {
+        grid-template-columns: 200px 1fr;
+    }
+}
+
+.requirements-table dt {
+    background: white;
+    padding: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+}
+
+.requirements-table dd {
+    padding: 1.5rem;
+    color: var(--color-text-main);
+}
+
+/* -------------------
+   New Content Sections
+------------------- */
+
+/* Message Section */
+.section-message {
+    background-color: white;
+}
+.message-box {
+    background: var(--color-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.message-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .message-head {
+        flex-direction: row;
+        text-align: left;
+        gap: 2rem;
+    }
+}
+.message-img img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: var(--shadow-md);
+}
+.m-role {
+    font-size: 0.875rem;
+    color: var(--color-text-sub);
+    font-weight: 600;
+}
+.m-name {
+    font-size: 1.75rem;
+    margin: 0.25rem 0 0.5rem;
+}
+.m-career {
+    font-size: 0.875rem;
+    color: var(--color-text-sub);
+}
+.message-body h4 {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+/* Schedule (Timeline) */
+.section-schedule {
+    background-color: white;
+    padding: 6rem 0;
+}
+.schedule-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 0; /* padding-leftを削除し、flexで制御 */
+}
+
+/* タイムラインの縦線 */
+.schedule-timeline::before {
+    content: '';
+    position: absolute;
+    left: 94px; /* 時間(80px) + gap半分程度 */
+    top: 10px;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+    z-index: 0;
+}
+
+.time-item {
+    display: flex;
+    gap: 3rem; /* 間隔を広げる */
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.time {
+    font-weight: 700;
+    color: var(--color-accent);
+    width: 80px; /* 固定幅をとる */
+    min-width: 80px;
+    text-align: right;
+    padding-top: 0.25rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* タイムラインの丸ポチ */
+.time-item::before {
+    content: '';
+    position: absolute;
+    left: 89px; /* 線の位置に合わせる (94pxの中心 - サイズ6px) */
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border: 3px solid var(--color-accent);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.time-content {
+    background: var(--color-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    flex: 1;
+    border: 1px solid var(--color-border);
+}
+
+.time-content h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-family: "Shippori Mincho B1", serif;
+    color: var(--color-primary);
+}
+
+.time-content p {
+    font-size: 0.95rem;
+    color: var(--color-text-sub);
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .schedule-timeline::before {
+        left: 20px;
+    }
+    .time-item {
+        gap: 1.5rem;
+        flex-direction: column;
+        padding-left: 2rem;
+    }
+    .time {
+        text-align: left;
+        width: auto;
+        padding-left: 1.5rem;
+    }
+    .time-item::before {
+        left: 15px; /* 線上 */
+    }
+}
+
+/* FAQ */
+.section-faq {
+    background-color: white;
+}
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.faq-item {
+    background: var(--color-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+.faq-q {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+.faq-q::before {
+    content: 'Q.';
+    color: var(--color-accent);
+    font-weight: 900;
+}
+.faq-a {
+    padding-left: 1.5rem;
+    color: var(--color-text-sub);
+}
+
+/* Company Profile */
+.section-company {
+    background-color: var(--color-bg);
+}
+.company-info {
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 1px solid var(--color-border);
+}
+.c-row {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 0;
+}
+@media (min-width: 600px) {
+    .c-row {
+        flex-direction: row;
+    }
+}
+.c-row dt {
+    width: 150px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+}
+.c-row dd {
+    flex: 1;
+}
+
+/* Fixed CTA (Mobile) */
+.fixed-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    z-index: 9999;
+    padding: 10px;
+    gap: 10px;
+}
+.cta-tel {
+    flex: 1;
+    background: var(--color-accent);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.cta-tel:hover {
+    background: var(--color-accent-hover);
+    color: white;
+}
+.cta-line {
+    flex: 1;
+    background: #06C755;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.cta-line:hover {
+    background: #05b54d;
+    color: white;
+}
+
+/* -------------------
+   Animations & Polish
+------------------- */
+
+/* 1. Scroll Reveal (Fade In) */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. Sticky Header Effects */
+.header {
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.95); /* Default */
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.98);
+    padding: 0.5rem 0; /* Shrink slightly */
+}
+.header.scrolled .logo {
+    font-size: 1.25rem; /* Shrink logo slightly */
+}
+
+/* 3. Button Pulse Effect (CTA) */
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(249, 115, 22, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+    }
+}
+
+.btn-primary, .cta-tel {
+    animation: pulse-orange 2s infinite;
+}
+
+.cta-line {
+    /* Green Pulse */
+    animation: pulse-green 2s infinite;
+    animation-delay: 1s; /* Offset pulse */
+}
+
+:root {
+  /* TETO Inspired: Lifestyle Modern Palette */
+  --color-primary: #333333; /* Dark Grey for text */
+  --color-primary-light: #666666;
+  --color-accent: #3b82f6; /* Fresh Blue (Accent) - like the sky in construction sites */
+  --color-accent-hover: #2563eb;
+  --color-bg: #ffffff; /* Pure White */
+  --color-surface: #f3f4f6; /* Very light cool grey */
+  --color-text-main: #333333;
+  --color-text-sub: #6b7280; /* Cool grey text */
+  --color-border: #e5e7eb;
+
+  /* Fonts */
+  --font-base: "Noto Sans JP", sans-serif; /* Back to Gothic */
+  --font-en: "Inter", sans-serif;
+
+  /* Spacing - Generous whitespace */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1.5rem;
+  --spacing-md: 4rem;
+  --spacing-lg: 8rem;
+  --spacing-xl: 12rem;
+
+  /* Shadows - Soft & Broad */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+
+  /* Animation */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+    font-family: var(--font-base);
+    color: var(--color-text-main);
+    background-color: var(--color-bg);
+    line-height: 1.8;
+    letter-spacing: 0.05em; /* Cleaner tracking */
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(6, 199, 85, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(6, 199, 85, 0);
+    }
+}
+
+/* 4. Enhanced Hover Effects */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(249, 115, 22, 0.3);
+}
+
+.faq-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Hero Text Enhancement */
+.hero-title {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.hero-subtitle {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ----------------------------------------------------
+   TETO Style: Lifestyle Modern Hero
+   ---------------------------------------------------- */
+
+.hero-teto {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Not full full height, leave a hint of scrolling */
+    min-height: 700px;
+    background: var(--color-bg);
+    display: flex;
+    align-items: center; /* Center Vertically */
+    justify-content: flex-start; /* Left Align */
+    overflow: hidden;
+}
+
+.hero-teto-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Left Side: Typography */
+.hero-teto-content {
+    width: 100%;
+    z-index: 10;
+    position: relative;
+}
+
+@media (min-width: 900px) {
+    .hero-teto-content {
+        width: 50%;
+    }
+}
+
+.teto-catch-en {
+    font-family: var(--font-en);
+    font-weight: 800;
+    font-size: 10rem;
+    line-height: 0.8;
+    color: #f3f4f6; /* Very subtle background text color */
+    position: absolute;
+    top: -8rem;
+    left: -2rem;
+    z-index: -1;
+    white-space: nowrap;
+    opacity: 0;
+    animation: slideInLeft 1s forwards;
+}
+
+.teto-main-title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+    color: var(--color-primary);
+}
+
+.teto-main-title span {
+    display: block;
+    background: linear-gradient(120deg, transparent 60%, rgba(59, 130, 246, 0.2) 60%); /* Marker underline style */
+    background-size: 100% 40%;
+    background-position: 0 90%;
+    background-repeat: no-repeat;
+    width: fit-content;
+}
+
+.teto-sub-title {
+    font-size: 1.1rem;
+    color: var(--color-text-sub);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.6s forwards;
+}
+
+/* Right Side: Visual */
+.hero-teto-visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url('../images/hero-visual-v3.png'); /* Use existing visual */
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%); /* Diagonal slice */
+    opacity: 0;
+    animation: imageReveal 1.5s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (max-width: 900px) {
+    .hero-teto-visual {
+        width: 100%;
+        height: 100%;
+        clip-path: none;
+        z-index: 0;
+        filter: brightness(0.6); /* Darken for text readability on mobile */
+    }
+    .hero-teto-content {
+        margin-top: 4rem;
+        color: white; /* Text white on mobile */
+    }
+    .teto-main-title {
+        color: white;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .teto-catch-en {
+        display: none; /* Hide huge text on mobile */
+    }
+    .teto-main-title span {
+        background: none; /* Remove marker on dark bg */
+    }
+    .teto-sub-title {
+        color: rgba(255,255,255,0.9);
+    }
+}
+
+/* Animations */
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes imageReveal {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Scroll Down Mouse */
+.mouse-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 1s forwards;
+    z-index: 10;
+}
+.mouse-icon {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--color-border);
+    border-radius: 15px;
+    position: relative;
+}
+@media (max-width: 900px) {
+    .mouse-icon { border-color: white; }
+    .mouse-text { color: white; }
+}
+.mouse-wheel {
+    width: 4px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 1.5s infinite;
+}
+.mouse-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text-sub);
+    font-family: var(--font-en);
+}
+@keyframes scrollWheel {
+    0% { top: 8px; opacity: 1; }
+    100% { top: 25px; opacity: 0; }
+}
+
+/* ------------------------
+   Merit: Typography Layout
+------------------------ */
+.section-merit-modern {
+    padding: 8rem 0;
+    background: white;
+}
+
+.section-header-vertical {
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.v-subtitle {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.v-title {
+    font-size: 2.5rem;
+    font-family: "Shippori Mincho B1", serif;
+    color: var(--color-primary);
+    line-height: 1.6;
+}
+
+.merit-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+@media (min-width: 900px) {
+    .merit-grid {
+        flex-direction: row;
+        gap: 4rem;
+    }
+}
+
+.merit-card {
+    flex: 1;
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.merit-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+}
+
+.card-number {
+    font-size: 4rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: #e2e8f0; /* Light gray */
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.4s ease;
+}
+
+.merit-card:hover .card-number {
+    color: var(--color-accent);
+}
+
+.merit-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-family: "Shippori Mincho B1", serif;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: var(--color-text-sub);
+    line-height: 1.8;
+}
+
+/* ------------------------
+   Atmosphere: Trustworthy
+------------------------ */
+.section-atmosphere-modern {
+    padding: 8rem 0;
+    background: #f8fafc; /* Very light slate */
+}
+
+.atmosphere-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .atmosphere-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+    }
+    
+    /* Image on Left, Text on Right (Default) */
+    .atm-image-box {
+        order: 1;
+    }
+    .atm-text-box {
+        order: 2;
+    }
+}
+
+.atm-image-box {
+    position: relative;
+}
+
+.atm-img {
+    width: 100%;
+    border-radius: 4px;
+    filter: grayscale(20%); /* Slightly desaturated for mature look */
+    transition: filter 0.5s ease;
+}
+
+.atm-image-box:hover .atm-img {
+    filter: grayscale(0%);
+}
+
+.atm-deco-line {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 60%;
+    height: 60%;
+    border-bottom: 1px solid var(--color-primary);
+    border-right: 1px solid var(--color-primary);
+    z-index: 0;
+}
+
+.atm-text-box {
+    padding-left: 0;
+}
+
+@media (min-width: 900px) {
+    .atm-text-box {
+        padding-left: 2rem;
+    }
+}
+
+.section-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    color: var(--color-text-sub);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    background: white;
+}
+
+.atm-heading {
+    font-size: 2.25rem;
+    font-family: "Shippori Mincho B1", serif;
+    color: var(--color-primary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.atm-desc {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--color-text-sub);
+}
+
+/* ------------------------
+   Interview: Magazine Style (Updated Grid)
+   ------------------------ */
+.section-interview-modern {
+    background: white;
+    padding: 8rem 0;
+    overflow: hidden;
+}
+
+.section-desc {
+    text-align: center;
+    color: var(--color-text-sub);
+    margin-bottom: 4rem;
+}
+
+.interview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 768px) {
+    .interview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem 2rem;
+    }
+}
+
+.interview-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.interview-img-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: var(--shadow-md);
+}
+
+.interview-img {
+    width: 100%;
+    height: 300px; /* Uniform height */
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.interview-card:hover .interview-img {
+    transform: scale(1.05);
+}
+
+.interview-info {
+    padding: 0 0.5rem;
+}
+
+.iv-role {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.iv-name {
+    font-size: 1.5rem;
+    font-family: "Shippori Mincho B1", serif;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.iv-en {
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    color: #94a3b8; /* Light slate */
+    font-weight: 400;
+}
+
+.iv-msg {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text-sub);
+    border-left: 2px solid var(--color-border);
+    padding-left: 1rem;
+}
+
+
+/* ------------------------
+   Numbers Section (Pop Design)
+   ------------------------ */
+.section-numbers {
+    background: #f9fafb;
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.numbers-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.num-header {
+    margin-bottom: 4rem;
+}
+
+.num-label {
+    display: block;
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+
+.num-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.4;
+    color: var(--color-primary);
+}
+
+.numbers-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.num-card {
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s ease;
+}
+
+.num-card:hover {
+    transform: translateY(-10px);
+}
+
+.num-circle {
+    width: 140px;
+    height: 140px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: var(--font-en);
+    position: relative;
+}
+
+.circle-blue { background: #3b82f6; }
+.circle-orange { background: #f97316; }
+
+.num-val {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.num-unit {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-left: 0.2rem;
+}
+
+.num-desc {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.num-sub {
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+    display: block;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .numbers-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+/* ------------------------
+   Interview Detail (Accordion)
+   ------------------------ */
+.interview-card {
+    cursor: pointer;
+    /* transition is already defined */
+}
+
+/* Image Overlay */
+.iv-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(59, 130, 246, 0.7); /* Acccent Blue */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.interview-card:hover .iv-overlay {
+    opacity: 1;
+}
+
+.read-more {
+    color: white;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    font-family: var(--font-en);
+    border: 1px solid white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+}
+
+/* Detail Area (Hidden by default) */
+.interview-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    background: #f3f4f6;
+    margin-top: 1rem;
+    border-radius: 8px;
+}
+
+.interview-card.active .interview-detail {
+    max-height: 600px; /* Enough height for content */
+}
+
+.iv-qa {
+    padding: 1.5rem;
+}
+
+.iv-qa dl dt {
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.iv-qa dl dd {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-main);
+    font-size: 0.9rem;
+}
+.iv-qa dl dd:last-child {
+    margin-bottom: 0;
+}
+
+/* ------------------------
+   TETO Common Styles
+   ------------------------ */
+.teto-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.teto-label {
+    display: block;
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.teto-title {
+    font-size: 2.5rem;
+    font-weight: 800; /* Extra Bold */
+    line-height: 1.4;
+    color: var(--color-primary);
+}
+
+.teto-desc {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--color-text-sub);
+    margin-top: 2rem;
+}
+
+/* ------------------------
+   Merit: TETO Style (Grid of Clean Cards)
+   ------------------------ */
+.merit-grid-teto {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .merit-grid-teto {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.merit-card-teto {
+    background: white;
+    padding: 3rem 2rem;
+    border: 1px solid var(--color-border); /* Minimal border */
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.merit-card-teto:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.mc-num {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 4rem;
+    font-weight: 900;
+    color: #e5e7eb; /* Very light grey */
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    transition: color 0.4s ease;
+}
+
+.merit-card-teto:hover .mc-num {
+    color: var(--color-accent); /* Highlight on hover */
+}
+
+.mc-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.mc-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+    line-height: 1.7;
+}
+
+/* ------------------------
+   Atmosphere: TETO Style (Text + Image Side-by-Side)
+   ------------------------ */
+.section-atm-teto {
+    padding: 8rem 0;
+    overflow: hidden; /* Prevent horizontal scroll from deco box */
+    background: var(--color-bg); /* White */
+}
+
+.atm-content-teto {
+    display: flex;
+    flex-direction: column-reverse; /* Image top on mobile */
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .atm-content-teto {
+        flex-direction: row;
+        gap: 6rem;
+    }
+}
+
+.atm-text-area {
+    flex: 1;
+}
+
+.atm-text-area .teto-title {
+    font-size: 2.25rem; /* Slightly smaller than main header */
+}
+
+.atm-img-area {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    /* Ensure no unwanted hover effects from other sections leak here */
+}
+
+.atm-teto-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2; /* Image on top */
+    box-shadow: var(--shadow-lg); /* Add shadow for depth */
+}
+
+.atm-deco-box {
+    position: absolute;
+    top: 2rem;
+    right: -2rem;
+    width: 100%;
+    height: 100%;
+    background: var(--color-surface); /* Light grey */
+    z-index: 1; /* Behind image */
+}
+
+@media (max-width: 900px) {
+    .atm-deco-box {
+        top: 1rem;
+        right: -1rem;
+    }
+}
+
+/* FIX: Interview Card Layout & Image Sizing */
+.interview-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.interview-img-box {
+    aspect-ratio: 3/4;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #f3f4f6;
+}
+.interview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.interview-card:hover .interview-img {
+    transform: scale(1.05);
+}
+
+/* ------------------------
+   CEO Message: Magazine Style
+   ------------------------ */
+.section-message-teto {
+    padding: 8rem 0;
+    background: #fdfdfd;
+}
+
+.msg-layout-teto {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .msg-layout-teto {
+        flex-direction: row;
+        align-items: stretch; /* Align height */
+    }
+}
+
+.msg-img-box {
+    flex: 1;
+    position: relative;
+    width: 100%;
+}
+
+.msg-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    z-index: 1;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+}
+
+.msg-bg-typo {
+    position: absolute;
+    top: -4.5rem;
+    left: -1rem;
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 18vw; /* Responsive size */
+    color: #e5e7eb;
+    z-index: 0;
+    line-height: 1;
+    opacity: 0.6;
+}
+
+@media (min-width: 900px) {
+    .msg-bg-typo {
+        font-size: 8rem;
+        left: -4rem;
+    }
+}
+
+/* Generic Section Label */
+.section-label-en {
+    display: block;
+    text-align: center;
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--color-accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+}
+
+.msg-text-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.msg-body {
+    line-height: 2.2;
+    color: var(--color-text-main);
+    margin-top: 2rem;
+    font-weight: 500;
+}
+
+/* ------------------------
+   Schedule: Timeline Style
+   ------------------------ */
+.section-schedule-teto {
+    padding: 8rem 0;
+    background: white;
+}
+
+.schedule-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid #e5e7eb;
+}
+
+.time-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+}
+
+.time-item:last-child {
+    margin-bottom: 0;
+}
+
+.time-item::before {
+    content: '';
+    position: absolute;
+    left: -2.6rem; /* Adjust to sit on line */
+    top: 0.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: var(--color-accent);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #e5e7eb;
+}
+
+.time-label {
+    font-family: var(--font-en);
+    font-weight: 800;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+}
+
+.time-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.time-content p {
+    color: var(--color-text-sub);
+    line-height: 1.6;
+}
+
+/* ------------------------
+   Requirements & Company: Clean List
+   ------------------------ */
+.section-req-teto,
+.section-company-teto {
+    padding: 8rem 0;
+    background: #f9fafb;
+}
+
+.req-list, .company-info-teto {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: var(--shadow-sm);
+}
+
+.req-item, .company-info-teto dl {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1.5rem 0;
+    flex-wrap: wrap; /* Allow wrap on mobile */
+}
+
+.section-company-teto dl {
+    display: block;
+}
+.company-info-teto dl {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 0;
+}
+.company-info-teto dl:last-child {
+    border-bottom: none;
+}
+
+.req-item:last-child {
+    border-bottom: none;
+}
+
+.req-item dt, .company-info-teto dt {
+    width: 200px;
+    font-weight: 700;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.req-item dd, .company-info-teto dd {
+    flex: 1;
+    line-height: 1.8;
+    color: var(--color-text-main);
+}
+
+@media (max-width: 600px) {
+    .req-item, .company-info-teto dl {
+        flex-direction: column;
+        grid-template-columns: 1fr; /* Reset grid for company */
+        gap: 0.5rem;
+    }
+    .req-item dt, .company-info-teto dt {
+        width: 100%;
+        color: var(--color-accent);
+    }
+}
+
+/* ------------------------
+   FAQ: Accordion Style
+   ------------------------ */
+.section-faq-teto {
+    padding: 8rem 0;
+    background: white;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+}
+
+.faq-question {
+    font-weight: 700;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    list-style: none; /* Hide default triangle */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+/* Custom Icon */
+.faq-icon {
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    transition: transform 0.3s;
+}
+
+.faq-item[open] .faq-icon {
+    transform: rotate(45deg); /* Turn + into x */
+}
+
+.faq-answer {
+    padding-bottom: 2rem;
+    color: var(--color-text-sub);
+    line-height: 1.8;
+    padding-right: 2rem;
+}
