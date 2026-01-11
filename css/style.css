@@ -86,7 +86,7 @@ a:hover {
 }
 
 .logo img {
-    height: 42px;
+    height: 56px; /* 62px -> 56px (余白を考慮したバランス調整) */
     width: auto;
     /* 白背景を透過させる簡易テクニック */
     mix-blend-mode: multiply;
@@ -182,17 +182,25 @@ a:hover {
     justify-content: center;
 }
 
+/* Subtext hidden on PC */
+.nav-btn-sub {
+    display: none !important;
+}
+
 .hero-sub {
-    font-size: 13px;
-    color: var(--text-sub);
-    margin-bottom: 20px;
+    font-size: 13px !important; /* 強制的に小さく */
+    color: var(--accent-color) !important; /* ゴールド（アクセントカラー）に変更 */
+    margin-bottom: 0; /* 10px -> 0 (さらに詰める) */
+    margin-top: 50px !important; 
     display: block;
     letter-spacing: 0.2em;
+    font-weight: 500;
 }
 
 .hero-title {
     font-size: 42px;
     margin-bottom: 40px;
+    margin-top: 0; /* デフォルトマージンを削除 */
     line-height: 1.6;
 }
 
@@ -477,6 +485,7 @@ a:hover {
     margin: 0 auto 100px;
     text-align: center;
     position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* ほんのりとした影 */
 }
 
 /* 上品なフレーム装飾 */
@@ -620,25 +629,32 @@ a:hover {
 .step-list {
     display: flex;
     justify-content: space-between;
-    gap: 0; /* 線でつなぐため */
+    gap: 20px; /* ボックス間の隙間 */
     position: relative;
+    align-items: stretch; /* 高さ揃え */
 }
 
 /* 線をつなぐ演出があれば良いが、基本はシンプルに */
 .step-item {
     flex: 1;
-    padding: 0 20px;
+    padding: 30px 20px;
     text-align: center;
     position: relative;
+    background: var(--bg-light); /* 色をつける */
+    border: none; /* 背景があるので枠線はなしでシンプルに */
+    border-radius: 8px; /* 角丸 */
+    box-sizing: border-box; 
 }
 
 .step-item:not(:last-child)::after {
     content: '→';
     position: absolute;
-    right: -10px;
-    top: 20px;
+    right: -20px; /* ギャップの中央に */
+    top: 50%;
+    transform: translateY(-50%);
     color: #ccc;
     font-family: var(--font-mincho);
+    z-index: 1;
 }
 
 .s-head {
@@ -969,7 +985,7 @@ a:hover {
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1000; /* Behind hamburger */
         padding-top: 0;
-        padding-bottom: 80px; /* 重心を少し上に持っていく（光学的中心） */
+        padding-bottom: 40px; /* 60px -> 40pxに変更（変化を明確にするため） */
         pointer-events: none;
     }
 
@@ -1016,7 +1032,7 @@ a:hover {
         height: auto;
         min-height: auto; /* Reset desktop min-height */
         padding-top: 80px; /* Header space */
-        padding-bottom: 60px;
+        padding-bottom: 100px; /* 60px -> 100pxに拡大（料金セクションの余白感に合わせる） */
     }
     .container {
         padding: 0 20px; /* Reduce padding to allow wider cards */
@@ -1059,13 +1075,21 @@ a:hover {
     }
 
     /* General Mobile Adjustments */
-    .intro-section { padding: 80px 0; }
+    .intro-section { padding: 40px 0; } /* 80px -> 40px */
     .feature-section { padding: 80px 0; }
     .works-section { padding: 80px 0; }
+    .price-section { padding: 60px 0; } /* 40px -> 60px */
+    .policy-section { padding: 60px 0 100px 0; } /* 下余白を広く */
+    .flow-section { padding: 60px 0; } /* 40px -> 60px（料金セクションに合わせる） */
     
     .intro-lead h3 {
         font-size: 24px;
         margin-bottom: 40px;
+    }
+    
+    .campaign-box {
+        margin-bottom: 60px; /* 40px -> 60px */
+        padding: 40px 20px; /* 内部の余白も少し調整 */
     }
     .pain-list, .step-list, .plan-grid-mini {
         flex-direction: column;
@@ -1081,11 +1105,11 @@ a:hover {
         content: '↓';
         right: 50%;
         top: auto;
-        bottom: -25px;
+        bottom: -28px; /* ボックスの下に配置 */
         transform: translateX(50%);
     }
     .step-list {
-        gap: 30px;
+        gap: 30px; /* 縦の隙間を少し広めに */
     }
     .step-item {
         margin-bottom: 10px;
@@ -1154,6 +1178,17 @@ a:hover {
     /* Remove forced block display since we use <br class="br-sp"> */
     .cta-main {
         font-size: 18px; 
+    }
+    .hero-sub {
+        font-size: 14px;
+        margin-top: 0; /* モバイルではリセット（あるいは調整） */
+    }
+    
+    .nav-btn-sub {
+        display: block; /* モバイルでは表示 */
+        font-size: 10px;
+        margin-top: 2px;
+        opacity: 0.8;
     }
     .cta-sub {
         font-size: 12px;
