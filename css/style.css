@@ -308,20 +308,59 @@ a:hover {
     margin-bottom: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* 繊細な影 */
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.feature-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.f-text {
+    flex: 1;
 }
 
 .f-text h3 {
     font-size: 22px;
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     color: var(--text-color);
+    line-height: 1.6;
 }
 
 .f-text p {
     font-size: 15px;
     color: var(--text-sub);
     text-align: justify;
+    line-height: 2;
+}
+
+.f-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-img img {
+    max-width: 80%;
+    height: auto;
+    /* transition: transform 0.6s ease; */
+}
+
+/* Mobile Responsive for Feature Row */
+@media (max-width: 768px) {
+    .feature-row, .feature-row.reverse {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+    .f-img img {
+        max-width: 60%; /* Keep illustrations smaller on mobile */
+    }
 }
 
 /* Works */
