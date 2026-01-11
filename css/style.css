@@ -671,13 +671,11 @@ a:hover {
 .profile-inner {
     max-width: 800px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 60px;
 }
 
-.profile-content {
-    flex: 1.5;
+.profile-header {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .p-job {
@@ -687,13 +685,24 @@ a:hover {
     color: var(--accent-color);
     margin-bottom: 20px;
     text-transform: uppercase;
-    text-align: center; /* Keep center as requested */
+}
+
+.profile-header h3 {
+    font-size: 26px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.profile-body {
+    display: flex;
+    align-items: center; /* Vertically center image and text block */
+    gap: 60px;
 }
 
 .profile-image {
     flex: 1;
     max-width: 300px;
-    margin: 0; /* Reset margin */
+    margin: 0;
 }
 
 .profile-image img {
@@ -703,14 +712,11 @@ a:hover {
     box-shadow: 20px 20px 0 var(--bg-light);
 }
 
-.profile-content h3 {
-    font-size: 26px;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    text-align: center; /* User requested "Heading in the middle" */
+.profile-text {
+    flex: 1.5;
 }
 
-.profile-content p {
+.profile-text p {
     font-size: 14px;
     color: var(--text-sub);
     line-height: 2;
@@ -722,8 +728,20 @@ a:hover {
     font-family: var(--font-mincho);
     font-size: 20px;
     color: var(--text-color);
-    text-align: right; /* Sign looks better right aligned or keep default */
+    text-align: right;
     display: block;
+}
+
+@media (max-width: 768px) {
+    .profile-body {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .profile-image {
+        max-width: 100%;
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
 /* Contact */
@@ -1048,6 +1066,6 @@ a:hover {
 
 /* Fix Tax Size Global */
 .c-value .tax {
-    font-size: 0.5em !important; /* Force smaller size relative to price */
+    font-size: 0.4em !important; /* Force smaller size relative to price */
     font-weight: normal;
 }
