@@ -322,6 +322,15 @@ a:hover {
     flex-direction: row-reverse;
 }
 
+.gray-card {
+    background: var(--bg-light);
+    padding: 50px 40px;
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* Match feature-row shadow */
+}
+
 .f-text {
     flex: 1;
 }
@@ -353,6 +362,7 @@ a:hover {
     max-width: 80%;
     height: auto;
     /* transition: transform 0.6s ease; */
+    mix-blend-mode: multiply; /* Blend white background into container */
 }
 
 /* Mobile Responsive for Feature Row */
