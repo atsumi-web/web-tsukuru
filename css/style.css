@@ -748,6 +748,7 @@ a:hover {
 .contact-section {
     padding: 120px 0;
     text-align: center;
+    background-color: var(--bg-light); /* Distinguish from Profile */
 }
 
 .contact-lead {
@@ -929,6 +930,8 @@ a:hover {
         margin-left: 0;
         font-size: 18px;
         font-family: var(--font-mincho);
+        text-align: center; /* Center align text */
+        width: 100%; /* Full width for centering */
     }
     
     .site-nav a:not(.nav-btn) {
@@ -1056,16 +1059,36 @@ a:hover {
         width: 100%;
         padding: 20px 10px; /* Reduce side padding to allow more text space */
         box-sizing: border-box;
+        /* Fix hover flash on mobile by forcing background/color */
+        -webkit-tap-highlight-color: transparent; /* Remove blue highlight */
     }
+    .google-form-btn:active, .google-form-btn:focus {
+        background: var(--bg-dark); /* Keep same background */
+        color: #fff;
+    }
+    
     .google-form-btn strong {
         font-size: 15px; /* Slightly smaller text to prevent wrapping */
         display: block;
         width: 100%;
     }
+    
+    /* Break text on mobile */
+    .cta-main {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 18px; /* Emphasize main text */
+    }
+    .cta-sub {
+        display: block;
+        font-size: 13px;
+        font-weight: normal;
+        opacity: 0.9;
+    }
 }
 
 /* Fix Tax Size Global */
 .c-value .tax {
-    font-size: 0.4em !important; /* Force smaller size relative to price */
+    font-size: 0.5em !important; /* Force smaller size relative to price */
     font-weight: normal;
 }
