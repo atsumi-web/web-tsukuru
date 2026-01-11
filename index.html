@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260112x">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -30,8 +30,8 @@
                 <a href="#concept">特徴</a>
                 <a href="#flow">流れ</a>
                 <a href="#price">料金</a>
-                <a href="#profile">つくる人</a>
-                <a href="#contact" class="nav-btn">無料相談</a>
+                <a href="#profile">Webをつくる人</a>
+                <a href="https://docs.google.com/forms/" target="_blank" class="nav-btn">無料で相談する<span class="nav-btn-sub">（売り込みはありません）</span></a>
             </nav>
         </div>
     </header>
@@ -39,12 +39,12 @@
     <!-- 01: Hero (First View) -->
     <section class="hero">
         <div class="hero-bg">
-            <img src="images/hero-service-lp.png" alt="採用戦略会議">
+            <img src="images/hero_new.png" alt="採用戦略会議">
         </div>
         <div class="hero-content js-fade-up">
             <p class="hero-sub">中小企業の採用担当者・経営者様へ</p>
             <h2 class="hero-title">
-                求人広告にお金をかけても、<br>
+                求人広告にお金をかけても、<br class="br-pc">
                 掲載が終われば、何も残らない。
             </h2>
             <p class="hero-desc">
@@ -61,11 +61,11 @@
             </p>
             <p class="hero-sub-copy" style="margin-top:20px; font-weight:700; color:var(--text-color); line-height:1.8;">
                 採用を「その場しのぎ」から<br>
-                自社で持ち続けられる採用ページに変えるための<br>
+                自社で持ち続けられる採用ページに変えるための<br class="br-pc">
                 採用特化LP制作
             </p>
             <div class="hero-actions">
-                <a href="#contact" class="hero-btn primary">無料で相談する（売り込みはありません）</a>
+                <a href="#contact" class="hero-btn primary">無料で相談する<span class="nav-btn-sub" style="display:inline-block;">（売り込みはありません）</span></a>
             </div>
         </div>
     </section>
@@ -196,7 +196,7 @@
                     <p>月額の保守費・管理費がかからない</p>
                 </div>
             </div>
-            <p class="intro-mechanism js-fade-up" style="margin-top:0; padding-bottom: 60px;">
+            <p class="intro-mechanism js-fade-up" style="margin-top:0; padding-bottom: 40px;">
                 採用を「一時的な出費」ではなく、<br>
                 会社に残る資産として使える設計です。
             </p>
@@ -399,7 +399,7 @@
                 <div class="form-wrapper">
                     <a href="https://docs.google.com/forms/" target="_blank" class="google-form-btn">
                         <span>ご相談・お見積り・モニター応募</span>
-                        <strong><span class="cta-main"></span>無料で相談する</span><span class="cta-sub">（売り込みはありません）</span></strong>
+                        <strong><span class="cta-main">無料で相談する</span><br class="br-sp"><span class="cta-sub">（売り込みはありません）</span></strong>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
@@ -411,7 +411,10 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-            <div class="footer-logo">Webをつくるしごと | 採用特化LP制作</div>
+            <div class="footer-logo">
+                <img src="images/logo_icon.png" alt="Logo">
+                <span>Webをつくるしごと | 採用特化LP制作</span>
+            </div>
             <p class="copyright">&copy; 2026 Webをつくるしごと</p>
         </div>
     </footer>

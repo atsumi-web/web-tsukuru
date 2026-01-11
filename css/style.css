@@ -86,7 +86,7 @@ a:hover {
 }
 
 .logo img {
-    height: 32px;
+    height: 42px;
     width: auto;
     /* 白背景を透過させる簡易テクニック */
     mix-blend-mode: multiply;
@@ -243,9 +243,11 @@ a:hover {
 .pain-list {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-bottom: 60px;
+    gap: 20px;
     flex-wrap: wrap;
+    list-style: none; /* Remove bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
 }
 
 .pain-item {
@@ -261,6 +263,13 @@ a:hover {
     font-size: 14px;
     line-height: 1.8;
     margin: 0;
+}
+
+
+
+.intro-section .pain-item {
+    width: 440px; /* (900px - 20px gap) / 2 */
+    box-sizing: border-box;
 }
 
 .intro-mechanism {
@@ -307,7 +316,7 @@ a:hover {
 }
 
 .feature-row {
-    background: var(--bg-light);
+    background: #f2f2f2; /* Slightly darker gray for better visibility */
     padding: 60px;
     margin-bottom: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* 繊細な影 */
@@ -323,12 +332,14 @@ a:hover {
 }
 
 .gray-card {
-    background: var(--bg-light);
+    background: #f2f2f2; /* Consistent visible gray */
+    /* border: 2px solid red; Removed debug border */
     padding: 50px 40px;
     border-radius: 8px;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 900px; /* Match feature-rows width */
     box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* Match feature-row shadow */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .f-text {
@@ -462,7 +473,7 @@ a:hover {
     background: #fff;
     border: 1px solid #ddd; /* ギラギラさせず、シンプルな線 */
     padding: 60px;
-    max-width: 800px;
+    max-width: 900px; /* Aligned with other sections */
     margin: 0 auto 100px;
     text-align: center;
     position: relative;
@@ -656,7 +667,7 @@ a:hover {
 }
 
 .policy-box {
-    max-width: 700px;
+    max-width: 900px; /* Aligned with other sections */
     margin: 0 auto;
     text-align: center;
     padding: 40px;
@@ -779,24 +790,26 @@ a:hover {
 
 .google-form-btn {
     display: inline-block;
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--accent-color);
     padding: 25px 80px;
     text-align: center;
-    color: var(--text-color);
+    color: #fff;
     position: relative;
-    background: transparent;
+    background: var(--accent-color);
     transition: all 0.3s;
+    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); /* Add subtle shadow for depth */
 }
 
 .google-form-btn:hover {
     background: var(--text-color);
+    border-color: var(--text-color);
     color: #fff;
 }
 
-.google-form-btn span {
+.google-form-btn > span {
     font-size: 11px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     letter-spacing: 0.1em;
 }
 
@@ -842,6 +855,24 @@ a:hover {
 
 .no-scroll {
     overflow: hidden;
+}
+
+/* Mobile Break */
+.br-sp {
+    display: none;
+}
+/* PC Break Only */
+.br-pc {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .br-sp {
+        display: block;
+    }
+    .br-pc {
+        display: none;
+    }
 }
 
 .hamburger-btn {
@@ -933,11 +964,12 @@ a:hover {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 40px;
+        gap: 30px; /* 少し間隔を詰める */
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1000; /* Behind hamburger */
-        padding-top: 60px; /* Space for header */
+        padding-top: 0;
+        padding-bottom: 80px; /* 重心を少し上に持っていく（光学的中心） */
         pointer-events: none;
     }
 
@@ -947,18 +979,20 @@ a:hover {
     }
 
     .site-nav a {
-        margin-left: 0;
-        font-size: 18px;
+        margin: 0;
+        font-size: 16px; /* 文字サイズ調整 */
         font-family: var(--font-mincho);
-        text-align: center; /* Center align text */
-        width: 100%; /* Full width for centering */
+        text-align: center; 
+        width: auto; /* テキスト幅に合わせる（下線のため） */
+        display: inline-block; /* 念のため */
     }
     
     .site-nav a:not(.nav-btn) {
-        display: block; /* Override default cleanup */
+        display: inline-block; /* Override default cleanup */
         opacity: 0;
         transform: translateY(10px);
         transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+        position: relative; /* For underline */
     }
     
     .site-nav.is-active a:not(.nav-btn) {
@@ -973,7 +1007,7 @@ a:hover {
     }
     
     .logo img {
-        height: 26px;
+        height: 34px; /* モバイルでも少し存在感を出す */
     }
 
     /* Hero Responsive */
@@ -983,6 +1017,12 @@ a:hover {
         min-height: auto; /* Reset desktop min-height */
         padding-top: 80px; /* Header space */
         padding-bottom: 60px;
+    }
+    .container {
+        padding: 0 20px; /* Reduce padding to allow wider cards */
+    }
+    .plan-grid-mini {
+        padding: 20px; /* Reduce padding */
     }
     .hero-bg, .hero-content {
         width: 100%;
@@ -1031,10 +1071,11 @@ a:hover {
         flex-direction: column;
         align-items: center;
     }
-    .pain-item {
+    .pain-item, .step-item, .p-mini, .intro-section .pain-item {
         width: 100%;
-        max-width: 320px;
+        max-width: 360px; /* 320px -> 360pxに拡大 */
         box-sizing: border-box;
+        margin: 0 auto 20px; /* 中央揃え + 下マージン */
     }
     .step-item:not(:last-child)::after {
         content: '↓';
@@ -1075,6 +1116,24 @@ a:hover {
     }
     
     /* Fix CTA text width */
+    .site-nav a.nav-btn {
+        width: 240px; /* 安全な固定幅 */
+        display: block;
+        margin: 10px auto 0; /* 上に少しマージン、左右中央 */
+        padding: 15px 0; /* 横パディングなし（幅で制御） */
+        text-align: center;
+        box-sizing: border-box;
+        white-space: normal;
+    }
+    
+    .nav-btn-sub {
+        display: block; /* 強制改行 */
+        font-size: 13px; /* 少し小さく */
+        margin-top: 2px;
+        font-weight: normal;
+        opacity: 0.95;
+        line-height: normal; /* リセット */
+    }
     .google-form-btn {
         width: 100%;
         padding: 20px 10px; /* Reduce side padding to allow more text space */
@@ -1088,21 +1147,16 @@ a:hover {
     }
     
     .google-form-btn strong {
-        font-size: 15px; /* Slightly smaller text to prevent wrapping */
-        display: block;
-        width: 100%;
+        font-size: 15px; 
     }
     
-    /* Break text on mobile */
+    /* Mobile CTA modifications */
+    /* Remove forced block display since we use <br class="br-sp"> */
     .cta-main {
-        display: block;
-        margin-bottom: 4px;
-        font-size: 18px; /* Emphasize main text */
+        font-size: 18px; 
     }
     .cta-sub {
-        display: block;
-        font-size: 13px;
-        font-weight: normal;
+        font-size: 12px;
         opacity: 0.9;
     }
 }
@@ -1111,4 +1165,28 @@ a:hover {
 .c-value .tax {
     font-size: 0.5em !important; /* Force smaller size relative to price */
     font-weight: normal;
+}
+
+/* Footer Logo Styling */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-family: var(--font-mincho);
+    font-size: 15px; /* 少し読みやすく */
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.footer-logo img {
+    height: 28px; /* 20pxだと小さすぎたので、程よいサイズに */
+    width: auto;
+    filter: grayscale(100%) opacity(0.8); /* 視認性を上げつつ、派手すぎない */
+    transition: filter 0.3s;
+}
+
+.footer-logo:hover img {
+    filter: grayscale(0%) opacity(1);
 }
