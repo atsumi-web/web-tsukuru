@@ -473,7 +473,7 @@ a:hover {
 
 /* Campaign & Price */
 .price-section {
-    padding: 100px 0;
+    padding: 100px 0 60px; /* 下の余白を少し狭める (100px -> 60px) */
     background: var(--bg-light);
 }
 
@@ -482,7 +482,7 @@ a:hover {
     border: 1px solid #ddd; /* ギラギラさせず、シンプルな線 */
     padding: 60px;
     max-width: 900px; /* Aligned with other sections */
-    margin: 0 auto 100px;
+    margin: 0 auto; /* 下のマージン100pxを削除 */
     text-align: center;
     position: relative;
     box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* ほんのりとした影 */
