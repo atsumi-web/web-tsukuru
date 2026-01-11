@@ -851,10 +851,19 @@ a:hover {
 }
 
 .footer-logo {
+    display: flex; /* Flexbox for stacking */
+    flex-direction: column; /* Vertical stack */
+    align-items: center; /* Center align */
+    gap: 10px; /* Space between logo and text */
     font-family: var(--font-mincho);
     font-size: 16px;
     color: var(--text-color);
-    margin-bottom: 15px;
+    margin-bottom: 30px; /* 15px -> 30px */
+}
+
+.footer-logo img {
+    height: 100px !important; /* 強制的に大きく変更 */
+    width: auto;
 }
 
 /* Animation & Utility */
@@ -908,7 +917,7 @@ a:hover {
     max-width: 800px;
     margin: 0 auto 100px;
     text-align: center;
-    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15); /* Soft Gold Shadow */
+    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.1); /* Softened Shadow (0.15 -> 0.1) */
     border-radius: 2px;
 }
 
