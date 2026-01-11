@@ -1,0 +1,825 @@
+@charset "UTF-8";
+
+:root {
+    /* Color Palette: Intellectual Clean */
+    --text-color: #333333;
+    --text-sub: #666666;
+    --accent-color: #C5A059;   /* Muted Gold */
+    --link-color: #1a1a1a;
+    
+    --bg-white: #ffffff;
+    --bg-light: #f7f7f7;       /* Silver Gray */
+    --bg-dark: #1a1a1a;        /* Deep Navy/Black */
+    
+    /* Typography */
+    --font-gothic: 'Noto Sans JP', sans-serif;
+    --font-mincho: 'Shippori Mincho', serif;
+}
+
+body {
+    font-family: var(--font-gothic);
+    color: var(--text-color);
+    line-height: 2.0; /* ゆったりとした行間 */
+    margin: 0;
+    letter-spacing: 0.08em;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Header: Stylish Glassmorphism */
+.site-header {
+    padding: 15px 0;
+    position: fixed; /* 常に上に固定 */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85); /* 半透明の白 */
+    backdrop-filter: blur(10px); /* すりガラス効果 */
+    border-bottom: 1px solid rgba(0,0,0,0.03); /* 繊細な境界線 */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-mincho);
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: #1a1a1a;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 32px;
+    width: auto;
+    /* 白背景を透過させる簡易テクニック */
+    mix-blend-mode: multiply;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+}
+
+.site-nav a {
+    margin-left: 35px;
+    font-size: 13px;
+    color: #444;
+    font-weight: 500;
+    position: relative;
+    letter-spacing: 0.05em;
+}
+
+/* ホバー時の下線アニメーション */
+.site-nav a:not(.nav-btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.3s;
+}
+
+.site-nav a:not(.nav-btn):hover {
+    color: #000;
+}
+
+.site-nav a:not(.nav-btn):hover::after {
+    width: 100%;
+}
+
+.nav-btn {
+    background: var(--bg-dark);
+    color: #fff !important;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 2px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.nav-btn:hover {
+    background: #333;
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-light); /* 明るいグレー背景に戻す */
+}
+
+.hero-bg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48%; /* 画像幅を少し狭めて被りを防ぐ */
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1.05); /* 明るく清潔に */
+}
+
+.hero-content {
+    width: 52%; /* テキストエリアを確保 */
+    padding-left: 8%;
+    padding-right: 20px; /* 画像との間に余白 */
+    z-index: 2;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-sub {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 20px;
+    display: block;
+    letter-spacing: 0.2em;
+}
+
+.hero-title {
+    font-size: 42px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.hero-desc {
+    font-size: 15px;
+    color: var(--text-sub);
+    margin-bottom: 50px;
+    border-left: 1px solid var(--accent-color);
+    padding-left: 20px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.hero-btn.primary {
+    background: var(--bg-dark);
+    color: #fff;
+}
+
+.hero-btn.secondary {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: var(--text-color);
+}
+
+/* Intro / Pain */
+.intro-section {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.intro-lead h3 {
+    font-size: 28px;
+    margin-bottom: 60px;
+    font-weight: 400;
+}
+
+.pain-list {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.pain-item {
+    width: 260px;
+    text-align: center;
+    padding: 30px 25px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.pain-item p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.intro-mechanism {
+    font-family: var(--font-mincho);
+    font-size: 20px;
+    margin-top: 60px;
+}
+
+.intro-mechanism strong {
+    background: linear-gradient(transparent 60%, #e0e0e0 60%); /* マーカー風 */
+    font-weight: 500;
+}
+
+/* Features */
+.feature-section {
+    padding: 100px 0;
+    background: var(--bg-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.en-label {
+    display: block;
+    font-size: 12px;
+    color: var(--accent-color);
+    letter-spacing: 0.2em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    margin: 0;
+    font-weight: 400;
+}
+
+.feature-rows {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.feature-row {
+    background: #fff;
+    padding: 60px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* 繊細な影 */
+    border: none;
+}
+
+.f-text h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    color: var(--text-color);
+}
+
+.f-text p {
+    font-size: 15px;
+    color: var(--text-sub);
+    text-align: justify;
+}
+
+/* Works */
+.works-section {
+    padding: 120px 0;
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.work-card {
+    display: block;
+    transition: transform 0.3s;
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+}
+
+.work-thumb {
+    height: 220px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.work-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: grayscale(20%); /* 少し彩度を落として統一感 */
+}
+
+.work-card:hover .work-thumb img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.w-cat {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #999;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.work-info h4 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    font-family: var(--font-gothic); /* 作品名はゴシックでモダンに */
+}
+
+.work-info p {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.8;
+}
+
+.works-note {
+    text-align: center;
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 60px;
+}
+
+/* Campaign & Price */
+.price-section {
+    padding: 100px 0;
+    background: var(--bg-light);
+}
+
+.campaign-box {
+    background: #fff;
+    border: 1px solid #ddd; /* ギラギラさせず、シンプルな線 */
+    padding: 60px;
+    max-width: 800px;
+    margin: 0 auto 100px;
+    text-align: center;
+    position: relative;
+}
+
+/* 上品なフレーム装飾 */
+.campaign-box::after {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border: 1px solid #f0f0f0;
+    pointer-events: none;
+}
+
+.campaign-tag {
+    display: inline-block;
+    color: var(--accent-color);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+}
+
+.campaign-box h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.c-desc {
+    font-size: 15px;
+    margin-bottom: 40px;
+    color: var(--text-sub);
+}
+
+.c-price {
+    margin-bottom: 40px;
+}
+
+.c-label {
+    display: block;
+    font-size: 14px;
+    color: #999;
+}
+
+.c-value {
+    font-size: 42px;
+    font-family: var(--font-mincho);
+    color: var(--text-color); /* 黒でシックに */
+}
+
+/* Action Area (Side by side) */
+.c-action-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.c-cond {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-sub);
+}
+
+@media (max-width: 768px) {
+    .c-action-area {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    .c-cond {
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+.c-cond li::before {
+    content: '・';
+    margin-right: 10px;
+    color: #ccc;
+}
+
+.c-btn {
+    display: inline-block; /* フレックス内なのでinline-blockでもblockでもOKだが、幅なりにする */
+    background: var(--bg-dark);
+    color: #fff;
+    padding: 18px 60px;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    transition: opacity 0.3s;
+    margin: 0; /* マージンリセット */
+}
+
+.c-btn:hover {
+    opacity: 0.8;
+}
+
+/* Regular Plans (Mini) */
+.plan-sub {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.plan-sub h4 {
+    font-size: 16px;
+    color: #999;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.plan-grid-mini {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.p-mini span {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.p-mini strong {
+    font-family: var(--font-mincho);
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+/* Flow */
+.flow-section {
+    padding: 120px 0;
+}
+
+.step-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 0; /* 線でつなぐため */
+    position: relative;
+}
+
+/* 線をつなぐ演出があれば良いが、基本はシンプルに */
+.step-item {
+    flex: 1;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+}
+
+.step-item:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 20px;
+    color: #ccc;
+    font-family: var(--font-mincho);
+}
+
+.s-head {
+    font-family: var(--font-mincho);
+    font-size: 16px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.step-item p strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.step-item p {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+/* Policy */
+.policy-section {
+    padding: 60px 0;
+    background: #fafafa;
+}
+
+.policy-box {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px;
+    border: 1px dashed #ddd; /* 控えめな境界線 */
+}
+
+.policy-box h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.policy-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.policy-box li {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 5px;
+}
+
+/* Creator Profile */
+.profile-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.profile-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.profile-image {
+    flex: 1;
+    max-width: 300px;
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: 4px; /* あえて少し角を残して知的に */
+    filter: sepia(0.05); /* ほんの少し温かみを */
+    box-shadow: 20px 20px 0 var(--bg-light);
+}
+
+.profile-content {
+    flex: 1.5;
+}
+
+.p-job {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.profile-content h3 {
+    font-size: 26px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.profile-content p {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 2;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.p-sign {
+    font-family: var(--font-mincho);
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .profile-inner {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .profile-image {
+        max-width: 100%;
+        width: 80%;
+    }
+}
+
+/* Contact */
+.contact-section {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.contact-lead {
+    font-size: 16px;
+    margin-bottom: 60px;
+    line-height: 2;
+}
+
+.google-form-btn {
+    display: inline-block;
+    border: 1px solid var(--text-color);
+    padding: 25px 80px;
+    text-align: center;
+    color: var(--text-color);
+    position: relative;
+    background: transparent;
+    transition: all 0.3s;
+}
+
+.google-form-btn:hover {
+    background: var(--text-color);
+    color: #fff;
+}
+
+.google-form-btn span {
+    font-size: 11px;
+    display: block;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.google-form-btn strong {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.contact-sub {
+    font-size: 12px;
+    color: #999;
+    margin-top: 20px;
+}
+
+/* Footer */
+.site-footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+    font-size: 11px;
+    color: #999;
+}
+
+.footer-logo {
+    font-family: var(--font-mincho);
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Mobile Header Fix */
+    .site-nav a:not(.nav-btn) {
+        display: none;
+    }
+    .header-inner {
+        padding: 0 15px;
+    }
+    .logo {
+        font-size: 16px;
+        gap: 8px;
+    }
+    .logo img {
+        height: 24px;
+    }
+    .nav-btn {
+        padding: 8px 14px;
+        font-size: 11px;
+        margin-left: 0;
+    }
+
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding-bottom: 60px;
+    }
+    .hero-bg, .hero-content {
+        width: 100%;
+        position: static;
+    }
+    .hero-bg {
+        height: 300px;
+        margin-bottom: 40px;
+    }
+    .hero-content {
+        padding: 0 20px;
+    }
+    .hero-title {
+        font-size: 32px;
+    }
+    .hero-actions {
+        flex-direction: column;
+    }
+    .hero-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .intro-lead h3 {
+        font-size: 24px;
+    }
+    .pain-list, .step-list, .plan-grid-mini {
+        flex-direction: column;
+        align-items: center;
+    }
+    .step-item:not(:last-child)::after {
+        content: '↓';
+        right: 50%;
+        top: auto;
+        bottom: -20px;
+        transform: translateX(50%);
+    }
+    .step-item {
+        margin-bottom: 30px;
+    }
+    .campaign-box {
+        padding: 40px 20px;
+    }
+    .c-value {
+        font-size: 36px;
+    }
+}
