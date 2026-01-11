@@ -307,7 +307,7 @@ a:hover {
 }
 
 .feature-row {
-    background: #fff;
+    background: var(--bg-light);
     padding: 60px;
     margin-bottom: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* 繊細な影 */
@@ -353,6 +353,7 @@ a:hover {
     max-width: 80%;
     height: auto;
     /* transition: transform 0.6s ease; */
+    mix-blend-mode: multiply; /* Simulate transparency on light backgrounds */
 }
 
 /* Mobile Responsive for Feature Row */
@@ -370,6 +371,15 @@ a:hover {
 /* Works */
 .works-section {
     padding: 120px 0;
+}
+/* ... */
+/* Profile Image */
+.profile-image img {
+    width: 100%;
+    border-radius: 4px;
+    filter: sepia(0.05);
+    box-shadow: 20px 20px 0 var(--bg-light);
+    mix-blend-mode: multiply; /* Simulate transparency */
 }
 
 .works-grid {
@@ -710,6 +720,7 @@ a:hover {
     border-radius: 4px;
     filter: sepia(0.05);
     box-shadow: 20px 20px 0 var(--bg-light);
+    mix-blend-mode: multiply; /* Simulate transparency */
 }
 
 .profile-text {
