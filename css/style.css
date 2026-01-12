@@ -298,6 +298,7 @@ a:hover {
 .tagline-solution strong {
     color: var(--accent-color);
     font-weight: 700;
+    display: block; /* PC: Force line break before strong */
 }
 
 /* Main Title Spacing */
@@ -564,6 +565,10 @@ a:hover {
         margin-bottom: 10px !important; /* Tighter spacing on mobile */
     }
     
+    .tagline-solution strong {
+        display: inline; /* Mobile: Keep on same line */
+    }
+    
     .hero {
         display: flex; /* Flex Layout */
         flex-direction: column; /* Vertical Stack */
@@ -634,7 +639,7 @@ a:hover {
         position: relative !important;
         bottom: auto !important;
         left: auto !important;
-        margin-top: 0 !important; /* Remove top gap */
+        margin-top: -20px !important; /* Pull up closer to CTA */
         margin-bottom: 0 !important; /* No gap below strip */
         order: 2; /* Middle */
         background: rgba(255, 255, 255, 0.8);
