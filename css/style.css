@@ -151,25 +151,52 @@ a:hover {
     position: relative;
     display: flex;
     align-items: center;
-    background-color: var(--bg-light); /* 明るいグレー背景に戻す */
+    /* background-color: var(--bg-light); Removed to show hero-bg */
     box-sizing: border-box; /* Ensure padding is included in height */
+    overflow: hidden; /* Prevent bubbles from causing scrollbars */
 }
 
 .hero-bg {
     position: absolute;
-    right: 0;
     top: 0;
-    width: 48%; /* 画像幅を少し狭めて被りを防ぐ */
+    left: 0;
+    width: 100%;
     height: 100%;
+    z-index: -1; /* Behind content */
     overflow: hidden;
+    background: #fff; /* Ensure white background behind shifted image */
+}
+
+.hero-bg::after {
+    /* "Slanted Split" - Hard diagonal line */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 105 degrees creates a nice forward-leaning slash. Solid white until 50%, then transparent. */
+    background: linear-gradient(105deg, #ffffff 45%, rgba(255,255,255,0) 45.1%);
+    pointer-events: none;
+    z-index: 1; /* Above image, below content/bubbles */
 }
 
 .hero-bg img {
     width: 100%;
     height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    filter: brightness(1.05); /* 明るく清潔に */
+    /* Move PC to Right (25%) and Scale Down (0.85) to create space for bubbles */
+    transform: translateX(25%) scale(0.85); 
+    /* Vertical 85% - Lower slightly from 100% to clear header menu */
+    object-position: center 85%;
+    filter: brightness(1.05); 
 }
+
+/* Orbital Visuals (Bubbles) Definitions Moved to Line 399+ to avoid duplication */
+/* Only Bubble Title remains here if unique, but I will move it to the main block for consistency */
+
 
 .hero-content {
     width: 52%; /* テキストエリアを確保 */
@@ -214,7 +241,9 @@ a:hover {
 
 .hero-actions {
     display: flex;
-    gap: 20px;
+    flex-direction: column; /* Stack button and note vertically */
+    gap: 5px; /* Small gap between button and note */
+    align-items: flex-start; /* Align Left */
 }
 
 .hero-btn {
@@ -234,6 +263,348 @@ a:hover {
     border: 1px solid #ddd;
     background: #fff;
     color: var(--text-color);
+}
+
+/* Hero Tagline Refinements */
+.hero-text-group {
+    margin-bottom: 25px; /* Space before Main Title */
+}
+
+.tagline-problem {
+    font-size: 15px;
+    color: var(--text-sub);
+    margin-bottom: 10px !important;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+}
+
+/* Add a speech bubble icon effect to the problem text */
+.tagline-problem::before {
+    content: '💭';
+    margin-right: 8px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.tagline-solution {
+    font-size: 18px; /* Slightly larger/stronger */
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+.tagline-solution .highlight-gold {
+    color: var(--accent-color);
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--accent-color); /* Underline emphasis */
+    padding-bottom: 2px;
+}
+
+.hero-title {
+    /* Adjusted in existing style if needed, checking here */
+}
+
+/* Orbital Visuals (Bubbles) */
+.hero-orbitals {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width for free positioning */
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.orbital-bubble {
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    animation: floatBubble 6s ease-in-out infinite;
+}
+
+.orbital-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Title Badge (Right Edge Prominent) */
+.bubble-title {
+    width: 160px;
+    height: 160px;
+    top: 18%;
+    right: 5%; /* Moved slightly left from 1% */
+    left: auto;
+    background: var(--bg-dark);
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    animation-delay: 1s;
+}
+
+.bubble-text-small {
+    font-size: 22px; /* Increased from 15px to match Large */
+    font-weight: 700;
+}
+
+.bubble-text-large {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+/* Bubble Positioning - Scattered around PC & Center Gap */
+
+/* Zone: Center Gap (Top) - Avoid Header (Top > 100px) */
+.bubble-construction {
+    width: 150px;
+    height: 150px;
+    top: 15%; /* Safe from header */
+    left: 53%; /* Center gap area */
+    right: auto;
+    animation-delay: 0s;
+}
+
+/* Zone: Center/PC Overlap (Upper -> Middle) */
+.bubble-restaurant {
+    width: 110px;
+    height: 110px;
+    top: 40%; /* Moved down */
+    left: 58%; /* Moved left */
+    right: auto;
+    animation-delay: 3s;
+}
+
+/* Zone: Far Right (Mid-Low) - Balancing the Title */
+.bubble-kaigo {
+    width: 140px;
+    height: 140px;
+    bottom: 35%;
+    right: 2%; /* Right edge under title */
+    left: auto;
+    animation-delay: 1.5s;
+}
+
+/* Zone: Center Gap (Bottom) */
+.bubble-beauty {
+    width: 140px;
+    height: 140px;
+    bottom: 20%;
+    left: 45%; /* Moved up and left */
+    right: auto;
+    animation-delay: 2s;
+}
+
+/* Zone: PC Overlap (Lower/Hands) - Moved down-right */
+.bubble-mechanic {
+    width: 120px;
+    height: 120px;
+    bottom: 15%;
+    left: 78%; /* Further right */
+    right: auto;
+    animation-delay: 1s;
+}
+
+/* Zone: Slightly Left of Center (User Request - "Nurse"/Dentist) */
+.bubble-dentist {
+    width: 110px;
+    height: 110px;
+    top: 45%;  /* Center vertically */
+    left: 40%; /* Slightly left of center (50%) */
+    margin-left: -55px; /* Offset for center anchor */
+    right: auto;
+    animation-delay: 2.5s;
+}
+
+@keyframes floatBubble {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* CTA Button - Restored & Enhanced */
+.cta-button {
+    display: inline-block;
+    position: relative;
+    background: linear-gradient(45deg, var(--accent-color), #E3C37A, var(--accent-color));
+    background-size: 200% auto;
+    color: #fff;
+    padding: 20px 60px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 2px; /* Match header button (Square) */
+    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+    transition: all 0.3s ease;
+    text-align: center;
+    line-height: 1.4;
+    margin-top: 30px;
+    letter-spacing: 0.05em;
+    min-width: 280px;
+}
+
+.cta-button:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(197, 160, 89, 0.6);
+    opacity: 1; /* Override default a:hover */
+}
+
+.cta-button .add-text {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 2px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.cta-button .arrow {
+    margin-left: 10px;
+    font-family: var(--font-mincho);
+}
+
+.cta-note {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px; /* Closer to button */
+    text-align: left;
+    padding-left: 10px;
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    /* Header Fixes */
+    .site-header .container {
+        padding: 0 15px; /* Reduce side padding */
+    }
+    .logo-text {
+        font-size: 18px !important; /* Smaller logo text */
+        white-space: nowrap; /* Prevent wrapping */
+    }
+    .site-nav a {
+        margin-left: 15px !important; /* Tighter links */
+        font-size: 12px;
+    }
+    .nav-btn {
+        padding: 8px 16px !important; /* Smaller button */
+        font-size: 12px;
+    }
+
+    /* Hero Fixes */
+    .hero-title {
+        font-size: 28px; /* Smaller title */
+        br { display: none; } /* excessive breaks might be bad */
+    }
+    .hero-content {
+        width: 55%; 
+        padding-left: 2%; /* Less padding */
+    }
+    .hero-bg img {
+        transform: translateX(10%) scale(0.9); 
+        object-position: center bottom;
+    }
+    .orbital-bubble {
+        transform: scale(0.75); /* Smaller bubbles */
+    }
+    .bubble-title {
+        right: -10px; /* Pull closer to edge */
+        transform: scale(0.8); /* Scale title too */
+        top: 20%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        display: flex; /* Flex Layout */
+        flex-direction: column; /* Vertical Stack */
+        justify-content: flex-start; /* Start from top */
+        padding-top: 120px; /* Space for header */
+        padding-bottom: 60px;
+        padding-bottom: 60px;
+        height: auto;
+        min-height: 100vh; /* Restore Full Screen height */
+        overflow: hidden; 
+    }
+
+    /* Remove the white diagonal slash on mobile to show full image */
+    .hero-bg::after {
+        background: none;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 0 20px;
+        text-align: left;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .hero-title {
+        font-size: 28px;
+        line-height: 1.4;
+    }
+
+    .hero-sub {
+        margin-top: 20px !important;
+    }
+
+    .hero-bg img {
+        transform: translateX(0) scale(1);
+        object-position: 75% center; /* Slightly right to catch PC, but mostly full */
+        opacity: 1; /* Fully visible */
+    }
+
+    .hero-orbitals {
+        /* display: none !important; REMOVED temporarily hide */
+        display: block;
+        width: 100%;
+        height: 100%; /* Full coverage */
+        top: 0;
+        pointer-events: none;
+        z-index: 1; /* Behind text (z-index: 2) */
+    }
+    
+    .orbital-bubble {
+        border: 2px solid #fff;
+    }
+
+    /* Title: Top Right, smaller, lower to avoid header */
+    .bubble-title {
+        width: 80px;
+        height: 80px;
+        top: 140px; /* Lower position */
+        right: 10px; 
+        left: auto;
+        line-height: 0.85; /* Even tighter line height */
+    }
+    .bubble-text-small { 
+        font-size: 11px;
+        display: block; 
+        margin-bottom: 0; /* Remove gap */
+        /* letter-spacing removed for readability */
+    }
+    .bubble-text-large { font-size: 13px; }
+
+    /* Key Bubbles: HIDE all except Title on mobile */
+    /* Key Bubbles: HIDE all except Title on mobile */
+    .bubble-construction,
+    .bubble-kaigo, 
+    .bubble-beauty,
+    .bubble-mechanic,
+    .bubble-restaurant,
+    .bubble-dentist {
+        display: none;
+    }
 }
 
 /* Intro / Pain */
@@ -285,6 +656,40 @@ a:hover {
     font-size: 20px;
     margin-top: 60px;
     text-align: center; /* Center alignment */
+}
+
+/* Added for SME Trust Refinement */
+.voice-bubble {
+    text-align: center;
+    margin: 15px auto 25px;
+    font-weight: 500;
+    color: var(--text-color);
+    background: #fdfdfd;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    font-family: var(--font-mincho); /* Voice = Mincho */
+}
+
+.usage-list {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.warning-note {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #888; /* Slightly softer than text-sub */
+    line-height: 1.8;
 }
 
 .intro-mechanism strong {

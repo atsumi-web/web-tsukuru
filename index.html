@@ -23,8 +23,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260112_final2">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css?v=2026_TABLET_HEADER_FIX">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -57,6 +57,7 @@
         <div class="hero-bg">
             <img src="images/hero_new.png" alt="採用戦略会議">
         </div>
+
         <div class="hero-content js-fade-up">
             <p class="hero-sub">中小企業の採用担当者・経営者様へ</p>
             <h2 class="hero-title">
@@ -75,13 +76,55 @@
                 少しでもモヤっとするものがあるなら、<br>
                 やり方ではなく、仕組みから見直す時期かもしれません。
             </p>
-            <p class="hero-sub-copy" style="margin-top:20px; font-weight:700; color:var(--text-color); line-height:1.8;">
-                採用を「その場しのぎ」から<br>
-                自社で持ち続けられる採用ページに変えるための<br class="br-pc">
-                採用特化LP制作
-            </p>
+            <div class="hero-text-group">
+                <p class="tagline-problem">
+                    「求人を出しても反応がない...」
+                </p>
+                <p class="tagline-solution">
+                    その悩み、<span class="highlight-gold">Webの力</span>で解決します。
+                </p>
+            </div>
+
+            <!-- Main Title -->
+            <h1>
+                <span class="text-gradient">現場の想い</span>を<br>
+                <span class="text-gradient">未来の仲間</span>へ。
+            </h1>
+
             <div class="hero-actions">
-                <a href="#contact" class="hero-btn primary">無料で相談する<span class="nav-btn-sub" style="display:inline-block;">（売り込みはありません）</span></a>
+                <a href="#contact" class="cta-button">
+                    <span class="shine"></span>
+                    <span class="add-text">＼ まずは無料相談 ／</span>
+                    今すぐ相談する
+                    <span class="arrow">→</span>
+                </a>
+                <p class="cta-note">※しつこい営業は一切いたしません</p>
+            </div>
+        </div>
+        
+        <!-- Orbital Visuals (Bubbles) -->
+        <div class="hero-orbitals js-fade-up">
+            <div class="orbital-bubble bubble-title">
+                <span class="bubble-text-small">採用特化</span><br>
+                <span class="bubble-text-large">LP制作</span>
+            </div>
+            <div class="orbital-bubble bubble-kaigo">
+                <img src="images/hero_kaigo_single.png" alt="介護">
+            </div>
+            <div class="orbital-bubble bubble-construction">
+                <img src="images/hero_construction_single.png" alt="建設">
+            </div>
+            <div class="orbital-bubble bubble-restaurant">
+                <img src="images/hero_restaurant_single.png" alt="飲食">
+            </div>
+            <div class="orbital-bubble bubble-beauty">
+                <img src="images/hero_beauty_single.png" alt="美容">
+            </div>
+            <div class="orbital-bubble bubble-mechanic">
+                <img src="images/hero_mechanic_single.png" alt="整備">
+            </div>
+            <div class="orbital-bubble bubble-dentist">
+                <img src="images/hero_dentist_single.png" alt="歯科">
             </div>
         </div>
     </section>
@@ -91,6 +134,12 @@
         <div class="container">
             <div class="intro-lead js-fade-up">
                 <h3>こんな状況、思い当たりありませんか？</h3>
+                <div style="text-align: center;">
+                    <p class="voice-bubble">
+                        <i class="fa-solid fa-quote-left" style="color: #ddd; margin-right: 8px;"></i>
+                        社長や総務の方から、実際によく聞く声です。
+                    </p>
+                </div>
             </div>
             <div class="pain-list js-fade-up">
                 <div class="pain-item">
@@ -131,9 +180,19 @@
                             ・掲載期間の制限がない<br>
                             ・情報をまとめて、何度でも使える<br>
                             <br>
-                            ハローワークの求人票や、<br>
-                            求人媒体・会社案内からリンクして<br>
-                            何年でも使い続けられる採用ページになります。
+                            この採用LPは、<br>
+                            ・ハローワークの求人票にURLを載せる<br>
+                            ・求人媒体からリンクする<br>
+                            ・会社案内や名刺にQRを載せる<br>
+                            <br>
+                            など、いろいろな場面で<br>
+                            「採用の受け皿」として使えます。<br>
+                            <br>
+                            <span class="usage-list">
+                                <i class="fa-solid fa-check" style="color: var(--accent-color); margin-right: 5px;"></i> ハローワークの求人票にURLを載せる<br>
+                                <i class="fa-solid fa-check" style="color: var(--accent-color); margin-right: 5px;"></i> 求人媒体からリンクする<br>
+                                <i class="fa-solid fa-check" style="color: var(--accent-color); margin-right: 5px;"></i> 会社案内や名刺にQRを載せる
+                            </span>
                         </p>
                     </div>
                     <div class="f-img">
@@ -154,7 +213,10 @@
                     見た目のいいWebサイトを作ることが目的ではありません。<br>
                     <br>
                     中小企業が、無理なく・正直に・長く採用を続けるための<br>
-                    <strong>「採用専用の仕組み」を作るサービス</strong>です。
+                    <strong>「採用専用の仕組み」を作るサービス</strong>です。<br>
+                    <br>
+                    だから、いきなり作る話はしません。<br>
+                    まずは、今の採用状況を整理するところからです。
                 </p>
             </div>
         </div>
@@ -166,6 +228,9 @@
             <div class="section-header js-fade-up">
                 <span class="en-label">Contents</span>
                 <h2>応募前に、本当に知りたいことだけを載せます</h2>
+                <p class="warning-note">
+                    <i class="fa-solid fa-triangle-exclamation" style="margin-right: 5px; color:var(--text-sub);"></i> 良いことだけを書くためではありません。<br>入社後の「思ってたのと違う」を減らすためです。
+                </p>
             </div>
             <div class="pain-list js-fade-up" style="justify-content: center; gap: 20px; margin-bottom: 40px;">
                 <div class="pain-item" style="border: 1px solid var(--accent-color); background: #fafafa;">
@@ -226,6 +291,10 @@
                 <div class="feature-row reverse">
                     <div class="f-text">
                         <h3>なぜ、維持費がかからない設計なのか</h3>
+                        <p style="font-weight: bold; margin-bottom: 20px;">
+                            この採用LPは、<br>
+                            「頻繁に更新すること」を前提にしていません。
+                        </p>
                         <p>
                             このLPは、<br>
                             頻繁な更新や管理を前提とした仕組みではなく、<br>
@@ -286,6 +355,10 @@
                     <li>とりあえず人を集めたい方</li>
                     <li>採用を丸投げしたい方</li>
                 </ul>
+                </ul>
+                <p style="margin-top: 25px; font-weight: 500; text-align: center; color: var(--text-color); border-top: 1px dashed #ddd; padding-top: 20px;">
+                    本気で採用を良くしたい方と、<br>長く付き合える形を大切にしています。
+                </p>
             </div>
             
             <!-- Limitations (Added for clarity) -->
@@ -329,7 +402,10 @@
                     <p><strong>公開・納品</strong><br>サーバー代はかかりません</p>
                 </div>
             </div>
-            <p style="text-align:center; margin-top:40px; color:#999; font-size:13px;">※ Webが苦手でも問題ありません。専門用語は使いません。</p>
+            <p style="text-align:center; margin-top:40px; color:#999; font-size:13px;">
+                ※ Webが苦手でも問題ありません。専門用語は使いません。<br>
+                ※ 無料相談は30分ほど。話を聞くだけでも問題ありません。
+            </p>
         </div>
     </section>
 
@@ -353,6 +429,10 @@
                 <p class="c-desc" style="margin-top: 40px; font-size: 13px;">
                     ※ 採用媒体1〜2ヶ月分と同程度<br>
                     ※ 月額費用は一切かかりません
+                </p>
+                <p style="margin-top: 20px; font-size: 14px; font-weight: bold;">
+                    一度作れば、何年も使えることを考えると、<br>
+                    採用媒体よりもリスクは低いと考えています。
                 </p>
             </div>
         </div>
@@ -378,8 +458,8 @@
                             <br>
                             派手な実績は、まだ多くありません。<br>
                             ですが、<br>
-                            採用の整理から一緒に向き合う設計だけは、<br>
-                            手を抜かずにやっています。<br>
+                            中小企業の採用を「一度きり」で終わらせない設計だけは、<br>
+                            妥協せずにやっています。<br>
                             <br>
                             だから、<br>
                             <br>
@@ -413,6 +493,7 @@
                     それを一緒に整理するだけでも大丈夫です。
                 </p>
                 <div class="form-wrapper">
+                    <p style="text-align:center; margin-bottom: 20px; color: var(--text-color); font-weight: bold;">「作る・作らない」を決めるための相談です。</p>
                     <a href="https://docs.google.com/forms/" target="_blank" class="google-form-btn">
                         <span>ご相談・お見積り・モニター応募</span>
                         <strong><span class="cta-main">無料で相談する</span><br class="br-sp"><span class="cta-sub">（売り込みはありません）</span></strong>
