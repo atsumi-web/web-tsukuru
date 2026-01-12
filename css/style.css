@@ -58,10 +58,10 @@ a:hover {
     width: 100%;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.85); /* 半透明の白 */
+    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
     backdrop-filter: blur(10px); /* すりガラス効果 */
-    border-bottom: 1px solid rgba(0,0,0,0.03); /* 繊細な境界線 */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    /* border-bottom: 1px solid rgba(0,0,0,0.03); Removed for cleaner look */
+    /* box-shadow: 0 5px 20px rgba(0,0,0,0.02); Removed for cleaner look */
 }
 
 .header-inner {
@@ -241,9 +241,11 @@ a:hover {
 
 .hero-actions {
     display: flex;
-    flex-direction: column; /* Stack button and note vertically */
-    gap: 5px; /* Small gap between button and note */
-    align-items: flex-start; /* Align Left */
+    flex-direction: column; /* Stack vertically */
+    gap: 10px;
+    align-items: center; /* Center align button and note relative to each other */
+    width: fit-content; /* Don't stretch to full width, stick to content size */
+    margin-bottom: 100px; /* Increased: more breathing room below button */
 }
 
 .hero-btn {
@@ -267,13 +269,14 @@ a:hover {
 
 /* Hero Tagline Refinements */
 .hero-text-group {
-    margin-bottom: 25px; /* Space before Main Title */
+    margin-bottom: 20px; /* Reduced: space before Main Title */
+    line-height: 1.6; /* Tighter line spacing */
 }
 
 .tagline-problem {
     font-size: 15px;
     color: var(--text-sub);
-    margin-bottom: 10px !important;
+    margin-bottom: 8px !important; /* Reduced spacing */
     font-weight: 500;
     letter-spacing: 0.05em;
     position: relative;
@@ -281,31 +284,28 @@ a:hover {
 }
 
 /* Add a speech bubble icon effect to the problem text */
-.tagline-problem::before {
-    content: '💭';
-    margin-right: 8px;
-    font-size: 14px;
-    opacity: 0.7;
-}
+/* .tagline-problem::before removed per user request */
 
 .tagline-solution {
-    font-size: 18px; /* Slightly larger/stronger */
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 600;
     color: var(--text-color);
     margin: 0;
     letter-spacing: 0.05em;
+    line-height: 1.8;
 }
 
-.tagline-solution .highlight-gold {
+.tagline-solution strong {
     color: var(--accent-color);
-    font-size: 1.1em;
-    border-bottom: 2px solid var(--accent-color); /* Underline emphasis */
-    padding-bottom: 2px;
+    font-weight: 700;
 }
 
-.hero-title {
-    /* Adjusted in existing style if needed, checking here */
+/* Main Title Spacing */
+.hero-main-title {
+    margin-bottom: 25px !important; /* Reduced: closer to CTA button */
 }
+
+/* .hero-title adjusted above */
 
 /* Orbital Visuals (Bubbles) */
 .hero-orbitals {
@@ -368,64 +368,92 @@ a:hover {
 /* Bubble Positioning - Scattered around PC & Center Gap */
 
 /* Zone: Center Gap (Top) - Avoid Header (Top > 100px) */
-.bubble-construction {
-    width: 150px;
-    height: 150px;
-    top: 15%; /* Safe from header */
-    left: 53%; /* Center gap area */
-    right: auto;
-    animation-delay: 0s;
+/* Industry Strip (New Layout) */
+.hero-footer-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95); /* Nearly solid white strip */
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 0; /* Flush strip */
+    z-index: 20; /* Above everything in hero */
 }
 
-/* Zone: Center/PC Overlap (Upper -> Middle) */
-.bubble-restaurant {
-    width: 110px;
-    height: 110px;
-    top: 40%; /* Moved down */
-    left: 58%; /* Moved left */
-    right: auto;
-    animation-delay: 3s;
+.strip-container {
+    width: 100%; /* Full Width */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Prevent strip blow-out */
 }
 
-/* Zone: Far Right (Mid-Low) - Balancing the Title */
-.bubble-kaigo {
-    width: 140px;
-    height: 140px;
-    bottom: 35%;
-    right: 2%; /* Right edge under title */
-    left: auto;
-    animation-delay: 1.5s;
+/* Label removed per user request */
+
+.industry-list {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0;
+    justify-content: center; /* Center on PC for static Pro look */
 }
 
-/* Zone: Center Gap (Bottom) */
-.bubble-beauty {
-    width: 140px;
-    height: 140px;
-    bottom: 20%;
-    left: 45%; /* Moved up and left */
-    right: auto;
-    animation-delay: 2s;
+/* Hover effect removed for static style */
+
+.industry-list::-webkit-scrollbar {
+    display: none;
 }
 
-/* Zone: PC Overlap (Lower/Hands) - Moved down-right */
-.bubble-mechanic {
-    width: 120px;
-    height: 120px;
-    bottom: 15%;
-    left: 78%; /* Further right */
-    right: auto;
-    animation-delay: 1s;
+.industry-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 160px; /* Larger for better visibility */
+    position: relative; /* For overlaid text */
+    cursor: pointer;
+    overflow: hidden;
 }
 
-/* Zone: Slightly Left of Center (User Request - "Nurse"/Dentist) */
-.bubble-dentist {
-    width: 110px;
-    height: 110px;
-    top: 45%;  /* Center vertically */
-    left: 40%; /* Slightly left of center (50%) */
-    margin-left: -55px; /* Offset for center anchor */
-    right: auto;
-    animation-delay: 2.5s;
+.industry-item img {
+    width: 100%;
+    height: 110px; /* Larger height */
+    border-radius: 0;
+    object-fit: cover;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: grayscale(100%) brightness(0.9); /* Grayscale for "Pro/Stylish" feel */
+}
+
+/* Hover: Color reveal */
+.industry-item:hover img {
+    filter: grayscale(0%) brightness(1); /* Full color on hover */
+    transform: scale(1.05); /* Slight zoom */
+}
+
+.industry-item span {
+    display: none; /* Text hidden per user request */
+}
+
+/* Mobile Adjustments for Strip */
+@media (max-width: 768px) {
+    .industry-list {
+        justify-content: flex-start; /* Ensure scrolling works on mobile */
+    }
+
+    .industry-item {
+        width: 110px; /* Slightly smaller on mobile */
+    }
+
+    .industry-item img {
+        height: 80px;
+    }
 }
 
 @keyframes floatBubble {
@@ -433,52 +461,47 @@ a:hover {
     50% { transform: translateY(-15px); }
 }
 
-/* CTA Button - Restored & Enhanced */
+/* CTA Button - Unified Dark Theme */
 .cta-button {
     display: inline-block;
     position: relative;
-    background: linear-gradient(45deg, var(--accent-color), #E3C37A, var(--accent-color));
-    background-size: 200% auto;
+    background: var(--bg-dark);
     color: #fff;
-    padding: 20px 60px;
+    padding: 20px 50px;
     font-size: 18px;
     font-weight: 700;
-    border-radius: 2px; /* Match header button (Square) */
-    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+    border-radius: 2px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.6;
     margin-top: 30px;
     letter-spacing: 0.05em;
-    min-width: 280px;
+    min-width: 360px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .cta-button:hover {
-    background-position: right center;
+    background: #333;
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(197, 160, 89, 0.6);
-    opacity: 1; /* Override default a:hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    opacity: 1;
 }
 
-.cta-button .add-text {
-    display: block;
-    font-size: 12px;
-    margin-bottom: 2px;
-    font-weight: 500;
-    opacity: 0.9;
-}
-
-.cta-button .arrow {
-    margin-left: 10px;
-    font-family: var(--font-mincho);
+.cta-note-inline {
+    font-size: inherit; /* Same size as button text on PC */
+    font-weight: 400;
+    opacity: 1; /* Full white */
+    letter-spacing: 0.02em;
 }
 
 .cta-note {
     font-size: 12px;
     color: #999;
-    margin-top: 5px; /* Closer to button */
-    text-align: left;
-    padding-left: 10px;
+    margin-top: 0;
+    text-align: center; /* Center text */
+    padding-left: 0;
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -523,13 +546,30 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    .cta-button {
+        padding: 18px 30px;
+        width: 100%;
+        min-width: auto;
+        font-size: 16px;
+        margin-top: 15px; /* Reduced from 30px */
+    }
+    
+    .cta-note-inline {
+        display: block; /* Force line break on mobile */
+        font-size: 11px;
+        margin-top: 3px;
+    }
+    
+    .hero-main-title {
+        margin-bottom: 10px !important; /* Tighter spacing on mobile */
+    }
+    
     .hero {
         display: flex; /* Flex Layout */
         flex-direction: column; /* Vertical Stack */
         justify-content: flex-start; /* Start from top */
         padding-top: 120px; /* Space for header */
-        padding-bottom: 60px;
-        padding-bottom: 60px;
+        padding-bottom: 0; /* Remove bottom padding */
         height: auto;
         min-height: 100vh; /* Restore Full Screen height */
         overflow: hidden; 
@@ -540,18 +580,42 @@ a:hover {
         background: none;
     }
 
+    /* Convert Hero BG to Block for stacking */
+    .hero-bg {
+        position: relative !important; /* Override absolute */
+        height: 300px; /* Fixed height for image area */
+        width: 100%;
+        order: 1; /* First */
+        z-index: 5;
+        margin-bottom: 0 !important; /* No gap below image */
+        line-height: 0; /* Remove line-height space */
+    }
+
     .hero-content {
         width: 100%;
         padding: 0 20px;
         text-align: left;
-        margin-bottom: 40px;
+        margin-bottom: 0 !important; /* Remove all bottom margin */
         position: relative;
         z-index: 10;
+        order: 3; /* Last */
     }
 
     .hero-title {
         font-size: 28px;
         line-height: 1.4;
+    }
+
+    .hero-actions {
+        align-items: center; 
+        width: 100%; /* Force full width on mobile */
+        gap: 10px;
+        margin-bottom: 0 !important; /* Remove all bottom margin */
+    }
+    
+    .cta-note {
+        font-size: 11px; /* Smaller on mobile */
+        white-space: normal;
     }
 
     .hero-sub {
@@ -562,6 +626,22 @@ a:hover {
         transform: translateX(0) scale(1);
         object-position: 75% center; /* Slightly right to catch PC, but mostly full */
         opacity: 1; /* Fully visible */
+        display: block !important; /* Remove default inline spacing */
+    }
+
+    /* Reposition Strip for Mobile: Flow after content */
+    .hero .hero-footer-strip {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        margin-top: 0 !important; /* Remove top gap */
+        margin-bottom: 0 !important; /* No gap below strip */
+        order: 2; /* Middle */
+        background: rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        width: 100%;
+        display: block !important;
+        z-index: 20;
     }
 
     .hero-orbitals {
@@ -571,7 +651,7 @@ a:hover {
         height: 100%; /* Full coverage */
         top: 0;
         pointer-events: none;
-        z-index: 1; /* Behind text (z-index: 2) */
+        z-index: 15; /* Above hero-bg (z-index: 5) and content */
     }
     
     .orbital-bubble {
@@ -742,6 +822,19 @@ a:hover {
 
 .feature-row.reverse {
     flex-direction: row-reverse;
+}
+
+/* Custom Wide Text / Small Image Layout */
+.feature-row.content-wide .f-text {
+    flex: 1.6; /* Wider text (approx 60-65%) */
+}
+
+.feature-row.content-wide .f-img {
+    flex: 0.8; /* Smaller image container */
+}
+
+.feature-row.content-wide .f-img img {
+    max-width: 65%; /* Smaller image visual */
 }
 
 .gray-card {
@@ -1211,19 +1304,19 @@ a:hover {
 
 .google-form-btn {
     display: inline-block;
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--bg-dark);
     padding: 25px 80px;
     text-align: center;
     color: #fff;
     position: relative;
-    background: var(--accent-color);
+    background: var(--bg-dark);
     transition: all 0.3s;
-    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); /* Add subtle shadow for depth */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .google-form-btn:hover {
-    background: var(--text-color);
-    border-color: var(--text-color);
+    background: #333;
+    border-color: #333;
     color: #fff;
 }
 
@@ -1334,6 +1427,7 @@ a:hover {
     padding: 2px; /* Border width */
     background: linear-gradient(45deg, #C5A059, #f3e5c2, #C5A059);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -1638,4 +1732,61 @@ a:hover {
 
 .footer-logo:hover img {
     filter: grayscale(0%) opacity(1);
+}
+
+/* Fixed CTA Button (Bottom-Right) - Unified Dark Theme */
+.fixed-cta-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--bg-dark);
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.fixed-cta-btn.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.fixed-cta-btn:hover {
+    background: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.fixed-cta-btn i {
+    font-size: 20px;
+}
+
+.fixed-cta-btn span {
+    white-space: nowrap;
+}
+
+/* Mobile: Smaller button */
+@media (max-width: 768px) {
+    .fixed-cta-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+    
+    .fixed-cta-btn i {
+        font-size: 18px;
+    }
 }

@@ -54,4 +54,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const fadeElements = document.querySelectorAll(".js-fade-up, .js-fade-in");
   fadeElements.forEach((el) => observer.observe(el));
+
+  // ---------------------------------------------------------
+  // Fixed CTA Button - Show on Scroll
+  // ---------------------------------------------------------
+  const fixedCta = document.querySelector(".fixed-cta-btn");
+  
+  if (fixedCta) {
+    let scrollThreshold = 200; // Show after 200px scroll
+    
+    function toggleFixedCta() {
+      if (window.scrollY > scrollThreshold) {
+        fixedCta.classList.add("show");
+      } else {
+        fixedCta.classList.remove("show");
+      }
+    }
+    
+    // Check on scroll
+    window.addEventListener("scroll", toggleFixedCta);
+    
+    // Check on page load
+    toggleFixedCta();
+  }
 });
