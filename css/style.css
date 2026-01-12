@@ -1842,6 +1842,13 @@ a:hover {
 
 /* Mobile: Smaller button */
 @media (max-width: 768px) {
+    .f-text { margin-bottom: 30px; }
+    .f-img img { max-width: 80%; }
+    
+    /* Mobile text adjustment for hub image */
+    .hub-text {
+        font-size: 14px !important;
+    }
     .fixed-cta-btn {
         bottom: 15px;
         right: 15px;
@@ -1852,4 +1859,32 @@ a:hover {
     .fixed-cta-btn i {
         font-size: 18px;
     }
+}
+
+/* Hub Image Styles - Global */
+.hub-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blend-image {
+    mix-blend-mode: multiply; /* Make white transparent */
+    max-width: 95%; /* Match previous sizing */
+}
+
+.hub-text {
+    position: absolute;
+    color: #c5a059; /* Gold color */
+    font-weight: 700;
+    font-size: 24px; /* Larger on PC */
+    letter-spacing: 0.05em;
+    z-index: 10;
+    /* Center exactly */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Slight shadow for readability */
+    white-space: nowrap;
 }
