@@ -77,4 +77,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check on page load
     toggleFixedCta();
   }
+
+  // ---------------------------------------------------------
+  // Back to Top Button
+  // ---------------------------------------------------------
+  const backToTop = document.querySelector(".back-to-top");
+  
+  if (backToTop) {
+    // Show/Hide on scroll
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add("is-visible");
+        } else {
+            backToTop.classList.remove("is-visible");
+        }
+    });
+
+    // Scroll to top on click
+    backToTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+  }
 });
