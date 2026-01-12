@@ -31,6 +31,24 @@ h1, h2, h3, h4 {
     line-height: 1.5;
 }
 
+/* Responsive Line Breaks */
+.br-sp {
+    display: none; /* Hide mobile breaks on PC */
+}
+
+.br-pc {
+    display: inline; /* Show PC breaks on PC */
+}
+
+/* Responsive Text Blocks */
+.text-sp {
+    display: none; /* Hide mobile text on PC */
+}
+
+.text-pc {
+    display: block; /* Show PC text on PC */
+}
+
 img {
     max-width: 100%;
 }
@@ -690,6 +708,46 @@ a:hover {
     .bubble-dentist {
         display: none;
     }
+    
+    /* Intro Section - Reduced top spacing */
+    .intro-section {
+        padding-top: 30px !important; /* Reduced from 120px */
+        margin-top: -40px; /* Pull up closer to hero strip */
+    }
+    
+    /* Service Definition Section - Normal spacing */
+    .service-def {
+        margin-top: 0 !important; /* Reset margin for this section */
+        padding-top: 60px !important; /* Normal top padding */
+    }
+    
+    /* Container - Wider text area on mobile */
+    .container {
+        padding: 0 15px; /* Reduced from 20px for wider text */
+    }
+    
+    /* Gray Card - Wider text area on mobile */
+    .gray-card {
+        padding: 40px 20px !important; /* Reduced side padding from 40px */
+    }
+    
+    /* Responsive Line Breaks - Mobile */
+    .br-sp {
+        display: inline; /* Show mobile breaks on mobile */
+    }
+    
+    .br-pc {
+        display: none; /* Hide PC breaks on mobile */
+    }
+    
+    /* Responsive Text Blocks - Mobile */
+    .text-sp {
+        display: block !important; /* Show mobile text on mobile */
+    }
+    
+    .text-pc {
+        display: none !important; /* Hide PC text on mobile */
+    }
 }
 
 /* Intro / Pain */
@@ -854,7 +912,7 @@ a:hover {
 }
 
 .f-text {
-    flex: 1;
+    flex: 1.1; /* Text area slightly wider */
 }
 
 .f-text h3 {
@@ -874,14 +932,14 @@ a:hover {
 }
 
 .f-img {
-    flex: 1;
+    flex: 0.9; /* Image area slightly narrower */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .f-img img {
-    max-width: 80%;
+    max-width: 95%; /* Larger image */
     height: auto;
     /* transition: transform 0.6s ease; */
     mix-blend-mode: multiply; /* Blend white background into container */
