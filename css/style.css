@@ -4,12 +4,12 @@
     /* Color Palette: Intellectual Clean */
     --text-color: #333333;
     --text-sub: #666666;
-    --accent-color: #C5A059;   /* Muted Gold */
-    --link-color: #1a1a1a;
+    --accent-color: #AE8B47;   /* Muted Gold */
+    --link-color: #0F172A;
     
     --bg-white: #ffffff;
     --bg-light: #f7f7f7;       /* Silver Gray */
-    --bg-dark: #1a1a1a;        /* Deep Navy/Black */
+    --bg-dark: #0F172A;        /* Deep Navy/Black */
     
     /* Typography */
     --font-gothic: 'Noto Sans JP', sans-serif;
@@ -95,7 +95,7 @@ a:hover {
     font-family: var(--font-mincho);
     font-size: 22px;
     letter-spacing: 0.1em;
-    color: #1a1a1a;
+    color: #0F172A;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -104,10 +104,8 @@ a:hover {
 }
 
 .logo img {
-    height: 56px; /* 62px -> 56px (余白を考慮したバランス調整) */
+    height: 40px; /* Adjusted for tighter crop (48px -> 40px) */
     width: auto;
-    /* 白背景を透過させる簡易テクニック */
-    mix-blend-mode: multiply;
 }
 
 .site-nav {
@@ -383,14 +381,16 @@ a:hover {
 }
 
 .bubble-text-small {
-    font-size: 22px; /* Increased from 15px to match Large */
+    font-size: 16px; /* Reduced to fit */
     font-weight: 700;
+    letter-spacing: 0.05em;
 }
 
 .bubble-text-large {
-    font-size: 22px;
+    font-size: 20px; /* Reduced to fit */
     font-weight: 700;
     line-height: 1.1;
+    letter-spacing: 0.02em;
 }
 
 /* Bubble Positioning - Scattered around PC & Center Gap */
@@ -600,7 +600,7 @@ a:hover {
         display: flex; /* Flex Layout */
         flex-direction: column; /* Vertical Stack */
         justify-content: flex-start; /* Start from top */
-        padding-top: 120px; /* Space for header */
+        padding-top: 100px; /* Reduced from 120px to lift image */
         padding-bottom: 0; /* Remove bottom padding */
         height: auto;
         min-height: 100vh; /* Restore Full Screen height */
@@ -621,6 +621,29 @@ a:hover {
         z-index: 5;
         margin-bottom: 0 !important; /* No gap below image */
         line-height: 0; /* Remove line-height space */
+    }
+
+    .hero-bg img {
+        object-position: center 90% !important; /* Move focus slightly down to show laptop better (laptop is at bottom) or adjust to lift? If laptop is at bottom of image, we need to show bottom. If user wants laptop HIGHER on screen, we need to show MORE bottom. Let's try 90% or even 100% to ensuring bottom is visible, or if cut off, moving it up. Wait. User says "laptop comes up more". If image is fixed height, and object-fit cover. If laptop is low in image, showing 'bottom' aligns bottom of image to bottom of container. If laptop is visible but low, lifting the container lifts the laptop. I lifted container via padding. Let's also ensure object-position focuses on the laptop. 85% was PC. Let's try 80%? No, user says "laptop comes up". If I show more of the bottom, the laptop (which is at bottom) moves UP?? No.
+        Let's stick to lifting the Container (padding) first.
+        But also, changing object-position to 'center bottom' might ensure laptop isn't cut off.
+        Let's try center 70% to shift the visible window UP the image? No that hides the bottom laptop.
+        If laptop is at bottom of png. We need to show bottom. 'center bottom' or 'center 100%'.
+        If currently center 85%, and user wants it higher, maybe it's too low in the container?
+        Let's just do padding first. */
+        object-position: center 80% !important; 
+    }
+
+    /* Move Industry Strip to Middle */
+    .hero-footer-strip {
+        position: relative !important;
+        bottom: auto !important;
+        order: 2; /* Middle */
+        margin-top: 0;
+        margin-bottom: 30px; /* Space before text */
+        z-index: 10;
+        background: transparent !important; /* Seamless connection */
+        border: none !important;
     }
 
     .hero-content {
@@ -1452,7 +1475,7 @@ a:hover {
 }
 
 .footer-logo img {
-    height: 100px !important; /* 強制的に大きく変更 */
+    height: 70px !important; /* Smaller footer logo */
     width: auto;
 }
 
@@ -1517,7 +1540,7 @@ a:hover {
     top: 0; left: 0; right: 0; bottom: 0;
     border-radius: 2px;
     padding: 2px; /* Border width */
-    background: linear-gradient(45deg, #C5A059, #f3e5c2, #C5A059);
+    background: linear-gradient(45deg, #AE8B47, #f3e5c2, #AE8B47);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -1905,7 +1928,7 @@ a:hover {
 
 .hub-text {
     position: absolute;
-    color: #c5a059; /* Gold color */
+    color: #AE8B47; /* Gold color */
     font-weight: 700;
     font-size: 24px; /* Larger on PC */
     letter-spacing: 0.05em;
@@ -2009,4 +2032,1857 @@ a:hover {
 .logo img,
 .footer-logo img {
     mix-blend-mode: multiply;
+}
+
+/* =========================================
+   BRAND LP SPECIFIC STYLES (.brand-lp)
+   Target: Local Pride, High-End, Pop & Dynamic
+   ========================================= */
+
+/* Typography Overrides */
+.brand-lp h1, 
+.brand-lp h2, 
+.brand-lp h3, 
+.brand-lp .en-label {
+    font-family: 'Shippori Mincho', serif; /* Base Japanese Serif */
+}
+
+/* English Headings - Modern & Strong */
+.brand-lp .hero-sub,
+.brand-lp .brand-heading-en,
+.brand-lp .brand-tag,
+.brand-lp .orbital-bubble span {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+/* 1. Hero Section - More Impact */
+.brand-lp .hero-sub.brand-sub {
+    color: var(--accent-color) !important;
+    font-weight: 800;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #AE8B47, #E5C37F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.brand-lp .hero-main-title.brand-title {
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+/* Enhancing gradients for Brand Title */
+.brand-lp .text-gradient {
+    background: linear-gradient(135deg, #0F172A 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.brand-lp .hero-desc.brand-desc {
+    border-left: 4px solid var(--accent-color); /* Thicker border */
+    padding-left: 25px;
+    background: rgba(247, 247, 247, 0.5);
+    padding: 20px 25px; /* Box-like highlight */
+    font-weight: 500;
+}
+
+/* CTA Button - Premium Gold Gradient */
+.brand-lp .cta-button.brand-cta {
+    background: linear-gradient(135deg, #0F172A 0%, #000000 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+/* Removed conflicting hover override to use global brand-cta style */
+
+.brand-lp .cta-note-inline {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85em;
+}
+
+/* 2. Visual Bubbles - Brand Mode */
+.brand-lp .brand-bubble {
+    background: linear-gradient(135deg, #AE8B47 0%, #AA853C 100%); /* Gold Gradient */
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4);
+}
+
+.brand-lp .bubble-text-small {
+    color: rgba(255,255,255,0.9);
+}
+
+/* 3. Intro Section - Reality Gap (Dark Mode Injection) */
+.brand-lp .intro-section {
+    background: #0F172A; /* Deep Navy */
+    color: #fff;
+    position: relative;
+    padding-top: 80px !important;
+}
+
+/* Add a diagonal divider at the top of the dark section */
+.brand-lp .intro-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #0F172A;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.brand-lp .brand-heading-en {
+    color: var(--accent-color);
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    display: block;
+    letter-spacing: 0.2em;
+}
+
+.brand-lp .brand-heading-jp {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    color: #fff;
+}
+
+/* Pain Items in Dark Mode */
+.brand-lp .pain-item {
+    background: rgba(255,255,255,0.05); /* Glass-like */
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.9);
+}
+
+.brand-lp .pain-item p {
+    font-weight: 500;
+}
+
+.brand-lp .intro-mechanism {
+    color: rgba(255,255,255,0.8);
+}
+
+.brand-lp .intro-mechanism strong {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+/* 4. Concept Section - Identity Tag */
+.brand-lp .brand-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #0F172A;
+    color: #0F172A;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+}
+
+/* Mobile Adjustments for Brand */
+@media (max-width: 768px) {
+    .brand-lp .hero-main-title.brand-title {
+        font-size: 32px; /* Smaller on mobile but bold */
+    }
+    
+    .brand-lp .intro-section::before {
+        display: none; /* Simplify on mobile */
+    }
+    
+    .brand-lp .intro-section {
+        margin-top: 0;
+        padding-top: 60px !important;
+    }
+}
+
+/* =========================================
+   BRAND LP SPECIFIC STYLES (.brand-lp)
+   Target: Local Pride, High-End, Pop & Dynamic
+   ========================================= */
+
+/* Typography Overrides */
+.brand-lp h1, 
+.brand-lp h2, 
+.brand-lp h3, 
+.brand-lp .en-label {
+    font-family: 'Shippori Mincho', serif; /* Base Japanese Serif */
+}
+
+/* English Headings - Modern & Strong */
+.brand-lp .hero-sub,
+.brand-lp .brand-heading-en,
+.brand-lp .brand-tag,
+.brand-lp .orbital-bubble span {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+/* 1. Hero Section - More Impact */
+.brand-lp .hero-sub.brand-sub {
+    color: var(--accent-color) !important;
+    font-weight: 800;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #AE8B47, #E5C37F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.brand-lp .hero-main-title.brand-title {
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+/* Enhancing gradients for Brand Title */
+.brand-lp .text-gradient {
+    background: linear-gradient(135deg, #0F172A 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.brand-lp .hero-desc.brand-desc {
+    border-left: 4px solid var(--accent-color); /* Thicker border */
+    padding-left: 25px;
+    background: rgba(247, 247, 247, 0.5);
+    padding: 20px 25px; /* Box-like highlight */
+    font-weight: 500;
+}
+
+/* CTA Button - Premium Navy Gradient */
+.brand-lp .cta-button.brand-cta {
+    background: linear-gradient(135deg, #0F172A 0%, #000000 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.brand-lp .cta-button.brand-cta:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    background: var(--brand-gold);
+}
+
+.brand-lp .cta-note-inline {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85em;
+}
+
+/* 2. Visual Bubbles - Brand Mode */
+.brand-lp .brand-bubble {
+    background: linear-gradient(135deg, #AE8B47 0%, #AA853C 100%); /* Gold Gradient */
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4);
+}
+
+.brand-lp .bubble-text-small {
+    color: rgba(255,255,255,0.9);
+}
+
+/* 3. Intro Section - Reality Gap (Dark Mode Injection) */
+.brand-lp .intro-section {
+    background: #0F172A; /* Deep Navy */
+    color: #fff;
+    position: relative;
+    padding-top: 80px !important;
+}
+
+/* Add a diagonal divider at the top of the dark section */
+.brand-lp .intro-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #0F172A;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.brand-lp .brand-heading-en {
+    color: var(--accent-color);
+    font-size: 13px !important; /* Reduced for header visual */
+    font-weight: 800;
+    margin-bottom: 15px;
+    display: block;
+    letter-spacing: 0.15em;
+}
+
+.brand-lp .brand-heading-jp {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    color: #fff;
+    line-height: 1.5;
+}
+
+/* Pain Items in Dark Mode */
+.brand-lp .pain-item {
+    background: rgba(255,255,255,0.05); /* Glass-like */
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.9);
+}
+
+.brand-lp .pain-item p {
+    font-weight: 500;
+}
+
+.brand-lp .intro-mechanism {
+    color: rgba(255,255,255,0.9);
+    margin-top: 50px;
+    margin-bottom: 20px; /* Add bottom margin */
+    line-height: 2.0; /* Increased line height to avoid overlap */
+}
+
+/* Fix: Ensure text is dark in light sections like Core Value */
+.brand-lp .feature-section:not(.brand-dark-section) .intro-mechanism {
+    color: var(--brand-navy) !important;
+}
+
+.brand-lp .intro-mechanism strong {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 2px;
+    display: inline-block; /* Ensure line behaves */
+    background: none; /* Remove grey marker background */
+}
+
+/* 4. Concept Section - Identity Tag */
+.brand-lp .brand-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #0F172A;
+    color: #0F172A;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+}
+
+/* =========================================
+   Brand LP: 2-Color Unification Strategy
+   (Navy: #0F172A / Gold: #AE8B47)
+   ========================================= */
+
+.brand-lp {
+    --brand-navy: #0F172A;
+    --brand-gold: #AE8B47;
+}
+
+/* 1. Header & Buttons Unification */
+.brand-lp .site-header {
+    background: rgba(255, 255, 255, 0.98); /* Less transparent for cleaner look */
+}
+
+.brand-lp .nav-btn {
+    background: var(--brand-navy) !important;
+}
+
+.brand-lp .nav-btn:hover {
+    background: var(--brand-gold) !important;
+}
+
+.brand-lp .hero-btn.primary {
+    background: var(--brand-navy) !important;
+}
+
+.brand-lp .hero-btn.primary:hover {
+    background: var(--brand-gold) !important;
+}
+
+.brand-lp .fixed-cta-btn {
+    background: linear-gradient(135deg, #0F172A 0%, #000000 100%) !important;
+}
+
+.brand-lp .fixed-cta-btn i {
+    color: #fff !important; /* Ensure arrow is visible */
+}
+
+.brand-lp .fixed-cta-btn:hover {
+    background: var(--brand-gold) !important;
+}
+
+/* 2. Headline & Text Unification */
+.brand-lp .section-header h2,
+.brand-lp .brand-heading-jp {
+    color: var(--brand-navy);
+}
+
+.brand-lp .en-label {
+    color: var(--brand-gold);
+}
+
+/* 3. Iconography & Accents */
+.brand-lp i:not(.fa-circle-xmark) {
+    color: var(--brand-gold);
+}
+
+.brand-lp .accent-text {
+    color: var(--brand-gold);
+}
+
+/* Mobile Adjustments for Brand */
+@media (max-width: 768px) {
+    .brand-lp .hero-main-title.brand-title {
+        font-size: 34px; /* Dynamic & Pop */
+        line-height: 1.4;
+    }
+
+    .brand-lp .hero-sub.brand-sub {
+        font-size: 11px !important; /* Contrast with title */
+        letter-spacing: 0.15em; 
+        margin-bottom: 10px;
+    }
+    
+    .brand-lp .brand-heading-jp {
+        font-size: 24px; /* Balanced H3 */
+    }
+
+    .brand-lp .intro-section::before {
+        display: none; /* Simplify on mobile */
+    }
+    
+    .brand-lp .intro-section {
+        margin-top: 0;
+        padding-top: 60px !important;
+    }
+    
+    /* Ensure cards have spacing */
+    .brand-lp .pain-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* =========================================
+   Brand LP Specific Styles (Sections 9-13 Refactor)
+   ========================================= */
+
+/* Dark Section Common (Concept, Contact) */
+.brand-dark-section {
+    background-color: #0F172A !important;
+    color: #fff !important;
+    padding: 100px 0;
+}
+
+.brand-dark-section h2,
+.brand-dark-section h3 {
+    color: #fff !important;
+}
+
+.brand-dark-section p {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Fix: Restore dark text inside light cards within dark sections */
+.brand-dark-section .feature-row {
+    color: var(--text-color) !important;
+}
+
+.brand-dark-section .feature-row h3 {
+    color: var(--text-color) !important;
+    font-size: 28px !important; /* Larger heading for impact */
+    line-height: 1.5;
+}
+
+.brand-dark-section .feature-row p {
+    color: var(--text-sub) !important;
+}
+
+.brand-dark-section .feature-row strong {
+    color: var(--text-color); /* Ensure strong tag is also dark unless accented */
+}
+
+/* Updated IDENTITY Tag for Premium Feel */
+.brand-dark-section .brand-tag {
+    background: #0F172A;
+    color: #fff;
+    border: none;
+    display: inline-block;
+    padding: 6px 18px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    margin-bottom: 25px;
+}
+
+.brand-dark-section .feature-row p {
+    color: var(--text-sub) !important;
+}
+
+.brand-dark-section .feature-row strong {
+    color: var(--text-color); /* Ensure strong tag is also dark unless accented */
+}
+.brand-pain {
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+/* Service Definition (04) */
+.brand-service-def {
+    background-color: #0F172A; /* Match distinct dark theme */
+    padding: 60px 0 100px 0;
+    color: var(--text-color);
+}
+
+.brand-service-def .gray-card {
+    background: #fff;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Force dark text inside the service definition card */
+.brand-service-def .gray-card h3,
+.brand-service-def .gray-card p {
+    color: var(--text-color) !important;
+}
+
+.brand-service-def .gray-card h3 {
+    font-size: 26px; /* Larger than default for impact */
+    margin-bottom: 30px;
+    font-family: 'Shippori Mincho', serif;
+}
+
+/* Feature Sections Spacing (06, 07) */
+.brand-features-top {
+    padding-bottom: 60px; /* Added bottom spacing */
+    padding-top: 80px; /* Ensure space for border separation */
+    background-color: #f7f7f5; /* Slightly deeper warm beige for better contrast */
+    border-top: 1px solid #e5e5e0; /* Crisp separation line */
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix text visibility in Quality section */
+.brand-features-top .intro-mechanism {
+    color: var(--text-color) !important;
+}
+
+/* Quality Cards (06) */
+.brand-quality-card {
+    background: #fff;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Soft, premium shadow */
+    padding: 40px 30px;
+    height: 100%;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.brand-quality-card:hover {
+    transform: translateY(-5px);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.brand-quality-card p {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 500;
+    line-height: 2;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.brand-quality-card .icon-area {
+    font-size: 24px;
+    color: var(--accent-color);
+    position: relative;
+    z-index: 1;
+}
+
+.brand-features-bottom {
+    padding-bottom: 60px;
+    background-color: #fff; /* Reset to white for rhythm (Beige -> White) */
+    position: relative;
+    z-index: 1;
+}
+
+.brand-features-bottom .f-text h3 {
+    font-size: 28px; /* Match IDENTITY section heading size */
+    line-height: 1.5;
+}
+
+/* Technical Innovation Benefits */
+.tech-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+/* =========================================
+   Section 09: Polite Filtering (Refined)
+   ========================================= */
+
+.brand-policy-section {
+    padding: 100px 0;
+    background: #f7f7f7; /* Very light gray to separate from dark sections */
+    position: relative;
+    border-top: 1px solid #eee;
+}
+
+.brand-policy-section .policy-intro {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Main Box (Rejections) */
+.brand-policy-box {
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 50px 40px;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Make it look official, not scary */
+.brand-policy-box .policy-header i {
+    font-size: 40px;
+    color: var(--text-sub); /* Grey icon instead of red/gold for neutral tone */
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.brand-policy-box h4 {
+    font-size: 20px;
+    color: var(--brand-navy);
+    font-family: 'Shippori Mincho', serif;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.brand-policy-box .policy-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.brand-policy-box .policy-list li {
+    margin-bottom: 15px;
+    position: relative;
+    font-weight: 500;
+    color: #555;
+    line-height: 1.8;
+    display: flex; /* Flexbox for alignment */
+    align-items: flex-start; /* Align top */
+    gap: 15px; /* Space between icon and text */
+}
+
+.brand-policy-box .policy-list li i {
+    /* Removed absolute positioning */
+    color: #eaeaea !important; /* Even lighter gray */
+    font-size: 18px; /* Slightly larger */
+    margin-top: 0px; /* Fine-tune vertical alignment (3px -> 0px) */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.brand-policy-box .policy-conclusion-area {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.brand-policy-box .policy-conclusion {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    color: var(--brand-navy);
+    line-height: 2.0;
+}
+
+/* Trust & Quality Badge (Limitations) */
+.brand-policy-limitations {
+    background: #fff;
+    border: 1px solid #e5e5e0;
+    border-radius: 4px;
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+}
+
+.limitations-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brand-gold);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 5px 20px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(174, 139, 71, 0.3);
+    text-transform: uppercase;
+}
+
+.limitations-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    color: var(--text-sub);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.limitations-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+}
+
+.limitations-list li {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--brand-navy);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.limitations-list li i {
+    color: var(--brand-gold) !important;
+    margin-top: 5px; /* Fine-tune alignment (3px -> 5px) */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .brand-policy-box {
+        padding: 30px 20px;
+    }
+    
+    .limitations-list {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start; /* Left align on mobile */
+        width: 100%;
+        padding-left: 10px;
+    }
+    
+    .brand-policy-limitations {
+        padding: 40px 20px 30px 20px;
+    }
+}
+
+.tech-benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(174, 139, 71, 0.05); /* Subtle gold tint */
+    border-left: 3px solid var(--accent-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.tech-benefit-item:hover {
+    background: rgba(174, 139, 71, 0.1);
+    transform: translateX(5px);
+}
+
+.tech-benefit-item i {
+    font-size: 20px;
+    color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+.tech-benefit-item span {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+@media (max-width: 768px) {
+    .tech-benefit-item {
+        padding: 12px 15px;
+    }
+    
+    .tech-benefit-item i {
+        font-size: 18px;
+    }
+    
+    .tech-benefit-item span {
+        font-size: 14px;
+    }
+}
+
+/* Quality Cards (06) */
+
+/* Core Value Cards (05) */
+.brand-lp .brand-core-value {
+    background: #fff !important;
+    border: 1px solid #e0e0e0 !important; /* Subtle default border */
+    padding: 30px 20px;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-color) !important; /* Fix invisible text */
+}
+
+.brand-core-value::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent-color);
+    transform: scaleY(0);
+    transition: transform 0.4s ease;
+    transform-origin: bottom;
+}
+
+.brand-core-value:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Sophisticated shadow */
+    border-color: transparent;
+}
+
+.brand-core-value:hover::before {
+    transform: scaleY(1);
+    transform-origin: top;
+}
+
+/* Pre-design Philosophy (08) */
+.brand-philosophy {
+    padding-bottom: 40px;
+}
+
+.brand-philosophy .feature-row {
+    background: #fff;
+}
+
+.brand-philosophy .f-text h3 {
+    font-size: 28px; /* Match other section headings */
+    line-height: 1.5;
+}
+
+/* Accent text for keywords */
+.accent-text {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Policy Section (09) */
+.brand-policy-section {
+    padding: 100px 0;
+    background-color: #fff;
+}
+
+.policy-intro {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: var(--text-sub);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.brand-policy-box {
+    border: 1px solid #f0f0f0;
+    background: #fff;
+    padding: 60px 50px;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.03);
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.brand-policy-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #0F172A; /* Match Navy Brand Color */
+    opacity: 1;
+}
+
+.policy-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.policy-header i {
+    font-size: 32px;
+    color: #444; /* Neutral deep grey for exclusion */
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.brand-policy-box h4 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    line-height: 1.8;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.policy-list {
+    list-style: none;
+    padding: 0;
+    max-width: 550px;
+    margin: 0 auto 40px auto;
+}
+
+.policy-list li {
+    position: relative;
+    padding: 15px 0 15px 35px;
+    font-weight: 600;
+    color: var(--text-color);
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.policy-list li:last-child {
+    border-bottom: none;
+}
+
+.policy-list li i {
+    position: absolute;
+    left: 0;
+    color: #999; /* Muted neutral for exclusion icon */
+    font-size: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.policy-conclusion-area {
+    margin-top: 20px;
+    padding-top: 40px;
+    border-top: 2px dashed #f0f0f0;
+    text-align: center;
+}
+
+.policy-conclusion {
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 2.2;
+    font-size: 16px;
+    margin: 0;
+}
+
+.brand-policy-limitations {
+    margin-top: 80px;
+    background: transparent;
+    border-top: 1px solid #eee; /* Subtle separation */
+    padding-top: 40px;
+    text-align: center;
+}
+
+.limitations-badge {
+    display: inline-block;
+    border: 1px solid var(--brand-gold);
+    color: var(--brand-gold);
+    background: transparent;
+    padding: 4px 12px;
+    border-radius: 2px; /* Professional sharp corners */
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.limitations-title {
+    color: #444;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    margin-bottom: 25px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+}
+
+.limitations-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.limitations-list li {
+    padding-left: 28px;
+    position: relative;
+    font-weight: 600;
+    color: #444;
+    font-size: 14px;
+}
+
+.limitations-list li i {
+    position: absolute;
+    left: 0;
+    color: var(--brand-gold);
+    top: 1px;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .brand-policy-section {
+        padding: 60px 0;
+    }
+    
+    .brand-policy-box {
+        padding: 40px 20px;
+    }
+
+    .brand-policy-box h4 {
+        font-size: 18px;
+    }
+    
+    .limitations-list {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        display: flex; /* Changed from inline-block to enable flex layout */
+    }
+}
+
+/* Flow Section (10) */
+.brand-flow {
+    background: #f9f9f9; /* Contrast with white cards */
+    padding: 100px 0;
+}
+
+.brand-flow .step-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    padding-top: 40px; /* Space for the line */
+}
+
+/* Connecting Line */
+.brand-flow .step-list::before {
+    content: '';
+    position: absolute;
+    top: 55px; /* Aligns with the circles */
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #e0e0e0;
+    z-index: 0;
+}
+
+.brand-flow .step-item {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+    width: 200px;
+    padding: 80px 20px 30px !important; /* Force increased top padding */
+    position: relative;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 1;
+    margin-top: 0;
+    transition: transform 0.3s, border-color 0.3s;
+    border-bottom: 3px solid transparent; /* Prepare for hover effect */
+}
+
+.brand-flow .step-item:hover {
+    transform: translateY(-5px);
+    border-bottom: 3px solid var(--accent-color); /* Gold accent on hover */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.brand-flow .s-head {
+    /* The Circle Marker */
+    width: 60px;
+    height: 60px;
+    background: var(--brand-navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -30px; /* Half height to straddle the top edge */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1;
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.2);
+    border: 3px solid #fff; /* White ring to separate from line */
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.brand-flow .s-head::after {
+    content: attr(data-num); /* Or just use content in HTML, but here we can just style the text inside */
+    font-size: 20px;
+    margin-top: 2px;
+    display: block; /* Force number to new line if needed, but flex column handles it */
+}
+
+/* Enhance the text inside the card */
+.brand-flow .step-item p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.6;
+}
+
+.brand-flow .step-item p strong {
+    display: block;
+    color: var(--brand-navy);
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .brand-flow .step-list {
+        flex-direction: column;
+        align-items: center; /* Center items */
+        gap: 50px;
+        padding-top: 20px;
+        padding-left: 0; /* Remove side padding */
+    }
+
+    /* Vertical Line - Centered */
+    .brand-flow .step-list::before {
+        height: 100%;
+        width: 2px;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
+
+    .brand-flow .step-item {
+        width: 100%;
+        max-width: 320px; /* Limit width */
+        padding: 75px 20px 30px 20px !important; /* Increased top padding to lower text */
+        text-align: center;
+        margin: 0 auto; /* Center alignment */
+    }
+
+    .brand-flow .s-head {
+        top: -30px; /* Position at top center */
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
+
+    /* Arrow positioning - center perfectly on the line */
+    .brand-flow .step-item:not(:last-child)::after {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+}
+
+/* Price Section (11) */
+/* Price Section (11) */
+.brand-price {
+    background-color: #f9f9f9;
+    padding: 100px 0;
+}
+
+.brand-price-box {
+    background: #fff;
+    /* Double Border Effect */
+    border: 1px solid #ddd;
+    outline: 4px solid #fff; /* White gap */
+    box-shadow: 0 0 0 5px #ddd, 0 20px 50px rgba(0,0,0,0.05); /* Outer border + Shadow */
+    padding: 70px 50px;
+    max-width: 750px; /* Slightly wider */
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    border-radius: 2px;
+}
+
+/* Plan Header */
+.plan-subtitle {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    color: var(--accent-color);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.price-plan-title {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: var(--brand-navy);
+    font-family: 'Shippori Mincho', serif;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.price-plan-desc {
+    margin-bottom: 40px;
+    font-size: 15px;
+    color: var(--text-sub);
+    line-height: 1.8;
+}
+
+/* 5 Features Grid */
+.plan-features {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; 
+}
+
+.p-feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 80px;
+}
+
+.p-feature-item i {
+    font-size: 24px;
+    color: var(--brand-navy);
+    background: #f4f4f4;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.p-feature-item:hover i {
+    background: var(--brand-navy);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.p-feature-item span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.05em;
+}
+
+/* Price Display (Refined) */
+.price-display {
+    padding: 40px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.price-label {
+    font-size: 13px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.price-main {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    color: var(--brand-navy);
+    font-family: 'Outfit', sans-serif;
+}
+
+.price-main .yen {
+    font-size: 24px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.price-main .amount {
+    font-size: 60px; /* Huge impact */
+    font-weight: 500; /* Thinner for elegance */
+    line-height: 1;
+    font-family: 'Shippori Mincho', serif; /* Premium serif for numbers */
+    letter-spacing: 0.05em;
+}
+
+.price-main .tax {
+    font-size: 16px;
+    color: #999;
+    margin-left: 5px;
+    font-weight: 400;
+}
+
+.price-sub-note {
+    font-size: 13px;
+    color: var(--accent-color);
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Options List (Refined) */
+.price-options {
+    margin-top: 50px;
+    text-align: left;
+    background: #fafafa;
+    padding: 40px;
+    border-radius: 4px;
+}
+
+.options-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--brand-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.options-title i {
+    color: var(--accent-color);
+}
+
+.options-list {
+    list-style: none;
+    padding: 0;
+}
+
+.options-list li {
+    display: flex;
+    flex-direction: column; /* Stack name and desc */
+    margin-bottom: 20px;
+    padding-left: 20px;
+    position: relative;
+    border-left: 2px solid #ddd; /* Decor line */
+}
+
+.options-list li:last-child {
+    margin-bottom: 0;
+}
+
+.opt-name {
+    font-weight: 700;
+    color: #444;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.opt-desc {
+    font-size: 13px;
+    color: #888;
+}
+
+.price-footer {
+    margin-top: 40px;
+}
+
+.price-note {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.8;
+}
+
+.price-note strong {
+    color: var(--brand-navy);
+    font-size: 16px;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .brand-price-box {
+        padding: 40px 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Simplify shadow on mobile */
+        outline: none; /* Simplify border on mobile if needed, or keep */
+        border: 1px solid #eee; /* Fallback */
+    }
+
+    .price-main .amount {
+        font-size: 48px;
+    }
+    
+    .plan-features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Center items */
+        gap: 15px 20px; /* Row and column gap */
+    }
+    
+    .p-feature-item {
+        width: 28%; /* 3 items per row (28% * 3 + gaps ≈ 100%) */
+    }
+    
+    .p-feature-item i {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .p-feature-item span {
+        font-size: 10px;
+        white-space: nowrap; /* Prevent wrap */
+    }
+}
+
+/* Profile Section (12) */
+.brand-profile {
+    padding: 120px 0;
+    background-color: #fff;
+}
+
+.brand-profile .p-sign {
+    font-family: 'Dancing Script', cursive; /* Handwritten font */
+    font-size: 32px; /* Larger signature size */
+    margin-top: 30px;
+    color: var(--text-color);
+    font-weight: 700;
+    transform: rotate(-2deg); /* Slight tilt for realism */
+    display: inline-block;
+}
+
+.brand-profile .profile-image img {
+    filter: grayscale(100%); /* Maintain the Pro look */
+}
+
+/* Contact Section (13) Override */
+.brand-contact {
+    background-color: #0F172A;
+    color: #fff;
+    padding: 120px 0;
+}
+
+.brand-contact .en-label {
+    color: var(--accent-color) !important;
+}
+
+.brand-contact-lead {
+    color: rgba(255, 255, 255, 0.9) !important; /* Brighter for readability */
+    font-size: 16px;
+    line-height: 2.2;
+    margin-bottom: 50px;
+    letter-spacing: 0.05em;
+}
+
+.contact-info {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--accent-color); /* Gold color */
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+/* Header-Matched CTA (Square Gold - Single Line) */
+.brand-cta {
+    background: #AE8B47 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 2px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 16px 40px !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 280px;
+    height: auto !important;
+    text-decoration: none;
+}
+
+/* Hide the sub-label to make it look like a standard button */
+/* Hide the sub-label to make it look like a standard button */
+.brand-cta > span:first-child {
+    display: none;
+}
+
+.brand-cta strong {
+    font-size: 16px;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+/* Hide break tag on PC/Mobile for single line layout */
+.brand-cta .br-sp {
+    display: none;
+}
+
+.brand-cta i {
+    font-size: 14px;
+}
+
+.brand-cta:hover {
+    background: #fff !important;
+    color: #AE8B47 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.contact-sub {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 13px;
+    margin-top: 30px;
+}
+
+/* Footer Adjustments */
+.brand-footer {
+    background: var(--brand-navy) !important;
+    color: rgba(255, 255, 255, 0.8) !important; /* Increased visibility */
+}
+
+.brand-footer .footer-logo {
+    color: #fff !important; /* Force white text for "採用特化LP制作" */
+}
+
+.brand-footer .copyright {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+    .brand-dark-section {
+        padding: 80px 0;
+    }
+    
+    .brand-price-box {
+        padding: 40px 20px;
+    }
+
+    .price-amount {
+        font-size: 36px;
+    }
+}
+
+/* =========================================
+   Design Refinements (Flow & Profile)
+   ========================================= */
+
+/* 10. Flow Section Visuals */
+.brand-flow .step-list {
+    position: relative;
+    /* On PC: Add a connecting line behind */
+}
+
+/* Connecting Line (PC) */
+.brand-flow .step-list::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: #e0e0e0;
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+.brand-flow .step-item {
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* Soft shadow */
+    border: none;
+    z-index: 1; /* Above line */
+    transition: transform 0.3s ease;
+    border-radius: 8px; /* Slightly softer */
+    padding-top: 50px; /* Space for the badge */
+    overflow: visible; /* Allow badge to pop out */
+}
+
+/* Clear old arrow */
+.step-item:not(:last-child)::after {
+    content: none;
+}
+
+.brand-flow .step-item:hover {
+    transform: translateY(-5px);
+}
+
+.brand-flow .s-head {
+    /* "Step 01" Badge */
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-dark);
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    width: auto;
+    letter-spacing: 0.1em;
+}
+
+/* Mobile Flow Adjustments */
+@media (max-width: 768px) {
+    .brand-flow .step-list::before {
+        /* Vertical line on mobile */
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        height: auto;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .brand-flow .step-item {
+        margin-bottom: 40px; /* Space for arrow */
+    }
+
+    /* Mobile Arrow */
+    .brand-flow .step-item:not(:last-child)::after {
+        content: '▼';
+        display: block;
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--brand-gold);
+        font-size: 14px;
+    }
+}
+
+
+/* 12. Profile Section Visuals */
+.brand-profile {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background blob */
+.brand-profile::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: #f9f9f9;
+    border-radius: 50% 40% 60% 50%;
+    z-index: 0;
+    opacity: 0.6;
+    animation: blobFloat 20s infinite linear;
+}
+
+@keyframes blobFloat {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.05); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+.brand-profile .container {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-profile .profile-image img {
+    /* Stylized frame */
+    border-radius: 4px;
+    box-shadow: 20px 20px 0 var(--brand-gold);
+    filter: none; /* Clear image */
+    transition: transform 0.4s ease;
+}
+
+.brand-profile .profile-image:hover img {
+    transform: translate(5px, 5px);
+    box-shadow: 10px 10px 0 var(--brand-gold);
+}
+
+.brand-profile .p-job {
+    /* Tag style */
+    display: inline-block;
+    background: var(--bg-light);
+    padding: 5px 15px;
+    border-radius: 50px;
+    color: var(--text-color);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .brand-profile::before {
+        width: 300px;
+        height: 300px;
+        top: 0;
+        right: -50px;
+    }
+    
+    .brand-profile .profile-image img {
+        max-width: 180px; /* Balanced profile image on mobile */
+        display: block;
+        margin: 0 auto; /* Center the image */
+    }
+}
+
+/* Floating Badge Animation */
+.floating-badge {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: floatBubble 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+/* Force Text Gradient for Brand LP */
+.brand-lp .text-gradient {
+    background: linear-gradient(135deg, #ae8b47 0%, #d4b068 40%, #edd392 60%, #ae8b47 100%);
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    display: inline-block;
+    text-shadow: none !important; /* Remove conflict shadow */
+}
+
+/* Adjust Bubble Position for Image */
+/* Adjust Bubble Position for Brand LP */
+.brand-bubble {
+    width: 180px !important;
+    height: 180px !important;
+    right: 2% !important;
+    top: 15% !important;
+    position: absolute; /* Ensure it is positioned */
+    background: #0F172A !important; /* Navy */
+    color: #fff !important; /* Ensure text remains white */
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4); /* Navy Shadow */
+}
+
+@media (max-width: 768px) {
+    /* 1. Badge Adjustment */
+    .brand-bubble {
+        width: 70px !important; /* Reduced to 70px */
+        height: 70px !important;
+        top: 90px !important; 
+        right: 15px !important;
+        /* Ensure text fits */
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2px; /* Visual optical adjustment */
+    }
+    
+    .brand-bubble br {
+        display: none; /* Remove break to let Flex handle spacing */
+    }
+
+    .brand-bubble .bubble-text-small {
+        font-size: 11px !important; /* Equal size (11px) */
+        letter-spacing: 0;
+        font-weight: 700;
+        line-height: 1;
+        display: block;
+    }
+
+    .brand-bubble .bubble-text-large {
+        font-size: 11px !important; /* Equal size (11px) */
+        letter-spacing: 0; 
+        font-weight: 700;
+        line-height: 1;
+        display: block;
+        margin-top: 4px; /* Maintain spacing */
+    }
+
+    .brand-bubble .bubble-text-small {
+        font-size: 10px !important; /* Increased for visibility */
+        letter-spacing: 0;
+        font-weight: 700;
+    }
+
+    .brand-bubble .bubble-text-large {
+        font-size: 12px !important; /* Increased for visibility */
+        letter-spacing: 0; 
+        font-weight: 700;
+    }
+    
+    /* 2. Industry Strip - Smoother Scroll */
+    .industry-list {
+        gap: 0; /* Flush strip like Index LP */
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch; /* Smooth scroll */
+    }
+
+    .industry-item {
+        width: 28vw !important; /* Exactly 3.5 items (100/3.5 ≈ 28.5) */
+        flex-shrink: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .industry-item img {
+        width: 100% !important; /* Fill container */
+        height: 80px !important; /* Fixed attractive height */
+        object-fit: cover; /* Crop to fill */
+        display: block; /* Remove inline gap */
+    }
+    
+    /* 3. Hero Title Line Break */
+    .br-sp {
+        display: block !important; /* Force break on mobile */
+        content: "";
+        margin-top: 5px;
+    }
+    
+    .brand-lp .hero-main-title.brand-title {
+        line-height: 1.5; /* Relaxed leading */
+    }
+
+    /* 4. Logo Resizing */
+    .logo img {
+        height: 28px !important; /* Smaller on mobile */
+    }
+}
+
+/* Brand LP Specific Overrides */
+/* Note: Industry Image Color Override removed to revert to B&W */
+
+/* Stop Bubble Animation Globally */
+.orbital-bubble {
+    animation: none !important;
 }
