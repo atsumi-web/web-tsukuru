@@ -14,6 +14,10 @@
     /* Typography */
     --font-gothic: 'Noto Sans JP', sans-serif;
     --font-mincho: 'Shippori Mincho', serif;
+
+    /* Logo Sizes */
+    --header-logo-height: 32px;
+    --footer-logo-height: 60px;
 }
 
 body {
@@ -104,7 +108,7 @@ a:hover {
 }
 
 .logo img {
-    height: 40px; /* Adjusted for tighter crop (48px -> 40px) */
+    height: var(--header-logo-height);
     width: auto;
 }
 
@@ -1474,10 +1478,7 @@ a:hover {
     margin-bottom: 30px; /* 15px -> 30px */
 }
 
-.footer-logo img {
-    height: 70px !important; /* Smaller footer logo */
-    width: auto;
-}
+/* Removed - consolidated footer logo styles below */
 
 /* Animation & Utility */
 .js-fade-up {
@@ -1839,7 +1840,7 @@ a:hover {
 }
 
 .footer-logo img {
-    height: 28px; /* 20pxだと小さすぎたので、程よいサイズに */
+    height: var(--footer-logo-height);
     width: auto;
     filter: grayscale(100%) opacity(0.8); /* 視認性を上げつつ、派手すぎない */
     transition: filter 0.3s;
@@ -3877,6 +3878,9 @@ a:hover {
     .logo img {
         height: 28px !important; /* Smaller on mobile */
     }
+    .footer-logo img {
+        height: 20px !important; /* Even smaller footer logo on mobile */
+    }
 }
 
 /* Brand LP Specific Overrides */
@@ -3885,4 +3889,11 @@ a:hover {
 /* Stop Bubble Animation Globally */
 .orbital-bubble {
     animation: none !important;
+}
+
+/* Footer logo styles moved to line 1845 for better organization */
+
+/* Image Blending Utility */
+.blend-image {
+    mix-blend-mode: multiply;
 }
