@@ -67,6 +67,22 @@ a:hover {
     opacity: 0.7;
 }
 
+/* --- Global Spacing Fix --- */
+/* Remove bottom margin from the last element in section containers to ensure padding consistency */
+.hero .hero-content > *:last-child,
+.intro-section .container > *:last-child,
+.feature-section .container > *:last-child,
+.policy-section .container > *:last-child,
+.flow-section .container > *:last-child,
+.price-section .container > *:last-child,
+.profile-section .container > *:last-child,
+.contact-section .container > *:last-child,
+.brand-features-top .container > *:last-child,
+.brand-dark-section .container > *:last-child,
+.brand-lp .container > *:last-child {
+    margin-bottom: 0 !important;
+}
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -166,14 +182,44 @@ a:hover {
 .hero {
     /* height: 100vh; Removed to allow scrolling on small screens/long text */
     min-height: 100vh;
-    padding-top: 100px; /* Space for fixed header + breathing room */
-    padding-bottom: 60px;
+    padding-top: 80px; /* Reduced from 100px */
+    padding-bottom: 100px; /* Increased to clear the absolute footer strip */
     position: relative;
     display: flex;
     align-items: center;
     /* background-color: var(--bg-light); Removed to show hero-bg */
     box-sizing: border-box; /* Ensure padding is included in height */
     overflow: hidden; /* Prevent bubbles from causing scrollbars */
+}
+
+/* ... (skipping hero-bg styles) ... */
+
+.hero-sub {
+    font-size: 16px !important; /* Slightly reduced back to 16px for fit */
+    color: var(--accent-color) !important; /* ゴールド（アクセントカラー）に変更 */
+    margin-bottom: 0; 
+    margin-top: 20px !important; 
+    display: block;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-size: 34px; /* Reduced from 42px */
+    margin-bottom: 15px;
+    margin-top: 0;
+    line-height: 1.5;
+}
+
+/* ... (skipping hero-subtitle) ... */
+
+.hero-actions {
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    gap: 5px; /* Tighter gap */
+    align-items: center; /* Center align button and note relative to each other */
+    width: fit-content; /* Don't stretch to full width, stick to content size */
+    margin-bottom: 20px; /* Reduced from 40px */
 }
 
 .hero-bg {
@@ -235,7 +281,7 @@ a:hover {
 }
 
 .hero-sub {
-    font-size: 13px !important; /* 強制的に小さく */
+    font-size: 18px !important; /* Increased from 16px for better visibility */
     color: var(--accent-color) !important; /* ゴールド（アクセントカラー）に変更 */
     margin-bottom: 0; /* 10px -> 0 (さらに詰める) */
     margin-top: 50px !important; 
@@ -593,7 +639,9 @@ a:hover {
     }
     
     .hero-main-title {
-        margin-bottom: 10px !important; /* Tighter spacing on mobile */
+        font-size: 25px !important; /* Reduced to 25px to prevent "めて" wrapping */
+        margin-bottom: 15px !important; 
+        line-height: 1.5 !important;
     }
     
     .tagline-solution strong {
@@ -791,13 +839,56 @@ a:hover {
     .text-pc {
         display: none !important; /* Hide PC text on mobile */
     }
+    
+    /* Section Spacing - Mobile */
+    .feature-section,
+    .policy-section,
+    .flow-section,
+    .price-section,
+    .profile-section,
+    .contact-section {
+        padding: 60px 0 !important;
+    }
+    
+    .intro-section {
+        padding: 60px 0 !important;
+        padding-top: 30px !important; /* Reduced from 60px for first section after hero */
+        margin-top: -40px; /* Pull up closer to hero strip */
+    }
 }
+
 
 /* Intro / Pain */
 .intro-section {
-    padding: 120px 0;
+    padding: 100px 0;
     text-align: center;
 }
+
+/* Section Spacing Standardization */
+.feature-section {
+    padding: 100px 0;
+}
+
+.policy-section {
+    padding: 100px 0;
+}
+
+.flow-section {
+    padding: 100px 0;
+}
+
+.price-section {
+    padding: 100px 0;
+}
+
+.profile-section {
+    padding: 100px 0;
+}
+
+.contact-section {
+    padding: 100px 0;
+}
+
 
 .intro-lead h3 {
     font-size: 28px;
@@ -944,13 +1035,13 @@ a:hover {
 }
 
 .gray-card {
-    background: #f2f2f2; /* Consistent visible gray */
+    background: #fff; /* Increased contrast from #f2f2f2 */
     /* border: 2px solid red; Removed debug border */
     padding: 50px 40px;
     border-radius: 8px;
     margin: 0 auto;
     max-width: 900px; /* Match feature-rows width */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* Match feature-row shadow */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* Increased shadow opacity for visibility */
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
@@ -1077,7 +1168,7 @@ a:hover {
 
 /* Campaign & Price */
 .price-section {
-    padding: 100px 0 60px; /* 下の余白を少し狭める (100px -> 60px) */
+    padding: 100px 0; /* Standardized spacing */
     background: var(--bg-light);
 }
 
@@ -1089,7 +1180,7 @@ a:hover {
     margin: 0 auto; /* 下のマージン100pxを削除 */
     text-align: center;
     position: relative;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.03); /* ほんのりとした影 */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* Increased shadow for better visibility against gray */
 }
 
 /* 上品なフレーム装飾 */
@@ -1240,7 +1331,7 @@ a:hover {
 
 /* Flow */
 .flow-section {
-    padding: 120px 0;
+    padding: 100px 0;
 }
 
 .step-list {
@@ -1410,7 +1501,7 @@ a:hover {
 
 /* Contact */
 .contact-section {
-    padding: 120px 0;
+    padding: 100px 0;
     text-align: center;
     background-color: var(--bg-light); /* Distinguish from Profile */
 }
@@ -3879,7 +3970,7 @@ a:hover {
         height: 28px !important; /* Smaller on mobile */
     }
     .footer-logo img {
-        height: 20px !important; /* Even smaller footer logo on mobile */
+        height: 36px !important; /* Increased from 20px */
     }
 }
 
@@ -3899,31 +3990,62 @@ a:hover {
 }
 
 /* Hero Badge */
-.hero-content {
-    position: relative; /* Ensure container is relative for badge positioning */
+.hero {
+    position: relative; /* Badge is positioned relative to .hero */
 }
 
 .hero-badge {
     position: absolute;
-    top: -40px;
-    right: -20px;
-    width: 140px;
-    z-index: 10;
-    animation: floatBubble 6s ease-in-out infinite;
+    top: 140px; /* Moved lower per request */
+    right: 5%; /* Moved slightly right per request */
+    width: 110px; /* Smaller circle */
+    height: 110px;
+    background: #fff;
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 100; /* Ensure it floats above hero bg */
 }
 
-.hero-badge img {
-    width: 100%;
-    height: auto;
+.hero-badge span {
     display: block;
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+    line-height: 1.3;
+}
+
+.hero-badge span:first-child {
+    font-size: 16px; /* Larger */
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.hero-badge span:last-child {
+    font-size: 16px; /* Same size as top */
+    font-weight: 700;
+    color: var(--accent-color);
 }
 
 @media (max-width: 768px) {
     .hero-badge {
-        width: 90px;
-        top: -20px;
-        right: 0;
+        width: 65px; /* Further reduced from 80px */
+        height: 65px;
+        top: 110px; /* Moved down significantly to avoid menu */
+        right: 10px; 
+        border-width: 3px; /* Slightly thinner border for small size */
+    }
+    
+    .hero-badge span:first-child {
+        font-size: 10px; /* Reduced to fit */
+    }
+
+    .hero-badge span:last-child {
+        font-size: 10px; /* Unified size */
     }
 }
+
+
 

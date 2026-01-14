@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=2026_LOGO_FIX_v4">
+    <link rel="stylesheet" href="css/style.css?v=2026_MOBILE_FOOTER_LOGO_v24">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -47,22 +47,30 @@
                 <a href="#flow">流れ</a>
                 <a href="#price">料金</a>
                 <a href="#profile">Webをつくる人</a>
-                <a href="https://docs.google.com/forms/" target="_blank" class="nav-btn">無料で相談する<span class="nav-btn-sub">（売り込みはありません）</span></a>
+                <a href="https://docs.google.com/forms/" target="_blank" class="nav-btn">無料診断を受ける<span class="nav-btn-sub">（売り込みはありません）</span></a>
             </nav>
         </div>
     </header>
 
+    <!-- Fixed CTA Button (Bottom-Right) -->
+    <a href="#contact" class="fixed-cta-btn" aria-label="無料診断を受ける">
+        <i class="fa-solid fa-comments"></i>
+        <span>無料診断</span>
+    </a>
     <!-- 01: Hero (First View) -->
     <section class="hero">
+        <!-- Recruitment Badge (Moved for absolute positioning relative to hero) -->
+        <div class="hero-badge">
+            <span>採用特化</span>
+            <span>LP制作</span>
+        </div>
+
         <div class="hero-bg">
             <img src="images/hero_new.png" alt="採用戦略会議">
         </div>
 
         <div class="hero-content js-fade-up">
-            <!-- Recruitment Badge -->
-            <div class="hero-badge">
-                <img src="images/hero_title_badge.png" alt="採用特化LP制作">
-            </div>
+            <!-- Recruitment Badge Removed (Moved to .hero) -->
 
             <p class="hero-sub" style="font-weight: 700; color: var(--accent-color);">中小企業の経営者様へ</p>
             
@@ -72,8 +80,8 @@
                 <span class="text-gradient" style="font-size: 1.3em; line-height: 1.3;">「掛け捨て」をやめて<br class="br-sp"><span style="font-size:1.2em;">「資産」</span>を持つ。</span>
             </h1>
 
-            <div class="hero-metrics" style="background: rgba(255,255,255,0.95); padding: 20px 25px; border-radius: 8px; margin-bottom: 30px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; border-left: 5px solid var(--accent-color);">
-                <p style="font-weight: bold; font-size: 1.2em; color: var(--text-color); margin-bottom: 8px;">
+            <div class="hero-metrics" style="background: rgba(255,255,255,0.95); padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; border-left: 5px solid var(--accent-color);">
+                <p style="font-weight: bold; font-size: 1.0em; color: var(--text-color); margin-bottom: 5px;">
                      維持費<span style="font-size:1.5em; color:var(--accent-color);">0円</span>・資産型採用LPで
                 </p>
                 <p style="font-size: 1.0em; font-weight: 500;">
@@ -171,22 +179,22 @@
     </section>
 
     <!-- 02: Pain (Stalemate) -->
-    <section class="intro-section" style="padding-bottom: 40px; padding-top: 30px;">
+    <section class="intro-section" style="background-color: #f9f9f9;">
         <div class="container">
             <div class="intro-lead js-fade-up">
                 <h3>その広告費、<br class="br-sp">そろそろ「ドブに捨てる」のをやめませんか？</h3>
             </div>
             <div class="pain-list js-fade-up">
-                <div class="pain-item">
+                <div class="pain-item" style="background: #fff;">
                     <p>毎月30万円払っても、応募はゼロ</p>
                 </div>
-                <div class="pain-item">
+                <div class="pain-item" style="background: #fff;">
                     <p>掲載期間が終われば、データも残らない</p>
                 </div>
-                <div class="pain-item">
+                <div class="pain-item" style="background: #fff;">
                     <p>「とりあえず求人出しとこう」の繰り返し</p>
                 </div>
-                <div class="pain-item">
+                <div class="pain-item" style="background: #fff;">
                     <p>採用コストが利益を圧迫している</p>
                 </div>
             </div>
@@ -198,7 +206,7 @@
     </section>
 
     <!-- 03: Asset (Concept) -->
-    <section id="concept" class="feature-section" style="background-color: #fff; padding: 10px 0;">
+    <section id="concept" class="feature-section" style="background-color: #fff;">
         <div class="container">
             <div class="feature-rows js-fade-up">
                 <div class="feature-row" style="margin-bottom: 0;">
@@ -233,15 +241,15 @@
     </section>
 
     <!-- 04: Service Definition -->
-    <section class="intro-section service-def" style="background-color: #fff; padding: 40px 0 80px 0;">
+    <section class="intro-section service-def" style="background-color: #f9f9f9;">
         <div class="container">
-            <div class="intro-lead js-fade-up gray-card">
+            <div class="intro-lead js-fade-up gray-card" style="background: #fff;">
                 <h3 style="margin-bottom: 30px;">これは、Web制作ではありません。<br>「利益を残す」ための経営施策です。</h3>
                 <p style="text-align: center; line-height: 2.2; color: var(--text-sub);">
                     綺麗なサイトを作って終わり、ではありません。<br>
                     <br>
-                    <strong>「いかに採用コスト（販管費）を下げるか」<br>
-                    「いかに自社にノウハウ（資産）を残すか」</strong><br>
+                    <strong style="display: inline-block;">「いかに採用コスト（販管費）を下げるか」</strong><br>
+                    <strong style="display: inline-block;">「いかに自社にノウハウ（資産）を残すか」</strong><br>
                     <br>
                     経営者と同じ目線で、<br>
                     御社の「資産」となる採用の仕組みを構築します。
@@ -251,7 +259,7 @@
     </section>
 
     <!-- 05: LP Content -->
-    <section class="feature-section">
+    <section class="feature-section" style="background-color: #fff;">
         <div class="container">
             <div class="section-header js-fade-up">
                 <span class="en-label">Contents</span>
@@ -288,7 +296,7 @@
     </section>
 
     <!-- 06: LP Features (Zero Cost Intro) -->
-    <section class="feature-section" style="background-color: #fff; padding-bottom: 0;">
+    <section class="feature-section" style="background-color: #fff;">
         <div class="container">
             <div class="section-header js-fade-up">
                 <span class="en-label">Features</span>
@@ -312,8 +320,64 @@
         </div>
     </section>
 
+    <!-- HP vs LP Section -->
+    <section class="feature-section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-header js-fade-up">
+                <span class="en-label">HP vs LP</span>
+                <h2>「立派なホームページがあるのに、<br>なぜLPが必要?」</h2>
+            </div>
+            
+            <div class="intro-mechanism js-fade-up" style="margin-bottom: 40px;">
+                HPとLPは、役割が違います。
+            </div>
+
+            <!-- 比較表 -->
+            <div class="comparison-table js-fade-up" style="max-width: 800px; margin: 0 auto 40px;">
+                <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <thead>
+                        <tr style="background: var(--accent-color); color: white;">
+                            <th style="padding: 15px; text-align: left; border: 1px solid #ddd;">項目</th>
+                            <th style="padding: 15px; text-align: center; border: 1px solid #ddd;">公式HP</th>
+                            <th style="padding: 15px; text-align: center; border: 1px solid #ddd;">採用LP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">目的</td>
+                            <td style="padding: 15px; border: 1px solid #ddd; text-align: center;">企業の信頼性を担保</td>
+                            <td style="padding: 15px; border: 1px solid #ddd; text-align: center; background: #fff9e6;">応募への意欲を最大化</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">対象</td>
+                            <td style="padding: 15px; border: 1px solid #ddd; text-align: center;">取引先、金融機関、顧客など</td>
+                            <td style="padding: 15px; border: 1px solid #ddd; text-align: center; background: #fff9e6;">求職者のみ</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">情報</td>
+                            <td style="padding: 15px; border: 1px solid #ddd; text-align: center;">網羅的(情報の広さ)</td>
+                            <td style="padding: 15px; border: 1px solid #ddd; text-align: center; background: #fff9e6;">特化的(情報の深さ)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pain-list js-fade-up" style="justify-content: center; gap: 20px;">
+                <div class="pain-item" style="background: white; border-left: 4px solid var(--accent-color);">
+                    <p><strong>「スペック」を「ストーリー」に翻訳</strong><br>
+                    HPの「創業70年」といった硬い事実を、LPでは「どんな喜びがあるのか」という物語へ変換します。</p>
+                </div>
+                <div class="pain-item" style="background: white; border-left: 4px solid var(--accent-color);">
+                    <p><strong>広告運用と採用コストの最適化</strong><br>
+                    求人媒体から専用LPへ着地させることで、情報のノイズを排除し、離脱を防ぎます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- 07: Why Zero Maintenance Cost -->
-    <section class="feature-section" style="background-color: #fff; padding-bottom: 40px;">
+    <section class="feature-section" style="background-color: #fff;">
         <div class="container">
             <div class="feature-rows js-fade-up">
                 <div class="feature-row reverse content-wide">
@@ -347,8 +411,101 @@
         </div>
     </section>
 
+    <!-- Technology Section -->
+    <section class="feature-section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-header js-fade-up">
+                <span class="en-label">Technology</span>
+                <h2>なぜ、月額0円が可能なのか?<br>(その技術的背景)</h2>
+            </div>
+
+            <div class="intro-mechanism js-fade-up" style="margin-bottom: 40px;">
+                「場所代」ではなく「成果」に投資してほしい。
+            </div>
+
+            <div class="feature-rows js-fade-up">
+                <!-- ポイント1: 場所代ではなく成果に -->
+                <div class="feature-row" style="background: #fff; margin-bottom: 30px; padding: 30px; border-radius: 8px;">
+                    <div class="f-text">
+                        <h3 style="color: var(--accent-color); margin-bottom: 15px;">
+                            <i class="fa-solid fa-chart-line" style="margin-right: 10px;"></i>
+                            守るだけの費用を、攻めるための費用へ
+                        </h3>
+                        <p>
+                            私たちは、何もしなくても発生する「場所代(サーバー代)」はいただきません。<br>
+                            <br>
+                            その代わり、もし御社が「もっと応募を増やしたい」「現場の熱量を最新のものに更新したい」と望まれるとき、その<strong>「改善」という実利に直結する作業</strong>にだけ、対価をいただく形をとっています。<br>
+                            <br>
+                            守るだけの費用を、攻めるための費用へ。これが私たちの提案です。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ポイント2: コード管理による資産性 -->
+                <div class="feature-row" style="background: #fff; margin-bottom: 30px; padding: 30px; border-radius: 8px;">
+                    <div class="f-text">
+                        <h3 style="color: var(--accent-color); margin-bottom: 15px;">
+                            <i class="fa-solid fa-code-branch" style="margin-right: 10px;"></i>
+                            「デジタル設計図」による長期的な資産保護
+                        </h3>
+                        <p>
+                            月額費をいただかないからといって、管理を疎かにするわけではありません。<br>
+                            <br>
+                            私たちはすべての修正履歴を<strong>「デジタル設計図」として保存</strong>しています。<br>
+                            <br>
+                            1年後、3年後に御社が進化し、ページを書き換えたくなった時。その設計図を取り出し、最小限のコストで迅速にアップデートできる。それが「コードで書く資産」の強みです。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ポイント3: 自走と伴走の選択権 -->
+                <div class="feature-row" style="background: #fff; margin-bottom: 30px; padding: 30px; border-radius: 8px;">
+                    <div class="f-text">
+                        <h3 style="color: var(--accent-color); margin-bottom: 15px;">
+                            <i class="fa-solid fa-handshake" style="margin-right: 10px;"></i>
+                            「自走」と「伴走」の選択権を、御社に
+                        </h3>
+                        <p>
+                            固定費がゼロだからこそ、御社は「今は現状維持でいい」「今は一気に改善したい」という選択を、資金状況に合わせて自由に行えます。<br>
+                            <br>
+                            私たちは月額費で縛ることはしません。<br>
+                            <br>
+                            成果が必要な時に、最高のパートナーとして頼っていただける存在でありたいと考えています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技術的な仕組み -->
+            <div class="js-fade-up" style="max-width: 800px; margin: 40px auto 0; padding: 30px; background: #fff9e6; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                <h4 style="color: var(--text-color); margin-bottom: 20px; font-size: 20px; text-align: center;">
+                    <i class="fa-solid fa-lightbulb" style="margin-right: 8px; color: var(--accent-color);"></i>
+                    技術的な仕組み
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 6px; text-align: center;">
+                        <i class="fa-solid fa-cloud" style="font-size: 2em; color: var(--accent-color); margin-bottom: 10px;"></i>
+                        <p style="font-weight: bold; margin-bottom: 8px;">サーバーを借りない</p>
+                        <p style="font-size: 14px; color: var(--text-sub);">クラウド直結配信の採用</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 6px; text-align: center;">
+                        <i class="fa-solid fa-shield-halved" style="font-size: 2em; color: var(--accent-color); margin-bottom: 10px;"></i>
+                        <p style="font-weight: bold; margin-bottom: 8px;">定期メンテナンス不要</p>
+                        <p style="font-size: 14px; color: var(--text-sub);">堅牢な設計で長期間安定</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 6px; text-align: center;">
+                        <i class="fa-solid fa-file-code" style="font-size: 2em; color: var(--accent-color); margin-bottom: 10px;"></i>
+                        <p style="font-weight: bold; margin-bottom: 8px;">デジタル設計図</p>
+                        <p style="font-size: 14px; color: var(--text-sub);">プロが管理する長期的な資産保護</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- 08: Pre-design Philosophy -->
-    <section class="feature-section" style="padding-bottom: 40px;">
+    <section class="feature-section" style="background-color: #fff;">
         <div class="container">
             <div class="feature-rows js-fade-up">
                 <div class="feature-row" style="background: #fff;">
@@ -376,10 +533,10 @@
     </section>
 
     <!-- 09: Not Suitable -->
-    <section class="policy-section">
+    <section class="policy-section" style="background-color: #f9f9f9;">
         <div class="container js-fade-up">
             <p style="text-align:center; margin-bottom:20px; font-weight:bold;">このサービスは、<br class="sp-only">すべての会社に向いているわけではありません。</p>
-            <div class="policy-box">
+            <div class="policy-box" style="background: #fff;">
                 <h4>このサービスが向いていない方</h4>
                 <ul>
                     <li>とにかく安く作りたい方</li>
@@ -393,7 +550,7 @@
             </div>
             
             <!-- Limitations (Added for clarity) -->
-            <div class="policy-box js-fade-up" style="margin-top: 40px;">
+            <div class="policy-box js-fade-up" style="margin-top: 40px; background: #fff;">
                 <h4 style="color: #666; font-size: 18px; margin-bottom: 20px;">できないこともあります（正直にお伝えします）</h4>
                 <ul style="list-style: none; padding: 0; text-align: left; display: inline-block;">
                     <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><i class="fa-solid fa-check" style="position: absolute; left: 0; color: #ccc; top: 4px;"></i> ブログやお知らせの更新機能はありません（必要な場合はnoteなどを推奨）</li>
@@ -529,7 +686,7 @@
     </section>
 
     <!-- 13: CTA (Final) -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section" style="background-color: #f9f9f9;">
         <div class="container">
             <div class="section-header js-fade-up">
                 <span class="en-label">Contact</span>
