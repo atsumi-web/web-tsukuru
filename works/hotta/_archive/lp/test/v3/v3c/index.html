@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地元で働く、新しい選択肢｜堀田建設（シンプル版）</title>
+    <meta name="description" content="スマホでも読みやすい。3分でわかる、地元建設業のリアル。まずは30分のカジュアル面談から。">
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           v3-C 超シンプルモバイル最適化版
+           ============================================ */
+        :root {
+            --text-white: #ffffff;
+            --text-white-90: rgba(255, 255, 255, 0.9);
+            --text-white-80: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 基本リセット */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* コンテナの簡素化 */
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+        
+        /* ヘッダー（最小限） */
+        .simple-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        .cta-button-small {
+            background: var(--color-primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* ヒーロー（フルスクリーンモバイル） */
+        .simple-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px 40px;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 500px;
+        }
+        .hero-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        /* 診断セクション */
+        .diagnosis-section {
+            padding: 60px 20px;
+            background: #f8f9fa;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+        .diagnosis-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .diagnosis-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .diagnosis-card.selected {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .card-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--color-bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 0;
+        }
+        .card-tag {
+            display: inline-block;
+            background: var(--color-primary-bg);
+            color: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        .card-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .select-button {
+            background: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 10px 20px;
+            border-radius: 20px;
+            width: 100%;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .select-button.selected {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        /* インタビュー表示（診断後） */
+        .interview-display {
+            padding: 40px 20px;
+            background: white;
+            display: none;
+        }
+        .interview-display.active {
+            display: block;
+        }
+        .back-button {
+            background: transparent;
+            border: none;
+            color: var(--color-primary);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            padding: 10px 0;
+        }
+        .interview-quote-main {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            color: var(--color-primary-dark);
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 4px solid var(--color-accent-red);
+        }
+        .qa-item-simple {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .qa-item-simple:last-child {
+            border-bottom: none;
+        }
+        .qa-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-accent-red);
+            margin-bottom: 15px;
+        }
+        .qa-answer {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        /* 数字セクション（ビジュアル強化） */
+        .numbers-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .number-item {
+            background: white;
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .number-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        .number-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+        .number-context {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 8px;
+        }
+        
+        /* 制度セクション（アイコングリッド） */
+        .benefits-section {
+            padding: 60px 20px;
+            background: white;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .benefit-item {
+            text-align: center;
+            padding: 20px 15px;
+        }
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+        .benefit-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .benefit-desc {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* カジュアル面談CTA */
+        .casual-cta {
+            padding: 60px 20px;
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+        }
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .cta-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 400px;
+            margin: 40px auto;
+        }
+        .cta-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+        .step-number {
+            background: white;
+            color: var(--color-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        .step-content p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        .primary-button {
+            background: white;
+            color: var(--color-primary);
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .cta-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+        
+        /* 連絡先 */
+        .contact-simple {
+            padding: 40px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+            margin: 30px auto;
+        }
+        .contact-button {
+            padding: 18px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        .phone-button {
+            background: var(--color-primary);
+            color: white;
+        }
+        .line-button {
+            background: #06C755;
+            color: white;
+        }
+        
+        /* フッター */
+        .simple-footer {
+            padding: 40px 20px;
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .footer-info {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+        .footer-link {
+            margin-top: 20px;
+        }
+        .footer-link a {
+            color: white;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* モバイル最適化 */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .numbers-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+            }
+            .contact-buttons {
+                max-width: 100%;
+            }
+        }
+        
+        /* アニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- シンプルヘッダー -->
+    <header class="simple-header">
+        <div class="header-content">
+            <a href="#hero" class="logo">堀田建設</a>
+            <a href="#casual" class="cta-button-small">30分面談</a>
+        </div>
+    </header>
+
+    <!-- ヒーロー -->
+    <section id="hero" class="simple-hero">
+        <div class="hero-content">
+            <div class="hero-badge">スマホでも読みやすい</div>
+            <h1 class="hero-title">地元で働く<br>新しい選択肢</h1>
+            <p class="hero-subtitle">
+                「覚悟」がなくても大丈夫。<br>
+                3人のリアルな体験から、<br>
+                あなたに合った働き方を見つけてください。
+            </p>
+            <div style="margin-top: 30px;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 15px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                        <span style="font-size: 0.9rem;">未経験OK</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                        <span style="font-size: 0.9rem;">地元優先</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                        <span style="font-size: 0.9rem;">資格支援</span>
+                    </div>
+                </div>
+                <a href="#diagnosis" class="primary-button" style="background: white; color: var(--color-primary);">
+                    あなたのモデルを診断する（2分）
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 診断セクション -->
+    <section id="diagnosis" class="diagnosis-section">
+        <h2 class="section-title">あなたに合ったモデルは？</h2>
+        <p class="section-subtitle">気になるモデルを選んで、詳しい体験談を読んでみましょう</p>
+        
+        <div class="diagnosis-cards">
+            <!-- 岡安さんカード -->
+            <div class="diagnosis-card" id="card-okayasu">
+                <div class="card-header">
+                    <div class="card-avatar">岡</div>
+                    <div>
+                        <h3 class="card-title">岡安 20代</h3>
+                        <span class="card-tag">#地元一貫型</span>
+                    </div>
+                </div>
+                <p class="card-description">
+                    「地元で働く迷い」を8年間かけて乗り越えてきた。<br>
+                    地元就職に不安がある方に。
+                </p>
+                <button class="select-button" data-model="okayasu">
+                    このモデルを選ぶ
+                </button>
+            </div>
+            
+            <!-- 菅原さんカード -->
+            <div class="diagnosis-card" id="card-sugahara">
+                <div class="card-header">
+                    <div class="card-avatar">菅</div>
+                    <div>
+                        <h3 class="card-title">菅原 26歳</h3>
+                        <span class="card-tag">#異業種転職</span>
+                    </div>
+                </div>
+                <p class="card-description">
+                    特別な経歴なしで建設業界へ。<br>
+                    「普通」の経歴が強みになる道。
+                </p>
+                <button class="select-button" data-model="sugahara">
+                    このモデルを選ぶ
+                </button>
+            </div>
+            
+            <!-- 渥美さんカード -->
+            <div class="diagnosis-card" id="card-atsumi">
+                <div class="card-header">
+                    <div class="card-avatar">渥</div>
+                    <div>
+                        <h3 class="card-title">渥美 21歳</h3>
+                        <span class="card-tag">#高卒成長</span>
+                    </div>
+                </div>
+                <p class="card-description">
+                    高卒から建築士を目指す。<br>
+                    若手の成長を全力でサポートする環境。
+                </p>
+                <button class="select-button" data-model="atsumi">
+                    このモデルを選ぶ
+                </button>
+            </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px; color: #666; font-size: 0.9rem;">
+            ※ 選んだ後でも他のモデルに変更できます
+        </p>
+    </section>
+
+    <!-- インタビュー表示エリア -->
+    <div id="interview-display-area">
+        <!-- 岡安さんインタビュー -->
+        <section id="interview-okayasu" class="interview-display">
+            <div class="container">
+                <button class="back-button" onclick="showDiagnosis()">
+                    <i class="fas fa-arrow-left"></i> 他のモデルも見る
+                </button>
+                
+                <div class="card-header" style="margin-bottom: 30px;">
+                    <div class="card-avatar">岡</div>
+                    <div>
+                        <h3 class="card-title">岡安 20代｜入社8年目</h3>
+                        <span class="card-tag">#地元一貫型</span>
+                    </div>
+                </div>
+                
+                <div class="interview-quote-main">
+                    「地元で働く選択に、迷いはつきものだ。<br>
+                    でもその迷いこそが、成長の糧になる。」
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">地元で働くことに迷いはありましたか？</div>
+                    <div class="qa-answer">
+                        正直に言うと、入社前は「都会の方が給料がいいかも」「もっと視野が広がるかも」と迷っていました。地元で働くという選択は、ある意味「楽な道」に見えることもあって、自分に甘えているのかなと感じた時期もありました。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">辞めようと思ったことは？</div>
+                    <div class="qa-answer">
+                        3年目くらいに、同期が東京の建設会社に転職した話を聞いた時は「私も挑戦すべきかも」と思いました。でも、その時に先輩から「地元で経験を積むことも立派なキャリアだよ」と言われて、自分の選択を再確認できました。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">地元ならではの良さは？</div>
+                    <div class="qa-answer">
+                        最大の良さは、自分の仕事が地域の景色になっていくのを実感できることです。子どもの頃から知っている場所に、自分が関わった建物ができる。その実感は、都会ではなかなか得られないものだと思います。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">続けている一番の理由は？</div>
+                    <div class="qa-answer">
+                        「地元だから」以外で言うと、ここでは「迷いを共有できる環境」があることです。地元で働くことの不安や葛藤を、上司や先輩が真剣に聞いてくれて、一緒に考えてくれる。そんな人間関係が、続けられる大きな理由です。
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 菅原さんインタビュー -->
+        <section id="interview-sugahara" class="interview-display">
+            <div class="container">
+                <button class="back-button" onclick="showDiagnosis()">
+                    <i class="fas fa-arrow-left"></i> 他のモデルも見る
+                </button>
+                
+                <div class="card-header" style="margin-bottom: 30px;">
+                    <div class="card-avatar">菅</div>
+                    <div>
+                        <h3 class="card-title">菅原 26歳｜入社5年目</h3>
+                        <span class="card-tag">#異業種転職</span>
+                    </div>
+                </div>
+                
+                <div class="interview-quote-main">
+                    「"普通"の経歴が、ここでは強みになる。<br>
+                    特別なスキルより、等身大の会話を。」
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">転職の不安は何でしたか？</div>
+                    <div class="qa-answer">
+                        一番怖かったのは「仕事が全く分からなくてクビになるかも」という不安でした。前職とは全く違う業界で、専門用語もわからず、最初の1ヶ月は毎日が緊張の連続でした。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">想像と違った点は？</div>
+                    <div class="qa-answer">
+                        想像していたより、もっと「チームワーク」が重要だと気づきました。前職は個人の成果が評価されやすかったのですが、ここでは一つの建物をチーム全員で作り上げていく感覚があります。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">「無理です」と言えた経験は？</div>
+                    <div class="qa-answer">
+                        入社3ヶ月目の時、初めて工程管理の資料を作ったのですが、全然わからなくて「これは私には無理だ」と感じました。その時、上司が「最初から完璧にできなくていい。まずはやってみて」と言ってくれたのが救いでした。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">等身大モデルの価値は？</div>
+                    <div class="qa-answer">
+                        特別な経歴がないからこそ、等身大のアドバイスができると自負しています。同じように学歴や経験に自信がない人に、「私にできたから、あなたにもできる」と伝えられるのが強みです。
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 渥美さんインタビュー -->
+        <section id="interview-atsumi" class="interview-display">
+            <div class="container">
+                <button class="back-button" onclick="showDiagnosis()">
+                    <i class="fas fa-arrow-left"></i> 他のモデルも見る
+                </button>
+                
+                <div class="card-header" style="margin-bottom: 30px;">
+                    <div class="card-avatar">渥</div>
+                    <div>
+                        <h3 class="card-title">渥美 21歳｜入社3年目</h3>
+                        <span class="card-tag">#高卒成長</span>
+                        <span class="card-tag" style="background: var(--color-accent-red); color: white;">2級建築士</span>
+                    </div>
+                </div>
+                
+                <div class="interview-quote-main">
+                    「高卒から建築士へ。<br>
+                    未完成だからこそ、成長できる。」
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">入社当初の不安は？</div>
+                    <div class="qa-answer">
+                        高卒で入ったので、周りに専門学校や大学出身の人が多くて「私だけついていけないかも」という不安がありました。特に最初の3ヶ月は、専門用語がわからず、会話についていくのが大変でした。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">「無理です」と言えた経験は？</div>
+                    <div class="qa-answer">
+                        入社半年目の時、一人で現場の工程管理を任されたのですが、全くできなくて「無理です」と言えました。その時、先輩が「無理って言えるのはすごいことだよ。どこがわからないか、一緒に確認しよう」と言ってくれて、むしろ褒められたのが印象的でした。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">資格取得の支援は？</div>
+                    <div class="qa-answer">
+                        2級建築士の資格取得のために通った専門学校の費用は全額会社負担でした。それ以上に、「陽向くん、試験前は現場の負担減らすから」と配慮してもらえたのが本当にありがたかったです。
+                    </div>
+                </div>
+                
+                <div class="qa-item-simple">
+                    <div class="qa-question">仕事以外の楽しみは？</div>
+                    <div class="qa-answer">
+                        先輩と行くバッティングセンターで仕事のストレスを話すのが、最高のリフレッシュです。そういう「仕事以外のつながり」があるからこそ、仕事でも助け合える関係が築けるんだと思います。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 数字で見る働きやすさ -->
+    <section class="numbers-section">
+        <h2 class="section-title">数字でわかる働きやすさ</h2>
+        <p class="section-subtitle">客観的なデータで環境を証明します</p>
+        
+        <div class="numbers-grid">
+            <div class="number-item fade-in">
+                <div class="number-value">約20時間</div>
+                <div class="number-label">月の平均残業</div>
+                <div class="number-context">建設業界平均の半分以下</div>
+            </div>
+            <div class="number-item fade-in">
+                <div class="number-value">15日以上</div>
+                <div class="number-label">有給取得平均</div>
+                <div class="number-context">実際に取れる環境</div>
+            </div>
+            <div class="number-item fade-in">
+                <div class="number-value">平均12年</div>
+                <div class="number-label">勤続年数</div>
+                <div class="number-context">長く働き続けられる</div>
+            </div>
+            <div class="number-item fade-in">
+                <div class="number-value">無料</div>
+                <div class="number-label">社内ジム</div>
+                <div class="number-context">7割が定期的に利用</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 制度・ベネフィット -->
+    <section class="benefits-section">
+        <h2 class="section-title">制度で支える環境</h2>
+        <p class="section-subtitle">働きやすさを具体化した6つの制度</p>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item fade-in">
+                <div class="benefit-icon">🏠</div>
+                <div class="benefit-title">借上げ社宅</div>
+                <div class="benefit-desc">一人暮らし開始を支援</div>
+            </div>
+            <div class="benefit-item fade-in">
+                <div class="benefit-icon">📚</div>
+                <div class="benefit-title">資格全額支援</div>
+                <div class="benefit-desc">建築士など会社負担</div>
+            </div>
+            <div class="benefit-item fade-in">
+                <div class="benefit-icon">💪</div>
+                <div class="benefit-title">ジム無料</div>
+                <div class="benefit-desc">健康管理をサポート</div>
+            </div>
+            <div class="benefit-item fade-in">
+                <div class="benefit-icon">👨‍👩‍👧‍👦</div>
+                <div class="benefit-title">家族手当</div>
+                <div class="benefit-desc">生活を経済的に支援</div>
+            </div>
+            <div class="benefit-item fade-in">
+                <div class="benefit-icon">🎯</div>
+                <div class="benefit-title">優良現場表彰</div>
+                <div class="benefit-desc">やりがいと評価</div>
+            </div>
+            <div class="benefit-item fade-in">
+                <div class="benefit-icon">🚗</div>
+                <div class="benefit-title">通勤支援</div>
+                <div class="benefit-desc">地域に合わせたサポート</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- カジュアル面談CTA -->
+    <section id="casual" class="casual-cta">
+        <h2 class="cta-title">まずは30分のカジュアル面談から</h2>
+        <p style="opacity: 0.9; max-width: 400px; margin: 0 auto 40px;">
+            いきなりエントリーシートは緊張しますよね。<br>
+            まずは気軽に話を聞いてみませんか？
+        </p>
+        
+        <div class="cta-steps">
+            <div class="cta-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>LINEか電話で申込み</h4>
+                    <p>「カジュアル面談希望」と一言伝えてください</p>
+                </div>
+            </div>
+            <div class="cta-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>30分オンライン面談</h4>
+                    <p>Zoomか電話で。服装自由、カメラオフもOK</p>
+                </div>
+            </div>
+            <div class="cta-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>質疑応答で相互理解</h4>
+                    <p>あなたの不安や疑問に正直にお答えします</p>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#contact" class="primary-button">
+            <i class="fas fa-calendar-alt"></i> カジュアル面談を申し込む
+        </a>
+        
+        <p class="cta-note">
+            面談後、気が変わってももちろんOKです。<br>
+            「もう少し考えます」とお伝えください。
+        </p>
+    </section>
+
+    <!-- 連絡先 -->
+    <section id="contact" class="contact-simple">
+        <h2 class="section-title">お問い合わせ</h2>
+        <p class="section-subtitle">以下のいずれかでご連絡ください</p>
+        
+        <div class="contact-buttons">
+            <a href="tel:0120-XXX-XXX" class="contact-button phone-button">
+                <i class="fas fa-phone-alt"></i>
+                電話で問い合わせ
+                <br>
+                <small style="font-size: 0.9rem; opacity: 0.9;">0120-XXX-XXX</small>
+            </a>
+            <a href="#" class="contact-button line-button">
+                <i class="fab fa-line"></i>
+                LINEで問い合わせ
+                <br>
+                <small style="font-size: 0.9rem; opacity: 0.9;">公式アカウント</small>
+            </a>
+        </div>
+        
+        <p style="margin-top: 30px; color: #666; font-size: 0.9rem;">
+            受付時間：平日 9:00-18:00<br>
+            ※「カジュアル面談希望」とお伝えください
+        </p>
+    </section>
+
+    <!-- フッター -->
+    <footer class="simple-footer">
+        <div class="footer-logo">堀田建設株式会社</div>
+        <div class="footer-info">
+            <p>〒XXX-XXXX 三重県亀山市XXXXXX</p>
+            <p>TEL: 0120-XXX-XXX（採用担当）</p>
+            <p>© 2023 堀田建設株式会社</p>
+        </div>
+        <div class="footer-link">
+            <a href="/">採用トップページへ戻る</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 診断機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectButtons = document.querySelectorAll('.select-button');
+            const diagnosisCards = document.querySelectorAll('.diagnosis-card');
+            const interviewSections = document.querySelectorAll('.interview-display');
+            
+            // 診断カード選択処理
+            selectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const model = this.dataset.model;
+                    
+                    // 全てのカードとボタンの選択状態を解除
+                    diagnosisCards.forEach(card => card.classList.remove('selected'));
+                    selectButtons.forEach(btn => {
+                        btn.classList.remove('selected');
+                        btn.textContent = 'このモデルを選ぶ';
+                    });
+                    
+                    // 選択したカードとボタンを強調
+                    const card = document.getElementById(`card-${model}`);
+                    card.classList.add('selected');
+                    this.classList.add('selected');
+                    this.textContent = '✓ 選択中';
+                    
+                    // 対応するインタビューを表示
+                    interviewSections.forEach(section => section.classList.remove('active'));
+                    const interviewSection = document.getElementById(`interview-${model}`);
+                    interviewSection.classList.add('active');
+                    
+                    // インタビューセクションまでスクロール
+                    interviewSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // フェードインアニメーション
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.number-item, .benefit-item').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // 診断画面に戻る
+        function showDiagnosis() {
+            document.querySelectorAll('.interview-display').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 診断セクションまでスクロール
+            document.getElementById('diagnosis').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

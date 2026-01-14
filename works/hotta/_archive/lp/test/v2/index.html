@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私たちが、続けている理由。｜堀田建設株式会社</title>
+    <meta name="description" content="地元で続ける、未経験から挑戦、若手が育つ。3人の施工管理が語る、ここで働き続ける現実的な理由。">
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* v2専用の追加スタイル */
+        :root {
+            --text-white: #ffffff;
+            --text-white-90: rgba(255, 255, 255, 0.9);
+            --text-white-80: rgba(255, 255, 255, 0.8);
+            --text-white-70: rgba(255, 255, 255, 0.7);
+        }
+        
+        .interview-section {
+            padding: var(--space-xl) 0;
+            background-color: var(--color-bg-white);
+            border-top: 1px solid var(--color-neutral-border);
+        }
+        
+        .interview-section:nth-child(even) {
+            background-color: var(--color-bg-light);
+        }
+        
+        .interview-header {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            padding: 0 var(--space-md);
+            text-align: center;
+        }
+        
+        .interview-person {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .interview-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--color-bg-light);
+            border: 3px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        
+        .interview-info h3 {
+            margin-bottom: var(--space-xs);
+            color: var(--color-primary);
+        }
+        
+        .interview-tag {
+            display: inline-block;
+            background-color: var(--color-primary-bg);
+            color: var(--color-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .interview-quote {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--color-primary-dark);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            padding-left: var(--space-lg);
+            border-left: 4px solid var(--color-accent-red);
+        }
+        
+        .qa-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .qa-item {
+            margin-bottom: var(--space-lg);
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--color-neutral-border);
+        }
+        
+        .qa-item h4 {
+            color: var(--color-accent-red);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .qa-item h4:before {
+            content: "Q.";
+            font-weight: 800;
+        }
+        
+        .qa-item p {
+            color: var(--color-neutral-dark);
+            line-height: 1.8;
+        }
+        
+        /* 共通環境セクション */
+        .environment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .environment-item {
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            border: 2px solid var(--color-neutral-border);
+            transition: var(--transition);
+        }
+        
+        .environment-item:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .environment-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* 選考フロー */
+        .flow-steps {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+            flex-wrap: wrap;
+        }
+        
+        .flow-step {
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            min-width: 200px;
+            text-align: center;
+            border: 2px solid var(--color-primary);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-primary);
+            color: var(--color-bg-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        /* 特記事項 - 背景なしシンプル版 */
+        .simple-features {
+            background-color: transparent;
+            padding: 0;
+            margin: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .simple-features h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-lg);
+            font-size: 1.5rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto var(--space-lg);
+            max-width: 600px;
+        }
+        
+        .features-list li {
+            color: var(--color-neutral-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            padding: var(--space-md) var(--space-lg);
+            border-left: 4px solid var(--color-accent-red);
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow);
+            text-align: left;
+            transition: var(--transition);
+        }
+        
+        .features-list li:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .features-list li i {
+            color: var(--color-accent-red);
+            margin-right: var(--space-sm);
+            font-size: 1.1rem;
+        }
+        
+        .simple-note {
+            font-size: 0.95rem;
+            color: var(--color-neutral-gray);
+            margin-top: var(--space-md);
+            font-style: italic;
+        }
+        
+        /* ヘッダーテキスト */
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            padding: var(--space-lg);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-accent-red);
+            box-shadow: var(--shadow);
+        }
+        
+        /* ヒーロー連絡先 */
+        .hero-contact-section {
+            margin-top: 2.5rem; /* 追加: 上のコンテンツとの間隔 */
+            margin-bottom: 1.5rem; /* 追加: 下のセクションとの間隔 */
+            padding: var(--space-lg);
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-item i {
+            font-size: 1.4rem;
+            color: #ffd700;
+        }
+        
+        .contact-divider {
+            color: var(--text-white-70);
+            font-weight: 300;
+        }
+        
+        /* フッターCTA - 背景なしシンプル版 */
+        .footer-cta-simple {
+            text-align: center;
+            padding: var(--space-xl) 0;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .footer-cta-title {
+            color: var(--text-white);
+            font-size: 1.8rem;
+            margin-bottom: var(--space-md);
+            border-bottom: none;
+        }
+        
+        .footer-cta-text {
+            color: var(--text-white-90);
+            font-size: 1.2rem;
+            margin-bottom: var(--space-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .cta-note {
+            color: var(--text-white-80);
+            font-size: 0.95rem;
+            margin-top: var(--space-md);
+        }
+        
+        /* フッタースタイル */
+        .footer-content {
+            padding: var(--space-xl) 0;
+        }
+        
+        .footer-contact-info {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin: var(--space-lg) 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-details {
+            color: var(--text-white);
+        }
+        
+        .contact-details p {
+            color: var(--text-white) !important;
+            font-size: 1.1rem;
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        
+        .contact-details p strong {
+            color: var(--text-white);
+            font-weight: 700;
+        }
+        
+        .footer-copyright {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+        
+        .footer-copyright p {
+            color: var(--text-white-80) !important;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        .footer-links {
+            margin: var(--space-lg) 0;
+        }
+        
+        .footer-links a {
+            color: var(--text-white-90) !important;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text-white) !important;
+            text-decoration: none;
+        }
+        
+        /* 専門資格バッジ */
+        .qualification-badge {
+            display: inline-block;
+            background-color: var(--color-accent-red);
+            color: var(--color-bg-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: var(--space-xs);
+        }
+        
+        /* ============================================
+           v2 ファーストビュー余白修正 + v1風ヘッダー/フッター調整
+           ============================================ */
+        
+        /* 1. ヒーローセクションの上部余白を確保 */
+        .hero {
+            margin-top: 0;
+            padding-top: 100px; /* ヘッダーの高さ分 */
+        }
+        
+        /* ヒーローコンテンツ内の余白 */
+        .hero-content {
+            padding-top: 2rem;
+            padding-bottom: 3rem;
+        }
+        
+        /* 3. セクション間の余白を一貫させる */
+        .interview-section,
+        .features,
+        .positions,
+        .cta {
+            padding-top: var(--space-xl);
+            padding-bottom: var(--space-xl);
+        }
+        
+        /* 4. モバイル対応 */
+        @media (max-width: 768px) {
+            .interview-person {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .interview-quote {
+                font-size: 1.25rem;
+                padding-left: var(--space-md);
+            }
+            
+            .flow-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .flow-step {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .environment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .contact-divider {
+                display: none;
+            }
+            
+            .contact-item {
+                font-size: 1.1rem;
+            }
+            
+            .features-list li {
+                font-size: 1rem;
+                padding: var(--space-sm) var(--space-md);
+            }
+            
+            .footer-cta-title {
+                font-size: 1.5rem;
+            }
+            
+            .footer-cta-text {
+                font-size: 1.1rem;
+            }
+            
+            .simple-features h3 {
+                font-size: 1.3rem;
+            }
+            
+            /* モバイル用余白調整 */
+            .hero {
+                padding-top: 90px;
+            }
+            .hero-content {
+                padding-top: 1.5rem;
+                padding-bottom: 2rem;
+            }
+            .hero-contact-section {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                padding: var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー（v1風に修正） -->
+    <header class="site-header">
+        <div class="container">
+            <!-- ブランド部分（2行ロゴ） -->
+            <div class="header-brand">
+                <a href="#hero" class="logo-link">
+                    <span class="logo-main">堀田建設</span>
+                    <span class="logo-sub">採用サイト</span>
+                </a>
+            </div>
+            
+            <!-- 充実ナビゲーション -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <li><a href="#interview-okayasu">岡安さんの話</a></li>
+                    <li><a href="#interview-sugahara">菅原さんの話</a></li>
+                    <li><a href="#interview-atsumi">渥美さんの話</a></li>
+                    <li><a href="#casual-interview" class="nav-cta-blue">30分カジュアル面談</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-image-placeholder">
+                <div class="placeholder-content">
+                    <div class="construction-symbol">🏗️</div>
+                    <p>建設現場のリアルな声</p>
+                    <small>施工管理職3人の選択と迷いの記録</small>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    私たちも、<br>最初から「覚悟」があったわけじゃない。
+                </h1>
+                <p class="hero-lead">
+                    それでも、ここで働き続けられる理由。<br>
+                    <strong>私たちが、続けている理由。</strong>
+                </p>
+                <div class="hero-actions">
+                    <a href="#casual-interview" class="btn btn-primary btn-large">まずは話を聞いてみる（30分カジュアル面談）</a>
+                </div>
+                
+                <!-- 連絡先情報 -->
+                <div class="hero-contact-section">
+                    <div class="hero-contact-content">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>0120-XXX-XXX</span>
+                            </div>
+                            <div class="contact-divider">|</div>
+                            <div class="contact-item">
+                                <i class="fab fa-line"></i>
+                                <span>LINEでも受付中</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 導入テキスト -->
+    <section class="message">
+        <div class="container">
+            <div class="intro-text">
+                <p class="message-text">
+                    <span class="highlight">このページに書かれているのは「会社のアピール」ではありません。</span><br>
+                    3人の施工管理が、なぜこの会社を選び、なぜ続けているのか。<br>
+                    そのリアルな選択と迷いの記録です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 岡安さんインタビュー -->
+    <section id="interview-okayasu" class="interview-section">
+        <div class="container">
+            <div class="interview-header">
+                <h2>「地元で働く選択に、迷いはつきものだ。」</h2>
+            </div>
+            
+            <div class="interview-person">
+                <div class="interview-avatar">岡</div>
+                <div class="interview-info">
+                    <h3>岡安 20代｜入社8年目｜施工管理</h3>
+                    <p>三重県亀山市出身・在住。地元密着のプロジェクトを担当。</p>
+                    <span class="interview-tag">#地元就職 #迷いの共有 #定着型</span>
+                </div>
+            </div>
+            
+            <div class="interview-quote">
+                「地元で働くことに、最初は『これでいいのかな』と迷いがありました。<br>
+                でも今は、その選択を続ける『現実的な理由』が見えてきています。」
+            </div>
+            
+            <div class="qa-section">
+                <div class="qa-item">
+                    <h4>地元で働く選択に迷いはありましたか？</h4>
+                    <p>正直に言うと、入社する前は「都会の方が給料がいいかも」「もっと視野が広がるかも」と迷っていました。地元で働くという選択は、ある意味「楽な道」に見えることもあって、自分に甘えているのかなと感じた時期もありました。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>辞めようと思ったことはありますか？</h4>
+                    <p>3年目くらいに、同期が東京の建設会社に転職した話を聞いた時は「私も挑戦すべきかも」と思いました。でも、その時に先輩から「地元で経験を積むことも立派なキャリアだよ」と言われて、自分の選択を再確認できました。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>地元ならではの良さは？</h4>
+                    <p>地元で働く最大の良さは、自分の仕事が地域の景色になっていくのを実感できることです。子どもの頃から知っている場所に、自分が関わった建物ができる。その実感は、都会ではなかなか得られないものだと思います。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>それでも続けている一番の理由は？</h4>
+                    <p>「地元だから」以外で言うと、ここでは「迷いを共有できる環境」があることです。地元で働くことの不安や葛藤を、上司や先輩が真剣に聞いてくれて、一緒に考えてくれる。そんな人間関係が、続けられる大きな理由です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 菅原さんインタビュー -->
+    <section id="interview-sugahara" class="interview-section">
+        <div class="container">
+            <div class="interview-header">
+                <h2>「異業種からの転職が、想像よりリアルだった理由。」</h2>
+            </div>
+            
+            <div class="interview-person">
+                <div class="interview-avatar">菅</div>
+                <div class="interview-info">
+                    <h3>菅原 26歳｜異業種から転職｜入社5年目｜施工管理</h3>
+                    <p>商業高校卒業後、建設とは別の業界で働いていた経験あり。</p>
+                    <span class="interview-tag">#異業種転職 #生活改善 #第二のキャリア</span>
+                </div>
+            </div>
+            
+            <div class="interview-quote">
+                「未経験でも大丈夫と言われたけど、<br>
+                実際に働き始めて『想像と違う』と感じた瞬間はありました。<br>
+                でも、そのギャップこそが学びだったんです。」
+            </div>
+            
+            <div class="qa-section">
+                <div class="qa-item">
+                    <h4>転職で一番怖かったことは？</h4>
+                    <p>一番怖かったのは「仕事が全く分からなくてクビになるかも」という不安でした。前職とは全く違う業界で、専門用語もわからず、最初の1ヶ月は毎日が緊張の連続でした。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>想像と違った点は？</h4>
+                    <p>想像していたより、もっと「チームワーク」が重要だと気づきました。前職は個人の成果が評価されやすかったのですが、ここでは一つの建物をチーム全員で作り上げていく感覚があります。最初は戸惑いましたが、今ではそれが一番のやりがいです。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>無理だと思った時、どうしましたか？</h4>
+                    <p>入社3ヶ月目の時、初めて工程管理の資料を作ったのですが、全然わからなくて「これは私には無理だ」と感じました。その時、上司が「最初から完璧にできなくていい。まずはやってみて、わからないところを一緒に直しよう」と言ってくれたのが救いでした。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>転職して良かったと思う瞬間は？</h4>
+                    <p>生活リズムが安定したことです。前職はシフト制で休みが不規則だったのですが、今は週休2日制で土日祝日が確実に休める。家族や友人との約束が立てやすくなり、生活の質が明らかに向上しました。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>転職を迷っている人へのアドバイスは？</h4>
+                    <p>「やってみないとわからない不安は、必ずあります。でも、『未経験でも教えてくれる環境』があるかどうかは、事前に確かめられることです。面談の時に、具体的に『どんなサポートがありますか？』と聞いてみるといいと思います。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 渥美さんインタビュー -->
+    <section id="interview-atsumi" class="interview-section">
+        <div class="container">
+            <div class="interview-header">
+                <h2>「未完成のままで、働いていい。」</h2>
+            </div>
+            
+            <div class="interview-person">
+                <div class="interview-avatar">渥</div>
+                <div class="interview-info">
+                    <h3>渥美さん 21歳｜高卒入社｜入社3年目｜施工管理</h3>
+                    <p>2級建築士合格<span class="qualification-badge">資格取得</span>・1級建築士目指し勉強中</p>
+                    <span class="interview-tag">#若手育成 #資格支援 #心理的安全性</span>
+                </div>
+            </div>
+            
+            <div class="interview-quote">
+                「入社したての頃は、何もできなくて当然だと言われました。<br>
+                その言葉が、今の自信につながっています。<br>
+                未完成だからこそ、成長できるんです。」
+            </div>
+            
+            <div class="qa-section">
+                <div class="qa-item">
+                    <h4>入社当初、一番不安だったことは？</h4>
+                    <p>高卒で入ったので、周りに専門学校や大学出身の人が多くて「私だけついていけないかも」という不安がありました。特に最初の3ヶ月は、専門用語がわからず、会話についていくのが大変でした。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>無理だと言えた経験は？</h4>
+                    <p>入社半年目の時、一人で現場の工程管理を任されたのですが、全くできなくて「無理です」と言えました。その時、先輩が「無理って言えるのはすごいことだよ。どこがわからないか、一緒に確認しよう」と言ってくれて、むしろ褒められたのが印象的でした。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>専門学校の費用を会社が負担してくれたそうですね</h4>
+                    <p>はい、2級建築士の資格取得のために通った専門学校の費用は全額会社負担でした。最初は「そんなことまでしてもらっていいのか」と申し訳なく思ったのですが、社長から「会社への投資だと思って頑張って」と言われて、本当に感謝しています。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>今でも苦手なことはありますか？</h4>
+                    <p>プレゼンテーションがまだ苦手です。現場では話せるのですが、お客様の前だと緊張してしまいます。でも、それを苦手と認めてもらえる環境があるので、少しずつ練習しています。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>続けられる現実的な理由は？</h4>
+                    <p>「成長を認めてもらえること」です。小さな改善でも「よく気づいたね」と評価してくれる。資格取得のサポートもしてくれる。まだ21歳で経験も浅いですが、ここならちゃんと成長できるという確信があります。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <h4>自信がなくて怖い人へのアドバイスは？</h4>
+                    <p>「最初から完璧な人なんていません。私も入社当時は何もできませんでした。大事なのは、『できない』ことを隠さず、周りに助けを求められるかどうか。この会社では、それが『成長の第一歩』として評価されます。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 共通環境セクション -->
+    <section id="environment" class="features">
+        <div class="container">
+            <h2 class="section-title">「3人が、選び続けている環境」</h2>
+            <p class="section-subtitle">私たちが大切にしている4つのこと</p>
+            
+            <div class="environment-grid">
+                <div class="environment-item">
+                    <div class="environment-number">1</div>
+                    <h3>迷いを共有できる</h3>
+                    <p>地元で働く不安、未経験の怖さ、若手の葛藤。どんな迷いも、チームで話し合える環境があります。</p>
+                </div>
+                
+                <div class="environment-item">
+                    <div class="environment-number">2</div>
+                    <h3>成長の投資をする</h3>
+                    <p>資格取得費用の全額負担、専門スキルの研修、段階的な責任委譲。社員の成長に本気で投資します。</p>
+                </div>
+                
+                <div class="environment-item">
+                    <div class="environment-number">3</div>
+                    <h3>生活の質を尊重する</h3>
+                    <p>週休2日制の確立、地元での働きやすさ、ライフステージに合わせた柔軟な働き方を提案します。</p>
+                </div>
+                
+                <div class="environment-item">
+                    <div class="environment-number">4</div>
+                    <h3>未完成を認める</h3>
+                    <p>「できない」と言える心理的安全性、「失敗」から学ぶ文化、一人ひとりのペースを尊重する環境です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 求人情報セクション -->
+    <section id="recruitment" class="positions">
+        <div class="container">
+            <h2 class="section-title">募集職種と選考の流れ</h2>
+            
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h3 class="position-title">施工管理技術者（経験者）</h3>
+                    <p class="position-description">現場統括・工程管理</p>
+                    <ul class="position-benefits">
+                        <li>現場主任としてのマネジメント</li>
+                        <li>プロジェクト全体の責任者候補</li>
+                        <li>専門資格取得支援あり</li>
+                    </ul>
+                </div>
+                
+                <div class="position-card">
+                    <h3 class="position-title">施工管理技術者（未経験可）</h3>
+                    <p class="position-description">現場サポート・工程補助</p>
+                    <ul class="position-benefits">
+                        <li>未経験からの研修制度完備</li>
+                        <li>先輩社員による個別指導</li>
+                        <li>段階的な責任範囲の拡大</li>
+                    </ul>
+                </div>
+                
+                <div class="position-card">
+                    <h3 class="position-title">施工管理補助</h3>
+                    <p class="position-description">書類整理・現場巡回サポート</p>
+                    <ul class="position-benefits">
+                        <li>事務スキルを活かせる</li>
+                        <li>現場業務へのステップアップ可能</li>
+                        <li>ワークライフバランス重視</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <h4>カジュアル面談</h4>
+                    <p>オンライン可・30分</p>
+                    <p><small>履歴書不要</small></p>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <h4>現場見学・ディスカッション</h4>
+                    <p>チームとの対話</p>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <h4>内定</h4>
+                    <p>条件面談・入社決定</p>
+                </div>
+            </div>
+            
+            <!-- 特記事項 - 背景なしシンプル版 -->
+            <div class="simple-features">
+                <h3>特記事項</h3>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> 履歴書不要・面談のみからスタート</li>
+                    <li><i class="fas fa-check"></i> 未経験者大歓迎（研修制度あり）</li>
+                    <li><i class="fas fa-check"></i> 資格取得支援制度（施工管理技士など）</li>
+                    <li><i class="fas fa-check"></i> 試用期間3ヶ月（その間もフルサポート）</li>
+                </ul>
+                <p class="simple-note">※ すべての職種で柔軟な働き方を提案しています</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTAセクション -->
+    <section id="casual-interview" class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">あなたの「続けられる理由」、<br>ここにあるかもしれません。</h2>
+                <p class="cta-description">
+                    まずは、30分のカジュアルな対話から始めてみませんか？
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="mailto:recruit@hottacon.co.jp?subject=30分カジュアル面談を希望します" class="btn btn-primary btn-large">
+                        <i class="fas fa-calendar-check"></i> 30分カジュアル面談を申し込む
+                    </a>
+                    <a href="https://youtube.com/..." target="_blank" class="btn btn-secondary btn-large">
+                        <i class="fas fa-play-circle"></i> 施工管理の仕事を知る（現場紹介動画）
+                    </a>
+                </div>
+                
+                <p class="casual-note">
+                    面談は採用を約束するものではありません。<br>
+                    まずはお互いを知る場としてご利用ください。<br>
+                    <small>※ 面談後に正式な応募書類の提出が必要となります</small>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター（v1風に修正） -->
+    <footer class="site-footer">
+        <div class="container">
+            <!-- フッターCTA -->
+            <div class="footer-cta" style="background-color: transparent; padding: 0;">
+                <h3 class="footer-cta-title">まずは気軽にお問い合わせください</h3>
+                <p class="footer-cta-text">30分のカジュアル面談で、あなたの疑問や不安を解消します。</p>
+                <a href="mailto:recruit@hottacon.co.jp" class="btn btn-primary btn-large">
+                    今すぐエントリーする
+                </a>
+                <p class="cta-note">24時間受付中・翌営業日中に返信いたします</p>
+            </div>
+            
+            <!-- 法的情報（v1風） -->
+            <div class="footer-legal">
+                <p class="company-name">堀田建設株式会社 採用担当</p>
+                <p class="copyright">© 2025 HOTTA CONSTRUCTION CO.,LTD</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+    <script>
+        // v2用の追加JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // スムーズスクロール
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // インタビューセクションのアニメーション
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // インタビューセクションを監視
+            document.querySelectorAll('.interview-section, .environment-item, .flow-step').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

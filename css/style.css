@@ -3897,3 +3897,33 @@ a:hover {
 .blend-image {
     mix-blend-mode: multiply;
 }
+
+/* Hero Badge */
+.hero-content {
+    position: relative; /* Ensure container is relative for badge positioning */
+}
+
+.hero-badge {
+    position: absolute;
+    top: -40px;
+    right: -20px;
+    width: 140px;
+    z-index: 10;
+    animation: floatBubble 6s ease-in-out infinite;
+}
+
+.hero-badge img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+}
+
+@media (max-width: 768px) {
+    .hero-badge {
+        width: 90px;
+        top: -20px;
+        right: 0;
+    }
+}
+
