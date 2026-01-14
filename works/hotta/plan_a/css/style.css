@@ -2330,3 +2330,20 @@ h1, h2, h3 {
     z-index: -1;
     pointer-events: none;
 }
+
+/* 引用符の修正（テキストとの重なりを解消） */
+.interview-quote {
+    position: relative;
+    z-index: 1;
+    background-color: var(--color-bg-light); /* 背景色を明示 */
+}
+
+.interview-quote::before {
+    z-index: 0;           /* テキストの背面に配置 */
+    opacity: 0.15;        /* 透明度を下げて邪魔にならないように */
+    color: var(--gold);   /* 色をゴールドに */
+    top: -20px;           /* 位置調整 */
+    left: 10px;
+    font-size: 6rem;      /* サイズ調整 */
+}
+
