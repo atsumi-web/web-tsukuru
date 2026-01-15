@@ -412,10 +412,10 @@ a:hover {
 
 /* Title Badge (Right Edge Prominent) */
 .bubble-title {
-    width: 160px;
-    height: 160px;
+    width: 110px; /* Reduced from 130px */
+    height: 110px; /* Reduced from 130px */
     top: 18%;
-    right: 5%; /* Moved slightly left from 1% */
+    right: 5%;
     left: auto;
     background: var(--bg-dark);
     display: flex; 
@@ -431,13 +431,14 @@ a:hover {
 }
 
 .bubble-text-small {
-    font-size: 16px; /* Reduced to fit */
+    font-size: 15px; /* Increased from 16px relative to box? No, 16px on 110px box is tight. But user said "Text Bigger". Let's try keeping 15px-16px and ensure it fits. */
     font-weight: 700;
     letter-spacing: 0.05em;
+    line-height: 1.2;
 }
 
 .bubble-text-large {
-    font-size: 20px; /* Reduced to fit */
+    font-size: 22px; /* Increased from 20px */
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: 0.02em;
@@ -774,20 +775,19 @@ a:hover {
 
     /* Title: Top Right, smaller, lower to avoid header */
     .bubble-title {
-        width: 80px;
-        height: 80px;
-        top: 140px; /* Lower position */
-        right: 10px; 
+        width: 64px; /* Reduced from 70px */
+        height: 64px; /* Reduced from 70px */
+        top: 130px; /* Lower position */
+        right: 15px; 
         left: auto;
-        line-height: 0.85; /* Even tighter line height */
+        line-height: 0.9;
     }
     .bubble-text-small { 
-        font-size: 11px;
+        font-size: 10px; /* Keep legible */
         display: block; 
-        margin-bottom: 0; /* Remove gap */
-        /* letter-spacing removed for readability */
+        margin-bottom: 0;
     }
-    .bubble-text-large { font-size: 13px; }
+    .bubble-text-large { font-size: 13px; } /* Slightly larger relative to box */
 
     /* Key Bubbles: HIDE all except Title on mobile */
     /* Key Bubbles: HIDE all except Title on mobile */
@@ -1479,16 +1479,12 @@ a:hover {
     text-align: justify;
 }
 
-/* Signature Styling */
-/* Signature Styling */
 .p-sign {
-    font-family: 'Dancing Script', cursive !important;
-    font-size: 32px !important;
-    color: var(--brand-navy) !important;
-    margin-top: 15px !important;
-    text-align: right !important;
-    transform: rotate(-3deg) !important;
-    opacity: 0.9 !important;
+    font-family: var(--font-mincho);
+    font-size: 20px;
+    color: var(--text-color);
+    text-align: right;
+    display: block;
 }
 
 @media (max-width: 768px) {
@@ -2358,17 +2354,18 @@ a:hover {
 }
 
 /* CTA Button - Premium Navy Gradient */
+/* CTA Button - Premium Navy (Matched to Header) */
 .brand-lp .cta-button.brand-cta {
-    background: linear-gradient(135deg, #0F172A 0%, #000000 100%);
+    background: #0F172A !important; /* Strictly enforce Navy */
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 15px 40px rgba(0,0,0,0.25);
 }
 
 .brand-lp .cta-button.brand-cta:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    /* background: var(--brand-gold); REMOVED */
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #AE8B47 !important; /* Gold */
+    color: #fff !important;
 }
 
 .brand-lp .cta-note-inline {
@@ -2378,9 +2375,10 @@ a:hover {
 
 /* 2. Visual Bubbles - Brand Mode */
 .brand-lp .brand-bubble {
-    background: linear-gradient(135deg, #AE8B47 0%, #AA853C 100%); /* Gold Gradient */
+    background: #0F172A; /* Deep Navy to match Brand */
     color: #fff;
-    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4);
+    border: 2px solid var(--accent-color); /* Gold Border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Clean Shadow */
 }
 
 .brand-lp .bubble-text-small {
@@ -2487,8 +2485,7 @@ a:hover {
 }
 
 .brand-lp .nav-btn:hover {
-    /* background: var(--brand-gold) !important; REMOVED */
-    opacity: 0.8;
+    background: var(--brand-gold) !important;
 }
 
 .brand-lp .hero-btn.primary {
@@ -2496,42 +2493,65 @@ a:hover {
 }
 
 .brand-lp .hero-btn.primary:hover {
-    /* background: var(--brand-gold) !important; REMOVED */
-    opacity: 0.9;
+    background: var(--brand-gold) !important;
 }
 
-.brand-lp .fixed-cta-btn {
-    background: linear-gradient(135deg, #0F172A 0%, #000000 100%) !important;
-}
-
-.brand-lp .fixed-cta-btn i {
-    color: #fff !important; /* Ensure arrow is visible */
-}
-
-.brand-lp .fixed-cta-btn:hover {
-    /* background: var(--brand-gold) !important; REMOVED */
-    opacity: 0.9;
-}
-
-/* Google Form Button Specific Hover */
+/* Footer Google Form CTA Specifics - Navy Button */
 .brand-lp .google-form-btn {
+    display: inline-block !important;
+    text-align: center;
+    padding: 30px 80px !important; /* Adjusted Height (30px) */
+    width: 100%;
+    max-width: 640px;
+    line-height: 1.4;
+    background: #0F172A; /* Navy Background */
+    border: none;
+    color: #fff !important;
+    border-radius: 2px;
+    box-sizing: border-box;
     transition: all 0.3s ease;
-    border: 1px solid transparent; /* Prepare for border on hover */
+}
+
+/* Force first line (Label) to block */
+.brand-lp .google-form-btn > span {
+    display: block !important;
+    font-size: 11px; /* Smaller label */
+    margin-bottom: 8px;
+    opacity: 0.9;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+
+/* Second line (Main Text) */
+.brand-lp .google-form-btn strong {
+    display: inline-block !important;
+    font-size: 18px; /* Smaller main text */
+    font-weight: 500; /* Thinner weight */
+    color: #fff;
+    letter-spacing: 0.05em;
+}
+
+.brand-lp .google-form-btn i {
+    color: #fff !important;
+    font-size: 18px;
+    margin-left: 10px;
 }
 
 .brand-lp .google-form-btn:hover {
-    background: #fff !important;
-    color: var(--brand-gold) !important;
-    border: 1px solid var(--brand-gold);
-    opacity: 1 !important; /* Reset opacity from generic rule */
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.15);
+    background: #AE8B47 !important; /* Gold on Hover */
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.brand-lp .google-form-btn:hover span,
-.brand-lp .google-form-btn:hover strong,
-.brand-lp .google-form-btn:hover i {
-    color: var(--brand-gold) !important;
+.brand-lp .fixed-cta-btn:hover {
+    background: var(--brand-navy) !important; /* Keep Navy (No color change) */
+    opacity: 0.9; /* Subtle feedback */
+    color: #fff !important; /* Text White */
+}
+
+.brand-lp .fixed-cta-btn:hover i {
+    color: #fff !important; /* Icon White */
 }
 
 /* 2. Headline & Text Unification */
@@ -2539,7 +2559,6 @@ a:hover {
 .brand-lp .brand-heading-jp {
     color: var(--brand-navy);
 }
-
 
 .brand-lp .en-label {
     color: var(--brand-gold);
@@ -2550,8 +2569,33 @@ a:hover {
     color: var(--brand-gold);
 }
 
-.brand-lp .accent-text {
-    color: var(--brand-gold);
+.brand-lp .google-form-btn i,
+.brand-lp .fixed-cta-btn i {
+    color: #fff !important; /* Force White Icon always */
+}
+
+/* Back to Top Button Customization */
+.back-to-top {
+    background: #fff !important; /* Normal: White Background */
+    color: var(--brand-navy) !important; /* Icon Color Set on Parent too */
+    border: none !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+/* Force Navy Icon Normal State override Gold */
+.brand-lp .back-to-top i {
+    color: var(--brand-navy) !important; 
+}
+
+.back-to-top:hover {
+    background: var(--brand-navy) !important; /* Hover: Navy Background */
+    color: #fff !important;
+}
+
+/* Force White Icon Hover State */
+.brand-lp .back-to-top:hover i {
+    color: #fff !important;
 }
 
 /* Mobile Adjustments for Brand */
@@ -2591,20 +2635,28 @@ a:hover {
    Brand LP Specific Styles (Sections 9-13 Refactor)
    ========================================= */
 
-/* Dark Section Common (Concept, Contact) */
-.brand-dark-section {
-    background-color: #0F172A !important;
-    color: #fff !important;
+/* Dark Section Common (Concept ONLY now) */
+.brand-lp #concept {
+    background: #111;
+    color: #fff;
     padding: 100px 0;
 }
 
-.brand-dark-section h2,
-.brand-dark-section h3 {
-    color: #fff !important;
+/* Contact Section - Reverted to Light */
+.brand-lp #contact {
+    background: #f9f9f9; /* Light Gray */
+    color: #333 !important; /* Dark Text Enforced */
+    padding: 100px 0;
 }
 
-.brand-dark-section p {
-    color: rgba(255, 255, 255, 0.8) !important;
+.brand-lp #contact h2 {
+    color: #0F172A !important; /* Navy Heading Enforced */
+}
+
+.brand-lp #contact p,
+.brand-lp #contact .contact-lead,
+.brand-lp #contact .contact-sub {
+    color: #333 !important; /* Dark Text Enforced */
 }
 
 /* Fix: Restore dark text inside light cards within dark sections */
@@ -3594,14 +3646,14 @@ a:hover {
 }
 
 .p-sign {
-    font-family: 'Zen Kurenaido', sans-serif !important;
-    font-size: 42px;
-    margin-top: 15px;
+    font-family: 'WindSong', cursive !important;
+    font-size: 55px; /* Slightly larger for WindSong */
+    margin-top: 10px;
     color: var(--text-color);
-    font-weight: 400;
-    transform: rotate(-3deg);
+    font-weight: 500; /* Add weight for readability */
+    transform: rotate(-5deg);
     display: inline-block;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     opacity: 0.9;
 }
 
@@ -4127,4 +4179,68 @@ a:hover {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+/* Fix Hero Spacing to prevent CTA overlap */
+.brand-hero {
+    min-height: 100vh; /* Ensure full height */
+    padding-bottom: 120px !important; /* Force space at bottom for CTA */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-hero .hero-content {
+    position: relative;
+    z-index: 10; /* Ensure content is above bg */
+    padding-bottom: 60px; /* Extra breathing room around properties */
+}
+
+/* Ensure background image doesn't overlap content */
+.brand-hero .hero-bg {
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .brand-hero {
+        height: auto !important; /* Let it grow on mobile */
+        min-height: 100vh;
+        padding-bottom: 150px !important; /* More space on mobile to be safe */
+    }
+}
+
+/* LINE Button Styles (Added) */
+/* LINE Button Styles (Added) */
+/* LINE Button Styles (Restored) */
+/* LINE Button Styles (Restored) */
+.line-btn {
+    display: inline-flex; /* Inline flex for centering content */
+    align-items: center;
+    justify-content: center;
+    background-color: #06C755;
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 15px 40px; /* Standard padding */
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    width: auto; /* Natural width */
+    max-width: 100%;
+    box-shadow: 0 5px 15px rgba(6, 199, 85, 0.2);
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.line-btn i {
+    font-size: 28px;
+    margin-right: 15px;
+    color: #fff !important;
+}
+
+.line-sub {
+    font-size: 0.8em;
+    font-weight: 500;
+    margin-left: 10px;
+    opacity: 0.9;
 }
