@@ -1479,12 +1479,16 @@ a:hover {
     text-align: justify;
 }
 
+/* Signature Styling */
+/* Signature Styling */
 .p-sign {
-    font-family: var(--font-mincho);
-    font-size: 20px;
-    color: var(--text-color);
-    text-align: right;
-    display: block;
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 32px !important;
+    color: var(--brand-navy) !important;
+    margin-top: 15px !important;
+    text-align: right !important;
+    transform: rotate(-3deg) !important;
+    opacity: 0.9 !important;
 }
 
 @media (max-width: 768px) {
@@ -2363,7 +2367,8 @@ a:hover {
 .brand-lp .cta-button.brand-cta:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    background: var(--brand-gold);
+    /* background: var(--brand-gold); REMOVED */
+    opacity: 0.9;
 }
 
 .brand-lp .cta-note-inline {
@@ -2482,7 +2487,8 @@ a:hover {
 }
 
 .brand-lp .nav-btn:hover {
-    background: var(--brand-gold) !important;
+    /* background: var(--brand-gold) !important; REMOVED */
+    opacity: 0.8;
 }
 
 .brand-lp .hero-btn.primary {
@@ -2490,7 +2496,8 @@ a:hover {
 }
 
 .brand-lp .hero-btn.primary:hover {
-    background: var(--brand-gold) !important;
+    /* background: var(--brand-gold) !important; REMOVED */
+    opacity: 0.9;
 }
 
 .brand-lp .fixed-cta-btn {
@@ -2502,7 +2509,29 @@ a:hover {
 }
 
 .brand-lp .fixed-cta-btn:hover {
-    background: var(--brand-gold) !important;
+    /* background: var(--brand-gold) !important; REMOVED */
+    opacity: 0.9;
+}
+
+/* Google Form Button Specific Hover */
+.brand-lp .google-form-btn {
+    transition: all 0.3s ease;
+    border: 1px solid transparent; /* Prepare for border on hover */
+}
+
+.brand-lp .google-form-btn:hover {
+    background: #fff !important;
+    color: var(--brand-gold) !important;
+    border: 1px solid var(--brand-gold);
+    opacity: 1 !important; /* Reset opacity from generic rule */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.15);
+}
+
+.brand-lp .google-form-btn:hover span,
+.brand-lp .google-form-btn:hover strong,
+.brand-lp .google-form-btn:hover i {
+    color: var(--brand-gold) !important;
 }
 
 /* 2. Headline & Text Unification */
@@ -2510,6 +2539,7 @@ a:hover {
 .brand-lp .brand-heading-jp {
     color: var(--brand-navy);
 }
+
 
 .brand-lp .en-label {
     color: var(--brand-gold);
