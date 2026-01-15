@@ -1355,7 +1355,7 @@ a:hover {
 }
 
 .step-item:not(:last-child)::after {
-    content: '竊・;
+    content: '→';
     position: absolute;
     right: -20px; /* 繧ｮ繝｣繝・・縺ｮ荳ｭ螟ｮ縺ｫ */
     top: 50%;
@@ -1817,7 +1817,7 @@ a:hover {
         margin: 0 auto 20px; /* 荳ｭ螟ｮ謠・∴ + 荳九・繝ｼ繧ｸ繝ｳ */
     }
     .step-item:not(:last-child)::after {
-        content: '竊・;
+        content: '↓';
         right: 50%;
         top: auto;
         bottom: -28px; /* 繝懊ャ繧ｯ繧ｹ縺ｮ荳九↓驟咲ｽｮ */
@@ -3564,13 +3564,15 @@ a:hover {
 }
 
 .brand-profile .p-sign {
-    font-family: 'Dancing Script', cursive; /* Handwritten font */
-    font-size: 32px; /* Larger signature size */
-    margin-top: 30px;
+    font-family: 'Zen Kurenaido', sans-serif; /* Japanese Handwritten Font */
+    font-size: 42px; /* Large size */
+    margin-top: 15px;
     color: var(--text-color);
-    font-weight: 700;
-    transform: rotate(-2deg); /* Slight tilt for realism */
+    font-weight: 400;
+    transform: rotate(-3deg);
     display: inline-block;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
 }
 
 .brand-profile .profile-image img {
