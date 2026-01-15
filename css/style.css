@@ -412,10 +412,10 @@ a:hover {
 
 /* Title Badge (Right Edge Prominent) */
 .bubble-title {
-    width: 160px;
-    height: 160px;
+    width: 130px; /* Reduced from 160px */
+    height: 130px; /* Reduced from 160px */
     top: 18%;
-    right: 5%; /* Moved slightly left from 1% */
+    right: 5%;
     left: auto;
     background: var(--bg-dark);
     display: flex; 
@@ -431,13 +431,13 @@ a:hover {
 }
 
 .bubble-text-small {
-    font-size: 16px; /* Reduced to fit */
+    font-size: 16px; /* Increased back from 14px */
     font-weight: 700;
     letter-spacing: 0.05em;
 }
 
 .bubble-text-large {
-    font-size: 20px; /* Reduced to fit */
+    font-size: 20px; /* Increased back from 18px */
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: 0.02em;
@@ -774,20 +774,20 @@ a:hover {
 
     /* Title: Top Right, smaller, lower to avoid header */
     .bubble-title {
-        width: 80px;
-        height: 80px;
+        width: 70px; /* Reduced from 80px */
+        height: 70px; /* Reduced from 80px */
         top: 140px; /* Lower position */
-        right: 10px; 
+        right: 15px; /* Slight adjusted right margin */
         left: auto;
         line-height: 0.85; /* Even tighter line height */
     }
     .bubble-text-small { 
-        font-size: 11px;
+        font-size: 10px; /* Reduced from 11px */
         display: block; 
         margin-bottom: 0; /* Remove gap */
         /* letter-spacing removed for readability */
     }
-    .bubble-text-large { font-size: 13px; }
+    .bubble-text-large { font-size: 12px; } /* Reduced from 13px */
 
     /* Key Bubbles: HIDE all except Title on mobile */
     /* Key Bubbles: HIDE all except Title on mobile */
@@ -2373,9 +2373,10 @@ a:hover {
 
 /* 2. Visual Bubbles - Brand Mode */
 .brand-lp .brand-bubble {
-    background: linear-gradient(135deg, #AE8B47 0%, #AA853C 100%); /* Gold Gradient */
+    background: #0F172A; /* Deep Navy to match Brand */
     color: #fff;
-    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4);
+    border: 2px solid var(--accent-color); /* Gold Border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Clean Shadow */
 }
 
 .brand-lp .bubble-text-small {
@@ -3564,14 +3565,14 @@ a:hover {
 }
 
 .p-sign {
-    font-family: 'Zen Kurenaido', sans-serif !important;
-    font-size: 42px;
-    margin-top: 15px;
+    font-family: 'WindSong', cursive !important;
+    font-size: 55px; /* Slightly larger for WindSong */
+    margin-top: 10px;
     color: var(--text-color);
-    font-weight: 400;
-    transform: rotate(-3deg);
+    font-weight: 500; /* Add weight for readability */
+    transform: rotate(-5deg);
     display: inline-block;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     opacity: 0.9;
 }
 
@@ -4097,4 +4098,32 @@ a:hover {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+/* Fix Hero Spacing to prevent CTA overlap */
+.brand-hero {
+    min-height: 100vh; /* Ensure full height */
+    padding-bottom: 120px !important; /* Force space at bottom for CTA */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-hero .hero-content {
+    position: relative;
+    z-index: 10; /* Ensure content is above bg */
+    padding-bottom: 60px; /* Extra breathing room around properties */
+}
+
+/* Ensure background image doesn't overlap content */
+.brand-hero .hero-bg {
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .brand-hero {
+        height: auto !important; /* Let it grow on mobile */
+        min-height: 100vh;
+        padding-bottom: 150px !important; /* More space on mobile to be safe */
+    }
 }
