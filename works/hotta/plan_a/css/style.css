@@ -2347,3 +2347,105 @@ h1, h2, h3 {
     font-size: 6rem;      /* サイズ調整 */
 }
 
+
+/* ============================================
+   Diagnosis Section (Pattern A) - Added 2026-01-14
+   ============================================ */
+.diagnosis-section {
+    background-color: #f0f4f8; /* Light blue-gray background */
+    padding: 80px 0;
+}
+
+.diagnosis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on PC */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.diagnosis-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent; /* Prepare for hover border */
+    position: relative;
+    overflow: hidden;
+}
+
+.diagnosis-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.diagnosis-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(1, 50, 118, 0.05); /* var(--color-primary-bg) fallback */
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+}
+
+.diagnosis-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+}
+
+.diagnosis-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.diagnosis-check {
+    color: var(--color-accent-red); /* Use red for "Check!" feeling */
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.diagnosis-result {
+    margin-top: 50px;
+    text-align: center;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid var(--color-primary);
+}
+
+.diagnosis-result p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.diagnosis-result strong {
+    font-size: 1.5rem;
+    color: var(--color-accent-red);
+    background: linear-gradient(transparent 70%, #ffdfdf 70%);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .diagnosis-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        gap: 20px;
+    }
+    
+    .diagnosis-card {
+        padding: 25px 15px;
+    }
+}
