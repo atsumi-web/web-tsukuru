@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webサイト更新手順 (GitHub) | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #24292e; /* GitHub Black */
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        .toc {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #24292e;
+            padding-bottom: 10px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 8px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #555;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .toc a:hover {
+            background: #f0f0f0;
+            color: #24292e;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .manual-section {
+            margin-bottom: 50px;
+        }
+        .section-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .section-header h2 {
+            margin: 10px 0;
+            font-size: 2rem;
+        }
+        .step-block {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #eee;
+        }
+        h3 {
+            background: #e1e4e8; /* Light Grey */
+            padding: 10px 15px;
+            border-left: 5px solid #24292e;
+            border-radius: 0 4px 4px 0;
+            margin-top: 0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            color: #fff;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .tips {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .tips h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .highlight-box {
+            background: #f1f8ff;
+            border-left: 4px solid #0366d6;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .image-placeholder {
+            background: #eee;
+            color: #888;
+            padding: 40px;
+            text-align: center;
+            border-radius: 4px;
+            border: 2px dashed #ccc;
+        }
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 20px;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">← マニュアル一覧に戻る</a>
+            </div>
+            <h1>Webサイト更新＆公開手順（GitHub）</h1>
+        </div>
+    </header>
+
+    <div class="container layout">
+        <aside class="sidebar">
+            <nav class="toc">
+                <h3>目次</h3>
+                <ul>
+                    <li><a href="#git-step1">1. 変更を保存</a></li>
+                    <li><a href="#git-step2">2. コミット（記録）</a></li>
+                    <li><a href="#git-step3">3. プッシュ（公開）</a></li>
+                    <li><a href="#git-step4">4. 公開確認</a></li>
+                    <li><a href="#git-trouble">トラブルシューティング</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section class="manual-section">
+                <div class="section-header">
+                    <span class="badge" style="background: #24292e;">STEP 3</span>
+                    <h2>VS Codeを使った更新手順</h2>
+                    <p class="lead">VS Codeを使って、修正したWebサイトをインターネット上に公開（更新）する手順です。<br>難しいコマンドは使わず、ボタン操作だけで完結します。</p>
+                </div>
+
+                <div id="git-step1" class="step-block">
+                    <h3>1. 変更を保存する</h3>
+                    <p>まずは編集した内容をパソコン内に保存します。</p>
+                    <ol>
+                        <li>VS Codeでファイルを編集し、保存（<code>Ctrl + S</code>）します。</li>
+                        <li>左側のメニューから<strong>「ソース管理アイコン」</strong>（枝分かれのマーク）をクリックします。</li>
+                    </ol>
+                    <figure>
+                        <div class="image-placeholder">
+                            <p>ソース管理アイコンの場所</p>
+                            <small>左サイドバーの「枝分かれ」マーク</small>
+                        </div>
+                    </figure>
+                    <div class="tips">
+                        <h5>💡 数字が表示されていたら</h5>
+                        <p>アイコンの横に「①」などの数字が出ていれば、修正が保存されている証拠です。</p>
+                    </div>
+                </div>
+
+                <div id="git-step2" class="step-block">
+                    <h3>2. 変更をステージング・コミットする</h3>
+                    <p>保存した内容を「記録（コミット）」する準備を行います。</p>
+                    <ol>
+                        <li>「変更」欄にあるファイル一覧の横の<strong>「＋」ボタン</strong>（変更をステージング）を押します。</li>
+                        <li>上の入力欄（メッセージ欄）に、変更内容を一言で入力します。<br>
+                        <span style="color: #666; font-size: 0.9rem;">例：「日報のリンクを追加」「画像の差し替え」「誤字修正」など</span></li>
+                        <li><strong>「コミット」ボタン</strong>（青いボタン）をクリックします。</li>
+                    </ol>
+                    <figure>
+                        <div class="image-placeholder">
+                            <p>ステージングとコミット画面</p>
+                            <small>＋ボタン、メッセージ入力、コミットボタンの順</small>
+                        </div>
+                    </figure>
+                </div>
+
+                <div id="git-step3" class="step-block">
+                    <h3>3. GitHubへ反映（プッシュ）する</h3>
+                    <p>記録した内容をインターネット上の「GitHub」に送信し、公開します。</p>
+                    <ol>
+                        <li>コミット後、同じ場所に表示される<strong>「変更の同期（Sync Changes）」</strong>ボタンをクリックします。</li>
+                        <li>「OK」などの確認画面が出たら「OK」を押します。</li>
+                    </ol>
+                    <figure>
+                        <div class="image-placeholder">
+                            <p>「変更の同期」ボタン</p>
+                            <small>コミット後に青いボタンが変わります</small>
+                        </div>
+                    </figure>
+                    <div class="highlight-box">
+                        <h5>✅ これで完了です！</h5>
+                        <p>「変更の同期」ボタンが消えれば、送信完了です。これだけでWebサイトが更新されます。</p>
+                    </div>
+                </div>
+
+                <div id="git-step4" class="step-block">
+                    <h3>4. 公開確認</h3>
+                    <ol>
+                        <li>数分待ちます（通常1〜3分程度）。</li>
+                        <li>自分のWebサイトのURLにアクセスして、表示が変わっているか確認します。</li>
+                    </ol>
+                    <div class="tips">
+                        <h5>⚠️ 変わっていない場合は？</h5>
+                        <p>ブラウザが古い情報を記憶している（キャッシュ）可能性があります。<br>
+                        <strong>「Ctrl + F5」</strong>（Macなら Command + Shift + R）を押して、スーパーリロード（強制再読み込み）を試してください。</p>
+                    </div>
+                </div>
+
+                <div id="git-trouble" class="step-block">
+                    <h3>トラブルシューティング</h3>
+                    <h4>Q. 「競合が発生しました」と言われた！</h4>
+                    <p>同じファイルを別の場所でも修正した場合などに発生します。<br>
+                    無理に触ると壊れる可能性があるため、<strong>その画面のスクリーンショットを撮って、私（Gemini）に相談してください。</strong></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

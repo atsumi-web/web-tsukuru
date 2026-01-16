@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webをつくるしごと サポートマニュアル</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .site-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .site-header h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .site-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .menu-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: flex-start;
+            border-left: 6px solid #ccc;
+        }
+        .menu-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .menu-card.line { border-left-color: #06c755; }
+        .menu-card.form { border-left-color: #673ab7; }
+        .menu-card.git { border-left-color: #24292e; }
+        .menu-card.hearing { border-left-color: #ff9800; }
+
+        .icon-box {
+            font-size: 2rem;
+            margin-right: 20px;
+            width: 50px;
+            text-align: center;
+        }
+        .card-content h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: #333;
+        }
+        .card-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #999;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="site-header">
+            <h1>Webをつくるしごと サポートマニュアル</h1>
+            <p>採用ホームページの運営・活用に関する手順書一覧</p>
+        </header>
+
+        <div class="menu-grid">
+            <!-- LINE Manual -->
+            <a href="01_line.html" class="menu-card line">
+                <div class="icon-box">💬</div>
+                <div class="card-content">
+                    <h2>LINE公式アカウント設定</h2>
+                    <p>アカウントの開設から、応募者を逃さない「勝てる」初期設定、リッチメニューの設置まで。</p>
+                </div>
+            </a>
+
+            <!-- Google Form Manual -->
+            <a href="02_google_form.html" class="menu-card form">
+                <div class="icon-box">📝</div>
+                <div class="card-content">
+                    <h2>Googleフォーム作成</h2>
+                    <p>採用エントリー用のフォーム作成と、回答通知の設定、LINEへの連携方法。</p>
+                </div>
+            </a>
+
+            <!-- GitHub Manual -->
+            <a href="03_github.html" class="menu-card git">
+                <div class="icon-box">💻</div>
+                <div class="card-content">
+                    <h2>Webサイトの更新（GitHub）</h2>
+                    <p>画像や文章を修正して、インターネット上に公開する手順。VS Codeを使用します。</p>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
