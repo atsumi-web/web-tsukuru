@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自社採用資産化・全体戦略ガイド | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 25px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #003366; /* Strategy Navy */
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+        }
+        .toc {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            color: #003366;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 10px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 5px 8px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc a:hover {
+            background: #f0f5ff;
+            color: #003366;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #003366;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #222;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #003366;
+            padding-left: 15px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .highlight {
+            background: linear-gradient(transparent 60%, #fffbe6 60%);
+            font-weight: bold;
+        }
+        .advice-box {
+            background: #f0f7ff;
+            border: 1px solid #d6e4ff;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .advice-box h4 {
+            margin: 0 0 15px 0;
+            color: #003366;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .advice-box h4::before {
+            content: '💡';
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+        .diagram-placeholder {
+            background: #fafafa;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            color: #888;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+        .site-footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+        }
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>Webをつくるしごと | 採用戦略ガイド</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">TOP</a> &gt; 採用資産化・全体戦略ガイド
+        </div>
+
+        <div class="layout">
+            <aside class="sidebar">
+                <nav class="toc">
+                    <h3>目次</h3>
+                    <ul>
+                        <li><a href="#intro">1. なぜ「仕組み」が必要か</a></li>
+                        <li><a href="#ecosystem">2. 採用エコシステムの全体像</a></li>
+                        <li><a href="#tools">3. 各ツールの戦略的運用</a></li>
+                        <li><a href="#routine">4. 経営者の成功ルーティン</a></li>
+                        <li><a href="#conclusion">5. おわりに：自走する組織へ</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="content">
+                
+                <section id="intro">
+                    <h2>1. はじめに：なぜ「仕組み」が必要なのか</h2>
+                    <h3>掛け捨てから「積み上げ」へ</h3>
+                    <p>これまでの求人広告は「掲載期間が終わればゼロに戻る」という、いわば<strong>「掛け捨ての保険」</strong>のようなものでした。<br>
+                    お金を払い続けなければ、応募はおろか、自社の存在を知ってもらうことすらできません。</p>
+                    <p>我々が目指すのは、<strong>「採用資産（ストック）」</strong>の構築です。<br>
+                    一度作ったLP（受け皿）、集まったLINEの友だち（リスト）は、御社の等身大の資産として残り続けます。</p>
+                    
+                    <h3>誰かの「言い値」依存からの脱却</h3>
+                    <p>大手媒体のプランやアルゴリズムに振り回されるのは、もう終わりにしましょう。<br>
+                    自社で応募ルートを持ち、自社でコントロールできる仕組み（エコシステム）を持つことこそが、<br>
+                    採用コストを劇的に下げ、本当に欲しい人材と出会うための唯一の道です。</p>
+
+                    <div class="advice-box">
+                        <h4>経営者へのアドバイス</h4>
+                        <p>「採用は担当者任せ」にしていませんか？<br>
+                        この「仕組み」は、<strong>営業における「顧客リスト」と同じくらい重要な経営資源</strong>です。<br>
+                        まずは社長ご自身が、この全体像を「経営戦略」として理解してください。</p>
+                    </div>
+                </section>
+
+                <section id="ecosystem">
+                    <h2>2. 採用エコシステムの全体像（ロードマップ）</h2>
+                    <p>この仕組みは、4つの役割を持った「チーム」のようなものです。<br>
+                    それぞれが得意分野を担当し、バトンを繋ぐことで採用を成功させます。</p>
+
+                    <div class="diagram-placeholder">
+                        [ここに図解：採用エコシステムの全体図]<br>
+                        認知（SNS/広告） → 信頼（LP） → 資産（LINE） → 選別（Googleフォーム）
+                    </div>
+
+                    <ul>
+                        <li><strong>① 認知（入り口）：</strong> 求人サイト、Web広告、SNS。<br>知ってもらうきっかけを作ります。</li>
+                        <li><strong>② 信頼（心臓）：</strong> 採用LP。<br>御社の「想い」や「リアル」を伝え、応募者の心を動かします。</li>
+                        <li><strong>③ 資産（秘書）：</strong> 公式LINE。<br>興味を持ってくれた人をリスト化し、自動でフォロー・動機付けを行います。</li>
+                        <li><strong>④ 選別（門番）：</strong> Googleフォーム。<br>履歴書の前に「熱意」や「適性」を診断し、ミスマッチを防ぎます。</li>
+                    </ul>
+
+                    <div class="advice-box">
+                        <h4>経営者へのアドバイス</h4>
+                        <p>どこか一つだけ強化しても上手くいきません。<br>
+                        「LPはきれいだけど、入り口（認知）がない」「LINEに登録させたけど、その後のフォローがない」とならないよう、<br>
+                        <strong>「流れ（フロー）」が繋がっているか</strong>を常に意識してください。</p>
+                    </div>
+                </section>
+
+                <section id="tools">
+                    <h2>3. 各ツールの戦略的運用ガイド</h2>
+                    
+                    <h3>SNS/広告： 「日常」を切り取る</h3>
+                    <p>カッコいい動画やプロが撮った写真は必要ありません。<br>
+                    求職者が見たいのは<strong>「自分が働くかもしれない現場のリアル」</strong>です。<br>
+                    社員の笑顔、休憩中の雑談、あるいは真剣な眼差し。そんな「日常」こそが最強のコンテンツです。</p>
+
+                    <h3>公式LINE： 「24時間働く営業部長」</h3>
+                    <p>登録直後の「あいさつメッセージ」と「リッチメニュー」が成約率を分けます。<br>
+                    ここで「この会社、なんか良さそう」「話しやすそう」と思わせることができれば、<br>
+                    応募のハードルは一気に下がります。</p>
+
+                    <h3>Googleフォーム： 履歴書の前に「熱意」を測る</h3>
+                    <p>ただの連絡先入力フォームではありません。<br>
+                    「なぜうちで働きたいと思いましたか？」「今の仕事で大切にしていることは？」<br>
+                    そういった質問を一つ入れるだけで、冷やかしの応募を減らし、<strong>「本気の人」だけを抽出</strong>できます。</p>
+
+                    <div class="advice-box">
+                        <h4>経営者へのアドバイス</h4>
+                        <p>ツールはあくまで「道具」です。<br>
+                        魂を吹き込むのは、経営者であるあなたの言葉と想いです。<br>
+                        「きれいな文章」よりも<strong>「熱量のある文章」</strong>が、人の心を動かします。</p>
+                    </div>
+                </section>
+
+                <section id="routine">
+                    <h2>4. 経営者がやるべき「成功ルーティン」</h2>
+                    <p>仕組みができたら、あとは「日々の水やり」です。<br>
+                    これだけは続けてください。</p>
+
+                    <ul>
+                        <li><strong>📸 週に1枚、現場の写真を撮る</strong><br>
+                        SNS用、またはLPの更新用として。ストックしておくだけでも価値があります。</li>
+                        <li><strong>💬 LINE通知には「即レス」する（または担当者に徹底させる）</strong><br>
+                        求職者の熱量は「問い合わせた瞬間」がピークです。鉄は熱いうちに打て。</li>
+                        <li><strong>🔄 定期的にLPを微調整する</strong><br>
+                        「反応が悪いな」と思ったら、キャッチコピーや募集要項（時給や休日）を少し変えてみる。<br>
+                        Webだからこそ、何度でもテストできます。</li>
+                    </ul>
+
+                    <div class="advice-box">
+                        <h4>経営者へのアドバイス</h4>
+                        <p>これらは「作業」ではなく「投資」です。<br>
+                        習慣化するまでは大変かもしれませんが、<br>
+                        <strong>「採用に困らない未来」</strong>を作るための、最もリターンの大きい投資です。</p>
+                    </div>
+                </section>
+
+                <section id="conclusion">
+                    <h2>5. おわりに：自走する組織へ</h2>
+                    <p>この仕組みは、一度作り上げて運用に乗せてしまえば、<br>
+                    あなたが寝ている間も、商談をしている間も、休んでいる間も、<br>
+                    文句ひとつ言わずに働き続ける<strong>「最強の営業部長」</strong>になります。</p>
+                    <p>私たちは「箱（仕組み）」を作ることはできますが、<br>
+                    それを「生き生きとした組織」に育てられるのは、経営者であるあなただけです。</p>
+                    <p>運用に迷ったり、壁にぶつかったりした時は、いつでも頼ってください。<br>
+                    私たちは、御社の採用成功を共に目指すパートナー（伴走者）として、<br>
+                    これからも全力でサポートさせていただきます。</p>
+                    <p>さあ、新しい採用の形を、ここから始めましょう！</p>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

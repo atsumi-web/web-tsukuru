@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Googleフォーム作成マニュアル | Webをつくるしごと</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style.css">
     <style>
         /* 追加スタイル */
         .manual-section {
@@ -103,7 +104,7 @@
         </div>
     </header>
 
-    <div class="container manual-container">
+    <div class="container layout manual-container">
         <aside class="sidebar">
             <nav class="toc">
                 <h3>目次</h3>
@@ -160,6 +161,12 @@
                         <li>「新しいフォームを作成」の<strong>「空白」</strong>（＋マーク）をクリック</li>
                         <li>「無題のフォーム」という文字をクリックし、<strong>「求人応募フォーム」</strong>などの名前に変更</li>
                     </ol>
+                    <div class="alert-box">
+                        <h5>⚠️ AI（Gemini）の提案画面が出た場合</h5>
+                        <p>「こんにちは、〇〇さん 作成してみましょう」という画面が表示されることがありますが、<br>
+                        今回はマニュアル通り手動で設定するため、画面右上の<strong>「×」ボタン</strong>を押して閉じてください。<br>
+                        <span style="font-size: 0.9rem; color: #666;">（通常の編集画面に移動します）</span></p>
+                    </div>
                     <figure>
                         <img src="images/form_create_new.png" alt="新規作成画面">
                         <figcaption>まずはシンプルな空白フォームからスタートします</figcaption>
@@ -169,28 +176,45 @@
                 <!-- Step 2: 質問項目の設定 -->
                 <div id="form-step2" class="step-block">
                     <h3>Step 2: 質問項目の設定</h3>
-                    <p>採用に必要な最低限の項目を作ります。<br>
-                    <strong>「項目は少なく」</strong>が鉄則です！入力が面倒だと応募してくれません。</p>
+                    <p>採用に必要な項目を一つずつ設定していきます。<br>
+                    以下の画像を参考に、5つの質問を作成してください。</p>
                     
-                    <div class="highlight-box">
-                        <h6 style="margin: 0 0 10px 0;">✅ おすすめの項目リスト</h6>
-                        <ul class="check-list">
-                            <li><strong>お名前</strong> （記述式・必須）</li>
-                            <li><strong>電話番号</strong> （記述式・必須）</li>
-                            <li><strong>面接希望日</strong> （記述式 or 日付・任意） <br><span style="font-size:0.8rem; color:#666;">※「第一希望〜第三希望」などを書いてもらう形式がスムーズです</span></li>
-                            <li><strong>質問・その他</strong> （段落・任意）</li>
-                        </ul>
-                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
+                        <!-- 1. お名前 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">1. お名前</h5>
+                            <p style="font-size: 0.9rem;">「記述式（短文）」を選び、<strong>必須</strong>をONにします。</p>
+                            <img src="images/form_question_name.png" alt="お名前設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
 
-                    <ol>
-                        <li>右側の「＋」ボタンで質問を追加</li>
-                        <li>質問タイトルを入力し、回答形式（記述式、ラジオボタンなど）を選択</li>
-                        <li>必ず入力してほしい項目は右下の<strong>「必須」をON</strong>にする</li>
-                    </ol>
-                    <figure>
-                        <img src="images/form_question_settings.png" alt="質問設定画面">
-                        <figcaption>「記述式」と「段落」を使い分けるのがポイントです</figcaption>
-                    </figure>
+                        <!-- 2. 電話番号 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">2. 電話番号</h5>
+                            <p style="font-size: 0.9rem;">こちらも「記述式（短文）」＆<strong>必須</strong>です。</p>
+                            <img src="images/form_question_phone.png" alt="電話番号設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+
+                        <!-- 3. 現在の職業 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">3. 現在の職業</h5>
+                            <p style="font-size: 0.9rem;">「ラジオボタン」を選び、選択肢を入力します。</p>
+                            <img src="images/form_question_occupation.png" alt="職業設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+
+                        <!-- 4. 面接希望日 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">4. 面接希望日</h5>
+                            <p style="font-size: 0.9rem;">「段落」を選びます。説明文を入れると親切です。</p>
+                            <img src="images/form_question_date.png" alt="面接希望日設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+
+                        <!-- 5. 質問・メッセージ -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">5. 質問・メッセージ</h5>
+                            <p style="font-size: 0.9rem;">「段落」を選びます。熱意を書いてもらう場所です。</p>
+                            <img src="images/form_question_message.png" alt="メッセージ設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Step 3: デザイン -->
@@ -210,50 +234,107 @@
 
                 <!-- Step 4: スプレッドシート連携 -->
                 <div id="form-step4" class="step-block">
-                    <h3>Step 4: スプレッドシート連携（★最重要）</h3>
-                    <p>ここがGoogleフォームを使う最大のメリットです。<br>
-                    応募データを自動でExcel（スプレッドシート）に蓄積する設定をします。</p>
+                    <h3>Step 4: スプレッドシート連携（最重要！）</h3>
+                    <p>これを行うと、応募が来るたびに<strong>自動でエクセル（スプレッドシート）に行が追加</strong>されるようになります。<br>
+                    管理が圧倒的に楽になるので、必ず設定しましょう。</p>
+                    
                     <ol>
-                        <li>画面上の<strong>「回答」</strong>タブをクリック</li>
-                        <li><strong>「スプレッドシートにリンク」</strong>（緑色の十字アイコン）をクリック</li>
-                        <li>「新しいスプレッドシートを作成」を選択して「作成」</li>
+                        <li>フォーム編集画面の上の<strong>「回答」</strong>タブをクリック</li>
+                        <li><strong>「スプレッドシートにリンク」</strong>（緑色の十字マーク）をクリック</li>
                     </ol>
-                    <div class="alert-box">
-                        <h5>⚠️ 必ずやってください！</h5>
-                        <p>これをやらないと、毎回フォームの管理画面を開いて確認することになります。<br>
-                        連携しておけば、スプレッドシートを開くだけで全応募者が一覧で見れます。</p>
-                    </div>
                     <figure>
-                        <img src="images/form_spreadsheet_link.png" alt="スプレッドシート連携ボタン">
-                        <figcaption>この緑のボタンを押すだけで、最強の管理リストが完成します</figcaption>
+                        <img src="images/form_responses_link_button.png" alt="回答タブとリンクボタン">
                     </figure>
+
+                    <ol start="3">
+                        <li>「新しいスプレッドシートを作成」が選ばれていることを確認して、<strong>「作成」</strong>をクリック</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_responses_create_sheet.png" alt="スプレッドシート作成ポップアップ">
+                    </figure>
+
+                    <div class="highlight-box">
+                        <h6 style="margin: 0 0 10px 0;">🎉 これで連携完了です！</h6>
+                        <p>自動的にスプレッドシートが開き、先ほど作った質問項目（お名前、電話番号など）が1行目に並んでいるはずです。</p>
+                        <figure style="margin: 15px 0 0 0;">
+                            <img src="images/form_spreadsheet_view.png" alt="作成されたスプレッドシート" style="border: 1px solid #ddd;">
+                            <figcaption>応募があると、ここに自動でデータが溜まっていきます</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="tips">
+                        <h5>📂 データの保存場所について</h5>
+                        <p>Googleドライブを見ると、フォームの隣に緑色のアイコンのファイル（スプレッドシート）ができています。<br>
+                        今後の応募者確認は、このファイルを開くだけでOKです！</p>
+                        <img src="images/form_drive_view.png" alt="Googleドライブの表示" style="width: 100%; border: 1px solid #ddd; margin-top: 10px;">
+                    </div>
                 </div>
 
                 <!-- Step 5: 通知設定 -->
                 <div id="form-step5" class="step-block">
-                    <h3>Step 5: 通知設定（見落とし防止）</h3>
-                    <p>応募が来たらメールで知らせてくれる設定です。</p>
+                    <h3>Step 5: メール通知設定（忘れずに！）</h3>
+                    <p>応募が来たら自分のメールアドレスに通知が届くようにします。<br>
+                    これをしておかないと、せっかくの応募を見逃してしまうので必須です。</p>
                     <ol>
-                        <li>「回答」タブの右上の「︙（3点リーダー）」をクリック</li>
-                        <li><strong>「新しい回答についてのメール通知を受け取る」</strong>にチェックを入れる</li>
-                    </ol>
-                    <p>これで、応募があるたびにGmailに通知が届きます。</p>
-                </div>
-
-                <!-- Step 6: URL発行 -->
-                <div id="form-step6" class="step-block">
-                    <h3>Step 6: 応募用URLの発行</h3>
-                    <p>最後に、求人票やLINEのリッチメニューに貼り付けるためのURLを取得します。</p>
-                    <ol>
-                        <li>右上の<strong>「送信」</strong>ボタンをクリック</li>
-                        <li>真ん中の<strong>「リンク」アイコン</strong>（クリップマーク）をクリック</li>
-                        <li><strong>「URLを短縮」</strong>にチェックを入れる <span style="font-size:0.9rem;">（スマートになります！）</span></li>
-                        <li>「コピー」ボタンを押す</li>
+                        <li>「回答」タブ右上の<strong>「…（3点リーダー）」</strong>をクリック</li>
                     </ol>
                     <figure>
-                        <img src="images/form_get_link.png" alt="リンク発行画面">
-                        <figcaption>この「短縮URL」をコピーして、色々なところに貼り付けましょう</figcaption>
+                        <img src="images/form_notification_menu_button.png" alt="通知メニューボタン">
                     </figure>
+                    <ol start="2">
+                        <li><strong>「新しい回答についてのメール通知を受け取る」</strong>を選択</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_notification_settings.png" alt="メール通知をオンにする">
+                        <figcaption>チェックマークがつけば設定完了です</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Step 6: 確認メッセージの設定 -->
+                <div id="form-step6" class="step-block">
+                    <h3>Step 6: 確認メッセージの設定（安心感アップ）</h3>
+                    <p>応募完了後に表示される画面です。「本当に送れたのかな？」という不安を解消します。</p>
+                    <div class="highlight-box">
+                        <h6 style="margin: 0 0 10px 0;">📋 推奨メッセージ（コピーして使いてください）</h6>
+                        <div style="background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem;">
+                            ご応募ありがとうございます。送信が完了いたしました。<br>
+                            内容を確認の上、担当者（090-XXXX-XXXX）より3営業日以内にご連絡させていただきます。
+                        </div>
+                    </div>
+                    <ol>
+                        <li>「設定」タブをクリック</li>
+                        <li><strong>「表示設定」</strong>にある「確認メッセージ」に上記の文言を入力して<strong>「保存」</strong></li>
+                        <li>その下の<strong>「別の回答を送信するためのリンクを表示」をOFF</strong>にする<br>
+                        <span style="color: #d9534f; font-size: 0.9rem;">※重要：これを消すと「完了した」という区切りが明確になります！</span></li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_confirmation_settings.png" alt="確認メッセージ設定画面">
+                        <figcaption>このひと手間で、応募者に丁寧な印象を与えられます</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Step 7: URL発行 -->
+                <div id="form-step7" class="step-block">
+                    <h3>Step 7: 応募用URLの発行</h3>
+                    <p>最後に、求人票やLINEのリッチメニューに貼り付けるためのURLを取得します。</p>
+                    <ol>
+                        <li>画面右上の<strong>「リンク」アイコン</strong>（鎖のマーク）をクリック</li>
+                        <li><strong>「URLを短縮」</strong>にチェックを入れる <span style="font-size:0.9rem;">（短くなって見やすくなります）</span></li>
+                        <li><strong>「コピー」</strong>をクリック</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_get_link_final.png" alt="リンク発行画面">
+                        <figcaption>この「短縮URL」が、応募受付の窓口になります</figcaption>
+                    </figure>
+                </div>
+
+                <div class="completion-box">
+                    <h4>🎉 お疲れ様でした！フォーム完成です！</h4>
+                    <p>これで「勝手に応募が集まり、自動でリスト化され、通知も来る」という<br>
+                    <strong>「採用の自動化システム」</strong>が構築できました。</p>
+                    <p style="margin-top: 15px;">
+                        あとは、このフォームのURLを<strong>LINE公式アカウントのリッチメニュー</strong>や、ホームページに貼り付けるだけです！
+                    </p>
                 </div>
 
             </section>
