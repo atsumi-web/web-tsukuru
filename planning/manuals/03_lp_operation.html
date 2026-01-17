@@ -3,68 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>採用特化LP運用ガイド - Webをつくるしごと</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>採用資産構築・運用ガイド | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
     <style>
-        /* マニュアル固有のスタイル */
-        .concept-card {
-            background: #f8f9fa;
-            border-left: 5px solid #00B900; /* LINE Greenっぽい色、あるいはブランドカラー */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #d35400; /* Warm Orange for Recruitment Heat */
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        .toc {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #d35400;
+            padding-bottom: 10px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 8px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #555;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .toc a:hover {
+            background: #fff0e6;
+            color: #d35400;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .manual-section {
+            margin-bottom: 50px;
+        }
+        .section-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .section-header h2 {
+            margin: 10px 0;
+            font-size: 2rem;
+        }
+        h2 {
+            border-bottom: none; /* Reset default */
+        }
+        h3 {
+            background: #fff0e6; /* Light Orange */
+            padding: 10px 15px;
+            border-left: 5px solid #d35400;
+            border-radius: 0 4px 4px 0;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #fff;
+            background: #d35400;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .concept-card {
+            background: #fff8f0;
+            border: 2px solid #ffccbc;
+            border-left-width: 5px;
+            border-left-color: #ff5722;
+            padding: 25px;
             margin: 30px 0;
-            border-radius: 0 8px 8px 0;
+            border-radius: 8px;
         }
         .concept-title {
             font-weight: bold;
             font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 10px;
+            color: #bf360c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
         }
         .highlight-text {
-            background: linear-gradient(transparent 60%, #fff3cd 60%);
+            background: linear-gradient(transparent 60%, #ffe0b2 60%);
             font-weight: bold;
         }
         .section-number {
             display: inline-block;
-            background: #333;
+            background: #d35400;
             color: #fff;
             width: 30px;
             height: 30px;
             line-height: 30px;
             text-align: center;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        .check-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #d35400;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
             font-size: 0.9rem;
+            margin-top: 40px;
         }
-        h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-top: 50px;
-        }
-        h3 {
-             margin-top: 30px;
-             color: #444;
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 20px;
+            }
+            .content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="manual-container">
-        <header class="manual-header">
+
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">← マニュアル一覧に戻る</a>
+            </div>
             <h1>採用資産構築・運用ガイド</h1>
-            <p>〜完全伴走型・採用資産構築エンジンを使いこなす〜</p>
-        </header>
+            <p style="margin-top: 10px; color: #555; background: #fff3cd; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+                <span style="font-weight: bold; color: #d35400;">対象</span> 経営者様・採用担当者様 &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <span style="font-weight: bold; color: #d35400;">目的</span> 「24時間働く営業部長」を育て上げる
+            </p>
+        </div>
+    </header>
 
-        <nav class="manual-nav">
-            <a href="index.html">← マニュアル一覧に戻る</a>
-        </nav>
+    <div class="container layout">
+        <aside class="sidebar">
+            <nav class="toc">
+                <h3>目次</h3>
+                <ul>
+                    <li><a href="#intro">はじめに</a></li>
+                    <li><a href="#chapter1">1. なぜ「想い」を売るのか</a></li>
+                    <li><a href="#chapter2">2. 「伴走型」のメリット</a></li>
+                    <li><a href="#chapter3">3. 写真の選び方</a></li>
+                    <li><a href="#chapter4">4. テストと磨き込み</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-        <main class="manual-content">
+        <main class="content">
             
-            <section class="intro-section">
-                <h2>はじめに：これはただのホームページではありません</h2>
+            <section class="manual-section" id="intro">
+                <div class="section-header">
+                    <span class="badge">Introduction</span>
+                    <h2>はじめに：これはただのホームページではありません</h2>
+                </div>
                 <p>納品させていただいたこの採用資産（LP）は、単なる会社紹介のページではありません。<br>
                 <strong>「完全伴走型・採用資産構築エンジン」</strong>を基盤に構築された、貴社のための<strong>「24時間365日働く、採用専門の営業部長」</strong>です。</p>
                 
@@ -75,12 +246,12 @@
                 </div>
             </section>
 
-            <section id="chapter1">
-                <h2><span class="section-number">1</span>LPの役割：なぜ「条件」ではなく「想い」を売るのか</h2>
+            <section class="manual-section" id="chapter1">
+                <h3><span class="section-number">1</span>LPの役割：なぜ「条件」ではなく「想い」を売るのか</h3>
                 <p>求職者が仕事を探すとき、最後に見るのは確かに「給与」や「休日」といった条件です。<br>
                 しかし、数ある会社の中から<strong>「ここに応募してみようかな」と最初に心を決めるのは「共感」です。</strong></p>
                 
-                <h3>感情を動かすメカニズム</h3>
+                <h4 style="margin-top: 25px; border-left: 4px solid #ddd; padding-left: 10px; color: #555;">感情を動かすメカニズム</h4>
                 <p>このLPは、以下の流れで求職者の心を動かすように設計されています。</p>
                 <ol>
                     <li><strong>興味：</strong>「おっ、他となんか違うぞ？」と思わせるファーストビュー</li>
@@ -91,30 +262,30 @@
                 <p>だからこそ、掲載する言葉は「飾った美辞麗句」ではなく、<span class="highlight-text">「社長の嘘偽りない本音」</span>である必要があります。</p>
             </section>
 
-            <section id="chapter2">
-                <h2><span class="section-number">2</span>鮮度が命：1分でできる「募集要項」の更新</h2>
+            <section class="manual-section" id="chapter2">
+                <h3><span class="section-number">2</span>鮮度が命：1分でできる「募集要項」の更新</h3>
                 <p>採用市場は生き物です。競合他社が時給を上げれば、こちらも手を打つ必要があります。<br>
                 そんな時、いちいち制作会社にメールをして、見積もりをもらって、修正を待って…なんてしていたら、優秀な人材は他に行ってしまいます。</p>
 
-                <h3>経営的メリット： 「丸投げ」ではない「伴走」</h3>
+                <h4 style="margin-top: 25px; border-left: 4px solid #ddd; padding-left: 10px; color: #555;">経営的メリット： 「丸投げ」ではない「伴走」</h4>
                 <p>本エンジンは、面倒な更新作業をすべて私（渥美）が代行します。<br>
                 ですが、それは単なる作業代行ではありません。<strong>「どう書き換えれば応募が増えるか？」</strong>を共に考え、プロの視点で最適化してから反映します。</p>
-                <ul>
-                    <li>✅ 「時給を上げたい」→ LINEで一言送るだけで即反映</li>
-                    <li>✅ 「もっとアットホームさを出したい」→ 最適な写真選びと言葉選びを提案</li>
-                    <li>✅ 難しい操作やシステムの管理は一切不要</li>
+                <ul class="check-list">
+                    <li><strong>「時給を上げたい」</strong> → LINEで一言送るだけで即反映</li>
+                    <li><strong>「もっとアットホームさを出したい」</strong> → 最適な写真選びと言葉選びを提案</li>
+                    <li>難<strong>しい操作やシステムの管理は一切不要</strong></li>
                 </ul>
-                <p><strong>「思いついた瞬間に相談でき、プロが形にしてくれる」</strong>こと。これこそが、中小企業にとって最強の武器になります。</p>
+                <p style="margin-top: 20px;"><strong>「思いついた瞬間に相談でき、プロが形にしてくれる」</strong>こと。これこそが、中小企業にとって最強の武器になります。</p>
             </section>
 
-            <section id="chapter3">
-                <h2><span class="section-number">3</span>「現場のリアル」を伝える写真の重要性</h2>
+            <section class="manual-section" id="chapter3">
+                <h3><span class="section-number">3</span>「現場のリアル」を伝える写真の重要性</h3>
                 <p>綺麗なフリー素材や、プロが撮ったよそ行きの写真は、今の求職者にはすぐに見抜かれます。<br>
                 「どうせ良いところしか見せてないんでしょ？」と思われてしまうのです。</p>
 
-                <h3>スマホで撮った「今」が最強の素材</h3>
+                <h4 style="margin-top: 25px; border-left: 4px solid #ddd; padding-left: 10px; color: #555;">スマホで撮った「今」が最強の素材</h4>
                 <p>信頼を生むのは、以下のような写真です。</p>
-                <ul>
+                <ul class="check-list">
                     <li>お昼休憩にみんなで笑っている何気ない瞬間</li>
                     <li>真剣な眼差しで作業をしている横顔</li>
                     <li>社長と社員が並んで話している姿</li>
@@ -123,12 +294,12 @@
                 <strong>「あ、この会社、なんか雰囲気がいいな」</strong>と直感で感じさせるのは、作り込まれていない<span class="highlight-text">「生の空気感」</span>なのです。</p>
             </section>
 
-            <section id="chapter4">
-                <h2><span class="section-number">4</span>PDCA：反応を見て「言葉」を磨き続ける</h2>
+            <section class="manual-section" id="chapter4">
+                <h3><span class="section-number">4</span>PDCA：反応を見て「言葉」を磨き続ける</h3>
                 <p>LPは「作って終わり」の看板ではありません。<br>
                 雨風にさらされて育っていく<strong>「資産」</strong>です。</p>
 
-                <h3>テスト運用もプロにお任せ</h3>
+                <h4 style="margin-top: 25px; border-left: 4px solid #ddd; padding-left: 10px; color: #555;">テスト運用もプロにお任せ</h4>
                 <p>通常、ホームページの修正には毎回コストがかかりますが、本エンジンの伴走プランなら<strong>追加費用なし</strong>で何度でも修正可能です（※プラン内容によります）。</p>
                 <p>だからこそ、失敗を恐れずに私たちにどんどん相談してください。</p>
                 <ul>
@@ -141,10 +312,12 @@
             </section>
 
         </main>
-        
-        <footer class="manual-footer">
-            <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
+

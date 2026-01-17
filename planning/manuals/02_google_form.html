@@ -11,6 +11,17 @@
         .manual-section {
             margin-bottom: 60px;
         }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
         .step-block {
             background: #fff;
             padding: 30px;
@@ -19,10 +30,14 @@
             margin-bottom: 40px;
         }
         .step-block h3 {
-            border-bottom: 2px solid #673ab7; /* Google Form Purple */
-            padding-bottom: 10px;
+            background: #f3e5f5; /* Light Purple tint */
+            padding: 10px 15px;
+            border-left: 5px solid #673ab7;
+            border-bottom: none;
+            border-radius: 0 4px 4px 0;
+            margin-top: 0;
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #333;
         }
         .step-block ol {
@@ -88,16 +103,61 @@
             padding: 15px;
             margin: 20px 0;
         }
+        
+        /* Layout overrides to match standard manual design (1000px) */
+        .container {
+            max-width: 1000px !important;
+            padding: 20px !important; /* Match vertical padding of other manuals */
+        }
+
+        /* Header Override */
+        .site-header {
+            height: auto !important;
+            display: block !important;
+            position: static !important;
+            padding: 20px 0 !important;
+            margin-bottom: 30px !important;
+            border-bottom: 1px solid #eee !important;
+            box-shadow: none !important;
+            background: #fff !important;
+        }
+        .site-header .container {
+            display: block;
+            /* Remove specific padding override so it inherits the global 20px */
+        }
+        .site-header h1 {
+            font-size: 1.5rem !important;
+            display: block !important;
+            margin: 0 !important;
+            color: #673ab7; /* Google Purple */
+        }
+        .site-header p {
+            display: inline-block;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Footer Override */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            background: transparent;
+            border-top: none;
+        }
     </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container">
-            <div class="back-link">
+            <div class="breadcrumb">
                 <a href="index.html">← マニュアル一覧に戻る</a>
             </div>
             <h1>Googleフォーム作成マニュアル</h1>
-            <p style="margin-top: 10px; color: #555; background: #f0f0f0; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+            <p style="margin-top: 10px; color: #555; background: #f3e5f5; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
                 <span style="font-weight: bold; color: #673ab7;">対象</span> 中小企業の採用担当者様 &nbsp;&nbsp;|&nbsp;&nbsp; 
                 <span style="font-weight: bold; color: #673ab7;">目的</span> 管理の手間をゼロにする「自動応募リスト」を作る
             </p>
@@ -338,7 +398,9 @@
                 </div>
 
             </section>
-        </main>
     </div>
-</body>
+    
+    <footer>
+        <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+    </footer>
 </html>
