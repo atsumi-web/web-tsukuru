@@ -675,7 +675,7 @@ a:hover {
   .bubble-title {
     right: -10px; /* Pull closer to edge */
     transform: scale(0.8); /* Scale title too */
-    top: 20%;
+    top: 180px; /* Fixed pixel to avoid header overlap */
   }
 }
 
@@ -837,10 +837,10 @@ a:hover {
   .bubble-title {
     width: 80px;
     height: 80px;
-    top: 230px; /* Lower position to avoid campaign bar */
+    top: 230px !important; /* Force lower position */
     right: 10px;
     left: auto;
-    line-height: 0.85; /* Even tighter line height */
+    line-height: 0.85; 
   }
   .bubble-text-small {
     font-size: 11px;
@@ -4145,7 +4145,7 @@ a:hover {
   .brand-bubble {
     width: 70px !important; /* Reduced to 70px */
     height: 70px !important;
-    top: 90px !important;
+    top: 125px !important; /* Adjusted: High enough but clear of header */
     right: 15px !important;
     /* Ensure text fits */
     display: flex;
