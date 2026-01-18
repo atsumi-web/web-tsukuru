@@ -777,6 +777,11 @@ a:hover {
     display: block !important; /* Remove default inline spacing */
   }
 
+  /* Ensure mobile break is visible */
+  .br-sp {
+    display: block !important;
+  }
+
   /* Reposition Strip for Mobile: Flow after content */
   .hero .hero-footer-strip {
     position: relative !important;
