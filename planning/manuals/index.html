@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>完全伴走型・採用資産構築エンジン 専用マニュアル</title>
+    <title>Webをつくるしごと | 運用司令室</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
     <style>
         body {
@@ -12,10 +12,10 @@
             color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
+            background-color: #f4f6f8;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -24,58 +24,116 @@
             margin-bottom: 50px;
         }
         .site-header h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin: 0 0 10px 0;
         }
         .site-header p {
             color: #666;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
-        .menu-grid {
+
+        /* Section Styles */
+        .section-title {
+            font-size: 1.2rem;
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin: 50px 0 20px 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .section-title span {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* Quick Access Grid */
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .quick-card {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quick-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .quick-card.brand {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+        .quick-card h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        .quick-card p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .arrow-icon {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        /* Manual Grid */
+        .manual-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 15px;
         }
         .menu-card {
             background: #fff;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
             text-decoration: none;
             color: inherit;
             display: flex;
-            align-items: flex-start;
-            border-left: 6px solid #ccc;
+            align-items: center;
+            border-left: 5px solid #ccc;
         }
         .menu-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+            background: #fafafa;
         }
+        .menu-card.strategy { border-left-color: #003366; }
+        .menu-card.admin { border-left-color: #38b2ac; }
         .menu-card.line { border-left-color: #06c755; }
         .menu-card.form { border-left-color: #673ab7; }
         .menu-card.git { border-left-color: #24292e; }
-        .menu-card.hearing { border-left-color: #ff9800; }
-        .menu-card.strategy { border-left-color: #003366; }
         .menu-card.lp { border-left-color: #d35400; }
 
         .icon-box {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-right: 20px;
-            width: 50px;
+            width: 40px;
             text-align: center;
         }
         .card-content h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
             color: #333;
         }
         .card-content p {
             margin: 0;
             color: #666;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
+
         footer {
             text-align: center;
             margin-top: 60px;
@@ -88,61 +146,85 @@
 
     <div class="container">
         <header class="site-header">
-            <h1>完全伴走型・採用資産構築エンジン 専用マニュアル</h1>
-            <p>「24時間働く営業部長」を育て上げるための運用・活用ガイド</p>
+            <h1>Webをつくるしごと | 運用司令室</h1>
+            <p>すべての業務はここから始まります。</p>
         </header>
 
-        <div class="menu-grid">
-            <!-- Strategy Guide -->
+        <!-- Quick Access -->
+        <div class="section-title"><span>🚀</span> Quick Access (本番環境)</div>
+        <div class="quick-access-grid">
+            <a href="../../index.html" class="quick-card" target="_blank">
+                <div>
+                    <h3>メインLPを確認</h3>
+                    <p>現在公開中のWebサイトを開く</p>
+                </div>
+                <div class="arrow-icon">↗</div>
+            </a>
+            <a href="../../brand.html" class="quick-card brand" target="_blank">
+                <div>
+                    <h3>ブランドページ</h3>
+                    <p>世界観・コンセプトを確認する</p>
+                </div>
+                <div class="arrow-icon">↗</div>
+            </a>
+        </div>
+
+        <!-- Manuals -->
+        <div class="section-title"><span>📚</span> Manuals (業務フェーズ別)</div>
+
+        <!-- Phase 1: Mindset -->
+        <h3 style="margin: 20px 0 10px 0; color: #003366; font-size: 1rem;">1. 戦略・マインド</h3>
+        <div class="manual-grid">
             <a href="00_strategy.html" class="menu-card strategy">
                 <div class="icon-box">🧭</div>
                 <div class="card-content">
                     <h2>採用戦略ガイド（はじめに）</h2>
-                    <p>なぜ「仕組み」が必要なのか？経営者が知るべき、採用資産化の全体像とロードマップ。</p>
+                    <p>なぜ「仕組み」が必要なのか？採用資産化の全体像とロードマップ。</p>
                 </div>
             </a>
-            <!-- LINE Manual -->
+        </div>
+
+        <!-- Phase 2: Setup -->
+        <h3 style="margin: 30px 0 10px 0; color: #38b2ac; font-size: 1rem;">2. 構築・セットアップ</h3>
+        <div class="manual-grid">
+            <a href="05_assets.html" class="menu-card admin">
+                <div class="icon-box">🔐</div>
+                <div class="card-content">
+                    <h2>資産管理＆クライアント台帳</h2>
+                    <p>アカウント発行ルール、ドメイン・サーバー管理（管理者用）。</p>
+                </div>
+            </a>
             <a href="01_line.html" class="menu-card line">
                 <div class="icon-box">💬</div>
                 <div class="card-content">
                     <h2>LINE公式アカウント設定</h2>
-                    <p>求職者と心の距離を縮めるコミュニケーション術。配信内容は私と一緒に考えましょう。</p>
+                    <p>リッチメニュー、あいさつメッセージの作成ガイド。</p>
                 </div>
             </a>
-
-            <!-- Google Form Manual -->
             <a href="02_google_form.html" class="menu-card form">
                 <div class="icon-box">📝</div>
                 <div class="card-content">
                     <h2>Googleフォーム作成</h2>
-                    <p>理想の人材だけを抽出する選別術。回答結果の分析もサポートします。</p>
+                    <p>応募者選別フォームの作成と設定。</p>
                 </div>
             </a>
+        </div>
 
-            <!-- LP Operation Manual -->
+        <!-- Phase 3: Operation -->
+        <h3 style="margin: 30px 0 10px 0; color: #d35400; font-size: 1rem;">3. 運用・更新（ルーティン）</h3>
+        <div class="manual-grid">
+            <a href="04_github.html" class="menu-card git">
+                <div class="icon-box">🐙</div>
+                <div class="card-content">
+                    <h2>Antigravity × GitHub 爆速運用</h2>
+                    <p>「黄金サイクル」で日々の更新を爆速化する（自分用）。</p>
+                </div>
+            </a>
             <a href="03_lp_operation.html" class="menu-card lp">
                 <div class="icon-box">🚀</div>
                 <div class="card-content">
                     <h2>採用特化LP運用ガイド</h2>
-                    <p>24時間働く採用専門の営業部長。社長は写真を送るだけ。更新はすべて私にお任せください。</p>
-                </div>
-            </a>
-
-            <!-- GitHub Manual -->
-            <a href="04_github.html" class="menu-card git">
-                <div class="icon-box">🐙</div>
-                <div class="card-content">
-                    <h2>Antigravity × GitHub 爆速運用マニュアル</h2>
-                    <p>迷ったらここを見る。「黄金サイクル」「コミット定型文」「緊急時のリカバリー」を網羅。</p>
-                </div>
-            </a>
-
-            <!-- Asset Management Manual -->
-            <a href="05_assets.html" class="menu-card" style="border-left-color: #38b2ac;">
-                <div class="icon-box">🔐</div>
-                <div class="card-content">
-                    <h2>資産管理＆クライアント台帳</h2>
-                    <p>アカウント発行ルール、ドメイン・サーバー管理など、事業の「資産」を守るための管理者マニュアル。</p>
+                    <p>写真更新、文章修正など、日々のメンテナンス方法。</p>
                 </div>
             </a>
         </div>

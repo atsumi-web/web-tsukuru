@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クライアント様専用ポータル | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .welcome-header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+        }
+        .welcome-header p {
+            color: #666;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .phase-label {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 40px 0 20px 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .phase-label span {
+            background: #2c3e50;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+
+        .menu-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: flex-start;
+            border-left: 5px solid #ccc;
+        }
+        .menu-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Card Colors */
+        .menu-card.strategy { border-left-color: #003366; }
+        .menu-card.line { border-left-color: #06c755; }
+        .menu-card.form { border-left-color: #673ab7; }
+        .menu-card.contact { border-left-color: #333; }
+
+        .icon-box {
+            font-size: 2rem;
+            margin-right: 25px;
+            width: 50px;
+            text-align: center;
+        }
+        .card-content h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #333;
+        }
+        .card-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #999;
+            font-size: 0.85rem;
+        }
+    <style>
+        /* ... existing styles ... */
+        
+        /* Login Overlay Styles (Uncomment to enable)
+        #login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .login-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 400px;
+        }
+        .login-box h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .login-box input {
+            width: 80%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .login-box button {
+            background: #06c755;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .login-box button:hover {
+            background: #05b54d;
+        }
+        .container {
+            display: none; 
+        }
+        */
+        
+        /* Ensure container is visible when password disabled */
+        .container {
+            display: block; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Overlay (Uncomment to enable password protection)
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2>🔒 Restricted Access</h2>
+            <p>パスワードを入力してください</p>
+            <input type="password" id="passwordInfo" placeholder="Password">
+            <button onclick="checkPassword()">Enter</button>
+            <p id="error-msg" style="color: red; display: none; margin-top: 10px; font-size: 0.9rem;">パスワードが違います</p>
+        </div>
+    </div>
+    -->
+
+    <div class="container" id="main-content">
+        <!-- ... existing content ... -->
+        
+        <header class="welcome-header">
+            <h1>Welcome to the Team!</h1>
+            <p>採用資産構築プロジェクトへようこそ。<br>ここは、プロジェクトの進行に必要なガイドをまとめた専用ポータルです。</p>
+        </header>
+
+        <!-- Phase 1 -->
+        <div class="phase-label"><span>STEP 1</span> まずはじめに（マインドセット）</div>
+        <a href="00_strategy.html" class="menu-card strategy">
+            <div class="icon-box">🧭</div>
+            <div class="card-content">
+                <h2>採用戦略ガイドBOOK</h2>
+                <p>なぜ「仕組み」を作るのか？経営者様に知っていただきたい「採用資産化」の全体像。</p>
+            </div>
+        </a>
+
+        <!-- Phase 2 -->
+        <div class="phase-label"><span>STEP 2</span> 環境構築（アカウント準備）</div>
+        <a href="01_line.html" class="menu-card line">
+            <div class="icon-box">💬</div>
+            <div class="card-content">
+                <h2>LINE公式アカウント 設定マニュアル</h2>
+                <p>採用専用LINEの開設方法と、求職者とのコミュニケーション設計について。</p>
+            </div>
+        </a>
+        <a href="02_google_form.html" class="menu-card form">
+            <div class="icon-box">📝</div>
+            <div class="card-content">
+                <h2>Googleフォーム 作成マニュアル</h2>
+                <p>自動面接官となる「応募フォーム」の作成手順と、通知設定の方法。</p>
+            </div>
+        </a>
+
+        <!-- Support -->
+        <div class="phase-label"><span>SUPPORT</span> お問い合わせ</div>
+        <a href="#" class="menu-card contact">
+            <div class="icon-box">👩🏻‍💻</div>
+            <div class="card-content">
+                <h2>担当者へ連絡する</h2>
+                <p>設定で不明な点があれば、いつでも「Webをつくるしごと」公式LINEへご連絡ください。<br>（※ここにえりさんの連絡先リンク等を貼ります）</p>
+            </div>
+        </a>
+
+        <footer>
+            <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- 
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('passwordInfo').value;
+            // 簡易的なパスワード設定（必要に応じて変更してください）
+            const correct = "web2026"; 
+
+            if (input === correct) {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('passwordInfo').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+    -->
+
+</body>
+</html>
