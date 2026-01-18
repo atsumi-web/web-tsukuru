@@ -188,7 +188,7 @@ a:hover {
 }
 
 .nav-btn {
-  background: var(--bg-dark);
+  background: #06c755 !important; /* LINE Green */
   color: #fff !important;
   border: none;
   padding: 12px 28px;
@@ -203,10 +203,10 @@ a:hover {
 }
 
 .nav-btn:hover {
-  background: #333;
+  background: #05b34d !important; /* Darker Green */
   opacity: 1;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(6, 199, 85, 0.4);
 }
 
 /* Hero */
@@ -2722,8 +2722,8 @@ a:hover {
 }
 
 .brand-lp .fixed-cta-btn:hover {
-  /* background: var(--brand-gold) !important; REMOVED */
-  opacity: 0.9;
+  background: #05b34d !important; /* Darker Green */
+  opacity: 1; /* Ensure opacity stays full or slightly reduced if desired, but 1 is safer for brand color */
 }
 
 /* Google Form Button Specific Hover */
