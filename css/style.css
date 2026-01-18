@@ -4145,7 +4145,7 @@ a:hover {
   .brand-bubble {
     width: 70px !important; /* Reduced to 70px */
     height: 70px !important;
-    top: 125px !important; /* Adjusted: High enough but clear of header */
+    top: 150px !important; /* Adjusted: A little lower per user request */
     right: 15px !important;
     /* Ensure text fits */
     display: flex;
