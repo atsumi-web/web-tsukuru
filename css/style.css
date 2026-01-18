@@ -4143,8 +4143,8 @@ a:hover {
 @media (max-width: 768px) {
   /* 1. Badge Adjustment */
   .brand-bubble {
-    width: 70px !important; /* Reduced to 70px */
-    height: 70px !important;
+    width: 80px !important; /* Increased: User requested larger size */
+    height: 80px !important;
     top: 150px !important; /* Adjusted: A little lower per user request */
     right: 15px !important;
     /* Ensure text fits */
