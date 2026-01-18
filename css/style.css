@@ -3891,6 +3891,7 @@ a:hover {
 
 .brand-cta i {
   font-size: 14px;
+  color: inherit !important; /* Force inherit white text color */
 }
 
 .brand-cta:hover {
