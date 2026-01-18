@@ -2696,12 +2696,12 @@ a:hover {
 }
 
 .brand-lp .nav-btn {
-  background: var(--brand-navy) !important;
+  background: #06c755 !important; /* LINE Green override */
 }
 
 .brand-lp .nav-btn:hover {
-  /* background: var(--brand-gold) !important; REMOVED */
-  opacity: 0.8;
+  background: #05b34d !important; /* Darker Green */
+  opacity: 1;
 }
 
 .brand-lp .hero-btn.primary {
