@@ -94,29 +94,33 @@ a:hover {
 
 /* Header: Stylish Glassmorphism */
 .site-header {
-  padding: 15px 0;
+  padding: 0; /* Updated: Remove padding from container to flush bar */
   position: fixed; /* 蟶ｸ縺ｫ荳翫↓蝗ｺ螳・*/
   width: 100%;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
-  backdrop-filter: blur(10px); /* 縺吶ｊ繧ｬ繝ｩ繧ｹ蜉ｹ譫・*/
-  /* border-bottom: 1px solid rgba(0,0,0,0.03); Removed for cleaner look */
-  /* box-shadow: 0 5px 20px rgba(0,0,0,0.02); Removed for cleaner look */
+  transition: background 0.3s, padding 0.3s;
+}
+
+/* Scrolled State (added by JS) */
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px; /* Wider for header */
+  margin: 0 auto;
+  padding: 15px 40px; /* Padding moved here */
 }
 
 .logo {
   font-family: var(--font-mincho);
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: 0.1em;
   color: #0f172a;
   font-weight: 500;
@@ -124,6 +128,24 @@ a:hover {
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #0f172a;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* Campaign Notification Bar */
+.campaign-notification-bar {
+    background: linear-gradient(90deg, #DC2626, #B91C1C);
+    position: relative;
+    z-index: 2000;
+    transition: background 0.3s;
+}
+.campaign-notification-bar:hover {
+    background: #991b1b;
 }
 
 .logo img {
@@ -1207,134 +1229,204 @@ a:hover {
   margin-top: 60px;
 }
 
-/* Campaign & Price */
+/* Campaign & Price (New 2-Column Layout) */
 .price-section {
-  padding: 100px 0; /* Standardized spacing */
-  background: var(--bg-light);
+    padding: 100px 0;
+    background: var(--bg-light);
 }
 
-.campaign-box {
-  background: #fff;
-  border: 1px solid #ddd; /* 繧ｮ繝ｩ繧ｮ繝ｩ縺輔○縺壹√す繝ｳ繝励Ν縺ｪ邱・*/
-  padding: 60px;
-  max-width: 900px; /* Aligned with other sections */
-  margin: 0 auto; /* 荳九・繝槭・繧ｸ繝ｳ100px繧貞炎髯､ */
-  text-align: center;
-  position: relative;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Increased shadow for better visibility against gray */
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: stretch; /* Cards stretch to same height */
 }
 
-/* 荳雁刀縺ｪ繝輔Ξ繝ｼ繝陬・｣ｾ */
-.campaign-box::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 1px solid #f0f0f0;
-  pointer-events: none;
+.plan-card {
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 20px; /* Slightly rounder */
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* For vertical alignment */
+    justify-content: space-between; /* Push button to bottom */
 }
 
-.campaign-tag {
-  display: inline-block;
-  color: var(--accent-color);
-  font-size: 13px;
-  letter-spacing: 0.2em;
-  border-bottom: 1px solid var(--accent-color);
-  padding-bottom: 5px;
-  margin-bottom: 30px;
+/* Plan A: Recommended */
+.plan-card.recommended {
+    border: 4px solid #0056D2; /* Brand Blue */
+    box-shadow: 0 20px 60px rgba(0, 86, 210, 0.15); /* Stronger shadow */
+    z-index: 2; /* Lifts it slightly */
+    background: linear-gradient(to bottom, #fff, #f6faff); /* Subtle blue tint at bottom */
 }
 
-.campaign-box h3 {
-  font-size: 28px;
-  margin-bottom: 30px;
+.plan-card.recommended:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 80px rgba(0, 86, 210, 0.2);
 }
 
-.c-desc {
-  font-size: 15px;
-  margin-bottom: 40px;
-  color: var(--text-sub);
+.plan-badge {
+    position: absolute;
+    top: -4px; /* Align with border */
+    right: -4px;
+    background: #0056D2;
+    color: white;
+    padding: 8px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    letter-spacing: 0.05em;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
 }
 
-.c-price {
-  margin-bottom: 20px; /* Reduced margin to fit subtitle */
-  line-height: 1.4;
-  letter-spacing: 0.1em;
-  font-family: "Shippori Mincho", serif;
-  color: #333;
-}
-
-.hero-subtitle {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 30px;
-  color: #333;
-  font-family: "Noto Sans JP", sans-serif; /* Gothic for functionality */
-  letter-spacing: 0.05em;
-}
-
-.c-label {
-  display: block;
-  font-size: 14px;
-  color: #999;
-}
-
-.c-value {
-  font-size: 42px;
-  font-family: var(--font-mincho);
-  color: var(--text-color); /* 鮟偵〒繧ｷ繝・け縺ｫ */
-}
-
-/* Action Area (Side by side) */
-.c-action-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 50px;
-  text-align: left;
-}
-
-.c-cond {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-sub);
-}
-
-@media (max-width: 768px) {
-  .c-action-area {
-    flex-direction: column;
-    gap: 30px;
+.plan-title {
+    font-size: 26px; /* Larger */
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eef2f6; /* Thicker light border */
     text-align: center;
-  }
-  .c-cond {
+}
+
+.price-area {
+    margin-bottom: 40px;
+    text-align: center;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.limit-badge {
+    background: #DC2626;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 16px;
+    border-radius: 50px;
     display: inline-block;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+    border: 2px solid white;
+    animation: pop 2s infinite;
+}
+
+@keyframes pop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.price-init {
+    text-decoration: line-through;
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.price-monitor {
+    font-size: 20px;
+    font-weight: bold;
+    color: #DC2626; /* Red for emphasis */
+    margin-bottom: 15px;
+    display: block;
+    background: #fee2e2;
+    color: #991b1b;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.price-monthly {
+    font-size: 48px; /* Impact Size */
+    font-weight: 800;
+    color: #333;
+    font-family: var(--font-mincho);
+    line-height: 1;
+    display: block;
+    margin-top: 10px;
+}
+
+.plan-features-list {
+    list-style: none;
+    padding: 0 10px; /* Indent slightly */
+    margin: 0 0 40px 0;
     text-align: left;
-  }
+    font-size: 15px;
+    line-height: 2;
+    color: #444;
+    flex-grow: 1; /* Pushes button to bottom */
 }
 
-.c-cond li::before {
-  content: "繝ｻ";
-  margin-right: 10px;
-  color: #ccc;
+.plan-features-list li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center; /* Center align vertically */
+    border-bottom: 1px dashed #eee; /* Subtle separator */
+    padding-bottom: 12px;
+}
+.plan-features-list li:last-child {
+    border-bottom: none;
 }
 
-.c-btn {
-  display: inline-block; /* 繝輔Ξ繝・け繧ｹ蜀・↑縺ｮ縺ｧinline-block縺ｧ繧Ｃlock縺ｧ繧０K縺縺後∝ｹ・↑繧翫↓縺吶ｋ */
-  background: var(--bg-dark);
-  color: #fff;
-  padding: 18px 60px;
-  font-size: 15px;
-  letter-spacing: 0.1em;
-  transition: opacity 0.3s;
-  margin: 0; /* 繝槭・繧ｸ繝ｳ繝ｪ繧ｻ繝・ヨ */
+.plan-features-list i {
+    min-width: 24px; /* Aligns icons */
+    font-size: 18px;
+    margin-right: 10px;
 }
 
-.c-btn:hover {
-  opacity: 0.8;
+/* Plan B: Self */
+.plan-card.self {
+    border: 1px solid #E5E7EB;
+    color: #6B7280;
+    background: #fdfdfd; /* Off-white */
+}
+
+.plan-card.self .plan-title {
+    color: #9CA3AF;
+    border-bottom-color: #f3f4f6;
+}
+
+.plan-card.self .price-monthly {
+    color: #0056D2; /* Highlights 0 Yen in Blue */
+}
+
+.plan-card.self .plan-features-list {
+    color: #888;
+}
+
+.plan-card.self .plan-features-list i {
+    color: #ccc; /* Gray icons */
+}
+
+/* Remove Warning color override for uniform gray in self plan, except specific warning */
+.plan-card.self .plan-features-list li.warning {
+    color: #d97706; /* Amber for warning */
+    border-bottom: none;
+    background: #fffbeb;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .price-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 40px;
+        max-width: 400px;
+    }
+    .plan-card {
+        padding: 40px 25px;
+    }
+    .price-monthly {
+        font-size: 40px;
+    }
 }
 
 /* Regular Plans (Mini) */
