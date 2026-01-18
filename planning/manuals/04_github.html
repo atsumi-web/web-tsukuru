@@ -245,8 +245,31 @@ git push -f origin main
                 <li>VS Codeのエクスプローラー（ファイル一覧）の下にある<strong>「タイムライン」</strong>を開く</li>
                 <li>戻したい時間の履歴を右クリック</li>
                 <li><strong>「内容をコピー」</strong>して今のファイルに貼り付ける</li>
-            </ol>
-            <p class="note">※ プロジェクト全体を過去に戻す場合は、先ほどの「リカバリー手順（git reset）」を使います。</p>
+            <h2>5. 【辞書】ターミナルコマンド早見表</h2>
+            <p>※ 「あれ、なんだっけ？」と思ったらここからコピペしてください。</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="command-box" style="background: #24292e; color: #fff; padding: 15px; border-radius: 6px;">
+                    <div style="color: #bbb; font-size: 0.8rem; margin-bottom: 5px;">基本の更新（ゴールデンサイクル）</div>
+                    <code style="display: block; font-size: 1.1em; margin-bottom: 10px; color: #81e6d9;">git add .</code>
+                    <code style="display: block; font-size: 1.1em; color: #81e6d9;">git commit -m "update"</code>
+                </div>
+                
+                <div class="command-box" style="background: #24292e; color: #fff; padding: 15px; border-radius: 6px;">
+                    <div style="color: #bbb; font-size: 0.8rem; margin-bottom: 5px;">最終プッシュ</div>
+                    <code style="display: block; font-size: 1.1em; color: #81e6d9;">git push origin main</code>
+                </div>
+
+                <div class="command-box" style="background: #792828; color: #fff; padding: 15px; border-radius: 6px;">
+                    <div style="color: #ffcccc; font-size: 0.8rem; margin-bottom: 5px;">強制リセット（取り消し）</div>
+                    <code style="display: block; font-size: 1.1em; color: #ffadad;">git reset --hard HEAD</code>
+                </div>
+
+                <div class="command-box" style="background: #792828; color: #fff; padding: 15px; border-radius: 6px;">
+                    <div style="color: #ffcccc; font-size: 0.8rem; margin-bottom: 5px;">強制上書きプッシュ</div>
+                    <code style="display: block; font-size: 1.1em; color: #ffadad;">git push -f origin main</code>
+                </div>
+            </div>
 
         </main>
 

@@ -164,18 +164,50 @@
                 <p>GitHub上に<strong>「ベースとなるAntigravityのテンプレート」</strong>を1つ作っておき、新しい案件が来たらそれをコピー（Use this template）するだけにすると、構築がさらに速くなります。</p>
             </div>
 
-            <h2>2. クライアント管理台帳（テンプレート）</h2>
-            <p>※ 今後、お客様が増えたらここにリストを追加していきます。</p>
-            <div style="background: #f4f4f4; padding: 20px; border-radius: 8px;">
-                <p><strong>【検討中】管理項目のアイデア：</strong></p>
-                <ul>
-                    <li>クライアント名／担当者連絡先</li>
-                    <li>ドメイン／サーバー更新期限</li>
-                    <li>Googleアカウント情報（ID/PASS管理シートへのリンク）</li>
-                    <li>GitHubリポジトリURL</li>
-                    <li>LINE公式アカウント管理画面URL</li>
-                </ul>
-                <p style="font-size: 0.9em; color: #666;">※ スプレッドシート等で管理する場合は、ここにリンクを貼るのがおすすめです。</p>
+            <h2>2. 【保存版】運用リンク集（ブックマーク）</h2>
+            <p>※ 作業時はまずここを開き、各管理画面へ直行します。</p>
+
+            <div class="client-card" style="background: #fff; border: 1px solid #ddd; border-left: 5px solid #24292e; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                    <h3 style="margin: 0; padding: 0; background: none; border: none; font-size: 1.2rem;">📁 自社プロジェクト (atsumi-web)</h3>
+                    <span style="background: #24292e; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem;">Active</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <a href="https://github.com/atsumi-web/" target="_blank" style="text-decoration: none; color: #333; background: #f6f8fa; padding: 10px; border-radius: 4px; display: flex; align-items: center; border: 1px solid #e1e4e8;">
+                        <span style="font-size: 1.2rem; margin-right: 10px;">🐙</span>
+                        <div>
+                            <div style="font-weight: bold; font-size: 0.9rem;">GitHubリポジトリ</div>
+                            <div style="font-size: 0.75rem; color: #666;">ソースコード修正</div>
+                        </div>
+                    </a>
+                    <a href="https://dash.cloudflare.com/" target="_blank" style="text-decoration: none; color: #333; background: #fff4e6; padding: 10px; border-radius: 4px; display: flex; align-items: center; border: 1px solid #ffe0b2;">
+                        <span style="font-size: 1.2rem; margin-right: 10px;">☁️</span>
+                        <div>
+                            <div style="font-weight: bold; font-size: 0.9rem;">Cloudflare管理画面</div>
+                            <div style="font-size: 0.75rem; color: #666;">デプロイ状況確認</div>
+                        </div>
+                    </a>
+                    <a href="https://analytics.google.com/" target="_blank" style="text-decoration: none; color: #333; background: #e3f2fd; padding: 10px; border-radius: 4px; display: flex; align-items: center; border: 1px solid #bbdefb;">
+                        <span style="font-size: 1.2rem; margin-right: 10px;">📊</span>
+                        <div>
+                            <div style="font-weight: bold; font-size: 0.9rem;">Google Analytics</div>
+                            <div style="font-size: 0.75rem; color: #666;">アクセス解析</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Template for New Client -->
+            <div class="client-card" style="background: #fafafa; border: 1px dashed #bbb; border-radius: 8px; padding: 20px; opacity: 0.8;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="margin: 0; padding: 0; background: none; border: none; font-size: 1.1rem; color: #666;">➕ 新規クライアント用（テンプレート）</h3>
+                </div>
+                <p style="font-size: 0.9rem; color: #666;">※ 案件が決まったらこのブロックをコピーして使ってください。</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="background: #eee; padding: 10px; border-radius: 4px; color: #999;">GitHub URL</div>
+                    <div style="background: #eee; padding: 10px; border-radius: 4px; color: #999;">Cloudflare URL</div>
+                    <div style="background: #eee; padding: 10px; border-radius: 4px; color: #999;">Google Form URL</div>
+                </div>
             </div>
 
             <h2>3. 【コスト管理】有料プランへの切り替え目安</h2>
