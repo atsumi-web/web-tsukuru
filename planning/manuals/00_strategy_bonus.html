@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>採用資産化・全体戦略ロードマップ | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #003366; /* Strategy Navy */
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+        }
+        .toc {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            color: #003366;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 10px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 5px 8px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc a:hover {
+            background: #f0f5ff;
+            color: #003366;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #003366;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #222;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #003366;
+            padding-left: 15px;
+        }
+        h4 {
+            font-size: 1.2rem;
+            color: #003366;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .highlight {
+            background: linear-gradient(transparent 60%, #fffbe6 60%);
+            font-weight: bold;
+        }
+        .advice-box {
+            background: #f0f7ff;
+            border: 1px solid #d6e4ff;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .bg-beige {
+            background: #fdfaf4;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .cta-btn {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #06c755;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(6, 199, 85, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(6, 199, 85, 0.4);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+        }
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Elements from original to prevent JS errors, hidden */
+        .back-to-top, .back-to-index, .line-support, .chat-widget, .mobile-bottom-nav {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <!-- Navigation removed for bonus content -->
+            </div>
+            <h1>採用資産化・全体戦略ロードマップ</h1>
+            <p style="margin-top: 10px; color: #555; background: #fffbe6; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold;">
+                〜求人広告を「家賃（掛け捨て）」から「資産」に変える設計図〜
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="layout">
+            <aside class="sidebar">
+                <nav class="toc">
+                    <h3>目次</h3>
+                    <ul>
+                        <li><a href="#intro">はじめに：未来を計算する</a></li>
+                        <li><a href="#section1">1. 賃貸モデル vs 持ち家モデル</a></li>
+                        <li><a href="#section2">2. キーワード戦略</a></li>
+                        <li><a href="#section3">3. 編集長という伴走者</a></li>
+                        <li><a href="#qa">4. よくあるご質問 (Q&A)</a></li>
+                        <li><a href="#diagnosis">5. 現在地を測定する</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="content">
+                
+                <section id="intro" class="bg-beige" style="border: 2px solid #ffeeba; background: #fff3cd; color: #856404; margin-bottom: 50px;">
+                    <h2 style="font-size: 1.3rem; border: none; margin: 0 0 15px 0; padding: 0; color: #856404;">【重要】診断を始める前に、少しだけ「未来」を計算してみませんか？</h2>
+                    <p style="font-weight: bold; font-size: 1.05rem;">
+                        「今、Indeedなどのサイトに載せている情報。<br>もし掲載を止めたら、明日から応募は入りますか？<br>
+                        その情報は、3年後も御社の手元に資産として残っていますか？」
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        掲載が終われば応募が止まる。このサイクルを繰り返している限り、採用はいつまでも「終わりのない出費」のままです。<br>
+                        このロードマップは、その出費を<strong>「将来にわたって価値を生み続ける資産」</strong>に変えるためのガイドです。
+                    </p>
+                </section>
+
+                <section id="section1">
+                    <h2>1. 採用には「賃貸（百貨店）」と「持ち家（路面店）」がある</h2>
+                    <p>世の中の採用手法は、大きく分けて2つしかありません。</p>
+
+                    <h3>「賃貸（百貨店）」モデル</h3>
+                    <p>Indeedなどの大手媒体の中に「棚」を借りる手法です。無料で載せていても、時間が経てば新しい他社の求人に埋もれて見えなくなります。<br>
+                    目立たせるには高額な<strong>「場所代（広告費＝家賃）」</strong>を払い続けるしかありません。<br>
+                    百貨店のルール変更一つで、御社の求人が追い出されるリスクも常に隣り合わせです。</p>
+
+                    <h3>「持ち家（路面店）」モデル</h3>
+                    <p>Googleという巨大な駅前の一等地に、自社専用の<strong>「店舗（LP）」</strong>を構える戦略です。<br>
+                    他社に邪魔されず、御社の魅力だけを100%伝えられます。</p>
+
+                    <div class="advice-box">
+                        <h4>なぜ「持ち家」が最強なのか？</h4>
+                        <ul>
+                            <li><strong>広告費ゼロの一等地</strong><br>
+                            正しい構造で作られた自社サイトなら、Googleの「求人専用エリア」が自動で情報を吸い上げ、無料で表示し続けます。</li>
+                            <li style="margin-top: 15px;"><strong>維持費が消える最新技術</strong><br>
+                            当サービスでは最新技術（サーバーレス）を駆使し、サーバー代等の固定費を一生0円にすることに成功しました。</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="section2">
+                    <h2>2. 「狙ったキーワード」で求職者を一本釣りする</h2>
+                    <p>「本当に自社サイトで人が集まるのか？」という不安への答えが、私のキーワード戦略です。</p>
+
+                    <h3>ターゲットを絞る</h3>
+                    <p>「施工管理」といった曖昧な言葉ではなく、<strong>「鈴鹿市 30代 未経験」</strong>など、ターゲットが実際に検索する言葉を専門コードとしてLPに埋め込みます。</p>
+
+                    <h3>複数の窓口を作る</h3>
+                    <p>1枚のLPでありながら、Google上では複数の「窓口（求人票）」が開いている状態を作り、網羅的に捕まえます。<br>
+                    維持費ゼロの「持ち家型」だからこそ、広告費を気にせずこの窓口を最大化できるのです。</p>
+                </section>
+
+                <section id="section3">
+                    <h2>3. 「作って終わり」のサイトは、翌日から死んでいく</h2>
+                    <p>多くの会社が失敗するのは、サイトを放置するからです。Googleは「新しく、活気のある情報」を優先して上位に表示します。</p>
+                    <p><span class="highlight">私は御社の「外部編集長」として伴走します。</span></p>
+
+                    <ul>
+                        <li><strong>鮮度の維持：</strong> GoogleのAIへ「今日も募集中です！」と信号を送り続け、最前列をキープします。</li>
+                        <li><strong>熱量の更新：</strong> 社長からLINEで届く現場の写真を反映させ、「今、この会社は動いている」という活気を可視化します。</li>
+                        <li><strong>言葉の調整：</strong> 反応を見ながらキーワードを微調整し、応募が来るまで磨き続けます。</li>
+                    </ul>
+                </section>
+
+                <section id="qa">
+                    <h2>4. よくあるご質問 (Q&A)</h2>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #333;"><span style="color: #003366;">Q.</span> 検索すると「広告」ばかり出てきますが、どこに求人枠があるのですか？</h4>
+                        <p><strong>A. 広告のすぐ下にある、大きな青い「求人」という枠がそれです。</strong><br>
+                        多くの経営者がここを素通りして上の「広告」にお金を払っていますが、実はここは「正しい設計の自社サイト」があれば、無料で表示される一等地なのです。<br>
+                        具体的な技術（Indexing API等）については、パートナー様限定で実行させていただきます。</p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #333;"><span style="color: #003366;">Q.</span> Googleからの流入だけで、十分な応募が集まりますか？</h4>
+                        <p><strong>A. 地域や職種によります。</strong><br>
+                        資産型LPは「本気度の高い層」を捕まえる最強の受け皿です。<br>
+                        もし短期間で大量の応募が必要な場合は、このLPを活用した<strong>SNS発信や少額広告の運用といった「集客ブースト（オプション）」</strong>を柔軟に組み合わせることが可能です。<br>
+                        無駄な広告費を垂れ流さず、必要な時に、必要な分だけ投資するのが賢い戦略です。</p>
+                    </div>
+                </section>
+
+                <section id="diagnosis" style="text-align: center; margin-top: 60px;">
+                    <h2>5. さあ、御社の現在地を測定しましょう</h2>
+                    <p>このロードマップにある「資産化」が、御社でどの程度実現できているか。<br>
+                    3分で終わる簡単な質問に、ありのままお答えください。</p>
+
+                    <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-btn">
+                        ➡︎ 無料診断をスタートする
+                    </a>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+            <a href="#" style="color: #555; text-decoration: none; margin: 0 10px;">▲ ページトップ</a>
+        </div>
+        <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+    </footer>
+
+    <!-- Dummy elements to satisfy potential JS references if needed, kept hidden -->
+    <a href="#" id="backToTop" class="back-to-top">▲</a>
+    <a href="#" id="backToIndex" class="back-to-index"></a>
+    <a href="#" id="lineSupport" class="line-support"></a>
+    <div id="chatWidget" class="chat-widget"></div>
+    <div id="closeChat"></div>
+    <div id="mobileLineSupport"></div>
+    <div id="mobileBackToTop"></div>
+
+</body>
+</html>
