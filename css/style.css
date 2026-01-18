@@ -198,6 +198,10 @@ a:hover {
     background 0.3s;
 }
 
+.nav-btn i {
+  color: inherit !important; /* Force white icon */
+}
+
 .nav-btn:hover {
   background: #333;
   opacity: 1;
