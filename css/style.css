@@ -837,7 +837,7 @@ a:hover {
   .bubble-title {
     width: 80px;
     height: 80px;
-    top: 140px; /* Lower position */
+    top: 230px; /* Lower position to avoid campaign bar */
     right: 10px;
     left: auto;
     line-height: 0.85; /* Even tighter line height */
