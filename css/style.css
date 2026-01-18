@@ -1326,6 +1326,8 @@ a:hover {
     font-size: 14px;
     margin-bottom: 8px;
     display: block;
+    font-family: "Outfit", sans-serif; /* Stylish Number */
+    letter-spacing: 0.05em;
 }
 
 .price-monitor {
@@ -1340,16 +1342,32 @@ a:hover {
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 16px;
+    font-family: "Noto Sans JP", sans-serif; /* Japanese text mixed */
 }
 
+/* Make the number part of monitor price stylish if possible, but it mixes JP. 
+   Usually "Monitor Price: 50,000 Yen" -> "モニター価格：50,000円"
+   Keep it simple for monitor line, but emphasize the main monthly price.
+*/
+
 .price-monthly {
-    font-size: 48px; /* Impact Size */
+    font-size: 56px; /* Increased size for English font */
     font-weight: 800;
     color: #333;
-    font-family: var(--font-mincho);
+    font-family: "Outfit", sans-serif; /* Stylish Geometric Sans */
     line-height: 1;
     display: block;
     margin-top: 10px;
+    letter-spacing: -0.02em; /* Tighten for impact */
+}
+
+.price-monthly span {
+   font-size: 0.4em;
+   font-family: "Noto Sans JP", sans-serif;
+   font-weight: normal;
+   color: #666;
+   vertical-align: middle;
+   margin-left: 5px;
 }
 
 .plan-features-list {
