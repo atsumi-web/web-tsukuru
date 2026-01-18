@@ -627,17 +627,17 @@ a:hover {
   padding-left: 0;
 }
 
-/* Aggressive CTA (Vibrant Blue) */
+/* Aggressive CTA (LINE Green for Consistency) */
 .aggressive-cta {
-  background: #0056d2 !important; /* Vivid Blue (Intellectual but Active) */
-  box-shadow: 0 5px 20px rgba(0, 86, 210, 0.4);
+  background: #06c755 !important; /* Unified to LINE Green */
+  box-shadow: 0 5px 20px rgba(6, 199, 85, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .aggressive-cta:hover {
-  background: #0044a5 !important;
+  background: #05b34d !important;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 86, 210, 0.6);
+  box-shadow: 0 10px 30px rgba(6, 199, 85, 0.6);
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -3857,7 +3857,7 @@ a:hover {
 
 /* Header-Matched CTA (Square Gold - Single Line) */
 .brand-cta {
-  background: #ae8b47 !important;
+  background: #06c755 !important; /* LINE Green */
   color: #fff !important;
   border: none !important;
   border-radius: 2px !important;
@@ -3908,8 +3908,8 @@ a:hover {
 }
 
 .brand-cta:hover {
-  background: #fff !important;
-  color: #ae8b47 !important;
+  background: #05b34d !important;
+  color: #fff !important;
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
