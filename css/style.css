@@ -3871,6 +3871,15 @@ a:hover {
   text-decoration: none;
 }
 
+@media (max-width: 768px) {
+  .brand-cta {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 16px 20px !important;
+    box-sizing: border-box !important;
+  }
+}
+
 /* Hide the sub-label to make it look like a standard button */
 /* Hide the sub-label to make it look like a standard button */
 .brand-cta > span:first-child {
