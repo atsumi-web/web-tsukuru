@@ -245,30 +245,71 @@ git push -f origin main
                 <li>VS Codeのエクスプローラー（ファイル一覧）の下にある<strong>「タイムライン」</strong>を開く</li>
                 <li>戻したい時間の履歴を右クリック</li>
                 <li><strong>「内容をコピー」</strong>して今のファイルに貼り付ける</li>
-            <h2>5. 【辞書】ターミナルコマンド早見表</h2>
-            <p>※ 「あれ、なんだっけ？」と思ったらここからコピペしてください。</p>
+            <h2>5. 【重要】3つの魔法の呪文（基本動作）</h2>
+            <p>※ この3つを順番に唱えるだけで、サイトは更新されます。</p>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="command-box" style="background: #24292e; color: #fff; padding: 15px; border-radius: 6px;">
-                    <div style="color: #bbb; font-size: 0.8rem; margin-bottom: 5px;">基本の更新（ゴールデンサイクル）</div>
-                    <code style="display: block; font-size: 1.1em; margin-bottom: 10px; color: #81e6d9;">git add .</code>
-                    <code style="display: block; font-size: 1.1em; color: #81e6d9;">git commit -m "update"</code>
-                </div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
                 
-                <div class="command-box" style="background: #24292e; color: #fff; padding: 15px; border-radius: 6px;">
-                    <div style="color: #bbb; font-size: 0.8rem; margin-bottom: 5px;">最終プッシュ</div>
-                    <code style="display: block; font-size: 1.1em; color: #81e6d9;">git push origin main</code>
+                <!-- Step 1: Add -->
+                <div class="command-box" style="background: #24292e; color: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #28a745;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color: #4cd964; font-size: 1.2em;">1. 変更を集める</strong>
+                        <span style="font-size:0.9em; color:#bbb;">Stage</span>
+                    </div>
+                    <code style="display: block; font-size: 1.2em; margin-bottom: 5px; color: #fff; background: #000; padding: 10px; border-radius: 4px;">git add .</code>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「散らばった変更ファイルを、発送用の箱に集める」イメージです。<br>
+                    <span style="color: #4cd964;">（専門用語で「ステージする」と言います）</span></p>
                 </div>
 
-                <div class="command-box" style="background: #792828; color: #fff; padding: 15px; border-radius: 6px;">
-                    <div style="color: #ffcccc; font-size: 0.8rem; margin-bottom: 5px;">強制リセット（取り消し）</div>
-                    <code style="display: block; font-size: 1.1em; color: #ffadad;">git reset --hard HEAD</code>
+                <!-- Step 2: Commit -->
+                <div class="command-box" style="background: #24292e; color: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #2188ff;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color: #79b8ff; font-size: 1.2em;">2. 記録する</strong>
+                        <span style="font-size:0.9em; color:#bbb;">Commit</span>
+                    </div>
+                    <code style="display: block; font-size: 1.2em; margin-bottom: 5px; color: #fff; background: #000; padding: 10px; border-radius: 4px;">git commit -m "update"</code>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「箱にフタをして、ラベル（メッセージ）を貼る」作業です。</p>
                 </div>
 
-                <div class="command-box" style="background: #792828; color: #fff; padding: 15px; border-radius: 6px;">
-                    <div style="color: #ffcccc; font-size: 0.8rem; margin-bottom: 5px;">強制上書きプッシュ</div>
-                    <code style="display: block; font-size: 1.1em; color: #ffadad;">git push -f origin main</code>
+                <!-- Step 3: Push -->
+                <div class="command-box" style="background: #24292e; color: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #f9826c;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color: #ffab70; font-size: 1.2em;">3. 送信する</strong>
+                        <span style="font-size:0.9em; color:#bbb;">Push</span>
+                    </div>
+                    <code style="display: block; font-size: 1.2em; margin-bottom: 5px; color: #fff; background: #000; padding: 10px; border-radius: 4px;">git push origin main</code>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「トラックへ積み込んで出荷する」作業です。<br>
+                    <span style="color: #ffab70;">→ これをすると、Cloudflareが自動検知して、数分でネット上のページが書き換わります。</span></p>
                 </div>
+
+            </div>
+
+            <!-- Deployment Explanation -->
+            <div class="tips" style="margin-top: 30px; background: #e0f2f1; border-left: 4px solid #009688; padding: 20px;">
+                <h5 style="margin-top:0; color: #00695c; font-size: 1.1em;">🤔 「デプロイ」ってなに？</h5>
+                <p style="color: #004d40; margin-bottom: 10px;">
+                    よく聞く「デプロイ」と、この「3つの作業」の関係は以下の通りです。
+                </p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.6); border-radius: 4px;">
+                        <strong>🚚 3つの呪文（Add, Commit, Push）</strong><br>
+                        ＝ <span style="color: #d81b60;">えりさんの仕事</span>（荷物をまとめて出荷するまで）
+                    </li>
+                    <li style="padding: 10px; background: rgba(255,255,255,0.6); border-radius: 4px;">
+                        <strong>🏪 デプロイ（Deployment）</strong><br>
+                        ＝ <span style="color: #00695c;">システムの仕事</span>（お店の棚に商品を並べて、公開すること）
+                    </li>
+                </ul>
+                <p style="margin-top: 15px; font-weight: bold; color: #004d40;">
+                    つまり、「3. 送信する（Push）」さえすれば、あとはシステムが勝手にデプロイ（公開）してくれます！
+                </p>
+            </div>
+
+            <h3 style="margin-top: 40px;">🆘 緊急時の呪文（強制上書き）</h3>
+            <div class="command-box" style="background: #792828; color: #fff; padding: 20px; border-radius: 8px;">
+                <div style="color: #ffcccc; font-size: 0.9rem; margin-bottom: 5px;">「間違えてプッシュしてしまった！」時だけ使います</div>
+                <code style="display: block; font-size: 1.1em; color: #ffadad; margin-bottom: 10px;">git reset --hard HEAD^</code>
+                <code style="display: block; font-size: 1.1em; color: #ffadad;">git push -f origin main</code>
             </div>
 
         </main>
