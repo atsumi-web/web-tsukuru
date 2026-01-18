@@ -759,6 +759,7 @@ a:hover {
     padding: 0 20px;
     text-align: left;
     margin-bottom: 0 !important; /* Remove all bottom margin */
+    padding-bottom: 10px !important; /* Reduced from 60px inline style */
     position: relative;
     z-index: 10;
     order: 3; /* Last */
