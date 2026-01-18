@@ -4368,3 +4368,125 @@ a:hover {
   align-items: center;
   gap: 20px;
 }
+
+/* Bonus Section (Limited Offer) */
+.brand-bonus-section {
+  background-color: #FEFDF5; /* Light Beige */
+  padding: 80px 0;
+}
+
+.bonus-card {
+  background: #fff;
+  border: 2px solid #e8cb90; /* Gold-ish border */
+  border-radius: 12px;
+  padding: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 15px 35px rgba(174, 139, 71, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bonus-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #ae8b47, #f3e5be, #ae8b47);
+}
+
+.bonus-label {
+  display: inline-block;
+  background: linear-gradient(135deg, #ae8b47 0%, #c5a365 100%);
+  color: #fff;
+  padding: 8px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(174, 139, 71, 0.3);
+}
+
+.bonus-card h3 {
+  font-size: 26px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  font-feature-settings: "palt";
+}
+
+.bonus-card p.bonus-desc {
+  text-align: left;
+  line-height: 2;
+  color: #555;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.bonus-check-list {
+  list-style: none;
+  padding: 25px;
+  margin: 0 0 20px 0;
+  text-align: left;
+  background: #fffbf4; /* Very light beige/gold tint */
+  border-radius: 8px;
+  border: 1px dashed #e8cb90;
+}
+
+.bonus-check-list li {
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #333;
+  display: flex;
+  align-items: flex-start;
+  font-size: 16px;
+}
+
+.bonus-check-list li:last-child {
+  margin-bottom: 0;
+}
+
+.bonus-check-list li i {
+  color: #ae8b47; /* Brand Gold */
+  margin-right: 12px;
+  font-size: 1.2em;
+  margin-top: 2px;
+}
+
+.bonus-note {
+  font-size: 12px;
+  color: #999;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Middle & Bottom Button Large Variant */
+.brand-cta-large {
+  width: 100% !important;
+  max-width: 640px !important;
+  padding: 24px 40px !important;
+  font-size: 20px !important; /* Larger text */
+  border-radius: 4px !important;
+  /* Flex is already set in .brand-cta */
+}
+
+.brand-cta-large i {
+  font-size: 1.4em !important; /* Larger icon */
+}
+
+@media (max-width: 768px) {
+  .bonus-card {
+    padding: 30px 20px;
+  }
+  .bonus-card h3 {
+    font-size: 20px;
+  }
+  .brand-cta-large {
+    padding: 18px 20px !important;
+    font-size: 16px !important;
+  }
+}
