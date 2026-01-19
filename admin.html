@@ -154,44 +154,21 @@
             </ul>
         </div>
 
-        <!-- 2. Portals -->
-        <div class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-door-open card-icon"></i>
-                <h2 class="card-title">ポータルページ</h2>
-            </div>
-            <ul class="link-list">
-                <li class="link-item">
-                    <a href="planning/manuals/client_index.html" class="admin-link" target="_blank">
-                        <div>
-                            <span class="link-label">既存クライアント用</span>
-                            <span class="link-desc">契約後のマニュアル一覧</span>
-                        </div>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </li>
-                <li class="link-item">
-                    <a href="planning/manuals/leads/index.html" class="admin-link" target="_blank">
-                        <div>
-                            <span class="link-label">リード（見込み客）用</span>
-                            <span class="link-desc">LINE登録者向け資料一覧</span>
-                        </div>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- LINE Rich Menu Assets (New) -->
-        <div class="card" style="border: 2px solid #06c755;">
+        <!-- 2. Leads Portal (Prospects) -->
+        <div class="card" style="border-left: 5px solid #06c755;">
             <div class="card-header">
                 <i class="fa-brands fa-line card-icon" style="color:#06c755;"></i>
-                <h2 class="card-title">LINEリッチメニュー用URL</h2>
+                <h2 class="card-title">リード（見込み客）用ポータル</h2>
             </div>
-            <p style="font-size: 13px; color: #666; margin-bottom: 15px;">
-                LINE公式アカウントの管理画面には、以下のURLをコピーして設定してください。<br>
-                （クリックすると実際にページが開きます）
-            </p>
+            <div style="margin-bottom: 15px;">
+                <a href="planning/manuals/leads/index.html" class="admin-link" target="_blank" style="background:#06c755; color:white; font-weight:bold; justify-content:center;">
+                    ポータルを開く（LINEメニュー遷移先）
+                </a>
+                <p style="font-size: 12px; color: #666; margin-top: 8px;">
+                    ※LINEリッチメニューのリンク先設定には、以下の緑色のURLを使用してください。
+                </p>
+            </div>
+
             <ul class="link-list">
                 <li class="link-item">
                     <a href="https://web-tsukuru.jp/planning/manuals/leads/00_roadmap.html" class="admin-link" target="_blank" style="display:block;">
@@ -232,12 +209,47 @@
             </ul>
         </div>
 
-        <!-- 3. Infrastructure Manuals -->
-        <div class="card">
+        <!-- 3. Clients Portal (Existing) -->
+        <div class="card" style="border-left: 5px solid #003366;">
             <div class="card-header">
-                <i class="fa-solid fa-server card-icon"></i>
-                <h2 class="card-title">環境構築マニュアル</h2>
+                <i class="fa-solid fa-users card-icon" style="color:#003366;"></i>
+                <h2 class="card-title">クライアント（既存）用ポータル</h2>
             </div>
+            <div style="margin-bottom: 15px;">
+                <a href="planning/manuals/client_index.html" class="admin-link" target="_blank" style="background:#003366; color:white; font-weight:bold; justify-content:center;">
+                    ポータルを開く（契約者用）
+                </a>
+            </div>
+
+            <h3 style="font-size:14px; margin:15px 0 8px; color:#666;">STEP 1: 戦略・マインドセット</h3>
+            <ul class="link-list">
+                <li class="link-item">
+                    <a href="planning/manuals/00_strategy.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">採用戦略ガイドBOOK</span>
+                            <span class="link-desc">採用資産化の全体像</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/00_zero_cost.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">維持費0円の仕組み</span>
+                            <span class="link-desc">技術的根拠と安全性</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/04_hotta_case.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">事例：三重モデル構築PJ</span>
+                            <span class="link-desc">堀田建設様の実例</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <h3 style="font-size:14px; margin:20px 0 8px; color:#666;">STEP 2: 環境構築</h3>
             <ul class="link-list">
                 <li class="link-item">
                     <a href="planning/manuals/07_domain_setup.html" class="admin-link" target="_blank">
@@ -256,28 +268,10 @@
                     </a>
                 </li>
                 <li class="link-item">
-                    <a href="planning/manuals/04_github.html" class="admin-link" target="_blank">
-                        <div>
-                            <span class="link-label">04. GitHub更新</span>
-                            <span class="link-desc">日々の更新手順</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 4. Client Operation Manuals -->
-        <div class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-book-open card-icon"></i>
-                <h2 class="card-title">運用マニュアル</h2>
-            </div>
-            <ul class="link-list">
-                <li class="link-item">
                     <a href="planning/manuals/01_line.html" class="admin-link" target="_blank">
                         <div>
                             <span class="link-label">01. LINE公式アカウント</span>
-                            <span class="link-desc">リッチメニュー作成など</span>
+                            <span class="link-desc">開設とリッチメニュー</span>
                         </div>
                     </a>
                 </li>
@@ -285,62 +279,34 @@
                     <a href="planning/manuals/02_google_form.html" class="admin-link" target="_blank">
                         <div>
                             <span class="link-label">02. Googleフォーム</span>
-                            <span class="link-desc">応募フォーム作成・通知</span>
+                            <span class="link-desc">応募フォーム作成</span>
                         </div>
                     </a>
                 </li>
+            </ul>
+
+            <h3 style="font-size:14px; margin:20px 0 8px; color:#666;">STEP 3: 運用・内製化</h3>
+            <ul class="link-list">
                 <li class="link-item">
                     <a href="planning/manuals/03_lp_operation.html" class="admin-link" target="_blank">
                         <div>
                             <span class="link-label">03. LP運用・内製化</span>
-                            <span class="link-desc">自走プラン向け</span>
+                            <span class="link-desc">運用マインドセット</span>
                         </div>
                     </a>
                 </li>
-                 <li class="link-item">
+                <li class="link-item">
                     <a href="planning/manuals/05_assets.html" class="admin-link" target="_blank">
                         <div>
-                            <span class="link-label">05. 素材準備</span>
-                            <span class="link-desc">写真・テキストの準備</span>
+                            <span class="link-label">05. 素材準備（撮影）</span>
+                            <span class="link-desc">現場のリアル撮影ガイド</span>
                         </div>
                     </a>
                 </li>
             </ul>
         </div>
 
-        <!-- 5. Strategy Documents -->
-        <div class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-chess card-icon"></i>
-                <h2 class="card-title">戦略・提案資料</h2>
-            </div>
-            <ul class="link-list">
-                <li class="link-item">
-                    <a href="planning/manuals/00_hotta_blueprint.html" class="admin-link" target="_blank">
-                        <div>
-                            <span class="link-label">堀田建設様 提案書</span>
-                            <span class="link-desc">Blueprint (Ver.Accompaniment)</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="link-item">
-                    <a href="planning/manuals/00_zero_cost.html" class="admin-link" target="_blank">
-                        <div>
-                            <span class="link-label">Zero Cost Strategy</span>
-                            <span class="link-desc">維持費0円の仕組み解説</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="link-item">
-                    <a href="planning/manuals/04_hotta_case.html" class="admin-link" target="_blank">
-                        <div>
-                            <span class="link-label">Case Study</span>
-                            <span class="link-desc">事例紹介（堀田建設様ベース）</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
+
         
     </div>
 
