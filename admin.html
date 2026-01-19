@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webをつくるしごと｜管理画面</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --accent: #D4AF37;
+            --bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text: #334155;
+            --text-light: #64748B;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 2px solid #E2E8F0;
+        }
+        h1 {
+            color: var(--primary);
+            font-size: 24px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .card-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 18px;
+            margin: 0;
+        }
+        .card-icon {
+            color: var(--accent);
+            font-size: 20px;
+        }
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .link-item {
+            margin-bottom: 12px;
+        }
+        .link-item:last-child {
+            margin-bottom: 0;
+        }
+        .admin-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: #F8FAFC;
+            transition: background 0.2s;
+        }
+        .admin-link:hover {
+            background: #F1F5F9;
+            color: var(--primary);
+        }
+        .link-label {
+            font-weight: 500;
+        }
+        .link-desc {
+            font-size: 12px;
+            color: var(--text-light);
+            display: block;
+        }
+        .status-badge {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #DEF7EC;
+            color: #03543F;
+        }
+        .status-wip {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fa-solid fa-toolbox"></i> Webをつくるしごと｜管理画面</h1>
+        <p style="color: var(--text-light); margin-top: 10px;">自分専用：全ページへのリンク集</p>
+    </header>
+
+    <div class="dashboard-grid">
+        
+        <!-- 1. Main Media -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-globe card-icon"></i>
+                <h2 class="card-title">本番公開サイト</h2>
+            </div>
+            <ul class="link-list">
+                <li class="link-item">
+                    <a href="index.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">公式サイト (Top)</span>
+                            <span class="link-desc">名刺代わりのメインLP</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 2. Portals -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-door-open card-icon"></i>
+                <h2 class="card-title">ポータルページ</h2>
+            </div>
+            <ul class="link-list">
+                <li class="link-item">
+                    <a href="planning/manuals/client_index.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">既存クライアント用</span>
+                            <span class="link-desc">契約後のマニュアル一覧</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/leads/index.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">リード（見込み客）用</span>
+                            <span class="link-desc">LINE登録者向け資料一覧</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 3. Infrastructure Manuals -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-server card-icon"></i>
+                <h2 class="card-title">環境構築マニュアル</h2>
+            </div>
+            <ul class="link-list">
+                <li class="link-item">
+                    <a href="planning/manuals/07_domain_setup.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">07. ドメイン設定</span>
+                            <span class="link-desc">Cloudflare × お名前.com</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/08_email_routing.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">08. メール設定</span>
+                            <span class="link-desc">Cloudflare Email Routing</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/04_github.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">04. GitHub更新</span>
+                            <span class="link-desc">日々の更新手順</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 4. Client Operation Manuals -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-book-open card-icon"></i>
+                <h2 class="card-title">運用マニュアル</h2>
+            </div>
+            <ul class="link-list">
+                <li class="link-item">
+                    <a href="planning/manuals/01_line.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">01. LINE公式アカウント</span>
+                            <span class="link-desc">リッチメニュー作成など</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/02_google_form.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">02. Googleフォーム</span>
+                            <span class="link-desc">応募フォーム作成・通知</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/03_lp_operation.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">03. LP運用・内製化</span>
+                            <span class="link-desc">自走プラン向け</span>
+                        </div>
+                    </a>
+                </li>
+                 <li class="link-item">
+                    <a href="planning/manuals/05_assets.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">05. 素材準備</span>
+                            <span class="link-desc">写真・テキストの準備</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 5. Strategy Documents -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-chess card-icon"></i>
+                <h2 class="card-title">戦略・提案資料</h2>
+            </div>
+            <ul class="link-list">
+                <li class="link-item">
+                    <a href="planning/manuals/00_hotta_blueprint.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">堀田建設様 提案書</span>
+                            <span class="link-desc">Blueprint (Ver.Accompaniment)</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/00_zero_cost.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">Zero Cost Strategy</span>
+                            <span class="link-desc">維持費0円の仕組み解説</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="planning/manuals/04_hotta_case.html" class="admin-link" target="_blank">
+                        <div>
+                            <span class="link-label">Case Study</span>
+                            <span class="link-desc">事例紹介（堀田建設様ベース）</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; color: var(--text-light); font-size: 12px;">
+        &copy; 2026 Admin Dashboard for Eri
+    </footer>
+</div>
+
+</body>
+</html>
