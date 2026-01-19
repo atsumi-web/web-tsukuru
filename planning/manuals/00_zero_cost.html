@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>維持費0円の仕組み（技術解説） | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #003366; /* Strategy Navy */
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+        }
+        .toc {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            color: #003366;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 10px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 5px 8px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc a:hover {
+            background: #f0f5ff;
+            color: #003366;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #003366;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #222;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #003366;
+            padding-left: 15px;
+        }
+        h4 {
+             font-size: 1.15rem;
+             color: #444;
+             margin-top: 25px;
+             margin-bottom: 10px;
+             font-weight: bold;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        /* Alert Box for Traps */
+        .alert-group {
+            border: 2px solid #e57373;
+            background-color: #ffebee;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        .alert-group h3 {
+            color: #c62828;
+            border-left: none;
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(198, 40, 40, 0.2);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .alert-group h3::before {
+            content: '⚠️';
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        .trap-item {
+            margin-bottom: 20px;
+        }
+        .trap-title {
+            color: #c62828;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+
+        /* Gold/Blue Box for Solution */
+        .solution-group {
+            border: 2px solid #daa520; /* Gold border */
+            background: linear-gradient(to bottom, #fffdf5, #fff);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .solution-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #daa520, #ffd700, #daa520);
+        }
+        .solution-group h3 {
+            color: #003366; /* Trust Blue */
+            border-left: none;
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px dashed #daa520;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .solution-group h3::before {
+            content: '💎';
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        .engine-item {
+            margin-bottom: 25px;
+        }
+        .engine-title {
+            color: #003366;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+        }
+        footer p {
+            text-align: center;
+        }
+        
+        /* Mobile Bottom Navigation */
+        .mobile-bottom-nav {
+            display: none; /* Hidden on Desktop */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #003366; /* Strategy Theme Color */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            height: 60px;
+            z-index: 10000;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: bold;
+            width: 33%;
+            height: 100%;
+            transition: background 0.2s;
+        }
+        .nav-item.active-color {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .alert-group, .solution-group {
+                padding: 20px;
+            }
+            .mobile-bottom-nav {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="client_index.html">← マニュアル一覧に戻る</a>
+            </div>
+            <h1>採用資産構築マニュアル：なぜ「維持費0円」が可能なのか？</h1>
+            <p style="margin-top: 10px; color: #555; background: #f0f7ff; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+                <span style="font-weight: bold; color: #003366;">対象</span> 経営者様・ご担当者様 &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <span style="font-weight: bold; color: #003366;">目的</span> 技術的根拠と安全性の解説
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="layout">
+            <aside class="sidebar">
+                <nav class="toc">
+                    <h3>目次</h3>
+                    <ul>
+                        <li><a href="#wordpress">1. 「ワードプレス」に潜む罠</a></li>
+                        <li><a href="#freetools">2. 「無料ツール」の限界とリスク</a></li>
+                        <li><a href="#engine">3. 一生モノの独自エンジン</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="content">
+                
+                <section id="wordpress">
+                    <!-- WordPress Section (Red Alert) -->
+                    <div class="alert-group">
+                        <h3>1. 「ワードプレス」に潜む3つの罠</h3>
+                        <p>世界中のホームページの多くがワードプレス（WordPress）で作られています。しかし、専門知識のない経営者が導入するには、非常にリスクの高い「金食い虫」の一面があります。</p>
+
+                        <div class="trap-item">
+                            <span class="trap-title">「修繕コスト」の罠</span>
+                            <p>ワードプレスは家と同じで、システム（プラグインや本体）の定期的な更新が不可欠です。放置すると表示が崩れたり、画面が真っ白になったりします。これを防ぐために、プロへ毎月の「保守管理費」を払い続ける必要があります。</p>
+                        </div>
+
+                        <div class="trap-item">
+                            <span class="trap-title">「セキュリティ」の罠</span>
+                            <p>利用者が多いため、常に世界中のハッカーから攻撃の標的にされています。対策を怠ると、自社サイトがウイルス配布元になり、会社の信用を一夜にして失うリスクがあります。</p>
+                        </div>
+
+                        <div class="trap-item">
+                            <span class="trap-title">「鈍足」の罠</span>
+                            <p>多機能ゆえに読み込みが非常に重く、スマホで見た時に「なかなか開かない」というストレスを与えます。求職者は開くのに3秒以上かかると、その瞬間に他社の求人へ逃げてしまいます。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="freetools">
+                    <!-- Free Tools Section (Orange/Red Alert) -->
+                    <div class="alert-group" style="background-color: #fff8e1; border-color: #ffb74d;">
+                        <h3 style="color: #ef6c00;">2. 「無料ツール」の限界とリスク</h3>
+                        <p>「無料でホームページが作れる」というサービス（Wix、ペライチ、Studioなど）は手軽ですが、ビジネス、特に「採用」という重要な局面では、以下のリスクが経営を圧迫します。</p>
+
+                        <div class="trap-item">
+                            <span class="trap-title" style="color: #ef6c00;">「掛け捨て」のリスク</span>
+                            <p>月額費用を払うことで高機能になりますが、支払いを止めればサイトは即座に消えます。それは「自社の資産」ではなく、いつまでも家賃を払い続ける「レンタル品」に過ぎません。</p>
+                        </div>
+
+                        <div class="trap-item">
+                            <span class="trap-title" style="color: #ef6c00;">「老朽化（プラットフォーム依存）」のリスク</span>
+                            <p>提供会社のサービスが終了したり、仕様が大きく変わったりすると、自社の意思とは無関係にサイトの作り直しを余儀なくされます。</p>
+                        </div>
+
+                        <div class="trap-item">
+                            <span class="trap-title" style="color: #ef6c00;">「速度と制限」のリスク</span>
+                            <p>無料版は表示速度が制限されていたり、勝手に広告が表示されたりします。大切な求職者に対し、スマホでの「第一印象」でチープな印象を与え、損をしています。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="engine">
+                    <!-- Solution Section (Gold/Blue) -->
+                    <div class="solution-group">
+                        <h3>3. 私が提供するのは「一生モノの独自エンジン」</h3>
+                        <p>私は、これらのツールの「良いとこ取り」をしつつ、デメリットを最新技術で排除しました。</p>
+
+                        <div class="engine-item">
+                            <span class="engine-title">維持費0円の「持ち家」</span>
+                            <p>特定のサービスやレンタルサーバーに依存しない「サーバーレス」という最新の構造を、私が独自に組み上げます。そのため、月々の「システム維持費」をゼロにすることが可能になりました。</p>
+                        </div>
+
+                        <div class="engine-item">
+                            <span class="engine-title">10年後も古くならない</span>
+                            <p>ワードプレスのように「古くなって壊れる」心配がありません。10年後も今と同じ爆速の表示スピードと、軍事レベルの安全性を維持し続けます。</p>
+                        </div>
+
+                        <div class="engine-item">
+                            <span class="engine-title">「道具は無料、技術はプロ」</span>
+                            <p>私が使う基盤（GitHub等）自体は無料で使えますが、それを「採用エンジン」へと昇華させるには高度な技術が必要です。<br>
+                            <strong>「道具代をいただくのではなく、その道具を最高に使いこなす知恵と技術」</strong>が私の価値です。</p>
+                        </div>
+                    </div>
+                </section>
+                
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+            <a href="#" style="color: #555; text-decoration: none; margin: 0 10px;">▲ ページトップ</a>
+            <span style="color: #ccc;">|</span>
+            <a href="client_index.html" style="color: #555; text-decoration: none; margin: 0 10px;">← マニュアル一覧</a>
+        </div>
+        <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <a href="client_index.html" class="nav-item">
+            一覧に戻る
+        </a>
+        <a href="https://lin.ee/eKNHAte" class="nav-item active-color">
+            LINEで相談
+        </a>
+        <a href="#" id="mobileBackToTop" class="nav-item">
+            ページTOP
+        </a>
+    </div>
+
+    <script>
+        const mobileBackToTop = document.getElementById('mobileBackToTop');
+        const scrollToTop = (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        if(mobileBackToTop) mobileBackToTop.addEventListener('click', scrollToTop);
+    </script>
+</body>
+</html>
