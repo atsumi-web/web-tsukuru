@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>環境構築・アカウント準備ガイド | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #003366;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+        }
+        .toc {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            color: #003366;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 10px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 5px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc a:hover {
+            background: #f0f5ff;
+            color: #003366;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #003366;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #222;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #003366;
+            padding-left: 15px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .important-box {
+            background: #fff3cd;
+            border: 2px solid #ffeeba;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .important-title {
+            color: #856404;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .important-title::before {
+            content: '⚠️';
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            background: #f8fbff;
+            border: 1px solid #e1e8ed;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .check-icon {
+            color: #003366;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            line-height: 1;
+        }
+        .item-content h4 {
+            margin: 0 0 5px 0;
+            color: #003366;
+            font-size: 1.1rem;
+        }
+        .item-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Mobile Bottom Nav */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #003366;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            height: 60px;
+            z-index: 10000;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 33%;
+        }
+        @media (max-width: 768px) {
+            .mobile-bottom-nav { display: flex; }
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; position: static; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="client_index.html">← マニュアル一覧に戻る</a>
+            </div>
+            <h1>環境構築・アカウント準備ガイド</h1>
+            <p style="margin-top: 10px; color: #555; background: #f0f7ff; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+                <span style="font-weight: bold; color: #003366;">対象</span> 経営者様・採用リーダー様 &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <span style="font-weight: bold; color: #003366;">目的</span> 「資産の所有権」を確保する
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <aside class="sidebar">
+                <nav class="toc">
+                    <h3>目次</h3>
+                    <ul>
+                        <li><a href="#prologue">はじめに：業者に任せてはいけない理由</a></li>
+                        <li><a href="#todo">ご用意いただきたい3つのアカウント</a></li>
+                        <li><a href="#technical">技術的な構築について（おまけ）</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="content">
+                
+                <section id="prologue">
+                    <h2>はじめに：なぜ「ご自身で」準備するのか</h2>
+                    <p>Webサイトやシステムを作る際、「面倒だからアカウント作成も全部やっといて」と業者に依頼したくなるお気持ちはよく分かります。<br>
+                    しかし、私たちはあえて<strong>「主要なアカウントの作成だけは、お客様ご自身でお願いする」</strong>というスタンスをとっています。</p>
+                    
+                    <div class="important-box">
+                        <div class="important-title">アカウントの作成者 ＝ 「資産の法的な所有者」</div>
+                        <p>もし私がアカウントを作成し、私が管理した場合、契約終了時に「アカウントごとお返しできない（または引継ぎ手数料が発生する）」というトラブルが起きる可能性があります。<br>
+                        <strong>「Webサイト（資産）の権利は、100%お客様のもの」</strong>という原則を守るため、最初の登録作業だけはお願いしています。</p>
+                    </div>
+                </section>
+
+                <section id="todo">
+                    <h2>ご用意いただきたい3つのアカウント</h2>
+                    <p>以下の3つだけご用意ください。すでに個人のものをお持ちの場合は、それを使っていただいても構いませんが、会社用に新規取得することをお勧めします。</p>
+
+                    <div class="checklist-item">
+                        <div class="check-icon">🏢</div>
+                        <div class="item-content">
+                            <h4>1. Googleアカウント（必須）</h4>
+                            <p>応募者リスト（スプレッドシート）や、アクセス解析の管理に使います。<br><code>company.recruit@gmail.com</code> のような採用専用アドレスを取得いただくのがベストです。</p>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="check-icon">💬</div>
+                        <div class="item-content">
+                            <h4>2. LINEビジネスID（必須）</h4>
+                            <p>LINE公式アカウントの運用に必要です。<br>普段お使いの個人LINEアカウントと連携させると管理が一番スムーズです。</p>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="check-icon">📸</div>
+                        <div class="item-content">
+                            <h4>3. Instagramアカウント（推奨）</h4>
+                            <p>「日常の発信」による集客用です。<br>まだない場合は、会社名や「〇〇建設採用」といったIDで作成してください。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="technical">
+                    <h2>技術的な構築について（おまけ）</h2>
+                    <p>アカウントさえご用意いただければ、その後の「ドメイン取得」「サーバー接続」「メール設定」などの難しい技術設定は、すべて私たちが代行します。<br>
+                    これらは非常に専門的ですが、<strong>「裏側でどんな工事システムを組んでいるか」</strong>に興味がある方は、以下の技術資料をご覧ください。</p>
+                    <p style="font-size: 0.9rem; color: #666;">※これらは私が作業する内容ですので、お客様が覚える必要はありません。「しっかり作ってるんだな」と安心していただければ幸いです。</p>
+                    
+                    <div style="margin-top: 20px; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                        <ul style="margin: 0; padding-left: 20px;">
+                            <li style="margin-bottom: 10px;"><a href="07_domain_setup.html" style="color: #003366; text-decoration: underline;">ドメイン設定の仕様書（Cloudflare）</a></li>
+                            <li><a href="08_email_routing.html" style="color: #003366; text-decoration: underline;">メール送受信システムの仕様書</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <a href="client_index.html" class="nav-item">一覧に戻る</a>
+        <a href="https://lin.ee/eKNHAte" class="nav-item">LINEで相談</a>
+        <a href="#" id="mobileBackToTop" class="nav-item">TOP</a>
+    </div>
+
+</body>
+</html>
