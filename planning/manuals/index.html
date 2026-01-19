@@ -146,85 +146,113 @@
 
     <div class="container">
         <header class="site-header">
-            <h1>Webをつくるしごと | 運用司令室</h1>
-            <p>すべての業務はここから始まります。</p>
+            <div style="margin-bottom: 20px;">
+                <a href="../../admin.html" style="text-decoration: none; color: #666;">← 運用司令室に戻る</a>
+            </div>
+            <h1>自分用マニュアル (Private Index)</h1>
+            <p>※ここはクライアント非公開の内部エリアです。</p>
         </header>
 
-        <!-- Quick Access -->
-        <div class="section-title"><span>🚀</span> Quick Access (本番環境)</div>
+        <!-- Portals -->
+        <div class="section-title"><span>🌏</span> Portals (公開エリア確認)</div>
         <div class="quick-access-grid">
-            <a href="../../index.html" class="quick-card" target="_blank">
+            <a href="client_index.html" class="quick-card" target="_blank">
                 <div>
-                    <h3>メインLPを確認</h3>
-                    <p>現在公開中のWebサイトを開く</p>
+                    <h3>クライアント用ポータル</h3>
+                    <p>契約者様向けマニュアル一覧</p>
                 </div>
                 <div class="arrow-icon">↗</div>
             </a>
-            <a href="../../brand.html" class="quick-card brand" target="_blank">
+            <a href="leads/index.html" class="quick-card brand" target="_blank">
                 <div>
-                    <h3>ブランドページ</h3>
-                    <p>世界観・コンセプトを確認する</p>
+                    <h3>リード用ポータル</h3>
+                    <p>見込み客向け（診断・ロードマップ）</p>
                 </div>
                 <div class="arrow-icon">↗</div>
             </a>
         </div>
 
-        <!-- Manuals -->
-        <div class="section-title"><span>📚</span> Manuals (業務フェーズ別)</div>
+        <!-- Internal Docs -->
+        <div class="section-title"><span>🔐</span> Internal Only (社外秘)</div>
+        <div class="manual-grid">
+            <a href="05_assets.html" class="menu-card admin">
+                <div class="icon-box">🔑</div>
+                <div class="card-content">
+                    <h2>資産管理＆クライアント台帳</h2>
+                    <p>アカウント管理ルール、重要情報一元管理。</p>
+                </div>
+            </a>
+            <a href="00_hotta_blueprint.html" class="menu-card admin" style="border-left-color: #e65100;">
+                <div class="icon-box">🏗️</div>
+                <div class="card-content">
+                    <h2>堀田建設様 提案書 (Draft)</h2>
+                    <p>採用資産構築エンジン導入提案（自走モデル）。</p>
+                </div>
+            </a>
+            <a href="04_github.html" class="menu-card git">
+                <div class="icon-box">🐙</div>
+                <div class="card-content">
+                    <h2>Antigravity × GitHub 爆速運用</h2>
+                    <p>開発者（自分）用の技術・運用メモ。</p>
+                </div>
+            </a>
+        </div>
 
-        <!-- Phase 1: Mindset -->
-        <h3 style="margin: 20px 0 10px 0; color: #003366; font-size: 1rem;">1. 戦略・マインド</h3>
+        <!-- Client Manuals (Master List) -->
+        <div class="section-title"><span>📚</span> Client Manuals (公開中コンテンツ)</div>
+        
+        <h3 style="margin: 20px 0 10px 0; color: #003366; font-size: 1rem;">戦略・マインド</h3>
         <div class="manual-grid">
             <a href="00_strategy.html" class="menu-card strategy">
                 <div class="icon-box">🧭</div>
                 <div class="card-content">
-                    <h2>採用戦略ガイド（はじめに）</h2>
-                    <p>なぜ「仕組み」が必要なのか？採用資産化の全体像とロードマップ。</p>
+                    <h2>採用戦略ガイドBOOK</h2>
+                    <p>共通戦略マップ。</p>
+                </div>
+            </a>
+            <a href="00_zero_cost.html" class="menu-card strategy">
+                <div class="icon-box">💰</div>
+                <div class="card-content">
+                    <h2>維持費0円の仕組み</h2>
+                    <p>サーバーレス技術解説。</p>
                 </div>
             </a>
         </div>
 
-        <!-- Phase 2: Setup -->
-        <h3 style="margin: 30px 0 10px 0; color: #38b2ac; font-size: 1rem;">2. 構築・セットアップ</h3>
+        <h3 style="margin: 30px 0 10px 0; color: #06c755; font-size: 1rem;">設定・ツール</h3>
         <div class="manual-grid">
-            <a href="05_assets.html" class="menu-card admin">
-                <div class="icon-box">🔐</div>
-                <div class="card-content">
-                    <h2>資産管理＆クライアント台帳</h2>
-                    <p>アカウント発行ルール、ドメイン・サーバー管理（管理者用）。</p>
-                </div>
-            </a>
             <a href="01_line.html" class="menu-card line">
                 <div class="icon-box">💬</div>
                 <div class="card-content">
                     <h2>LINE公式アカウント設定</h2>
-                    <p>リッチメニュー、あいさつメッセージの作成ガイド。</p>
                 </div>
             </a>
             <a href="02_google_form.html" class="menu-card form">
                 <div class="icon-box">📝</div>
                 <div class="card-content">
                     <h2>Googleフォーム作成</h2>
-                    <p>応募者選別フォームの作成と設定。</p>
+                </div>
+            </a>
+            <a href="07_domain_setup.html" class="menu-card line">
+                <div class="icon-box">🌐</div>
+                <div class="card-content">
+                    <h2>ドメイン設定</h2>
+                </div>
+            </a>
+            <a href="08_email_routing.html" class="menu-card line">
+                <div class="icon-box">📧</div>
+                <div class="card-content">
+                    <h2>メール設定</h2>
                 </div>
             </a>
         </div>
 
-        <!-- Phase 3: Operation -->
-        <h3 style="margin: 30px 0 10px 0; color: #d35400; font-size: 1rem;">3. 運用・更新（ルーティン）</h3>
+        <h3 style="margin: 30px 0 10px 0; color: #d35400; font-size: 1rem;">運用</h3>
         <div class="manual-grid">
-            <a href="04_github.html" class="menu-card git">
-                <div class="icon-box">🐙</div>
-                <div class="card-content">
-                    <h2>Antigravity × GitHub 爆速運用</h2>
-                    <p>「黄金サイクル」で日々の更新を爆速化する（自分用）。</p>
-                </div>
-            </a>
             <a href="03_lp_operation.html" class="menu-card lp">
                 <div class="icon-box">🚀</div>
                 <div class="card-content">
-                    <h2>採用特化LP運用ガイド</h2>
-                    <p>写真更新、文章修正など、日々のメンテナンス方法。</p>
+                    <h2>LP運用ガイド</h2>
                 </div>
             </a>
         </div>
