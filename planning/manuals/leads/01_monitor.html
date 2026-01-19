@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【限定3社】採用資産構築モニター募集要項 | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 30px 20px;
+            border-bottom: 4px solid #003366;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .site-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: #003366;
+        }
+        .site-header .sub-title {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+            display: block;
+        }
+        .content-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.4rem;
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .lead-text {
+            font-weight: bold;
+            font-size: 1.05rem;
+            color: #2c3e50;
+            line-height: 2;
+        }
+        
+        /* Diagram Styles */
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .diagram-step {
+            display: flex;
+            align-items: center;
+            background: #f8fbff;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        .diagram-step::after {
+            content: "▼";
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ccc;
+            font-size: 14px;
+        }
+        .diagram-step:last-child::after {
+            display: none;
+        }
+        .step-label {
+            background: #003366;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 15px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .step-content strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        .step-content span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Price Box */
+        .price-box {
+            background: #fffbe6;
+            border: 2px solid #ffd700;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .price-item {
+            margin-bottom: 20px;
+        }
+        .price-label {
+            font-size: 1rem;
+            color: #666;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .price-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .price-note {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: #fff5f5;
+            border: 2px solid #ffcdd2;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        .warning-title {
+            color: #c62828;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .warning-title::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+
+        /* CTA */
+        .cta-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .cta-btn {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #06c755; /* LINE Green */
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(6, 199, 85, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(6, 199, 85, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .site-header h1 { font-size: 1.3rem; }
+            .content-box { padding: 25px; }
+            .diagram-step { flex-direction: column; align-items: flex-start; text-align: left; }
+            .step-label { margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb" style="margin-bottom: 20px;">
+                <a href="index.html" style="color: #666; text-decoration: none;">← ガイド一覧に戻る</a>
+            </div>
+            <h1>【限定3社】採用資産構築モニター募集要項</h1>
+            <span class="sub-title">〜求人広告に頼らない「自社で採れる」仕組みを、共に作りませんか？〜</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="content-box">
+            
+            <p class="lead-text">
+                私は現在、三重県の建設会社様と共に、求人媒体に依存しない「採用の自社資産化」プロジェクトを進めています。<br>
+                この仕組みは、広告費を払い続ける「家賃型」の採用から、自社で応募をコントロールする「持ち家型」の採用へとシフトするものです。<br><br>
+                今回、このモデルをさらに多業種、そしてより広い地域へと展開し、さらなる成功事例を積み上げるため、私の伴走サポートを特別条件で受けられる「限定モニター」を募集いたします。
+            </p>
+
+            <h2>1. 採用資産構築エンジンとは？</h2>
+            <p>
+                「論理的な図解」と「心に響く言葉」の両輪で、求職者の心を動かし、採用へと繋げる独自の仕組みです。<br>
+                エンジンの全体構造は以下の通りです。
+            </p>
+
+            <div class="diagram-container">
+                <div class="diagram-step">
+                    <div class="step-label">STEP 1：集客（広げる）</div>
+                    <div class="step-content">
+                        <strong>Instagram（日常の記録）＋ Googleしごと検索</strong>
+                        <span>「映え」や「キラキラ」は不要。<br>求職者が安心するのは、飾らない「ありのままの現場」です。</span>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="step-label">STEP 2：接客（伝える）</div>
+                    <div class="step-content">
+                        <strong>採用特化LP（GitHub ＆ Cloudflare構築）</strong>
+                        <span>スマホで一瞬で開き、会社の想いを120%伝えます。</span>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="step-label">STEP 3：囲い込み（繋がる）</div>
+                    <div class="step-content">
+                        <strong>公式LINE</strong>
+                        <span>一度訪れた人を逃さず、いつでも連絡が取れる関係を作ります。</span>
+                    </div>
+                </div>
+                <div class="diagram-step">
+                    <div class="step-label">STEP 4：回収（選ぶ）</div>
+                    <div class="step-content">
+                        <strong>Googleフォーム適性診断</strong>
+                        <span>履歴書不要の「診断」で、本気度の高い人を自動で判別します。</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>2. なぜ今、この「エンジン」が必要なのか</h2>
+            
+            <h3>掛け捨てからの卒業</h3>
+            <p>
+                求人媒体に高い広告費を払い続け、掲載が終われば消えてしまう。<br>
+                そんな「掛け捨て型」の採用から卒業しませんか？<br>
+                私たちは、御社の魅力を社内外へ発信し続け、自社で人を採る力を育てる「採用資産」を御社専用に組み上げます。
+            </p>
+
+            <h3>あえて最新の「サーバーレス技術」を使う理由</h3>
+            <p>多くの制作会社が使う従来の仕組み（サーバー型）は、維持費がかかり続けたり、数年でシステムが古くなるリスクがあります。<br>私のエンジンは、世界標準の最新技術（サーバーレス）を採用しています。</p>
+            <ul>
+                <li><strong>一生モノ：</strong> 壊れる心配がなく、10年後も今と同じスピードで動きます。</li>
+                <li><strong>維持費0円：</strong> サーバー代を気にせず、ずっと会社の資産として残せます。</li>
+                <li><strong>無敵の守り：</strong> 本体サイトとは切り離して構築するため、セキュリティも万全です。</li>
+            </ul>
+
+            <h3>「外部編集長」としての約束</h3>
+            <p>
+                ただ箱（サイト）を作って終わりではありません。<br>
+                このエンジンを回すには、現場の「生きた情報」（写真1枚、動画1本）が不可欠です。<br>
+                私が御社の「外部編集長」として伴走し、御社だけの成功モデルを一緒に作り上げます。
+            </p>
+
+            <h2>3. モニター価格と条件</h2>
+
+            <div class="price-box">
+                <div class="price-item">
+                    <span class="price-label">初期構築費用</span>
+                    <span class="price-value">50,000円</span>
+                    <span class="price-note">（税込）</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">運用伴走費用</span>
+                    <span class="price-value">20,000円〜 / 月</span>
+                </div>
+                <p style="margin: 0; font-size: 0.9rem; color: #666;">
+                    ※ 通常の制作費用を大幅に抑え、システム構築の実費相当のみで承ります。
+                </p>
+            </div>
+
+            <h3>モニター対象・条件</h3>
+            <ul>
+                <li><strong>対象業種：</strong> 全業種（建設、製造、飲食、介護、サービス業など）</li>
+                <li><strong>対象地域：</strong> 三重・愛知・岐阜を中心に全国対応（オンライン対応可）</li>
+                <li><strong>必須条件：</strong> 
+                    <ul>
+                        <li>実名での事例公開にご協力いただけること</li>
+                        <li>導入後インタビューへのご協力</li>
+                        <li>LINEでの積極的な情報共有（現場写真の提供など）が可能であること</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="warning-box">
+                <div class="warning-title">既存クライアント様への配慮について（重要）</div>
+                <p style="font-size: 0.95rem; margin: 0;">
+                    弊社は、ご縁のあったクライアント様の利益を最大化することを第一に考えております。<br>
+                    そのため、すでにサポート中の企業様と<strong>「営業エリア」および「職種」が完全に重複する場合、お申し込みをお断りすることがございます。</strong><br>
+                    先行企業様の採用を阻害しないための措置ですので、何卒ご理解ください。
+                </p>
+            </div>
+
+            <h2>4. よくあるご質問</h2>
+            <div class="qa-box" style="margin-bottom: 40px;">
+                <div class="qa-item" style="margin-bottom: 20px;">
+                    <strong style="display: block; color: #003366; margin-bottom: 5px;">Q. ITの知識が全くなくても大丈夫ですか？</strong>
+                    <p style="margin: 0; font-size: 0.95rem;">はい、ご安心ください。難しい設定や文章作成は、すべて私が「外部編集長」として代行します。社長様や担当者様にお願いするのは「写真の共有」や「インタビュー対応」などの素材提供がメインです。</p>
+                </div>
+                <div class="qa-item" style="margin-bottom: 20px;">
+                    <strong style="display: block; color: #003366; margin-bottom: 5px;">Q. 記載の費用（5万円＋月2万円）以外に追加料金はかかりますか？</strong>
+                    <p style="margin: 0; font-size: 0.95rem;">いいえ、かかりません。通常のWeb制作会社のように、数ページ増えるごとに追加料金…といった仕組みではありませんので、ご安心ください。（※サーバー費用も0円です）</p>
+                </div>
+                <div class="qa-item">
+                    <strong style="display: block; color: #003366; margin-bottom: 5px;">Q. 途中で解約することはできますか？</strong>
+                    <p style="margin: 0; font-size: 0.95rem;">はい、可能です。万が一、成果にご満足いただけない場合は、1ヶ月前の告知にて契約を終了することができます。その場合も、違約金などは一切発生しません。</p>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <p style="font-weight: bold; margin-bottom: 20px;">まずは無料診断にて、貴社の課題をお聞かせください</p>
+                <a href="https://forms.gle/W3soAqEUbyZ7Py1J6" target="_blank" class="cta-btn">
+                    【無料】診断を受けてモニターに応募する
+                </a>
+            </div>
+
+        </main>
+
+        <footer style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 30px;">
+            &copy; 2026 Webをつくるしごと All Rights Reserved.
+        </footer>
+    </div>
+
+</body>
+</html>
