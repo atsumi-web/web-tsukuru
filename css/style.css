@@ -34,7 +34,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-mincho);
-  font-weight: 500;
+  font-weight: 800; /* Increased to 800 for dignity */
   line-height: 1.5;
 }
 
@@ -99,7 +99,9 @@ a:hover {
   width: 100%;
   top: 0;
   z-index: 1000;
-  transition: background 0.3s, padding 0.3s;
+  transition:
+    background 0.3s,
+    padding 0.3s;
 }
 
 /* Scrolled State (added by JS) */
@@ -130,7 +132,7 @@ a:hover {
   text-decoration: none;
   letter-spacing: 0.1em;
   color: #0f172a;
-  font-weight: 500;
+  font-weight: 800;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -139,13 +141,13 @@ a:hover {
 
 /* Campaign Notification Bar */
 .campaign-notification-bar {
-    background: linear-gradient(90deg, #DC2626, #B91C1C);
-    position: relative;
-    z-index: 2000;
-    transition: background 0.3s;
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
+  position: relative;
+  z-index: 2000;
+  transition: background 0.3s;
 }
 .campaign-notification-bar:hover {
-    background: #991b1b;
+  background: #991b1b;
 }
 
 .logo img {
@@ -188,25 +190,31 @@ a:hover {
 }
 
 .nav-btn {
-  background: #06c755 !important; /* LINE Green */
+  background: var(--accent-color) !important; /* Gold */
   color: #fff !important;
   border: none;
-  padding: 12px 28px;
+  padding: 10px 24px; /* Narrower padding */
   border-radius: 2px;
   transition:
     transform 0.3s,
     background 0.3s;
+  font-size: 16px; /* 16px */
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
 }
 
 .nav-btn i {
   color: inherit !important; /* Force white icon */
+  font-size: 1.5em; /* Further increased (approx 1.2x previous) */
 }
 
 .nav-btn:hover {
-  background: #05b34d !important; /* Darker Green */
+  background: #8e7037 !important; /* Darker Gold */
   opacity: 1;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(6, 199, 85, 0.4);
+  box-shadow: 0 5px 15px rgba(174, 139, 71, 0.4);
 }
 
 /* Hero */
@@ -627,17 +635,17 @@ a:hover {
   padding-left: 0;
 }
 
-/* Aggressive CTA (LINE Green for Consistency) */
+/* Aggressive CTA (Reverting to Gold) */
 .aggressive-cta {
-  background: #06c755 !important; /* Unified to LINE Green */
-  box-shadow: 0 5px 20px rgba(6, 199, 85, 0.4);
+  background: var(--accent-color) !important; /* Back to Gold */
+  box-shadow: 0 5px 20px rgba(174, 139, 71, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .aggressive-cta:hover {
-  background: #05b34d !important;
+  background: #8e7037 !important;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(6, 199, 85, 0.6);
+  box-shadow: 0 10px 30px rgba(174, 139, 71, 0.6);
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -845,7 +853,7 @@ a:hover {
     top: 230px !important; /* Force lower position */
     right: 10px;
     left: auto;
-    line-height: 0.85; 
+    line-height: 0.85;
   }
   .bubble-text-small {
     font-size: 11px;
@@ -1236,118 +1244,129 @@ a:hover {
 
 /* Campaign & Price (New 2-Column Layout) */
 .price-section {
-    padding: 100px 0;
-    background: var(--bg-light);
+  padding: 100px 0;
+  background: var(--bg-light);
 }
 
 .price-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    max-width: 960px;
-    margin: 0 auto;
-    align-items: stretch; /* Cards stretch to same height */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto;
+  align-items: stretch; /* Cards stretch to same height */
 }
 
 .plan-card {
-    background: #fff;
-    padding: 50px 40px;
-    border-radius: 20px; /* Slightly rounder */
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column; /* For vertical alignment */
-    justify-content: space-between; /* Push button to bottom */
+  background: #fff;
+  padding: 50px 40px;
+  border-radius: 20px; /* Slightly rounder */
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column; /* For vertical alignment */
+  justify-content: space-between; /* Push button to bottom */
 }
 
 /* Plan A: Recommended */
 .plan-card.recommended {
-    border: 4px solid #0056D2; /* Brand Blue */
-    box-shadow: 0 20px 60px rgba(0, 86, 210, 0.15); /* Stronger shadow */
-    z-index: 2; /* Lifts it slightly */
-    background: linear-gradient(to bottom, #fff, #f6faff); /* Subtle blue tint at bottom */
+  border: 4px solid #0056d2; /* Brand Blue */
+  box-shadow: 0 20px 60px rgba(0, 86, 210, 0.15); /* Stronger shadow */
+  z-index: 2; /* Lifts it slightly */
+  background: linear-gradient(
+    to bottom,
+    #fff,
+    #f6faff
+  ); /* Subtle blue tint at bottom */
 }
 
 .plan-card.recommended:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 30px 80px rgba(0, 86, 210, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 30px 80px rgba(0, 86, 210, 0.2);
 }
 
 .plan-badge {
-    position: absolute;
-    top: -4px; /* Align with border */
-    right: -4px;
-    background: #0056D2;
-    color: white;
-    padding: 8px 24px;
-    font-size: 14px;
-    font-weight: bold;
-    border-top-right-radius: 16px;
-    border-bottom-left-radius: 16px;
-    letter-spacing: 0.05em;
-    box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
+  position: absolute;
+  top: -4px; /* Align with border */
+  right: -4px;
+  background: #0056d2;
+  color: white;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border-top-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  letter-spacing: 0.05em;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .plan-title {
-    font-size: 26px; /* Larger */
-    font-weight: bold;
-    color: #333;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #eef2f6; /* Thicker light border */
-    text-align: center;
+  font-size: 26px; /* Larger */
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eef2f6; /* Thicker light border */
+  text-align: center;
 }
 
 .price-area {
-    margin-bottom: 40px;
-    text-align: center;
-    background: rgba(255,255,255,0.8);
-    padding: 20px;
-    border-radius: 12px;
+  margin-bottom: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 12px;
 }
 
 .limit-badge {
-    background: #DC2626;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 6px 16px;
-    border-radius: 50px;
-    display: inline-block;
-    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
-    border: 2px solid white;
-    animation: pop 2s infinite;
+  background: #dc2626;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 50px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+  border: 2px solid white;
+  animation: pop 2s infinite;
 }
 
 @keyframes pop {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .price-init {
-    text-decoration: line-through;
-    color: #aaa;
-    font-size: 14px;
-    margin-bottom: 8px;
-    display: block;
-    font-family: "Outfit", sans-serif; /* Stylish Number */
-    letter-spacing: 0.05em;
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+  font-family: "Outfit", sans-serif; /* Stylish Number */
+  letter-spacing: 0.05em;
 }
 
 .price-monitor {
-    font-size: 20px;
-    font-weight: bold;
-    color: #DC2626; /* Red for emphasis */
-    margin-bottom: 15px;
-    display: block;
-    background: #fee2e2;
-    color: #991b1b;
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-family: "Noto Sans JP", sans-serif; /* Japanese text mixed */
+  font-size: 20px;
+  font-weight: bold;
+  color: #dc2626; /* Red for emphasis */
+  margin-bottom: 15px;
+  display: block;
+  background: #fee2e2;
+  color: #991b1b;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-family: "Noto Sans JP", sans-serif; /* Japanese text mixed */
 }
 
 /* Make the number part of monitor price stylish if possible, but it mixes JP. 
@@ -1356,100 +1375,100 @@ a:hover {
 */
 
 .price-monthly {
-    font-size: 56px; /* Increased size for English font */
-    font-weight: 800;
-    color: #333;
-    font-family: "Outfit", sans-serif; /* Stylish Geometric Sans */
-    line-height: 1;
-    display: block;
-    margin-top: 10px;
-    letter-spacing: -0.02em; /* Tighten for impact */
+  font-size: 56px; /* Increased size for English font */
+  font-weight: 800;
+  color: #333;
+  font-family: "Outfit", sans-serif; /* Stylish Geometric Sans */
+  line-height: 1;
+  display: block;
+  margin-top: 10px;
+  letter-spacing: -0.02em; /* Tighten for impact */
 }
 
 .price-monthly span {
-   font-size: 0.4em;
-   font-family: "Noto Sans JP", sans-serif;
-   font-weight: normal;
-   color: #666;
-   vertical-align: middle;
-   margin-left: 5px;
+  font-size: 0.4em;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: normal;
+  color: #666;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 .plan-features-list {
-    list-style: none;
-    padding: 0 10px; /* Indent slightly */
-    margin: 0 0 40px 0;
-    text-align: left;
-    font-size: 15px;
-    line-height: 2;
-    color: #444;
-    flex-grow: 1; /* Pushes button to bottom */
+  list-style: none;
+  padding: 0 10px; /* Indent slightly */
+  margin: 0 0 40px 0;
+  text-align: left;
+  font-size: 15px;
+  line-height: 2;
+  color: #444;
+  flex-grow: 1; /* Pushes button to bottom */
 }
 
 .plan-features-list li {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center; /* Center align vertically */
-    border-bottom: 1px dashed #eee; /* Subtle separator */
-    padding-bottom: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center; /* Center align vertically */
+  border-bottom: 1px dashed #eee; /* Subtle separator */
+  padding-bottom: 12px;
 }
 .plan-features-list li:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .plan-features-list i {
-    min-width: 24px; /* Aligns icons */
-    font-size: 18px;
-    margin-right: 10px;
+  min-width: 24px; /* Aligns icons */
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 /* Plan B: Self */
 .plan-card.self {
-    border: 1px solid #E5E7EB;
-    color: #6B7280;
-    background: #fdfdfd; /* Off-white */
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+  background: #fdfdfd; /* Off-white */
 }
 
 .plan-card.self .plan-title {
-    color: #9CA3AF;
-    border-bottom-color: #f3f4f6;
+  color: #9ca3af;
+  border-bottom-color: #f3f4f6;
 }
 
 .plan-card.self .price-monthly {
-    color: #0056D2; /* Highlights 0 Yen in Blue */
+  color: #0056d2; /* Highlights 0 Yen in Blue */
 }
 
 .plan-card.self .plan-features-list {
-    color: #888;
+  color: #888;
 }
 
 .plan-card.self .plan-features-list i {
-    color: #ccc; /* Gray icons */
+  color: #ccc; /* Gray icons */
 }
 
 /* Remove Warning color override for uniform gray in self plan, except specific warning */
 .plan-card.self .plan-features-list li.warning {
-    color: #d97706; /* Amber for warning */
-    border-bottom: none;
-    background: #fffbeb;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
+  color: #d97706; /* Amber for warning */
+  border-bottom: none;
+  background: #fffbeb;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
 }
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-    .price-grid {
-        grid-template-columns: 1fr; /* Stack vertically */
-        gap: 40px;
-        max-width: 400px;
-    }
-    .plan-card {
-        padding: 40px 25px;
-    }
-    .price-monthly {
-        font-size: 40px;
-    }
+  .price-grid {
+    grid-template-columns: 1fr; /* Stack vertically */
+    gap: 40px;
+    max-width: 400px;
+  }
+  .plan-card {
+    padding: 40px 25px;
+  }
+  .price-monthly {
+    font-size: 40px;
+  }
 }
 
 /* Regular Plans (Mini) */
@@ -2145,11 +2164,11 @@ a:hover {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: var(--bg-dark);
+  background: var(--accent-color) !important; /* Force Gold */
   color: #fff;
   padding: 16px 24px;
   border-radius: 50px;
-  display: flex;
+  display: none; /* Hidden on PC */
   align-items: center;
   gap: 8px;
   font-size: 16px;
@@ -2170,7 +2189,7 @@ a:hover {
 }
 
 .fixed-cta-btn:hover {
-  background: #333;
+  background: #8e7037;
   transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
@@ -2197,6 +2216,7 @@ a:hover {
     font-size: 14px !important;
   }
   .fixed-cta-btn {
+    display: flex; /* Show on Mobile */
     bottom: 15px;
     right: 15px;
     padding: 14px 20px;
@@ -2284,7 +2304,7 @@ a:hover {
 /* Back to Top Button */
 .back-to-top {
   position: fixed;
-  bottom: 90px; /* Above the fixed CTA */
+  bottom: 30px; /* Lowered for PC since CTA is hidden */
   right: 30px;
   width: 50px;
   height: 50px;
@@ -3814,14 +3834,31 @@ a:hover {
 
 .p-sign {
   font-family: "Zen Kurenaido", sans-serif !important;
-  font-size: 42px;
-  margin-top: 15px;
+  font-size: 32px; /* Reduced from 42px */
+  margin-top: 30px; /* Increased spacing further */
   color: var(--text-color);
   font-weight: 400;
-  transform: rotate(-3deg);
+  transform: none !important; /* Force straight globally (PC & Mobile) */
   display: inline-block;
   letter-spacing: 0.05em;
   opacity: 0.9;
+  text-align: right; /* Default PC: Right aligned */
+  /* Badge Style Logic */
+  display: table !important; /* Shrink to fit content */
+  margin-left: auto; /* Push to right on PC */
+  margin-right: 0;
+  width: auto; /* Override 100% */
+}
+
+@media (max-width: 768px) {
+  .p-sign {
+    margin-left: auto !important;
+    margin-right: auto !important; /* Center on mobile */
+    text-align: center !important;
+    font-size: 18px !important; /* Smaller text for luxury badge */
+    margin-top: 25px !important;
+    transform: none !important;
+  }
 }
 
 .brand-profile .profile-image img {
@@ -3857,7 +3894,7 @@ a:hover {
 
 /* Header-Matched CTA (Square Gold - Single Line) */
 .brand-cta {
-  background: #06c755 !important; /* LINE Green */
+  background: var(--accent-color) !important; /* Muted Gold */
   color: #fff !important;
   border: none !important;
   border-radius: 2px !important;
@@ -3873,6 +3910,7 @@ a:hover {
   min-width: 280px;
   height: auto !important;
   text-decoration: none;
+  font-size: 16px; /* Explicitly unify text size */
 }
 
 @media (max-width: 768px) {
@@ -3884,7 +3922,6 @@ a:hover {
   }
 }
 
-/* Hide the sub-label to make it look like a standard button */
 /* Hide the sub-label to make it look like a standard button */
 .brand-cta > span:first-child {
   display: none;
@@ -3903,12 +3940,12 @@ a:hover {
 }
 
 .brand-cta i {
-  font-size: 14px;
+  font-size: 20px; /* Unified Icon Size */
   color: inherit !important; /* Force inherit white text color */
 }
 
 .brand-cta:hover {
-  background: #05b34d !important;
+  background: #8e7037 !important; /* Darker Gold */
   color: #fff !important;
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -4028,7 +4065,7 @@ a:hover {
 
   /* Mobile Arrow */
   .brand-flow .step-item:not(:last-child)::after {
-    content: "笆ｼ";
+    content: "\25BC"; /* Down Triangle */
     display: block;
     position: absolute;
     bottom: -35px;
@@ -4158,49 +4195,45 @@ a:hover {
 @media (max-width: 768px) {
   /* 1. Badge Adjustment */
   .brand-bubble {
-    width: 80px !important; /* Increased: User requested larger size */
-    height: 80px !important;
-    top: 150px !important; /* Adjusted: A little lower per user request */
+    width: 100px !important; /* Increased to 100px to fit text */
+    height: 100px !important;
+    top: 150px !important;
     right: 15px !important;
     /* Ensure text fits */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 2px; /* Visual optical adjustment */
+    padding-top: 2px;
   }
 
-  .brand-bubble br {
-    display: none; /* Remove break to let Flex handle spacing */
+  .brand-bubble > br {
+    display: none; /* Hide top level break */
   }
 
-  .brand-bubble .bubble-text-small {
-    font-size: 11px !important; /* Equal size (11px) */
-    letter-spacing: 0;
-    font-weight: 700;
-    line-height: 1;
-    display: block;
-  }
-
-  .brand-bubble .bubble-text-large {
-    font-size: 11px !important; /* Equal size (11px) */
-    letter-spacing: 0;
-    font-weight: 700;
-    line-height: 1;
-    display: block;
-    margin-top: 4px; /* Maintain spacing */
+  .brand-bubble .bubble-text-large br {
+    display: inline; /* Show nested break for 3 lines */
   }
 
   .brand-bubble .bubble-text-small {
-    font-size: 10px !important; /* Increased for visibility */
+    font-size: 11px !important;
     letter-spacing: 0;
     font-weight: 700;
+    line-height: 1.2;
+    display: block;
+    white-space: nowrap;
+    text-align: center;
   }
 
   .brand-bubble .bubble-text-large {
-    font-size: 12px !important; /* Increased for visibility */
+    font-size: 11px !important;
     letter-spacing: 0;
     font-weight: 700;
+    line-height: 1.2;
+    display: block;
+    margin-top: 3px; /* Reduced margin */
+    white-space: nowrap;
+    text-align: center;
   }
 
   /* 2. Industry Strip - Smoother Scroll */
@@ -4325,14 +4358,14 @@ a:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #06c755;
+  background-color: var(--accent-color);
   color: #fff !important;
   text-decoration: none;
   padding: 15px 40px;
   border-radius: 50px;
   font-weight: 700;
   font-size: 18px;
-  box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
+  box-shadow: 0 4px 15px rgba(174, 139, 71, 0.3);
   transition:
     transform 0.3s,
     box-shadow 0.3s;
@@ -4342,7 +4375,7 @@ a:hover {
 
 .line-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(6, 199, 85, 0.4);
+  box-shadow: 0 8px 25px rgba(174, 139, 71, 0.4);
   opacity: 1;
 }
 
@@ -4371,7 +4404,7 @@ a:hover {
 
 /* Bonus Section (Limited Offer) */
 .brand-bonus-section {
-  background-color: #FEFDF5; /* Light Beige */
+  background-color: #fefdf5; /* Light Beige */
   padding: 80px 0;
 }
 
@@ -4474,6 +4507,10 @@ a:hover {
   /* Flex is already set in .brand-cta */
 }
 
+.brand-cta-large strong {
+  font-size: inherit !important; /* Allow it to scale with parent */
+}
+
 .brand-cta-large i {
   font-size: 1.4em !important; /* Larger icon */
 }
@@ -4487,6 +4524,31 @@ a:hover {
   }
   .brand-cta-large {
     padding: 18px 20px !important;
-    font-size: 16px !important;
+    font-size: 18px !important; /* Increased from 16px for better visibility on mobile too */
   }
+}
+
+/* NUCLEAR OVERRIDE FOR GOLD BUTTONS */
+html body .nav-btn,
+html body .fixed-cta-btn,
+html body .brand-cta,
+html body .line-btn,
+html body a.nav-btn,
+html body a.fixed-cta-btn,
+html body a.brand-cta,
+html body a.line-btn {
+    background-color: #ae8b47 !important; /* Gold */
+    background: #ae8b47 !important;
+}
+
+html body .nav-btn:hover,
+html body .fixed-cta-btn:hover,
+html body .brand-cta:hover,
+html body .line-btn:hover,
+html body a.nav-btn:hover,
+html body a.fixed-cta-btn:hover,
+html body a.brand-cta:hover,
+html body a.line-btn:hover {
+    background-color: #8e7037 !important; /* Darker Gold */
+    background: #8e7037 !important;
 }
