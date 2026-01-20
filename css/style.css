@@ -141,13 +141,13 @@ a:hover {
 
 /* Campaign Notification Bar */
 .campaign-notification-bar {
-  background: linear-gradient(90deg, #dc2626, #b91c1c);
+  background: #0F172A; /* Navy */
   position: relative;
   z-index: 2000;
   transition: background 0.3s;
 }
 .campaign-notification-bar:hover {
-  background: #991b1b;
+  background: #1e293b; /* Lighter Navy */
 }
 
 .logo img {
@@ -4192,6 +4192,19 @@ a:hover {
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4); /* Navy Shadow */
 }
 
+/* Global Badge Lines (PC & Mobile) */
+.brand-bubble .bubble-text-small {
+  display: block;
+  margin-bottom: 12px; /* Increased separation */
+}
+.badge-line-1 {
+  display: block;
+  margin-bottom: 5px; /* Spacing between lines */
+}
+.badge-line-2 {
+  display: block;
+}
+
 @media (max-width: 768px) {
   /* 1. Badge Adjustment */
   .brand-bubble {
@@ -4221,19 +4234,39 @@ a:hover {
     font-weight: 700;
     line-height: 1.2;
     display: block;
+    margin-bottom: 5px !important; /* Visual gap for 3-line layout */
     white-space: nowrap;
     text-align: center;
   }
 
   .brand-bubble .bubble-text-large {
-    font-size: 11px !important;
+    font-size: 11px !important; /* Keep large size logic? Wait, font-size: 11px IS small. Ah, .bubble-text-large in mobile is set to 11px? Yes. */
+    /* Wait, checking previous ViewFile... yes, line 4220 font-size: 11px !important. */
     letter-spacing: 0;
     font-weight: 700;
     line-height: 1.2;
-    display: block;
-    margin-top: 3px; /* Reduced margin */
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0 !important; /* Remove container margin */
     white-space: nowrap;
     text-align: center;
+  }
+
+  .badge-line-1 {
+    display: block !important;
+    margin-bottom: 5px !important; /* 5px gap between L2 and L3 */
+  }
+
+  .badge-line-2 {
+    display: block !important;
+  }
+
+  /* Remove BR logic */
+  .brand-bubble > br,
+  .brand-bubble .bubble-text-large br {
+    display: none !important;
   }
 
   /* 2. Industry Strip - Smoother Scroll */
@@ -4546,9 +4579,23 @@ html body .fixed-cta-btn:hover,
 html body .brand-cta:hover,
 html body .line-btn:hover,
 html body a.nav-btn:hover,
-html body a.fixed-cta-btn:hover,
-html body a.brand-cta:hover,
-html body a.line-btn:hover {
-    background-color: #8e7037 !important; /* Darker Gold */
-    background: #8e7037 !important;
+/* Bonus Section - Navy Background Override */
+.brand-bonus-section {
+  background-color: #0F172A !important; /* Navy */
+  color: #fff !important;
+}
+
+.brand-bonus-section h2 {
+  color: #fff !important;
+}
+
+.brand-bonus-section .section-header span {
+  color: #ae8b47 !important; /* Ensure 'Special Gift' is Gold */
+}
+
+/* Card inside bonus section */
+.brand-bonus-section .bonus-card {
+  background: #fff; /* Keep card white for contrast? Or make it also dark? User said "Background to Navy". Usually this means section. */
+  /* If section is Navy, Card White looks good. */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important; /* Stronger shadow on dark bg */
 }
