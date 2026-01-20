@@ -1,40 +1,40 @@
 /* ============================================
-   css/style.css - 堀田建設LP 最終版
+   css/style.css - 蝣逕ｰ蟒ｺ險ｭLP 譛邨ら沿
    ============================================ */
 
-/* 1. カラーパレット */
+/* 1. 繧ｫ繝ｩ繝ｼ繝代Ξ繝�ヨ */
 :root {
-    /* メインカラー */
+    /* 繝｡繧､繝ｳ繧ｫ繝ｩ繝ｼ */
     --color-primary: #013276;
     --color-primary-light: #1e4a8a;
     --color-primary-dark: #002257;
     --color-primary-bg: rgba(1, 50, 118, 0.05);
     
-    /* アクセントカラー */
+    /* 繧｢繧ｯ繧ｻ繝ｳ繝医き繝ｩ繝ｼ */
     --color-accent-red: #b3000f;
     --color-accent-red-light: #d32f2f;
     
-    /* ニュートラルカラー */
+    /* 繝九Η繝ｼ繝医Λ繝ｫ繧ｫ繝ｩ繝ｼ */
     --color-neutral-dark: #333333;
     --color-neutral-gray: #666666;
     --color-neutral-light: #999999;
     --color-neutral-border: #e0e0e0;
     
-    /* 背景カラー */
+    /* 閭梧勹繧ｫ繝ｩ繝ｼ */
     --color-bg-white: #ffffff;
     --color-bg-light: #f8f9fa;
     
-    /* フォント */
-    --font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック', sans-serif;
+    /* 繝輔か繝ｳ繝� */
+    --font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '貂ｸ繧ｴ繧ｷ繝�け', sans-serif;
     
-    /* スペーシング */
+    /* 繧ｹ繝壹�繧ｷ繝ｳ繧ｰ */
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;
     --space-lg: 2.5rem;
     --space-xl: 4rem;
     
-    /* その他 */
+    /* 縺昴�莉� */
     --border-radius: 8px;
     --border-radius-sm: 4px;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -43,7 +43,7 @@
     --transition: all 0.2s ease;
 }
 
-/* 2. 基本リセット */
+/* 2. 蝓ｺ譛ｬ繝ｪ繧ｻ繝�ヨ */
 * {
     margin: 0;
     padding: 0;
@@ -71,7 +71,7 @@ body {
     padding: 0 var(--space-md);
 }
 
-/* 3. タイポグラフィ */
+/* 3. 繧ｿ繧､繝昴げ繝ｩ繝輔ぅ */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family);
     font-weight: 700;
@@ -111,7 +111,7 @@ strong {
     color: var(--color-primary-dark);
 }
 
-/* 4. 充実ヘッダー */
+/* 4. 蜈�ｮ溘�繝�ム繝ｼ */
 .site-header {
     background-color: var(--color-bg-white);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -130,7 +130,7 @@ strong {
     align-items: center;
 }
 
-/* ブランド部分 */
+/* 繝悶Λ繝ｳ繝蛾Κ蛻� */
 .logo-link {
     display: flex;
     flex-direction: column;
@@ -150,7 +150,7 @@ strong {
     font-weight: 500;
 }
 
-/* ナビゲーション */
+/* 繝翫ン繧ｲ繝ｼ繧ｷ繝ｧ繝ｳ */
 .header-nav {
     display: flex;
 }
@@ -193,7 +193,7 @@ strong {
     width: 100%;
 }
 
-/* ヘッダーCTA */
+/* 繝倥ャ繝繝ｼCTA */
 .nav-cta {
     background-color: var(--color-accent-red);
     color: var(--color-bg-white) !important;
@@ -216,7 +216,7 @@ strong {
     display: none !important;
 }
 
-/* 5. 統一ボタンデザインシステム */
+/* 5. 邨ｱ荳繝懊ち繝ｳ繝�じ繧､繝ｳ繧ｷ繧ｹ繝�Β */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -233,17 +233,17 @@ strong {
 }
 
 /* ============================================
-   ボタンカラーシステム - 修正箇所
+   繝懊ち繝ｳ繧ｫ繝ｩ繝ｼ繧ｷ繧ｹ繝�Β - 菫ｮ豁｣邂�園
    ============================================ */
 
-/* A. 青ボタン（募集要項を見る） */
+/* A. 髱偵�繧ｿ繝ｳ�亥供髮�ｦ���ｒ隕九ｋ�� */
 .btn-primary:not(.nav-cta):not(.form-submit .btn):not(#entry-form .btn-primary) {
     background-color: var(--color-primary);
     color: var(--color-bg-white);
     border-color: var(--color-primary);
 }
 
-/* 青ボタンのホバー効果 */
+/* 髱偵�繧ｿ繝ｳ縺ｮ繝帙ヰ繝ｼ蜉ｹ譫� */
 .btn-primary:not(.nav-cta):not(.form-submit .btn):not(#entry-form .btn-primary):hover {
     background-color: var(--color-primary-dark);
     color: var(--color-bg-white);
@@ -253,7 +253,7 @@ strong {
     box-shadow: 0 4px 12px rgba(1, 50, 118, 0.3);
 }
 
-/* B. 赤ボタン（応募する、送信する） */
+/* B. 襍､繝懊ち繝ｳ�亥ｿ懷供縺吶ｋ縲�∽ｿ｡縺吶ｋ�� */
 .nav-cta,
 .form-submit .btn,
 #entry-form .btn-primary {
@@ -262,7 +262,7 @@ strong {
     border-color: var(--color-accent-red);
 }
 
-/* 赤ボタンのホバー効果 */
+/* 襍､繝懊ち繝ｳ縺ｮ繝帙ヰ繝ｼ蜉ｹ譫� */
 .nav-cta:hover,
 .form-submit .btn:hover,
 #entry-form .btn-primary:hover {
@@ -274,14 +274,14 @@ strong {
     box-shadow: 0 4px 12px rgba(179, 0, 15, 0.3);
 }
 
-/* C. 白ボタン（まずは話を聞いてみる） */
+/* C. 逋ｽ繝懊ち繝ｳ�医∪縺壹�隧ｱ繧定◇縺�※縺ｿ繧具ｼ� */
 .btn-secondary {
     background-color: var(--color-bg-white);
     color: var(--color-primary);
     border-color: var(--color-primary);
 }
 
-/* ★★★ 白ボタンのホバー効果 - 濃い白に変化 ★★★ */
+/* 笘��笘� 逋ｽ繝懊ち繝ｳ縺ｮ繝帙ヰ繝ｼ蜉ｹ譫� - 豼�＞逋ｽ縺ｫ螟牙喧 笘��笘� */
 .btn-secondary:hover {
     background-color: rgba(255, 255, 255, 0.95);
     color: var(--color-primary);
@@ -291,17 +291,17 @@ strong {
     box-shadow: 0 4px 12px rgba(1, 50, 118, 0.2);
 }
 
-/* D. フッターの白ボタン（今すぐエントリーする） */
-/* ★★★ 重要：このセレクターをAの後に配置 ★★★ */
+/* D. 繝輔ャ繧ｿ繝ｼ縺ｮ逋ｽ繝懊ち繝ｳ�井ｻ翫☆縺舌お繝ｳ繝医Μ繝ｼ縺吶ｋ�� */
+/* 笘��笘� 驥崎ｦ�ｼ壹％縺ｮ繧ｻ繝ｬ繧ｯ繧ｿ繝ｼ繧但縺ｮ蠕後↓驟咲ｽｮ 笘��笘� */
 .site-footer .btn-primary {
     background-color: var(--color-bg-white) !important;
     color: var(--color-primary) !important;
     border-color: var(--color-bg-white) !important;
 }
 
-/* ★★★ フッター白ボタンのホバー効果 - 濃い白に変化 ★★★ */
+/* 笘��笘� 繝輔ャ繧ｿ繝ｼ逋ｽ繝懊ち繝ｳ縺ｮ繝帙ヰ繝ｼ蜉ｹ譫� - 豼�＞逋ｽ縺ｫ螟牙喧 笘��笘� */
 .site-footer .btn-primary:hover {
-    background-color: #f5f5f5 !important; /* 濃い白（グレーがかった白） */
+    background-color: #f5f5f5 !important; /* 豼�＞逋ｽ�医げ繝ｬ繝ｼ縺後°縺｣縺溽區�� */
     color: var(--color-primary) !important;
     border-color: #f5f5f5 !important;
     text-decoration: none;
@@ -309,14 +309,14 @@ strong {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* 大きなボタン */
+/* 螟ｧ縺阪↑繝懊ち繝ｳ */
 .btn-large {
     padding: 1rem 2rem;
     font-size: 1.1rem;
     min-height: 60px;
 }
 
-/* 6. ヒーロー背景画像スタイル */
+/* 6. 繝偵�繝ｭ繝ｼ閭梧勹逕ｻ蜒上せ繧ｿ繧､繝ｫ */
 .hero-bg-image {
     position: absolute;
     top: 0;
@@ -329,7 +329,7 @@ strong {
     z-index: 1;
 }
 
-/* 7. インパクトヒーローセクション */
+/* 7. 繧､繝ｳ繝代け繝医ヲ繝ｼ繝ｭ繝ｼ繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ */
 .hero {
     position: relative;
     height: 100vh;
@@ -445,7 +445,7 @@ strong {
     font-weight: 700;
 }
 
-/* ヒーローアクションボタン */
+/* 繝偵�繝ｭ繝ｼ繧｢繧ｯ繧ｷ繝ｧ繝ｳ繝懊ち繝ｳ */
 .hero-actions {
     display: flex;
     gap: var(--space-md);
@@ -458,7 +458,7 @@ strong {
     min-width: 220px;
 }
 
-/* スクロールインジケーター */
+/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繧､繝ｳ繧ｸ繧ｱ繝ｼ繧ｿ繝ｼ */
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
@@ -523,7 +523,7 @@ strong {
     }
 }
 
-/* 8. セクション共通 */
+/* 8. 繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ蜈ｱ騾� */
 section {
     padding: var(--space-xl) 0;
 }
@@ -546,7 +546,7 @@ section {
     line-height: 1.6;
 }
 
-/* 9. メッセージセクション */
+/* 9. 繝｡繝�そ繝ｼ繧ｸ繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ */
 .message {
     background-color: var(--color-bg-light);
     border-top: 1px solid var(--color-neutral-border);
@@ -569,7 +569,7 @@ section {
     font-weight: 700;
 }
 
-/* 10. 縦型ロードマップ */
+/* 10. 邵ｦ蝙九Ο繝ｼ繝峨�繝�� */
 #growth {
     background-color: var(--color-bg-white);
     padding: var(--space-xl) 0;
@@ -757,7 +757,7 @@ section {
     box-shadow: 0 0 0 3px var(--color-bg-white);
 }
 
-/* 11. データ表示 */
+/* 11. 繝��繧ｿ陦ｨ遉ｺ */
 #environment {
     background-color: var(--color-bg-light);
     border-top: 1px solid var(--color-neutral-border);
@@ -818,7 +818,7 @@ section {
     line-height: 1.5;
 }
 
-/* 12. 先輩の声 */
+/* 12. 蜈郁ｼｩ縺ｮ螢ｰ */
 #voice {
     background-color: var(--color-bg-white);
     border-top: 1px solid var(--color-neutral-border);
@@ -888,7 +888,7 @@ section {
 }
 
 .voice-text::before {
-    content: "“";
+    content: "窶�";
     font-size: 3rem;
     color: var(--color-primary);
     opacity: 0.3;
@@ -898,7 +898,7 @@ section {
     font-family: serif;
 }
 
-/* 13. 募集要項テーブル */
+/* 13. 蜍滄寔隕���ユ繝ｼ繝悶Ν */
 #entry {
     background-color: var(--color-bg-light);
     border-top: 1px solid var(--color-neutral-border);
@@ -937,7 +937,7 @@ section {
     background-color: rgba(1, 50, 118, 0.03);
 }
 
-/* 14. エントリーフォーム */
+/* 14. 繧ｨ繝ｳ繝医Μ繝ｼ繝輔か繝ｼ繝� */
 .entry-form {
     background-color: var(--color-bg-white);
     border-radius: var(--border-radius);
@@ -1016,7 +1016,7 @@ section {
     box-shadow: 0 0 0 3px rgba(1, 50, 118, 0.1);
 }
 
-/* プライバシー同意チェックボックス */
+/* 繝励Λ繧､繝舌す繝ｼ蜷梧э繝√ぉ繝�け繝懊ャ繧ｯ繧ｹ */
 .privacy-agreement {
     grid-column: 1 / -1;
     display: flex;
@@ -1051,7 +1051,7 @@ section {
     text-decoration: underline;
 }
 
-/* 送信ボタン */
+/* 騾∽ｿ｡繝懊ち繝ｳ */
 .form-submit {
     text-align: center;
     margin-top: 2rem;
@@ -1063,7 +1063,7 @@ section {
     min-width: 200px;
 }
 
-/* 15. 超ミニマルフッター（CTA集中型） */
+/* 15. 雜�Α繝九�繝ｫ繝輔ャ繧ｿ繝ｼ��TA髮�ｸｭ蝙具ｼ� */
 .site-footer {
     background-color: var(--color-primary);
     color: var(--color-bg-white);
@@ -1101,7 +1101,7 @@ section {
     margin-top: 1rem;
 }
 
-/* 法的情報 */
+/* 豕慕噪諠��ｱ */
 .footer-legal {
     text-align: center;
     padding-top: var(--space-lg);
@@ -1119,7 +1119,7 @@ section {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* 16. レスポンシブデザイン */
+/* 16. 繝ｬ繧ｹ繝昴Φ繧ｷ繝悶ョ繧ｶ繧､繝ｳ */
 @media (max-width: 1200px) {
     .hero-title {
         font-size: 3rem;
@@ -1146,7 +1146,7 @@ section {
 }
 
 @media (max-width: 768px) {
-    /* ヘッダー */
+    /* 繝倥ャ繝繝ｼ */
     .site-header {
         padding: 0.5rem 0;
     }
@@ -1176,7 +1176,7 @@ section {
         margin-top: 0.25rem;
     }
     
-    /* ヒーロー */
+    /* 繝偵�繝ｭ繝ｼ */
     .hero-title {
         font-size: 2rem;
         padding: 0 var(--space-sm);
@@ -1196,7 +1196,7 @@ section {
         max-width: 300px;
     }
     
-    /* フォームグリッド */
+    /* 繝輔か繝ｼ繝�繧ｰ繝ｪ繝�ラ */
     .form-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -1234,7 +1234,7 @@ section {
         display: none;
     }
     
-    /* フッターCTA */
+    /* 繝輔ャ繧ｿ繝ｼCTA */
     .footer-cta {
         padding: 1.5rem;
     }
@@ -1247,7 +1247,7 @@ section {
         font-size: 1rem;
     }
     
-    /* ボタン調整 */
+    /* 繝懊ち繝ｳ隱ｿ謨ｴ */
     .form-submit .btn {
         width: 100%;
         max-width: none;
@@ -1303,7 +1303,7 @@ section {
 }
 
 /* ============================================
-   青いヘッダーCTAボタン - 新規追加（メイン用）
+   髱偵＞繝倥ャ繝繝ｼCTA繝懊ち繝ｳ - 譁ｰ隕剰ｿｽ蜉��医Γ繧､繝ｳ逕ｨ��
    ============================================ */
 
 .nav-cta-blue {
@@ -1330,18 +1330,18 @@ section {
     box-shadow: 0 4px 12px rgba(1, 50, 118, 0.3);
 }
 
-/* ナビゲーションの下線効果を無効化 */
+/* 繝翫ン繧ｲ繝ｼ繧ｷ繝ｧ繝ｳ縺ｮ荳狗ｷ壼柑譫懊ｒ辟｡蜉ｹ蛹� */
 .nav-cta-blue::after {
     display: none !important;
 }
 
-/* ナビゲーションリンクのホバー効果を上書き */
+/* 繝翫ン繧ｲ繝ｼ繧ｷ繝ｧ繝ｳ繝ｪ繝ｳ繧ｯ縺ｮ繝帙ヰ繝ｼ蜉ｹ譫懊ｒ荳頑嶌縺� */
 .nav-menu a.nav-cta-blue:hover {
     color: var(--color-bg-white) !important;
 }
 
 
-/* 17. ユーティリティクラス */
+/* 17. 繝ｦ繝ｼ繝�ぅ繝ｪ繝�ぅ繧ｯ繝ｩ繧ｹ */
 .text-center { text-align: center; }
 .mt-1 { margin-top: var(--space-sm); }
 .mt-2 { margin-top: var(--space-md); }
@@ -1360,7 +1360,7 @@ section {
     }
 }
 /* ============================================
-   v3 ���S�� �ǉ��X�^�C��
+   v3 完全版 追加スタイル
    ============================================ */
 :root {
     --text-white: #ffffff;
@@ -1368,7 +1368,7 @@ section {
     --text-white-80: rgba(255, 255, 255, 0.8);
 }
 
-/* �q�[���[���� */
+/* ヒーロー調整 */
 .hero {
     margin-top: 0;
     padding-top: 100px;
@@ -1378,7 +1378,7 @@ section {
     padding-bottom: 3rem;
 }
 
-/* �C���^�r���[�Z�N�V���� */
+/* インタビューセクション */
 .interview-section {
     padding: var(--space-xl) 0;
     background-color: var(--color-bg-white);
@@ -1464,7 +1464,7 @@ section {
     line-height: 1.7;
 }
 
-/* ���ʊ��Z�N�V���� */
+/* 共通環境セクション */
 .environment-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1491,7 +1491,7 @@ section {
     margin-bottom: var(--space-sm);
 }
 
-/* �f�[�^�Z�N�V�����iv1����ڐA�j */
+/* データセクション（v1から移植） */
 .data-section {
     background-color: var(--color-bg-light);
     padding: var(--space-xl) 0;
@@ -1545,7 +1545,7 @@ section {
     line-height: 1.5;
 }
 
-/* ���x�Z�N�V�����i�����T�C�g����j */
+/* 制度セクション（公式サイトから） */
 .system-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1564,7 +1564,7 @@ section {
     box-shadow: var(--shadow);
 }
 
-/* �d�������Z�N�V���� */
+/* 仕事説明セクション */
 .job-description-block {
     background: var(--color-bg-light);
     padding: var(--space-lg);
@@ -1583,7 +1583,7 @@ section {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* �I�l�t���[ */
+/* 選考フロー */
 .flow-steps {
     display: flex;
     justify-content: center;
@@ -1616,7 +1616,7 @@ section {
     font-weight: 600;
 }
 
-/* ��W�v�� */
+/* 募集要項 */
 .requirements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1650,7 +1650,7 @@ section {
     font-weight: bold;
 }
 
-/* �q�[���[�A���� */
+/* ヒーロー連絡先 */
 .hero-contact-section {
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
@@ -1690,7 +1690,7 @@ section {
     color: #ffd700;
 }
 
-/* �t�b�^�[CTA */
+/* フッターCTA */
 .footer-cta-simple {
     text-align: center;
     padding: var(--space-xl) 0;
@@ -1717,7 +1717,7 @@ section {
     margin-top: var(--space-md);
 }
 
-/* ���L���� */
+/* 特記事項 */
 .simple-features {
     background-color: transparent;
     padding: 0;
@@ -1759,7 +1759,7 @@ section {
     font-style: italic;
 }
 
-/* ��厑�i�o�b�W */
+/* 専門資格バッジ */
 .qualification-badge {
     display: inline-block;
     background-color: var(--color-accent-red);
@@ -1771,7 +1771,7 @@ section {
     margin-left: var(--space-xs);
 }
 
-/* �Z�N�V�����]������ */
+/* セクション余白統一 */
 .interview-section, .features, .data-section, 
 .job-description, .system-section, .positions,
 .cta, .requirements {
@@ -1779,7 +1779,7 @@ section {
     padding-bottom: var(--space-xl);
 }
 
-/* ���X�|���V�u���� */
+/* レスポンシブ調整 */
 @media (max-width: 768px) {
     .hero {
         padding-top: 90px;
@@ -2251,3 +2251,16 @@ h1, h2, h3 {
     }
 }
 
+
+/* Logo Image Styling */
+.header-logo-img {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .header-logo-img {
+        height: 24px;
+    }
+}
