@@ -275,21 +275,7 @@ a:hover {
 }
 
 .hero-bg::after {
-  /* "Slanted Split" - Hard diagonal line */
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* 105 degrees creates a nice forward-leaning slash. Solid white until 50%, then transparent. */
-  background: linear-gradient(
-    105deg,
-    #ffffff 45%,
-    rgba(255, 255, 255, 0) 45.1%
-  );
-  pointer-events: none;
-  z-index: 1; /* Above image, below content/bubbles */
+  display: none;
 }
 
 .hero-bg img {
@@ -1226,7 +1212,8 @@ a:hover {
 .work-info h4 {
   font-size: 18px;
   margin: 0 0 10px 0;
-  font-family: var(--font-gothic); /* 菴懷刀蜷阪・繧ｴ繧ｷ繝・け縺ｧ繝｢繝繝ｳ縺ｫ */
+  font-family: var(--font-gothic); /* 菴懷刀蜷阪・繧ｴ繧ｷ繝・け縺ｧ繝｢繝€繝ｳ縺ｫ */
+  font-weight: 700; /* Noto Sans JP supports 700, not 800 */
 }
 
 .work-info p {
