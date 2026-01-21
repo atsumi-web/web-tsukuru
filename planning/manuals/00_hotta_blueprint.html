@@ -3,305 +3,503 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>採用資産構築エンジン・導入提案書（堀田建設様） | Webをつくるしごと</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <title>堀田建設株式会社 採用資産構築エンジン 導入提案書 | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
     <style>
+        :root {
+            --primary: #003366;
+            --accent: #d4af37;
+            --bg-light: #f4f7f6;
+            --text-main: #333;
+            --danger: #c0392b;
+            --success: #27ae60;
+        }
         body {
             font-family: 'Noto Sans JP', sans-serif;
             line-height: 1.8;
-            color: #333;
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
+            background-color: var(--bg-light);
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
-        .site-header {
+
+        /* HEADER */
+        .proposal-header {
             background: #fff;
-            padding: 30px 20px;
-            border-bottom: 4px solid #003366;
-            margin-bottom: 30px;
+            padding: 60px 20px;
             text-align: center;
+            border-bottom: 5px solid var(--primary);
+            margin-bottom: 50px;
         }
-        .site-header h1 {
-            margin: 0 0 10px 0;
-            font-size: 1.5rem;
-            color: #003366;
+        .proposal-header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            line-height: 1.3;
         }
-        .site-header .sub-title {
-            font-size: 1rem;
-            color: #666;
-            font-weight: normal;
-            display: block;
-        }
-        .content-box {
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-        h2 {
-            font-size: 1.4rem;
-            color: #003366;
-            border-left: 5px solid #003366;
-            padding-left: 15px;
-            margin-top: 40px;
-            margin-bottom: 25px;
-        }
-        h2:first-child {
-            margin-top: 0;
-        }
-        h3 {
-            font-size: 1.2rem;
-            color: #333;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        p {
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        .lead-text {
-            font-weight: bold;
-            font-size: 1.05rem;
-            color: #2c3e50;
-            line-height: 2;
-        }
-        
-        /* Diagram Styles */
-        .diagram-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin: 30px 0;
-            position: relative;
-        }
-        .diagram-step {
-            display: flex;
-            align-items: center;
-            background: #f8fbff;
-            border: 2px solid #e1e8ed;
-            border-radius: 10px;
-            padding: 20px;
-            position: relative;
-        }
-        .diagram-step::after {
-            content: "▼";
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ccc;
-            font-size: 14px;
-        }
-        .diagram-step:last-child::after {
-            display: none;
-        }
-        .step-label {
-            background: #003366;
-            color: #fff;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-right: 15px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        .step-content strong {
-            display: block;
+        .proposal-header .sub-title {
             font-size: 1.1rem;
-            color: #003366;
-            margin-bottom: 5px;
-        }
-        .step-content span {
-            font-size: 0.9rem;
-            color: #666;
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 10px 20px;
+            border-radius: 50px;
         }
 
-        @media (max-width: 600px) {
-            .site-header h1 { font-size: 1.3rem; }
-            .content-box { padding: 25px; }
-            .diagram-step { flex-direction: column; align-items: flex-start; text-align: left; }
-            .step-label { margin-bottom: 10px; }
+        /* CARD STYLE */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 6px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        /* SECTION 1: ANALYSIS (VISUAL LEAKAGE) */
+        .analysis-visual {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            align-items: stretch;
+        }
+        .av-box {
+            flex: 1;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .av-bad {
+            background: #fff5f5;
+            border: 2px solid #ffcccc;
+        }
+        .av-good {
+            background: #f0f9ff;
+            border: 2px solid #cceeff;
+        }
+        .av-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .button-mock {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #fff;
+            margin: 15px 0;
+            position: relative;
+        }
+        .btn-indeed { background: #2164f3; }
+        .btn-own { background: #003366; transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,51,102,0.3); }
+        
+        .leak-arrow {
+            color: var(--danger);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        .keep-arrow {
+            color: var(--success);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* SECTION 2: MOTHER SHIP vs FIGHTER */
+        .type-comparison {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .type-box {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        .type-box.fighter {
+            border: 2px solid var(--accent);
+            background: #fffdf5;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+        .type-header {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        /* 6 STEP DIAGRAM */
+        .six-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .step-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #ccc;
+        }
+        .step-item.active {
+            background: #eef2f6;
+            border-left-color: var(--primary);
+        }
+        .step-num {
+            font-weight: 900;
+            color: #ccc;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .step-item.active .step-num { color: var(--primary); }
+
+        /* SECTION 4: TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 4px solid #eee;
+        }
+        .time-point {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .time-point::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+        .tp-label {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* SECTION 5: REQUESTS */
+        .request-list {
+            list-style: none;
+            padding: 0;
+        }
+        .request-item {
+            background: #fafafa;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .req-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* SECTION 6: EXCLUSIVE */
+        .exclusive-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .exclusive-box::before {
+            content: 'SPECIAL';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.05);
+            font-weight: 900;
+        }
+        .ex-title {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .proposal-header h1 { font-size: 1.5rem; }
+            .analysis-visual, .type-comparison, .six-steps { flex-direction: column; }
+            .card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
+    <header class="proposal-header">
         <div class="container">
-            <h1>採用資産構築エンジン・導入提案書（案）</h1>
-            <span class="sub-title">〜堀田建設様へのご提案〜</span>
+            <h1>堀田建設株式会社<br>採用資産構築エンジン 導入提案書</h1>
+            <div class="sub-title">媒体依存から脱却し、自社で「採用の主導権」を握るための6ヶ月間実証プログラム</div>
         </div>
     </header>
 
     <div class="container">
-        <main class="content-box">
-            
-            <p class="lead-text">
-                堀田建設様に導入をご提案させていただく、「採用資産構築エンジン」の設計案を作成いたしました。<br>
-                求人媒体に依存せず、自社の力で応募を獲得し続けるための「持ち家型」採用システムの全体像です。<br>
-                本内容にて構築を進めてよろしいか、ご検討をお願いいたします。
-            </p>
 
-            <h2>1. ご提案するシステムの全体構造（6ステップ・エンジン）</h2>
-            <p>
-                本システムは、以下の6ステップで「採用」を科学し、自動化する仕組みです。<br>
-                単なるホームページ制作ではなく、企業のDNA抽出から運用の自走化までを体系化した「採用エンジン」を導入します。
-            </p>
+        <!-- 1. 現状分析 -->
+        <section class="card">
+            <h2>1. 現状分析：情報の流出を止める</h2>
+            <p>今のボタンは「他社行き」です。<br>
+            せっかく興味を持った求職者が、クリックした瞬間に他社の広告の海へ流出しています。<br>
+            まずはこのボタンを<strong>「堀田建設（自社）」</strong>に取り戻しましょう。</p>
 
-            <div class="diagram-container">
-                <div class="diagram-step">
-                    <div class="step-label">Step 1：Mining（種/現状把握）</div>
-                    <div class="step-content">
-                        <strong>埋もれている「強み」の発掘</strong>
-                        <span>御社のDNAや魅力をヒアリングで引き出し、求職者に響く言葉へ変換します。</span>
-                    </div>
+            <div class="analysis-visual">
+                <div class="av-box av-bad">
+                    <span class="av-title" style="color: #c0392b;">現在（媒体依存）</span>
+                    <img src="images/google_leakage.png" alt="Indeedへの流出" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <span class="leak-arrow">▼ Indeedのリストへ流出...<br><span style="font-size:0.8rem">（競合他社と比較される）</span></span>
                 </div>
-                <div class="diagram-step">
-                    <div class="step-label">Step 2：Foundation（土台/LP構築）</div>
-                    <div class="step-content">
-                        <strong>資産型LPの建設</strong>
-                        <span>維持費0円・サーバーレス技術を用いた、御社だけの「採用資産」を構築します。</span>
-                    </div>
+                <div class="av-box av-good">
+                    <span class="av-title" style="color: var(--primary);">未来（自社資産）</span>
+                    <img src="images/google_asset.png" alt="自社への直接応募" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <span class="keep-arrow">▼ 自社サイトとだけ向き合う<br><span style="font-size:0.8rem">（熱意が逃げない）</span></span>
                 </div>
-                <div class="diagram-step">
-                    <div class="step-label">Step 3：Attraction（集客）</div>
-                    <div class="step-content">
-                        <strong>Google・SNS連携</strong>
-                        <span>「地名＋職種」での検索流入や、Instagramの現場写真でファンを惹きつけます。</span>
-                    </div>
+            </div>
+        </section>
+
+        <!-- 2. 戦略図 -->
+        <section class="card">
+            <h2>2. 戦略図：採用資産構築エンジン</h2>
+            <p>既存のHPを「信頼の母艦」とし、今回作るLPを「攻めの戦闘機」として役割を分けます。</p>
+
+            <div class="type-comparison">
+                <div class="type-box">
+                    <div class="type-header">既存サイト（母艦）</div>
+                    <ul>
+                        <li>会社概要・実績・IR</li>
+                        <li>銀行・取引先向け</li>
+                        <li>更新：年数回（守り）</li>
+                        <li><strong>役割：信頼の担保</strong></li>
+                    </ul>
                 </div>
-                <div class="diagram-step">
-                    <div class="step-label">Step 4：Enclosure（囲い込み）</div>
-                    <div class="step-content">
-                        <strong>LINE公式アカウント</strong>
-                        <span>興味を持った求職者と繋がり、定期的な情報発信で信頼を温めます。</span>
-                    </div>
-                </div>
-                <div class="diagram-step">
-                    <div class="step-label">Step 5：Selection（選別）</div>
-                    <div class="step-content">
-                        <strong>Googleフォーム適性診断</strong>
-                        <span>履歴書不要の「診断」で、本気度の高い人を自動で判別し、ミスマッチを防ぎます。</span>
-                    </div>
-                </div>
-                <div class="diagram-step">
-                    <div class="step-label">Step 6：Operation（運用）</div>
-                    <div class="step-content">
-                        <strong>外部編集長による伴走</strong>
-                        <span>公開がスタートライン。プロが編集長として情報の鮮度を保ち、最終的には自走できる状態へ導きます。</span>
-                    </div>
+                <div class="type-box fighter">
+                    <div class="type-header">★新LP（戦闘機）</div>
+                    <ul>
+                        <li>求人・魅力・先輩の声</li>
+                        <li>未来の社員向け</li>
+                        <li>更新：毎日・毎週（攻め）</li>
+                        <li><strong>役割：獲得と口説き</strong></li>
+                    </ul>
                 </div>
             </div>
 
-            <h2>2. 採用の「資産化」のご提案</h2>
+            <h3>6ステップ・ロードマップ</h3>
+            <div class="six-steps">
+                <div class="step-item active">
+                    <span class="step-num">01</span>
+                    <strong>Googleしごと検索ハック</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">「構造化データ（JSON-LD）」を駆使し、Googleに正しい情報を伝えることで、エリア内の求人枠での露出を最大化します。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">02</span>
+                    <strong>エリアジャック戦略</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">鈴鹿・四日市・津の特定キーワードで、御社の求人が上位に表示される確率を高める施策を打ちます。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">03</span>
+                    <strong>サーバーレスLP構築（Git管理）</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">修正を瞬時に反映でき、変更履歴が全て残る「Git」技術を採用。改善のPDCAを止めません。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">04</span>
+                    <strong>現場のリアルな発信</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">整った写真より、現場の日常を切り取った何気ない一枚。信頼を生む「温度」のある情報を発信します。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">05</span>
+                    <strong>公式LINEへの誘導</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">いきなりの面接ではなく、まずはLINEで繋がり、関係性を資産化します。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">06</span>
+                    <strong>Googleフォームで無料診断</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">履歴書不要の「無料診断」を用意。応募の前に適性を判断できる状態にし、ミスマッチを防ぎます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 深掘り -->
+        <section class="card">
+            <h2>3. 深掘り：Google「エリアジャック」の威力</h2>
+            <p>なぜ、広告費0円で露出を増やせるのか。<br>
+            それは<strong>「Googleにだけ聞こえる信号（構造化データ / JSON-LD）」</strong>を送るからです。</p>
             
-            <h3>掛け捨てからの卒業</h3>
-            <p>
-                求人媒体に高い広告費を払い続け、掲載が終われば消えてしまう。<br>
-                そんな「掛け捨て型」の採用から卒業し、堀田建設様の魅力を社内外へ発信し続け、自社で人を採る力を育てるご提案です。
-            </p>
-
-            <h3>あえて最新の「サーバーレス技術」を使う理由</h3>
-            <p>多くの制作会社が使う従来の仕組み（サーバー型）は、維持費がかかり続けたり、数年でシステムが古くなるリスクがあります。<br>今回採用を予定している世界標準の最新技術（サーバーレス）には、以下のメリットがあります。</p>
-            <ul>
-                <li><strong>一生モノ：</strong> 壊れる心配がなく、10年後も今と同じスピードで動きます。</li>
-                <li><strong>維持費0円：</strong> 次世代インフラ（Cloudflare）を活用するため、サーバー費用は一切かかりません。</li>
-                <li><strong>圧倒的なスピード：</strong> 従来のサーバーでは不可能な「即時更新（Git連携）」が可能なため、改善のPDCAが数倍速く回ります。</li>
-                <li><strong>鉄壁の守り：</strong> 世界的プラットフォーム（GitHub）を利用するため、セキュリティも万全です。</li>
-                <li><strong>安心の復元：</strong> 修正履歴が全て残るため、万が一の時もすぐに元通りに復旧できます。</li>
-            </ul>
-
-            <h3>「外部編集長」として</h3>
-            <p>
-                ただ箱（サイト）を作って終わりではありません。<br>
-                このエンジンを回すには、現場の「生きた情報」（写真1枚、動画1本）が不可欠です。<br>
-                許可をいただけましたら、私が堀田建設様の「外部編集長」として伴走し、三重県で一番、人が集まる建設会社を一緒に作り上げたいと考えております。
-            </p>
-
-            <h3>最終ゴールは「御社だけでの自走（卒業）」です</h3>
-            <p>
-                「一度頼んだら、ずっと管理費を払い続けないといけない」<br>
-                そんな業界の常識（依存モデル）を、私は変えたいと思っています。
-            </p>
-            <p>
-                私が構築過程（GitHubやCloudflareの設定）をすべてマニュアル化して公開するのは、<br>
-                <strong>「いつでも私を解約して、自社だけで運用できる状態（＝自走）」</strong>を担保するためです。<br>
-                ブラックボックスを作らず、すべてをお渡しする。<br>
-                その「逃げ道をふさがない誠実さ」こそが、本当のパートナーシップだと信じているからです。
-            </p>
-            <p>
-                ゆくゆくは、私がいなくても、社員様だけで「今日の採用活動」ができる。<br>
-                そんな未来を目指して、まずは全力で伴走させていただきます。
-            </p>
-
-            <div class="note-box" style="background: #e8f5e9; border: 2px solid #81c784; padding: 20px; border-radius: 8px; margin-top: 30px;">
-                <h3 style="margin-top: 0; color: #2e7d32;">費用について</h3>
-                <p style="margin-bottom: 0;">
-                    本プロジェクトは、堀田建設様を「成功モデル（第1号）」とさせていただくため、<br>
-                    <strong>構築費は【全額無料】、運用費も【半年間は無料】</strong>にて承ります。<br>
-                    <span style="font-size: 0.9rem; color: #555;">（※ドメイン（URL）取得の実費（年額1,500円程度）のみ、貴社にてご負担をお願いします）</span><br>
-                    <span style="font-size: 0.9rem; color: #555;">（※半年後以降の運用については、成果を見ながら改めてご相談させてください。<br>あくまで参考ですが、通常サービスとしては月額2万円を予定しています）</span>
+            <div style="background:#f0f7ff; padding:20px; border-radius:8px; border:1px solid #cce0ff; margin-bottom: 30px;">
+                <p style="margin:0;">
+                    多くの競合他社は、求人媒体に情報を預けているため、Googleへの直接通知ができていません。<br>
+                    私たちは、御社の情報をGoogleのデータベースへ直接翻訳して届けます。<br>
+                    結果として、<strong>「三重 建設 求人」などで検索された際、媒体よりも優先的・目立つ位置に表示される</strong>可能性が極めて高くなります。<br>
+                    <small style="color:#666;">（※検索順位はGoogleのアルゴリズムに依存するため、上位表示を100%確約するものではありません）</small>
                 </p>
             </div>
 
-            <h2>3. 貴社にお願いしたいこと</h2>
-            <p>
-                最高の成果を出すために、以下のご協力をお願いいたします。<br>
-                （※記事の執筆やシステム構築など、実作業は全て私が代行します）
-            </p>
-            <ul style="list-style: none; padding: 0;">
+            <!-- Google Mockup -->
+            <div style="max-width: 400px; margin: 0 auto; border: 1px solid #ddd; border-radius: 15px; overflow: hidden; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <!-- Mock Header -->
+                <div style="background: #fff; padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center;">
+                    <span style="font-size: 1.1rem; color: #5f6368; margin-right: 15px;">🔍</span>
+                    <span style="font-size: 1rem; color: #202124;">三重 建設 求人</span>
+                    <span style="margin-left: auto; color: #5f6368;">✖</span>
+                </div>
+                
+                <!-- Jobs Widget -->
+                <div style="background: #fff; padding: 0;">
+                    <div style="padding: 15px; border-bottom: 1px solid #eee;">
+                        <span style="font-size: 1.2rem; color: #202124; display: block; margin-bottom: 5px;">求人</span>
+                        <span style="font-size: 0.8rem; color: #5f6368;">ネット上の求人情報</span>
+                    </div>
 
-                <li style="background: #fff; border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; align-items: flex-start;">
-                    <span style="color: #003366; font-weight: bold; margin-right: 10px;">①</span>
+                    <!-- Job Card (Winner) -->
+                    <div style="padding: 15px; background: #f8fbff; border-left: 5px solid #1a73e8; border-bottom: 1px solid #eee;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="font-weight: bold; color: #1a73e8; font-size: 1rem;">施工管理（未経験OK）</span>
+                            <span style="background: #e8f0fe; color: #1967d2; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">新着</span>
+                        </div>
+                        <div style="font-size: 0.9rem; color: #202124; margin-bottom: 5px;">堀田建設株式会社</div>
+                        <div style="font-size: 0.8rem; color: #5f6368; margin-bottom: 10px;">三重県 鈴鹿市 • 正社員 • 月給25万〜</div>
+                        <div style="display: flex; gap: 5px;">
+                            <span style="background: #f1f3f4; color: #3c4043; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px;">転勤なし</span>
+                            <span style="background: #f1f3f4; color: #3c4043; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px;">昇給あり</span>
+                        </div>
+                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccdcf5; font-size: 0.8rem; color: #1a73e8; font-weight: bold;">
+                            ➤ 応募ページへ直行（Indeedを経由しません）
+                        </div>
+                    </div>
+
+                    <!-- Job Card (Others) -->
+                    <div style="padding: 15px; background: #fff; border-bottom: 1px solid #eee; opacity: 0.6;">
+                        <div style="font-weight: bold; color: #202124; font-size: 1rem; margin-bottom: 5px;">建築現場監督</div>
+                        <div style="font-size: 0.9rem; color: #202124; margin-bottom: 5px;">〇〇建設</div>
+                        <div style="font-size: 0.8rem; color: #5f6368;">三重県 四日市市</div>
+                    </div>
+                </div>
+                
+                <div style="background: #f1f3f4; padding: 10px; text-align: center; color: #1a73e8; font-weight: bold; font-size: 0.9rem;">
+                    すべて見る
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 10px;">
+                ▲ Google検索結果での占有イメージ（エリアジャック）
+            </p>
+
+        </section>
+
+        <!-- 4. 運用の誠実さ -->
+        <section class="card">
+            <h2>4. 運用の誠実さ：6ヶ月間の実証テスト</h2>
+            <p>「作って終わり」ではありません。分析と改善を繰り返す「成長型エンジン」です。</p>
+
+            <div class="timeline">
+                <div class="time-point">
+                    <div class="tp-label">1ヶ月目：基盤構築・公開</div>
+                    <div>サーバーレスLPの公開、Googleしごと検索への連携開始。まずは世に出して反応を見ます。</div>
+                </div>
+                <div class="time-point">
+                    <div class="tp-label">2〜3ヶ月目：実験とデータ収集</div>
+                    <div>「現場写真の方がクリックされる？」「給与表記を変えると？」<br>仮説検証を繰り返し、御社の勝ちパターンを探します。</div>
+                </div>
+                <div class="time-point">
+                    <div class="tp-label">4〜6ヶ月目：資産の磨き上げ</div>
+                    <div>蓄積データに基づき、コンテンツを最適化。採用コストを下げながら、質を高めるフェーズです。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. お願いしたいこと -->
+        <section class="card">
+            <h2>5. 貴社にお願いしたいこと（実戦への約束）</h2>
+            <ul class="request-list">
+                <li class="request-item">
+                    <span class="req-icon">📸</span>
                     <div>
-                        <strong>現場写真・動画と「一言メモ」の共有</strong><br>
-                        <span style="font-size: 0.9rem; color: #666;">LINEで送る際に、「何の現場か」「どんな状況か」など、簡単なメモを添えていただけると助かります。</span>
+                        <strong>現場写真1枚と一言メモ</strong><br>
+                        「現場の体温」をLINEで送ってください。綺麗な写真は不要です。
                     </div>
                 </li>
-                <li style="background: #fff; border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; align-items: flex-start;">
-                    <span style="color: #003366; font-weight: bold; margin-right: 10px;">②</span>
+                <li class="request-item">
+                    <span class="req-icon">🤝</span>
                     <div>
-                        <strong>定例ミーティング（月1回程度）</strong><br>
-                        <span style="font-size: 0.9rem; color: #666;">進捗報告と、翌月の打ち合わせをオンライン（または対面）にて実施します。</span>
+                        <strong>月1回の定例会</strong><br>
+                        改善結果の共有と、翌月の作戦会議をオンラインで行います。
                     </div>
                 </li>
-                <li style="background: #fff; border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; align-items: flex-start;">
-                    <span style="color: #003366; font-weight: bold; margin-right: 10px;">③</span>
+                <li class="request-item">
+                    <span class="req-icon">🔑</span>
                     <div>
-                        <strong>Google・LINE公式アカウントの取得</strong><br>
-                        <span style="font-size: 0.9rem; color: #666;">「資産」として権利を貴社に持っていただくため、アカウント開設のみ貴社にてお願いします。<br>（そこからの難しい設定・構築作業は、私に権限を付与していただき、すべて代行します）</span>
+                        <strong>アカウントの取得（Google/LINE）</strong><br>
+                        資産の権利を御社に持っていただくための手続きです。（設定は代行します）
                     </div>
                 </li>
-                <li style="background: #fff; border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; align-items: flex-start;">
-                    <span style="color: #003366; font-weight: bold; margin-right: 10px;">④</span>
+                <li class="request-item">
+                    <span class="req-icon">🌐</span>
                     <div>
-                        <strong>ドメイン（URL）の決定</strong><br>
-                        <span style="font-size: 0.9rem; color: #666;">「Googleしごと検索」への掲載を確実にするため、専用の新規ドメイン（例：hotta-recruit.com 等）の取得を推奨します。</span>
+                        <strong>専用ドメインの取得</strong><br>
+                        Google掲載率を高め、資産を守るために独自のURLを取得します。（年額1,500円程度）
                     </div>
                 </li>
-                <li style="background: #fff; border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; align-items: flex-start;">
-                    <span style="color: #003366; font-weight: bold; margin-right: 10px;">⑤</span>
+                <li class="request-item">
+                    <span class="req-icon">📢</span>
                     <div>
-                        <strong>制作実績としての公開許可（モニター条件）</strong><br>
-                        <span style="font-size: 0.9rem; color: #666;">私が手がけるプロジェクトとして、御社名や完成したページの実績公開を許可いただきたいです。ここだけご快諾をお願いします。</span>
+                        <strong>実績公開の許可</strong><br>
+                        モニター条件として、本プロジェクトを私の実績として公開させてください。
                     </div>
                 </li>
             </ul>
+        </section>
 
-        </main>
+        <!-- 6. 特典 -->
+        <section class="exclusive-box">
+            <span class="ex-title">【特別特典】エリア・業種 独占契約</span>
+            <p style="font-size:1.1rem; margin-top:20px;">
+                <strong>三重県内の同業他社様からのご依頼は、<br>今後一切お引き受けしません。</strong>
+            </p>
+            <p>私の持つノウハウとリソースは、すべて堀田建設様の採用成功のためだけに注ぎ込みます。<br>
+            御社を、私が担当する地域唯一の「採用成功モデル」にします。</p>
+        </section>
 
-        <footer style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 30px;">
-            &copy; 2026 Webをつくるしごと All Rights Reserved.
-        </footer>
     </div>
+    
+    <footer style="text-align:center; padding:50px; color:#888;">
+        &copy; 2026 Webをつくるしごと
+    </footer>
 
 </body>
 </html>
