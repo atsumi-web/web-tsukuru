@@ -233,35 +233,7 @@ a:hover {
 
 
 
-.hero-sub {
-  font-size: 16px !important; /* Slightly reduced back to 16px for fit */
-  color: var(
-    --accent-color
-  ) !important; /* 繧ｴ繝ｼ繝ｫ繝会ｼ医い繧ｯ繧ｻ繝ｳ繝医き繝ｩ繝ｼ・峨↓螟画峩 */
-  margin-bottom: 0;
-  margin-top: 20px !important;
-  display: block;
-  letter-spacing: 0.2em;
-  font-weight: 500;
-}
-
-.hero-title {
-  font-size: 34px; /* Reduced from 42px */
-  margin-bottom: 15px;
-  margin-top: 0;
-  line-height: 1.5;
-}
-
-
-
-.hero-actions {
-  display: flex;
-  flex-direction: column; /* Stack vertically */
-  gap: 5px; /* Tighter gap */
-  align-items: center; /* Center align button and note relative to each other */
-  width: fit-content; /* Don't stretch to full width, stick to content size */
-  margin-bottom: 20px; /* Reduced from 40px */
-}
+/* Duplicate .hero-sub, .hero-title, .hero-actions definitions removed - see lines 311-354 for actual definitions */
 
 .hero-bg {
   position: absolute;
@@ -805,7 +777,6 @@ a:hover {
   }
 
   .hero-orbitals {
-    /* display: none !important; REMOVED temporarily hide */
     display: block;
     width: 100%;
     height: 100%; /* Full coverage */
@@ -837,7 +808,6 @@ a:hover {
     font-size: 13px;
   }
 
-  /* Key Bubbles: HIDE all except Title on mobile */
   /* Key Bubbles: HIDE all except Title on mobile */
   .bubble-construction,
   .bubble-kaigo,
