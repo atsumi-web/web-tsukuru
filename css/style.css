@@ -231,7 +231,7 @@ a:hover {
   overflow: hidden; /* Prevent bubbles from causing scrollbars */
 }
 
-/* ... (skipping hero-bg styles) ... */
+
 
 .hero-sub {
   font-size: 16px !important; /* Slightly reduced back to 16px for fit */
@@ -252,7 +252,7 @@ a:hover {
   line-height: 1.5;
 }
 
-/* ... (skipping hero-subtitle) ... */
+
 
 .hero-actions {
   display: flex;
@@ -274,9 +274,7 @@ a:hover {
   background: #fff; /* Ensure white background behind shifted image */
 }
 
-.hero-bg::after {
-  display: none;
-}
+
 
 .hero-bg img {
   width: 100%;
@@ -713,10 +711,7 @@ a:hover {
     overflow: hidden;
   }
 
-  /* Remove the white diagonal slash on mobile to show full image */
-  .hero-bg::after {
-    background: none;
-  }
+
 
   /* Convert Hero BG to Block for stacking */
   .hero-bg {
@@ -729,16 +724,7 @@ a:hover {
     line-height: 0; /* Remove line-height space */
   }
 
-  .hero-bg img {
-    object-position: center 90% !important; /* Move focus slightly down to show laptop better (laptop is at bottom) or adjust to lift? If laptop is at bottom of image, we need to show bottom. If user wants laptop HIGHER on screen, we need to show MORE bottom. Let's try 90% or even 100% to ensuring bottom is visible, or if cut off, moving it up. Wait. User says "laptop comes up more". If image is fixed height, and object-fit cover. If laptop is low in image, showing 'bottom' aligns bottom of image to bottom of container. If laptop is visible but low, lifting the container lifts the laptop. I lifted container via padding. Let's also ensure object-position focuses on the laptop. 85% was PC. Let's try 80%? No, user says "laptop comes up". If I show more of the bottom, the laptop (which is at bottom) moves UP?? No.
-        Let's stick to lifting the Container (padding) first.
-        But also, changing object-position to 'center bottom' might ensure laptop isn't cut off.
-        Let's try center 70% to shift the visible window UP the image? No that hides the bottom laptop.
-        If laptop is at bottom of png. We need to show bottom. 'center bottom' or 'center 100%'.
-        If currently center 85%, and user wants it higher, maybe it's too low in the container?
-        Let's just do padding first. */
-    object-position: center 80% !important;
-  }
+
 
   /* Move Industry Strip to Middle */
   .hero-footer-strip {
@@ -793,7 +779,7 @@ a:hover {
 
   .hero-bg img {
     transform: translateX(0) scale(1);
-    object-position: 75% center; /* Slightly right to catch PC, but mostly full */
+    object-position: center 80% !important; /* Mobile Optimized Position */
     opacity: 1; /* Fully visible */
     display: block !important; /* Remove default inline spacing */
   }
