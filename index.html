@@ -20,6 +20,8 @@
     <!-- Favicon -->
     <link rel="icon" href="images/logo_icon.webp">
     <link rel="apple-touch-icon" href="images/logo_icon.webp">
+    <!-- Preload Hero Image for LCP -->
+    <link rel="preload" as="image" href="images/hero_new.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +77,7 @@
 
         <div class="header-inner">
             <h1 class="logo">
-                <img src="images/logo_icon_white.webp" alt="Logo" style="background: #0f172a; padding: 5px; border-radius: 4px;">
+                <img src="images/logo_icon_white.webp" alt="Logo" width="40" height="40" style="background: #0f172a; padding: 5px; border-radius: 4px;">
                 <span>WEBでしくみをつくる仕事</span>
             </h1>
             <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
@@ -96,7 +98,7 @@
     <!-- 01: Hero (First View) -->
     <section class="hero brand-hero">
         <div class="hero-bg">
-            <img src="images/hero_new.webp" alt="採用戦略会議">
+            <img src="images/hero_new.webp" alt="採用戦略会議" fetchpriority="high">
         </div>
 
         <div class="hero-content js-fade-up" style="padding-bottom: 60px; position: relative; z-index: 10;">
@@ -144,53 +146,53 @@
                 <div class="industry-list">
                     <!-- Set 1 (Construction Only) -->
                     <div class="industry-item">
-                        <img src="images/hero_construction_single.webp" alt="建築・土木">
+                        <img src="images/hero_construction_single.webp" alt="建築・土木" loading="lazy">
                         <span>Construction</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_refreshing.webp" alt="建築デザイン">
+                        <img src="images/hero_construction_refreshing.webp" alt="建築デザイン" loading="lazy">
                         <span>Architecture</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_sme.webp" alt="大規模修繕">
+                        <img src="images/hero_construction_sme.webp" alt="大規模修繕" loading="lazy">
                         <span>Renovation</span>
                     </div>
                      <div class="industry-item">
-                        <img src="images/hero_construction_single.webp" alt="建設全般">
+                        <img src="images/hero_construction_single.webp" alt="建設全般" loading="lazy">
                         <span>General</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_refreshing.webp" alt="設計・施工">
+                        <img src="images/hero_construction_refreshing.webp" alt="設計・施工" loading="lazy">
                         <span>Planning</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_sme.webp" alt="土木工事">
+                        <img src="images/hero_construction_sme.webp" alt="土木工事" loading="lazy">
                         <span>Civil Eng.</span>
                     </div>
                     
                     <!-- Set 2 (Duplicate for scroll) -->
                     <div class="industry-item">
-                        <img src="images/hero_construction_single.webp" alt="建築・土木">
+                        <img src="images/hero_construction_single.webp" alt="建築・土木" loading="lazy">
                         <span>Construction</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_refreshing.webp" alt="建築デザイン">
+                        <img src="images/hero_construction_refreshing.webp" alt="建築デザイン" loading="lazy">
                         <span>Architecture</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_sme.webp" alt="大規模修繕">
+                        <img src="images/hero_construction_sme.webp" alt="大規模修繕" loading="lazy">
                         <span>Renovation</span>
                     </div>
                      <div class="industry-item">
-                        <img src="images/hero_construction_single.webp" alt="建設全般">
+                        <img src="images/hero_construction_single.webp" alt="建設全般" loading="lazy">
                         <span>General</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_refreshing.webp" alt="設計・施工">
+                        <img src="images/hero_construction_refreshing.webp" alt="設計・施工" loading="lazy">
                         <span>Planning</span>
                     </div>
                     <div class="industry-item">
-                        <img src="images/hero_construction_sme.webp" alt="土木工事">
+                        <img src="images/hero_construction_sme.webp" alt="土木工事" loading="lazy">
                         <span>Civil Eng.</span>
                     </div>
                 </div>

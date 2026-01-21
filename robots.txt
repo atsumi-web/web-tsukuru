@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /planning/
+Disallow: /leads/
+Disallow: /clients/
+Disallow: /_archive*/
+Disallow: /_backup*/
+
+Sitemap: https://web-tsukuru.com/sitemap.xml

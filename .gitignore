@@ -1,0 +1,18 @@
+# System & Logs
+.DS_Store
+Thumbs.db
+*.log
+
+# Private Data & Planning
+planning/
+leads/
+clients/
+
+# Archives & Backups
+_archive*/
+_backup*/
+*.bak
+*.tmp
+
+# Editor
+.vscode/
