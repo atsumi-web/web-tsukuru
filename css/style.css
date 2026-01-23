@@ -141,7 +141,7 @@ a:hover {
 
 /* Campaign Notification Bar */
 .campaign-notification-bar {
-  background: #0F172A; /* Navy */
+  background: #0f172a; /* Navy */
   position: relative;
   z-index: 2000;
   transition: background 0.3s;
@@ -231,31 +231,27 @@ a:hover {
   overflow: hidden; /* Prevent bubbles from causing scrollbars */
 }
 
-
-
 /* Duplicate .hero-sub, .hero-title, .hero-actions definitions removed - see lines 311-354 for actual definitions */
 
 .hero-bg {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0; /* Right aligned */
+  width: 60%; /* Wider for more image area at bottom */
   height: 100%;
   z-index: -1; /* Behind content */
   overflow: hidden;
   background: #fff; /* Ensure white background behind shifted image */
+  /* Diagonal clip - narrower at top, full width at bottom */
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
-
-
 
 .hero-bg img {
   width: 100%;
   height: 100%;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  /* Move PC to Right (25%) and Scale Down (0.85) to create space for bubbles */
-  transform: translateX(25%) scale(0.85);
+  /* No scaling - let the container do the trimming */
+  transform: none;
   /* Vertical 85% - Lower slightly from 100% to clear header menu */
   object-position: center 85%;
   filter: brightness(1.05);
@@ -265,7 +261,7 @@ a:hover {
 /* Only Bubble Title remains here if unique, but I will move it to the main block for consistency */
 
 .hero-content {
-  width: 52%; /* 繝・く繧ｹ繝医お繝ｪ繧｢繧堤｢ｺ菫・*/
+  width: 58%; /* Wider to prevent title wrapping */
   padding-left: 8%;
   padding-right: 20px; /* 逕ｻ蜒上→縺ｮ髢薙↓菴咏區 */
   z-index: 2;
@@ -683,8 +679,6 @@ a:hover {
     overflow: hidden;
   }
 
-
-
   /* Convert Hero BG to Block for stacking */
   .hero-bg {
     position: relative !important; /* Override absolute */
@@ -695,8 +689,6 @@ a:hover {
     margin-bottom: 0 !important; /* No gap below image */
     line-height: 0; /* Remove line-height space */
   }
-
-
 
   /* Move Industry Strip to Middle */
   .hero-footer-strip {
@@ -1605,7 +1597,7 @@ a:hover {
 /* Signature Styling */
 .p-sign {
   font-family: "Dancing Script", cursive !important;
-  font-size: 32px !important;
+  font-size: 16px !important;
   color: var(--brand-navy) !important;
   margin-top: 15px !important;
   text-align: right !important;
@@ -3776,32 +3768,46 @@ a:hover {
   background-color: #fff;
 }
 
+.brand-profile .profile-image {
+  position: relative; /* Anchor for absolute positioning */
+  display: inline-block; /* Ensure width fits image */
+  line-height: 0; /* Remove vertical gap */
+}
+
 .p-sign {
-  font-family: "Zen Kurenaido", sans-serif !important;
-  font-size: 32px; /* Reduced from 42px */
-  margin-top: 30px; /* Increased spacing further */
-  color: var(--text-color);
-  font-weight: 400;
-  transform: none !important; /* Force straight globally (PC & Mobile) */
-  display: inline-block;
-  letter-spacing: 0.05em;
-  opacity: 0.9;
-  text-align: right; /* Default PC: Right aligned */
-  /* Badge Style Logic */
-  display: table !important; /* Shrink to fit content */
-  margin-left: auto; /* Push to right on PC */
-  margin-right: 0;
-  width: auto; /* Override 100% */
+  font-family: inherit !important;
+  font-size: 13px; /* Delicate size */
+  color: #fff; /* White Text */
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+  letter-spacing: 0.15em;
+  position: absolute; /* Watermark */
+  bottom: 12px;
+  right: 15px;
+  z-index: 10;
+  box-shadow: none;
+  margin: 0 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6); /* Soft shadow */
+  width: auto !important;
+  text-align: right;
+  opacity: 0.8; /* Subtle transparency */
+  font-weight: 400; /* Thinner weight */
+  transform: none !important;
 }
 
 @media (max-width: 768px) {
   .p-sign {
-    margin-left: auto !important;
-    margin-right: auto !important; /* Center on mobile */
-    text-align: center !important;
-    font-size: 18px !important; /* Smaller text for luxury badge */
-    margin-top: 25px !important;
+    display: block !important;
+    margin: 0 !important;
+    font-size: 13px !important; /* Consistent delicate size */
+    position: absolute !important;
+    bottom: 10px !important;
+    right: 15px !important;
+    left: auto !important;
     transform: none !important;
+    background: transparent;
   }
 }
 
@@ -4088,6 +4094,10 @@ a:hover {
     height: 300px;
     top: 0;
     right: -50px;
+  }
+
+  .brand-profile .profile-image {
+    text-align: center; /* Center all content including name badge */
   }
 
   .brand-profile .profile-image img {
@@ -4514,8 +4524,8 @@ html body a.nav-btn,
 html body a.fixed-cta-btn,
 html body a.brand-cta,
 html body a.line-btn {
-    background-color: #ae8b47 !important; /* Gold */
-    background: #ae8b47 !important;
+  background-color: #ae8b47 !important; /* Gold */
+  background: #ae8b47 !important;
 }
 
 html body .nav-btn:hover,
@@ -4525,7 +4535,7 @@ html body .line-btn:hover,
 html body a.nav-btn:hover,
 /* Bonus Section - Navy Background Override */
 .brand-bonus-section {
-  background-color: #0F172A !important; /* Navy */
+  background-color: #0f172a !important; /* Navy */
   color: #fff !important;
 }
 
@@ -4541,5 +4551,5 @@ html body a.nav-btn:hover,
 .brand-bonus-section .bonus-card {
   background: #fff; /* Keep card white for contrast? Or make it also dark? User said "Background to Navy". Usually this means section. */
   /* If section is Navy, Card White looks good. */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important; /* Stronger shadow on dark bg */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important; /* Stronger shadow on dark bg */
 }

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社アーク・ビルド | 採用特設サイト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        serif: ['Zen Old Mincho', 'serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#F7F5F2',
+                            900: '#1A1A1A',
+                        },
+                        accent: {
+                            gold: '#A68B67',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
+        .fade-in.active { opacity: 1; transform: translateY(0); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+        .vertical-text { writing-mode: vertical-rl; }
+        .shadow-dreamy { box-shadow: 0 20px 50px -12px rgba(166, 139, 103, 0.25); }
+        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</head>
+<body class="bg-white text-stone-900 font-sans antialiased overflow-x-hidden">
+
+    <header class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-stone-100">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="font-serif text-2xl font-black tracking-[0.3em] text-stone-900 leading-none">ARC BUILD</span>
+                <span class="text-[9px] font-bold tracking-[0.4em] text-accent-gold uppercase mt-1 italic">Modern Craftsmanship</span>
+            </div>
+            <nav class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-widest text-stone-400 uppercase">
+                <a href="#philosophy" class="hover:text-accent-gold transition">Philosophy</a>
+                <a href="#flow" class="hover:text-accent-gold transition">Flow</a>
+                <a href="#project" class="hover:text-accent-gold transition">Projects</a>
+                <a href="#conditions" class="hover:text-accent-gold transition">Conditions</a>
+                <a href="#voice" class="hover:text-accent-gold transition">Interview</a>
+            </nav>
+            <a href="#contact" class="bg-stone-900 text-white px-8 py-3 text-[10px] font-bold tracking-widest hover:bg-accent-gold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg uppercase">
+                Entry
+            </a>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-20 bg-stone-50">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 scroll-reveal">
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <div class="inline-block h-px w-16 bg-accent-gold mb-10"></div>
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-serif font-black leading-[1.2] mb-12 text-stone-900 tracking-tight">
+                        <span class="inline-block whitespace-nowrap">1mmの美学に、</span><br>
+                        <span class="inline-block whitespace-nowrap">一生を賭ける。</span>
+                    </h1>
+                    <p class="text-lg text-stone-500 leading-relaxed max-w-lg font-light mb-16 italic">
+                        建築は、もっと美しくなれる。<br>
+                        アーク・ビルドはBIMを活用した「フロントローディング」により、現場の非効率を極小化。技術者が最も大切にすべき「つくる愉しみ」を追求する施工管理集団です。
+                    </p>
+                    <div class="flex items-center gap-12 md:gap-20">
+                        <div>
+                            <p class="text-[10px] text-stone-400 font-bold tracking-widest uppercase mb-2">Annual Holidays</p>
+                            <p class="text-3xl md:text-4xl font-serif font-bold text-stone-900 italic">125<span class="text-sm ml-1 font-sans not-italic font-bold">days</span></p>
+                        </div>
+                        <div class="w-px h-12 bg-stone-200"></div>
+                        <div>
+                            <p class="text-[10px] text-stone-400 font-bold tracking-widest uppercase mb-2">Retention Rate</p>
+                            <p class="text-3xl md:text-4xl font-serif font-bold text-stone-900 italic">96.8<span class="text-sm ml-1 font-sans not-italic font-bold">%</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 order-1 lg:order-2 relative">
+                    <div class="relative z-10 shadow-dreamy overflow-hidden rounded-sm border-[12px] border-white transform hover:scale-[1.01] transition duration-700">
+                        <img src="./Image_fx_c_hero.webp" class="w-full h-auto object-cover" alt="Hero Image">
+                    </div>
+                    <div class="absolute -right-12 top-10 vertical-text text-stone-200/60 font-serif text-6xl font-black tracking-[0.6em] select-none hidden xl:block">
+                        美学ある現場
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="py-40 relative bg-white">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-stone-50/50 -z-10"></div>
+        <div class="container mx-auto px-6 max-w-6xl scroll-reveal">
+            <div class="flex flex-col md:flex-row items-center gap-20">
+                <div class="md:w-1/2 relative group">
+                    <img src="./Image_fx_c_mission.webp" class="w-full h-auto shadow-dreamy rounded-sm transition-all duration-700 group-hover:shadow-[0_30px_60px_-15px_rgba(166,139,103,0.3)]" alt="Philosophy Image">
+                    <div class="absolute -bottom-10 -left-10 bg-stone-900 text-white p-12 hidden lg:block shadow-xl">
+                        <p class="text-xl font-serif leading-relaxed italic opacity-90 tracking-widest">
+                            「合理性は、<br>&nbsp;&nbsp;美意識のためにある。」
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <span class="text-accent-gold text-[11px] font-bold tracking-[0.6em] uppercase mb-8 block">Our Philosophy</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-12 leading-[1.6]">
+                        効率化は、こだわり抜くための<br>「時間」を生む手段。
+                    </h2>
+                    <div class="space-y-12">
+                        <div class="group border-l-2 border-stone-100 pl-10 hover:border-accent-gold transition duration-500">
+                            <h3 class="text-lg font-bold text-stone-900 mb-4 flex items-center gap-6">
+                                <span class="text-accent-gold text-lg font-serif italic">01</span>
+                                BIMによる「事前解決」
+                            </h3>
+                            <p class="text-stone-500 text-sm leading-[2] font-light">
+                                現場での「干渉」や「不整合」をゼロにする。着工前に3Dモデル上で完璧なシミュレーションを行うことで、深夜の図面修正や手戻りを物理的に排除しています。
+                            </p>
+                        </div>
+                        <div class="group border-l-2 border-stone-100 pl-10 hover:border-accent-gold transition duration-500">
+                            <h3 class="text-lg font-bold text-stone-900 mb-4 flex items-center gap-6">
+                                <span class="text-accent-gold text-lg font-serif italic">02</span>
+                                アーク・メソッド
+                            </h3>
+                            <p class="text-stone-500 text-sm leading-[2] font-light">
+                                熟練工の技を動画とマニュアルに体系化。「背中を見て盗め」を廃し、未経験者でも確かな技術を最短で習得できる「仕組み」を整えています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flow" class="py-40 bg-stone-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-stone-200 pb-12">
+                <div>
+                    <h2 class="text-5xl font-serif font-black text-stone-900 mb-6 italic">FLOW</h2>
+                    <p class="text-stone-400 font-bold text-[10px] tracking-[0.3em] uppercase">The Modern Standards</p>
+                </div>
+                <p class="text-stone-400 text-sm italic mt-8 md:mt-0">「美しい現場が、最高の品質を保証する。」</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+                <div class="space-y-12 scroll-reveal">
+                    <img src="./Image_fx_c_work1.webp" class="w-full h-[450px] object-cover shadow-dreamy rounded-sm hover:translate-y-[-5px] transition-all duration-500" alt="Process 1">
+                    <div class="pl-10 relative">
+                        <div class="absolute left-0 top-0 w-1 h-full bg-accent-gold"></div>
+                        <h3 class="text-xl font-bold text-stone-900 mb-4 uppercase tracking-widest italic">Digital Management</h3>
+                        <p class="text-stone-500 text-sm leading-[2] font-light">
+                            施工管理アプリによるペーパーレス化と直行直帰を徹底。無駄な移動時間を削減し、技術者が最も大切にすべき「施工の精度」に向き合う時間を確保します。
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-12 lg:mt-32 scroll-reveal" style="transition-delay: 0.2s;">
+                    <img src="./Image_fx_c_work2.webp" class="w-full h-[450px] object-cover shadow-dreamy rounded-sm hover:translate-y-[-5px] transition-all duration-500" alt="Process 2">
+                    <div class="pl-10 relative">
+                        <div class="absolute left-0 top-0 w-1 h-full bg-accent-gold"></div>
+                        <h3 class="text-xl font-bold text-stone-900 mb-4 uppercase tracking-widest italic">4S Aesthetics</h3>
+                        <p class="text-stone-500 text-sm leading-[2] font-light">
+                            整理・整頓・清掃・清潔（4S）を「美学」として定義。道具が整列した美しい現場こそが、施工ミスのない究極の品質を生む唯一の条件です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project" class="relative h-[600px] md:h-[800px] overflow-hidden flex items-center scroll-reveal">
+        <div class="absolute inset-0">
+            <img src="./Image_fx_c_project.webp" class="w-full h-full object-cover transition-transform duration-[3s] hover:scale-105" alt="Completed Project">
+            <div class="absolute inset-0 bg-stone-900/20"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-lg bg-white/90 backdrop-blur-md p-12 md:p-16 shadow-dreamy rounded-sm ml-auto lg:mr-12 border-l-4 border-accent-gold">
+                <span class="text-accent-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block">CASE STUDY</span>
+                <h2 class="text-3xl font-serif font-bold text-stone-900 mb-8 leading-tight">
+                    南青山 N邸<br>
+                    <span class="text-lg font-normal text-stone-500">Private Residence N, Minami-Aoyama</span>
+                </h2>
+                <p class="text-sm text-stone-600 leading-[2.2] font-light mb-10">
+                    RCと木の混構造。図面では表現しきれない、異なる素材の境目の「収まり」を、ミリ単位の精度で追求した結晶。建築家と職人の対話から生まれた、一つの芸術作品です。
+                </p>
+                <div class="w-16 h-px bg-accent-gold"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conditions" class="py-40 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl scroll-reveal">
+            <div class="bg-stone-50 p-12 md:p-24 relative overflow-hidden shadow-dreamy border border-stone-100">
+                <div class="absolute top-0 right-0 p-12 font-serif text-white text-[12rem] font-black italic select-none drop-shadow-md opacity-50" style="text-shadow: -1px -1px 0 #eee;">$$</div>
+                <span class="text-accent-gold text-[11px] font-bold tracking-[0.6em] uppercase mb-10 block italic relative z-10">Salary & Rewards</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-stone-900 mb-20 leading-tight relative z-10">
+                    技術者に、最高の敬意と待遇を。
+                </h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
+                    <div class="space-y-10">
+                        <div class="border-b border-stone-200 pb-8">
+                            <p class="text-stone-400 text-[10px] font-bold tracking-widest uppercase mb-4 italic">Experience Base Salary</p>
+                            <p class="text-stone-900 font-serif text-5xl font-bold tracking-tighter italic">
+                                ¥350,000 <span class="text-lg font-sans not-italic ml-1 text-stone-400 font-bold">~ / month</span>
+                            </p>
+                            <p class="text-[10px] text-stone-400 mt-4 leading-relaxed font-light">※固定残業代（45時間分/9.5万円〜）を含む。超過分は1分単位で別途支給。<br>※試用期間3ヶ月（条件変更なし）</p>
+                        </div>
+                        <div class="border-b border-stone-200 pb-8">
+                            <p class="text-stone-400 text-[10px] font-bold tracking-widest uppercase mb-4 italic">Bonus (2025 Record)</p>
+                            <p class="text-stone-900 font-serif text-5xl font-bold tracking-tighter italic">
+                                x 5.0 <span class="text-lg font-sans not-italic ml-1 text-stone-400 font-bold">months</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-sm">
+                        <div class="space-y-4 text-stone-500 font-light">
+                            <p class="font-bold text-stone-900 uppercase tracking-widest border-l-2 border-accent-gold pl-4 italic">Allowances</p>
+                            <p>・資格手当 (1級管/施管: 3万)</p>
+                            <p>・近接住居手当 (月5万)</p>
+                            <p>・通勤交通費 全額支給</p>
+                        </div>
+                        <div class="space-y-4 text-stone-500 font-light">
+                            <p class="font-bold text-stone-900 uppercase tracking-widest border-l-2 border-accent-gold pl-4 italic">Benefits</p>
+                            <p>・完全週休2日制 (土日祝)</p>
+                            <p>・年間休日125日</p>
+                            <p>・中退共加入 (退職金制度)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="voice" class="py-40 bg-stone-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-4xl font-serif font-black text-stone-900 mb-24 text-center tracking-[0.2em] italic uppercase italic">Interview</h2>
+            <div class="space-y-32">
+                <div class="flex flex-col lg:flex-row bg-white shadow-dreamy rounded-sm scroll-reveal">
+                    <div class="lg:w-2/5 h-[400px] lg:h-auto overflow-hidden">
+                        <img src="./Image_fx_c_interview1.webp" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000 hover:scale-105" alt="Project Manager">
+                    </div>
+                    <div class="lg:w-3/5 p-12 md:p-20 flex flex-col justify-center">
+                        <span class="text-accent-gold text-[10px] font-bold tracking-widest uppercase mb-6 italic">現場所長 / Project Manager / 35yr</span>
+                        <h3 class="text-2xl font-serif font-bold text-stone-900 mb-8 leading-relaxed italic">
+                            「18時には現場を出て、家族と夕飯を食べる。<br class="hidden md:block">当たり前の幸せを、この会社で取り戻した。」
+                        </h3>
+                        <p class="text-stone-500 text-sm leading-[2.2] font-light italic">
+                            「アーク・ビルドの強みは『前段取り』の徹底です。着工前に勝負が決まっているからこそ、現場では職人さんと最高の作品を作ることに没頭できる。技術者として本来あるべき姿を追求できる環境です。」
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col lg:flex-row-reverse bg-white shadow-dreamy rounded-sm scroll-reveal">
+                    <div class="lg:w-2/5 h-[400px] lg:h-auto overflow-hidden">
+                        <img src="./Image_fx_c_interview2.webp" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000 hover:scale-105" alt="Field Supervisor">
+                    </div>
+                    <div class="lg:w-3/5 p-12 md:p-20 flex flex-col justify-center">
+                        <span class="text-accent-gold text-[10px] font-bold tracking-widest uppercase mb-6 italic">施工管理 / Field Supervisor / 24yr</span>
+                        <h3 class="text-2xl font-serif font-bold text-stone-900 mb-8 leading-relaxed italic">
+                            「未経験からでも、24歳で数億規模の現場をサブとして任せてもらえるスピード感がある。」
+                        </h3>
+                        <p class="text-stone-500 text-sm leading-[2.2] font-light italic">
+                            「マニュアルが体系化されているので、迷う時間がありません。iPad一つで全てが完結するスマートさは、古い建設業界のイメージを180度変えてくれました。ここは誇りを持って働ける場所です。」
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-56 bg-stone-900 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-accent-gold rounded-full filter blur-[120px]"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-10 tracking-[0.2em] leading-tight">
+                まずは、カジュアルにお話ししませんか。
+            </h2>
+            <p class="text-stone-400 mb-16 max-w-xl mx-auto leading-[2] font-light italic">
+                履歴書は不要です。私たちの「美学」と、あなたの描きたい「キャリア」について、<br class="hidden md:block">
+                コーヒーを飲みながら語り合いましょう。
+            </p>
+            <div class="flex justify-center scroll-reveal">
+                <a href="#" class="bg-white text-stone-900 px-16 py-6 text-[11px] font-bold tracking-[0.4em] hover:bg-accent-gold hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl uppercase italic">
+                    Entry For Interview
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-24 border-t border-stone-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between gap-16">
+                <div>
+                    <div class="font-serif text-4xl font-black tracking-widest mb-6 uppercase">ARC BUILD</div>
+                    <p class="text-stone-400 text-xs font-bold tracking-[0.4em] uppercase mb-8 italic">Creating the Future with Craft & Tech.</p>
+                    <p class="text-stone-400 text-[10px] leading-loose uppercase tracking-[0.5em] font-bold italic">
+                        株式会社アーク・ビルド<br>
+                        5-1-1 MINAMI-AOYAMA, MINATO-KU, TOKYO
+                    </p>
+                </div>
+                <nav class="flex flex-wrap gap-x-16 gap-y-6 text-[10px] font-bold tracking-[0.3em] uppercase italic text-stone-300">
+                    <a href="#philosophy" class="hover:text-accent-gold transition">Philosophy</a>
+                    <a href="#flow" class="hover:text-accent-gold transition">The Process</a>
+                    <a href="#project" class="hover:text-accent-gold transition">Projects</a>
+                    <a href="#conditions" class="hover:text-accent-gold transition">Conditions</a>
+                </nav>
+            </div>
+            <div class="mt-24 pt-8 border-t border-stone-100 text-center text-[9px] text-stone-300 tracking-[0.5em] uppercase italic">
+                &copy; 2026 ARC BUILD Co., Ltd. Pure Artistry in Engineering.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

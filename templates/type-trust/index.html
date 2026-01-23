@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRUST CONSTRUCTION | 経験者採用特設サイト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        serif: ['Zen Old Mincho', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0F172A',
+                            gold: '#A68A5E',
+                            base: '#FFFFFF',
+                            light: '#F8FAFC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .font-feature-settings { font-feature-settings: "palt"; }
+        .vertical-text { writing-mode: vertical-rl; letter-spacing: 0.4em; }
+        .keep-all { word-break: keep-all; overflow-wrap: anywhere; }
+        .section-space { padding: 5rem 0; }
+        @media (min-width: 1024px) { .section-space { padding: 10rem 0; } }
+        .aspect-landscape { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+        .aspect-wide { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+        .img-mask { overflow: hidden; border-radius: 8px; }
+        .img-mask img { transition: transform 1.5s ease, filter 0.7s ease; filter: grayscale(100%); }
+        .img-mask:hover img { transform: scale(1.05); filter: grayscale(0%); }
+        
+        /* Animation Utilities */
+        .fade-in-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Culture Section Decorative Text */
+        .culture-section::before {
+            content: 'TRUST';
+            position: absolute;
+            left: -160px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 80px;
+            font-weight: 900;
+            letter-spacing: 0.4em;
+            color: rgba(166, 138, 94, 0.3);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Desktop: position in the center-right space between image and text */
+        @media (min-width: 768px) {
+            .culture-section::before {
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-90deg);
+                font-size: 120px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-base text-brand-navy font-sans antialiased font-feature-settings leading-[1.8]">
+
+    <header class="fixed w-full z-50 bg-white border-b border-slate-100 shadow-sm">
+        <div class="container mx-auto px-6 md:px-8 lg:px-12 h-16 md:h-20 flex items-center gap-4 lg:gap-8 justify-between lg:justify-start">
+            <a href="#" class="flex items-center gap-3 lg:gap-4 group flex-shrink-0">
+                <img src="./Image_rogo.webp" alt="Logo" class="h-8 md:h-10 lg:h-12 w-auto group-hover:opacity-80 transition">
+                <div class="flex items-baseline gap-1 text-brand-navy">
+                    <span class="font-serif text-base md:text-lg lg:text-xl font-black tracking-[0.15em] italic uppercase">TRUST</span>
+                    <span class="font-serif text-base md:text-lg lg:text-xl font-bold tracking-wider">建設</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="ml-auto hidden lg:flex items-center gap-10 opacity-80">
+                <a href="#philosophy" class="group flex flex-col items-center hover:opacity-100 transition">
+                    <span class="text-[13px] font-bold tracking-[0.2em] font-serif">理念</span>
+                </a>
+                <a href="#promise" class="group flex flex-col items-center hover:opacity-100 transition">
+                    <span class="text-[13px] font-bold tracking-[0.2em] font-serif">約束</span>
+                </a>
+                <a href="#voice" class="group flex flex-col items-center hover:opacity-100 transition">
+                    <span class="text-[13px] font-bold tracking-[0.2em] font-serif">対話</span>
+                </a>
+                <a href="#data" class="group flex flex-col items-center hover:opacity-100 transition">
+                    <span class="text-[13px] font-bold tracking-[0.2em] font-serif">実績</span>
+                </a>
+            </nav>
+            <a href="#contact" class="hidden lg:block text-[12px] font-bold tracking-[0.2em] bg-brand-gold text-white px-6 py-3 hover:bg-brand-gold/80 transition-all duration-300 flex-shrink-0">面談予約</a>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2 z-50">
+                <span class="w-6 h-0.5 bg-brand-navy transition-all duration-300 origin-center block"></span>
+                <span class="w-6 h-0.5 bg-brand-navy transition-all duration-300 origin-center block"></span>
+                <span class="w-6 h-0.5 bg-brand-navy transition-all duration-300 origin-center block"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-gradient-to-br from-brand-navy via-brand-navy to-slate-800 z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500">
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand-gold opacity-5 rounded-full blur-3xl"></div>
+            
+            <!-- Menu Content -->
+            <div class="relative z-10 flex flex-col items-center gap-12">
+                <!-- Brand Logo in Menu -->
+                <div class="mb-8 opacity-100">
+                    <span class="font-serif text-4xl font-black tracking-[0.3em] text-brand-gold italic">TRUST</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="flex flex-col items-center gap-6">
+                    <a href="#philosophy" class="mobile-link group relative">
+                        <span class="text-2xl md:text-3xl font-serif font-bold tracking-[0.3em] text-white transition-all duration-300 group-hover:text-brand-gold group-hover:tracking-[0.4em]">理念</span>
+                        <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#promise" class="mobile-link group relative">
+                        <span class="text-2xl md:text-3xl font-serif font-bold tracking-[0.3em] text-white transition-all duration-300 group-hover:text-brand-gold group-hover:tracking-[0.4em]">約束</span>
+                        <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#voice" class="mobile-link group relative">
+                        <span class="text-2xl md:text-3xl font-serif font-bold tracking-[0.3em] text-white transition-all duration-300 group-hover:text-brand-gold group-hover:tracking-[0.4em]">対話</span>
+                        <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#data" class="mobile-link group relative">
+                        <span class="text-2xl md:text-3xl font-serif font-bold tracking-[0.3em] text-white transition-all duration-300 group-hover:text-brand-gold group-hover:tracking-[0.4em]">実績</span>
+                        <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <a href="#contact" class="mobile-link mt-8 text-sm font-bold tracking-[0.3em] bg-brand-gold text-white px-10 py-5 hover:bg-white hover:text-brand-gold transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105">面談予約</a>
+                
+                <!-- Decorative Line -->
+                <div class="mt-6 w-16 h-px bg-brand-gold opacity-30"></div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const spans = menuBtn.querySelectorAll('span');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isOpen = !isOpen;
+            if (isOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                spans[0].classList.add('rotate-45', 'translate-y-2');
+                spans[1].classList.add('opacity-0');
+                spans[2].classList.add('-rotate-45', '-translate-y-2');
+            } else {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                spans[0].classList.remove('rotate-45', 'translate-y-2');
+                spans[1].classList.remove('opacity-0');
+                spans[2].classList.remove('-rotate-45', '-translate-y-2');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isOpen = false;
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                spans[0].classList.remove('rotate-45', 'translate-y-2');
+                spans[1].classList.remove('opacity-0');
+                spans[2].classList.remove('-rotate-45', '-translate-y-2');
+            });
+        });
+
+        // Scroll animation script
+        const faders = document.querySelectorAll('.fade-in-up');
+
+        const appearOptions = {
+            threshold: 0.2, // Trigger when 20% of the item is visible
+            rootMargin: "0px 0px -50px 0px" // Adjust when item is 50px from bottom of viewport
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+
+    <section class="min-h-screen flex items-center pt-20 pb-20 overflow-hidden relative">
+        <!-- Background Elements for Mobile Appeal -->
+        <div class="absolute top-0 right-0 w-2/3 h-2/3 bg-slate-50 rounded-bl-[100px] -z-10 opacity-50 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                <!-- Text Content -->
+                <div class="w-full lg:w-5/12 z-10 order-2 lg:order-1 fade-in-up">
+                    <span class="text-brand-gold text-[10px] md:text-xs font-bold tracking-[0.4em] mb-6 md:mb-8 block">特別採用 2026</span>
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold leading-[1.6] md:leading-[1.8] lg:leading-[1.8] mb-8 md:mb-12 tracking-wide">
+                        その経験を、<br>
+                        <span class="text-brand-gold relative inline-block">
+                            「家族の安心」
+                            <span class="absolute bottom-1 left-0 w-full h-[6px] bg-brand-gold/20 -z-10"></span>
+                        </span> に<br>
+                        変えませんか。
+                    </h1>
+                    <div class="w-12 h-[1px] bg-brand-navy mb-8 md:mb-12"></div>
+                    <p class="text-xs md:text-sm text-slate-500 leading-loose tracking-wider mb-12">
+                        朝5時の起床、長い通勤、数年ごとの転勤。<br class="hidden md:block">
+                        技術者の当たり前を、私たちは変えてきました。
+                    </p>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="w-full lg:w-7/12 relative order-1 lg:order-2 fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="relative z-10 img-mask shadow-2xl">
+                        <img src="./a-hero.webp" alt="Experienced Construction Manager" class="w-full h-[40vh] md:h-[50vh] lg:h-auto object-cover transform scale-105 hover:scale-100">
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-dots opacity-20 -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy & Promise Sections -->
+    <section id="philosophy" class="section-space bg-slate-50 border-t border-slate-100 scroll-mt-20">
+        <div class="container mx-auto px-6 lg:px-12">
+             <!-- Philosophy Content -->
+             <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32 lg:mb-40 fade-in-up">
+                <div class="lg:w-1/2 relative">
+                   <!-- Main Office Image -->
+                   <div class="img-mask rounded shadow-xl relative z-10">
+                        <img src="./a-office.webp" alt="Philosophy" class="aspect-landscape object-cover hover:scale-105 transition duration-700">
+                   </div>
+                   
+                   <!-- CEO Image Overlay -->
+                   <div class="absolute -bottom-16 -right-6 md:-right-12 w-56 md:w-72 z-20">
+                        <div class="img-mask rounded shadow-2xl border-4 border-white">
+                            <img src="./a-ceo.webp" alt="CEO" class="w-full aspect-video object-cover hover:scale-110 transition duration-700">
+                        </div>
+                        <div class="bg-white p-3 md:p-4 shadow-lg absolute -bottom-6 -left-6 md:-left-10 w-max">
+                            <p class="text-[9px] font-bold tracking-[0.2em] text-brand-gold mb-1">代表取締役</p>
+                            <p class="font-serif text-lg md:text-xl font-black text-brand-navy">田中 健一</p>
+                        </div>
+                   </div>
+
+                   <!-- Number decoration -->
+                   <div class="absolute -top-10 -left-10 text-[120px] font-black text-white -z-10 select-none drop-shadow-sm text-stroke-slate">01</div>
+                </div>
+                <div class="lg:w-1/2 mt-16 lg:mt-0">
+                    <span class="text-brand-gold font-bold tracking-widest text-xs mb-6 block">理念</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-10 leading-normal">技術者ファーストの<br>新しい建設業へ</h2>
+                    <p class="text-slate-600 leading-8 text-lg font-light">
+                        私たちは、建設業界の常識を疑います。過酷な労働環境、不安定な雇用、報われない努力。それらを過去のものとし、技術者が誇りを持って働ける環境を作ること。それがTRUST建設の使命です。
+                    </p>
+                </div>
+            </div>
+
+             <!-- Promise Content -->
+             <div id="promise" class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 fade-in-up scroll-mt-20">
+                <div class="lg:w-1/2 relative">
+                   <div class="img-mask rounded shadow-xl">
+                        <img src="./a-project-rc.webp" alt="Promise" class="aspect-landscape object-cover hover:scale-105 transition duration-700">
+                   </div>
+                   <div class="absolute -bottom-10 -right-10 text-[120px] font-black text-white/50 -z-10 select-none">02</div>
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-brand-gold font-bold tracking-widest text-xs mb-6 block">環境</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-10 leading-normal">あなたの経験を、<br>最高の環境で活かす。</h2>
+                    <p class="text-slate-600 leading-8 text-lg font-light">
+                        TRUST建設は、経験豊富な技術者が安心して長く働ける環境を提供します。給与、労働時間、福利厚生。全てにおいて業界最高水準を目指し、あなたのキャリアを全力でサポートします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-20 lg:mb-32">
+                <span class="text-brand-gold text-[10px] font-bold tracking-[0.5em] mb-8 block">約束</span>
+                <h2 class="text-4xl lg:text-5xl font-serif font-black italic tracking-widest">TRUSTが約束する、<br class="md:hidden">3つのこと。</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-24">
+                <div class="group fade-in-up">
+                    <span class="text-8xl font-serif font-black text-slate-100 group-hover:text-brand-gold transition duration-500 leading-none italic mb-12 block">01</span>
+                    <h3 class="text-3xl font-bold mb-10 tracking-widest">残業は、月10時間以内。</h3>
+                    <p class="text-slate-500 leading-loose font-light text-[16px] keep-all">現場のDX化と徹底した業務効率化により、残業はほぼゼロ。家族との時間、自己研鑽の時間、趣味の時間。あなたの人生を豊かにする時間を確保します。</p>
+                </div>
+                <div class="group fade-in-up" style="transition-delay: 0.1s;">
+                        <span class="text-8xl font-serif font-black text-slate-100 group-hover:text-brand-gold transition duration-500 leading-none italic mb-12 block">02</span>
+                        <h3 class="text-3xl font-bold mb-10 tracking-widest">年収の完全保証。</h3>
+                        <p class="text-slate-500 leading-loose font-light text-[16px] keep-all">あなたの経験に敬意を払い、源泉徴収票に基づいた「前職以上」の給与提示をお約束。将来の退職金も完備しています。</p>
+                    </div>
+                    <div class="group fade-in-up" style="transition-delay: 0.2s;">
+                        <span class="text-8xl font-serif font-black text-slate-100 group-hover:text-brand-gold transition duration-500 leading-none italic mb-12 block">03</span>
+                        <h3 class="text-3xl font-bold mb-10 tracking-widest">18時の帰宅を現実に。</h3>
+                        <p class="text-slate-500 leading-loose font-light text-[16px] keep-all">事務作業の徹底したDX化により、監督が書類に追われる時間を排除。効率化を突き詰めるのは、社員の人生を大切にするためです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="voice" class="section-space bg-slate-50 scroll-mt-20">
+        <div class="container mx-auto px-12">
+            <div class="text-center mb-40">
+                <span class="text-brand-gold text-[10px] font-bold tracking-[0.5em] mb-8 block">インタビュー</span>
+                <h2 class="text-5xl font-serif font-black italic tracking-widest">現場に、愛を。</h2>
+            </div>
+            <div class="space-y-48">
+                <div class="flex flex-col lg:flex-row gap-24 items-center">
+                    <div class="lg:w-7/12 img-mask">
+                        <img src="./a-voice-rest.webp" class="aspect-wide grayscale shadow-2xl" alt="Worker 1">
+                    </div>
+                    <div class="lg:w-5/12">
+                        <h4 class="text-2xl lg:text-3xl font-serif font-bold mb-10 leading-relaxed italic keep-all border-l-4 border-brand-gold pl-8 py-2">「18時に現場を上がり、コーヒーを飲む。<br>この何気ない時間が、最大の贅沢です。」</h4>
+                        <p class="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase pl-8">工事長（52歳）/ 1級建築施工管理技士</p>
+                    </div>
+                </div>
+                <div class="flex flex-col lg:flex-row-reverse gap-24 items-center">
+                    <div class="lg:w-7/12 img-mask">
+                        <img src="./a-voice-lead.webp" class="aspect-wide grayscale shadow-2xl" alt="Worker 2">
+                    </div>
+                    <div class="lg:w-5/12">
+                        <h4 class="text-2xl lg:text-3xl font-serif font-bold mb-10 leading-relaxed italic keep-all border-l-4 border-brand-gold pl-8 py-2">「培った技術を次世代に伝える。<br>それが、第二のやりがいになりました。」</h4>
+                        <p class="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase pl-8">現場所長（48歳）/ 施工管理責任者</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-space culture-section relative">
+        <div class="container mx-auto px-0 md:px-12">
+            <!-- Dark Navy Card with significant internal padding for "Solid Space" -->
+            <div class="bg-brand-navy rounded-sm shadow-2xl p-6 md:p-16 lg:p-24 overflow-hidden">
+                <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                    
+                    <!-- Image Side: Landscape as requested, natural aspect ratio -->
+                    <div class="lg:w-6/12">
+                        <div class="img-mask shadow-2xl border border-white/10 relative group">
+                            <!-- Subtle decorative element -->
+                            <div class="absolute top-0 left-0 w-24 h-24 border-t border-l border-brand-gold opacity-30 group-hover:opacity-100 transition duration-500"></div>
+                            
+                            <img src="./a-culture.webp" class="aspect-landscape w-full object-cover grayscale opacity-90 group-hover:opacity-100 transition duration-700" alt="社内交流">
+                            
+                            <div class="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-brand-gold opacity-30 group-hover:opacity-100 transition duration-500"></div>
+                        </div>
+                    </div>
+
+                    <!-- Text Side: Ample width for readability -->
+                    <div class="lg:w-6/12 flex flex-col items-center lg:items-end text-center lg:text-right">
+                        <span class="text-brand-gold text-[11px] font-bold tracking-[0.5em] block italic font-serif mb-12">社内文化</span>
+                        
+                        <div class="flex justify-end mb-16 w-full">
+                            <!-- Vertical Title: flex-col in vertical-rl stacks items horizontally. 
+                                 gap-32 creates very wide spacing between the vertical lines. 
+                                 tracking-widest is standard spacing. -->
+                            <h3 class="vertical-text flex flex-col gap-8 lg:gap-16 text-2xl md:text-3xl lg:text-[42px] font-serif font-black text-white tracking-widest h-auto min-h-[250px] md:min-h-[300px] py-4">
+                                <span>世代を</span>
+                                <span>超えて、</span>
+                                <span>高め合える</span>
+                                <span>仲間がいる。</span>
+                            </h3>
+                        </div>
+
+                        <!-- Paragraph with wide readability -->
+                        <div class="w-full lg:max-w-xl border-t border-white/10 pt-10">
+                            <p class="text-slate-400 leading-[2.4] font-light text-[15px] text-justify lg:text-right">
+                                トラスト建設の事務所には、常に会話があります。若手もベテランも、役職に関係なく意見を出し合える風通しの良さ。この「空気感」こそが、私たちの品質を支えています。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="data" class="py-20 md:py-32 border-y border-slate-100 bg-white scroll-mt-20">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-16 text-center">
+                <div class="p-6 rounded-lg hover:bg-slate-50 transition duration-500">
+                    <p class="text-5xl md:text-7xl font-serif font-black text-brand-gold italic mb-4 md:mb-6">16</p>
+                    <p class="text-[10px] md:text-xs font-black tracking-[0.2em] opacity-40">平均勤続年数</p>
+                </div>
+                <div class="p-6 rounded-lg hover:bg-slate-50 transition duration-500">
+                    <p class="text-5xl md:text-7xl font-serif font-black text-brand-gold italic mb-4 md:mb-6">2.0</p>
+                    <p class="text-[10px] md:text-xs font-black tracking-[0.2em] opacity-40">離職率 (%)</p>
+                </div>
+                <div class="p-6 rounded-lg hover:bg-slate-50 transition duration-500">
+                    <p class="text-5xl md:text-7xl font-serif font-black text-brand-gold italic mb-4 md:mb-6">5.2</p>
+                    <p class="text-[10px] md:text-xs font-black tracking-[0.2em] opacity-40">年間賞与 (ヶ月)</p>
+                </div>
+                <div class="p-6 rounded-lg hover:bg-slate-50 transition duration-500">
+                    <p class="text-5xl md:text-7xl font-serif font-black text-brand-gold italic mb-4 md:mb-6">70</p>
+                    <p class="text-[10px] md:text-xs font-black tracking-[0.2em] opacity-40">定年 (歳)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-space text-center bg-brand-navy text-white scroll-mt-20">
+        <div class="container mx-auto px-12">
+            <h2 class="text-4xl lg:text-7xl font-serif font-black mb-16 italic keep-all">履歴書は、まだいりません。</h2>
+            <div class="w-12 h-px bg-brand-gold mx-auto mb-16"></div>
+            <p class="text-lg font-serif font-light text-slate-400 leading-loose mb-24 keep-all">
+                まずはコーヒーを飲みながら、あなたのこれまでの歩みを教えてください。<br>
+                無理な勧誘は一切しません。それが、技術者の先輩に対する私たちの礼儀です。
+            </p>
+            <a href="#" class="inline-block text-[12px] font-bold tracking-[0.3em] border border-brand-gold px-20 py-8 hover:bg-brand-gold transition-all duration-1000 font-black">面談を予約する</a>
+        </div>
+    </section>
+
+    <footer class="bg-white py-24">
+        <div class="container mx-auto px-12 flex flex-col md:flex-row justify-between items-end gap-8">
+            <div class="flex flex-col">
+                <span class="font-serif text-3xl font-light italic tracking-[0.1em] text-slate-300">TRUST CONSTRUCTION</span>
+                <span class="text-[10px] tracking-widest text-slate-300 mt-4">東京 / 創業1976年</span>
+            </div>
+            <div class="text-[10px] tracking-widest text-slate-300 italic uppercase">
+                Powered by WEBとしくみをつくる仕事
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
