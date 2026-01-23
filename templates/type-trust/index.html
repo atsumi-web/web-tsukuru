@@ -149,61 +149,7 @@
         </div>
     </header>
 
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const spans = menuBtn.querySelectorAll('span');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        let isOpen = false;
 
-        menuBtn.addEventListener('click', () => {
-            isOpen = !isOpen;
-            if (isOpen) {
-                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-                spans[0].classList.add('rotate-45', 'translate-y-2');
-                spans[1].classList.add('opacity-0');
-                spans[2].classList.add('-rotate-45', '-translate-y-2');
-            } else {
-                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-                spans[0].classList.remove('rotate-45', 'translate-y-2');
-                spans[1].classList.remove('opacity-0');
-                spans[2].classList.remove('-rotate-45', '-translate-y-2');
-            }
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                isOpen = false;
-                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-                spans[0].classList.remove('rotate-45', 'translate-y-2');
-                spans[1].classList.remove('opacity-0');
-                spans[2].classList.remove('-rotate-45', '-translate-y-2');
-            });
-        });
-
-        // Scroll animation script
-        const faders = document.querySelectorAll('.fade-in-up');
-
-        const appearOptions = {
-            threshold: 0.2, // Trigger when 20% of the item is visible
-            rootMargin: "0px 0px -50px 0px" // Adjust when item is 50px from bottom of viewport
-        };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
-                }
-            });
-        }, appearOptions);
-
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
-    </script>
 
     <section class="min-h-screen flex items-center pt-20 pb-20 overflow-hidden relative">
         <!-- Background Elements for Mobile Appeal -->
@@ -444,6 +390,38 @@
         </div>
     </footer>
     <script>
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const spans = menuBtn.querySelectorAll('span');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isOpen = !isOpen;
+            if (isOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                spans[0].classList.add('rotate-45', 'translate-y-2');
+                spans[1].classList.add('opacity-0');
+                spans[2].classList.add('-rotate-45', '-translate-y-2');
+            } else {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                spans[0].classList.remove('rotate-45', 'translate-y-2');
+                spans[1].classList.remove('opacity-0');
+                spans[2].classList.remove('-rotate-45', '-translate-y-2');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isOpen = false;
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                spans[0].classList.remove('rotate-45', 'translate-y-2');
+                spans[1].classList.remove('opacity-0');
+                spans[2].classList.remove('-rotate-45', '-translate-y-2');
+            });
+        });
+
         // Scroll Animation Observer
         const observerOptions = {
             root: null,

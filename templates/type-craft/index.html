@@ -31,13 +31,11 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
-        .fade-in.active { opacity: 1; transform: translateY(0); }
         .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .scroll-reveal.active { opacity: 1; transform: translateY(0); }
         .vertical-text { writing-mode: vertical-rl; }
         .shadow-dreamy { box-shadow: 0 20px 50px -12px rgba(166, 139, 103, 0.25); }
-        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .bg-white-important { background-color: #ffffff !important; }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -50,6 +48,38 @@
             }, { threshold: 0.1 });
             
             document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+            // Mobile Menu Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const icon = menuToggle.querySelector('i');
+            let isMenuOpen = false;
+
+            menuToggle.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('translate-x-full');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.add('translate-x-full');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    isMenuOpen = false;
+                    mobileMenu.classList.add('translate-x-full');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                });
+            });
         });
     </script>
 </head>
@@ -61,16 +91,35 @@
                 <span class="font-serif text-2xl font-black tracking-[0.3em] text-stone-900 leading-none">ARC BUILD</span>
                 <span class="text-[9px] font-bold tracking-[0.4em] text-accent-gold uppercase mt-1 italic">Modern Craftsmanship</span>
             </div>
-            <nav class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-widest text-stone-400 uppercase">
-                <a href="#philosophy" class="hover:text-accent-gold transition">Philosophy</a>
-                <a href="#flow" class="hover:text-accent-gold transition">Flow</a>
-                <a href="#project" class="hover:text-accent-gold transition">Projects</a>
-                <a href="#conditions" class="hover:text-accent-gold transition">Conditions</a>
-                <a href="#voice" class="hover:text-accent-gold transition">Interview</a>
+            <div class="flex items-center gap-12">
+                <nav class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-widest text-stone-400 uppercase">
+                    <a href="#philosophy" class="hover:text-accent-gold transition">Philosophy</a>
+                    <a href="#flow" class="hover:text-accent-gold transition">Flow</a>
+                    <a href="#project" class="hover:text-accent-gold transition">Projects</a>
+                    <a href="#conditions" class="hover:text-accent-gold transition">Conditions</a>
+                    <a href="#voice" class="hover:text-accent-gold transition">Interview</a>
+                </nav>
+                <div class="flex items-center gap-6">
+                    <a href="#contact" class="hidden md:inline-flex bg-stone-900 text-white px-8 py-3 text-[10px] font-bold tracking-widest hover:bg-accent-gold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg uppercase">
+                        Entry
+                    </a>
+                    <button id="menu-toggle" class="lg:hidden text-stone-900 hover:text-accent-gold transition z-50 relative">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu" class="fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-white z-40 transform translate-x-full transition-transform duration-500 ease-out lg:hidden flex flex-col justify-center items-center border-t border-stone-100 bg-white-important">
+            <nav class="flex flex-col gap-8 text-center text-sm font-bold tracking-[0.2em] text-stone-900 uppercase">
+                <a href="#philosophy" class="mobile-link hover:text-accent-gold transition">Philosophy</a>
+                <a href="#flow" class="mobile-link hover:text-accent-gold transition">Flow</a>
+                <a href="#project" class="mobile-link hover:text-accent-gold transition">Projects</a>
+                <a href="#conditions" class="mobile-link hover:text-accent-gold transition">Conditions</a>
+                <a href="#voice" class="mobile-link hover:text-accent-gold transition">Interview</a>
+                <a href="#contact" class="mobile-link text-accent-gold mt-4">Entry</a>
             </nav>
-            <a href="#contact" class="bg-stone-900 text-white px-8 py-3 text-[10px] font-bold tracking-widest hover:bg-accent-gold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg uppercase">
-                Entry
-            </a>
         </div>
     </header>
 
@@ -111,7 +160,7 @@
         </div>
     </section>
 
-    <section id="philosophy" class="py-40 relative bg-white">
+    <section id="philosophy" class="py-24 md:py-40 relative bg-white">
         <div class="absolute top-0 right-0 w-1/3 h-full bg-stone-50/50 -z-10"></div>
         <div class="container mx-auto px-6 max-w-6xl scroll-reveal">
             <div class="flex flex-col md:flex-row items-center gap-20">
@@ -153,7 +202,7 @@
         </div>
     </section>
 
-    <section id="flow" class="py-40 bg-stone-50">
+    <section id="flow" class="py-24 md:py-40 bg-stone-50">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-stone-200 pb-12">
                 <div>
@@ -208,7 +257,7 @@
         </div>
     </section>
 
-    <section id="conditions" class="py-40 bg-white">
+    <section id="conditions" class="py-24 md:py-40 bg-white">
         <div class="container mx-auto px-6 max-w-5xl scroll-reveal">
             <div class="bg-stone-50 p-12 md:p-24 relative overflow-hidden shadow-dreamy border border-stone-100">
                 <div class="absolute top-0 right-0 p-12 font-serif text-white text-[12rem] font-black italic select-none drop-shadow-md opacity-50" style="text-shadow: -1px -1px 0 #eee;">$$</div>
@@ -253,7 +302,7 @@
         </div>
     </section>
 
-    <section id="voice" class="py-40 bg-stone-50">
+    <section id="voice" class="py-24 md:py-40 bg-stone-50">
         <div class="container mx-auto px-6 max-w-6xl">
             <h2 class="text-4xl font-serif font-black text-stone-900 mb-24 text-center tracking-[0.2em] italic uppercase italic">Interview</h2>
             <div class="space-y-32">
@@ -289,7 +338,7 @@
         </div>
     </section>
 
-    <section id="contact" class="py-56 bg-stone-900 text-center relative overflow-hidden">
+    <section id="contact" class="py-32 md:py-56 bg-stone-900 text-center relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 left-0 w-96 h-96 bg-accent-gold rounded-full filter blur-[120px]"></div>
         </div>
