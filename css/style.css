@@ -3789,7 +3789,7 @@ a:hover {
   z-index: 10;
   box-shadow: none;
   margin: 0 !important;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6); /* Soft shadow */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); /* Soft shadow */
   width: auto !important;
   text-align: right;
   opacity: 0.8; /* Subtle transparency */
@@ -4552,4 +4552,390 @@ html body a.nav-btn:hover,
   background: #fff; /* Keep card white for contrast? Or make it also dark? User said "Background to Navy". Usually this means section. */
   /* If section is Navy, Card White looks good. */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important; /* Stronger shadow on dark bg */
+}
+
+/* =========================================
+   Works Page Styles
+   ========================================= */
+
+/* Browser Mockup */
+.browser-mockup {
+  border-top: 2em solid #f1f1f1;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  background: #fff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.browser-mockup::before {
+  content: "";
+  position: absolute;
+  top: -1.25em;
+  left: 1em;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #ff5f56;
+  border-radius: 50%;
+  box-shadow:
+    0.75em 0 0 #ffbd2e,
+    1.5em 0 0 #27c93f;
+  z-index: 1;
+}
+
+.browser-mockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-top: 1px solid #ddd;
+}
+
+.browser-mockup:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Device Group for Desktop + Mobile */
+.device-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Phone Mockup */
+.phone-mockup {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 28%; /* Slightly larger as it might include shadow/frame in image */
+    min-width: 100px;
+    z-index: 10;
+    transition: transform 0.3s ease;
+    /* Removed bezel styles as image is transparent mockup */
+    background: transparent;
+    box-shadow: none; 
+    padding: 0;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.phone-mockup:hover {
+    transform: translateY(-5px) scale(1.05);
+    z-index: 11;
+}
+
+.phone-mockup img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* Removed border and radius as image carries the design */
+    border: none;
+    border-radius: 0;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); /* Add shadow to the image itself */
+}
+
+/* Adjustments for SP */
+@media screen and (max-width: 768px) {
+    .phone-mockup {
+        width: 35%;
+        bottom: -10px;
+        right: -10px;
+    }
+}
+
+/* Shadow Dreamy */
+.shadow-dreamy {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.07),
+    0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07),
+    0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07),
+    0 32px 64px rgba(0, 0, 0, 0.07);
+}
+
+/* Works Grid */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+.work-card {
+  background: transparent;
+}
+
+.work-card-header {
+  margin-bottom: 25px;
+}
+
+.work-card-body h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.work-model-label {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Model Label Colors */
+.label-trust {
+  background: var(--brand-navy);
+  color: #fff;
+}
+
+.label-craft {
+  background: #555; /* Gray for CRAFT */
+  color: #fff;
+}
+
+.label-speed {
+  background: #000;
+  color: #facc15; /* Yellow text for SPEED */
+  border: 1px solid #facc15;
+}
+
+.work-catch {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  line-height: 1.8;
+  color: var(--brand-navy);
+  font-family: var(--font-mincho);
+}
+
+.work-desc {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.work-links {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+
+.work-link:hover {
+  color: var(--brand-gold);
+  border-bottom-color: var(--brand-gold);
+}
+
+.work-link i {
+  margin-right: 6px;
+  font-size: 0.9em;
+}
+
+/* Works Hero */
+.works-hero {
+  padding: 160px 0 80px;
+  background-color: var(--brand-navy);
+  /* Subtle texture or gradient */
+  background-image: radial-gradient(
+    circle at 80% 20%,
+    rgba(174, 139, 71, 0.15) 0%,
+    transparent 40%
+  );
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.works-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  font-family: var(--font-mincho);
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.works-hero p {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 2;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background Text Texture for Works Hero */
+.works-hero::before {
+  content: "WORKS";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Tech Reasons Section */
+.tech-reasons {
+  padding: 80px 0;
+  background: #fafafa;
+}
+
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.reason-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 8px; /* Sharper corners for pro feel */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border-bottom: 4px solid transparent; /* Prepare for hover */
+  transition:
+    transform 0.3s,
+    border-color 0.3s;
+}
+
+.reason-card:hover {
+  transform: translateY(-5px);
+  border-bottom-color: var(--brand-gold);
+}
+
+.reason-icon {
+  font-size: 2.5rem;
+  color: var(--brand-gold);
+  margin-bottom: 25px;
+}
+
+.reason-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.reason-card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.9;
+}
+
+/* Active Nav State */
+.site-nav a.active {
+  color: var(--brand-navy); /* Dark on light bg header */
+  font-weight: 800;
+}
+.site-nav a.active::after {
+  width: 100%;
+}
+
+/* Works Teaser on Homepage */
+.work-preview-card:hover .preview-img img {
+    transform: scale(1.05);
+}
+
+.work-preview-card .preview-info {
+    transition: opacity 0.3s;
+}
+
+.work-preview-card:hover .preview-info {
+    opacity: 0.8;
+}
+
+/* Work Strategy Box */
+.work-strategy-box {
+    margin-top: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+.strategy-list {
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.strategy-item {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    margin-bottom: 12px;
+    line-height: 1.6;
+    align-items: baseline; /* Align icon/text properly */
+}
+
+.strategy-item:last-child {
+    margin-bottom: 0;
+}
+
+.strategy-item dt {
+    font-weight: bold;
+    color: var(--brand-navy);
+    min-width: 120px; /* Fixed width for labels */
+    flex-shrink: 0;
+}
+
+.strategy-item dd {
+    margin: 0;
+    color: #666;
+    flex: 1; /* Take remaining space */
+}
+
+.strategy-item dt i {
+    width: 20px;
+    color: var(--brand-gold);
+    text-align: center;
+    margin-right: 5px;
+}
+
+/* Highlight the 'Strategy' item */
+.strategy-item.highlight {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd;
+}
+
+.strategy-item.highlight dt {
+    color: #DC2626; /* Red for emphasis */
+}
+
+.strategy-item.highlight dt i {
+    color: #DC2626;
+}
+
+.strategy-item.highlight dd {
+    font-weight: 500;
+    color: #333;
 }
