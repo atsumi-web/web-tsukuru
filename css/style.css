@@ -1055,6 +1055,10 @@ a:hover {
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
+.gray-card h2 {
+  color: var(--text-color) !important;
+}
+
 .f-text {
   flex: 1.1; /* Text area slightly wider */
 }
