@@ -28,14 +28,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@400;600;800&family=Dancing+Script:wght@400;700&family=WindSong:wght@400;500&family=Zen+Kurenaido&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@400;600;800&family=Dancing+Script:wght@400;700&family=WindSong:wght@400;500&family=Zen+Kurenaido&family=Zen+Old+Mincho:wght@400;700;900&display=swap"
         media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@400;600;800&family=Dancing+Script:wght@400;700&family=WindSong:wght@400;500&family=Zen+Kurenaido&display=swap">
     </noscript>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=gold_campaign_navy">
+    <link rel="stylesheet" href="css/style.css?v=signature_fix_64px">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         media="print" onload="this.media='all'">
     <noscript>
@@ -710,12 +710,10 @@
                 </div>
 
                 <!-- New 2-Plan Layout using CSS Grid -->
-                <div class="price-grid js-fade-up"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 960px; margin: 0 auto;">
+                <div class="price-grid js-fade-up">
 
                     <!-- Plan A: Recommended -->
-                    <div class="plan-card recommended"
-                        style="border: 4px solid #3B82F6; padding: 40px; border-radius: 16px; position: relative; background: #fff;">
+                    <div class="plan-card recommended">
                         <span
                             style="position: absolute; top: 0; right: 0; background: #3B82F6; color: white; padding: 8px 16px; font-size: 14px; font-weight: bold; border-top-right-radius: 11px; border-bottom-left-radius: 11px;">推奨</span>
                         <h3 style="font-size: 24px; font-weight: bold; color: #333; margin-top: 0;">A：【完全伴走】専属編集長プラン
@@ -730,31 +728,23 @@
                             </div>
 
                             <!-- 初期費用 -->
-                            <div style="margin: 25px 0; padding: 20px; background: #FEF2F2; border-radius: 8px;">
-                                <p
-                                    style="font-size: 14px; font-weight: 600; color: #666; margin: 0 0 8px 0; letter-spacing: 0.05em;">
-                                    初期費用</p>
-                                <p
-                                    style="font-size: 42px; font-weight: bold; color: #DC2626; margin: 0; line-height: 1;">
-                                    50,000円<span
-                                        style="font-size: 0.35em; font-weight: 600; margin-left: 5px;">（税込）</span></p>
-                                <p
-                                    style="font-size: 13px; color: #999; margin: 8px 0 0 0; text-decoration: line-through;">
-                                    通常 250,000円</p>
+                            <div class="price-box" style="background: #FEF2F2;">
+                                <p style="font-size: 14px; font-weight: 600; color: #666; margin: 0 0 8px 0; letter-spacing: 0.05em;">初期費用</p>
+                                <div class="price-display">
+                                    <span class="price-number">50,000</span>
+                                    <span class="price-unit">円<small>（税込）</small></span>
+                                </div>
+                                <p class="price-init">通常 250,000円</p>
                             </div>
 
                             <!-- 月額費用 -->
-                            <div style="margin: 25px 0; padding: 20px; background: #FEF2F2; border-radius: 8px;">
-                                <p
-                                    style="font-size: 14px; font-weight: 600; color: #666; margin: 0 0 8px 0; letter-spacing: 0.05em;">
-                                    月額費用</p>
-                                <p
-                                    style="font-size: 42px; font-weight: bold; color: #DC2626; margin: 0; line-height: 1;">
-                                    30,000円<span
-                                        style="font-size: 0.35em; font-weight: 600; margin-left: 5px;">（税込）</span></p>
-                                <p
-                                    style="font-size: 13px; color: #999; margin: 8px 0 0 0; text-decoration: line-through;">
-                                    通常 50,000円</p>
+                            <div class="price-box" style="background: #FEF2F2;">
+                                <p style="font-size: 14px; font-weight: 600; color: #666; margin: 0 0 8px 0; letter-spacing: 0.05em;">月額費用</p>
+                                <div class="price-display">
+                                    <span class="price-number">30,000</span>
+                                    <span class="price-unit">円<small>（税込）</small></span>
+                                </div>
+                                <p class="price-init">通常 50,000円</p>
                             </div>
 
                             <p
@@ -779,8 +769,7 @@
                     </div>
 
                     <!-- Plan B: Self -->
-                    <div class="plan-card"
-                        style="border: 1px solid #E5E7EB; padding: 40px; border-radius: 16px; background: #fff; color: #777;">
+                    <div class="plan-card self">
                         <h3 style="font-size: 24px; font-weight: bold; color: #777; margin-top: 0;">B：【完全自走】固定費ゼロプラン
                         </h3>
                         <p style="font-size: 14px; margin-bottom: 20px; color: #666; line-height: 1.6;">
@@ -789,9 +778,11 @@
                         </p>
                         <div class="price-area" style="margin: 30px 0;">
                             <p style="font-size: 14px;">構築・譲渡パッケージ</p>
-                            <p style="font-size: 36px; font-weight: bold; color: #1F2937;">350,000円<span
-                                    style="font-size: 0.4em; font-weight: normal; color: #777;">（税込）</span></p>
-                            <p style="font-size: 20px; font-weight: bold; color: #3B82F6; margin-top: 10px;">月額費用：0円</p>
+                            <div class="price-display" style="color: #1F2937; justify-content: center;">
+                                <span class="price-number" style="font-size: 42px;">350,000</span>
+                                <span class="price-unit" style="font-size: 16px;">円<small>（税込）</small></span>
+                            </div>
+                            <p style="font-size: 20px; font-weight: bold; color: #3B82F6; margin-top: 10px; text-align: center;">月額費用：0円</p>
                         </div>
                         <ul class="plan-features-list"
                             style="list-style: none; padding: 0; margin-bottom: 30px; text-align: left; font-size: 14px; line-height: 1.8; color: #6B7280;">
@@ -863,6 +854,7 @@
         <section class="profile-section brand-profile" id="profile">
             <div class="container">
                 <div class="profile-inner js-fade-up">
+                    <div class="profile-bg-text">Professional Asset Partner</div>
                     <div class="profile-header">
                         <span class="p-job"
                             style="letter-spacing: 0.05em; font-size: 12px;">御社の魅力を発掘し、一生モノの資産へ昇華させる責任者</span>
@@ -870,15 +862,9 @@
                                 class="br-sp">採用資産コンサルタント / 専属編集長</h3>
                     </div>
                     <!-- Profile Body Same as Brand -->
-                    <div class="profile-body">
-                        <div class="profile-image">
-                            <img src="images/profile.webp" alt="Creator Profile" width="400" height="400"
-                                loading="lazy">
-                            <div class="p-sign">
-                                渥美 絵里</div>
-                        </div>
-                        <div class="profile-text">
-                            <p class="text-pc">
+                    <div class="profile-body-v2">
+                        <div class="profile-text-full">
+                            <p class="text-main">
                                 建設業界には、真面目で誠実な会社がたくさんあります。<br>
                                 技術も、実績も、職人の想いも、全てが揃っている。<br>
                                 <br>
@@ -892,8 +878,7 @@
                                 「資産」として世に残し続ける。<br>
                                 その運用の全責任を負う「門番（編集長）」として、御社に伴走します。<br>
                                 <br>
-                                <strong
-                                    style="color: var(--brand-navy); border-bottom: 1px solid var(--brand-gold);">建設業界で働く娘から聞く、現場のリアルな声。<br>
+                                <strong class="profile-highlight">建設業界で働く娘から聞く、現場のリアルな声。<br>
                                     それが、私に「本当に良い会社ほど、その魅力が伝わっていない」という現実を教えてくれました。<br>
                                     <br>
                                     技術も、想いも、歴史も、全てが揃っている。<br>
@@ -905,6 +890,15 @@
                                     <br>
                                     次は、御社の番です。</strong>
                             </p>
+                            <div class="profile-footer">
+                                <div class="profile-founder-image">
+                                    <img src="images/profile.webp" alt="Creator Profile" width="60" height="60"
+                                        loading="lazy">
+                                </div>
+                                <div class="profile-signature-img">
+                                    <img src="images/signature.png" alt="渥美 絵里 手書きサイン" width="200" height="auto">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

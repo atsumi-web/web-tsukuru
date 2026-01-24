@@ -824,12 +824,12 @@ a:hover {
 
   /* Container - Wider text area on mobile */
   .container {
-    padding: 0 15px; /* Reduced from 20px for wider text */
+    padding: 0 12px; /* Reduced to maximize width */
   }
 
   /* Gray Card - Wider text area on mobile */
   .gray-card {
-    padding: 40px 20px !important; /* Reduced side padding from 40px */
+    padding: 40px 15px !important; /* Reduced side padding */
   }
 
   /* Responsive Line Breaks - Mobile */
@@ -1286,11 +1286,11 @@ a:hover {
 
 .price-init {
   text-decoration: line-through;
-  color: #aaa;
-  font-size: 14px;
-  margin-bottom: 8px;
+  color: #999;
+  font-size: 16px; /* Increased for better visibility */
+  margin-top: 8px;
   display: block;
-  font-family: "Outfit", sans-serif; /* Stylish Number */
+  font-family: "Zen Old Mincho", serif;
   letter-spacing: 0.05em;
 }
 
@@ -1314,24 +1314,33 @@ a:hover {
    Keep it simple for monitor line, but emphasize the main monthly price.
 */
 
-.price-monthly {
-  font-size: 56px; /* Increased size for English font */
-  font-weight: 800;
-  color: #333;
-  font-family: "Outfit", sans-serif; /* Stylish Geometric Sans */
-  line-height: 1;
-  display: block;
-  margin-top: 10px;
-  letter-spacing: -0.02em; /* Tighten for impact */
+.price-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  color: #DC2626;
+  margin: 10px 0;
 }
 
-.price-monthly span {
-  font-size: 0.4em;
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: normal;
-  color: #666;
-  vertical-align: middle;
-  margin-left: 5px;
+.price-number {
+  font-family: "Zen Old Mincho", serif;
+  font-size: 38px; /* Further reduced from 48px */
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.price-unit {
+  font-size: 16px; /* Reduced from 20px */
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.price-unit small {
+  font-size: 0.5em;
+  font-weight: 500;
+  display: inline-block;
+  transform: translateY(-2px);
 }
 
 .plan-features-list {
@@ -1400,14 +1409,21 @@ a:hover {
 @media (max-width: 768px) {
   .price-grid {
     grid-template-columns: 1fr; /* Stack vertically */
-    gap: 40px;
-    max-width: 400px;
+    gap: 30px;
+    width: 100%;
   }
   .plan-card {
-    padding: 40px 25px;
+    padding: 40px 12px; /* Sufficient for text parts */
   }
-  .price-monthly {
-    font-size: 40px;
+  .price-box {
+    padding: 25px 0 !important; /* No horizontal padding inside pink box */
+    margin: 25px -12px !important; /* Flush with plan-card edges */
+    width: calc(100% + 24px) !important;
+    border-radius: 0 !important; /* Sharp edges look wider */
+    box-sizing: border-box;
+  }
+  .price-number {
+    font-size: 32px; /* One size smaller on mobile */
   }
 }
 
@@ -1565,60 +1581,113 @@ a:hover {
   line-height: 1.6;
 }
 
-.profile-body {
-  display: flex;
-  align-items: center; /* Vertically center image and text block */
-  gap: 60px;
+/* Profile V2 (Text Focused) */
+.profile-body-v2 {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-.profile-image {
-  flex: 1;
-  max-width: 300px;
-  margin: 0;
-}
-
-.profile-image img {
-  width: 100%;
-  height: auto; /* Fix aspect ratio */
-  border-radius: 4px;
-  filter: sepia(0.05);
-  box-shadow: 20px 20px 0 var(--bg-light);
-  mix-blend-mode: multiply; /* Simulate transparency */
-}
-
-.profile-text {
-  flex: 1.5;
-}
-
-.profile-text p {
-  font-size: 14px;
-  color: var(--text-sub);
-  line-height: 2;
-  margin-bottom: 30px;
+.text-main {
+  font-size: 16px;
+  line-height: 2.2;
+  color: var(--text-color);
+  margin-bottom: 40px;
   text-align: justify;
 }
 
-/* Signature Styling */
-/* Signature Styling */
-.p-sign {
-  font-family: "Dancing Script", cursive !important;
-  font-size: 16px !important;
-  color: var(--brand-navy) !important;
-  margin-top: 15px !important;
-  text-align: right !important;
-  transform: rotate(-3deg) !important;
-  opacity: 0.9 !important;
+.profile-highlight {
+  display: block;
+  color: var(--brand-navy);
+  border-left: 3px solid var(--brand-gold);
+  padding: 5px 0 5px 20px;
+  margin: 30px 0;
+  font-weight: 700;
+  background: rgba(174, 139, 71, 0.03); /* Extremely subtle tint instead of gradient line */
+}
+
+.profile-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.profile-founder-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--brand-gold);
+  flex-shrink: 0;
+}
+
+.profile-founder-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Legacy styles removed for clean layout */
+
+/* Profile Background Floating Text (Refined for V2) */
+.profile-bg-text {
+  position: absolute;
+  bottom: 5%; /* 文章の下の方に配置 */
+  left: 45%; 
+  transform: translate(-50%, 0) rotate(-12deg); /* 角度を-12度へ大幅に強化 */
+  font-family: "WindSong", cursive !important;
+  font-size: 18vw; /* 迫力のあるサイズ */
+  color: var(--accent-color);
+  opacity: 0.15; /* 視認性をしっかり確保 */
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: 0.02em;
+}
+
+.profile-inner {
+  position: relative;
+  overflow: visible; 
+}
+
+.profile-body {
+  position: relative;
+  z-index: 2; /* Content above bg text */
+}
+
+.profile-signature-img {
+  width: 140px; /* 改：筆文字の存在感を出しつつ、品よく収まるサイズ */
+  height: auto;
+  flex-shrink: 0;
+  margin-left: 5px;
+}
+
+.profile-signature-img img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @media (max-width: 768px) {
-  .profile-body {
-    flex-direction: column;
-    gap: 30px;
+  .profile-bg-text {
+    font-size: 20vw;
+    opacity: 0.25; /* 改：モバイルではもっと濃くして視認性を確保 */
   }
-  .profile-image {
-    max-width: 100%;
-    width: 80%;
-    margin: 0 auto;
+  .text-main {
+    font-size: 15px;
+    line-height: 2;
+  }
+  .profile-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .profile-signature-img {
+    margin-left: 0;
+    width: 120px;
   }
 }
 
@@ -1845,6 +1914,10 @@ a:hover {
   .site-nav.is-active {
     transform: translateX(0);
     pointer-events: auto;
+  }
+
+  .site-nav .nav-btn {
+    display: none !important; /* モバイルメニュー内では非表示（フローティングボタンがあるため） */
   }
 
   .site-nav a {

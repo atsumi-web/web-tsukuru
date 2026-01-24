@@ -8,18 +8,7 @@ const nav = document.getElementById("nav");
 
 menuToggle.addEventListener("click", () => {
   nav.classList.toggle("active");
-
-  // Animate menu toggle icon
-  const spans = menuToggle.querySelectorAll("span");
-  if (nav.classList.contains("active")) {
-    spans[0].style.transform = "rotate(45deg) translateY(10px)";
-    spans[1].style.opacity = "0";
-    spans[2].style.transform = "rotate(-45deg) translateY(-10px)";
-  } else {
-    spans[0].style.transform = "none";
-    spans[1].style.opacity = "1";
-    spans[2].style.transform = "none";
-  }
+  menuToggle.classList.toggle("active");
 });
 
 // Close mobile menu when clicking a link
@@ -28,10 +17,7 @@ navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     if (window.innerWidth <= 768) {
       nav.classList.remove("active");
-      const spans = menuToggle.querySelectorAll("span");
-      spans[0].style.transform = "none";
-      spans[1].style.opacity = "1";
-      spans[2].style.transform = "none";
+      menuToggle.classList.remove("active");
     }
   });
 });
@@ -44,9 +30,9 @@ window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
 
   if (currentScroll > 100) {
-    header.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+    header.classList.add("scrolled");
   } else {
-    header.style.boxShadow = "none";
+    header.classList.remove("scrolled");
   }
 
   lastScroll = currentScroll;
@@ -153,5 +139,61 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// Log page load
-console.log("IIJ Engineering Recruiting Site - Loaded");
+// News Slider Logic
+// News Slider Logic
+const initNewsSlider = () => {
+  const items = document.querySelectorAll(".info-item");
+  if (items.length <= 1) return;
+
+  let currentIndex = 0;
+  let sliderInterval;
+
+  const showNext = () => {
+    const currentItem = items[currentIndex];
+
+    // Set exit animation for current item
+    currentItem.classList.remove("active");
+    currentItem.classList.add("exit");
+
+    // Update index
+    currentIndex = (currentIndex + 1) % items.length;
+    const nextItem = items[currentIndex];
+
+    // Reset and show next item
+    nextItem.classList.remove("exit");
+    nextItem.classList.add("active");
+
+    // Clean up exit class after animation
+    setTimeout(() => {
+      currentItem.classList.remove("exit");
+    }, 2000);
+  };
+
+  const startAutoPlay = () => {
+    sliderInterval = setInterval(showNext, 5000);
+  };
+
+  const resetAutoPlay = () => {
+    clearInterval(sliderInterval);
+    startAutoPlay();
+  };
+
+  // Auto-play
+  startAutoPlay();
+
+  // Manual Navigation (Click anywhere on the item or specifically the arrow)
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      showNext();
+      resetAutoPlay(); // Restart timer so it doesn't jump immediately after click
+    });
+    // Add cursor pointer to indicate clickability
+    item.style.cursor = "pointer";
+  });
+};
+
+// Initialize All
+document.addEventListener("DOMContentLoaded", () => {
+  initNewsSlider();
+  console.log("IIJ Engineering Recruiting Site - Initialized");
+});

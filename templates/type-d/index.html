@@ -5,7 +5,427 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="IIJ Engineering - Design IT, Design Your Life. 最先端のエンジニアリングで未来を創造する企業です。">
     <title>IIJ Engineering - Recruiting Site</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=6">
+    <style>
+        /* GLOBAL (Desktop) FIXES */
+        .info-arrow { display: none; }
+        .info-content { display: contents; }
+
+        /* White Line Animation for Red Decoration */
+        .hero-left-decoration::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* Robust bottom positioning */
+            left: 50%; 
+            margin-left: -1px; 
+            width: 2px;
+            height: 0; 
+            background-color: #ffffff;
+            animation: lineDraw 2.0s ease-in-out infinite; /* Slower */
+            opacity: 1;
+            transform: none; 
+        }
+        
+        /* Specific positioning for Mobile */
+        @media (max-width: 768px) {
+            .hero-left-decoration::after {
+                left: 80px !important;
+                top: 160px !important; /* Revert to pixel value */
+                bottom: auto !important; 
+                margin-left: 0 !important; 
+                z-index: 100 !important;
+            }
+        }
+
+        @keyframes lineDraw {
+            0% {
+                transform: translateY(0);
+                height: 0;
+            }
+            50% {
+                transform: translateY(0);
+                height: 120px; 
+            }
+            100% {
+                transform: translateY(120px); 
+                height: 0; 
+            }
+        }
+
+        /* CRITICAL FIXES FOR MOBILE */
+        @media (max-width: 768px) {
+            /* 0. Global Resets for Mobile to ensure Full Screen */
+            body, html {
+                height: 100% !important;
+                overflow-x: hidden !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .hero {
+                height: 100dvh !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                overflow: visible !important; /* Changed to visible to allow line animation */
+            }
+
+            /* 1. Hide the Big Hero Logo */
+            .hero-logo-space {
+                display: none !important;
+            }
+
+            /* 2. Fix Header Layout (Logo Left, Menu Right) */
+            .header-container {
+                justify-content: space-between !important;
+                padding: 0 20px !important;
+                height: 60px !important; /* Adjusted to user preference */
+            }
+
+            /* Force Logo to be visible and standard size */
+            .header .logo {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                display: flex !important;
+            }
+            .header .logo .logo-main { font-size: 40px !important; }
+            .hero-decoration-label { 
+                font-size: 8px !important; /* Smaller size */
+                margin-left: 4px !important; /* Moved right 3px more (Total 6px from original) */
+            }
+            .header .logo .logo-subtitle { font-size: 13px !important; }
+
+            /* 3. Hero Full Screen Wrapper */
+            .hero-full-width-wrapper {
+                height: 100dvh !important; /* Dynamic Viewport Height */
+                width: 100% !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                padding-top: 60px !important; /* Adjusted to 60px */
+                padding-bottom: 0 !important;
+                box-sizing: border-box !important;
+                overflow: visible !important; /* Changed to visible to allow line animation */
+                position: relative !important;
+            }
+            
+            .hero-visual-marquee-full {
+                position: absolute !important;
+                height: 100% !important;
+                width: 100% !important;
+                margin-top: 0 !important;
+                padding: 0 !important; /* Ensure no extra padding */
+                top: 0 !important;
+                left: 0 !important;
+            }
+            
+            .marquee-viewport {
+                margin-top: 0 !important; /* Removed redundant gap */
+                height: 100% !important; /* Fill container */
+                border-top-left-radius: 40px !important;
+                border-bottom-left-radius: 0 !important;
+                margin-left: 20px !important;
+                width: calc(100% - 20px) !important;
+            }
+            
+            .hero-info-box {
+                position: absolute !important;
+                bottom: 20px !important;
+                left: 0 !important;
+                border-radius: 0 !important;
+                background: #ffffff !important;
+                z-index: 50 !important;
+                padding: 0 !important; /* Internal padding handled by items */
+                height: 90px !important; /* Fixed height is key for absolute positioning */
+                width: 100% !important;
+                overflow: hidden !important; 
+                display: block !important;
+            }
+            .info-slider {
+                position: relative !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: block !important; 
+            }
+            .info-slider::-webkit-scrollbar {
+                display: none !important;
+            }
+            .hero-info-box::-webkit-scrollbar {
+                display: none !important;
+            }
+            .hero-info-box::after { display: none !important; }
+
+            /* Fix Overlapping: Horizontal Slider */
+            .info-item {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                box-sizing: border-box !important;
+                padding: 15px 20px !important; 
+                background-color: #ffffff !important;
+                
+                /* DEFAULT: Hidden right */
+                opacity: 1 !important; /* Keep opacity 1 for solid block */
+                visibility: hidden !important;
+                transform: translateX(100%) !important;
+                transition: transform 1.0s ease-in-out, visibility 0s linear 1.0s !important; /* Delay visibility hidden until done */
+                z-index: 1 !important;
+            }
+
+            .info-item.active {
+                /* ACTIVE: Center */
+                visibility: visible !important;
+                transform: translateX(0) !important;
+                transition: transform 1.0s ease-in-out !important; /* Sync duration */
+                z-index: 10 !important;
+            }
+            .info-item.exit {
+                /* EXIT: Left */
+                visibility: visible !important;
+                transform: translateX(-100%) !important;
+                transition: transform 1.0s ease-in-out !important;
+                z-index: 9 !important;
+            }
+            
+            /* Remove Animation Keyframes as we use Transitions now */
+            @keyframes animSlideInRight {} 
+            @keyframes animSlideOutLeft {}
+            .info-content {
+                display: flex !important;
+                flex-direction: column !important; /* Stack Date/Text */
+                justify-content: center !important;
+                align-items: flex-start !important;
+                flex: 1 !important;
+                gap: 12px !important; /* Increased from 5px */
+            }
+            .info-box-date {
+                white-space: nowrap !important;
+                display: flex !important;
+                align-items: center !important;
+                font-size: 12px !important;
+                color: #666 !important;
+            }
+            .info-box-text {
+                text-align: left !important;
+                white-space: normal !important;
+                font-size: 14px !important;
+                font-weight: 500 !important; /* Not bold */
+                line-height: 1.4 !important;
+                color: #333 !important;
+                margin: 0 !important;
+            }
+            /* Explicit Arrow Element (SVG Wrapper) */
+            .inline-arrow {
+                color: #555 !important;
+                font-weight: bold !important;
+                font-size: 14px !important;
+                margin-left: 10px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 20px !important;
+                height: 20px !important;
+                border: 1px solid #999 !important;
+                border-radius: 50% !important;
+                padding-bottom: 2px !important; /* Alignment fix */
+                background-color: #f9f9f9 !important;
+            }
+
+
+            /* 4. Red Decoration & Text Position */
+            .hero-left-decoration {
+                position: absolute !important;
+                bottom: 140px !important; /* Moved up 30px */
+                left: -60px !important;
+                width: 160px !important;
+                height: 160px !important;
+                padding-left: 80px !important;
+                padding-top: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: flex-start !important;
+                z-index: 60 !important;
+                overflow: visible !important; /* Allow text to overflow */
+            }
+            
+            .decoration-text {
+                margin-top: -20px !important; /* Moved text up 20px total */
+            }
+            
+            .hero-text-line {
+                font-size: 36px !important;
+                line-height: 1.0 !important;
+                white-space: nowrap !important;
+            }
+            
+            .handwritten-accent {
+                font-size: 48px !important;
+                margin-left: 10px !important;
+                margin-top: -5px !important;
+                white-space: nowrap !important;
+            }
+            
+            .decoration-text {
+                flex-direction: row !important; /* Side by side */
+                align-items: center !important; /* Center vertically relative to each other */
+                gap: 10px !important;
+            }
+            
+            .design-words {
+                display: flex !important;
+                flex-direction: column !important; /* Stack Design Design */
+                gap: 5px !important; /* Increased from 0 */
+                margin-top: -10px !important; /* Move up 10px */
+            }
+
+            .handwritten-accent {
+                display: flex !important;
+                flex-direction: column !important; /* Stack IT, Your Life */
+                align-items: flex-start !important;
+                font-size: 56px !important; /* Increased from 48px */
+                margin-left: 10px !important; /* Move right */
+                margin-top: 10px !important; /* Move down */
+                white-space: nowrap !important;
+                line-height: 1.2 !important;
+            }
+            .handwritten-accent span:last-child {
+                margin-top: -20px !important; /* Reduce gap by 20px */
+            }
+
+            /* 5. Full Screen Mobile Menu */
+            .nav {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100vh !important;
+                background-color: #ffffff !important;
+                padding: 70px 20px 40px !important; /* Reduced top padding */
+                display: flex !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+                transform: translateX(100%) !important;
+                transition: transform 0.4s ease !important;
+                z-index: 1500 !important; /* Below toggle but above everything else */
+                visibility: visible !important; /* Override if hidden */
+            }
+
+            .nav.active {
+                transform: translateX(0) !important;
+            }
+
+            /* Buttons inside Menu */
+            .header-buttons {
+                order: -1 !important; /* Move to top */
+                display: flex !important;
+                gap: 10px !important;
+                width: 100% !important;
+                margin-bottom: 20px !important;
+                flex-direction: row !important;
+            }
+
+            .header-buttons .btn {
+                flex: 1 !important;
+                text-align: center !important;
+                padding: 12px 0 !important;
+                width: auto !important;
+                display: block !important;
+            }
+
+            /* Nav List Styles */
+            .nav-list {
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 0 !important;
+            }
+
+            .nav-link {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+                padding: 20px 0 !important;
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                color: #333 !important;
+                border-bottom: 1px solid #eee !important;
+            }
+
+            /* Red Plus Icon */
+            .nav-link::after {
+                content: "+" !important;
+                font-size: 24px !important;
+                color: #e60012 !important;
+                font-weight: 300 !important;
+                position: static !important; /* Reset absolute */
+                width: auto !important;
+                height: auto !important;
+                background: none !important;
+            }
+            
+            
+            /* Add missing container style for flex filling */
+            .hero-visual-marquee-full {
+                width: 100% !important;
+                flex: 1 !important; /* Fill remaining height */
+                overflow: hidden !important;
+                position: relative !important;
+                margin-top: 0 !important; /* Removed gap */
+            }
+            .marquee-viewport, .marquee-track {
+                height: calc(100% - 100px) !important; /* Maximized based on image */
+            }
+            .marquee-track {
+                display: flex !important;
+                gap: 0 !important; /* Force no gap */
+            }
+
+            .marquee-item { 
+                width: 300px !important;
+                height: 100% !important; 
+                margin-right: 10px !important;
+                flex-shrink: 0 !important;
+                background: transparent !important;
+                display: block !important; /* Ensure block */
+                padding: 0 !important;
+            }
+            .marquee-frame {
+                display: block !important;
+                width: 100% !important;
+                height: 100% !important;
+                border-radius: 20px !important; /* Adjusted to 20px */
+                overflow: hidden !important; 
+                position: relative !important;
+                background: transparent !important; /* Remove temp bg */
+                /* Fix for Safari/Chrome */
+                transform: translateZ(0); 
+                -webkit-transform: translateZ(0);
+                mask-image: -webkit-radial-gradient(white, black); /* Force clipping */
+            }
+            .marquee-item img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                display: block !important;
+                border-radius: 0 !important;
+            } 
+            
+            /* ... existing ... */
+
+
+        }
+    </style>
 </head>
 <body>
     
@@ -27,8 +447,10 @@
                     <li><a href="#recruit" class="nav-link">採用情報</a></li>
                     <li><a href="#sns" class="nav-link">SNS</a></li>
                 </ul>
-                <a href="#" class="btn btn-primary">新卒採用</a>
-                <a href="#" class="btn btn-primary">中途採用</a>
+                <div class="header-buttons">
+                    <a href="#" class="btn btn-primary">新卒採用</a>
+                    <a href="#" class="btn btn-orange">中途採用</a>
+                </div>
             </nav>
             
             <div class="menu-toggle" id="menuToggle">
@@ -41,24 +463,45 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="red-circle red-circle-1"></div>
+
         <div class="hero-full-width-wrapper">
             <div class="hero-visual-marquee-full">
                 <div class="marquee-viewport">
                     <div class="marquee-track">
                         <!-- Set 1 -->
-                        <div class="marquee-item"><img src="images/hero-meeting.png" alt="Meeting"></div>
-                        <div class="marquee-item"><img src="images/hero-team.png" alt="Team"></div>
-                        <div class="marquee-item"><img src="images/illustration-1on1.png" alt="1on1"></div>
-                        <div class="marquee-item"><img src="images/member-1.png" alt="Member 1"></div>
-                        <div class="marquee-item"><img src="images/career-image.png" alt="Career"></div>
+                        <!-- Set 1 -->
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-meeting.png" alt="Meeting"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-team.png" alt="Team"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-2.png" alt="Member 2"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-1.png" alt="Member 1"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-3.png" alt="Member 3"></div>
+                        </div>
                         
                         <!-- Set 2 (Duplicate for loop) -->
-                        <div class="marquee-item"><img src="images/hero-meeting.png" alt="Meeting"></div>
-                        <div class="marquee-item"><img src="images/hero-team.png" alt="Team"></div>
-                        <div class="marquee-item"><img src="images/illustration-1on1.png" alt="1on1"></div>
-                        <div class="marquee-item"><img src="images/member-1.png" alt="Member 1"></div>
-                        <div class="marquee-item"><img src="images/career-image.png" alt="Career"></div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-meeting.png" alt="Meeting"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-team.png" alt="Team"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-2.png" alt="Member 2"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-1.png" alt="Member 1"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-3.png" alt="Member 3"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,9 +510,16 @@
             <div class="hero-content-overlay">
                 <!-- Left Bottom Red Decoration -->
                 <div class="hero-left-decoration">
+                    <p class="hero-decoration-label">IIJ Engineering Recruiting Site</p>
                     <div class="decoration-text">
-                        <span>Design</span>
-                        <span>Design</span>
+                        <div class="design-words">
+                            <div class="hero-text-line">Design</div>
+                            <div class="hero-text-line">Design</div>
+                        </div>
+                        <div class="handwritten-accent">
+                            <span>IT,</span>
+                            <span>your Life.</span>
+                        </div>
                     </div>
                 </div>
 
@@ -83,21 +533,52 @@
                 </div>
                 <!-- Wrap text content in container to keep it grid-aligned -->
                 <div class="container" style="height: 100%; display: flex; align-items: center;">
-                     <div class="hero-content fade-in-up">
-                        <p class="hero-label">IIJ Engineering Recruiting Site</p>
-                        <h1 class="hero-title">
-                            Design IT<br>
-                            Design
-                            <span class="hero-title-accent">Your Life</span>
-                        </h1>
-                    </div>
                 </div>
                 
                 <!-- Info Box (Bottom Right - Viewport Edge) -->
                 <div class="hero-info-box">
-                    <div class="info-box-date">2026.01.08 <span class="info-badge">お知らせ</span></div>
-                    <div class="info-box-text">IIJエンジニアリング公式noteを公開しました！</div>
-                    <div class="info-box-arrow">→</div>
+                    <div class="info-slider">
+                    <!-- News Item 1 -->
+                    <div class="info-item active">
+                        <div class="info-content">
+                            <div class="info-box-date" style="gap: 10px;">
+                                2026.01.24
+                                <span class="info-badge">News</span>
+                            </div>
+                            <div class="info-box-text">
+                                IIJエンジニアリング公式noteを公開しました！ 
+                                <span class="inline-arrow">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- News Item 2 -->
+                    <!-- News Item 2 -->
+                    <div class="info-item">
+                        <div class="info-content">
+                            <div class="info-box-date" style="gap: 10px;">
+                                2026.01.20
+                                <span class="info-badge" style="background-color: var(--primary-red);">Update</span>
+                            </div>
+                            <div class="info-box-text">
+                                2027年度新卒採用のエントリー受付を開始しました。
+                                <span class="inline-arrow">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- News Item 3 -->
+                    <div class="info-item">
+                        <div class="info-content">
+                            <div class="info-box-date" style="gap: 10px;">
+                                2026.01.15
+                                <span class="info-badge">Event</span>
+                            </div>
+                            <div class="info-box-text">
+                                オンライン会社説明会を2月に開催いたします。
+                                <span class="inline-arrow">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
