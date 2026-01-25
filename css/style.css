@@ -1318,7 +1318,7 @@ a:hover {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  color: #DC2626;
+  color: #dc2626;
   margin: 10px 0;
 }
 
@@ -1604,7 +1604,12 @@ a:hover {
   padding: 5px 0 5px 20px;
   margin: 30px 0;
   font-weight: 700;
-  background: rgba(174, 139, 71, 0.03); /* Extremely subtle tint instead of gradient line */
+  background: rgba(
+    174,
+    139,
+    71,
+    0.03
+  ); /* Extremely subtle tint instead of gradient line */
 }
 
 .profile-footer {
@@ -1624,6 +1629,13 @@ a:hover {
   flex-shrink: 0;
 }
 
+@media (max-width: 768px) {
+  .profile-founder-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 .profile-founder-image img {
   width: 100%;
   height: 100%;
@@ -1636,7 +1648,7 @@ a:hover {
 .profile-bg-text {
   position: absolute;
   bottom: 5%; /* 文章の下の方に配置 */
-  left: 45%; 
+  left: 45%;
   transform: translate(-50%, 0) rotate(-12deg); /* 角度を-12度へ大幅に強化 */
   font-family: "WindSong", cursive !important;
   font-size: 18vw; /* 迫力のあるサイズ */
@@ -1650,7 +1662,7 @@ a:hover {
 
 .profile-inner {
   position: relative;
-  overflow: visible; 
+  overflow: visible;
 }
 
 .profile-body {
@@ -4680,49 +4692,51 @@ html body a.nav-btn:hover,
 
 /* Device Group for Desktop + Mobile */
 .device-group {
-    position: relative;
-    margin-bottom: 20px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 /* Phone Mockup */
 .phone-mockup {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 28%; /* Slightly larger as it might include shadow/frame in image */
-    min-width: 100px;
-    z-index: 10;
-    transition: transform 0.3s ease;
-    /* Removed bezel styles as image is transparent mockup */
-    background: transparent;
-    box-shadow: none; 
-    padding: 0;
-    border-radius: 0;
-    overflow: visible;
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 28%; /* Slightly larger as it might include shadow/frame in image */
+  min-width: 100px;
+  z-index: 10;
+  transition: transform 0.3s ease;
+  /* Removed bezel styles as image is transparent mockup */
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .phone-mockup:hover {
-    transform: translateY(-5px) scale(1.05);
-    z-index: 11;
+  transform: translateY(-5px) scale(1.05);
+  z-index: 11;
 }
 
 .phone-mockup img {
-    display: block;
-    width: 100%;
-    height: auto;
-    /* Removed border and radius as image carries the design */
-    border: none;
-    border-radius: 0;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); /* Add shadow to the image itself */
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Removed border and radius as image carries the design */
+  border: none;
+  border-radius: 0;
+  filter: drop-shadow(
+    0 10px 20px rgba(0, 0, 0, 0.3)
+  ); /* Add shadow to the image itself */
 }
 
 /* Adjustments for SP */
 @media screen and (max-width: 768px) {
-    .phone-mockup {
-        width: 35%;
-        bottom: -10px;
-        right: -10px;
-    }
+  .phone-mockup {
+    width: 35%;
+    bottom: -10px;
+    right: -10px;
+  }
 }
 
 /* Shadow Dreamy */
@@ -4940,80 +4954,80 @@ html body a.nav-btn:hover,
 
 /* Works Teaser on Homepage */
 .work-preview-card:hover .preview-img img {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .work-preview-card .preview-info {
-    transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .work-preview-card:hover .preview-info {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 /* Work Strategy Box */
 .work-strategy-box {
-    margin-top: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    border: 1px solid #eee;
+  margin-top: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #eee;
 }
 
 .strategy-list {
-    margin: 0;
-    padding: 0;
-    font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
 }
 
 .strategy-item {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-    margin-bottom: 12px;
-    line-height: 1.6;
-    align-items: baseline; /* Align icon/text properly */
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  margin-bottom: 12px;
+  line-height: 1.6;
+  align-items: baseline; /* Align icon/text properly */
 }
 
 .strategy-item:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .strategy-item dt {
-    font-weight: bold;
-    color: var(--brand-navy);
-    min-width: 120px; /* Fixed width for labels */
-    flex-shrink: 0;
+  font-weight: bold;
+  color: var(--brand-navy);
+  min-width: 120px; /* Fixed width for labels */
+  flex-shrink: 0;
 }
 
 .strategy-item dd {
-    margin: 0;
-    color: #666;
-    flex: 1; /* Take remaining space */
+  margin: 0;
+  color: #666;
+  flex: 1; /* Take remaining space */
 }
 
 .strategy-item dt i {
-    width: 20px;
-    color: var(--brand-gold);
-    text-align: center;
-    margin-right: 5px;
+  width: 20px;
+  color: var(--brand-gold);
+  text-align: center;
+  margin-right: 5px;
 }
 
 /* Highlight the 'Strategy' item */
 .strategy-item.highlight {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px dashed #ddd;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #ddd;
 }
 
 .strategy-item.highlight dt {
-    color: #DC2626; /* Red for emphasis */
+  color: #dc2626; /* Red for emphasis */
 }
 
 .strategy-item.highlight dt i {
-    color: #DC2626;
+  color: #dc2626;
 }
 
 .strategy-item.highlight dd {
-    font-weight: 500;
-    color: #333;
+  font-weight: 500;
+  color: #333;
 }
