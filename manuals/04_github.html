@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antigravity × GitHub 爆速運用マニュアル（自分用）</title>
+    <title>Antigravity ÁEGitHub 爁E��運用マニュアル�E��E刁E���E�E/title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
     <style>
         body {
@@ -122,131 +122,131 @@
 
     <header class="site-header">
         <div class="container">
-            <h1>Antigravity × GitHub 爆速運用マニュアル（自分用）</h1>
-            <p>渥美さんが迷っていた「どのタイミングで？」「どう戻す？」への答えをすべて型にしました。</p>
+            <h1>Antigravity ÁEGitHub 爁E��運用マニュアル�E��E刁E���E�E/h1>
+            <p>渥美さんが迷ってぁE��「どのタイミングで�E�」「どぁE��す？」への答えをすべて型にしました、E/p>
         </div>
     </header>
 
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.html">← マニュアル一覧に戻る</a>
+            <a href="/manuals/admin.html">ↁE運用司令室に戻めE/a>
         </div>
 
         <main class="content">
             
-            <h2>0. 【重要】コードはどこに入力する？</h2>
+            <h2>0. 【重要】コード�Eどこに入力する！E/h2>
             <div class="highlight-box" style="background: #e6fffa; border-left: 4px solid #38b2ac; padding: 15px; margin-bottom: 30px;">
-                <h3 style="margin-top:0; border:none; padding:0; background:none;">💻 「ターミナル」を使います</h3>
-                <p>このマニュアルに出てくる英語のコマンド（<code>git pull...</code>など）は、全て<strong>VS Codeの下にある「ターミナル」パネル</strong>に入力してEnterキーを押します。</p>
-                <p><strong>ターミナルの出し方：</strong><br>
-                画面上のメニュー「ターミナル(T)」→「新しいターミナル」をクリック<br>
-                （または <code>Ctrl</code> + <code>J</code> キー）</p>
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">💻 「ターミナル」を使ぁE��ぁE/h3>
+                <p>こ�Eマニュアルに出てくる英語�Eコマンド！Ecode>git pull...</code>など�E��E、�Eて<strong>VS Codeの下にある「ターミナル」パネル</strong>に入力してEnterキーを押します、E/p>
+                <p><strong>ターミナルの出し方�E�E/strong><br>
+                画面上�Eメニュー「ターミナル(T)」�E「新しいターミナル」をクリチE��<br>
+                �E�また�E <code>Ctrl</code> + <code>J</code> キー�E�E/p>
             </div>
 
             <div class="tips">
-                <h5 style="margin-top:0;">💡 ファイルの横の「英語」の意味は？</h5>
+                <h5 style="margin-top:0;">💡 ファイルの横の「英語」�E意味は�E�E/h5>
                 <ul style="list-style: none; padding-left: 0; margin: 0;">
-                    <li><strong style="color: #d7ba7d;">M (Modified)</strong> ： 修正（もともとあったファイルを変えた）</li>
-                    <li><strong style="color: #28a745;">U (Untracked)</strong> ： 新規（まだGitに入れていない新しいファイル）</li>
-                    <li><strong style="color: #28a745;">A (Added)</strong> ： 追加（新しく作って、コミット準備OK）</li>
-                    <li><strong style="color: #d73a49;">D (Deleted)</strong> ： 削除（消したファイル）</li>
+                    <li><strong style="color: #d7ba7d;">M (Modified)</strong> �E�E修正�E�もともとあったファイルを変えた！E/li>
+                    <li><strong style="color: #28a745;">U (Untracked)</strong> �E�E新規（まだGitに入れてぁE��ぁE��しいファイル�E�E/li>
+                    <li><strong style="color: #28a745;">A (Added)</strong> �E�E追加�E�新しく作って、コミット準備OK�E�E/li>
+                    <li><strong style="color: #d73a49;">D (Deleted)</strong> �E�E削除�E�消したファイル�E�E/li>
                 </ul>
             </div>
 
-            <h2>1. 作業の「黄金サイクル」とタイミング</h2>
-            <p>この順序を守るだけで、トラブルの9割は防げます。</p>
+            <h2>1. 作業の「黁E��サイクル」とタイミング</h2>
+            <p>こ�E頁E��を守るだけで、トラブルの9割は防げます、E/p>
 
-            <h3>① 作業開始時：まずは最新にする</h3>
-            <p><strong>場所：</strong>ターミナル</p>
+            <h3>① 作業開始時�E�まず�E最新にする</h3>
+            <p><strong>場所�E�E/strong>ターミナル</p>
             <div class="command-block">git pull origin main</div>
-            <p><strong>理由：</strong>他のPCやAIによる変更を自分のPCに反映し、衝突（コンフリクト）を防ぐため。</p>
+            <p><strong>琁E���E�E/strong>他�EPCやAIによる変更を�E刁E�EPCに反映し、衝突E��コンフリクト）を防ぐため、E/p>
 
-            <h3>② 作業終了時：保存して公開（Commit & Push）</h3>
-            <p><strong>場所：</strong>ソース管理パネルの「コミット」ボタンの横の矢印 → 「コミットしてプッシュ」</p>
-            <p><strong>理由：</strong>「保存」と「公開」を一度に終わらせる、えりさんいつもの手順です。<br>
-            ※これでGitHub（サーバー）への保存まで完了します。</p>
+            <h3>② 作業終亁E���E�保存して公開！Eommit & Push�E�E/h3>
+            <p><strong>場所�E�E/strong>ソース管琁E��ネルの「コミット」�Eタンの横の矢印 ↁE「コミットしてプッシュ、E/p>
+            <p><strong>琁E���E�E/strong>「保存」と「�E開」を一度に終わらせる、えりさんいつも�E手頁E��す、Ebr>
+            ※これでGitHub�E�サーバ�E�E�への保存まで完亁E��ます、E/p>
 
             <div class="tips">
-                <h5>⚠️ 「ステージされている変更」と「変更」が両方ある時は？</h5>
-                <p>この状態でコミットすると、<strong>「ステージ（上の段）」にあるものしか保存されません！</strong></p>
-                <p>必ず、<strong>「変更」段の横にある ＋ ボタン（すべての変更をステージ）</strong>を押して、全部「ステージ」に入れてからコミットしてください。</p>
+                <h5>⚠�E�E「スチE�EジされてぁE��変更」と「変更」が両方ある時�E�E�E/h5>
+                <p>こ�E状態でコミットすると、Estrong>「スチE�Eジ�E�上�E段�E�」にあるも�Eしか保存されません�E�E/strong></p>
+                <p>忁E��、Estrong>「変更」段の横にある �E�Eボタン�E�すべての変更をスチE�Eジ�E�E/strong>を押して、�E部「スチE�Eジ」に入れてからコミットしてください、E/p>
             </div>
 
             <div class="tips" style="background: #f0f4f8; border-color: #d9e2ec; color: #102a43;">
-                <h5 style="margin-top:0;">🛑 メニューの意味（迷ったらコレを見て！）</h5>
-                <p>ボタンの横の矢印を押すと色々出てきますが、正解は一つです。</p>
+                <h5 style="margin-top:0;">🛑 メニューの意味�E�迷ったらコレを見て�E�E��E/h5>
+                <p>ボタンの横の矢印を押すと色、E�Eてきますが、正解は一つです、E/p>
                 <ul style="list-style: none; padding-left: 0; margin: 0;">
-                    <li style="margin-bottom: 8px;">❌ <strong>コミット</strong>：PCに保存するだけ（GitHubには送らない）</li>
-                    <li style="margin-bottom: 8px;">❌ <strong>コミット (修正)</strong>：さっきのコミットをやり直す（上級者用）</li>
-                    <li style="margin-bottom: 8px;">⭕ <strong>コミットしてプッシュ</strong>：<strong>これを使います！</strong>（保存＆公開）</li>
-                    <li style="margin-bottom: 8px;">⚠️ <strong>コミットして同期</strong>：プッシュ＋他人の変更を取り込む（※競合エラーが出やすいので注意）</li>
+                    <li style="margin-bottom: 8px;">❁E<strong>コミッチE/strong>�E�PCに保存するだけ！EitHubには送らなぁE��E/li>
+                    <li style="margin-bottom: 8px;">❁E<strong>コミッチE(修正)</strong>�E�さっき�EコミットをめE��直す（上級老E���E�E/li>
+                    <li style="margin-bottom: 8px;">⭁E<strong>コミットしてプッシュ</strong>�E�Estrong>これを使ぁE��す！E/strong>�E�保存！E�E開！E/li>
+                    <li style="margin-bottom: 8px;">⚠�E�E<strong>コミットして同期</strong>�E��EチE��ュ�E�他人の変更を取り込む�E�※競合エラーが�EめE��ぁE�Eで注意！E/li>
                 </ul>
             </div>
 
-            <h2>2. コミットメッセージの「爆速」テンプレ</h2>
-            <p>左側の「ソース管理」パネルの入力欄（メッセージ欄）に入れます。<br>迷ったらこれだけ使えばOKです。</p>
+            <h2>2. コミットメチE��ージの「�E速」テンプレ</h2>
+            <p>左側の「ソース管琁E��パネルの入力欁E��メチE��ージ欁E��に入れます、Ebr>迷ったらこれだけ使え�EOKです、E/p>
             <ul class="step-list">
-                <li><code>fix: 文言修正</code><br>（誤字脱字、テキストの変更）</li>
-                <li><code>feat: 写真追加</code><br>（新しい画像を入れた時）</li>
-                <li><code>style: デザイン調整</code><br>（色や余白を変えた時）</li>
+                <li><code>fix: 斁E��修正</code><br>�E�誤字脱字、テキスト�E変更�E�E/li>
+                <li><code>feat: 写真追加</code><br>�E�新しい画像を入れた時！E/li>
+                <li><code>style: チE��イン調整</code><br>�E�色めE��白を変えた時�E�E/li>
             </ul>
 
             <div class="tips">
-                <h5>💡 いろいろまとめて作業しちゃった時は？</h5>
-                <p>「一番大きな変更」を書いて、後ろに<strong>「、他」</strong>とつければOKです！<br>
-                自分用なので、自分が思い出せれば完璧さを求める必要はありません。</p>
-                <p>例： <code>feat: 会社概要を追加、他デザイン調整</code></p>
+                <h5>💡 ぁE��ぁE��まとめて作業しちめE��た時は�E�E/h5>
+                <p>「一番大きな変更」を書ぁE��、後ろに<strong>「、他、E/strong>とつければOKです！Ebr>
+                自刁E��なので、�E刁E��思い出せれば完璧さを求める忁E���Eありません、E/p>
+                <p>例！E<code>feat: 会社概要を追加、他デザイン調整</code></p>
             </div>
 
-            <h2>3. 「やばい！」と思った時のリカバリー手順</h2>
+            <h2>3. 「やばぁE��」と思った時のリカバリー手頁E/h2>
             <div class="alert">
-                <strong>⚠️ VS Codeの「ターミナル」で行ってください</strong><br>
-                渥美さんが最も不安な「戻し方」と「削除」の正解ルートです。
+                <strong>⚠�E�EVS Codeの「ターミナル」で行ってください</strong><br>
+                渥美さんが最も不安な「戻し方」と「削除」�E正解ルートです、E
             </div>
 
-            <h3>Q：作業中に「なんか変になった！」元に戻したい</h3>
-            <div class="note">「コミットしてプッシュ」ボタンを<strong>押す前</strong>なら、ボタン一つで戻せます。</div>
-            <p><strong>場所：</strong>ソース管理パネルの「変更」一覧</p>
+            <h3>Q�E�作業中に「なんか変になった！」�Eに戻したぁE/h3>
+            <div class="note">「コミットしてプッシュ」�EタンめEstrong>押す前</strong>なら、�Eタン一つで戻せます、E/div>
+            <p><strong>場所�E�E/strong>ソース管琁E��ネルの「変更」一覧</p>
             <ol>
-                <li>もし「ステージされている変更」にある場合は、<strong>「ー（マイナス）」</strong>ボタンで「変更」に戻す</li>
-                <li>ファイル名の横にある<strong>「曲がった矢印（変更を破棄）」</strong>をクリック</li>
-                <li>「変更（作業内容）を破棄しますか？」と聞かれるので「破棄」を押す</li>
+                <li>もし「スチE�EジされてぁE��変更」にある場合�E、Estrong>「�E�E��Eイナス�E�、E/strong>ボタンで「変更」に戻ぁE/li>
+                <li>ファイル名�E横にある<strong>「曲がった矢印�E�変更を破棁E��、E/strong>をクリチE��</li>
+                <li>「変更�E�作業冁E���E�を破棁E��ますか�E�」と聞かれるので「破棁E��を押ぁE/li>
             </ol>
-            <p>※ これで、直前のきれいな状態（前回のプッシュ時）に戻ります。</p>
+            <p>※ これで、直前�EきれぁE��状態（前回�Eプッシュ時）に戻ります、E/p>
 
-            <h3>Q：「コミットしてプッシュ」した後に、間違いに気づいた！</h3>
+            <h3>Q�E�「コミットしてプッシュ」した後に、E��違いに気づぁE���E�E/h3>
             <div class="alert">
-                <strong>⚠️ ボタンを押した後は、ターミナル必須です</strong><br>
-                一度公開してしまったものを無理やり巻き戻すため、「強制」コマンドを使います。
+                <strong>⚠�E�Eボタンを押した後�E、ターミナル忁E��でぁE/strong><br>
+                一度公開してしまったものを無琁E��り巻き戻すため、「強制」コマンドを使ぁE��す、E
             </div>
             <div class="command-block">
 git reset --hard HEAD^<br>
 git push -f origin main
             </div>
-            <p class="note">※ <code>-f</code> は「強制（force）」の意味。一人で作業しているからこそ使える必殺技です。</p>
+            <p class="note">※ <code>-f</code> は「強制�E�Eorce�E�」�E意味。一人で作業してぁE��からこそ使える忁E��技です、E/p>
 
-            <h3>Q：GitHub上のファイルも消したい！（削除手順）</h3>
-            <p><strong>A：PCで消して、いつものように「コミット＆プッシュ」するだけです。</strong></p>
+            <h3>Q�E�GitHub上�Eファイルも消したい�E�E��削除手頁E��E/h3>
+            <p><strong>A�E�PCで消して、いつも�Eように「コミット！E�EチE��ュ」するだけです、E/strong></p>
             <ol>
-                <li>VS Codeのエクスプローラー（左のファイル一覧）で、不要なファイルを右クリックして<strong>「削除」</strong></li>
-                <li>ソース管理パネルに行くと、ファイル名に取消線がつき、<strong style="color: #d73a49;">D (Deleted)</strong> と表示されます</li>
-                <li>いつも通り<strong>「コミットしてプッシュ」</strong>をする</li>
+                <li>VS Codeのエクスプローラー�E�左のファイル一覧�E�で、不要なファイルを右クリチE��して<strong>「削除、E/strong></li>
+                <li>ソース管琁E��ネルに行くと、ファイル名に取消線がつき、Estrong style="color: #d73a49;">D (Deleted)</strong> と表示されまぁE/li>
+                <li>ぁE��も通り<strong>「コミットしてプッシュ、E/strong>をすめE/li>
             </ol>
-            <p>※ これで自動的に、GitHub上からも消去されます。</p>
+            <p>※ これで自動的に、GitHub上からも消去されます、E/p>
 
-            <h2>4. 便利機能：タイムライン（過去を覗き見）</h2>
-            <p>「あの時の文章に戻したい…」という時は、<strong>「タイムライン」</strong>が便利です。</p>
+            <h2>4. 便利機�E�E�タイムライン�E�過去を覗き見！E/h2>
+            <p>「あの時�E斁E��に戻したぁE��」とぁE��時�E、Estrong>「タイムライン、E/strong>が便利です、E/p>
             <div class="note">
-                <strong>💡 ここがすごい！</strong><br>
-                コミットした履歴だけでなく、<strong>「ワークスペースの編集（ただ保存しただけ）」</strong>の状態も細かく残っています。<br>
-                「コミットし忘れてた！」という時でも、ここを見れば助かることがあります。
+                <strong>💡 ここがすごい�E�E/strong><br>
+                コミットした履歴だけでなく、Estrong>「ワークスペ�Eスの編雁E��ただ保存しただけ）、E/strong>の状態も細かく残ってぁE��す、Ebr>
+                「コミットし忘れてた！」とぁE��時でも、ここを見れば助かることがあります、E
             </div>
             <ol>
-                <li>VS Codeのエクスプローラー（ファイル一覧）の下にある<strong>「タイムライン」</strong>を開く</li>
-                <li>戻したい時間の履歴を右クリック</li>
-                <li><strong>「内容をコピー」</strong>して今のファイルに貼り付ける</li>
-            <h2>5. 【重要】3つの魔法の呪文（基本動作）</h2>
-            <p>※ この3つを順番に唱えるだけで、サイトは更新されます。</p>
+                <li>VS Codeのエクスプローラー�E�ファイル一覧�E��E下にある<strong>「タイムライン、E/strong>を開ぁE/li>
+                <li>戻したぁE��間�E履歴を右クリチE��</li>
+                <li><strong>「�E容をコピ�E、E/strong>して今�Eファイルに貼り付けめE/li>
+            <h2>5. 【重要、Eつの魔法�E呪斁E��基本動作！E/h2>
+            <p>※ こ�E3つを頁E��に唱えるだけで、サイト�E更新されます、E/p>
             
             <div style="display: flex; flex-direction: column; gap: 15px;">
                 
@@ -257,8 +257,8 @@ git push -f origin main
                         <span style="font-size:0.9em; color:#bbb;">Stage</span>
                     </div>
                     <code style="display: block; font-size: 1.2em; margin-bottom: 5px; color: #fff; background: #000; padding: 10px; border-radius: 4px;">git add .</code>
-                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「散らばった変更ファイルを、発送用の箱に集める」イメージです。<br>
-                    <span style="color: #4cd964;">（専門用語で「ステージする」と言います）</span></p>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「散ら�Eった変更ファイルを、発送用の箱に雁E��る」イメージです、Ebr>
+                    <span style="color: #4cd964;">�E�専門用語で「スチE�Eジする」と言ぁE��す！E/span></p>
                 </div>
 
                 <!-- Step 2: Commit -->
@@ -268,7 +268,7 @@ git push -f origin main
                         <span style="font-size:0.9em; color:#bbb;">Commit</span>
                     </div>
                     <code style="display: block; font-size: 1.2em; margin-bottom: 5px; color: #fff; background: #000; padding: 10px; border-radius: 4px;">git commit -m "update"</code>
-                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「箱にフタをして、ラベル（メッセージ）を貼る」作業です。</p>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「箱にフタをして、ラベル�E�メチE��ージ�E�を貼る」作業です、E/p>
                 </div>
 
                 <!-- Step 3: Push -->
@@ -278,36 +278,36 @@ git push -f origin main
                         <span style="font-size:0.9em; color:#bbb;">Push</span>
                     </div>
                     <code style="display: block; font-size: 1.2em; margin-bottom: 5px; color: #fff; background: #000; padding: 10px; border-radius: 4px;">git push origin main</code>
-                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「トラックへ積み込んで出荷する」作業です。<br>
-                    <span style="color: #ffab70;">→ これをすると、Cloudflareが自動検知して、数分でネット上のページが書き換わります。</span></p>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: #ccc;">「トラチE��へ積み込んで出荷する」作業です、Ebr>
+                    <span style="color: #ffab70;">ↁEこれをすると、Cloudflareが�E動検知して、数刁E��ネット上�Eペ�Eジが書き換わります、E/span></p>
                 </div>
 
             </div>
 
             <!-- Deployment Explanation -->
             <div class="tips" style="margin-top: 30px; background: #e0f2f1; border-left: 4px solid #009688; padding: 20px;">
-                <h5 style="margin-top:0; color: #00695c; font-size: 1.1em;">🤔 「デプロイ」ってなに？</h5>
+                <h5 style="margin-top:0; color: #00695c; font-size: 1.1em;">🤁E「デプロイ」ってなに�E�E/h5>
                 <p style="color: #004d40; margin-bottom: 10px;">
-                    よく聞く「デプロイ」と、この「3つの作業」の関係は以下の通りです。
+                    よく聞く「デプロイ」と、この、Eつの作業」�E関係�E以下�E通りです、E
                 </p>
                 <ul style="list-style: none; padding: 0; margin-bottom: 0;">
                     <li style="margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.6); border-radius: 4px;">
-                        <strong>🚚 3つの呪文（Add, Commit, Push）</strong><br>
-                        ＝ <span style="color: #d81b60;">えりさんの仕事</span>（荷物をまとめて出荷するまで）
+                        <strong>🚚 3つの呪斁E��Edd, Commit, Push�E�E/strong><br>
+                        �E�E<span style="color: #d81b60;">えりさんの仕亁E/span>�E�荷物をまとめて出荷するまで�E�E
                     </li>
                     <li style="padding: 10px; background: rgba(255,255,255,0.6); border-radius: 4px;">
-                        <strong>🏪 デプロイ（Deployment）</strong><br>
-                        ＝ <span style="color: #00695c;">システムの仕事</span>（お店の棚に商品を並べて、公開すること）
+                        <strong>🏪 チE�Eロイ�E�Eeployment�E�E/strong><br>
+                        �E�E<span style="color: #00695c;">シスチE��の仕亁E/span>�E�お店�E棚に啁E��を並べて、�E開すること�E�E
                     </li>
                 </ul>
                 <p style="margin-top: 15px; font-weight: bold; color: #004d40;">
-                    つまり、「3. 送信する（Push）」さえすれば、あとはシステムが勝手にデプロイ（公開）してくれます！
+                    つまり、、E. 送信する�E�Eush�E�」さえすれ�E、あとはシスチE��が勝手にチE�Eロイ�E��E開）してくれます！E
                 </p>
             </div>
 
-            <h3 style="margin-top: 40px;">🆘 緊急時の呪文（強制上書き）</h3>
+            <h3 style="margin-top: 40px;">�E 緊急時�E呪斁E��強制上書き！E/h3>
             <div class="command-box" style="background: #792828; color: #fff; padding: 20px; border-radius: 8px;">
-                <div style="color: #ffcccc; font-size: 0.9rem; margin-bottom: 5px;">「間違えてプッシュしてしまった！」時だけ使います</div>
+                <div style="color: #ffcccc; font-size: 0.9rem; margin-bottom: 5px;">「間違えてプッシュしてしまった！」時だけ使ぁE��ぁE/div>
                 <code style="display: block; font-size: 1.1em; color: #ffadad; margin-bottom: 10px;">git reset --hard HEAD^</code>
                 <code style="display: block; font-size: 1.1em; color: #ffadad;">git push -f origin main</code>
             </div>

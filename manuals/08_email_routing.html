@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>その手があったか！0円で独自ドメインメール（Cloudflare Email Routing） | Webをつくるしごと</title>
+    <title>そ�E手があったか�E�E冁E��独自ドメインメール�E�Eloudflare Email Routing�E�E| Webをつくるしごと</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: #333; background-color: #f4f7f6; margin: 0; padding: 0; }
@@ -20,155 +20,158 @@
 <body>
     <div class="container">
         <div class="manual-box">
-            <h1>0円で独自ドメインメールを作る</h1>
-            <p>Cloudflareの「Email Routing（メール転送）」機能を使えば、サーバー代を払わずに<code>info@web-tsukuru.jp</code>のような独自ドメインのメールアドレスを持つことができます。<br>
-            届いたメールは、普段使っているGmailなどに自動転送されます。</p>
+            <div style="margin-bottom: 20px;">
+                <a href="/manuals/admin.html" style="text-decoration: none; color: #666;">ↁE運用司令室に戻めE/a>
+            </div>
+            <h1>0冁E��独自ドメインメールを作る</h1>
+            <p>Cloudflareの「Email Routing�E�メール転送E��」機�Eを使え�E、サーバ�E代を払わずに<code>info@web-tsukuru.jp</code>のような独自ドメインのメールアドレスを持つことができます、Ebr>
+            届いたメールは、普段使ってぁE��Gmailなどに自動転送されます、E/p>
 
             <div class="alert">
-                💡 この設定でできること<br>
-                ・独自ドメイン宛のメール（例: contact@web-tsukuru.jp）を、無料で作れる。<br>
-                ・届いたメールは、指定したGmail等で受信できる。<br>
-                （※ここでの設定は「受信（転送）」専用です）
+                💡 こ�E設定でできること<br>
+                ・独自ドメイン宛�Eメール�E�侁E contact@web-tsukuru.jp�E�を、無料で作れる、Ebr>
+                ・届いたメールは、指定したGmail等で受信できる、Ebr>
+                �E�※ここでの設定�E「受信�E�転送E��」専用です！E
             </div>
 
             <div id="content-area">
                 
-                <h2>STEP 1: メール設定画面を開く</h2>
+                <h2>STEP 1: メール設定画面を開ぁE/h2>
                 <div class="step-box">
-                    <span class="step-number">1</span> Cloudflareの左メニューから<strong>「メール アドレス」</strong>をクリック<br>
+                    <span class="step-number">1</span> Cloudflareの左メニューから<strong>「メール アドレス、E/strong>をクリチE��<br>
                     <img src="images/12_cf_email_menu.png" alt="メールアドレスメニュー" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">2</span> メニューの中から<strong>「Email Routing」</strong>を選択<br>
-                    <img src="images/13_cf_email_submenu.png" alt="Email Routing選択" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">3</span> 画面中央の青いボタン<strong>「始める」</strong>（または Get started）をクリック<br>
+                    <span class="step-number">2</span> メニューの中から<strong>「Email Routing、E/strong>を選抁Ebr>
+                    <img src="images/13_cf_email_submenu.png" alt="Email Routing選抁E style="margin-bottom: 15px;"><br>
+                    <span class="step-number">3</span> 画面中央の青いボタン<strong>「始める、E/strong>�E�また�E Get started�E�をクリチE��<br>
                     <img src="images/14_cf_email_get_started.png" alt="Email Routing開始画面" style="margin-bottom: 15px;">
                 </div>
 
-                <h2>STEP 2: 転送用アドレスを作成</h2>
+                <h2>STEP 2: 転送用アドレスを作�E</h2>
                 <div class="step-box">
-                    <span class="step-number">3</span> <strong>カスタムアドレス</strong>：作りたいメールアドレスを入力（例：info）<br>
-                    <span class="step-number">4</span> <strong>宛先</strong>：転送先の自分のメールアドレスを入力（例：atsumiwebstudio@gmail.com）<br>
+                    <span class="step-number">3</span> <strong>カスタムアドレス</strong>�E�作りたいメールアドレスを�E力（例：info�E�Ebr>
+                    <span class="step-number">4</span> <strong>宛�E</strong>�E�転送�Eの自刁E�Eメールアドレスを�E力（例：atsumiwebstudio@gmail.com�E�Ebr>
                     <img src="images/15_cf_email_create_input.png" alt="アドレス入力画面" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">5</span> <strong>「作成して続行する」</strong>をクリック
+                    <span class="step-number">5</span> <strong>「作�Eして続行する、E/strong>をクリチE��
                 </div>
                 
-                <h2>STEP 3: 宛先アドレスの確認</h2>
+                <h2>STEP 3: 宛�Eアドレスの確誁E/h2>
                 <div class="step-box">
-                    <span class="step-number">6</span> Gmailに届いた確認メール内のボタンを押すと、Cloudflareの画面が「確認済み」に変わります。<br>
-                    <img src="images/16_cf_email_verified.png" alt="認証完了画面" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">7</span> <strong>「続行」</strong>をクリック
+                    <span class="step-number">6</span> Gmailに届いた確認メール冁E�Eボタンを押すと、Cloudflareの画面が「確認済み」に変わります、Ebr>
+                    <img src="images/16_cf_email_verified.png" alt="認証完亁E��面" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">7</span> <strong>「続行、E/strong>をクリチE��
                 </div>
 
-                <h2>STEP 4: レコードの追加</h2>
+                <h2>STEP 4: レコード�E追加</h2>
                 <div class="step-box">
-                    <span class="step-number">8</span> 次の画面で「競合するレコード」や「必要なレコード」が表示されます。<br>
+                    <span class="step-number">8</span> 次の画面で「競合するレコード」や「忁E��なレコード」が表示されます、Ebr>
                     <img src="images/17_cf_email_dns_records.png" alt="DNSレコード追加画面" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">9</span> 画面下の青いボタン<strong>「レコードを追加して有効にする」</strong>をクリック<br>
+                    <span class="step-number">9</span> 画面下�E青いボタン<strong>「レコードを追加して有効にする、E/strong>をクリチE��<br>
                     <br>
                     <div class="alert" style="background:#fff3e0; color:#e65100; font-size:0.9rem;">
-                        <strong>⚠️ ボタンが押せない場合</strong><br>
-                        上にある「競合するレコード」の横に赤い文字で<strong>「削除（Delete）」</strong>と書かれていませんか？<br>
-                        もしあれば、先にその「削除」を押して不要なレコードを消してください。<br>
-                        <img src="images/18_cf_email_delete_confirm.png" alt="削除確認ポップアップ" style="margin-bottom: 5px;"><br>
-                        確認画面が出たら、迷わず<strong>「削除」</strong>（赤いボタン）を押してOKです。
+                        <strong>⚠�E�Eボタンが押せなぁE��吁E/strong><br>
+                        上にある「競合するレコード」�E横に赤ぁE��字で<strong>「削除�E�Eelete�E�、E/strong>と書かれてぁE��せんか！Ebr>
+                        もしあれば、�Eにそ�E「削除」を押して不要なレコードを消してください、Ebr>
+                        <img src="images/18_cf_email_delete_confirm.png" alt="削除確認�EチE�EアチE�E" style="margin-bottom: 5px;"><br>
+                        確認画面が�Eたら、迷わず<strong>「削除、E/strong>�E�赤ぁE�Eタン�E�を押してOKです、E
                     </div>
                     <br>
-                    <img src="images/19_cf_email_ready_to_enable.png" alt="ボタンが有効になった状態" style="margin-bottom: 15px;"><br>
-                    邪魔なレコードが消えるとボタンが青くなります。<br>
-                    <strong>「レコードを追加して有効にする」</strong>をクリックしてください。<br>
+                    <img src="images/19_cf_email_ready_to_enable.png" alt="ボタンが有効になった状慁E style="margin-bottom: 15px;"><br>
+                    邪魔なレコードが消えるとボタンが青くなります、Ebr>
+                    <strong>「レコードを追加して有効にする、E/strong>をクリチE��してください、Ebr>
                     <br>
-                    以下のように<strong>「有効（Enabled）」</strong>かつ<strong>「メール DNS レコード設定されました」</strong>（緑色の表示）になれば、全ての設定完了です！🎉<br>
-                    <img src="images/21_cf_email_enabled.png" alt="設定完了ダッシュボード" style="margin-bottom: 15px;"><br>
-                    これで、<code>info@web-tsukuru.jp</code> 宛のメールがご自身のGmailに届くようになりました！
+                    以下�Eように<strong>「有効�E�Enabled�E�、E/strong>かつ<strong>「メール DNS レコード設定されました、E/strong>�E�緑色の表示�E�になれ�E、�Eての設定完亁E��す！🎁Ebr>
+                    <img src="images/21_cf_email_enabled.png" alt="設定完亁E��チE��ュボ�EチE style="margin-bottom: 15px;"><br>
+                    これで、Ecode>info@web-tsukuru.jp</code> 宛�Eメールがご自身のGmailに届くようになりました�E�E
                 </div>
 
                 <hr style="margin: 40px 0; border: 0; border-top: 2px dashed #ddd;">
 
                 <h1>【発展編】送信もできるようにする</h1>
-                <p>受信したメールに返信する際、相手に <code>info@web-tsukuru.jp</code> から送ったように見せる設定です。<br>
-                これにはGoogleアカウントの<strong>「アプリパスワード」</strong>という特別なパスワードを使います。</p>
+                <p>受信したメールに返信する際、相手に <code>info@web-tsukuru.jp</code> から送ったよぁE��見せる設定です、Ebr>
+                これにはGoogleアカウント�E<strong>「アプリパスワード、E/strong>とぁE��特別なパスワードを使ぁE��す、E/p>
 
-                <h2>STEP 5: Googleアプリパスワードの発行</h2>
+                <h2>STEP 5: Googleアプリパスワード�E発衁E/h2>
                 <div class="step-box">
-                    <span class="step-number">1</span> Googleアカウント（<a href="https://myaccount.google.com/" target="_blank">myaccount.google.com</a>）にアクセス<br>
-                    <span class="step-number">2</span> 左メニュー<strong>「セキュリティ」</strong>をクリック<br>
+                    <span class="step-number">1</span> Googleアカウント！Ea href="https://myaccount.google.com/" target="_blank">myaccount.google.com</a>�E�にアクセス<br>
+                    <span class="step-number">2</span> 左メニュー<strong>「セキュリチE��、E/strong>をクリチE��<br>
                     <img src="images/22_google_account_menu.png" alt="Googleアカウントメニュー" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">3</span> リストの一番上にある<strong>「2段階認証プロセス」</strong>をクリック<br>
+                    <span class="step-number">3</span> リスト�E一番上にある<strong>、E段階認証プロセス、E/strong>をクリチE��<br>
                     <img src="images/22_google_account_menu.png" alt="Googleアカウントメニュー" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">3</span> 画面の一番上にある<strong>「検索窓」</strong>を使います。（これが一番早いです！）<br>
-                    <span class="step-number">4</span> <strong>「アプリ」</strong>と入力して、出てきた候補の<strong>「アプリ パスワード」</strong>をクリック<br>
+                    <span class="step-number">3</span> 画面の一番上にある<strong>「検索窓、E/strong>を使ぁE��す。（これが一番早ぁE��す！E��Ebr>
+                    <span class="step-number">4</span> <strong>「アプリ、E/strong>と入力して、�Eてきた候補�E<strong>「アプリ パスワード、E/strong>をクリチE��<br>
                     <img src="images/25_google_search_app_pass.png" alt="アプリパスワード検索" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">5</span> アプリ名に適当な名前（例：Cloudflare）を入力して「作成」<br>
-                    <span class="step-number">6</span> <strong>16桁のパスワード</strong>が表示されるので、コピーしてメモ帳などに控える<br>
+                    <span class="step-number">5</span> アプリ名に適当な名前�E�例：Cloudflare�E�を入力して「作�E、Ebr>
+                    <span class="step-number">6</span> <strong>16桁�EパスワーチE/strong>が表示される�Eで、コピ�Eしてメモ帳などに控える<br>
                     <div class="alert" style="background:#fff3e0; color:#e65100;"><br>
-                    <span class="step-number">6</span> <strong>16桁のパスワード</strong>が表示されるので、コピーしてメモ帳などに控える<br>
+                    <span class="step-number">6</span> <strong>16桁�EパスワーチE/strong>が表示される�Eで、コピ�Eしてメモ帳などに控える<br>
                     <div class="alert" style="background:#fff3e0; color:#e65100;">
-                        ⚠️ このパスワードは後で1回だけ使います。画面を閉じると二度と見れないので必ずコピーしてください！
+                        ⚠�E�Eこ�Eパスワード�E後で1回だけ使ぁE��す。画面を閉じると二度と見れなぁE�Eで忁E��コピ�Eしてください�E�E
                     </div>
                 </div>
 
                 <h2>STEP 6: Gmailで送信設定を追加</h2>
                 <div class="step-box">
-                    <span class="step-number">6</span> Gmailの右上「歯車マーク」→<strong>「すべての設定を表示」</strong><br>
+                    <span class="step-number">6</span> Gmailの右上「歯車�Eーク」�E<strong>「すべての設定を表示、E/strong><br>
                     <img src="images/26_gmail_settings_menu.png" alt="Gmail設定メニュー" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">7</span> <strong>「アカウントとインポート」</strong>タブをクリック<br>
-                    <img src="images/27_gmail_accounts_tab.png" alt="アカウントとインポート" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">8</span> 「名前:」のところにある<strong>「他のメールアドレスを追加」</strong>をクリック<br>
-                    <img src="images/28_gmail_add_address_link.png" alt="他のメールアドレスを追加" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">7</span> <strong>「アカウントとインポ�Eト、E/strong>タブをクリチE��<br>
+                    <img src="images/27_gmail_accounts_tab.png" alt="アカウントとインポ�EチE style="margin-bottom: 15px;"><br>
+                    <span class="step-number">8</span> 「名剁E」�Eところにある<strong>「他�Eメールアドレスを追加、E/strong>をクリチE��<br>
+                    <img src="images/28_gmail_add_address_link.png" alt="他�Eメールアドレスを追加" style="margin-bottom: 15px;"><br>
                     <br>
-                    <strong>【開いた画面での入力内容】</strong><br>
+                    <strong>【開ぁE��画面での入力�E容、E/strong><br>
                     <ul>
-                        <li><strong>名前</strong>：相手に表示したい名前（例：Webをつくるしごと）</li>
-                        <li><strong>メールアドレス</strong>：<code>info@web-tsukuru.jp</code></li>
-                        <li>「エイリアスとして扱います」：チェックを入れたまま</li>
-                        <li>→「次のステップ」をクリック</li>
+                        <li><strong>名前</strong>�E�相手に表示したぁE��前（例：Webをつくるしごと�E�E/li>
+                        <li><strong>メールアドレス</strong>�E�Ecode>info@web-tsukuru.jp</code></li>
+                        <li>「エイリアスとして扱ぁE��す」：チェチE��を�Eれたまま</li>
+                        <li>→「次のスチE��プ」をクリチE��</li>
                     </ul>
-                    <img src="images/29_gmail_popup_input.png" alt="メールアドレス追加ポップアップ" style="margin-bottom: 15px;"><br>
+                    <img src="images/29_gmail_popup_input.png" alt="メールアドレス追加ポップアチE�E" style="margin-bottom: 15px;"><br>
                 </div>
 
-                <h2>STEP 7: SMTPサーバーの設定（重要）</h2>
+                <h2>STEP 7: SMTPサーバ�Eの設定（重要E��E/h2>
                 <div class="step-box">
-                    <p>ここが一番の難関です。<br>
-                    下の画像のように、最初から <code>route2...</code> や <code>info</code> が入力されていますが、<strong>これらは使いません！</strong></p>
-                    <img src="images/30_gmail_smtp_default.png" alt="デフォルトのSMTP設定" style="margin-bottom: 5px;">
-                    <p style="text-align:center; font-size:0.8rem; color:#666; margin-bottom: 20px;">▲これはダメな例（全部消してください）</p>
+                    <p>ここが一番の難関です、Ebr>
+                    下�E画像�Eように、最初かめE<code>route2...</code> めE<code>info</code> が�E力されてぁE��すが、Estrong>これら�E使ぁE��せん�E�E/strong></p>
+                    <img src="images/30_gmail_smtp_default.png" alt="チE��ォルト�ESMTP設宁E style="margin-bottom: 5px;">
+                    <p style="text-align:center; font-size:0.8rem; color:#666; margin-bottom: 20px;">▲これはダメな例（�E部消してください�E�E/p>
                     
-                    <p>これらを<strong>全て消して</strong>、以下のように書き換えてください（これが正解です👇）。</p>
-                    <img src="images/31_gmail_smtp_correct.png" alt="正しいSMTP設定" style="margin-bottom: 15px;"><br>
+                    <p>これらを<strong>全て消して</strong>、以下�Eように書き換えてください�E�これが正解です👁E��、E/p>
+                    <img src="images/31_gmail_smtp_correct.png" alt="正しいSMTP設宁E style="margin-bottom: 15px;"><br>
                     
                     <ul>
-                        <li><strong>SMTPサーバー</strong>：<code>smtp.gmail.com</code></li>
-                        <li><strong>ポート</strong>：<code>587</code></li>
-                        <li><strong>ユーザー名</strong>：<code>atsumiwebstudio@gmail.com</code><br><span style="font-size:0.8em; color:red;">※info〜ではありません！元のGmailアドレスです</span></li>
-                        <li><strong>パスワード</strong>：さっきコピーした<strong>「16桁のアプリパスワード」</strong><br><span style="font-size:0.8em; color:#666;">（※スペースが入ったままで大丈夫です！）</span></li>
-                        <li><strong>TLSを使用した...</strong>：チェック（推奨）</li>
+                        <li><strong>SMTPサーバ�E</strong>�E�Ecode>smtp.gmail.com</code></li>
+                        <li><strong>ポ�EチE/strong>�E�Ecode>587</code></li>
+                        <li><strong>ユーザー吁E/strong>�E�Ecode>atsumiwebstudio@gmail.com</code><br><span style="font-size:0.8em; color:red;">※info〜ではありません�E��EのGmailアドレスでぁE/span></li>
+                        <li><strong>パスワーチE/strong>�E�さっきコピ�Eした<strong>、E6桁�Eアプリパスワード、E/strong><br><span style="font-size:0.8em; color:#666;">�E�※スペ�Eスが�Eったままで大丈夫です！E��E/span></li>
+                        <li><strong>TLSを使用した...</strong>�E�チェチE���E�推奨�E�E/li>
                     </ul>
-                    →<strong>「アカウントを追加」</strong>をクリック
+                    ↁEstrong>「アカウントを追加、E/strong>をクリチE��
                 </div>
 
-                <h2>STEP 8: 確認コードの入力</h2>
+                <h2>STEP 8: 確認コード�E入劁E/h2>
                 <div class="step-box">
-                    <span class="step-number">9</span> 以下のようなメールがGmailに届けば成功です！（受信ができている証拠です）<br>
+                    <span class="step-number">9</span> 以下�EようなメールがGmailに届けば成功です！E��受信ができてぁE��証拠です！Ebr>
                     <img src="images/33_gmail_confirm_email.png" alt="Gmail確認メール" style="margin-bottom: 15px;"><br>
                     
-                    <span class="step-number">10</span> メール内の<strong>長いリンク</strong>をクリックして、出てきた画面で「確認」ボタンを押す<br>
-                    <span class="step-number">11</span> 以下の画面が出れば完了です！<br>
-                    <img src="images/35_gmail_complete.png" alt="確認完了画面" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">10</span> メール冁E�E<strong>長ぁE��ンク</strong>をクリチE��して、�Eてきた画面で「確認」�Eタンを押ぁEbr>
+                    <span class="step-number">11</span> 以下�E画面が�Eれ�E完亁E��す！Ebr>
+                    <img src="images/35_gmail_complete.png" alt="確認完亁E��面" style="margin-bottom: 15px;"><br>
                     <br>
-                    <strong>これですべての設定が完了です！お疲れ様でした！🎉</strong><br>
-                    メール作成時に「差出人」を <code>info@web-tsukuru.jp</code> に切り替えられるようになっています。<br>
-                    （※反映まで少し時間がかかる場合がありますが、一度Gmailを再読み込みすると出てきます）
+                    <strong>これですべての設定が完亁E��す！お疲れ様でした�E�🎁E/strong><br>
+                    メール作�E時に「差出人」を <code>info@web-tsukuru.jp</code> に刁E��替えられるようになってぁE��す、Ebr>
+                    �E�※反映まで少し時間がかかる場合がありますが、一度Gmailを�E読み込みすると出てきます！E
                 </div>
 
-                <h2>STEP 9: 【使い方】送信元の切り替え</h2>
+                <h2>STEP 9: 【使ぁE��】送信允E�E刁E��替ぁE/h2>
                 <div class="step-box">
-                    <p>メールを送るときは、以下の手順で差出人を切り替えます。</p>
+                    <p>メールを送るとき�E、以下�E手頁E��差出人を�Eり替えます、E/p>
                     <ol>
-                        <li>Gmailの<strong>「作成（＋）」</strong>ボタンを押す</li>
-                        <li><strong>「差出人（From）」</strong>のところにある自分のメールアドレスをクリック</li>
-                        <img src="images/36_gmail_send_as.png" alt="差出人の切り替え" style="margin-top: 10px; margin-bottom: 10px; border: 2px solid #e74c3c;">
-                        <li>リストから <code>info@web-tsukuru.jp</code> を選択</li>
+                        <li>Gmailの<strong>「作�E�E�＋）、E/strong>ボタンを押ぁE/li>
+                        <li><strong>「差出人�E�Erom�E�、E/strong>のところにある自刁E�EメールアドレスをクリチE��</li>
+                        <img src="images/36_gmail_send_as.png" alt="差出人の刁E��替ぁE style="margin-top: 10px; margin-bottom: 10px; border: 2px solid #e74c3c;">
+                        <li>リストかめE<code>info@web-tsukuru.jp</code> を選抁E/li>
                     </ol>
-                    <p>これで、相手には「info@...」からのメールとして届きます！</p>
+                    <p>これで、相手には「info@...」から�Eメールとして届きます！E/p>
                 </div>
 
             </div>
