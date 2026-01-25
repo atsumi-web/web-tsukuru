@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ドメイン接続�Eニュアル�E�Eloudflare�E�E| Webをつくるしごと</title>
+    <title>ドメイン接続マニュアル（Cloudflare） | Webをつくるしごと</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: #333; background-color: #f4f7f6; margin: 0; padding: 0; }
@@ -20,83 +20,80 @@
 <body>
     <div class="container">
         <div class="manual-box">
-            <h1>ドメイン接続�Eニュアル</h1>
-            <p>取得した独自ドメインを、Cloudflare�E�世界最速�E無料�Eサーバ�Eレス基盤�E�に接続する手頁E��す、Ebr>
-            こ�E作業は最初�E1回だけ行います、E/p>
+            <h1>ドメイン接続マニュアル</h1>
+            <p>取得した独自ドメインを、Cloudflare（世界最速・無料のサーバーレス基盤）に接続する手順です。<br>
+            この作業は最初の1回だけ行います。</p>
 
             <div class="alert">
-                ⚠�E�E作業を始める前に<br>
-                ドメインを取得したサービス�E�お名前.com、Xserverドメインなど�E��Eログイン惁E��をご用意ください、E
+                ⚠️ 作業を始める前に<br>
+                ドメインを取得したサービス（お名前.com、Xserverドメインなど）のログイン情報をご用意ください。
             </div>
 
-            <div style="margin-bottom: 20px;">
-                <a href="/manuals/admin.html" style="text-decoration: none; color: #666;">ↁE運用司令室に戻めE/a>
-            </div>
             <!-- Content will be added here interactively -->
             <div id="content-area">
                 
                 <h2>STEP 1: Cloudflareにドメインを追加する</h2>
                 <div class="step-box">
-                    <span class="step-number">1</span> Cloudflareの管琁E��面にログイン<br>
-                    <span class="step-number">2</span> 右上�E、E 追加」をクリチE��し、メニューから<strong>「ドメインを接続する、E/strong>を選抁Ebr>
+                    <span class="step-number">1</span> Cloudflareの管理画面にログイン<br>
+                    <span class="step-number">2</span> 右上の「+ 追加」をクリックし、メニューから<strong>「ドメインを接続する」</strong>を選択<br>
                     <img src="images/01_cf_add_site_dropdown.png" alt="Cloudflareドメイン接続メニュー" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">3</span> 取得したドメイン名（侁E example.com�E�を入劁Ebr>
+                    <span class="step-number">3</span> 取得したドメイン名（例: example.com）を入力<br>
                     <img src="images/02_cf_enter_domain.png" alt="ドメイン入力画面" style="margin-bottom: 15px;"><br>
-                    <span style="font-size:0.9em; color:#666;">※「DNSレコード�EクイチE��スキャン」や「robots.txtでAIボッチE..」�E、Estrong>すべてチェチE��が�Eったまま�E��E期状態！E/strong>でOKです、E/span><br>
-                    <span class="step-number">4</span> 画面下�E「続行」をクリチE��
+                    <span style="font-size:0.9em; color:#666;">※「DNSレコードのクイックスキャン」や「robots.txtでAIボット...」は、<strong>すべてチェックが入ったまま（初期状態）</strong>でOKです。</span><br>
+                    <span class="step-number">4</span> 画面下の「続行」をクリック
                 </div>
 
-                <h2>STEP 2: プランの選抁E/h2>
+                <h2>STEP 2: プランの選択</h2>
                 <div class="step-box">
-                    <span class="step-number">5</span> 画面を一番下までスクロールし、Estrong>「Free�E�E0�E�、E/strong>のボックスをクリチE��して選抁Ebr>
+                    <span class="step-number">5</span> 画面を一番下までスクロールし、<strong>「Free（$0）」</strong>のボックスをクリックして選択<br>
                     <img src="images/03_cf_select_plan.png" alt="プラン選択画面" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">6</span> 「続行」をクリチE��
+                    <span class="step-number">6</span> 「続行」をクリック
                 </div>
 
-                <h2>STEP 3: DNSレコード�E確誁E/h2>
+                <h2>STEP 3: DNSレコードの確認</h2>
                 <div class="step-box">
-                    <span class="step-number">6</span> 現在のDNS設定が自動でスキャンされて表示されます、Ebr>
+                    <span class="step-number">6</span> 現在のDNS設定が自動でスキャンされて表示されます。<br>
                     <img src="images/04_cf_dns_review.png" alt="DNSレコード確認画面" style="margin-bottom: 15px;"><br>
-                    特に変更せず、そのまま画面を一番下までスクロールして<strong>「アクチE��ベ�Eションに進む、E/strong>�E�また�E「続行」）をクリチE��してください、E
+                    特に変更せず、そのまま画面を一番下までスクロールして<strong>「アクティベーションに進む」</strong>（または「続行」）をクリックしてください。
                 </div>
 
-                <h2>STEP 4: Cloudflareのネ�Eムサーバ�Eをコピ�E</h2>
+                <h2>STEP 4: Cloudflareのネームサーバーをコピー</h2>
                 <div class="step-box">
-                    <span class="step-number">7</span> 画面に<strong>「Cloudflareのネ�Eムサーバ�E、E/strong>とぁE��頁E��が表示されます、Ebr>
-                    <img src="images/05_cf_nameservers.png" alt="ネ�Eムサーバ�E画面" style="margin-bottom: 15px;"><br>
-                    ここに表示されてぁE��2つの行（例：darwin.ns.cloudflare.com など�E�を、次のスチE��プで<strong>「お名前.com」�E画面に入劁E/strong>します、Ebr>
-                    こ�E画面はまだ閉じなぁE��ください、E
+                    <span class="step-number">7</span> 画面に<strong>「Cloudflareのネームサーバー」</strong>という項目が表示されます。<br>
+                    <img src="images/05_cf_nameservers.png" alt="ネームサーバー画面" style="margin-bottom: 15px;"><br>
+                    ここに表示されている2つの行（例：darwin.ns.cloudflare.com など）を、次のステップで<strong>「お名前.com」の画面に入力</strong>します。<br>
+                    この画面はまだ閉じないでください。
                 </div>
 
-                <h2>STEP 5: お名剁Ecomでの設定変更</h2>
+                <h2>STEP 5: お名前.comでの設定変更</h2>
                 <div class="step-box">
-                    <p>ここからは「お名前.com」�E管琁E��面�E�お名前.com Navi�E�での操作です、E/p>
+                    <p>ここからは「お名前.com」の管理画面（お名前.com Navi）での操作です。</p>
                     
-                    <span class="step-number">8</span> お名剁Ecom Naviにログイン<br>
-                    <span class="step-number">9</span> 上部メニューの<strong>「ネームサーバ�Eの設定、E/strong> �E�E<strong>「ネームサーバ�Eの変更、E/strong>をクリチE��<br>
-                    <img src="images/06_onamae_top.png" alt="お名剁Ecomメニュー" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">10</span> 設定したいドメイン�E�Eeb-tsukuru.jp�E��E<strong>左端にあるチェチE��ボックス</strong>をクリチE��してチェチE��を�Eれる<br>
-                    <span style="font-size:0.9em; margin-left: 2.5em; color:#666; display:block; margin-bottom:5px;">※右側の「�E期設定」などの斁E���EクリチE��しなくて大丈夫です、E/span>
-                    <span class="step-number">11</span> <strong>「他�Eネ�Eムサーバ�Eを利用、E/strong>タブを選抁Ebr>
-                    <img src="images/07_onamae_select_other.png" alt="他�Eネ�Eムサーバ�Eを利用タチE style="margin-bottom: 15px;"><br>
-                    <span class="step-number">12</span> ネ�Eムサーバ�E1、ネームサーバ�E2の欁E��、�EほどCloudflareで表示された名前をそれぞれ入力（コピ�E�E�すめEbr>
-                    <img src="images/08_onamae_input_complete.png" alt="ネ�Eムサーバ�E入力完亁E��面" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">13</span> 画面右下�E「確認」をクリチE��<br>
-                    <img src="images/09_onamae_confirm_modal.png" alt="確認�EチE�EアチE�E" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">14</span> ポップアチE�Eが表示されたら「OK」をクリチE��
+                    <span class="step-number">8</span> お名前.com Naviにログイン<br>
+                    <span class="step-number">9</span> 上部メニューの<strong>「ネームサーバーの設定」</strong> ＞ <strong>「ネームサーバーの変更」</strong>をクリック<br>
+                    <img src="images/06_onamae_top.png" alt="お名前.comメニュー" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">10</span> 設定したいドメイン（web-tsukuru.jp）の<strong>左端にあるチェックボックス</strong>をクリックしてチェックを入れる<br>
+                    <span style="font-size:0.9em; margin-left: 2.5em; color:#666; display:block; margin-bottom:5px;">※右側の「初期設定」などの文字はクリックしなくて大丈夫です。</span>
+                    <span class="step-number">11</span> <strong>「他のネームサーバーを利用」</strong>タブを選択<br>
+                    <img src="images/07_onamae_select_other.png" alt="他のネームサーバーを利用タブ" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">12</span> ネームサーバー1、ネームサーバー2の欄に、先ほどCloudflareで表示された名前をそれぞれ入力（コピペ）する<br>
+                    <img src="images/08_onamae_input_complete.png" alt="ネームサーバー入力完了画面" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">13</span> 画面右下の「確認」をクリック<br>
+                    <img src="images/09_onamae_confirm_modal.png" alt="確認ポップアップ" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">14</span> ポップアップが表示されたら「OK」をクリック
                 </div>
 
-                <h2>STEP 6: 完亁E��誁E/h2>
+                <h2>STEP 6: 完了確認</h2>
                 <div class="step-box">
-                    <span class="step-number">14</span> Cloudflareの画面に戻り、画面下�E<strong>「ネームサーバ�Eを更新しました、E/strong>ボタンをクリチE��<br>
-                    <img src="images/10_cf_check_nameservers.png" alt="ネ�Eムサーバ�E更新ボタン" style="margin-bottom: 15px;"><br>
-                    <span class="step-number">15</span> 「クイチE��スタートガイド」が表示されたら「後で」でスキチE�Eして構いません、Ebr>
+                    <span class="step-number">14</span> Cloudflareの画面に戻り、画面下の<strong>「ネームサーバーを更新しました」</strong>ボタンをクリック<br>
+                    <img src="images/10_cf_check_nameservers.png" alt="ネームサーバー更新ボタン" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">15</span> 「クイックスタートガイド」が表示されたら「後で」でスキップして構いません。<br>
                     <br>
-                    <strong>🎉 設定完亁E��す！E/strong><br>
-                    最後、以下�Eような画面�E�「伝播するのを征E��てぁE��す」）になれ�E成功です、Ebr>
-                    <img src="images/11_cf_pending.png" alt="完亁E��E��画面" style="margin-bottom: 15px;"><br>
-                    完�Eに刁E��替わるまで数刁E��E4時間かかります。後ほどCloudflareのトップ画面で、ドメインの下に「アクチE��ブ」と表示されれ�E完亁E��す、Ebr>
-                    <span style="font-size:0.9em; color:#666;">※画面右下にある「ゾーンID」や「アカウンチED」�E、シスチE��開発などが使ぁE��のなので書き留める忁E���Eありません。（使ぁE��せん�E�E/span>
+                    <strong>🎉 設定完了です！</strong><br>
+                    最後、以下のような画面（「伝播するのを待っています」）になれば成功です。<br>
+                    <img src="images/11_cf_pending.png" alt="完了待機画面" style="margin-bottom: 15px;"><br>
+                    完全に切り替わるまで数分〜24時間かかります。後ほどCloudflareのトップ画面で、ドメインの下に「アクティブ」と表示されれば完了です。<br>
+                    <span style="font-size:0.9em; color:#666;">※画面右下にある「ゾーンID」や「アカウントID」は、システム開発などが使うものなので書き留める必要はありません。（使いません）</span>
                 </div>
         </div>
     </div>
