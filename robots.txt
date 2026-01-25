@@ -1,6 +1,5 @@
 User-agent: *
-Disallow: /admin.html
-Disallow: /planning/
+Disallow: /manuals/admin.html
 Disallow: /leads/
 Disallow: /clients/
 Disallow: /_archive/
