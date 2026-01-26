@@ -66,6 +66,7 @@
 
 html {
   scroll-behavior: smooth;
+  /* Removed height: 100% */
 }
 
 body {
@@ -75,6 +76,16 @@ body {
   color: var(--dark);
   background-color: var(--white);
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex; /* Sticky Footer Setup */
+  flex-direction: column;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+main {
+  flex: 1 0 auto; /* Expand to fill space */
+  width: 100%;
 }
 
 img {
@@ -605,7 +616,9 @@ ul {
 .footer {
   background-color: var(--dark);
   color: var(--white);
-  padding: var(--spacing-xxl) 0 var(--spacing-md);
+  padding: var(--spacing-xxl) 0 0; /* Removed bottom padding */
+  margin-bottom: 0 !important;
+  overflow: hidden;
 }
 
 .footer-content {
@@ -658,6 +671,11 @@ ul {
   text-align: center;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 0px; /* Zero padding */
+}
+
+.footer-bottom p {
+  margin: 0;
 }
 
 /* ===================================
