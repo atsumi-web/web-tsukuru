@@ -148,8 +148,7 @@ window.addEventListener("scroll", () => {
 // News Slider Logic
 const initNewsSlider = () => {
   // Mobile: Disable JS slider (use CSS Scroll Snap instead)
-  // Mobile: Enabled JS slider
-  // if (window.innerWidth <= 768) return;
+  if (window.innerWidth <= 768) return;
 
   const items = document.querySelectorAll(".info-item");
   if (items.length <= 1) return;

@@ -8,7 +8,18 @@ const nav = document.getElementById("nav");
 
 menuToggle.addEventListener("click", () => {
   nav.classList.toggle("active");
-  menuToggle.classList.toggle("active");
+
+  // Animate menu toggle icon
+  const spans = menuToggle.querySelectorAll("span");
+  if (nav.classList.contains("active")) {
+    spans[0].style.transform = "rotate(45deg) translateY(10px)";
+    spans[1].style.opacity = "0";
+    spans[2].style.transform = "rotate(-45deg) translateY(-10px)";
+  } else {
+    spans[0].style.transform = "none";
+    spans[1].style.opacity = "1";
+    spans[2].style.transform = "none";
+  }
 });
 
 // Close mobile menu when clicking a link
@@ -17,7 +28,10 @@ navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     if (window.innerWidth <= 768) {
       nav.classList.remove("active");
-      menuToggle.classList.remove("active");
+      const spans = menuToggle.querySelectorAll("span");
+      spans[0].style.transform = "none";
+      spans[1].style.opacity = "1";
+      spans[2].style.transform = "none";
     }
   });
 });
@@ -30,9 +44,9 @@ window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
 
   if (currentScroll > 100) {
-    header.classList.add("scrolled");
+    header.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
   } else {
-    header.classList.remove("scrolled");
+    header.style.boxShadow = "none";
   }
 
   lastScroll = currentScroll;
@@ -139,70 +153,5 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// ===================================
-// Mobile Carousel Swipe Force (Manual Implementation)
-// ===================================
-// (Removed to rely on native CSS scroll for better performance)
-
-
-// News Slider Logic
-const initNewsSlider = () => {
-  // Mobile: Disable JS slider (use CSS Scroll Snap instead)
-  // Mobile: Enabled JS slider
-  // if (window.innerWidth <= 768) return;
-
-  const items = document.querySelectorAll(".info-item");
-  if (items.length <= 1) return;
-
-  let currentIndex = 0;
-  let sliderInterval;
-
-  const showNext = () => {
-    const currentItem = items[currentIndex];
-
-    // Set exit animation for current item
-    currentItem.classList.remove("active");
-    currentItem.classList.add("exit");
-
-    // Update index
-    currentIndex = (currentIndex + 1) % items.length;
-    const nextItem = items[currentIndex];
-
-    // Reset and show next item
-    nextItem.classList.remove("exit");
-    nextItem.classList.add("active");
-
-    // Clean up exit class after animation
-    setTimeout(() => {
-      currentItem.classList.remove("exit");
-    }, 2000);
-  };
-
-  const startAutoPlay = () => {
-    sliderInterval = setInterval(showNext, 5000);
-  };
-
-  const resetAutoPlay = () => {
-    clearInterval(sliderInterval);
-    startAutoPlay();
-  };
-
-  // Auto-play
-  startAutoPlay();
-
-  // Manual Navigation (Listen on the container to include the arrow/pseudo-elements)
-  const container = document.querySelector(".hero-info-box");
-  if (container) {
-    container.addEventListener("click", () => {
-      showNext();
-      resetAutoPlay();
-    });
-    container.style.cursor = "pointer";
-  }
-};
-
-// Initialize All
-document.addEventListener("DOMContentLoaded", () => {
-  initNewsSlider();
-  console.log("IIJ Engineering Recruiting Site - Initialized");
-});
+// Log page load
+console.log("IIJ Engineering Recruiting Site - Loaded");
