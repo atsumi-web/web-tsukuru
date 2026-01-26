@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity直伝・コーディングの鉄則</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h3 {
+            background: #f1f8ff;
+            padding: 10px 15px;
+            border-left: 5px solid #0366d6;
+            border-radius: 4px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+        .rule-box {
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .rule-box.bad {
+            border-color: #ffaeb6;
+            background: #fff5f6;
+        }
+        .rule-box.good {
+            border-color: #a3d9a5;
+            background: #f0fff4;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .badge-bad {
+            background: #d73a49;
+            color: #fff;
+        }
+        .badge-good {
+            background: #28a745;
+            color: #fff;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>Antigravity直伝・コーディングの鉄則</h1>
+            <p>「修正の無限ループ」から抜け出すための4つの掟</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="Private_index.html">← マニュアル一覧に戻る</a>
+        </div>
+
+        <main class="content">
+            
+            <div class="highlight-box" style="background: #e6fffa; border-left: 4px solid #38b2ac; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🛡️ これはなに？</h3>
+                <p>複雑なデザイン（C-Limber等）に挑戦した際に直面した「コードが複雑化して修正できなくなる」問題を解決するための、Antigravityとの約束事（鉄の掟）です。<br>
+                模写だけでなく、オリジナル開発でもこのルールを守ることで、プロ品質の保守性を担保します。</p>
+            </div>
+
+            <h2>1. モバイルファースト（小は大を兼ねない！）</h2>
+            <p><strong>「まずスマホ版のデザインを先に書く」</strong>。これだけでコード量は半分になります。</p>
+            
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG: Webファースト</span>
+                <p>デスクトップ版を先に作ると、スマホ版で「打ち消し」のコードが大量に必要になります。</p>
+                <code>padding: 0; border: none; flex-direction: column;</code>
+                <p>↑こんなコードが増えたら要注意です。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: モバイルファースト</span>
+                <p>スマホ版をベースにすれば、デスクトップ版は「追加」だけで済みます。</p>
+                <p>「スマホでシンプルな形を作る」→「画面が広かったら横並びにする（@media）」</p>
+            </div>
+
+            <h2>2. !important は「敗北宣言」</h2>
+            <p><code>!important</code> を使いたくなったら、それはCSSの設計が破綻しかけている合図です。</p>
+            
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p><code>width: 100% !important;</code></p>
+                <p>これを使うと、後で「やっぱり変更したい」と思った時に、誰も修正できなくなります。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>使う前に自問自答する：<br>
+                「HTMLのクラス名を見直せないか？」<br>
+                「詳細度（セレクタの強さ）を整理できないか？」</p>
+            </div>
+
+            <h2>3. 「絶対配置（absolute）」は飾りだけ</h2>
+            <p>コンテンツ（文字や画像）を <code>position: absolute</code> で無理やり配置するのはやめましょう。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>本文や見出しなどの「文章」をabsoluteで固定する。<br>
+                → 文字数が増えたり、スマホで見たりした瞬間に崩壊します。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>中身の配置は必ず <code>Flexbox</code> か <code>Grid</code> を使います。<br>
+                <code>absolute</code> は<strong>「背景の赤い丸」や「装飾アイコン」</strong> など、崩れても読めるものだけに限定します。</p>
+            </div>
+
+            <h2>4. 「下書き保存」禁止（One Source of Truth）</h2>
+            <p>修正したいとき、ファイルの末尾に「修正用コード」を追記していく「継ぎ足し秘伝のタレ」方式は禁止です。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>既存のコードには触らず、一番下に新しいCSSを書いて上書きする。<br>
+                → どこが有効なのか分からなくなり、自分が書いたコード同士が喧嘩を始めます。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><strong>勇気を出して、元の場所に戻って書き換える。</strong><br>
+                ファイル内検索（Ctrl+F）を使って、該当箇所の元の記述を探し出し、そこを直接修正します。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🚀 求人LP特化の3ヶ条</h3>
+                <p>頻繁なABテストや修正が発生する「求人ランディングページ」で事故を防ぐための追加ルールです。</p>
+            </div>
+
+            <h2>5. セクション＝積み木ルール（入れ替え自由自在）</h2>
+            <p>求人LPは「先輩の声を上にしたい」「募集要項を最後にしたい」など、頻繁な並び替えが発生します。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>各セクションは上下に依存する余白(<code>margin-top/bottom</code>)を持たせない。<br>
+                自分の内側の余白(<code>padding</code>)だけで完結させる。<br>
+                → これなら、どの順番に入れ替えてもレイアウトが崩れません。</p>
+            </div>
+
+            <h2>6. 「文字・即・テキスト」 (脱・画像化)</h2>
+            <p>給与、時間、待遇…これらは最も変更が多い箇所です。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>Photoshopで作った画像の中に文字を埋め込む。<br>
+                → 時給が50円変わるだけで画像の作り直しが発生します。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><strong>HTMLテキスト＋CSSで作る。</strong><br>
+                変更の可能性がある情報は、意地でもテキストデータとして実装します。</p>
+            </div>
+
+            <h2>7. CVボタンは絶対聖域</h2>
+            <p>LPの唯一の目的は「応募」です。デザイン崩れでボタンが押せなくなることだけは万死に値します。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><strong>最強の共通パーツを作る。</strong><br>
+                <code>.btn-cta</code> のような共通クラスを作り、どのページ、どの場所に置いても絶対に崩れないように独立させて管理します。</p>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

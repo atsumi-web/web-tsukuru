@@ -1,0 +1,2483 @@
+﻿/* ===================================
+   C-Limber Style Website
+   Modern Corporate Design System
+   =================================== */
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Poppins:wght@300;400;600;700;800&family=Pacifico&family=Allura&display=swap");
+
+/* ===================================
+   CSS Variables & Design Tokens
+   =================================== */
+:root {
+  /* Colors */
+  --primary-red: #ff3333;
+  --primary-red-hover: #e62e2e;
+  --dark: #1a1a1a;
+  --dark-gray: #333333;
+  --medium-gray: #666666;
+  --light-gray: #f8f8f8;
+  --white: #ffffff;
+  --border-color: #e5e5e5;
+
+  /* Typography */
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --font-accent: "Pacifico", cursive;
+
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+  --spacing-xl: 60px;
+  --spacing-xxl: 80px;
+  --spacing-xxxl: 120px;
+
+  /* Container */
+  --container-max: 1200px;
+  --container-padding: 20px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* ===================================
+   Reset & Base Styles
+   =================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Removed height: 100% */
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--dark);
+  background-color: var(--white);
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex; /* Sticky Footer Setup */
+  flex-direction: column;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+main {
+  flex: 1 0 auto; /* Expand to fill space */
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-normal);
+}
+
+ul {
+  list-style: none;
+}
+
+/* ===================================
+   Container & Layout
+   =================================== */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 var(--container-padding);
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ===================================
+   Header & Navigation
+   =================================== */
+
+.header-container {
+  display: flex;
+  justify-content: flex-end; /* Nav to right */
+  align-items: center;
+  padding: 0 var(--container-padding); /* REMOVED vertical padding */
+  position: static;
+}
+
+/* Integrated Logo Design */
+/* Hide Header Logo to avoid duplication with Hero Logo */
+.header .logo {
+  display: flex; /* Restored */
+  flex-direction: column;
+  align-items: flex-start; /* 左揃えに設定 */
+}
+
+/* Unused block removed */
+
+/* Original Logo Rules */
+.logo {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 1001;
+  display: flex !important; /* Force Show */
+}
+
+.logo-main {
+  font-family: "Times New Roman", Times, serif; /* Serif font as requested */
+  font-size: 100px; /* Very Large */
+  font-weight: bold;
+  color: #1a2b33; /* Dark slate text */
+  line-height: 0.8;
+  position: relative;
+  letter-spacing: -2px;
+}
+
+.logo-j {
+  position: relative;
+}
+
+/* The Red Dot on J */
+.logo-j::after {
+  content: "";
+  position: absolute;
+  bottom: 12px; /* Moved up slightly */
+  right: -5px;
+  width: 16px;
+  height: 16px;
+  background-color: #e60012; /* IIJ Red */
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logo-subtitle {
+  font-family: var(--font-main);
+  font-size: 20px;
+  color: #1a2b33;
+  letter-spacing: 0.15em; /* Wide tracking */
+  margin-top: 8px;
+  margin-left: 0; /* 左揃えを徹底するため 4px -> 0 に変更 */
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-gray);
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-red);
+  transition: var(--transition-normal);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  border: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-red);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-red-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Mobile Menu Toggle */
+.btn-orange {
+  background-color: #ff7733; /* Slightly Orange */
+  color: var(--white);
+}
+
+.btn-orange:hover {
+  background-color: #e66629; /* Darker orange for hover */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Closer spacing */
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--dark);
+  transition: var(--transition-normal);
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.hero {
+  margin-top: 0; /* No margin needed for relative header */
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #ffffff; /* Ensure base is white */
+  box-shadow: none; /* Remove any potential container shadows */
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--medium-gray);
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+  color: var(--dark);
+}
+
+.hero-title-accent {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  color: var(--dark);
+  display: block;
+  margin-top: 10px;
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.hero-image {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-image.large {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  height: 500px;
+}
+
+.hero-image.small {
+  grid-column: 2;
+  height: 240px;
+}
+
+.hero-card {
+  grid-column: 2;
+  background-color: var(--white);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-card-date {
+  font-size: 12px;
+  color: var(--medium-gray);
+  margin-bottom: var(--spacing-xs);
+}
+
+.hero-card-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: var(--light-gray);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: var(--spacing-xs);
+}
+
+.hero-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-top: var(--spacing-xs);
+}
+
+/* Red Circle Decoration */
+.red-circle {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-color: var(--primary-red);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.red-circle-1 {
+  left: -200px;
+  bottom: -200px;
+}
+
+.red-circle-2 {
+  right: -150px;
+  top: -150px;
+  width: 300px;
+  height: 300px;
+  opacity: 0.1;
+}
+
+/* ===================================
+   Section Styles
+   =================================== */
+.section {
+  padding: var(--spacing-xxxl) 0;
+  position: relative;
+}
+
+.section-bg {
+  background-color: var(--light-gray);
+}
+
+.section-dark {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-dark .section-title {
+  color: var(--white);
+}
+
+.section-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--medium-gray);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===================================
+   Card Components
+   =================================== */
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-image {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-slow);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.card-content {
+  padding: var(--spacing-md);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  color: var(--dark);
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: var(--medium-gray);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--dark-gray);
+}
+
+/* ===================================
+   Team Member Cards
+   =================================== */
+.member-card {
+  text-align: center;
+}
+
+.member-card .card-image {
+  height: 320px;
+  border-radius: var(--radius-lg);
+}
+
+.member-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: var(--spacing-sm);
+  color: var(--dark);
+}
+
+.member-position {
+  font-size: 13px;
+  color: var(--medium-gray);
+  margin-top: 4px;
+}
+
+/* ===================================
+   Stats Section
+   =================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-gray);
+  border-radius: 50%;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary-red);
+  line-height: 1;
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--medium-gray);
+  font-weight: 500;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+.footer {
+  background-color: var(--dark);
+  color: var(--white);
+  padding: var(--spacing-xxl) 0 0; /* Removed bottom padding */
+  margin-bottom: 0 !important;
+  overflow: hidden;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-description {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-link {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: var(--transition-normal);
+}
+
+.footer-link:hover {
+  color: var(--white);
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-md);
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 0px; /* Zero padding */
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===================================
+   Full Width Hero (Desktop Default)
+   =================================== */
+.hero-full-width-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-visual-marquee-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  padding-top: 130px; 
+  padding-left: 80px; /* Standardized narrow gap */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.marquee-viewport {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 80px; /* The Top-Left Curve */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  height: 100%;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  width: 400px;
+  height: 100%;
+  position: relative;
+}
+
+.marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hero Overlay Elements */
+.hero-logo-space {
+  position: absolute;
+  top: 40px !important;
+  left: 20px;
+  z-index: 1100;
+  width: 180px;
+  display: block !important;
+}
+
+.hero-info-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  min-width: 700px;
+  padding: 40px 100px 40px 50px;
+  background-color: #ffffff;
+  border-top-left-radius: 80px;
+  height: 140px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 20;
+}
+
+.hero-info-box::after {
+  content: "";
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--dark);
+  border-right: 2px solid var(--dark);
+  z-index: 30;
+}
+
+/* Decoration - Red Circle */
+.hero-left-decoration {
+  position: absolute;
+  bottom: 25px; 
+  left: -140px; 
+  width: 340px; 
+  height: 340px;
+  background-color: var(--primary-red);
+  border-radius: 50%;
+  z-index: 15;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding-left: 110px; /* Center-weighted padding */
+  padding-bottom: 30px;
+  box-sizing: border-box;
+  overflow: visible;
+  pointer-events: none;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+}
+
+.hero-decoration-label {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.decoration-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.design-words {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-text-line {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  font-size: 64px; /* Balanced large size */
+  line-height: 0.9;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.handwritten-accent {
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-size: 80px; /* Elegant script accent */
+  margin-left: -5px;
+  margin-top: -10px;
+  line-height: 1.0;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* White Line Animation */
+.hero-left-decoration::after {
+  content: "";
+  position: absolute;
+  top: 78%;
+  left: 170px;
+  width: 2px;
+  height: 0;
+  background-color: #ffffff;
+  animation: lineDraw 2s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+@keyframes lineDraw {
+  0% { height: 0; transform: translateY(0); }
+  50% { height: 120px; transform: translateY(0); }
+  100% { height: 0; transform: translateY(120px); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInNews {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutNews {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+/* ===================================
+   Mobile Responsiveness (768px and below)
+   =================================== */
+@media (max-width: 768px) {
+  /* --- Header & Menu --- */
+  .header-container {
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 70px;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .header .logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1003;
+  }
+
+  .header .logo .logo-main {
+    font-size: 32px;
+  }
+  .header .logo .logo-subtitle {
+    font-size: 10px;
+  }
+
+  /* Mobile Menu Toggle Style */
+  .menu-toggle {
+    display: flex; /* Ensure it stays flex */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #ccc; /* Visible border */
+    border-radius: 4px;
+    position: relative;
+    z-index: 2000;
+    background: #fff;
+  }
+
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--dark);
+    transition: all 0.3s ease;
+    position: absolute;
+  }
+
+  /* X Icon Logic */
+  .menu-toggle span:nth-child(1) {
+    transform: translateY(-8px);
+  }
+  .menu-toggle span:nth-child(2) {
+    opacity: 1;
+  }
+  .menu-toggle span:nth-child(3) {
+    transform: translateY(8px);
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  /* Full Screen Nav */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--white);
+    padding: 80px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.4s ease;
+    visibility: hidden;
+    z-index: 1500;
+  }
+
+  .nav.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header-buttons {
+    order: -1;
+    display: flex;
+    gap: 0; /* No gap between buttons */
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .header-buttons .btn {
+    flex: 1;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0; /* Remove default radius */
+  }
+
+  .header-buttons .btn:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+  }
+  .header-buttons .btn:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Default Icon: Red Plus */
+  .nav-link::after {
+    content: "+";
+    color: var(--primary-red);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  /* Special Icon for Message: Red Circle Arrow */
+  .nav-link[href="#message"]::after {
+    content: "→";
+    background-color: var(--primary-red);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  /* --- Hero Mobile Adjustments --- */
+  .hero-full-width-wrapper {
+    padding-top: 70px;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+
+  /* HIDE Absolute Hero Logo on Mobile */
+  .hero-logo-space {
+    display: none;
+  }
+
+  /* Marquee */
+  .hero-visual-marquee-full {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    padding: 0;
+    margin-top: 20px;
+    background-color: transparent;
+    overflow: visible;
+  }
+
+  .marquee-viewport {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    margin-left: 20px;
+    width: calc(100% - 20px);
+  }
+
+  .marquee-item {
+    width: 280px;
+  }
+
+  /* Red Decoration */
+  .hero-left-decoration {
+    position: absolute;
+    bottom: 40px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    padding-left: 80px;
+    padding-top: 0;
+    align-items: flex-start;
+  }
+
+  .hero-decoration-label {
+    font-size: 10px;
+    margin-left: 0;
+  }
+
+  .decoration-text {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-text-line {
+    font-size: 48px;
+  }
+
+  .handwritten-accent {
+    font-size: 64px;
+    margin-left: 60px;
+    margin-top: -10px;
+  }
+
+  /* Info Box */
+  .hero-info-box {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-width: auto;
+    padding: 30px 20px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    margin-top: 0;
+    bottom: auto;
+    right: auto;
+  }
+
+  .hero-info-box::after {
+    display: none;
+  }
+
+  .info-item {
+    position: relative;
+    display: flex;
+    opacity: 1;
+    transform: none;
+    animation: none;
+    margin-bottom: 20px;
+  }
+
+  .info-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-box-arrow {
+    display: none;
+  }
+  .info-box-text {
+    font-size: 14px;
+  }
+
+  /* Generic Resets */
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .stats-grid,
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 60px 0;
+  }
+}
+
+/* ===================================
+   Animations
+   =================================== */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Scroll Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================================
+   Hero Marquee
+   =================================== */
+.hero-visual-marquee {
+  grid-column: 2;
+  width: 100%;
+  height: 500px; /* Match previous large image height */
+  position: relative;
+  overflow: hidden;
+  /* Optional: Fade edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  gap: var(--spacing-md);
+  width: max-content;
+  height: 100%;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-item {
+  width: 350px;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.section-voice .section-label {
+  margin-bottom: var(--spacing-sm);
+  display: block;
+}
+
+.voice-container {
+  background-color: #f0f5fa; /* Light cool grey */
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  padding-bottom: var(--spacing-xxl); /* Extra padding for bottom */
+}
+
+.voice-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.voice-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Decoratiive white arrow from container to show it's a bubble?
+   The design seems to just have the card inside.
+   Assuming standard card inside container. */
+
+.voice-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 60%;
+  background-color: var(--white); /* Blend with card or accent? */
+  /* Screenshot has a curve on the left side of the card connecting to the container?
+       Actually it looks like the white card has a 'tail' on the left.
+       Let's stick to simple cards first for stability, or try a pseudo-element for the tail. */
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  opacity: 0; /* Simpler implementation first */
+}
+/* The screenshot shows a speech bubble effect on the left of the white card */
+.voice-card-tail-wrapper {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: var(--white);
+  border-radius: 50%;
+}
+
+.voice-avatar-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.voice-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  margin-bottom: var(--spacing-xs);
+  background-color: #fff;
+}
+
+.voice-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.voice-meta {
+  font-size: 11px;
+  color: var(--dark);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.voice-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--dark-gray);
+  padding-top: 5px; /* Alignment fix */
+}
+
+
+
+/* ===================================
+   Training Points Section
+   =================================== */
+.section-points-title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xl);
+  color: var(--dark);
+}
+
+.point-wrapper {
+  margin-bottom: var(--spacing-xxxl);
+  padding-left: 30px;
+  border-left: 1px solid #ccc;
+  position: relative;
+}
+
+.point-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.point-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.point-badge {
+  background-color: var(--primary-red);
+  color: var(--white);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Drop shape or circle */
+  border-bottom-left-radius: 0;
+  transform: rotate(-45deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.point-badge-content {
+  transform: rotate(45deg);
+}
+
+.point-badge-label {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.point-badge-number {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.point-title {
+  font-size: 28px;
+  font-weight: 700;
+  padding-left: 40px; /* Space for the absolute badge */
+}
+
+/* Point 01: Timeline */
+.timeline-container {
+  background-color: #ebf5ff; /* Light blue bg */
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.timeline-bar {
+  display: flex;
+  margin-bottom: var(--spacing-md);
+  color: var(--white);
+  font-weight: 700;
+  text-align: center;
+  font-size: 14px;
+}
+
+.timeline-phase {
+  padding: 8px 0;
+  position: relative;
+}
+
+.timeline-phase:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 10px solid; /* Color matched via inline/specific styles */
+  z-index: 1;
+}
+/* Arrow effect handling needs specific colors, simplified for now relying on bg colors */
+
+.phase-1 {
+  background-color: #4a90e2;
+  width: 33%;
+  clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
+  padding-right: 15px;
+}
+.phase-2 {
+  background-color: #357abd;
+  width: 34%;
+  margin-left: -15px;
+  padding-left: 15px;
+  clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%, 5% 50%);
+}
+.phase-3 {
+  background-color: #2a629c;
+  width: 33%;
+  margin-left: -15px;
+  padding-left: 15px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 5% 50%);
+}
+
+.training-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+.training-card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.training-card-header {
+  background-color: #2c5282; /* Deep Blue */
+  color: var(--white);
+  padding: 10px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.training-card-body {
+  padding: var(--spacing-md);
+  font-size: 14px;
+}
+
+.training-card-body ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.training-sub-card {
+  background-color: #f0f4f8;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  color: #357abd;
+}
+
+.point-description {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--dark-gray);
+  margin-top: var(--spacing-md);
+}
+
+/* Point 02: Support */
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.support-item {
+  text-align: left;
+}
+
+.support-illustration {
+  height: 150px;
+  background-color: #f5f5f5;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+}
+
+.support-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.support-text {
+  font-size: 14px;
+  color: var(--dark-gray);
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Point 03: Career Path */
+.career-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.career-image {
+  height: 300px;
+  background-color: #f5f5f5;
+  border-radius: 12px; /* specific radius */
+  overflow: hidden;
+}
+
+.career-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.career-btn-container {
+  margin-top: var(--spacing-lg);
+}
+
+.btn-arrow {
+  background-color: #f0f4f8;
+  color: var(--dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 24px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+}
+.btn-arrow:hover {
+  background-color: #e2e8f0;
+}
+
+
+
+
+/* ===================================
+   Full Width Hero Marquee
+   =================================== */
+
+/* Ensure text is visible on top of any overlay */
+.hero-title {
+  color: var(--dark);
+  font-size: 80px; /* Make it large */
+  line-height: 1.1;
+  font-weight: 900;
+  text-shadow:
+    4px 4px 0 #fff,
+    -4px -4px 0 #fff,
+    4px -4px 0 #fff,
+    -4px 4px 0 #fff,
+    0px 0px 30px rgba(255, 255, 255, 1); /* Strong glow */
+}
+
+.hero-label {
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================
+   Header & Navigation
+   =================================== */
+.header {
+  position: fixed; /* Sticky/Overlay behavior */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff; /* Always White */
+  border-bottom: none;
+  box-shadow: none;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-end; /* Nav to right */
+  align-items: center;
+  padding: 0 var(--container-padding);
+  position: static;
+  height: 90px; /* Define fixed height for consistency */
+}
+
+/* Integrated Logo Design */
+.logo {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+
+  /* Initial State: Hidden (Large Hero Logo takes precedence) */
+  opacity: 0;
+  pointer-events: none; /* Prevent clicks when hidden */
+  transition: opacity 0.3s ease;
+
+  /* Vertical Centering in Header */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Header Specific Logo Styles */
+.header .logo .logo-main {
+  font-size: 42px; /* Reduced from 100px to fit 90px header */
+}
+
+.header .logo .logo-subtitle {
+  font-size: 11px; /* Reduced from 20px */
+  margin-top: 2px; /* 元に戻しました (12px -> 2px) */
+  letter-spacing: 0.1em;
+}
+
+.header .logo .logo-j::after {
+  width: 8px; /* Resize the dot */
+  height: 8px;
+  bottom: 5px;
+  right: -2px;
+}
+
+/* Scrolled State: Show Header Logo */
+.header.scrolled .logo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===================================
+   Full Width Hero Marquee
+   =================================== */
+.hero-full-width-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height for immersive feel */
+  background-color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-visual-marquee-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  /* THE ASYMMETRIC WHITE FRAME */
+  padding-top: 130px; /* Reduced from 30px */
+  padding-right: 0;
+  padding-bottom: 40px;
+  padding-left: 80px; /* Narrower white frame as requested */
+
+  box-sizing: border-box;
+  background-color: #ffffff;
+
+  display: flex; /* Holds the viewport */
+  align-items: stretch; /* Stretch viewport to fill height */
+  overflow: hidden;
+}
+
+/* Logo Space (Top Left - Large & avoiding marquee) */
+/* Restored: Large Logo for Initial View */
+.hero-logo-space {
+  position: absolute;
+  top: 40px; /* Position it comfortably overlapping header area */
+  left: 20px; /* 元の 20px に戻します */
+  z-index: 1100; /* Above Header (1000) */
+  width: 180px;
+  display: block; /* Visible initially */
+  transition: opacity 0.3s ease;
+}
+
+/* Hide Hero Logo when scrolled (Optional, but cleaner) */
+.header.scrolled ~ .hero .hero-logo-space {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Info Box (Bottom Right - Pop-up Tab Style) */
+.hero-info-box {
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  width: auto;
+  min-width: 600px; /* 最新の音声指示に基づき 600px に変更 */
+  padding: 30px 90px 30px 45px; /* 幅に合わせて余白を微調整 */
+  background-color: #ffffff;
+  border-radius: 0;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 0;
+  height: 140px; /* Maintain fixed height */
+  overflow: hidden;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 20;
+}
+
+.info-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.info-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  background-color: transparent; /* Changed to transparent to use parent background */
+}
+
+.info-item.active {
+  display: flex;
+  animation: slideInNews 2s cubic-bezier(0.23, 1, 0.32, 1) forwards; /* Slowed down to 2.0s */
+}
+
+.info-item.exit {
+  display: flex;
+  animation: slideOutNews 2s cubic-bezier(0.23, 1, 0.32, 1) forwards; /* Slowed down to 2.0s */
+}
+
+.info-box-date {
+  font-size: 14px;
+  color: var(--dark);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  letter-spacing: 0.05em;
+}
+
+.info-badge {
+  background-color: #999;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 2px;
+  font-weight: 400;
+}
+
+.info-box-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--dark);
+  line-height: 1.5;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Arrow styling to match the sample image (chevron right) */
+/* .hero-info-box::after {
+  content: "";
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--dark);
+  border-right: 2px solid var(--dark);
+  z-index: 30; 
+} */
+
+.info-box-arrow {
+  display: none; /* Replaced with CSS pseudo-element */
+}
+
+/* Updated Marquee Layout for "Asymmetric White Frame" */
+.hero-visual-marquee-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  /* THE ASYMMETRIC WHITE FRAME */
+  padding-top: 130px; /* Reduced from 30px */
+  padding-right: 0;
+  padding-bottom: 40px;
+  padding-left: 80px; /* Narrower white frame as requested */
+
+  box-sizing: border-box;
+  background-color: #ffffff;
+
+  display: flex; /* Holds the viewport */
+  align-items: stretch; /* Stretch viewport to fill height */
+  overflow: hidden;
+}
+
+/* New Marquee Viewport for Inner Radius */
+.marquee-viewport {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 80px; /* The Top-Left "Inner Curve" */
+  overflow: hidden;
+  position: relative;
+  /* Optional: Ensure image track aligns correctly */
+  display: flex;
+  align-items: center;
+  background-color: #ffffff; /* Fallback bg */
+}
+
+/* Ensure track fills the viewport */
+.marquee-track {
+  display: flex;
+  gap: 0;
+  width: max-content; /* Ensure track is long enough */
+  animation: marquee 40s linear infinite;
+  height: 100%; /* Match viewport height */
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  width: 400px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  position: relative;
+}
+
+.marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Left Bottom Red Decoration - Circle */
+.hero-decoration-label {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-left: 0; 
+  white-space: nowrap; 
+  width: max-content;
+  position: relative;
+  z-index: 2;
+}
+
+.decoration-text {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row; /* 元の横並びに戻す */
+  align-items: center; 
+  gap: 20px; 
+  position: relative;
+  z-index: 2;
+}
+
+.design-words {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 左揃えを維持 */
+  gap: 20px; 
+  margin-top: -30px; 
+}
+
+.hero-left-decoration {
+  position: absolute;
+  bottom: 25px; 
+  left: -140px; 
+  width: 340px; 
+  height: 340px;
+  background-color: var(--primary-red);
+  border-radius: 50%;
+  z-index: 15;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  /* 指示に基づき、50px左に移動（270px -> 220px） */
+  padding-left: 220px; 
+  padding-top: 0;
+  padding-bottom: 50px; 
+  box-sizing: border-box;
+
+  overflow: visible; 
+  pointer-events: none;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.1); 
+}
+
+.decoration-text {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* 一体感を出すため 20px を維持 */
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text-line {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  font-size: 83px; /* 指示に基づき 80px -> 83px に微調整 */
+  line-height: 0.9;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* "Design" lines */
+.hero-text-line:nth-child(1),
+.hero-text-line:nth-child(2) {
+  margin-left: 0;
+}
+
+/* "IT, your Life." - Thin Handwritten Accent */
+.handwritten-accent {
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-size: 123px; /* 音声指示に基づき 120px -> 123px に拡大しました */
+  margin-left: 0;
+  margin-top: -5px; 
+  line-height: 0.8; /* 音声指示に基づき、1.0から0.8に狭めました */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 左揃えを徹底 */
+  text-align: left;
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.handwritten-large {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.2em; 
+  margin-left: 0; 
+  transform: rotate(-5deg); 
+  margin-top: 10px;
+}
+
+/* Ensure the marquee starts from the left of the content box (after padding) */
+.hero-visual-marquee-full .marquee-track {
+  animation: scrollLeftFull 60s linear infinite;
+  gap: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-visual-marquee-full .marquee-item {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+
+  border: none;
+  box-shadow: none;
+  border-radius: var(--radius-xl);
+
+  margin-right: 0;
+  position: relative;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+/* ===================================
+   Refactored Hero & Mobile Styles
+   (Prioritized Overrides)
+   =================================== */
+
+/* GLOBAL (Desktop) FIXES */
+.info-arrow, .inline-arrow {
+  display: none !important;
+}
+.info-content {
+  display: contents;
+}
+
+/* White Line Animation for Red Decoration */
+.hero-left-decoration::after {
+  content: "";
+  position: absolute;
+  top: calc(78% - 45px); /* 指示に基づき、さらに20px上げ（合計40px分）て下端に合わせました */
+  left: 165px;
+  width: 2px;
+  height: 0;
+  background-color: #ffffff;
+  animation: lineDraw 2s ease-in-out infinite;
+  opacity: 0.8;
+  transform: none;
+}
+
+@keyframes lineDraw {
+  0% { transform: translateY(0); height: 0; }
+  50% { transform: translateY(0); height: 120px; }
+  100% { transform: translateY(120px); height: 0; }
+}
+
+@keyframes lineDrawMobile {
+  0% { transform: translateY(0); height: 0; }
+  50% { transform: translateY(0); height: 60px; } /* 長さを半分（120px -> 60px）に */
+  100% { transform: translateY(60px); height: 0; }
+}
+
+/* ===================================
+   Consolidated Mobile Styles (Refactored)
+   =================================== */
+@media (max-width: 768px) {
+  /* 0. Global Resets for Mobile */
+  body, html {
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  .hero {
+    height: 100dvh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* 1. Header & Toggle (Merged) */
+  .header-container {
+    justify-content: space-between !important;
+    padding: 0 20px !important;
+    height: 60px !important;
+  }
+  /* Mobile Menu Toggle Style (Migrated from Old Block) */
+  .menu-toggle {
+    display: flex; /* Ensure it stays flex */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #ccc; /* Visible border */
+    border-radius: 4px;
+    position: relative;
+    z-index: 2000;
+    background: #fff;
+  }
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--dark);
+    transition: all 0.3s ease;
+    position: absolute;
+  }
+  .menu-toggle span:nth-child(1) { transform: translateY(-8px); }
+  .menu-toggle span:nth-child(2) { opacity: 1; }
+  .menu-toggle span:nth-child(3) { transform: translateY(8px); }
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg); }
+
+  /* Logo Visibility */
+  .header .logo {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    z-index: 2005 !important;
+  }
+  .header .logo .logo-main {
+    font-size: 40px !important;
+  }
+  .header .logo .logo-subtitle {
+    font-size: 13px !important;
+    margin-top: 2px !important;
+    margin-left: 0 !important;
+  }
+  .hero-logo-space {
+    display: none !important;
+  }
+
+  /* 2. Full Screen Mobile Menu */
+  .nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background-color: #ffffff !important;
+    padding: 70px 20px 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.4s ease !important;
+    z-index: 1500 !important;
+    visibility: visible !important;
+  }
+  .nav.active {
+    transform: translateX(0) !important;
+  }
+  .header-buttons {
+    order: -1 !important;
+    display: flex !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    flex-direction: row !important;
+  }
+  .header-buttons .btn {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 12px 0 !important;
+    width: auto !important;
+    display: block !important;
+    border: none;
+  }
+  .nav-list {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+  .nav-list li {
+    width: 100% !important;
+  }
+  .nav-link {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 20px 0 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    border-bottom: 1px solid #eee !important;
+  }
+  .nav-link::after {
+    margin-left: auto !important;
+    content: "+" !important;
+    font-size: 24px !important;
+    color: #e60012 !important;
+    font-weight: bold !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+  }
+  .nav-link[href="#message"]::after {
+    content: "→" !important;
+    background-color: var(--primary-red) !important;
+    color: white !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+  }
+
+  /* 3. Hero Layout & Marquee */
+  .hero-full-width-wrapper {
+    height: 100dvh !important;
+    width: 100% !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding-top: 60px !important;
+  }
+  .hero-visual-marquee-full {
+    position: absolute !important;
+    width: calc(100% - 10px) !important;
+    top: 50px !important;
+    left: 10px !important;
+    bottom: 150px !important;
+    height: unset !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border-radius: 40px 0 0 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    z-index: 1 !important;
+  }
+  .marquee-viewport {
+    height: 100% !important;
+    border-radius: 40px 0 0 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  /* Reset gap on track and margins on items */
+  .hero-visual-marquee-full .marquee-track {
+    gap: 10px !important;
+  }
+
+  .marquee-item {
+    width: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    height: 100% !important;
+    margin-right: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 4. Decoration & Info Box */
+  .hero-left-decoration {
+    position: absolute !important;
+    bottom: 130px !important;
+    left: -60px !important;
+    width: 180px !important;
+    height: 180px !important;
+    padding-left: 100px !important;
+    padding-bottom: 50px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    z-index: 60 !important;
+  }
+  .hero-left-decoration::after {
+    left: 80px !important;
+    top: 120px !important;
+    bottom: auto !important;
+    display: block !important;
+    animation: lineDrawMobile 2s ease-in-out infinite !important;
+  }
+  .hero-decoration-label {
+    font-size: 8px !important;
+    margin-left: 4px !important;
+    margin-top: 34px !important;
+  }
+  .decoration-text {
+    margin-top: -5px !important;
+    gap: 12px !important;
+    flex-direction: row !important;
+  }
+  .design-words {
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-top: -10px !important;
+  }
+  .hero-text-line {
+    font-size: 35px !important;
+    line-height: 0.9 !important;
+  }
+  .handwritten-accent {
+    font-size: 51px !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    line-height: 0.9 !important;
+  }
+  .handwritten-accent span:last-child {
+    margin-top: -15px !important;
+  }
+
+  .hero-info-box {
+    position: absolute !important;
+    bottom: 10px !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    z-index: 50 !important;
+    height: auto !important;
+    min-height: 90px !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+  .info-item {
+    padding: 25px 20px 25px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .info-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .info-box-date { font-size: 12px !important; }
+  .info-box-text {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    white-space: normal !important;
+  }
+  .info-arrow, .inline-arrow { display: none !important; }
+
+  /* 5. Voice Section (Migrated) */
+  .voice-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  .voice-avatar-area {
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+  }
+  .voice-text {
+    width: 100%;
+    text-align: left;
+  }
+
+  /* 6. Points Section (Migrated) */
+  .section-points-title { font-size: 24px; }
+  .point-title { font-size: 20px; }
+  .point-wrapper { padding-left: 20px; margin-left: 10px; }
+  .point-badge { width: 50px; height: 50px; left: -25px; }
+  .timeline-bar { flex-direction: column; }
+  .timeline-phase { width: 100% !important; margin-left: 0 !important; margin-bottom: 5px; clip-path: none !important; }
+  .training-cards, .support-grid, .career-container { grid-template-columns: 1fr; }
+  .career-image { order: -1; height: 200px; }
+}
+
+/* Animations */
+@keyframes scrollLeftFull {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* News Slider Animations */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.info-item {
+  display: none !important; /* Hide by default */
+  width: 100%;
+}
+
+.info-item.active {
+  display: flex !important;
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.info-item.exit {
+  display: flex !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  animation: slideOutLeft 0.8s ease-in forwards;
+}
+
+.info-slider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 80px; /* Reserve space */
+  overflow: hidden; /* Hide outgoing items */
+}
+

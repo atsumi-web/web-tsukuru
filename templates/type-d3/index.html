@@ -1,0 +1,676 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IIJ Engineering - Design IT, Design Your Life. 最先端のエンジニアリングで未来を創造する企業です。">
+    <title>IIJ Engineering - Recruiting Site</title>
+    <link rel="stylesheet" href="style.css?v=10">
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-main">II<span class="logo-j">J</span></div>
+                <div class="logo-subtitle">Engineering</div>
+            </div>
+            
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="#message" class="nav-link">メッセージ</a></li>
+                    <li><a href="#about" class="nav-link">私たちについて</a></li>
+                    <li><a href="#work" class="nav-link">仕事について</a></li>
+                    <li><a href="#members" class="nav-link">社員紹介</a></li>
+                    <li><a href="#environment" class="nav-link">制度・環境</a></li>
+                    <li><a href="#recruit" class="nav-link">採用情報</a></li>
+                    <li><a href="#sns" class="nav-link">SNS</a></li>
+                </ul>
+                <div class="header-buttons">
+                    <a href="#" class="btn btn-primary">新卒採用</a>
+                    <a href="#" class="btn btn-orange">中途採用</a>
+                </div>
+            </nav>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-full-width-wrapper">
+            <div class="hero-visual-marquee-full">
+                <div class="marquee-viewport">
+                    <div class="marquee-track">
+                        <!-- Set 1 -->
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-meeting.png" alt="Meeting"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-team.png" alt="Team"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-2.png" alt="Member 2"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-1.png" alt="Member 1"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-3.png" alt="Member 3"></div>
+                        </div>
+                        
+                        <!-- Set 2 (Duplicate for loop) -->
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-meeting.png" alt="Meeting"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/hero-team.png" alt="Team"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-2.png" alt="Member 2"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-1.png" alt="Member 1"></div>
+                        </div>
+                        <div class="marquee-item">
+                            <div class="marquee-frame"><img src="images/member-3.png" alt="Member 3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Removed 'container' class to allow full viewport width for Logo/Info Box -->
+            <div class="hero-content-overlay">
+                <!-- Left Bottom Red Decoration -->
+                <div class="hero-left-decoration">
+                    <p class="hero-decoration-label">IIJ Engineering Recruiting Site</p>
+                    <div class="decoration-text">
+                        <div class="design-words">
+                            <div class="hero-text-line">Design</div>
+                            <div class="hero-text-line">Design</div>
+                        </div>
+                        <div class="handwritten-accent">
+                            <span>IT,</span>
+                            <span>your Life.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logo Space (Top Left) -->
+                <div class="hero-logo-space">
+                     <!-- Restoring Original Brand Logo Structure -->
+                     <div class="hero-logo-brand">
+                        <div class="logo-main">II<span class="logo-j">J</span></div>
+                        <div class="logo-subtitle">Engineering</div>
+                     </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            <!-- Moved Info Box Here for Layout Safety -->
+            <div class="hero-info-box">
+                <div class="info-slider">
+                <!-- News Item 1 -->
+                <div class="info-item active">
+                    <div class="info-content">
+                        <div class="info-box-date" style="gap: 10px;">
+                            2026.01.24
+                            <span class="info-badge">News</span>
+                        </div>
+                        <div class="info-box-text">
+                            IIJエンジニアリング公式noteを公開しました！ 
+                            <span class="inline-arrow">&gt;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-content">
+                        <div class="info-box-date" style="gap: 10px;">
+                            2026.01.20
+                            <span class="info-badge" style="background-color: var(--primary-red);">Update</span>
+                        </div>
+                        <div class="info-box-text">
+                            2027年度新卒採用のエントリー受付を開始しました。
+                            <span class="inline-arrow">&gt;</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="scroll-reveal">
+                    <p class="section-label">私たちについて</p>
+                    <h2 class="section-title">テクノロジーで<br>未来を創る</h2>
+                    <p class="section-description" style="max-width: none; text-align: left;">
+                        私たちIIJ Engineeringは、最先端のテクノロジーを駆使し、
+                        社会の課題を解決するエンジニアリング集団です。<br><br>
+                        一人ひとりの個性と専門性を尊重し、チームワークを大切にしながら、
+                        革新的なソリューションを生み出し続けています。<br><br>
+                        あなたのキャリアを、私たちと一緒に設計しませんか。
+                    </p>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="card-image" style="height: 400px; border-radius: 12px; overflow: hidden;">
+                        <img src="images/about-team.png" alt="Our Team">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Points Training Section -->
+    <section class="section" id="training">
+        <div class="container">
+            <h2 class="section-points-title">未経験からITプロフェッショナルになれる仕組み</h2>
+
+            <!-- Point 01 -->
+            <div class="point-wrapper scroll-reveal">
+                <div class="point-badge">
+                    <div class="point-badge-content">
+                        <div class="point-badge-label">POINT</div>
+                        <div class="point-badge-number">01</div>
+                    </div>
+                </div>
+                <div class="point-header">
+                    <h3 class="point-title">入社初年度から充実した未経験者向け研修</h3>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-bar">
+                        <div class="timeline-phase phase-1">内定から入社まで</div>
+                        <div class="timeline-phase phase-2">入社後 2ヶ月程</div>
+                        <div class="timeline-phase phase-3">入社半年〜</div>
+                    </div>
+
+                    <div class="training-cards">
+                        <div class="training-card">
+                            <div class="training-card-header">内定者研修</div>
+                            <div class="training-card-body">
+                                <ul>
+                                    <li>技術</li>
+                                    <li>ビジネスマナー</li>
+                                </ul>
+                                <div class="training-sub-card">
+                                    Eラーニングで準備運動
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-card">
+                            <div class="training-card-header">新人社員研修</div>
+                            <div class="training-card-body">
+                                <ul>
+                                    <li>ビジネスマナー</li>
+                                    <li>ビジネスコミュニケーション</li>
+                                    <li>ネットワーク・サーバ研修</li>
+                                    <li>IIJサービス理解</li>
+                                </ul>
+                                <div class="training-sub-card">
+                                    ビジネススキルと<br>体系的な知識の習得
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-card">
+                            <div class="training-card-header">業務教育研修 (OJT)</div>
+                            <div class="training-card-body">
+                                <ul>
+                                    <li>インターネットサービス</li>
+                                    <li>運用 / 保守業務</li>
+                                    <li>サービスマネジメント</li>
+                                </ul>
+                                <div class="training-sub-card">
+                                    チーム配属後の研修<br>マンツーマン指導
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="point-description">
+                    入社後の導入研修では、メールの書き方や電話対応などのビジネススキルに加え、ITプロフェッショナルを目指すうえで欠かせない技術的な基礎を身につけていただきます。インターネットの基礎知識から、事業やサービスの知識、さらにはサーバの基本コマンドなど、ITに関する知識と技術をしっかり学べる研修をご用意しています。<br>
+                    現場配属後にも二度のフォローアップ研修を実施。コミュニケーションスキルの向上や次年度に向けた目標設定を行います。さらにこれらの研修とは別に、配属先での専門的な業務研修もあります。研修で学んだ知識を活かして、1年目でITパスポート、LPIC、CCNAといった資格を取得する社員もたくさんいます。
+                </p>
+            </div>
+
+            <!-- Point 02 -->
+            <div class="point-wrapper scroll-reveal">
+                <div class="point-badge">
+                    <div class="point-badge-content">
+                        <div class="point-badge-label">POINT</div>
+                        <div class="point-badge-number">02</div>
+                    </div>
+                </div>
+                <div class="point-header">
+                    <h3 class="point-title">さらなる成長を促すサポート体制</h3>
+                </div>
+
+                <div class="support-grid">
+                    <div class="support-item">
+                        <div class="support-illustration">
+                            <!-- Placeholder for Illustration 1 -->
+                            <img src="images/illustration-1on1.png" alt="1on1 Meeting"> 
+                        </div>
+                        <h4 class="support-title">1on1ミーティング</h4>
+                        <p class="support-text">
+                            正式の面談とは別に、直属の上司やリーダーとラフに話し合いをするのが「1on1ミーティング」です。フィジカル・メンタルの健康状態、取り組んでいる業務との相性、チームに対する要望、今後のキャリアについてなど、何でも気軽に相談できます。
+                        </p>
+                    </div>
+                    <div class="support-item">
+                        <div class="support-illustration">
+                            <!-- Placeholder for Illustration 2 -->
+                             <img src="images/illustration-ojt.png" alt="OJT Training">
+                        </div>
+                        <h4 class="support-title">OJT (On-the-Job Training)</h4>
+                        <p class="support-text">
+                            入社1年目の新入社員に対しては、先輩社員がOJTトレーナーとなり、一緒に働きながらマンツーマンで指導します。未経験入社の社員が多いため、現場ごとにマニュアルが整備されており、さらには業務そのものを学べる研修も充実しているので、無理なく一人前に成長できます。
+                        </p>
+                    </div>
+                    <div class="support-item">
+                        <div class="support-illustration">
+                            <!-- Placeholder for Illustration 3 -->
+                             <img src="images/illustration-followup.png" alt="Follow up">
+                        </div>
+                        <h4 class="support-title">フォローアップ研修</h4>
+                        <p class="support-text">
+                            入社1年目の社員全員を対象として、秋期・冬期に人事部主催のフォローアップ研修を実施します。さらなるスキルアップを図ると同時に、これまでの仕事をじっくり振り返りつつ、これからのキャリアプランを一緒に考えます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Point 03 -->
+            <div class="point-wrapper scroll-reveal" style="border-left: none;">
+                <div class="point-badge">
+                    <div class="point-badge-content">
+                        <div class="point-badge-label">POINT</div>
+                        <div class="point-badge-number">03</div>
+                    </div>
+                </div>
+                <div class="point-header">
+                    <h3 class="point-title">志向性に合わせて選べるキャリアパス</h3>
+                </div>
+
+                <div class="career-container">
+                    <div class="career-content">
+                        <p class="support-text" style="font-size: 16px;">
+                            適性のある仕事や志向するキャリア、働き方は人それぞれ。当社では、一人ひとりの社員が自分でキャリアパスを選べるような制度となっており、会社としても個々のキャリア形成を支援しています。当社にはヘルプデスクやシステム運用・保守、システム構築、営業など幅広い業務があり、万が一取り組んでいる業務への適性に無理を感じたときや、スキルアップを目指して他の仕事に挑戦したくなったときには、上司や人事部に相談することができます。転職することなく、社内で新しいキャリアを実現できる制度と環境が当社にはあります。他部署に異動した際のフォローも万全。各部署での導入研修や先輩によるOJT、オンライン講座などを通じて新しいスキルを身につけられるので、安心し希望の道に進めます。
+                        </p>
+                        <div class="career-btn-container">
+                            <a href="#" class="btn-arrow">
+                                学びとキャリア
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="career-image">
+                         <img src="images/career-image.png" alt="Career Path" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Voice Section -->
+    <section class="section section-voice" id="voice">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label" style="color:var(--primary-red);">Voice</p>
+                <h2 class="section-title">未経験で入社した社員の声</h2>
+            </div>
+
+            <div class="voice-container scroll-reveal">
+                <!-- Voice 1 -->
+                <div class="voice-card">
+                    <!-- Tail effect wrapper if needed, for now just simple card -->
+                    <div class="voice-avatar-area">
+                        <div class="voice-avatar">
+                            <img src="images/avatar-woman-1.png" alt="Employee Voice">
+                        </div>
+                        <div class="voice-meta">2021年入社<br>(中途)</div>
+                    </div>
+                    <div class="voice-text">
+                        研修中には会社になじむこと・リズムを合わせることに重きを置き、初めての環境で精神的にも不安だった中、過ごしやすい環境を作ってくださいました。
+                    </div>
+                </div>
+
+                <!-- Voice 2 -->
+                <div class="voice-card">
+                    <div class="voice-avatar-area">
+                        <div class="voice-avatar">
+                            <img src="images/avatar-woman-2.png" alt="Employee Voice">
+                        </div>
+                        <div class="voice-meta">2021年入社<br>(中途)</div>
+                    </div>
+                    <div class="voice-text">
+                        手厚く丁寧な研修が受けられたことが良かったです。研修の中でも、ネットワークの学習が特に楽しく、不明点も聞きやすかったです。自分にできるのか不安な時には、研修担当者に「大丈夫！」と後押ししてもらえたことも安心につながりました。
+                    </div>
+                </div>
+
+                <!-- Voice 3 -->
+                <div class="voice-card">
+                    <div class="voice-avatar-area">
+                        <div class="voice-avatar">
+                            <img src="images/avatar-man-1.png" alt="Employee Voice">
+                        </div>
+                        <div class="voice-meta">2021年入社<br>(中途)</div>
+                    </div>
+                    <div class="voice-text">
+                        少人数で質問しやすい環境でした。アウトプットの機会やフィードバックも多かったため、知識の定着や癖の矯正ができました。また、eラーニングで基礎から自分のペースで学習できたこともよかったです。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practice Section -->
+    <section class="section section-bg" id="work">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">ベストプラクティス</p>
+                <h2 class="section-title">私たちの強み</h2>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card scroll-reveal">
+                    <div class="card-content">
+                        <div class="stat-icon" style="margin-bottom: 16px;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">最先端技術</h3>
+                        <p class="card-text">
+                            AI、クラウド、IoTなど、最新のテクノロジーを活用したプロジェクトに携わることができます。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <div class="card-content">
+                        <div class="stat-icon" style="margin-bottom: 16px;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">チーム文化</h3>
+                        <p class="card-text">
+                            フラットな組織で、年齢や役職に関係なく意見を交換できる環境があります。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <div class="card-content">
+                        <div class="stat-icon" style="margin-bottom: 16px;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">ワークライフバランス</h3>
+                        <p class="card-text">
+                            フレックスタイム制やリモートワーク制度など、柔軟な働き方をサポートします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section class="section" id="members">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">社員紹介</p>
+                <h2 class="section-title">メンバーを知る</h2>
+                <p class="section-description">
+                    多様なバックグラウンドを持つメンバーが、<br>
+                    それぞれの専門性を活かして活躍しています。
+                </p>
+            </div>
+            
+            <div class="grid grid-4">
+                <div class="member-card scroll-reveal">
+                    <div class="card-image">
+                        <img src="images/member-1.png" alt="田中 太郎">
+                    </div>
+                    <h3 class="member-name">田中 太郎</h3>
+                    <p class="member-position">フロントエンドエンジニア</p>
+                </div>
+                
+                <div class="member-card scroll-reveal">
+                    <div class="card-image">
+                        <img src="images/member-2.png" alt="佐藤 花子">
+                    </div>
+                    <h3 class="member-name">佐藤 花子</h3>
+                    <p class="member-position">バックエンドエンジニア</p>
+                </div>
+                
+                <div class="member-card scroll-reveal">
+                    <div class="card-image">
+                        <img src="images/member-3.png" alt="鈴木 健一">
+                    </div>
+                    <h3 class="member-name">鈴木 健一</h3>
+                    <p class="member-position">データサイエンティスト</p>
+                </div>
+                
+                <div class="member-card scroll-reveal">
+                    <div class="card-image">
+                        <img src="images/member-1.png" alt="高橋 美咲">
+                    </div>
+                    <h3 class="member-name">高橋 美咲</h3>
+                    <p class="member-position">プロジェクトマネージャー</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professionals Section -->
+    <section class="section section-dark">
+        <div class="red-circle red-circle-2"></div>
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">プロフェッショナル紹介</p>
+                <h2 class="section-title">各分野のエキスパート</h2>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card scroll-reveal">
+                    <div class="card-image">
+                        <img src="images/member-3.png" alt="山田 一郎">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">山田 一郎</h3>
+                        <p class="card-subtitle">テックリード</p>
+                        <p class="card-text">20年以上の経験を持つベテランエンジニア。最新技術の導入を牽引。</p>
+                    </div>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <div class="card-image">
+                        <img src="images/member-2.png" alt="中村 真理">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">中村 真理</h3>
+                        <p class="card-subtitle">UXデザイナー</p>
+                        <p class="card-text">ユーザー中心設計のスペシャリスト。使いやすさを追求。</p>
+                    </div>
+                </div>
+                
+                <div class="card scroll-reveal">
+                    <div class="card-image">
+                        <img src="images/member-1.png" alt="小林 健太">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">小林 健太</h3>
+                        <p class="card-subtitle">セキュリティエンジニア</p>
+                        <p class="card-text">システムの安全性を守るセキュリティのプロフェッショナル。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section" id="environment">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">数字で見る</p>
+                <h2 class="section-title">私たちの実績</h2>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">社員数</div>
+                </div>
+                
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">プロジェクト実績</div>
+                </div>
+                
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">平均勤続年数</div>
+                </div>
+                
+                <div class="stat-item scroll-reveal">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">社員満足度</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruit Section -->
+    <section class="section section-bg" id="recruit">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="scroll-reveal">
+                    <p class="section-label">採用情報</p>
+                    <h2 class="section-title">共に未来を<br>創りませんか</h2>
+                    <p class="section-description" style="max-width: none; text-align: left; margin-bottom: 32px;">
+                        IIJ Engineeringでは、新卒・中途を問わず、<br>
+                        情熱を持ったエンジニアを募集しています。<br><br>
+                        
+                        あなたのスキルとアイデアで、<br>
+                        社会に新しい価値を提供しませんか。
+                    </p>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="#" class="btn btn-primary">新卒採用エントリー</a>
+                        <a href="#" class="btn btn-primary">中途採用エントリー</a>
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="card-image" style="height: 400px; border-radius: 12px; overflow: hidden;">
+                        <img src="images/hero-team.png" alt="Join Us">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        IIJ<br>
+                        <span style="font-size: 16px; font-weight: 400;">Engineering</span>
+                    </div>
+                    <p class="footer-description">
+                        最先端のテクノロジーで<br>
+                        未来を創造するエンジニアリング集団
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">会社情報</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">会社概要</a>
+                        <a href="#" class="footer-link">事業内容</a>
+                        <a href="#" class="footer-link">アクセス</a>
+                        <a href="#" class="footer-link">お問い合わせ</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">採用情報</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">新卒採用</a>
+                        <a href="#" class="footer-link">中途採用</a>
+                        <a href="#" class="footer-link">インターン</a>
+                        <a href="#" class="footer-link">よくある質問</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">SNS</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Twitter</a>
+                        <a href="#" class="footer-link">Facebook</a>
+                        <a href="#" class="footer-link">Instagram</a>
+                        <a href="#" class="footer-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 IIJ Engineering. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
