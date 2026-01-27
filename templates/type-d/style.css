@@ -14,6 +14,8 @@
 /* 3. Section Styles */
 @import "css/header.css";
 @import "css/hero.css";
+@import "css/strategic-message.css"; /* New Strategic Message */
+
 @import "css/message.css";
 @import "css/about.css";
 @import "css/training.css";
@@ -22,4 +24,5 @@
 @import "css/data.css";
 @import "css/works.css";
 @import "css/sections.css";
+@import "css/recruit.css";
 @import "css/footer.css";

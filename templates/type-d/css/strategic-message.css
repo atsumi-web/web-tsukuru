@@ -1,0 +1,186 @@
+/* ===================================
+   Strategic Message Section
+   =================================== */
+.strategic-message {
+  padding: 120px 0;
+  padding-bottom: 200px; /* Extra padding for the wave */
+  position: relative;
+  overflow: hidden;
+  background-color: #fff; /* White background */
+  /* No border-radius or z-index hacks needed */
+}
+
+/* Background Design Elements */
+.strategic-message::before {
+  content: "MESSAGE";
+  position: absolute;
+  top: -20px;
+  right: -50px; /* Positioned on right for visual balance vs About */
+  font-size: 180px;
+  font-weight: 900;
+  color: #f8f8f8;
+  z-index: 1;
+  font-family: var(--font-heading);
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.strategic-message__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.strategic-message__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* Text Column */
+.strategic-message__text-column {
+  flex: 1;
+}
+
+.strategic-message__label {
+  display: block;
+  font-size: 14px;
+  color: #e60012;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+  position: relative;
+  padding-left: 20px;
+}
+
+.strategic-message__label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 2px;
+  background-color: #e60012;
+}
+
+.strategic-message__title {
+  margin-bottom: 40px;
+}
+
+.strategic-message__title-en {
+  display: block;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1a1a1a;
+  font-family: var(--font-heading);
+}
+
+.strategic-message__title-jp {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #666;
+}
+
+.strategic-message__body {
+  margin-bottom: 40px;
+}
+
+.strategic-message__text {
+  font-size: 16px;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+
+.strategic-message__president-area {
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.strategic-message__position {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.strategic-message__name {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: serif; /* Elegant for signature */
+}
+
+/* Image Column */
+.strategic-message__image-column {
+  flex: 0 0 45%;
+  position: relative;
+}
+
+.strategic-message__image-wrapper {
+  position: relative;
+}
+
+.strategic-message__image-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Decorative square */
+.strategic-message__image-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #e60012;
+  border-radius: 8px;
+  z-index: -1;
+}
+
+/* SVG Shape Divider */
+.custom-shape-divider-bottom-123 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-123 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px; /* Adjustable wave height */
+}
+
+.custom-shape-divider-bottom-123 .shape-fill {
+    fill: #f2f2f2; /* Matches the color of the section below (About) */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .strategic-message {
+      padding: 80px 0;
+      padding-bottom: 120px;
+  }
+  
+  .strategic-message__content {
+    flex-direction: column-reverse; /* Image on top on mobile? Or text? standard is Image top usually for personality */
+    gap: 50px;
+  }
+  
+  .strategic-message__image-column {
+      width: 100%;
+      flex: none;
+  }
+}
