@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECRUITMENT LP CLONING BIBLE - 求人LP特化型模写プロトコル</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3333;
+            --primary-dark: #e60012;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray-100: #f1f5f9;
+            --gray-300: #cbd5e1;
+            --gray-600: #475569;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Header --- */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        /* --- Quick Links Bar --- */
+        .quick-links {
+            background: var(--white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-300);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quick-links .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .links-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .label-sm {
+            font-size: 11px;
+            font-weight: 900;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .btn-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 12px;
+            background: var(--gray-100);
+            border-radius: 6px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-tool {
+            background: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+        }
+
+        .btn-tool:hover {
+            background: #4338ca;
+            color: white;
+        }
+
+        /* --- Sections --- */
+        section { padding: 60px 0; }
+
+        .protocol-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .protocol-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .phase-num {
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .phase-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 32px;
+            border-bottom: 2px solid var(--gray-100);
+            padding-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* --- Steps --- */
+        .step-box {
+            margin-bottom: 48px;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .step-index {
+            width: 36px;
+            height: 36px;
+            background: var(--dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .step-content-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--dark);
+        }
+
+        .sub-steps {
+            list-style: none;
+            padding-left: 56px;
+        }
+
+        .sub-step-item {
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .sub-step-item::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .strong-text {
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        .code-snippet {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            margin: 12px 0;
+            overflow-x: auto;
+        }
+
+        /* --- Alert Box --- */
+        .alert-prevention {
+            background: #fff1f2;
+            border: 2px solid #fda4af;
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .alert-title {
+            color: #be123c;
+            font-weight: 900;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .quick-links .container { justify-content: center; }
+            .phase-title { font-size: 24px; }
+            .protocol-card { padding: 32px; }
+        }
+
+        /* --- Tactics Grid --- */
+        .tactics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .tactic-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 24px;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .tactic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .tactic-title {
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <span class="header-badge">RECRUITMENT LP SPECIALIST</span>
+            <h1>RECRUITMENT LP<br>CLONING BIBLE</h1>
+            <p style="color: var(--gray-300);">求人LPに特化。採用コンバージョンを最大化する「最強の模写」手順書</p>
+        </div>
+    </header>
+
+    <div class="quick-links">
+        <div class="container">
+            <div class="links-group">
+                <span class="label-sm">Project Files</span>
+                <a href="file:///c:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/templates/type-d/index.html" class="btn-link">index.html</a>
+                <a href="file:///c:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/templates/type-d/style.css" class="btn-link">style.css</a>
+                <a href="file:///c:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/templates/type-d/css/" class="btn-link">📂 CSS Folder</a>
+            </div>
+            <div class="links-group">
+                <span class="label-sm">External Tools</span>
+                <a href="https://gemini.google.com/" target="_blank" class="btn-link btn-tool">Gemini (軍師)</a>
+                <a href="https://labs.google/fx/ja/tools/image-fx" target="_blank" class="btn-link btn-tool">ImageFX (絵師)</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        
+        <!-- Team Roles -->
+        <section id="team" style="padding-bottom: 0;">
+            <div class="protocol-card" style="display: flex; gap: 40px; flex-wrap: wrap; background: linear-gradient(to right bottom, #f8fafc, #fff);">
+                <div style="flex: 1; min-width: 250px;">
+                    <span class="label-sm" style="color: var(--primary);">STRATEGIST</span>
+                    <h3 style="font-size: 24px; font-weight: 900; margin: 8px 0;">Gemini</h3>
+                    <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">全体の構成案、画像プロンプト作成。<br>迷ったらまず相談する軍師。</p>
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <span class="label-sm" style="color: var(--primary);">ARTIST</span>
+                    <h3 style="font-size: 24px; font-weight: 900; margin: 8px 0;">ImageFX</h3>
+                    <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">世界観を決定づける素材生成。<br>妥協なきビジュアルを作る絵師。</p>
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <span class="label-sm" style="color: var(--primary);">ENGINEER</span>
+                    <h3 style="font-size: 24px; font-weight: 900; margin: 8px 0;">Antigravity</h3>
+                    <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">ピクセルパーフェクトな実装。<br>最強の執行官。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 0: Master Workflow -->
+        <section id="workflow">
+            <div class="protocol-card" style="border: 4px solid var(--dark);">
+                <span class="phase-num" style="color: var(--dark);">MASTER WORKFLOW</span>
+                <h2 class="phase-title">求人LP製作ロードマップ</h2>
+                
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">0</div>
+                        <div class="step-content-title">【選定】デザイン至上主義 (Design First)</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">ターゲット：業種不問。「このデザインで働きたい」と思わせる魅力的なSaaS、LP、ブランドサイト。</li>
+                        <li class="sub-step-item">視点：求人サイトである必要はない。「プロダクトの魅力」を「職場の魅力」に変換する。</li>
+                    </ul>
+                </div>
+
+                <div class="step-box" style="background: #f0fdf4; border: 1px solid #bbb; padding: 15px; border-radius: 8px;">
+                    <div class="step-header" style="margin-bottom: 10px;">
+                        <span style="font-weight:900; color:#166534;">PHASE A: 純粋模写 (Pure Clone)</span>
+                    </div>
+                    <ul class="sub-steps" style="padding-left: 20px;">
+                        <li class="sub-step-item">まずは<strong>「一切のアレンジなし」</strong>で、元のデザインを1pxの狂いもなく再現する。</li>
+                        <li class="sub-step-item">この段階では「求人」のことは忘れ、技術的な再現のみに集中する。</li>
+                    </ul>
+                </div>
+                
+                <div style="text-align: center; font-size: 24px; margin: 20px 0; color: var(--gray-300);">⬇ 完了後、フォルダごと複製 ⬇</div>
+
+                <div class="step-box" style="background: #fff7ed; border: 1px solid #bbb; padding: 15px; border-radius: 8px;">
+                     <div class="step-header" style="margin-bottom: 10px;">
+                        <span style="font-weight:900; color:#9a3412;">PHASE B: 求人転生 (Recruitment Conversion)</span>
+                    </div>
+                    <div class="step-content-title" style="font-size: 16px; margin-bottom: 10px;">【翻訳】コンテキスト書き換え</div>
+                    <ul class="sub-steps" style="padding-left: 20px;">
+                        <li class="sub-step-item">Geminiに「デザインの構造」を維持しつつ、「中身を求人」に書き換えさせる。</li>
+                        <div class="code-snippet">
+To: Gemini<br>
+「この完成したHTML/CSSの構造を維持したまま、内容を『求人LP』に書き換えます。<br>
+1. ヒーローキャッチコピー → 採用スローガンへ<br>
+2. 機能紹介(Features) → 働くメリットへ<br>
+3. 商品画像 → オフィス風景や社員の画像へ(ImageFXプロンプト作成)<br>
+元のクラス名(.features__itemなど)は変えずに、コンテンツだけを差し替える案を出して。」
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">2</div>
+                        <div class="step-content-title">【素材】ImageFX 絵師への指令 (Assets)</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">「オフィスの活気」「多様な社員」「真剣な会議」など、採用シーンに特化。</li>
+                        <div class="code-snippet">
+To: ImageFX<br>
+"Modern tech office, diverse team collaborating, happy employees, natural lighting, professional but friendly atmosphere, 4k, canon photography --no text"
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">3</div>
+                        <div class="step-content-title">【実装】Antigravity 執行官への指令 (Coding)</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">素材と分析結果を揃え、Antigravityに実装を指示。</li>
+                        <div class="code-snippet">
+To: Antigravity<br>
+「添付の画像（Heroセクション）を再現します。<br>
+- 分析した色変数：[COLOR_LIST]<br>
+- HTML構造：BEM記法 (.hero__title, .hero__image)<br>
+- レスポンシブ：タブレット(768px)でカラム落ち<br>
+まずはHTMLとCSSの骨組みをお願いします。」
+                        </div>
+                    </ul>
+                </div>
+                
+                <div class="step-box" style="margin-bottom: 0;">
+                    <div class="step-header">
+                        <div class="step-index">4</div>
+                        <div class="step-content-title">【無限ループ】完了まで繰り返す</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">1セクション完成 → <span class="strong-text">ブラウザ幅可変テスト</span> → 修正。</li>
+                        <li class="sub-step-item">完璧になったら次のセクションへ。これをFooterまで繰り返す。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 1: Preparation -->
+        <section id="phase1">
+            <div class="protocol-card">
+                <span class="phase-num">PHASE 01</span>
+                <h2 class="phase-title">「X線」分析：完璧な事前準備</h2>
+                
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">1</div>
+                        <div class="step-content-title">変数の全抽出（後戻り防止：共通化）</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">元サイトの <span class="strong-text">Computed一覧</span> を確認し、基本の色、フォントサイズ、行間（1.5〜1.8が多い）、字間を書き出す。</li>
+                        <li class="sub-step-item">共通の余白（Section Padding: 120px, Content Max-Width: 1100px等）を確定させる。</li>
+                        <div class="code-snippet">--primary-red: #e60012;<br>--section-padding: 120px;<br>--container-width: 1100px;</div>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">2</div>
+                        <div class="step-content-title">アセットの先行確保（後戻り防止：素材待ちゼロ）</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">必要な画像を ImageFX ですべて生成し、<span class="strong-text">images/</span> 配下に揃えてからコーディングに入る。</li>
+                        <li class="sub-step-item">アイコンは SVG で揃え、コード内に直接埋め込むか、共通化する。</li>
+                        <li class="sub-step-item">画像は必ず <a href="https://squoosh.app/" target="_blank" style="color: var(--primary); font-weight: bold;">Squoosh</a> で軽量化し、読み込み速度を担保する。</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 1.5: Architecture -->
+        <section id="architecture">
+            <div class="protocol-card" style="background: #f8fafc; border: 2px solid var(--gray-300);">
+                <span class="phase-num" style="color: var(--gray-600);">PHASE 01.5</span>
+                <h2 class="phase-title">堅牢なディレクトリ構成</h2>
+                
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index" style="background: var(--gray-600);">S</div>
+                        <div class="step-content-title">CSSは「機能・セクション」で物理的に分割せよ</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">1つの巨大なCSSファイルはメンテナンスの敵。必ず <code>css/modules/</code> 配下に分割する。</li>
+                        <div class="code-snippet">
+project-root/
+├── index.html
+├── style.css       <-- 全ファイルをここで @import
+└── css/
+    ├── variables.css   <-- 変数定義
+    ├── reset.css       <-- リセットCSS
+    └── modules/
+        ├── header.css
+        ├── hero.css    <-- セクションごとに独立
+        ├── mission.css
+        └── footer.css
+                        </div>
+                        <li class="sub-step-item"><code>style.css</code> には以下のように記述するだけ。</li>
+                        <div class="code-snippet">
+@import "css/variables.css";
+@import "css/reset.css";
+@import "css/modules/header.css";
+@import "css/modules/hero.css";
+...
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 2: Atomic Sprint -->
+        <section id="phase2">
+            <div class="protocol-card">
+                <span class="phase-num">PHASE 02</span>
+                <h2 class="phase-title">「1セクション完結」実装スプリント</h2>
+                <p style="margin-bottom: 30px;">「最後まとめてレスポンシブ」は最悪の手法。1つずつ確実に終わらせることが最速への最短。 </p>
+
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">3</div>
+                        <div class="step-content-title">HTML骨組み (BEM徹底)</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">デザインを見ながら、セマンティックなタグで構造を定義。クラス名は BEM 以外認めない。</li>
+                        <div class="code-snippet">&lt;section class="works"&gt;<br>&nbsp;&nbsp;&lt;div class="works__container"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="works__card"&gt;...</div>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">4</div>
+                        <div class="step-content-title">デスクトップ・スタイリング (Pixel Perfect)</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">1200px以上の画面で予実のズレをなくす。</li>
+                        <li class="sub-step-item">マジックナンバー（例: 37px）は避け、可能な限り意味のある数値（変数）で構成。</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">5</div>
+                        <div class="step-content-title"><span class="strong-text">【重要】</span>即時レスポンシブ対応</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item"><span class="strong-text">魔の中間サイズ (1200px〜1024px)</span> の表示を今すぐ確認。</li>
+                        <li class="sub-step-item">ブレイクポイントごとに以下を即調整：<br>・フォントサイズの縮小（clamp関数やメディアクエリ）<br>・グリッドのカラム変更（3カラム→2カラム）<br>・余白の微調整</li>
+                    </ul>
+                </div>
+
+                <div class="alert-prevention">
+                    <div class="alert-title">📢 後戻り防止：地獄の連鎖を断つ</div>
+                    <p class="protocol-desc">一つのセクションが終わった瞬間に、ブラウザの幅を「ドラッグ」して動かして。一瞬でもガタついたら、その場で直す。これを怠ると、全ページ完成後に「全部やり直し」が来ます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Iron Rules -->
+        <section id="iron-rules">
+            <div class="protocol-card" style="background: #1e293b; color: white;">
+                <span class="phase-num" style="color: var(--primary);">THE LAW</span>
+                <h2 class="phase-title" style="color: white; border-color: var(--gray-600);">絶対死守：最強のコーディング掟</h2>
+                
+                <div class="tactics-grid" style="grid-template-columns: 1fr 1fr;">
+                    
+                    <div class="tactic-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3 class="tactic-title" style="color: #60a5fa; border-color: #60a5fa;">1. 基本原則 (Principles)</h3>
+                        <p style="font-size: 13px; color: #cbd5e1;">&bull; <strong style="color: white;">ピクセルパーフェクト：</strong>DevToolsの数値を絶対正義とする。<br>&bull; <strong style="color: white;">アレンジ禁止：</strong>「良かれと思って」のデザイン変更は厳禁。</p>
+                    </div>
+
+                    <div class="tactic-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3 class="tactic-title" style="color: #60a5fa; border-color: #60a5fa;">2. HTML構造 (Structure)</h3>
+                        <p style="font-size: 13px; color: #cbd5e1;">&bull; <strong style="color: white;">セマンティック：</strong><code>section, nav, footer</code> 等を適切に使う。<br>&bull; <strong style="color: white;">BEM命名：</strong><code>c-card__title--small</code> のように予測可能に。</p>
+                    </div>
+
+                    <div class="tactic-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3 class="tactic-title" style="color: #60a5fa; border-color: #60a5fa;">3. CSS設計 (Style)</h3>
+                        <p style="font-size: 13px; color: #cbd5e1;">
+                            &bull; <strong style="color: white;">敗北宣言禁止：</strong><code>!important</code> は絶対に使用しない。<br>
+                            &bull; <strong style="color: white;">追記禁止：</strong>末尾への継ぎ足し厳禁。元に戻って修正せよ。
+                        </p>
+                    </div>
+
+                    <div class="tactic-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3 class="tactic-title" style="color: #60a5fa; border-color: #60a5fa;">4. レスポンシブ (Responsive)</h3>
+                        <p style="font-size: 13px; color: #cbd5e1;">
+                            &bull; <strong style="color: white;">モバイルファースト：</strong>スマホ版を書き、PC版は <code>min-width</code> で追加。<br>
+                            &bull; <strong style="color: white;">絶対配置の制限：</strong><code>absolute</code> は装飾のみ。文字には使わない。
+                        </p>
+                    </div>
+
+                    <div class="tactic-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3 class="tactic-title" style="color: #60a5fa; border-color: #60a5fa;">5. 画像・アセット (Assets)</h3>
+                        <p style="font-size: 13px; color: #cbd5e1;">&bull; <strong style="color: white;">整理整頓：</strong><code>images/</code> 配下へ格納し、相対パスで記述。<br>&bull; <strong style="color: white;">Alt属性：</strong>すべての画像に意味のある代替テキストを。</p>
+                    </div>
+
+                    <div class="tactic-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                        <h3 class="tactic-title" style="color: #fca5a5; border-color: #fca5a5;">6. 対AIプロトコル (Meta)</h3>
+                        <p style="font-size: 13px; color: #cbd5e1;">&bull; <strong style="color: white;">意図の解説：</strong>「なぜそのコードか」を説明させる。<br>&bull; <strong style="color: white;">不明点の確認：</strong>勝手に実装せず、迷ったらえりさんに聞く。</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 3: Validation -->
+        <section id="phase3">
+            <div class="protocol-card">
+                <span class="phase-num">PHASE 03</span>
+                <h2 class="phase-title">究極の整合性チェック</h2>
+                
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">6</div>
+                        <div class="step-content-title">ナビゲーションの堅牢性確認</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">ヘッダーメニューが改行される瞬間の幅を確認し、<span class="strong-text">その20px手前</span> でハンバーガーメニューに切り替える設定にする。</li>
+                        <li class="sub-step-item">JavaScript の `innerWidth` 判定がある場合は、CSS のメディアクエリと数値を完全に同期。</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <div class="step-header">
+                        <div class="step-index">7</div>
+                        <div class="step-content-title">インタラクションの質感調整</div>
+                    </div>
+                    <ul class="sub-steps">
+                        <li class="sub-step-item">hover 時の transition 時間（0.3s〜0.5s）やイージングが元サイトと同じか？</li>
+                        <li class="sub-step-item">ScrollReveal の時間差（delay）が心地よいか？</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appendix: Section Mastery -->
+        <section id="tactics">
+            <div class="protocol-card" style="border-left: 8px solid var(--dark);">
+                <span class="phase-num" style="color: var(--dark);">APPENDIX</span>
+                <h2 class="phase-title">【秘伝】セクション別・攻略の鍵</h2>
+                
+                <div class="tactics-grid">
+                    <div class="tactic-card">
+                        <h3 class="tactic-title">SECTIONS = BLOCKS</h3>
+                        <p>セクションは「積み木」。上下マージンを持たせず、パディングだけで完結させる。これで順序入れ替えが自由自在になる。</p>
+                    </div>
+                    <div class="tactic-card">
+                        <h3 class="tactic-title">TEXT IS GOD</h3>
+                        <p>給与・日付・待遇は「画像」にするな。必ず「HTMLテキスト」で実装し、5分で修正できる状態を維持せよ。</p>
+                    </div>
+                    <div class="tactic-card">
+                        <h3 class="tactic-title">CTA IS SACRED</h3>
+                        <p>応募ボタンは神聖不可侵。最強の共通クラス（<code>.btn-cta</code>）を作り、どんな配置でも絶対に崩れないようにせよ。</p>
+                    </div>
+                    <div class="tactic-card">
+                        <h3 class="tactic-title">MISSION / VISION</h3>
+                        <p>企業の想いを伝えるセクション。背景には「働く風景」のぼかし画像を敷き、白文字＋ドロップシャドウで可読性を確保。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Command Protocol -->
+        <section id="commands">
+            <div class="protocol-card" style="background: #f1f5f9; border: 2px dashed #94a3b8;">
+                <span class="phase-num" style="color: #475569;">COMMAND PROTOCOL</span>
+                <h2 class="phase-title" style="color: var(--dark); border-color: #cbd5e1;">AIへの《神指令》集</h2>
+
+                <div class="tactics-grid">
+                    <!-- Gemini Prompts -->
+                    <div class="tactic-card" style="background: white;">
+                        <h3 class="tactic-title" style="border-color: #4285F4; color: #4285F4;">To: Gemini (軍師)</h3>
+                        <div class="code-snippet" style="background: #f8fafc; color: #334155; border: 1px solid #e2e8f0;">
+                            <strong>【求人LP構造分析】</strong><br>
+                            「この採用サイトのセクション（社員紹介など）を分析し、信頼感と親しみやすさを両立するデザイン意図を言語化して。<br>
+                            また、モバイルファーストなBEMクラス名（例: .interview-card__name）を設計してください。」
+                        </div>
+                    </div>
+
+                    <!-- ImageFX Prompts -->
+                    <div class="tactic-card" style="background: white;">
+                        <h3 class="tactic-title" style="border-color: #d93025; color: #d93025;">To: ImageFX (絵師)</h3>
+                        <div class="code-snippet" style="background: #f8fafc; color: #334155; border: 1px solid #e2e8f0;">
+                            <strong>【採用シーン生成】</strong><br>
+                            "Office meeting in a modern tech company, smiling employees, casual dress code, bright natural light, shallow depth of field, 4k"<br>
+                            ※「笑顔」「自然光」でクリーンな印象を作る。
+                        </div>
+                    </div>
+
+                    <!-- Antigravity Prompts -->
+                    <div class="tactic-card" style="background: white;">
+                        <h3 class="tactic-title" style="border-color: #000; color: #000;">To: Antigravity (執)</h3>
+                        <div class="code-snippet" style="background: #f8fafc; color: #334155; border: 1px solid #e2e8f0;">
+                            <strong>【実装開始の合言葉 (Kickoff)】</strong><br>
+                            「@Antigravity 『RECRUITMENT LP CLONING BIBLE』を読み込み、Phase 1の実装を開始してください。<br>
+                            鉄の掟（Mobile First, No Magic Numbers）を遵守し、まずはモバイル版から構築します。」
+                        </div>
+                    </div>
+
+                    <!-- Gemini Context Injection -->
+                    <div class="tactic-card" style="background: white;">
+                         <h3 class="tactic-title" style="border-color: #8e24aa; color: #8e24aa;">To: Gemini (Chat)</h3>
+                        <div class="code-snippet" style="background: #f8fafc; color: #334155; border: 1px solid #e2e8f0;">
+                            <strong>【文脈共有 (Context Injection)】</strong><br>
+                            「あなたは世界最高峰の求人LPプロデューサーです。<br>
+                            添付の『RECRUITMENT LP CLONING BIBLE』の内容を完全に理解し、これに基づくアドバイスを行ってください。<br>
+                            特に『デザイン至上主義』と『コンテキスト変換』のルールに従うこと。」
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Antigravity x えり. すべてのクローニングを「聖域」へ。</p>
+            <p style="margin-top: 15px; font-size: 14px; color: var(--gray-600);">Created for the Elite Web Cloning Workshop.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal or basic animation trigger can be added here
+        // For now, smooth scroll only
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

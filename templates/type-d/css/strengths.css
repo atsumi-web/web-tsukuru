@@ -1,0 +1,127 @@
+/* ===================================
+   Strengths Section (3 Circles Layout)
+   =================================== */
+
+.strengths {
+  padding: 120px 0;
+  background-color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.strengths__header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.strengths__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-red);
+  margin-bottom: 20px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.strengths__title {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.strengths__grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.strength-circle {
+  width: 320px;
+  height: 320px;
+  background-color: var(--white);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.strength-circle:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-red);
+}
+
+.strength-circle::before {
+  content: attr(data-number);
+  position: absolute;
+  top: 30px;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  color: rgba(230, 0, 18, 0.1);
+}
+
+.strength-circle__icon {
+  margin-bottom: 20px;
+  color: var(--primary-red);
+}
+
+.strength-circle__title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.strength-circle__text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--medium-gray);
+}
+
+/* Tablet Robustness (魔の中間サイズ対応) */
+@media (max-width: 1100px) {
+  .strength-circle {
+    width: 280px;
+    height: 280px;
+    padding: 30px;
+  }
+  .strengths__title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 950px) {
+  .strengths__grid {
+    gap: 30px;
+  }
+  .strength-circle {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .strengths {
+    padding: 60px 0;
+  }
+  .strengths__grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .strength-circle {
+    width: 100%;
+    max-width: 320px;
+    height: 320px;
+  }
+}

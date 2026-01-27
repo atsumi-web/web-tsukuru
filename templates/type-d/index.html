@@ -414,59 +414,106 @@
         </div>
     </section>
 
-    <!-- Best Practice Section -->
-    <section class="section section-bg" id="work">
+    <!-- Strengths Section -->
+    <section class="section strengths" id="strengths">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <p class="section-label">ベストプラクティス</p>
-                <h2 class="section-title">私たちの強み</h2>
+            <div class="strengths__header scroll-reveal">
+                <span class="strengths__label">Strengths</span>
+                <h2 class="strengths__title">私たちの強み</h2>
             </div>
             
-            <div class="grid grid-3">
-                <div class="card scroll-reveal">
-                    <div class="card-content">
-                        <div class="stat-icon" style="margin-bottom: 16px;">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">最先端技術</h3>
-                        <p class="card-text">
-                            AI、クラウド、IoTなど、最新のテクノロジーを活用したプロジェクトに携わることができます。
-                        </p>
+            <div class="strengths__grid">
+                <div class="strength-circle scroll-reveal" data-number="01">
+                    <div class="strength-circle__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
                     </div>
+                    <h3 class="strength-circle__title">圧倒的な<br>技術基盤</h3>
+                    <p class="strength-circle__text">
+                        IIJグループが築き上げた、高品質なネットワーク・サーバインフラを支える技術力が私たちの誇りです。
+                    </p>
                 </div>
                 
-                <div class="card scroll-reveal">
-                    <div class="card-content">
-                        <div class="stat-icon" style="margin-bottom: 16px;">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">チーム文化</h3>
-                        <p class="card-text">
-                            フラットな組織で、年齢や役職に関係なく意見を交換できる環境があります。
-                        </p>
+                <div class="strength-circle scroll-reveal" data-number="02" style="transition-delay: 0.1s;">
+                    <div class="strength-circle__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        </svg>
                     </div>
+                    <h3 class="strength-circle__title">未経験をプロに<br>変える研修</h3>
+                    <p class="strength-circle__text">
+                        知識ゼロからでも一流のエンジニアを目指せる、体系的で実践的な教育プログラムが整っています。
+                    </p>
                 </div>
                 
-                <div class="card scroll-reveal">
-                    <div class="card-content">
-                        <div class="stat-icon" style="margin-bottom: 16px;">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">ワークライフバランス</h3>
-                        <p class="card-text">
-                            フレックスタイム制やリモートワーク制度など、柔軟な働き方をサポートします。
+                <div class="strength-circle scroll-reveal" data-number="03" style="transition-delay: 0.2s;">
+                    <div class="strength-circle__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="8" r="7"/>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                        </svg>
+                    </div>
+                    <h3 class="strength-circle__title">多彩な<br>キャリアパス</h3>
+                    <p class="strength-circle__text">
+                        運用・保守から設計・構築、マネジメントまで。志向に合わせて選べる幅広いフィールドがあります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section class="section works" id="works">
+        <div class="container">
+            <div class="works__header scroll-reveal">
+                <span class="works__label">Our Industry</span>
+                <h2 class="works__title">事業内容</h2>
+            </div>
+            
+            <div class="works__grid">
+                <div class="work-card scroll-reveal">
+                    <div class="work-card__image">
+                        <img src="images/hero-1.png" alt="Engineering">
+                    </div>
+                    <div class="work-card__content">
+                        <span class="work-card__tag">Infrastructure</span>
+                        <h3 class="work-card__title">基盤構築・運用</h3>
+                        <p class="work-card__text">
+                            ネットワーク・サーバの設計・構築から、24時間365日の運用・保守まで。企業のIT基盤をトータルにサポートします。
                         </p>
+                        <a href="#" class="work-card__link">View Detail</a>
+                    </div>
+                </div>
+
+                <div class="work-card scroll-reveal" style="transition-delay: 0.1s;">
+                    <div class="work-card__image">
+                        <img src="images/hero-2.png" alt="Cloud Solution">
+                    </div>
+                    <div class="work-card__content">
+                        <span class="work-card__tag">Cloud</span>
+                        <h3 class="work-card__title">マルチクラウド支援</h3>
+                        <p class="work-card__text">
+                            AWS、Azure、GCPなど、最適なクラウド環境の導入・移行・活用をプロフェッショナルが強力にバックアップします。
+                        </p>
+                        <a href="#" class="work-card__link">View Detail</a>
+                    </div>
+                </div>
+
+                <div class="work-card scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="work-card__image">
+                        <img src="images/hero-3.png" alt="DX Support">
+                    </div>
+                    <div class="work-card__content">
+                        <span class="work-card__tag">DX</span>
+                        <h3 class="work-card__title">DX推進サポート</h3>
+                        <p class="work-card__text">
+                            最新のテクノロジーを活用し、お客様のビジネスプロセスの変革とデジタル化の実現を共に創り上げます。
+                        </p>
+                        <a href="#" class="work-card__link">View Detail</a>
                     </div>
                 </div>
             </div>
@@ -567,58 +614,61 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="section" id="environment">
+    <!-- Data Section -->
+    <section class="section data" id="data">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <p class="section-label">数字で見る</p>
-                <h2 class="section-title">私たちの実績</h2>
+            <div class="data__header scroll-reveal">
+                <span class="data__label">Data</span>
+                <h2 class="data__title">数字で見るIIJ</h2>
             </div>
             
-            <div class="stats-grid">
-                <div class="stat-item scroll-reveal">
-                    <div class="stat-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+            <div class="data__grid">
+                <div class="stat-card scroll-reveal">
+                    <div class="stat-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <div class="stat-number">250+</div>
-                    <div class="stat-label">社員数</div>
-                </div>
-                
-                <div class="stat-item scroll-reveal">
-                    <div class="stat-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                        </svg>
+                    <div class="stat-card__content">
+                        <div class="stat-card__number-wrap">
+                            <span class="stat-card__number">550</span>
+                            <span class="stat-card__unit">名</span>
+                        </div>
+                        <p class="stat-card__label">従業員数</p>
                     </div>
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">プロジェクト実績</div>
                 </div>
-                
-                <div class="stat-item scroll-reveal">
-                    <div class="stat-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                    </div>
-                    <div class="stat-number">15</div>
-                    <div class="stat-label">平均勤続年数</div>
-                </div>
-                
-                <div class="stat-item scroll-reveal">
-                    <div class="stat-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3333" stroke-width="2">
+
+                <div class="stat-card scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="stat-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
                         </svg>
                     </div>
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">社員満足度</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__number-wrap">
+                            <span class="stat-card__number">90</span>
+                            <span class="stat-card__unit">%</span>
+                        </div>
+                        <p class="stat-card__label">未経験入社比率</p>
+                    </div>
+                </div>
+
+                <div class="stat-card scroll-reveal" style="transition-delay: 0.3s;">
+                    <div class="stat-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__number-wrap">
+                            <span class="stat-card__number">95</span>
+                            <span class="stat-card__unit">%</span>
+                        </div>
+                        <p class="stat-card__label">定着率</p>
+                    </div>
                 </div>
             </div>
         </div>
