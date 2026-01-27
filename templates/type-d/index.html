@@ -150,15 +150,58 @@
             </div>
         </div>
     </section>
+    
+    <!-- Message Section -->
+    <section class="section message" id="message">
+        <div class="message__bg-text">MESSAGE</div>
+        <div class="container">
+            <div class="message__inner">
+                <div class="message__content scroll-reveal">
+                    <p class="section-label message__label">Message</p>
+                    <h2 class="message__title">
+                        <span class="message__title-en">Design IT,</span><br>
+                        <span class="message__title-en">your Life.</span>
+                    </h2>
+                    <div class="message__text">
+                        <p>
+                            私たちのミッションは、最先端のエンジニアリングを通じて、<br>
+                            社会に、そして一人ひとりの人生に新しい価値をデザインすることです。
+                        </p>
+                        <p>
+                            変化の激しいIT業界において、常に挑戦し続ける姿勢を大切にしています。<br>
+                            あなたの情熱が、未来を創る力になります。
+                        </p>
+                    </div>
+                    <div class="message__president">
+                        <p class="message__president-name">代表取締役社長 <span>山中 康之</span></p>
+                    </div>
+                    <div class="message__link">
+                        <a href="#" class="btn-arrow">
+                            トップメッセージ
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="message__image scroll-reveal">
+                    <div class="message__image-wrapper">
+                        <img src="images/president.png" alt="代表取締役社長 山中 康之">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- About Section -->
-    <section class="section" id="about">
+    <section class="section about" id="about">
         <div class="container">
-            <div class="grid grid-2">
-                <div class="scroll-reveal">
-                    <p class="section-label">私たちについて</p>
-                    <h2 class="section-title">テクノロジーで<br>未来を創る</h2>
-                    <p class="section-description" style="max-width: none; text-align: left;">
+            <div class="about__inner">
+                <div class="about__content scroll-reveal">
+                    <p class="about__label">私たちについて</p>
+                    <h2 class="about__title">テクノロジーで<br>未来を創る</h2>
+                    <p class="about__description">
                         私たちIIJ Engineeringは、最先端のテクノロジーを駆使し、
                         社会の課題を解決するエンジニアリング集団です。<br><br>
                         一人ひとりの個性と専門性を尊重し、チームワークを大切にしながら、
@@ -166,152 +209,138 @@
                         あなたのキャリアを、私たちと一緒に設計しませんか。
                     </p>
                 </div>
-                <div class="scroll-reveal">
-                    <div class="card-image" style="height: 400px; border-radius: 12px; overflow: hidden;">
-                        <img src="images/about-team.png" alt="Our Team">
-                    </div>
+                <div class="about__image scroll-reveal">
+                    <img src="images/about-team.png" alt="Our Team">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Points Training Section -->
-    <section class="section" id="training">
+    <!-- Training Section -->
+    <section class="section training" id="training">
         <div class="container">
-            <h2 class="section-points-title">未経験からITプロフェッショナルになれる仕組み</h2>
+            <h2 class="training__title-main scroll-reveal">未経験からITプロフェッショナルになれる仕組み</h2>
 
             <!-- Point 01 -->
-            <div class="point-wrapper scroll-reveal">
-                <div class="point-badge">
-                    <div class="point-badge-content">
-                        <div class="point-badge-label">POINT</div>
-                        <div class="point-badge-number">01</div>
+            <div class="point scroll-reveal">
+                <div class="point__badge">
+                    <div class="point__badge-content">
+                        <span class="point__badge-label">POINT</span>
+                        <span class="point__badge-number">01</span>
                     </div>
                 </div>
-                <div class="point-header">
-                    <h3 class="point-title">入社初年度から充実した未経験者向け研修</h3>
+                <div class="point__header">
+                    <h3 class="point__title">入社初年度から充実した未経験者向け研修</h3>
                 </div>
 
-                <div class="timeline-container">
-                    <div class="timeline-bar">
-                        <div class="timeline-phase phase-1">内定から入社まで</div>
-                        <div class="timeline-phase phase-2">入社後 2ヶ月程</div>
-                        <div class="timeline-phase phase-3">入社半年〜</div>
+                <div class="timeline">
+                    <div class="timeline__bar">
+                        <div class="timeline__phase timeline__phase--1">内定から入社まで</div>
+                        <div class="timeline__phase timeline__phase--2">入社後 2ヶ月程</div>
+                        <div class="timeline__phase timeline__phase--3">入社半年〜</div>
                     </div>
 
-                    <div class="training-cards">
+                    <div class="timeline__cards">
                         <div class="training-card">
-                            <div class="training-card-header">内定者研修</div>
-                            <div class="training-card-body">
-                                <ul>
+                            <div class="training-card__header">内定者研修</div>
+                            <div class="training-card__body">
+                                <ul class="training-card__list">
                                     <li>技術</li>
                                     <li>ビジネスマナー</li>
                                 </ul>
-                                <div class="training-sub-card">
-                                    Eラーニングで準備運動
-                                </div>
+                                <div class="training-card__note">Eラーニングで準備運動</div>
                             </div>
                         </div>
                         <div class="training-card">
-                            <div class="training-card-header">新人社員研修</div>
-                            <div class="training-card-body">
-                                <ul>
+                            <div class="training-card__header">新人社員研修</div>
+                            <div class="training-card__body">
+                                <ul class="training-card__list">
                                     <li>ビジネスマナー</li>
-                                    <li>ビジネスコミュニケーション</li>
                                     <li>ネットワーク・サーバ研修</li>
                                     <li>IIJサービス理解</li>
                                 </ul>
-                                <div class="training-sub-card">
-                                    ビジネススキルと<br>体系的な知識の習得
-                                </div>
+                                <div class="training-card__note">ビジネススキルと体系的知識の習得</div>
                             </div>
                         </div>
                         <div class="training-card">
-                            <div class="training-card-header">業務教育研修 (OJT)</div>
-                            <div class="training-card-body">
-                                <ul>
+                            <div class="training-card__header">業務教育研修 (OJT)</div>
+                            <div class="training-card__body">
+                                <ul class="training-card__list">
                                     <li>インターネットサービス</li>
                                     <li>運用 / 保守業務</li>
                                     <li>サービスマネジメント</li>
                                 </ul>
-                                <div class="training-sub-card">
-                                    チーム配属後の研修<br>マンツーマン指導
-                                </div>
+                                <div class="training-card__note">チーム配属後のマンツーマン指導</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <p class="point-description">
-                    入社後の導入研修では、メールの書き方や電話対応などのビジネススキルに加え、ITプロフェッショナルを目指すうえで欠かせない技術的な基礎を身につけていただきます。インターネットの基礎知識から、事業やサービスの知識、さらにはサーバの基本コマンドなど、ITに関する知識と技術をしっかり学べる研修をご用意しています。<br>
-                    現場配属後にも二度のフォローアップ研修を実施。コミュニケーションスキルの向上や次年度に向けた目標設定を行います。さらにこれらの研修とは別に、配属先での専門的な業務研修もあります。研修で学んだ知識を活かして、1年目でITパスポート、LPIC、CCNAといった資格を取得する社員もたくさんいます。
+                    入社後の導入研修では、ビジネススキルに加え、ITプロフェッショナルとして欠かせない技術的な基礎を身につけていただきます。知識ゼロからでも安心してスタートできる環境を整えています。
                 </p>
             </div>
 
             <!-- Point 02 -->
-            <div class="point-wrapper scroll-reveal">
-                <div class="point-badge">
-                    <div class="point-badge-content">
-                        <div class="point-badge-label">POINT</div>
-                        <div class="point-badge-number">02</div>
+            <div class="point scroll-reveal">
+                <div class="point__badge">
+                    <div class="point__badge-content">
+                        <span class="point__badge-label">POINT</span>
+                        <span class="point__badge-number">02</span>
                     </div>
                 </div>
-                <div class="point-header">
-                    <h3 class="point-title">さらなる成長を促すサポート体制</h3>
+                <div class="point__header">
+                    <h3 class="point__title">さらなる成長を促すサポート体制</h3>
                 </div>
 
                 <div class="support-grid">
                     <div class="support-item">
-                        <div class="support-illustration">
-                            <!-- Placeholder for Illustration 1 -->
+                        <div class="support-item__image">
                             <img src="images/illustration-1on1.png" alt="1on1 Meeting"> 
                         </div>
-                        <h4 class="support-title">1on1ミーティング</h4>
-                        <p class="support-text">
-                            正式の面談とは別に、直属の上司やリーダーとラフに話し合いをするのが「1on1ミーティング」です。フィジカル・メンタルの健康状態、取り組んでいる業務との相性、チームに対する要望、今後のキャリアについてなど、何でも気軽に相談できます。
+                        <h4 class="support-item__title">1on1ミーティング</h4>
+                        <p class="support-item__text">
+                            直属の上司やリーダーとラフに話し合いをする「1on1ミーティング」。今後のキャリアや悩みなど、何でも気軽に相談できます。
                         </p>
                     </div>
                     <div class="support-item">
-                        <div class="support-illustration">
-                            <!-- Placeholder for Illustration 2 -->
+                        <div class="support-item__image">
                              <img src="images/illustration-ojt.png" alt="OJT Training">
                         </div>
-                        <h4 class="support-title">OJT (On-the-Job Training)</h4>
-                        <p class="support-text">
-                            入社1年目の新入社員に対しては、先輩社員がOJTトレーナーとなり、一緒に働きながらマンツーマンで指導します。未経験入社の社員が多いため、現場ごとにマニュアルが整備されており、さらには業務そのものを学べる研修も充実しているので、無理なく一人前に成長できます。
+                        <h4 class="support-item__title">OJTトレーナー制度</h4>
+                        <p class="support-item__text">
+                            先輩社員がトレーナーとなり、実務を通じてマンツーマンで指導。未経験の方でも無理なく一人前に成長できます。
                         </p>
                     </div>
                     <div class="support-item">
-                        <div class="support-illustration">
-                            <!-- Placeholder for Illustration 3 -->
+                        <div class="support-item__image">
                              <img src="images/illustration-followup.png" alt="Follow up">
                         </div>
-                        <h4 class="support-title">フォローアップ研修</h4>
-                        <p class="support-text">
-                            入社1年目の社員全員を対象として、秋期・冬期に人事部主催のフォローアップ研修を実施します。さらなるスキルアップを図ると同時に、これまでの仕事をじっくり振り返りつつ、これからのキャリアプランを一緒に考えます。
+                        <h4 class="support-item__title">フォローアップ研修</h4>
+                        <p class="support-item__text">
+                            新人社員全員を対象とした研修を定期的に実施。スキルアップと共にこれからのキャリアプランを一緒に考えます。
                         </p>
                     </div>
                 </div>
             </div>
 
             <!-- Point 03 -->
-            <div class="point-wrapper scroll-reveal" style="border-left: none;">
-                <div class="point-badge">
-                    <div class="point-badge-content">
-                        <div class="point-badge-label">POINT</div>
-                        <div class="point-badge-number">03</div>
+            <div class="point scroll-reveal">
+                <div class="point__badge">
+                    <div class="point__badge-content">
+                        <span class="point__badge-label">POINT</span>
+                        <span class="point__badge-number">03</span>
                     </div>
                 </div>
-                <div class="point-header">
-                    <h3 class="point-title">志向性に合わせて選べるキャリアパス</h3>
+                <div class="point__header">
+                    <h3 class="point__title">志向性に合わせて選べるキャリアパス</h3>
                 </div>
 
-                <div class="career-container">
-                    <div class="career-content">
-                        <p class="support-text" style="font-size: 16px;">
-                            適性のある仕事や志向するキャリア、働き方は人それぞれ。当社では、一人ひとりの社員が自分でキャリアパスを選べるような制度となっており、会社としても個々のキャリア形成を支援しています。当社にはヘルプデスクやシステム運用・保守、システム構築、営業など幅広い業務があり、万が一取り組んでいる業務への適性に無理を感じたときや、スキルアップを目指して他の仕事に挑戦したくなったときには、上司や人事部に相談することができます。転職することなく、社内で新しいキャリアを実現できる制度と環境が当社にはあります。他部署に異動した際のフォローも万全。各部署での導入研修や先輩によるOJT、オンライン講座などを通じて新しいスキルを身につけられるので、安心し希望の道に進めます。
+                <div class="career">
+                    <div class="career__content">
+                        <p class="support-item__text">
+                            適性のある仕事や志向するキャリアは人それぞれ。当社では、社員が自分でキャリアパスを選べる制度を整えています。ヘルプデスクから構築・設計、さらには営業まで、幅広いフィールドで挑戦することが可能です。
                         </p>
-                        <div class="career-btn-container">
+                        <div style="margin-top: 30px;">
                             <a href="#" class="btn-arrow">
                                 学びとキャリア
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -321,12 +350,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class="career-image">
-                         <img src="images/career-image.png" alt="Career Path" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="career__image">
+                         <img src="images/career-image.png" alt="Career Path">
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -345,37 +373,41 @@
                     <div class="voice-avatar-area">
                         <div class="voice-avatar">
                             <img src="images/avatar-woman-1.png" alt="Employee Voice">
-                        </div>
-                        <div class="voice-meta">2021年入社<br>(中途)</div>
-                    </div>
-                    <div class="voice-text">
-                        研修中には会社になじむこと・リズムを合わせることに重きを置き、初めての環境で精神的にも不安だった中、過ごしやすい環境を作ってくださいました。
-                    </div>
+    <section class="section voice" id="voice">
+        <div class="container">
+            <div class="voice__container scroll-reveal">
+                <div class="voice__header">
+                    <span class="voice__label">Voice</span>
+                    <h2 class="voice__title">社員の声</h2>
                 </div>
-
-                <!-- Voice 2 -->
-                <div class="voice-card">
-                    <div class="voice-avatar-area">
-                        <div class="voice-avatar">
-                            <img src="images/avatar-woman-2.png" alt="Employee Voice">
+                
+                <div class="voice__grid">
+                    <div class="voice-card">
+                        <div class="voice-card__avatar-area">
+                            <div class="voice-card__avatar">
+                                <img src="images/member-1.png" alt="Member 1">
+                            </div>
+                            <div class="voice-card__meta">
+                                2022年入社<br>サービス運用部
+                            </div>
                         </div>
-                        <div class="voice-meta">2021年入社<br>(中途)</div>
+                        <p class="voice-card__text">
+                            未経験からこの業界に飛び込みましたが、充実した研修と先輩方の手厚いサポートのおかげで、着実にエンジニアとしての階段を登れています。日々、新しい技術に触れられる刺激的な環境です。
+                        </p>
                     </div>
-                    <div class="voice-text">
-                        手厚く丁寧な研修が受けられたことが良かったです。研修の中でも、ネットワークの学習が特に楽しく、不明点も聞きやすかったです。自分にできるのか不安な時には、研修担当者に「大丈夫！」と後押ししてもらえたことも安心につながりました。
-                    </div>
-                </div>
 
-                <!-- Voice 3 -->
-                <div class="voice-card">
-                    <div class="voice-avatar-area">
-                        <div class="voice-avatar">
-                            <img src="images/avatar-man-1.png" alt="Employee Voice">
+                    <div class="voice-card">
+                        <div class="voice-card__avatar-area">
+                            <div class="voice-card__avatar">
+                                <img src="images/member-2.png" alt="Member 2">
+                            </div>
+                            <div class="voice-card__meta">
+                                2021年入社<br>ネットワーク構築部
+                            </div>
                         </div>
-                        <div class="voice-meta">2021年入社<br>(中途)</div>
-                    </div>
-                    <div class="voice-text">
-                        少人数で質問しやすい環境でした。アウトプットの機会やフィードバックも多かったため、知識の定着や癖の矯正ができました。また、eラーニングで基礎から自分のペースで学習できたこともよかったです。
+                        <p class="voice-card__text">
+                            自分が設計・構築に携わったインフラが、多くの人々の生活を支えているという実感を持てることがこの仕事の醍醐味です。チームワークが良く、困ったことがあればすぐに相談できる風通しの良さがあります。
+                        </p>
                     </div>
                 </div>
             </div>

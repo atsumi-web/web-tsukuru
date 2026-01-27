@@ -14,5 +14,9 @@
 /* 3. Section Styles */
 @import "css/header.css";
 @import "css/hero.css";
+@import "css/message.css";
+@import "css/about.css";
+@import "css/training.css";
+@import "css/voice.css";
 @import "css/sections.css";
 @import "css/footer.css";
