@@ -415,6 +415,8 @@
     gap: var(--spacing-md);
     transform: none;
     transition: none;
+    visibility: visible; /* Restore visibility on desktop */
+    pointer-events: auto; /* Restore interactivity on desktop */
   }
   
   .nav-list {
