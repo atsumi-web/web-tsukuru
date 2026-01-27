@@ -1,0 +1,495 @@
+/* ===================================
+   Header & Navigation
+   =================================== */
+
+.header-container {
+  display: flex;
+  justify-content: flex-end; /* Nav to right */
+  align-items: center;
+  padding: 0 var(--container-padding); /* REMOVED vertical padding */
+  position: static;
+}
+
+/* Integrated Logo Design */
+/* Hide Header Logo to avoid duplication with Hero Logo */
+.header .logo {
+  display: flex; /* Restored */
+  flex-direction: column;
+  align-items: flex-start; /* 左揃えに設定 */
+}
+
+/* Original Logo Rules */
+.logo {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 1001;
+  display: flex !important; /* Force Show */
+}
+
+.logo-main {
+  font-family: "Times New Roman", Times, serif; /* Serif font as requested */
+  font-size: 100px; /* Very Large */
+  font-weight: bold;
+  color: #1a2b33; /* Dark slate text */
+  line-height: 0.8;
+  position: relative;
+  letter-spacing: -2px;
+}
+
+.logo-j {
+  position: relative;
+}
+
+/* The Red Dot on J */
+.logo-j::after {
+  content: "";
+  position: absolute;
+  bottom: 12px; /* Moved up slightly */
+  right: -5px;
+  width: 16px;
+  height: 16px;
+  background-color: #e60012; /* IIJ Red */
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logo-subtitle {
+  font-family: var(--font-main);
+  font-size: 20px;
+  color: #1a2b33;
+  letter-spacing: 0.15em; /* Wide tracking */
+  margin-top: 8px;
+  margin-left: 0; /* 左揃えを徹底するため 4px -> 0 に変更 */
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-gray);
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-red);
+  transition: var(--transition-normal);
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Closer spacing */
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--dark);
+  transition: var(--transition-normal);
+}
+
+/* ===================================
+   Header (Mobile First / Overrides)
+   =================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff;
+  border-bottom: none;
+  box-shadow: none;
+  z-index: 2005; /* High z-index to stay on top of hero on mobile */
+  transition: box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Mobile default: Logo Left, Burger Right */
+  align-items: center;
+  padding: 0 20px;
+  position: static;
+  height: 80px; /* Mobile standard height - increased from 60px */
+}
+
+/* Integrated Logo Design Overrides */
+.logo {
+  position: relative;
+  z-index: 2005; /* Above mobile menu */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  opacity: 1; /* Always visible on mobile */
+  pointer-events: auto;
+}
+
+.logo-main {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #1a2b33;
+  line-height: 0.8;
+  position: relative;
+  letter-spacing: -2px;
+}
+
+.logo-j::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: #e60012;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logo-subtitle {
+  font-family: var(--font-main);
+  font-size: 13px;
+  color: #1a2b33;
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+  margin-left: 0;
+  font-weight: 500;
+}
+
+/* Mobile Menu Toggle (Hamburger) - Visible by default */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  z-index: 2000;
+  gap: 0;
+}
+
+.menu-toggle span {
+  display: block; /* Explicitly block */
+  width: 24px;
+  height: 2px;
+  background-color: var(--dark);
+  transition: all 0.3s ease;
+  position: absolute; /* Using absolute positioning for the 'X' animation */
+}
+
+.menu-toggle span:nth-child(1) { transform: translateY(-8px); }
+.menu-toggle span:nth-child(2) { opacity: 1; }
+.menu-toggle span:nth-child(3) { transform: translateY(8px); }
+
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg); }
+
+
+/* Mobile Nav - Hidden offscreen by default */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 20px; /* Use bottom instead of height to ensure a 20px gap from the screen edge */
+  height: auto; /* Allow bottom to define the height */
+  background-color: #ffffff;
+  padding: 70px 0 40px; /* Reset internal padding to allow more space for external gap */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  transform: translateX(100%); /* HIDE OFF-SCREEN */
+  transition: transform 0.4s ease;
+  z-index: 1500;
+  visibility: visible;
+  align-items: stretch; /* Override base align-items: center */
+
+  /* Removed radius and shadow per user request */
+  border-radius: 0;
+  box-shadow: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav.active {
+  transform: translateX(0); /* SHOW ON-SCREEN */
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+  align-items: stretch; /* Override base align-items: center */
+}
+
+.nav-link {
+  display: flex; /* Mobile layout */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px; /* Added horizontal padding to links instead of container */
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.nav-link span {
+  flex: 1;
+  text-align: left;
+}
+
+.nav-link::after {
+  content: "+";
+  font-size: 24px;
+  color: #e60012;
+  font-weight: bold;
+  position: static;
+  width: auto;
+  height: auto;
+  background: none;
+}
+
+.nav-link[href="#message"]::after {
+  content: "→";
+  background-color: var(--primary-red);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.header-buttons {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  order: -1; /* Buttons at top on mobile */
+  box-sizing: border-box;
+}
+
+.header-buttons .btn {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  width: auto;
+  display: block;
+}
+
+/* ===================================
+   Desktop Header (Overrides for >= 768px)
+   =================================== */
+@media (min-width: 768px) {
+  
+  .header-container {
+    justify-content: flex-start; /* Logo on Left */
+    height: 80px; /* Reduced from 90px for tighter spacing */
+    transition: height 0.4s ease; /* Smooth height change */
+  }
+
+  /* Header Logo Logic for Desktop */
+  .logo {
+    position: relative; /* Normal flow */
+    top: auto;
+    transform: none;
+    left: auto;
+    z-index: 1001;
+    margin-top: 40px; /* Lower logo by 40px total initial state */
+    
+    /* Initial State: Visible & Large */
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Increased duration from 0.4s to 0.8s */
+  }
+
+  /* THE LARGE STATE (Before Scroll) */
+  .logo-main {
+    font-size: 80px; /* Large initial size matches Hero design */
+    line-height: 1;
+    margin-left: 20px; /* Adjust spacing */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Added transition for font-size */
+  }
+  
+  .logo-subtitle {
+     font-size: 14px;
+     margin-left: 24px;
+     margin-top: 5px;
+     opacity: 1;
+     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Updated from opacity only to all, and longer duration */
+  }
+  
+  .header {
+    background-color: #ffffff; /* User requested white background */
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  /* --- SCROLLED STATE (After Scroll) --- */
+  .header.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header.scrolled .header-container {
+    height: 70px; /* Shrink header height */
+  }
+
+  .header.scrolled .logo-main {
+    font-size: 32px; /* Shrink logo text */
+    margin-left: 0;
+  }
+
+  .header.scrolled .logo {
+    margin-top: 0; /* Reset margin on scroll */
+  }
+  
+  .header.scrolled .logo-subtitle {
+    font-size: 10px; /* Shrink subtitle */
+    margin-left: 0;
+    opacity: 0.8;
+  }
+
+  /* Navigation Positioning */
+  .nav {
+    margin-left: auto; /* Push nav to right */
+    position: static;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    transform: none;
+    transition: none;
+  }
+  
+  .nav-list {
+    flex-direction: row;
+    width: auto;
+    gap: var(--spacing-md);
+  }
+
+  .nav-link {
+    display: inline-block;
+    width: auto;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark-gray);
+    border-bottom: none;
+  }
+
+  /* Restore Underline Hover Effect */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-red);
+    transition: var(--transition-normal);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Reset Special Arrow for Message */
+  .nav-link[href="#message"]::after {
+     content: "";
+     background-color: var(--primary-red);
+     width: 0;
+     height: 2px;
+     border-radius: 0;
+  }
+  .nav-link[href="#message"]:hover::after {
+    width: 100%;
+  }
+
+  .header-buttons {
+    width: auto;
+    margin-bottom: 0;
+    order: 0; /* Normal order */
+  }
+
+  .header-buttons .btn {
+    width: auto;
+    flex: none;
+    padding: 12px 24px;
+  }
+  
+  /* Hide Toggle */
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* ===================================
+   Mobile Final Adjustments
+   =================================== */
+@media (max-width: 768px) {
+  .hero-logo-space {
+    display: none;
+  }
+  
+  .header .logo {
+    margin-left: -20px; /* Move 20px left (offsetting container padding) */
+    margin-top: 5px;  /* Adjusted from 10px to balance with 80px height */
+  }
+
+  .header .logo .logo-main {
+    font-size: 38px;
+  }
+}

@@ -29,7 +29,7 @@ let lastScroll = 0;
 window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
 
-  if (currentScroll > 100) {
+  if (currentScroll > 50) {
     header.classList.add("scrolled");
   } else {
     header.classList.remove("scrolled");
