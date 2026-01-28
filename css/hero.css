@@ -1,0 +1,505 @@
+.hero {
+  /* height: 100vh; Removed to allow scrolling on small screens/long text */
+  min-height: 100vh;
+  padding-top: 80px; /* Reduced from 100px */
+  padding-bottom: 100px; /* Increased to clear the absolute footer strip */
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* background-color: var(--bg-light); Removed to show hero-bg */
+  box-sizing: border-box; /* Ensure padding is included in height */
+  overflow: hidden; /* Prevent bubbles from causing scrollbars */
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind content */
+  overflow: hidden;
+  background: #fff; /* Ensure white background behind shifted image */
+}
+
+.hero-bg::after {
+  /* "Slanted Split" - Hard diagonal line */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 105 degrees creates a nice forward-leaning slash. Solid white until 50%, then transparent. */
+  background: linear-gradient(105deg, #ffffff 45%, rgba(255, 255, 255, 0) 45.1%);
+  pointer-events: none;
+  z-index: 1; /* Above image, below content/bubbles */
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Move PC to Right (25%) and Scale Down (0.85) to create space for bubbles */
+  transform: translateX(25%) scale(0.85);
+  /* Vertical 85% - Lower slightly from 100% to clear header menu */
+  object-position: center 85%;
+  filter: brightness(1.05);
+}
+
+.hero-content {
+  width: 52%; /* テキストエリアを確保 */
+  padding-left: 8%;
+  padding-right: 20px; /* 画像との間に余白 */
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-sub {
+  font-size: 18px !important; /* Increased from 16px for better visibility */
+  color: var(--accent-color) !important; /* ゴールド（アクセントカラー）に変更 */
+  margin-bottom: 0; /* 10px -> 0 (さらに詰める) */
+  margin-top: 50px !important;
+  display: block;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+}
+
+.hero-title {
+  font-size: 42px;
+  margin-bottom: 20px; /* Reduced margin to fit subtitle */
+  margin-top: 0; /* デフォルトマージンを削除 */
+  line-height: 1.6;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif; /* Gothic for functionality */
+  letter-spacing: 0.05em;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: var(--text-sub);
+  margin-bottom: 50px;
+  border-left: 1px solid var(--accent-color);
+  padding-left: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  gap: 10px;
+  align-items: center; /* Center align button and note relative to each other */
+  width: fit-content; /* Don't stretch to full width, stick to content size */
+  margin-bottom: 100px; /* Increased: more breathing room below button */
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.hero-btn.primary {
+  background: var(--bg-dark);
+  color: #fff;
+}
+
+.hero-btn.secondary {
+  border: 1px solid #ddd;
+  background: #fff;
+  color: var(--text-color);
+}
+
+.hero-text-group {
+  margin-bottom: 20px; /* Reduced: space before Main Title */
+  line-height: 1.6; /* Tighter line spacing */
+}
+
+.tagline-problem {
+  font-size: 15px;
+  color: var(--text-sub);
+  margin-bottom: 8px !important; /* Reduced spacing */
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  position: relative;
+  display: inline-block;
+}
+
+.tagline-solution {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+
+.tagline-solution strong {
+  color: var(--accent-color);
+  font-weight: 700;
+  display: block; /* PC: Force line break before strong */
+}
+
+.hero-main-title {
+  margin-bottom: 25px !important; /* Reduced: closer to CTA button */
+}
+
+/* Gold Gradient Text */
+.text-gradient {
+  background: linear-gradient(135deg, #ae8b47 0%, #d4b068 40%, #edd392 60%, #ae8b47 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  text-shadow: 0 2px 10px rgba(197, 160, 89, 0.2);
+}
+
+.title-particle {
+  font-size: 0.7em;
+  font-weight: 500;
+  margin: 0 5px;
+  vertical-align: 0.1em;
+  color: #555;
+}
+
+/* Orbital Visuals (Bubbles) */
+.hero-orbitals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width for free positioning */
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.orbital-bubble {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: floatBubble 6s ease-in-out infinite;
+}
+
+.orbital-bubble img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title Badge (Right Edge Prominent) */
+.bubble-title {
+  width: 110px; /* Reduced from 130px */
+  height: 110px; /* Reduced from 130px */
+  top: 18%;
+  right: 5%;
+  left: auto;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  animation-delay: 1s;
+}
+
+.bubble-text-small {
+  font-size: 15px; /* Increased from 16px relative to box? No, 16px on 110px box is tight. But user said "Text Bigger". Let's try keeping 15px-16px and ensure it fits. */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.bubble-text-large {
+  font-size: 22px; /* Increased from 20px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+/* Industry Strip (New Layout) */
+.hero-footer-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95); /* Nearly solid white strip */
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0; /* Flush strip */
+  z-index: 20; /* Above everything in hero */
+}
+
+.strip-container {
+  width: 100%; /* Full Width */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Prevent strip blow-out */
+}
+
+.industry-list {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0;
+  justify-content: center; /* Center on PC for static Pro look */
+}
+
+.industry-list::-webkit-scrollbar {
+  display: none;
+}
+
+.industry-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 160px; /* Larger for better visibility */
+  position: relative; /* For overlaid text */
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.industry-item img {
+  width: 100%;
+  height: 110px; /* Larger height */
+  border-radius: 0;
+  object-fit: cover;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
+  filter: grayscale(100%) brightness(0.9); /* Grayscale for "Pro/Stylish" feel */
+}
+
+/* Hover: Color reveal */
+.industry-item:hover img {
+  filter: grayscale(0%) brightness(1); /* Full color on hover */
+  transform: scale(1.05); /* Slight zoom */
+}
+
+.industry-item span {
+  display: none; /* Text hidden per user request */
+}
+
+@keyframes floatBubble {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  /* Header Fixes (already in base/header) */
+
+  /* Hero Fixes */
+  .hero-title {
+    font-size: 28px; /* Smaller title */
+  }
+  .hero-title br {
+    display: none;
+  } /* excessive breaks might be bad */
+  .hero-content {
+    width: 55%;
+    padding-left: 2%; /* Less padding */
+  }
+  .hero-bg img {
+    transform: translateX(10%) scale(0.9);
+    object-position: center bottom;
+  }
+  .orbital-bubble {
+    transform: scale(0.75); /* Smaller bubbles */
+  }
+  .bubble-title {
+    right: -10px; /* Pull closer to edge */
+    transform: scale(0.8); /* Scale title too */
+    top: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-main-title {
+    font-size: 25px !important; /* Reduced to 25px to prevent "めて" wrapping */
+    margin-bottom: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  .tagline-solution strong {
+    display: inline; /* Mobile: Keep on same line */
+  }
+
+  .hero {
+    display: flex; /* Flex Layout */
+    flex-direction: column; /* Vertical Stack */
+    justify-content: flex-start; /* Start from top */
+    padding-top: 100px; /* Reduced from 120px to lift image */
+    padding-bottom: 0; /* Remove bottom padding */
+    height: auto;
+    min-height: 100vh; /* Restore Full Screen height */
+    overflow: hidden;
+  }
+
+  /* Remove the white diagonal slash on mobile to show full image */
+  .hero-bg::after {
+    background: none;
+  }
+
+  /* Convert Hero BG to Block for stacking */
+  .hero-bg {
+    position: relative !important; /* Override absolute */
+    height: 300px; /* Fixed height for image area */
+    width: 100%;
+    order: 1; /* First */
+    z-index: 5;
+    margin-bottom: 0 !important; /* No gap below image */
+    line-height: 0; /* Remove line-height space */
+  }
+
+  .hero-bg img {
+    object-position: center 80% !important;
+  }
+
+  /* Move Industry Strip to Middle */
+  .hero-footer-strip {
+    position: relative !important;
+    bottom: auto !important;
+    order: 2; /* Middle */
+    margin-top: 0;
+    margin-bottom: 30px; /* Space before text */
+    z-index: 10;
+    background: transparent !important; /* Seamless connection */
+    border: none !important;
+  }
+
+  .hero-content {
+    width: 100%;
+    padding: 0 20px;
+    text-align: left;
+    margin-bottom: 0 !important; /* Remove all bottom margin */
+    position: relative;
+    z-index: 10;
+    order: 3; /* Last */
+  }
+
+  .hero-title {
+    font-size: 24px !important; /* Increased to 24px */
+    line-height: 1.5;
+    margin-bottom: 15px !important; /* Reduced on mobile */
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 25px; /* Space before button */
+  }
+
+  .hero-actions {
+    align-items: center;
+    width: 100%; /* Force full width on mobile */
+    gap: 10px;
+    margin-bottom: 0 !important; /* Remove all bottom margin */
+  }
+
+  .hero-sub {
+    margin-top: 20px !important;
+  }
+
+  .hero-bg img {
+    transform: translateX(0) scale(1);
+    object-position: 75% center; /* Slightly right to catch PC, but mostly full */
+    opacity: 1; /* Fully visible */
+    display: block !important; /* Remove default inline spacing */
+  }
+
+  /* Reposition Strip for Mobile: Flow after content */
+  .hero .hero-footer-strip {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin-top: -20px !important; /* Pull up closer to CTA */
+    margin-bottom: 0 !important; /* No gap below strip */
+    order: 2; /* Middle */
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+    display: block !important;
+    z-index: 20;
+  }
+
+  /* Industry Strip Scrollability on Mobile */
+  .industry-list {
+    justify-content: flex-start;
+  }
+  .industry-item {
+    width: 110px;
+  }
+  .industry-item img {
+    height: 80px;
+  }
+
+  .hero-orbitals {
+    display: block;
+    width: 100%;
+    height: 100%; /* Full coverage */
+    top: 0;
+    pointer-events: none;
+    z-index: 15; /* Above hero-bg (z-index: 5) and content */
+  }
+
+  .orbital-bubble {
+    border: 2px solid #fff;
+  }
+
+  /* Title: Top Right, smaller, lower to avoid header */
+  .bubble-title {
+    width: 64px; /* Reduced from 70px */
+    height: 64px; /* Reduced from 70px */
+    top: 130px; /* Lower position */
+    right: 15px;
+    left: auto;
+    line-height: 0.9;
+  }
+  .bubble-text-small {
+    font-size: 10px; /* Keep legible */
+    display: block;
+    margin-bottom: 0;
+  }
+  .bubble-text-large {
+    font-size: 13px;
+  } /* Slightly larger relative to box */
+
+  /* Key Bubbles: HIDE all except Title on mobile */
+  .bubble-construction,
+  .bubble-kaigo,
+  .bubble-beauty,
+  .bubble-mechanic,
+  .bubble-restaurant,
+  .bubble-dentist {
+    display: none;
+  }
+}

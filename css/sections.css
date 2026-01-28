@@ -1,0 +1,265 @@
+/* --- Section Spacing --- */
+.intro-section,
+.feature-section,
+.policy-section,
+.flow-section,
+.price-section,
+.profile-section,
+.contact-section,
+.works-section {
+  padding: 100px 0;
+}
+
+/* Intro Section */
+.intro-section {
+  text-align: center;
+}
+
+.intro-lead h3 {
+  font-size: 28px;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+.intro-mechanism {
+  font-family: var(--font-mincho);
+  font-size: 20px;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.intro-mechanism strong {
+  background: linear-gradient(transparent 60%, #e0e0e0 60%);
+  font-weight: 500;
+}
+
+/* Feature Section */
+.feature-section {
+  background: var(--bg-light);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.en-label {
+  display: block;
+  font-size: 12px;
+  color: var(--accent-color);
+  letter-spacing: 0.2em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.feature-rows {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.feature-row {
+  background: #f2f2f2;
+  padding: 60px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.f-text {
+  flex: 1.1;
+}
+
+.f-text h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.f-text p {
+  font-size: 15px;
+  color: var(--text-sub);
+  text-align: justify;
+  line-height: 2;
+}
+
+.f-img {
+  flex: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Price Section */
+.price-section {
+  background: var(--bg-light);
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.price-area {
+  margin-bottom: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.price-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  color: #dc2626;
+  margin: 10px 0;
+}
+
+.price-number {
+  font-family: "Zen Old Mincho", serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+/* Flow Section */
+.step-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  align-items: stretch;
+}
+
+.step-item:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  font-family: var(--font-mincho);
+  z-index: 1;
+}
+
+/* Profile Section */
+.profile-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.p-job {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.text-main {
+  font-size: 16px;
+  line-height: 2.2;
+  color: var(--text-color);
+  margin-bottom: 40px;
+  text-align: justify;
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  background-color: var(--bg-light);
+}
+
+.contact-lead {
+  font-size: 16px;
+  margin-bottom: 60px;
+  line-height: 2;
+}
+
+/* Tech Section */
+.tech-reasons {
+  padding: 80px 0;
+  background: #fafafa;
+}
+
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .feature-section,
+  .policy-section,
+  .flow-section,
+  .price-section,
+  .profile-section,
+  .contact-section {
+    padding: 60px 0 !important;
+  }
+
+  .intro-section {
+    padding: 60px 0 !important;
+    padding-top: 30px !important;
+    margin-top: -40px;
+  }
+
+  .feature-row {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+
+  .f-img img {
+    max-width: 60%;
+  }
+
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .step-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .step-item:not(:last-child)::after {
+    content: "↓";
+    right: 50%;
+    top: auto;
+    bottom: -28px;
+    transform: translateX(50%);
+  }
+}
