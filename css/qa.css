@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Q&A Section Styles (Card Design)
+   ========================================================================== */
+
+.qa-section {
+    padding: 100px 0;
+    width: 100%;
+    background-color: #f9f9f9; /* 明るいエリアであることを明示 */
+}
+
+/* Container limits */
+.qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 60px auto 0;
+    padding: 0 20px; /* スマホで端が詰まらないように */
+}
+
+/* Card Style */
+.qa-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.qa-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-color: var(--renewal-gold);
+}
+
+/* Question Part */
+.q {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--renewal-navy);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    line-height: 1.4;
+}
+
+/* Q Icon */
+.q::before {
+    content: 'Q';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background: var(--renewal-navy);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-family: var(--font-en);
+    flex-shrink: 0;
+    font-weight: 700;
+}
+
+/* Answer Part */
+.a {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.8;
+    padding-left: 51px; /* Qアイコン幅 + gap */
+    position: relative;
+    display: block;
+}
+
+/* A Icon (Optional but good for clarity) */
+.a::before {
+    content: 'A';
+    position: absolute;
+    left: 2px;
+    top: -2px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--renewal-gold);
+    font-weight: 700;
+    font-family: var(--font-en);
+    font-size: 1.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .qa-item {
+        padding: 25px 20px;
+    }
+
+    .q {
+        font-size: 1.05rem;
+        align-items: flex-start; /* アイコンが上に来るように */
+    }
+
+    .q::before {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+        margin-top: 2px;
+    }
+
+    .a {
+        padding-left: 0; /* スマホではインデント解除して広く使う */
+        margin-top: 15px;
+        border-top: 1px dashed #eee;
+        padding-top: 15px;
+    }
+
+    .a::before {
+        display: none; /* スマホではAアイコンを消してスッキリさせる */
+    }
+}

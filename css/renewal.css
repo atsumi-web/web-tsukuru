@@ -15,15 +15,15 @@
     background-color: #fff;
     color: var(--renewal-text-dark);
     font-size: 16px;
-    font-family: 'Noto Sans JP', sans-serif; /* ベースフォントを明示 */
-    line-height: 1.8; /* 読みやすい行間に統一 */
-    letter-spacing: 0.05em; /* 日本語に適した字間 */
+    font-family: 'Noto Sans JP', sans-serif; /* 繝吶�繧ｹ繝輔か繝ｳ繝医ｒ譏守､ｺ */
+    line-height: 1.8; /* 隱ｭ縺ｿ繧�☆縺�｡碁俣縺ｫ邨ｱ荳 */
+    letter-spacing: 0.05em; /* 譌･譛ｬ隱槭↓驕ｩ縺励◆蟄鈴俣 */
     overflow-x: hidden;
-    word-wrap: break-word; /* 長い単語での崩れ防止 */
+    word-wrap: break-word; /* 髟ｷ縺�腰隱槭〒縺ｮ蟠ｩ繧碁亟豁｢ */
 }
 
 .construction-renewal p {
-    margin-bottom: 1.5em; /* 段落間の余白確保 */
+    margin-bottom: 1.5em; /* 谿ｵ關ｽ髢薙�菴咏區遒ｺ菫� */
 }
 
 /* Mobile Breakpoint Helper */
@@ -76,7 +76,7 @@ section {
 }
 
 .section-title {
-    font-size: 2.2rem; /* 少しサイズを抑えて崩れ防止 */
+    font-size: 2.2rem; /* 蟆代＠繧ｵ繧､繧ｺ繧呈椛縺医※蟠ｩ繧碁亟豁｢ */
     line-height: 1.6;
     margin-bottom: 40px;
     font-family: 'Shippori Mincho', serif;
@@ -124,14 +124,15 @@ section {
 
 /* Hero Section Override */
 .hero.renewal-hero {
-    display: block !important; /* hero.cssのflexを解除 */
+    display: block !important; /* hero.css縺ｮflex繧定ｧ｣髯､ */
     min-height: 100vh;
-    padding: 0 !important; /* hero.cssのpaddingを解除 */
+    padding: 0 !important; /* hero.css縺ｮpadding繧定ｧ｣髯､ */
     position: relative;
     overflow: hidden;
 }
 
-/* ★重要★ 古いデザインの「斜めの白背景」を完全に削除 */
+/* 笘�㍾隕≫� 蜿､縺�ョ繧ｶ繧､繝ｳ縺ｮ縲梧万繧√�逋ｽ閭梧勹縲阪ｒ螳悟�縺ｫ蜑企勁 */
+/* 笘㍾隕≫ 蜿､縺ョ繧ｶ繧､繝ｳ縺ｮ縲梧万繧√逋ｽ閭梧勹縲阪ｒ螳悟縺ｫ蜑企勁 */
 .hero.renewal-hero .hero-bg::after {
     display: none !important;
     content: none !important;
@@ -145,12 +146,12 @@ section {
     justify-content: flex-start; /* 左寄せを明示 */
     position: relative;
     z-index: 10;
-    max-width: 1200px;
+    max-width: 100%; /* ★全幅に変更 */
     margin: 0 auto;
-    padding: 0 40px; /* 基本のコンテナパディング */
+    padding: 0 5%; /* 画面端から5%の余白を確保 */
 }
 
-/* 以前のhero.cssの影響を完全に消す */
+/* 莉･蜑阪hero.css縺ｮ蠖ｱ髻ｿ繧貞ｮ悟縺ｫ豸医☆ */
 .hero.renewal-hero .hero-content {
     width: 100% !important;
     max-width: 800px !important;
@@ -172,11 +173,14 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* 画像を明るく・爽やかに */
-    filter: brightness(0.85) contrast(1.05);
-    transform: scale(1.05); /* ブラー端対策で少し拡大 */
-    transition: filter 0.5s;
+    filter: brightness(0.85);
+    transform: scaleX(-1); /* 蟾ｦ蜿ｳ蜿崎ｻ｢ */
 }
+    /* 逕ｻ蜒上ｒ譏弱ｋ縺上�辷ｽ繧�°縺ｫ */
+    /* filter: brightness(0.85) contrast(1.05); */ /* Original filter */
+    /* transform: scale(1.05); */ /* Original transform */
+    /* transition: filter 0.5s; */ /* Original transition */
+
 
 .hero-overlay {
     position: absolute;
@@ -192,12 +196,12 @@ section {
     position: relative;
     z-index: 10;
     color: #fff;
-    max-width: 800px; /* 少し広げてバランス調整 */
-    width: 100% !important; /* 旧CSSの52%指定を解除 */
-    padding-left: 0 !important; /* 旧CSSの8%指定を解除 */
+    max-width: 800px; /* 蟆代＠蠎�￡縺ｦ繝舌Λ繝ｳ繧ｹ隱ｿ謨ｴ */
+    width: 100% !important; /* 譌ｧCSS縺ｮ52%謖�ｮ壹ｒ隗｣髯､ */
+    padding-left: 0 !important; /* 譌ｧCSS縺ｮ8%謖�ｮ壹ｒ隗｣髯､ */
     padding-right: 0 !important;
-    margin: 0 auto; /* 中央寄せを確実に */
-    text-align: left; /* スマホでは左寄せ、PCでも基本左寄せでデザイン */
+    margin: 0 auto; /* 荳ｭ螟ｮ蟇�○繧堤｢ｺ螳溘↓ */
+    text-align: left; /* 繧ｹ繝槭�縺ｧ縺ｯ蟾ｦ蟇�○縲￣C縺ｧ繧ょ渕譛ｬ蟾ｦ蟇�○縺ｧ繝�じ繧､繝ｳ */
 }
 
 /* PC only alignment adjustment if needed */
@@ -205,7 +209,7 @@ section {
     .renewal-hero .container {
         display: flex;
         align-items: center;
-        justify-content: flex-start; /* 左寄せレイアウトの場合 */
+        justify-content: flex-start; /* 蟾ｦ蟇�○繝ｬ繧､繧｢繧ｦ繝医�蝣ｴ蜷� */
     }
 }
 
@@ -224,11 +228,11 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    /* 左側(テキスト側)をより濃く、広範囲にカバーして可読性を確保 */
+    /* 蟾ｦ蛛ｴ(繝�く繧ｹ繝亥�)繧偵ｈ繧頑ｿ�￥縲∝ｺ�ｯ�峇縺ｫ繧ｫ繝舌�縺励※蜿ｯ隱ｭ諤ｧ繧堤｢ｺ菫� */
     background: linear-gradient(90deg, 
-        rgba(15, 23, 42, 0.8) 0%, /* 文字の背景は確保 */
-        rgba(15, 23, 42, 0.4) 50%, /* 画像を見せるために薄く */
-        rgba(15, 23, 42, 0) 100% /* 右側は透過して青空を見せる */
+        rgba(15, 23, 42, 0.8) 0%, /* 譁�ｭ励�閭梧勹縺ｯ遒ｺ菫� */
+        rgba(15, 23, 42, 0.4) 50%, /* 逕ｻ蜒上ｒ隕九○繧九◆繧√↓阮�￥ */
+        rgba(15, 23, 42, 0) 100% /* 蜿ｳ蛛ｴ縺ｯ騾城℃縺励※髱堤ｩｺ繧定ｦ九○繧� */
     );
     z-index: 1;
 }
@@ -240,7 +244,7 @@ section {
     margin-bottom: 30px;
     font-weight: 800;
     color: #fff;
-    /* 強力なドロップシャドウで浮き立たせる */
+    /* 蠑ｷ蜉帙↑繝峨Ο繝��繧ｷ繝｣繝峨え縺ｧ豬ｮ縺咲ｫ九◆縺帙ｋ */
     text-shadow: 2px 2px 0 #000, 0 0 30px rgba(0,0,0,0.8);
 }
 
@@ -254,12 +258,12 @@ section {
 .hero-desc {
     font-size: 1.1rem;
     line-height: 2;
-    color: #f1f5f9; /* より明るい白に */
+    color: #f1f5f9; /* 繧医ｊ譏弱ｋ縺�區縺ｫ */
     margin-bottom: 40px;
-    border-left: 3px solid var(--renewal-gold); /* 線を少し太く */
+    border-left: 3px solid var(--renewal-gold); /* 邱壹ｒ蟆代＠螟ｪ縺� */
     padding-left: 20px;
     max-width: 600px;
-    /* 背景色も薄く追加して確実に読めるようにする */
+    /* 閭梧勹濶ｲ繧り埋縺剰ｿｽ蜉�縺励※遒ｺ螳溘↓隱ｭ繧√ｋ繧医≧縺ｫ縺吶ｋ */
     background: rgba(0, 0, 0, 0.3);
     padding: 15px 20px;
     border-radius: 0 4px 4px 0;
@@ -274,76 +278,119 @@ section {
 }
 
 .hero-note {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem; /* 蟆代＠螟ｧ縺阪￥ */
+    color: rgba(255, 255, 255, 0.85); /* 蟆代＠譏弱ｋ縺� */
+    margin-top: 5px;
 }
 
 @media (max-width: 768px) {
     .hero-overlay {
-        background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.9) 100%); /* モバイル用グラデーション */
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.9) 100%); /* 繝｢繝舌う繝ｫ逕ｨ繧ｰ繝ｩ繝��繧ｷ繝ｧ繝ｳ */
     }
     .hero-container {
-        align-items: flex-end; /* 下寄せにして画像を見せる */
+        align-items: flex-end; /* 荳句ｯ�○縺ｫ縺励※逕ｻ蜒上ｒ隕九○繧� */
         padding-bottom: 100px;
     }
     .hero-content {
         width: 100%;
     }
     .hero-main-copy {
-        font-size: 2.4rem; /* モバイルでの最適サイズ */
+        font-size: 2.4rem; /* 繝｢繝舌う繝ｫ縺ｧ縺ｮ譛驕ｩ繧ｵ繧､繧ｺ */
         line-height: 1.4;
     }
     .hero-main-copy br {
-        display: block; /* モバイルでも改行を有効化 */
+        display: block; /* 繝｢繝舌う繝ｫ縺ｧ繧よ隼陦後ｒ譛牙柑蛹� */
     }
     .hero-desc {
         font-size: 1rem;
         line-height: 1.8;
-        background: rgba(0,0,0,0.5); /* 文字背景を追加して可読性確保 */
+        background: rgba(0,0,0,0.5); /* 譁�ｭ苓レ譎ｯ繧定ｿｽ蜉�縺励※蜿ｯ隱ｭ諤ｧ遒ｺ菫� */
         padding: 15px;
         border-radius: 4px;
         border-left: 4px solid var(--renewal-gold);
     }
 }
 
-/* Problem Section */
-.problem-grid {
+/* Problem Section (Overlay Style) */
+.problem-section {
+    padding: 100px 0;
+    color: #fff;
+    /* 閭梧勹逕ｻ蜒上�HTML蛛ｴ縺ｧ繧､繝ｳ繝ｩ繧､繝ｳ繧ｹ繧ｿ繧､繝ｫ縺ｨ縺励※險ｭ螳壽ｸ医∩縲√∪縺溘�.problem-bg縺ｧ蛻ｶ蠕｡ */
+}
+
+/* 繧ｪ繝ｼ繝舌�繝ｬ繧､縺輔ｌ縺ｦ縺�ｋ縺ｮ縺ｧ縲√き繝ｼ繝芽�菴薙�閭梧勹縺ｯ蜊企乗�縺ｫ縺吶ｋ縺ｨ鬥ｴ譟薙� */
+.problem-grid-wide {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    margin-top: 50px;
+}
+
+.flow-card {
+    background: #ffffff; /* 荳埼乗�縺ｪ逋ｽ縺ｧ蜿ｯ隱ｭ諤ｧ遒ｺ菫� */
+    padding: 40px 30px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* 蠖ｱ縺ｧ豬ｮ縺九○繧� */
+    transition: transform 0.3s ease;
+}
+
+.flow-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--renewal-gold);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
 }
 
 .problem-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 40px;
-    border-radius: 4px;
+    background: rgba(26, 26, 26, 0.85); /* 蟆代＠騾城℃縺輔○繧� */
+    padding: 40px 30px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s;
+    border-radius: 8px; /* 隗剃ｸｸ繧貞ｰ代＠謚代∴繧√↓ */
+    backdrop-filter: blur(10px); /* 縺吶ｊ繧ｬ繝ｩ繧ｹ蜉ｹ譫� */
+    transition: transform 0.3s ease;
 }
 
 .problem-card:hover {
-    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
     border-color: var(--renewal-gold);
 }
 
-.p-num {
-    font-family: 'Outfit', sans-serif;
+.problem-card .p-num {
     font-size: 3rem;
-    font-weight: 800;
-    color: rgba(174, 139, 71, 0.3);
-    margin-bottom: 20px;
-    line-height: 1;
-}
-
-.problem-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
+    font-weight: 700;
     color: var(--renewal-gold);
+    line-height: 1;
+    margin-bottom: 20px;
+    font-family: var(--font-en);
+    opacity: 0.5; /* 蟆代＠謗ｧ縺医ａ縺ｫ */
 }
 
-@media (max-width: 900px) {
-    .problem-grid {
-        grid-template-columns: 1fr;
+.prob.flow-card h3 {
+    font-size: 1.3rem; /* 蟆代＠隱ｿ謨ｴ */
+    margin-bottom: 15px;
+    color: var(--renewal-navy) !important; /* 豼�＞髱偵ｒ蠑ｷ蛻ｶ */
+    font-family: var(--font-jp-serif);
+}
+
+.flow-card p {
+    font-size: 0.95rem;
+    color: #333 !important; /* 豼�＞鮟偵ｒ蠑ｷ蛻ｶ */
+    line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .problem-section {
+        padding: 60px 0;
+    }
+    
+    .problem-grid-wide {
+        grid-template-columns: 1fr; /* 繧ｹ繝槭�縺ｯ1蛻� */
+        gap: 20px;
+    }
+
+    .problem-card {
+        padding: 30px 20px;
     }
 }
 
@@ -435,11 +482,25 @@ section {
     flex: 1;
 }
 
+.tech-chart {
+    margin: 30px 0;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.tech-chart img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
 .tech-list {
     list-style: none;
     padding: 0;
     margin-top: 30px;
-    background: rgba(255,255,255,0.05); /* リストを目立たせる */
+    background: rgba(255,255,255,0.05); /* 繝ｪ繧ｹ繝医ｒ逶ｮ遶九◆縺帙ｋ */
     padding: 20px;
     border-radius: 8px;
 }
@@ -447,15 +508,15 @@ section {
 .tech-list li {
     margin-bottom: 15px;
     display: flex;
-    align-items: flex-start; /* アイコンを上揃えに */
+    align-items: flex-start; /* 繧｢繧､繧ｳ繝ｳ繧剃ｸ頑純縺医↓ */
     gap: 15px;
-    font-weight: 700; /* 強調 */
+    font-weight: 700; /* 蠑ｷ隱ｿ */
     line-height: 1.6;
 }
 
 .tech-list li i {
     color: var(--renewal-gold);
-    margin-top: 5px; /* テキストとのバランス調整 */
+    margin-top: 5px; /* 繝�く繧ｹ繝医→縺ｮ繝舌Λ繝ｳ繧ｹ隱ｿ謨ｴ */
     font-size: 1.2rem;
 }
 
@@ -470,21 +531,49 @@ section {
 }
 
 /* Flow Section */
-.flow-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+/* Flow Section Updates */
+.flow-container {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
     margin-top: 50px;
 }
 
+.flow-image {
+    flex: 1;
+    position: sticky;
+    top: 100px;
+}
+
+.flow-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.flow-steps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 0;
+}
+
 .flow-step {
-    text-align: center;
+    text-align: left;
     position: relative;
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    background: #f8fafc;
+    padding: 35px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
 }
 
 .step-num {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: var(--renewal-navy);
     color: #fff;
     display: flex;
@@ -493,14 +582,41 @@ section {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
     border-radius: 50%;
-    margin: 0 auto 20px;
+    margin: 0;
     font-size: 1.2rem;
-    border: 4px solid var(--renewal-gold);
+    border: 3px solid var(--renewal-gold);
+    flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+.flow-step-content {
+    flex: 1;
+}
+
+.flow-step h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: var(--renewal-navy);
+    font-family: 'Shippori Mincho', serif;
+}
+
+.flow-step p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .flow-container {
+        flex-direction: column;
+    }
+    .flow-image {
+        position: static;
+        width: 100%;
+        margin-bottom: 20px;
+    }
     .flow-steps {
-        grid-template-columns: 1fr;
+        width: 100%;
     }
 }
 
@@ -763,3 +879,425 @@ section {
         margin-top: 20px;
     }
 }
+
+/* Q&A Section (Refined Style) */
+.qa-section {
+    padding: 100px 0;
+    width: 100%;
+}
+
+.qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 60px auto 0;
+}
+
+.qa-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.qa-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    border-color: #ddd;
+}
+
+.q {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--renewal-navy);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.q::before {
+    content: 'Q';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: var(--renewal-navy);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-family: var(--font-en);
+    flex-shrink: 0;
+}
+
+.a {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.8;
+    padding-left: 47px;
+    position: relative;
+    display: block;
+}
+
+.a::before {
+    content: 'A';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--renewal-gold);
+    font-weight: 700;
+    font-family: var(--font-en);
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   Responsive Polish (Multi-Device Optimization)
+   ========================================================================== */
+
+/* 1. Global Image Safety */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 2. Enhanced Mobile Container */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Prevent horizontal scroll */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+}
+
+/* 3. Hero Mobile Improvements (Dynamic Viewport Height) */
+@media (max-width: 768px) {
+    .hero.renewal-hero {
+        min-height: 100dvh; /* Browsers with address bars support */
+    }
+    
+    .hero-content {
+        padding-top: 80px; /* Header space */
+    }
+}
+
+/* 4. Safe Area for Fixed Button (iPhone X+ support) */
+.fixed-line-btn {
+    bottom: max(20px, env(safe-area-inset-bottom) + 20px);
+    right: max(20px, env(safe-area-inset-right) + 20px);
+}
+
+/* 5. Typography Adjustments for Small Screens */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px; /* Slightly smaller base text */
+    }
+
+    .section-title {
+        font-size: 1.8rem !important;
+        word-break: keep-all; /* Don't break words awkwardly */
+        overflow-wrap: break-word;
+    }
+    
+    .hero-main-copy {
+        font-size: 2rem !important;
+    }
+}
+
+
+/* ==========================================================================
+   HEADING REPAIR (Fix Broken Layout)
+   ========================================================================== */
+
+/* 1. Reset Header Layout */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.95) !important; /* ほぼ不透明なネイビー */
+    padding: 15px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.header-inner {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: auto !important; /* 高さ制限解除 */
+}
+
+/* 2. Logo Fix (Refined) */
+.logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    text-decoration: none;
+    z-index: 10001;
+    height: 100%; /* 親の高さに合わせる */
+}
+
+.logo img {
+    display: block !important;
+    height: 40px !important;
+    width: auto !important;
+    max-width: none !important; /* 幅制限解除 */
+    background: #fff;
+    padding: 6px; /* パディングを少し増やす */
+    border-radius: 4px;
+    margin: 0 !important;
+    object-fit: contain;
+}
+
+.logo span {
+    display: block !important;
+    color: #fff !important;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem !important; /* 少し大きく */
+    letter-spacing: 0.05em;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* 3. Navigation Fix (PC) */
+.site-nav {
+    display: flex !important;
+    gap: 30px !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.site-nav a {
+    color: rgba(255,255,255,0.8) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.site-nav a:hover {
+    color: var(--renewal-gold) !important;
+}
+
+.nav-btn {
+    background: var(--renewal-gold) !important;
+    color: #fff !important;
+    padding: 10px 24px !important;
+    border-radius: 4px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+}
+
+/* 4. Hamburger & Mobile Menu Fix */
+.hamburger-btn {
+    display: none !important; /* PCでは非表示 */
+}
+
+@media (max-width: 900px) {
+    .site-nav {
+        /* スマホメニュー（デフォルトは隠す、JSでクラスがついたら表示） */
+        position: fixed !important;
+        top: 0;
+        right: -100%; /* 画面外へ */
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--renewal-navy) !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 30px !important;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        z-index: 10000;
+    }
+
+    .site-nav.active {
+        right: 0 !important; /* 出現 */
+    }
+
+    .site-nav a {
+        font-size: 1.2rem !important;
+        color: #fff !important;
+    }
+
+    /* ハンバーガーボタンを表示 */
+    .hamburger-btn {
+        display: block !important;
+        position: relative;
+        z-index: 10002;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 30px;
+        height: 24px;
+        padding: 0;
+    }
+    
+    .hamburger-btn span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #fff !important;
+        position: absolute;
+        transition: all 0.3s;
+    }
+    
+    .hamburger-btn span:nth-child(1) { top: 0; }
+    .hamburger-btn span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger-btn span:nth-child(3) { bottom: 0; }
+}
+
+
+/* ==========================================================================
+   Header Button Fix (Right Side LINE Button)
+   ========================================================================== */
+.nav-btn {
+    display: inline-flex !important;
+    align-items: center !important; /* ������������ */
+    justify-content: center !important;
+    gap: 8px !important;
+    height: auto !important;
+    line-height: 1 !important; /* �s�Ԃ���߂� */
+    padding: 10px 24px !important;
+}
+
+.nav-btn i {
+    display: inline-block !important;
+    font-size: 1.2rem !important; /* �����傫�� */
+    transform: translateY(1px); /* ���o�I������ */
+    margin: 0 !important;
+}
+
+
+/* ==========================================================================
+   FOOTER DESIGN (Professional Brand Finish)
+   ========================================================================== */
+
+.site-footer {
+    background-color: var(--renewal-navy);
+    color: #fff;
+    padding: 60px 0 40px;
+    text-align: center;
+    border-top: 5px solid var(--renewal-gold); /* �A�N�Z���g���C�� */
+}
+
+/* Footer Logo Styling */
+.footer-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    color: #fff;
+    display: inline-block;
+}
+
+/* Copyright Styling */
+.copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.05em;
+    margin-top: 20px;
+}
+
+
+/* ==========================================================================
+   FONT UNIFICATION (Shippori Mincho for Headings)
+   ========================================================================== */
+
+/* �S�Ă̌��o�����w�����ۂ薾���x�œ��ꂵ�A�d�����ƐM�������o�� */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.hero-main-copy,
+.flow-step h3,
+.problem-card h3,
+.profile-text h3,
+.s-content h3 {
+    font-family: 'Shippori Mincho', serif !important;
+    font-weight: 700 !important;
+}
+
+/* �{���͉ǐ��d���ŃS�V�b�N�iNoto Sans JP�j���ێ� */
+body, p, li, a, span:not(.hero-main-copy) {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* �p�����̃A�N�Z���g�i�o�b�W�␔���j�� Outfit ���ێ� */
+.section-badge,
+.step-num,
+.amount,
+.unit,
+.logo span,
+.footer-logo,
+.copyright {
+    font-family: 'Outfit', sans-serif !important;
+}
+
+
+/* ==========================================================================
+   FONT UNIFICATION (ALL Shippori Mincho)
+   ========================================================================== */
+
+/* ���{��e�L�X�g��S�āw�����ۂ薾���x�œ��� */
+body, 
+p, 
+li, 
+a, 
+span, 
+div, 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Shippori Mincho', serif !important;
+}
+
+/* �p�����̃A�N�Z���g�i�o�b�W�␔���A�p�P��j�� Outfit ���ێ����ă��_�������c�� */
+.section-badge,
+.step-num,
+.amount,
+.unit,
+.logo span,
+.footer-logo,
+.copyright,
+.nav-btn, /* �{�^�����̉p��Ȃ� */
+.card-label { /* ���i���x���Ȃ� */
+    font-family: 'Outfit', sans-serif !important;
+}
+
+
+/* ==========================================================================
+   BUTTON FONT FIX (Shippori Mincho)
+   ========================================================================== */
+
+/* �{�^�����̓��{����w�����ۂ薾���x�ɂ��� */
+.nav-btn,
+.cta-button,
+.fixed-line-btn span {
+    font-family: 'Shippori Mincho', serif !important;
+    font-weight: 700 !important; /* �����ł������Ŏ��F���m�� */
+    letter-spacing: 0.05em;
+}
+
