@@ -183,7 +183,7 @@
             </div>
 
             <h2>4. 「下書き保存」禁止（One Source of Truth）</h2>
-            <p>修正したいとき、<strong></strong>ファイルの末尾に「修正用コード」を追記していく「継ぎ足し方式」は禁止</strong>です。</p>
+            <p>修正したいとき、<strong>ファイルの末尾に「修正用コード」を追記していく「継ぎ足し方式」は禁止</strong>です。</p>
 
             <div class="rule-box bad">
                 <span class="badge badge-bad">NG：同じファイル内で重複</span>
@@ -195,11 +195,44 @@
             <div class="rule-box good">
                 <span class="badge badge-good">OK：元の場所を直接修正</span>
                 <p><strong>勇気を出して、元の記述を書き換える。</strong><br>
-                ファイル内検索（Ctrl+F）を使って、該当箇所の元の記述を探し出し、そこを直接修正します。<br>
-                <strong>ただし、必ずGitでコミットを取ってから修正すること（ルール10）。</strong></p>
-                
-                <p><strong>💡 Antigravityが生成したコードは「自分のコード」です</strong><br>
-                外部ライブラリではないので、遠慮せずに直接書き換えてOK。1箇所を見れば全てが分かる状態（One Source of Truth）を保ちましょう。</p>
+                ファイル内検索（Ctrl+F）を使って、該当箇所の元の記述を探し出し、そこを直接修正します。</p>
+                <p><strong>💡 AIへの指示のコツ</strong><br>
+                「既存の構造を壊さず、メンテナンス性を維持した美しいコードで出力してください」と一言添えるのがプロのディレクションです。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #e1f5fe; border-left: 4px solid #0288d1; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">✨ AI時代のCSS設計</h3>
+                <p>AI（Antigravity）と共同でデザインを磨き上げるための最新ルールです。</p>
+            </div>
+
+            <h2>5. 脱・!important 戦略</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><code>:where()</code> セレクタを活用してベーススタイルを定義する。<br>
+                詳細度（強さ）を上げすぎないことで、後の修正を楽にします。</p>
+            </div>
+
+            <h2>6. デザイン・トークン（変数）の徹底</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>色はすべて <code>--renewal-gold</code> のような変数で管理し、ハードコード（直書き）を排除します。<br>
+                これにより、サイト全体のカラーチェンジが 1 箇所（:root）の修正で完了します。</p>
+            </div>
+
+            <h2>7. コンポーネント指向メディアクエリ</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>レスポンシブ設定は、そのクラスの本体のすぐ下に記述します。<br>
+                PC版とスマホ版の設定を上下に往復して探す手間をなくします。</p>
+            </div>
+
+            <h2>8. 動的パディング（clamp関数）</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><code>padding: clamp(60px, 10vw, 120px) 0;</code><br>
+                画面幅に合わせて余白が自動で「呼吸」するように設計します。</p>
             </div>
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
