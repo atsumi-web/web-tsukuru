@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>私たちが、続けている理由。｜堀田建設株式会社（完全版）</title>
     <meta name="description" content="地元で続ける、未経験から挑戦、若手が育つ。3人のリアルな声と、数字・制度で証明する「働き続けられる環境」">
-    <!-- 共通CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/polish.css">
+    <!-- 共通CSS (ブラウザキャッシュ対策: v2.8) -->
+    <link rel="stylesheet" href="css/style.css?v=2.8">
+    <link rel="stylesheet" href="css/polish.css?v=2.8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800&family=Shippori+Mincho+B1:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ヘッダー（v1風） -->
+    <!-- 1. ヘッダー（成約率に直結する入り口） -->
     <header class="site-header">
-        <div class="container">
+        <div class="header-full-width">
             <div class="header-brand">
                 <a href="#hero" class="logo-link">
-                    <span class="logo-main">堀田建設</span>
-                    <span class="logo-sub">採用サイト</span>
+                    <img src="images/logo_blue.svg" alt="堀田建設株式会社" class="header-logo-img">
+                    <span class="logo-sub">RECRUITMENT</span>
                 </a>
             </div>
             
@@ -31,356 +31,365 @@
 
             <nav class="header-nav">
                 <ul class="nav-menu">
-                    <li><a href="#job-description">仕事について</a></li>
-                    <li><a href="#interview-okayasu">3人のインタビュー</a></li>
-                    <li><a href="#data">数字で見る環境</a></li>
-                    <li><a href="#casual-interview" class="nav-cta-blue">30分カジュアル面談</a></li>
+                    <li><a href="#job-description">仕事を知る</a></li>
+                    <li><a href="#interview-okayasu">人を深掘る</a></li>
+                    <li><a href="#data">環境を確かめる</a></li>
+                    <li><a href="#contact" class="nav-cta">LINEでカジュアル相談</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ヒーローセクション (TETO Design) -->
+    <!-- 2. ヒーローセクション（スプリット・没入型） -->
     <section class="hero-teto" id="hero">
         <div class="hero-teto-container">
-            <!-- Left: Typography Content -->
+            <!-- 背景に添える英語テキスト -->
+            <div class="teto-catch-en">RECRUIT</div>
+            
+            <!-- メッセージコンテンツ -->
             <div class="hero-teto-content">
-                <div class="teto-catch-en">BUILD<br>OUR<br>CITY</div>
                 <h1 class="teto-main-title">
                     <span>三重の現場に、</span><br>
-                    <span>一生モノの誇りを。</span>
+                    一生モノの誇りを。
                 </h1>
                 <p class="teto-sub-title">
                     「とりあえず」で選んだ仕事でもいい。<br>
                     ここで過ごす時間は、あなたの人生の「資産」になる。<br>
-                    <strong>私たちは、次世代の地域を担う新しい仲間のために、最高の環境を用意しています。</strong>
+                    私たちは、地域を担う新しい仲間のために最高の環境を用意しています。
                 </p>
                 
-                <div class="hero-actions" style="justify-content: flex-start; margin-top: 2rem;">
+                <div class="hero-actions" style="margin-top: 2rem;">
                     <a href="#contact" class="btn btn-primary btn-large">
                         <i class="fab fa-line"></i> まずはLINEで相談してみる
                     </a>
                 </div>
 
-                <!-- 連絡先情報 -->
-                <div style="margin-top: 2rem; display: flex; gap: 1.5rem; align-items: center; color: var(--color-neutral-gray);">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
-                        <i class="fas fa-phone-alt" style="color: var(--color-primary);"></i> 0595-82-1262
+                <!-- プレミアム連絡先情報 -->
+                <div class="hero-contact-minimal">
+                    <div class="contact-minimal-item">
+                        <i class="fas fa-phone-alt"></i> 0595-82-1262
                     </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
-                        <i class="fab fa-line" style="color: #06C755;"></i> LINE受付中
+                    <div class="contact-minimal-item">
+                        <i class="fab fa-line"></i> LINE相談受付中
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Right: Dynamic Visual -->
-            <div class="hero-teto-visual">
-                <video autoplay loop muted playsinline poster="images/hero-background.jpg">
-                    <source src="images/hattakensetsu_rp_min.mp4" type="video/mp4">
-                </video>
+        <!-- 右側：動画ビジュアル -->
+        <div class="hero-teto-visual">
+            <video autoplay loop muted playsinline poster="images/hero-background.jpg">
+                <source src="images/hattakensetsu_rp_min.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="mouse-scroll">
+            <div class="mouse-icon">
+                <div class="mouse-wheel"></div>
             </div>
-            
-            <!-- Mouse Scroll Indicator -->
-            <div class="mouse-scroll">
-                <div class="mouse-icon">
-                    <div class="mouse-wheel"></div>
-                </div>
-                <span class="mouse-text">SCROLL</span>
-            </div>
+            <span class="mouse-text">SCROLL</span>
         </div>
     </section>
 
-    <!-- イントロダクション -->
-    <section class="message">
+    <!-- 3. イントロダクション（共感と約束） -->
+    <section class="message reveal">
         <div class="container">
-            <div class="intro-text" style="max-width: 800px; margin: 0 auto; text-align: center; padding: var(--space-xl) var(--space-md);">
-                <p class="message-text" style="font-size: 1.1rem; line-height: 1.8;">
-                    このページでは、<strong>3人のリアルな声（感情）</strong>と、<strong>客観的な数字（理性）</strong>、<br>
-                    そして<strong>具体的な制度（具体性）</strong>の3つの側面から、<br>
-                    「なぜここで働き続けられるのか」をありのままにお伝えします。
-                </p>
+            <div class="intro-grid">
+                <div class="visual-frame">
+                    <img src="images/civil-01.jpg" alt="ベテランと若手の笑顔の対話">
+                </div>
+                <div class="intro-text">
+                    <span class="label-en">INTRODUCTION</span>
+                    <h2 class="premium-title">建設業は怖い？<br>その不安、ここで解けます。</h2>
+                    <p class="premium-text">
+                        「建設業界は厳しそう」「未経験だと怒られそう」<br>
+                        もしあなたがそんな不安を抱えているなら、<strong>堀田建設はそのイメージを真っ先に裏切る場所</strong>でありたいと考えています。
+                    </p>
+                    <p class="premium-text" style="margin-top: 1.5rem;">
+                        私たちが求めているのは、今すぐ完璧に仕事ができる人ではありません。あなたの失敗を笑わず、成長を一歩ずつ支える。そんな当たり前だけど温かい関係を、堀田建設は大切にしています。
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 【新規追加】施工管理の仕事説明 -->
+    <!-- 4. 仕事説明（施工管理の魅力） -->
     <section id="job-description" class="job-description reveal">
         <div class="container">
-            <h2 class="section-title"><span>GUIDE</span>「施工管理」って、どんな仕事？</h2>
-            <p class="section-subtitle">インタビューに出てくる「施工管理」の仕事を、具体的に解説します。</p>
-            
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="job-description-block">
-                    <h3 style="color: var(--color-primary); margin-bottom: var(--space-sm);">👷‍♂️ 現場の総合ディレクター</h3>
-                    <p>設計図面をもとに、工程・資材・人員・予算を管理し、建物を計画通りに完成させるのが仕事です。単なる「現場監督」ではなく、<strong>「建築プロジェクトのプロデューサー」</strong>に近い役割です。</p>
-                </div>
-                
-                <div class="job-aspects">
-                    <div class="job-aspect">
-                        <h4 style="color: var(--color-primary); font-size: 1rem;">工程管理</h4>
-                        <p style="font-size: 0.9rem;">スケジュールを作成し、遅延なく進捗させる</p>
-                    </div>
-                    <div class="job-aspect">
-                        <h4 style="color: var(--color-primary); font-size: 1rem;">品質管理</h4>
-                        <p style="font-size: 0.9rem;">図面通りに施工されているかチェックする</p>
-                    </div>
-                    <div class="job-aspect">
-                        <h4 style="color: var(--color-primary); font-size: 1rem;">安全管理</h4>
-                        <p style="font-size: 0.9rem;">現場の安全を確保し、事故を防止する</p>
-                    </div>
-                    <div class="job-aspect">
-                        <h4 style="color: var(--color-primary); font-size: 1rem;">コスト管理</h4>
-                        <p style="font-size: 0.9rem;">予算内でプロジェクトを完遂させる</p>
+            <div class="job-grid">
+                <div class="job-text">
+                    <span class="label-en">WHAT WE DO</span>
+                    <h2 class="premium-title">「施工管理」とは、<br>街のプロデューサー。</h2>
+                    <p class="premium-text">
+                        施工管理の仕事は、単なる現場監督ではありません。設計図をもとに、人・資材・工程のすべてを束ね、一つの建物を完成へと導く<strong>「建築プロジェクトの総指揮官」</strong>です。
+                    </p>
+                    <div class="job-card">
+                        <div class="job-step-item">
+                            <span class="step-num">1</span>
+                            <div>
+                                <h4 style="color:var(--navy-deep); margin-bottom: 0.5rem; font-weight: 700;">調整のプロ</h4>
+                                <p style="font-size: 0.95rem; color: #666;">職人さんと対話し、現場を円滑に回す。それが最大の役割です。</p>
+                            </div>
+                        </div>
+                        <div class="job-step-item">
+                            <span class="step-num">2</span>
+                            <div>
+                                <h4 style="color:var(--navy-deep); margin-bottom: 0.5rem; font-weight: 700;">品質の守護者</h4>
+                                <p style="font-size: 0.95rem; color: #666;">設計通りに、そして安全に建物が作られているかを見守ります。</p>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; margin-top: 2rem; color: var(--accent-gold); font-weight: 600;">※ 未経験の方は、簡単なサポート業務から一歩ずつ成長できます。</p>
                     </div>
                 </div>
-                
-                <p style="text-align: center; margin-top: var(--space-lg); font-style: italic; color: var(--color-neutral-gray);">
-                    ※ 未経験から始める場合は、これらの業務を段階的に学んでいきます。<br>
-                    以下の3人は、それぞれ異なる経路でこの仕事にたどり着きました。
-                </p>
+                <div class="visual-frame">
+                    <img src="images/talk-construction-01.jpg" alt="現場で打ち合わせを行う社員">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 岡安さんインタビュー -->
+    <!-- 5. 社員インタビュー：岡安 航平（共感の核） -->
     <section id="interview-okayasu" class="interview-section reveal">
         <div class="container">
-            <div class="interview-header">
-                <h2>「大手ではなく、地元密着の『1から10』を選んだ理由。」</h2>
-            </div>
+            <h2 class="premium-title"><span>VOICE 01</span>人を深掘る</h2>
             
-            <div class="interview-person">
-                <div class="interview-avatar">岡</div>
-                <div class="interview-info">
-                    <h3>岡安 航平｜工事部｜入社5年目</h3>
-                    <p>三重県亀山市出身・在住。地元でのキャリア形成に迷いながらも、ここで働く価値を見出した。</p>
-                    <span class="interview-tag">#地元密着</span>
-                    <span class="interview-tag">#1から10まで経験</span>
-                    <span class="interview-tag">#失敗を糧に</span>
-                </div>
-            </div>
-            
-            <div class="interview-quote">
-                「全国規模の大手なら、私は大勢の中の一人に過ぎなかったかもしれません。<br>
-                1から10まで、自分の手で現場を動かす。この手応えは、ここだから味わえる資産です。」
-            </div>
-            
-            <div class="qa-grid">
-                <div class="qa-item">
-                    <h4>地元で働く選択に迷いはありましたか？</h4>
-                    <p>地元で働くことに、最初は少し不安もありました。大手のほうがキャリアが広がるかも、自分に甘えているのかな、と。でも今は、その選択を続ける『現実的な理由』が見えています。顔の見えるお客様から『早く対応してくれてありがとう』と言われる距離感は、何物にも代えがたいです。</p>
+            <div class="interview-premium">
+                <!-- 左：人物ビジュアル -->
+                <div class="interview-visual">
+                    <img src="images/建築部係長.png" alt="岡安 航平">
                 </div>
                 
-                <div class="qa-item">
-                    <h4>未熟だったなと思う失敗談は？</h4>
-                    <p>仕事に慣れてきた頃、メモを取らずに指示を聞いてしまい、下請けさんの段取りを止めてしまったことがあります。真っ青になった私に、先輩たちは『2度同じミスをしなければいい』と笑ってくれました。その一言で、次こそは貢献しようと強く思えました。</p>
-                </div>
-                
-                <div class="qa-item">
-                    <h4>大手と比べて、ここで働き続けている理由は？</h4>
-                    <p>もし大手なら、もっと大規模な現場で、多くの監督職員の一人として働いていたと思います。でも私は、現場の最初から最後まで、すべてに責任を持って関われることにやりがいを感じます。自分の成長が、ダイレクトに建物に反映されるのが最高に面白いんです。</p>
-                </div>
-                
-                <div class="qa-item">
-                    <h4>同じ道を考えている人へ</h4>
-                    <p>地元の雰囲気を感じながら仕事ができるのは、大きな安心感があります。一方で、お客様との距離が近いからこそのプレッシャーもあります。でも、それを乗り越えた時の感謝の言葉は、この仕事を続けていく最高のエネルギーになりますよ。</p>
+                <!-- 右：内容 -->
+                <div class="interview-body">
+                    <div class="interview-name-block">
+                        <span class="interview-name-en">BUILDING SECTION</span>
+                        <h3 class="interview-name-jp">
+                            岡安 航平 <span class="interview-role">建築部 係長｜入社5年目</span>
+                        </h3>
+                    </div>
+
+                    <p class="interview-main-quote">
+                        「大手ではない、地元密着の『1から10』。<br>この手応えこそが、ここを選ぶ理由でした。」
+                    </p>
+
+                    <div class="interview-tags">
+                        <span class="interview-tag">#地元密着</span>
+                        <span class="interview-tag">#施工管理の醍醐味</span>
+                        <span class="interview-tag">#失敗を糧に</span>
+                    </div>
+
+                    <div class="interview-qa-stack">
+                        <div class="qa-box">
+                            <h4><i class="fas fa-question-circle"></i> 地元で働く選択に迷いは？</h4>
+                            <p>
+                                以前は「大手のほうがかっこいいかも」と迷ったこともあります。でも今は、顔の見えるお客様から「堀田さん、早く対応してくれてありがとう」と言われる距離感が、何物にも代えがたい誇りになっています。
+                            </p>
+                        </div>
+                        <div class="qa-box">
+                            <h4><i class="fas fa-lightbulb"></i> 仕事の面白さはどこにありますか？</h4>
+                            <p>
+                                現場の最初から最後まで、すべてに責任を持って関われること。自分の指示や判断がダイレクトに建物に反映される。この「現場を動かしている」という感覚は、少人数の精鋭チームだからこそ味わえる特等席です。
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 菅原さんインタビュー -->
+    <!-- 6. 社員インタビュー：菅原 拓真（異業種の希望） -->
     <section id="interview-sugahara" class="interview-section reveal">
         <div class="container">
-            <div class="interview-header">
-                <h2>「商業高校から建設へ。『普通でない道』が、ここでは武器になる。」</h2>
-            </div>
+            <h2 class="premium-title"><span>VOICE 02</span>「違い」を強みに</h2>
             
-            <div class="interview-person">
-                <div class="interview-avatar">菅</div>
-                <div class="interview-info">
-                    <h3>菅原 拓真｜工事部｜異業種から転職</h3>
-                    <p>前職：商業系職種。未経験から建設業界へ飛び込み、独自の視点で現場を支える。</p>
-                    <span class="interview-tag">#異業種からの挑戦</span>
-                    <span class="interview-tag">#未経験スタート</span>
-                    <span class="interview-tag">#生活の質の向上</span>
+            <div class="interview-premium" style="grid-template-columns: 1.1fr 0.9fr;">
+                <!-- 内容 -->
+                <div class="interview-body" style="order: 2;">
+                    <div class="interview-name-block">
+                        <span class="interview-name-en">CONSTRUCTION SECTION</span>
+                        <h3 class="interview-name-jp">
+                            菅原 拓真 <span class="interview-role">工事部｜異業種から転職</span>
+                        </h3>
+                    </div>
+
+                    <p class="interview-main-quote">
+                        「商業高校から建設へ。『普通でない道』が、<br>ここでは誰にも負けない武器になる。」
+                    </p>
+
+                    <div class="interview-tags">
+                        <span class="interview-tag">#異業種からの挑戦</span>
+                        <span class="interview-tag">#未経験スタート</span>
+                        <span class="interview-tag">#生活の質の向上</span>
+                    </div>
+
+                    <div class="interview-qa-stack">
+                        <div class="qa-box">
+                            <h4><i class="fas fa-question-circle"></i> 未経験からの転職、不安は？</h4>
+                            <p>
+                                道具の名前も分からない状態からのスタートでした。でも、前職で培った事務的な丁寧さや効率化の視点は、複雑な現場の工程管理で驚くほど役立ちました。「未経験」は欠点ではなく、新しい視点という武器になります。
+                            </p>
+                        </div>
+                        <div class="qa-box">
+                            <h4><i class="fas fa-heart"></i> 転職して一番良かったことは？</h4>
+                            <p>
+                                何より「心に余裕ができたこと」です。地元に腰を据えて働くことで生活のリズムが整い、休日の質が劇的に上がりました。プライベートが充実しているからこそ、仕事にも100%の力で向き合えています。
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="interview-quote">
-                「商業高校出身という"普通"の経歴が、現場の段取りや丁寧な確認という形で、今では私の最大の強みになっています。専門用語が宇宙語に聞こえたあの日が嘘のようです。」
-            </div>
-            
-            <div class="qa-grid">
-                <div class="qa-item">
-                    <h4>未経験からの転職、不安はありましたか？</h4>
-                    <p>一番は『本当にできるのか？』という不安でした。道具の名前も分からない、右も左も分からない状態。でも、前職で培った事務スキルやコミュニケーション力は、現場の安全を守る『丁寧さ』に繋がると気づき、徐々に自信が持てるようになりました。</p>
-                </div>
-                
-                <div class="qa-item">
-                    <h4>想像と違った業界のカルチャーは？</h4>
-                    <p>前職は個人の成果重視でしたが、建設業は驚くほど『チームワーク』の仕事でした。一人が困っていたら全員で助ける。最初は戸惑いましたが、今ではその一体感こそが、この仕事を続ける一番の理由です。</p>
-                </div>
-                
-                <div class="qa-item">
-                    <h4>「無理だ」と思った瞬間は？</h4>
-                    <p>初めて工程管理を任された時、あまりの複雑さに『これは私には無理だ』と感じ、正直に伝えました。上司は『無理って言えるのは、真剣に考えた証拠。一緒にやろう』と。その一言で、肩の荷が下り、一歩ずつ進むことができました。</p>
-                </div>
-                
-                <div class="qa-item">
-                    <h4>転職して一番良かったことは？</h4>
-                    <p>心に余裕ができたことです。地元に腰を据えて働くことで、仕事と生活のバランスが整いました。休日の質が上がり、家族や友人と過ごす時間が格段に増えた。これが今の私の『本当の収穫（ひらめき）』です。</p>
+
+                <!-- 人物ビジュアル -->
+                <div class="interview-visual" style="order: 1;">
+                    <img src="images/土木部部長.png" alt="菅原 拓真">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 渥美さんインタビュー -->
+    <!-- 7. 社員インタビュー：渥美 陽向（若手の成長） -->
     <section id="interview-atsumi" class="interview-section reveal">
         <div class="container">
-            <div class="interview-header">
-                <h2>「女性が、若手が、現場の主役になる時代。」</h2>
-            </div>
+            <h2 class="premium-title"><span>VOICE 03</span>次代を創る</h2>
             
-            <div class="interview-person">
-                <div class="interview-avatar">渥</div>
-                <div class="interview-info">
-                    <h3>渥美 陽向｜工事部｜入社3年目</h3>
-                    <p>高卒入社。2級建築士合格<span class="qualification-badge">資格取得</span>。1級を目指し、日々現場で奮闘中。</p>
-                    <span class="interview-tag">#若手ホープ</span>
-                    <span class="interview-tag">#資格支援制度</span>
-                    <span class="interview-tag">#現場の新しい風</span>
-                </div>
-            </div>
-            
-            <div class="interview-quote">
-                「『無理です』と言えることが、私にとって最大の成長でした。<br>
-                強がるのではなく、仲間の安全のために正直に頼る。それがプロへの第一歩だと教わりました。」
-            </div>
-            
-            <div class="qa-grid">
-                <div class="qa-item">
-                    <h4>入社当初、一番強がっていたことは？</h4>
-                    <p>始めた頃は『女だからってなめられたくない』と、重いものを持つのも全部一人でやろうとしていました。でも先輩に『無理な時は無理と言え。それが現場全体の安全を守ることだ』と言われ、目が覚めました。今は、自分の限界を正しく共有することが信頼に繋がると確信しています。</p>
+            <div class="interview-premium">
+                <!-- 左：人物ビジュアル -->
+                <div class="interview-visual">
+                    <img src="images/土木部主任.png" alt="渥美 陽向">
                 </div>
                 
-                <div class="qa-item">
-                    <h4>ヘルメットを被る自分の姿、どう思いますか？</h4>
-                    <p>最初は少し抵抗もありましたが（笑）、今では地元の友達にも誇らしく見せられます。2級建築士を取り、少しずつ仕事の面白さがわかってきた今、毎日が新しい挑戦の連続です。建設は力仕事だけじゃない、細やかな配慮が生きる世界なんです。</p>
-                </div>
-                
-                <div class="qa-item">
-                    <h4>会社のサポートで一番驚いたことは？</h4>
-                    <p>一番は、資格試験前の配慮です。勉強時間の確保のために現場の負担を調整してくれたり、『陽向ならいける！』と背中を押してくれた。ここには、性別も年齢も関係なく、頑張る人を全力で応援してくれる土壌があります。</p>
-                </div>
-                
-                <div class="qa-item">
-                    <h4>未来の後輩へ一言</h4>
-                    <p>未完成だからこそ、ここで成長できるんです。何もできなくて当然。最初の一歩を怖がらずに、私たちのチームに入ってきてほしいです。私もしっかりサポートしますよ！</p>
+                <!-- 右：内容 -->
+                <div class="interview-body">
+                    <div class="interview-name-block">
+                        <span class="interview-name-en">CONSTRUCTION SECTION</span>
+                        <h3 class="interview-name-jp">
+                            渥美 陽向 <span class="interview-role">工事部｜入社3年目</span>
+                        </h3>
+                    </div>
+
+                    <p class="interview-main-quote">
+                        「『無理です』と言えることが、<br>私にとって最大の成長でした。」
+                    </p>
+
+                    <div class="interview-tags">
+                        <span class="interview-tag">#2級建築士合格</span>
+                        <span class="interview-tag">#若手ホープ</span>
+                        <span class="interview-tag">#資格支援制度</span>
+                    </div>
+
+                    <div class="interview-qa-stack">
+                        <div class="qa-box">
+                            <h4><i class="fas fa-question-circle"></i> 仕事のやりがいを感じる瞬間は？</h4>
+                            <p>
+                                最初は「なめられたくない」と強がっていましたが、先輩に「無理な時は正直に頼れ。それが安全へのプロの仕事だ」と教わりました。素直に仲間に頼れるようになった時、本当のチームワークと、この仕事の深さがわかりました。
+                            </p>
+                        </div>
+                        <div class="qa-box">
+                            <h4><i class="fas fa-shield-alt"></i> 会社のサポートはどうですか？</h4>
+                            <p>
+                                資格試験前の休暇配慮など、頑張る人を全力で応援してくれる土壌があります。性別や年齢に関係なく、一人の技術者として向き合ってくれる。そんな文化があるから、未経験の私でもここまで来れました。
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 共通環境セクション -->
+    <!-- 8. 環境セクション（情緒的信頼） -->
     <section id="environment" class="features reveal">
         <div class="container">
-            <h2 class="section-title"><span>ENVIRONMENT</span>「3人が、選び続けている環境」</h2>
-            <p class="section-subtitle">立場も経歴も違う3人が、なぜ同じ職場を選んだのか。私たちが何より大切にしている4つのこと。</p>
+            <h2 class="premium-title"><span>ENVIRONMENT</span>「3人が、選び続けている理由」</h2>
             
             <div class="environment-grid">
-                <div class="environment-item">
-                    <div class="environment-number">1</div>
+                <div class="environment-card">
+                    <i class="fas fa-comments"></i>
                     <h3>迷いを共有できる</h3>
-                    <p>地元就職の不安、未経験の怖さ、若手の葛藤。どんな迷いも、一人で抱え込まない文化があります。</p>
+                    <p>地元就職の不安、未経験の怖さ、若手の葛藤。どんな小さな迷いも、一人で抱え込まずに話せる文化が根付いています。</p>
                 </div>
-                
-                <div class="environment-item">
-                    <div class="environment-number">2</div>
+                <div class="environment-card">
+                    <i class="fas fa-seedling"></i>
                     <h3>成長に投資する</h3>
-                    <p>資格取得の全額負担、専門スキルの研修、段階的な責任委譲。社員の「なりたい」に本気で向き合います。</p>
+                    <p>資格取得の全額負担はもちろん、現場での丁寧な指導まで。「未完成」なあなたがプロになるまで伴走します。</p>
                 </div>
-                
-                <div class="environment-item">
-                    <div class="environment-number">3</div>
-                    <h3>未完成を認め合う</h3>
-                    <p>「できない」が改善の種になる。「無理です」が信頼の第一歩になる。完璧より成長を重視します。</p>
-                </div>
-                
-                <div class="environment-item">
-                    <div class="environment-number">4</div>
-                    <h3>働くだけでなく、遊びも一緒に</h3>
-                    <p>終業後のスポーツ、会社主催のBBQ、世代を超えた趣味の話。等身大の付き合いが、チームの土台です。</p>
+                <div class="environment-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>「無理」を認め合う</h3>
+                    <p>強がるのではなく、仲間の安全のために正直に頼ること。そんな「弱さを見せられる強さ」を私たちは大切にします。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 【新規追加】数字で見る働きやすさ（v1から移植） -->
+    <!-- 9. データセクション（論理的信頼） -->
     <section id="data" class="data-section reveal">
         <div class="container">
-            <h2 class="section-title"><span>DATA</span>数字でわかる、働きやすい環境</h2>
-            <p class="section-subtitle">インタビューで語られた「働きやすさ」を、客観的なデータでも証明します。</p>
-
+            <h2 class="premium-title"><span>TRUST</span>数字と認定が証明する、安心</h2>
+            
             <div class="data-grid">
-                <div class="data-item">
-                    <div class="data-number">約20時間</div>
-                    <h4 class="data-title">月次平均残業時間</h4>
-                    <p class="data-desc">プライベートの時間も大切に。</p>
-                    <span class="data-comparison">建設業界平均より大幅に短い</span>
+                <div class="data-card">
+                    <span class="data-label">月次平均残業</span>
+                    <span class="data-val">約20時間</span>
+                    <p>「建設＝不夜城」は過去の話。効率的な管理で私生活を尊重します。</p>
                 </div>
-                <div class="data-item">
-                    <div class="data-number">15日以上</div>
-                    <h4 class="data-title">有給取得平均日数</h4>
-                    <p class="data-desc">実際に取得できている環境です。</p>
-                    <span class="data-comparison">前年度比 +3日増加</span>
+                <div class="data-card">
+                    <span class="data-label">有給取得日数（平均）</span>
+                    <span class="data-val">15日以上</span>
+                    <p>趣味や家族のための休み。後ろめたさなく取れるのが当たり前です。</p>
                 </div>
-                <div class="data-item">
-                    <div class="data-number">無料</div>
-                    <h4 class="data-title">社内ジム利用</h4>
-                    <p class="data-desc">健康管理も会社がサポート。</p>
-                    <span class="data-comparison">社員の7割が定期的に利用</span>
+                <div class="data-card">
+                    <span class="data-label">平均勤続年数</span>
+                    <span class="data-val">10.5年</span>
+                    <p>若手からベテランまで、腰を据えて長く働ける環境の証です。</p>
                 </div>
-                <div class="data-item">
-                    <div class="data-number">平均12年</div>
-                    <h4 class="data-title">平均勤続年数</h4>
-                    <p class="data-desc">長く働き続けられる職場。</p>
-                    <span class="data-comparison">定着率の高さの証左</span>
+            </div>
+
+            <!-- 公式認定エリア（圧倒的権威） -->
+            <div class="trust-badges">
+                <div class="trust-badge-item">
+                    <img src="images/ユースエール.png" alt="ユースエール認定">
+                    <span>若者の雇用に積極的な<br>優良企業（厚労省）</span>
+                </div>
+                <div class="trust-badge-item">
+                    <img src="images/三重の働き方改革推進企業.webp" alt="三重の働き方改革推進企業">
+                    <span>三重県働き方改革<br>推進企業（三重県）</span>
+                </div>
+                <div class="trust-badge-item">
+                    <img src="images/健康経営優良法人.svg" alt="健康経営優良法人">
+                    <span>健康経営優良法人<br>（経済産業省）</span>
                 </div>
             </div>
         </div>
     </section>
 
-      <!-- 【新規追加】制度で支える（公式サイトから） -->
+
+    <!-- 10. 福利厚生制度（お宝日常） -->
     <section id="system" class="system-section reveal">
         <div class="container">
-            <h2 class="section-title"><span>BENEFITS</span>制度で支える、続けられる理由</h2>
-            <p class="section-subtitle">「働きやすさ」は、具体的な制度に支えられています。</p>
+            <h2 class="premium-title"><span>BENEFITS</span>ちょっと嬉しい、堀田の日常</h2>
             
-            <div class="system-grid">
-                <div class="system-item">
-                    <h4 style="color: var(--color-primary); margin-bottom: var(--space-xs);">🏠 借上げ社宅制度</h4>
-                    <p style="font-size: 0.95rem;">一人暮らしのスタートも安心。地元外からの転職者もスムーズに生活を始められます。</p>
+            <div class="environment-grid">
+                <div class="environment-card" style="padding: 0; overflow: hidden;">
+                    <img src="images/gym_facility.png" alt="社内ジム" style="width: 100%; height: 220px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-size: 1.2rem;">社内ジム、使い放題。</h3>
+                        <p style="font-size: 0.95rem;">仕事帰りにリフレッシュ。健康な体こそが、良い仕事の基本です。</p>
+                    </div>
                 </div>
-                <div class="system-item">
-                    <h4 style="color: var(--color-primary); margin-bottom: var(--space-xs);">💪 スポーツジム無料</h4>
-                    <p style="font-size: 0.95rem;">会社に隣接するジムを無料で利用可能。仕事と健康のバランスをサポート。</p>
+                <div class="environment-card" style="padding: 0; overflow: hidden;">
+                    <img src="images/eel_bento.png" alt="うなぎ弁当" style="width: 100%; height: 220px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-size: 1.2rem;">差し入れは、地元の銘味。</h3>
+                        <p style="font-size: 0.95rem;">繁忙期など、社長から「うなぎ弁当」が届くことも。スタミナ満点です。</p>
+                    </div>
                 </div>
-                <div class="system-item">
-                    <h4 style="color: var(--color-primary); margin-bottom: var(--space-xs);">🎯 優良現場表彰</h4>
-                    <p style="font-size: 0.95rem;">安全大会で最も優良な現場を表彰。仕事へのやりがいと評価を実感できます。</p>
-                </div>
-                <div class="system-item">
-                    <h4 style="color: var(--color-primary); margin-bottom: var(--space-xs);">📚 資格取得全額支援</h4>
-                    <p style="font-size: 0.95rem;">渥美さんも活用した制度。建築士などの資格取得費用は全額会社負担。</p>
-                </div>
-                <div class="system-item">
-                    <h4 style="color: var(--color-primary); margin-bottom: var(--space-xs);">👨‍👩‍👧‍👦 家族手当</h4>
-                    <p style="font-size: 0.95rem;">配偶者・子どもに対して手当を支給。家族との生活を経済的にサポート。</p>
-                </div>
-                <div class="system-item">
-                    <h4 style="color: var(--color-primary); margin-bottom: var(--space-xs);">🚗 通勤支援</h4>
-                    <p style="font-size: 0.95rem;">公共交通機関の不便な地域でも安心。通勤をしっかりサポートします。</p>
+                <div class="environment-card" style="padding: 0; overflow: hidden;">
+                    <img src="images/company_party.png" alt="親睦会" style="width: 100%; height: 220px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-size: 1.2rem;">立場を超えて楽しむ。</h3>
+                        <p style="font-size: 0.95rem;">BBQや食事会では、社長も新人も関係なく盛り上がります。この距離感の近さが、現場のチームワークを生んでいます。</p>
+                    </div>
                 </div>
             </div>
         </div>

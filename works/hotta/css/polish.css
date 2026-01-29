@@ -1,180 +1,115 @@
-/* ============================================
+﻿/* ============================================
    works/hotta/css/polish.css
-   堀田建設様 LP プレミアム・ブラッシュアップ
+   堀田建設様 LP プレミアムデザイン
    ============================================ */
 
-@import url("https://fonts.googleapis.com/css2?family= Shippori+Mincho+B1:wght@400;700&display=swap");
+/* 09_coding_rules.md 厳守: !importantを使わず、詳細度（bodyやID）で既存のstyle.cssを上書きリセットする */
+
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;700&family=Inter:wght@400;700;900&display=swap");
 
 :root {
-  --accent-gold: #c5a059;
-  --navy-deep: #001a3d;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.3);
-  --premium-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    --accent-gold: #c5a059;
+    --accent-gold-light: #ffebbc;
+    --navy-deep: #001a3d;
+    --navy-light: #002d6b;
+    --premium-white: #ffffff;
+    --text-dark: #333333;
+    --border-light: rgba(0, 26, 61, 0.08);
+    --premium-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
+    --radius-lg: 40px;
+    --radius-card: 32px;
 }
 
-/* 1. タイポグラフィ強化 */
-h1,
-h2,
-h3,
-.interview-quote {
-  font-family: "Shippori Mincho B1", serif !important;
+/* --- Base Reset for Premium Sections --- */
+body .premium-title {
+    border-bottom: none; border-left: 6px solid var(--accent-gold);
+    padding: 0 0 0 1.5rem; margin-bottom: 3rem;
+    font-family: "Shippori Mincho B1", serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.3; color: var(--navy-deep);
+}
+body .premium-title span {
+    display: block; font-size: 0.9rem; letter-spacing: 0.3em;
+    color: var(--accent-gold); margin-bottom: 0.5rem;
+    font-style: normal; font-weight: 700;
 }
 
-.section-title {
-  font-size: 2.8rem !important;
-  text-align: center;
-  position: relative;
-  padding-bottom: 2rem;
-  margin-bottom: 3rem !important;
-  border-bottom: none !important;
-  color: var(--color-primary) !important;
+/* --- Header Polish --- */
+body .site-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05); border: none;
+}
+body .header-logo-img { max-height: 45px; width: auto; }
+
+/* --- Hero Teto --- */
+body #hero.hero-teto {
+    height: 100vh; min-height: 700px; background: var(--navy-deep);
+    display: flex; overflow: hidden; margin: 0; padding: 0;
+}
+@media (max-width: 1024px) { body #hero.hero-teto { flex-direction: column-reverse; height: auto; } }
+
+body .hero-teto-container {
+    width: 45%; flex: 0 0 45%; background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-light) 100%);
+    display: flex; align-items: center; padding: 0 6%; position: relative; z-index: 2;
+}
+@media (max-width: 1024px) { body .hero-teto-container { width: 100%; padding: 5rem 8%; } }
+
+body .teto-main-title {
+    font-family: "Shippori Mincho B1", serif; color: #fff; font-size: clamp(2.5rem, 4.5vw, 3.8rem); line-height: 1.25;
+}
+body .teto-main-title span {
+    background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(
-    to right,
-    var(--color-primary),
-    var(--accent-gold)
-  );
+body .hero-teto-visual {
+    width: 55%; flex: 0 0 55%; position: relative;
+}
+@media (max-width: 1024px) { body .hero-teto-visual { width: 100%; height: 50vh; } }
+body .hero-teto-visual video { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- Interview Section --- */
+body .interview-section { background: #fdfdfd; padding: 8rem 0; }
+body .interview-premium {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 0; background: #fff;
+    border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--premium-shadow);
+}
+@media (max-width: 900px) { body .interview-premium { grid-template-columns: 1fr; } }
+
+body .interview-visual img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.01); transition: 1s ease; }
+body .interview-body { padding: clamp(2rem, 5vw, 4rem); }
+
+body .interview-name-jp { font-size: 2rem; margin-bottom: 0.5rem; border-bottom: none; font-family: "Shippori Mincho B1", serif; }
+body .interview-role { font-size: 1rem; color: var(--accent-gold); font-weight: 700; margin-left: 1rem; }
+body .interview-main-quote {
+    font-family: "Shippori Mincho B1", serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    line-height: 1.6; color: var(--navy-deep); margin: 2rem 0; font-weight: 700;
 }
 
-.section-title span {
-  display: block;
-  font-size: 0.9rem;
-  font-family: "Inter", sans-serif;
-  color: var(--accent-gold);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
+/* --- Cards & Grid --- */
+body .environment-grid, body .data-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 4rem;
 }
 
-/* 2. インタビューセクションの高級感 */
-.interview-section {
-  background: white;
-  margin: 4rem 0;
-  border-radius: 40px;
-  padding: 4rem !important;
-  box-shadow: var(--premium-shadow);
+body .environment-card {
+    background: #fff; padding: 3.5rem 2.5rem; border-radius: var(--radius-card);
+    border: 1px solid var(--border-light); transition: 0.4s ease;
+}
+body .environment-card:hover { transform: translateY(-12px); box-shadow: var(--premium-shadow); border-color: transparent; }
+
+body .data-card {
+    background: #f8fafc; padding: 3rem 2rem; border-radius: var(--radius-card); text-align: center;
+    border: 1px solid var(--border-light); position: relative;
+}
+body .data-card::after {
+    content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 4px; background: var(--accent-gold);
 }
 
-.interview-quote {
-  font-size: 1.8rem !important;
-  line-height: 1.6 !important;
-  color: var(--color-primary) !important;
-  border-left: 5px solid var(--accent-gold) !important;
-  padding-left: 2rem !important;
-  margin: 3rem 0 !important;
-  font-weight: 700;
-}
+body .data-val { font-family: "Inter", sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--navy-deep); line-height: 1; }
+body .data-label { color: var(--accent-gold); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem; }
 
-.qa-item {
-  background: #f8fafc !important;
-  border: none !important;
-  border-radius: 20px !important;
-  padding: 2.5rem !important;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.qa-item:hover {
-  background: white !important;
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0, 50, 118, 0.1) !important;
-}
-
-.qa-item h4 {
-  color: var(--color-primary) !important;
-  font-size: 1.3rem !important;
-  display: flex;
-  gap: 15px;
-  align-items: flex-start;
-}
-
-.qa-item h4::before {
-  content: "Q.";
-  font-family: "Inter", sans-serif;
-  color: var(--accent-gold);
-  font-weight: 900;
-}
-
-/* 3. ヒーローセクションのグラスモルフィズム */
-.hero-teto-content {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 3rem !important;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-@media (max-width: 900px) {
-  .hero-teto-content {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 2rem !important;
-  }
-}
-
-/* 4. スクロール連動アニメーション */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 5. ボタンのマイクロインタラクション */
-.btn {
-  border-radius: 50px !important;
-  padding: 1.2rem 2.5rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
-
-.btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-light) 100%
-  ) !important;
-  border: none !important;
-}
-
-.btn-primary:hover {
-  transform: translateY(-5px) scale(1.05) !important;
-  box-shadow: 0 20px 40px rgba(1, 50, 118, 0.3) !important;
-}
-
-/* 6. 数字（データ）セクションの強調 */
-.data-item {
-  border: none !important;
-  background: white !important;
-  border-radius: 30px !important;
-}
-
-.data-number {
-  font-family: "Inter", sans-serif !important;
-  font-size: 3.5rem !important;
-  background: linear-gradient(
-    to bottom,
-    var(--color-primary),
-    var(--color-primary-light)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem !important;
-}
+/* --- Reveal (Intersection Observer) --- */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.active, .reveal.animate-in { opacity: 1; transform: translateY(0); }

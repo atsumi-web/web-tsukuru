@@ -128,26 +128,32 @@ strong {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%; /* 全幅に広げる */
+    padding: 0 4%; /* 左右に開放感のある余白を確保 */
 }
 
 /* 繝悶Λ繝ｳ繝蛾Κ蛻� */
 .logo-link {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
 }
 
-.logo-main {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    line-height: 1.2;
+.header-logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
 }
 
 .logo-sub {
-    font-size: 0.85rem;
-    color: var(--color-neutral-gray);
-    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--color-neutral-light);
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    border-left: 1px solid var(--color-neutral-border);
+    padding-left: 12px;
+    margin-top: 2px;
 }
 
 /* 繝翫ン繧ｲ繝ｼ繧ｷ繝ｧ繝ｳ */
@@ -195,21 +201,22 @@ strong {
 
 /* 繝倥ャ繝繝ｼCTA */
 .nav-cta {
-    background-color: var(--color-accent-red);
-    color: var(--color-bg-white) !important;
-    padding: 0.6rem 1.5rem !important;
-    border-radius: var(--border-radius-sm);
-    margin-left: 0.5rem;
-    border: 1px solid var(--color-accent-red);
-    font-weight: 600;
+    background: linear-gradient(135deg, var(--color-accent-red) 0%, #ff6b6b 100%);
+    color: white !important;
+    padding: 0.75rem 1.6rem !important;
+    border-radius: 50px !important;
+    margin-left: 1.2rem;
+    font-weight: 800;
+    font-size: 0.85rem !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    transition: var(--transition);
+    border: none !important;
 }
 
 .nav-cta:hover {
-    background-color: var(--color-accent-red-light);
-    border-color: var(--color-accent-red-light);
-    text-decoration: none !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(179, 0, 15, 0.3);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+    text-decoration: none !important;
 }
 
 .nav-cta::after {
