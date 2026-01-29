@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   // ---------------------------------------------------------
   // Mobile Menu Toggle
   // ---------------------------------------------------------
@@ -12,10 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
     hamburger.addEventListener("click", function (e) {
       e.preventDefault(); // Prevent default button behavior
 
+      const header = document.querySelector(".site-header");
+
       // Toggle classes
       hamburger.classList.toggle("is-active");
       nav.classList.toggle("is-active");
       body.classList.toggle("no-scroll");
+      if (header) header.classList.toggle("is-menu-open");
 
       // Update aria attribute
       const isExpanded = hamburger.classList.contains("is-active");
@@ -26,9 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = nav.querySelectorAll("a");
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
+        const header = document.querySelector(".site-header");
         hamburger.classList.remove("is-active");
         nav.classList.remove("is-active");
         body.classList.remove("no-scroll");
+        if (header) header.classList.remove("is-menu-open");
         hamburger.setAttribute("aria-expanded", "false");
       });
     });
@@ -58,11 +62,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---------------------------------------------------------
   // Fixed CTA Button - Show on Scroll
   // ---------------------------------------------------------
-  const fixedCta = document.querySelector(".fixed-cta-btn");
-  
+  const fixedCta = document.querySelector(".fixed-line-btn");
+
   if (fixedCta) {
     let scrollThreshold = 200; // Show after 200px scroll
-    
+
     function toggleFixedCta() {
       if (window.scrollY > scrollThreshold) {
         fixedCta.classList.add("show");
@@ -70,10 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
         fixedCta.classList.remove("show");
       }
     }
-    
+
     // Check on scroll
     window.addEventListener("scroll", toggleFixedCta);
-    
+
     // Check on page load
     toggleFixedCta();
   }
@@ -82,24 +86,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // Back to Top Button
   // ---------------------------------------------------------
   const backToTop = document.querySelector(".back-to-top");
-  
+
   if (backToTop) {
     // Show/Hide on scroll
     window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-            backToTop.classList.add("is-visible");
-        } else {
-            backToTop.classList.remove("is-visible");
-        }
+      if (window.scrollY > 300) {
+        backToTop.classList.add("is-visible");
+      } else {
+        backToTop.classList.remove("is-visible");
+      }
     });
 
     // Scroll to top on click
     backToTop.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
   }
 });
