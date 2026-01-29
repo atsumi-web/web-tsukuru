@@ -118,7 +118,7 @@
     <header class="site-header">
         <div class="container">
             <h1>Antigravity直伝・コーディングの鉄則</h1>
-            <p>「修正の無限ループ」から抜け出すための4つの掟</p>
+            <p>「修正の無限ループ」から抜け出すための14の鉄則</p>
         </div>
     </header>
 
@@ -195,6 +195,10 @@
                 <span class="badge badge-good">OK</span>
                 <p><strong>勇気を出して、元の場所に戻って書き換える。</strong><br>
                 ファイル内検索（Ctrl+F）を使って、該当箇所の元の記述を探し出し、そこを直接修正します。</p>
+                
+                <p><strong>⚠️ 例外：メインCSS（renewal.css等）の場合</strong><br>
+                メインCSSは触らず、<strong>ルール9に従い custom.css に分離</strong>します。<br>
+                既存の設計を壊さないため、追加スタイルは custom.css にまとめます。</p>
             </div>
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
@@ -236,6 +240,187 @@
                 <span class="badge badge-good">OK</span>
                 <p><strong>最強の共通パーツを作る。</strong><br>
                 <code>.btn-cta</code> のような共通クラスを作り、どのページ、どの場所に置いても絶対に崩れないように独立させて管理します。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #ffebee; border-left: 4px solid #e53935; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">⚠️ 技術的負債を防ぐ</h3>
+                <p>コードを書く前に知っておくべき、文字化けとファイル構造の罠</p>
+            </div>
+
+            <h2>8. ファイルエンコーディングの厳守</h2>
+            <p><strong>【重要】PowerShellでファイルを保存する際の注意</strong></p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">問題</span>
+                <p>PowerShellの <code>Set-Content</code> や <code>Out-File</code> は、デフォルトでUTF-16 LEまたはシステムデフォルトエンコーディングで保存される。<br>
+                これにより、日本語コメントを含むHTML/CSS/JSファイルが文字化けする。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK（UTF-8 BOMなしを明示）</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">[System.IO.File]::WriteAllText('file.css', $content, (New-Object System.Text.UTF8Encoding $false))</pre>
+                <p><strong>確認方法：</strong><br>
+                VS Codeの右下に表示されるエンコーディングが「UTF-8」であることを必ず確認する。</p>
+            </div>
+
+            <h2>9. CSS設計：ファイル分割ルール</h2>
+            <p>メインCSSファイル（<code>renewal.css</code> 等）は、セクションごとに分割して管理します。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：1つの巨大ファイル</span>
+                <p><code>style.css</code> に全てのスタイルを詰め込むと、2000行を超えて誰も修正できなくなります。<br>
+                また、<strong>既存ファイルの末尾に追記を繰り返す</strong>のは禁止（秘伝のタレ方式）。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：セクション別に分割</span>
+                <p><strong>推奨構成：</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">css/
+├── base.css          （基本設定・リセット）
+├── components.css    （ボタン、カードなど共通パーツ）
+├── header.css        （ヘッダー専用）
+├── hero.css          （ヒーローセクション専用）
+├── sections.css      （各セクションの共通スタイル）
+├── footer.css        （フッター専用）
+├── animations.css    （アニメーション定義）
+├── custom.css        （カスタマイズ用：追加スタイルはここに）
+└── main.css          （上記を @import でまとめる）</pre>
+                <p><strong>ルール：</strong></p>
+                <ul>
+                    <li><strong>メインCSS（<code>renewal.css</code> 等）は触らない</strong>：既存の設計を壊さない</li>
+                    <li><strong>追加・修正は <code>custom.css</code> に書く</strong>：変更履歴が明確になる</li>
+                    <li><strong>セクション単位で独立</strong>：<code>header.css</code> を修正しても <code>hero.css</code> に影響しない</li>
+                </ul>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🔄 実践：無限修正ループからの脱出</h3>
+                <p>今回のセッションで実際に起きた「試行錯誤→重複→文字化け」の悪循環を防ぐための必須ルール</p>
+            </div>
+
+            <h2>10. Git必須（変更前に必ずコミット）</h2>
+            <p>「ちょっと試してみる」が取り返しのつかない事態を招きます。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>いきなりファイルを編集し始める。<br>
+                → うまくいかなかった時、「元の状態」に戻せなくなる。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><strong>変更前に必ずコミット</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">git add .
+git commit -m "PRICE section 修正前"
+
+# 実験的な変更はブランチで
+git checkout -b fix/price-section</pre>
+                <p>これで、いつでも <code>git reset --hard HEAD</code> で戻れます。</p>
+            </div>
+
+            <h2>11. ワンステップ・ワンテスト（段階的テスト）</h2>
+            <p>一度に複数の変更を加えると、どこで壊れたか分からなくなります。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：一気に変更</span>
+                <p>ボタンの幅 + 色 + フォント + 位置を同時に変更。<br>
+                → どれが原因でデザインが崩れたのか特定不可能。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：1つずつ確認</span>
+                <ol>
+                    <li>ボタンの幅を変更 → <strong>ブラウザ確認</strong></li>
+                    <li>OK → 色を変更 → <strong>ブラウザ確認</strong></li>
+                    <li>OK → フォントを変更 → <strong>ブラウザ確認</strong></li>
+                </ol>
+                <p>問題が起きても、直前の1ステップだけ戻せばOK。</p>
+            </div>
+
+            <h2>12. コマンド実行前チェックリスト</h2>
+            <p>PowerShellでファイル操作をする前に、必ず以下を確認します。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">実行前チェック</span>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ <code>-Encoding UTF8</code> は指定したか？</li>
+                    <li>☐ バックアップは取ったか？（<code>cp file.css file.css.bak</code>）</li>
+                    <li>☐ 対象ファイルのパスは正しいか？</li>
+                    <li>☐ 上書きしても大丈夫なファイルか？（メインCSSではないか？）</li>
+                    <li>☐ Gitでコミット済みか？</li>
+                </ul>
+            </div>
+
+            <h2>13. ブラウザ確認を義務化</h2>
+            <p>「コードが正しそう」と「実際に正しい」は別物です。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>コードを修正して満足。ブラウザで確認せずに次の作業へ。<br>
+                → 実は表示が崩れていた、ボタンが押せなかった、などが後で発覚。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：最低限の確認項目</span>
+                <ul>
+                    <li>✅ <strong>デスクトップ表示</strong>（Chrome/Edge）</li>
+                    <li>✅ <strong>スマホ表示</strong>（DevTools: F12 → デバイスモード）</li>
+                    <li>✅ <strong>ボタンのクリック可否</strong>（実際にクリックしてみる）</li>
+                    <li>✅ <strong>テキストの読みやすさ</strong>（コントラスト、文字サイズ）</li>
+                </ul>
+                <p>特に、<strong>スマホ表示は必須</strong>。ユーザーの8割はスマホです。</p>
+            </div>
+
+            <h2>14. ロールバック手順の明文化</h2>
+            <p>「やっぱり元に戻したい」時の手順を事前に決めておきます。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">ロールバック手順</span>
+                <p><strong>Git使用時：</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># 最後のコミットに戻す
+git reset --hard HEAD
+
+# 特定のコミットに戻す
+git reset --hard [コミットID]
+
+# ファイル単位で戻す
+git checkout HEAD -- file.css</pre>
+
+                <p><strong>バックアップファイル使用時：</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># バックアップから復元
+cp file.css.bak file.css</pre>
+
+                <p><strong>custom.css分離方式：</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># custom.cssだけ削除すれば元に戻る
+# メインCSSは無傷のまま
+rm custom.css</pre>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：14の鉄則</h3>
+                <ol style="line-height: 2;">
+                    <li>モバイルファースト</li>
+                    <li>!important は敗北宣言</li>
+                    <li>絶対配置は飾りだけ</li>
+                    <li>下書き保存禁止</li>
+                    <li>セクション＝積み木ルール</li>
+                    <li>文字・即・テキスト</li>
+                    <li>CVボタンは絶対聖域</li>
+                    <li>ファイルエンコーディング厳守</li>
+                    <li>CSS設計：ファイル分割</li>
+                    <li><strong>Git必須</strong></li>
+                    <li><strong>ワンステップ・ワンテスト</strong></li>
+                    <li><strong>コマンド実行前チェック</strong></li>
+                    <li><strong>ブラウザ確認義務化</strong></li>
+                    <li><strong>ロールバック手順明文化</strong></li>
+                </ol>
+                <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
             </div>
 
         </main>

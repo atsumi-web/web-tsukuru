@@ -1,0 +1,433 @@
+/* ==========================================================================
+   CUSTOM STYLES FOR LP
+   renewal.cssへの追加スタイルを整理したファイル
+   ========================================================================== */
+
+/* ==========================================================================
+   COLOR ADJUSTMENTS
+   ========================================================================== */
+/* ゴールドテキストの視認性向上 */
+.text-gold,
+.text-highlight-gold {
+    color: #9F7833;
+}
+
+.text-highlight-gold {
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-color: rgba(159, 120, 51, 0.4);
+    text-underline-offset: 4px;
+    font-size: 1.1em;
+}
+
+/* ==========================================================================
+   SECTION BADGE
+   ========================================================================== */
+.section-badge {
+    background-color: var(--renewal-navy);
+    color: #fff;
+    border: 1px solid var(--renewal-navy);
+}
+
+.section-badge.inverted,
+.dark-bg .section-badge.inverted {
+    background-color: #fff;
+    color: var(--renewal-navy);
+    border-color: #fff;
+}
+
+/* ==========================================================================
+   PRICE SECTION
+   ========================================================================== */
+/* カードレイアウト */
+.price-card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.price-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+}
+
+/* カードラベル */
+.price-card .card-label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 10;
+    white-space: nowrap;
+    border-radius: 4px;
+}
+
+.price-card.monitor .card-label {
+    background: var(--renewal-gold);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 5px 15px;
+}
+
+.price-card.regular .card-label.gray {
+    background: rgba(15, 23, 42, 0.95);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.price-card.regular {
+    border: 2px solid #fff;
+}
+
+/* 0円モニターと通常プランのサイズ統一 */
+.price-card.featured-plan,
+.price-card.monitor {
+    transform: scale(1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* テキスト色 */
+.price-card.monitor,
+.price-card.monitor h3,
+.price-card.monitor .price,
+.price-card.monitor .price-note,
+.price-card.monitor .price-features li {
+    color: #fff;
+}
+
+.price-card.regular {
+    background: #fff;
+}
+
+.price-card.regular h3,
+.price-card.regular .price,
+.price-card.regular .price-features li {
+    color: var(--renewal-navy);
+}
+
+/* ボタンスタイル */
+.price-card.regular .cta-button.secondary {
+    background: transparent;
+    border: 2px solid var(--renewal-gold);
+    color: var(--renewal-gold);
+    box-shadow: none;
+}
+
+.price-card.regular .cta-button.secondary:hover {
+    background-color: var(--renewal-gold);
+    color: #ffffff;
+    border-color: var(--renewal-gold);
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Q&A SECTION
+   ========================================================================== */
+.qa-list {
+    max-width: 800px;
+    margin: 50px auto 0;
+}
+
+.qa-item {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 30px;
+}
+
+.qa-item:last-child {
+    border-bottom: none;
+}
+
+.qa-item .q,
+.qa-item .a {
+    display: block;
+    position: relative;
+    padding-left: 50px;
+    min-height: 32px;
+}
+
+.qa-item .q {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--renewal-navy);
+    margin-bottom: 15px;
+}
+
+.qa-item .a {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.8;
+}
+
+/* QとAのアイコン（疑似要素） */
+.qa-item .q::before,
+.qa-item .a::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.qa-item .q::before {
+    content: 'Q';
+    background-color: var(--renewal-navy);
+}
+
+.qa-item .a::before {
+    content: 'A';
+    background-color: var(--renewal-gold);
+}
+
+/* ==========================================================================
+   MESSAGE SECTION (PROFILE)
+   ========================================================================== */
+.profile-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-image {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    flex-shrink: 0;
+    margin-right: 40px;
+}
+
+.profile-image img {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-text {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.profile-text p:first-child {
+    margin-top: 0;
+}
+
+.profile-meta {
+    text-align: right;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-meta .name,
+.profile-meta .name-jp {
+    display: block;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+}
+
+.profile-meta .name {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.profile-meta .name-jp {
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.profile-section {
+    padding-top: 100px;
+    padding-bottom: 120px;
+}
+
+/* ==========================================================================
+   FOOTER CTA SECTION
+   ========================================================================== */
+.footer-cta-section {
+    background: linear-gradient(135deg, var(--renewal-navy) 0%, #1e3a5f 100%);
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer-cta-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.footer-cta-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.cta-button {
+    padding: 16px 36px;
+}
+
+.cta-button.large {
+    font-size: 1.2rem;
+    padding: 16px 40px;
+}
+
+.cta-button.primary {
+    min-width: 280px;
+    text-align: center;
+}
+
+.cta-button.primary.large {
+    min-width: 320px;
+}
+
+/* ==========================================================================
+   SECTION SPACING
+   ========================================================================== */
+section {
+    padding: 120px 0;
+}
+
+.hero-section {
+    padding: 0;
+}
+
+.footer-cta-section {
+    padding: 100px 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* セクション余白 */
+    section {
+        padding: 80px 0;
+    }
+    
+    .footer-cta-section,
+    .profile-section {
+        padding: 70px 0;
+    }
+    
+    /* コンテナ */
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* タイトル */
+    .section-title {
+        font-size: 1.8rem;
+        line-height: 1.4;
+    }
+    
+    .footer-cta-title {
+        font-size: 1.6rem;
+    }
+    
+    .footer-cta-text {
+        font-size: 1rem;
+    }
+    
+    /* MESSAGEセクション */
+    .profile-content {
+        flex-direction: column;
+    }
+    
+    .profile-image {
+        margin-right: 0;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .profile-image img {
+        width: 100%;
+        max-width: 100%;
+        height: 200px;
+    }
+    
+    .profile-image img:last-child {
+        display: none; /* 3枚目を非表示にして軽量化 */
+    }
+    
+    /* PRICEカード */
+    .price-card-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .price-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Q&A */
+    .qa-item .q::before,
+    .qa-item .a::before {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+    
+    .qa-item .q,
+    .qa-item .a {
+        padding-left: 40px;
+        font-size: 0.95rem;
+    }
+    
+    /* ボタン */
+    .cta-button {
+        font-size: 1rem;
+        padding: 14px 30px;
+    }
+    
+    .cta-button.large {
+        font-size: 1.1rem;
+        padding: 14px 32px;
+    }
+    
+    .cta-button.primary {
+        min-width: 240px;
+    }
+    
+    .cta-button.primary.large {
+        min-width: 260px;
+    }
+}
+
+/* 超小型スマホ */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .profile-image img {
+        height: 160px;
+    }
+    
+    .price-card {
+        padding: 30px 20px;
+    }
+}

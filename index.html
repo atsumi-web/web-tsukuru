@@ -30,6 +30,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/renewal.css?v=2">
     <link rel="stylesheet" href="css/qa.css?v=1"> <!-- Q&A専用スタイル -->
+    <link rel="stylesheet" href="css/custom.css?v=1"> <!-- カスタムスタイル -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script src="js/main.js" defer></script>
@@ -72,11 +73,11 @@
                     <p class="hero-tagline">建設・建築業界専門｜採用特化型LP制作</p>
                     <h1 class="hero-main-copy">
                         建設・建築業界の<br>
-                        「掛け捨て採用」を、<br>
+                        「<span class="accent-text"></span>掛け捨て採用</span>」を、<br>
                         <span class="highlight">今すぐ終わらせる。</span>
                     </h1>
                     <p class="hero-desc">
-                        「爆速表示」×「LINE窓口」×「維持費一生0円」<br>
+                        「採用特化LP」×「LINE窓口」×「維持費一生0円」<br>
                         あなたの現場を、一生使える「採用資産」へ。
                     </p>
                     <div class="hero-actions">
@@ -97,11 +98,14 @@
             </div>
 
             <div class="container" style="position: relative; z-index: 2;">
-                <div class="section-badge">PROBLEM</div>
-                <h2 class="section-title">
-                    なぜ、求人広告に<br>
-                    「掛け捨ての家賃」を<br class="br-sp">払い続けるのですか？
-                </h2>
+                <div class="section-header js-fade-up">
+                    <span class="section-badge inverted">PROBLEM</span>
+                    <h2 class="section-title">
+                        なぜ、求人広告に<br>
+                        <span class="text-highlight">「掛け捨ての家賃」</span>を<br>
+                        払い続けるのですか？
+                    </h2>
+                </div>
                 
                 <!-- コンテンツラッパー（従来の左右分割を廃止し、グリッドへ戻す） -->
                 <div class="problem-grid-wide">
@@ -113,68 +117,107 @@
                     <div class="problem-card js-fade-up" data-delay="100">
                         <div class="p-num">02</div>
                         <h3>高額な掲載費、回収できていますか？</h3>
-                        <p>数十万円を払っても、条件だけで比較され大手に埋もれてしまう。成果の出ない広告にお金を使い続けるのは、まさに「ドブにお金を捨てる」のと同じです。</p>
+                        <p>求人サイトは<span class="text-highlight">「給与比較」</span>の場。一覧に並べられれば、資金力のある大手に負けるのは当たり前です。負け戦にお金を使い続けるのは、まさに「ドブにお金を捨てる」のと同じです。</p>
                     </div>
                     <div class="problem-card js-fade-up" data-delay="200">
                         <div class="p-num">03</div>
                         <h3>間に「業者」が入るスピードロス</h3>
-                        <p>代理店を通すと連絡が遅れ、その間に若手は他社へ。ハローワークやIndeedから自社サイトへ直接誘導すれば、ロスなく即LINEで繋がれます。</p>
+                        <p>求人サイトの管理画面越しでは連絡が遅れ、その間に若手は他社へ。<span class="text-highlight">自社専用LP</span>なら、応募と同時に<span class="text-highlight">社長のLINE</span>へ直通知。この「直接」のスピード感が、採用成功の鍵です。</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Solution Section -->
+        <!-- Solution Section -->
         <section id="solution" class="solution-section">
             <div class="container">
-                <div class="section-badge inverted">SOLUTION</div>
-                <h2 class="section-title">
-                    一過性の広告をやめて、<br>
-                    一生使い回せる<span class="accent">「自社の武器」</span>を持つ。
-                </h2>
-                
+                <div class="section-header js-fade-up">
+                    <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">SOLUTION</span>
+                    <h2 class="section-title text-dark">
+                        「いい会社」を、<br>
+                        <span class="text-gold">「強い会社」</span>に変える3つの武器。
+                    </h2>
+                </div>
+
+                <!-- 01: RECRUIT (採用特化) -->
                 <div class="solution-item js-fade-up">
                     <div class="s-content">
-                        <span class="s-tag">VISUAL</span>
-                        <h3>「ここで働きたい」と思わせるLP</h3>
-                        <p>現場の職人が直感で「いいな」と感じるビジュアルを構築。飾らない言葉とデザインで、御社の誇りと仲間の良さを正しく伝えます。</p>
+                        <span class="s-tag">RECRUIT STRATEGY</span>
+                        <h3>「採用特化型」の構成で、<br>若手の心を掴んで離さない。</h3>
+                        <p>
+                            ただ綺麗なだけのホームページでは、人は採れません。<br>
+                            「どうすれば若手が応募したくなるか」を徹底的に計算した構成と、<br>
+                            電波の悪い現場でも一瞬で開く<span class="text-highlight-gold">「爆速表示」</span>技術。<br>
+                            この2つを掛け合わせることで、せっかくのアクセスを1ミリも無駄にせず、<br>
+                            確実に応募へと繋げます。
+                        </p>
+                        <!-- Proof Badge -->
+                        <div class="proof-badge">
+                            <i class="fa-solid fa-gauge-high text-green"></i>
+                            <span>PageSpeed Score: <strong>90+</strong> (Mobile)</span>
+                        </div>
                     </div>
                     <div class="s-image">
-                        <img src="images/solution-team-unity.webp" alt="チームの団結">
+                        <img src="images/solution-team-unity.webp" alt="若手が活躍する現場">
                     </div>
                 </div>
 
+                <!-- 02: LINE (LINE連携) -->
                 <div class="solution-item reverse js-fade-up">
                     <div class="s-content">
-                        <span class="s-tag">CONVERSION</span>
-                        <h3>LINEで、そのまま応募できる</h3>
-                        <p>面倒な入力は一切不要。使い慣れたLINEが窓口になるから、仕事終わりの車内からでもサッと連絡できます。<br>※複雑な初期設定はすべて弊社が代行。社長の手間はゼロです。</p>
+                        <span class="s-tag">LINE INTEGRATION</span>
+                        <h3>面倒な設定はすべて丸投げ。<br>社長は「待つだけ」のLINE窓口。</h3>
+                        <p>
+                            電話応募はハードルが高く、メールは面倒くさい。<br>
+                            今の求職者が一番動きやすい「LINE応募」の仕組みを導入します。<br>
+                            複雑な公式アカウントの開設やWebサイトとの連携は、<br>
+                            すべて私たちが代行します。<br>
+                            社長は、スマホに通知が来るのを待つだけでOKです。
+                        </p>
                     </div>
                     <div class="s-image">
-                        <img src="images/feature-line-truck.png" alt="仕事終わりにLINEで応募">
+                        <img src="images/conversion-line-button.webp" alt="LINE応募ボタン">
                     </div>
                 </div>
 
+                <!-- 03: ASSET (維持費0円) -->
                 <div class="solution-item js-fade-up">
                     <div class="s-content">
-                        <span class="s-tag">SPEED</span>
-                        <h3>電波が悪くても、すぐ開く</h3>
-                        <p>休憩中の地下や、移動中の山道でも大丈夫。超軽量な設計により、興味を持ってくれたその瞬間を逃さず、会社の魅力を届けます。</p>
+                        <span class="s-tag">ZERO COST ASSET</span>
+                        <h3>「家賃」を払うのはもう終わり。<br>維持費0円の「資産」を持つ。</h3>
+                        <p>
+                            毎月数万円の管理費を払い続けるのは、終わりのない「家賃」と一緒です。<br>
+                            私たちは、GoogleやMicrosoftも利用する最新の「サーバーレス技術」を活用。<br>
+                            サーバー代がかからない仕組みを構築することで、<br>
+                            <span class="text-highlight-gold">「維持費一生0円」</span>を実現しました。<br>
+                            浮いた固定費を、現場の道具や社員の給料に還元してください。
+                        </p>
+                        <!-- Proof Badge -->
+                        <div class="proof-badge">
+                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-solid fa-cloud"></i>
+                            <span>Powered by: <strong>GitHub</strong> × <strong>Cloudflare</strong></span>
+                        </div>
                     </div>
                     <div class="s-image">
-                        <img src="images/conversion-line-button.webp" alt="サクサク開く">
+                        <img src="images/asset-benefit-tools.webp" alt="浮いたコストで道具を購入">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Tech Proof Section -->
+        <!-- Tech Proof Section -->
         <section id="tech" class="tech-section dark-bg">
             <div class="container">
-                <div class="section-badge">TECHNOLOGY</div>
-                <h2 class="section-title">
-                    なぜ「維持費0円」が可能なのか？
-                </h2>
+                <div class="section-header js-fade-up">
+                    <span class="section-badge inverted">TECHNOLOGY</span>
+                    <h2 class="section-title">
+                        なぜ不可能だった<br>
+                        「維持費0円」が可能なのか？
+                    </h2>
+                </div>
                 <div class="tech-content js-fade-up">
                     <div class="tech-visual">
                         <div class="tech-icons">
@@ -182,20 +225,20 @@
                             <span class="plus">+</span>
                             <i class="fa-brands fa-cloudflare"></i>
                         </div>
-                        <p>GitHub × Cloudflare</p>
+                        <p class="tech-labels">GitHub × Cloudflare</p>
                     </div>
                     <div class="tech-desc">
                         <p>
-                            実は、GoogleやMicrosoftも使う世界基準のインフラには、小規模サイト向けの<strong>「太っ腹な無料枠」</strong>が存在します。<br>
-                            私たちは最新技術（GitHub×Cloudflare）を使ってその仕組みを最大限活用するため、サーバー維持費を物理的に「0円」にできるのです。
+                            実は、GoogleやMicrosoftも使う世界基準のインフラには、小規模サイト向けの<span class="text-highlight-gold">「太っ腹な無料枠」</span>が存在します。<br>
+                            私たちは最新技術を使ってその仕組みを最大限活用するため、サーバー維持費を物理的に「0円」にできるのです。
                         </p>
                         
                         <div class="tech-chart">
-                            <img src="images/concept-asset-graph.webp" alt="資産化の仕組み">
+                            <img src="images/concept-asset-graph.webp" alt="維持費0円の比較グラフ">
                         </div>
 
                         <ul class="tech-list">
-                            <li><i class="fa-solid fa-check"></i> 巨大IT企業の強固なインフラに「無料」で便乗</li>
+                            <li><i class="fa-solid fa-check"></i> 巨大IT企業の強固なインフラを、賢く「無料」でフル活用</li>
                             <li><i class="fa-solid fa-check"></i> 毎月の管理費という「中間マージン」を完全排除</li>
                             <li><i class="fa-solid fa-check"></i> WordPressのような改ざん・ウイルスリスクから解放</li>
                         </ul>
@@ -205,36 +248,35 @@
         </section>
 
         <!-- Flow Section -->
-        <section id="flow" class="flow-section" style="position: relative; overflow: hidden; padding: 100px 0;">
-            <!-- 背景画像設定（ホワイトオーバーレイ：少し薄くして画像を見せる） -->
-            <div class="flow-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-                <img src="images/hero-service-lp.webp" alt="背景" style="width: 100%; height: 100%; object-fit: cover;">
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.7));"></div>
-            </div>
+        <!-- Flow Section -->
+        <section id="flow" class="flow-section">
+            <div class="flow-bg"></div> <!-- CSSで背景画像設定 -->
 
-            <div class="container" style="position: relative; z-index: 2;">
-                <div class="section-badge" style="background: var(--renewal-navy); color: #fff; border-color: var(--renewal-navy);">FLOW</div>
-                <h2 class="section-title" style="color: var(--renewal-navy);">制作の流れ</h2>
-                <p class="section-desc" style="color: #444;">社長の手間は最小限。LINEで素材を送るだけでOK。</p>
+            <div class="container relative z-10">
+                <div class="section-header js-fade-up">
+                    <span class="section-badge badge-blue">FLOW</span>
+                    <h2 class="section-title text-navy">制作の流れ</h2>
+                    <p class="section-desc text-dark">社長の手間は最小限。<br>LINEで素材を送るだけで、プロが仕上げます。</p>
+                </div>
                 
-                <!-- 画像imgタグは削除（背景に統合） -->
-
-                <!-- ワイドグリッド構成（カード） -->
                 <div class="flow-grid-wide">
                     <div class="flow-card js-fade-up">
                         <div class="step-num">01</div>
                         <h3>オンラインヒアリング</h3>
-                        <p>LINEまたはZoomで、御社の強みや悩みを30分ほど伺います（全国対応）。</p>
+                        <p>
+                            LINE、Zoom、または<strong>お電話</strong>で、30分だけお時間をください。現場からの着信でも構いません。<br>
+                            まずはLINE登録後、ご都合の良い日時をお知らせください。
+                        </p>
                     </div>
                     <div class="flow-card js-fade-up" data-delay="100">
                         <div class="step-num">02</div>
-                        <h3>スマホにある写真でOK</h3>
-                        <p>プロの写真は不要です。社長のスマホに入っている「いつもの現場写真」を送ってください。文章も丸投げでOKです。</p>
+                        <h3>スマホ写真とメモでOK</h3>
+                        <p>プロの写真は不要です。社長のスマホにある「いつもの現場写真」を送ってください。文章も丸投げしていただければ、<span class="text-gold" style="font-weight:700;">プロが魅力的に構成</span>します。</p>
                     </div>
                     <div class="flow-card js-fade-up" data-delay="200">
                         <div class="step-num">03</div>
                         <h3>確認・公開</h3>
-                        <p>テストサイトをスマホで確認。修正したい箇所もLINEで一言送るだけ。OKが出れば、その場で世界に公開されます。</p>
+                        <p>テストサイトをスマホで確認。修正したい箇所もLINEで一言送るだけ。OKが出ればすぐに世界へ公開され、あなたの最強の営業マンとなります。</p>
                     </div>
                 </div>
             </div>
@@ -243,20 +285,21 @@
         <!-- Price Section -->
         <section id="price" class="price-section dark-bg">
             <div class="container">
-                <div class="section-badge">PRICE</div>
+                <div class="section-badge inverted">PRICE</div>
                 <h2 class="section-title">料金プラン</h2>
                 
                 <div class="price-card-container">
-                    <div class="price-card monitor js-fade-up">
+                    <div class="price-card monitor js-fade-up featured-plan">
                         <div class="card-label">限定オファー</div>
                         <h3>0円モニター</h3>
                         <div class="price">
                             <span class="amount">0</span><span class="unit">円</span>
                         </div>
                         <p class="price-note">
-                            （先着3社 / 残り1社）<br>
-                            <span style="font-size:0.9em; display:block; margin-top:5px; opacity:0.9;">
-                            ※実績公開への協力と、<br>本気で採用を変革したい意欲のある方
+                            （先着3社 / <span class="text-alert">残り1社</span>）<br>
+                            <span style="font-size:0.95em; display:block; margin-top:5px; color:#fff;">
+                            ※実績公開への協力と、<br>本気で採用を変革したい意欲のある方<br>
+                            <span style="font-size:0.85em; color:rgba(255,255,255,0.8);">（ドメイン実費：年額数千円のみご負担）</span>
                             </span>
                         </p>
                         <ul class="price-features">
@@ -273,8 +316,8 @@
                         <div class="price">
                             <span class="amount">98,000</span><span class="unit">円</span>
                         </div>
-                        <p class="price-note">（税込）<br>
-                            <span style="font-size:0.85em; display:block; margin-top:5px; color:rgba(255,255,255,0.7);">
+                        <p class="price-note" style="color:#475569;">（税込）<br>
+                            <span style="font-size:0.85em; display:block; margin-top:5px; color:#64748b;">
                             平均相場：初期30万〜＋月額管理費
                             </span>
                         </p>
@@ -296,12 +339,12 @@
         <!-- Q&A Section -->
         <section class="qa-section">
             <div class="container">
-                <div class="section-badge inverted">Q&amp;A</div>
+                <div class="section-badge">Q&amp;A</div>
                 <h2 class="section-title">よくある質問</h2>
                 <div class="qa-list">
                     <div class="qa-item js-fade-up">
                         <div class="q">Indeedなどの無料掲載とは何が違いますか？</div>
-                        <div class="a">無料掲載は「文字情報」が中心ですが、このLPは写真とデザインで御社の魅力を100%伝えるための**「最強の受け皿」**となります。IndeedやハローワークからこのLPに誘導することで、応募率を劇的に高めることができます。</div>
+                        <div class="a">無料掲載は「文字情報」が中心ですが、このLPは写真とデザインで御社の魅力を100%伝えるための<strong class="text-highlight-gold">「最強の受け皿」</strong>となります。IndeedやハローワークからこのLPに誘導することで、応募率を劇的に高めることができます。</div>
                     </div>
                     <div class="qa-item js-fade-up">
                         <div class="q">本当に維持費は0円ですか？</div>
@@ -322,16 +365,20 @@
         <!-- Profile Section -->
         <section id="profile" class="profile-section dark-bg">
             <div class="container">
-                <div class="section-badge">MESSAGE</div>
+                <div class="section-badge inverted">MESSAGE</div>
                 <h2 class="section-title">「汗をかく現場が、<br class="br-sp">一番に報われる世界へ」</h2>
                 <div class="profile-content js-fade-up">
                     <div class="profile-image">
-                        <img src="images/work-heavy-excavator.webp" alt="渥美">
+                        <img src="images/trust-digital-collaboration.webp" alt="デジタル連携">
+                        <img src="images/work-scaffold-check.webp" alt="足場チェック作業">
+                        <img src="images/work-heavy-excavator.webp" alt="重機作業">
                     </div>
                     <div class="profile-text">
                         <p>
-                            建設現場の仕事は、キツいかもしれない。でも、それ以上に面白いし、本当にかっこいい。<br><br>
-                            私は、その泥臭い熱気や、社長の心意気を、最新の技術で<b>「正しく」</b>世の中に伝えたいと思ってこのサービスを作りました。<br><br>
+                            私の娘は今、とある建設会社で<strong>「現場監督」</strong>として働いています。<br>
+                            日々ヘルメットを被り、厳しい現場の最前線で奮闘する娘を見て、改めて思います。<br><br>
+                            建設現場の仕事は、キツいかもしれない。でも、誰よりも社会を支えている、本当にかっこいい仕事だと。<br><br>
+                            私は、その現場の熱気や、社長の心意気を、最新の技術で<b>「正しく」</b>世の中に伝えたいと思ってこのサービスを作りました。<br><br>
                             広告費を払い続けるだけの採用は、もう終わりにしましょう。<br>
                             自社の力で人を集め、利益を現場に還元できる<b>「強い会社」</b>を作る。<br><br>
                             そのための最強の武器を、私が責任を持ってお渡しします。
@@ -340,12 +387,26 @@
                             <span class="name">web-tsukuru.jp 運営代表</span>
                             <span class="name-jp">渥美 絵里</span>
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <!-- Footer CTA Section -->
+    <section class="footer-cta-section">
+        <div class="container">
+            <h2 class="footer-cta-title">まずは無料相談から。<br>LINEで30秒、カンタン登録。</h2>
+            <p class="footer-cta-text">
+                「うちの会社でも本当にできるかな？」<br>
+                そんな不安も、まずは気軽にご相談ください。<br>
+                しつこい営業は一切ありません。
+            </p>
+            <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary large">LINEで無料相談する</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="site-footer">

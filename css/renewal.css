@@ -1,163 +1,264 @@
-/* --- Renewal Strategy CSS (Professional Construction Tone) --- */
+/* ==========================================================================
+   Web Tsukuru Renewal Styles (Recovered & Optimized)
+   ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   BASE & RESET
+   -------------------------------------------------------------------------- */
 :root {
-    --renewal-navy: #0F172A;
-    --renewal-gold: #AE8B47;
-    --renewal-gold-light: #D4B068;
-    --renewal-dark: #020617;
-    --renewal-text: #E2E8F0;
-    --renewal-text-dark: #334155;
-    --renewal-accent: #38BDF8; /* Sky Blue for tech accents */
+    --renewal-navy: #0F172A;   /* Deep Navy */
+    --renewal-gold: #C5A059;   /* Elegant Gold */
+    --renewal-dark: #333333;   /* Text Dark */
+    --renewal-gray: #F4F5F7;   /* Background Gray */
 }
 
-/* Global resets for the new design */
-.construction-renewal {
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Shippori Mincho', serif;
+    color: var(--renewal-dark);
+    line-height: 1.8;
     background-color: #fff;
-    color: var(--renewal-text-dark);
-    font-size: 16px;
-    font-family: 'Noto Sans JP', sans-serif; /* 繝吶�繧ｹ繝輔か繝ｳ繝医ｒ譏守､ｺ */
-    line-height: 1.8; /* 隱ｭ縺ｿ繧�☆縺�｡碁俣縺ｫ邨ｱ荳 */
-    letter-spacing: 0.05em; /* 譌･譛ｬ隱槭↓驕ｩ縺励◆蟄鈴俣 */
-    overflow-x: hidden;
-    word-wrap: break-word; /* 髟ｷ縺�腰隱槭〒縺ｮ蟠ｩ繧碁亟豁｢ */
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'palt';
 }
 
-.construction-renewal p {
-    margin-bottom: 1.5em; /* 谿ｵ關ｽ髢薙�菴咏區遒ｺ菫� */
+/* Force Mincho on all text elements */
+h1, h2, h3, h4, h5, h6, 
+p, li, a, span, div,
+button, input, textarea {
+    font-family: 'Shippori Mincho', serif;
 }
 
-/* Mobile Breakpoint Helper */
-.br-sp {
-    display: none;
-}
-@media (max-width: 768px) {
-    .br-sp {
-        display: block;
-    }
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
 }
 
-.dark-bg {
-    background-color: var(--renewal-navy);
-    color: var(--renewal-text);
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 5%;
+    position: relative;
 }
 
-/* Section Common */
-section {
-    padding: 100px 0;
+/* --------------------------------------------------------------------------
+   TYPOGRAPHY & UTILITIES
+   -------------------------------------------------------------------------- */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    text-align: center;
 }
 
-@media (max-width: 768px) {
-    section {
-        padding: 60px 0;
-    }
+.section-desc {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+}
+
+/* Outfit Font Parts */
+.section-badge, 
+.step-num, 
+.amount, 
+.unit, 
+.card-label,
+.logo span,
+.footer-logo,
+.copyright {
+    font-family: 'Outfit', sans-serif !important;
 }
 
 .section-badge {
     display: inline-block;
-    background: var(--renewal-gold);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 12px;
-    padding: 4px 12px;
-    letter-spacing: 0.2em;
-    margin-bottom: 20px;
-    border-radius: 2px;
+    padding: 6px 16px;
+    border: 1px solid var(--renewal-gold);
+    color: var(--renewal-gold);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
 }
 
 .section-badge.inverted {
-    background: var(--renewal-navy);
+    background: transparent; /* Changed later for SOLUTION section */
 }
 
-.section-title {
-    font-size: 2.2rem; /* 蟆代＠繧ｵ繧､繧ｺ繧呈椛縺医※蟠ｩ繧碁亟豁｢ */
-    line-height: 1.6;
-    margin-bottom: 40px;
-    font-family: 'Shippori Mincho', serif;
-    font-weight: 700;
+/* --------------------------------------------------------------------------
+   HEADER
+   -------------------------------------------------------------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(15, 23, 42, 0.95);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    min-height: 70px;
 }
 
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 1.6rem;
-        line-height: 1.5;
-        margin-bottom: 30px;
-    }
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: auto;
+    width: 100%;
 }
 
-/* Buttons */
-.cta-button {
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    z-index: 10001;
+    height: 100%;
+}
+
+.logo img {
+    display: block;
+    height: 40px;
+    width: auto;
+    background: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.logo span {
+    display: block;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.site-nav {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.site-nav a:hover {
+    color: var(--renewal-gold); /* !important 鬯�E��E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�驕ｶ荵怜��E��E��E��E��E��E��E��E� */
+}
+
+/* Special Button in Nav */
+.site-nav a.nav-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 40px;
-    font-weight: 700;
-    border-radius: 4px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    text-decoration: none;
-    gap: 10px;
-    font-size: 1.1rem;
-}
-
-.cta-button.primary {
-    background: #06c755; /* LINE Green */
-    color: #fff;
-    box-shadow: 0 10px 20px rgba(6, 199, 85, 0.2);
-}
-
-.cta-button.primary:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(6, 199, 85, 0.3);
-}
-
-.cta-button.secondary {
+    gap: 8px;
     background: var(--renewal-gold);
-    color: #fff;
-    box-shadow: 0 10px 20px rgba(174, 139, 71, 0.2);
+    color: #fff; /* 鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�讖ｸ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�鬮�E�諛ｶ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-left: 20px;
 }
 
-/* Hero Section Override */
+/* 鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�髢�E��E��E�陟墓圜�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�雋��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�譎｢�E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�蛹�E��E��E�繧托ｽ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�驕ｶ謫�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�陋ｹ�E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髫�E�蜻�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�!important鬯�E��E��E�陋ｹ�E��E��E��E��E��E��E��E��E��E�鬮�E�譎｢�E��E��E��E�鬮�E�諛ｶ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+.site-nav a.nav-btn:hover {
+    opacity: 0.9;
+    color: #fff; /* 鬯�E�蟷�E��E��E��E��E�髫�E�蜿門�E�暦�E��E��E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E�雜｣�E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯滓汚��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�驛｢�E��E�闔会ｽ�E��E�つ髯�E�闌ｨ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬩匁E���E�隰�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�髢�E��E��E�陟墓圜�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E�髣費�E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯具�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯具�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�鬩幢�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髫�E�蜻�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    background: var(--renewal-gold);
+}
+
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 10002;
+    padding: 0;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    transition: all 0.3s;
+}
+.hamburger-btn span:nth-child(1) { top: 0; }
+.hamburger-btn span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger-btn span:nth-child(3) { bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   HERO SECTION (Restored from Backup)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   HERO SECTION (Restored from Backup)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   HERO SECTION (Restored from Backup)
+   -------------------------------------------------------------------------- */
 .hero.renewal-hero {
-    display: block !important; /* hero.css縺ｮflex繧定ｧ｣髯､ */
-    min-height: 100vh;
-    padding: 0 !important; /* hero.css縺ｮpadding繧定ｧ｣髯､ */
-    position: relative;
-    overflow: hidden;
-}
-
-/* 笘�㍾隕≫� 蜿､縺�ョ繧ｶ繧､繝ｳ縺ｮ縲梧万繧√�逋ｽ閭梧勹縲阪ｒ螳悟�縺ｫ蜑企勁 */
-/* 笘㍾隕≫ 蜿､縺ョ繧ｶ繧､繝ｳ縺ｮ縲梧万繧√逋ｽ閭梧勹縲阪ｒ螳悟縺ｫ蜑企勁 */
-.hero.renewal-hero .hero-bg::after {
-    display: none !important;
-    content: none !important;
-    background: none !important;
-}
-
-.hero.renewal-hero .container {
-    height: 100%;
+    height: 100vh;
+    min-height: 600px;
     display: flex;
-    align-items: center;
-    justify-content: flex-start; /* 左寄せを明示 */
+    align-items: flex-start; /* 鬯�E��E��E�隲幢�E��E�騾墓ｻゑｽ�E��E��E�髣�E��E��E�雎ｬ螟ｲ�E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E�遶乗ｩ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�讖ｸ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    justify-content: flex-start; /* 鬯�E��E��E�隴幢�E��E��E��E��E��E�闔ｨ螟ｲ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E�遶乗ｩ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�讖ｸ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
     position: relative;
-    z-index: 10;
-    max-width: 100%; /* ★全幅に変更 */
-    margin: 0 auto;
-    padding: 0 5%; /* 画面端から5%の余白を確保 */
+    padding-top: 0;
+    overflow: hidden;
+    color: #fff;
 }
 
-/* 莉･蜑阪hero.css縺ｮ蠖ｱ髻ｿ繧貞ｮ悟縺ｫ豸医☆ */
-.hero.renewal-hero .hero-content {
-    width: 100% !important;
-    max-width: 800px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    text-align: left !important;
+/* Hero鬯�E��E��E��E��E��E��E��E��E�縺�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�陋ｹ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩匁E���E�闔ｨ竏ｬ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+.hero.renewal-hero .container {
+    width: 100%;
+    max-width: 100% !important;
+    padding: 0 5%;
+    display: flex;
+    justify-content: flex-start; /* 鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    align-items: flex-start; /* 鬯�E��E��E�陋ｹ�E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    height: 100%;
+    padding-top: 140px; /* 鬯�E�蟷�E��E��E��E��E�髫�E�蜿厁E���E�蜿�E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E��E��E�鬲托ｽ�E��E�つ鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�(鬯�E��E��E�髢�E��E��E�陟墓圜�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�70px) + 鬯�E��E��E�陷�E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E�髣匁E���E�隶難�E��E��E��E��E��E��E��E��E��E� */
 }
 
 .hero-bg {
@@ -173,14 +274,10 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* filter: brightness(0.85); 鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�HTML鬯�E��E��E�陷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�貁E��譯�E��E��E��E��E��E��E��E��E�S鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�陷茨�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�雋��E��E�隴�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬩匁E���E�闕ｳ讖ｸ�E��E��E��E��E��E��E��E�髫�E�魁E��ｽ�E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�蛹�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E�髫�E�謐ｺ諷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
     filter: brightness(0.85);
-    transform: scaleX(-1); /* 蟾ｦ蜿ｳ蜿崎ｻ｢ */
+    transform: scaleX(-1);
 }
-    /* 逕ｻ蜒上ｒ譏弱ｋ縺上�辷ｽ繧�°縺ｫ */
-    /* filter: brightness(0.85) contrast(1.05); */ /* Original filter */
-    /* transform: scale(1.05); */ /* Original transform */
-    /* transition: filter 0.5s; */ /* Original transition */
-
 
 .hero-overlay {
     position: absolute;
@@ -189,28 +286,22 @@ section {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, rgba(15, 23, 42, 0.9) 30%, rgba(15, 23, 42, 0.2) 100%);
+    z-index: 2;
 }
 
-/* Hero Content Conflict Fix */
-.hero-content {
+.hero.renewal-hero .hero-content {
     position: relative;
     z-index: 10;
-    color: #fff;
-    max-width: 800px; /* 蟆代＠蠎�￡縺ｦ繝舌Λ繝ｳ繧ｹ隱ｿ謨ｴ */
-    width: 100% !important; /* 譌ｧCSS縺ｮ52%謖�ｮ壹ｒ隗｣髯､ */
-    padding-left: 0 !important; /* 譌ｧCSS縺ｮ8%謖�ｮ壹ｒ隗｣髯､ */
-    padding-right: 0 !important;
-    margin: 0 auto; /* 荳ｭ螟ｮ蟇�○繧堤｢ｺ螳溘↓ */
-    text-align: left; /* 繧ｹ繝槭�縺ｧ縺ｯ蟾ｦ蟇�○縲￣C縺ｧ繧ょ渕譛ｬ蟾ｦ蟇�○縺ｧ繝�じ繧､繝ｳ */
-}
-
-/* PC only alignment adjustment if needed */
-@media (min-width: 769px) {
-    .renewal-hero .container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start; /* 蟾ｦ蟇�○繝ｬ繧､繧｢繧ｦ繝医�蝣ｴ蜷� */
-    }
+    width: 100%;
+    max-width: 800px;
+    padding: 0 40px;
+    margin-left: 0; /* 鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    margin-right: auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 鬯�E��E��E�陋ｹ�E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    /* padding-top 鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯具�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� .container 鬯�E��E��E�陷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�陷茨�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�雋��E��E�隴�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E�闔ｨ螟ｲ�E��E��E��E��E��E��E��E�鬩匁E���E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髴托ｽ�E�隴会ｽ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�陋ｹ�E��E��E��E��E��E��E��E��E��E�鬮�E�譎｢�E��E��E��E�鬮�E�諛ｶ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
 }
 
 .hero-tagline {
@@ -219,237 +310,320 @@ section {
     font-weight: 700;
     letter-spacing: 0.1em;
     margin-bottom: 20px;
-}
-
-/* Hero Overlay & Text Contrast Fix */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* 蟾ｦ蛛ｴ(繝�く繧ｹ繝亥�)繧偵ｈ繧頑ｿ�￥縲∝ｺ�ｯ�峇縺ｫ繧ｫ繝舌�縺励※蜿ｯ隱ｭ諤ｧ繧堤｢ｺ菫� */
-    background: linear-gradient(90deg, 
-        rgba(15, 23, 42, 0.8) 0%, /* 譁�ｭ励�閭梧勹縺ｯ遒ｺ菫� */
-        rgba(15, 23, 42, 0.4) 50%, /* 逕ｻ蜒上ｒ隕九○繧九◆繧√↓阮�￥ */
-        rgba(15, 23, 42, 0) 100% /* 蜿ｳ蛛ｴ縺ｯ騾城℃縺励※髱堤ｩｺ繧定ｦ九○繧� */
-    );
-    z-index: 1;
+    display: block;
 }
 
 .hero-main-copy {
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem); /* 鬯�E��E��E�隶灘･�E��E��E��E��E�郢�E�謁E���E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隲幢�E��E�陝矩屮�E��E��E��E��E��E��E��E�髫�E�謫�E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�雋��E��E�隴�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�髮懶�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
     font-family: 'Shippori Mincho', serif;
     line-height: 1.5;
     margin-bottom: 30px;
     font-weight: 800;
-    color: #fff;
-    /* 蠑ｷ蜉帙↑繝峨Ο繝��繧ｷ繝｣繝峨え縺ｧ豬ｮ縺咲ｫ九◆縺帙ｋ */
-    text-shadow: 2px 2px 0 #000, 0 0 30px rgba(0,0,0,0.8);
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.hero-main-copy .highlight {
-    color: var(--renewal-gold);
-    position: relative;
-    display: inline-block;
-    text-shadow: 2px 2px 0 #000;
+/* --------------------------------------------------------------------------
+   SECTIONS & COMPONENTS
+   -------------------------------------------------------------------------- */
+
+/* SOLUTION Section (3 Pillars) */
+.solution-section {
+    padding: 80px 0;
+    background: #fff;
 }
 
-.hero-desc {
-    font-size: 1.1rem;
-    line-height: 2;
-    color: #f1f5f9; /* 繧医ｊ譏弱ｋ縺�區縺ｫ */
-    margin-bottom: 40px;
-    border-left: 3px solid var(--renewal-gold); /* 邱壹ｒ蟆代＠螟ｪ縺� */
-    padding-left: 20px;
-    max-width: 600px;
-    /* 閭梧勹濶ｲ繧り埋縺剰ｿｽ蜉�縺励※遒ｺ螳溘↓隱ｭ繧√ｋ繧医≧縺ｫ縺吶ｋ */
-    background: rgba(0, 0, 0, 0.3);
-    padding: 15px 20px;
-    border-radius: 0 4px 4px 0;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-}
-
-.hero-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.hero-note {
-    font-size: 0.9rem; /* 蟆代＠螟ｧ縺阪￥ */
-    color: rgba(255, 255, 255, 0.85); /* 蟆代＠譏弱ｋ縺� */
-    margin-top: 5px;
-}
-
-@media (max-width: 768px) {
-    .hero-overlay {
-        background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.9) 100%); /* 繝｢繝舌う繝ｫ逕ｨ繧ｰ繝ｩ繝��繧ｷ繝ｧ繝ｳ */
-    }
-    .hero-container {
-        align-items: flex-end; /* 荳句ｯ�○縺ｫ縺励※逕ｻ蜒上ｒ隕九○繧� */
-        padding-bottom: 100px;
-    }
-    .hero-content {
-        width: 100%;
-    }
-    .hero-main-copy {
-        font-size: 2.4rem; /* 繝｢繝舌う繝ｫ縺ｧ縺ｮ譛驕ｩ繧ｵ繧､繧ｺ */
-        line-height: 1.4;
-    }
-    .hero-main-copy br {
-        display: block; /* 繝｢繝舌う繝ｫ縺ｧ繧よ隼陦後ｒ譛牙柑蛹� */
-    }
-    .hero-desc {
-        font-size: 1rem;
-        line-height: 1.8;
-        background: rgba(0,0,0,0.5); /* 譁�ｭ苓レ譎ｯ繧定ｿｽ蜉�縺励※蜿ｯ隱ｭ諤ｧ遒ｺ菫� */
-        padding: 15px;
-        border-radius: 4px;
-        border-left: 4px solid var(--renewal-gold);
-    }
-}
-
-/* Problem Section (Overlay Style) */
-.problem-section {
-    padding: 100px 0;
-    color: #fff;
-    /* 閭梧勹逕ｻ蜒上�HTML蛛ｴ縺ｧ繧､繝ｳ繝ｩ繧､繝ｳ繧ｹ繧ｿ繧､繝ｫ縺ｨ縺励※險ｭ螳壽ｸ医∩縲√∪縺溘�.problem-bg縺ｧ蛻ｶ蠕｡ */
-}
-
-/* 繧ｪ繝ｼ繝舌�繝ｬ繧､縺輔ｌ縺ｦ縺�ｋ縺ｮ縺ｧ縲√き繝ｼ繝芽�菴薙�閭梧勹縺ｯ蜊企乗�縺ｫ縺吶ｋ縺ｨ鬥ｴ譟薙� */
-.problem-grid-wide {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.flow-card {
-    background: #ffffff; /* 荳埼乗�縺ｪ逋ｽ縺ｧ蜿ｯ隱ｭ諤ｧ遒ｺ菫� */
-    padding: 40px 30px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* 蠖ｱ縺ｧ豬ｮ縺九○繧� */
-    transition: transform 0.3s ease;
-}
-
-.flow-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--renewal-gold);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-}
-
-.problem-card {
-    background: rgba(26, 26, 26, 0.85); /* 蟆代＠騾城℃縺輔○繧� */
-    padding: 40px 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px; /* 隗剃ｸｸ繧貞ｰ代＠謚代∴繧√↓ */
-    backdrop-filter: blur(10px); /* 縺吶ｊ繧ｬ繝ｩ繧ｹ蜉ｹ譫� */
-    transition: transform 0.3s ease;
-}
-
-.problem-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--renewal-gold);
-}
-
-.problem-card .p-num {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--renewal-gold);
-    line-height: 1;
-    margin-bottom: 20px;
-    font-family: var(--font-en);
-    opacity: 0.5; /* 蟆代＠謗ｧ縺医ａ縺ｫ */
-}
-
-.prob.flow-card h3 {
-    font-size: 1.3rem; /* 蟆代＠隱ｿ謨ｴ */
-    margin-bottom: 15px;
-    color: var(--renewal-navy) !important; /* 豼�＞髱偵ｒ蠑ｷ蛻ｶ */
-    font-family: var(--font-jp-serif);
-}
-
-.flow-card p {
-    font-size: 0.95rem;
-    color: #333 !important; /* 豼�＞鮟偵ｒ蠑ｷ蛻ｶ */
-    line-height: 1.8;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .problem-section {
-        padding: 60px 0;
-    }
-    
-    .problem-grid-wide {
-        grid-template-columns: 1fr; /* 繧ｹ繝槭�縺ｯ1蛻� */
-        gap: 20px;
-    }
-
-    .problem-card {
-        padding: 30px 20px;
-    }
-}
-
-/* Solution Section */
 .solution-item {
     display: flex;
     align-items: center;
-    gap: 60px;
-    margin-bottom: 100px;
+    gap: 50px;
+    margin-bottom: 80px;
 }
-
 .solution-item.reverse {
     flex-direction: row-reverse;
 }
-
-.s-content {
+.solution-item .s-content {
     flex: 1;
 }
-
-.s-image {
+.solution-item .s-image {
     flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
-.s-image img {
-    border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    width: 100%;
-}
-
 .s-tag {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
     color: var(--renewal-gold);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+.solution-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* FLOW Section */
+.flow-grid-wide {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+.flow-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+.step-num {
+    font-size: 3rem !important;
+    color: rgba(200, 200, 200, 0.2) !important;
+    position: absolute !important;
+    top: -10px !important;
+    right: 10px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    z-index: 0;
+}
+.flow-card h3,
+.flow-card p {
+    position: relative;
+    z-index: 1;
+}
+
+/* PRICE Section */
+.price-section {
+    padding: 80px 0;
+}
+.price-section.dark-bg {
+    background: var(--renewal-navy);
+    color: #fff;
+}
+.price-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+.price-card {
+    background: #fff;
+    color: var(--renewal-dark);
+    padding: 40px 30px;
+    border-radius: 16px;
+    width: 320px;
+    text-align: center;
+    position: relative;
+}
+.price-card.monitor {
+    border: 3px solid var(--renewal-gold);
+    transform: scale(1.05);
+}
+.price {
+    color: var(--renewal-gold);
+    margin: 20px 0;
+}
+.price .amount {
+    font-size: 4rem !important;
+    font-weight: 800;
+    line-height: 1;
+}
+.price .unit {
+    font-size: 1.2rem !important;
+    font-weight: 700;
+    position: relative;
+    top: -1.5rem;
+    margin-left: 5px;
+}
+.price-features {
+    text-align: left;
+    margin: 20px 0 30px;
+    font-size: 0.95rem;
+}
+.price-features li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+.price-features li i {
+    position: absolute;
+    left: 0;
+    color: var(--renewal-gold);
+    top: 4px;
+}
+
+/* BUTTONS */
+.cta-button {
+    width: 100% !important;
+    width: 100%;
+    display: block;
+    padding: 16px 0;
+    font-size: 1.1rem;
+    border-radius: 10px; /* Restore 10px radius */
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 20px;
+    background: var(--renewal-gold);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    opacity: 0.95;
+}
+.cta-button.secondary {
+    background: transparent;
+    border: 2px solid #fff; /* For dark background */
+    color: #fff; /* Initial state */
+}
+
+/* Secondary Button Hover (Transparent) */
+#price .price-card .cta-button.secondary:hover {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+    opacity: 0.7;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* FOOTER */
+.site-footer {
+    background-color: var(--renewal-navy);
+    color: #fff;
+    padding: 60px 0 40px;
+    text-align: center;
+    border-top: 5px solid var(--renewal-gold);
+}
+.footer-logo {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: 14px;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.s-content h3 {
     font-size: 2rem;
+    letter-spacing: 0.05em;
     margin-bottom: 20px;
-    font-family: 'Shippori Mincho', serif;
+    color: #fff;
+    display: inline-block;
+}
+.copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.05em;
+    margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-    .solution-item, .solution-item.reverse {
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .site-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--renewal-navy);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.3s ease-in-out;
+        z-index: 10000;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    }
+    .site-nav.active {
+        right: 0;
+    }
+    .site-nav a {
+        font-size: 1.2rem;
+        color: #fff;
+    }
+    .hamburger-btn {
+        display: block;
+    }
+    .solution-item {
         flex-direction: column;
         gap: 30px;
-        margin-bottom: 60px;
+    }
+    .solution-item.reverse {
+        flex-direction: column;
+    }
+    .flow-grid-wide {
+        grid-template-columns: 1fr;
     }
 }
 
-/* Tech Section */
+@media (max-width: 768px) {
+    .site-header { padding: 10px 0 !important; }
+    .logo img { height: 32px !important; padding: 4px !important; }
+    .hamburger-btn { top: 2px; }
+    .hero.renewal-hero .hero-content {
+        padding-top: 100px !important; /* Mobile adjust */
+    }
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* ==========================================================================
+   RESTORED SECTIONS (From Backup)
+   ========================================================================== */
+
+/* Dark Background Badge (White button style) */
+.section-badge.inverted {
+    background: #fff; /* 鬯�E��E��E�陷茨�E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髫�E��E��E��E��E��E��E�髯�E�謳�E��E��E��E��E�鬩搾�E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蛹�E��E��E��E��E�髣匁E���E�隴擾�E��E�髯橸�E��E�鬩搾�E��E��E��E��E��E�髯晢�E��E�陷�E��E��E��E��E��E��E��E��E��E��E� */
+    color: var(--renewal-navy); /* 鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髯�E�莨夲�E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�閧�E�蠕暦�E��E��E��E��E��E��E��E� */
+    border-color: #fff;
+    font-weight: 800;
+}
+
+/* --------------------- */
+
+/* Problem Card - Increase Opacity */
+.problem-card {
+    background: rgba(255, 255, 255, 0.12); /* 0.05 -> 0.12 鬩搾�E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩搾�E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    padding: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.15); /* 鬩幢�E��E�隴趣�E��E�魁E���E��E��E��E��E��E��E��E�鬩幢�E��E�隰�E�魑ｴ�E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬩幢�E��E��E��E��E��E�驛｢�E��E��E��E��E��E��E��E��E��E��E��E��E��E�髣比ｼ夲�E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    transition: all 0.3s;
+    backdrop-filter: blur(5px); /* 鬩搾�E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E�鬯倩�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬩幢�E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E�闔ｨ螟ｲ�E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E�髫�E�蟶�E��E��E��E��E��E�つ陞ｳ螟ｲ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髯�E�莨夲�E��E��E��E��E��E��E��E�陝ｶ譎丞ｯ�E�髣匁E���E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+}
+.problem-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--renewal-gold);
+}
+.p-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(174, 139, 71, 0.3);
+    margin-bottom: 20px;
+    line-height: 1;
+}
+.problem-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--renewal-gold);
+}
+@media (max-width: 900px) {
+    .problem-grid { grid-template-columns: 1fr; }
+}
+
+/* 2. Tech Section */
 .tech-content {
     display: flex;
     gap: 60px;
     align-items: center;
 }
-
 .tech-visual {
     flex: 1;
     background: rgba(255, 255, 255, 0.03);
@@ -457,7 +631,6 @@ section {
     border-radius: 12px;
     text-align: center;
 }
-
 .tech-icons {
     font-size: 5rem;
     margin-bottom: 20px;
@@ -466,303 +639,73 @@ section {
     align-items: center;
     gap: 20px;
 }
-
 .tech-icons .plus {
     font-size: 2rem;
     color: var(--renewal-gold);
 }
-
 .tech-visual p {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     color: var(--renewal-gold);
 }
-
-.tech-desc {
-    flex: 1;
-}
-
-.tech-chart {
-    margin: 30px 0;
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.tech-chart img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
-
+.tech-desc { flex: 1; }
 .tech-list {
     list-style: none;
     padding: 0;
     margin-top: 30px;
-    background: rgba(255,255,255,0.05); /* 繝ｪ繧ｹ繝医ｒ逶ｮ遶九◆縺帙ｋ */
-    padding: 20px;
-    border-radius: 8px;
 }
-
 .tech-list li {
     margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start; /* 繧｢繧､繧ｳ繝ｳ繧剃ｸ頑純縺医↓ */
-    gap: 15px;
-    font-weight: 700; /* 蠑ｷ隱ｿ */
-    line-height: 1.6;
-}
-
-.tech-list li i {
-    color: var(--renewal-gold);
-    margin-top: 5px; /* 繝�く繧ｹ繝医→縺ｮ繝舌Λ繝ｳ繧ｹ隱ｿ謨ｴ */
-    font-size: 1.2rem;
-}
-
-.tech-list li:last-child {
-    margin-bottom: 0;
-}
-
-@media (max-width: 768px) {
-    .tech-content {
-        flex-direction: column;
-    }
-}
-
-/* Flow Section */
-/* Flow Section Updates */
-.flow-container {
-    display: flex;
-    gap: 60px;
-    align-items: flex-start;
-    margin-top: 50px;
-}
-
-.flow-image {
-    flex: 1;
-    position: sticky;
-    top: 100px;
-}
-
-.flow-image img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-}
-
-.flow-steps {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 0;
-}
-
-.flow-step {
-    text-align: left;
-    position: relative;
-    display: flex;
-    gap: 25px;
-    align-items: flex-start;
-    background: #f8fafc;
-    padding: 35px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-}
-
-.step-num {
-    width: 50px;
-    height: 50px;
-    background: var(--renewal-navy);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    border-radius: 50%;
-    margin: 0;
-    font-size: 1.2rem;
-    border: 3px solid var(--renewal-gold);
-    flex-shrink: 0;
-}
-
-.flow-step-content {
-    flex: 1;
-}
-
-.flow-step h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.25rem;
-    color: var(--renewal-navy);
-    font-family: 'Shippori Mincho', serif;
-}
-
-.flow-step p {
-    margin-bottom: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-@media (max-width: 900px) {
-    .flow-container {
-        flex-direction: column;
-    }
-    .flow-image {
-        position: static;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .flow-steps {
-        width: 100%;
-    }
-}
-
-/* Price Section */
-.price-card-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.price-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 50px 40px;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.price-card.monitor {
-    border: 2px solid var(--renewal-gold);
-    background: rgba(174, 139, 71, 0.05);
-}
-
-.card-label {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--renewal-gold);
-    color: #fff;
-    padding: 5px 20px;
-    font-size: 12px;
-    font-weight: 800;
-    border-radius: 50px;
-}
-
-.price {
-    margin: 30px 0;
-}
-
-.amount {
-    font-size: 4rem;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-}
-
-.unit {
-    font-size: 1.5rem;
-    margin-left: 5px;
-}
-
-.price-features {
-    list-style: none;
-    padding: 0;
-    margin: 30px 0;
-    text-align: left;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding: 20px 0;
-}
-
-.price-sub-note {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-.price-features li {
-    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
-
-.price-features li i {
-    color: var(--renewal-gold);
-}
-
+.tech-list li i { color: var(--renewal-gold); }
 @media (max-width: 768px) {
-    .price-card-container {
-        grid-template-columns: 1fr;
-    }
+    .tech-content { flex-direction: column; }
 }
 
-/* Profile Section */
+/* 3. Profile Section */
 .profile-content {
     display: flex;
     gap: 60px;
     align-items: center;
 }
-
-.profile-image {
-    flex: 1;
-}
-
+.profile-image { flex: 1; }
 .profile-image img {
     width: 100%;
     border-radius: 8px;
     filter: grayscale(1);
     transition: filter 0.5s;
 }
-
-.profile-image img:hover {
-    filter: grayscale(0);
-}
-
-.profile-text {
-    flex: 1.5;
-}
-
+.profile-image img:hover { filter: grayscale(0); }
+.profile-text { flex: 1.5; }
 .profile-text h3 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: var(--renewal-gold);
     font-family: 'Shippori Mincho', serif;
 }
-
 .profile-meta {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
 }
-
 .profile-meta .name {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 0.9rem;
     color: var(--renewal-gold);
 }
-
 .profile-meta .name-jp {
     font-size: 1.5rem;
     font-weight: 800;
 }
-
 @media (max-width: 768px) {
-    .profile-content {
-        flex-direction: column;
-    }
+    .profile-content { flex-direction: column; }
 }
 
-/* Fixed LINE Button */
+/* 4. Fixed LINE Button */
 .fixed-line-btn {
     position: fixed;
     bottom: 20px;
@@ -778,526 +721,137 @@ section {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     transition: all 0.3s;
 }
-
-.fixed-line-btn i {
-    font-size: 2rem;
-    margin-right: 15px;
-}
-
+.fixed-line-btn i { font-size: 2rem; margin-right: 15px; }
 .fixed-line-btn span {
     font-size: 0.9rem;
     font-weight: 800;
     line-height: 1.2;
 }
+.fixed-line-btn:hover { transform: scale(1.05); }
 
-.fixed-line-btn:hover {
-    transform: scale(1.05);
-}
-
-/* Header Fixes */
-.site-header {
-    background: rgba(15, 23, 42, 0.9) !important;
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding: 10px 0 !important;
-}
-
-.header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
-}
-
-.logo {
-    gap: 10px !important;
-    text-decoration: none;
-}
-
-.logo img {
-    height: 40px !important;
-    width: auto;
-    background: #fff;
-    padding: 4px;
-    border-radius: 4px;
-}
-
-.logo span {
-    color: #fff !important;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: 0.05em;
-}
-
-.site-nav a {
-    color: rgba(255,255,255,0.9) !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    margin-left: 25px !important;
-    transition: color 0.3s;
-}
-
-.site-nav a:hover {
-    color: var(--renewal-gold) !important;
-}
-
-.nav-btn {
-    background: var(--renewal-gold) !important;
-    color: #fff !important;
-    padding: 8px 20px !important;
-    border-radius: 4px !important;
-    font-size: 14px !important;
-    margin-left: 30px !important;
-}
-
-/* Hamburger Button Visibility */
-.hamburger-btn span {
-    background-color: #fff !important;
-}
-
-/* Mobile Nav Adjustments */
-@media (max-width: 768px) {
-    .site-header {
-        padding: 15px 0 !important;
-    }
-
-    .site-nav {
-        background: var(--renewal-navy) !important;
-        padding-top: 80px;
-        gap: 20px !important;
-    }
-
-    .site-nav a {
-        margin-left: 0 !important;
-        font-size: 1.2rem !important;
-        color: #fff !important;
-    }
-
-    .site-nav .nav-btn {
-        display: flex !important; /* Show on mobile menu */
-        margin-left: 0 !important;
-        margin-top: 20px;
-    }
-}
-
-/* Q&A Section (Refined Style) */
-.qa-section {
-    padding: 100px 0;
-    width: 100%;
-}
-
-.qa-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-    margin: 60px auto 0;
-}
-
-.qa-item {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    transition: transform 0.3s ease;
-}
-
-.qa-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    border-color: #ddd;
-}
-
-.q {
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: var(--renewal-navy);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.q::before {
-    content: 'Q';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    height: 32px;
-    background: var(--renewal-navy);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 1rem;
-    font-family: var(--font-en);
-    flex-shrink: 0;
-}
-
-.a {
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.8;
-    padding-left: 47px;
-    position: relative;
-    display: block;
-}
-
-.a::before {
-    content: 'A';
-    position: absolute;
-    left: 0;
-    top: -2px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--renewal-gold);
-    font-weight: 700;
-    font-family: var(--font-en);
-    font-size: 1.2rem;
-}
-
-/* ==========================================================================
-   Responsive Polish (Multi-Device Optimization)
-   ========================================================================== */
-
-/* 1. Global Image Safety */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* 2. Enhanced Mobile Container */
-@media (max-width: 768px) {
-    .container {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* Prevent horizontal scroll */
-    body, html {
-        overflow-x: hidden;
-        width: 100%;
-    }
-}
-
-/* 3. Hero Mobile Improvements (Dynamic Viewport Height) */
-@media (max-width: 768px) {
-    .hero.renewal-hero {
-        min-height: 100dvh; /* Browsers with address bars support */
-    }
-    
-    .hero-content {
-        padding-top: 80px; /* Header space */
-    }
-}
-
-/* 4. Safe Area for Fixed Button (iPhone X+ support) */
-.fixed-line-btn {
-    bottom: max(20px, env(safe-area-inset-bottom) + 20px);
-    right: max(20px, env(safe-area-inset-right) + 20px);
-}
-
-/* 5. Typography Adjustments for Small Screens */
-@media (max-width: 480px) {
-    html {
-        font-size: 14px; /* Slightly smaller base text */
-    }
-
-    .section-title {
-        font-size: 1.8rem !important;
-        word-break: keep-all; /* Don't break words awkwardly */
-        overflow-wrap: break-word;
-    }
-    
-    .hero-main-copy {
-        font-size: 2rem !important;
-    }
-}
-
-
-/* ==========================================================================
-   HEADING REPAIR (Fix Broken Layout)
-   ========================================================================== */
-
-/* 1. Reset Header Layout */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-    background: rgba(15, 23, 42, 0.95) !important; /* ほぼ不透明なネイビー */
-    padding: 15px 0 !important;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.header-inner {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: auto !important; /* 高さ制限解除 */
-}
-
-/* 2. Logo Fix (Refined) */
-.logo {
-    display: flex !important;
-    align-items: center !important;
-    gap: 15px !important;
-    text-decoration: none;
-    z-index: 10001;
-    height: 100%; /* 親の高さに合わせる */
-}
-
-.logo img {
-    display: block !important;
-    height: 40px !important;
-    width: auto !important;
-    max-width: none !important; /* 幅制限解除 */
-    background: #fff;
-    padding: 6px; /* パディングを少し増やす */
-    border-radius: 4px;
-    margin: 0 !important;
-    object-fit: contain;
-}
-
-.logo span {
-    display: block !important;
-    color: #fff !important;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.4rem !important; /* 少し大きく */
-    letter-spacing: 0.05em;
-    line-height: 1;
-    white-space: nowrap;
-}
-
-/* 3. Navigation Fix (PC) */
-.site-nav {
-    display: flex !important;
-    gap: 30px !important;
-    align-items: center !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-}
-
-.site-nav a {
-    color: rgba(255,255,255,0.8) !important;
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    transition: color 0.3s;
-    white-space: nowrap;
-}
-
-.site-nav a:hover {
-    color: var(--renewal-gold) !important;
-}
-
-.nav-btn {
-    background: var(--renewal-gold) !important;
-    color: #fff !important;
-    padding: 10px 24px !important;
-    border-radius: 4px !important;
-    font-weight: 700 !important;
-    display: inline-flex !important;
-}
-
-/* 4. Hamburger & Mobile Menu Fix */
-.hamburger-btn {
-    display: none !important; /* PCでは非表示 */
-}
-
-@media (max-width: 900px) {
-    .site-nav {
-        /* スマホメニュー（デフォルトは隠す、JSでクラスがついたら表示） */
-        position: fixed !important;
-        top: 0;
-        right: -100%; /* 画面外へ */
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background: var(--renewal-navy) !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        gap: 30px !important;
-        transition: right 0.3s ease-in-out;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-        z-index: 10000;
-    }
-
-    .site-nav.active {
-        right: 0 !important; /* 出現 */
-    }
-
-    .site-nav a {
-        font-size: 1.2rem !important;
-        color: #fff !important;
-    }
-
-    /* ハンバーガーボタンを表示 */
-    .hamburger-btn {
-        display: block !important;
-        position: relative;
-        z-index: 10002;
-        background: none;
-        border: none;
-        cursor: pointer;
-        width: 30px;
-        height: 24px;
-        padding: 0;
-    }
-    
-    .hamburger-btn span {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: #fff !important;
-        position: absolute;
-        transition: all 0.3s;
-    }
-    
-    .hamburger-btn span:nth-child(1) { top: 0; }
-    .hamburger-btn span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-    .hamburger-btn span:nth-child(3) { bottom: 0; }
-}
-
-
-/* ==========================================================================
-   Header Button Fix (Right Side LINE Button)
-   ========================================================================== */
-.nav-btn {
-    display: inline-flex !important;
-    align-items: center !important; /* ������������ */
-    justify-content: center !important;
-    gap: 8px !important;
-    height: auto !important;
-    line-height: 1 !important; /* �s�Ԃ���߂� */
-    padding: 10px 24px !important;
-}
-
-.nav-btn i {
-    display: inline-block !important;
-    font-size: 1.2rem !important; /* �����傫�� */
-    transform: translateY(1px); /* ���o�I������ */
-    margin: 0 !important;
-}
-
-
-/* ==========================================================================
-   FOOTER DESIGN (Professional Brand Finish)
-   ========================================================================== */
-
-.site-footer {
+/* 5. Utility Colors & Animation */
+.dark-bg {
     background-color: var(--renewal-navy);
     color: #fff;
-    padding: 60px 0 40px;
-    text-align: center;
-    border-top: 5px solid var(--renewal-gold); /* �A�N�Z���g���C�� */
+}
+.section-badge.inverted {
+    background: var(--renewal-navy);
+    color: #fff;
+    border-color: var(--renewal-navy);
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.js-fade-up {
+    /* 鬯�E��E��E�驕貞､�E��E��E�貁E��讌�E�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E�S鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�貁E��譯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�蛹�E��E��E�繧托ｽ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�貊捺�E�夲�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�貊灘擠�E��E��E��E�闔ｨ螟ｲ�E��E��E��E��E��E��E��E�髴托ｽ�E�隴会ｽ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E�髯樊ｻゑｽ�E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隶厁E���E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    /* animation: fadeInUp 0.8s ease-out forwards; */
 }
 
-/* Footer Logo Styling */
-.footer-logo {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 2rem;
-    letter-spacing: 0.05em;
-    margin-bottom: 20px;
+
+/* Hero Accent Color */
+.accent-text {
+    color: var(--renewal-gold);
+}
+
+
+/* Hero Description Box (Restored) */
+.hero-desc {
+    font-size: 1.1rem;
+    line-height: 2;
     color: #fff;
+    margin-bottom: 40px;
+    
+    /* 鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E�鬲�E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    background: rgba(0, 0, 0, 0.5); /* 鬯�E��E��E��E��E��E��E�鬮�E�讎奁E���E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�縺�E��E�鬮�E�蛹�E��E��E��E��E�髫�E�莨夲�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髯橸�E��E��E��E��E��E��E��E�蜿厁E���E��E��E�陜咎�E��E�螻�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    padding: 20px 30px;
+    border-left: 5px solid var(--renewal-gold); /* 鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�蜿門�E�暦�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    border-radius: 0 4px 4px 0; /* 鬯�E��E��E��E��E��E��E�髫�E��E��E�隲幢�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�髯橸�E��E�陞｢�E��E��E��E��E��E��E��E��E��E�鬮�E�豈費�E��E�螟ｲ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�陋ｹ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    max-width: 650px;
+    backdrop-filter: blur(4px); /* 鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蛟ｩ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�蟷�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髣費�E��E�陞滂ｽ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E�陝ｶ�E��E��E��E��E��E��E��E��E��E��E��E�縺�E��E�髯晢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�蛹�E��E��E�繧托ｽ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�讖ｸ�E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E�雋ょ庁E�� */
+}
+
+
+/* LINE Button Specific Style (Restore Green) */
+.cta-button.primary {
+    background-color: #06c755 !important; /* LINE Official Green */
+    color: #fff !important;
+    box-shadow: 0 10px 25px rgba(6, 199, 85, 0.4) !important; /* 鬯�E��E��E�隰�E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�闖ｫ�E��E��E��E��E��E�陷�E�蜴�E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�雋��E��E�驕假�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E�謳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髣費�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�譎｢�E��E��E��E�髯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    border: none !important;
+}
+
+.cta-button.primary:hover {
+    background-color: #05b34c !important; /* 鬯�E�蟷�E��E��E��E��E�髫�E�蜿門�E�暦�E��E��E��E��E��E��E��E�髯�E��E��E��E��E��E��E��E��E�雜｣�E��E��E��E�鬯�E�蟷�E��E��E��E��E�髫�E�雜｣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E�髯滓汚��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�隴趣�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�髮懶�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(6, 199, 85, 0.5) !important;
+}
+
+
+/* ==========================================================================
+   HEADER NAV BUTTON FIX (Final)
+   ========================================================================== */
+
+/* ==========================================================================
+   PROBLEM SECTION DETAILED DESIGN
+   ========================================================================== */
+
+/* 鬮�E�蛹�E��E��E��E��E�鬮�E�讎奁E���E��E��E��E��E��E��E��E��E�髯区�E�ゑｽ�E��E��E��E��E��E��E��E��E��E��E�髯�E��E��E�闕ｳ讓｣�E��E��E��E��E�費�E��E��E��E�髯句�E��E��E��E��E��E�髫�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩搾�E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩幢�E��E��E��E��E��E�鬯�E��E��E�遶乗剌�E��E�螳�E��E�費�E��E��E��E��E��E��E��E��E��E��E��E� */
+.problem-section {
+    padding-top: 120px !important;
+    padding-bottom: 100px !important;
+    text-align: center;
+}
+
+/* 鬯�E��E��E�陷肴�E��E�鄂ｰ�E��E��E��E��E��E��E��E�鬩搾�E��E��E��E��E��E�髯�E�莨夲�E��E��E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�驍ｵ�E��E�陋滂ｽ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬮�E�蜈ｷ�E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+.section-title {
+    font-size: 2.8rem;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+/* 鬩搾�E��E��E��E��E��E�髫�E��E��E��E��E��E��E�髯晢�E��E��E��E��E��E�鬩搾�E��E��E��E��E��E�鬮�E��E��E��E��E��E��E�髫�E�荳橸�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩搾�E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E�讖ｸ�E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E�闔ｨ螟ｲ�E��E��E��E��E��E��E��E��E��E�縺�E��E�髫�E�荳�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬯�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+.text-highlight {
+    color: var(--renewal-gold); /* 鬩幢�E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴趣�E��E��E��E��E��E��E��E��E��E�鬩幢�E��E�隴取得��E��E��E��E��E��E��E�驕ｶ莨�E��E��E��E��E�邵�E�螂��E��E��E��E��E��E��E��E�鬮�E�蛹�E��E��E��E��E��E��E�縺�E��E� */
+    font-weight: 900;
+    font-size: 1.1em;
+    display: inline-block;
+    padding: 0 5px;
+    /* text-shadow: 0 0 10px rgba(255, 107, 107, 0.4); */
+}
+
+/* 鬩幢�E��E�隴趣�E��E��E��E��E��E�驛｢譎｢�E��E��E��E�鬩幢�E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬮�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E�鬩幢�E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
+.section-header {
+    margin-bottom: 60px;
+}
+.section-badge {
+    margin-bottom: 25px;
     display: inline-block;
 }
 
-/* Copyright Styling */
-.copyright {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
-    font-family: 'Outfit', sans-serif;
-    letter-spacing: 0.05em;
-    margin-top: 20px;
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+        line-height: 1.5;
+    }
 }
 
 
 /* ==========================================================================
-   FONT UNIFICATION (Shippori Mincho for Headings)
+   BADGE FIX (Final Override)
    ========================================================================== */
-
-/* �S�Ă̌��o�����w�����ۂ薾���x�œ��ꂵ�A�d�����ƐM�������o�� */
-h1, h2, h3, h4, h5, h6,
-.section-title,
-.hero-main-copy,
-.flow-step h3,
-.problem-card h3,
-.profile-text h3,
-.s-content h3 {
-    font-family: 'Shippori Mincho', serif !important;
-    font-weight: 700 !important;
+/* PROBLEM驛｢�E��E��E��E��E��E�驛｢�E��E��E��E��E��E�驛｢�E��E��E��E��E��E�驛｢譎｢�E��E��E��E�驛｢譎｢�E��E��E��E�鬩匁E���E�陝ｲ�E��E��E��E��E��E�髫�E�迚吝�E��E��E��E�讓｣螯呵�E��E��E��E�陷搾�E��E�髣匁E���E�驗呻�E��E��E��E��E��E�驛｢譎��E��E�郢晢�E��E�驛｢�E��E��E��E��E��E�驛｢�E��E�陜｣�E��E�陷環驍ｵ�E��E��E��E��E��E�驍ｵ�E��E�陷�E��E��E��E��E��E��E� */
+.section-badge.inverted {
+    background-color: #fff !important; /* 鬮�E��E��E��E��E��E��E�鬩肴得��E��E��E�髯溯�E��E��E��E��E��E�髯�E�閧�E�蜁E���E��E��E��E��E��E��E��E�驍ｵ�E��E�驕停扱蟲�E�髯区�E��E��E��E�遶企E���E��E��E��E��E��E��E��E�驍ｵ�E��E��E��E��E��E�驍ｵ�E��E�髦�E�蜻�E��E��E��E��E��E��E��E��E��E��E��E��E�驍ｵ�E��E�闔会ｽ�E��E��E��E��E�鬮�E��E��E��E��E��E��E�驍ｵ�E��E�陷会ｽ�E�遯�E��E��E�驍ｵ�E��E�闕ｳ蟯�E�蜻�E�驍ｵ�E��E�髴郁E���E��E��E��E��E�...驍ｵ�E��E��E��E��E��E��E��E��E��E��E��E��E��E�遶丞､�E��E��E��E��E��E��E��E��E��E��E��E��E�驛｢�E��E�鬯伜�E�E��E��E��E�陷證ｦ�E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E��E� */
 }
 
-/* �{���͉ǐ��d���ŃS�V�b�N�iNoto Sans JP�j���ێ� */
-body, p, li, a, span:not(.hero-main-copy) {
-    font-family: 'Noto Sans JP', sans-serif;
-}
-
-/* �p�����̃A�N�Z���g�i�o�b�W�␔���j�� Outfit ���ێ� */
-.section-badge,
-.step-num,
-.amount,
-.unit,
-.logo span,
-.footer-logo,
-.copyright {
-    font-family: 'Outfit', sans-serif !important;
+/* 鬮�E��E��E��E��E��E��E�鬩肴得��E��E��E�髯溯�E��E��E��E��E��E�驍ｵ�E��E��E��E��E��E�髯�E�閧�E�莠�E�隨�E��E��E�髫�E�蜴�E��E��E��E��E�驍ｵ�E��E�髢�E��E��E�陝�E��E� */
+section.dark-bg .section-badge.inverted,
+.problem-section .section-badge.inverted {
+    background-color: #fff;
+    color: var(--renewal-navy);
+    border: 1px solid #fff;
 }
 
 
 /* ==========================================================================
-   FONT UNIFICATION (ALL Shippori Mincho)
-   ========================================================================== */
-
-/* ���{��e�L�X�g��S�āw�����ۂ薾���x�œ��� */
-body, 
-p, 
-li, 
-a, 
-span, 
-div, 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Shippori Mincho', serif !important;
-}
-
-/* �p�����̃A�N�Z���g�i�o�b�W�␔���A�p�P��j�� Outfit ���ێ����ă��_�������c�� */
-.section-badge,
-.step-num,
-.amount,
-.unit,
-.logo span,
-.footer-logo,
-.copyright,
-.nav-btn, /* �{�^�����̉p��Ȃ� */
-.card-label { /* ���i���x���Ȃ� */
-    font-family: 'Outfit', sans-serif !important;
-}
-
-
-/* ==========================================================================
-   BUTTON FONT FIX (Shippori Mincho)
-   ========================================================================== */
-
-/* �{�^�����̓��{����w�����ۂ薾���x�ɂ��� */
-.nav-btn,
-.cta-button,
-.fixed-line-btn span {
-    font-family: 'Shippori Mincho', serif !important;
-    font-weight: 700 !important; /* �����ł������Ŏ��F���m�� */
-    letter-spacing: 0.05em;
-}
-
