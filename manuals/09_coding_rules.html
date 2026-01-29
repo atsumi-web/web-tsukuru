@@ -118,7 +118,7 @@
     <header class="site-header">
         <div class="container">
             <h1>Antigravity直伝・コーディングの鉄則</h1>
-            <p>「修正の無限ループ」から抜け出すための14の鉄則</p>
+            <p>「修正の無限ループ」から抜け出すための15の鉄則</p>
         </div>
     </header>
 
@@ -183,22 +183,23 @@
             </div>
 
             <h2>4. 「下書き保存」禁止（One Source of Truth）</h2>
-            <p>修正したいとき、ファイルの末尾に「修正用コード」を追記していく「継ぎ足し秘伝のタレ」方式は禁止です。</p>
+            <p>修正したいとき、<strong></strong>ファイルの末尾に「修正用コード」を追記していく「継ぎ足し方式」は禁止</strong>です。</p>
 
             <div class="rule-box bad">
-                <span class="badge badge-bad">NG</span>
+                <span class="badge badge-bad">NG：同じファイル内で重複</span>
                 <p>既存のコードには触らず、一番下に新しいCSSを書いて上書きする。<br>
-                → どこが有効なのか分からなくなり、自分が書いたコード同士が喧嘩を始めます。</p>
+                <code>.button { background: red; }</code> (末尾に追記)<br>
+                → どこが有効なのか分からなくなり、管理不能になります。</p>
             </div>
 
             <div class="rule-box good">
-                <span class="badge badge-good">OK</span>
-                <p><strong>勇気を出して、元の場所に戻って書き換える。</strong><br>
-                ファイル内検索（Ctrl+F）を使って、該当箇所の元の記述を探し出し、そこを直接修正します。</p>
+                <span class="badge badge-good">OK：元の場所を直接修正</span>
+                <p><strong>勇気を出して、元の記述を書き換える。</strong><br>
+                ファイル内検索（Ctrl+F）を使って、該当箇所の元の記述を探し出し、そこを直接修正します。<br>
+                <strong>ただし、必ずGitでコミットを取ってから修正すること（ルール10）。</strong></p>
                 
-                <p><strong>⚠️ 例外：メインCSS（renewal.css等）の場合</strong><br>
-                メインCSSは触らず、<strong>ルール9に従い custom.css に分離</strong>します。<br>
-                既存の設計を壊さないため、追加スタイルは custom.css にまとめます。</p>
+                <p><strong>💡 Antigravityが生成したコードは「自分のコード」です</strong><br>
+                外部ライブラリではないので、遠慮せずに直接書き換えてOK。1箇所を見れば全てが分かる状態（One Source of Truth）を保ちましょう。</p>
             </div>
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
@@ -265,34 +266,32 @@
                 VS Codeの右下に表示されるエンコーディングが「UTF-8」であることを必ず確認する。</p>
             </div>
 
-            <h2>9. CSS設計：ファイル分割ルール</h2>
-            <p>メインCSSファイル（<code>renewal.css</code> 等）は、セクションごとに分割して管理します。</p>
-
-            <div class="rule-box bad">
-                <span class="badge badge-bad">NG：1つの巨大ファイル</span>
-                <p><code>style.css</code> に全てのスタイルを詰め込むと、2000行を超えて誰も修正できなくなります。<br>
-                また、<strong>既存ファイルの末尾に追記を繰り返す</strong>のは禁止（秘伝のタレ方式）。</p>
-            </div>
+            <h2>9. CSS設計：ファイル分割と直接修正</h2>
+            <p>管理しやすくするためにファイルを分割しますが、分割されたファイルは直接修正します。</p>
 
             <div class="rule-box good">
-                <span class="badge badge-good">OK：セクション別に分割</span>
-                <p><strong>推奨構成：</strong></p>
+                <span class="badge badge-good">推奨構成（管理の単位）</span>
                 <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">css/
 ├── base.css          （基本設定・リセット）
 ├── components.css    （ボタン、カードなど共通パーツ）
 ├── header.css        （ヘッダー専用）
 ├── hero.css          （ヒーローセクション専用）
 ├── sections.css      （各セクションの共通スタイル）
-├── footer.css        （フッター専用）
-├── animations.css    （アニメーション定義）
-├── custom.css        （カスタマイズ用：追加スタイルはここに）
 └── main.css          （上記を @import でまとめる）</pre>
-                <p><strong>ルール：</strong></p>
-                <ul>
-                    <li><strong>メインCSS（<code>renewal.css</code> 等）は触らない</strong>：既存の設計を壊さない</li>
-                    <li><strong>追加・修正は <code>custom.css</code> に書く</strong>：変更履歴が明確になる</li>
-                    <li><strong>セクション単位で独立</strong>：<code>header.css</code> を修正しても <code>hero.css</code> に影響しない</li>
-                </ul>
+            </div>
+
+            <h3>修正の鉄則</h3>
+            <ul>
+                <li><strong>迷わず直接修正</strong>：<code>header.css</code> の中身を直接書き換える。</li>
+                <li><strong>custom.css は「例外」</strong>：実験的な変更や、触れない外部ファイル（WPテーマ等）の場合のみ使用。</li>
+                <li><strong>Gitが生命線</strong>：直接修正する代わりに、一歩ごとにコミットする（ルール10）。</li>
+            </ul>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">メリット</span>
+                <p>✅ <strong>シンプル</strong>：1箇所見れば全てが分かる。<br>
+                ✅ <strong>軽量</strong>：無駄な上書きコードが残らない。<br>
+                ✅ <strong>確実</strong>：Gitがあれば失敗しても1秒で戻せる。</p>
             </div>
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
@@ -400,10 +399,44 @@ cp file.css.bak file.css</pre>
 rm custom.css</pre>
             </div>
 
+            <h2>15. AI（Antigravity）との協働ルール</h2>
+            <p>AIが生成するコードやコマンドの特性を理解し、事故を未然に防ぎます。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">環境を明示する</span>
+                <ul>
+                    <li>OS（Windows）、シェル（PowerShell）、エンコーディング（UTF-8）を常に意識させる。</li>
+                    <li><code>ANTIGRAVITY_NOTES.md</code> があれば活用し、AIにコンテキストを記憶させる。</li>
+                </ul>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">コマンドの制約を伝える</span>
+                <ul>
+                    <li>PowerShell環境では <code>grep</code> ではなく <code>Select-String</code> を使うよう指示。</li>
+                    <li>Linux系コマンド（<code>sed</code>, <code>awk</code> 等）は使えないことを明記する。</li>
+                </ul>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">段階的に確認する</span>
+                <ul>
+                    <li>AIが生成したコードを盲信せず、必ずブラウザで確認（ルール13）を行う。</li>
+                    <li>一気に大量の修正を頼まず、セクションごとに段階的に依頼する。</li>
+                </ul>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">カスタム指示の例</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">{
+  "antigravity.customInstructions": "PowerShell環境。UTF-8厳守。grep禁止→Select-String使用。"
+}</pre>
+            </div>
+
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
 
             <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
-                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：14の鉄則</h3>
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：15の鉄則</h3>
                 <ol style="line-height: 2;">
                     <li>モバイルファースト</li>
                     <li>!important は敗北宣言</li>
@@ -419,6 +452,7 @@ rm custom.css</pre>
                     <li><strong>コマンド実行前チェック</strong></li>
                     <li><strong>ブラウザ確認義務化</strong></li>
                     <li><strong>ロールバック手順明文化</strong></li>
+                    <li><strong>AI（Antigravity）協働ルール</strong></li>
                 </ol>
                 <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
             </div>
