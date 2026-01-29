@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90日収益化・最速ロードマップ | web-tsukuru.jp</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0F172A;
+            --gold: #C5A059;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --accent: #ef4444;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .category {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--gold);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+        }
+
+        h1 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .intro {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--gold);
+        }
+
+        .phase {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .phase-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            background: var(--gold);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+        }
+
+        .phase-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .task-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .task-card h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .task-card h3 i {
+            color: var(--gold);
+        }
+
+        .task-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .highlight-box h2 {
+            font-size: 1.2rem;
+            color: #92400e;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ultra-tips {
+            background: var(--navy);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        .ultra-tips h2 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--gold);
+            text-align: center;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .tip-item {
+            margin-bottom: 25px;
+        }
+
+        .tip-item:last-child { margin-bottom: 0; }
+
+        .tip-item strong {
+            color: var(--gold);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-action {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .back-link:hover { opacity: 1; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .phase-title { font-size: 1.3rem; }
+        }
+
+        /* Daily Action List Styles */
+        .daily-schedule {
+            margin-top: 60px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .daily-week {
+            margin-bottom: 40px;
+        }
+        .week-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .day-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .day-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--navy);
+            min-width: 60px;
+        }
+        .day-desc {
+            font-size: 0.95rem;
+        }
+        .daily-routine {
+            background: var(--navy);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .daily-routine h4 {
+            margin-top: 0;
+            color: var(--gold);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .daily-routine ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="category">INTERNAL BIBLE</div>
+        <h1>web-tsukuru.jp<br>90日収益化・最速ロードマップ</h1>
+    </header>
+
+    <div class="intro">
+        <p><strong>「泥臭い作業はAIに、えりさんは意思決定と関係構築に」</strong><br>
+        この計画は、Google AI Ultraのパワーを最大限に活用し、最短距離で安定収益を確保するための司令書です。迷った時は、常にここに戻ってください。</p>
+    </div>
+
+    <!-- Phase 1 -->
+    <section class="phase">
+        <div class="phase-header">
+            <div class="phase-num">01</div>
+            <h2 class="phase-title">実績構築と「武器」の研磨（Day 1-30）</h2>
+        </div>
+        <div class="card-grid">
+            <div class="task-card">
+                <h3><i class="fa-solid fa-trophy"></i> モニター納品とエビデンス回収</h3>
+                <p>モニター案件を最優先で完遂。PageSpeed 90点以上の数値と「社長の喜びの声」をキャプチャし、実績を「動かぬ証拠」に変える。</p>
+            </div>
+            <div class="task-card">
+                <h3><i class="fa-solid fa-magnet"></i> リードマグネットの完成</h3>
+                <p>「求人広告を一生0円にする：採用資産化マニュアル」をAIで作成。LINE登録時の強力な動機付け（エサ）を用意する。</p>
+            </div>
+            <div class="task-card">
+                <h3><i class="fa-solid fa-location-dot"></i> 地域特化Webライティング</h3>
+                <p>「三重県 建設 採用」等のキーワードで1位を取るためのブログ10記事をAI Ultraで一気に書き下ろす。</p>
+            </div>
+        </div>
+
+        <!-- Daily Action Breakdown -->
+        <div class="daily-schedule">
+            <h3 style="text-align:center; font-family:'Shippori Mincho',serif; color:var(--navy); margin-bottom:30px;">
+                <i class="fa-solid fa-calendar-check"></i> Day 1-30 毎日の行動リスト
+            </h3>
+
+            <div class="daily-routine">
+                <h4><i class="fa-solid fa-sun"></i> 毎日の「黄金習慣」</h4>
+                <ul>
+                    <li><strong>午前（30分）:</strong> AI Ultraで「採用ブログ」を1記事生成・投稿。</li>
+                    <li><strong>午後（15分）:</strong> SNS用「採用の一言アドバイス」を1枚作り投稿（予約可）。</li>
+                    <li><strong>就寝前（5分）:</strong> 明日の「AIへの指示内容」をメモして寝る。</li>
+                </ul>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 1: 武器の研磨と堀田建設モデルの完成</span>
+                <div class="day-item">
+                    <div class="day-label">Day 1-3</div>
+                    <div class="day-desc"><strong>「既存資産のハイブリッド・リミックス」。</strong><br>HPの画像・動画・テキストを全て回収。AI Ultraで動画から切り出し、娘さんの声と掛け合わせた「完成間近のドラフト」を爆速で組み上げる。</div>
+                </div>
+                <div class="day-item">
+                    <div class="day-label">Day 4-7</div>
+                    <div class="day-desc"><strong>部長を唸らせる「動くプレビュー」提示。</strong><br>HP素材を活かしたリッチな演出（背景動画等）を盛り込み、「何もしなくても完成した」と思わせる品質で提示。即決・承認を勝ち取る。</div>
+                </div>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 2: コンテンツの種まき（SEO）</span>
+                <div class="day-item">
+                    <div class="day-label">Day 8-10</div>
+                    <div class="day-desc"><strong>地域キーワード検索。</strong><br>周辺地域の建設会社をリストアップし、ターゲット別のブログ記事をAIで10本書き溜める。</div>
+                </div>
+                <div class="day-item">
+                    <div class="day-label">Day 11-14</div>
+                    <div class="day-desc"><strong>モニター2社目の「爆速公開」。</strong><br>1社目とは異なる業種（例：造園、土木）で実績のバリエーションを作る。</div>
+                </div>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 3: リードマグネット（特典）完成</span>
+                <div class="day-item">
+                    <div class="day-label">Day 15-18</div>
+                    <div class="day-desc"><strong>「無料プレゼント」PDF作成。</strong><br>AIに構成案を出させ、Canvaなどのツールと組み合わせてプロ級の資料を完成させる。</div>
+                </div>
+                <div class="day-item">
+                    <div class="day-label">Day 19-21</div>
+                    <div class="day-desc"><strong>LINE公式アカウントを「自動営業機」に変える。</strong><br>友達登録時にPDFが届く仕組みをテストする。</div>
+                </div>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 4: 紹介依頼と総まとめ</span>
+                <div class="day-item">
+                    <div class="day-label">Day 22-26</div>
+                    <div class="day-desc"><strong>モニター3社目の完遂。</strong><br>3つの異なる成功事例が揃い、実績ページに圧倒的な説得力が生まれる。</div>
+                </div>
+                <div class="day-item">
+                    <div class="day-label">Day 27-30</div>
+                    <div class="day-desc"><strong>全実績の「キャプチャ」をLPへ。</strong><br>「PageSpeed 99点」などの証拠をトップページにデカデカと掲載。Phase 2への準備完了。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 2 -->
+    <section class="phase">
+        <div class="phase-header">
+            <div class="phase-num">02</div>
+            <h2 class="phase-title">攻撃的な集客と「認知」の拡大（Day 31-60）</h2>
+        </div>
+        <div class="card-grid">
+            <div class="task-card">
+                <h3><i class="fa-solid fa-share-nodes"></i> SNS運用の戦略的選定</h3>
+                <p>
+                    <strong>Instagram:</strong> 「かっこよさ」を動画（リール）で見せ、30-40代の若手社長の感性を刺激。<br>
+                    <strong>Facebook:</strong> 経営者層の本音に刺さる長文投稿で信頼を構築。地域の紹介ループを作る。<br>
+                    <strong>非公開MEO:</strong> 自宅住所は伏せつつ、特定地域のターゲットに絞ったデジタル広告と連携。
+                </p>
+            </div>
+            <div class="task-card">
+                <h3><i class="fa-solid fa-comment-dots"></i> LINE問い合わせ自動対応</h3>
+                <p>初期のやり取りを自動化し、えりさんは「契約直前の面談」にのみ全力を注げる体制を構築する。</p>
+            </div>
+            <div class="task-card">
+                <h3><i class="fa-solid fa-people-arrows"></i> オフライン・ハイブリッド営業</h3>
+                <p>実績チラシを持ち、地域の建材屋や協力会社へ。モニター実績を見せ、「紹介したくなる仕組み」を提示する。</p>
+            </div>
+            <div class="task-card">
+                <h3><i class="fa-solid fa-building-shield"></i> 事業インフラの信頼性強化</h3>
+                <p>
+                    <strong>バーチャルオフィス契約:</strong> 自宅住所を隠しつつMEO（マップ検索）対策を実施。信頼の拠点を確保。<br>
+                    <strong>ビジネス用番号取得:</strong> 050アプリ等で仕事用番号を切り分け、プライベートを保護しつつプロの応対。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3 -->
+    <section class="phase">
+        <div class="phase-header">
+            <div class="phase-num">03</div>
+            <h2 class="phase-title">収益最大化と「紹介」のループ（Day 61-90）</h2>
+        </div>
+        <div class="card-grid">
+            <div class="task-card">
+                <h3><i class="fa-solid fa-yen-sign"></i> 有料モデル（平均9.8万〜）へ移行</h3>
+                <p>モニター枠を終了。圧倒的な実績（証拠）をもとに正規価格での成約を勝ち取る。維持費0円の強みがあれば、この価格でも無双できる。</p>
+            </div>
+            <div class="task-card">
+                <h3><i class="fa-solid fa-arrows-spin"></i> 紹介エンジンの駆動</h3>
+                <p>既存顧客に対し、紹介バック（月額サポート無料化など）を提案。広告費をかけずに案件が舞い込む「紹介の和」を作る。</p>
+            </div>
+            <div class="task-card">
+                <h3><i class="fa-solid fa-bolt-lightning"></i> AI並列製作システム</h3>
+                <p>1人で月10件以上のサイトを作れるよう、AIを活用した製作工程の完全テンプレート化を完了させる。</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="ultra-tips">
+        <h2><i class="fa-solid fa-rocket"></i> AI Ultra 活用術</h2>
+        <div class="tip-item">
+            <strong>1. コンテンツの量産（グループ1解放）</strong>
+            業種別・地域別の採用ブログを100本単位で作成。Google検索で見えない網を張る。
+        </div>
+        <div class="tip-item">
+            <strong>2. 最新動静の分析（Deep Think）</strong>
+            競合サイトを私に分析させ、あつみさんのサービスが「どこで勝てるか」の必勝トークを磨く。
+        </div>
+        <div class="tip-item">
+            <strong>3. クオリティの極限化</strong>
+            スマホ写真をAIで最高級のプロ素材に補正。「あつみさんのセンスは凄い」と思わせる視覚的説得力を維持する。
+        </div>
+    </div>
+
+    <div class="footer-action">
+        <a href="Private_index.html" class="back-link">← 運用司令室へ戻る</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【ご提案】採用資産最大化ガイド｜web-tsukuru.jp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/renewal.css?v=proposal">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --proposal-gold: #C5A059;
+            --proposal-navy: #0F172A;
+            --proposal-accent: #ef4444;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--proposal-navy);
+        }
+
+        .proposal-hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, var(--proposal-navy) 0%, #1e3a5f 100%);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proposal-hero::before {
+            content: "PROPOSAL";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-outfit);
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .proposal-title-top {
+            font-family: var(--font-outfit);
+            color: var(--proposal-gold);
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .proposal-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proposal-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .strategy-intro {
+            padding: 100px 0;
+            text-align: center;
+            background: #f8fafc;
+        }
+
+        .intro-box {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border-bottom: 5px solid var(--proposal-gold);
+        }
+
+        .intro-box h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--proposal-navy);
+        }
+
+        .intro-box p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--renewal-text-soft);
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 100px;
+            padding: 100px 0;
+        }
+
+        .strategy-item {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .strategy-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .strategy-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .strategy-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .strategy-img::after {
+            content: "";
+            position: absolute;
+            inset: -20px;
+            border: 2px solid var(--proposal-gold);
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .strategy-text {
+            flex: 1.2;
+        }
+
+        .strategy-num {
+            font-family: var(--font-outfit);
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(197, 160, 89, 0.1);
+            line-height: 1;
+            margin-bottom: -10px;
+        }
+
+        .strategy-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--proposal-navy);
+            border-bottom: 3px solid var(--proposal-gold);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .strategy-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--renewal-text-soft);
+        }
+
+        .point-list {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .point-list h4 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: 900;
+            color: var(--proposal-navy);
+        }
+
+        .point-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .point-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .point-list li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--proposal-gold);
+        }
+
+        .check-sheet {
+            background: var(--proposal-navy);
+            color: #fff;
+            padding: 100px 0;
+        }
+
+        .check-sheet-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .check-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .check-card {
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .check-card:hover {
+            border-color: var(--proposal-gold);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .check-card h5 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            color: var(--proposal-gold);
+        }
+
+        @media (max-width: 900px) {
+            .strategy-item, .strategy-item:nth-child(even) {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .strategy-text h3 { font-size: 1.8rem; }
+            .intro-box { padding: 30px; }
+        }
+
+        .footer-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header" style="position: absolute; background: transparent; border: none; box-shadow: none;">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo_icon3.webp" alt="Logo" width="40" height="40">
+                <span style="color: #fff;">web-tsukuru.jp</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="proposal-hero">
+            <div class="container">
+                <span class="proposal-title-top">WINNING RECRUITMENT</span>
+                <h1>御社を「選ぶべき理由」を、<br>最強の資産に変える。</h1>
+                <p>
+                    求人サイトに「家賃」を払うのをやめませんか？<br>
+                    一度作れば24時間365日、理想の職人を惹きつけ続ける。<br>
+                    唯一無二の「コンテンツ戦略」のご提案。
+                </p>
+            </div>
+        </section>
+
+        <!-- Intro -->
+        <section class="strategy-intro">
+            <div class="container">
+                <div class="intro-box">
+                    <h2>「デザイン」で耳を傾けさせ、<br>「コンテンツ」で判を押させる。</h2>
+                    <p>
+                        かっこいいウェブサイトは、今の時代「当たり前」です。<br>
+                        しかし、多くの採用サイトは一番重要なことが抜けています。<br><br>
+                        それは、求職者の<b>「不安を消し、欲望を刺激する」</b>情報の具体性です。<br>
+                        私たちが提案するのは、単なる制作ではなく、御社の「中身」を強みに変える戦略です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy Sections -->
+        <section class="strategy-details">
+            <div class="container">
+
+                <div class="strategy-grid">
+                    <!-- 1. SPIRIT -->
+                    <div class="strategy-item">
+                        <div class="strategy-img">
+                            <img src="../images/proposal-ceo-vision.png" alt="社長の情熱">
+                        </div>
+                        <div class="strategy-text">
+                            <div class="strategy-num">01</div>
+                            <h3>【魂】社長のストーリー</h3>
+                            <p>
+                                「立派な挨拶」は誰も読みません。若者が求めているのは、社長がどんな失敗をし、どんな想いで今、現場を任せているかという「人間臭さ」です。
+                            </p>
+                            <div class="point-list">
+                                <h4>具体的な提案コンテンツ例：</h4>
+                                <ul>
+                                    <li>社長の「どん底」下積み時代ストーリー</li>
+                                    <li>「現場監督に口出ししない」信頼のルール</li>
+                                    <li>5年後の御社と、社員の未来予想図</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. REALITY -->
+                    <div class="strategy-item">
+                        <div class="strategy-img">
+                            <img src="../images/proposal-team-laughing.png" alt="休憩時間の笑い声">
+                        </div>
+                        <div class="strategy-text">
+                            <div class="strategy-num">02</div>
+                            <h3>【現場】プロの職人の日常</h3>
+                            <p>
+                                入社後の自分をイメージできるかどうかが、応募の分かれ道です。休憩時間の笑い声や、一人にしない教育体制、そしてプライベートを尊重する空気感。求人票では見えない「現場のリアル」を可視化します。
+                            </p>
+                            <div class="point-list">
+                                <h4>具体的な提案コンテンツ例：</h4>
+                                <ul>
+                                    <li>「本当に17時に帰れるの？」定時撤収のリアルな風景</li>
+                                    <li>未経験者を一人にしない。最初の90日間教育ステップ</li>
+                                    <li>子供の行事や急な休み、本当に取れる？現場の本音</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. NUMBERS -->
+                    <div class="strategy-item">
+                        <div class="strategy-img">
+                            <img src="../images/proposal-salary-satisfied.png" alt="報酬への納得感">
+                        </div>
+                        <div class="strategy-text">
+                            <div class="strategy-num">03</div>
+                            <h3>【誠実】嘘のない数字、将来の「安心」を可視化する</h3>
+                            <p>
+                                求職者が最も疑い、かつ最も知りたいのが「お金」の現実です。曖昧な「モデル年収」ではなく、実際の給与明細や昇給の根拠を提示することで、他社には真似できない圧倒的な誠実さを武器にします。
+                            </p>
+                            <div class="point-list">
+                                <h4>具体的な提案コンテンツ例：</h4>
+                                <ul>
+                                    <li>20代・30代・40代の「リアル給与明細」公開</li>
+                                    <li>「資格取得、全部おごります」支援の実績</li>
+                                    <li>なぜ退職金制度を作ったのか、その理由</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Check Sheet -->
+        <section class="check-sheet">
+            <div class="container">
+                <div class="check-sheet-title">
+                    <span class="section-badge inverted">SELECTABLE MODULES</span>
+                    <h2 class="section-title">御社の武器を選ぶ</h2>
+                    <p>御社の強みに合わせて、以下のモジュールを組み合わせて構成します。</p>
+                </div>
+
+                <div class="check-grid">
+                    <div class="check-card">
+                        <h5>信頼構築系</h5>
+                        <ul class="point-list" style="background: transparent; color: #cbd5e1;">
+                            <li>代表者インタビュー</li>
+                            <li>協力会社からの推薦状</li>
+                            <li>歴史的な重要施工事例</li>
+                        </ul>
+                    </div>
+                    <div class="check-card">
+                        <h5>不安払拭系</h5>
+                        <ul class="point-list" style="background: transparent; color: #cbd5e1;">
+                            <li>安全教育徹底の証明</li>
+                            <li>1日の詳しいタイムライン</li>
+                            <li>寮・現場環境の全写真</li>
+                        </ul>
+                    </div>
+                    <div class="check-card">
+                        <h5>欲望刺激系</h5>
+                        <ul class="point-list" style="background: transparent; color: #cbd5e1;">
+                            <li>独立支援実績・OB紹介</li>
+                            <li>成果給・インセンティブ詳細</li>
+                            <li>最新工具・重機の導入リスト</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Material Checklist -->
+        <section class="material-guide" style="padding: 100px 0; background: #f8fafc;">
+            <div class="container">
+                <div class="section-header js-fade-up" style="margin-bottom: 60px;">
+                    <span class="section-badge" style="background: var(--proposal-navy); color: #fff; border: none;">START GUIDE</span>
+                    <h2 class="section-title text-navy">丸投げでOK。<br>準備いただくのはこれだけです。</h2>
+                    <p class="section-desc" style="margin-bottom: 0;">社長の手間は最小限。スマホの「いつもの写真」が最高の素材になります。</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div class="point-list" style="background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px; border-radius: 20px;">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 25px; color: var(--proposal-navy);"><i class="fa-solid fa-camera" style="margin-right: 10px; color: var(--proposal-gold);"></i> 用意していただく写真例</h4>
+                        <ul style="opacity: 0.9;">
+                            <li style="margin-bottom: 15px;"><b>情熱の1枚</b>：現場で指示を出している社長の自然な姿</li>
+                            <li style="margin-bottom: 15px;"><b>日常の1枚</b>：休憩中、リラックスして談笑している社員さん</li>
+                            <li style="margin-bottom: 15px;"><b>自慢の1枚</b>：御社が手掛けた、一番かっこいい施工実績</li>
+                            <li style="margin-bottom: 15px;"><b>安心の1枚</b>：社用車や機材、整理された資材置き場など</li>
+                        </ul>
+                    </div>
+                    <div class="point-list" style="background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px; border-radius: 20px;">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 25px; color: var(--proposal-navy);"><i class="fa-solid fa-comment-dots" style="margin-right: 10px; color: var(--proposal-gold);"></i> お答えいただく質問（LINEでOK）</h4>
+                        <ul style="opacity: 0.9;">
+                            <li style="margin-bottom: 15px;"><b>「なぜこの仕事？」</b>：社長がこの業界で働き続けている一番の理由は？</li>
+                            <li style="margin-bottom: 15px;"><b>「強みは何？」</b>：他社から移ってきた人が一番驚いていた御社の良さは？</li>
+                            <li style="margin-bottom: 15px;"><b>「どんな未来？」</b>：新しい仲間が入ったら、どんな会社にしていきたい？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="footer-cta">
+            <div class="container">
+                <h2 class="section-title text-navy">「いい会社」を、<br>「強い会社」に変えましょう。</h2>
+                <p class="section-desc">
+                    御社の現場に漂う『かっこよさ』を、<br>
+                    言語化し、デザインし、一生モノの資産にします。
+                </p>
+                <div style="max-width: 400px; margin: 40px auto 0;">
+                    <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary large">
+                        <i class="fa-brands fa-line" style="margin-right: 10px;"></i> 戦略を相談する
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-logo">web-tsukuru.jp</div>
+            <p class="copyright">&copy; 2026 web-tsukuru.jp All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -113,16 +113,38 @@ section {
     text-align: center;
     cursor: pointer;
     transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
 }
 .cta-button.large { padding: 20px 0; font-size: 1.3rem; }
 .cta-button:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px var(--renewal-gold-soft);
 }
-.cta-button.primary { background: var(--renewal-line-green); }
+.cta-button.primary { 
+    background: var(--renewal-line-green);
+    box-shadow: 0 10px 30px rgba(6, 199, 85, 0.3);
+}
+.cta-button.primary::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(30deg);
+    animation: cta-shine 3s infinite;
+}
+@keyframes cta-shine {
+    0% { left: -60%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
+}
 .cta-button.primary:hover {
     background: var(--renewal-line-green-hover);
-    box-shadow: 0 20px 40px rgba(6, 199, 85, 0.4);
+    box-shadow: 0 20px 50px rgba(6, 199, 85, 0.5);
+    transform: translateY(-5px) scale(1.02);
 }
 .cta-button.secondary {
     border: 2px solid var(--renewal-gold);
@@ -131,15 +153,14 @@ section {
 }
 .cta-button.secondary:hover { background: var(--renewal-gold); color: #fff; }
 
-/* Pulse Animation for Primary CTA */
-.cta-button.primary,
+/* Pulse Animation for CTA elements */
 .fixed-line-btn {
     animation: cta-pulse 3s infinite;
 }
 @keyframes cta-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4); }
-    70% { box-shadow: 0 0 0 15px rgba(6, 199, 85, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(6, 199, 85, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
 }
 
 .section-header {
@@ -224,22 +245,23 @@ section {
 .urgency-badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 12px;
-    padding: 6px 12px;
-    border-radius: 4px;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    border-radius: 50px;
     background: var(--renewal-alert);
     color: #fff;
-    font-size: 0.85rem;
-    font-weight: 800;
+    font-size: 0.9rem;
+    font-weight: 900;
     line-height: 1;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
     animation: pulse-small 2s infinite;
 }
 
 @keyframes pulse-small {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); }
+    50% { transform: scale(1.08); box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); }
 }
 
 .dark-bg {
@@ -939,6 +961,11 @@ section {
     border: 4px solid var(--renewal-gold);
     background: var(--renewal-navy);
     color: #fff;
+    box-shadow: 0 0 50px var(--renewal-gold-soft), var(--shadow-lg);
+    transform: scale(1.05);
+}
+@media (max-width: 768px) {
+    .price-card.monitor { transform: scale(1); margin: 20px 0; }
 }
 .price-card h3 {
     min-height: 2.8rem; /* タイトルの高さを固定 */
@@ -1177,11 +1204,12 @@ section {
     z-index: 1000;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
+    justify-content: center;
+    gap: 12px;
+    padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
     border-radius: 60px;
     background: var(--renewal-line-green);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 15px 40px rgba(6, 199, 85, 0.4);
     color: #fff;
     transition: var(--transition-base), opacity 0.5s, transform 0.5s;
     opacity: 0;
@@ -1189,16 +1217,41 @@ section {
     transform: translateY(20px);
     pointer-events: none;
 }
+.fixed-line-btn::before {
+    content: "残り1枠";
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    padding: 4px 10px;
+    background: var(--renewal-alert);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 900;
+    border-radius: 4px;
+    line-height: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: bounce-in 1s ease-out forwards;
+}
+@keyframes bounce-in {
+    0% { transform: translateY(10px) scale(0); opacity: 0; }
+    70% { transform: translateY(-5px) scale(1.1); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
 .fixed-line-btn.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
 }
-.fixed-line-btn i { font-size: 1.8rem; }
-.fixed-line-btn span { font-size: 0.85rem; font-weight: 700; line-height: 1.2; }
+.fixed-line-btn i { font-size: clamp(1.4rem, 4vw, 1.8rem); }
+.fixed-line-btn span { font-size: clamp(0.75rem, 2vw, 0.85rem); font-weight: 900; line-height: 1.2; }
 .fixed-line-btn:hover {
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(1.08) translateY(-8px);
+    background: var(--renewal-line-green-hover);
+    box-shadow: 0 20px 50px rgba(6, 199, 85, 0.6);
+}
+@media (max-width: 768px) {
+    .fixed-line-btn { right: 15px; bottom: 15px; width: calc(100% - 30px); max-width: 320px; }
 }
 
 /* --------------------------------------------------------------------------

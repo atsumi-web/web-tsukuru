@@ -1,0 +1,180 @@
+/* ============================================
+   works/hotta/css/polish.css
+   堀田建設様 LP プレミアム・ブラッシュアップ
+   ============================================ */
+
+@import url("https://fonts.googleapis.com/css2?family= Shippori+Mincho+B1:wght@400;700&display=swap");
+
+:root {
+  --accent-gold: #c5a059;
+  --navy-deep: #001a3d;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --premium-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* 1. タイポグラフィ強化 */
+h1,
+h2,
+h3,
+.interview-quote {
+  font-family: "Shippori Mincho B1", serif !important;
+}
+
+.section-title {
+  font-size: 2.8rem !important;
+  text-align: center;
+  position: relative;
+  padding-bottom: 2rem;
+  margin-bottom: 3rem !important;
+  border-bottom: none !important;
+  color: var(--color-primary) !important;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--accent-gold)
+  );
+}
+
+.section-title span {
+  display: block;
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  color: var(--accent-gold);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* 2. インタビューセクションの高級感 */
+.interview-section {
+  background: white;
+  margin: 4rem 0;
+  border-radius: 40px;
+  padding: 4rem !important;
+  box-shadow: var(--premium-shadow);
+}
+
+.interview-quote {
+  font-size: 1.8rem !important;
+  line-height: 1.6 !important;
+  color: var(--color-primary) !important;
+  border-left: 5px solid var(--accent-gold) !important;
+  padding-left: 2rem !important;
+  margin: 3rem 0 !important;
+  font-weight: 700;
+}
+
+.qa-item {
+  background: #f8fafc !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 2.5rem !important;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.qa-item:hover {
+  background: white !important;
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 50, 118, 0.1) !important;
+}
+
+.qa-item h4 {
+  color: var(--color-primary) !important;
+  font-size: 1.3rem !important;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.qa-item h4::before {
+  content: "Q.";
+  font-family: "Inter", sans-serif;
+  color: var(--accent-gold);
+  font-weight: 900;
+}
+
+/* 3. ヒーローセクションのグラスモルフィズム */
+.hero-teto-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 3rem !important;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 900px) {
+  .hero-teto-content {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem !important;
+  }
+}
+
+/* 4. スクロール連動アニメーション */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 5. ボタンのマイクロインタラクション */
+.btn {
+  border-radius: 50px !important;
+  padding: 1.2rem 2.5rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  ) !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px) scale(1.05) !important;
+  box-shadow: 0 20px 40px rgba(1, 50, 118, 0.3) !important;
+}
+
+/* 6. 数字（データ）セクションの強調 */
+.data-item {
+  border: none !important;
+  background: white !important;
+  border-radius: 30px !important;
+}
+
+.data-number {
+  font-family: "Inter", sans-serif !important;
+  font-size: 3.5rem !important;
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem !important;
+}
