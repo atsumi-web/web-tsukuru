@@ -1,14 +1,14 @@
 /* ==========================================================================
    Project: Web Tsukuru Renewal
    Description: Unified Production Stylesheet (Refactored & Optimized)
-   Version: 3.1.0
+   Version: 3.1.2
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    BASE & RESET
    -------------------------------------------------------------------------- */
 :root {
-    /* Colors */
+    /* Colors - Brand */
     --renewal-navy: #0F172A;
     --renewal-gold: #C5A059;
     --renewal-gold-soft: rgba(197, 160, 89, 0.4);
@@ -17,18 +17,30 @@
     --renewal-text-soft: #4b5563;
     --renewal-line-green: #06c755;
     --renewal-line-green-hover: #05b34c;
+    --renewal-alert: #ef4444;
     
-    /* Semantic Colors */
+    /* Semantic Backgrounds */
     --bg-header: rgba(15, 23, 42, 0.95);
     --bg-hero-desc: rgba(15, 23, 42, 0.6);
     --bg-problem-card: rgba(255, 255, 255, 0.1);
+    --bg-light: #f8fafc;
     
     /* Fonts */
     --font-mincho: 'Shippori Mincho', serif;
     --font-outfit: 'Outfit', sans-serif;
     
-    /* Spacing */
+    /* Spacing & Layout */
     --section-padding: clamp(60px, 10vw, 120px);
+    --container-width: 1200px;
+    --radius-lg: 25px;
+    --radius-md: 15px;
+    --radius-sm: 8px;
+    
+    /* Effects */
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+    --transition-base: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 html {
@@ -55,7 +67,6 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
-    vertical-align: bottom;
 }
 
 a {
@@ -79,12 +90,55 @@ section {
    -------------------------------------------------------------------------- */
 .container {
     position: relative;
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 40px;
 }
 @media (max-width: 768px) {
     .container { padding: 0 20px; }
+}
+
+/* CTA Buttons */
+.cta-button {
+    display: block;
+    width: 100%;
+    padding: 18px 0;
+    border: none;
+    border-radius: 50px;
+    background: var(--renewal-gold);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+.cta-button.large { padding: 20px 0; font-size: 1.3rem; }
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px var(--renewal-gold-soft);
+}
+.cta-button.primary { background: var(--renewal-line-green); }
+.cta-button.primary:hover {
+    background: var(--renewal-line-green-hover);
+    box-shadow: 0 20px 40px rgba(6, 199, 85, 0.4);
+}
+.cta-button.secondary {
+    border: 2px solid var(--renewal-gold);
+    background: transparent;
+    color: var(--renewal-gold);
+}
+.cta-button.secondary:hover { background: var(--renewal-gold); color: #fff; }
+
+/* Pulse Animation for Primary CTA */
+.cta-button.primary,
+.fixed-line-btn {
+    animation: cta-pulse 3s infinite;
+}
+@keyframes cta-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(6, 199, 85, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
 }
 
 .section-header {
@@ -158,6 +212,28 @@ section {
     color: var(--renewal-gold);
 }
 
+/* Urgency Badge */
+.urgency-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: var(--renewal-alert);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    line-height: 1;
+    animation: pulse-small 2s infinite;
+}
+
+@keyframes pulse-small {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 .dark-bg {
     background-color: var(--renewal-navy);
     color: #fff;
@@ -208,7 +284,8 @@ section {
 }
 .logo span {
     color: #fff;
-    font-size: 1.3rem;
+    font-family: var(--font-outfit);
+    font-size: 1.2rem;
     font-weight: 800;
 }
 
@@ -243,11 +320,19 @@ section {
 }
 
 .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 10px 24px;
     border-radius: 4px;
     background: var(--renewal-gold);
     color: #fff;
     font-weight: 700;
+}
+.nav-btn i {
+    font-size: 1.4rem;
+    position: relative;
+    top: 1px;
 }
 
 .hamburger-btn {
@@ -282,15 +367,15 @@ section {
 .hero.renewal-hero {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
-    min-height: 700px;
-    padding: 0;
+    padding: calc(var(--section-padding) + 20px) 0 0;
     overflow: hidden;
     color: #fff;
+    box-sizing: border-box;
 }
 @media (max-width: 768px) {
-    .hero.renewal-hero { min-height: 100vh; padding: 100px 0; }
+    .hero.renewal-hero { padding: calc(var(--section-padding) + 10px) 0 0; }
 }
 
 .hero-bg {
@@ -319,12 +404,23 @@ section {
     background: linear-gradient(90deg, rgba(15, 23, 42, 0.9) 30%, rgba(15, 23, 42, 0.4) 100%);
 }
 
+.hero-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+}
+
 .hero-content {
     position: relative;
     z-index: 10;
     width: 100%;
     max-width: 850px;
-    padding: 0 40px;
+    padding: 0 60px; /* テキストの読みやすさを確保する左右余白 */
+}
+@media (max-width: 768px) {
+    .hero-content { padding: 0 20px; }
 }
 
 .hero-tagline {
@@ -351,9 +447,9 @@ section {
     margin-bottom: 40px;
     padding: 25px 35px;
     border-left: 6px solid var(--renewal-gold);
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     background: var(--bg-hero-desc);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
     backdrop-filter: blur(10px);
     font-size: 1.15rem;
     line-height: 2;
@@ -388,9 +484,9 @@ section {
 
 .problem-card {
     padding: 45px 35px;
-    transition: 0.3s;
+    transition: var(--transition-base);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     background: var(--bg-problem-card);
     backdrop-filter: blur(10px);
 }
@@ -436,8 +532,8 @@ section {
 .solution-item .s-image {
     flex: 1;
     overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
 }
 .s-tag {
     display: block;
@@ -496,9 +592,9 @@ section {
 .flow-card {
     position: relative;
     padding: 50px 40px;
-    border-radius: 15px;
+    border-radius: var(--radius-md);
     background: #fff;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-sm);
 }
 .step-num {
     position: absolute;
@@ -510,6 +606,225 @@ section {
 }
 @media (max-width: 768px) {
     .flow-grid-wide { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------------------------
+   WORKS SECTION & PAGE
+   -------------------------------------------------------------------------- */
+.works-section {
+    background: #f8fafc;
+}
+
+/* Works Hero (for works.html) */
+.works-hero {
+    position: relative;
+    padding: 160px 0 100px;
+    background: var(--renewal-navy);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+.works-hero h1 {
+    font-family: var(--font-outfit);
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+    opacity: 1;
+}
+.works-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+.works-hero::before {
+    content: "WORKS";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-outfit);
+    font-size: 20vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: 0;
+    pointer-events: none;
+}
+.works-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Works Grid & Cards */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 50px;
+}
+@media (max-width: 1100px) {
+    .works-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .works-grid { grid-template-columns: 1fr; gap: 60px; }
+}
+
+.work-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-base);
+}
+.work-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.work-card-header {
+    background: #f1f5f9;
+    padding: 20px;
+}
+
+.device-group {
+    position: relative;
+    padding: 10px 10px 30px;
+}
+.browser-mockup {
+    display: block;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+.phone-mockup {
+    position: absolute;
+    bottom: -10px;
+    right: -5px;
+    width: 32%;
+    z-index: 10;
+}
+.phone-mockup img {
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.work-card-body {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.work-model-label {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 4px 12px;
+    margin-bottom: 15px;
+    background: var(--renewal-navy);
+    color: #fff;
+    font-family: var(--font-outfit);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+}
+.work-card-body h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.work-catch {
+    margin-bottom: 20px;
+    color: var(--renewal-navy);
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* Strategy Box */
+.work-strategy-box {
+    margin-top: auto;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+.strategy-list {
+    margin: 0;
+    padding: 0;
+}
+.strategy-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+}
+.strategy-item:last-child { margin-bottom: 0; }
+.strategy-item dt {
+    flex-shrink: 0;
+    width: 80px;
+    font-weight: 700;
+    color: var(--renewal-navy);
+}
+.strategy-item dd {
+    margin: 0;
+    color: var(--renewal-text-soft);
+}
+.strategy-item.highlight dt {
+    color: var(--renewal-gold);
+}
+
+.works-actions {
+    text-align: center;
+    margin-top: 60px;
+}
+/*.more-button is already a component-like-link, but let's keep it here if specific to works */
+.more-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 45px;
+    border: 2px solid var(--renewal-navy);
+    border-radius: 60px;
+    color: var(--renewal-navy);
+    font-weight: 700;
+    transition: var(--transition-base);
+}
+.more-button:hover {
+    background: var(--renewal-navy);
+    color: #fff;
+    box-shadow: var(--shadow-md);
+}
+
+/* Technical Reasons (Section in Works.html) */
+.tech-reasons {
+    background: #fff;
+}
+.reason-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+@media (max-width: 900px) {
+    .reason-grid { grid-template-columns: 1fr; }
+}
+.reason-card {
+    padding: 40px;
+    background: #f8fafc;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+.reason-card:hover { border-color: var(--renewal-gold); transform: translateY(-5px); }
+.reason-icon {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: var(--renewal-gold);
+}
+.reason-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 /* --------------------------------------------------------------------------
@@ -529,18 +844,35 @@ section {
     flex-direction: column;
     width: 360px;
     padding: 60px 45px;
-    border-radius: 25px;
+    border-radius: var(--radius-lg);
     background: #fff;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
     color: var(--renewal-dark);
     text-align: center;
 }
 .price-card.monitor {
     z-index: 5;
     border: 4px solid var(--renewal-gold);
-    transform: scale(1.05);
     background: var(--renewal-navy);
     color: #fff;
+}
+.price-card h3 {
+    min-height: 2.8rem; /* タイトルの高さを固定 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.price {
+    min-height: 120px; /* 価格エリアの高さを固定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.price-note {
+    min-height: 110px; /* 内容に合わせて少し高さを確保 */
+    margin: 10px 0;
+    display: block; /* 改行を有効にするため block に戻す */
 }
 @media (max-width: 768px) {
     .price-card { width: 100%; max-width: 400px; padding: 40px 30px; }
@@ -580,6 +912,7 @@ section {
     margin: 20px 0 30px;
     font-size: 0.95rem;
     text-align: left;
+    flex-grow: 1; /* 内容に応じて伸び、ボタンを下に押し出す */
 }
 .price-features li {
     position: relative;
@@ -591,6 +924,16 @@ section {
     top: 4px;
     left: 0;
     color: var(--renewal-gold);
+}
+.price-card .cta-button {
+    margin-top: 30px;
+}
+.price-sub-note {
+    min-height: 4.5rem; /* 通常プランのみにある注釈エリアの高さを確保 */
+    margin-top: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #64748b;
 }
 
 /* --------------------------------------------------------------------------
@@ -611,11 +954,11 @@ section {
 
 .qa-item {
     padding: 30px;
-    transition: 0.3s;
+    transition: var(--transition-base);
     border: 1px solid #ebebeb;
     border-radius: 12px;
     background: #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    box-shadow: var(--shadow-sm);
 }
 .qa-item:hover {
     transform: translateY(-3px);
@@ -729,7 +1072,7 @@ section {
    FOOTER CTA & BUTTONS
    -------------------------------------------------------------------------- */
 .footer-cta-section {
-    padding: 100px 0;
+    padding: var(--section-padding) 0;
     background: linear-gradient(135deg, var(--renewal-navy) 0%, #1e3a5f 100%);
     color: #fff;
     text-align: center;
@@ -745,47 +1088,6 @@ section {
     line-height: 1.8;
 }
 
-.cta-button {
-    display: block;
-    width: 100%;
-    padding: 18px 0;
-    border: none;
-    border-radius: 50px;
-    background: var(--renewal-gold);
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 800;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.cta-button.large {
-    padding: 20px 0;
-    font-size: 1.3rem;
-}
-.cta-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.4);
-}
-
-.cta-button.primary {
-    background: var(--renewal-line-green);
-}
-.cta-button.primary:hover {
-    background: var(--renewal-line-green-hover);
-    box-shadow: 0 20px 40px rgba(6, 199, 85, 0.4);
-}
-
-.price-card.regular .cta-button.secondary {
-    border: 2px solid var(--renewal-gold);
-    background: transparent;
-    color: var(--renewal-gold);
-}
-.price-card.regular .cta-button.secondary:hover {
-    background: var(--renewal-gold);
-    color: #fff;
-}
-
 .fixed-line-btn {
     position: fixed;
     right: 30px;
@@ -793,22 +1095,25 @@ section {
     z-index: 1000;
     display: flex;
     align-items: center;
-    padding: 15px 30px;
+    gap: 10px;
+    padding: 12px 24px;
     border-radius: 60px;
     background: var(--renewal-line-green);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-lg);
     color: #fff;
-    transition: 0.3s;
+    transition: var(--transition-base);
 }
+.fixed-line-btn i { font-size: 1.8rem; }
+.fixed-line-btn span { font-size: 0.85rem; font-weight: 700; line-height: 1.2; }
 .fixed-line-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05) translateY(-5px);
 }
 
 /* --------------------------------------------------------------------------
    FOOTER
    -------------------------------------------------------------------------- */
 .site-footer {
-    padding: 100px 0 50px;
+    padding: var(--section-padding) 0 50px;
     border-top: 5px solid var(--renewal-gold);
     background: var(--renewal-navy);
     color: #fff;
@@ -817,11 +1122,13 @@ section {
 .footer-logo {
     display: inline-block;
     margin-bottom: 20px;
+    font-family: var(--font-outfit);
     font-size: 2rem;
     font-weight: 800;
 }
 .copyright {
     margin-top: 30px;
     color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-outfit);
     font-size: 0.85rem;
 }
