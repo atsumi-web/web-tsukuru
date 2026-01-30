@@ -387,9 +387,40 @@ body .mouse-wheel {
         padding: 1rem 2rem;
     }
 
-    /* 連絡先情報をモバイルでは非表示 */
+    /* 連絡先情報をモバイルでは2つのボタンを横並びで表示 */
     body .hero-contact-minimal {
-        display: none;
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        margin-top: 0.75rem; /* スペースを詰める */
+        margin-bottom: 0; /* 下のマージンを削除 */
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
+        border-top: none; /* モバイルでは上部の線を非表示 */
+        padding-top: 0; /* 線がないのでパディングも不要 */
+    }
+    
+    body .contact-minimal-item {
+        flex: 1;
+        background: rgba(0, 26, 61, 0.8); /* 濃い紺色背景 */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 0.9rem 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+    
+    body .contact-minimal-item i {
+        font-size: 1rem;
+        color: var(--accent-gold);
     }
 
     /* PRIDEをタブレット・モバイルでは非表示 */
