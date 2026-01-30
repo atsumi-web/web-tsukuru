@@ -5,8 +5,8 @@
 ## 🚀 最優先 (Must)
 
 - [ ] **自社ブログ・SNSの「箱」を作る**
-  - [ ] `web-tsukuru` ブログサイトの構築（Antigravityに指示）
-  - [ ] X / Instagram アカウント開設
+  - [x] `web-tsukuru` ブログサイトの構築（Antigravityに指示）
+  - [ ] X / Instagram アカウント開設（OGP設定完了、素材準備済み）
 - [ ] **堀田建設様LP：AIハイブリッド素材の作成**
   - [ ] 既存素材 × AI生成で、不足している画像を埋める
 
