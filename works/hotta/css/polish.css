@@ -1067,3 +1067,320 @@ body .qa-item p {
     padding: 0.6rem 1rem;
   }
 }
+
+/* ============================================
+   募集要項セクション (POSITIONS)
+   ============================================ */
+
+body .positions {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: #fff;
+}
+
+body .recruit-wrapper {
+  max-width: 900px;
+  margin: 4rem auto 0;
+}
+
+body .recruit-list {
+  border-top: 1px solid #eee;
+}
+
+body .recruit-row {
+  display: flex;
+  padding: 2rem 0;
+  border-bottom: 1px solid #eee;
+  align-items: flex-start;
+}
+
+body .recruit-row dt {
+  width: 200px;
+  font-weight: 700;
+  color: var(--navy-deep);
+  font-size: 1.05rem;
+  padding-right: 2rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+body .recruit-row dt::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: var(--accent-gold);
+  border-radius: 2px;
+}
+
+body .recruit-row dd {
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+body .recruit-row dd strong {
+  font-size: 1.2rem;
+  color: var(--navy-deep);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+body .recruit-row .tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.8rem;
+  background: #f0f4f8;
+  color: var(--navy-deep);
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+body .recruit-row .note {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+body .benefit-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+body .benefit-list li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+body .benefit-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--line-green);
+  font-weight: bold;
+}
+
+/* モバイル対応（募集要項） */
+@media (max-width: 768px) {
+  body .recruit-row {
+    flex-direction: column;
+    padding: 1.5rem 0;
+  }
+
+  body .recruit-row dt {
+    width: 100%;
+    margin-bottom: 0.8rem;
+    padding-right: 0;
+  }
+
+  body .benefit-list {
+    gap: 0.5rem 1rem;
+  }
+}
+
+/* ============================================
+   エントリーエリア (ENTRY)
+   ============================================ */
+
+body .entry-section {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  background: #f0f4f8;
+}
+
+body .entry-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+body .entry-lead {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-top: 2rem;
+  color: #555;
+}
+
+body .entry-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 共通カードスタイル */
+body .entry-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 3rem;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  border: 2px solid transparent;
+}
+
+body .entry-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+body .card-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff5252;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
+  white-space: nowrap;
+}
+
+body .card-badge.sub {
+  background: #555;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body .card-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+body .entry-card h3 {
+  font-size: 1.5rem;
+  color: var(--navy-deep);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+body .entry-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* LINEカード固有 */
+body .entry-card.line {
+  border-color: rgba(6, 199, 85, 0.3);
+  background: linear-gradient(to bottom, #fff, #f9fff9);
+}
+
+body .entry-card.line .card-icon {
+  color: #06c755;
+}
+
+body .btn-line {
+  background: #06c755;
+  color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+body .btn-line:hover {
+  background: #05b34c;
+  color: #fff;
+}
+
+/* フォームカード固有 */
+body .entry-card.form {
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+body .entry-card.form .card-icon {
+  color: var(--navy-deep);
+}
+
+/* 簡易フォームスタイル */
+body .simple-entry-form {
+  text-align: left;
+}
+
+body .form-group {
+  margin-bottom: 1.5rem;
+}
+
+body .form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+body .form-group .required {
+  background: #ff5252;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+body .form-group .optional {
+  background: #999;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+body .form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: border-color 0.2s;
+}
+
+body .form-group input:focus {
+  border-color: var(--navy-deep);
+  background: #fff;
+  outline: none;
+}
+
+/* 電話エリア */
+body .entry-phone {
+  text-align: center;
+  margin-top: 4rem;
+  color: #666;
+}
+
+body .phone-link {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+  margin: 0.5rem 0;
+  font-family: var(--font-en);
+}
+
+/* モバイル対応（エントリー） */
+@media (max-width: 900px) {
+  body .entry-options {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  body .entry-card {
+    padding: 2rem;
+  }
+}
