@@ -46,7 +46,6 @@ body .nav-menu li a.nav-cta {
 /* --- Hero Section (CV Optimization) --- */
 /* 画像エリア拡大・高さ調整：スクロールせずに収まるようにmin-heightを調整 */
 body #hero.hero-teto {
-    /* 高さ調整：100dvhを使用してモバイルブラウザのUIを考慮、min-heightはさらに緩める */
     height: 100dvh; 
     min-height: 550px; 
     max-height: 100dvh; 
@@ -55,13 +54,14 @@ body #hero.hero-teto {
     background-color: var(--navy-deep);
     overflow: hidden; 
 }
-@media (max-width: 1024px) { body #hero.hero-teto { flex-direction: column-reverse; height: auto; } }
 
+/* --- PC Layout (Default) --- */
 /* テキストエリア設定：幅を50%に拡大し、画像と重ねる（ネガティブマージンで調整） */
 body .hero-teto-container { 
     width: 50%; 
     padding: 0 clamp(1rem, 4vw, 3rem); 
     padding-right: 0; 
+    margin-top: 80px; /* コンテンツ全体を80px下に移動 */
     margin-right: -10%; 
     display: flex; 
     flex-direction: column; 
@@ -71,43 +71,65 @@ body .hero-teto-container {
     position: relative; 
     z-index: 2; 
     height: 100%; 
-    color: #fff; /* 文字色を反転 */
+    color: #fff;
 }
-body .hero-teto-content { width: 100%; max-width: 800px; position: relative; z-index: 2; }
 
-/* 背景あしらい（PRIDE） - 調整版 */
+body .hero-teto-content { 
+    width: 100%; 
+    max-width: 800px; 
+    position: relative; 
+    z-index: 2; 
+}
+
+/* 背景あしらい（PRIDE） - PC版 */
 body .teto-catch-en {
     position: absolute;
     top: 5%;
     left: 2%;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: clamp(4rem, 10vw, 12rem); /* 控えめに調整 */
-    color: rgba(255, 255, 255, 0.08); /* 少し濃くして視認性UP */
+    font-size: clamp(4rem, 10vw, 12rem);
+    color: rgba(255, 255, 255, 0.08);
     letter-spacing: 0.05em;
     z-index: 0;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
-    transform: rotate(-5deg); /* 動きをつけてデザイン性を高める */
+    transform: rotate(-5deg);
 }
 
-/* タイトルサイズ戻し：インパクト優先 */
+/* タイトルサイズ：インパクト優先 */
 body .teto-main-title { 
     font-family: "Shippori Mincho B1", serif; 
-    font-size: clamp(2.5rem, 5vw, 4.5rem); /* 元のサイズに戻す */
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     color: #fff; 
     line-height: 1.1; 
-    margin-bottom: clamp(1rem, 2vh, 2rem); 
+    margin-bottom: clamp(2.25rem, 3vh, 3.25rem); /* サブコピーとの間隔を20px広く */
 }
-body .teto-main-title span {
-    background: linear-gradient(to right, #c5a059, #ffebbc, #c5a059); background-size: 200% auto;
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    animation: shineText 6s linear infinite; display: inline-block;
-}
-@keyframes shineText { to { background-position: 200% center; } }
 
-body .teto-sub-title { font-size: 1.25rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 3rem; border-left: 3px solid var(--accent-gold); padding-left: 1.5rem; }
+body .teto-main-title span {
+    background: linear-gradient(to right, #c5a059, #ffebbc, #c5a059); 
+    background-size: 200% auto;
+    -webkit-background-clip: text; 
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    animation: shineText 6s linear infinite; 
+    display: inline-block;
+}
+
+@keyframes shineText { 
+    to { background-position: 200% center; } 
+}
+
+body .teto-sub-title { 
+    font-size: 1.25rem; 
+    line-height: 1.8; 
+    color: rgba(255, 255, 255, 0.9); 
+    max-width: 700px; 
+    margin-bottom: 3rem; 
+    border-left: 3px solid var(--accent-gold); 
+    padding-left: 1.5rem; 
+}
 
 /* LINE Button (CV focus) */
 body .hero-actions {
@@ -119,40 +141,283 @@ body .hero-actions {
 
 body .hero-actions .btn-primary {
     background: linear-gradient(135deg, var(--line-green) 0%, var(--line-green-dark) 100%);
-    color: #fff; padding: 1.4rem 4rem; font-size: 1.25rem; font-weight: 800; border-radius: 100px;
-    box-shadow: 0 20px 50px rgba(6, 199, 85, 0.3); border: none; cursor: pointer; transition: all 0.3s ease;
+    color: #fff; 
+    padding: 1.4rem 4rem; 
+    font-size: 1.25rem; 
+    font-weight: 800; 
+    border-radius: 100px;
+    box-shadow: 0 20px 50px rgba(6, 199, 85, 0.3); 
+    border: none; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
 }
-body .hero-actions .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(6, 199, 85, 0.5); }
+
+body .hero-actions .btn-primary:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 30px 60px rgba(6, 199, 85, 0.5); 
+}
 
 /* パディングを詰めて高さを確保 */
-body .hero-contact-minimal { margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; gap: 2rem; }
-body .contact-minimal-item {
-    display: flex; align-items: center; gap: 1rem; color: #fff; font-weight: 700; padding: 0.8rem 1.5rem;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+body .hero-contact-minimal { 
+    margin-top: 5.75rem; /* ボタンとの間隔を60px広く */
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    padding-top: 1.5rem; 
+    display: flex; 
+    gap: 2rem; 
 }
-body .contact-minimal-item i { color: var(--accent-gold); }
 
-/* 画像エリア拡大：幅60% */
+body .contact-minimal-item {
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+    color: #fff; 
+    font-weight: 700; 
+    padding: 0.8rem 1.5rem;
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    border-radius: 12px;
+}
+
+body .contact-minimal-item i { 
+    color: var(--accent-gold); 
+}
+
+/* 画像エリア拡大：幅60% - PC版 */
 body .hero-teto-visual { 
     width: 60%; 
     position: relative; 
     clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%); 
     margin-left: -1px;
-    /* 透けた紺色の帯：drop-shadowで斜めラインに沿って帯を作る */
-    filter: drop-shadow(-15px 0 0 rgba(0, 45, 107, 0.4)) drop-shadow(-30px 0 0 rgba(0, 26, 61, 0.2));
 }
 
+body .hero-teto-visual video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* グラデーションオーバーレイ - PC版（1025px以上） */
+@media (min-width: 1025px) {
+    body .hero-teto-visual::after {
+        content: ""; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,26,61,0.3) 0%, transparent 40%, rgba(0,26,61,0.85) 100%);
+    }
+}
+
+body .mouse-scroll { 
+    bottom: 40px; 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    text-align: center; 
+    color: #fff; 
+    z-index: 10; 
+}
+
+body .mouse-icon { 
+    width: 26px; 
+    height: 42px; 
+    border: 2px solid #fff; 
+    border-radius: 20px; 
+    margin: 0 auto 8px; 
+    position: relative; 
+}
+
+body .mouse-wheel { 
+    width: 4px; 
+    height: 8px; 
+    background: var(--accent-gold); 
+    border-radius: 2px; 
+    position: absolute; 
+    top: 8px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    animation: scrollV 2s infinite; 
+}
+
+@keyframes scrollV { 
+    0% { opacity: 0; transform: translateX(-50%) translateY(0); } 
+    30% { opacity: 1; } 
+    100% { opacity: 0; transform: translateX(-50%) translateY(15px); } 
+}
+
+/* --- Mobile Optimization (Layout Fix - Overlay Style) --- */
 @media (max-width: 1024px) {
+    body #hero.hero-teto {
+        height: 100dvh; /* 画面いっぱいに固定 */
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 上下中央配置 */
+        padding-top: 0; /* ヘッダー裏まで拡張 */
+        position: relative;
+    }
+
+    /* 画像エリアを背景化 */
     body .hero-teto-visual {
-        filter: none; /* モバイルのレイアウト変更時は解除 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        z-index: 0; /* 最背面 */
+        clip-path: none;
+    }
+    
+    /* 動画を見やすくするための紺色フィルター（バランス調整） */
+    body .hero-teto-visual::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* 紺色の雰囲気を残しつつ、動画も見える濃度 */
+        background: linear-gradient(to bottom, rgba(0, 45, 120, 0.65) 0%, rgba(0, 20, 60, 0.80) 100%);
+        backdrop-filter: blur(3px); 
+        z-index: 1;
+    }
+
+    /* コンテナを前面に */
+    body .hero-teto-container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        /* 上部スペースをさらに広く（+20px） */
+        padding: 160px 1rem 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: transparent;
+        position: relative;
+        z-index: 10;
+        color: #fff;
+        /* text-shadowを軽減してボタンへの影響を減らす */
+        text-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    }
+
+    body .hero-teto-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: inherit;
+        z-index: 11;
+    }
+    
+    body .teto-main-title {
+        font-size: 2.2rem; 
+        margin-bottom: 1rem;
+        color: #fff;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+        line-height: 1.35;
+    }
+    
+    /* モバイルではタイトルを単色（ブランドカラーの金色）に統一 */
+    body .teto-main-title span {
+        background: none;
+        -webkit-text-fill-color: #c5a059;
+        color: #c5a059;
+        animation: none;
+    }
+
+    body .teto-sub-title {
+        color: rgba(255, 255, 255, 0.95);
+        border-left: none;
+        padding-left: 0;
+        /* マージンを詰める */
+        margin-bottom: 1rem; 
+        font-size: 0.95rem;
+    }
+
+    /* タグライン（履歴書はいらない）の修正：暗い背景で浮き立つように */
+    body .hero-cta-tagline {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--accent-gold);
+        border: 1px solid var(--accent-gold);
+        border-radius: 50px;
+        padding: 0.4rem 1.2rem;
+        /* マージンを詰める */
+        margin-bottom: 0.8rem;
+        animation: none;
+        opacity: 1;
+        transform: none;
+        display: inline-block;
+        font-size: 0.85rem;
+    }
+
+    body .hero-actions {
+        width: 100%;
+        max-width: 320px; /* ボタンエリアの最大幅を統一 */
+        justify-content: center;
+        margin-top: 0;
+    }
+    
+    /* ボタンを鮮やかに */
+    body .hero-actions .btn-primary {
+        width: 100%;
+        max-width: 320px;
+        /* ボタンの高さを少し抑える */
+        padding: 1rem; 
+        white-space: nowrap;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* LINEグリーンを強調 */
+        background: linear-gradient(135deg, #06c755 0%, #05b34c 100%) !important;
+        box-shadow: 0 10px 25px rgba(6, 199, 85, 0.4);
+    }
+
+    /* 連絡先エリアもボタンと幅を揃える */
+    body .hero-contact-minimal {
+        width: 100%;
+        max-width: 320px; /* ボタンと幅を統一 */
+        justify-content: center;
+        flex-wrap: wrap;
+        /* ギャップを詰める */
+        gap: 0.5rem; 
+        margin-top: 1rem;
+        border-top: none; /* ボーダー削除ですっきり */
+        padding-top: 0;
+    }
+    /* 連絡先エリアを明るく */
+    body .contact-minimal-item {
+        font-size: 0.8rem;
+        /* アイテム自体も小さく */
+        padding: 0.6rem 1rem; 
+        color: #fff;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        /* 幅を親要素に合わせる（2列の場合は calc((100% - 0.5rem) / 2) など） */
+        flex: 1 1 calc(50% - 0.25rem); /* 2列レイアウト */
+        min-width: 140px; /* 最小幅を確保 */
+    }
+
+    body .teto-catch-en {
+        font-size: 6rem;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%) rotate(0deg);
+        width: 100%;
+        text-align: center;
+        opacity: 0.05;
+    }
+
+    /* スマホではスクロールアイコンは情報過多で重なるため非表示 */
+    body .mouse-scroll {
+        display: none;
     }
 }
 body .hero-teto-visual video { width: 100%; height: 100%; object-fit: cover; }
-body .hero-teto-visual::after {
-    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    /* 変数使用による統一 */
-    background: linear-gradient(to bottom, rgba(0,26,61,0.3) 0%, transparent 40%, rgba(0,26,61,0.85) 100%);
-}
 
 body .mouse-scroll { bottom: 40px; position: absolute; left: 50%; transform: translateX(-50%); text-align: center; color: #fff; z-index: 10; }
 body .mouse-icon { width: 26px; height: 42px; border: 2px solid #fff; border-radius: 20px; margin: 0 auto 8px; position: relative; }
