@@ -816,15 +816,16 @@ body .voice-grid {
 }
 
 /* インタビューカード */
+/* インタビューカード */
+/* インタビューカード */
 body .interview-card {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 380px 1fr; /* 画像エリアを少し広げる */
   gap: 3rem;
   align-items: center;
   background: #fff;
   border-radius: 20px;
-  padding: 3rem;
-  padding-left: 0; /* 画像をはみ出させるため左側はパディングなし */
+  padding: 3.5rem 3rem; /* 上下余白を少し増やす */
   box-shadow: 0 20px 60px rgba(0, 26, 61, 0.08); /* 浮遊感のある影 */
   position: relative;
   max-width: 1100px;
@@ -833,75 +834,100 @@ body .interview-card {
 
 /* 逆向きレイアウト（偶数番目） */
 body .interview-card.reverse {
-  grid-template-columns: 1fr 350px;
-  padding-left: 3rem;
-  padding-right: 0;
+  grid-template-columns: 1fr 380px;
 }
 
 body .interview-card.reverse .interview-visual {
   order: 2; /* 画像を右へ */
-  margin-left: 0;
-  margin-right: -20px;
 }
 
-/* 画像エリア */
+/* 画像エリア：横長＆はみ出し（Broken Grid） */
 body .interview-visual {
   position: relative;
-  height: 450px;
-  margin-left: -20px; /* カードからはみ出させる */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 115%; /* カードからはみ出させる */
+  margin-left: -15%; /* 左側へのはみ出し */
+  aspect-ratio: 3 / 2; /* 横長比率（3:2） */
+  height: auto; /* 高さは比率にお任せ */
+  background: #fff; /* フレーム色 */
+  padding: 10px; /* 白枠の幅 */
+  box-shadow:
+    10px 15px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.03); /* 立体的な影 */
+  border-radius: 4px;
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s ease;
+  z-index: 10; /* カードより上に表示 */
+}
+
+/* 逆向きの時のはみ出し方向 */
+body .interview-card.reverse .interview-visual {
+  margin-left: 0;
+  margin-right: -15%; /* 右側へのはみ出し */
+  box-shadow:
+    -10px 15px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.03); /* 影の向きも逆に */
 }
 
 body .interview-visual img {
-  max-height: 110%; /* 枠より大きく */
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2)); /* 人物に影を落とす */
-  transform: scale(1.05); /* 少し拡大 */
-  transition: transform 0.4s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-body .interview-card:hover .interview-visual img {
-  transform: scale(1.08) translateY(-5px);
+/* ホバー時の動き（ふわっと浮く） */
+body .interview-card:hover .interview-visual {
+  transform: scale(1.02) translateY(-8px);
+  box-shadow:
+    15px 25px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+body .interview-card.reverse:hover .interview-visual {
+  box-shadow:
+    -15px 25px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.03);
 }
 
 /* 役職バッジ */
 body .role-badge {
   position: absolute;
-  bottom: 20px;
+  top: -15px; /* 写真の上に少し乗せる */
   left: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  bottom: auto; /* 下配置を解除 */
+  background: var(--navy-deep); /* 濃紺背景で引き締め */
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  z-index: 2;
-  border-left: 4px solid var(--navy-deep);
+  z-index: 11;
+  border-left: none; /* ボーダー廃止 */
 }
 
 body .role-badge.civil {
-  border-left-color: var(--line-green);
+  background: #005f73; /* 土木用の濃い青 */
+  border-left-color: transparent;
 }
 
 body .role-en {
-  font-size: 0.75rem;
-  color: #999;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.1em;
   font-weight: 700;
+  margin-bottom: 2px;
 }
 
 body .role-jp {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--navy-deep);
+  color: #fff; /* 白文字 */
 }
 
 /* コンテンツエリア */
 body .interview-content {
-  padding-right: 2rem;
+  padding-right: 0;
 }
 
 body .interviewee-name {
@@ -972,26 +998,60 @@ body .qa-item p {
     grid-template-columns: 1fr;
     padding: 0;
     gap: 0;
-    overflow: hidden; /* モバイルでははみ出しなし */
+    overflow: visible; /* 影を表示させるため */
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   }
 
   body .interview-visual {
-    margin: 0;
-    height: 350px;
-    background: radial-gradient(circle at center, #f0f4f8 0%, #fff 70%);
     width: 100%;
-    order: -1 !important; /* 画像を常に上に */
-    padding-top: 2rem;
+    margin: 0; /* はみ出しリセット */
+    aspect-ratio: 3 / 2;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+    padding: 0; /* 枠なし */
+    box-shadow: none;
+    order: -1 !important;
   }
 
   body .interview-visual img {
+    border-radius: 20px 20px 0 0;
     max-height: 100%;
     transform: none !important;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+    filter: none;
+  }
+
+  body .interview-card.reverse .interview-visual {
+    margin-right: 0;
+    box-shadow: none;
+  }
+
+  /* バッジ位置調整 */
+  body .role-badge {
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95); /* 元のスタイルに戻す */
+    color: var(--navy-deep);
+    padding: 0.6rem 1.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  body .role-badge.civil {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  body .role-en {
+    color: #999;
+  }
+
+  body .role-jp {
+    color: var(--navy-deep);
   }
 
   body .interview-content {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
   }
 
   body .interviewee-name {
