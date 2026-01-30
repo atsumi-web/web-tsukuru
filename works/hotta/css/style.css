@@ -649,6 +649,7 @@ section {
         font-size: 1.1rem;
         display: block;
         width: 100%;
+        color: #fff; /* 紺色背景に対して白文字 */
     }
     
     .nav-menu a:hover {
