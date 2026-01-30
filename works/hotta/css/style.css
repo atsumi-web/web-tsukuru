@@ -1479,92 +1479,10 @@ h1, h2, h3 {
 }
 
 
+
 /* ============================================
-   Mobile Navigation (Pattern A)
+   Logo Image Styling
    ============================================ */
-   
-/* PCではハンバーガーメニューを非表示 */
-@media (min-width: 1101px) {
-    .mobile-menu-toggle {
-        display: none;
-    }
-}
-
-/* ハンバーガーメニューボタンの基本スタイル */
-.mobile-menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 30px;
-    height: 24px;
-    position: relative;
-    z-index: 1001;
-}
-
-.mobile-menu-toggle span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #001a3d; /* 通常時は紺色 */
-    position: absolute;
-    left: 0;
-    transition: 0.3s;
-}
-
-.mobile-menu-toggle span:nth-child(1) { top: 0; }
-.mobile-menu-toggle span:nth-child(2) { top: 11px; }
-.mobile-menu-toggle span:nth-child(3) { bottom: 0; }
-
-/* メニューを開いた時は白色 */
-.mobile-menu-toggle.active span {
-    background-color: #fff;
-}
-
-.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg); top: 11px; }
-.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
-.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg); bottom: 11px; }
-
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-
-    .header-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: #001a3d; /* ブランドカラーの紺色 */
-        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-        padding: 80px 40px;
-        transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 1000;
-        display: block !important; /* Force show for slide behavior */
-    }
-
-    .header-nav.active {
-        right: 0;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 30px;
-    }
-
-    .nav-menu li {
-        width: 100%;
-        padding-bottom: 15px;
-    }
-
-    .nav-menu a {
-        font-size: 1.1rem;
-        display: block;
-        color: #fff; /* 紺色背景に対して白文字 */
-    }
-}
-
 
 /* Logo Image Styling */
 .header-logo-img {
