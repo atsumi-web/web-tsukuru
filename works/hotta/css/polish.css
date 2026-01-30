@@ -1004,7 +1004,9 @@ body .qa-item p {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   }
 
-  body .interview-visual {
+  /* 詳細度を上げてPC版のスタイルを確実に上書き */
+  body .interview-card .interview-visual,
+  body .interview-card.reverse .interview-visual {
     width: 100%;
     margin: 0; /* はみ出しリセット */
     aspect-ratio: 3 / 2;
@@ -1012,19 +1014,14 @@ body .qa-item p {
     border-radius: 20px 20px 0 0;
     padding: 0; /* 枠なし */
     box-shadow: none;
-    order: -1 !important;
+    order: -1; /* 画像を常に上に */
+    transform: none; /* PC版のホバーエフェクト等をリセット */
   }
 
   body .interview-visual img {
     border-radius: 20px 20px 0 0;
     max-height: 100%;
-    transform: none !important;
     filter: none;
-  }
-
-  body .interview-card.reverse .interview-visual {
-    margin-right: 0;
-    box-shadow: none;
   }
 
   /* バッジ位置調整 */
