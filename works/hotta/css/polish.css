@@ -3,113 +3,218 @@
    堀田建設様 LP プレミアムデザイン
    ============================================ */
 
-/* 09_coding_rules.md 厳守: !importantを使わず、詳細度（bodyやID）で既存のstyle.cssを上書きリセットする */
+/* 09_coding_rules.md 厳守: 最小限のコードで成約率（応募数）を最大化する */
 
-@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;700&family=Inter:wght@400;700;900&display=swap");
+/* Font Import: index.htmlで読み込み済みのため削除 */
 
 :root {
     --accent-gold: #c5a059;
-    --accent-gold-light: #ffebbc;
     --navy-deep: #001a3d;
     --navy-light: #002d6b;
-    --premium-white: #ffffff;
-    --text-dark: #333333;
-    --border-light: rgba(0, 26, 61, 0.08);
+    --line-green: #06c755;
+    --line-green-dark: #05a346;
     --premium-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
-    --radius-lg: 40px;
-    --radius-card: 32px;
 }
 
-/* --- Base Reset for Premium Sections --- */
-body .premium-title {
-    border-bottom: none; border-left: 6px solid var(--accent-gold);
-    padding: 0 0 0 1.5rem; margin-bottom: 3rem;
-    font-family: "Shippori Mincho B1", serif;
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    line-height: 1.3; color: var(--navy-deep);
-}
-body .premium-title span {
-    display: block; font-size: 0.9rem; letter-spacing: 0.3em;
-    color: var(--accent-gold); margin-bottom: 0.5rem;
-    font-style: normal; font-weight: 700;
+/* --- Layout Optimization (PC) --- */
+body .container {
+    max-width: 1400px;
+    width: 94%;
+    margin: 0 auto;
 }
 
-/* --- Header Polish --- */
+/* --- Header / Navigation --- */
 body .site-header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.05); border: none;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    transition: all 0.4s ease;
 }
-body .header-logo-img { max-height: 45px; width: auto; }
+body .site-header.scrolled {
+    height: 80px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
 
-/* --- Hero Teto --- */
+body .nav-menu li a.nav-cta {
+    background: linear-gradient(135deg, var(--line-green) 0%, var(--line-green-dark) 100%);
+    color: #fff; padding: 1rem 2.5rem; border-radius: 100px;
+    display: flex; align-items: center; gap: 0.8rem;
+    font-weight: 700; text-decoration: none;
+}
+
+/* --- Hero Section (CV Optimization) --- */
+/* 画像エリア拡大・高さ調整：スクロールせずに収まるようにmin-heightを調整 */
 body #hero.hero-teto {
-    height: 100vh; min-height: 700px; background: var(--navy-deep);
-    display: flex; overflow: hidden; margin: 0; padding: 0;
+    /* 高さ調整：100dvhを使用してモバイルブラウザのUIを考慮、min-heightはさらに緩める */
+    height: 100dvh; 
+    min-height: 550px; 
+    max-height: 100dvh; 
+    display: flex; 
+    position: relative;
+    background-color: var(--navy-deep);
+    overflow: hidden; 
 }
 @media (max-width: 1024px) { body #hero.hero-teto { flex-direction: column-reverse; height: auto; } }
 
-body .hero-teto-container {
-    width: 45%; flex: 0 0 45%; background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-light) 100%);
-    display: flex; align-items: center; padding: 0 6%; position: relative; z-index: 2;
+/* テキストエリア設定：幅を50%に拡大し、画像と重ねる（ネガティブマージンで調整） */
+body .hero-teto-container { 
+    width: 50%; 
+    padding: 0 clamp(1rem, 4vw, 3rem); 
+    padding-right: 0; 
+    margin-right: -10%; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    background: transparent; 
+    position: relative; 
+    z-index: 2; 
+    height: 100%; 
+    color: #fff; /* 文字色を反転 */
 }
-@media (max-width: 1024px) { body .hero-teto-container { width: 100%; padding: 5rem 8%; } }
+body .hero-teto-content { width: 100%; max-width: 800px; }
 
-body .teto-main-title {
-    font-family: "Shippori Mincho B1", serif; color: #fff; font-size: clamp(2.5rem, 4.5vw, 3.8rem); line-height: 1.25;
+/* タイトルサイズ戻し：インパクト優先 */
+body .teto-main-title { 
+    font-family: "Shippori Mincho B1", serif; 
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* 元のサイズに戻す */
+    color: #fff; 
+    line-height: 1.1; 
+    margin-bottom: clamp(1rem, 2vh, 2rem); 
 }
 body .teto-main-title span {
-    background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+    background: linear-gradient(to right, #c5a059, #ffebbc, #c5a059); background-size: 200% auto;
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    animation: shineText 6s linear infinite; display: inline-block;
+}
+@keyframes shineText { to { background-position: 200% center; } }
+
+body .teto-sub-title { font-size: 1.25rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin-bottom: 3rem; border-left: 3px solid var(--accent-gold); padding-left: 1.5rem; }
+
+/* LINE Button (CV focus) */
+body .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
-body .hero-teto-visual {
-    width: 55%; flex: 0 0 55%; position: relative;
+body .hero-actions .btn-primary {
+    background: linear-gradient(135deg, var(--line-green) 0%, var(--line-green-dark) 100%);
+    color: #fff; padding: 1.4rem 4rem; font-size: 1.25rem; font-weight: 800; border-radius: 100px;
+    box-shadow: 0 20px 50px rgba(6, 199, 85, 0.3); border: none; cursor: pointer; transition: all 0.3s ease;
 }
-@media (max-width: 1024px) { body .hero-teto-visual { width: 100%; height: 50vh; } }
+body .hero-actions .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(6, 199, 85, 0.5); }
+
+/* パディングを詰めて高さを確保 */
+body .hero-contact-minimal { margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; gap: 2rem; }
+body .contact-minimal-item {
+    display: flex; align-items: center; gap: 1rem; color: #fff; font-weight: 700; padding: 0.8rem 1.5rem;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+}
+body .contact-minimal-item i { color: var(--accent-gold); }
+
+/* 画像エリア拡大：幅60% */
+body .hero-teto-visual { width: 60%; position: relative; clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%); margin-left: -1px; }
 body .hero-teto-visual video { width: 100%; height: 100%; object-fit: cover; }
-
-/* --- Interview Section --- */
-body .interview-section { background: #fdfdfd; padding: 8rem 0; }
-body .interview-premium {
-    display: grid; grid-template-columns: 1fr 1.2fr; gap: 0; background: #fff;
-    border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--premium-shadow);
-}
-@media (max-width: 900px) { body .interview-premium { grid-template-columns: 1fr; } }
-
-body .interview-visual img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.01); transition: 1s ease; }
-body .interview-body { padding: clamp(2rem, 5vw, 4rem); }
-
-body .interview-name-jp { font-size: 2rem; margin-bottom: 0.5rem; border-bottom: none; font-family: "Shippori Mincho B1", serif; }
-body .interview-role { font-size: 1rem; color: var(--accent-gold); font-weight: 700; margin-left: 1rem; }
-body .interview-main-quote {
-    font-family: "Shippori Mincho B1", serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-    line-height: 1.6; color: var(--navy-deep); margin: 2rem 0; font-weight: 700;
+body .hero-teto-visual::after {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    /* 変数使用による統一 */
+    background: linear-gradient(to bottom, rgba(0,26,61,0.3) 0%, transparent 40%, rgba(0,26,61,0.85) 100%);
 }
 
-/* --- Cards & Grid --- */
-body .environment-grid, body .data-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 4rem;
+body .mouse-scroll { bottom: 40px; position: absolute; left: 50%; transform: translateX(-50%); text-align: center; color: #fff; z-index: 10; }
+body .mouse-icon { width: 26px; height: 42px; border: 2px solid #fff; border-radius: 20px; margin: 0 auto 8px; position: relative; }
+body .mouse-wheel { width: 4px; height: 8px; background: var(--accent-gold); border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scrollV 2s infinite; }
+@keyframes scrollV { 0% { opacity: 0; transform: translateX(-50%) translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) translateY(15px); } }
+
+/* --- Reveal Animation --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- Floating CTA (Conversion Booster) --- 
+   画面右下に追従するLINEボタン。スマホでのコンバージョン率を劇的に改善します。
+*/
+.floating-line-cta {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background: linear-gradient(135deg, var(--line-green) 0%, var(--line-green-dark) 100%);
+    color: #fff;
+    padding: 1rem 1.8rem;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 15px 40px rgba(6, 199, 85, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+}
+.floating-line-cta.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.floating-line-cta:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(6, 199, 85, 0.6);
+    color: #fff;
+    text-decoration: none;
+}
+.floating-line-cta i {
+    font-size: 1.4rem;
+}
+@media (max-width: 768px) {
+    .floating-line-cta {
+        bottom: 20px;
+        right: 20px;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+        box-shadow: 0 10px 25px rgba(6, 199, 85, 0.3);
+    }
 }
 
-body .environment-card {
-    background: #fff; padding: 3.5rem 2.5rem; border-radius: var(--radius-card);
-    border: 1px solid var(--border-light); transition: 0.4s ease;
+/* --- Hero CTA Enhancement --- */
+.hero-cta-tagline {
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(197, 160, 89, 0.2), transparent);
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    margin-bottom: 1.2rem;
+    border-left: 4px solid var(--accent-gold);
+    letter-spacing: 0.05em;
+    animation: fadeInSlide 0.8s ease-out both;
 }
-body .environment-card:hover { transform: translateY(-12px); box-shadow: var(--premium-shadow); border-color: transparent; }
 
-body .data-card {
-    background: #f8fafc; padding: 3rem 2rem; border-radius: var(--radius-card); text-align: center;
-    border: 1px solid var(--border-light); position: relative;
-}
-body .data-card::after {
-    content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 60px; height: 4px; background: var(--accent-gold);
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-body .data-val { font-family: "Inter", sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--navy-deep); line-height: 1; }
-body .data-label { color: var(--accent-gold); font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem; }
+/* --- Pulse Animation (Attention Seeker) --- */
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
 
-/* --- Reveal (Intersection Observer) --- */
-.reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.active, .reveal.animate-in { opacity: 1; transform: translateY(0); }
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(6, 199, 85, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
+}
+
+/* 追従ボタンにアニメーション適用 */
+.floating-line-cta.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    animation: pulse 2s infinite; /* 常に目を引くように */
+}
