@@ -84,11 +84,12 @@ body .hero-teto-content {
 /* 背景あしらい（PRIDE） - PC版 */
 body .teto-catch-en {
     position: absolute;
-    top: 5%;
-    left: 2%;
+    top: 3%; /* より上に配置 */
+    right: 5%; /* 右上に配置 */
+    left: auto; /* 左からの配置を解除 */
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: clamp(4rem, 10vw, 12rem);
+    font-size: clamp(5rem, 12vw, 14rem); /* 一回り大きく */
     color: rgba(255, 255, 255, 0.08);
     letter-spacing: 0.05em;
     z-index: 0;
@@ -137,6 +138,7 @@ body .hero-actions {
     flex-direction: column; 
     align-items: flex-start; 
     gap: 1.5rem;
+    margin-top: 20px; /* メインボタンを20px下に */
 }
 
 body .hero-cta-tagline {
@@ -178,7 +180,9 @@ body .hero-contact-minimal {
     border-top: 1px solid rgba(255,255,255,0.1); 
     padding-top: 1.5rem; 
     display: flex; 
-    gap: 2rem; 
+    gap: 2rem;
+    /* 動画エリアに線が映らないよう、テキストエリアの幅内に制限 */
+    max-width: 700px;
 }
 
 body .contact-minimal-item {
@@ -234,21 +238,24 @@ body .mouse-scroll {
     flex-direction: column; 
     align-items: center; 
     gap: 0.5rem;
+    color: #fff; /* テキストを白色にして見やすく */
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
 }
 
-body .mouse { 
+body .mouse-icon { 
     width: 28px; 
     height: 45px; 
-    border: 2px solid rgba(255,255,255,0.5); 
+    border: 2px solid rgba(255,255,255,0.9); /* より不透明にして見やすく */
     border-radius: 20px; 
     position: relative;
 }
 
-body .mouse::before { 
-    content: ''; 
+body .mouse-wheel { 
     width: 4px; 
     height: 10px; 
-    background: rgba(255,255,255,0.7); 
+    background: rgba(255,255,255,0.9); /* より不透明にして見やすく */
     border-radius: 4px; 
     position: absolute; 
     top: 10px; 
@@ -380,7 +387,7 @@ body .mouse::before {
         padding: 1rem 2rem;
     }
 
-    /* 連絡先情報をタブレット・モバイルでは非表示 */
+    /* 連絡先情報をモバイルでは非表示 */
     body .hero-contact-minimal {
         display: none;
     }
