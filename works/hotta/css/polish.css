@@ -1384,3 +1384,342 @@ body .phone-link {
     padding: 2rem;
   }
 }
+
+/* ============================================
+   ENVIRONMENT (情緒的信頼)
+   ============================================ */
+
+body .features {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: linear-gradient(180deg, #f4f6f9 0%, #fff 100%);
+}
+
+body .environment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+body .environment-card {
+  background: #fff;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+body .environment-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 26, 61, 0.1);
+}
+
+body .environment-card i {
+  font-size: 3.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 2rem;
+  display: inline-block;
+  background: rgba(201, 169, 73, 0.1);
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+}
+
+body .environment-card h3 {
+  font-size: 1.4rem;
+  color: var(--navy-deep);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+body .environment-card p {
+  line-height: 1.8;
+  color: #666;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+/* ============================================
+   DATA / TRUST (論理的信頼)
+   ============================================ */
+
+body .data-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: var(--navy-deep);
+  color: #fff;
+  position: relative;
+}
+
+body .data-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+body .data-section .premium-title {
+  color: #fff;
+}
+
+body .data-section .premium-title span {
+  color: var(--accent-gold);
+  opacity: 0.8;
+}
+
+body .data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 4rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+body .data-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+body .data-label {
+  display: block;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+body .data-val {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  font-family: var(--font-en);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(201, 169, 73, 0.3);
+}
+
+body .data-card p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+body .trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+body .trust-badge-item {
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+body .trust-badge-item img {
+  height: 50px;
+  width: auto;
+}
+
+body .trust-badge-item span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* ============================================
+   SYSTEM / BENEFITS (お宝福利厚生)
+   ============================================ */
+
+body .system-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: #fff;
+}
+
+/* モバイル対応（追加セクション） */
+@media (max-width: 900px) {
+  body .environment-grid,
+  body .data-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  body .trust-badges {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  body .trust-badge-item {
+    width: 100%;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 1.5rem;
+  }
+}
+
+/* ============================================
+   COMPANY (会社概要)
+   ============================================ */
+
+body .company-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: #f9f9f9;
+}
+
+body .company-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+body .company-table {
+  width: 100%;
+}
+
+body .company-row {
+  display: flex;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+body .company-row:last-child {
+  border-bottom: none;
+}
+
+body .company-row dt {
+  width: 180px;
+  font-weight: 700;
+  color: var(--navy-deep);
+  flex-shrink: 0;
+}
+
+body .company-row dd {
+  flex-grow: 1;
+  color: #333;
+  line-height: 1.6;
+}
+
+body .map-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+body .map-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   FOOTER (フッター)
+   ============================================ */
+
+body .site-footer {
+  background: var(--navy-deep);
+  color: #fff;
+  padding: 4rem 0 2rem;
+}
+
+body .footer-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+body .footer-info p {
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+body .logo-main {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+body .footer-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+body .footer-nav a {
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+body .footer-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+body .copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* モバイル対応（会社概要・フッター） */
+@media (max-width: 768px) {
+  body .company-wrapper {
+    padding: 2rem 1.5rem;
+  }
+
+  body .company-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  body .company-row dt {
+    width: 100%;
+    color: var(--color-primary);
+  }
+
+  body .footer-layout {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  body .footer-nav ul {
+    align-items: center;
+  }
+}
