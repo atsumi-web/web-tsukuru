@@ -1723,3 +1723,25 @@ body .copyright {
     align-items: center;
   }
 }
+
+/* ============================================
+   TYPOGRAPHY ADJUSTMENT (英語タイトルの統一)
+   ============================================ */
+
+body .premium-title span {
+  display: block; /* 改行させる */
+  font-size: 0.85rem; /* .label-en と同じ */
+  font-weight: 600; /* .label-en と同じ */
+  letter-spacing: 0.15em; /* .label-en と同じ */
+  color: var(--accent-gold); /* .label-en と同じ */
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  opacity: 1; /* 透明度は解除（Gold本来の色へ） */
+}
+
+/* モバイルではさらに調整 */
+@media (max-width: 768px) {
+  body .premium-title span {
+    font-size: 0.8rem;
+  }
+}
