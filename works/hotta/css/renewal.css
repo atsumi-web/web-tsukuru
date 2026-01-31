@@ -87,6 +87,22 @@ body .nav-menu li a.nav-cta {
   body .site-header.scrolled {
     height: 70px;
   }
+
+  /* ハンバーガーメニューのアクティブ（×閉じる）アニメーション */
+  body .mobile-menu-toggle.active span {
+    background-color: #fff !important; /* 閉じる時は白にする */
+  }
+  body .mobile-menu-toggle.active span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  body .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  body .mobile-menu-toggle.active span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
 }
 
 /* --- Hero Section (CV Optimization) --- */
