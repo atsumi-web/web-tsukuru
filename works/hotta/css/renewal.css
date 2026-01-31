@@ -398,6 +398,16 @@ body .hero-teto-visual video {
   }
 }
 
+/* Hero Button Fix for Small Screens (e.g. OPPO Reno5) */
+@media (max-width: 480px) {
+  body .hero-actions .btn-primary {
+    font-size: 0.95rem !important; /* Prevent wrapping */
+    padding: 1rem 0.5rem !important; /* Maximize text space */
+    white-space: nowrap;
+    width: 95%;
+  }
+}
+
 @media (max-width: 768px) {
   body .hero-teto-container {
     padding: 100px 1rem 15px; /* 160px/120px -> 100px to fix "pushed down" look */
