@@ -1158,14 +1158,39 @@ body .qa-item p {
 }
 
 /* ============================================
-   WORKS (施工実績)
+   WORKS (施工実績) - DARK THEME
    ============================================ */
+
+body .works-section {
+  background-color: var(--navy-deep);
+  color: #fff;
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+body .works-section .premium-title {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body .works-section .premium-title::after {
+  background-color: #fff !important;
+}
+
+body .works-section .premium-title span {
+  color: var(--accent-gold);
+  opacity: 1;
+}
+
+body .works-section .section-lead {
+  color: rgba(255, 255, 255, 0.9);
+}
 
 body .works-caption {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--navy-deep);
+  color: rgba(255, 255, 255, 0.85); /* Changed from navy-deep to white/gray */
+  text-align: left;
 }
 
 /* ============================================
