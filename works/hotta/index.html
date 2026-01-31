@@ -955,11 +955,13 @@
           menuToggle.addEventListener("click", () => {
             menuToggle.classList.toggle("active");
             nav.classList.toggle("active");
+            document.body.classList.toggle("menu-open"); // メニュー展開時にbodyへクラス付与
           });
           document.querySelectorAll(".nav-menu a").forEach((link) => {
             link.addEventListener("click", () => {
               menuToggle.classList.remove("active");
               nav.classList.remove("active");
+              document.body.classList.remove("menu-open"); // メニューを閉じたらクラス削除
             });
           });
         }
@@ -1025,5 +1027,55 @@
       <i class="fab fa-line"></i>
       <span>LINEで相談</span>
     </a>
+
+    <!-- トップへ戻るボタン -->
+    <a href="#" class="scroll-top">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- JavaScript Extension for Scroll Top -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const scrollTopBtn = document.querySelector(".scroll-top");
+        const floatingCta = document.querySelector(".floating-line-cta");
+
+        // スクロール検知
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (window.scrollY > 300) {
+              scrollTopBtn.classList.add("visible");
+            } else {
+              scrollTopBtn.classList.remove("visible");
+            }
+          },
+          { passive: true },
+        );
+
+        // クリック時
+        scrollTopBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // LINEボタンがある場合の配置調整
+        if (floatingCta) {
+          const checkCtaVisibility = () => {
+            if (floatingCta.classList.contains("visible")) {
+              scrollTopBtn.classList.add("adjust-for-cta");
+            } else {
+              scrollTopBtn.classList.remove("adjust-for-cta");
+            }
+          };
+          // スクロールイベントに追加
+          window.addEventListener("scroll", checkCtaVisibility, {
+            passive: true,
+          });
+        }
+      });
+    </script>
   </body>
 </html>

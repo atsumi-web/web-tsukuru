@@ -1156,7 +1156,12 @@ body .qa-item p {
   }
 
   body .interview-content {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.5rem; /* 元のパディングに戻す */
+  }
+
+  /* QAボックス（白い箱）のパディング調整：右側を広くしてバランスを取る */
+  body .qa-item {
+    padding: 1rem 1.5rem 1rem 0.8rem; /* 上1rem, 右1.5rem, 下1rem, 左0.8rem */
   }
 
   body .interviewee-name {
@@ -1527,6 +1532,12 @@ body .phone-link {
   body .entry-card {
     padding: 2rem;
   }
+
+  /* 電話番号の文字サイズを調整して1行に収める */
+  body .phone-link {
+    font-size: 1.7rem; /* 2.5remから縮小 */
+    white-space: nowrap; /* 改行禁止 */
+  }
 }
 
 /* ============================================
@@ -1594,6 +1605,14 @@ body .floating-line-cta i {
   
   body .floating-line-cta i {
     font-size: 1.4rem;
+  }
+
+  /* メニュー展開時は追従ボタンを非表示にする（被り防止） */
+  body.menu-open .floating-line-cta {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(20px);
   }
 }
 
@@ -1996,8 +2015,68 @@ body .footer-tagline {
 body .footer-contact p {
   font-size: 0.9rem;
   line-height: 1.6;
-  opacity: 0.8;
+  opacity: 0.7; /* 0.9から0.7に変更 */
+  color: #fff;
   margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   SCROLL TO TOP (トップへ戻るボタン)
+   ============================================ */
+body .scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 26, 61, 0.8); /* Navy with slight blur */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body .scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body .scroll-top:hover {
+  background: var(--navy-deep);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* LINEボタンがある場合は位置を調整（被り防止） */
+body .scroll-top.adjust-for-cta {
+  bottom: 120px; /* LINEボタンの上に十分に配置（PC用） */
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+}
+
+@media (max-width: 768px) {
+  body .scroll-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* モバイル用の位置調整（PCより少し下げる） */
+  body .scroll-top.adjust-for-cta {
+    bottom: 90px;
+  }
 }
 
 body .footer-phone {
@@ -2086,6 +2165,26 @@ body .copyright {
   
   body .company-wrapper {
     padding: 1.5rem 1rem;
+  }
+
+  /* 会社概要テーブルのモバイル縦積み対応 【追加】 */
+  body .company-row {
+    flex-direction: column;
+    padding: 1.2rem 0;
+    gap: 0.5rem;
+  }
+
+  body .company-row dt {
+    width: 100%;
+    margin-bottom: 0.2rem;
+    color: var(--navy-deep);
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  body .company-row dd {
+    width: 100%;
+    padding-left: 0;
   }
 }
 
