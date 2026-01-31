@@ -748,17 +748,49 @@ body .qualification-badge {
 /* ============================================
    CLEAN DESIGN (下線除去)
    ============================================ */
-body .premium-title::after,
-body .section-title::after {
-  display: none !important;
-  content: none !important;
-}
-
 body .premium-title,
 body .section-title {
+  position: relative;
+  padding-bottom: 1.5rem !important; /* Make space for underline */
+  margin-bottom: 3rem !important;
+}
+
+/* Default Underline (Navy) */
+body .premium-title::after,
+body .section-title::after {
+  content: "" !important;
+  display: block !important;
+  width: 60px;
+  height: 3px;
+  background-color: var(--navy-deep);
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Align left by default */
+}
+
+/* Center Alignment for specific titles */
+body .premium-title.text-center,
+body .section-title.text-center {
+  text-align: center;
+}
+body .premium-title.text-center::after,
+body .section-title.text-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* EXCEPTION: Clean Center (No Underline) for Company & Notes */
+body .premium-title.title-clean-center,
+body .section-title.title-clean-center {
+  text-align: center !important;
   padding-bottom: 0 !important;
   border-bottom: none !important;
-  text-align: center;
+  margin-bottom: 2rem !important;
+}
+body .premium-title.title-clean-center::after,
+body .section-title.title-clean-center::after {
+  display: none !important;
+  content: none !important;
 }
 
 /* ============================================
