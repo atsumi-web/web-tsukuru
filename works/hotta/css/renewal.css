@@ -556,7 +556,7 @@ body .signature p {
 }
 
 /* --- Job Description Section --- */
-body .job-description { padding: clamp(4rem, 8vw, 6rem) 0; background: #fff; }
+body .job-description { padding: clamp(4rem, 8vw, 6rem) 0; background: #f4f6f9; }
 body .job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 body .job-card {
   background: linear-gradient(135deg, rgba(0, 26, 61, 0.03) 0%, rgba(255, 255, 255, 1) 100%);
