@@ -317,7 +317,8 @@ body .hero-teto-visual video {
   }
   body .hero-teto-container {
     width: 100%;
-    padding: 140px 2rem 20px;
+    padding: 120px 2rem 20px; /* 140px -> 120px to reduce space */
+    margin-top: 0; /* PC版のmargin-top: 80pxをリセット（重要） */
     align-items: center;
     text-align: center;
     z-index: 10;
@@ -383,7 +384,7 @@ body .hero-teto-visual video {
 
 @media (max-width: 768px) {
   body .hero-teto-container {
-    padding: 160px 1rem 15px;
+    padding: 100px 1rem 15px; /* 160px/120px -> 100px to fix "pushed down" look */
   }
   body .teto-main-title {
     font-size: 2.2rem;
@@ -398,8 +399,21 @@ body .hero-teto-visual video {
     margin-bottom: 0.8rem;
   }
   body .hero-actions .btn-primary {
-    width: 100%;
     font-size: 1.05rem;
+  }
+
+  /* Restore side-by-side layout for buttons on mobile */
+  body .hero-contact-minimal {
+    flex-direction: row; /* Column -> Row (Restore) */
+    gap: 0.5rem; /* Gap reduction for small screens */
+  }
+  body .contact-minimal-item {
+    width: auto;
+    flex: 1; /* Distribute space equally */
+    justify-content: center;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.8rem; /* Slightly smaller text to fit */
+    white-space: nowrap; /* Prevent breaking lines inside button */
   }
 }
 
@@ -785,8 +799,57 @@ body .guardians-subtitle {
   font-size: 1.25rem; font-weight: 700; color: var(--navy-deep); margin-bottom: 1.5rem; border-left: 4px solid var(--accent-gold); padding-left: 1rem;
 }
 body .guardians-points { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5rem; }
-body .guardians-points li { display: flex; gap: 1rem; align-items: flex-start; }
-body .check-icon { color: #06c755; font-weight: 900; font-size: 1.2rem; margin-top: 2px; }
+/* --- Guardian Cards (Navy Background) --- */
+body .guardians-points li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--navy-deep); /* White -> Navy */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body .guardians-points strong {
+  color: var(--accent-gold) !important; /* Emphasized text -> Gold */
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+body .guardians-points p {
+  color: rgba(255, 255, 255, 0.9) !important; /* Text -> White */
+}
+
+/* --- Guardians Check Icon (Gold Circle / Navy Check) --- */
+/* Navy card requires light icon for contrast */
+body .check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--accent-gold); /* Navy -> Gold for visibility on dark bg */
+  color: var(--navy-deep); /* Navy Check */
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+/* --- Special Notes (Red -> Navy) --- */
+body .features-list li i {
+  color: var(--navy-deep) !important; /* Red -> Navy */
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Special Notes Card Border (Red -> Navy) */
+body .features-list li {
+  border-left: 4px solid var(--navy-deep) !important;
+}
 
 @media (max-width: 900px) {
   body .guardians-wrapper { flex-direction: column-reverse; gap: 3rem; }
