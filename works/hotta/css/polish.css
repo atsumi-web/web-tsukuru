@@ -159,7 +159,7 @@ body .hero-actions {
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
-  margin-top: 20px; /* メインボタンを20px下に */
+  margin-top: 2rem;
 }
 
 body .hero-cta-tagline {
@@ -1746,4 +1746,54 @@ body .premium-title span {
   body .premium-title span {
     font-size: 0.8rem;
   }
+}
+
+/* ============================================
+   REFACTORING ADDS (Clean Code & Maintenance)
+   ============================================ */
+
+/* WORKS Section */
+body .works-caption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+
+/* COMPANY Section (Vertical Layout) */
+body .company-visual-wide {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+body .company-visual-wide img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+/* TOP MESSAGE Section */
+body .intro-visuals {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+body .signature {
+  margin-top: 2rem;
+  font-family: 'Shippori Mincho B1', serif;
+}
+
+body .signature p {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* SECTION UTILS */
+body .section-lead {
+  max-width: 800px;
+  margin-bottom: 3rem;
 }
