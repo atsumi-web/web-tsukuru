@@ -804,7 +804,7 @@ body .guardians-points li {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  background: var(--navy-deep); /* White -> Navy */
+  background: var(--navy-deep);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -812,13 +812,13 @@ body .guardians-points li {
 }
 
 body .guardians-points strong {
-  color: var(--accent-gold) !important; /* Emphasized text -> Gold */
+  color: var(--accent-gold);
   margin-bottom: 0.5rem;
   display: block;
 }
 
 body .guardians-points p {
-  color: rgba(255, 255, 255, 0.9) !important; /* Text -> White */
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* --- Guardians Check Icon (Gold Circle / Navy Check) --- */
@@ -830,8 +830,8 @@ body .check-icon {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  background: var(--accent-gold); /* Navy -> Gold for visibility on dark bg */
-  color: var(--navy-deep); /* Navy Check */
+  background: var(--accent-gold);
+  color: var(--navy-deep);
   border-radius: 50%;
   font-weight: 900;
   font-size: 0.8rem;
@@ -840,7 +840,7 @@ body .check-icon {
 
 /* --- Special Notes (Red -> Navy) --- */
 body .features-list li i {
-  color: var(--navy-deep) !important; /* Red -> Navy */
+  color: var(--navy-deep);
   font-size: 1.2rem;
   margin-right: 0.5rem;
   vertical-align: middle;
@@ -848,7 +848,7 @@ body .features-list li i {
 
 /* Special Notes Card Border (Red -> Navy) */
 body .features-list li {
-  border-left: 4px solid var(--navy-deep) !important;
+  border-left: 4px solid var(--navy-deep);
 }
 
 @media (max-width: 900px) {
