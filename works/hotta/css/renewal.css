@@ -550,6 +550,9 @@ body .signature p {
 }
 @media (max-width: 900px) {
   body .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
+  body .intro-visuals .visual-company {
+    display: none; /* スマホでは社長のみ表示（本社画像を隠す） */
+  }
 }
 
 /* --- Job Description Section --- */
