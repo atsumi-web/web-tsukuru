@@ -10,7 +10,7 @@
     />
     <!-- 共通CSS (ブラウザキャッシュ対策: v5.0) -->
     <link rel="stylesheet" href="css/style.css?v=5.0" />
-    <link rel="stylesheet" href="css/polish.css?v=5.0" />
+    <link rel="stylesheet" href="css/renewal.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -945,82 +945,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script>
-      // スクロールアニメーション
-      document.addEventListener("DOMContentLoaded", function () {
-        // 1. Mobile Menu Toggle
-        const menuToggle = document.querySelector(".mobile-menu-toggle");
-        const nav = document.querySelector(".header-nav");
-        if (menuToggle && nav) {
-          menuToggle.addEventListener("click", () => {
-            menuToggle.classList.toggle("active");
-            nav.classList.toggle("active");
-            document.body.classList.toggle("menu-open"); // メニュー展開時にbodyへクラス付与
-          });
-          document.querySelectorAll(".nav-menu a").forEach((link) => {
-            link.addEventListener("click", () => {
-              menuToggle.classList.remove("active");
-              nav.classList.remove("active");
-              document.body.classList.remove("menu-open"); // メニューを閉じたらクラス削除
-            });
-          });
-        }
 
-        // 2. Reveal Animation (Intersection Observer)
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("active"); // polish.cssの .active と同期
-              }
-            });
-          },
-          { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-        );
-        document
-          .querySelectorAll(".reveal")
-          .forEach((el) => observer.observe(el));
-
-        // 3. Header Scroll Effect (スマートヘッダー)
-        const header = document.querySelector(".site-header");
-        const handleScroll = () => {
-          if (window.scrollY > 80) header.classList.add("scrolled");
-          else header.classList.remove("scrolled");
-        };
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
-
-        // 4. Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            const targetId = this.getAttribute("href");
-            if (targetId === "#") return;
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              e.preventDefault();
-              window.scrollTo({
-                top: targetElement.offsetTop - 90,
-                behavior: "smooth",
-              });
-            }
-          });
-        });
-
-        // 5. Floating CTA Visibility
-        const floatingCta = document.querySelector(".floating-line-cta");
-        window.addEventListener(
-          "scroll",
-          () => {
-            if (window.scrollY > 600) {
-              floatingCta.classList.add("visible");
-            } else {
-              floatingCta.classList.remove("visible");
-            }
-          },
-          { passive: true },
-        );
-      });
-    </script>
 
     <!-- 追従型コンバージョンボタン -->
     <a href="#entry" class="floating-line-cta">
@@ -1034,48 +959,7 @@
     </a>
 
     <!-- JavaScript Extension for Scroll Top -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const scrollTopBtn = document.querySelector(".scroll-top");
-        const floatingCta = document.querySelector(".floating-line-cta");
-
-        // スクロール検知
-        window.addEventListener(
-          "scroll",
-          () => {
-            if (window.scrollY > 300) {
-              scrollTopBtn.classList.add("visible");
-            } else {
-              scrollTopBtn.classList.remove("visible");
-            }
-          },
-          { passive: true },
-        );
-
-        // クリック時
-        scrollTopBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        });
-
-        // LINEボタンがある場合の配置調整
-        if (floatingCta) {
-          const checkCtaVisibility = () => {
-            if (floatingCta.classList.contains("visible")) {
-              scrollTopBtn.classList.add("adjust-for-cta");
-            } else {
-              scrollTopBtn.classList.remove("adjust-for-cta");
-            }
-          };
-          // スクロールイベントに追加
-          window.addEventListener("scroll", checkCtaVisibility, {
-            passive: true,
-          });
-        }
-      });
-    </script>
+    <!-- JavaScript (Refactored) -->
+    <script src="js/renewal.js"></script>
   </body>
 </html>
