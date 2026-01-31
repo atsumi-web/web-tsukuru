@@ -333,7 +333,7 @@ body .hero-teto-visual video {
   }
   body .hero-teto-container {
     width: 100%;
-    padding: 120px 2rem 20px; /* 140px -> 120px to reduce space */
+    padding: 150px 2rem 20px; /* 120px -> 150px: Lower content by 30px */
     margin-top: 0; /* PC版のmargin-top: 80pxをリセット（重要） */
     align-items: center;
     text-align: center;
@@ -410,7 +410,7 @@ body .hero-teto-visual video {
 
 @media (max-width: 768px) {
   body .hero-teto-container {
-    padding: 100px 1rem 15px; /* 160px/120px -> 100px to fix "pushed down" look */
+    padding: 130px 1rem 15px; /* 100px -> 130px: Lower content by 30px */
   }
   body .teto-main-title {
     font-size: 2.2rem;
