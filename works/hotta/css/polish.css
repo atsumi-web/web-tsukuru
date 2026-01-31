@@ -24,6 +24,25 @@ body .container {
   margin: 0 auto;
 }
 
+/* --- Mobile Header Optimization --- */
+@media (max-width: 900px) {
+  /* ロゴのサブラベル（RECRUITMENT）を非表示にしてスッキリさせる */
+  body .logo-sub {
+    display: none;
+  }
+
+  /* ハンバーガーメニューの位置微調整 */
+  body .mobile-menu-toggle {
+    margin-top: 2px; /* ロゴのベースラインに合わせる微調整 */
+  }
+
+  /* ヘッダーの高さをモバイル用に適正化（平均的サイズ） */
+  body .site-header,
+  body .site-header.scrolled {
+    height: 70px;
+  }
+}
+
 /* --- Header / Navigation --- */
 body .site-header {
   height: 100px;
