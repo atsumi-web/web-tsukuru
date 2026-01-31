@@ -729,10 +729,36 @@ body .step-num {
 /* ============================================
    社員ギャラリーセクション
    ============================================ */
+/* ============================================
+   COLOR CORRECTION (赤色排除)
+   ============================================ */
+body .features-list li {
+  border-left: 4px solid var(--accent-gold);
+}
 
-body .gallery-section {
-  padding: clamp(4rem, 8vw, 6rem) 0;
-  background: #fafafa;
+body .features-list li i {
+  color: var(--accent-gold);
+}
+
+body .qualification-badge {
+  background-color: var(--navy-deep);
+  color: #fff;
+}
+
+/* ============================================
+   CLEAN DESIGN (下線除去)
+   ============================================ */
+body .premium-title::after,
+body .section-title::after {
+  display: none !important;
+  content: none !important;
+}
+
+body .premium-title,
+body .section-title {
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+  text-align: center;
 }
 
 body .gallery-grid {
@@ -1387,6 +1413,74 @@ body .phone-link {
 }
 
 /* ============================================
+   FLOATING CTA (追従ボタン)
+   ============================================ */
+
+body .floating-line-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #06c755; /* LINE Green */
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(6, 199, 85, 0.4);
+  font-weight: 700;
+  font-size: 1.1rem;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+body .floating-line-cta.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  animation: floatPulse 2s infinite;
+}
+
+body .floating-line-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(6, 199, 85, 0.6);
+}
+
+body .floating-line-cta i {
+  font-size: 1.8rem;
+}
+
+@keyframes floatPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(6, 199, 85, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 199, 85, 0);
+  }
+}
+
+/* Mobile Styling for CTA */
+@media (max-width: 768px) {
+  body .floating-line-cta {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  body .floating-line-cta i {
+    font-size: 1.4rem;
+  }
+}
+
+/* ============================================
    ENVIRONMENT (情緒的信頼)
    ============================================ */
 
@@ -1796,4 +1890,129 @@ body .signature p {
 body .section-lead {
   max-width: 800px;
   margin-bottom: 3rem;
+}
+
+/* ============================================
+   PREMIUM FOOTER STYLES
+   ============================================ */
+
+body .site-footer {
+  background-color: var(--navy-deep); /* Match header color for consistency */
+  color: #ffffff;
+  padding: 4rem 0 0;
+  border-top: 3px solid var(--accent-gold);
+}
+
+body .footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+body .footer-brand {
+  flex: 1;
+  min-width: 250px;
+}
+
+body .footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+body .footer-tagline {
+  font-size: 0.9rem;
+  color: var(--accent-gold);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+body .footer-contact p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+body .footer-phone {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: opacity 0.3s;
+}
+
+body .footer-phone:hover {
+  opacity: 0.7;
+}
+
+body .footer-links {
+  display: flex;
+  gap: 4rem;
+}
+
+body .link-column h4 {
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.1em;
+  font-family: var(--font-en);
+}
+
+body .link-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body .link-column ul li {
+  margin-bottom: 0.8rem;
+}
+
+body .link-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+body .link-column ul li a:hover {
+  opacity: 1;
+  padding-left: 5px;
+  color: var(--accent-gold);
+}
+
+body .footer-bottom {
+  border-top: none;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+body .copyright {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  font-family: var(--font-en);
+}
+
+/* Footer Mobile Responsiveness */
+@media (max-width: 768px) {
+  body .footer-top {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  
+  body .footer-links {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 3rem;
+  }
 }
