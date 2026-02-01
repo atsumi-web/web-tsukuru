@@ -330,27 +330,24 @@ body .hero-teto-visual video {
   }
   
   body .teto-main-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.2;
-    margin-top: 3rem; /* ヘッダー100px + 余白を確保 */
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    line-height: 1.3;
+    margin-top: 3rem;
   }
   
   body .teto-sub-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     max-width: 600px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   
   body .hero-cta-tagline {
-    font-size: 0.85rem;
-    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
   }
   
-  /* ボタンエリアを横配置に変更（縦スペース節約） */
+  /* ボタンエリアは縦配置のまま */
   body .hero-actions {
-    flex-direction: row !important;
-    align-items: center;
-    gap: 1.5rem;
     margin-top: 1.5rem;
   }
   
