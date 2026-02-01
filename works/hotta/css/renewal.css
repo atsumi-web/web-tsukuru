@@ -348,7 +348,7 @@ body .hero-teto-visual video {
   
   /* ボタンエリアを横配置に変更（縦スペース節約） */
   body .hero-actions {
-    flex-direction: row;
+    flex-direction: row !important;
     align-items: center;
     gap: 1.5rem;
     margin-top: 1.5rem;
