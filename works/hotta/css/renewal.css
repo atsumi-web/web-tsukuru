@@ -6,13 +6,33 @@
 /* 09_coding_rules.md 厳守: 最小限のコードで成約率（応募数）を最大化する */
 
 :root {
+  /* --- Brand Colors --- */
   --accent-gold: #c5a059;
   --navy-deep: #001a3d;
   --navy-light: #002d6b;
   --line-green: #06c755;
   --line-green-dark: #05a346;
+
+  /* --- Text Colors (No Magic Hex) --- */
+  --text-main: #333333;
+  --text-sub: #555555;
+  --text-muted: #666666;
+  --text-inverse: #ffffff;
+
+  /* --- Backgrounds --- */
+  --bg-white: #ffffff;
+  --bg-light: #f4f6f9;
+  --bg-navy-overlay: rgba(0, 26, 61, 0.9);
+
+  /* --- UI Tokens --- */
   --premium-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --border-light: #eeeeee;
+  
+  /* --- Fonts --- */
   --font-en: "Inter", sans-serif;
+  --font-jp: "Noto Sans JP", sans-serif;
+  --font-serif: "Shippori Mincho B1", serif;
 }
 
 /* --- Layout Optimization (PC) --- */
@@ -90,7 +110,7 @@ body .nav-menu li a.nav-cta {
 
   /* ハンバーガーメニューのアクティブ（×閉じる）アニメーション */
   body .mobile-menu-toggle.active span {
-    background-color: #fff !important; /* 閉じる時は白にする */
+    background-color: var(--bg-white) !important; /* 閉じる時は白にする */
   }
   body .mobile-menu-toggle.active span:nth-child(1) {
     top: 50%;
@@ -145,7 +165,7 @@ body .teto-catch-en {
   top: 3%;
   right: 5%;
   left: auto;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-en);
   font-weight: 900;
   font-size: clamp(5rem, 12vw, 14rem);
   color: rgba(255, 255, 255, 0.08);
@@ -158,7 +178,7 @@ body .teto-catch-en {
 }
 
 body .teto-main-title {
-  font-family: "Shippori Mincho B1", serif;
+  font-family: var(--font-serif);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   color: #fff;
   line-height: 1.1;
@@ -490,7 +510,7 @@ body .premium-title span {
 body .premium-text {
   font-size: 1.05rem;
   line-height: 1.9;
-  color: #333;
+  color: var(--text-main);
 }
 body .premium-text strong {
   color: var(--accent-gold);
@@ -556,7 +576,7 @@ body .signature p {
 }
 
 /* --- Job Description Section --- */
-body .job-description { padding: clamp(4rem, 8vw, 6rem) 0; background: #f4f6f9; }
+body .job-description { padding: clamp(4rem, 8vw, 6rem) 0;  background: var(--bg-light); }
 body .job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 body .job-card {
   background: linear-gradient(135deg, rgba(0, 26, 61, 0.03) 0%, rgba(255, 255, 255, 1) 100%);
@@ -639,7 +659,7 @@ body .interview-card {
   grid-template-columns: 380px 1fr;
   gap: 3rem;
   align-items: center;
-  background: #fff;
+  background: var(--bg-white);
   border-radius: 20px;
   padding: 3.5rem 3rem;
   box-shadow: 0 20px 60px rgba(0, 26, 61, 0.08); /* 浮遊感のある影 */
@@ -656,7 +676,7 @@ body .interview-visual {
   margin-left: -25%; /* -15% -> -25% */
   aspect-ratio: 3 / 2;
   height: auto;
-  background: #fff;
+  background: var(--bg-white);
   padding: 10px;
   box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.03);
   border-radius: 4px;
@@ -716,7 +736,7 @@ body .interview-catch {
   font-size: 1.25rem;
   line-height: 1.8;
   font-weight: 700;
-  color: #333;
+  color: var(--text-main);
   padding-bottom: 2rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -766,7 +786,7 @@ body .works-caption {
 body .features { padding: clamp(4rem, 8vw, 6rem) 0; background: linear-gradient(180deg, #f4f6f9 0%, #fff 100%); }
 body .environment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
 body .environment-card {
-  background: #fff; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); text-align: center; transition: transform 0.3s ease; position: relative; overflow: hidden;
+  background: var(--bg-white); padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); text-align: center; transition: transform 0.3s ease; position: relative; overflow: hidden;
 }
 body .environment-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0, 26, 61, 0.1); }
 body .environment-card i {
@@ -806,7 +826,7 @@ body .data-val {
 body .data-card p { font-size: 0.9rem; color: rgba(255, 255, 255, 0.9); line-height: 1.6; }
 body .trust-badges { display: flex; justify-content: center; gap: 2rem; margin-top: 4rem; flex-wrap: wrap; position: relative; z-index: 1; }
 body .trust-badge-item {
-  background: #fff; padding: 1rem 2rem; border-radius: 50px; display: flex; align-items: center; gap: 1rem; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: var(--bg-white); padding: 1rem 2rem; border-radius: 50px; display: flex; align-items: center; gap: 1rem; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 body .trust-badge-item img { height: 50px; width: auto; }
 body .trust-badge-item span { font-size: 0.9rem; font-weight: 700; color: #333; line-height: 1.2; text-align: left; }
@@ -894,8 +914,8 @@ body .features-list li {
 /* --- Recruit (Positions) --- */
 body .positions { padding: clamp(4rem, 8vw, 6rem) 0; background: #fff; }
 body .recruit-wrapper { max-width: 900px; margin: 4rem auto 0; }
-body .recruit-list { border-top: 1px solid #eee; }
-body .recruit-row { display: flex; padding: 2rem 0; border-bottom: 1px solid #eee; align-items: flex-start; }
+body .recruit-list { border-top: 1px solid var(--border-light); }
+body .recruit-row { display: flex; padding: 2rem 0; border-bottom: 1px solid var(--border-light); align-items: flex-start; }
 body .recruit-row dt {
   width: 200px; font-weight: 700; color: var(--navy-deep); font-size: 1.05rem; padding-right: 2rem; flex-shrink: 0; display: flex; align-items: center; gap: 0.5rem;
 }
@@ -951,7 +971,7 @@ body .entry-header { text-align: center; max-width: 800px; margin: 0 auto 4rem; 
 body .entry-lead { font-size: 1.1rem; line-height: 1.8; margin-top: 2rem; color: #555; }
 body .entry-options { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto; }
 body .entry-card {
-  background: #fff; border-radius: 20px; padding: 3rem; position: relative; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; border: 2px solid transparent;
+  background: var(--bg-white); border-radius: 20px; padding: 3rem; position: relative; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; border: 2px solid transparent;
 }
 body .entry-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
 body .card-badge {
@@ -980,7 +1000,7 @@ body .form-group .optional {
   background: #999; color: #fff; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 0.5rem;
 }
 body .form-group input {
-  width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; background: #f9f9f9; transition: border-color 0.2s;
+  width: 100%; padding: 0.8rem;  border: 1px solid var(--border-light); border-radius: 8px; font-size: 1rem; background: #f9f9f9; transition: border-color 0.2s;
 }
 body .form-group input:focus { border-color: var(--navy-deep); background: #fff; outline: none; }
 
@@ -1090,7 +1110,7 @@ body .section-title.title-clean-center::after { display: none !important; conten
 /* --- Culture Section (BBQ) --- */
 body .culture-section {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: #fff;
+  background: var(--bg-white);
   position: relative;
   overflow: hidden;
 }
@@ -1127,7 +1147,7 @@ body .culture-visual:hover img {
 body .culture-lead {
   font-size: 1.1rem;
   line-height: 2;
-  color: #333;
+  color: var(--text-main);
   margin-top: 2rem;
   font-weight: 500;
 }
@@ -1166,7 +1186,7 @@ body .culture-tag {
 /* Office Gallery */
 body .office-gallery {
   padding: 4rem 0;
-  background: #f9f9f9;
+  background: var(--bg-light);
   overflow: hidden;
 }
 body .office-scroll-wrapper {
@@ -1191,7 +1211,7 @@ body .office-scroll img {
 /* FAQ Section */
 body .faq-section {
   padding: 6rem 0;
-  background: #fff;
+  background: var(--bg-white);
 }
 body .faq-grid {
   display: grid;
@@ -1200,8 +1220,8 @@ body .faq-grid {
   margin-top: 3rem;
 }
 body .faq-item {
-  background: #fff;
-  border: 1px solid #eee;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 5px 15px rgba(0,0,0,0.03);
@@ -1224,12 +1244,12 @@ body .faq-q {
   font-size: 1.5rem;
   line-height: 1;
   margin-right: 0.8rem;
-  font-family: 'Oswald', sans-serif;
+  font-family: var(--font-serif);
 }
 body .faq-answer {
   display: flex;
   align-items: flex-start;
-  color: #555;
+  color: var(--text-sub);
   line-height: 1.8;
   font-size: 0.95rem;
 }
@@ -1238,11 +1258,37 @@ body .faq-a {
   font-size: 1.5rem;
   line-height: 1;
   margin-right: 0.8rem;
-  font-family: 'Oswald', sans-serif;
+  font-family: var(--font-serif);
   font-weight: 700;
 }
 @media (max-width: 768px) {
-  body .office-scroll img { height: 200px; }
+  /* Office Gallery: Scroll -> Grid for Visibility */
+  body .office-scroll-wrapper {
+    overflow-x: visible;
+  }
+  body .office-scroll {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    padding: 0 10px;
+    overflow-x: visible;
+  }
+  body .office-scroll img {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  /* Environment & Benefits: 1 Column */
+  body .environment-grid {
+    grid-template-columns: 1fr;
+  }
+  body .environment-card {
+    padding: 2rem;
+  }
+
   body .faq-grid { grid-template-columns: 1fr; }
 }
 
