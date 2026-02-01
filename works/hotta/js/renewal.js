@@ -115,3 +115,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+/* ============================================
+   5. Toggle Expandable VOICE Content
+   ============================================ */
+function toggleVoiceContent(button) {
+  const card = button.closest('.interview-card');
+  const moreContent = card.querySelector('.qa-more-content');
+  
+  if (moreContent.style.display === 'none' || moreContent.style.display === '') {
+    moreContent.style.display = 'block';
+    button.innerHTML = '<i class="fas fa-chevron-up"></i> 閉じる';
+  } else {
+    moreContent.style.display = 'none';
+    button.innerHTML = '<i class="fas fa-chevron-down"></i> もっと見る';
+  }
+}
