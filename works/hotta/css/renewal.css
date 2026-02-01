@@ -404,7 +404,7 @@ body .hero-teto-visual video {
   }
   body .hero-teto-container {
     width: 100%;
-    padding: 150px 2rem 20px; /* 120px -> 150px: Lower content by 30px */
+    padding: 180px 2rem 20px; /* ヘッダー100px + 十分な余白を確保 */
     margin-top: 0; /* PC版のmargin-top: 80pxをリセット（重要） */
     align-items: center;
     text-align: center;
