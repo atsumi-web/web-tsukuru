@@ -316,40 +316,47 @@ body .hero-teto-visual video {
 /* ノートパソコンサイズ（1200-1400px）の最適化 */
 @media (min-width: 1101px) and (max-width: 1400px) {
   body .hero-teto-container {
-    width: 55%;
-    padding: 0 2rem;
-    margin-right: -5%;
-    margin-top: 120px; /* 80px → 120px: ヘッダーとの重なりを防ぐ */
+    width: 55% !important;
+    padding: 0 2rem !important;
+    padding-right: 2rem !important;
+    margin-right: -5% !important;
+    margin-top: 120px !important; /* ヘッダーとの重なりを防ぐ */
   }
 
+  body .hero-teto-visual {
+    width: 55%;
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 5% 100%);
+  }
+  
   body .teto-main-title {
     font-size: clamp(2rem, 4vw, 3.5rem);
     line-height: 1.2;
   }
-
+  
   body .teto-sub-title {
     font-size: 1.1rem;
     max-width: 600px;
     margin-bottom: 2rem;
   }
-
+  
   body .hero-cta-tagline {
     font-size: 0.85rem;
     padding: 0.6rem 1.2rem;
   }
-
+  
   body .hero-actions .btn-primary {
     font-size: 1.1rem;
     padding: 1rem 2.5rem;
   }
-
+  
   body .hero-contact-minimal {
     margin-top: 3rem;
     gap: 1.5rem;
   }
 }
 
-@media (min-width: 1101px) and (max-width: 1600px) {
+/* 大きめのPC（1401-1600px）の調整 */
+@media (min-width: 1401px) and (max-width: 1600px) {
   body .hero-teto-visual {
     width: 55%;
     clip-path: polygon(20% 0, 100% 0, 100% 100%, 5% 100%);
