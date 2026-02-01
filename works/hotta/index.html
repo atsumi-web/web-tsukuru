@@ -9,14 +9,28 @@
       content="地元で続ける、未経験から挑戦、若手が育つ。3人のリアルな声と、数字・制度で証明する「働き続けられる環境」"
     />
     <meta name="theme-color" content="#001a3d" />
+    
+    <!-- DNS Prefetch & Preconnect (レンダリングブロック解消) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    
     <!-- 共通CSS (ブラウザキャッシュ対策: v5.0) -->
     <link rel="stylesheet" href="css/style.css?v=5.0" />
     <link rel="stylesheet" href="css/renewal.css?v=5.2" />
+    
+    <!-- Font Awesome (非同期読み込み) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
     />
-    <!-- Google Fonts -->
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    </noscript>
+    
+    <!-- Google Fonts (font-display:swap で高速化) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
       rel="stylesheet"
@@ -467,57 +481,57 @@
           </div>
           <!-- Item 2: 亀山中学校 -->
           <div class="gallery-item">
-            <img src="images/works/work_education_kameyama_ms.webp" alt="亀山中学校 体育館" />
+            <img src="images/works/work_education_kameyama_ms.webp" alt="亀山中学校 体育館"  loading="lazy"/>
             <p class="works-caption">学校施設整備</p>
           </div>
           <!-- Item 3: 金丸脳脊椎外科クリニック -->
           <div class="gallery-item">
-            <img src="images/works/work_clinic_kanamaru.webp" alt="金丸脳脊椎外科クリニック" />
+            <img src="images/works/work_clinic_kanamaru.webp" alt="金丸脳脊椎外科クリニック"  loading="lazy"/>
             <p class="works-caption">脳脊椎外科クリニック</p>
           </div>
           <!-- Item 4: プロジェクト風景 -->
           <div class="gallery-item">
-            <img src="images/works/work_project_scene.webp" alt="建築施工プロジェクト" />
+            <img src="images/works/work_project_scene.webp" alt="建築施工プロジェクト"  loading="lazy"/>
             <p class="works-caption">施工プロジェクト</p>
           </div>
           <!-- Item 5: 宮本クリニック -->
           <div class="gallery-item">
-            <img src="images/works/work_clinic_miyamoto.webp" alt="宮本クリニック" />
+            <img src="images/works/work_clinic_miyamoto.webp" alt="宮本クリニック"  loading="lazy"/>
             <p class="works-caption">宮本クリニック</p>
           </div>
           <!-- Item 6: ホウダテクニカル -->
           <div class="gallery-item">
-            <img src="images/works/work_factory_houda_02.webp" alt="ホウダテクニカル工場" />
+            <img src="images/works/work_factory_houda_02.webp" alt="ホウダテクニカル工場"  loading="lazy"/>
             <p class="works-caption">テクニカル工場施工</p>
           </div>
           <!-- Item 7: Honda -->
           <div class="gallery-item">
-            <img src="images/works/work_factory_honda.webp" alt="Honda関連施設" />
+            <img src="images/works/work_factory_honda.webp" alt="Honda関連施設"  loading="lazy"/>
             <p class="works-caption">自動車関連施設</p>
           </div>
           <!-- Item 8: 一般建築11 -->
           <div class="gallery-item">
-            <img src="images/works/work_untitled_11.webp" alt="施工実績" />
+            <img src="images/works/work_untitled_11.webp" alt="施工実績"  loading="lazy"/>
             <p class="works-caption">施工実績</p>
           </div>
           <!-- Item 9: よしみね -->
           <div class="gallery-item">
-            <img src="images/works/work_factory_yoshimine.webp" alt="株式会社よしみね 中部事業所" />
+            <img src="images/works/work_factory_yoshimine.webp" alt="株式会社よしみね 中部事業所"  loading="lazy"/>
             <p class="works-caption">事業所建設工事</p>
           </div>
           <!-- Item 10: 追加実績 -->
           <div class="gallery-item">
-            <img src="images/works/work_untitled_02.webp" alt="施工実績" />
+            <img src="images/works/work_untitled_02.webp" alt="施工実績"  loading="lazy"/>
             <p class="works-caption">施工実績</p>
           </div>
           <!-- Item 11: 追加実績 (Road) -->
           <div class="gallery-item">
-            <img src="images/works/work_civil_road.webp" alt="道路改良工事" />
+            <img src="images/works/work_civil_road.webp" alt="道路改良工事"  loading="lazy"/>
             <p class="works-caption">道路改良工事</p>
           </div>
           <!-- Item 12: 追加実績 (Untitled 8) -->
           <div class="gallery-item">
-            <img src="images/works/work_untitled_08.webp" alt="施工実績" />
+            <img src="images/works/work_untitled_08.webp" alt="施工実績"  loading="lazy"/>
             <p class="works-caption">施工実績</p>
           </div>
         </div>
@@ -589,7 +603,7 @@
         <!-- 公式認定エリア（圧倒的権威） -->
         <div class="trust-badges">
           <div class="trust-badge-item">
-            <img src="images/common/certification_youth_yell.webp" alt="ユースエール認定" />
+            <img src="images/common/certification_youth_yell.webp" alt="ユースエール認定"  loading="lazy"/>
             <span>若者の雇用に積極的な<br />優良企業（厚労省）</span>
           </div>
           <div class="trust-badge-item">
@@ -600,7 +614,7 @@
             <span>三重県働き方改革<br />推進企業（三重県）</span>
           </div>
           <div class="trust-badge-item">
-            <img src="images/common/certification_health.svg" alt="健康経営優良法人" />
+            <img src="images/common/certification_health.svg" alt="健康経営優良法人"  loading="lazy"/>
             <span>健康経営優良法人<br />（経済産業省）</span>
           </div>
         </div>
@@ -1197,4 +1211,5 @@
     <script src="js/renewal.js"></script>
   </body>
 </html>
+
 
