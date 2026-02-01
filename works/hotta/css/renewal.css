@@ -313,8 +313,8 @@ body .hero-teto-visual video {
 
 /* Hero Section - Tablet & Mobile Optimization */
 
-/* ノートパソコンサイズ（1200-1400px）の最適化 */
-@media (min-width: 1101px) and (max-width: 1400px) {
+/* ノートパソコンサイズ（1000-1400px）の最適化 */
+@media (min-width: 1000px) and (max-width: 1400px) {
   body .hero-teto-container {
     width: 55% !important;
     padding: 0 2rem !important;
