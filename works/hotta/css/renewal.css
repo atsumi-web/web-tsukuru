@@ -319,6 +319,7 @@ body .hero-teto-visual video {
     width: 55%;
     padding: 0 2rem;
     margin-right: -5%;
+    margin-top: 120px; /* 80px → 120px: ヘッダーとの重なりを防ぐ */
   }
 
   body .teto-main-title {
