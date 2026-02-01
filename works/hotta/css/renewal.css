@@ -140,7 +140,7 @@ body .hero-teto-container {
   width: 50%;
   padding: 0 clamp(1rem, 4vw, 3rem);
   padding-right: 0;
-  margin-top: 120px; /* ヘッダー100px + 余白を確保 */
+  margin-top: 150px; /* 横長ウィンドウでも十分な余白を確保 */
   margin-right: -10%;
   display: flex;
   flex-direction: column;
