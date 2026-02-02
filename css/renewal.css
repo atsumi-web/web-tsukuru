@@ -129,6 +129,7 @@ section {
 .cta-button.primary {
   background: var(--renewal-line-green);
   box-shadow: 0 10px 30px rgba(6, 199, 85, 0.3);
+  max-width: 450px;
 }
 .cta-button.primary::after {
   content: "";
@@ -374,7 +375,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 24px;
+  padding: 8px 20px;
   border-radius: 4px;
   background: var(--renewal-gold);
   color: #fff;
@@ -382,7 +383,7 @@ section {
   transition: var(--transition-base);
 }
 .nav-btn i {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   position: relative;
   top: 1px;
 }
@@ -1303,6 +1304,13 @@ section {
   font-size: 1.1rem;
   line-height: 1.8;
 }
+
+/* フッターCTAボタンの幅を調整 */
+.footer-cta-section .cta-button.large {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 
 .fixed-line-btn {
   position: fixed;
