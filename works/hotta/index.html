@@ -15,9 +15,91 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     
-    <!-- 共通CSS (ブラウザキャッシュ対策: v5.0) -->
-    <link rel="stylesheet" href="css/style.min.css?v=5.1" />
-    <link rel="stylesheet" href="css/renewal.min.css?v=7.2" />
+    <!-- ⚡ Critical CSS (インライン化でFirst View高速化) -->
+    <style>
+      /* CSS変数 */
+      :root{--accent-gold:#c5a059;--navy-deep:#001a3d;--navy-light:#002d6b;--line-green:#06c755;--line-green-dark:#05a346;--text-main:#333;--text-inverse:#fff;--bg-white:#fff;--bg-light:#f4f6f9;--font-en:"Inter",sans-serif;--font-jp:"Noto Sans JP",sans-serif;--font-serif:"Shippori Mincho B1",serif;--color-neutral-dark:#333;--color-neutral-light:#999;--color-neutral-border:#e0e0e0;--space-md:1.5rem}
+      /* 基本リセット */
+      *{margin:0;padding:0;box-sizing:border-box}
+      html{scroll-behavior:smooth;font-size:16px}
+      body{font-family:var(--font-jp);line-height:1.8;color:var(--text-main);background-color:var(--bg-white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+      /* Header 基本 */
+      body .site-header{height:100px;background:rgba(255,255,255,.92);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:fixed;top:0;left:0;width:100%;z-index:1000;transition:all .4s ease;padding:.75rem 0;box-shadow:0 2px 8px rgba(0,0,0,.08);border-bottom:1px solid var(--color-neutral-border)}
+      body .site-header.scrolled{height:80px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
+      /* Header Layout */
+      body .site-header .header-full-width{display:flex;justify-content:space-between;align-items:center;width:94%;max-width:1400px;padding:0;margin:0 auto;height:100%}
+      body .logo-link{display:flex;align-items:center;gap:12px;text-decoration:none}
+      body .header-logo-img{height:32px;width:auto;display:block}
+      body .logo-sub{font-size:.7rem;color:var(--color-neutral-light);font-weight:800;letter-spacing:.15em;border-left:1px solid var(--color-neutral-border);padding-left:12px;margin-top:2px}
+      /* Nav Menu - PC */
+      body .header-nav{display:flex}
+      body .nav-menu{display:flex;list-style:none;gap:1.5rem;align-items:center;margin:0;padding:0}
+      body .nav-menu a{color:var(--color-neutral-dark);text-decoration:none;font-weight:500;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
+      body .nav-menu a:hover{color:#013276}
+      body .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:#c5a059;transition:all .2s ease}
+      body .nav-menu a:hover::after{width:100%}
+      body .nav-cta{background:linear-gradient(135deg,#06C755 0%,#05a346 100%);color:#fff!important;padding:.75rem 1.6rem!important;border-radius:50px!important;margin-left:1.2rem;font-weight:800;font-size:.85rem!important;box-shadow:0 4px 15px rgba(6,199,85,.3);transition:all .2s ease;border:none!important}
+      body .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,199,85,.4);text-decoration:none!important}
+      body .nav-cta::after{display:none!important}
+      body .mobile-menu-toggle{display:none}
+      /* Hero - PC */
+      body #hero.hero-teto{height:100dvh;min-height:550px;max-height:100dvh;display:flex;position:relative;background-color:var(--navy-deep);overflow:hidden}
+      body .hero-teto-container{width:50%;padding:0 clamp(1rem,4vw,3rem);padding-right:0;margin-top:110px;margin-right:-10%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;z-index:2;height:100%;color:#fff}
+      body .hero-teto-content{width:100%;max-width:800px;position:relative;z-index:2;padding-top:2rem}
+      body .teto-main-title{font-family:var(--font-serif);font-size:clamp(2.2rem,4.5vw,5rem);color:#fff;line-height:1.1;margin-bottom:clamp(2.25rem,3vh,3.25rem)}
+      body .teto-main-title span{background:linear-gradient(to right,#c5a059,#ffebbc,#c5a059);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shineText 6s linear infinite;display:inline-block}
+      @keyframes shineText{to{background-position:200% center}}
+      body .teto-sub-title{font-size:1.2rem;line-height:1.8;color:rgba(255,255,255,.9);max-width:700px;margin-bottom:3rem;border-left:3px solid var(--accent-gold);padding-left:1.5rem}
+      body .hero-actions{display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem;margin-top:2rem}
+      body .hero-actions .btn-primary{background:linear-gradient(135deg,var(--line-green) 0%,var(--line-green-dark) 100%);color:#fff;font-size:1.25rem;font-weight:700;padding:1.2rem 3rem;border-radius:50px;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;box-shadow:0 20px 40px rgba(6,199,85,.3);border:none;cursor:pointer;transition:all .3s ease}
+      body .hero-teto-visual{position:absolute;top:0;right:0;width:60%;height:100%;clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);overflow:hidden;z-index:1}
+      body .hero-teto-visual video{width:100%;height:100%;object-fit:cover}
+      /* Hero - Mobile */
+      @media (max-width:1100px){
+        body .mobile-menu-toggle{display:block;position:relative;z-index:1100;width:30px;height:24px;background:transparent;border:none;cursor:pointer;padding:0;margin-left:auto}
+        body .mobile-menu-toggle span{display:block;width:100%;height:2px;background-color:#001a3d;position:absolute;left:0;transition:all .3s;border-radius:2px}
+        body .mobile-menu-toggle.active span{background-color:#fff}
+        body .mobile-menu-toggle span:nth-child(1){top:0}
+        body .mobile-menu-toggle span:nth-child(2){top:50%;transform:translateY(-50%)}
+        body .mobile-menu-toggle span:nth-child(3){bottom:0}
+        body .mobile-menu-toggle.active span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+        body .mobile-menu-toggle.active span:nth-child(2){opacity:0}
+        body .mobile-menu-toggle.active span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg)}
+        body .header-nav{display:block;position:fixed;top:0;right:-100%;width:85%;max-width:320px;height:100vh;background-color:#001a3d;box-shadow:-5px 0 20px rgba(0,0,0,.15);padding:80px 2rem 3rem;transition:right .3s cubic-bezier(.4,0,.2,1);z-index:1000;overflow-y:auto}
+        body .header-nav.active{right:0}
+        body .nav-menu{display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem}
+        body .nav-menu li{width:100%;padding-bottom:.5rem}
+        body .nav-menu a{font-size:1.1rem;display:block;width:100%;color:#fff}
+        body .nav-menu a:hover{color:#c5a059}
+        body .nav-cta{margin-left:0;margin-top:1rem;text-align:center;justify-content:center;width:100%;display:flex}
+      }
+      @media (max-width:999px){
+        body .site-header,body .site-header.scrolled{height:70px}
+        body #hero.hero-teto{height:100dvh;min-height:600px;flex-direction:column;justify-content:center;padding-top:0}
+        body .hero-teto-visual{width:100%;height:100%;z-index:0;clip-path:none}
+        body .hero-teto-visual::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,45,120,.65) 0%,rgba(0,20,60,.8) 100%);backdrop-filter:blur(3px);z-index:1}
+        body .hero-teto-container{width:100%;padding:180px 2rem 20px;margin-top:0;align-items:center;text-align:center;z-index:10;text-shadow:0 1px 5px rgba(0,0,0,.4)}
+        body .teto-main-title{font-size:clamp(2rem,5vw,2.8rem);text-shadow:0 4px 15px rgba(0,0,0,.9)}
+        body .teto-main-title span{background:none;-webkit-text-fill-color:#c5a059;color:#c5a059;animation:none}
+        body .teto-sub-title{border-left:none;padding-left:0;font-size:1rem}
+        body .hero-actions{align-items:center;width:100%;gap:1.2rem}
+        body .hero-actions .btn-primary{width:90%;max-width:400px;justify-content:center;font-size:1.1rem;padding:1rem 2rem}
+      }
+      @media (max-width:768px){
+        body .hero-teto-container{padding:130px 1rem 15px}
+        body .teto-main-title{font-size:2.2rem}
+        body .teto-sub-title{font-size:.95rem;margin-bottom:1rem}
+        body .header-logo-img{height:24px}
+      }
+    </style>
+    
+    <!-- 非クリティカルCSS (非同期読み込み) -->
+    <link rel="stylesheet" href="css/style.min.css?v=5.1" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/renewal.min.css?v=7.3" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="css/style.min.css?v=5.1" />
+      <link rel="stylesheet" href="css/renewal.min.css?v=7.3" />
+    </noscript>
     
     <!-- Font Awesome (非同期読み込み) -->
     <link
