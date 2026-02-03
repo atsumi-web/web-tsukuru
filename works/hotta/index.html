@@ -212,7 +212,9 @@
 
       <!-- 右側：動画ビジュアル -->
       <div class="hero-teto-visual">
+        <!-- デスクトップ用：動画 -->
         <video
+          class="hero-video"
           autoplay
           loop
           muted
@@ -221,6 +223,15 @@
         >
           <source src="images/hero/hattakensetsu_rp_optimized.mp4" type="video/mp4" />
         </video>
+        
+        <!-- モバイル用：静止画 -->
+        <img 
+          class="hero-image-mobile" 
+          src="images/hero-background.webp" 
+          alt="堀田建設の現場" 
+          width="1920" 
+          height="1080"
+        >
       </div>
 
       <!-- Scroll Indicator -->

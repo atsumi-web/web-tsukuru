@@ -294,6 +294,15 @@ body .hero-teto-visual video {
   height: 100%;
   object-fit: cover;
 }
+
+/* デフォルト（デスクトップ）: ビデオ表示、静止画非表示 */
+body .hero-video {
+  display: block;
+}
+
+body .hero-image-mobile {
+  display: none;
+}
 /* グラデーションオーバーレイ - PC版（1101px以上） */
 @media (min-width: 1101px) {
   body .hero-teto-visual::after {
@@ -387,6 +396,20 @@ body .hero-teto-visual video {
     z-index: 0;
     clip-path: none;
   }
+  
+  /* モバイル: ビデオ非表示 */
+  body .hero-video {
+    display: none;
+  }
+  
+  /* モバイル: 静止画表示 */
+  body .hero-image-mobile {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
   body .hero-teto-visual::after {
     content: "";
     position: absolute;
