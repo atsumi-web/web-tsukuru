@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>株式会社アーク・ビルド | 採用特設サイト</title>
+    <title>株式会社アーク・ビルド | 施工管理採用特設サイト | Modern Craftsmanship</title>
+    <meta name="description" content="【年休125日・残業月18h】BIMとDXで、建築現場はもっと美しくなれる。アーク・ビルドは「1mmの美学」を追求する施工管理集団です。経験者月給35万〜、未経験者も安心の教育プログラム完備。">
+    <meta name="keywords" content="施工管理,採用,BIM,DX,アークビルド,建築,求人,未経験">
+    
+    <!-- OGP -->
+    <meta property="og:title" content="株式会社アーク・ビルド | 施工管理採用特設サイト">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="1mmの美学に、一生を賭ける。BIMとDXで建設現場の常識を変える、新しい施工管理のスタイル。">
+    <meta property="og:url" content="https://arc-build.jp/recruit/">
+    <meta property="og:image" content="./Image_fx_c_hero.webp">
+    <meta property="og:site_name" content="株式会社アーク・ビルド採用サイト">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,12 +45,34 @@
         }
     </script>
     <style>
+    <style>
         html { scroll-behavior: smooth; }
         .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .scroll-reveal.active { opacity: 1; transform: translateY(0); }
         .vertical-text { writing-mode: vertical-rl; }
         .shadow-dreamy { box-shadow: 0 20px 50px -12px rgba(166, 139, 103, 0.25); }
         .bg-white-important { background-color: #ffffff !important; }
+        
+        /* Ken Burns Effect */
+        @keyframes kenBurns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .ken-burns {
+            animation: kenBurns 15s ease-out infinite alternate;
+        }
+
+        /* Infinite Scroll Animation */
+        @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: infiniteScroll 60s linear infinite;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -92,18 +129,21 @@
                 <span class="text-[9px] font-bold tracking-[0.4em] text-accent-gold uppercase mt-1 italic">Modern Craftsmanship</span>
             </div>
             <div class="flex items-center gap-12">
-                <nav class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-widest text-stone-400 uppercase">
+                <nav class="hidden xl:flex items-center gap-6 text-[10px] font-bold tracking-widest text-stone-400 uppercase">
                     <a href="#philosophy" class="hover:text-accent-gold transition">Philosophy</a>
+                    <a href="#gallery" class="hover:text-accent-gold transition">Gallery</a>
+                    <a href="#schedule" class="hover:text-accent-gold transition">Schedule</a>
+                    <a href="#career" class="hover:text-accent-gold transition">Career</a>
                     <a href="#flow" class="hover:text-accent-gold transition">Flow</a>
                     <a href="#project" class="hover:text-accent-gold transition">Projects</a>
-                    <a href="#conditions" class="hover:text-accent-gold transition">Conditions</a>
                     <a href="#voice" class="hover:text-accent-gold transition">Interview</a>
+                    <a href="#faq" class="hover:text-accent-gold transition">FAQ</a>
                 </nav>
                 <div class="flex items-center gap-6">
                     <a href="#contact" class="hidden md:inline-flex bg-stone-900 text-white px-8 py-3 text-[10px] font-bold tracking-widest hover:bg-accent-gold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg uppercase">
                         Entry
                     </a>
-                    <button id="menu-toggle" class="lg:hidden text-stone-900 hover:text-accent-gold transition z-50 relative">
+                    <button id="menu-toggle" class="xl:hidden text-stone-900 hover:text-accent-gold transition z-50 relative">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -111,12 +151,14 @@
         </div>
         
         <!-- Mobile Navigation Overlay -->
-        <div id="mobile-menu" class="fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-white z-40 transform translate-x-full transition-transform duration-500 ease-out lg:hidden flex flex-col justify-center items-center border-t border-stone-100 bg-white-important">
-            <nav class="flex flex-col gap-8 text-center text-sm font-bold tracking-[0.2em] text-stone-900 uppercase">
+        <div id="mobile-menu" class="fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-white z-40 transform translate-x-full transition-transform duration-500 ease-out xl:hidden flex flex-col justify-center items-center border-t border-stone-100 bg-white-important">
+            <nav class="flex flex-col gap-6 text-center text-sm font-bold tracking-[0.2em] text-stone-900 uppercase">
                 <a href="#philosophy" class="mobile-link hover:text-accent-gold transition">Philosophy</a>
+                <a href="#gallery" class="mobile-link hover:text-accent-gold transition">Gallery</a>
+                <a href="#schedule" class="mobile-link hover:text-accent-gold transition">Schedule</a>
+                <a href="#career" class="mobile-link hover:text-accent-gold transition">Career</a>
                 <a href="#flow" class="mobile-link hover:text-accent-gold transition">Flow</a>
                 <a href="#project" class="mobile-link hover:text-accent-gold transition">Projects</a>
-                <a href="#conditions" class="mobile-link hover:text-accent-gold transition">Conditions</a>
                 <a href="#voice" class="mobile-link hover:text-accent-gold transition">Interview</a>
                 <a href="#contact" class="mobile-link text-accent-gold mt-4">Entry</a>
             </nav>
@@ -149,8 +191,8 @@
                     </div>
                 </div>
                 <div class="lg:w-1/2 order-1 lg:order-2 relative">
-                    <div class="relative z-10 shadow-dreamy overflow-hidden rounded-sm border-[12px] border-white transform hover:scale-[1.01] transition duration-700">
-                        <img src="./Image_fx_c_hero.webp" class="w-full h-auto object-cover" alt="Hero Image">
+                    <div class="relative z-10 shadow-dreamy overflow-hidden rounded-sm border-[12px] border-white">
+                        <img src="./Image_fx_c_hero.webp" class="w-full h-auto object-cover ken-burns" alt="Hero Image">
                     </div>
                     <div class="absolute -right-12 top-10 vertical-text text-stone-200/60 font-serif text-6xl font-black tracking-[0.6em] select-none hidden xl:block">
                         美学ある現場
@@ -196,6 +238,88 @@
                                 熟練工の技を動画とマニュアルに体系化。「背中を見て盗め」を廃し、未経験者でも確かな技術を最短で習得できる「仕組み」を整えています。
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION (New) -->
+    <section id="gallery" class="py-20 bg-stone-900 overflow-hidden relative border-t border-white/10">
+        <div class="container mx-auto px-4 md:px-6 mb-12 text-center scroll-reveal">
+            <span class="text-accent-gold text-[10px] font-bold tracking-[0.4em] uppercase mb-4 block italic">The Texture of Work</span>
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-white tracking-widest leading-tight">
+                美しさは、細部に宿る。
+            </h2>
+        </div>
+        
+        <!-- Infinite Scroll Slider -->
+        <div class="relative w-full overflow-hidden group">
+            <div class="flex animate-scroll hover:pause gap-4 w-[200%]">
+                <!-- Slide Items (Duplicated for seamless loop) -->
+                <!-- Use existing images reused with different cropping/context for now, or placeholders if strictly needed. 
+                     Using hero/mission images as placeholders with CSS filters to create 'texture' look. -->
+                
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_work1.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Work Check">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Precise Setup</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_project.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Material">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Material Quality</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_work2.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Tools">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Clean Tools</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_project2.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Detail">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Sukiya Detail</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_project3.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Piping">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Piping Layout</p>
+                    </div>
+                </div>
+
+                <!-- Duplicate for Loop -->
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_work1.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Work Check">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Precise Setup</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_project.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Material">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Material Quality</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_work2.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Tools">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Clean Tools</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_project2.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Detail">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Sukiya Detail</p>
+                    </div>
+                </div>
+                <div class="w-[300px] h-[200px] flex-shrink-0 bg-stone-800 rounded-sm overflow-hidden relative">
+                    <img src="./Image_fx_c_project3.webp" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0" alt="Piping">
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <p class="text-[9px] text-white tracking-widest uppercase italic">Piping Layout</p>
                     </div>
                 </div>
             </div>
@@ -481,6 +605,199 @@
                             「力仕事は職人さんがやってくれる。施工管理の本質は『調整力』と『先読み力』。性別は関係ない。産休・育休制度も整っているし、復帰後も時短勤務でキャリアを続けられる。ここは本当にフラットな組織です。」
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE SECTION (New) -->
+    <section id="schedule" class="py-20 md:py-32 bg-stone-50 border-b border-stone-200">
+        <div class="container mx-auto px-4 md:px-6 max-w-5xl scroll-reveal">
+            <div class="text-center mb-20">
+                <span class="text-accent-gold text-[11px] font-bold tracking-[0.6em] uppercase mb-8 block italic">One Day Flow</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-6 leading-tight">
+                    プロの時間は、濃い。
+                </h2>
+                <p class="text-stone-500 text-sm max-w-xl mx-auto leading-[2] font-light italic">
+                    ダラダラとした残業は「恥」と見なされます。<br>段取り良く働き、定時で美しく終わる。それがアーク・ビルドの流儀です。
+                </p>
+            </div>
+
+            <div class="relative border-l-2 border-stone-200 ml-4 md:ml-1/2 space-y-16 py-8">
+                <!-- 08:00 -->
+                <div class="relative pl-10 md:pl-0 md:flex md:justify-between items-center group">
+                    <div class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-stone-300 group-hover:border-accent-gold transition duration-300 md:left-1/2 md:-ml-2"></div>
+                    <div class="md:w-[45%] md:text-right md:pr-10">
+                        <span class="text-accent-gold font-bold font-serif text-2xl italic">08:00</span>
+                    </div>
+                    <div class="md:w-[45%] md:pl-10">
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Morning Assembly</h3>
+                        <p class="text-stone-500 text-xs leading-[2]">
+                            朝礼は5分で終了。iPadでその日の工程と危険予知箇所を共有し、直ちを作業開始。無駄な訓示はありません。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 10:00 -->
+                <div class="relative pl-10 md:pl-0 md:flex md:justify-between items-center group">
+                    <div class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-stone-300 group-hover:border-accent-gold transition duration-300 md:left-1/2 md:-ml-2"></div>
+                    <div class="md:w-[45%] md:text-right md:pr-10 order-2 md:order-1">
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Zone Work</h3>
+                        <p class="text-stone-500 text-xs leading-[2]">
+                            最も集中力が高まる時間帯。BIM図面を確認しながら、職人への指示出しと写真撮影をスムーズに行います。
+                        </p>
+                    </div>
+                    <div class="md:w-[45%] md:pl-10 order-1 md:order-2">
+                        <span class="text-accent-gold font-bold font-serif text-2xl italic">10:00</span>
+                    </div>
+                </div>
+
+                <!-- 12:00 -->
+                <div class="relative pl-10 md:pl-0 md:flex md:justify-between items-center group">
+                    <div class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-stone-300 group-hover:border-accent-gold transition duration-300 md:left-1/2 md:-ml-2"></div>
+                    <div class="md:w-[45%] md:text-right md:pr-10">
+                        <span class="text-accent-gold font-bold font-serif text-2xl italic">12:00</span>
+                    </div>
+                    <div class="md:w-[45%] md:pl-10">
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Lunch Break</h3>
+                        <p class="text-stone-500 text-xs leading-[2]">
+                            現場事務所はWi-Fi完備。しっかり休み、午後の英気を養います。オンオフの切り替えもプロの技術です。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 16:00 -->
+                <div class="relative pl-10 md:pl-0 md:flex md:justify-between items-center group">
+                    <div class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-stone-300 group-hover:border-accent-gold transition duration-300 md:left-1/2 md:-ml-2"></div>
+                    <div class="md:w-[45%] md:text-right md:pr-10 order-2 md:order-1">
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Documentation</h3>
+                        <p class="text-stone-500 text-xs leading-[2]">
+                            事務所に戻る必要はありません。現場で撮影した写真をその場でクラウドにアップし、日報作成もスマホで完結。
+                        </p>
+                    </div>
+                    <div class="md:w-[45%] md:pl-10 order-1 md:order-2">
+                        <span class="text-accent-gold font-bold font-serif text-2xl italic">16:00</span>
+                    </div>
+                </div>
+
+                <!-- 17:30 -->
+                <div class="relative pl-10 md:pl-0 md:flex md:justify-between items-center group">
+                    <div class="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-stone-300 group-hover:border-accent-gold transition duration-300 md:left-1/2 md:-ml-2"></div>
+                    <div class="md:w-[45%] md:text-right md:pr-10">
+                        <span class="text-accent-gold font-bold font-serif text-2xl italic">17:30</span>
+                    </div>
+                    <div class="md:w-[45%] md:pl-10">
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Finish Work</h3>
+                        <p class="text-stone-500 text-xs leading-[2]">
+                            後片付け（4S）をして終了。現場への直行直帰が基本なので、無駄な帰社は不要です。お疲れ様でした。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAREER PATH (New) -->
+    <section id="career" class="py-20 md:py-32 bg-stone-900 text-white">
+        <div class="container mx-auto px-4 md:px-6 max-w-6xl scroll-reveal">
+            <div class="flex flex-col md:flex-row gap-16 md:gap-24 items-start">
+                <div class="md:w-1/3 sticky top-32">
+                    <span class="text-accent-gold text-[11px] font-bold tracking-[0.6em] uppercase mb-8 block italic">Career Path</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 leading-tight">
+                        「背中で盗め」は<br>古い。
+                    </h2>
+                    <p class="text-stone-400 text-sm leading-[2] font-light italic">
+                        アーク・ビルドには、明確な育成ロードマップがあります。<br>
+                        感覚的な指導を排除し、論理的なカリキュラムで、あなたを最短で「現場の司令塔」へと育て上げます。
+                    </p>
+                </div>
+                
+                <div class="md:w-2/3 space-y-12">
+                    <!-- Step 1 -->
+                    <div class="bg-white/5 border border-white/10 p-8 md:p-10 rounded-sm hover:bg-white/10 transition duration-300">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-xl font-bold font-serif tracking-wider">Apprentice <span class="text-sm font-sans font-normal text-stone-400 ml-2">見習い・基礎習得</span></h3>
+                            <span class="bg-accent-gold text-stone-900 text-[10px] font-bold px-3 py-1 uppercase tracking-widest italic">Year 1</span>
+                        </div>
+                        <ul class="space-y-3 text-stone-300 text-sm font-light">
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 4S（現場美化）の徹底と安全管理の基礎</li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 写真撮影のポイントと記録管理アプリの操作</li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 職人さんとのコミュニケーションと名称の暗記</li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white/5 border border-white/10 p-8 md:p-10 rounded-sm hover:bg-white/10 transition duration-300">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-xl font-bold font-serif tracking-wider">Junior <span class="text-sm font-sans font-normal text-stone-400 ml-2">担当・小規模現場</span></h3>
+                            <span class="bg-accent-gold text-stone-900 text-[10px] font-bold px-3 py-1 uppercase tracking-widest italic">Year 2-3</span>
+                        </div>
+                        <ul class="space-y-3 text-stone-300 text-sm font-light">
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 小規模リノベーション現場の品質管理担当</li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 図面の読み込みと簡単な修正指示</li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 2級施工管理技士の取得（資格手当支給開始）</li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white/5 border border-white/10 p-8 md:p-10 rounded-sm hover:bg-white/10 transition duration-300">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-xl font-bold font-serif tracking-wider">Professional <span class="text-sm font-sans font-normal text-stone-400 ml-2">主任・中規模現場</span></h3>
+                            <span class="bg-accent-gold text-stone-900 text-[10px] font-bold px-3 py-1 uppercase tracking-widest italic">Year 4-5</span>
+                        </div>
+                        <ul class="space-y-3 text-stone-300 text-sm font-light">
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 新築RC現場の所長代理として工程管理</li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 実行予算の作成と原価管理の補佐</li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 若手社員のメンター指導</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (New) -->
+    <section id="faq" class="py-20 md:py-32 bg-stone-50 border-t border-stone-200">
+        <div class="container mx-auto px-4 md:px-6 max-w-4xl scroll-reveal">
+            <div class="text-center mb-16">
+                <span class="text-accent-gold text-[11px] font-bold tracking-[0.6em] uppercase mb-8 block italic">Q&A</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-6 leading-tight">
+                    よくある懸念を、<br>ここで解消します。
+                </h2>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Q1 -->
+                <div class="group bg-white border-l-4 border-stone-200 hover:border-accent-gold transition duration-300 p-8 shadow-sm">
+                    <h3 class="text-lg font-bold text-stone-900 mb-4 flex items-start gap-4">
+                        <span class="text-accent-gold font-serif italic">Q.</span>
+                        「親方が怖い」「見て覚えろ」という古い体質はありませんか？
+                    </h3>
+                    <p class="text-stone-500 text-sm leading-[2] pl-8 border-l border-stone-100">
+                        一切ありません。弊社ではハラスメントを厳重に禁止しており、代表直通の通報窓口も設けています。また、技術習得はiPad上の動画マニュアルとメンター制度で行うため、「見て覚えろ」といった非効率な指導は禁止されています。
+                    </p>
+                </div>
+
+                <!-- Q2 -->
+                <div class="group bg-white border-l-4 border-stone-200 hover:border-accent-gold transition duration-300 p-8 shadow-sm">
+                    <h3 class="text-lg font-bold text-stone-900 mb-4 flex items-start gap-4">
+                        <span class="text-accent-gold font-serif italic">Q.</span>
+                        未経験で不器用ですが、本当に務まりますか？
+                    </h3>
+                    <p class="text-stone-500 text-sm leading-[2] pl-8 border-l border-stone-100">
+                        はい、大丈夫です。施工管理の主な仕事は「段取り」と「確認」であり、手先の器用さよりも「几帳面さ」や「コミュニケーション力」が重視されます。技術的な知識は入社後のカリキュラムで十分に習得可能です。
+                    </p>
+                </div>
+
+                <!-- Q3 -->
+                <div class="group bg-white border-l-4 border-stone-200 hover:border-accent-gold transition duration-300 p-8 shadow-sm">
+                    <h3 class="text-lg font-bold text-stone-900 mb-4 flex items-start gap-4">
+                        <span class="text-accent-gold font-serif italic">Q.</span>
+                        建設現場は危険なイメージがあります。
+                    </h3>
+                    <p class="text-stone-500 text-sm leading-[2] pl-8 border-l border-stone-100">
+                        安全は全てに優先されます。弊社では最新の安全装備（フルハーネス型墜落制止用器具など）の支給はもちろん、危険予知活動（KYK）の徹底、ドローンやセンサーによる監視など、テクノロジーを活用して事故ゼロを維持しています。
+                    </p>
                 </div>
             </div>
         </div>
