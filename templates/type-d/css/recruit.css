@@ -5,7 +5,7 @@
 .recruit {
     padding: 80px 0;
     position: relative;
-    background-color: var(--light-gray);
+    background: linear-gradient(135deg, #f7f9fc 0%, var(--light-gray) 100%);
 }
 
 .recruit__grid {

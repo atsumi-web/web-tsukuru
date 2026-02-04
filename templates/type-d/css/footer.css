@@ -2,9 +2,9 @@
    Footer
    =================================== */
 .footer {
-  background-color: var(--dark);
+  background: linear-gradient(135deg, var(--dark) 0%, var(--primary-navy) 100%);
   color: var(--white);
-  padding: var(--spacing-xxl) 0 0; /* Removed bottom padding */
+  padding: var(--spacing-xxl) 0 0;
   margin-bottom: 0 !important;
   overflow: hidden;
 }

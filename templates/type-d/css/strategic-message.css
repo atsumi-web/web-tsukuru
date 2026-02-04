@@ -6,8 +6,7 @@
   padding-bottom: 200px; /* Extra padding for the wave */
   position: relative;
   overflow: hidden;
-  background-color: #fff; /* White background */
-  /* No border-radius or z-index hacks needed */
+  background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
 }
 
 /* Background Design Elements */
@@ -45,7 +44,7 @@
 .strategic-message__label {
   display: block;
   font-size: 14px;
-  color: #e60012;
+  color: var(--primary-navy);
   font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: 0.1em;
@@ -61,7 +60,7 @@
   transform: translateY(-50%);
   width: 12px;
   height: 2px;
-  background-color: #e60012;
+  background-color: var(--primary-navy);
 }
 
 .strategic-message__title {
@@ -140,7 +139,7 @@
   right: -20px;
   width: 100%;
   height: 100%;
-  border: 2px solid #e60012;
+  border: 2px solid var(--primary-orange);
   border-radius: 8px;
   z-index: -1;
 }

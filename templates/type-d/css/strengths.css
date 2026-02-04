@@ -18,7 +18,7 @@
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: var(--primary-red);
+  color: var(--primary-navy);
   margin-bottom: 20px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -57,7 +57,7 @@
 .strength-circle:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-  border-color: var(--primary-red);
+  border-color: var(--primary-orange);
 }
 
 .strength-circle::before {
@@ -67,12 +67,12 @@
   font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 800;
-  color: rgba(230, 0, 18, 0.1);
+  color: rgba(255, 107, 53, 0.15);
 }
 
 .strength-circle__icon {
   margin-bottom: 20px;
-  color: var(--primary-red);
+  color: var(--primary-orange);
 }
 
 .strength-circle__title {

@@ -26,7 +26,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--primary-red);
+  color: var(--primary-navy);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -117,7 +117,7 @@
   font-family: var(--font-heading);
   font-size: 48px;
   font-weight: 800;
-  color: var(--primary-red);
+  color: var(--primary-orange);
   line-height: 1;
   margin-bottom: var(--spacing-xs);
 }
@@ -175,7 +175,7 @@
 }
 
 .point-badge {
-  background-color: var(--primary-red);
+  background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-hover) 100%);
   color: var(--white);
   width: 60px;
   height: 60px;

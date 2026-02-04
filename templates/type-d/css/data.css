@@ -18,7 +18,7 @@
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: var(--primary-red);
+  color: var(--primary-navy);
   margin-bottom: 20px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -58,8 +58,8 @@
 
 .stat-card__icon {
   margin-bottom: 20px;
-  color: var(--primary-red);
-  background-color: rgba(230, 0, 18, 0.05);
+  color: var(--primary-orange);
+  background-color: rgba(255, 107, 53, 0.1);
   width: 60px;
   height: 60px;
   border-radius: 50%;

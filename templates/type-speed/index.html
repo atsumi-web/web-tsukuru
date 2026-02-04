@@ -35,7 +35,9 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #FACC15; }
         .text-outline { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
-        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+        @media (min-width: 768px) {
+            .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+        }
     </style>
 </head>
 <body class="bg-brand-black text-gray-300 font-sans antialiased overflow-x-hidden">
@@ -54,6 +56,7 @@
                 <a href="#work" class="hover:text-brand-yellow transition">Actual Work</a>
                 <a href="#career" class="hover:text-brand-yellow transition">Career Path</a>
                 <a href="#interview" class="hover:text-brand-yellow transition">Frontrunners</a>
+                <a href="#company" class="hover:text-brand-yellow transition">Company</a>
                 <a href="#faq" class="hover:text-brand-yellow transition">Q&A</a>
             </nav>
             <div class="flex items-center gap-6">
@@ -78,6 +81,7 @@
             <a href="#work" class="menu-link text-black hover:text-white transition">Actual Work</a>
             <a href="#career" class="menu-link text-black hover:text-white transition">Career Path</a>
             <a href="#interview" class="menu-link text-black hover:text-white transition">Frontrunners</a>
+            <a href="#company" class="menu-link text-black hover:text-white transition">Company</a>
             <a href="#faq" class="menu-link text-black hover:text-white transition">Q&A</a>
             <a href="#entry" class="menu-link mt-8 bg-black text-white px-12 py-4 hover:bg-white hover:text-black transition">Entry Now</a>
         </nav>
@@ -118,18 +122,18 @@
 
     <section id="mission" class="py-24 md:py-40 bg-brand-black relative overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-10 grayscale">
-            <img src="./Image_fx5.png" class="w-full h-full object-cover" alt="Mission Background">
+            <img src="./Image_fx5.webp" class="w-full h-full object-cover" alt="Mission Background">
         </div>
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
             <div class="flex flex-col lg:flex-row items-start gap-24">
-                <div class="lg:w-2/5 sticky top-32">
+                <div class="lg:w-2/5 lg:sticky lg:top-32">
                     <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">The Philosophy</span>
                     <h2 class="text-6xl md:text-8xl font-display font-black text-white mb-8 italic tracking-tighter uppercase leading-none">Mission<span class="text-brand-yellow">.</span></h2>
                     <p class="text-gray-500 font-bold leading-relaxed text-xl italic mb-8">
                         まだ、下積みに<br>
                         数年を費やすつもりですか？
                     </p>
-                    <div class="w-12 h-1 bg-brand-yellow"></div>
+                    <div class="w-12 h-1 bg-brand-yellow hidden lg:block"></div>
                 </div>
                 <div class="lg:w-3/5 space-y-24">
                     <div>
@@ -162,30 +166,48 @@
                 <p class="text-brand-yellow font-bold uppercase tracking-[0.5em] text-xs italic">Professional Operations</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-brand-gray p-12 border border-white/5 hover:border-brand-yellow transition-all duration-700 group relative overflow-hidden shadow-2xl">
-                    <div class="text-brand-yellow text-5xl mb-10 group-hover:scale-110 transition duration-500"><i class="fas fa-tablet-alt"></i></div>
-                    <h3 class="text-2xl font-black text-white mb-6 italic uppercase tracking-tighter group-hover:text-brand-yellow transition">IT × Construction</h3>
-                    <p class="text-sm text-gray-500 font-bold mb-4 italic uppercase">IT × 建設</p>
-                    <p class="text-gray-400 leading-relaxed font-bold">
-                        「紙の図面は、もういらない。」<br>タブレット一台で完結するスマートな現場管理。
-                    </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Case 1 -->
+                <div class="group relative overflow-hidden bg-brand-gray border border-white/5 hover:border-brand-yellow transition-all duration-500 shadow-2xl">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="./Image_fx_s_work1.webp" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Server Room">
+                        <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-3 italic">Advanced Facility</div>
+                        <h3 class="text-2xl font-black text-white mb-4 italic uppercase tracking-tighter leading-none">Local Data Center</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-bold">
+                            地域の情報通信を支える。精密空調と電源設備の施工ノウハウにより、県内企業のサーバー拠点構築を一括受注。
+                        </p>
+                    </div>
                 </div>
-                <div class="bg-brand-gray p-12 border border-white/5 hover:border-brand-yellow transition-all duration-700 group relative overflow-hidden shadow-2xl">
-                    <div class="text-brand-yellow text-5xl mb-10 group-hover:scale-110 transition duration-500"><i class="fas fa-chart-line"></i></div>
-                    <h3 class="text-2xl font-black text-white mb-6 italic uppercase tracking-tighter group-hover:text-brand-yellow transition">Transparency</h3>
-                    <p class="text-sm text-gray-500 font-bold mb-4 italic uppercase">評価の透明性</p>
-                    <p class="text-gray-400 leading-relaxed font-bold">
-                        「長くいるから」ではなく「何ができるか」で決まるデジタルな評価基準。
-                    </p>
+                <!-- Case 2 -->
+                <div class="group relative overflow-hidden bg-brand-gray border border-white/5 hover:border-brand-yellow transition-all duration-500 shadow-2xl">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="./Image_fx_s_work2.webp" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="ICT Construction">
+                        <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-3 italic">ICT Roadworks</div>
+                        <h3 class="text-2xl font-black text-white mb-4 italic uppercase tracking-tighter leading-none">Prefectural Bypass</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-bold">
+                            県道バイパス工事におけるi-Construction活用モデル事業。ドローン測量による3次元データ管理で生産性を向上。
+                        </p>
+                    </div>
                 </div>
-                <div class="bg-brand-gray p-12 border border-white/5 hover:border-brand-yellow transition-all duration-700 group relative overflow-hidden shadow-2xl">
-                    <div class="text-brand-yellow text-5xl mb-10 group-hover:scale-110 transition duration-500"><i class="fas fa-gem"></i></div>
-                    <h3 class="text-2xl font-black text-white mb-6 italic uppercase tracking-tighter group-hover:text-brand-yellow transition">Smart Work</h3>
-                    <p class="text-sm text-gray-500 font-bold mb-4 italic uppercase">3Kからの脱却</p>
-                    <p class="text-gray-400 leading-relaxed font-bold">
-                        「きつい・汚い・危険」を、最新技術で「効率的・知的・高待遇」へ。
-                    </p>
+                <!-- Case 3 -->
+                <div class="group relative overflow-hidden bg-brand-gray border border-white/5 hover:border-brand-yellow transition-all duration-500 shadow-2xl">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="./Image_fx_s_work3.webp" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Smart Factory">
+                        <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-3 italic">Smart Factory</div>
+                        <h3 class="text-2xl font-black text-white mb-4 italic uppercase tracking-tighter leading-none">Automated Warehouse</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-bold">
+                            地場メーカーの自動化物流倉庫。AGV走行に対応した高精度な土間コンクリート施工を提供。
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,34 +260,79 @@
         <div class="container mx-auto px-6">
             <h2 class="text-6xl md:text-[11rem] font-display font-black text-white mb-32 text-center italic tracking-tighter uppercase leading-none opacity-10 select-none">Frontrunners</h2>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 -mt-48">
-                <div class="flex flex-col gap-10 group">
-                    <div class="aspect-[3/4] lg:aspect-video bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
-                        <img src="./Image_fx3.png" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-110" alt="Leader 1">
-                        <div class="absolute bottom-6 left-6 bg-brand-yellow text-black px-8 py-3 font-black italic uppercase tracking-tighter text-xl shadow-2xl">Engineer / 2nd Yr</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 -mt-48">
+                <!-- Member 1 -->
+                <div class="flex flex-col gap-6 group">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member1.webp" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="DX Lead">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">DX Promotion Lead</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">29 years old / Ex-IT Engineer</div>
+                        </div>
                     </div>
                     <div class="pl-4 border-l-2 border-brand-yellow">
-                        <h3 class="text-3xl md:text-4xl font-black text-white mb-8 leading-snug italic uppercase tracking-tighter">
-                            「大手ゼネコンでの下積みより、<br>ここでの1年の方が<br><span class="text-brand-yellow">成長を実感できた。</span>」
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「現場の課題を、<br>技術で解く。」
                         </h3>
-                        <p class="text-gray-400 leading-[2.3] text-xl font-bold italic">
-                            入社2年目 / 現場技術者<br>
-                            「前職では雑務が多く、なかなか現場を任せてもらえませんでした。ここでは入社後すぐに小規模なプロジェクトに関わることができ、実践を通じて学ぶ機会の多さが、私を強くしてくれました。」
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            元ITエンジニアからの転身。BIMデータの自動連携システムを内製開発し、現場の管理工数を半減させました。ここは「建設会社」というより、「建設現場を持ったテック企業」です。
                         </p>
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-10 group mt-24 lg:mt-48">
-                    <div class="aspect-[3/4] lg:aspect-video bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
-                        <img src="./Image_fx4.png" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-110" alt="Leader 2">
-                        <div class="absolute bottom-6 left-6 bg-brand-yellow text-black px-8 py-3 font-black italic uppercase tracking-tighter text-xl shadow-2xl">Strategist / 29yr</div>
+                <!-- Member 2 -->
+                <div class="flex flex-col gap-6 group md:mt-24">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member2.webp" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="Area Manager">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">Area Manager</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">26 years old / 3rd Year</div>
+                        </div>
                     </div>
                     <div class="pl-4 border-l-2 border-brand-yellow">
-                        <h3 class="text-3xl md:text-4xl font-black text-white mb-8 leading-snug italic uppercase tracking-tighter text-right lg:text-left">
-                            「テクノロジーを使いこなす。<br>それが、現代の建設の<br><span class="text-brand-yellow uppercase">最高に面白い醍醐味だ。</span>」
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「実力で掴んだ、<br>早期キャリア。」
                         </h3>
-                        <p class="text-gray-400 leading-[2.3] text-xl font-bold italic text-right lg:text-left">
-                            ドローン測量や最新の施工管理アプリ。これらを導入することで、現場の負担は劇的に減ります。空いた時間をより高品質な品質管理や創造的な業務に充てる。最新の技術を手に戦う今の環境に、誇りを感じています。
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            入社3年目でエリア統括へ。iPadひとつで3つの現場を遠隔管理しています。「若いうちは下積み」という常識はこの会社には存在しません。成果を出せば、年齢に関係なく裁量権が与えられます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="flex flex-col gap-6 group">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member3.webp" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="Drone Specialist">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">Drone Surveyor</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">25 years old / Specialist</div>
+                        </div>
+                    </div>
+                    <div class="pl-4 border-l-2 border-brand-yellow">
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「空から現場を<br>俯瞰する。」
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            ドローンによる3次元測量のスペシャリスト。かつては数日かかった測量作業を30分で完遂します。正確なデータで現場を指揮する。これが新しい「職人」の姿です。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="flex flex-col gap-6 group md:mt-24">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member4.webp" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="HR & Dev">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">HR & Org Dev</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">28 years old / Ex-Consultant</div>
+                        </div>
+                    </div>
+                    <div class="pl-4 border-l-2 border-brand-yellow">
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「建設業の働き方を<br>変革する。」
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            レガシー産業だからこそ、変革のインパクトが大きい。組織制度もゼロベースで再構築し、成果を出した社員が「業界最高水準」の報酬を得られる仕組みを作り上げました。
                         </p>
                     </div>
                 </div>
@@ -273,24 +340,107 @@
         </div>
     </section>
 
-    <section class="py-32 bg-brand-black border-y border-white/5">
+    <section id="company" class="py-24 md:py-40 bg-brand-black border-y border-white/5">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-16 text-center">
+            <!-- Message -->
+            <div class="flex flex-col lg:flex-row gap-20 items-center mb-40">
+                <div class="lg:w-1/2 relative group">
+                    <div class="absolute -inset-4 bg-brand-yellow/20 blur-2xl group-hover:bg-brand-yellow/30 transition duration-700"></div>
+                    <img src="./Image_fx_s_ceo.webp" class="relative w-full shadow-2xl grayscale group-hover:grayscale-0 transition duration-700" alt="CEO Message">
+                    <div class="absolute bottom-10 left-10 z-10">
+                        <p class="text-brand-yellow font-black uppercase tracking-widest text-xs italic mb-2">Representative</p>
+                        <h3 class="text-white text-4xl font-black italic uppercase tracking-tighter leading-none">Keisuke <br>Matsushita</h3>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-5xl md:text-7xl font-display font-black text-white mb-12 italic uppercase tracking-tighter leading-none">
+                        建設業を、<br>
+                        <span class="text-brand-yellow">クールにハックせよ。</span>
+                    </h2>
+                    <div class="space-y-8 text-gray-400 font-medium leading-loose text-lg">
+                        <p>
+                            私たちのライバルは、競合の建設会社ではありません。GoogleやAmazonのような、テクノロジー企業です。
+                        </p>
+                        <p>
+                            建設現場は、実は「データの宝庫」です。ドローン、AI、IoT。これらを駆使すれば、きつい肉体労働はもっとクリエイティブな「管理業務」に変わります。私が作りたいのは、汗水垂らして働く現場ではなく、涼しい顔をしてスマートに巨大建造物を作り上げる、そんな新しい建設の常識です。
+                        </p>
+                        <p class="text-white font-bold italic">
+                            古いやり方に疑問を持つあなたへ。<br>
+                            その「違和感」こそが、私たちの最大の武器になります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Info & Office -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-brand-gray p-12 md:p-20 border border-white/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-5">
+                    <i class="fas fa-building text-9xl"></i>
+                </div>
+                
+                <div>
+                     <h2 class="text-3xl md:text-5xl font-display font-black text-white mb-10 italic uppercase tracking-tighter leading-none">Company Profile</h2>
+                     <dl class="space-y-6 text-sm md:text-base font-bold text-gray-400">
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Company Name</dt>
+                             <dd class="text-white">株式会社ネクスト・フロンティア (Next Frontier Co., Ltd.)</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Founded</dt>
+                             <dd class="text-white">2015年 4月</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Capital</dt>
+                             <dd class="text-white">5,000万円</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Employees</dt>
+                             <dd class="text-white">45名 (平均年齢 28.5歳)</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Business</dt>
+                             <dd class="text-white">総合建設業、建設DXコンサルティング</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Location</dt>
+                             <dd class="text-white">
+                                 [本社] 東京都渋谷区渋谷2-24-12<br>
+                                 [技術センター] 千葉県柏市の葉キャンパス
+                             </dd>
+                         </div>
+                     </dl>
+                </div>
+                <div class="relative h-full min-h-[300px] overflow-hidden group">
+                    <img src="./Image_fx_s_company.webp" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="Office Environment">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black/80 to-transparent flex items-end p-8">
+                        <p class="text-white font-bold italic">
+                            <span class="text-brand-yellow text-xl mr-2">■</span>
+                            フリーアドレス制のオフィス。現場とリモートを柔軟に使い分ける「Smart Work」推奨企業。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Numbers (moved inside section) -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-16 text-center mt-24 pt-24 border-t border-white/5">
                 <div class="group">
-                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Avg Age</div>
-                    <div class="text-7xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">29.4<span class="text-xl text-brand-yellow ml-2 italic">Avg</span></div>
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Growth Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">250<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-wider">3-Year Growth</p>
                 </div>
                 <div class="group">
-                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Overtime</div>
-                    <div class="text-7xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">24.5<span class="text-xl text-brand-yellow ml-2 italic">h/mo</span></div>
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">DX Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">100<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-wider">Cloud Adoption</p>
                 </div>
                 <div class="group">
-                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Bonus</div>
-                    <div class="text-7xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">4.5<span class="text-xl text-brand-yellow ml-2 italic">mo.</span></div>
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Avg Raise</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">5.0<span class="text-2xl text-brand-yellow ml-1 italic">万/年</span></div>
+                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-wider">Annual Raise</p>
                 </div>
                 <div class="group">
                     <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Paid Leave</div>
-                    <div class="text-7xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">78<span class="text-xl text-brand-yellow ml-2 italic">%</span></div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">88<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
                 </div>
             </div>
         </div>
@@ -362,6 +512,8 @@
                         <a href="#mission" class="hover:text-brand-yellow transition">The Mission</a>
                         <a href="#work" class="hover:text-brand-yellow transition">The Work</a>
                         <a href="#career" class="hover:text-brand-yellow transition">The Career</a>
+                        <a href="#interview" class="hover:text-brand-yellow transition">Frontrunners</a>
+                        <a href="#company" class="hover:text-brand-yellow transition">The Company</a>
                         <a href="#faq" class="hover:text-brand-yellow transition">The Q&A</a>
                     </nav>
                 </div>

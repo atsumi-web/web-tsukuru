@@ -10,15 +10,26 @@
    CSS Variables & Design Tokens
    =================================== */
 :root {
-  /* Colors */
+  /* Primary Colors */
   --primary-red: #ff3333;
   --primary-red-hover: #e62e2e;
+  
+  /* IIJ Corporate Colors */
+  --primary-navy: #1e3a5f;
+  --primary-navy-light: #2d5080;
+  --primary-orange: #ff6b35;
+  --primary-orange-hover: #ff5722;
+  --accent-teal: #00a896;
+  
+  /* Grayscale */
   --dark: #1a1a1a;
   --dark-gray: #333333;
   --medium-gray: #666666;
   --light-gray: #f8f8f8;
+  --off-white: #fafafa;
   --white: #ffffff;
   --border-color: #e5e5e5;
+  --border-light: #f0f0f0;
 
   /* Typography */
   --font-main: "Noto Sans JP", sans-serif;
