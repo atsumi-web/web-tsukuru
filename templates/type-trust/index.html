@@ -208,12 +208,12 @@
         <div class="absolute top-0 right-0 w-2/3 h-2/3 bg-slate-50 rounded-bl-[100px] -z-10 opacity-50 pointer-events-none"></div>
 
         <div class="container mx-auto px-6 md:px-12">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+            <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-12 lg:gap-24">
                 <!-- Text Content -->
                 <div class="w-full lg:w-5/12 z-10 order-2 lg:order-1 fade-in-up">
-                    <span class="text-brand-gold text-base md:text-lg font-bold tracking-[0.4em] mb-6 md:mb-8 block">大和建設 中途採用 2026</span>
+                    <span class="hidden lg:block text-brand-gold text-base md:text-lg font-bold tracking-[0.4em] mb-6 md:mb-8">大和建設 中途採用 2026</span>
                     <h1 class="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-serif font-bold leading-[1.6] md:leading-[1.8] lg:leading-tight xl:leading-[1.8] mb-8 md:mb-12 tracking-wide">
-                        <span class="whitespace-nowrap"></span>いつもの街を、</span><br>
+                        <span class="whitespace-nowrap">いつもの街を、</span><br>
                         
                         <span class="whitespace-nowrap">
                             <span class="text-brand-gold relative inline-block text-4xl md:text-6xl lg:text-6xl xl:text-7xl">
@@ -223,6 +223,13 @@
                         </span><br>
                         <span class="whitespace-nowrap">守り抜く。</span>
                     </h1>
+                    
+                    <!-- Certification Marks (Text Right) -->
+                    <div class="flex justify-end gap-3 md:gap-4 mb-8 -mt-6 md:-mt-8">
+                        <img src="./trust_cert_iso.png" alt="ISO 9001" class="h-8 md:h-10 lg:h-12 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
+                        <img src="./trust_cert_dx.png" alt="DX Certification" class="h-8 md:h-10 lg:h-12 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
+                        <img src="./trust_cert_wlb.png" alt="Health & Productivity" class="h-8 md:h-10 lg:h-12 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
+                    </div>
                     <div class="w-12 h-[1px] bg-brand-navy mb-8 md:mb-12"></div>
                     <p class="text-xs md:text-sm text-slate-500 leading-loose tracking-wider mb-12">
                         泥臭いだけの建設業は、もう終わりです。<br class="hidden md:block">
@@ -260,17 +267,16 @@
                         .hero-slide:nth-child(2) { animation-delay: 5s; }
                         .hero-slide:nth-child(3) { animation-delay: 10s; }
                     </style>
+                    <!-- Mobile Overlay Title (Tag Style) -->
+                    <div class="absolute top-6 left-0 z-20 lg:hidden fade-in-up" style="animation-delay: 0.5s;">
+                        <span class="text-white text-xs font-bold tracking-[0.2em] bg-brand-navy/90 px-4 py-2 rounded-r-sm shadow-xl border-l-4 border-brand-gold inline-block">
+                            大和建設 中途採用 2026
+                        </span>
+                    </div>
                     <div class="hero-slide-container img-mask shadow-2xl overflow-hidden rounded-lg">
                         <img src="./trust_final_hero_1770166933003.webp" alt="Site Overview" class="hero-slide">
                         <img src="./trust_final_work_road_1770166977138.webp" alt="Road Works" class="hero-slide">
                         <img src="./trust_final_work_river_1770166963202.webp" alt="River Works" class="hero-slide">
-                    </div>
-                    
-                    <!-- Certification Marks -->
-                    <div class="flex flex-row justify-end gap-4 md:gap-5 mt-16 px-2">
-                        <img src="./trust_cert_iso.png" alt="ISO 9001" class="h-10 md:h-12 lg:h-14 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
-                        <img src="./trust_cert_dx.png" alt="DX Certification" class="h-10 md:h-12 lg:h-14 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
-                        <img src="./trust_cert_wlb.png" alt="Health & Productivity" class="h-10 md:h-12 lg:h-14 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
                     </div>
                 </div>
             </div>
@@ -309,8 +315,7 @@
                         </div>
                    </div>
 
-                   <!-- Number decoration removed -->
-                </div>
+                   </div>
                 <div class="w-full lg:w-1/2 mt-24 lg:mt-0">
                     <span class="text-brand-gold font-bold tracking-widest text-sm mb-6 block">未来へ</span>
                     <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-10 leading-normal">良い仕事は、<br>きれいな環境から。</h2>
