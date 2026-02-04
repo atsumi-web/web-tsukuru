@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,7 @@
             --white: #ffffff;
             --text: #334155;
             --accent: #ef4444;
+            --success: #10B981;
         }
 
         body {
@@ -22,7 +23,61 @@
             color: var(--text);
             margin: 0;
             padding: 0;
+            padding-top: 80px; /* Space for sticky header */
             background-color: var(--light-bg);
+        }
+
+        /* Sticky Progress Bar */
+        .progress-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            color: white;
+            z-index: 1000;
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .progress-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .progress-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .progress-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .progress-bar-bg {
+            width: 200px;
+            height: 10px;
+            background: #334155;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .next-action {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .container {
@@ -105,16 +160,39 @@
             gap: 20px;
         }
 
+        /* Interactive Task Card */
         .task-card {
             background: var(--white);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
         }
 
         .task-card:hover {
             transform: translateY(-5px);
+            border-color: #cbd5e1;
+        }
+
+        .task-card.completed {
+            background: #f0fdf4;
+            border-color: var(--success);
+            opacity: 0.8;
+        }
+
+        .task-card.completed::after {
+            content: 'COMPLETED';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            color: var(--success);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
         }
 
         .task-card h3 {
@@ -129,75 +207,35 @@
         .task-card h3 i {
             color: var(--gold);
         }
+        
+        .task-card.completed h3 i {
+            color: var(--success);
+        }
 
         .task-card p {
             font-size: 0.95rem;
             margin-bottom: 0;
         }
 
-        .highlight-box {
-            background: #fffbeb;
-            border: 1px solid #fef3c7;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 40px;
-        }
-
-        .highlight-box h2 {
-            font-size: 1.2rem;
-            color: #92400e;
-            margin-top: 0;
+        /* Checkbox styling */
+        .check-circle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            margin-right: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            color: transparent;
+            transition: all 0.2s;
+            flex-shrink: 0;
         }
-
-        .ultra-tips {
-            background: var(--navy);
-            color: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            margin-top: 60px;
-        }
-
-        .ultra-tips h2 {
-            font-family: 'Outfit', sans-serif;
-            color: var(--gold);
-            text-align: center;
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
-
-        .tip-item {
-            margin-bottom: 25px;
-        }
-
-        .tip-item:last-child { margin-bottom: 0; }
-
-        .tip-item strong {
-            color: var(--gold);
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .footer-action {
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .back-link {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .back-link:hover { opacity: 1; }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .phase-title { font-size: 1.3rem; }
+        
+        .task-card.completed .check-circle {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
         }
 
         /* Daily Action List Styles */
@@ -220,22 +258,49 @@
             margin-bottom: 20px;
             display: inline-block;
         }
+        
         .day-item {
             display: flex;
             gap: 15px;
             margin-bottom: 12px;
-            padding-bottom: 12px;
+            padding: 15px;
             border-bottom: 1px dashed #e2e8f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s;
         }
+
+        .day-item:hover {
+            background: #f8fafc;
+        }
+
+        .day-item.completed {
+            background: #f0fdf4;
+            text-decoration: none; /* Removed strikethrough for readability */
+        }
+        
+        .day-item.completed .day-label, 
+        .day-item.completed .day-desc {
+            opacity: 0.6;
+        }
+
+        .day-item.completed .check-circle {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
         .day-label {
             font-family: 'Outfit', sans-serif;
             font-weight: 800;
             color: var(--navy);
-            min-width: 60px;
+            min-width: 70px;
         }
         .day-desc {
             font-size: 0.95rem;
+            flex-grow: 1;
         }
+        
         .daily-routine {
             background: var(--navy);
             color: #fff;
@@ -251,14 +316,67 @@
             align-items: center;
             gap: 8px;
         }
-        .daily-routine ul {
+        .routine-list {
             margin: 0;
-            padding-left: 20px;
-            font-size: 0.9rem;
+            padding: 0;
+            list-style: none;
+        }
+        .routine-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .routine-item:hover { background: rgba(255,255,255,0.1); }
+        .routine-item.completed { opacity: 0.5; text-decoration: line-through; }
+        .routine-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--gold);
+            border-radius: 3px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: transparent;
+        }
+        .routine-item.completed .routine-checkbox {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .footer-action { text-align: center; margin-top: 80px; }
+        .back-link { text-decoration: none; color: var(--text); opacity: 0.7; }
+        .back-link:hover { opacity: 1; }
+        
+        @media (max-width: 600px) {
+            .progress-label { font-size: 0.8rem; }
+            .next-action { display: none; }
+            .progress-bar-bg { width: 100px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Sticky Progress Bar -->
+    <div class="progress-header">
+        <div class="progress-container">
+                <div class="progress-info">
+                <a href="admin.html" style="color:var(--gold); font-size:1.2rem; margin-right:15px; text-decoration:none;" title="司令室へ戻る">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                </a>
+                <span class="progress-label">PROGRESS</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <span class="progress-label" id="progressText">0%</span>
+            </div>
+            <div class="next-action" id="nextActionDisplay">Next: モニター納品...</div>
+        </div>
+    </div>
 
 <div class="container">
     <header>
@@ -278,16 +396,25 @@
             <h2 class="phase-title">実績構築と「武器」の研磨（Day 1-30）</h2>
         </div>
         <div class="card-grid">
-            <div class="task-card">
-                <h3><i class="fa-solid fa-trophy"></i> モニター納品とエビデンス回収</h3>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p1-task1">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-trophy"></i> モニター納品とエビデンス回収</h3>
+                </div>
                 <p>モニター案件を最優先で完遂。PageSpeed 90点以上の数値と「社長の喜びの声」をキャプチャし、実績を「動かぬ証拠」に変える。</p>
             </div>
-            <div class="task-card">
-                <h3><i class="fa-solid fa-magnet"></i> リードマグネットの完成</h3>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p1-task2">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-magnet"></i> リードマグネットの完成</h3>
+                </div>
                 <p>「求人広告を一生0円にする：採用資産化マニュアル」をAIで作成。LINE登録時の強力な動機付け（エサ）を用意する。</p>
             </div>
-            <div class="task-card">
-                <h3><i class="fa-solid fa-location-dot"></i> 地域特化Webライティング</h3>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p1-task3">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-location-dot"></i> 地域特化Webライティング</h3>
+                </div>
                 <p>「三重県 建設 採用」等のキーワードで1位を取るためのブログ10記事をAI Ultraで一気に書き下ろす。</p>
             </div>
         </div>
@@ -299,59 +426,101 @@
             </h3>
 
             <div class="daily-routine">
-                <h4><i class="fa-solid fa-sun"></i> 毎日の「黄金習慣」</h4>
-                <ul>
-                    <li><strong>午前（30分）:</strong> AI Ultraで「採用ブログ」を1記事生成・投稿。</li>
-                    <li><strong>午後（15分）:</strong> SNS用「採用の一言アドバイス」を1枚作り投稿（予約可）。</li>
-                    <li><strong>就寝前（5分）:</strong> 明日の「AIへの指示内容」をメモして寝る。</li>
+                <h4><i class="fa-solid fa-sun"></i> 毎日の「黄金習慣」 (Daily Reset)</h4>
+                <ul class="routine-list">
+                    <li class="routine-item" onclick="window.open('daily_routine_morning.html', '_blank')">
+                        <div style="display:flex; align-items:center; flex-grow:1;">
+                           <i class="fa-solid fa-sun" style="color:#F59E0B; margin-right:10px;"></i>
+                           <span style="border-bottom:1px solid rgba(255,255,255,0.3);">モーニング・ルーティン (ブログ指示書)</span>
+                           <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; margin-left:8px; opacity:0.7;"></i>
+                        </div>
+                    </li>
+                    <li class="routine-item" onclick="window.open('daily_routine_afternoon.html', '_blank')">
+                        <div style="display:flex; align-items:center; flex-grow:1;">
+                            <i class="fa-solid fa-cloud-sun" style="color:#EA580C; margin-right:8px;"></i>
+                            <span style="border-bottom:1px solid rgba(255,255,255,0.3);">アフタヌーン・ルーティン (SNS指示書)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; margin-left:8px; opacity:0.7;"></i>
+                        </div>
+                    </li>
+                    <li class="routine-item" onclick="window.open('daily_routine_night.html', '_blank')">
+                        <div style="display:flex; align-items:center; flex-grow:1;">
+                            <i class="fa-solid fa-moon" style="color:#818cf8; margin-right:11px;"></i>
+                            <span style="border-bottom:1px solid rgba(255,255,255,0.3);">ナイト・ルーティン (翌日準備)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; margin-left:8px; opacity:0.7;"></i>
+                        </div>
+                    </li>
                 </ul>
             </div>
 
             <div class="daily-week">
                 <span class="week-title">WEEK 1: 武器の研磨と堀田建設モデルの完成</span>
-                <div class="day-item">
-                    <div class="day-label">Day 1-3</div>
-                    <div class="day-desc"><strong>「既存資産のハイブリッド・リミックス」。</strong><br>HPの画像・動画・テキストを全て回収。AI Ultraで動画から切り出し、娘さんの声と掛け合わせた「完成間近のドラフト」を爆速で組み上げる。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w1-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 1-3</div>
+                        <div class="day-desc"><strong>「既存資産のハイブリッド・リミックス」。</strong><br>HP素材を全て回収。AIで動画切り出し×音声合成のドラフトを作成。</div>
+                    </div>
                 </div>
-                <div class="day-item">
-                    <div class="day-label">Day 4-7</div>
-                    <div class="day-desc"><strong>部長を唸らせる「動くプレビュー」提示。</strong><br>HP素材を活かしたリッチな演出（背景動画等）を盛り込み、「何もしなくても完成した」と思わせる品質で提示。即決・承認を勝ち取る。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w1-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 4-7</div>
+                        <div class="day-desc"><strong>部長を唸らせる「動くプレビュー」提示。</strong><br>リッチな演出（背景動画等）を盛り込み、完成形を提示して即決を勝ち取る。</div>
+                    </div>
                 </div>
             </div>
 
             <div class="daily-week">
                 <span class="week-title">WEEK 2: コンテンツの種まき（SEO）</span>
-                <div class="day-item">
-                    <div class="day-label">Day 8-10</div>
-                    <div class="day-desc"><strong>地域キーワード検索。</strong><br>周辺地域の建設会社をリストアップし、ターゲット別のブログ記事をAIで10本書き溜める。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w2-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 8-10</div>
+                        <div class="day-desc"><strong>地域キーワード検索。</strong><br>周辺地域の建設会社をリストアップし、ターゲット別のブログ記事をAIで10本書き溜める。</div>
+                    </div>
                 </div>
-                <div class="day-item">
-                    <div class="day-label">Day 11-14</div>
-                    <div class="day-desc"><strong>モニター2社目の「爆速公開」。</strong><br>1社目とは異なる業種（例：造園、土木）で実績のバリエーションを作る。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w2-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 11-14</div>
+                        <div class="day-desc"><strong>モニター2社目の「爆速公開」。</strong><br>1社目とは異なる業種（例：造園、土木）で実績のバリエーションを作る。</div>
+                    </div>
                 </div>
             </div>
 
             <div class="daily-week">
                 <span class="week-title">WEEK 3: リードマグネット（特典）完成</span>
-                <div class="day-item">
-                    <div class="day-label">Day 15-18</div>
-                    <div class="day-desc"><strong>「無料プレゼント」PDF作成。</strong><br>AIに構成案を出させ、Canvaなどのツールと組み合わせてプロ級の資料を完成させる。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w3-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 15-18</div>
+                        <div class="day-desc"><strong>「無料プレゼント」PDF作成。</strong><br>AIに構成案を出させ、Canvaでプロ級の資料を完成させる。</div>
+                    </div>
                 </div>
-                <div class="day-item">
-                    <div class="day-label">Day 19-21</div>
-                    <div class="day-desc"><strong>LINE公式アカウントを「自動営業機」に変える。</strong><br>友達登録時にPDFが届く仕組みをテストする。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w3-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 19-21</div>
+                        <div class="day-desc"><strong>LINE公式アカウントを「自動営業機」に変える。</strong><br>友達登録時にPDFが届く仕組みをテストする。</div>
+                    </div>
                 </div>
             </div>
 
             <div class="daily-week">
                 <span class="week-title">WEEK 4: 紹介依頼と総まとめ</span>
-                <div class="day-item">
-                    <div class="day-label">Day 22-26</div>
-                    <div class="day-desc"><strong>モニター3社目の完遂。</strong><br>3つの異なる成功事例が揃い、実績ページに圧倒的な説得力が生まれる。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w4-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 22-26</div>
+                        <div class="day-desc"><strong>モニター3社目の完遂。</strong><br>3つの異なる成功事例が揃い、実績ページに圧倒的な説得力が生まれる。</div>
+                    </div>
                 </div>
-                <div class="day-item">
-                    <div class="day-label">Day 27-30</div>
-                    <div class="day-desc"><strong>全実績の「キャプチャ」をLPへ。</strong><br>「PageSpeed 99点」などの証拠をトップページにデカデカと掲載。Phase 2への準備完了。</div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w4-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 27-30</div>
+                        <div class="day-desc"><strong>全実績の「キャプチャ」をLPへ。</strong><br>「PageSpeed 99点」などの証拠をトップページにデカデカと掲載。Phase 2への準備完了。</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -364,28 +533,33 @@
             <h2 class="phase-title">攻撃的な集客と「認知」の拡大（Day 31-60）</h2>
         </div>
         <div class="card-grid">
-            <div class="task-card">
-                <h3><i class="fa-solid fa-share-nodes"></i> SNS運用の戦略的選定</h3>
-                <p>
-                    <strong>Instagram:</strong> 「かっこよさ」を動画（リール）で見せ、30-40代の若手社長の感性を刺激。<br>
-                    <strong>Facebook:</strong> 経営者層の本音に刺さる長文投稿で信頼を構築。地域の紹介ループを作る。<br>
-                    <strong>非公開MEO:</strong> 自宅住所は伏せつつ、特定地域のターゲットに絞ったデジタル広告と連携。
-                </p>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p2-task1">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-share-nodes"></i> SNS運用の戦略的選定</h3>
+                </div>
+                <p>Instagram（動画・感性）、Facebook（信頼・長文）、非公開MEO（地域広告）のベストミックス運用。</p>
             </div>
-            <div class="task-card">
-                <h3><i class="fa-solid fa-comment-dots"></i> LINE問い合わせ自動対応</h3>
-                <p>初期のやり取りを自動化し、えりさんは「契約直前の面談」にのみ全力を注げる体制を構築する。</p>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p2-task2">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-comment-dots"></i> LINE問い合わせ自動対応</h3>
+                </div>
+                <p>初期対応を自動化し、えりさんは「契約直前の面談」にのみ全力を注げる体制を構築する。</p>
             </div>
-            <div class="task-card">
-                <h3><i class="fa-solid fa-people-arrows"></i> オフライン・ハイブリッド営業</h3>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p2-task3">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-people-arrows"></i> オフライン・ハイブリッド営業</h3>
+                </div>
                 <p>実績チラシを持ち、地域の建材屋や協力会社へ。モニター実績を見せ、「紹介したくなる仕組み」を提示する。</p>
             </div>
-            <div class="task-card">
-                <h3><i class="fa-solid fa-building-shield"></i> 事業インフラの信頼性強化</h3>
-                <p>
-                    <strong>バーチャルオフィス契約:</strong> 自宅住所を隠しつつMEO（マップ検索）対策を実施。信頼の拠点を確保。<br>
-                    <strong>ビジネス用番号取得:</strong> 050アプリ等で仕事用番号を切り分け、プライベートを保護しつつプロの応対。
-                </p>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p2-task4">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-building-shield"></i> 事業インフラの信頼性強化</h3>
+                </div>
+                <p>バーチャルオフィス契約とビジネス用番号取得で、プライバシーを守りつつ法人格の信頼を確保。</p>
             </div>
         </div>
     </section>
@@ -397,62 +571,135 @@
             <h2 class="phase-title">収益最大化と「紹介」のループ（Day 61-90）</h2>
         </div>
         <div class="card-grid">
-            <div class="task-card">
-                <h3><i class="fa-solid fa-yen-sign"></i> 有料モデル（平均9.8万〜）へ移行</h3>
-                <p>モニター枠を終了。圧倒的な実績（証拠）をもとに正規価格での成約を勝ち取る。維持費0円の強みがあれば、この価格でも無双できる。</p>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p3-task1">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-yen-sign"></i> 有料モデル（平均9.8万〜）へ移行</h3>
+                </div>
+                <p>モニター枠を終了。圧倒的な実績（証拠）をもとに正規価格での成約を勝ち取る。</p>
             </div>
-            <div class="task-card">
-                <h3><i class="fa-solid fa-arrows-spin"></i> 紹介エンジンの駆動</h3>
-                <p>既存顧客に対し、紹介バック（月額サポート無料化など）を提案。広告費をかけずに案件が舞い込む「紹介の和」を作る。</p>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p3-task2">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-arrows-spin"></i> 紹介エンジンの駆動</h3>
+                </div>
+                <p>既存顧客に対し、紹介バック（月額サポート無料化など）を提案し、広告費ゼロで案件が舞い込む仕組みを作る。</p>
             </div>
-            <div class="task-card">
-                <h3><i class="fa-solid fa-bolt-lightning"></i> AI並列製作システム</h3>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p3-task3">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-bolt-lightning"></i> AI並列製作システム</h3>
+                </div>
                 <p>1人で月10件以上のサイトを作れるよう、AIを活用した製作工程の完全テンプレート化を完了させる。</p>
             </div>
         </div>
     </section>
 
-    <!-- Phase 4 (New Vision) -->
+    <!-- Phase 4 (Next Stage) -->
     <section class="phase" style="border-top: 3px dashed var(--gold); padding-top: 50px;">
         <div class="phase-header">
             <div class="phase-num" style="background: var(--navy);">04</div>
             <h2 class="phase-title">【Next Stage】AI Web アーキテクトへの進化（Day 91〜）</h2>
         </div>
         <div class="card-grid">
-            <div class="task-card" style="background: #f0f9ff; border: 2px solid var(--navy);">
-                <h3><i class="fa-solid fa-brain"></i> 「構築エンジン」自体の販売</h3>
-                <p>LP制作代行を超え、「Antigravityを使って超高速で資産型Webを作るノウハウ」自体を商品化する。競合他社やフリーランス向けのコンサルティング事業へ。</p>
-            </div>
-            <div class="task-card" style="background: #f0f9ff; border: 2px solid var(--navy);">
-                <h3><i class="fa-solid fa-layer-group"></i> サービスのFC（フランチャイズ）化</h3>
-                <p>「web-tsukuru」の制作フローをパッケージ化し、のれん分けする。自分は手を動かさず、監修と技術提供で収益を得るモデルへの転換。</p>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p4-task1">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-brain"></i> 「構築エンジン」自体の販売</h3>
+                </div>
+                <p>Antigravityのノウハウ自体を商品化。競合他社やフリーランス向けのコンサルティング事業へ。</p>
             </div>
         </div>
-        <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">
-            <strong>※重要なポイント：</strong> このステージに行くためには、Phase 1〜3で「圧倒的な実績（ありえない速度と品質）」を証明していることが絶対条件となる。だからこそ、今の「泥臭い実績作り」が最大の投資になる。
-        </p>
     </section>
 
-    <div class="ultra-tips">
-        <h2><i class="fa-solid fa-rocket"></i> AI Ultra 活用術</h2>
-        <div class="tip-item">
-            <strong>1. コンテンツの量産（グループ1解放）</strong>
-            業種別・地域別の採用ブログを100本単位で作成。Google検索で見えない網を張る。
-        </div>
-        <div class="tip-item">
-            <strong>2. 最新動静の分析（Deep Think）</strong>
-            競合サイトを私に分析させ、あつみさんのサービスが「どこで勝てるか」の必勝トークを磨く。
-        </div>
-        <div class="tip-item">
-            <strong>3. クオリティの極限化</strong>
-            スマホ写真をAIで最高級のプロ素材に補正。「あつみさんのセンスは凄い」と思わせる視覚的説得力を維持する。
-        </div>
-    </div>
-
     <div class="footer-action">
-        <a href="Private_index.html" class="back-link">← 運用司令室へ戻る</a>
+        <a href="admin.html" class="back-link">← 運用司令室へ戻る</a>
     </div>
 </div>
 
+<script>
+    // Configuration
+    const STORAGE_KEY = 'web_tsukuru_roadmap_progress';
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        loadProgress();
+        updateProgressBar();
+    });
+
+    function toggleTask(element) {
+        element.classList.toggle('completed');
+        saveProgress();
+        updateProgressBar();
+    }
+
+    function toggleRoutine(element) {
+        element.classList.toggle('completed');
+        // Routine items don't strictly count towards "Project Progress" in this version,
+        // but acts as a daily checklist reset. (Optional: Reset logic)
+    }
+
+    function saveProgress() {
+        const completedIds = [];
+        document.querySelectorAll('.task-card.completed, .day-item.completed').forEach(el => {
+            if(el.dataset.id) completedIds.push(el.dataset.id);
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(completedIds));
+    }
+
+    function loadProgress() {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        saved.forEach(id => {
+            const el = document.querySelector(`[data-id="${id}"]`);
+            if (el) el.classList.add('completed');
+        });
+    }
+
+    function updateProgressBar() {
+        const totalTasks = document.querySelectorAll('.task-card[data-id], .day-item[data-id]').length;
+        const completedTasks = document.querySelectorAll('.task-card.completed[data-id], .day-item.completed[data-id]').length;
+        
+        const percentage = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+        
+        document.getElementById('progressBar').style.width = percentage + '%';
+        document.getElementById('progressText').textContent = percentage + '%';
+
+        // Update Next Action
+        const nextTask = document.querySelector('.task-card:not(.completed)[data-id], .day-item:not(.completed)[data-id]');
+        const nextActionDisplay = document.getElementById('nextActionDisplay');
+        
+        if (nextTask) {
+            // Try to find a title
+            let title = nextTask.querySelector('h3') ? nextTask.querySelector('h3').innerText : 
+                        nextTask.querySelector('.day-desc strong') ? nextTask.querySelector('.day-desc strong').innerText :
+                        "次のタスク";
+            nextActionDisplay.textContent = "Next: " + title;
+            nextActionDisplay.style.color = "#cbd5e1";
+        } else {
+            nextActionDisplay.textContent = "All Tasks Completed! 🎉";
+            nextActionDisplay.style.color = "#10B981";
+        }
+    }
+</script>
+
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
 </body>
 </html>

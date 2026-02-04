@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afternoon Routine | 90-Day Roadmap</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --navy: #0F172A; --gold: #C5A059; --bg: #FFF7ED; --white: #ffffff; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--navy); margin: 0; padding: 40px 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #fed7aa; padding-bottom: 20px; }
+        .routine-icon { font-size: 3rem; color: #EA580C; margin-bottom: 10px; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: 2rem; margin: 0; }
+        h2 { border-left: 5px solid var(--gold); padding-left: 15px; margin-top: 40px; color: var(--navy); }
+        .step { background: #fff7ed; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .step-title { font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .step-num { background: #EA580C; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+        
+        .prompt-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            position: relative;
+            margin-top: 10px;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .copy-btn:active { transform: scale(0.95); }
+        .tool-link {
+            display: inline-block;
+            background: #EA580C;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .tool-link:hover { background: #c2410c; }
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #64748b; text-decoration: none; }
+        .back-link:hover { color: var(--navy); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="routine-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+            <h1>AFTERNOON ROUTINE</h1>
+            <p>SNS一言投稿（所要時間：15分）</p>
+        </div>
+
+        <div class="intro">
+            <p><strong>目標:</strong> 30〜40代の若手建設社長や、独立志向の職人の「感情」を動かすこと。有益な情報よりも「共感」や「ハッとする一言」が重要です。</p>
+        </div>
+
+        <h2>Step 1: テーマを決める</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">1</span> 今日の「一言」の方向性を決める</div>
+            <p>どれか1つを選んでください。</p>
+            <ul>
+                <li><strong style="color:#d97706;">GIVE:</strong> 元請けとの交渉術、単価アップのコツ、若手の育て方。</li>
+                <li><strong style="color:#ef4444;">PAIN:</strong> 雨の日の憂鬱、腰痛、現場の理不尽、ドタキャン。</li>
+                <li><strong style="color:#10b981;">VISION:</strong> 建設業の未来、DX、カッコいい親方像。</li>
+            </ul>
+        </div>
+
+        <h2>Step 2: AIプロンプト実行</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">2</span> インスタ文章を一撃作成</div>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+建設業界の若手社長（30-40代、独立して数年）に向けた、Instagramのフィード投稿用の文章を作成してください。
+
+# 今日のテーマ
+[ここに選んだテーマを入れる 例：若手がすぐに辞めてしまう悩み]
+
+# 構成
+1. 画像内の文字（キャッチコピー）：15文字以内。インパクト重視。（例：「まだ求人で消耗してるの？」）
+2. キャプション（本文）：
+   - 読者が「それ！」と共感する書き出し。
+   - プロとしての短いアドバイス。
+   - 偉そうにせず、建設業界の仲間として語る口調。
+3. ハッシュタグ：建設業に関連する人気タグを10個。
+
+# トーン＆マナー
+- 男気があるが、知性を感じる。
+- 短く、改行を多用して読みやすく。
+            </div>
+        </div>
+
+        <h2>Step 3: 画像作成 & 投稿</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">3</span> ツールを使ってサクッと作成</div>
+            <p>AIが出した「画像内の文字」をCanva等の画像に乗せるだけ。</p>
+            <div>
+                <a href="https://www.canva.com/" target="_blank" class="tool-link"><i class="fa-solid fa-paintbrush"></i> Canvaを開く</a>
+                <a href="https://labs.google/fx/ja/tools/image-fx" target="_blank" class="tool-link" style="background:#EA4335;"><i class="fa-solid fa-wand-magic-sparkles"></i> ImageFX (素材作成)</a>
+            </div>
+            <p style="margin-top:15px;">完成したらシェア！</p>
+            <div>
+                 <a href="https://business.facebook.com/latest/home" target="_blank" class="tool-link" style="background:#1877F2;"><i class="fa-brands fa-meta"></i> Meta Business Suite</a>
+            </div>
+        </div>
+
+        <a href="monetization_bible_90days.html" class="back-link">← ロードマップに戻る</a>
+    </div>
+
+    <script>
+        function copyPrompt(btn) {
+            const promptText = btn.parentElement.innerText.replace('COPY', '').trim();
+            navigator.clipboard.writeText(promptText).then(() => {
+                btn.textContent = 'COPIED!';
+                setTimeout(() => btn.textContent = 'COPY', 2000);
+            });
+        }
+    </script>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

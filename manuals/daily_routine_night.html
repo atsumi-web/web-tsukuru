@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Routine | 90-Day Roadmap</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --navy: #0F172A; --gold: #C5A059; --bg: #1e293b; --white: #ffffff; --text-light: #cbd5e1; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text-light); margin: 0; padding: 40px 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; background: var(--navy); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid #334155; }
+        .header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #334155; padding-bottom: 20px; }
+        .routine-icon { font-size: 3rem; color: #818cf8; margin-bottom: 10px; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: 2rem; margin: 0; color: white; }
+        h2 { border-left: 5px solid var(--gold); padding-left: 15px; margin-top: 40px; color: white; }
+        .step { background: #334155; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .step-title { font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: white; }
+        .step-num { background: #818cf8; color: var(--navy); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; }
+        
+        .prompt-box {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            position: relative;
+            margin-top: 10px;
+            border: 1px solid #475569;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .copy-btn:active { transform: scale(0.95); }
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #94a3b8; text-decoration: none; }
+        .back-link:hover { color: white; }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #64748b;
+            background: #1e293b;
+            color: white;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="routine-icon"><i class="fa-solid fa-moon"></i></div>
+            <h1>NIGHT ROUTINE</h1>
+            <p>翌日準備・脳のキャッシュクリア（所要時間：5分）</p>
+        </div>
+
+        <div class="intro">
+            <p><strong>目標:</strong> 一日をリセットし、明日の朝起きた瞬間に「何をするか迷わない」状態を作ってから寝ること。これが継続の鍵です。</p>
+        </div>
+
+        <h2>Step 1: 明日の「AIへの指示」をメモする</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">1</span> 起きたらAIに投げる内容を決めておく</div>
+            <p>明日、ブログにするキーワードや、LPで修正したい箇所をメモしてください。朝の脳力は決断ではなく「実行」に使います。</p>
+            <textarea rows="3" placeholder="例：明日は「亀山市　土木　未経験」でブログを書く。ImageFXでショベルカーの画像を作らせる。"></textarea>
+        </div>
+
+        <h2>Step 2: 今日の振り返り（任意）</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">2</span> 詰まっていることをAIに相談（Deep Think）</div>
+            <p>もし悩みがあれば、寝ている間にAIに考えさせておきましょう。</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+今日、こんなことがありました、またはこんな悩みがあります。
+[ここに悩みを書く 例：ブログのアクセスが増えない / LPのここが気に入らない]
+
+あなたはWebマーケティングと事業構築のプロです。
+明日、私がとるべき「一番効果的なアクション」を1つだけ提案してください。
+            </div>
+        </div>
+
+        <h2 style="text-align: center; border: none; margin-top: 50px; font-family: 'Shippori Mincho', serif;">
+            明日も、良い一日を。
+        </h2>
+
+        <a href="monetization_bible_90days.html" class="back-link">← ロードマップに戻る</a>
+    </div>
+
+    <script>
+        function copyPrompt(btn) {
+            const promptText = btn.parentElement.innerText.replace('COPY', '').trim();
+            navigator.clipboard.writeText(promptText).then(() => {
+                btn.textContent = 'COPIED!';
+                setTimeout(() => btn.textContent = 'COPY', 2000);
+            });
+        }
+    </script>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

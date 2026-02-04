@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析＆計測設定ガイド | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 20px;
+        }
+        h1 { margin: 0; color: #0f172a; }
+        h2 { margin-top: 40px; border-left: 5px solid #3b82f6; padding-left: 15px; color: #1e293b; }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .step { margin-bottom: 30px; }
+        .step-title { font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .badge { background: #3b82f6; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="admin.html" style="text-decoration:none; color:#64748b;">← 司令室に戻る</a>
+    <header>
+        <h1><i class="fa-solid fa-chart-line"></i> アクセス解析・効果測定の導入</h1>
+    </header>
+
+    <div class="info-box">
+        <strong>💡 なぜこれが必要か？</strong><br>
+        「作ったサイトがどれくらい見られているか？」<br>
+        「どこから（ブログ？LINE？チラシ？）人が来ているか？」<br>
+        これを知ることで、次の打ち手（改善策）が見えてくるからです。
+    </div>
+
+    <h2>1. Google Analytics (GA4) の導入</h2>
+    <div class="step">
+        <div class="step-title"><span class="badge">STEP 1</span> 測定IDの取得</div>
+        <p>Google Analyticsの管理画面で、新しいプロパティを作成し、「測定ID（G-から始まる文字列）」を取得してください。</p>
+    </div>
+    
+    <div class="step">
+        <div class="step-title"><span class="badge">STEP 2</span> コードの埋め込み</div>
+        <p>以下のコードの <code>G-XXXXXXXXXX</code> の部分を、あなたの測定IDに書き換えてください。<br>
+        そして、<strong>すべてのHTMLファイルの <code>&lt;head&gt;</code> タグ内（一番上推奨）</strong> に貼り付けます。</p>
+        
+        <div class="code-block">
+&lt;!-- Google tag (gtag.js) --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXXXXXXXXX');
+&lt;/script&gt;
+        </div>
+    </div>
+
+    <h2>2. 流入経路の追跡 (UTMパラメータ)</h2>
+    <p>「自社のブログから来た人」や「LINEから来た人」を区別するために、リンクに「印（パラメータ）」を付けます。</p>
+
+    <div class="step">
+        <div class="step-title">リンクの作り方</div>
+        <p>普通のURLの後ろに、以下のような文字列を追加します。</p>
+        
+        <table style="width:100%; border-collapse:collapse; margin-top:10px; background:#fff;">
+            <tr>
+                <th style="border:1px solid #ddd; padding:10px; background:#f1f5f9; text-align:left;">流入元</th>
+                <th style="border:1px solid #ddd; padding:10px; background:#f1f5f9; text-align:left;">リンクURLの例</th>
+            </tr>
+            <tr>
+                <td style="border:1px solid #ddd; padding:10px;">自社ブログから</td>
+                <td style="border:1px solid #ddd; padding:10px; font-family:monospace;">index.html?utm_source=blog&utm_medium=referral</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #ddd; padding:10px;">自社サイトから</td>
+                <td style="border:1px solid #ddd; padding:10px; font-family:monospace;">index.html?utm_source=mysite&utm_medium=referral</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #ddd; padding:10px;">LINE配信から</td>
+                <td style="border:1px solid #ddd; padding:10px; font-family:monospace;">index.html?utm_source=line&utm_medium=social</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #ddd; padding:10px;">QRコード（名刺）</td>
+                <td style="border:1px solid #ddd; padding:10px; font-family:monospace;">index.html?utm_source=card&utm_medium=qr</td>
+            </tr>
+        </table>
+        
+        <p style="margin-top:15px; font-size:0.9rem; color:#64748b;">
+            ※ これを使ってリンクを貼ると、Google Analytics上で「どこから来たか」が自動的に集計されます。<br>
+            「Campaign URL Builder」などのツールを使うと簡単に作れます。
+        </p>
+    </div>
+</div>
+
+<!-- INJECT NAV -->
+<script src="../js/inject_nav.js"></script>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

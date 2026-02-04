@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobile_optimization_guide | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: #334155; margin: 0; background-color: #f1f5f9; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .content { background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { font-size: 2rem; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 40px; }
+        h2 { font-size: 1.5rem; color: #0f172a; margin-top: 50px; border-left: 5px solid #3b82f6; padding-left: 15px; }
+        h3 { font-size: 1.2rem; color: #334155; margin-top: 30px; font-weight: bold; }
+        p, li { font-size: 1rem; margin-bottom: 1rem; }
+        ul { padding-left: 20px; }
+        code { background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; font-family: monospace; color: #ea580c; }
+        blockquote { background: #eff6ff; border-left: 5px solid #3b82f6; margin: 20px 0; padding: 15px 20px; color: #1e40af; }
+        .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
+        .breadcrumb a { color: #64748b; text-decoration: none; }
+        .breadcrumb a:hover { color: #3b82f6; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #cbd5e1; padding: 12px; text-align: left; }
+        th { background: #f8fafc; color: #334155; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="Private_index.html">← 制作コックピットに戻る</a></div>
+        <main class="content">
+            <h1>Mobile & Multi-Device Optimization Guidelines</h1>
+            <p>Created: 2026-02-04</p>
+            <p>建設業LPテンプレート（Type-Trust）におけるモバイル最適化の鉄則まとめ。「見やすさ」「崩れにくさ」「使いやすさ」の3点を担保するための技術基準です。</p>
+
+            <h2>1. コンテンツ幅の確保（攻め vs 守り）</h2>
+            <p>スマホ画面では「余白」よりも「文字の可読領域」を優先します。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>モバイル (Mobile)</th>
+                        <th>デスクトップ (Desktop)</th>
+                        <th>意図</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>画面端の余白</strong></td>
+                        <td><strong><code>px-6</code></strong> (24px) or <code>px-4</code></td>
+                        <td><code>px-12</code> (48px)</td>
+                        <td>スマホは物理幅確保を最優先。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>装飾線の余白</strong></td>
+                        <td><strong><code>pl-4</code></strong> (16px)</td>
+                        <td><code>pl-8</code> (32px)</td>
+                        <td>左線があっても文字を圧迫しない。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>カード内余白</strong></td>
+                        <td><strong><code>p-4</code></strong> (16px)</td>
+                        <td><code>p-16</code> ~ <code>p-24</code></td>
+                        <td>枠内でも文字を大きく見せる。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>2. タイポグラフィ（見出しと改行）</h2>
+            <p>「巨大すぎて改行崩れ」を防ぎ、かつ「泣き別れ」を回避します。</p>
+            
+            <h3>見出しサイズ</h3>
+            <ul>
+                <li><strong>モバイル</strong>: <strong><code>text-3xl</code></strong> (約30px)</li>
+                <li><strong>デスクトップ</strong>: <code>text-5xl</code> ~ <code>text-7xl</code> (意図した迫力を維持)</li>
+            </ul>
+
+            <h3>改行・禁則処理</h3>
+            <ul>
+                <li><strong>NG</strong>: <code>keep-all</code> / <code>whitespace-nowrap</code> （本文・引用文）
+                    <ul><li>スマホ幅で「と」「が」などが1文字だけ改行されて浮く原因になるため<strong>使用厳禁</strong>。</li></ul>
+                </li>
+                <li><strong>OK</strong>: <code>br.md:hidden</code> （見出し）
+                    <ul><li>見出しなど、意図した位置で切りたい場合のみ使用。</li></ul>
+                </li>
+            </ul>
+
+            <h2>3. レイアウト順序（Voiceセクション等）</h2>
+            <p>「誰が発言しているか」を直感的に伝える順序。</p>
+            <ul>
+                <li><strong>順序</strong>: <strong>Image</strong> (顔) → <strong>Profile</strong> (誰) → <strong>Quote</strong> (内容)</li>
+                <li>PCは左右レイアウト可だが、モバイルは上記順序の縦積み（flex-col 等）を厳守。</li>
+            </ul>
+
+            <h2>4. フォントの使い分け（機能 vs 情緒）</h2>
+            <ul>
+                <li><strong>Noto Sans JP (ゴシック)</strong>: 情報伝達（理念、仕事内容、データ、FAQ）</li>
+                <li><strong>Zen Old Mincho (明朝)</strong>: 情緒・メッセージ（Voice引用、Contact、Culture、見出し）
+                    <ul><li>※ Worksセクション見出しも「作品」として扱うため明朝体を推奨。</li></ul>
+                </li>
+            </ul>
+
+            <h2>5. 画像表示の安定化 (Padding Hack)</h2>
+            <p><code>position: absolute</code> を使うスライダー等で、タブレット幅で高さが0になり画像が消える現象を防ぐ。最新の <code>aspect-ratio</code> プロパティだけでなく、物理的なpaddingで高さを確保する手法を併用する。</p>
+
+            <h2>6. 操作性の確保 (UI/UX)</h2>
+            <ul>
+                <li><strong>タップ領域</strong>: ハンバーガーメニューや閉じるボタンは、見た目以上に判定を大きくする（<code>p-2</code>以上）。</li>
+                <li><strong>視認性</strong>: <code>backdrop-blur</code> (すりガラス) や <code>bg-white/90</code> を活用し、背景とのコントラストを確保する。</li>
+            </ul>
+
+            <h2>7. ブレークポイント戦略 (1024pxの壁)</h2>
+            <p>「PCかタブレットか」の境界線は原則 <strong><code>lg</code> (1024px)</strong> とし、それ未満はすべてモバイル（縦積み・ハンバーガー）として扱う「広めの安全マージン」を取る。</p>
+            
+            <h3>境界ルール</h3>
+            <ul>
+                <li><strong>&lt; 1024px</strong>: <strong>モバイル扱い</strong>
+                    <ul>
+                        <li>ヘッダー：ハンバーガーメニュー</li>
+                        <li>レイアウト：<code>flex-col</code>で縦積み</li>
+                        <li>余白：<code>px-6</code></li>
+                    </ul>
+                </li>
+                <li><strong>≧ 1024px</strong>: <strong>PC扱い</strong>
+                    <ul>
+                        <li>ヘッダー：フルメニュー（横並び）</li>
+                        <li>レイアウト：<code>flex-row</code>で横並び</li>
+                        <li>余白：<code>px-12</code></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>ヘッダーメニュー崩れへの鉄則</h3>
+            <ul>
+                <li>タブレット幅（768px～1023px）で無理にヘッダーメニューを横並びにすると、<strong>「ロゴと重なる」「リンク文字が改行してレイアウト崩壊」</strong>などの事故が多発する。</li>
+                <li><strong>対策</strong>: ヘッダーナビゲーションは <strong><code>hidden lg:flex</code></strong> を徹底し、タブレット幅では潔くハンバーガーメニューを表示する。無理な「タブレット対応」はしない。</li>
+            </ul>
+
+            <h2>8. 鉄板フォント選定 (迷ったらこれ)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>カテゴリ</th>
+                        <th>推奨フォント</th>
+                        <th>特徴・用途</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>本文</strong></td>
+                        <td><strong>Noto Sans JP</strong></td>
+                        <td>視認性・汎用性最強。迷わずこれ一択。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>見出し(Jp)</strong></td>
+                        <td><strong>Zen Old Mincho</strong></td>
+                        <td><strong>信頼・伝統・高級</strong>。老舗や地域密着型に最適 (Type-Trust採用)。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>英字(En)</strong></td>
+                        <td><strong>Oswald</strong></td>
+                        <td><strong>剛健・インパクト</strong>。建設業と相性抜群の縦長ゴシック。</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><strong>Jost / Outfit</strong></td>
+                        <td><strong>知的・モダン</strong>。幾何学的ですっきりした印象 (DX・テック系)。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

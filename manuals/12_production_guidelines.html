@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_production_guidelines | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: #334155; margin: 0; background-color: #f1f5f9; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .content { background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { font-size: 2rem; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 40px; }
+        h2 { font-size: 1.5rem; color: #0f172a; margin-top: 50px; border-left: 5px solid #3b82f6; padding-left: 15px; }
+        h3 { font-size: 1.2rem; color: #334155; margin-top: 30px; font-weight: bold; }
+        p, li { font-size: 1rem; margin-bottom: 1rem; }
+        ul { padding-left: 20px; }
+        code { background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; font-family: monospace; color: #ea580c; }
+        blockquote { background: #eff6ff; border-left: 5px solid #3b82f6; margin: 20px 0; padding: 15px 20px; color: #1e40af; }
+        .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
+        .breadcrumb a { color: #64748b; text-decoration: none; }
+        .breadcrumb a:hover { color: #3b82f6; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #cbd5e1; padding: 12px; text-align: left; }
+        th { background: #f8fafc; color: #334155; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="Private_index.html">← 制作コックピットに戻る</a></div>
+        <main class="content">
+            <h1>LP Production & Asset Management Guidelines</h1>
+            <p>Created: 2026-02-05</p>
+            <p>LP制作における「画像」「ファイル管理」「作業フロー」のルール定義。<code>09_coding_rules</code> (コード) と <code>11_recruit_content_guide</code> (コンテンツ) の間を埋める、実務的な制作進行ガイドです。</p>
+
+            <h2>1. 画像・アセット管理 (Asset Management)</h2>
+
+            <h3>ファイル形式 (Formats)</h3>
+            <ul>
+                <li><strong>写真 (Photos)</strong>: 原則 <strong>WebP</strong> (.webp) を使用。
+                    <ul>
+                        <li>品質設定: 80% (劣化が目立たない範囲で軽量化)</li>
+                        <li>フォールバック: 基本不要（現代ブラウザはほぼ対応）。必要な場合のみJPEG。</li>
+                    </ul>
+                </li>
+                <li><strong>ロゴ・アイコン (Logos/Icons)</strong>: <strong>SVG</strong> または <strong>WebP</strong> (透過)。</li>
+                <li><strong>動画 (Videos)</strong>: MP4 (H.264), muted, playsinline, autoplay, loop。
+                    <ul><li>1ファイル 3MB〜5MB 以内に抑えること。</li></ul>
+                </li>
+            </ul>
+
+            <h3>命名規則 (Naming Convention)</h3>
+            <p><code>[category]_[detail]_[suffix].webp</code> の形式で統一。</p>
+            <ul>
+                <li><code>hero_main.webp</code> (ヒーローイメージ)</li>
+                <li><code>work_office_01.webp</code> (実績: オフィス1)</li>
+                <li><code>member_tanaka.webp</code> (社員紹介: 田中)</li>
+                <li><code>bg_texture_paper.webp</code> (背景素材)</li>
+            </ul>
+            <p><strong>NG例</strong>:</p>
+            <ul>
+                <li><code>DSC00123.jpg</code> (意味不明)</li>
+                <li><code>saisyuu_fix_v2.png</code> (バージョン名入り)</li>
+                <li><code>image1.webp</code> (具体的でない)</li>
+            </ul>
+
+            <h3>画像配置ディレクトリ</h3>
+            <ul>
+                <li><strong>テンプレートルート直下には置かない</strong>。</li>
+                <li>必ず <code>images/</code> フォルダを作成し、その中に格納する。
+                    <ul>
+                        <li><code>images/hero/</code></li>
+                        <li><code>images/works/</code></li>
+                        <li><code>images/members/</code></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2>2. 制作・実装フロー (Production Workflow)</h2>
+
+            <h3>Step 1: ベース構築 (Setup)</h3>
+            <ol>
+                <li><strong>テンプレート選定</strong>: Type-A/B/C から最適なものをコピー。</li>
+                <li><strong>不要ファイル削除</strong>: <code>v2</code>, <code>backup</code>, <code>unused</code> などのゴミファイルを即座に削除。</li>
+                <li><strong>画像フォルダ整理</strong>: <code>images/</code> ディレクトリを作成。</li>
+            </ol>
+
+            <h3>Step 2: コンテンツ流し込み (Content)</h3>
+            <ol>
+                <li><strong>テキスト置換</strong>: <code>11_recruit_content_guide</code> に基づき原稿を作成・反映。</li>
+                <li><strong>画像差し替え</strong>: クライアント支給画像を WebP 変換して配置。
+                    <ul><li>※ 画像がない場合は、一時的にダミー（Generative AI）を使用するが、ファイル名に <code>_dummy</code> を付与する。</li></ul>
+                </li>
+            </ol>
+
+            <h3>Step 3: モバイル最適化 (Mobile First)</h3>
+            <ol>
+                <li><strong>1024pxの壁</strong>: <code>mobile_optimization_guide</code> を適用。</li>
+                <li><strong>実機確認</strong>: Chrome DevTools で <code>iPhone SE</code>, <code>iPhone 12/13</code>, <code>iPad Air</code> の3サイズを確認。</li>
+            </ol>
+
+            <h3>Step 4: クリーンアップ (Cleanup)</h3>
+            <ol>
+                <li><strong>未使用CSS/JS削除</strong>: 使っていないクラス定義やスクリプトを削除。</li>
+                <li><strong>コンソールエラー確認</strong>: F12 で赤文字のエラーが出ていないか確認。</li>
+                <li><strong>最終ファイル整理</strong>: 納品用フォルダ（dist）を作成し、必要なファイルのみをコピー。</li>
+            </ol>
+
+            <h2>3. ガイドライン体系図</h2>
+            <p>このプロジェクトのルールは以下の4本柱で構成されます。</p>
+            <ol>
+                <li><strong>コード (Code)</strong>: <code>09_coding_rules</code> (CSS設計、クラス命名、HTML構造)</li>
+                <li><strong>モバイル (Mobile)</strong>: <code>mobile_optimization_guide</code> (レスポンシブ、タイポグラフィ、余白)</li>
+                <li><strong>コンテンツ (Content)</strong>: <code>11_recruit_content_guide</code> (構成、ライティング、トンマナ)</li>
+                <li><strong>制作進行 (Production)</strong>: <code>12_production_guidelines</code> (本ガイド: 画像管理、ディレクトリ構造)</li>
+            </ol>
+        </main>
+    </div>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

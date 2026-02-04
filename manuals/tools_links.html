@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cockpit & Tools | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F1F5F9;
+            --surface: #FFFFFF;
+            --text-main: #1E293B;
+            --text-sub: #64748B;
+            --primary: #0F172A;
+            --border: #E2E8F0;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 { 
+            font-size: 1.8rem; 
+            margin: 0; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            color: var(--primary);
+        }
+        .btn-back {
+            text-decoration: none;
+            color: var(--text-sub);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: #fff;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .btn-back:hover { 
+            background: var(--primary); 
+            color: #fff; 
+            border-color: var(--primary);
+        }
+
+        /* Section */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 10px;
+        }
+
+        /* Launcher Grid */
+        .launcher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        /* Launcher Button */
+        .launch-btn {
+            background-color: var(--surface);
+            border: 2px solid transparent; /* default transparent border */
+            border-radius: 20px;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 140px; /* Fixed height for uniformity */
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .launch-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-color: var(--hover-color, #CBD5E1);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        .launch-btn:hover .tool-icon {
+            transform: scale(1.1);
+        }
+
+        .tool-name {
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        /* Specific Brand Colors */
+        .brand-chatgpt { --hover-color: #10A37F; color: #10A37F; }
+        .brand-claude { --hover-color: #D97757; color: #D97757; }
+        .brand-gemini { --hover-color: #1A73E8; color: #1A73E8; }
+        .brand-deepseek { --hover-color: #4D6BFE; color: #4D6BFE; }
+        .brand-manus { --hover-color: #333333; color: #333333; }
+        
+        .brand-cf { --hover-color: #F38020; color: #F38020; }
+        .brand-squoosh { --hover-color: #FF3366; color: #FF3366; }
+        .brand-psi { --hover-color: #4285F4; color: #4285F4; }
+        .brand-googlefx { --hover-color: #EA4335; color: #EA4335; }
+
+        .brand-line { --hover-color: #06C755; color: #06C755; }
+        .brand-meta { --hover-color: #1877F2; color: #1877F2; }
+        .brand-insta { --hover-color: #E4405F; color: #E4405F; }
+
+        /* Compact Mode for Utilities */
+        .launcher-grid.compact {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        .launcher-grid.compact .launch-btn {
+            height: 110px;
+            padding: 15px;
+        }
+        .launcher-grid.compact .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .launcher-grid.compact .tool-name {
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+        /* Badge Style */
+        .tool-badge {
+            display: inline-block;
+            background: rgba(0,0,0,0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: var(--text-sub);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        .launch-btn:hover .tool-badge {
+            background: rgba(0,0,0,0.1);
+            color: var(--text-main);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-toolbox"></i> Tools & Links</h1>
+            <a href="admin.html" class="btn-back"><i class="fa-solid fa-tower-broadcast"></i> 司令室へ戻る</a>
+        </header>
+
+        <!-- AI Cockpit -->
+        <div class="section-title"><i class="fa-solid fa-robot"></i> AI PARTNERS</div>
+        <div class="launcher-grid">
+            <a href="https://chat.openai.com/" target="_blank" class="launch-btn brand-chatgpt">
+                <i class="fa-solid fa-bolt tool-icon"></i>
+                <span class="tool-name">ChatGPT</span>
+                <span class="tool-badge">相談・壁打ち</span>
+            </a>
+            <a href="https://claude.ai/" target="_blank" class="launch-btn brand-claude">
+                <i class="fa-solid fa-feather tool-icon"></i>
+                <span class="tool-name">Claude</span>
+                <span class="tool-badge">文章・ブログ</span>
+            </a>
+            <a href="https://gemini.google.com/" target="_blank" class="launch-btn brand-gemini">
+                <i class="fa-solid fa-star tool-icon"></i>
+                <span class="tool-name">Gemini</span>
+                <span class="tool-badge">最新情報・検索</span>
+            </a>
+            <a href="https://chat.deepseek.com/" target="_blank" class="launch-btn brand-deepseek">
+                <i class="fa-solid fa-brain tool-icon"></i>
+                <span class="tool-name">DeepSeek</span>
+                <span class="tool-badge">コード生成・論理</span>
+            </a>
+            <a href="https://manus.im/" target="_blank" class="launch-btn brand-manus">
+                <i class="fa-solid fa-robot tool-icon"></i>
+                <span class="tool-name">Manus</span>
+                <span class="tool-badge">自律エージェント</span>
+            </a>
+            <a href="https://labs.google/fx/ja/tools/image-fx" target="_blank" class="launch-btn brand-googlefx">
+                <i class="fa-solid fa-wand-magic-sparkles tool-icon"></i>
+                <span class="tool-name">ImageFX</span>
+                <span class="tool-badge">画像生成</span>
+            </a>
+        </div>
+
+        <!-- Dev & Infra -->
+        <div class="section-title"><i class="fa-solid fa-server"></i> DEV & INFRA</div>
+        <div class="launcher-grid compact">
+            <a href="https://dash.cloudflare.com/2906f71905b1a2ce471a3e4b9e29448f/pages/view/web-tsukuru" target="_blank" class="launch-btn brand-cf">
+                <i class="fa-solid fa-cloud tool-icon"></i>
+                <span class="tool-name">CF Project</span>
+                <span class="tool-badge">設定・管理</span>
+            </a>
+            <a href="https://dash.cloudflare.com/2906f71905b1a2ce471a3e4b9e29448f/workers-and-pages" target="_blank" class="launch-btn brand-cf" style="--hover-color:#F6821F;">
+                <i class="fa-solid fa-server tool-icon"></i>
+                <span class="tool-name">CF Workers</span>
+                <span class="tool-badge">デプロイ確認</span>
+            </a>
+            <a href="https://github.com/atsumi-web" target="_blank" class="launch-btn brand-manus" style="--hover-color:#333; color:#333;">
+                <i class="fa-brands fa-github tool-icon"></i>
+                <span class="tool-name">GitHub</span>
+                <span class="tool-badge">ソース管理</span>
+            </a>
+        </div>
+
+        <!-- Design & Utility -->
+        <div class="section-title"><i class="fa-solid fa-palette"></i> DESIGN & UTILITY</div>
+        <div class="launcher-grid compact">
+            <a href="https://www.canva.com/projects" target="_blank" class="launch-btn brand-cf" style="--hover-color:#00C4CC; color:#00C4CC;">
+                <i class="fa-solid fa-palette tool-icon"></i>
+                <span class="tool-name">Canva</span>
+                <span class="tool-badge">デザイン作成</span>
+            </a>
+            <a href="https://squoosh.app/" target="_blank" class="launch-btn brand-squoosh">
+                <i class="fa-solid fa-image tool-icon"></i>
+                <span class="tool-name">Squoosh</span>
+                <span class="tool-badge">画像圧縮</span>
+            </a>
+            <a href="https://pagespeed.web.dev/" target="_blank" class="launch-btn brand-psi">
+                <i class="fa-solid fa-gauge-high tool-icon"></i>
+                <span class="tool-name">PageSpeed</span>
+                <span class="tool-badge">速度計測</span>
+            </a>
+            <a href="https://huuuu.jp/" target="_blank" class="launch-btn" style="color:#64748B; --hover-color:#333;">
+                <i class="fa-solid fa-eye tool-icon"></i>
+                <span class="tool-name">Reference</span>
+                <span class="tool-badge">デザイン参考</span>
+            </a>
+        </div>
+
+        <!-- SNS Management -->
+        <div class="section-title"><i class="fa-solid fa-share-nodes"></i> SNS MANAGEMENT</div>
+        <div class="launcher-grid compact">
+            <a href="https://manager.line.biz/account/@788iztqa" target="_blank" class="launch-btn brand-line">
+                <i class="fa-brands fa-line tool-icon"></i>
+                <span class="tool-name">LINE Official</span>
+                <span class="tool-badge">顧客対応・配信</span>
+            </a>
+            <a href="https://business.facebook.com/latest/home?business_id=3935470163159551&asset_id=109685825483250" target="_blank" class="launch-btn brand-meta">
+                <i class="fa-brands fa-facebook tool-icon"></i>
+                <span class="tool-name">Meta Biz</span>
+                <span class="tool-badge">FB/Insta管理</span>
+            </a>
+            <a href="https://www.instagram.com/web_tsukuru_jp/?locale=ja_JP" target="_blank" class="launch-btn brand-insta">
+                <i class="fa-brands fa-instagram tool-icon"></i>
+                <span class="tool-name">Instagram</span>
+                <span class="tool-badge">投稿確認</span>
+            </a>
+        </div>
+
+    </div>
+
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="運用司令室へ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

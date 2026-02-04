@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建設採用サイト分析・研究 | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 { margin: 0; color: #0f172a; font-size: 1.8rem; }
+        .back-btn { text-decoration: none; color: #64748b; font-weight: bold; }
+        
+        .intro-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #0f172a;
+        }
+
+        /* Card Grid */
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .ref-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        .ref-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-img-top {
+            height: 180px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 3rem;
+        }
+        
+        .card-body { padding: 20px; }
+        .site-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0f172a;
+        }
+        .site-url {
+            font-size: 0.85rem;
+            color: #3b82f6;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .point-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+        .point-list li { margin-bottom: 8px; }
+        
+        .steal-badge {
+            background: #fef3c7;
+            color: #b45309;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .add-new {
+            border: 2px dashed #cbd5e1;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            min-height: 300px;
+            color: #64748b;
+            font-weight: bold;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .add-new:hover {
+            border-color: #94a3b8;
+            color: #475569;
+            background: #f8fafc;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fa-solid fa-microscope"></i> 建設採用サイト分析・研究</h1>
+        <a href="admin.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 司令室へ戻る</a>
+    </header>
+
+    <div class="intro-box">
+        <h3><i class="fa-solid fa-book-open"></i> 「良いものを盗む」ための研究ノート</h3>
+        <p style="margin:0;">
+            他社の優れた採用サイトを分析し、<strong>「自社に取り入れられる要素（構成・言い回し・デザイン）」</strong>をストックしていくリストです。<br>
+            ここが溜まるほど、私たちの提案力は最強になります。
+        </p>
+    </div>
+
+    <div class="ref-grid">
+
+        <!-- IIJ Engineering -->
+        <div class="ref-card">
+            <div class="card-img-top" style="background:#000;">
+                <span style="color:#fff;">IIJ</span>
+            </div>
+            <div class="card-body">
+                <span class="steal-badge">デザイン・雰囲気</span>
+                <div class="site-name">IIJエンジニアリング</div>
+                <a href="https://recruit.iij-engineering.co.jp/" target="_blank" class="site-url">Visit Site <i class="fa-solid fa-external-link-alt"></i></a>
+                
+                <h4 style="margin:10px 0 5px; font-size:0.9rem; color:#64748b;">▼ 盗めるポイント</h4>
+                <ul class="point-list">
+                    <li>黒×黄（または金）の使い方が非常に洗練されている。</li>
+                    <li>「プロフェッショナル感」の演出が上手い。</li>
+                    <li>社員インタビューの見せ方が参考になる。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Add New Placeholder -->
+        <div class="ref-card add-new" onclick="alert('新しい参考サイトが見つかったら、ここに追加していきましょう！')">
+            <i class="fa-solid fa-plus-circle" style="font-size:2rem;"></i>
+            <span>新しいサイトを追加する</span>
+        </div>
+
+    </div>
+</div>
+
+<!-- INJECT NAV -->
+<script src="../js/inject_nav.js"></script>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

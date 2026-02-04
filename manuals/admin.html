@@ -1,263 +1,401 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webとしくみをつくる ｜運用司令室</title>
+    <title>ANTIGRAVITY COMMAND | 運用司令室</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0F172A;
-            --accent: #D4AF37;
-            --bg: #F8FAFC;
-            --card-bg: #FFFFFF;
-            --text: #334155;
-            --text-light: #64748B;
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-purple: #8B5CF6;
+            --accent-green: #10B981;
+            --danger: #EF4444;
         }
+        * { box-sizing: border-box; }
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--space-bg);
+            color: var(--text-main);
             margin: 0;
             padding: 20px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.5;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+
+        /* --- Header --- */
         header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px 0;
-            border-bottom: 2px solid #E2E8F0;
-        }
-        h1 {
-            color: var(--primary);
-            font-size: 24px;
-            margin: 0;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--panel-border);
+            margin-bottom: 25px;
         }
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #F1F5F9;
-        }
-        .card-title {
+        .app-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
-            font-size: 18px;
-            margin: 0;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .card-icon {
-            color: var(--accent);
-            font-size: 20px;
+        .app-title i { color: var(--accent-gold); }
+        .date-display {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dim);
+            font-size: 0.9rem;
         }
-        .link-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+
+        /* --- Grid Layout --- */
+        .cockpit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            align-items: start;
         }
-        .link-item {
-            margin-bottom: 12px;
+
+        /* --- Card Styles --- */
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .link-item:last-child {
-            margin-bottom: 0;
-        }
-        .admin-link {
+        .panel-header {
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--panel-border);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            text-decoration: none;
-            color: var(--text);
-            padding: 8px 12px;
+        }
+        .panel-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .panel-body {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* --- Components --- */
+        
+        /* 1. Highlight Card (Mission/Strategy) */
+        .highlight-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--panel-border);
+            padding: 12px;
             border-radius: 6px;
-            background: #F8FAFC;
-            transition: background 0.2s;
+            margin-bottom: 8px;
         }
-        .admin-link:hover {
-            background: #F1F5F9;
-            color: var(--primary);
-        }
-        .link-label {
+        .highlight-card:hover { border-color: var(--accent-gold); background: rgba(212, 175, 55, 0.05); }
+        .hc-icon { font-size: 1.5rem; margin-right: 15px; width: 30px; text-align: center; }
+        .hc-content { flex: 1; }
+        .hc-title { font-weight: bold; font-size: 1rem; color: var(--text-main); margin-bottom: 2px; }
+        .hc-desc { font-size: 0.75rem; color: var(--text-dim); }
+        .hc-arrow { opacity: 0.5; font-size: 0.8rem; }
+
+        /* 2. Compact List (Links) */
+        .link-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 4px;
+            color: var(--text-main);
             font-weight: 500;
         }
-        .link-desc {
-            font-size: 12px;
-            color: var(--text-light);
-            display: block;
+        .link-row:hover { background: rgba(255,255,255,0.05); color: var(--accent-blue); }
+        .lr-icon { width: 25px; color: var(--text-dim); font-size: 0.9rem; }
+        .link-row:hover .lr-icon { color: var(--accent-blue); }
+        .lr-text { flex: 1; }
+        .lr-sub { font-size: 0.7rem; color: var(--text-dim); margin-left: 10px; opacity: 0.7; }
+
+        /* 3. Icon Grid (Reference/Tools) */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
         }
-        .status-badge {
-            font-size: 11px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: #DEF7EC;
-            color: #03543F;
+        .icon-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--panel-border);
+            padding: 10px 5px;
+            border-radius: 6px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            transition: all 0.2s;
         }
-        .status-wip {
-            background: #FEF3C7;
-            color: #92400E;
-        }
+        .icon-btn:hover { border-color: var(--accent-blue); color: var(--text-main); background: rgba(59, 130, 246, 0.1); transform: translateY(-2px); }
+        .icon-btn i { font-size: 1.2rem; margin-bottom: 5px; display: block; }
+        
+        /* Status Dots */
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .dot-green { background: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+        .dot-gold { background: var(--accent-gold); }
+
+        /* Utility Helpers */
+        .text-gold { color: var(--accent-gold) !important; }
+        .text-blue { color: var(--accent-blue) !important; }
+        .border-gold { border-color: var(--accent-gold) !important; }
+        .border-blue { border-color: var(--accent-blue) !important; }
+
     </style>
 </head>
 <body>
 
-<div class="container">
     <header>
-        <h1><i class="fa-solid fa-tower-broadcast"></i> Webとしくみをつくる｜運用司令室</h1>
-        <p style="color: var(--text-light); margin-top: 10px;">自分専用コックピット：全ページへのリンク集</p>
+        <div class="app-title">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <div>
+                <div style="line-height:1;">OPERATION COMMAND</div>
+                <div style="font-size:0.75rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">WEB & SYSTEM PRODUCTION</div>
+            </div>
+        </div>
+        <div class="date-display">
+            <span id="current-date">2026.02.05</span> <span class="dot dot-green" style="margin-left:10px;"></span>ONLINE
+        </div>
     </header>
 
-    <div class="dashboard-grid">
-        
-        <!-- 1. Main Media -->
-        <div class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-globe card-icon"></i>
-                <h2 class="card-title">本番公開サイト</h2>
+    <div class="cockpit-grid">
+
+        <!-- COLUMN 1: STRATEGY & MISSION -->
+        <div class="col">
+            <!-- 0.5 Today's Mission -->
+            <div class="panel" style="margin-bottom: 20px;">
+                <div class="panel-header">
+                    <span class="panel-title text-blue"><i class="fa-solid fa-crosshairs"></i> CURRENT MISSION</span>
+                </div>
+                <div class="panel-body">
+                    <a href="today.html" target="_blank" class="highlight-card border-blue" style="background: rgba(59, 130, 246, 0.05);">
+                        <div class="hc-icon text-blue"><i class="fa-solid fa-play"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">Today's Mission</div>
+                            <div class="hc-desc">今日の作業・手順書・AI指示</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right hc-arrow text-blue"></i>
+                    </a>
+                </div>
             </div>
-            <ul class="link-list">
-                <li class="link-item">
-                    <a href="../index.html" class="admin-link" target="_blank">
-                        <div>
-                            <span class="link-label">公式サイト (Top)</span>
-                            <span class="link-desc">名刺代わりのメインLP</span>
+            
+            <!-- 0. Strategy -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title text-gold"><i class="fa-solid fa-chess-knight"></i> STRATEGY</span>
+                </div>
+                <div class="panel-body">
+                    <a href="monetization_bible_90days.html" target="_blank" class="highlight-card border-gold">
+                        <div class="hc-icon text-gold"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">90-Day Roadmap</div>
+                            <div class="hc-desc">最速収益化・絶対バイブル</div>
                         </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <i class="fa-solid fa-chevron-right hc-arrow text-gold"></i>
                     </a>
-                </li>
-                <li class="link-item">
-                    <a href="monetization_bible_90days.html" class="admin-link" target="_blank" style="border-left: 3px solid #C5A059; background: #FFFDF5;">
-                        <div>
-                            <span class="link-label" style="color: #854d0e;">🚀 90日収益化・最速ロードマップ</span>
-                            <span class="link-desc">3ヶ月で最短収益を上げるためのバイブル</span>
-                        </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #C5A059;"></i>
-                    </a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- Current Mockup (Added) -->
-        <div class="card" style="border-left: 5px solid #ff3333;">
-            <div class="card-header">
-                <i class="fa-solid fa-laptop-code card-icon" style="color:#ff3333;"></i>
-                <h2 class="card-title">今回の模写</h2>
-            </div>
-            <ul class="link-list">
-                <li class="link-item">
-                    <a href="../templates/type-d/index.html" class="admin-link" target="_blank" style="border-left: 3px solid #ff3333;">
-                        <div>
-                            <span class="link-label">Type-D Mockup</span>
-                            <span class="link-desc">現在制作中の模写プロジェクト</span>
-                        </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <!-- COLUMN 2: OPERATIONS -->
+        <div class="col">
+            <div class="panel" style="height: 100%;">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-layer-group"></i> PRODUCTION & OPS</span>
+                </div>
+                <div class="panel-body">
+                    <!-- Main Links -->
+                    <div style="margin-bottom: 15px;">
+                        <a href="lp_list.html" class="link-row" style="background:rgba(255,255,255,0.05); margin-bottom:5px;">
+                            <i class="fa-solid fa-helmet-safety lr-icon"></i>
+                            <span class="lr-text">LP Project Board</span>
+                            <span class="lr-sub">実績・テンプレート</span>
+                        </a>
+                        <a href="tools_links.html" class="link-row" style="background:rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-toolbox lr-icon"></i>
+                            <span class="lr-text">Tools & Links</span>
+                            <span class="lr-sub">Webツール集</span>
+                        </a>
+                    </div>
+
+                    <div style="border-top:1px solid var(--panel-border); margin:5px 0 10px 0;"></div>
+
+                    <!-- Dev & Infra -->
+                    <div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:5px; padding-left:5px;">DEV & INFRA</div>
+                    <div class="icon-grid" style="margin-bottom: 10px;">
+                        <a href="https://dash.cloudflare.com/2906f71905b1a2ce471a3e4b9e29448f/workers-and-pages" target="_blank" class="icon-btn">
+                            <i class="fa-solid fa-cloud text-gold"></i> CF Workers
+                        </a>
+                        <a href="https://github.com/atsumi-web" target="_blank" class="icon-btn">
+                            <i class="fa-brands fa-github"></i> Profile
+                        </a>
+                        <a href="https://github.com/new" target="_blank" class="icon-btn">
+                            <i class="fa-solid fa-plus"></i> Repo
+                        </a>
+                    </div>
+
+                    <div style="border-top:1px solid var(--panel-border); margin:5px 0 10px 0;"></div>
+
+                    <!-- SNS -->
+                    <div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:5px; padding-left:5px;">SNS MANAGEMENT</div>
+                    <div class="icon-grid" style="margin-bottom: 10px;">
+                        <a href="https://www.instagram.com/web_tsukuru_jp/?locale=ja_JP" target="_blank" class="icon-btn">
+                            <i class="fa-brands fa-instagram" style="color:#E4405F;"></i> Insta
+                        </a>
+                        <a href="https://business.facebook.com/latest/home?business_id=3935470163159551&asset_id=109685825483250" target="_blank" class="icon-btn">
+                            <i class="fa-brands fa-facebook" style="color:#1877F2;"></i> Meta
+                        </a>
+                        <a href="https://manager.line.biz/account/@788iztqa" target="_blank" class="icon-btn">
+                            <i class="fa-brands fa-line" style="color:#06C755;"></i> LINE
+                        </a>
+                    </div>
+
+                    <div style="border-top:1px solid var(--panel-border); margin:5px 0 10px 0;"></div>
+                    
+                    <!-- Manual Portals -->
+                    <div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:5px; padding-left:5px;">PORTALS</div>
+                    <a href="Private_index.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-key lr-icon"></i>
+                        <span class="lr-text">Private Manual</span>
+                        <span class="lr-sub">Master</span>
                     </a>
-                </li>
-            </ul>
+                    <a href="client_index.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-user-tie lr-icon"></i>
+                        <span class="lr-text">Client Portal</span>
+                        <span class="lr-sub">Public</span>
+                    </a>
+                    <a href="leads/index.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-seedling lr-icon"></i>
+                        <span class="lr-text">Leads Portal</span>
+                        <span class="lr-sub">Public</span>
+                    </a>
+                    
+                    <div style="border-top:1px solid var(--panel-border); margin:5px 0 10px 0;"></div>
+                    
+                    <!-- Main Site -->
+                    <a href="../index.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-globe lr-icon"></i>
+                        <span class="lr-text">Official Site (Top)</span>
+                    </a>
+                    
+                    <div style="border-top:1px solid var(--panel-border); margin:5px 0 10px 0;"></div>
+
+                    <a href="master_index.html" class="link-row" style="opacity:0.6;">
+                        <i class="fa-solid fa-list lr-icon"></i>
+                        <span class="lr-text">Master Index</span>
+                        <span class="lr-sub">全リンク一覧</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- 2. Manual Portals (The 3 Realms) -->
-        <div class="card" style="border-left: 5px solid #003366;">
-            <div class="card-header">
-                <i class="fa-solid fa-book-atlas card-icon" style="color:#003366;"></i>
-                <h2 class="card-title">マニュアル・ポータル</h2>
+        <!-- COLUMN 3: RESOURCES -->
+        <div class="col">
+            <div class="panel" style="margin-bottom: 20px;">
+                <div class="panel-header">
+                    <span class="panel-title text-green"><i class="fa-brands fa-google"></i> WORKSPACE</span>
+                </div>
+                <div class="panel-body">
+                    <div class="icon-grid">
+                        <a href="https://mail.google.com/" target="_blank" class="icon-btn">
+                            <i class="fa-regular fa-envelope" style="color:#EA4335;"></i> Gmail
+                        </a>
+                        <a href="https://drive.google.com/" target="_blank" class="icon-btn">
+                            <i class="fa-brands fa-google-drive" style="color:#1FA463;"></i> Drive
+                        </a>
+                        <a href="https://photos.google.com/" target="_blank" class="icon-btn">
+                            <i class="fa-solid fa-image" style="color:#FFC107;"></i> Photos
+                        </a>
+                    </div>
+                </div>
             </div>
-            <p style="font-size: 13px; color: #666; margin-bottom: 20px;">
-                管理レベルに応じて入口が分かれています。
-            </p>
 
-            <ul class="link-list">
-                <!-- Private Master -->
-                <li class="link-item">
-                    <a href="Private_index.html" class="admin-link" target="_blank" style="border-left: 3px solid #334155;">
-                        <div>
-                            <span class="link-label">🔑 自分用マニュアル (Private)</span>
-                            <span class="link-desc">社外秘を含む、すべてのドキュメントへのマスターインデックス。</span>
-                        </div>
-                        <span class="status-badge">Master</span>
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-folder-open"></i> SHARED & GROWTH</span>
+                </div>
+                <div class="panel-body">
+                    <!-- Shared -->
+                    <a href="https://drive.google.com/drive/folders/1Vz7UNVs31X7UI2jtErLkGG06rO0H0AeM" target="_blank" class="link-row">
+                        <i class="fa-brands fa-google-drive lr-icon"></i>
+                        <span class="lr-text">堀田さん共有写真</span>
                     </a>
-                </li>
-
-                <!-- Client Portal -->
-                <li class="link-item">
-                    <a href="client_index.html" class="admin-link" target="_blank" style="border-left: 3px solid #003366;">
-                        <div>
-                            <span class="link-label">👥 クライアント用ポータル</span>
-                            <span class="link-desc">契約者様に見せている画面と同じもの。（戦略・設定・運用）</span>
-                        </div>
-                        <span class="status-badge status-wip">Public</span>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfzQaoi0_iB2mM6TIjURIjtxaWKVapJAYKrzu8aaHeLtD6-WQ/viewform" target="_blank" class="link-row">
+                        <i class="fa-solid fa-list-check lr-icon"></i>
+                        <span class="lr-text">資産化診断テスト</span>
                     </a>
-                </li>
-
-                <!-- Leads Portal -->
-                <li class="link-item">
-                    <a href="leads/index.html" class="admin-link" target="_blank" style="border-left: 3px solid #06c755;">
-                        <div>
-                            <span class="link-label">🌱 リード（見込み客）用</span>
-                            <span class="link-desc">LINE登録者向けロードマップ・診断コンテンツ。</span>
-                        </div>
-                        <span class="status-badge status-wip">Public</span>
+                    <a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fmep%2F" target="_blank" class="link-row">
+                        <i class="fa-brands fa-paypal lr-icon" style="color:#003087;"></i>
+                        <span class="lr-text">PayPal (Login)</span>
                     </a>
-                </li>
-            </ul>
-        </div>
-
-
-        
-        <!-- 3. Trouble & Recovery Manual -->
-        <div class="card" style="border-left: 5px solid #DC2626;">
-            <div class="card-header">
-                <i class="fa-solid fa-triangle-exclamation card-icon" style="color:#DC2626;"></i>
-                <h2 class="card-title">トラブル・復旧マニュアル</h2>
+                    <a href="https://discord.com/channels/1456467705468027057/1456467706391040213" target="_blank" class="link-row">
+                        <i class="fa-brands fa-discord lr-icon" style="color:#5865F2;"></i>
+                        <span class="lr-text">Discord</span>
+                    </a>
+                    
+                     <div style="border-top:1px solid var(--panel-border); margin:5px 0 10px 0;"></div>
+                    
+                    <!-- Growth -->
+                     <a href="15_reference_analysis.html" class="link-row">
+                        <i class="fa-solid fa-microscope lr-icon text-purple"></i>
+                        <span class="lr-text">Analysis Note</span>
+                    </a>
+                    <a href="16_analytics_guide.html" class="link-row">
+                        <i class="fa-solid fa-chart-line lr-icon text-purple"></i>
+                        <span class="lr-text">Analytics Guide</span>
+                    </a>
+                    
+                    <div style="border-top:1px solid var(--panel-border); margin:5px 0 10px 0;"></div>
+                    
+                    <!-- Design Ref -->
+                    <a href="https://www.canva.com/projects" target="_blank" class="link-row">
+                        <i class="fa-solid fa-palette lr-icon text-blue"></i>
+                        <span class="lr-text">Canva</span>
+                        <span class="lr-sub">Design Tool</span>
+                    </a>
+                    <a href="https://recruit.iij-engineering.co.jp/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-eye lr-icon"></i>
+                        <span class="lr-text">Ref: IIJ Engineering</span>
+                    </a>
+                </div>
             </div>
-            <p style="font-size: 13px; color: #666; margin-bottom: 20px;">
-                文字化けやデータ消失時の緊急対応マニュアル。
-            </p>
-            <ul class="link-list">
-                <li class="link-item">
-                    <a href="trouble_recovery.html" class="admin-link" target="_blank" style="border-left: 3px solid #DC2626; background: #FEF2F2;">
-                        <div>
-                            <span class="link-label" style="color: #991B1B;">🆘 復旧手順を見る</span>
-                            <span class="link-desc">教訓・バックアップ・復旧の3ステップ</span>
-                        </div>
-                        <i class="fa-solid fa-arrow-right" style="color: #DC2626;"></i>
-                    </a>
-                </li>
-            </ul>
         </div>
 
     </div>
 
-    <footer style="text-align: center; margin-top: 40px; color: var(--text-light); font-size: 12px;">
-        &copy; 2026 Operation Control Room for Eri
-    </footer>
-</div>
-
+    <!-- GLOBAL NAV INJECTION SCRIPT (For consistency, though this IS the command room) -->
+    <!-- Not strictly needed in Admin itself, but kept for JS consistency if needed later -->
+    
+    <script>
+        // Update date
+        const now = new Date();
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const dateStr = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')} (${days[now.getDay()]})`;
+        document.getElementById('current-date').textContent = dateStr;
+    </script>
 </body>
 </html>

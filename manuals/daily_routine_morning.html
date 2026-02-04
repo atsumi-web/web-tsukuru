@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Routine | 90-Day Roadmap</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --navy: #0F172A; --gold: #C5A059; --bg: #F8FAFC; --white: #ffffff; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--navy); margin: 0; padding: 40px 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
+        .routine-icon { font-size: 3rem; color: #F59E0B; margin-bottom: 10px; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: 2rem; margin: 0; }
+        h2 { border-left: 5px solid var(--gold); padding-left: 15px; margin-top: 40px; color: var(--navy); }
+        .step { background: #f1f5f9; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .step-title { font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .step-num { background: var(--navy); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+        
+        .prompt-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            position: relative;
+            margin-top: 10px;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .copy-btn:active { transform: scale(0.95); }
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #64748b; text-decoration: none; }
+        .back-link:hover { color: var(--navy); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="routine-icon"><i class="fa-solid fa-sun"></i></div>
+            <h1>MORNING ROUTINE</h1>
+            <p>SEOブログ記事作成（所要時間：30分）</p>
+        </div>
+
+        <div class="intro">
+            <p><strong>目標:</strong> 検索エンジン（Google）に「地域の建設情報はここにある」と認識させるための網を張る作業です。クオリティは60〜70点でOK。とにかく出し続けることが重要です。</p>
+        </div>
+
+        <h2>Step 1: キーワードの決定</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">1</span> 誰に向けて書くか決める（2パターン）</div>
+            
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:20px;">
+                <div style="background:white; padding:15px; border-radius:8px; border:2px solid #3b82f6;">
+                    <strong style="color:#3b82f6; display:block; margin-bottom:5px;">A. 求職者を集める (Media Power)</strong>
+                    <p style="font-size:0.85rem; margin:0;">「給料・休み・未経験」などで検索する若手を集め、サイトのアクセス数を稼ぐ。実績（数字）を作る用。</p>
+                    <p style="font-size:0.8rem; color:#64748b; margin-top:5px;">例：「四日市 現場監督 年収」「津市 土木 きつい」</p>
+                </div>
+                <div style="background:white; padding:15px; border-radius:8px; border:2px solid #ef4444;">
+                    <strong style="color:#ef4444; display:block; margin-bottom:5px;">B. 社長を集める (Direct Leads)</strong>
+                    <p style="font-size:0.85rem; margin:0;">「採用 悩み・代行・コツ」などで検索する経営者を集め、直接問い合わせを狙う。</p>
+                    <p style="font-size:0.8rem; color:#64748b; margin-top:5px;">例：「建設業 人手不足 対策」「高卒採用 ハローワーク」</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Step 2: AIプロンプト実行</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">2</span> 選んだパターンのプロンプトをコピー</div>
+            
+            <h3 style="font-size:1rem; margin-bottom:10px; color:#3b82f6;">Aパターン：求職者向け (アクセスアップ重視)</h3>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this)">COPY A</button>
+以下の条件で、建設業界の求職者に向けたSEO記事を作成してください。
+
+# ターゲットキーワード
+[ここにキーワードを入れる 例：四日市市 現場監督 給料]
+
+# 記事の目的
+読者に「この地域の建設業は稼げる/働きやすい」と気づかせ、最終的に「詳細な求人はLINEで相談」へと誘導すること。
+
+# 構成ルール
+1. タイトル：35文字以内。キーワードを左側に含める。「【年収公開】...」「実は...」などクリックしたくなる要素を入れる。
+2. 見出し（H2, H3）：キーワードを適度に散りばめる。
+3. 本文：
+   - 専門用語は使いすぎず、親しみやすい「先輩のトーン」で。
+   - 結論から書く（PREP法）。
+   - 具体的数値（年収〇〇万円、残業〇〇時間）を入れる。
+4. 文字数：2000文字程度。
+
+# 最重要部分（CTA）
+記事の最後は以下の誘導で締めくくる：
+「もっと詳しい地域の求人情報や、非公開の給与条件を知りたい方は、Webをつくるしごとの公式LINEを追加してください。あなたに合った現場を無料診断します。」
+            </div>
+
+            <h3 style="font-size:1rem; margin-top:30px; margin-bottom:10px; color:#ef4444;">Bパターン：社長向け (お問い合わせ獲得重視)</h3>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this)">COPY B</button>
+以下の条件で、建設会社の経営者・採用担当者に向けたSEO記事を作成してください。
+
+# ターゲットキーワード
+[ここにキーワードを入れる 例：建設業 若手採用 難しい]
+
+# 記事の目的
+「採用がうまくいかない」という悩みに共感し、解決策として「採用LP（自社サイト）の重要性」を説き、問い合わせへ誘導する。
+
+# 構成ルール
+1. タイトル：35文字以内。社長がついクリックする「痛み」や「解決策」を入れる。（例：「なぜ求人誌では集まらないのか？」「0円で採用する方法」）
+2. 本文：
+   - 「ビジネスライクだが、熱意のある」信頼できるトーン。
+   - 業界の現状（人手不足、高齢化）をデータで示す。
+   - 「待ちの採用」から「攻めの採用」への転換を提案。
+3. 文字数：2000文字程度。
+
+# 最重要部分（CTA）
+記事の最後は以下の誘導で締めくくる：
+「『求人広告費を一生0円にする』ための採用資産構築マニュアルを、期間限定で無料配布しています。今すぐ公式LINEから受け取ってください。」
+            </div>
+        </div>
+
+        <h2>Step 3: 投稿 & チェック</h2>
+        <div class="step">
+            <div class="step-title"><span class="step-num">3</span> WordPress等に貼り付けて公開</div>
+            <ul>
+                <li>生成されたタイトルをH1に設定。</li>
+                <li>見出し（H2, H3）が正しく設定されているか確認。</li>
+                <li><strong>アイキャッチ画像:</strong> 現場の写真や、ImageFXで作った「日本の建設現場」の画像を設定。</li>
+                <li>公開ボタンを押す！</li>
+            </ul>
+        </div>
+
+        <a href="monetization_bible_90days.html" class="back-link">← ロードマップに戻る</a>
+    </div>
+
+    <script>
+        function copyPrompt(btn) {
+            const promptText = btn.parentElement.innerText.replace('COPY', '').trim();
+            navigator.clipboard.writeText(promptText).then(() => {
+                btn.textContent = 'COPIED!';
+                setTimeout(() => btn.textContent = 'COPY', 2000);
+            });
+        }
+    </script>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>
