@@ -1058,14 +1058,23 @@ section {
 }
 .phone-mockup {
   position: absolute;
-  bottom: -10px;
-  right: -5px;
-  width: 32%;
+  bottom: -15px;
+  right: -10px;
+  width: 30%;
+  max-width: 120px;
   z-index: 10;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2)); /* Better shadow handling */
 }
 .phone-mockup img {
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
+  display: block;
+  width: 100%;
+  aspect-ratio: 9/19.5; /* Modern smartphone ratio */
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 18px; /* Smooth corners */
+  border: 6px solid #1e293b; /* Dark Navy Frame (Bezel) */
+  background: #1e293b; /* Prevent background bleeding */
+  box-sizing: border-box;
 }
 
 .work-card-body {
