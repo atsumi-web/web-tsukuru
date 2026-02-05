@@ -1115,7 +1115,7 @@ section {
   width: 100%;
   margin-top: auto;
   padding: 12px 0;
-  border: 1px solid var(--renewal-navy);
+  border: 2px solid #0f172a;
   border-radius: 4px;
   background: transparent;
   color: var(--renewal-navy);
