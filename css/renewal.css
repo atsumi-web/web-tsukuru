@@ -1107,6 +1107,34 @@ section {
   line-height: 1.5;
 }
 
+.work-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 0;
+  border: 1px solid var(--renewal-navy);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--renewal-navy);
+  font-family: var(--font-outfit);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.work-demo-btn:hover {
+  background: var(--renewal-navy);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
+}
+.work-demo-btn i {
+  font-size: 0.8rem;
+}
+
 /* Strategy Box */
 .work-strategy-box {
   margin-top: auto;
