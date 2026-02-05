@@ -582,7 +582,9 @@ body .premium-title span {
     font-size: 0.8rem;
   }
   body .premium-title {
-    font-size: clamp(1.75rem, 5vw, 2rem);
+    font-size: clamp(1.6rem, 4.5vw, 1.9rem);
+    letter-spacing: 0.05em;
+    font-feature-settings: "palt";
   }
 }
 
@@ -2234,6 +2236,9 @@ body .culture-ticker img:hover {
 }
 
 @media (max-width: 768px) {
+  .br-pc-only {
+    display: none;
+  }
   body .culture-ticker-wrapper {
     margin-top: 3rem;
   }
