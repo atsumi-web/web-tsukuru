@@ -23,10 +23,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/renewal.css?v=solution_num_add">
+    <link rel="stylesheet" href="css/renewal.min.css?v=minified">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <script src="js/main.js" defer></script>
+    <script src="js/main.min.js" defer></script>
 </head>
 
 <body class="brand-lp construction-renewal">
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <div class="s-image">
-                        <img src="images/solution-team-unity.webp" alt="若手が活躍する現場">
+                        <img src="images/solution-team-unity.webp" alt="若手が活躍する現場" loading="lazy" decoding="async">
                     </div>
                 </div>
 
@@ -171,7 +171,7 @@
                         </p>
                     </div>
                     <div class="s-image">
-                        <img src="images/conversion-line-button.webp" alt="LINE応募ボタン">
+                        <img src="images/conversion-line-button.webp" alt="LINE応募ボタン" loading="lazy" decoding="async">
                     </div>
                 </div>
 
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                     <div class="s-image">
-                        <img src="images/works/fv_next.webp" alt="圧倒的なインパクトを放つ採用サイトデザイン">
+                        <img src="images/works/fv_next.webp" alt="圧倒的なインパクトを放つ採用サイトデザイン" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -260,33 +260,32 @@
 
                 <div class="works-grid">
                     <!-- Work 1: YAMATO (Standard Model) -->
-                    <div class="work-card js-fade-up">
-                        <div class="work-card-header">
-                            <div class="device-group">
-                                <a href="templates/type-trust/" target="_blank" class="browser-mockup">
-                                    <img src="images/works/yamato_impact_pc.png" alt="大和建設モデル デモサイト">
-                                </a>
-                                <div class="phone-mockup">
-                                    <img src="images/works/yamato_impact_sp.png" alt="大和建設モデル スマホ表示">
-                                </div>
-                            </div>
+                    <div class="works-card js-fade-up" data-category="recruitment">
+                    <a href="templates/type-c/index.html" class="works-link" target="_blank">
+                        <!-- Desktop Image (PC) -->
+                        <div class="works-thumb pc-thumb">
+                            <img src="images/works/yamato_v3_pc.png" alt="株式会社大和建設 PC採用サイト">
                         </div>
-                        <div class="work-card-body">
-                            <span class="work-model-label">STANDARD MODEL / DEMO</span>
-                            <h3>株式会社 大和建設</h3>
-                            <p class="work-catch">「堅実」×「スマート」。<br>安心感と先進性を両立した、王道の信頼獲得モデル。</p>
+                        <!-- Mobile Image (SP) -->
+                        <div class="works-thumb sp-thumb">
+                            <img src="images/works/yamato_v3_sp.png" alt="株式会社大和建設 スマホ採用サイト">
                         </div>
-                    </div>
-
+                        <div class="works-info">
+                            <div class="works-cat">CONSTRUCTION / HERITAGE</div>
+                            <h3 class="works-title">株式会社大和建設 様</h3>
+                            <p class="works-desc">「確かな信頼、未来への架け橋」<br>創業50年の重みと、先進的な技術力を融合。</p>
+                        </div>
+                    </a>
+                </div>
                     <!-- Work 2: CRAFT -->
                     <div class="work-card js-fade-up" data-delay="100">
                         <div class="work-card-header">
                             <div class="device-group">
                                 <a href="templates/type-a/" target="_blank" class="browser-mockup">
-                                    <img src="images/works/fv_arc.webp" alt="CRAFTモデル デモサイト">
+                                    <img src="images/works/fv_arc.webp" alt="CRAFTモデル デモサイト" loading="lazy" decoding="async">
                                 </a>
                                 <div class="phone-mockup">
-                                    <img src="images/works/sp_arc.webp" alt="CRAFTモデル スマホ表示">
+                                    <img src="images/works/sp_arc.webp" alt="CRAFTモデル スマホ表示" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </div>
@@ -302,10 +301,10 @@
                         <div class="work-card-header">
                             <div class="device-group">
                                 <a href="templates/type-speed/" target="_blank" class="browser-mockup">
-                                    <img src="images/works/fv_next.webp" alt="Next Frontier" width="600" height="400">
+                                    <img src="images/works/fv_next.webp" alt="Next Frontier" width="600" height="400" loading="lazy" decoding="async">
                                 </a>
                                 <div class="phone-mockup">
-                                    <img src="images/works/sp_next.webp" alt="Next Frontier Mobile">
+                                    <img src="images/works/sp_next.webp" alt="Next Frontier Mobile" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </div>
@@ -414,9 +413,9 @@
                 <h2 class="section-title">「汗をかく現場が、<br class="br-sp">一番に報われる世界へ」</h2>
                 <div class="profile-content js-fade-up">
                     <div class="profile-image">
-                        <img src="images/trust-digital-collaboration.webp" alt="デジタル連携">
-                        <img src="images/work-scaffold-check.webp" alt="足場チェック作業">
-                        <img src="images/work-heavy-excavator.webp" alt="重機作業">
+                        <img src="images/trust-digital-collaboration.webp" alt="デジタル連携" loading="lazy" decoding="async">
+                        <img src="images/work-scaffold-check.webp" alt="足場チェック作業" loading="lazy" decoding="async">
+                        <img src="images/work-heavy-excavator.webp" alt="重機作業" loading="lazy" decoding="async">
                     </div>
                     <div class="profile-text">
                         <p>

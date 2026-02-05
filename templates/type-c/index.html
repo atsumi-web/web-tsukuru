@@ -209,11 +209,16 @@
         <div class="absolute inset-0 z-0">
             <style>
                 @keyframes heroSequence {
-                    0% { opacity: 0; transform: scale(1); z-index: 1; }
-                    5% { opacity: 1; transform: scale(1); z-index: 2; }
-                    33% { opacity: 1; transform: scale(1.05); z-index: 2; }
-                    38% { opacity: 0; transform: scale(1.05); z-index: 1; }
-                    100% { opacity: 0; transform: scale(1); z-index: 1; }
+                    0% { opacity: 0; transform: scale(1.05); z-index: 1; }
+                    5% { opacity: 1; transform: scale(1.05); z-index: 2; }
+                    33% { opacity: 1; transform: scale(1.15); z-index: 2; }
+                    38% { opacity: 0; transform: scale(1.15); z-index: 1; }
+                    100% { opacity: 0; transform: scale(1.05); z-index: 1; }
+                }
+                @keyframes movedown {
+                    0% { top: 0; height: 50%; opacity: 1; }
+                    50% { top: 50%; height: 50%; opacity: 1; }
+                    100% { top: 100%; height: 0%; opacity: 0; }
                 }
                 .hero-slide-item {
                     position: absolute;
@@ -231,14 +236,24 @@
             </style>
             
             <!-- Slide 1: Site Overview -->
-            <img src="./trust_final_hero_1770166933003.webp" alt="建設現場" class="hero-slide-item delay-0 brightness-[0.8] grayscale group-hover:grayscale-0 transition duration-1000">
+            <!-- Slide 1: Site Overview -->
+            <picture>
+                <source media="(max-width: 768px)" srcset="./trust_hero_slide1_mobile.png">
+                <img src="./trust_final_hero_1770166933003.webp" alt="建設現場" class="hero-slide-item delay-0 brightness-95 grayscale group-hover:grayscale-0 transition duration-1000" fetchpriority="high">
+            </picture>
             <!-- Slide 2: Road Works -->
-            <img src="./trust_final_work_road_1770166977138.webp" alt="道路工事" class="hero-slide-item delay-6 brightness-[0.8] grayscale group-hover:grayscale-0 transition duration-1000" style="object-position: center;">
+            <picture>
+                <source media="(max-width: 768px)" srcset="./trust_hero_slide2_mobile.png">
+                <img src="./trust_final_work_road_1770166977138.webp" alt="道路工事" class="hero-slide-item delay-6 brightness-95 grayscale group-hover:grayscale-0 transition duration-1000" style="object-position: center;" loading="lazy" decoding="async">
+            </picture>
             <!-- Slide 3: River Works -->
-            <img src="./trust_final_work_river_1770166963202.webp" alt="河川工事" class="hero-slide-item delay-12 brightness-[0.8] grayscale group-hover:grayscale-0 transition duration-1000">
+            <picture>
+                <source media="(max-width: 768px)" srcset="./trust_hero_slide3_mobile.png">
+                <img src="./trust_final_work_river_1770166963202.webp" alt="河川工事" class="hero-slide-item delay-12 brightness-95 grayscale group-hover:grayscale-0 transition duration-1000" loading="lazy" decoding="async">
+            </picture>
             
-            <div class="absolute inset-0 bg-brand-navy/30 mix-blend-multiply z-10 pointer-events-none"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/20 to-brand-navy/40 z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-brand-navy/20 mix-blend-multiply z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-brand-navy/10 to-brand-navy/10 z-10 pointer-events-none"></div>
         </div>
 
         <!-- Hero Content -->
@@ -275,7 +290,7 @@
 
             <!-- Scroll Indicator -->
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-20 md:translate-x-0 w-[1px] h-24 bg-white/30 overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-movedown"></div>
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-[movedown_2s_infinite]"></div>
             </div>
         </div>
     </section>
@@ -294,14 +309,14 @@
                    <!-- Main Office Image (Slider) -->
                    <div class="rounded shadow-xl relative z-10 w-full pb-[66.666%] bg-slate-50 overflow-hidden group">
 
-                        <img src="./trust_construction_meeting_room_1770176808643.png" alt="Construction Meeting" class="philosophy-slide">
-                        <img src="./trust_schedule_desk_1770175312710.webp" alt="Comfortable Desk" class="philosophy-slide">
+                        <img src="./trust_construction_meeting_room_1770176808643.png" alt="Construction Meeting" class="philosophy-slide" loading="lazy" decoding="async">
+                        <img src="./trust_schedule_desk_1770175312710.webp" alt="Comfortable Desk" class="philosophy-slide" loading="lazy" decoding="async">
                    </div>
                    
                    <!-- CEO Image Overlay -->
                    <div class="absolute -bottom-16 -right-6 md:-right-12 w-56 md:w-72 z-20">
                         <div class="img-mask rounded shadow-2xl border-4 border-white">
-                            <img src="./trust_ceo_1770165762077.webp" alt="CEO" class="w-full aspect-video object-cover object-top hover:scale-110 transition duration-700">
+                            <img src="./trust_ceo_1770165762077.webp" alt="CEO" class="w-full aspect-video object-cover object-top hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                         </div>
                         <div class="bg-white p-3 md:p-4 shadow-lg absolute -bottom-6 -left-6 md:-left-10 w-max">
                             <p class="text-[9px] font-bold tracking-[0.2em] text-brand-gold mb-1">代表取締役</p>
@@ -324,7 +339,7 @@
              <div id="promise" class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 fade-in-up scroll-mt-20">
                 <div class="lg:w-1/2 relative">
                    <div class="img-mask rounded shadow-xl">
-                        <img src="./trust_final_work_river_1770166963202.webp" alt="River Protection" class="aspect-landscape object-cover hover:scale-105 transition duration-700">
+                        <img src="./trust_final_work_river_1770166963202.webp" alt="River Protection" class="aspect-landscape object-cover hover:scale-105 transition duration-700" loading="lazy" decoding="async">
                    </div>
                 </div>
                 <div class="lg:w-1/2">
@@ -347,7 +362,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24">
                 <div class="group fade-in-up">
                     <div class="mb-8 img-mask shadow-lg">
-                        <img src="./trust_work_river_new.png" class="w-full h-48 object-cover" alt="河川工事">
+                        <img src="./trust_work_river_new.png" class="w-full h-48 object-cover" alt="河川工事" loading="lazy" decoding="async">
                     </div>
                     <span class="text-sm font-bold tracking-widest text-brand-gold mb-4 block">River Control</span>
                     <h3 class="text-2xl font-bold mb-6 font-serif">河川・防災工事</h3>
@@ -356,7 +371,7 @@
                 
                 <div class="group fade-in-up" style="transition-delay: 0.1s;">
                     <div class="mb-8 img-mask shadow-lg">
-                        <img src="./trust_work_road_new.png" class="w-full h-48 object-cover" alt="道路維持">
+                        <img src="./trust_work_road_new.png" class="w-full h-48 object-cover" alt="道路維持" loading="lazy" decoding="async">
                     </div>
                     <span class="text-sm font-bold tracking-widest text-brand-gold mb-4 block">Road Maintenance</span>
                     <h3 class="text-2xl font-bold mb-6 font-serif">道路維持・舗装</h3>
@@ -365,7 +380,7 @@
 
                 <div class="group fade-in-up" style="transition-delay: 0.2s;">
                     <div class="mb-8 img-mask shadow-lg">
-                        <img src="./trust_work_public_new.png" class="w-full h-48 object-cover" alt="公共施設">
+                        <img src="./trust_work_public_new.png" class="w-full h-48 object-cover" alt="公共施設" loading="lazy" decoding="async">
                     </div>
                     <span class="text-sm font-bold tracking-widest text-brand-gold mb-4 block">Public Facility</span>
                     <h3 class="text-2xl font-bold mb-6 font-serif">公共施設改修</h3>
@@ -401,31 +416,31 @@
                 <!-- Set 1 -->
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">08:00 朝礼・点呼</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">安全確認（指差し呼称）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">最新技術（ICT建機・ドローン）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">休憩中のひととき</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">社内イベント（BBQ大会）</p>
                 </div>
@@ -433,31 +448,31 @@
                 <!-- Set 2 -->
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">08:00 朝礼・点呼</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">安全確認（指差し呼称）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">最新技術（ICT建機・ドローン）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">休憩中のひととき</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">社内イベント（BBQ大会）</p>
                 </div>
@@ -465,31 +480,31 @@
                 <!-- Set 3 -->
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">08:00 朝礼・点呼</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">安全確認（指差し呼称）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">最新技術（ICT建機・ドローン）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">休憩中のひととき</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">社内イベント（BBQ大会）</p>
                 </div>
@@ -497,31 +512,31 @@
                 <!-- Set 4 -->
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_morning_mixed_v2.png" alt="Morning Assembly" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">08:00 朝礼・点呼</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_safety_young.png" alt="Safety Check" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">安全確認（指差し呼称）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_drone_op_1770174286479.webp" alt="Drone Operation" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">最新技術（ICT建機・ドローン）</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_break_young.png" alt="Break Time" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">休憩中のひととき</p>
                 </div>
                 <div class="w-[300px] md:w-[400px] flex-shrink-0 group pr-8">
                     <div class="img-mask shadow-lg">
-                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_gallery_bbq_new.png" alt="BBQ" class="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700" loading="lazy" decoding="async">
                     </div>
                     <p class="text-xs font-bold text-slate-400 mt-4 tracking-widest text-center">社内イベント（BBQ大会）</p>
                 </div>
