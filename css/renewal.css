@@ -528,11 +528,14 @@ section {
 /* --------------------------------------------------------------------------
    HERO SECTION
    -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   HERO SECTION
+   -------------------------------------------------------------------------- */
 .hero.renewal-hero {
   position: relative;
   display: flex;
   align-items: center; /* 中央に配置して100vhの広がりを活かす */
-  min-height: 100vh; /* height から min-height にしてコンテンツ溢れに対応 */
+  min-height: 100svh; /* モバイルブラウザのアドレスバー対策 */
   padding: 100px 0 60px; /* ヘッダー分 (約80px) + 余裕を確保 */
   overflow: hidden;
   color: #fff;
@@ -540,9 +543,129 @@ section {
 }
 @media (max-width: 768px) {
   .hero.renewal-hero {
-    padding-top: 120px;
-  } /* モバイルはヘッダー密度が高いため多めに確保 */
+    padding-top: 140px; /* モバイルはヘッダー密度が高いため多めに確保 */
+    align-items: flex-start; /* コンテンツが中央すぎると被るため上寄せ */
+  }
 }
+
+/* ... (Hero background styles remain same) ... */
+
+.hero-main-copy {
+  margin-bottom: clamp(20px, 5vw, 35px);
+  font-size: clamp(2.4rem, 8vw, 4.2rem); /* スマホで小さくなりすぎないよう調整 */
+  font-weight: 800;
+  line-height: 1.3;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-desc {
+  max-width: 700px;
+  margin-bottom: 40px;
+  padding: clamp(20px, 5vw, 30px);
+  border-left: 6px solid var(--renewal-gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--bg-hero-desc);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem); /* 可読性確保 */
+  line-height: 1.8;
+}
+
+/* --------------------------------------------------------------------------
+   PROBLEM SECTION
+   -------------------------------------------------------------------------- */
+/* ... */
+
+.problem-grid-wide {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+@media (max-width: 900px) {
+  .problem-grid-wide {
+    grid-template-columns: 1fr; /* タブレット以下は1列 */
+    gap: 20px;
+  }
+}
+
+/* ... */
+
+/* --------------------------------------------------------------------------
+   SOLUTION SECTION
+   -------------------------------------------------------------------------- */
+/* ... */
+
+.solution-item {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 120px;
+}
+@media (max-width: 1024px) {
+  .solution-item {
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 900px) {
+  .solution-item,
+  .solution-item.reverse {
+    flex-direction: column;
+    align-items: flex-start; /* 左寄せで読みやすく */
+  }
+  .solution-item .s-image {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   WORKS (DESIGN LINEUP) SECTION
+   -------------------------------------------------------------------------- */
+/* ... */
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 50px;
+}
+@media (max-width: 1100px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER CTA & BUTTONS
+   -------------------------------------------------------------------------- */
+/* ... */
+
+.fixed-line-btn {
+  /* ... existing styles ... */
+  bottom: 30px;
+  /* ... */
+}
+@media (max-width: 768px) {
+  .fixed-line-btn {
+    right: 50%;
+    transform: translateX(50%) translateY(20px); /* 初期位置調整中心寄せ */
+    bottom: 20px;
+    width: 90%; /* 画面幅いっぱいになりすぎないよう */
+    max-width: 350px;
+  }
+  .fixed-line-btn.show {
+    transform: translateX(50%) translateY(0); /* 表示時 */
+  }
+}
+
 
 .hero-bg {
   position: absolute;
