@@ -137,7 +137,20 @@
                 </ul>
             </div>
 
-            <h2>4. 運用・管理ルール</h2>
+            <h2>4. レイアウト構造ルール (Layout Code)</h2>
+            <p>記事ページの骨組み（HTML構造）も統一してください。崩れの原因になります。</p>
+
+            <div class="rule-box">
+                <span class="rule-title">メインコンテナ (Main Container)</span>
+                <p>記事のすべてを囲む親タグには、必ず以下のクラスを使用する。</p>
+                <ul>
+                    <li><strong>正:</strong> <code>&lt;main class="blog-container"&gt;</code></li>
+                    <li><strong>誤:</strong> <code>blog-post-container</code>, <code>container</code>, <code>main-wrapper</code></li>
+                    <li><strong>理由:</strong> 中央寄せ、最大横幅（800px）、スマホ時の余白がすべてこのクラスに定義されているため。</li>
+                </ul>
+            </div>
+
+            <h2>5. 運用・管理ルール</h2>
             
             <h3>画像ファイル管理</h3>
             <p><code>blog/images/</code> フォルダに集約し、以下の命名規則を守ります。</p>
