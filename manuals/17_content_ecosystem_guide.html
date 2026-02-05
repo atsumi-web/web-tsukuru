@@ -50,6 +50,38 @@
                 <span class="tag-ok">推奨: ブログ一覧、SNSフィード</span>
             </div>
 
+            <!-- ILLUSTRATION DESIGN SPECS -->
+            <div style="background: #f8fafc; border: 1px dashed #475569; padding: 15px; border-radius: 8px; margin: 10px 0 25px 0; font-size: 0.9rem;">
+                <strong>🎨 Level 2: Unified Design Code (統一感のルール)</strong>
+                <ul style="margin: 10px 0 0 0; color: #334155;">
+                    <li><strong>重要スタイル:</strong> 線画なし・縁取りなし (No Outlines / No Strokes)</li>
+                    <li><strong>共通テイスト:</strong> フラットデザイン、マットな質感、ベクター調</li>
+                    <li><strong>カラーパレット:</strong>
+                        <span style="color:#0F172A; font-weight:bold;">● Navy (#0F172A)</span> をベースに、
+                        <span style="color:#C5A059; font-weight:bold;">● Gold</span> や
+                        <span style="color:#94a3b8; font-weight:bold;">● Gray</span> で構成
+                    </li>
+                    <li><strong>NG事項:</strong> <span style="color:#ef4444; font-weight:bold;">縁取り(Outlines)</span>、主線のあるイラスト、写真との合成</li>
+                </ul>
+                <div style="margin-top: 15px; border-top: 1px dashed #cbd5e1; padding-top: 10px;">
+                    <strong style="display:block; margin-bottom:10px; color:#475569;">📸 Good Examples (基準サンプル)</strong>
+                    <div style="display: flex; gap: 10px; overflow-x: auto;">
+                        <div style="flex: 0 0 100px;">
+                            <img src="../blog/images/blog_illust_ad_budget_1769998607992.png" alt="Example 1" style="width:100%; border-radius:4px; border:1px solid #e2e8f0;">
+                            <span style="font-size:0.7rem; color:#64748b; display:block; text-align:center;">Ad Budget</span>
+                        </div>
+                        <div style="flex: 0 0 100px;">
+                            <img src="../blog/images/blog_illust_team_1769998623467.png" alt="Example 2" style="width:100%; border-radius:4px; border:1px solid #e2e8f0;">
+                            <span style="font-size:0.7rem; color:#64748b; display:block; text-align:center;">Team Tech</span>
+                        </div>
+                        <div style="flex: 0 0 100px;">
+                            <img src="../blog/images/blog_illust_optimization.webp" alt="Example 3" style="width:100%; border-radius:4px; border:1px solid #e2e8f0;">
+                            <span style="font-size:0.7rem; color:#64748b; display:block; text-align:center;">Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="rule-box">
                 <span class="rule-title">Level 3: Optimized AI / Screenshots (補完)</span>
                 <p>やむを得ず使用する場合は、Level 2のイラストとトーンを合わせるか、記事の「中身（証拠画像）」としてのみ使用する。</p>
@@ -83,7 +115,29 @@
                 <li>ブログへの誘導（「続きはプロフのリンクから」）を必ず入れる。</li>
             </ul>
 
-            <h2>3. 運用・管理ルール</h2>
+            <h2>3. CTA・フッター標準化ルール (CTA Standards)</h2>
+            <p>全てのブログ記事は、読者を迷わせないために以下のCTA（行動喚起）構造を遵守してください。</p>
+            
+            <div class="rule-box">
+                <span class="rule-title">1. 記事内CTA (In-Article CTA)</span>
+                <p>記事の最後（まとめの直前、または直後）に配置する。</p>
+                <ul>
+                    <li><strong>クラス名:</strong> <code>.blog-cta-box</code></li>
+                    <li><strong>内容:</strong> 記事の内容を受けた具体的な提案（例:「LP診断しませんか？」）</li>
+                    <li><strong>リンク先:</strong> 公式LINE (<code>https://lin.ee/nMDNiFg</code>)</li>
+                </ul>
+            </div>
+
+            <div class="rule-box">
+                <span class="rule-title">2. 共通フッターCTA (Footer CTA)</span>
+                <p><code>&lt;footer&gt;</code> タグの直前に必ず配置する。</p>
+                <ul>
+                    <li><strong>セクション:</strong> <code>&lt;section class="footer-cta-section"&gt;</code></li>
+                    <li><strong>役割:</strong> 記事を読み終えたユーザーへの最終的な受け皿（30秒で登録、などのハードル下げ）</li>
+                </ul>
+            </div>
+
+            <h2>4. 運用・管理ルール</h2>
             
             <h3>画像ファイル管理</h3>
             <p><code>blog/images/</code> フォルダに集約し、以下の命名規則を守ります。</p>
