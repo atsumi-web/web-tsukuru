@@ -1449,17 +1449,25 @@ section {
   gap: 60px;
 }
 .profile-image {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   flex-shrink: 0;
-  gap: 20px;
-  width: 300px;
+  gap: 15px;
+  width: 360px; /* Wider for 2-col layout */
 }
 .profile-image img {
-  height: 200px;
+  width: 100%;
   border-radius: 12px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   object-fit: cover;
+}
+.profile-image img:nth-child(1) {
+  grid-column: 1 / -1; /* Span full width */
+  height: 240px;
+}
+.profile-image img:nth-child(2),
+.profile-image img:nth-child(3) {
+  height: 150px;
 }
 .profile-text {
   flex: 1;
