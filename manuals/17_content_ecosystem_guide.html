@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17_content_ecosystem_guide | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: #334155; margin: 0; background-color: #f1f5f9; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .content { background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { font-size: 2rem; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 40px; }
+        h2 { font-size: 1.5rem; color: #0f172a; margin-top: 50px; border-left: 5px solid #3b82f6; padding-left: 15px; }
+        h3 { font-size: 1.2rem; color: #334155; margin-top: 30px; font-weight: bold; }
+        p, li { font-size: 1rem; margin-bottom: 1rem; }
+        ul { padding-left: 20px; }
+        code { background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; font-family: monospace; color: #ea580c; }
+        blockquote { background: #eff6ff; border-left: 5px solid #3b82f6; margin: 20px 0; padding: 15px 20px; color: #1e40af; }
+        .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
+        .breadcrumb a { color: #64748b; text-decoration: none; }
+        .breadcrumb a:hover { color: #3b82f6; }
+        
+        /* Rule Box */
+        .rule-box { border: 2px solid #e2e8f0; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .rule-title { font-weight: bold; color: #0f172a; display: block; margin-bottom: 10px; }
+        .tag-ok { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .tag-ng { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="Private_index.html">← 制作コックピットに戻る</a></div>
+        <main class="content">
+            <h1>コンテンツ・エコシステム運用ガイド (Blog & SNS)</h1>
+            <p>Created: 2026-02-05</p>
+            <p>ブログ記事とInstagramを連携させ、効率的に「資産」を積み上げるための運用ルールブックです。</p>
+
+            <h2>1. ビジュアル・ハイラルキー (画像のルール)</h2>
+            <p>ブランドの統一感を守るため、使用する画像には厳格な優先順位があります。</p>
+            
+            <div class="rule-box">
+                <span class="rule-title">Level 1: Authentic Real Photos (最高信頼度)</span>
+                <p>実際の現場、本人の写真、具体的な作業風景。最も信頼性が高い。</p>
+                <span class="tag-ok">推奨: トップページ、重要事例</span>
+            </div>
+
+            <div class="rule-box">
+                <span class="rule-title">Level 2: Unified Illustrations (標準運用)</span>
+                <p>ネイビー・ゴールド・ベージュを基調としたフラットイラスト。ブログのアイキャッチやSNSの表紙に使用。</p>
+                <span class="tag-ok">推奨: ブログ一覧、SNSフィード</span>
+            </div>
+
+            <div class="rule-box">
+                <span class="rule-title">Level 3: Optimized AI / Screenshots (補完)</span>
+                <p>やむを得ず使用する場合は、Level 2のイラストとトーンを合わせるか、記事の「中身（証拠画像）」としてのみ使用する。</p>
+                <span class="tag-ng">禁止: ブログ一覧やSNS表紙での単体使用</span>
+            </div>
+
+            <blockquote>
+                <strong>技術ルール:</strong> すべての画像は本番公開時に <code>.webp</code> 形式に変換すること。
+            </blockquote>
+
+            <h2>2. Instagram連携ワークフロー</h2>
+            <p>ブログ記事を「親」として、Instagramフィードを「子」として展開するエコシステムです。</p>
+
+            <h3>Step 1: ブログ記事の執筆 (Parent Content)</h3>
+            <ul>
+                <li>まずブログ記事を完成させます（論理と証拠を固める）。</li>
+                <li>アイキャッチ画像（Level 2 イラスト）を作成・選定します。</li>
+            </ul>
+
+            <h3>Step 2: インスタ用クリエイティブ作成 (Canva)</h3>
+            <p>えりさんがCanvaのテンプレート（4:5サイズ）を使用して作成します。</p>
+            <ul>
+                <li><strong>表紙:</strong> ブログのアイキャッチ画像をベースにする（統一感）。</li>
+                <li><strong>中面:</strong> ブログの要点を3〜4枚のスライドに要約。</li>
+                <li><strong>ツール:</strong> Canvaテンプレートを使用（毎回ゼロから作らない）。</li>
+            </ul>
+
+            <h3>Step 3: キャプション作成 (Assistant)</h3>
+            <p>私がブログ記事を元に、インスタ用の「短く、共感を呼ぶ」文章を作成します。</p>
+            <ul>
+                <li>ブログへの誘導（「続きはプロフのリンクから」）を必ず入れる。</li>
+            </ul>
+
+            <h2>3. 運用・管理ルール</h2>
+            
+            <h3>画像ファイル管理</h3>
+            <p><code>blog/images/</code> フォルダに集約し、以下の命名規則を守ります。</p>
+            <ul>
+                <li><code>blog_illust_[theme].webp</code> (イラスト)</li>
+                <li><code>psi_[project]_[before/after].webp</code> (証拠画像)</li>
+            </ul>
+
+        </main>
+    </div>
+<!-- GLOBAL NAVIGATION (Same as other manuals) -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="司令室へ"><i class="fa-solid fa-tower-broadcast"></i></a>
+</div>
+</body>
+</html>
