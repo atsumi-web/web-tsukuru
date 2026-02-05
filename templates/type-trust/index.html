@@ -203,92 +203,86 @@
 
 
 
-    <section class="min-h-screen flex items-center pt-28 md:pt-36 pb-28 overflow-hidden relative">
-        <!-- Background Elements for Mobile Appeal -->
-        <div class="absolute top-0 right-0 w-2/3 h-2/3 bg-slate-50 rounded-bl-[100px] -z-10 opacity-50 pointer-events-none"></div>
+    <!-- HERO SECTION (V3: Twilight Asset Model) -->
+    <section class="relative h-screen min-h-[600px] w-full overflow-hidden group">
+        <!-- Hero Background -->
+        <div class="absolute inset-0 z-0">
+            <style>
+                @keyframes heroSequence {
+                    0% { opacity: 0; transform: scale(1); z-index: 1; }
+                    5% { opacity: 1; transform: scale(1); z-index: 2; }
+                    33% { opacity: 1; transform: scale(1.05); z-index: 2; }
+                    38% { opacity: 0; transform: scale(1.05); z-index: 1; }
+                    100% { opacity: 0; transform: scale(1); z-index: 1; }
+                }
+                .hero-slide-item {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: bottom;
+                    opacity: 0;
+                    animation: heroSequence 18s ease-in-out infinite;
+                }
+                .delay-0 { animation-delay: 0s; }
+                .delay-6 { animation-delay: 6s; }
+                .delay-12 { animation-delay: 12s; }
+            </style>
+            
+            <!-- Slide 1: Site Overview -->
+            <img src="./trust_final_hero_1770166933003.webp" alt="建設現場" class="hero-slide-item delay-0 brightness-[0.8] grayscale group-hover:grayscale-0 transition duration-1000">
+            <!-- Slide 2: Road Works -->
+            <img src="./trust_final_work_road_1770166977138.webp" alt="道路工事" class="hero-slide-item delay-6 brightness-[0.8] grayscale group-hover:grayscale-0 transition duration-1000" style="object-position: center;">
+            <!-- Slide 3: River Works -->
+            <img src="./trust_final_work_river_1770166963202.webp" alt="河川工事" class="hero-slide-item delay-12 brightness-[0.8] grayscale group-hover:grayscale-0 transition duration-1000">
+            
+            <div class="absolute inset-0 bg-brand-navy/30 mix-blend-multiply z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/20 to-brand-navy/40 z-10 pointer-events-none"></div>
+        </div>
 
-        <div class="container mx-auto px-6 md:px-12">
-            <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-12 lg:gap-24">
-                <!-- Text Content -->
-                <div class="w-full lg:w-5/12 z-10 order-2 lg:order-1 fade-in-up">
-                    <span class="hidden lg:block text-brand-gold text-base md:text-lg font-bold tracking-[0.4em] mb-6 md:mb-8">大和建設 中途採用 2026</span>
-                    <h1 class="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-serif font-bold leading-[1.6] md:leading-[1.8] lg:leading-tight xl:leading-[1.8] mb-8 md:mb-12 tracking-wide">
-                        <span class="whitespace-nowrap">いつもの街を、</span><br>
-                        
-                        <span class="whitespace-nowrap">
-                            <span class="text-brand-gold relative inline-block text-4xl md:text-6xl lg:text-6xl xl:text-7xl">
-                                「スマート」
-                                <span class="absolute -bottom-2 left-0 w-full h-[6px] bg-brand-gold/40 -z-10"></span>
-                            </span> <span class="text-2xl md:text-4xl lg:text-5xl xl:text-6xl">に</span>
-                        </span><br>
-                        <span class="whitespace-nowrap">守り抜く。</span>
+        <!-- Hero Content -->
+        <div class="relative z-10 flex h-full w-full items-center justify-center md:justify-start px-6 md:px-20 max-w-[1400px] mx-auto">
+            <div class="fade-in-up visible flex flex-col items-center md:items-start text-center md:text-left">
+                <!-- Text Box Container -->
+                <div class="bg-brand-navy/70 backdrop-blur-md p-8 md:p-12 rounded-sm border-l-4 border-brand-gold shadow-2xl max-w-2xl">
+                    <p class="mb-6 font-sans text-sm font-bold tracking-[0.3em] text-brand-gold md:text-base animate-pulse">
+                        SOLID TRUST & FUTURE
+                    </p>
+                    <!-- Vertical for PC, Stacked for Mobile via classes -->
+                    <h1 class="font-serif font-bold text-white leading-none">
+                        <span class="block text-[10vw] md:text-[4rem] lg:text-[5rem] tracking-widest drop-shadow-lg mb-2">確かな信頼</span>
+                        <span class="block text-[6vw] md:text-[2.5rem] lg:text-[3rem] tracking-[0.2em] opacity-90 drop-shadow-lg">未来への架け橋</span>
                     </h1>
-                    
-                    <!-- Certification Marks (Text Right) -->
-                    <div class="flex justify-end gap-3 md:gap-4 mb-8 -mt-6 md:-mt-8">
-                        <img src="./trust_cert_iso.png" alt="ISO 9001" class="h-8 md:h-10 lg:h-12 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
-                        <img src="./trust_cert_dx.png" alt="DX Certification" class="h-8 md:h-10 lg:h-12 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
-                        <img src="./trust_cert_wlb.png" alt="Health & Productivity" class="h-8 md:h-10 lg:h-12 w-auto object-contain transition duration-500 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 mix-blend-multiply">
-                    </div>
-                    <div class="w-12 h-[1px] bg-brand-navy mb-8 md:mb-12"></div>
-                    <p class="text-xs md:text-sm text-slate-500 leading-loose tracking-wider mb-12">
-                        泥臭いだけの建設業は、もう終わりです。<br class="hidden md:block">
-                        最新の技術と、洗練されたチームワークで。<br class="hidden md:block">
-                        地域のインフラを、もっときれいに、もっと安全に。
+                    <div class="h-[1px] w-20 bg-white/30 my-6 md:ml-0 mx-auto"></div>
+                    <p class="font-sans text-xs md:text-base font-medium leading-loose text-white/90 hidden md:block">
+                        創業50年。積み重ねた技術と信頼で、<br>
+                        地図に残る仕事を、次の世代へ。
                     </p>
                 </div>
+            </div>
+            
+            <!-- Floating CTA (Circle) -->
+            <div class="absolute bottom-12 right-6 md:bottom-20 md:right-20 fade-in-up visible" style="animation-delay: 0.5s;">
+                <a href="#recruit" class="group relative flex h-28 w-28 md:h-40 md:w-40 items-center justify-center rounded-full bg-brand-gold text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white hover:text-brand-navy border-4 border-white/20">
+                    <div class="text-center transition-colors">
+                        <span class="block font-serif text-lg md:text-2xl font-bold">採用<br>情報</span>
+                        <span class="block font-sans text-[10px] md:text-xs tracking-widest opacity-80 mt-1">RECRUIT</span>
+                    </div>
+                    <div class="absolute -inset-4 rounded-full border border-white/30 animate-ping opacity-50"></div>
+                </a>
+            </div>
 
-                <!-- Hero Slider -->
-                <div class="w-full lg:w-7/12 relative order-1 lg:order-2 fade-in-up" style="transition-delay: 0.2s;">
-                    <style>
-                        @keyframes heroSlider {
-                            0% { opacity: 0; transform: scale(1.1); animation-timing-function: ease-in; }
-                            8% { opacity: 1; transform: scale(1.12); animation-timing-function: ease-out; }
-                            33% { opacity: 1; transform: scale(1.15); }
-                            41% { opacity: 0; transform: scale(1.16); }
-                            100% { opacity: 0; transform: scale(1.2); }
-                        }
-                        .hero-slide-container {
-                             position: relative;
-                             width: 100%;
-                             aspect-ratio: 3/2; 
-                        }
-                         .hero-slide {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            opacity: 0;
-                            animation: heroSlider 15s linear infinite; 
-                        }
-                        .hero-slide:nth-child(1) { animation-delay: 0s; }
-                        .hero-slide:nth-child(2) { animation-delay: 5s; }
-                        .hero-slide:nth-child(3) { animation-delay: 10s; }
-                    </style>
-                    <!-- Mobile Overlay Title (Tag Style) -->
-                    <div class="absolute top-6 left-0 z-20 lg:hidden fade-in-up" style="animation-delay: 0.5s;">
-                        <span class="text-white text-xs font-bold tracking-[0.2em] bg-brand-navy/90 px-4 py-2 rounded-r-sm shadow-xl border-l-4 border-brand-gold inline-block">
-                            大和建設 中途採用 2026
-                        </span>
-                    </div>
-                    <div class="hero-slide-container img-mask shadow-2xl overflow-hidden rounded-lg">
-                        <img src="./trust_final_hero_1770166933003.webp" alt="Site Overview" class="hero-slide">
-                        <img src="./trust_final_work_road_1770166977138.webp" alt="Road Works" class="hero-slide">
-                        <img src="./trust_final_work_river_1770166963202.webp" alt="River Works" class="hero-slide">
-                    </div>
-                </div>
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-20 md:translate-x-0 w-[1px] h-24 bg-white/30 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-movedown"></div>
             </div>
-            </div>
-        </div>
-        
-        <!-- Interactive Scroll Indicator -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 -ml-[2px] flex flex-col items-center gap-2 opacity-60 animate-bounce cursor-pointer" onclick="document.querySelector('#philosophy').scrollIntoView({behavior: 'smooth'})">
-            <span class="text-[10px] tracking-[0.3em] font-serif text-slate-400 [writing-mode:vertical-rl] leading-none">SCROLL</span>
-            <div class="w-[1px] h-16 bg-gradient-to-b from-brand-gold to-transparent"></div>
         </div>
     </section>
+
+    <!-- SPACER for next content -->
+    <div class="h-0"></div>
+
 
     <!-- Philosophy & Promise Sections -->
     <section id="philosophy" class="section-space bg-slate-50 border-t border-slate-100 scroll-mt-20">
@@ -299,7 +293,7 @@
                    <!-- Main Office Image -->
                    <!-- Main Office Image (Slider) -->
                    <div class="rounded shadow-xl relative z-10 w-full pb-[66.666%] bg-slate-50 overflow-hidden group">
-                        <img src="./trust_final_office_1770166947354.webp" alt="Smart Office" class="philosophy-slide">
+
                         <img src="./trust_construction_meeting_room_1770176808643.png" alt="Construction Meeting" class="philosophy-slide">
                         <img src="./trust_schedule_desk_1770175312710.webp" alt="Comfortable Desk" class="philosophy-slide">
                    </div>
@@ -552,7 +546,7 @@
                 </div>
                 <div class="flex flex-col lg:flex-row-reverse gap-24 items-center">
                     <div class="lg:w-7/12 img-mask">
-                        <img src="./trust_final_young_clean_1770167762260.webp" class="aspect-wide shadow-2xl object-cover object-top" alt="Worker 2">
+                        <img src="./trust_generated_young_pristine.png" class="aspect-[3/2] shadow-2xl object-cover object-[50%_35%]" alt="Worker 2">
                     </div>
                     <div class="lg:w-5/12">
                         <p class="text-sm font-bold tracking-[0.2em] text-brand-gold uppercase pl-4 lg:pl-8 mb-6 border-l-2 border-brand-gold">土木部（24歳）/ 入社2年目</p>
