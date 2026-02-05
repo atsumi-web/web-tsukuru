@@ -1,11 +1,3 @@
-# 🌐 Live Command
-
-**Base Domain:** [https://web-tsukuru.jp/](https://web-tsukuru.jp/)
-**Live View:** [TODAY.md (Web)](https://web-tsukuru.jp/TODAY.md)
-**Quick Links Map:** [`_URL_MAP.md`](_URL_MAP.md)
-
----
-
 # 📅 本日のミッション：2026-02-01 (日)
 
 > **Theme:** 「継続と休息」＋ **「戦略的証拠（Evidence）の確保」**
