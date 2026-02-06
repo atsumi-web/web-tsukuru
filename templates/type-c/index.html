@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="image" href="./optimized_trust_final_hero_1770166933003_sp.webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="./optimized_trust_final_hero_1770166933003.webp?v=3" media="(min-width: 769px)">
     
     <style>
         html { scroll-behavior: smooth; }
@@ -214,6 +216,8 @@
                     opacity: 0;
                     animation: heroSequence 18s ease-in-out infinite;
                 }
+                /* Ensure first slide is visible immediately if animation delays */
+                .hero-slide-item.delay-0 { opacity: 1; z-index: 2; }
                 .delay-0 { animation-delay: 0s; }
                 .delay-6 { animation-delay: 6s; }
                 .delay-12 { animation-delay: 12s; }

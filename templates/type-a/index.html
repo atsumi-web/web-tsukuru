@@ -25,6 +25,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="image" href="./Image_fx_c_hero_sp.webp" media="(max-width: 1024px)">
+    <link rel="preload" as="image" href="./Image_fx_c_hero.webp" media="(min-width: 1025px)">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet"></noscript>
     
     
@@ -175,7 +177,7 @@
 
     <section class="relative min-h-screen flex items-center overflow-hidden pt-20 bg-stone-50">
         <div class="container mx-auto px-4 md:px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 scroll-reveal">
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
                 <div class="lg:w-1/2 order-2 lg:order-1">
                     <div class="inline-block h-px w-16 bg-accent-gold mb-10"></div>
                     <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-black mb-10 md:mb-12 text-stone-900 tracking-tight flex flex-col gap-3 md:gap-6">
@@ -200,7 +202,7 @@
                 </div>
                 <div class="lg:w-1/2 order-1 lg:order-2 relative">
                     <div class="relative z-10 shadow-dreamy overflow-hidden rounded-sm border-[12px] border-white">
-                        <img src="./Image_fx_c_hero.webp" srcset="./Image_fx_c_hero_sp.webp 800w, ./Image_fx_c_hero.webp 1200w" sizes="(max-width: 1024px) 100vw, 50vw" class="w-full h-auto object-cover ken-burns" alt="Hero Image" fetchpriority="high" width="1200" height="800">
+                        <img src="./Image_fx_c_hero.webp" srcset="./Image_fx_c_hero_sp.webp 800w, ./Image_fx_c_hero.webp 1200w" sizes="(max-width: 1024px) 100vw, 50vw" class="w-full h-auto object-cover" alt="Hero Image" fetchpriority="high" width="1200" height="800">
                     </div>
                     <div class="absolute -right-12 top-10 vertical-text text-stone-200/60 font-serif text-6xl font-black tracking-[0.6em] select-none hidden xl:block">
                         美学ある現場
