@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "./tailwind.config.js";
 
 /* Custom Utilities if needed */
 @layer utilities {

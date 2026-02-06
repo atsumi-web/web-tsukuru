@@ -3,9 +3,6 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-yellow-100: oklch(97.3% 0.071 103.193);
@@ -23,14 +20,12 @@
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: oklch(21% 0.034 264.665);
-    --color-stone-50: oklch(98.5% 0.001 106.423);
     --color-stone-100: oklch(97% 0.001 106.424);
     --color-stone-200: oklch(92.3% 0.003 48.717);
     --color-stone-300: oklch(86.9% 0.005 56.366);
     --color-stone-400: oklch(70.9% 0.01 56.259);
     --color-stone-500: oklch(55.3% 0.013 58.071);
     --color-stone-800: oklch(26.8% 0.007 34.298);
-    --color-stone-900: oklch(21.6% 0.006 56.043);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -104,7 +99,9 @@
     --aspect-video: 16 / 9;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --default-font-family: var(--font-sans);
+    --default-font-family: "Noto Sans JP", sans-serif;
+    --default-font-feature-settings: normal;
+    --default-font-variation-settings: normal;
     --default-mono-font-family: var(--font-mono);
   }
 }
@@ -119,9 +116,9 @@
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
-    font-feature-settings: var(--default-font-feature-settings, normal);
-    font-variation-settings: var(--default-font-variation-settings, normal);
+    font-family: "Noto Sans JP", sans-serif;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
     -webkit-tap-highlight-color: transparent;
   }
   hr {
@@ -1061,6 +1058,15 @@
     border-left-style: var(--tw-border-style);
     border-left-width: 4px;
   }
+  .border-accent-gold {
+    border-color: #A68B67;
+  }
+  .border-brand-gold {
+    border-color: #A68A5E;
+  }
+  .border-brand-yellow {
+    border-color: #FACC15;
+  }
   .border-gray-700 {
     border-color: var(--color-gray-700);
   }
@@ -1109,6 +1115,9 @@
       border-color: color-mix(in oklab, var(--color-white) 30%, transparent);
     }
   }
+  .bg-accent-gold {
+    background-color: #A68B67;
+  }
   .bg-black {
     background-color: var(--color-black);
   }
@@ -1117,6 +1126,48 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-black) 10%, transparent);
     }
+  }
+  .bg-brand-base {
+    background-color: #FFFFFF;
+  }
+  .bg-brand-black {
+    background-color: #050505;
+  }
+  .bg-brand-black\/20 {
+    background-color: color-mix(in oklab, #050505 20%, transparent);
+  }
+  .bg-brand-black\/95 {
+    background-color: color-mix(in oklab, #050505 95%, transparent);
+  }
+  .bg-brand-dark {
+    background-color: #121212;
+  }
+  .bg-brand-gold {
+    background-color: #A68A5E;
+  }
+  .bg-brand-gray {
+    background-color: #1F1F1F;
+  }
+  .bg-brand-light {
+    background-color: #F8FAFC;
+  }
+  .bg-brand-navy {
+    background-color: #0F172A;
+  }
+  .bg-brand-navy\/20 {
+    background-color: color-mix(in oklab, #0F172A 20%, transparent);
+  }
+  .bg-brand-navy\/60 {
+    background-color: color-mix(in oklab, #0F172A 60%, transparent);
+  }
+  .bg-brand-navy\/70 {
+    background-color: color-mix(in oklab, #0F172A 70%, transparent);
+  }
+  .bg-brand-yellow {
+    background-color: #FACC15;
+  }
+  .bg-brand-yellow\/20 {
+    background-color: color-mix(in oklab, #FACC15 20%, transparent);
   }
   .bg-current {
     background-color: currentcolor;
@@ -1128,13 +1179,10 @@
     background-color: var(--color-slate-50);
   }
   .bg-stone-50 {
-    background-color: var(--color-stone-50);
+    background-color: #F7F5F2;
   }
   .bg-stone-50\/50 {
-    background-color: color-mix(in srgb, oklch(98.5% 0.001 106.423) 50%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-stone-50) 50%, transparent);
-    }
+    background-color: color-mix(in oklab, #F7F5F2 50%, transparent);
   }
   .bg-stone-200 {
     background-color: var(--color-stone-200);
@@ -1143,7 +1191,7 @@
     background-color: var(--color-stone-800);
   }
   .bg-stone-900 {
-    background-color: var(--color-stone-900);
+    background-color: #1A1A1A;
   }
   .bg-white {
     background-color: var(--color-white);
@@ -1193,14 +1241,44 @@
     }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
-  .from-stone-900 {
-    --tw-gradient-from: var(--color-stone-900);
+  .from-brand-black {
+    --tw-gradient-from: #050505;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-brand-black\/80 {
+    --tw-gradient-from: color-mix(in oklab, #050505 80%, transparent);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-brand-navy\/80 {
+    --tw-gradient-from: color-mix(in oklab, #0F172A 80%, transparent);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-brand-yellow {
+    --tw-gradient-from: #FACC15;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-stone-900 {
+    --tw-gradient-from: #1A1A1A;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .via-brand-black\/60 {
+    --tw-gradient-via: color-mix(in oklab, #050505 60%, transparent);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .via-brand-navy\/10 {
+    --tw-gradient-via: color-mix(in oklab, #0F172A 10%, transparent);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
   .via-transparent {
     --tw-gradient-via: transparent;
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .to-brand-navy\/10 {
+    --tw-gradient-to: color-mix(in oklab, #0F172A 10%, transparent);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-transparent {
     --tw-gradient-to: transparent;
@@ -1376,11 +1454,14 @@
   .text-right {
     text-align: right;
   }
+  .font-display {
+    font-family: Teko, sans-serif;
+  }
   .font-sans {
-    font-family: var(--font-sans);
+    font-family: "Noto Sans JP", sans-serif;
   }
   .font-serif {
-    font-family: var(--font-serif);
+    font-family: "Zen Old Mincho", serif;
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -1580,8 +1661,26 @@
   .whitespace-nowrap {
     white-space: nowrap;
   }
+  .text-accent-gold {
+    color: #A68B67;
+  }
   .text-black {
     color: var(--color-black);
+  }
+  .text-brand-black {
+    color: #050505;
+  }
+  .text-brand-gold {
+    color: #A68A5E;
+  }
+  .text-brand-navy {
+    color: #0F172A;
+  }
+  .text-brand-navy\/90 {
+    color: color-mix(in oklab, #0F172A 90%, transparent);
+  }
+  .text-brand-yellow {
+    color: #FACC15;
   }
   .text-gray-300 {
     color: var(--color-gray-300);
@@ -1623,7 +1722,7 @@
     color: var(--color-stone-500);
   }
   .text-stone-900 {
-    color: var(--color-stone-900);
+    color: #1A1A1A;
   }
   .text-transparent {
     color: transparent;
@@ -1732,6 +1831,10 @@
   }
   .shadow-\[0_20px_50px_rgba\(0\,0\,0\,0\.3\)\] {
     --tw-shadow: 0 20px 50px var(--tw-shadow-color, rgba(0,0,0,0.3));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-dreamy {
+    --tw-shadow: 0 20px 40px -10px var(--tw-shadow-color, rgba(0, 0, 0, 0.15));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-lg {
@@ -1920,6 +2023,27 @@
       }
     }
   }
+  .group-hover\:border-accent-gold {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        border-color: #A68B67;
+      }
+    }
+  }
+  .group-hover\:bg-brand-navy\/40 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        background-color: color-mix(in oklab, #0F172A 40%, transparent);
+      }
+    }
+  }
+  .group-hover\:bg-brand-yellow\/30 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        background-color: color-mix(in oklab, #FACC15 30%, transparent);
+      }
+    }
+  }
   .group-hover\:bg-transparent {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -1932,6 +2056,27 @@
       @media (hover: hover) {
         --tw-tracking: 0.4em;
         letter-spacing: 0.4em;
+      }
+    }
+  }
+  .group-hover\:text-accent-gold {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: #A68B67;
+      }
+    }
+  }
+  .group-hover\:text-brand-gold {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: #A68A5E;
+      }
+    }
+  }
+  .group-hover\:text-brand-yellow {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: #FACC15;
       }
     }
   }
@@ -2009,6 +2154,48 @@
       }
     }
   }
+  .hover\:border-accent-gold {
+    &:hover {
+      @media (hover: hover) {
+        border-color: #A68B67;
+      }
+    }
+  }
+  .hover\:border-brand-yellow {
+    &:hover {
+      @media (hover: hover) {
+        border-color: #FACC15;
+      }
+    }
+  }
+  .hover\:bg-accent-gold {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #A68B67;
+      }
+    }
+  }
+  .hover\:bg-brand-gold {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #A68A5E;
+      }
+    }
+  }
+  .hover\:bg-brand-gold\/80 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in oklab, #A68A5E 80%, transparent);
+      }
+    }
+  }
+  .hover\:bg-brand-yellow {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #FACC15;
+      }
+    }
+  }
   .hover\:bg-slate-50 {
     &:hover {
       @media (hover: hover) {
@@ -2033,10 +2220,38 @@
       }
     }
   }
+  .hover\:text-accent-gold {
+    &:hover {
+      @media (hover: hover) {
+        color: #A68B67;
+      }
+    }
+  }
   .hover\:text-black {
     &:hover {
       @media (hover: hover) {
         color: var(--color-black);
+      }
+    }
+  }
+  .hover\:text-brand-gold {
+    &:hover {
+      @media (hover: hover) {
+        color: #A68A5E;
+      }
+    }
+  }
+  .hover\:text-brand-navy {
+    &:hover {
+      @media (hover: hover) {
+        color: #0F172A;
+      }
+    }
+  }
+  .hover\:text-brand-yellow {
+    &:hover {
+      @media (hover: hover) {
+        color: #FACC15;
       }
     }
   }
