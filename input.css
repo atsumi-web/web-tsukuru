@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Custom Utilities if needed */
+@layer utilities {
+    .text-outline {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+        color: transparent;
+    }
+    .text-outline-black {
+        -webkit-text-stroke: 1px rgba(0,0,0,0.1);
+        color: transparent;
+    }
+    .writing-vertical {
+        writing-mode: vertical-rl;
+    }
+}
