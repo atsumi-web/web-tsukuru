@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Routine System | web-tsukuru</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -26,7 +26,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 60px 20px;
         }
@@ -38,20 +38,8 @@
             border-bottom: 1px solid #e2e8f0;
         }
 
-        .category {
-            display: inline-block;
-            background: var(--navy);
-            color: var(--gold);
-            padding: 4px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: 0.1em;
-        }
-
         h1 {
-            font-family: 'Shippori Mincho', serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 2.2rem;
             color: var(--navy);
             margin: 0;
@@ -65,26 +53,28 @@
             border-left: 5px solid var(--gold);
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             margin-bottom: 50px;
-        }
-
-        .concept-title {
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 10px;
             font-size: 1.1rem;
         }
 
-        section {
-            margin-bottom: 60px;
+        .concept-box strong {
+            color: var(--navy);
+        }
+
+        /* Simple Card */
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
         }
 
         h2 {
             font-family: 'Outfit', sans-serif;
             font-size: 1.6rem;
             color: var(--navy);
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            margin-top: 0;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -92,55 +82,25 @@
 
         h2 i { color: var(--gold); }
 
-        /* Timeline / Cycle Styles */
-        .cycle-step {
-            display: flex;
-            gap: 20px;
-            background: var(--white);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            border: 1px solid transparent;
-            transition: transform 0.2s;
-        }
-        
-        .cycle-step:hover {
-            transform: translateX(5px);
-            border-color: var(--gold);
-        }
-
-        .step-icon {
-            width: 50px;
-            height: 50px;
+        .step-number {
             background: var(--navy);
             color: var(--gold);
-            border-radius: 12px;
-            display: flex;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
         }
 
-        .step-content h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1rem;
-            color: var(--navy);
-        }
-
-        .step-content p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #64748b;
-        }
-
-        /* Prompts Section */
+        /* Prompt Card */
         .prompt-card {
             background: var(--code-bg);
             border-radius: 12px;
             padding: 25px;
-            margin-bottom: 30px;
+            margin: 20px 0;
             position: relative;
             color: #e2e8f0;
         }
@@ -157,7 +117,6 @@
         .prompt-title {
             color: var(--gold);
             font-weight: 700;
-            font-family: 'Outfit', sans-serif;
         }
 
         .copy-btn {
@@ -188,19 +147,17 @@
             line-height: 1.6;
         }
 
-        /* TODAY Link Special Button */
         .today-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--accent); /* Assuming gold/navy mix or strictly navy */
             background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);
             color: #fff;
             text-decoration: none;
             padding: 15px 30px;
             border-radius: 50px;
             font-weight: 700;
-            margin-top: 15px;
+            margin-top: 20px;
             border: 2px solid var(--gold);
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
@@ -215,162 +172,40 @@
             text-align: center;
             margin-top: 80px;
             font-size: 1.5rem;
-            font-family: 'Shippori Mincho', serif;
+            font-family: 'Outfit', sans-serif;
             color: var(--navy);
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        @media (max-width: 600px) {
-            .container { padding: 40px 15px; }
-            h1 { font-size: 1.8rem; }
-            .cycle-step { flex-direction: column; gap: 10px; }
-        }
+        /* Global Nav */
+        .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+        .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <div class="category">SYSTEM MANUAL</div>
-        <h1>毎日やること＆仕組み化マニュアル<br>Daily Routine System</h1>
+        <h1>毎日やること<br>Daily Routine System</h1>
     </header>
 
     <div class="concept-box">
-        <div class="concept-title">💡 コンセプト</div>
-        意志力を使わず、<strong>「息をするように」</strong>成果が出る仕組みを作る。<br>
-        「毎日頑張ってやる」のではなく、「週に1回セットしたら、あとは勝手に回る」状態を目指す。
+        💡 <strong>コンセプト</strong><br>
+        「昨日やったこと、どれぐらい進んでる、今日やること」をシンプルに確認。<br>
+        毎朝5分で完結。
     </div>
 
-    <!-- Overall Cycle -->
-    <section>
-        <h2><i class="fa-solid fa-arrows-spin"></i> 1. 全体像：超・朝型サイクル（4時起き）</h2>
-        <p>「4時起き」という最強の武器を活かします。世の中が寝静まっている間に、全てを終わらせて勝ちに行きます。</p>
+    <!-- Step 1 -->
+    <div class="card">
+        <h2><span class="step-number">1</span> プロンプトをコピーして Antigravity に投げる</h2>
         
-        <div class="cycle-step">
-            <div class="step-icon"><i class="fa-solid fa-sun"></i></div>
-            <div class="step-content">
-                <h3>【日次】 毎朝 04:00 (15min)</h3>
-                <p><strong>昨日の日報 ＆ 今日のセット：</strong> 起床即スタート。昨日の振り返りと、今日の <code>TODAY.md</code> 作成。</p>
-            </div>
-        </div>
-
-        <div class="cycle-step">
-            <div class="step-icon"><i class="fa-solid fa-calendar-week"></i></div>
-            <div class="step-content">
-                <h3>【週次】 日曜 朝04:30 (30min)</h3>
-                <p><strong>静寂のバッチ処理：</strong> 誰も邪魔しない最高の時間に、来週分のコンテンツを一括作成。</p>
-            </div>
-        </div>
-
-        <div class="cycle-step" style="border-left: 5px solid var(--gold);">
-            <div class="step-icon"><i class="fa-solid fa-pen-nib"></i></div>
-            <div class="step-content">
-                <h3>【日中】 本業タイム</h3>
-                <p><strong>全集中：</strong> ルーティンは日の出と共に終わっている。あとはLP制作という「資産」を作るだけ。</p>
-            </div>
-        </div>
-
-        <div class="cycle-step" style="opacity: 0.6; background: #f1f5f9;">
-            <div class="step-icon" style="background: #cbd5e1;"><i class="fa-solid fa-bed"></i></div>
-            <div class="step-content">
-                <h3>【夜】 完全オフ</h3>
-                <p><strong>何もしない：</strong> 明日の4時のために、早めに寝る。それが仕事。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Morning Routine -->
-    <section>
-        <h2><i class="fa-solid fa-coffee"></i> 2. モーニング・ルーティン（起床後）</h2>
-        <p>4時、PCを開いたらこの順番で処理します。</p>
-
-        <div style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
-            <h3>Step 1: 朝イチ作戦会議（進捗確認＆行動決定）</h3>
-            <p>4時のクリアな頭で「昨日の進捗」を冷静に振り返り、AIと共に「今日絶対にやるべきこと」を確定させます。</p>
-            
-            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid var(--gold);">
-                <h4 style="margin-top: 0; color: var(--navy);">✏️ today.html のサブタイトル更新（1分）</h4>
-                <p style="font-size: 0.9rem; margin-bottom: 15px;">日付は自動更新されるので、<strong>サブタイトルだけ</strong>以下から選んでコピペします。</p>
-                
-                <div style="background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-bottom: 10px;">
-                    <div style="color: #94a3b8; margin-bottom: 5px;">// テンプレート集（コピペ用）</div>
-                    <div>〇〇完了＆〇〇強化</div>
-                    <div>〇〇実装＆コンテンツ拡充</div>
-                    <div>〇〇最適化＆マニュアル更新</div>
-                    <div>新規LP制作開始＆リサーチ</div>
-                    <div>クライアント対応＆ブログ執筆</div>
-                </div>
-                
-                <p style="font-size: 0.85rem; color: #64748b; margin: 0;">
-                    <strong>更新場所:</strong> <code>manuals/today.html</code> の 240行目（<code>id="mission-subtitle"</code>）
-                </p>
-            </div>
-        </div>
-
-        <div style="background: white; padding: 30px; border-radius: 12px; text-align: center;">
-            <h3>Step 2: 作戦が決まったら…</h3>
-            <a href="../TODAY.md" class="today-btn">
-                <i class="fa-solid fa-rocket"></i> TODAY.md を開く
-            </a>
-            <p style="margin-top:20px; font-size:0.9rem; color:#64748b;">世の中が動き出す前に、今日の勝利条件をクリアする。</p>
-        </div>
-    </section>
-
-    <!-- Calendar Setup -->
-    <section>
-        <h2><i class="fa-solid fa-calendar-check"></i> 0. 【初期設定】カレンダー通知（4時起き）</h2>
-        <p>以下のボタンで「4時」のサイクルを登録してください。</p>
-
-        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-            <!-- Daily -->
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=朝イチ作戦会議（進捗＆今日セット）&details=4時起床。昨日の進捗確認と、今日の戦略立案（TODAY.md更新）。%0Aマニュアル：%20manuals/11_daily_routine_system.html&recur=RRULE:FREQ=DAILY&dates=20260201T040000/20260201T041500" 
-               target="_blank"
-               class="today-btn" 
-               style="background: var(--navy); border-color: var(--navy); font-size: 0.9rem;">
-                <i class="fa-regular fa-calendar-plus"></i> 毎朝 04:00（日次）を登録
-            </a>
-
-            <!-- Weekly -->
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=週次バッチ（ブログ・SNS）&details=静寂の中で来週分のコンテンツを一括作成。&recur=RRULE:FREQ=WEEKLY;BYDAY=SU&dates=20260201T043000/20260201T050000" 
-               target="_blank"
-               class="today-btn" 
-               style="background: var(--navy); border-color: var(--navy); font-size: 0.9rem;">
-                <i class="fa-regular fa-calendar-plus"></i> 日曜 朝04:30（週次）を登録
-            </a>
-        </div>
-    </section>
-    
-    <!-- Prompts -->
-    <section>
-        <h2><i class="fa-solid fa-terminal"></i> 3. 【AI指示書】 コピペ用プロンプト集</h2>
-        <p>コピーしてチャットに貼り付けてください。</p>
-
-        <!-- Prompt 1 -->
         <div class="prompt-card">
             <div class="prompt-header">
-                <span class="prompt-title">A. 【週次】ブログ・SNSネタ 一括作成（日曜朝）</span>
-                <button class="copy-btn" onclick="copyToClipboard('prompt1')"><i class="fa-regular fa-copy"></i> Copy</button>
+                <span class="prompt-title">毎朝の作戦会議プロンプト</span>
+                <button class="copy-btn" onclick="copyToClipboard('morning-prompt')"><i class="fa-regular fa-copy"></i> Copy</button>
             </div>
-            <pre id="prompt1">@Antigravity
-おはよう。頭が冴えているうちに今週分のコンテンツを作りたい。
-
-【依頼内容】
-1. 「建設会社の採用」に関するブログ記事のネタを7つ提案して。
-   - ターゲット：地方の建設会社社長（30〜50代）
-   - キーワード：「求人 悩み」「若手採用」「スマホ対応」「維持費0円」など
-2. 提案された7つすべての「タイトル」「見出し構成」「本文（各2000文字程度）」を一気に作成して。
-3. 同時に、それぞれの記事をSNS（Instagram/X）で紹介するための「要約投稿文」も7日分作って。
-
-これらを今すぐバッチ作成してください。</pre>
-        </div>
-
-        <!-- Prompt 2 -->
-        <div class="prompt-card">
-            <div class="prompt-header">
-                <span class="prompt-title">B. 【毎朝】昨日と今日の作戦会議</span>
-                <button class="copy-btn" onclick="copyToClipboard('prompt2')"><i class="fa-regular fa-copy"></i> Copy</button>
-            </div>
-            <pre id="prompt2">@Antigravity
+            <pre id="morning-prompt">@Antigravity
 おはよう。昨日のチャットログを読んで、
 
 1. 昨日進んだことの整理（日報作成）
@@ -385,23 +220,27 @@
 この3つをやってほしい。
 頭が冴えている今、戦略的に動きたいので、90日ロードマップに基づいた鋭い提案を頼む。</pre>
         </div>
+    </div>
 
-        <!-- Prompt 3 -->
-        <div class="prompt-card">
-            <div class="prompt-header">
-                <span class="prompt-title">C. 【随時】悩み相談（壁打ち）</span>
-                <button class="copy-btn" onclick="copyToClipboard('prompt3')"><i class="fa-regular fa-copy"></i> Copy</button>
-            </div>
-            <pre id="prompt3">@Antigravity
-今、〇〇について迷っているんだけど、
-「資産型LPコンサルタント」としての視点で、メリット・デメリットと、えりさんが取るべき行動をアドバイスして。</pre>
-        </div>
-    </section>
+    <!-- Step 2 -->
+    <div class="card" style="text-align: center;">
+        <h2 style="justify-content: center;"><span class="step-number">2</span> 今日のミッションを確認</h2>
+        <p style="margin-bottom: 20px;">Antigravity が TODAY.md を更新したら、以下を開く：</p>
+        <a href="today.html" class="today-btn">
+            <i class="fa-solid fa-rocket"></i> TODAY.md を見る
+        </a>
+    </div>
 
     <div class="motto-banner">
         「頑張らない。仕組みにする。」
     </div>
 
+</div>
+
+<!-- Global Navigation -->
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="運用司令室へ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
 </div>
 
 <script>
@@ -423,26 +262,6 @@
             }, 2000);
         });
     }
-</script>
-
-<!-- GLOBAL NAVIGATION -->
-<style>
-    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
-    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
-    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
-    .to-top { opacity: 0; pointer-events: none; }
-    .to-top.visible { opacity: 1; pointer-events: all; }
-</style>
-<div class="global-nav">
-    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
-    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
-</div>
-<script>
-    window.addEventListener('scroll', () => {
-        const toTop = document.querySelector('.to-top');
-        if (window.scrollY > 300) toTop.classList.add('visible');
-        else toTop.classList.remove('visible');
-    });
 </script>
 </body>
 </html>
