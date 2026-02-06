@@ -16,3 +16,6 @@ _backup*/
 
 # Editor
 .vscode/
+
+# Dependencies
+node_modules/
