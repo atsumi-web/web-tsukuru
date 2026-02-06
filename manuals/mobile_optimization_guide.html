@@ -168,6 +168,69 @@
                 </tbody>
             </table>
         </main>
+        
+        <!-- NEW SECTION ADDED -->
+        <main class="content" style="margin-top: 40px;">
+            <h2>9. 技術的パフォーマンス最適化 (PSI 対策)</h2>
+            <p>PageSpeed Insights (PSI) でモバイルスコア 80+ を叩き出すための「技術的実装ルール」。<br>
+            見た目のリッチさを維持しつつ、モバイルの回線負荷を極限まで減らすための鉄則。</p>
+
+            <h3>9-1. 重量級メディアの完全遮断 (JS Injection)</h3>
+            <ul>
+                <li><strong>問題</strong>: <code>display: none</code> で動画を隠しても、ブラウザは「念のため」裏で動画ファイルをダウンロードしてしまう（1.5MB〜の無駄死に）。</li>
+                <li><strong>解決策</strong>: HTMLに <code>&lt;source&gt;</code> タグを書かず、<strong>JavaScriptで画面幅判定してから注入する</strong>。</li>
+            </ul>
+<pre style="background:#1e293b; color:#fff; padding:15px; border-radius:8px; overflow-x:auto;"><code>&lt;!-- HTML: videoタグの中身は空にしておく --&gt;
+&lt;video id="heroVideo" poster="image.webp"&gt;&lt;/video&gt;
+
+&lt;script&gt;
+// 999px以上（PC）の場合のみ動画ソースを注入
+if (window.innerWidth &gt; 999) {
+    const v = document.getElementById('heroVideo');
+    if (v) {
+        const s = document.createElement('source');
+        s.src = 'movie.mp4';
+        s.type = 'video/mp4';
+        v.appendChild(s);
+        v.load();
+    }
+}
+&lt;/script&gt;</code></pre>
+
+            <h3>9-2. 脱・外部アイコンライブラリ (No FontAwesome)</h3>
+            <ul>
+                <li><strong>禁止</strong>: FontAwesome 等の外部CDN読み込み。
+                    <ul><li>たった数個のアイコンのために 200KB〜 のCSSを読み込むのは、レンダリングブロック（描画遅延）の主犯となるため<strong>厳禁</strong>。</li></ul>
+                </li>
+                <li><strong>推奨</strong>: <strong>Inline SVG</strong>。
+                    <ul><li>必要なアイコンだけをSVGコードとしてHTMLに直接埋め込む。通信発生ゼロ、描画待ち時間ゼロ。</li></ul>
+                </li>
+            </ul>
+
+            <h3>9-3. モバイル画像の「攻め」の圧縮基準</h3>
+            <p>スマホ画面は物理サイズが小さいため、画質を下げても粗が目立ちにくい。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>対象</th>
+                        <th>推奨設定 (ImageMagick)</th>
+                        <th>解説</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Desktop画像</strong></td>
+                        <td><code>-quality 75</code></td>
+                        <td>大画面での美麗さを維持。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile画像</strong></td>
+                        <td><strong><code>-quality 50</code></strong></td>
+                        <td><strong>「攻めのQ50」</strong>。スマホではQ75との違いはほぼ判別不能だが、容量は劇的に減る（例: 80KB→35KB）。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
     </div>
 <!-- GLOBAL NAVIGATION -->
 <style>

@@ -21,7 +21,8 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Removed -->
     
     <script>
         tailwind.config = {
@@ -99,15 +100,17 @@
 
             menuToggle.addEventListener('click', () => {
                 isMenuOpen = !isMenuOpen;
+                // Icons as SVG strings
+                const iconBars = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 448 512" fill="currentColor"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>';
+                const iconXmark = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 384 512" fill="currentColor"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
+                
                 if (isMenuOpen) {
                     mobileMenu.classList.remove('translate-x-full');
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
+                    menuToggle.innerHTML = iconXmark;
                     document.body.style.overflow = 'hidden';
                 } else {
                     mobileMenu.classList.add('translate-x-full');
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
+                    menuToggle.innerHTML = iconBars;
                     document.body.style.overflow = '';
                 }
             });
@@ -166,7 +169,7 @@
                         Entry
                     </a>
                     <button id="menu-toggle" class="xl:hidden text-stone-900 hover:text-accent-gold transition z-50 relative">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 448 512" fill="currentColor"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
                     </button>
                 </div>
             </div>
@@ -742,9 +745,9 @@
                             <span class="bg-accent-gold text-stone-900 text-[10px] font-bold px-3 py-1 uppercase tracking-widest italic">Year 1</span>
                         </div>
                         <ul class="space-y-3 text-stone-300 text-sm font-light">
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 4S（現場美化）の徹底と安全管理の基礎</li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 写真撮影のポイントと記録管理アプリの操作</li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 職人さんとのコミュニケーションと名称の暗記</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 4S（現場美化）の徹底と安全管理の基礎</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 写真撮影のポイントと記録管理アプリの操作</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 職人さんとのコミュニケーションと名称の暗記</li>
                         </ul>
                     </div>
 
@@ -755,9 +758,9 @@
                             <span class="bg-accent-gold text-stone-900 text-[10px] font-bold px-3 py-1 uppercase tracking-widest italic">Year 2-3</span>
                         </div>
                         <ul class="space-y-3 text-stone-300 text-sm font-light">
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 小規模リノベーション現場の品質管理担当</li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 図面の読み込みと簡単な修正指示</li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 2級施工管理技士の取得（資格手当支給開始）</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 小規模リノベーション現場の品質管理担当</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 図面の読み込みと簡単な修正指示</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 2級施工管理技士の取得（資格手当支給開始）</li>
                         </ul>
                     </div>
 
@@ -768,9 +771,9 @@
                             <span class="bg-accent-gold text-stone-900 text-[10px] font-bold px-3 py-1 uppercase tracking-widest italic">Year 4-5</span>
                         </div>
                         <ul class="space-y-3 text-stone-300 text-sm font-light">
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 新築RC現場の所長代理として工程管理</li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 実行予算の作成と原価管理の補佐</li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-check text-accent-gold mt-1 text-xs"></i> 若手社員のメンター指導</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 新築RC現場の所長代理として工程管理</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 実行予算の作成と原価管理の補佐</li>
+                            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 448 512" fill="currentColor" class="text-accent-gold mt-1"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> 若手社員のメンター指導</li>
                         </ul>
                     </div>
                 </div>
@@ -871,7 +874,7 @@
 
     <!-- Back to Top Button -->
     <a href="#" id="back-to-top" class="fixed bottom-6 right-6 bg-stone-900 text-white w-12 h-12 flex items-center justify-center rounded-sm shadow-lg border border-white/10 opacity-0 pointer-events-none translate-y-4 transition-all duration-500 hover:bg-accent-gold z-40 group" aria-label="ページトップへ戻る">
-        <i class="fa-solid fa-chevron-up text-sm group-hover:-translate-y-1 transition-transform duration-300"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512" fill="currentColor" class="group-hover:-translate-y-1 transition-transform duration-300"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>
     </a>
 
 </body>

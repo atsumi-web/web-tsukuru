@@ -132,6 +132,25 @@ Get-Item images/フォルダ名/画像名.jpg | Select-Object Name, @{Name="Size
 
 <table>
     <tr>
+        <th>ターゲット</th>
+        <th>リサイズ・圧縮設定</th>
+        <th>用途・解説</th>
+    </tr>
+    <tr>
+        <td><strong>PC用・高画質</strong></td>
+        <td><code>-quality 75</code></td>
+        <td>一般的なWebP変換。画質と容量のバランスが良い標準設定。</td>
+    </tr>
+    <tr>
+        <td><strong>モバイル用 (攻め)</strong></td>
+        <td><strong><code>-quality 50</code></strong></td>
+        <td><strong>スマホ専用の攻撃的設定</strong>。<br>小さな画面では画質劣化が目立たないため、ここまで下げて容量を極限まで削る。<br>（例: <code>_mobile.webp</code>）</td>
+    </tr>
+</table>
+
+<h3>サイズ別リサイズ目安</h3>
+<table>
+    <tr>
         <th>元のサイズ</th>
         <th>リサイズ指定</th>
         <th>例</th>

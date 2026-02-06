@@ -60,7 +60,9 @@
             <h2>3. 画像・パフォーマンス (Performance)</h2>
             <ul class="checklist">
                 <li><strong>画像形式</strong>: 全ての写真が <code>.webp</code> になっているか？</li>
-                <li><strong>ファイルサイズ</strong>: 1枚あたり200KB以下を目指しているか？</li>
+                <li><strong>スマホ画像圧縮</strong>: モバイル用画像は <code>-quality 50</code> で極限まで軽量化されているか？</li>
+                <li><strong>動画ブロック</strong>: スマホで動画ファイルが裏でダウンロードされていないか？（JS制御確認）</li>
+                <li><strong>脱・アイコンフォント</strong>: FontAwesome等の外部CSSが読み込まれていないか？（SVG化確認）</li>
                 <li><strong>Consoleエラー</strong>: F12（開発者ツール）に赤文字のエラーが出ていないか？</li>
             </ul>
 

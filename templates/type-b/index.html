@@ -21,7 +21,8 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Teko:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Teko:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Removed -->
     
     <script>
         tailwind.config = {
@@ -104,7 +105,7 @@
 
     <section class="relative min-h-screen flex items-center justify-start overflow-hidden py-28 md:py-20">
         <div class="absolute inset-0 z-0">
-            <img src="./Image_fx.png" class="w-full h-full object-cover grayscale opacity-40 scale-105" alt="Hero" fetchpriority="high">
+            <img src="./Image_fx.webp" class="w-full h-full object-cover grayscale opacity-40 scale-105" alt="Hero" fetchpriority="high">
             <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/60 to-transparent"></div>
         </div>
         <div class="absolute top-1/2 right-0 -translate-y-1/2 text-[25vw] font-display font-black text-outline pointer-events-none z-0 uppercase italic leading-none">UPDATE</div>
@@ -407,7 +408,7 @@
             <!-- Company Info & Office -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-brand-gray p-12 md:p-20 border border-white/5 relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-4 opacity-5">
-                    <i class="fas fa-building text-9xl"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 448 512" fill="currentColor"><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32 0-97.2-78.8-176-176-176zM448 128c0-70.7-57.3-128-128-128H128C57.3 0 0 57.3 0 128v64c0 70.7 57.3 128 128 128h192c70.7 0 128-57.3 128-128v-64zM240 160h-48c-8.8 0-16-7.2-16-16s7.2-16 16-16h48c8.8 0 16 7.2 16 16s-7.2 16-16 16zm-48-64h48c8.8 0 16-7.2 16-16s-7.2-16-16-16h-48c-8.8 0-16 7.2-16 16s7.2 16 16 16zm-16 64h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0-64h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16z"/></svg>
                 </div>
                 
                 <div>
@@ -531,7 +532,7 @@
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-10 items-stretch">
                 <a href="#" class="bg-black text-white px-12 py-8 text-2xl md:text-3xl font-black tracking-[0.1em] hover:bg-white hover:text-black transition-all duration-700 italic uppercase shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform hover:-translate-y-2 flex items-center gap-4">
-                    <i class="fab fa-line text-4xl"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="36" width="36" viewBox="0 0 448 512" fill="currentColor"><path d="M272.1 204.2v-19.1h-44.6v39.7h44.6v-20.6zm-175.4 0v-19.1H52.1v39.7h44.6v-20.6zm43.3 19.1h45.2v-39.7h-45.2v39.7zm87.4 0h45.2v-39.7h-45.2v39.7zm-225 39.7h44.6v-20.6H52.4v20.6h-5zm0-59.3H52.4v-20.1H47.4v20.1h44.6v20h-44.6zM227 48C94.7 48 0 135.5 0 258c0 58.7 21.6 112.5 57.6 153.2-2.3 14.2-11.3 46-12.7 51.9-1 4.2 1.9 6.2 4.2 4.6 2.3-1.6 29.5-16.7 40.6-23 23 9.4 48.7 15.2 75.3 15.2 132.3 0 227-87.5 227-210S359.3 48 227 48z"/></svg>
                     5秒で完了。LINEで適性診断を始める
                 </a>
             </div>
@@ -569,13 +570,13 @@
 
     <!-- Back to Top Button -->
     <a href="#" id="back-to-top" class="fixed bottom-24 right-6 md:bottom-8 md:right-8 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 flex items-center justify-center rounded-sm opacity-0 invisible transition-all duration-300 hover:bg-brand-yellow hover:text-black hover:border-brand-yellow z-40 group">
-        <i class="fas fa-arrow-up transform group-hover:-translate-y-1 transition duration-300"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="36" width="36" viewBox="0 0 448 512" fill="currentColor"><path d="M272 100.3V224H124.8c-14.2 0-21.3-17.2-11.3-27.3L232.7 77.4c6.2-6.2 16.4-6.2 22.6 0l119.2 119.2c10 10.1 2.9 27.3-11.3 27.3H272V100.3zM256 32c17.7 0 32 14.3 32 32V256h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H288V448c0 17.7-14.3 32-32 32H192c-17.7 0-32-14.3-32-32V320H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h96V64c0-17.7 14.3-32 32-32h96z"/></svg>
     </a>
 
     <!-- Sticky CTA -->
     <div class="fixed bottom-0 left-0 w-full bg-brand-yellow z-50 py-4 px-6 flex justify-center items-center shadow-[0_-10px_40px_rgba(0,0,0,0.3)] transition-transform duration-300 md:hidden">
         <a href="#" class="w-full bg-black text-white text-center py-4 font-black italic uppercase tracking-wider text-sm flex items-center justify-center gap-3 rounded-sm">
-            <i class="fab fa-line text-xl"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 448 512" fill="currentColor"><path d="M272.1 204.2v-19.1h-44.6v39.7h44.6v-20.6zm-175.4 0v-19.1H52.1v39.7h44.6v-20.6zm43.3 19.1h45.2v-39.7h-45.2v39.7zm87.4 0h45.2v-39.7h-45.2v39.7zm-225 39.7h44.6v-20.6H52.4v20.6h-5zm0-59.3H52.4v-20.1H47.4v20.1h44.6v20h-44.6zM227 48C94.7 48 0 135.5 0 258c0 58.7 21.6 112.5 57.6 153.2-2.3 14.2-11.3 46-12.7 51.9-1 4.2 1.9 6.2 4.2 4.6 2.3-1.6 29.5-16.7 40.6-23 23 9.4 48.7 15.2 75.3 15.2 132.3 0 227-87.5 227-210S359.3 48 227 48z"/></svg>
             5秒で完了。LINEで適性診断を始める
         </a>
     </div>

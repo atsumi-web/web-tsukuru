@@ -118,7 +118,7 @@
     <header class="site-header">
         <div class="container">
             <h1>Antigravity直伝・コーディングの鉄則</h1>
-            <p>「修正の無限ループ」から抜け出すための15の鉄則</p>
+            <p>「修正の無限ループ」から抜け出すための16の鉄則</p>
         </div>
     </header>
 
@@ -468,6 +468,33 @@ rm custom.css</pre>
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
 
+            <div class="highlight-box" style="background: #e8f5e9; border-left: 4px solid #00c853; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">⚡ Performance First Coding</h3>
+                <p>「後から高速化」は泥沼の元。最初から「爆速」で作るための鉄則。</p>
+            </div>
+
+            <h2>16. 脱・重量級ライブラリ & メディア</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: Inline SVG</span>
+                <p>FontAwesome等のアイコンフォントは<strong>使用禁止</strong>（250KBの無駄）。<br>
+                アイコンは必ずSVGコードとしてHTMLに埋め込む。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: JS Media Injection</span>
+                <p>動画などの重いファイルは、HTMLに直接書かない。<br>
+                <code>window.innerWidth</code> でPC判定してから、JSでタグを生成・注入する。<br>
+                （スマホでの裏ダウンロードを完全に防ぐため）</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: Mobile Q50</span>
+                <p>スマホ用画像は品質(Quality)を <strong>50</strong> まで落とす。<br>
+                小さな画面では劣化が気にならず、容量を劇的に削減できる。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
             <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
                 <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：15の鉄則</h3>
                 <ol style="line-height: 2;">
@@ -486,6 +513,7 @@ rm custom.css</pre>
                     <li><strong>ブラウザ確認義務化</strong></li>
                     <li><strong>ロールバック手順明文化</strong></li>
                     <li><strong>AI（Antigravity）協働ルール</strong></li>
+                    <li><strong>Performance First (SVG/JS-Inject/Q50)</strong></li>
                 </ol>
                 <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
             </div>
