@@ -8,8 +8,8 @@
     <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Zen+Old+Mincho:wght@400;700;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet"></noscript>
     
     <style>
         html { scroll-behavior: smooth; }
@@ -107,7 +107,7 @@
     <header class="fixed w-full z-50 bg-brand-navy border-b border-white/10 shadow-lg">
         <div class="container mx-auto px-6 md:px-8 lg:px-12 h-16 md:h-20 flex items-center gap-4 lg:gap-8 justify-between lg:justify-start">
             <a href="#" class="flex items-center gap-3 lg:gap-4 group flex-shrink-0">
-                <img src="./yamato_symbol_logo_1770173769718.webp" alt="Logo" class="h-10 md:h-12 lg:h-14 w-auto group-hover:opacity-80 transition bg-white rounded-full p-[2px]">
+                <img src="./yamato_symbol_logo_1770173769718.webp" alt="Logo" class="h-10 md:h-12 lg:h-14 w-auto group-hover:opacity-80 transition bg-white rounded-full p-[2px]" width="200" height="200">
                 <div class="flex flex-col justify-center">
                     <span class="font-serif text-xl md:text-2xl font-bold tracking-widest text-white leading-none">大和建設</span>
                     <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-brand-gold leading-none mt-1">YAMATO CONSTRUCTION</span>
@@ -221,17 +221,17 @@
             
             <!-- Slide 1: Site Overview -->
             <picture>
-                <source media="(max-width: 768px)" srcset="./trust_hero_slide1_mobile.webp?v=3">
+                <source media="(max-width: 768px)" srcset="./optimized_trust_final_hero_1770166933003_sp.webp">
                 <img src="./optimized_trust_final_hero_1770166933003.webp?v=3" alt="建設現場" class="hero-slide-item delay-0 brightness-95 grayscale group-hover:grayscale-0 transition duration-1000" fetchpriority="high" width="1200" height="800">
             </picture>
             <!-- Slide 2: Road Works -->
             <picture>
-                <source media="(max-width: 768px)" srcset="./trust_hero_slide2_mobile.webp?v=3">
+                <source media="(max-width: 768px)" srcset="./optimized_trust_final_work_road_1770166977138_sp.webp">
                 <img src="./optimized_trust_final_work_road_1770166977138.webp?v=3" alt="道路工事" class="hero-slide-item delay-6 brightness-95 grayscale group-hover:grayscale-0 transition duration-1000" style="object-position: center;" loading="lazy" decoding="async">
             </picture>
             <!-- Slide 3: River Works -->
             <picture>
-                <source media="(max-width: 768px)" srcset="./trust_hero_slide3_mobile.webp?v=3">
+                <source media="(max-width: 768px)" srcset="./optimized_trust_final_work_river_1770166963202_sp.webp">
                 <img src="./optimized_trust_final_work_river_1770166963202.webp?v=3" alt="河川工事" class="hero-slide-item delay-12 brightness-95 grayscale group-hover:grayscale-0 transition duration-1000" loading="lazy" decoding="async">
             </picture>
             
@@ -293,7 +293,7 @@
                    <div class="rounded shadow-xl relative z-10 w-full pb-[66.666%] bg-slate-50 overflow-hidden group">
 
                         <img src="./trust_construction_meeting_room_1770176808643.webp" alt="Construction Meeting" class="philosophy-slide" loading="lazy" decoding="async">
-                        <img src="./trust_schedule_desk_1770175312710.webp" alt="Comfortable Desk" class="philosophy-slide" loading="lazy" decoding="async">
+                        <img src="./trust_schedule_desk_1770175312710.webp" srcset="./trust_schedule_desk_1770175312710_sp.webp 800w, ./trust_schedule_desk_1770175312710.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw" alt="Comfortable Desk" class="philosophy-slide" loading="lazy" decoding="async">
                    </div>
                    
                    <!-- CEO Image Overlay -->
@@ -322,7 +322,7 @@
              <div id="promise" class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 fade-in-up scroll-mt-20">
                 <div class="lg:w-1/2 relative">
                    <div class="img-mask rounded shadow-xl">
-                        <img src="./trust_final_work_river_1770166963202.webp" alt="River Protection" class="aspect-landscape object-cover hover:scale-105 transition duration-700" loading="lazy" decoding="async">
+                        <img src="./trust_final_work_river_1770166963202.webp" srcset="./trust_final_work_river_1770166963202_sp.webp 800w, ./trust_final_work_river_1770166963202.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw" alt="River Protection" class="aspect-landscape object-cover hover:scale-105 transition duration-700" loading="lazy" decoding="async">
                    </div>
                 </div>
                 <div class="lg:w-1/2">
@@ -535,7 +535,7 @@
             </div>
                 <div class="flex flex-col lg:flex-row gap-24 items-center mb-32">
                     <div class="lg:w-7/12 img-mask">
-                        <img src="./trust_final_veteran_clean_1770167746457.webp" class="aspect-wide shadow-2xl object-cover object-top" alt="Worker 1">
+                        <img src="./trust_final_veteran_clean_1770167746457.webp" srcset="./trust_final_veteran_clean_1770167746457_sp.webp 600w, ./trust_final_veteran_clean_1770167746457.webp 1024w" sizes="(max-width: 768px) 100vw, 600px" class="aspect-wide shadow-2xl object-cover object-top" alt="Worker 1">
                     </div>
                     <div class="lg:w-5/12">
                         <p class="text-sm font-bold tracking-[0.2em] text-brand-gold uppercase pl-4 lg:pl-8 mb-6 border-l-2 border-brand-gold">土木部 工事長（60歳）/ 勤続38年</p>
@@ -544,7 +544,7 @@
                 </div>
                 <div class="flex flex-col lg:flex-row-reverse gap-24 items-center">
                     <div class="lg:w-7/12 img-mask">
-                        <img src="./trust_generated_young_pristine.webp" class="aspect-[3/2] shadow-2xl object-cover object-[50%_35%]" alt="Worker 2">
+                        <img src="./trust_generated_young_pristine.webp" class="aspect-[3/2] shadow-2xl object-cover object-[50%_35%]" alt="Worker 2" width="600" height="400">
                     </div>
                     <div class="lg:w-5/12">
                         <p class="text-sm font-bold tracking-[0.2em] text-brand-gold uppercase pl-4 lg:pl-8 mb-6 border-l-2 border-brand-gold">土木部（24歳）/ 入社2年目</p>
@@ -566,7 +566,7 @@
                 <!-- Step 1 -->
                 <div class="group fade-in-up">
                     <div class="mb-6 relative rounded overflow-hidden shadow-lg aspect-landscape img-mask">
-                        <img src="./trust_schedule_morning_mixed.webp?v=3" alt="Morning" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_schedule_morning_mixed.webp?v=3" alt="Morning" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" width="800" height="534">
                         <div class="absolute top-0 left-0 bg-brand-navy text-white text-xs font-bold px-3 py-1">08:00</div>
                     </div>
                     <h3 class="text-lg font-bold mb-3 border-b border-brand-gold pb-2 inline-block">朝礼・安全指示</h3>
@@ -575,7 +575,7 @@
                 <!-- Step 2 -->
                 <div class="group fade-in-up" style="transition-delay: 0.1s;">
                     <div class="mb-6 relative rounded overflow-hidden shadow-lg aspect-landscape img-mask">
-                        <img src="./trust_schedule_lunch_v4.webp" alt="Lunch" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_schedule_lunch_v4.webp" alt="Lunch" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" width="800" height="534">
                         <div class="absolute top-0 left-0 bg-brand-navy text-white text-xs font-bold px-3 py-1">12:00</div>
                     </div>
                     <h3 class="text-lg font-bold mb-3 border-b border-brand-gold pb-2 inline-block">昼休憩</h3>
@@ -584,7 +584,7 @@
                 <!-- Step 3 -->
                 <div class="group fade-in-up" style="transition-delay: 0.2s;">
                     <div class="mb-6 relative rounded overflow-hidden shadow-lg aspect-landscape img-mask">
-                        <img src="./trust_schedule_sunset_v5.webp?v=3" alt="Sunset" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_schedule_sunset_v5.webp?v=3" alt="Sunset" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" width="800" height="534">
                         <div class="absolute top-0 left-0 bg-brand-navy text-white text-xs font-bold px-3 py-1">17:00</div>
                     </div>
                     <h3 class="text-lg font-bold mb-3 border-b border-brand-gold pb-2 inline-block">作業終了・片付け</h3>
@@ -593,7 +593,7 @@
                 <!-- Step 4 -->
                 <div class="group fade-in-up" style="transition-delay: 0.3s;">
                     <div class="mb-6 relative rounded overflow-hidden shadow-lg aspect-landscape img-mask">
-                        <img src="./trust_schedule_desk_v4.webp" alt="Desk" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_schedule_desk_v4.webp" alt="Desk" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" width="800" height="534">
                         <div class="absolute top-0 left-0 bg-brand-navy text-white text-xs font-bold px-3 py-1">17:30</div>
                     </div>
                     <h3 class="text-lg font-bold mb-3 border-b border-brand-gold pb-2 inline-block">帰社・退社</h3>
@@ -615,7 +615,7 @@
                 <!-- Career 1 -->
                 <div class="flex-1 group fade-in-up">
                     <div class="aspect-video overflow-hidden rounded shadow-xl mb-8 img-mask">
-                        <img src="./trust_career_training_1770175328436.webp" alt="Training" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="./trust_career_training_1770175328436.webp" srcset="./trust_career_training_1770175328436_sp.webp 600w, ./trust_career_training_1770175328436.webp 1024w" sizes="(max-width: 768px) 100vw, 600px" alt="Training" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="px-4">
                         <h3 class="text-2xl font-bold mb-4 font-serif">マンツーマン指導</h3>
@@ -625,7 +625,7 @@
                 <!-- Career 2 -->
                 <div class="flex-1 group fade-in-up" style="transition-delay: 0.2s;">
                     <div class="aspect-video overflow-hidden rounded shadow-xl mb-8 img-mask">
-                        <img src="./trust_career_license_1770175344296.webp" alt="License" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy">
+                        <img src="./trust_career_license_1770175344296.webp" srcset="./trust_career_license_1770175344296_sp.webp 600w, ./trust_career_license_1770175344296.webp 1024w" sizes="(max-width: 768px) 100vw, 600px" alt="License" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy">
                     </div>
                     <div class="px-4">
                         <h3 class="text-2xl font-bold mb-4 font-serif">資格取得は全額支援</h3>
