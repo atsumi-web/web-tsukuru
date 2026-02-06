@@ -603,9 +603,14 @@ section {
   }
   .hero-desc {
     padding: 20px;
-    margin-bottom: 30px; /* 40px -> 30px */
+    margin-bottom: 30px;
     font-size: 0.9rem;
     line-height: 1.6;
+    /* Performance Fix: Disable expensive blur on mobile */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.9); /* Opaque fallback */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Simplified shadow */
   }
 }
 
@@ -842,6 +847,12 @@ section {
 @media (max-width: 768px) {
   .problem-grid-wide {
     grid-template-columns: 1fr;
+  }
+  /* Performance Fix: Disable expensive blur on mobile */
+  .problem-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--bg-problem-card-solid, rgba(23, 37, 84, 0.95)); /* Solid Fallback */
   }
 }
 
