@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【実録】採用LPの表示速度、31点から73点へ。「動画」を使いながら高速化するプロの技術｜web-tsukuru.jp</title>
-    <meta name="description" content="リッチな動画を使った採用LPでも、スマホの表示速度を犠牲にする必要はありません。モバイルスコアを31点から73点まで劇的に改善した具体的な施策を公開します。">
+    <title>【実録】動画を使った採用LPを、スマホで高速表示する技術｜web-tsukuru.jp</title>
+    <meta name="description" content="リッチな動画を使った採用LPでも、スマホの表示速度を犠牲にする必要はありません。「ハイブリッド読み込み」など、プロの技術で劇的に改善した具体的な施策を公開します。">
 
     <!-- OGP -->
-    <meta property="og:title" content="【実録】採用LPの表示速度、31点から73点へ。「動画」を使いながら高速化するプロの技術">
+    <meta property="og:title" content="【実録】動画を使った採用LPを、スマホで高速表示する技術">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://web-tsukuru.jp/blog/posts/20260205_hotta_performance.html">
     <meta property="og:image" content="https://web-tsukuru.jp/blog/images/blog_illust_optimization.webp">
-    <meta property="og:description" content="リッチな動画を使った採用LPでも、スマホの表示速度を犠牲にする必要はありません。モバイルスコアを31点から73点まで劇的に改善した具体的な施策を公開します。">
+    <meta property="og:description" content="リッチな動画を使った採用LPでも、スマホの表示速度を犠牲にする必要はありません。「ハイブリッド読み込み」など、プロの技術で劇的に改善した具体的な施策を公開します。">
     <meta property="og:site_name" content="web-tsukuru.jp">
 
     <!-- Twitter Card -->
@@ -63,7 +63,7 @@
         <!-- Post Header -->
         <header class="post-header">
             <span class="post-category">技術解説</span>
-            <h1 class="post-title">【実録】採用LPの表示速度、31点から73点へ。「動画」を使いながら高速化するプロの技術</h1>
+            <h1 class="post-title">【実録】動画を使った採用LPを、スマホで高速表示する技術</h1>
             <div class="post-meta">
                 <time datetime="2026-02-05"><i class="fa-regular fa-clock"></i> 2026.02.05</time>
                 <span style="margin:0 10px;">|</span>
@@ -81,19 +81,19 @@
             <p>動画を入れた途端、サイトが重くなり、スマホでの表示が遅くなる。<br>
             結果として、せっかくアクセスしてくれた求職者が、中身を見る前に離脱してしまうのです。</p>
 
-            <p>今回は、先日公開した「堀田建設株式会社様」の採用LPで実際に起きた<strong>「表示速度低下（31点）」</strong>と、そこから<strong>「V字回復（73点）」</strong>させるために行ったプロの施策を公開します。</p>
+            <p>今回は、先日公開した「堀田建設株式会社様」の採用LPで実際に起きた<strong>「表示速度の大幅低下」</strong>と、そこから<strong>「劇的に改善」</strong>させるために行ったプロの施策を公開します。</p>
 
-            <h2>衝撃の事実：動画を入れただけで31点</h2>
+            <h2>衝撃の事実：動画を入れただけで激遅に</h2>
             <p>今回のLPでは、ファーストビュー（一番最初に開く画面）に、現場の臨場感を伝えるための動画背景を採用しました。</p>
             <p>PCで見ると非常に没入感があり、ブランドイメージを高める効果があります。<br>
             しかし、そのままの状態でGoogleのスピードテスト（PageSpeed Insights）を行った結果がこちらです。</p>
 
             <figure>
-                <img src="../images/psi_score_31.png" alt="改善前のモバイルスコア31点" style="border: 1px solid #eee;">
-                <figcaption>改善前：モバイルスコア 31点（Red Zone）</figcaption>
+                <img src="../images/psi_score_31.png" alt="改善前のモバイルスコア" style="border: 1px solid #eee;">
+                <figcaption>改善前：モバイル表示速度（参考値）</figcaption>
             </figure>
 
-            <p><strong>31点。これはいけません。</strong><br>
+            <p><strong>これはいけません。</strong><br>
             一般的に、スマホでの読み込みに3秒以上かかると、半数以上のユーザーが離脱すると言われています。<br>
             原因は明らかでした。<strong>「スマホでも裏側で重たい動画ファイルを読み込もうとしていた」</strong>からです。</p>
 
@@ -114,16 +114,16 @@
             <p>単に「隠す（display: none）」だけでは、ブラウザは裏で動画をダウンロードしてしまいます。<br>
             今回は「Critical CSS」という技術を使い、<strong>「スマホなら、そもそも動画の存在をブラウザに教えない」</strong>レベルでの制御を行いました。</p>
 
-            <h2>結果：見た目は変わらず、スコアは倍増</h2>
+            <h2>結果：見た目は変わらず、体感速度が劇的に改善</h2>
             <p>この施策を適用した直後の再計測結果がこちらです。</p>
 
             <figure>
-                <img src="../images/psi_score_73.png" alt="改善後のモバイルスコア73点" style="border: 1px solid #eee;">
-                <figcaption>改善後：モバイルスコア 73点（大幅改善 🚀）</figcaption>
+                <img src="../images/psi_score_73.png" alt="改善後のモバイル表示" style="border: 1px solid #eee;">
+                <figcaption>改善後：モバイル表示速度（大幅改善 🚀）</figcaption>
             </figure>
 
-            <p><strong>31点から、一気に73点まで回復しました。</strong><br>
-            Googleの基準でも、リッチなコンテンツを含むサイトとしては十分「合格点」と言える数値です。</p>
+            <p><strong>スマホでのページ表示が、体感的に劇的に速くなりました。</strong><br>
+            重たい動画ファイル（1.5MB以上）の読み込みを完全に遮断したことで、スマホユーザーの離脱率を大幅に改善できます。</p>
 
             <p>見た目のデザインや訴求力は一切落とさず、裏側の技術だけでこれだけの差が生まれます。<br>
             これが、私たちが提供する<strong>「Webとしくみをつくる」</strong>の品質です。</p>
