@@ -230,6 +230,146 @@ if (window.innerWidth &gt; 999) {
                     </tr>
                 </tbody>
             </table>
+
+            <h3>9-4. LCP High-Speed Checklist（最優先3項目）</h3>
+            <p>Largest Contentful Paint (LCP) は、ページの「体感速度」に最も影響する指標。以下の3つを徹底すれば、スコアが劇的に改善する。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>実装方法</th>
+                        <th>効果</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Hero画像のPreload</strong></td>
+                        <td><code>&lt;link rel="preload" as="image" href="hero_sp.webp" media="(max-width: 768px)"&gt;</code></td>
+                        <td><strong>必須</strong>。ブラウザが「最優先でダウンロード」する。LCP改善の最短ルート。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. 初期opacityの禁止</strong></td>
+                        <td>Hero要素に <code>opacity: 0</code>, <code>scroll-reveal</code>, <code>js-fade-up</code> などのクラスを付けない</td>
+                        <td>アニメーション待ちでLCPが数秒遅延する「Hidden Blocker」を回避。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. fetchpriority="high"</strong></td>
+                        <td><code>&lt;img src="hero.webp" fetchpriority="high"&gt;</code></td>
+                        <td>ブラウザに「これは重要」と明示的に指示。他リソースより優先ダウンロード。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <blockquote>
+                <strong>⚠️ 重要:</strong> Preloadのパスと実際の<code>&lt;img&gt;</code>のパスが<strong>完全一致</strong>していないと、ブラウザが「別ファイル」と認識して二重ダウンロードが発生する（例: <code>hero.webp</code> vs <code>hero_sp.webp</code>）。必ずgrepで検証すること。
+            </blockquote>
+
+            <h3>9-5. Hidden Blockers（見えないブレーキ）の撲滅</h3>
+            <p>CSS/JSアニメーションが原因で、Hero画像が「読み込み済みなのに画面に表示されない」状態が数秒続く致命的バグ。</p>
+            
+            <h4>典型的な原因クラス</h4>
+            <ul>
+                <li><code>scroll-reveal</code>: スクロールするまで<code>opacity: 0</code>のまま</li>
+                <li><code>js-fade-up</code>: JavaScript実行完了まで非表示</li>
+                <li><code>ken-burns</code>: アニメーション開始までディレイ</li>
+                <li>CSS Keyframe の初期値が<code>opacity: 0</code>（Type-Cの<code>heroSequence</code>など）</li>
+            </ul>
+
+            <h4>診断方法</h4>
+<pre style="background:#1e293b; color:#fff; padding:15px; border-radius:8px; overflow-x:auto;"><code># Hero section にopacity/visibilityブロッカーがないか確認
+grep -i "scroll-reveal\|js-fade\|opacity-0" index.html
+
+# 見つかった場合、Hero要素から削除する（下部セクションは残してOK）
+</code></pre>
+
+            <h4>修正例</h4>
+<pre style="background:#1e293b; color:#fff; padding:15px; border-radius:8px; overflow-x:auto;"><code>&lt;!-- ❌ NG: Heroセクションでこれをやると LCP が 5秒以上遅延 --&gt;
+&lt;div class="hero-content js-fade-up"&gt;
+    &lt;img src="hero.webp" class="scroll-reveal" /&gt;
+&lt;/div&gt;
+
+&lt;!-- ✅ OK: アニメーションクラスを削除、即座に表示 --&gt;
+&lt;div class="hero-content"&gt;
+    &lt;img src="hero.webp" fetchpriority="high" /&gt;
+&lt;/div&gt;
+</code></pre>
+
+            <h3>9-6. PageSpeed測定の正しい理解</h3>
+            <p><strong>重要:</strong> PageSpeed Insightsのスコアは<strong>±30点のブレ</strong>がある。同じサイトでも測定のたびに60点→92点→56点のように大きく変動する。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>現象</th>
+                        <th>原因</th>
+                        <th>対策</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>同じサイトで92点→56点</td>
+                        <td>測定サーバーの負荷、ネットワーク状態のランダム変動</td>
+                        <td><strong>3回測定して平均</strong>を取る。1回の結果で一喜一憂しない。</td>
+                    </tr>
+                    <tr>
+                        <td>改善したのにスコア悪化</td>
+                        <td>測定タイミングの偶然</td>
+                        <td>時間を置いて再測定（5分以上間隔を開ける）。</td>
+                    </tr>
+                    <tr>
+                        <td>クライアントが測定すると低い</td>
+                        <td>同上（測定サーバーのランダム性）</td>
+                        <td><strong>スコアを約束しない</strong>。「60点以上を目標」程度に留める。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <blockquote>
+                <strong>🎯 内部品質基準:</strong> モバイル60点以上を安定維持。80点以上は「達成可能」だが、クライアントへの約束としては出さない。不安定な数字を売りにするとクレームリスクになる。
+            </blockquote>
+
+            <h3>9-7. 製作段階からの軽量化マインドセット</h3>
+            <p>「後から直す」より「最初から作る」方が圧倒的に効率的。以下を制作フローに組み込む。</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>フェーズ</th>
+                        <th>チェック項目</th>
+                        <th>具体的アクション</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>デザイン</strong></td>
+                        <td>画像点数の抑制</td>
+                        <td>Hero, Works, Teamなど、セクションごとに画像を<strong>3-5枚以内</strong>に制限。装飾目的の画像は極力CSS/SVGで代替。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HTML構築</strong></td>
+                        <td>Preload/Lazy自動設定</td>
+                        <td>Hero画像には必ず<code>preload</code>と<code>fetchpriority="high"</code>。2画面目以降は<code>loading="lazy"</code>を標準装備。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アニメーション実装</strong></td>
+                        <td>Hero要素に初期opacityを付けない</td>
+                        <td><code>scroll-reveal</code>などは<strong>2セクション目以降のみ</strong>使用。Heroは「即時表示」を厳守。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>画像書き出し</strong></td>
+                        <td>Quality設定の徹底</td>
+                        <td>Desktop: Q75 / Mobile: Q50 を標準値として、最初から圧縮済みで保存。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>公開前</strong></td>
+                        <td>Preload一致チェック</td>
+                        <td><code>grep "preload"</code>と<code>grep "&lt;img.*hero"</code>でパスが完全一致しているか機械的に確認。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <blockquote>
+                <strong>💡 ポイント:</strong> 「速度最適化」を最後の仕上げ作業と考えず、<strong>設計・デザイン段階から組み込む</strong>ことで、手戻りゼロで高速なサイトを構築できる。
+            </blockquote>
         </main>
     </div>
 <!-- GLOBAL NAVIGATION -->
