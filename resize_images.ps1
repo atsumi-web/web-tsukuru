@@ -6,7 +6,8 @@
 $target_dirs = @(
     "templates/type-a",
     "templates/type-b",
-    "templates/type-c"
+    "templates/type-c",
+    "images"
 )
 
 $extensions = @("*.jpg", "*.jpeg", "*.png", "*.webp")
@@ -28,19 +29,19 @@ foreach ($dir in $target_dirs) {
             $newName = $img.BaseName + "_sp.webp"
             $outputPath = Join-Path $img.DirectoryName $newName
 
-            # Check if output already exists
-            if (Test-Path $outputPath) {
-                Write-Host "  Skipping (exists): $newName" -ForegroundColor DarkGray
-                continue
-            }
+            # Check if output already exists - DISABLED TO FORCE REGENERATION
+            # if (Test-Path $outputPath) {
+            #     Write-Host "  Skipping (exists): $newName" -ForegroundColor DarkGray
+            #     continue
+            # }
 
             # Check dimensions using magick identify
             try {
                 $width = [int](magick identify -format "%w" $img.FullName)
                 if ($width -gt 800) {
                     Write-Host "  Resizing: $($img.Name) ($width px) -> $newName" -ForegroundColor Green
-                    # Resize to 800px width, convert to webp, quality 80
-                    magick $img.FullName -resize 800x -quality 80 -define webp:lossless=false $outputPath
+                    # Resize to 800px width, convert to webp, quality 75 (High Compression)
+                    magick $img.FullName -resize 800x -quality 75 -define webp:lossless=false $outputPath
                 }
                 else {
                     Write-Host "  Skipping (small): $($img.Name) ($width px)" -ForegroundColor Gray
