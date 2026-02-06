@@ -17,10 +17,13 @@
     <link rel="icon" href="images/logo_icon_navyblue.webp">
     <link rel="apple-touch-icon" href="images/logo_icon2.webp">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Async Loading) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    </noscript>
     
     <!-- Critical Optimization -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -29,6 +32,18 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/renewal.css?v=sticky_navy">
+    
+    <!-- Critical Inline CSS to Force Hero Visibility -->
+    <style>
+        /* FCP対策: ヒーローエリアだけはJSを待たずに即時表示する */
+        .hero-content {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+    </style>
+    
+    <!-- Font Awesome (Async Loading) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script src="js/main.min.js" defer></script>
