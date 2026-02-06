@@ -15,8 +15,9 @@ $finalPath = "images/hero-unified-mobile.webp"
 # Simpler approach: Check if 'magick' exists.
 if (Get-Command magick -ErrorAction SilentlyContinue) {
     Write-Host "ImageMagick found. Resizing..."
-    magick "images/hero-wide-active-site.webp" -resize 750x -quality 80 "images/hero-unified-mobile.webp"
-    Write-Host "Created images/hero-unified-mobile.webp"
+    # Aggressive Compression: Quality 60 (vs 80)
+    magick "images/hero-wide-active-site.webp" -resize 750x -quality 60 "images/hero-unified-mobile.webp"
+    Write-Host "Created images/hero-unified-mobile.webp (Low Quality for Speed)"
 }
 else {
     Write-Error "ImageMagick not found. Cannot resize WebP reliably without it. Checking for ffmpeg..."
