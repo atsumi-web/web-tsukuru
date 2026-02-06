@@ -286,7 +286,25 @@
 
         <div style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
             <h3>Step 1: 朝イチ作戦会議（進捗確認＆行動決定）</h3>
-            <p>4時のクリアな頭で「昨日の進捗」を冷静に振り返り、AIと共に「今日絶対にやるべきこと（TODAY.md）」を確定させます。</p>
+            <p>4時のクリアな頭で「昨日の進捗」を冷静に振り返り、AIと共に「今日絶対にやるべきこと」を確定させます。</p>
+            
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid var(--gold);">
+                <h4 style="margin-top: 0; color: var(--navy);">✏️ today.html のサブタイトル更新（1分）</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">日付は自動更新されるので、<strong>サブタイトルだけ</strong>以下から選んでコピペします。</p>
+                
+                <div style="background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-bottom: 10px;">
+                    <div style="color: #94a3b8; margin-bottom: 5px;">// テンプレート集（コピペ用）</div>
+                    <div>〇〇完了＆〇〇強化</div>
+                    <div>〇〇実装＆コンテンツ拡充</div>
+                    <div>〇〇最適化＆マニュアル更新</div>
+                    <div>新規LP制作開始＆リサーチ</div>
+                    <div>クライアント対応＆ブログ執筆</div>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: #64748b; margin: 0;">
+                    <strong>更新場所:</strong> <code>manuals/today.html</code> の 240行目（<code>id="mission-subtitle"</code>）
+                </p>
+            </div>
         </div>
 
         <div style="background: white; padding: 30px; border-radius: 12px; text-align: center;">
@@ -355,8 +373,9 @@
             <pre id="prompt2">@Antigravity
 おはよう。昨日の作業メモを送るから、
 1. 昨日進んだことの整理（日報作成）
-2. 今日やるべきことの洗い出し（TODAY.md更新）
-この2つをやってほしい。
+2. 今日の `manuals/today.html` サブタイトル提案（1行コピペ用）
+3. 今日やるべきことの洗い出し（TODAY.md更新）
+この3つをやってほしい。
 
 頭が冴えている今、戦略的に動きたいので、90日ロードマップに基づいた鋭い提案を頼む。
 
