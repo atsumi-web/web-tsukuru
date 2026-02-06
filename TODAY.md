@@ -1,87 +1,85 @@
-# 📅 本日のミッション：2026-02-06 (金)
+# 📅 本日のミッション：2026-02-07 (土)
 
-> **Theme:** 「証拠の検証」＋ **「Lead Magnet 設計開始」**
-> 昨日適用した最適化の実効果をPageSpeedで検証し、Phase 01 Week 3の重要タスク「Lead Magnet（無料PDF）」の設計に着手します。
+> **Theme:** 「Q50メソッド効果検証」＋「Lead Magnet 設計着手」
+> 昨日確立した「手法重視」の戦略を実際のテンプレートで検証し、Phase 01 Week 3の重要タスク「Lead Magnet（無料PDF）」の設計に着手します。
+
+---
 
 ## 🌅 午前 (Deep Work) - 90分
 
-### 【最優先】パフォーマンス最適化メソッドの効果確認
+### 【最優先】Q50メソッド適用結果の視覚検証
 
-- [ ] **Type-B テンプレート 視覚検証**
-  - モバイル表示での体感速度確認（Hero画像の表示速度、スクロール時の画像読み込み）
-  - DevTools Network タブで `_sp.webp` が正しくロードされているか確認
-  - **目的**: スコアではなく、手法が正しく機能しているかを検証
+**必要なマニュアル**:
 
-- [ ] **Type-C テンプレート 視覚検証**
-  - Hero Slider の初期表示速度確認
-  - アニメーション遅延が解消されているか確認
-  - **目的**: ユーザー体験としての改善を確認
+- [Performance Stability Guide](file:///C:/Users/eri76/.gemini/antigravity/brain/.../performance_stability_guide.md)
+- [Q50 Stability Pivot Policy](file:///C:/Users/eri76/.gemini/antigravity/brain/44a2b0a6-6747-4e43-8a6f-124eda90b848/q50_stability_pivot_policy.md)
 
-- [ ] **検証結果の記録**
-  - 「Q50 + srcset メソッドによる改善」として文書化
-  - スコアではなく「手法の適用状況」を記録
+**タスク**:
 
-### Lead Magnet 設計開始（Phase 01 Week 3 重要タスク）
+- [ ] Type-B、Type-C テンプレートをブラウザで開く
+  - モバイル表示（デベロッパーツール）での体感速度確認
+  - 画像の読み込み状況（srcset が正しく機能しているか）
+  - LCP要素の表示速度
+- [ ] 検証結果を簡易メモとして記録
+  - ✅ Q50メソッド適用済み
+  - 体感: 3秒以内に表示されているか
+  - 画像: \_sp.webp がモバイルで配信されているか
 
-- [ ] **「採用資産マニュアル：維持費ゼロ円で採用を続ける方法」コンセプト設計**
-  - ターゲット：建設業・製造業の30-50代経営者
-  - 構成案：
-    1. なぜハローワークだけでは限界なのか
-    2. 「採用資産」とは何か（LP + LINE窓口 + SEOの3点セット）
-    3. 維持費一生0円の仕組み
-    4. 成功事例（堀田建設モデル）
-    5. 無料相談への導線
-  - **AI活用**: Claude/ChatGPTで各セクションの下書き作成
+**成果物**: 「メソッド適用状況」簡易レポート（Markdown）
 
 ---
 
-## 🌤 午後 (Light Work & Content Creation) - 60分
+## 🌤️ 午後 (Batch Work) - 60分
 
-### ブログ記事執筆（SEO強化 - Phase 01 Week 2継続）
+### Lead Magnet 設計開始
 
-- [ ] **「採用LPを3秒以内に表示させる技術：Q50安定化メソッド」ブログ執筆**
-  - 昨日作成した「Performance Stability Guide」をベースに、手法を解説
-  - キーワード：「採用LP 表示速度」「建設業 採用サイト 改善」
-  - 目的：技術的権威の確立 & SEO流入獲得
-  - **重要**: スコアの数値は約束せず、「再現可能な手法」として紹介
+**必要なマニュアル**:
 
-### SNS投稿準備（Phase 01 Week 2継続）
+- [90日ロードマップ](../manuals/monetization_bible_90days.html) Phase 01 Week 3
+- [Lead Magnet Strategy](file:///C:/Users/eri76/.gemini/antigravity/knowledge/web_tsukuru_agency_site/artifacts/strategy/lead_magnet_strategy.md)
 
-- [ ] **Instagram投稿用画像作成（Canva）**
-  - テーマ：「採用LPの表示速度が応募率を左右する理由」
-  - 画像：モバイル表示の Before/After + 「3秒ルール」のグラフィック
-  - テキスト案：「求職者の60%はスマホで閲覧。表示速度3秒以上で離脱率50%超。あなたのLPは大丈夫？」
-  - **重要**: スコアではなく「体感速度」にフォーカス
+**タスク**:
 
----
+- [ ] 「求人広告を一生0円にする：採用資産化マニュアル」のコンセプト確定
+  - ターゲット: 地方建設会社社長（30-50代）
+  - 痛み: 求人広告費が毎年数十万円かかる
+  - 解決策: 自社サイト＋LINE で永続的な採用導線を構築
+- [ ] 目次案をAIで作成（10セクション程度）
+- [ ] Canva デザイン案の構想（表紙イメージ）
 
-## 🌙 夜 (Review & Next Day Prep) - 15分
-
-- [ ] **明日（2/8 土）のスタートダッシュ準備**
-  - Lead Magnet 1stドラフト完成を目指す
-  - Antigravityへの指示：「Lead Magnet全セクションのAI生成文章をバッチで一気に作成」
-
-- [ ] **今日の成果を日報に記録**
-  - Type-B/Cのメソッド適用状況
-  - Lead Magnet設計状況
-  - ブログ執筆進捗
+**成果物**: Lead Magnet 構成案（Markdown）
 
 ---
 
-## ✅ ロードマップに基づくネクストアクション
+## 🌙 夕方 (Content) - 30分
 
-### Phase 01 Week 3（現在地）
+### ブログ＆SNS
 
-- [/] **Monitor Delivery & Evidence Recovery** - Type-B/C スコア検証中
-- [ ] **Lead Magnet Completion** - 設計開始（本日着手）
-- [x] **Performance Optimization Standardization** - Hotta Model確立済
+**タスク**:
 
-### Phase 01 Week 4（来週）
-
-- [ ] **Showcase Expansion** - Type-A/B/Cの「堀田レベル」コンテンツ密度達成
-- [ ] **Evidence Aggregation** - 全ポートフォリオの「Proof」を営業LPに集約
+- [ ] ブログ1本執筆（AI活用）
+  - テーマ: 「Q50安定化メソッドとは？速度数値に頼らない、本当の高速化」
+  - キーワード: 採用LP、モバイル最適化、体感速度
+  - 文字数: 2,000字程度
+- [ ] Instagram 投稿（ブログ要約）
 
 ---
 
-> **Strategic Note:**
-> 昨日確立した「Hotta Model（Q50安定化メソッド）」の適用状況を今日確認し、その手法を「再現可能な技術資産」として文書化。同時に、Phase 01の最重要成果物「Lead Magnet（無料PDF）」の設計に着手することで、Week 3の目標（証拠構築 + コンバージョン導線整備）を完了させます。スコアは不安定なため、営業では「手法」を前面に出します。
+## 📊 戦略的ノート
+
+### 90日ロードマップとの対応
+
+- **Phase 01 Week 3-4**: 実績構築＆武器の研磨
+- 今日の進捗: 「Q50メソッド」という武器の効果検証 ✅
+- 次のマイルストーン: Lead Magnet完成（Week 3終了まで）
+
+### 今日の判断基準
+
+- ❌ スコアを追わない
+- ✅ 手法の再現性を確認
+- ✅ クライアントに説明できる「証拠」を作る
+
+---
+
+**制定日**: 2026-02-06 20:40  
+**更新者**: Antigravity
