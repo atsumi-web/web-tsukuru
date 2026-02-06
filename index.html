@@ -27,7 +27,8 @@
     
     <!-- Critical Optimization -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preload" as="image" href="images/hero-wide-active-site.webp">
+    <link rel="preload" as="image" href="images/hero-unified-mobile.webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="images/hero-wide-active-site.webp" media="(min-width: 769px)">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/renewal.min.css?v=sticky_navy">
@@ -82,6 +83,7 @@
             <div class="hero-bg">
                 <!-- Mobile Optimized Hero Swap -->
                 <picture>
+                    <source media="(max-width: 768px)" srcset="images/hero-unified-mobile.webp">
                     <img src="images/hero-wide-active-site.webp" alt="活気ある建設現場の全景" fetchpriority="high">
                 </picture>
                 <div class="hero-overlay"></div>
