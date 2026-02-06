@@ -25,6 +25,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Teko:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Teko:wght@500;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="image" href="./Image_fx_sp.webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="./Image_fx.webp" media="(min-width: 769px)">
     
     <style>
         html { scroll-behavior: smooth; }
@@ -120,7 +122,7 @@
 
     <section id="mission" class="py-20 md:py-40 bg-brand-black relative overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-10 grayscale">
-            <img src="./Image_fx5.webp" srcset="./Image_fx5_sp.webp 800w, ./Image_fx5.webp 1200w" sizes="100vw" class="w-full h-full object-cover" alt="Mission Background" fetchpriority="high" width="1200" height="800">
+            <img src="./Image_fx5.webp" srcset="./Image_fx5_sp.webp 800w, ./Image_fx5.webp 1200w" sizes="100vw" class="w-full h-full object-cover" alt="Mission Background" loading="lazy" width="1200" height="800">
         </div>
         <div class="container mx-auto px-4 md:px-6 max-w-6xl relative z-10">
             <div class="flex flex-col lg:flex-row items-start gap-24">
