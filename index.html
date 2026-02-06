@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/renewal.css?v=dev">
+    <link rel="stylesheet" href="css/renewal.css?v=sticky_navy">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script src="js/main.min.js" defer></script>
@@ -58,7 +58,11 @@
         <!-- Hero Area -->
         <section class="hero renewal-hero">
             <div class="hero-bg">
-                <img src="images/hero-wide-active-site.webp" alt="活気ある建設現場の全景" fetchpriority="high">
+                <!-- Mobile Optimized Hero Swap -->
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/hero-service-lp.webp">
+                    <img src="images/hero-wide-active-site.webp" alt="活気ある建設現場の全景" fetchpriority="high">
+                </picture>
                 <div class="hero-overlay"></div>
             </div>
 
@@ -71,8 +75,8 @@
                         <span class="highlight text-white text-block">今すぐ終わらせる。</span>
                     </h1>
                     <p class="hero-desc">
-                        「採用特化LP」×「LINE窓口」×「維持費一生0円」<br>
-                        あなたの現場を、一生使える「採用資産」へ。
+                        <span class="text-block">「採用特化LP」</span>×<span class="text-block">「LINE窓口」</span>×<span class="text-block">「維持費一生0円」</span><br>
+                        <span class="text-block">あなたの現場を、</span><span class="text-block">一生使える</span><span class="text-block">「採用資産」へ。</span>
                     </p>
                     <div class="hero-actions">
                         <div class="urgency-badge">
@@ -95,9 +99,9 @@
                 <div class="section-header js-fade-up">
                     <span class="section-badge inverted">PROBLEM</span>
                     <h2 class="section-title">
-                        なぜ、求人広告に<br>
-                        <span class="text-highlight">「掛け捨ての家賃」</span>を<br>
-                        払い続けるのですか？
+                        <span class="text-block"></span>なぜ、求人広告に</span><br>
+                        <span class="text-block"><span class="text-highlight">「掛け捨ての家賃」</span>を</span><br>
+                        <span class="text-block">払い続けるのですか？</span>
                     </h2>
                 </div>
                 
@@ -129,8 +133,8 @@
                 <div class="section-header js-fade-up">
                     <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">SOLUTION</span>
                     <h2 class="section-title text-dark">
-                        「いい会社」を、<br>
-                        <span class="text-gold">「強い会社」</span>に変える3つの武器。
+                        <span class="text-block">「いい会社」を、</span><br>
+                        <span class="text-block"><span class="text-gold">「強い会社」</span>に変える</span><span class="text-block">3つの武器。</span>
                     </h2>
                 </div>
 
@@ -152,7 +156,10 @@
                         </div>
                     </div>
                     <div class="s-image">
-                        <img src="images/solution-team-unity.webp" alt="若手が活躍する現場" loading="lazy" decoding="async">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="images/solution-young-workers_sp.webp">
+                            <img src="images/solution-young-workers.webp" alt="スマホで求人を見る若手たち" class="responsive-img" loading="lazy" width="600" height="400">
+                        </picture>
                     </div>
                 </div>
 
@@ -169,9 +176,16 @@
                             すべて私たちが代行します。<br>
                             応募があれば、社長のスマホに即座に通知が届きます。
                         </p>
+                        <div class="proof-badge">
+                            <i class="fa-brands fa-line text-green" style="font-size: 1.2rem;"></i>
+                            <span>開封率・返信率の大幅UP</span>
+                        </div>
                     </div>
                     <div class="s-image">
-                        <img src="images/conversion-line-button.webp" alt="LINE応募ボタン" loading="lazy" decoding="async">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="images/conversion-line-button_sp.webp">
+                            <img src="images/conversion-line-button.webp" alt="LINE応募ボタン" class="responsive-img" loading="lazy" width="600" height="400">
+                        </picture>
                     </div>
                 </div>
 
@@ -194,7 +208,10 @@
                         </div>
                     </div>
                     <div class="s-image">
-                        <img src="images/works/fv_next.webp" alt="圧倒的なインパクトを放つ採用サイトデザイン" loading="lazy" decoding="async">
+                        <picture>
+                            <!-- Desktop Capture for All Devices (User Request) -->
+                            <img src="images/works/fv_next.webp" alt="圧倒的なインパクトを放つ採用サイトデザイン" class="responsive-img" loading="lazy" decoding="async" style="max-width: 100%;">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -246,8 +263,9 @@
                 <div class="section-header js-fade-up">
                     <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">DESIGN SAMPLES</span>
                     <h2 class="section-title text-dark">
-                        例えば、こんな<br>
-                        <span class="text-gold">「デザイン」</span>も可能です。
+                        <span class="text-block">例えば、</span><br>
+                        <span class="text-block">こんな「デザイン」も</span><br>
+                        <span class="text-block">可能です。</span>
                     </h2>
                     <p class="section-desc text-dark">
                         これらは制作可能なデザインの一例です。<br>
@@ -274,7 +292,10 @@
                         <div class="work-card-body">
                             <span class="work-model-label">STANDARD MODEL / DEMO</span>
                             <h3>株式会社大和建設</h3>
-                            <p class="work-catch">「確かな信頼、未来への架け橋」。<br>創業50年の重みと、先進的な技術力を融合した王道モデル。</p>
+                            <p class="work-catch">
+                                <span class="text-block">「確かな信頼、未来への架け橋」。</span><br>
+                                <span class="text-block">創業50年の重みと、先進的な技術力を融合した王道モデル。</span>
+                            </p>
                             <a href="templates/type-c/index.html" target="_blank" class="work-demo-btn">
                                 デモサイトを見る <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
@@ -419,7 +440,10 @@
         <section id="profile" class="profile-section dark-bg">
             <div class="container">
                 <div class="section-badge inverted">MESSAGE</div>
-                <h2 class="section-title">「汗をかく現場が、<br class="br-sp">一番に報われる世界へ」</h2>
+                <h2 class="section-title">
+                    <span class="text-block">「汗をかく現場が、</span><br class="br-sp">
+                    <span class="text-block">一番に報われる世界へ」</span>
+                </h2>
                 <div class="profile-content js-fade-up">
                     <div class="profile-image">
                         <img src="images/trust-digital-collaboration.webp" alt="デジタル連携" loading="lazy" decoding="async">
@@ -451,10 +475,13 @@
     <!-- Footer CTA Section -->
     <section class="footer-cta-section">
         <div class="container">
-            <h2 class="footer-cta-title">まずは無料相談から。<br>LINEで30秒、カンタン登録。</h2>
+            <h2 class="footer-cta-title">
+                <span class="cta-main">まずは無料相談から。</span>
+                <span class="cta-sub">LINEで30秒、<br>カンタン登録。</span>
+            </h2>
             <p class="footer-cta-text">
                 「うちの会社でも本当にできるかな？」<br>
-                そんな不安も、まずは気軽にご相談ください。<br>
+                そんな不安も、<br class="br-sp">まずは気軽にご相談ください。<br>
                 しつこい営業は一切ありません。
             </p>
             <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary large">
@@ -475,7 +502,7 @@
     <!-- Fixed LINE Button -->
     <a href="https://lin.ee/nMDNiFg" target="_blank" class="fixed-line-btn">
         <i class="fa-brands fa-line"></i>
-        <span>0円モニター<br>残り1社</span>
+        <span><span class="text-block">LINEで30秒、</span><span class="text-block">カンタン登録。</span></span>
     </a>
 
     <!-- Back to Top Button -->

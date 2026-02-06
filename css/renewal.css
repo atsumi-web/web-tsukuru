@@ -208,9 +208,9 @@ section {
 
 .section-title {
   margin-bottom: clamp(2rem, 5vw, 3rem);
-  font-size: clamp(1.5rem, 5vw, 2.8rem); /* 2.0rem -> 1.5rem: Mobile hierarchy fix < Hero(1.6rem) */
+  font-size: clamp(2.0rem, 5vw, 2.8rem); /* Mobile size increased as requested */
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.4; /* Slightly increased for readability with larger font */
   text-align: center;
 }
 
@@ -268,18 +268,22 @@ section {
   text-underline-offset: 4px;
 }
 
+/* UTILITIES */
 .accent-text,
 .text-gold {
   color: var(--renewal-gold);
 }
+.text-highlight { background: linear-gradient(transparent 90%, var(--renewal-gold) 90%); } /* 80%->90%にさらに細く */
 
 .text-dark {
-  color: var(--renewal-dark);
+  color: #333;
 }
 
 .text-white {
   color: #fff;
 }
+
+.text-block { display: inline-block; } /* 改行禁止ブロック: 単語の途中で切れないようにする */
 
 /* Urgency Badge */
 .urgency-badge {
@@ -691,20 +695,47 @@ section {
   bottom: 30px;
   /* ... */
 }
-@media (max-width: 768px) {
-  .fixed-line-btn {
-    right: 50%;
-    transform: translateX(50%) translateY(20px); /* 初期位置調整中心寄せ */
-    bottom: 20px;
-    width: 90%; /* 画面幅いっぱいになりすぎないよう */
-    max-width: 350px;
+@media (max-width: 1024px) {
+  /* Rule #2遵守: !importantを削除し、セレクタ詳細度(body .class)で上書き */
+  body .fixed-line-btn {
+    background: var(--renewal-navy);
+    border-top: 1px solid var(--renewal-gold);
+    color: #fff;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  /* テキストそのものにもサイズを強制継承させる */
+  body .fixed-line-btn span {
+    font-size: 1.15rem;
+  }
+  .fixed-line-btn .fa-line {
+    color: #fff; /* アイコンを白に変更 */
+    background: transparent; /* 白い丸を消す(背景と同じ色に) */
+    border-radius: 0;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    margin-right: 6px; /* アイコンとテキストの距離を縮める(12px->6px) */
+    font-size: 1.8rem; /* アイコンも大きく強調 */
   }
   .fixed-line-btn.show {
-    transform: translateX(50%) translateY(0); /* 表示時 */
+    transform: translateY(0);
   }
 }
-
-
 .hero-bg {
   position: absolute;
   top: 0;
@@ -975,6 +1006,30 @@ section {
   color: #fff;
   text-align: center;
   overflow: hidden;
+}
+/* モバイルでの長文タイトル用調整 */
+@media (max-width: 768px) {
+  /* 長い見出しは少し小さくして改行をきれいに */
+  .profile-section .section-title,
+  .footer-cta-title,
+  .design-samples .section-title {
+    font-size: 1.6rem !important; /* Long text specific override */
+    line-height: 1.6;
+  }
+}
+
+/* Footer CTA Title */
+.footer-cta-title {
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  .footer-cta-title {
+    font-size: 1.5rem !important; /* さらに少し小さくして2行に収める */
+  }
 }
 .works-hero h1 {
   font-family: var(--font-outfit);
@@ -1397,8 +1452,12 @@ section {
   background: var(--renewal-navy);
   color: #fff;
   font-weight: 700;
+  flex-shrink: 0; /* つぶれ防止 */
 }
 @media (max-width: 768px) {
+  .qa-item {
+    padding: 20px; /* 余白を減らしてコンテンツ幅を確保 */
+  }
   .qa-item .q::before {
     width: 30px;
     height: 30px;
@@ -1513,9 +1572,29 @@ section {
   text-align: center;
 }
 .footer-cta-title {
-  margin-bottom: 20px;
-  font-size: 2.2rem;
+  margin-bottom: 50px;
+}
+.footer-cta-title .cta-main {
+  display: block;
+  font-size: 2.6rem;
   font-weight: 800;
+  margin-bottom: 30px; /* Space between lines */
+  line-height: 1.2;
+}
+.footer-cta-title .cta-sub {
+  display: block;
+  font-size: 1.8rem; /* Smaller size */
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .footer-cta-title .cta-main {
+    font-size: 2.0rem; /* Fit on one line */
+  }
+  .footer-cta-title .cta-sub {
+    font-size: 1.5rem;
+  }
 }
 .footer-cta-text {
   margin-bottom: 40px;
@@ -1624,7 +1703,7 @@ section {
   display: inline-block;
   margin-bottom: 20px;
   font-family: var(--font-outfit);
-  font-size: 2rem;
+  font-size: 1.5rem; /* 2rem -> 1.5rem Smart look */
   font-weight: 800;
 }
 .copyright {
