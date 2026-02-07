@@ -132,7 +132,7 @@
 .blog-cta-box {
   background: var(--renewal-navy);
   color: #fff;
-  padding: 40px;
+  padding: 60px 40px;
   border-radius: 12px;
   text-align: center;
   margin: 80px 0;
@@ -142,16 +142,18 @@
   color: #fff;
   border: none;
   padding: 0;
-  margin-bottom: 20px;
+  margin: 0 0 15px 0; /* Reduced bottom margin */
   font-size: 1.4rem;
 }
 
 .blog-cta-box p {
   text-align: center; /* Override post-content p's text-align: justify */
+  margin-bottom: 25px; /* Override post-content p's 2em margin */
 }
 
 .blog-cta-box a {
   display: inline-block; /* Allow centering */
+  margin-top: 5px; /* Small spacing above button */
 }
 
 /* --------------------------------------------------------------------------
