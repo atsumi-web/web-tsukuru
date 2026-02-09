@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Pattern 09 - スライダー＋ロゴバー（プレビュー）</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Hero Pattern 09: Slider with Logo Bar Wireframe Styles */
+    .hero-pattern-09 {
+      background-color: #fff;
+    }
+
+    .hero-pattern-09 .hero-slider {
+      min-height: 70vh;
+      background-color: #f8f8f8;
+      padding: 80px 20px;
+      position: relative;
+    }
+
+    .hero-pattern-09 .slider-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-pattern-09 .slide-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* Text content */
+    .hero-pattern-09 .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .hero-pattern-09 .hero-subtitle {
+      font-size: 20px;
+      font-weight: 500;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .hero-pattern-09 .hero-description {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    /* CTA buttons */
+    .hero-pattern-09 .hero-cta {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-pattern-09 .cta-button {
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid #333;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero-pattern-09 .cta-primary {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .hero-pattern-09 .cta-secondary {
+      background-color: transparent;
+      color: #333;
+    }
+
+    /* Slide image */
+    .hero-pattern-09 .slide-image {
+      position: relative;
+    }
+
+    .hero-pattern-09 .placeholder-image {
+      width: 100%;
+      height: 400px;
+      background-color: #ddd;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .hero-pattern-09 .slide-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 12px 16px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    /* Slider navigation */
+    .hero-pattern-09 .slider-nav {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      padding: 0 20px;
+    }
+
+    .hero-pattern-09 .nav-arrow {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: all 0.3s ease;
+    }
+
+    .hero-pattern-09 .nav-arrow:hover {
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Slide indicators */
+    .hero-pattern-09 .slide-indicators {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .hero-pattern-09 .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-pattern-09 .indicator.active {
+      background-color: #333;
+    }
+
+    /* Logo bar */
+    .hero-pattern-09 .logo-bar {
+      background-color: #fff;
+      border-top: 1px solid #e0e0e0;
+      padding: 40px 20px;
+      overflow: hidden;
+    }
+
+    .hero-pattern-09 .logo-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-pattern-09 .logo-item {
+      flex: 0 0 auto;
+    }
+
+    .hero-pattern-09 .placeholder-logo {
+      width: 120px;
+      height: 60px;
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #999;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-pattern-09 .slide-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .hero-pattern-09 .hero-title {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-pattern-09 .hero-slider {
+        padding: 60px 20px;
+      }
+      
+      .hero-pattern-09 .hero-title {
+        font-size: 28px;
+      }
+      
+      .hero-pattern-09 .hero-cta {
+        flex-direction: column;
+      }
+      
+      .hero-pattern-09 .cta-button {
+        width: 100%;
+      }
+      
+      .hero-pattern-09 .logo-container {
+        gap: 20px;
+      }
+      
+      .hero-pattern-09 .placeholder-logo {
+        width: 80px;
+        height: 40px;
+        font-size: 10px;
+      }
+    }
+
+    /* Watermark */
+    .watermark {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 12px;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Watermark for identification -->
+  <div class="watermark">Pattern 09: スライダー＋ロゴバー（ワイヤーフレーム）</div>
+
+  <!-- Hero Section -->
+  <section class="hero-pattern-09">
+    <div class="hero-slider">
+      <div class="slider-container">
+        <!-- Slider content -->
+        <div class="slide-content">
+          <div class="slide-text">
+            <h1 class="hero-title">
+              ここに大見出しが入ります。<br>
+              ここに大見出しが入ります。
+            </h1>
+            <p class="hero-subtitle">ここに中見出しが入ります</p>
+            <p class="hero-description">
+              ここにサンプルのテキストブロックが入ります。ダミーの文章です。<br>
+              テキストの配置エリアを示しています。ここにサンプルのテキストが入ります。
+            </p>
+            
+            <!-- CTA buttons -->
+            <div class="hero-cta">
+              <button class="cta-button cta-primary">ボタンのラベル</button>
+              <button class="cta-button cta-secondary">ボタンのラベル</button>
+            </div>
+          </div>
+          
+          <!-- Slide image area -->
+          <div class="slide-image">
+            <div class="placeholder-image">スライド画像エリア</div>
+            <div class="slide-caption">ここにスライドのキャプションが入ります。</div>
+          </div>
+        </div>
+        
+        <!-- Slider navigation -->
+        <div class="slider-nav">
+          <button class="nav-arrow nav-prev">&lt;</button>
+          <button class="nav-arrow nav-next">&gt;</button>
+        </div>
+        
+        <!-- Slide indicators -->
+        <div class="slide-indicators">
+          <span class="indicator active"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Client logo bar -->
+    <div class="logo-bar">
+      <div class="logo-container">
+        <div class="logo-item"><div class="placeholder-logo">LOGO</div></div>
+        <div class="logo-item"><div class="placeholder-logo">CLIENT LOGO</div></div>
+        <div class="logo-item"><div class="placeholder-logo">LOGO</div></div>
+        <div class="logo-item"><div class="placeholder-logo">CLIENT LOGO</div></div>
+        <div class="logo-item"><div class="placeholder-logo">LOGO</div></div>
+        <div class="logo-item"><div class="placeholder-logo">LOGO</div></div>
+        <div class="logo-item"><div class="placeholder-logo">CLIENT LOGO</div></div>
+        <div class="logo-item"><div class="placeholder-logo">CLIENT LOGO</div></div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

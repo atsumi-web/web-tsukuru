@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Pattern 08 - 非対称採用レイアウト（プレビュー）</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Hero Pattern 08: Asymmetric Recruitment Layout Wireframe Styles */
+    .hero-pattern-08 {
+      min-height: 90vh;
+      background-color: #fff;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
+
+    .hero-pattern-08 .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero-pattern-08 .hero-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr 300px;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .hero-pattern-08 .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Title */
+    .hero-pattern-08 .hero-title {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.3;
+      color: #222;
+      letter-spacing: 0.02em;
+    }
+
+    /* Placeholder images */
+    .hero-pattern-08 .placeholder-image {
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .hero-pattern-08 .hero-image-left .placeholder-image {
+      height: 400px;
+    }
+
+    .hero-pattern-08 .hero-image-center .placeholder-image {
+      height: 500px;
+    }
+
+    .hero-pattern-08 .hero-image-right .placeholder-image {
+      height: 600px;
+    }
+
+    /* CTA buttons */
+    .hero-pattern-08 .hero-cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .hero-pattern-08 .cta-button {
+      padding: 16px 48px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid #333;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero-pattern-08 .cta-primary {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .hero-pattern-08 .cta-primary:hover {
+      background-color: #555;
+      border-color: #555;
+    }
+
+    .hero-pattern-08 .cta-secondary {
+      background-color: transparent;
+      color: #333;
+    }
+
+    .hero-pattern-08 .cta-secondary:hover {
+      background-color: #f5f5f5;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-pattern-08 .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .hero-pattern-08 .hero-image-left,
+      .hero-pattern-08 .hero-image-right {
+        display: none;
+      }
+      
+      .hero-pattern-08 .hero-title {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-pattern-08 {
+        padding: 80px 20px 40px;
+      }
+      
+      .hero-pattern-08 .hero-title {
+        font-size: 32px;
+      }
+      
+      .hero-pattern-08 .hero-cta {
+        flex-direction: column;
+      }
+      
+      .hero-pattern-08 .cta-button {
+        width: 100%;
+      }
+    }
+
+    /* Watermark */
+    .watermark {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 12px;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Watermark for identification -->
+  <div class="watermark">Pattern 08: 非対称採用レイアウト（ワイヤーフレーム）</div>
+
+  <!-- Hero Section -->
+  <section class="hero-pattern-08">
+    <div class="hero-container">
+      <div class="hero-grid">
+        <!-- Left side image (smaller) -->
+        <div class="hero-image hero-image-left">
+          <div class="placeholder-image">画像エリア（小）</div>
+        </div>
+        
+        <!-- Center content area -->
+        <div class="hero-content">
+          <h1 class="hero-title">
+            可能性を、<br>
+            共に切り拓く。
+          </h1>
+          
+          <!-- Center large image -->
+          <div class="hero-image hero-image-center">
+            <div class="placeholder-image">画像エリア（大）</div>
+          </div>
+        </div>
+        
+        <!-- Right side image (smaller) -->
+        <div class="hero-image hero-image-right">
+          <div class="placeholder-image">画像エリア（中）</div>
+        </div>
+      </div>
+      
+      <!-- CTA buttons -->
+      <div class="hero-cta">
+        <button class="cta-button cta-primary">資料を見る</button>
+        <button class="cta-button cta-secondary">お問い合わせ</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe Components - ワイヤーフレームコンポーネント集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .subtitle {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .section-card {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .section-card.available {
+      border-top: 4px solid #4caf50;
+    }
+
+    .section-card.coming-soon {
+      border-top: 4px solid #ff9800;
+      opacity: 0.7;
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .badge-available {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .badge-coming {
+      background-color: #fff3e0;
+      color: #e65100;
+    }
+
+    .section-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #667eea;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #5568d3;
+    }
+
+    .btn-disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .resources {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .resources h2 {
+      font-size: 28px;
+      color: #222;
+      margin-bottom: 24px;
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .resource-item {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .resource-item:hover {
+      background: #e9ecef;
+    }
+
+    .resource-item a {
+      flex: 1;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .resource-type {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #e3f2fd;
+      color: #1976d2;
+      margin-left: 12px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+      
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📐 Wireframe Components</h1>
+      <p class="subtitle">採用LP制作用ワイヤーフレームコンポーネント集</p>
+    </header>
+
+    <div class="section-grid">
+      <!-- Hero Section -->
+      <div class="section-card available">
+        <span class="status-badge badge-available">利用可能</span>
+        <div class="section-icon">🎨</div>
+        <h3 class="section-title">Hero - ヒーローセクション</h3>
+        <p class="section-description">
+          LPの第一印象を決める重要なセクション。保守的、モダン、実績重視の3パターンを用意。
+        </p>
+        <p class="section-count">3パターン収録</p>
+        <a href="hero/index.html" class="btn">一覧を見る →</a>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="section-card coming-soon">
+        <span class="status-badge badge-coming">Coming Soon</span>
+        <div class="section-icon">📢</div>
+        <h3 class="section-title">CTA - 行動喚起</h3>
+        <p class="section-description">
+          応募や問い合わせを促すセクション。固定ボタン、フローティング、複数CTAなど。
+        </p>
+        <p class="section-count">予定：5パターン</p>
+        <a href="#" class="btn btn-disabled">準備中</a>
+      </div>
+
+      <!-- About Section -->
+      <div class="section-card coming-soon">
+        <span class="status-badge badge-coming">Coming Soon</span>
+        <div class="section-icon">🏢</div>
+        <h3 class="section-title">About - 会社概要</h3>
+        <p class="section-description">
+          企業の特徴や強みを伝えるセクション。テキスト重視、画像重視など複数パターン。
+        </p>
+        <p class="section-count">予定：4パターン</p>
+        <a href="#" class="btn btn-disabled">準備中</a>
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="section-card coming-soon">
+        <span class="status-badge badge-coming">Coming Soon</span>
+        <div class="section-icon">💬</div>
+        <h3 class="section-title">Testimonials - 社員インタビュー</h3>
+        <p class="section-description">
+          実際に働く社員の声を伝えるセクション。カード型、リスト型、スライダー型など。
+        </p>
+        <p class="section-count">予定：4パターン</p>
+        <a href="#" class="btn btn-disabled">準備中</a>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="section-card coming-soon">
+        <span class="status-badge badge-coming">Coming Soon</span>
+        <div class="section-icon">❓</div>
+        <h3 class="section-title">FAQ - よくある質問</h3>
+        <p class="section-description">
+          求職者の疑問を解消するセクション。アコーディオン型、タブ型など。
+        </p>
+        <p class="section-count">予定：3パターン</p>
+        <a href="#" class="btn btn-disabled">準備中</a>
+      </div>
+
+      <!-- Footer Section -->
+      <div class="section-card coming-soon">
+        <span class="status-badge badge-coming">Coming Soon</span>
+        <div class="section-icon">📄</div>
+        <h3 class="section-title">Footer - フッター</h3>
+        <p class="section-description">
+          ページ下部の情報エリア。シンプル版、詳細版、ソーシャルリンク付きなど。
+        </p>
+        <p class="section-count">予定：3パターン</p>
+        <a href="#" class="btn btn-disabled">準備中</a>
+      </div>
+
+      <!-- Construction Prompts -->
+      <div class="section-card available">
+        <span class="status-badge badge-available">利用可能</span>
+        <div class="section-icon">🏗️</div>
+        <h3 class="section-title">Prompts - 建設業界特化プロンプト</h3>
+        <p class="section-description">
+          建設業界採用LP専用のAI画像生成プロンプト。現場、完成建物、社員など即戦力の18個。
+        </p>
+        <p class="section-count">18プロンプト収録</p>
+        <a href="prompts/construction_specialized.html" class="btn">一覧を見る →</a>
+      </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="resources">
+      <h2>📚 関連リソース</h2>
+      <div class="resource-list">
+        <div class="resource-item">
+          <a href="file:///C:/Users/eri76/.gemini/antigravity/knowledge/recruitment_lp_design_system/artifacts/resources/put_prompts_registry.md">Put! ビジュアルプロンプト集（53個）</a>
+          <span class="resource-type">Markdown</span>
+        </div>
+        <div class="resource-item">
+          <a href="file:///C:/Users/eri76/.gemini/antigravity/knowledge/recruitment_lp_design_system/artifacts/resources/put_wireframe_patterns.md">Put! ワイヤーフレームパターン（11個）</a>
+          <span class="resource-type">Markdown</span>
+        </div>
+        <div class="resource-item">
+          <a href="file:///C:/Users/eri76/.gemini/antigravity/knowledge/recruitment_lp_design_system/artifacts/resources/put_design_system_guide_ja.md">Put! 使い方ガイド（日本語）</a>
+          <span class="resource-type">Markdown</span>
+        </div>
+        <div class="resource-item">
+          <a href="file:///C:/Users/eri76/.gemini/antigravity/knowledge/recruitment_lp_design_system/artifacts/resources/lp_production_workflow_integrated.md">採用LP制作：完全ワークフロー</a>
+          <span class="resource-type">Markdown</span>
+        </div>
+        <div class="resource-item">
+          <a href="README.md">README - コンポーネント使い方</a>
+          <span class="resource-type">Markdown</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

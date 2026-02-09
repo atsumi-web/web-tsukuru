@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>建設業界特化プロンプト集 - Construction Specialized Prompts</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background-color: #f5f5f5;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #222;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      border: 2px solid #ddd;
+      background: white;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: #2196f3;
+      color: #2196f3;
+    }
+
+    .filter-btn.active {
+      background: #2196f3;
+      color: white;
+      border-color: #2196f3;
+    }
+
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 30px;
+    }
+
+    .prompt-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .prompt-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .prompt-image {
+      width: 100%;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 48px;
+      position: relative;
+    }
+
+    .prompt-image.placeholder {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .prompt-number {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .prompt-content {
+      padding: 24px;
+    }
+
+    .prompt-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 12px;
+    }
+
+    .prompt-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .badge-category {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .badge-use {
+      background: #f3e5f5;
+      color: #7b1fa2;
+    }
+
+    .prompt-description {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .prompt-keywords {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    .prompt-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: #2196f3;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1976d2;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #2196f3;
+      border: 1px solid #2196f3;
+    }
+
+    .btn-secondary:hover {
+      background: #e3f2fd;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: #f5f5f5;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal-close:hover {
+      background: #e0e0e0;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 24px;
+    }
+
+    .modal-section {
+      margin-bottom: 24px;
+    }
+
+    .modal-section h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .prompt-text {
+      background: #f5f5f5;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .copy-btn {
+      width: 100%;
+      padding: 12px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background: #45a049;
+    }
+
+    @media (max-width: 768px) {
+      .prompts-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏗️ 建設業界特化プロンプト集</h1>
+      <p class="subtitle">採用LP制作に特化した18の最適化プロンプト</p>
+    </header>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-category="all">すべて (18)</button>
+      <button class="filter-btn" data-category="現場">建設現場 (5)</button>
+      <button class="filter-btn" data-category="完成">完成建物 (3)</button>
+      <button class="filter-btn" data-category="オフィス">オフィス (3)</button>
+      <button class="filter-btn" data-category="インタビュー">社員 (3)</button>
+      <button class="filter-btn" data-category="福利厚生">福利厚生 (2)</button>
+      <button class="filter-btn" data-category="技術">技術 (2)</button>
+    </div>
+
+    <div class="prompts-grid" id="promptsGrid">
+      <!-- Prompts will be injected by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="promptModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      
+      <div class="modal-section">
+        <h3>日本語説明</h3>
+        <p id="modalDescriptionJa"></p>
+      </div>
+
+      <div class="modal-section">
+        <h3>English Prompt</h3>
+        <div class="prompt-text" id="modalPrompt"></div>
+        <button class="copy-btn" onclick="copyPrompt()">プロンプトをコピー</button>
+      </div>
+
+      <div class="modal-section">
+        <h3>用途</h3>
+        <p id="modalUse"></p>
+      </div>
+
+      <div class="modal-section">
+        <h3>キーワード</h3>
+        <p id="modalKeywords"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const prompts = [
+      {
+        id: 1,
+        title: "若手作業員（チーム作業）",
+        category: "現場",
+        icon: "👷",
+        image: "images/01_young_workers_team.png",
+        descriptionJa: "建設現場。20代の若手作業員3名が協力して作業している様子。ヘルメット着用。明るい表情。青空背景。信頼感とチームワークを感じさせる構図。",
+        prompt: "(Best Quality, Recruitment Photo), Construction site. Three young Japanese workers in their 20s collaborating on a task. Wearing yellow safety helmets and workwear. Bright, energetic expressions showing teamwork. Blue sky background. Natural lighting. Professional and trustworthy atmosphere. --ar 16:9",
+        use: "ヒーローセクション、チーム紹介",
+        keywords: "若手採用、チームワーク、明るい職場"
+      },
+      {
+        id: 2,
+        title: "ベテラン職人（技術指導）",
+        category: "現場",
+        icon: "🔨",
+        image: "images/08_veteran_mentor.png",
+        descriptionJa: "建設現場。50代のベテラン職人が30代の中堅社員に技術指導している様子。真剣な表情。職人の手元にフォーカス。伝統と技術の継承を表現。",
+        prompt: "(Best Quality, Mentoring Scene), Construction site interior. Experienced 50s Japanese craftsman teaching technique to 30s worker. Close-up on skilled hands demonstrating work. Serious, focused expressions. Professional workwear. Warm lighting highlighting the mentorship moment. Atmosphere of tradition and skill transfer. --ar 16:9",
+        use: "教育制度、キャリアパス紹介",
+        keywords: "技術継承、教育体制、職人技"
+      },
+      {
+        id: 3,
+        title: "女性作業員（ダイバーシティ）",
+        category: "現場",
+        icon: "👷‍♀️",
+        image: "images/06_female_worker.png",
+        descriptionJa: "建設現場。20代女性作業員が図面を確認している様子。ヘルメット着用。自信に満ちた表情。明るく開放的な現場。ダイバーシティを象徴。",
+        prompt: "(Best Quality, Diversity Photo), Construction site. Confident young Japanese woman in her 20s checking blueprints. White safety helmet, professional workwear. Bright, determined expression. Modern, well-organized site background. Natural sunlight. Atmosphere of diversity and inclusion. --ar 16:9",
+        use: "ダイバーシティアピール、女性採用",
+        keywords: "女性活躍、多様性、働きやすさ"
+      },
+      {
+        id: 4,
+        title: "高所作業（安全管理）",
+        category: "現場",
+        icon: "⛑️",
+        image: null,
+        descriptionJa: "建設現場。高層ビル建設中。安全ハーネスを装着した作業員が高所作業。安全装備完備。プロフェッショナルな安全管理体制を強調。",
+        prompt: "(Best Quality, Safety Focus), High-rise construction site. Japanese worker with full safety harness working at height. Professional safety equipment clearly visible. Wide-angle shot showing both worker and cityscape below. Blue sky background. Emphasis on professional safety management. --ar 16:9",
+        use: "安全管理アピール、企業信頼性",
+        keywords: "安全第一、プロ意識、管理体制"
+      },
+      {
+        id: 5,
+        title: "現場全景（規模感）",
+        category: "現場",
+        icon: "🏗️",
+        image: "images/05b_medium_apartment_site.png",
+        descriptionJa: "大規模建設現場の全景。複数のクレーン、足場、作業員が見える。青空と新しい建物のシルエット。企業の規模と実績を表現。",
+        prompt: "(Best Quality, Wide Landscape), Large-scale construction site overview. Multiple tower cranes, scaffolding, workers visible. New building structure rising against blue sky. Modern construction equipment. Professional, organized site. Atmosphere of large-scale projects and company capability. --ar 16:9",
+        use: "企業規模アピール、実績紹介",
+        keywords: "大規模プロジェクト、実績、企業力"
+      },
+      {
+        id: 6,
+        title: "新築住宅（実績）",
+        category: "完成",
+        icon: "🏠",
+        image: "images/03_completed_house.png",
+        descriptionJa: "完成した新築一戸建て。モダンな外観。青空背景。庭の緑も見える。清潔感と高品質を感じさせる仕上がり。",
+        prompt: "(Best Quality, Completed Project), Modern newly built Japanese house. Clean, contemporary exterior design. Blue sky background. Well-maintained garden visible. Professional photography. Atmosphere of quality craftsmanship and attention to detail. --ar 16:9",
+        use: "実績紹介、施工例",
+        keywords: "完成度、品質、実績"
+      },
+      {
+        id: 7,
+        title: "マンション外観（都市開発）",
+        category: "完成",
+        icon: "🏢",
+        image: null,
+        descriptionJa: "完成した中層マンション。モダンなデザイン。夕暮れ時の照明が美しい。都市開発プロジェクトの象徴。",
+        prompt: "(Best Quality, Urban Architecture), Completed modern mid-rise apartment building. Contemporary Japanese design. Twilight hour with beautiful exterior lighting. Urban skyline background. Professional architectural photography. Atmosphere of urban development and modern living. --ar 16:9",
+        use: "都市開発実績、大規模プロジェクト",
+        keywords: "都市開発、モダン、実績"
+      },
+      {
+        id: 8,
+        title: "商業施設（公共貢献）",
+        category: "完成",
+        icon: "🏪",
+        image: null,
+        descriptionJa: "完成した商業施設またはオフィスビル。ガラス張りのモダンな外観。人々が行き交う様子。地域貢献を象徴。",
+        prompt: "(Best Quality, Commercial Architecture), Completed modern commercial building with glass facade. People walking in front, showing active community use. Contemporary Japanese architecture. Natural daylight. Atmosphere of community contribution and modern business. --ar 16:9",
+        use: "公共貢献、地域密着アピール",
+        keywords: "地域貢献、商業施設、公共性"
+      },
+      {
+        id: 9,
+        title: "設計打ち合わせ（プロ意識）",
+        category: "オフィス",
+        icon: "📐",
+        image: "images/04_office_meeting.png",
+        descriptionJa: "オフィス内。設計図を囲んで打ち合わせする社員3名。真剣な表情。明るく清潔なオフィス。プロフェッショナルな雰囲気。",
+        prompt: "(Best Quality, Business Meeting), Office interior. Three Japanese professionals discussing blueprints on a table. Serious, focused expressions. Clean, bright modern office. Natural window light. Atmosphere of professionalism and detailed planning. --ar 16:9",
+        use: "オフィス環境紹介、プロ意識",
+        keywords: "設計力、チーム、プロ意識"
+      },
+      {
+        id: 10,
+        title: "3D設計（最新技術）",
+        category: "オフィス",
+        icon: "💻",
+        image: null,
+        descriptionJa: "オフィス。30代社員がPCで3D設計ソフトを使用。画面には建物の3Dモデル。最新技術を活用する企業姿勢を表現。",
+        prompt: "(Best Quality, Technology Focus), Modern office. Japanese engineer in 30s working on 3D building design software. Large monitor displaying detailed 3D architectural model. Clean, tech-forward office environment. Natural lighting. Atmosphere of innovation and modern technology adoption. --ar 16:9",
+        use: "技術力アピール、DX推進",
+        keywords: "最新技術、3D設計、革新"
+      },
+      {
+        id: 11,
+        title: "現場監督MTG（管理体制）",
+        category: "オフィス",
+        icon: "📋",
+        image: null,
+        descriptionJa: "建設現場の仮設事務所。現場監督がホワイトボードで作業員に指示。全員真剣。しっかりした管理体制を表現。",
+        prompt: "(Best Quality, Site Management), Temporary site office. Japanese site supervisor presenting work plan on whiteboard to team. Workers in workwear listening attentively. Serious, organized atmosphere. Professional site management and communication. --ar 16:9",
+        use: "管理体制、現場マネジメント",
+        keywords: "管理力、コミュニケーション、組織"
+      },
+      {
+        id: 12,
+        title: "現場社員インタビュー（リアル）",
+        category: "インタビュー",
+        icon: "😊",
+        image: "images/02_employee_portrait.png",
+        descriptionJa: "建設現場。20代男性作業員の笑顔のポートレート。ヘルメット着用。背景にぼかした現場。親近感とリアルな雰囲気。",
+        prompt: "(Best Quality, Employee Portrait), Construction site. Portrait of smiling young Japanese male worker in his 20s. Yellow safety helmet and workwear. Blurred construction site background. Natural, approachable expression. Authentic, relatable atmosphere. --ar 3:4",
+        use: "社員インタビュー、採用ページ",
+        keywords: "リアル、親近感、若手"
+      },
+      {
+        id: 13,
+        title: "女性社員インタビュー（事務）",
+        category: "インタビュー",
+        icon: "👩‍💼",
+        image: null,
+        descriptionJa: "明るいオフィス。20代女性事務員の笑顔のポートレート。清潔感のある服装。背景にオフィス。働きやすさを表現。",
+        prompt: "(Best Quality, Office Portrait), Bright modern office. Portrait of smiling young Japanese woman in her 20s in professional office attire. Clean, friendly expression. Blurred modern office background. Atmosphere of comfortable work environment. --ar 3:4",
+        use: "事務職採用、女性採用",
+        keywords: "女性活躍、オフィス、働きやすさ"
+      },
+      {
+        id: 14,
+        title: "ベテラン社員（キャリアパス）",
+        category: "インタビュー",
+        icon: "👨‍💼",
+        image: null,
+        descriptionJa: "50代男性管理職の落ち着いたポートレート。スーツ姿。オフィス背景。長期キャリアと安定を象徴。",
+        prompt: "(Best Quality, Leadership Portrait), Modern office. Portrait of confident Japanese male manager in his 50s in business suit. Calm, trustworthy expression. Blurred office background. Atmosphere of long-term career and stability. --ar 3:4",
+        use: "キャリアパス、長期雇用アピール",
+        keywords: "キャリアパス、安定、長期雇用"
+      },
+      {
+        id: 15,
+        title: "社員BBQ（社風）",
+        category: "福利厚生",
+        icon: "🍖",
+        image: "images/07_company_bbq.png",
+        descriptionJa: "屋外。社員とその家族がBBQを楽しむ様子。笑顔、カジュアルな服装。アットホームな社風を表現。",
+        prompt: "(Best Quality, Company Event), Outdoor BBQ event. Japanese employees and their families enjoying barbecue together. Smiling, casual clothing. Warm, friendly atmosphere. Natural sunlight. Feeling of close-knit company culture and work-life balance. --ar 16:9",
+        use: "福利厚生、社風紹介",
+        keywords: "アットホーム、福利厚生、家族的"
+      },
+      {
+        id: 16,
+        title: "社員旅行（チームビルディング）",
+        category: "福利厚生",
+        icon: "🚌",
+        image: null,
+        descriptionJa: "観光地。社員グループが記念撮影。全員笑顔。カジュアルな服装。チームの団結力を表現。",
+        prompt: "(Best Quality, Team Building), Tourist destination. Group of Japanese employees posing for team photo. Everyone smiling in casual wear. Beautiful scenic background. Atmosphere of team unity and company benefits. --ar 16:9",
+        use: "福利厚生、チームビルディング",
+        keywords: "社員旅行、団結、福利厚生"
+      },
+      {
+        id: 17,
+        title: "品質検査（こだわり）",
+        category: "技術",
+        icon: "🔍",
+        image: null,
+        descriptionJa: "建設現場。40代社員が測定器具で精密に計測している様子。真剣な表情。品質へのこだわりを表現。",
+        prompt: "(Best Quality, Quality Control), Construction site. Japanese quality inspector in his 40s carefully measuring with precision instrument. Serious, focused expression. Close-up showing attention to detail. Professional atmosphere of quality commitment. --ar 16:9",
+        use: "品質管理、こだわりアピール",
+        keywords: "品質、精密、プロ意識"
+      },
+      {
+        id: 18,
+        title: "最新技術機材（革新）",
+        category: "技術",
+        icon: "🤖",
+        image: null,
+        descriptionJa: "建設現場。最新の建設機械や測量機器。ドローンやレーザー測量など。技術革新への取り組みを表現。",
+        prompt: "(Best Quality, Technology Innovation), Modern construction site. Advanced construction equipment and surveying technology visible. Drone, laser measuring devices. High-tech, innovative atmosphere. Professional, forward-thinking company image. --ar 16:9",
+        use: "技術力、DX推進",
+        keywords: "最新技術、革新、先進性"
+      }
+    ];
+
+    let currentPrompt = null;
+
+    // Render prompts
+    function renderPrompts(category = 'all') {
+      const grid = document.getElementById('promptsGrid');
+      grid.innerHTML = '';
+
+      const filtered = category === 'all' ? prompts : prompts.filter(p => p.category === category);
+
+      filtered.forEach(prompt => {
+        const card = document.createElement('div');
+        card.className = 'prompt-card';
+        
+        const imageStyle = prompt.image 
+          ? `style="background-image: url('${prompt.image}');"` 
+          : `class="placeholder"`;
+        
+        const imageContent = prompt.image 
+          ? '' 
+          : `<span style="font-size: 72px;">${prompt.icon}</span>`;
+        
+        card.innerHTML = `
+          <div class="prompt-image" ${imageStyle}>
+            <span class="prompt-number">#${String(prompt.id).padStart(2, '0')}</span>
+            ${imageContent}
+          </div>
+          <div class="prompt-content">
+            <h3 class="prompt-title">${prompt.title}</h3>
+            <div class="prompt-meta">
+              <span class="badge badge-category">${prompt.category}</span>
+              <span class="badge badge-use">${prompt.use.split('、')[0]}</span>
+            </div>
+            <p class="prompt-description">${prompt.descriptionJa.slice(0, 100)}...</p>
+            <p class="prompt-keywords">🏷️ ${prompt.keywords}</p>
+            <div class="prompt-actions">
+              <button class="btn btn-primary" onclick="showPrompt(${prompt.id})">詳細を見る</button>
+              <button class="btn btn-secondary" onclick="quickCopy(${prompt.id})">コピー</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPrompts(btn.dataset.category);
+      });
+    });
+
+    // Show prompt details
+    function showPrompt(id) {
+      currentPrompt = prompts.find(p => p.id === id);
+      document.getElementById('modalTitle').textContent = currentPrompt.title;
+      document.getElementById('modalDescriptionJa').textContent = currentPrompt.descriptionJa;
+      document.getElementById('modalPrompt').textContent = currentPrompt.prompt;
+      document.getElementById('modalUse').textContent = currentPrompt.use;
+      document.getElementById('modalKeywords').textContent = currentPrompt.keywords;
+      document.getElementById('promptModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('promptModal').classList.remove('active');
+    }
+
+    function copyPrompt() {
+      navigator.clipboard.writeText(currentPrompt.prompt).then(() => {
+        alert('プロンプトをコピーしました！');
+      });
+    }
+
+    function quickCopy(id) {
+      const prompt = prompts.find(p => p.id === id);
+      navigator.clipboard.writeText(prompt.prompt).then(() => {
+        alert('プロンプトをコピーしました！');
+      });
+    }
+
+    // Close modal on background click
+    document.getElementById('promptModal').addEventListener('click', (e) => {
+      if (e.target.id === 'promptModal') {
+        closeModal();
+      }
+    });
+
+    // Initial render
+    renderPrompts();
+  </script>
+</body>
+</html>

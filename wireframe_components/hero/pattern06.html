@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Pattern 06 - 中央揃えヒーロー（プレビュー）</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Hero Pattern 06: Centered Hero Wireframe Styles */
+    .hero-pattern-06 {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f5f5f5;
+      position: relative;
+      padding: 60px 20px;
+    }
+
+    .hero-pattern-06 .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-pattern-06 .hero-content {
+      text-align: center;
+      position: relative;
+    }
+
+    /* Decorative circle */
+    .hero-pattern-06 .decorative-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #ddd;
+      margin: 0 auto 40px;
+    }
+
+    /* Main title */
+    .hero-pattern-06 .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #333;
+      margin-bottom: 40px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Lead text */
+    .hero-pattern-06 .hero-lead {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #666;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Scroll indicator */
+    .hero-pattern-06 .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      text-align: right;
+    }
+
+    .hero-pattern-06 .scroll-indicator span {
+      display: block;
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-pattern-06 .scroll-arrow {
+      font-size: 20px;
+      color: #999;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-pattern-06 {
+        min-height: 80vh;
+      }
+      
+      .hero-pattern-06 .hero-title {
+        font-size: 32px;
+      }
+      
+      .hero-pattern-06 .hero-lead {
+        font-size: 14px;
+      }
+      
+      .hero-pattern-06 .scroll-indicator {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    /* Watermark */
+    .watermark {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 12px;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Watermark for identification -->
+  <div class="watermark">Pattern 06: 中央揃えヒーロー（ワイヤーフレーム）</div>
+
+  <!-- Hero Section -->
+  <section class="hero-pattern-06">
+    <div class="hero-container">
+      <div class="hero-content">
+        <!-- Decorative circle element -->
+        <div class="decorative-circle"></div>
+        
+        <!-- Main headline (centered) -->
+        <h1 class="hero-title">
+          新たな価値を創造する、<br>
+          デザインの可能性
+        </h1>
+        
+        <!-- Lead text rows (centered) -->
+        <p class="hero-lead">
+          ここにリード文が入ります。ここにリード文が入ります。<br>
+          ここにリード文が入ります。ここにリード文が入ります。
+        </p>
+        <p class="hero-lead">
+          ここにリード文が入ります。ここにリード文が入ります。<br>
+          ここにリード文が入ります。ここにリード文が入ります。
+        </p>
+        
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+          <span>SCROLL DOWN</span>
+          <div class="scroll-arrow">↓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

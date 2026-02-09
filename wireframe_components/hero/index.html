@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ヒーローセクション一覧 - Wireframe Components</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background-color: #f8f9fa;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #222;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .pattern-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pattern-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .preview-frame {
+      width: 100%;
+      height: 300px;
+      border: none;
+      background: #f5f5f5;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .pattern-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .pattern-meta {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .badge-use {
+      background-color: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .badge-type {
+      background-color: #f3e5f5;
+      color: #7b1fa2;
+    }
+
+    .pattern-description {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      margin-bottom: 20px;
+    }
+
+    .features-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    .features ul {
+      list-style: none;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .features li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #4caf50;
+      font-weight: bold;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: #2196f3;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #1976d2;
+    }
+
+    .btn-secondary {
+      background-color: #fff;
+      color: #2196f3;
+      border: 1px solid #2196f3;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e3f2fd;
+    }
+
+    .quick-ref {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .quick-ref h2 {
+      font-size: 24px;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .ref-item {
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      border-left: 4px solid #2196f3;
+    }
+
+    .ref-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 4px;
+    }
+
+    .ref-value {
+      font-size: 13px;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .pattern-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎨 ヒーローセクション一覧</h1>
+      <p class="subtitle">採用LP用ワイヤーフレーム - すぐに使える3パターン</p>
+    </header>
+
+    <div class="pattern-grid">
+      <!-- Pattern 06 -->
+      <div class="pattern-card">
+        <iframe src="pattern06.html" class="preview-frame"></iframe>
+        <div class="card-content">
+          <h3 class="pattern-title">Pattern 06: 中央揃えヒーロー</h3>
+          <div class="pattern-meta">
+            <span class="badge badge-use">保守的クライアント向け</span>
+            <span class="badge badge-type">王道レイアウト</span>
+          </div>
+          <p class="pattern-description">
+            信頼感を重視する伝統的な建設会社に最適。中央揃えの構成で、プロフェッショナルな印象を与えます。
+          </p>
+          <div class="features">
+            <p class="features-title">主な特徴：</p>
+            <ul>
+              <li>中央揃えレイアウト</li>
+              <li>装飾的な円形エレメント</li>
+              <li>スクロールインジケーター</li>
+            </ul>
+          </div>
+          <div class="actions">
+            <a href="pattern06.html" target="_blank" class="btn btn-primary">プレビュー</a>
+            <button class="btn btn-secondary" onclick="copyPath('pattern06.html')">パスをコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern 08 -->
+      <div class="pattern-card">
+        <iframe src="pattern08.html" class="preview-frame"></iframe>
+        <div class="card-content">
+          <h3 class="pattern-title">Pattern 08: 非対称レイアウト</h3>
+          <div class="pattern-meta">
+            <span class="badge badge-use">モダン志向向け</span>
+            <span class="badge badge-type">動的レイアウト</span>
+          </div>
+          <p class="pattern-description">
+            若手採用を強化したい企業に最適。非対称グリッドで活気のある印象を演出します。
+          </p>
+          <div class="features">
+            <p class="features-title">主な特徴：</p>
+            <ul>
+              <li>非対称グリッドレイアウト</li>
+              <li>3つの画像エリア（大・中・小）</li>
+              <li>デュアルCTAボタン</li>
+            </ul>
+          </div>
+          <div class="actions">
+            <a href="pattern08.html" target="_blank" class="btn btn-primary">プレビュー</a>
+            <button class="btn btn-secondary" onclick="copyPath('pattern08.html')">パスをコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern 09 -->
+      <div class="pattern-card">
+        <iframe src="pattern09.html" class="preview-frame"></iframe>
+        <div class="card-content">
+          <h3 class="pattern-title">Pattern 09: スライダー＋ロゴバー</h3>
+          <div class="pattern-meta">
+            <span class="badge badge-use">実績重視向け</span>
+            <span class="badge badge-type">動的コンテンツ</span>
+          </div>
+          <p class="pattern-description">
+            大手建設会社や実績豊富な企業に最適。スライダーで複数のメッセージを伝え、ロゴバーで信頼性を強化します。
+          </p>
+          <div class="features">
+            <p class="features-title">主な特徴：</p>
+            <ul>
+              <li>ヒーロースライダー（複数メッセージ）</li>
+              <li>クライアントロゴバー</li>
+              <li>左右ナビゲーション付き</li>
+            </ul>
+          </div>
+          <div class="actions">
+            <a href="pattern09.html" target="_blank" class="btn btn-primary">プレビュー</a>
+            <button class="btn btn-secondary" onclick="copyPath('pattern09.html')">パスをコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Reference -->
+    <div class="quick-ref">
+      <h2>⚡ クイックリファレンス</h2>
+      <div class="ref-grid">
+        <div class="ref-item">
+          <p class="ref-label">保守的な建設会社</p>
+          <p class="ref-value">→ Pattern 06（中央揃え）</p>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">モダン志向の企業</p>
+          <p class="ref-value">→ Pattern 08（非対称）</p>
+        </div>
+        <div class="ref-item">
+          <p class="ref-label">実績をアピールしたい</p>
+          <p class="ref-value">→ Pattern 09（スライダー）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyPath(filename) {
+      const path = `C:\\Users\\eri76\\OneDrive\\Desktop\\VSC\\web-tsukuru\\wireframe_components\\hero\\${filename}`;
+      navigator.clipboard.writeText(path).then(() => {
+        alert('パスをコピーしました！\n' + path);
+      });
+    }
+  </script>
+</body>
+</html>
