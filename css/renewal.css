@@ -1070,7 +1070,7 @@ section {
   opacity: 0.9;
 }
 .works-hero::before {
-  content: "SAMPLES";
+  content: "SERVICE";
   position: absolute;
   top: 50%;
   left: 50%;
