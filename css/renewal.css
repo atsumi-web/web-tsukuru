@@ -132,7 +132,7 @@ section {
   background: var(--renewal-gold);
   color: #fff;
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 700;
   text-align: center;
   cursor: pointer;
   transition: var(--transition-base);
