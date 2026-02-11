@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity直伝・コーディングの鉄則</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h3 {
+            background: #f1f8ff;
+            padding: 10px 15px;
+            border-left: 5px solid #0366d6;
+            border-radius: 4px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+        .rule-box {
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .rule-box.bad {
+            border-color: #ffaeb6;
+            background: #fff5f6;
+        }
+        .rule-box.good {
+            border-color: #a3d9a5;
+            background: #f0fff4;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .badge-bad {
+            background: #d73a49;
+            color: #fff;
+        }
+        .badge-good {
+            background: #28a745;
+            color: #fff;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>Antigravity直伝・コーディングの鉄則</h1>
+            <p>「修正の無限ループ」から抜け出すための16の鉄則</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="Private_index.html">← マニュアル一覧に戻る</a>
+        </div>
+
+        <main class="content">
+            
+            <div class="highlight-box" style="background: #e6fffa; border-left: 4px solid #38b2ac; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🛡️ これはなに？</h3>
+                <p>複雑なデザイン（C-Limber等）に挑戦した際に直面した「コードが複雑化して修正できなくなる」問題を解決するための、Antigravityとの約束事（鉄の掟）です。<br>
+                模写だけでなく、オリジナル開発でもこのルールを守ることで、プロ品質の保守性を担保します。</p>
+            </div>
+
+            <h2>1. モバイルファースト（小は大を兼ねない！）</h2>
+            <p><strong>「まずスマホ版のデザインを先に書く」</strong>。これだけでコード量は半分になります。</p>
+            
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG: Webファースト</span>
+                <p>デスクトップ版を先に作ると、スマホ版で「打ち消し」のコードが大量に必要になります。</p>
+                <code>padding: 0; border: none; flex-direction: column;</code>
+                <p>↑こんなコードが増えたら要注意です。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: モバイルファースト</span>
+                <p>スマホ版をベースにすれば、デスクトップ版は「追加」だけで済みます。</p>
+                <p>「スマホでシンプルな形を作る」→「画面が広かったら横並びにする（@media）」</p>
+            </div>
+
+            <h2>2. !important は「敗北宣言」</h2>
+            <p><code>!important</code> を使いたくなったら、それはCSSの設計が破綻しかけている合図です。</p>
+            
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p><code>width: 100% !important;</code></p>
+                <p>これを使うと、後で「やっぱり変更したい」と思った時に、誰も修正できなくなります。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>使う前に自問自答する：<br>
+                「HTMLのクラス名を見直せないか？」<br>
+                「詳細度（セレクタの強さ）を整理できないか？」</p>
+            </div>
+
+            <h2>3. 「絶対配置（absolute）」は飾りだけ</h2>
+            <p>コンテンツ（文字や画像）を <code>position: absolute</code> で無理やり配置するのはやめましょう。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>本文や見出しなどの「文章」をabsoluteで固定する。<br>
+                → 文字数が増えたり、スマホで見たりした瞬間に崩壊します。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>中身の配置は必ず <code>Flexbox</code> か <code>Grid</code> を使います。<br>
+                <code>absolute</code> は<strong>「背景の赤い丸」や「装飾アイコン」</strong> など、崩れても読めるものだけに限定します。</p>
+            </div>
+
+            <h2>4. 「下書き保存」禁止（One Source of Truth）</h2>
+            <p>修正したいとき、<strong>ファイルの末尾に「修正用コード」を追記していく「継ぎ足し方式」は禁止</strong>です。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：同じファイル内で重複</span>
+                <p>既存のコードには触らず、一番下に新しいCSSを書いて上書きする。<br>
+                <code>.button { background: red; }</code> (末尾に追記)<br>
+                → どこが有効なのか分からなくなり、管理不能になります。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：元の場所を直接修正</span>
+                <p><strong>勇気を出して、元の記述を書き換える。</strong><br>
+                ファイル内検索（Ctrl+F）を使って、該当箇所の元の記述を探し出し、そこを直接修正します。</p>
+                <p><strong>💡 AIへの指示のコツ</strong><br>
+                「既存の構造を壊さず、メンテナンス性を維持した美しいコードで出力してください」と一言添えるのがプロのディレクションです。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #e1f5fe; border-left: 4px solid #0288d1; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">✨ AI時代のCSS設計</h3>
+                <p>AI（Antigravity）と共同でデザインを磨き上げるための最新ルールです。</p>
+            </div>
+
+            <h2>5. 脱・!important 戦略</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><code>:where()</code> セレクタを活用してベーススタイルを定義する。<br>
+                詳細度（強さ）を上げすぎないことで、後の修正を楽にします。</p>
+            </div>
+
+            <h2>6. デザイン・トークン（変数）の徹底</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>色はすべて <code>--renewal-gold</code> のような変数で管理し、ハードコード（直書き）を排除します。<br>
+                これにより、サイト全体のカラーチェンジが 1 箇所（:root）の修正で完了します。</p>
+            </div>
+
+            <h2>7. コンポーネント指向メディアクエリ</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>レスポンシブ設定は、そのクラスの本体のすぐ下に記述します。<br>
+                PC版とスマホ版の設定を上下に往復して探す手間をなくします。</p>
+            </div>
+
+            <h2>8. 動的パディング（clamp関数）</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><code>padding: clamp(60px, 10vw, 120px) 0;</code><br>
+                画面幅に合わせて余白が自動で「呼吸」するように設計します。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🚀 求人LP特化の3ヶ条</h3>
+                <p>頻繁なABテストや修正が発生する「求人ランディングページ」で事故を防ぐための追加ルールです。</p>
+            </div>
+
+            <h2>5. セクション＝積み木ルール（入れ替え自由自在）</h2>
+            <p>求人LPは「先輩の声を上にしたい」「募集要項を最後にしたい」など、頻繁な並び替えが発生します。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p>各セクションは上下に依存する余白(<code>margin-top/bottom</code>)を持たせない。<br>
+                自分の内側の余白(<code>padding</code>)だけで完結させる。<br>
+                → これなら、どの順番に入れ替えてもレイアウトが崩れません。</p>
+            </div>
+
+            <h2>6. 「文字・即・テキスト」 (脱・画像化)</h2>
+            <p>給与、時間、待遇…これらは最も変更が多い箇所です。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>Photoshopで作った画像の中に文字を埋め込む。<br>
+                → 時給が50円変わるだけで画像の作り直しが発生します。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><strong>HTMLテキスト＋CSSで作る。</strong><br>
+                変更の可能性がある情報は、意地でもテキストデータとして実装します。</p>
+            </div>
+
+            <h2>7. CVボタンは絶対聖域</h2>
+            <p>LPの唯一の目的は「応募」です。デザイン崩れでボタンが押せなくなることだけは万死に値します。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><strong>最強の共通パーツを作る。</strong><br>
+                <code>.btn-cta</code> のような共通クラスを作り、どのページ、どの場所に置いても絶対に崩れないように独立させて管理します。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #ffebee; border-left: 4px solid #e53935; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">⚠️ 技術的負債を防ぐ</h3>
+                <p>コードを書く前に知っておくべき、文字化けとファイル構造の罠</p>
+            </div>
+
+            <h2>8. ファイルエンコーディングの厳守</h2>
+            <p><strong>【重要】PowerShellでファイルを保存する際の注意</strong></p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">問題</span>
+                <p>PowerShellの <code>Set-Content</code> や <code>Out-File</code> は、デフォルトでUTF-16 LEまたはシステムデフォルトエンコーディングで保存される。<br>
+                これにより、日本語コメントを含むHTML/CSS/JSファイルが文字化けする。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK（UTF-8 BOMなしを明示）</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">[System.IO.File]::WriteAllText('file.css', $content, (New-Object System.Text.UTF8Encoding $false))</pre>
+                <p><strong>確認方法：</strong><br>
+                VS Codeの右下に表示されるエンコーディングが「UTF-8」であることを必ず確認する。</p>
+            </div>
+
+            <h2>9. CSS設計：ファイル分割と直接修正</h2>
+            <p>管理しやすくするためにファイルを分割しますが、分割されたファイルは直接修正します。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">推奨構成（管理の単位）</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">css/
+├── base.css          （基本設定・リセット）
+├── components.css    （ボタン、カードなど共通パーツ）
+├── header.css        （ヘッダー専用）
+├── hero.css          （ヒーローセクション専用）
+├── sections.css      （各セクションの共通スタイル）
+└── main.css          （上記を @import でまとめる）</pre>
+            </div>
+
+            <h3>修正の鉄則</h3>
+            <ul>
+                <li><strong>迷わず直接修正</strong>：<code>header.css</code> の中身を直接書き換える。</li>
+                <li><strong>custom.css は「例外」</strong>：実験的な変更や、触れない外部ファイル（WPテーマ等）の場合のみ使用。</li>
+                <li><strong>Gitが生命線</strong>：直接修正する代わりに、一歩ごとにコミットする（ルール10）。</li>
+            </ul>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">メリット</span>
+                <p>✅ <strong>シンプル</strong>：1箇所見れば全てが分かる。<br>
+                ✅ <strong>軽量</strong>：無駄な上書きコードが残らない。<br>
+                ✅ <strong>確実</strong>：Gitがあれば失敗しても1秒で戻せる。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🔄 実践：無限修正ループからの脱出</h3>
+                <p>今回のセッションで実際に起きた「試行錯誤→重複→文字化け」の悪循環を防ぐための必須ルール</p>
+            </div>
+
+            <h2>10. Git必須（変更前に必ずコミット）</h2>
+            <p>「ちょっと試してみる」が取り返しのつかない事態を招きます。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>いきなりファイルを編集し始める。<br>
+                → うまくいかなかった時、「元の状態」に戻せなくなる。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK</span>
+                <p><strong>変更前に必ずコミット</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">git add .
+git commit -m "PRICE section 修正前"
+
+# 実験的な変更はブランチで
+git checkout -b fix/price-section</pre>
+                <p>これで、いつでも <code>git reset --hard HEAD</code> で戻れます。</p>
+            </div>
+
+            <h2>11. ワンステップ・ワンテスト（段階的テスト）</h2>
+            <p>一度に複数の変更を加えると、どこで壊れたか分からなくなります。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：一気に変更</span>
+                <p>ボタンの幅 + 色 + フォント + 位置を同時に変更。<br>
+                → どれが原因でデザインが崩れたのか特定不可能。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：1つずつ確認</span>
+                <ol>
+                    <li>ボタンの幅を変更 → <strong>ブラウザ確認</strong></li>
+                    <li>OK → 色を変更 → <strong>ブラウザ確認</strong></li>
+                    <li>OK → フォントを変更 → <strong>ブラウザ確認</strong></li>
+                </ol>
+                <p>問題が起きても、直前の1ステップだけ戻せばOK。</p>
+            </div>
+
+            <h2>12. コマンド実行前チェックリスト</h2>
+            <p>PowerShellでファイル操作をする前に、必ず以下を確認します。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">実行前チェック</span>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ <code>-Encoding UTF8</code> は指定したか？</li>
+                    <li>☐ バックアップは取ったか？（<code>cp file.css file.css.bak</code>）</li>
+                    <li>☐ 対象ファイルのパスは正しいか？</li>
+                    <li>☐ 上書きしても大丈夫なファイルか？（メインCSSではないか？）</li>
+                    <li>☐ Gitでコミット済みか？</li>
+                </ul>
+            </div>
+
+            <h2>13. ブラウザ確認を義務化</h2>
+            <p>「コードが正しそう」と「実際に正しい」は別物です。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG</span>
+                <p>コードを修正して満足。ブラウザで確認せずに次の作業へ。<br>
+                → 実は表示が崩れていた、ボタンが押せなかった、などが後で発覚。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：最低限の確認項目</span>
+                <ul>
+                    <li>✅ <strong>デスクトップ表示</strong>（Chrome/Edge）</li>
+                    <li>✅ <strong>スマホ表示</strong>（DevTools: F12 → デバイスモード）</li>
+                    <li>✅ <strong>ボタンのクリック可否</strong>（実際にクリックしてみる）</li>
+                    <li>✅ <strong>テキストの読みやすさ</strong>（コントラスト、文字サイズ）</li>
+                </ul>
+                <p>特に、<strong>スマホ表示は必須</strong>。ユーザーの8割はスマホです。</p>
+            </div>
+
+            <h2>14. ロールバック手順の明文化</h2>
+            <p>「やっぱり元に戻したい」時の手順を事前に決めておきます。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">ロールバック手順</span>
+                <p><strong>Git使用時：</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># 最後のコミットに戻す
+git reset --hard HEAD
+
+# 特定のコミットに戻す
+git reset --hard [コミットID]
+
+# ファイル単位で戻す
+git checkout HEAD -- file.css</pre>
+
+                <p><strong>バックアップファイル使用時：</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># バックアップから復元
+cp file.css.bak file.css</pre>
+
+                <p><strong>custom.css分離方式：</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># custom.cssだけ削除すれば元に戻る
+# メインCSSは無傷のまま
+rm custom.css</pre>
+            </div>
+
+            <h2>15. AI（Antigravity）との協働ルール</h2>
+            <p>AIが生成するコードやコマンドの特性を理解し、事故を未然に防ぎます。</p>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">環境を明示する</span>
+                <ul>
+                    <li>OS（Windows）、シェル（PowerShell）、エンコーディング（UTF-8）を常に意識させる。</li>
+                    <li><code>ANTIGRAVITY_NOTES.md</code> があれば活用し、AIにコンテキストを記憶させる。</li>
+                </ul>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">コマンドの制約を伝える</span>
+                <ul>
+                    <li>PowerShell環境では <code>grep</code> ではなく <code>Select-String</code> を使うよう指示。</li>
+                    <li>Linux系コマンド（<code>sed</code>, <code>awk</code> 等）は使えないことを明記する。</li>
+                </ul>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">段階的に確認する</span>
+                <ul>
+                    <li>AIが生成したコードを盲信せず、必ずブラウザで確認（ルール13）を行う。</li>
+                    <li>一気に大量の修正を頼まず、セクションごとに段階的に依頼する。</li>
+                </ul>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">カスタム指示の例</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">{
+  "antigravity.customInstructions": "PowerShell環境。UTF-8厳守。grep禁止→Select-String使用。"
+}</pre>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #e8f5e9; border-left: 4px solid #00c853; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">⚡ Performance First Coding</h3>
+                <p>「後から高速化」は泥沼の元。最初から「爆速」で作るための鉄則。</p>
+            </div>
+
+            <h2>16. 脱・重量級ライブラリ & メディア</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: Inline SVG</span>
+                <p>FontAwesome等のアイコンフォントは<strong>使用禁止</strong>（250KBの無駄）。<br>
+                アイコンは必ずSVGコードとしてHTMLに埋め込む。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: JS Media Injection</span>
+                <p>動画などの重いファイルは、HTMLに直接書かない。<br>
+                <code>window.innerWidth</code> でPC判定してから、JSでタグを生成・注入する。<br>
+                （スマホでの裏ダウンロードを完全に防ぐため）</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK: Mobile Q50</span>
+                <p>スマホ用画像は品質(Quality)を <strong>50</strong> まで落とす。<br>
+                小さな画面では劣化が気にならず、容量を劇的に削減できる。</p>
+            </div>
+
+            <h2>17. インラインCSS vs 外部CSS（重複の絶対禁止）</h2>
+            <p><strong>【ルール4「下書き保存禁止」とルール9「直接修正」の具体的適用例】</strong></p>
+            <p>インラインCSSと外部CSSファイルで同じスタイルを定義すると、「どちらが有効か分からない」「修正が2箇所必要」という地獄が待っています。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：重複定義</span>
+                <p><code>index.html</code> のインラインCSSと <code>renewal.css</code> の両方に <code>.section-badge</code> を定義する。<br>
+                → 修正時に両方を直さないと不整合が発生し、デザインが崩れます。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：役割を明確に分離</span>
+                <h3 style="margin-top:0; border:none; padding:10px 0; background:none; font-size:1rem;">インラインCSS（<code>&lt;style&gt;</code>タグ内）に書いて良いもの</h3>
+                <ul>
+                    <li>✅ <code>@font-face</code> 定義（フォント読み込み）</li>
+                    <li>✅ CSS変数（<code>:root</code>）</li>
+                    <li>✅ 基本レイアウト（<code>html</code>, <code>body</code>）</li>
+                    <li>✅ タイポグラフィの基本（見出し、段落のフォントファミリー、ウェイト）</li>
+                </ul>
+                
+                <h3 style="margin-top:20px; border:none; padding:10px 0; background:none; font-size:1rem; color:#d73a49;">外部CSS（<code>renewal.css</code>等）のみに書くべきもの</h3>
+                <ul>
+                    <li>❌ コンポーネントスタイル（<code>.section-badge</code>, <code>.cta-button</code>など）</li>
+                    <li>❌ ヘッダー、ナビゲーション、フッター</li>
+                    <li>❌ レスポンシブルール（<code>@media</code>クエリ）</li>
+                    <li>❌ アニメーション（<code>@keyframes</code>）</li>
+                    <li>❌ 個別のセクションスタイル</li>
+                </ul>
+            </div>
+
+            <h3>CSS修正時の鉄則</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">ワークフロー</span>
+                <ol>
+                    <li><strong>外部CSS（<code>renewal.css</code>）を直接修正</strong>（ルール9に従う）</li>
+                    <li>修正後、必ず <code>.min.css</code> に同期：<br>
+                    <code>Copy-Item -Force "css\renewal.css" "css\renewal.min.css"</code></li>
+                    <li><strong>インラインCSSは絶対に触らない</strong>（フォント定義や変数以外）</li>
+                    <li>Gitコミット（ルール10）</li>
+                </ol>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">理由</span>
+                <p>✅ <strong>保守性</strong>：修正箇所が1箇所で済む<br>
+                ✅ <strong>一貫性</strong>：重複による不整合を防ぐ<br>
+                ✅ <strong>パフォーマンス</strong>：インラインCSSは最小限（初期表示の高速化）<br>
+                ✅ <strong>ルール4の実践</strong>：「下書き保存禁止」を徹底できる</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：17の鉄則</h3>
+                <ol style="line-height: 2;">
+                    <li>モバイルファースト</li>
+                    <li>!important は敗北宣言</li>
+                    <li>絶対配置は飾りだけ</li>
+                    <li>下書き保存禁止</li>
+                    <li>セクション＝積み木ルール</li>
+                    <li>文字・即・テキスト</li>
+                    <li>CVボタンは絶対聖域</li>
+                    <li>ファイルエンコーディング厳守</li>
+                    <li>CSS設計：ファイル分割</li>
+                    <li><strong>Git必須</strong></li>
+                    <li><strong>ワンステップ・ワンテスト</strong></li>
+                    <li><strong>コマンド実行前チェック</strong></li>
+                    <li><strong>ブラウザ確認義務化</strong></li>
+                    <li><strong>ロールバック手順明文化</strong></li>
+                    <li><strong>AI（Antigravity）協働ルール</strong></li>
+                    <li><strong>Performance First (SVG/JS-Inject/Q50)</strong></li>
+                    <li><strong>インラインCSS vs 外部CSS（重複禁止）</strong></li>
+                </ol>
+                <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+        </footer>
+    </div>
+
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="驕狗畑蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>
