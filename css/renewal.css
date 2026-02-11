@@ -789,8 +789,9 @@ section {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  max-width: none;
-  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
 .hero-content {
