@@ -288,8 +288,8 @@ section {
   color: var(--renewal-gold);
 }
 .text-highlight {
-  background: linear-gradient(transparent 90%, var(--renewal-gold) 90%);
-} /* 80%->90%にさらに細く */
+  background: linear-gradient(transparent 95%, var(--renewal-gold) 95%);
+} /* 90%->95%にさらに細く */
 
 .text-dark {
   color: #333;
