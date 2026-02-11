@@ -303,6 +303,14 @@ section {
   display: inline-block;
 } /* 改行禁止ブロック: 単語の途中で切れないようにする */
 
+/* Hero Actions - Center alignment container */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
 /* Urgency Badge - Text Label Style */
 .urgency-badge {
   display: block;
