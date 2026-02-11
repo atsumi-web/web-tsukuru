@@ -27,21 +27,24 @@
       /* Header 基本 */
       body .site-header{height:100px;background:rgba(255,255,255,.92);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:fixed;top:0;left:0;width:100%;z-index:1000;transition:all .4s ease;padding:.75rem 0;box-shadow:0 2px 8px rgba(0,0,0,.08);border-bottom:1px solid var(--color-neutral-border)}
       body .site-header.scrolled{height:80px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
-      /* Header Layout */
-      body .site-header .header-full-width{display:flex;justify-content:space-between;align-items:center;width:94%;max-width:1400px;padding:0;margin:0 auto;height:100%}
+      /* Header Layout (defined in renewal.css) */
+      body .site-header .header-full-width{display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 0 0 3%;margin:0;height:100%}
+      body .header-nav{display:flex;margin-right:1.5rem}
       body .logo-link{display:flex;align-items:center;gap:12px;text-decoration:none}
       body .header-logo-img{height:32px;width:auto;display:block}
       body .logo-sub{font-size:.7rem;color:var(--color-neutral-light);font-weight:800;letter-spacing:.15em;border-left:1px solid var(--color-neutral-border);padding-left:12px;margin-top:2px}
-      /* Nav Menu - PC */
-      body .header-nav{display:flex}
+      /* Nav Menu - PC (defined in renewal.css) */
       body .nav-menu{display:flex;list-style:none;gap:1.5rem;align-items:center;margin:0;padding:0}
-      body .nav-menu a{color:var(--color-neutral-dark);text-decoration:none;font-weight:500;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
-      body .nav-menu a:hover{color:#013276}
+      body .nav-menu a{color:var(--navy-deep);text-decoration:none;font-weight:500;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
+      body .nav-menu a:hover{color:var(--navy-light)}
       body .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:#c5a059;transition:all .2s ease}
       body .nav-menu a:hover::after{width:100%}
       body .nav-cta{background:linear-gradient(135deg,#06C755 0%,#05a346 100%);color:#fff!important;padding:.75rem 1.6rem!important;border-radius:50px!important;margin-left:1.2rem;font-weight:800;font-size:.85rem!important;box-shadow:0 4px 15px rgba(6,199,85,.3);transition:all .2s ease;border:none!important}
       body .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,199,85,.4);text-decoration:none!important}
       body .nav-cta::after{display:none!important}
+      /* LINE Icon Spacing */
+      .fab{margin-right:0!important}
+      html body .nav-cta>i.fab.fa-line,html body .btn-primary>i.fab.fa-line,html body .btn-line>i.fab.fa-line,html body .floating-line-cta>i.fab.fa-line{margin-right:2px!important}
       body .mobile-menu-toggle{display:none}
       /* Hero - PC */
       body #hero.hero-teto{height:100dvh;min-height:550px;max-height:100dvh;display:flex;position:relative;background-color:var(--navy-deep);overflow:hidden}
@@ -115,32 +118,33 @@
       @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:.8rem}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
     </style>
     
+    <!-- Font Awesome (LINE icon & その他アイコン用) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- 非クリティカルCSS (非同期読み込み) -->
     <link rel="stylesheet" href="css/style.min.css?v=5.1" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="css/renewal.css?v=7.4" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/renewal.css?v=7.8" media="print" onload="this.media='all'" />
     <noscript>
       <link rel="stylesheet" href="css/style.min.css?v=5.1" />
-      <link rel="stylesheet" href="css/renewal.css?v=7.4" />
+      <link rel="stylesheet" href="css/renewal.css?v=7.8" />
     </noscript>
-    
-    <!-- Font Awesome (Removed: Replaced with Inline SVGs) -->
     
     <!-- Google Fonts (preload + 非同期ロードで高速化) -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
       />
     </noscript>
   </head>
@@ -175,9 +179,7 @@
             <li><a href="#positions">募集要項</a></li>
             <li><a href="#company">会社概要</a></li>
             <li>
-              <a href="#entry" class="nav-cta"
-                ><i class="fab fa-line" style="margin-right: 4px;"></i> LINEでカジュアル相談</a
-              >
+              <a href="#entry" class="nav-cta"><i class="fab fa-line"></i>LINEでカジュアル相談</a>
             </li>
           </ul>
         </nav>
@@ -207,7 +209,7 @@
               相談は履歴書不要。<br />未経験者大歓迎。
             </div>
             <a href="#entry" class="btn btn-primary btn-large">
-              <i class="fab fa-line" style="margin-right: 0.5em;"></i> まずはLINEで相談してみる
+              <i class="fab fa-line"></i>まずはLINEで相談してみる
             </a>
           </div>
 
@@ -1196,7 +1198,7 @@
       <div class="container">
         <div class="culture-grid">
           <div class="culture-text">
-            <span class="culture-tag">Psychological Safety</span>
+            <span class="culture-tag" style="background: linear-gradient(135deg, var(--accent-gold) 0%, #d4a854 100%); color: white; box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);">Psychological Safety</span>
             <h2 class="premium-title">
               <span>THE CULTURE</span>社長との距離感、<br>0メートル。
             </h2>
@@ -1451,7 +1453,7 @@
           <!-- Option 1: LINE -->
           <div class="entry-card line">
             <div class="card-badge">一番カンタン！</div>
-            <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" fill="currentColor"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M272.1 204.2v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.1 0-2.1-.6-2.6-1.3l-32.6-44v42.2c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.1 0 2.1.6 2.6 1.3l32.6 44v-42.2c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm-74.2 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm-36.8 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm79.1 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-40.8c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h26.2v-17.7H200c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h26.2v-17.7H200c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h40.8c1.8 0 3.2 1.4 3.2 3.2zM448 248c0 137-111 248-248 248S-48 385-48 248 63 0 200 0s248 111 248 248zm-22.3 8.3c5-43.6 5.8-96.1-23.7-133.5-25.2-31.9-63.5-44.1-85-48.4-5.3-1-10.7-1.4-16.1-1.7-8.1 4-33.3 14.2-57.2 18.2-24.9 4.1-51.4 2.8-51.4 2.8s-26.6 1.3-51.4-2.8c-23.9-4-49.1-14.2-57.2-18.2-5.4.3-10.8.7-16.1 1.7-21.5 4.3-59.8 16.5-85 48.4-29.5 37.4-28.7 89.9-23.7 133.5 13.5 117.8 131.6 179.9 224 179.9 92.4 0 210.5-62.1 224-179.9z"/></svg></div>
+            <div class="card-icon"><i class="fab fa-line"></i></div>
             <h3>LINEで相談する</h3>
             <p>
               友達追加して、「カジュアル面談希望」と送るだけ。<br />
@@ -1461,14 +1463,18 @@
               href="https://line.me/ti/p/yourid"
               class="btn btn-line btn-large"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" fill="currentColor" style="margin-right: 0.5em;"><path d="M272.1 204.2v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.1 0-2.1-.6-2.6-1.3l-32.6-44v42.2c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.1 0 2.1.6 2.6 1.3l32.6 44v-42.2c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm-74.2 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm-36.8 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm79.1 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-40.8c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h26.2v-17.7H200c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h26.2v-17.7H200c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h40.8c1.8 0 3.2 1.4 3.2 3.2zM448 248c0 137-111 248-248 248S-48 385-48 248 63 0 200 0s248 111 248 248zm-22.3 8.3c5-43.6 5.8-96.1-23.7-133.5-25.2-31.9-63.5-44.1-85-48.4-5.3-1-10.7-1.4-16.1-1.7-8.1 4-33.3 14.2-57.2 18.2-24.9 4.1-51.4 2.8-51.4 2.8s-26.6 1.3-51.4-2.8c-23.9-4-49.1-14.2-57.2-18.2-5.4.3-10.8.7-16.1 1.7-21.5 4.3-59.8 16.5-85 48.4-29.5 37.4-28.7 89.9-23.7 133.5 13.5 117.8 131.6 179.9 224 179.9 92.4 0 210.5-62.1 224-179.9z"/></svg> LINEで送る
+              <i class="fab fa-line"></i>LINEで送る
             </a>
           </div>
 
           <!-- Option 2: 簡易フォーム -->
           <div class="entry-card form">
             <div class="card-badge sub">LINEなしでOK</div>
-            <div class="card-icon"><i class="fas fa-envelope"></i></div>
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+                <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+              </svg>
+            </div>
             <h3>カンタン応募フォーム</h3>
             <p>
               名前と電話番号だけでOK。<br />
@@ -1477,11 +1483,11 @@
 
             <form class="simple-entry-form">
               <div class="form-group">
-                <label>お名前 <span class="required">必須</span></label>
+                <label>お名前 <span class="required" style="color: white;">必須</span></label>
                 <input type="text" placeholder="例：堀田 太郎" required />
               </div>
               <div class="form-group">
-                <label>電話番号 <span class="required">必須</span></label>
+                <label>電話番号 <span class="required" style="color: white;">必須</span></label>
                 <input type="tel" placeholder="例：090-1234-5678" required />
               </div>
               <div class="form-group">
@@ -1713,7 +1719,7 @@
 
     <!-- 追従型コンバージョンボタン -->
     <a href="#entry" class="floating-line-cta">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 448 512" fill="currentColor"><path d="M272.1 204.2v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.1 0-2.1-.6-2.6-1.3l-32.6-44v42.2c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.1 0 2.1.6 2.6 1.3l32.6 44v-42.2c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm-74.2 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm-36.8 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8 0 3.2 1.4 3.2 3.2zm79.1 0v71.1c0 1.8-1.4 3.2-3.2 3.2h-40.8c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h26.2v-17.7H200c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h26.2v-17.7H200c-1.8 0-3.2-1.4-3.2-3.2v-8.4c0-1.8 1.4-3.2 3.2-3.2h40.8c1.8 0 3.2 1.4 3.2 3.2zM448 248c0 137-111 248-248 248S-48 385-48 248 63 0 200 0s248 111 248 248zm-22.3 8.3c5-43.6 5.8-96.1-23.7-133.5-25.2-31.9-63.5-44.1-85-48.4-5.3-1-10.7-1.4-16.1-1.7-8.1 4-33.3 14.2-57.2 18.2-24.9 4.1-51.4 2.8-51.4 2.8s-26.6 1.3-51.4-2.8c-23.9-4-49.1-14.2-57.2-18.2-5.4.3-10.8.7-16.1 1.7-21.5 4.3-59.8 16.5-85 48.4-29.5 37.4-28.7 89.9-23.7 133.5 13.5 117.8 131.6 179.9 224 179.9 92.4 0 210.5-62.1 224-179.9z"/></svg>
+      <i class="fab fa-line"></i>
       <span>LINEで相談</span>
     </a>
     

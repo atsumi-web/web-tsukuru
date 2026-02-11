@@ -2398,3 +2398,30 @@ body .culture-ticker img:hover {
   }
 }
 
+/* ========================================
+   Header Styles (Full Width Override)
+   ======================================== */
+body .site-header .header-full-width {
+  width: 100% !important;
+  padding: 0 0 0 3% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body .header-nav {
+  margin-right: 1.5rem !important;
+}
+
+/* CTA Button LINE Icon Spacing */
+html body .nav-cta > i.fab.fa-line,
+html body .btn-primary > i.fab.fa-line,
+html body .btn-line > i.fab.fa-line,
+html body .floating-line-cta > i.fab.fa-line {
+  margin-right: 2px !important;
+}
+
+/* Ensure icon displays inline */
+.floating-line-cta .fab.fa-line {
+  font-size: 24px !important;
+  display: inline-block !important;
+}
