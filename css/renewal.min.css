@@ -318,9 +318,6 @@ section {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* CTA Button */
-}
-
 .dark-bg {
   background-color: var(--renewal-navy);
   color: #fff;
