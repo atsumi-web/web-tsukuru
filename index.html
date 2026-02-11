@@ -118,6 +118,20 @@ h1, h2, h3, h4, h5, h6 {
 p, li, div {
   font-weight: 400;
 }
+
+/* Mobile text flow fix for OPPO RENO5 and similar devices */
+@media (max-width: 480px) {
+  .text-block {
+    display: inline !important;
+  }
+  
+  .hero-title-primary,
+  .section-title,
+  h1, h2, h3 {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+}
     </style>
 
     <!-- Custom CSS (Synchronous Loading to ensure font-weight applies) -->
