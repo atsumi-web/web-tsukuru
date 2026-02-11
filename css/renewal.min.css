@@ -108,7 +108,7 @@ section {
 }
 
 .solution-section {
-  padding-bottom: calc(var(--section-padding) * 0.67);
+  padding-bottom: calc(var(--section-padding) * 0.5);
 }
 
 /* --------------------------------------------------------------------------
