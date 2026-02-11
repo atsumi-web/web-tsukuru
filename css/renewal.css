@@ -800,13 +800,8 @@ section {
   z-index: 10;
   width: 100%;
   max-width: 850px;
-  padding: 0 60px; /* テキストの読みやすさを確保する左右余白 */
 }
-@media (max-width: 768px) {
-  .hero-content {
-    padding: 0 20px;
-  }
-}
+
 
 .hero-tagline {
   display: block;
