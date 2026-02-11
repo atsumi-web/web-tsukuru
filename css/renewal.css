@@ -57,6 +57,7 @@ body {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "palt";
+  font-weight: 300;
 }
 
 /* Response Break Utility */
@@ -74,9 +75,14 @@ body {
   display: inline-block;
 }
 
-/* Use :where to allow classes to override without !important */
-:where(h1, h2, h3, h4, h5, h6, p, li, a, span, div, button, input, textarea) {
+/* Headings use mincho for elegance */
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mincho);
+}
+
+/* Paragraphs and body text use light weight */
+p, li, div {
+  font-weight: 300;
 }
 
 img {
