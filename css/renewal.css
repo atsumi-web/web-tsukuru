@@ -1150,9 +1150,7 @@ section {
   aspect-ratio: 9/19.5; /* Modern smartphone ratio */
   object-fit: cover;
   object-position: top center;
-  border-radius: 18px; /* Smooth corners */
-  border: 6px solid #1e293b; /* Dark Navy Frame (Bezel) */
-  background: #1e293b; /* Prevent background bleeding */
+  border-radius: 0;
   box-sizing: border-box;
 }
 
