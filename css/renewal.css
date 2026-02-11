@@ -899,13 +899,6 @@ section {
   line-height: 1.4;
 }
 
-/* --------------------------------------------------------------------------
-   SOLUTION SECTION
-   -------------------------------------------------------------------------- */
-.solution-section {
-  background: #fff;
-}
-
 .solution-item {
   display: flex;
   align-items: center;
