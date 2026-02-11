@@ -327,6 +327,13 @@ section {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Hero Container - Match header alignment */
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
 .dark-bg {
   background-color: var(--renewal-navy);
   color: #fff;
