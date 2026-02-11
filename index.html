@@ -143,6 +143,11 @@ p, li, div {
   h1 br, h2 br, h3 br {
     display: none;
   }
+  
+  /* Hide 0円 on mobile CTA buttons for better spacing */
+  .hide-mobile-zero {
+    display: none;
+  }
 }
     </style>
 
@@ -212,7 +217,7 @@ p, li, div {
                             ＼0円モニター残り1社／
                         </div>
                         <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary">
-                            <i class="fa-brands fa-line"></i> 今すぐ0円モニターに申し込む
+                            <i class="fa-brands fa-line"></i> 今すぐ<span class="hide-mobile-zero"></span>0円</span>モニターに申し込む
                         </a>
                         <p class="hero-note">※無理な勧誘は一切ありません。まずはLINEで適性を診断してください。</p>
                     </div>
