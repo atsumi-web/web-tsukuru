@@ -131,6 +131,18 @@ p, li, div {
     word-break: keep-all;
     overflow-wrap: anywhere;
   }
+  
+  /* Optimize mobile heading display */
+  .section-title {
+    font-size: clamp(1.5rem, 4.5vw, 1.8rem) !important;
+    line-height: 1.5;
+  }
+  
+  /* Hide manual breaks on mobile for natural text flow */
+  .section-title br,
+  h1 br, h2 br, h3 br {
+    display: none;
+  }
 }
     </style>
 
