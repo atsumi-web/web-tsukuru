@@ -2412,16 +2412,55 @@ body .header-nav {
   margin-right: 1.5rem !important;
 }
 
-/* CTA Button LINE Icon Spacing */
-html body .nav-cta > i.fab.fa-line,
-html body .btn-primary > i.fab.fa-line,
-html body .btn-line > i.fab.fa-line,
-html body .floating-line-cta > i.fab.fa-line {
-  margin-right: 2px !important;
+/* ========================================
+   CTA Buttons - Rebuilt Clean Implementation
+   ======================================== */
+
+/* Header Navigation CTA */
+.nav-cta {
+  background: linear-gradient(135deg, #06C755 0%, #05a346 100%);
+  color: #fff;
+  padding: 0.75rem 1.6rem;
+  border-radius: 50px;
+  margin-left: 1.2rem;
+  font-weight: 800;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
 }
 
-/* Ensure icon displays inline */
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(6, 199, 85, 0.4);
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-cta::after {
+  display: none;
+}
+
+/* LINE Icon Spacing - All CTA Buttons */
+.nav-cta .fab.fa-line,
+.btn-primary .fab.fa-line,
+.btn-line .fab.fa-line,
 .floating-line-cta .fab.fa-line {
-  font-size: 24px !important;
-  display: inline-block !important;
+  margin-right: 0;
+}
+
+/* Floating LINE CTA */
+.floating-line-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.floating-line-cta .fab.fa-line {
+  font-size: 24px;
+  display: inline-block;
 }

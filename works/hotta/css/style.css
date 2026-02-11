@@ -211,29 +211,6 @@ strong {
     width: 100%;
 }
 
-/* ヘッダーCTA */
-.nav-cta {
-    background: linear-gradient(135deg, #06C755 0%, #05a346 100%);
-    color: white !important;
-    padding: 0.75rem 1.6rem !important;
-    border-radius: 50px !important;
-    margin-left: 1.2rem;
-    font-weight: 800;
-    font-size: 0.85rem !important;
-    box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
-    transition: var(--transition);
-    border: none !important;
-}
-
-.nav-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(6, 199, 85, 0.4);
-    text-decoration: none !important;
-}
-
-.nav-cta::after {
-    display: none !important;
-}
 
 /* PCではモバイルメニュートグルを非表示 */
 .mobile-menu-toggle {
