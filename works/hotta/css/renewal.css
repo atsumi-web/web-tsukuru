@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    works/hotta/css/renewal.css
    堀田建設様 LP プレミアムデザイン (Refactored)
    ============================================ */
@@ -2246,3 +2246,150 @@ body .culture-ticker img:hover {
     height: 160px;
   }
 }
+
+
+/* ===== 1日の業務フローセクション ===== */
+/* 1日の業務フローセクションのCSS */
+
+.daily-schedule {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+  padding: 80px 0;
+}
+
+.schedule-tabs {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.schedule-tab {
+  background: #ffffff;
+  border: 2px solid var(--color-neutral-border);
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.schedule-tab:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+.schedule-tab.active {
+  background: linear-gradient(
+    135deg,
+    var(--navy-deep) 0%,
+    var(--navy-light) 100%
+  );
+  color: #ffffff;
+  border-color: var(--navy-deep);
+}
+
+.schedule-content {
+  display: none;
+}
+
+.schedule-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.schedule-intro {
+  background: rgba(197, 160, 89, 0.1);
+  border-left: 4px solid var(--accent-gold);
+  padding: 20px 30px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+.schedule-intro strong {
+  color: var(--navy-deep);
+}
+
+.schedule-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 30px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--color-neutral-border);
+}
+
+.schedule-item:last-child {
+  border-bottom: none;
+}
+
+.schedule-time {
+  font-family: var(--font-en);
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--accent-gold);
+  padding-top: 5px;
+}
+
+.schedule-detail h4 {
+  color: var(--navy-deep);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.schedule-detail p {
+  color: var(--color-neutral-dark);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  .schedule-tabs {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .schedule-tab {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+  }
+
+  .schedule-item {
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .schedule-time {
+    font-size: 1.1rem;
+  }
+
+  .schedule-detail h4 {
+    font-size: 1rem;
+  }
+
+  .schedule-detail p {
+    font-size: 0.9rem;
+  }
+}
+
