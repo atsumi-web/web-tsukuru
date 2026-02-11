@@ -17,10 +17,7 @@
     <link rel="icon" href="images/logo_icon_navyblue.webp">
     <link rel="apple-touch-icon" href="images/logo_icon2.webp">
     
-    <!-- Google Fonts (Synchronous Loading - Cache Busted) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Shippori+Mincho:wght@800&family=Outfit:wght@800&display=swap&v=2" rel="stylesheet">
+    <!-- Fonts loaded via @font-face in inline CSS below -->
     
     <!-- Critical Optimization -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -31,6 +28,43 @@
 
     <!-- Critical CSS (Inlined for Performance) -->
     <style>
+/* Direct Font Loading to bypass cache issues */
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFE8j75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFPYk75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/outfit/v15/QGYyz_MVcBeNP4NjuGObqx1XmO1I4bCyC4E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/shipporimincho/v17/VdGDAZweH5EbgHY6YExcZfDoj0B4e9Om5A.ttf) format('truetype');
+}
+
 /* ========================================================================== Project: Web Tsukuru Renewal Description: Unified Production Stylesheet (Refactored & Optimized) Version: 3.1.2 ========================================================================== */ 
 
 /* Fix for User-Provided Mockup Images (All items are pre-mocked) */
@@ -50,7 +84,7 @@
     </style>
 
     <!-- Custom CSS (Synchronous Loading to ensure font-weight applies) -->
-    <link rel="stylesheet" href="css/renewal.min.css?v=font_weight_sync_fix">
+    <link rel="stylesheet" href="css/renewal.min.css?v=font_300_important">
 
     <!-- Font Awesome (Async Loading) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
