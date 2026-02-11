@@ -1641,7 +1641,7 @@ section {
   gap: 12px;
   padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
   border-radius: 60px;
-  background: var(--renewal-line-green);
+  background: #06c755;
   box-shadow: 0 15px 40px rgba(6, 199, 85, 0.4);
   color: #fff;
   transition:
