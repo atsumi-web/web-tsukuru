@@ -720,7 +720,7 @@ section {
 @media (max-width: 1024px) {
   /* Rule #2遵守: !importantを削除し、セレクタ詳細度(body .class)で上書き */
   body .fixed-line-btn {
-    background: var(--renewal-navy);
+    background: #06c755;
     border-top: 1px solid var(--renewal-gold);
     color: #fff;
     right: 0;
