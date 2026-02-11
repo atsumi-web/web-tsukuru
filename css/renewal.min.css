@@ -107,6 +107,10 @@ section {
   padding: var(--section-padding) 0;
 }
 
+.solution-section {
+  padding-bottom: calc(var(--section-padding) * 0.67);
+}
+
 /* --------------------------------------------------------------------------
    UI COMPONENTS & UTILITIES
    -------------------------------------------------------------------------- */
