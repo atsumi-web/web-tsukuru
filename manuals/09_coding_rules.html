@@ -493,10 +493,60 @@ rm custom.css</pre>
                 小さな画面では劣化が気にならず、容量を劇的に削減できる。</p>
             </div>
 
+            <h2>17. インラインCSS vs 外部CSS（重複の絶対禁止）</h2>
+            <p><strong>【ルール4「下書き保存禁止」とルール9「直接修正」の具体的適用例】</strong></p>
+            <p>インラインCSSと外部CSSファイルで同じスタイルを定義すると、「どちらが有効か分からない」「修正が2箇所必要」という地獄が待っています。</p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：重複定義</span>
+                <p><code>index.html</code> のインラインCSSと <code>renewal.css</code> の両方に <code>.section-badge</code> を定義する。<br>
+                → 修正時に両方を直さないと不整合が発生し、デザインが崩れます。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：役割を明確に分離</span>
+                <h3 style="margin-top:0; border:none; padding:10px 0; background:none; font-size:1rem;">インラインCSS（<code>&lt;style&gt;</code>タグ内）に書いて良いもの</h3>
+                <ul>
+                    <li>✅ <code>@font-face</code> 定義（フォント読み込み）</li>
+                    <li>✅ CSS変数（<code>:root</code>）</li>
+                    <li>✅ 基本レイアウト（<code>html</code>, <code>body</code>）</li>
+                    <li>✅ タイポグラフィの基本（見出し、段落のフォントファミリー、ウェイト）</li>
+                </ul>
+                
+                <h3 style="margin-top:20px; border:none; padding:10px 0; background:none; font-size:1rem; color:#d73a49;">外部CSS（<code>renewal.css</code>等）のみに書くべきもの</h3>
+                <ul>
+                    <li>❌ コンポーネントスタイル（<code>.section-badge</code>, <code>.cta-button</code>など）</li>
+                    <li>❌ ヘッダー、ナビゲーション、フッター</li>
+                    <li>❌ レスポンシブルール（<code>@media</code>クエリ）</li>
+                    <li>❌ アニメーション（<code>@keyframes</code>）</li>
+                    <li>❌ 個別のセクションスタイル</li>
+                </ul>
+            </div>
+
+            <h3>CSS修正時の鉄則</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">ワークフロー</span>
+                <ol>
+                    <li><strong>外部CSS（<code>renewal.css</code>）を直接修正</strong>（ルール9に従う）</li>
+                    <li>修正後、必ず <code>.min.css</code> に同期：<br>
+                    <code>Copy-Item -Force "css\renewal.css" "css\renewal.min.css"</code></li>
+                    <li><strong>インラインCSSは絶対に触らない</strong>（フォント定義や変数以外）</li>
+                    <li>Gitコミット（ルール10）</li>
+                </ol>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">理由</span>
+                <p>✅ <strong>保守性</strong>：修正箇所が1箇所で済む<br>
+                ✅ <strong>一貫性</strong>：重複による不整合を防ぐ<br>
+                ✅ <strong>パフォーマンス</strong>：インラインCSSは最小限（初期表示の高速化）<br>
+                ✅ <strong>ルール4の実践</strong>：「下書き保存禁止」を徹底できる</p>
+            </div>
+
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
 
             <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
-                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：15の鉄則</h3>
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：17の鉄則</h3>
                 <ol style="line-height: 2;">
                     <li>モバイルファースト</li>
                     <li>!important は敗北宣言</li>
@@ -514,6 +564,7 @@ rm custom.css</pre>
                     <li><strong>ロールバック手順明文化</strong></li>
                     <li><strong>AI（Antigravity）協働ルール</strong></li>
                     <li><strong>Performance First (SVG/JS-Inject/Q50)</strong></li>
+                    <li><strong>インラインCSS vs 外部CSS（重複禁止）</strong></li>
                 </ol>
                 <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
             </div>
