@@ -39,6 +39,10 @@
       body .nav-menu a:hover{color:var(--navy-light)}
       body .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:#c5a059;transition:all .2s ease}
       body .nav-menu a:hover::after{width:100%}
+      /* Header CTA - Critical styles to prevent FOUC */
+      html body .header-nav .nav-menu li .nav-cta{background:linear-gradient(135deg,#06C755 0%,#05a346 100%);color:#fff;padding:.75rem 1.6rem;border-radius:50px;margin-left:1.2rem;font-weight:800;font-size:.85rem;box-shadow:0 4px 15px rgba(6,199,85,.3);transition:all .2s ease;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:1px}
+      html body .header-nav .nav-menu li .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,199,85,.4);text-decoration:none;color:#fff}
+      html body .header-nav .nav-menu li .nav-cta::after{display:none}
       body .mobile-menu-toggle{display:none}
       /* Hero - PC */
       body #hero.hero-teto{height:100dvh;min-height:550px;max-height:100dvh;display:flex;position:relative;background-color:var(--navy-deep);overflow:hidden}
@@ -116,11 +120,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- 非クリティカルCSS (非同期読み込み) -->
-    <link rel="stylesheet" href="css/style.min.css?v=5.2" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="css/renewal.css?v=8.4" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/style.min.css?v=5.3" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/renewal.css?v=8.5" media="print" onload="this.media='all'" />
     <noscript>
-      <link rel="stylesheet" href="css/style.min.css?v=5.2" />
-      <link rel="stylesheet" href="css/renewal.css?v=8.4" />
+      <link rel="stylesheet" href="css/style.min.css?v=5.3" />
+      <link rel="stylesheet" href="css/renewal.css?v=8.5" />
     </noscript>
     
     <!-- Google Fonts (preload + 非同期ロードで高速化) -->
