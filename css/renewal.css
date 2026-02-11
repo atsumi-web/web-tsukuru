@@ -249,8 +249,8 @@ section {
 }
 
 .section-badge {
-  display: inline-block;
-  margin-bottom: 1.5rem;
+  display: block;
+  margin: 0 auto 1.5rem;
   padding: 8px 20px;
   border: 1px solid var(--renewal-navy);
   border-radius: 50px;
@@ -259,6 +259,8 @@ section {
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.1em;
+  text-align: center;
+  width: fit-content;
 }
 
 .section-badge.inverted {
