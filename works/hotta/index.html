@@ -40,21 +40,26 @@
       body .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:#c5a059;transition:all .2s ease}
       body .nav-menu a:hover::after{width:100%}
       /* Header CTA - Critical styles to prevent FOUC */
-      html body .header-nav .nav-menu li .nav-cta{background:linear-gradient(135deg,#06C755 0%,#05a346 100%);color:#fff;padding:.75rem 1.6rem;border-radius:50px;margin-left:1.2rem;font-weight:800;font-size:.85rem;box-shadow:0 4px 15px rgba(6,199,85,.3);transition:all .2s ease;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:1px}
+      html body .header-nav .nav-menu li .nav-cta{background:linear-gradient(135deg,#06C755 0%,#05a346 100%);color:#fff;padding:.75rem 1.6rem;border-radius:50px;margin-left:1.2rem;font-weight:800;font-size:.85rem;box-shadow:0 4px 15px rgba(6,199,85,.3);transition:all .2s ease;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
       html body .header-nav .nav-menu li .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,199,85,.4);text-decoration:none;color:#fff}
       html body .header-nav .nav-menu li .nav-cta::after{display:none}
+      /* Entry Area CTA Buttons */
+      body .btn-line,body .btn-primary{display:inline-flex;align-items:center;gap:8px}
+      body .btn-large{width:100%;min-width:280px;justify-content:center}
+      /* Entry Form Card Icon */
+      body .entry-card .card-icon{width:100px;height:100px;margin:0 auto 1.5rem auto}
       body .mobile-menu-toggle{display:none}
       /* Hero - PC */
       body #hero.hero-teto{height:100dvh;min-height:550px;max-height:100dvh;display:flex;position:relative;background-color:var(--navy-deep);overflow:hidden}
-      body .hero-teto-container{width:50%;padding:0 clamp(1rem,4vw,3rem);padding-right:0;margin-top:110px;margin-right:-10%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;z-index:2;height:100%;color:#fff}
-      body .hero-teto-content{width:100%;max-width:800px;position:relative;z-index:2;padding-top:2rem}
+      body .hero-teto-container{width:50%;padding:0 clamp(1rem,4vw,3rem);padding-right:0;margin-top:0;margin-right:-10%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;z-index:2;height:100%;color:#fff}
+      body .hero-teto-content{width:100%;max-width:800px;position:relative;z-index:2}
       body .teto-main-title{font-family:var(--font-serif);font-size:clamp(2.2rem,4.5vw,5rem);color:#fff;line-height:1.1;margin-bottom:clamp(2.25rem,3vh,3.25rem);opacity:0;animation:fadeInTitle 0.8s ease-out 0.2s forwards}
       @keyframes fadeInTitle{to{opacity:1}}
       body .teto-main-title span{background:linear-gradient(to right,#c5a059,#ffebbc,#c5a059);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shineText 6s linear infinite;display:inline-block}
       @keyframes shineText{to{background-position:200% center}}
-      body .teto-sub-title{font-size:1.2rem;line-height:1.8;color:rgba(255,255,255,.9);max-width:700px;margin-bottom:3rem;border-left:3px solid var(--accent-gold);padding-left:1.5rem;opacity:0;animation:fadeInTitle 0.8s ease-out 0.4s forwards}
+      body .teto-sub-title{font-size:1.2rem;line-height:1.8;color:rgba(255,255,255,.9);max-width:700px;margin-bottom:3rem;opacity:0;animation:fadeInTitle 0.8s ease-out 0.4s forwards}
       body .hero-actions{display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem;margin-top:2rem}
-      body .hero-actions .btn-primary{background:linear-gradient(135deg,var(--line-green) 0%,var(--line-green-dark) 100%);color:#fff;font-size:1.25rem;font-weight:700;padding:1.2rem 3rem;border-radius:50px;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;box-shadow:0 20px 40px rgba(6,199,85,.3);border:none;cursor:pointer;transition:all .3s ease}
+      body .hero-actions .btn-primary{background:linear-gradient(135deg,var(--line-green) 0%,var(--line-green-dark) 100%);color:#fff;font-size:1.25rem;font-weight:700;padding:1.2rem 3rem;border-radius:50px;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;box-shadow:0 20px 40px rgba(6,199,85,.3);border:none;cursor:pointer;transition:all .3s ease;max-width:400px}
       body .hero-teto-visual{position:absolute;top:0;right:0;width:60%;height:100%;clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);overflow:hidden;z-index:1}
       body .hero-teto-visual video{width:100%;height:100%;object-fit:cover}
       /* Hero - Mobile */
@@ -103,8 +108,7 @@
       /* Critical: Prevent PRIDE text FOUC */
       body .teto-catch-en{position:absolute;top:3%;right:5%;left:auto;font-family:var(--font-en);font-weight:900;font-size:clamp(5rem,12vw,14rem);color:rgba(255,255,255,.08);letter-spacing:.05em;z-index:0;pointer-events:none;user-select:none;white-space:nowrap;transform:rotate(-5deg);opacity:0;animation:fadeInPride 0.6s ease-in 0.3s forwards}
       @keyframes fadeInPride{to{opacity:1}}
-      /* Hero CTA Elements */
-      body .hero-cta-tagline{background:rgba(255,255,255,.1);color:var(--accent-gold);border-left:4px solid var(--accent-gold);border-radius:0 8px 8px 0;padding:.8rem 1.5rem;font-size:.95rem;font-weight:700;backdrop-filter:blur(10px)}
+      /* Hero Contact Elements */
       body .hero-contact-minimal{margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;gap:2rem;max-width:700px}
       body .contact-minimal-item{display:flex;align-items:center;gap:1rem;color:#fff;font-weight:700;padding:.8rem 1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px}
       body .mouse-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.8}
@@ -112,8 +116,8 @@
       body .mouse-wheel{width:4px;height:8px;background:rgba(255,255,255,.7);border-radius:2px;position:absolute;top:8px;left:50%;transform:translateX(-50%);animation:scroll 1.5s infinite}
       @keyframes scroll{0%,100%{opacity:1;top:8px}50%{opacity:.3;top:20px}}
       body .mouse-text{color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;font-weight:600;font-family:var(--font-en)}
-      @media (max-width:999px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:50px;padding:.5rem 1.2rem}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
-      @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:.8rem}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
+      @media (max-width:1200px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-tagline-grid{grid-template-columns:1fr;gap:.75rem;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:50px;padding:.5rem 1.2rem}body .hero-actions{display:flex;flex-direction:column;align-items:center;width:100%}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
+      @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:0}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
     </style>
     
     <!-- Font Awesome (LINE icon & その他アイコン用) -->
@@ -121,10 +125,10 @@
     
     <!-- 非クリティカルCSS (非同期読み込み) -->
     <link rel="stylesheet" href="css/style.min.css?v=5.3" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="css/renewal.css?v=8.5" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/renewal.css?v=8.6" media="print" onload="this.media='all'" />
     <noscript>
       <link rel="stylesheet" href="css/style.min.css?v=5.3" />
-      <link rel="stylesheet" href="css/renewal.css?v=8.5" />
+      <link rel="stylesheet" href="css/renewal.css?v=8.6" />
     </noscript>
     
     <!-- Google Fonts (preload + 非同期ロードで高速化) -->
@@ -177,7 +181,7 @@
             <li><a href="#positions">募集要項</a></li>
             <li><a href="#company">会社概要</a></li>
             <li>
-              <a href="#entry" class="nav-cta"><i class="fab fa-line"></i>LINEでカジュアル相談</a>
+              <a href="#entry" class="nav-cta"><i class="fab fa-line"></i>LINEで聞いてみる</a>
             </li>
           </ul>
         </nav>
@@ -203,11 +207,19 @@
           </p>
 
           <div class="hero-actions">
-            <div class="hero-cta-tagline">
-              相談は履歴書不要。<br />未経験者大歓迎。
+            <div class="hero-tagline-grid">
+              <div class="hero-cta-tagline">
+                履歴書も志望動機も不要。<br />未経験者大歓迎。
+              </div>
+              <div class="hero-cta-tagline">
+                地元・三重で働き続ける。<br />転勤なし、直行直帰OK。
+              </div>
+              <div class="hero-cta-tagline">
+                資格取得、全額会社負担。<br />一生使える技術を習得。
+              </div>
             </div>
             <a href="#entry" class="btn btn-primary btn-large">
-              <i class="fab fa-line"></i>まずはLINEで相談してみる
+              <i class="fab fa-line"></i>まずはLINEで聞いてみる
             </a>
           </div>
 
@@ -217,7 +229,7 @@
               <i class="fas fa-phone-alt"></i> 0595-82-1262
             </div>
             <div class="contact-minimal-item">
-              <i class="fab fa-line"></i> LINE相談受付中
+              <i class="fab fa-line"></i> LINE質問受付中
             </div>
           </div>
         </div>
@@ -536,6 +548,17 @@
                   </h4>
                   <p class="job-step-desc">
                     設計通りに、そして安全に建物が作られているかを見守ります。
+                  </p>
+                </div>
+              </div>
+              <div class="job-step-item">
+                <span class="step-num">3</span>
+                <div>
+                  <h4 class="job-step-title">
+                    コストの設計者
+                  </h4>
+                  <p class="job-step-desc">
+                    お金の流れを読み解き、材料・工法・人員の最適配分を判断します。
                   </p>
                 </div>
               </div>
@@ -1452,10 +1475,13 @@
           <div class="entry-card line">
             <div class="card-badge">一番カンタン！</div>
             <div class="card-icon"><i class="fab fa-line"></i></div>
-            <h3>LINEで相談する</h3>
+            <h3>LINEで聞く</h3>
             <p>
-              友達追加して、「カジュアル面談希望」と送るだけ。<br />
-              24時間いつでも送信OKです。
+              友達追加して、気になることを何でも聞いてください。<br />
+              「こんなこと聞いていいの？」も大歓迎。24時間送信OK。
+            </p>
+            <p style="font-size: 0.85rem; color: #888; line-height: 1.6; margin-top: 1rem;">
+              例：「未経験でも本当に大丈夫？」「休日出勤ってある？」「残業どのくらい？」
             </p>
             <a
               href="https://line.me/ti/p/yourid"
@@ -1718,7 +1744,7 @@
     <!-- 追従型コンバージョンボタン -->
     <a href="#entry" class="floating-line-cta">
       <i class="fab fa-line"></i>
-      <span>LINEで相談</span>
+      <span>LINEで聞く</span>
     </a>
     
     <!-- トップへ戻るボタン -->
