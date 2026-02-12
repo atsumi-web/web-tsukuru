@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare最適化ガイド</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.5rem;
+        }
+        h3 {
+            background: #f1f8ff;
+            padding: 10px 15px;
+            border-left: 5px solid #0366d6;
+            border-radius: 4px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+        .rule-box {
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #f6f8fa;
+            font-weight: bold;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-weight: bold;
+        }
+        .highlight-box {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .screenshot {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .step-number {
+            display: inline-block;
+            background: #0366d6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        ol {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        ol li {
+            counter-increment: step-counter;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 50px;
+        }
+        ol li::before {
+            content: counter(step-counter);
+            display: inline-block;
+            background: #0366d6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>Cloudflare最適化ガイド</h1>
+            <p>PageSpeed Insightsスコアを劇的に改善する設定手順</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="Private_index.html">← マニュアル一覧に戻る</a>
+        </div>
+
+        <main class="content">
+            
+            <div class="highlight-box" style="background: #e6fffa; border-left: 4px solid #38b2ac;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🎯 このガイドの目的</h3>
+                <p>Cloudflareの設定を最適化して、モバイルスコアを<strong>10-20点向上</strong>させます。<br>
+                特に、キャッシュ設定とEarly Hintsの有効化により、<strong>FCP/LCPを大幅に短縮</strong>します。</p>
+            </div>
+
+            <h2>効果</h2>
+            <table>
+                <tr>
+                    <th>指標</th>
+                    <th>改善前</th>
+                    <th>改善後</th>
+                    <th>削減量</th>
+                </tr>
+                <tr>
+                    <td>FCP/LCP</td>
+                    <td>10.9秒</td>
+                    <td>2-4秒</td>
+                    <td><strong>-6-8秒</strong></td>
+                </tr>
+                <tr>
+                    <td>モバイルスコア</td>
+                    <td>55点</td>
+                    <td>70-80点</td>
+                    <td><strong>+15-25点</strong></td>
+                </tr>
+            </table>
+
+            <h2>設定手順（所要時間: 20-30分）</h2>
+
+            <h3>1. Cloudflareダッシュボードにログイン</h3>
+            <ol>
+                <li>
+                    <strong>Cloudflareにアクセス</strong><br>
+                    https://dash.cloudflare.com/ にアクセス
+                </li>
+                <li>
+                    <strong>ドメインを選択</strong><br>
+                    <code>web-tsukuru.jp</code> ドメインをクリック
+                </li>
+            </ol>
+
+            <h3>2. Early Hintsを有効化</h3>
+            <ol>
+                <li>
+                    <strong>Speedメニューをクリック</strong><br>
+                    左側のメニューから「Speed」→「設定」を選択
+                    <img src="images/cloudflare/01_speed_menu.png" alt="Speedメニュー" class="screenshot">
+                </li>
+                <li>
+                    <strong>コンテンツの最適化タブ</strong><br>
+                    上部の「コンテンツの最適化」タブをクリック
+                    <img src="images/cloudflare/02_content_optimization_tab.png" alt="コンテンツの最適化タブ" class="screenshot">
+                </li>
+                <li>
+                    <strong>Early HintsをON</strong><br>
+                    「Early Hints」のトグルスイッチをONにする
+                    <img src="images/cloudflare/03_early_hints_on.png" alt="Early Hints ON" class="screenshot">
+                    <div class="success-box">
+                        ✅ <strong>効果:</strong> ブラウザがリソースを先読みして高速化
+                    </div>
+                </li>
+            </ol>
+
+            <h3>3. Page Rules（最重要）</h3>
+            <p><strong>Page Rulesで画像ファイルをキャッシュすると、最も大きな効果が得られます。</strong></p>
+
+            <ol>
+                <li>
+                    <strong>Page Rulesメニューを開く</strong><br>
+                    左側メニュー「Rules」→「ページルール」をクリック
+                </li>
+                <li>
+                    <strong>新規ルール作成</strong><br>
+                    「ページルールを作成」ボタンをクリック
+                    <img src="images/cloudflare/04_page_rules_empty.png" alt="Page Rules一覧画面" class="screenshot">
+                </li>
+                <li>
+                    <strong>URLパターンを入力</strong><br>
+                    「URL（必須）」欄に以下を入力：<br>
+                    <code>*web-tsukuru.jp/works/hotta/images/*</code>
+                    <img src="images/cloudflare/05_page_rule_create.png" alt="URL入力とキャッシュレベル設定" class="screenshot">
+                </li>
+                <li>
+                    <strong>キャッシュレベルを設定</strong><br>
+                    <ol style="list-style: lower-alpha;">
+                        <li>「設定を選択する」ドロップダウンをクリック</li>
+                        <li>「キャッシュレベル」を選択</li>
+                        <li>右側のドロップダウンで「Cache Everything」を選択</li>
+                    </ol>
+                    <div class="warning-box">
+                        ⚠️ <strong>警告が表示されます:</strong> 「このルールはあなたのトラフィックには適用されない可能性があります」<br>
+                        → 「とにかくルールを無視して展開する」を選択してOK
+                    </div>
+                    <img src="images/cloudflare/06_page_rule_warning.png" alt="警告画面" class="screenshot">
+                </li>
+                <li>
+                    <strong>ルールを保存</strong><br>
+                    「ページルールを保存およびデプロイ」ボタンをクリック
+                </li>
+                <li>
+                    <strong>完了確認</strong><br>
+                    Page Rules一覧に新しいルールが表示され、緑色のトグルがONになっていればOK
+                    <img src="images/cloudflare/07_page_rule_completed.png" alt="Page Rule作成完了" class="screenshot">
+                </li>
+            </ol>
+
+            <h3>4. キャッシュをクリア（必須）</h3>
+            <p><strong>設定変更後は必ずキャッシュをクリアしてください。古いキャッシュが残っていると効果が見えません。</strong></p>
+
+            <ol>
+                <li>
+                    <strong>Cachingメニューを開く</strong><br>
+                    左側メニュー「Caching」→「構成」をクリック
+                </li>
+                <li>
+                    <strong>すべてパージをクリック</strong><br>
+                    右上の青いボタン「すべてパージ」をクリック
+                    <img src="images/cloudflare/08_cache_purge_buttons.png" alt="キャッシュパージ画面" class="screenshot">
+                </li>
+                <li>
+                    <strong>確認画面で実行</strong><br>
+                    「すべてのキャッシュされたファイルをパージすると、Webサイトが一時的に遅くなる場合があります」という警告が表示されます。<br>
+                    → 「すべてパージ」をクリック
+                    <img src="images/cloudflare/09_purge_confirm.png" alt="パージ確認画面" class="screenshot">
+                    <div class="warning-box">
+                        💡 <strong>注意:</strong> パージ直後は一時的にサイトが遅くなりますが、すぐにキャッシュが再構築されて高速化されます。
+                    </div>
+                </li>
+            </ol>
+
+            <h2>検証手順</h2>
+
+            <div class="rule-box">
+                <h4 style="margin-top:0;">1. 5-10分待つ</h4>
+                <p>設定が世界中のCloudflareエッジサーバーに反映されるまで待ちます。</p>
+
+                <h4>2. ブラウザキャッシュをクリア</h4>
+                <p>Chrome: <code>Ctrl + Shift + Del</code> → キャッシュをクリア</p>
+
+                <h4>3. PageSpeed Insights再計測</h4>
+                <p>https://pagespeed.web.dev/ で再度計測</p>
+
+                <h4>4. 期待される改善</h4>
+                <ul>
+                    <li>FCP/LCP: 10.9秒 → <strong>2-4秒</strong></li>
+                    <li>モバイルスコア: 56点 → <strong>70-80点</strong></li>
+                </ul>
+            </div>
+
+            <h2>トラブルシューティング</h2>
+
+            <table>
+                <tr>
+                    <th>症状</th>
+                    <th>対処法</th>
+                </tr>
+                <tr>
+                    <td>改善が見られない</td>
+                    <td>
+                        1. キャッシュパージを再実行<br>
+                        2. ブラウザのシークレットモードで再テスト<br>
+                        3. 10分以上待ってから再計測
+                    </td>
+                </tr>
+                <tr>
+                    <td>画面が真っ白になった</td>
+                    <td>
+                        Page Ruleを一時的にOFFにする<br>
+                        （Page Rules画面でトグルをクリック）
+                    </td>
+                </tr>
+                <tr>
+                    <td>画像が表示されない</td>
+                    <td>
+                        URLパターンが正しいか確認<br>
+                        <code>*web-tsukuru.jp/works/hotta/images/*</code>
+                    </td>
+                </tr>
+            </table>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="success-box">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">✅ 最重要ポイント TOP 3</h3>
+                <ol style="line-height: 2; padding-left: 20px;">
+                    <li><strong>Page Rules（Cache Everything）</strong> — 最も効果的</li>
+                    <li><strong>キャッシュクリア</strong> — 設定後は必ず実施</li>
+                    <li><strong>Early Hints</strong> — ONにするだけで高速化</li>
+                </ol>
+            </div>
+
+            <div class="highlight-box" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📊 効果実績</h3>
+                <p><strong>堀田建設LP:</strong></p>
+                <ul>
+                    <li>モバイルスコア: 55点 → 56点（+1点）※コード最適化のみ</li>
+                    <li><strong>Cloudflare最適化後の期待値: 70-80点</strong></li>
+                </ul>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
