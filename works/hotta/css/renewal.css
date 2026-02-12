@@ -139,12 +139,13 @@ body #hero.hero-teto {
 body .hero-teto-container {
   width: 50%;
   padding: 0 clamp(1rem, 4vw, 3rem);
+  padding-top: 8rem;
   padding-right: 0;
   margin-top: 0; /* コンテンツを垂直中央に配置 */
   margin-right: -10%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   background: transparent;
   position: relative;
@@ -184,6 +185,14 @@ body .teto-main-title {
   color: #fff;
   line-height: 1.1;
   margin-bottom: clamp(1.8rem, 2.5vh, 2.5rem);
+  opacity: 0;
+  animation: fadeInTitle 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes fadeInTitle {
+  to {
+    opacity: 1;
+  }
 }
 
 body .teto-main-title span {
@@ -208,6 +217,8 @@ body .teto-sub-title {
   color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
   margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeInTitle 0.8s ease-out 0.4s forwards;
 }
 
 body .hero-actions {
@@ -236,6 +247,13 @@ body .hero-cta-tagline {
   backdrop-filter: blur(10px);
 }
 
+/* 中間サイズ：2列レイアウト */
+@media (max-width: 1610px) {
+  body .hero-tagline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 body .hero-actions .btn-primary {
   background: linear-gradient(
     135deg,
@@ -255,6 +273,7 @@ body .hero-actions .btn-primary {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  max-width: 400px;
 }
 
 body .hero-actions .btn-primary:hover {
@@ -384,7 +403,7 @@ body .hero-image-mobile {
   }
   body .hero-teto-container {
     width: 100%;
-    padding: 180px 2rem 20px; /* ヘッダー100px + 十分な余白を確保 */
+    padding: 120px 2rem 40px; /* ヘッダー100px + 最小限の余白、下部も確保 */
     margin-top: 0; /* PC版のmargin-top: 80pxをリセット（重要） */
     display: flex;
     flex-direction: column;
@@ -401,6 +420,7 @@ body .hero-image-mobile {
   body .teto-main-title {
     font-size: clamp(2rem, 5vw, 2.8rem);
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+    margin-bottom: 2.5rem; /* タイトル下のスペースを確保 */
   }
   body .teto-main-title span {
     background: none;
@@ -415,15 +435,15 @@ body .hero-image-mobile {
   }
   body .hero-tagline-grid {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
   body .hero-cta-tagline {
-    border: 1px solid var(--accent-gold);
-    border-radius: 50px;
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 0 8px 8px 0;
     padding: 0.5rem 1.2rem;
     animation: none;
   }
@@ -466,6 +486,13 @@ body .hero-image-mobile {
   body .teto-catch-en,
   body .mouse-scroll {
     display: none;
+  }
+}
+
+/* 小画面：上部スペースをさらに縮小 */
+@media (max-width: 768px) {
+  body .hero-teto-container {
+    padding-top: 110px; /* ヘッダー100px + 最小限の余白 */
   }
 }
 
@@ -1246,6 +1273,8 @@ body .guardians-text {
   line-height: 1.8;
   color: #333;
   margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInTitle 0.8s ease-out 0.4s forwards;
 }
 body .guardians-subtitle {
   font-size: 1.25rem;
