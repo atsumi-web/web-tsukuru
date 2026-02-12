@@ -226,7 +226,7 @@
           muted
           playsinline
           preload="none"
-          poster="images/hero/hero-background.webp"
+          poster="images/hero/hero-background_mobile.webp"
         >
           <!-- Source removed for mobile optimization. Injected via JS. -->
         </video>
@@ -249,8 +249,8 @@
         <img 
           class="hero-image-mobile" 
           srcset="images/hero/hero-background_mobile.webp 400w, images/hero/hero-background.webp 800w"
-          sizes="100vw"
-          src="images/hero/hero-background.webp" 
+          sizes="(max-width: 768px) 400px, 100vw"
+          src="images/hero/hero-background_mobile.webp" 
           alt="堀田建設の現場" 
           width="1920" 
           height="1080"
