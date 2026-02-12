@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レスポンシブLP制作ガイド</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.5rem;
+        }
+        h3 {
+            background: #f1f8ff;
+            padding: 10px 15px;
+            border-left: 5px solid #0366d6;
+            border-radius: 4px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+        .rule-box {
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #f6f8fa;
+            font-weight: bold;
+        }
+        code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-weight: bold;
+        }
+        .highlight-box {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>レスポンシブLP制作ガイド</h1>
+            <p>実戦で得た知見・デザイン判断とスペーシングの実践的ルール</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="Private_index.html">← マニュアル一覧に戻る</a>
+        </div>
+
+        <main class="content">
+            
+            <div class="highlight-box" style="background: #e6fffa; border-left: 4px solid #38b2ac;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🎯 このガイドの目的</h3>
+                <p>既存の「コーディングルール」「モバイル最適化」「画像最適化」を<strong>補完</strong>する、レスポンシブLP制作に特化した実践ガイドです。<br>
+                デザイン判断、スペーシング、レイアウトの具体的な数値と判断基準を提供します。</p>
+            </div>
+
+            <h2>1. ブレークポイント標準化</h2>
+            
+            <h3>必須ブレークポイント</h3>
+            <table>
+                <tr>
+                    <th>ブレークポイント</th>
+                    <th>デバイス</th>
+                    <th>用途</th>
+                </tr>
+                <tr>
+                    <td>デフォルト（1201px以上）</td>
+                    <td>デスクトップ</td>
+                    <td>PC表示</td>
+                </tr>
+                <tr>
+                    <td><code>@media (max-width: 1200px)</code></td>
+                    <td>タブレット・小型PC</td>
+                    <td>モバイルレイアウト切替</td>
+                </tr>
+                <tr>
+                    <td><code>@media (max-width: 768px)</code></td>
+                    <td>タブレット縦・スマホ横</td>
+                    <td>スペーシング縮小</td>
+                </tr>
+                <tr>
+                    <td><code>@media (max-width: 480px)</code></td>
+                    <td>スマホ縦</td>
+                    <td>極小画面調整</td>
+                </tr>
+            </table>
+
+            <h3>プロジェクト固有ブレークポイント</h3>
+            <div class="rule-box">
+                <ul>
+                    <li><strong>ヘッダーメニュー切替:</strong> <code>1135px</code> （ロゴ+メニュー項目の実測値から決定）</li>
+                    <li><strong>中間レイアウト:</strong> <code>1610px</code> （カード2列表示等、必要に応じて）</li>
+                </ul>
+                <p><strong>重要:</strong> HTML Critical CSSとrenewal.cssで同じ値を使用すること。</p>
+            </div>
+
+            <h2>2. スペーシング設計原則</h2>
+
+            <h3>基本単位（CSS変数化推奨）</h3>
+            <table>
+                <tr>
+                    <th>変数名</th>
+                    <th>値</th>
+                    <th>px換算</th>
+                </tr>
+                <tr><td><code>--space-xs</code></td><td>0.5rem</td><td>8px</td></tr>
+                <tr><td><code>--space-sm</code></td><td>0.75rem</td><td>12px</td></tr>
+                <tr><td><code>--space-md</code></td><td>1rem</td><td>16px</td></tr>
+                <tr><td><code>--space-lg</code></td><td>1.5rem</td><td>24px</td></tr>
+                <tr><td><code>--space-xl</code></td><td>2rem</td><td>32px</td></tr>
+                <tr><td><code>--space-2xl</code></td><td>2.5rem</td><td>40px</td></tr>
+                <tr><td><code>--space-3xl</code></td><td>3rem</td><td>48px</td></tr>
+            </table>
+
+            <h3>レスポンシブスペーシングの法則</h3>
+            <table>
+                <tr>
+                    <th>画面サイズ</th>
+                    <th>padding-top</th>
+                    <th>タイトル下</th>
+                    <th>カード間</th>
+                    <th>カードグリッド下</th>
+                    <th>下部余白</th>
+                </tr>
+                <tr>
+                    <td>PC（1201px+）</td>
+                    <td>8rem</td>
+                    <td>2.5rem</td>
+                    <td>1rem</td>
+                    <td>1.5rem</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>タブレット（769-1200px）</td>
+                    <td>120px</td>
+                    <td>2.5rem</td>
+                    <td>1rem</td>
+                    <td>1.8rem</td>
+                    <td>40px</td>
+                </tr>
+                <tr>
+                    <td>スマホ（768px以下）</td>
+                    <td>110px</td>
+                    <td>2rem</td>
+                    <td>0.75rem</td>
+                    <td>1.5rem</td>
+                    <td>40px</td>
+                </tr>
+            </table>
+
+            <div class="highlight-box" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+                <p><strong>ルール:</strong> 大→小で余白を縮小。重要要素（タイトル下、CTA前）は余白を確保。下部余白は必ず40px以上。</p>
+            </div>
+
+            <h2>3. FOUC（一瞬の崩れ）対策</h2>
+
+            <h3>Critical CSS（HTML内）に含めるもの</h3>
+            <div class="rule-box">
+                <h4 style="margin-top:0;">✅ 含めるべきもの</h4>
+                <ul>
+                    <li>基本リセット・CSS変数定義</li>
+                    <li>ヘッダー基本レイアウト</li>
+                    <li>ヒーローセクション基本構造（背景色、高さ、flex方向）</li>
+                    <li>初期表示に必要な最小限のアニメーション</li>
+                </ul>
+                
+                <h4>❌ 含めないもの</h4>
+                <ul>
+                    <li>コンポーネント固有のスタイル</li>
+                    <li>詳細なデザイン（影、グラデーション等）</li>
+                    <li>メディアクエリ内の詳細スタイル</li>
+                </ul>
+            </div>
+
+            <h3>CSS読み込み戦略</h3>
+            <div class="rule-box">
+                <p><strong>メインCSSは通常読み込み（FOUC防止）:</strong></p>
+                <code>&lt;link rel="stylesheet" href="css/renewal.css?v=X.X" /&gt;</code>
+                <p style="margin-top:15px;"><strong>重要度が低いCSSのみ非同期:</strong></p>
+                <code>&lt;link rel="stylesheet" href="css/optional.css" media="print" onload="this.media='all'" /&gt;</code>
+            </div>
+
+            <h2>4. レスポンシブカードレイアウト</h2>
+
+            <h3>グリッドテンプレート標準</h3>
+            <div class="rule-box">
+                <p><strong>PC: 3列</strong></p>
+                <code>grid-template-columns: repeat(3, 1fr);</code>
+                
+                <p style="margin-top:15px;"><strong>中間（1201-1610px）: 2列</strong></p>
+                <code>@media (max-width: 1610px) { grid-template-columns: repeat(2, 1fr); }</code>
+                
+                <p style="margin-top:15px;"><strong>タブレット・スマホ: 1列</strong></p>
+                <code>@media (max-width: 1200px) { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }</code>
+                
+                <p style="margin-top:15px;"><strong>ルール:</strong> 3→2→1の段階的縮小。1列時はmax-widthで幅制限。</p>
+            </div>
+
+            <h2>5. ヘッダーメニュー設計</h2>
+
+            <h3>項目数の目安</h3>
+            <table>
+                <tr>
+                    <th>デバイス</th>
+                    <th>項目数</th>
+                    <th>備考</th>
+                </tr>
+                <tr>
+                    <td>PC</td>
+                    <td>5-7項目 + CTA</td>
+                    <td>画面幅に応じて調整</td>
+                </tr>
+                <tr>
+                    <td>モバイル</td>
+                    <td>制限なし</td>
+                    <td>ハンバーガーメニュー内</td>
+                </tr>
+            </table>
+
+            <div class="rule-box">
+                <h4 style="margin-top:0;">必須要素</h4>
+                <ul>
+                    <li>ロゴ（左）</li>
+                    <li>ナビゲーション（中央）</li>
+                    <li>CTA（右端、目立つ色・LINE緑等）</li>
+                    <li>モバイルトグル（1135px以下）</li>
+                </ul>
+                <p><strong>ルール:</strong> 項目名は2-4文字が理想。ロゴとCTAの間隔は十分に確保。</p>
+            </div>
+
+            <h2>6. ボタン・CTA設計</h2>
+
+            <h3>サイズガイドライン</h3>
+            <table>
+                <tr>
+                    <th>種類</th>
+                    <th>padding</th>
+                    <th>font-size</th>
+                    <th>border-radius</th>
+                    <th>max-width</th>
+                </tr>
+                <tr>
+                    <td>プライマリCTA</td>
+                    <td>1.2rem 3rem</td>
+                    <td>1.25rem</td>
+                    <td>50px</td>
+                    <td><strong>400px</strong></td>
+                </tr>
+                <tr>
+                    <td>セカンダリCTA</td>
+                    <td>0.75rem 1.6rem</td>
+                    <td>0.85rem</td>
+                    <td>50px</td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+            <div class="highlight-box" style="background: #ffe6e6; border-left: 4px solid #dc3545;">
+                <p><strong>⚠️ 重要:</strong> プライマリCTAは必ずmax-width設定！広い画面でボタンが伸びすぎるのを防止。</p>
+            </div>
+
+            <h3>ホバー・インタラクション</h3>
+            <div class="rule-box">
+                <ul>
+                    <li>ホバー時: <code>transform: translateY(-2px)</code> で軽く浮かす</li>
+                    <li>アイコンとテキストの間隔: <code>gap: 4-8px</code></li>
+                </ul>
+            </div>
+
+            <h2>7. コード品質チェックリスト</h2>
+
+            <h3>必須チェック項目（目標: 90/100以上）</h3>
+            <div class="rule-box">
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ <code>!important</code>が0件</li>
+                    <li>☐ ブレークポイントが統一されている</li>
+                    <li>☐ HTMLにコンポーネントスタイルがない</li>
+                    <li>☐ アニメーション定義が重複していない</li>
+                    <li>☐ renewal.min.cssが同期されている</li>
+                </ul>
+            </div>
+
+            <h3>推奨チェック項目</h3>
+            <div class="rule-box">
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ スペーシングが一貫している</li>
+                    <li>☐ メディアクエリにコメントがある</li>
+                    <li>☐ 未使用のCSSがない</li>
+                </ul>
+            </div>
+
+            <h2>8. コミットメッセージ規則</h2>
+
+            <h3>フォーマット</h3>
+            <div class="rule-box">
+                <code>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</code>
+                <p style="margin-top:10px;"><strong>Type一覧:</strong></p>
+                <ul>
+                    <li><code>feat</code>: 新機能</li>
+                    <li><code>fix</code>: バグ修正</li>
+                    <li><code>refactor</code>: リファクタリング</li>
+                    <li><code>style</code>: スタイル変更</li>
+                    <li><code>perf</code>: パフォーマンス改善</li>
+                </ul>
+            </div>
+
+            <h2>9. アニメーション実装</h2>
+
+            <h3>配置ルール</h3>
+            <table>
+                <tr>
+                    <th>場所</th>
+                    <th>用途</th>
+                    <th>例</th>
+                </tr>
+                <tr>
+                    <td>HTML（Critical CSS）</td>
+                    <td>初期表示用のみ</td>
+                    <td><code>fadeInPride</code>, <code>scroll</code></td>
+                </tr>
+                <tr>
+                    <td>renewal.css</td>
+                    <td>その他すべて</td>
+                    <td><code>fadeInTitle</code>, <code>shineText</code></td>
+                </tr>
+            </table>
+
+            <h3>パフォーマンス</h3>
+            <div class="rule-box">
+                <p><strong>✅ 良い例（transform + opacity）:</strong></p>
+                <code>animation: fadeIn 0.8s ease-out forwards;</code>
+                
+                <p style="margin-top:15px;"><strong>❌ 避ける（width, height, left, top）:</strong></p>
+                <p>レイアウト再計算が発生してパフォーマンス低下</p>
+                
+                <p style="margin-top:15px;"><strong>ルール:</strong></p>
+                <ul>
+                    <li>transformとopacityのみ使用</li>
+                    <li>0.8s以内の短いアニメーション</li>
+                    <li><code>forwards</code>で状態維持</li>
+                </ul>
+            </div>
+
+            <h2>10. ファイル更新フロー</h2>
+
+            <div class="rule-box">
+                <ol>
+                    <li><code>renewal.css</code>を編集</li>
+                    <li><code>Copy-Item -Force "css\renewal.css" "css\renewal.min.css"</code></li>
+                    <li>git add/commit</li>
+                </ol>
+                <p><strong>ルール:</strong> .cssを編集したら必ず.min.cssに同期。画像はすべてWebP形式。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📊 これらのルールによる効果</h3>
+                <ul>
+                    <li>🚀 <strong>開発速度:</strong> 30-50%向上</li>
+                    <li>🎯 <strong>品質:</strong> 一貫して90点以上</li>
+                    <li>🔧 <strong>保守性:</strong> 6ヶ月後も理解可能</li>
+                    <li>📱 <strong>レスポンシブ:</strong> すべてのデバイスで最適</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">⭐ 最重要ルール TOP 3</h3>
+                <ol style="line-height: 2;">
+                    <li>ブレークポイントは必ず統一</li>
+                    <li>スペーシングは計算された値を使用</li>
+                    <li>コミット前に必ず品質チェック</li>
+                </ol>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Webをつくるしごと All Rights Reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
