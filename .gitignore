@@ -21,6 +21,6 @@ _backup*/
 node_modules/
 
 # Marketing Assets (PDF)
-# Allow lead magnet PDF in root
-!lead-magnet.pdf
+# Allow recruitment manual PDF in root
+!saiyou-manual.pdf
 *.pdf
