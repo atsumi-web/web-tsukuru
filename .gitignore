@@ -19,3 +19,8 @@ _backup*/
 
 # Dependencies
 node_modules/
+
+# Marketing Assets (PDF)
+# Allow lead magnet PDF in root
+!lead-magnet.pdf
+*.pdf

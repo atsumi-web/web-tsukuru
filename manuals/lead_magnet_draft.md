@@ -360,7 +360,7 @@ Zoom面談をご希望の場合、以下の簡単な診断に答えてからLINE
 
 LINEで今すぐ無料相談を始めましょう。
 
-**LINE ID: @web-tsukuru**
+**LINE ID: @788iztqa**
 または
 **QR code: [ここにQRコード画像]**
 
