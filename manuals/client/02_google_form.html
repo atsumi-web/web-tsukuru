@@ -675,24 +675,5 @@
             chatWidget.classList.remove('active');
         });
     </script>
-<!-- GLOBAL NAVIGATION -->
-<style>
-    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
-    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
-    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
-    .to-top { opacity: 0; pointer-events: none; }
-    .to-top.visible { opacity: 1; pointer-events: all; }
-</style>
-<div class="global-nav">
-    <a href="index.html" class="nav-btn" title="マニュアル一覧へ"><i class="fa-solid fa-list"></i></a>
-    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
-</div>
-<script>
-    window.addEventListener('scroll', () => {
-        const toTop = document.querySelector('.to-top');
-        if (window.scrollY > 300) toTop.classList.add('visible');
-        else toTop.classList.remove('visible');
-    });
-</script>
 </body>
 </html>
