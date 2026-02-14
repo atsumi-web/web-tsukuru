@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Googleフォーム作成マニュアル | Webとしくみをつくる</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 追加スタイル */
+        .manual-section {
+            margin-bottom: 60px;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .step-block {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .step-block h3 {
+            background: #f3e5f5; /* Light Purple tint */
+            padding: 10px 15px;
+            border-left: 5px solid #673ab7;
+            border-bottom: none;
+            border-radius: 0 4px 4px 0;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: #333;
+        }
+        .step-block ol {
+            line-height: 1.8;
+        }
+        .step-block ol li {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .step-block figcaption {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+            text-align: center;
+        }
+        .step-block img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .check-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .check-list li::before {
+            content: "✔";
+            color: #673ab7;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #fff;
+            background: #673ab7;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .alert-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .alert-box h5 {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            color: #f57f17;
+        }
+        .highlight-box {
+            background: #f3e5f5; /* Light Purple */
+            border-left: 5px solid #ab47bc;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        /* Layout overrides to match standard manual design (1000px) */
+        .container {
+            max-width: 1000px !important;
+            padding: 20px !important; /* Match vertical padding of other manuals */
+        }
+
+        /* Header Override */
+        .site-header {
+            height: auto !important;
+            display: block !important;
+            position: static !important;
+            padding: 20px 0 !important;
+            margin-bottom: 30px !important;
+            border-bottom: 1px solid #eee !important;
+            box-shadow: none !important;
+            background: #fff !important;
+        }
+        .site-header .container {
+            display: block;
+            /* Remove specific padding override so it inherits the global 20px */
+        }
+        .site-header h1 {
+            font-size: 1.5rem !important;
+            display: block !important;
+            margin: 0 !important;
+            color: #673ab7; /* Google Purple */
+        }
+        .site-header p {
+            display: inline-block;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Footer Override */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            background: transparent;
+            border-top: none;
+        }
+        /* Floating Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .back-to-index {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #fff;
+            color: #06c755;
+            border: 2px solid #06c755;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 46px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .back-to-index.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-index:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            background: #06c755;
+            color: #fff;
+        }
+        .line-support {
+            position: fixed;
+            bottom: 150px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .line-support.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .line-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        /* Chat Widget UI */
+        .chat-widget {
+            position: fixed;
+            bottom: 220px;
+            right: 30px;
+            width: 300px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 9999;
+        }
+        .chat-widget.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .chat-header {
+            background: #06c755;
+            color: #fff;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-body {
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+        }
+        .chat-btn {
+            display: block;
+            background: #06c755;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: opacity 0.3s;
+        }
+        .chat-btn:hover {
+            opacity: 0.9;
+        }
+        .close-chat {
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Mobile Bottom Navigation */
+        .mobile-bottom-nav {
+            display: none; /* Hidden on Desktop */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #673ab7; /* Google Form Theme Color */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            height: 60px;
+            z-index: 10000;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: bold;
+            width: 33%;
+            height: 100%;
+            transition: background 0.2s;
+        }
+        .nav-item.active-color {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .back-to-top, .back-to-index, .line-support {
+                display: none !important;
+            }
+            .mobile-bottom-nav {
+                display: flex;
+            }
+            .chat-widget {
+                bottom: 70px; /* Above Bottom Nav */
+                right: 5%;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">← マニュアル一覧に戻る</a>
+            </div>
+            <h1>Googleフォーム作成マニュアル</h1>
+            <p style="margin-top: 10px; color: #555; background: #f3e5f5; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+                <span style="font-weight: bold; color: #673ab7;">対象</span> 経営者様・採用担当者様 &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <span style="font-weight: bold; color: #673ab7;">目的</span> 管理の手間をゼロにする「自動応募リスト」を作る
+            </p>
+        </div>
+    </header>
+
+    <div class="container layout manual-container">
+        <aside class="sidebar">
+            <nav class="toc">
+                <h3>目次</h3>
+                <ul>
+                    <li><a href="#intro">はじめに：なぜGoogleフォーム？</a></li>
+                    <li><a href="#form-step1">1. フォームの新規作成</a></li>
+                    <li><a href="#form-step2">2. 質問項目の設定</a></li>
+                    <li><a href="#form-step3">3. デザインを整える</a></li>
+                    <li><a href="#form-step4">4. スプレッドシート連携（重要）</a></li>
+                    <li><a href="#form-step5">5. 通知設定（見落とし防止）</a></li>
+                    <li><a href="#form-step6">6. 応募用URLの発行</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section class="manual-section" id="intro" style="margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px dashed #eee;">
+                <div class="section-header" style="border-bottom: none; margin-bottom: 20px; padding-bottom: 0;">
+                    <span class="badge" style="background: #333; color: #fff;">はじめに</span>
+                    <h2 style="font-size: 1.8rem; margin-top: 10px;">なぜ「Googleフォーム」一択なのか？</h2>
+                </div>
+                <p>「お問い合わせフォーム」を作るツールはたくさんありますが、採用においてはGoogleフォームが最強です。<br>
+                その理由は以下の3点にあります。</p>
+
+                <div style="display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 280px; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                        <h4 style="margin-top: 0; color: #673ab7;">📊 1. 自動で「リスト」ができる</h4>
+                        <p style="font-size: 0.9rem;">これが最大のリメリットです。応募が来ると、自動的にExcel（スプレッドシート）に行が追加されていきます。<br>
+                        メール通知だけのフォームだと管理が大変ですが、これなら<strong>「応募者名簿」が勝手に出来上がります</strong>。</p>
+                    </div>
+                    <div style="flex: 1; min-width: 280px; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                        <h4 style="margin-top: 0; color: #673ab7;">📱 2. スマホに強い</h4>
+                        <p style="font-size: 0.9rem;">余計な装飾がなくシンプルなので、スマホでもサクサク動きます。求職者の8割以上はスマホからの応募です。「使いにくい」で離脱されるのを防ぎます。</p>
+                    </div>
+                    <div style="flex: 1; min-width: 280px; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                        <h4 style="margin-top: 0; color: #673ab7;">💰 3. 無料かつ安全</h4>
+                        <p style="font-size: 0.9rem;">Googleの強固なセキュリティ環境を無料で使えます。自前でフォームを作るより遥かに安全で、コストもかかりません。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="manual-section">
+                <!-- Step 1: 新規作成 -->
+                <div id="form-step1" class="step-block">
+                    <h3>Step 1: フォームの新規作成</h3>
+                    <p>Googleドライブ、またはGoogleフォームのトップページから作成します。</p>
+                    <div class="tips">
+                        <h5>💡 アカウントについて</h5>
+                        <p>会社のGoogleアカウント（Gmail）でログインして作成することをおすすめします。<br>
+                        （個人のアカウントで作ると、退職時などに引き継ぎが大変になります）</p>
+                    </div>
+                    <ol>
+                        <li><a href="https://docs.google.com/forms/" target="_blank">Googleフォームのページ</a>にアクセス</li>
+                        <li>「新しいフォームを作成」の<strong>「空白」</strong>（＋マーク）をクリック</li>
+                        <li>「無題のフォーム」という文字をクリックし、<strong>「求人応募フォーム」</strong>などの名前に変更</li>
+                    </ol>
+                    <div class="alert-box">
+                        <h5>⚠️ AI（Gemini）の提案画面が出た場合</h5>
+                        <p>「こんにちは、〇〇さん 作成してみましょう」という画面が表示されることがありますが、<br>
+                        今回はマニュアル通り手動で設定するため、画面右上の<strong>「×」ボタン</strong>を押して閉じてください。<br>
+                        <span style="font-size: 0.9rem; color: #666;">（通常の編集画面に移動します）</span></p>
+                    </div>
+                    <figure>
+                        <img src="images/form_create_new.png" alt="新規作成画面">
+                        <figcaption>まずはシンプルな空白フォームからスタートします</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Step 2: 質問項目の設定 -->
+                <div id="form-step2" class="step-block">
+                    <h3>Step 2: 質問項目の設定</h3>
+                    <p>採用に必要な項目を一つずつ設定していきます。<br>
+                    以下の画像を参考に、5つの質問を作成してください。</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
+                        <!-- 1. お名前 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">1. お名前</h5>
+                            <p style="font-size: 0.9rem;">「記述式（短文）」を選び、<strong>必須</strong>をONにします。</p>
+                            <img src="images/form_question_name.png" alt="お名前設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+
+                        <!-- 2. 電話番号 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">2. 電話番号</h5>
+                            <p style="font-size: 0.9rem;">こちらも「記述式（短文）」＆<strong>必須</strong>です。</p>
+                            <img src="images/form_question_phone.png" alt="電話番号設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+
+                        <!-- 3. 現在の職業 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">3. 現在の職業</h5>
+                            <p style="font-size: 0.9rem;">「ラジオボタン」を選び、選択肢を入力します。</p>
+                            <img src="images/form_question_occupation.png" alt="職業設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+
+                        <!-- 4. 面接希望日 -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">4. 面接希望日</h5>
+                            <p style="font-size: 0.9rem;">「段落」を選びます。説明文を入れると親切です。</p>
+                            <img src="images/form_question_date.png" alt="面接希望日設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+
+                        <!-- 5. 質問・メッセージ -->
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                            <h5 style="margin-top: 0; color: #673ab7;">5. 質問・メッセージ</h5>
+                            <p style="font-size: 0.9rem;">「段落」を選びます。熱意を書いてもらう場所です。</p>
+                            <img src="images/form_question_message.png" alt="メッセージ設定画面" style="width: 100%; border: 1px solid #ddd; border-radius: 4px; margin: 10px 0;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: デザイン -->
+                <div id="form-step3" class="step-block">
+                    <h3>Step 3: デザインを整える</h3>
+                    <p>デフォルトの紫色のままでも良いですが、会社の雰囲気に合わせると信頼感がアップします。</p>
+                    <ol>
+                        <li>右上の<strong>パレットアイコン</strong>（テーマをカスタマイズ）をクリック</li>
+                        <li><strong>「ヘッダーの画像」</strong>を選択 <span style="font-size:0.9rem;">（会社のロゴやオフィスの写真がおすすめ！）</span></li>
+                        <li><strong>「テーマの色」</strong>を会社の色に変更</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_theme_settings.png" alt="テーマ設定画面">
+                        <figcaption>ヘッダー画像が入るだけで、一気に「公式サイト」っぽくなります</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Step 4: スプレッドシート連携 -->
+                <div id="form-step4" class="step-block">
+                    <h3>Step 4: スプレッドシート連携（最重要！）</h3>
+                    <p>これを行うと、応募が来るたびに<strong>自動でエクセル（スプレッドシート）に行が追加</strong>されるようになります。<br>
+                    管理が圧倒的に楽になるので、必ず設定しましょう。</p>
+                    
+                    <ol>
+                        <li>フォーム編集画面の上の<strong>「回答」</strong>タブをクリック</li>
+                        <li><strong>「スプレッドシートにリンク」</strong>（緑色の十字マーク）をクリック</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_responses_link_button.png" alt="回答タブとリンクボタン">
+                    </figure>
+
+                    <ol start="3">
+                        <li>「新しいスプレッドシートを作成」が選ばれていることを確認して、<strong>「作成」</strong>をクリック</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_responses_create_sheet.png" alt="スプレッドシート作成ポップアップ">
+                    </figure>
+
+                    <div class="highlight-box">
+                        <h6 style="margin: 0 0 10px 0;">🎉 これで連携完了です！</h6>
+                        <p>自動的にスプレッドシートが開き、先ほど作った質問項目（お名前、電話番号など）が1行目に並んでいるはずです。</p>
+                        <figure style="margin: 15px 0 0 0;">
+                            <img src="images/form_spreadsheet_view.png" alt="作成されたスプレッドシート" style="border: 1px solid #ddd;">
+                            <figcaption>応募があると、ここに自動でデータが溜まっていきます</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="tips">
+                        <h5>📂 データの保存場所について</h5>
+                        <p>Googleドライブを見ると、フォームの隣に緑色のアイコンのファイル（スプレッドシート）ができています。<br>
+                        今後の応募者確認は、このファイルを開くだけでOKです！</p>
+                        <img src="images/form_drive_view.png" alt="Googleドライブの表示" style="width: 100%; border: 1px solid #ddd; margin-top: 10px;">
+                    </div>
+                </div>
+
+                <!-- Step 5: 通知設定 -->
+                <div id="form-step5" class="step-block">
+                    <h3>Step 5: メール通知設定（忘れずに！）</h3>
+                    <p>応募が来たら自分のメールアドレスに通知が届くようにします。<br>
+                    これをしておかないと、せっかくの応募を見逃してしまうので必須です。</p>
+                    <ol>
+                        <li>「回答」タブ右上の<strong>「…（3点リーダー）」</strong>をクリック</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_notification_menu_button.png" alt="通知メニューボタン">
+                    </figure>
+                    <ol start="2">
+                        <li><strong>「新しい回答についてのメール通知を受け取る」</strong>を選択</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_notification_settings.png" alt="メール通知をオンにする">
+                        <figcaption>チェックマークがつけば設定完了です</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Step 6: 確認メッセージの設定 -->
+                <div id="form-step6" class="step-block">
+                    <h3>Step 6: 確認メッセージの設定（安心感アップ）</h3>
+                    <p>応募完了後に表示される画面です。「本当に送れたのかな？」という不安を解消します。</p>
+                    <div class="highlight-box">
+                        <h6 style="margin: 0 0 10px 0;">📋 推奨メッセージ（コピーして使いてください）</h6>
+                        <div style="background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem;">
+                            ご応募ありがとうございます。送信が完了いたしました。<br>
+                            内容を確認の上、担当者（090-XXXX-XXXX）より3営業日以内にご連絡させていただきます。
+                        </div>
+                    </div>
+                    <ol>
+                        <li>「設定」タブをクリック</li>
+                        <li><strong>「表示設定」</strong>にある「確認メッセージ」に上記の文言を入力して<strong>「保存」</strong></li>
+                        <li>その下の<strong>「別の回答を送信するためのリンクを表示」をOFF</strong>にする<br>
+                        <span style="color: #d9534f; font-size: 0.9rem;">※重要：これを消すと「完了した」という区切りが明確になります！</span></li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_confirmation_settings.png" alt="確認メッセージ設定画面">
+                        <figcaption>このひと手間で、応募者に丁寧な印象を与えられます</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Step 7: URL発行 -->
+                <div id="form-step7" class="step-block">
+                    <h3>Step 7: 応募用URLの発行</h3>
+                    <p>最後に、求人票やLINEのリッチメニューに貼り付けるためのURLを取得します。</p>
+                    <ol>
+                        <li>画面右上の<strong>「リンク」アイコン</strong>（鎖のマーク）をクリック</li>
+                        <li><strong>「URLを短縮」</strong>にチェックを入れる <span style="font-size:0.9rem;">（短くなって見やすくなります）</span></li>
+                        <li><strong>「コピー」</strong>をクリック</li>
+                    </ol>
+                    <figure>
+                        <img src="images/form_get_link_final.png" alt="リンク発行画面">
+                        <figcaption>この「短縮URL」が、応募受付の窓口になります</figcaption>
+                    </figure>
+                </div>
+
+                <div class="completion-box">
+                    <h4>🎉 お疲れ様でした！フォーム完成です！</h4>
+                    <p>これで「勝手に応募が集まり、自動でリスト化され、通知も来る」という<br>
+                    <strong>「採用の自動化システム」</strong>が構築できました。</p>
+                    <p style="margin-top: 15px;">
+                        あとは、このフォームのURLを<strong>LINE公式アカウントのリッチメニュー</strong>や、ホームページに貼り付けるだけです！
+                    </p>
+                </div>
+
+            </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Webとしくみをつくる All Rights Reserved.</p>
+    </footer>
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <span>ご質問・ご相談</span>
+            <span class="close-chat" id="closeChat">×</span>
+        </div>
+        <div class="chat-body">
+            <p>マニュアルについてご不明点はございませんか？<br>以下のボタンからLINEで直接ご質問いただけます。</p>
+            <a href="https://lin.ee/eKNHAte" target="_blank" class="chat-btn">LINEを起動する</a>
+        </div>
+    </div>
+
+    <a href="#" id="lineSupport" class="line-support">💬 LINEで相談</a>
+    <a href="index.html" id="backToIndex" class="back-to-index">🏠 一覧に戻る</a>
+    <a href="#" id="backToTop" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item">
+            一覧に戻る
+        </a>
+        <a href="#" id="mobileLineSupport" class="nav-item active-color">
+            LINEで相談
+        </a>
+        <a href="#" id="mobileBackToTop" class="nav-item">
+            ページTOP
+        </a>
+    </div>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        const backToIndex = document.getElementById('backToIndex');
+        const lineSupport = document.getElementById('lineSupport');
+        const chatWidget = document.getElementById('chatWidget');
+        const closeChat = document.getElementById('closeChat');
+        
+        // Mobile Elements
+        const mobileLineSupport = document.getElementById('mobileLineSupport');
+        const mobileBackToTop = document.getElementById('mobileBackToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+                backToIndex.classList.add('show');
+                lineSupport.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+                backToIndex.classList.remove('show');
+                lineSupport.classList.remove('show');
+            }
+        });
+
+        const scrollToTop = (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        backToTop.addEventListener('click', scrollToTop);
+        if(mobileBackToTop) mobileBackToTop.addEventListener('click', scrollToTop);
+
+        const toggleChat = (e) => {
+            e.preventDefault();
+            chatWidget.classList.toggle('active');
+        };
+        lineSupport.addEventListener('click', toggleChat);
+        if(mobileLineSupport) mobileLineSupport.addEventListener('click', toggleChat);
+
+        closeChat.addEventListener('click', () => {
+            chatWidget.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

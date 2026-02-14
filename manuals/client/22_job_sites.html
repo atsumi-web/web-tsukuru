@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無料求人サイト活用マニュアル | Webとしくみをつくる</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .manual-section {
+            margin-bottom: 60px;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .comparison-table thead {
+            background: #2196F3;
+            color: white;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .comparison-table tbody tr:hover {
+            background: #f5f5f5;
+        }
+        .ok-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .ng-badge {
+            background: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .conditional-badge {
+            background: #FF9800;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .step-block {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .step-block h3 {
+            background: #e3f2fd;
+            padding: 10px 15px;
+            border-left: 5px solid #2196F3;
+            border-radius: 0 4px 4px 0;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: #333;
+        }
+        .step-block ol {
+            line-height: 1.8;
+        }
+        .step-block ol li {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .step-block ol li p {
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        .method-box {
+            background: #f9f9f9;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .method-box h4 {
+            margin-top: 0;
+            color: #2196F3;
+        }
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .alert-box strong {
+            color: #856404;
+        }
+        .tip-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .tip-box strong {
+            color: #0c5460;
+        }
+        /* Floating Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .back-to-index {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #fff;
+            color: #06c755;
+            border: 2px solid #06c755;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 46px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .back-to-index.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-index:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            background: #06c755;
+            color: #fff;
+        }
+        .line-support {
+            position: fixed;
+            bottom: 150px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .line-support.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .line-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            border: 2px solid #fff;
+        }
+        @media (max-width: 768px) {
+            .back-to-top, .back-to-index, .line-support {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb">
+            <a href="index.html">← マニュアル一覧に戻る</a>
+        </div>
+
+        <h1 style="border-bottom: 3px solid #2196F3; padding-bottom: 10px; margin-bottom: 30px;">
+            無料求人サイト活用マニュアル
+        </h1>
+
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px;">
+            本マニュアルでは、<strong>Indeed・求人ボックス・スタンバイ</strong>の3つの無料求人サイトを活用し、貴社の採用LPへ効果的に求職者を誘導する方法を解説します。
+        </p>
+
+        <!-- セクション1: はじめに -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #2196F3; padding-left: 15px; margin-bottom: 20px;">1. はじめに：なぜこの3サイトなのか？</h2>
+            
+            <div class="step-block">
+                <p><strong>Indeed・求人ボックス・スタンバイ</strong>は「求人検索エンジン」と呼ばれ、以下の特徴があります：</p>
+                <ul style="line-height: 1.8;">
+                    <li>✅ <strong>完全無料</strong>で求人掲載が可能</li>
+                    <li>✅ <strong>自社LPへのリンク掲載が可能</strong>（マイナビ・dodaは不可）</li>
+                    <li>✅ 求職者に直接リーチでき、応募までの導線を自社でコントロールできる</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>💡 ポイント</strong><br>
+                    大手求人媒体（マイナビ・doda等）は有料かつ外部リンク不可のため、自社LP活用には不向きです。この3サイトを使えば、<strong>維持費0円</strong>で採用活動を継続できます。
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション2: サイト別掲載可否一覧表 -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #2196F3; padding-left: 15px; margin-bottom: 20px;">2. サイト別：外部リンク掲載可否一覧</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>サイト名</th>
+                        <th>リンク可否</th>
+                        <th>無料/有料</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #e8f5e9;">
+                        <td><strong>Indeed</strong></td>
+                        <td><span class="ok-badge">✓ OK</span></td>
+                        <td>無料</td>
+                        <td>リンク可。応募フォーム必須</td>
+                    </tr>
+                    <tr style="background: #e8f5e9;">
+                        <td><strong>求人ボックス</strong></td>
+                        <td><span class="ok-badge">✓ OK</span></td>
+                        <td>無料</td>
+                        <td>リンク可。クローリング形式も対応</td>
+                    </tr>
+                    <tr style="background: #e8f5e9;">
+                        <td><strong>スタンバイ</strong></td>
+                        <td><span class="ok-badge">✓ OK</span></td>
+                        <td>無料</td>
+                        <td>LPそのものを掲載可能</td>
+                    </tr>
+                    <tr>
+                        <td>リクナビNEXT</td>
+                        <td><span class="conditional-badge">条件付</span></td>
+                        <td>有料</td>
+                        <td>1箇所のみリンク可</td>
+                    </tr>
+                    <tr style="background: #ffebee;">
+                        <td>マイナビ転職</td>
+                        <td><span class="ng-badge">✗ NG</span></td>
+                        <td>有料</td>
+                        <td>URL文字列のみ（リンク不可）</td>
+                    </tr>
+                    <tr style="background: #ffebee;">
+                        <td>doda</td>
+                        <td><span class="ng-badge">✗ NG</span></td>
+                        <td>有料</td>
+                        <td>URL文字列のみ（リンク不可）</td>
+                    </tr>
+                    <tr style="background: #ffebee;">
+                        <td>エン転職</td>
+                        <td><span class="ng-badge">✗ NG</span></td>
+                        <td>有料</td>
+                        <td>外部応募誘導は禁止</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert-box">
+                <strong>⚠️ 重要</strong><br>
+                緑色の3サイト（Indeed・求人ボックス・スタンバイ）が、<strong>無料かつLPリンク掲載が可能</strong>なサイトです。以降、この3サイトの活用方法を詳しく解説します。
+            </div>
+        </section>
+
+        <!-- セクション3: Indeed活用ガイド -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #2196F3; padding-left: 15px; margin-bottom: 20px;">3. Indeed（インディード）活用ガイド</h2>
+            
+            <div class="step-block">
+                <h3>アカウント開設〜求人投稿の流れ</h3>
+                <ol>
+                    <li>
+                        <strong>アカウント開設</strong>
+                        <p><a href="https://employers.indeed.com/j" target="_blank" style="color: #2196F3;">Indeed 採用企業向けページ</a>から「今すぐ掲載をはじめる」をクリック。</p>
+                    </li>
+                    <li>
+                        <strong>企業情報入力</strong>
+                        <p>会社名、従業員数、電話番号等を登録します。</p>
+                    </li>
+                    <li>
+                        <strong>求人票作成</strong>
+                        <p>職種名、勤務地、仕事内容、給与等の詳細を入力します。</p>
+                    </li>
+                    <li>
+                        <strong>応募方法の設定</strong>
+                        <p>ここでLPへのリンクを設定します（次項で詳しく解説）。</p>
+                    </li>
+                    <li>
+                        <strong>審査</strong>
+                        <p>最大72時間程度の審査を経て公開されます。</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="step-block">
+                <h3>LPリンクの設置方法（3つの方法）</h3>
+                
+                <div class="method-box">
+                    <h4>方法A：求人本文にURLを記載</h4>
+                    <p>仕事内容の末尾に「詳しくはこちら：<strong>https://貴社LP</strong>」と記載します。</p>
+                    <p style="color: #666; font-size: 0.95em;">※クリック可能なリンクとして表示されます。</p>
+                </div>
+
+                <div class="method-box">
+                    <h4>方法B：Apply URL機能（推奨）</h4>
+                    <p>応募ボタンをクリックした際に、直接自社LPの応募フォームへ遷移させる設定です。</p>
+                    <p style="color: #666; font-size: 0.95em;">※設定については、Indeed管理画面の「応募設定」から行えます。</p>
+                </div>
+
+                <div class="method-box">
+                    <h4>方法C：メールで応募</h4>
+                    <p>応募設定で「メールで応募」を選択し、自動返信メール内にLPのURLを記載する方法です。</p>
+                    <p style="color: #666; font-size: 0.95em;">※ただし、2025年6月以降はリンク先に応募フォームが必須となります。</p>
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>無料プランの制限事項</h3>
+                <ul style="line-height: 1.8;">
+                    <li><strong>投稿数</strong>：制限なし（ただし、重複求人はNG）</li>
+                    <li><strong>期間</strong>：制限なし（ただし、30日以上更新がないと表示順位が低下）</li>
+                    <li><strong>表示</strong>：有料広告（スポンサー求人）の下位に表示される</li>
+                </ul>
+                
+                <div class="alert-box">
+                    <strong>⚠️ 重要な注意点</strong><br>
+                    Indeedでは、<strong>リンク先のページで直接応募ができること</strong>が掲載基準として厳格化されています。LPに応募フォームまたはLINE登録ボタンを必ず設置してください。
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション4: 求人ボックス活用ガイド -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #2196F3; padding-left: 15px; margin-bottom: 20px;">4. 求人ボックス活用ガイド</h2>
+            
+            <div class="step-block">
+                <h3>アカウント開設〜求人投稿の流れ</h3>
+                <ol>
+                    <li>
+                        <strong>アカウント開設</strong>
+                        <p><a href="https://for-employer.xn--pck7a.jp/" target="_blank" style="color: #2196F3;">求人ボックス 採用ボード</a>から登録。</p>
+                    </li>
+                    <li>
+                        <strong>認証</strong>
+                        <p>登録メールアドレスのURLをクリックして本登録完了。</p>
+                    </li>
+                    <li>
+                        <strong>求人作成</strong>
+                        <p>管理画面（採用ボード）から「求人を作成する」を選択。</p>
+                    </li>
+                    <li>
+                        <strong>公開</strong>
+                        <p>審査通過後、最短当日〜数日で公開されます。</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="step-block">
+                <h3>LPリンクの設置方法</h3>
+                
+                <ul style="line-height: 1.8;">
+                    <li><strong>企業情報ページ</strong>：自社サイトURLを登録する項目があり、会社概要欄にリンクが表示されます。</li>
+                    <li><strong>求人本文内</strong>：URLの記載自体は可能ですが、クリック可能なハイパーリンクにならない場合があります。</li>
+                    <li><strong>クローリング形式</strong>：LP自体を読み込ませる形式で依頼すれば、応募ボタンが直接LPへ飛びます。</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>💡 おすすめ</strong><br>
+                    求人ボックスは<strong>クローリング形式</strong>が最も効果的です。LPのURLを求人ボックスサポートに送り、掲載可否を確認しましょう。
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>無料プランの制限事項</h3>
+                <ul style="line-height: 1.8;">
+                    <li><strong>投稿数</strong>：制限なし</li>
+                    <li><strong>期間</strong>：制限なし</li>
+                    <li><strong>特徴</strong>：カカクコムグループが運営しており、SEOに強いため無料枠でも比較的流入が見込めます</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- セクション5: スタンバイ活用ガイド -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #2196F3; padding-left: 15px; margin-bottom: 20px;">5. スタンバイ活用ガイド</h2>
+            
+            <div class="step-block">
+                <h3>掲載の流れ</h3>
+                <p>スタンバイは、Indeedや求人ボックスと異なり、<strong>管理画面からの直接投稿機能が一般公開されていません。</strong></p>
+                
+                <ol style="margin-top: 20px;">
+                    <li>
+                        <strong>掲載方法の選択</strong>
+                        <p>「クローリング（自社サイト読み込み）」または「データフィード連携」が基本です。</p>
+                    </li>
+                    <li>
+                        <strong>連携依頼</strong>
+                        <p>自社LPのURLをスタンバイの問い合わせフォームから送り、掲載可否の確認を依頼します。</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="step-block">
+                <h3>LPの技術要件</h3>
+                <p>スタンバイのクローリングには、以下の技術要件を満たす必要があります：</p>
+                <ul style="line-height: 1.8;">
+                    <li>✅ <strong>スマホ最適化されている</strong></li>
+                    <li>✅ <strong>1求人1URL</strong>になっている</li>
+                    <li>✅ 求人票として認識できる構造化データがある</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>💡 ポイント</strong><br>
+                    弊社が制作するLPは、すべてこれらの要件を満たしています。安心してスタンバイ掲載をご依頼ください。
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>無料プランの制限事項</h3>
+                <ul style="line-height: 1.8;">
+                    <li><strong>掲載条件</strong>：自社サイトが技術要件を満たしている必要がある</li>
+                    <li><strong>期間</strong>：サイトが巡回（クロール）されている限り継続</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- セクション6: 運用のコツ -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #2196F3; padding-left: 15px; margin-bottom: 20px;">6. 運用のコツ・よくある質問</h2>
+            
+            <div class="step-block">
+                <h3>運用時の重要ポイント</h3>
+                
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #2196F3;">1. 重複投稿を避ける</h4>
+                    <p>同じ職種を複数の駅名で出すなどは、<strong>全件非掲載（ペナルティ）</strong>のリスクがあります。</p>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #2196F3;">2. スマホ表示を確認</h4>
+                    <p>3サイトともアクセスの<strong>8割以上がスマホ</strong>です。誘導先のLPがスマホで崩れていないか必ず確認してください。</p>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #2196F3;">3. 定期的に更新する</h4>
+                    <p>無料掲載を維持する場合でも、<strong>2週間に1回程度</strong>内容を微修正して「更新日」を新しくすることが、露出維持の鍵です。</p>
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>よくある質問</h3>
+                
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #2196F3;">Q. 3サイト全部に掲載すべきですか?</h4>
+                    <p><strong>A.</strong> はい、おすすめです。それぞれ利用者層が異なるため、3サイトすべてに掲載することで最大の効果が見込めます。</p>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #2196F3;">Q. 応募が来たらどうすればいいですか?</h4>
+                    <p><strong>A.</strong> LPに設置したLINE公式アカウントまたは応募フォームから連絡が来ます。通常の応募対応と同じ流れで進めてください。</p>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <h4 style="color: #2196F3;">Q. 有料プランに切り替えるべきタイミングは?</h4>
+                    <p><strong>A.</strong> 無料掲載で応募が安定して来るようになり、さらに露出を増やしたい場合に検討しましょう。まずは無料で十分です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <div style="text-align: center; margin-top: 60px; padding: 30px; background: #f5f5f5; border-radius: 8px;">
+            <p style="margin-bottom: 15px;">求人サイト掲載でお困りの際は、いつでもご相談ください。</p>
+            <a href="https://lin.ee/eKNHAte" target="_blank" style="display: inline-block; background: #06c755; color: white; padding: 12px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">
+                💬 LINEで相談する
+            </a>
+        </div>
+    </div>
+    <a href="#" id="lineSupport" class="line-support"> LINEで相談</a>
+    <a href="index.html" id="backToIndex" class="back-to-index"> 一覧に戻る</a>
+    <a href="#" id="backToTop" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        const backToIndex = document.getElementById('backToIndex');
+        const lineSupport = document.getElementById('lineSupport');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+                backToIndex.classList.add('show');
+                lineSupport.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+                backToIndex.classList.remove('show');
+                lineSupport.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        lineSupport.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('https://lin.ee/eKNHAte', '_blank');
+        });
+    </script>
+
+</body>
+</html>
