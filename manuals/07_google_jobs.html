@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Googleしごと検索 設定マニュアル | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .manual-section {
+            margin-bottom: 60px;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .step-block {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .step-block h3 {
+            background: #e8f5e9;
+            padding: 10px 15px;
+            border-left: 5px solid #4CAF50;
+            border-radius: 0 4px 4px 0;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: #333;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .alert-box strong {
+            color: #856404;
+        }
+        .tip-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .tip-box strong {
+            color: #0c5460;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .success-box strong {
+            color: #155724;
+        }
+        .property-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .property-table th,
+        .property-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .property-table th {
+            background: #4CAF50;
+            color: white;
+        }
+        .property-table tbody tr:hover {
+            background: #f5f5f5;
+        }
+        .required-badge {
+            background: #f44336;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .recommended-badge {
+            background: #FF9800;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <div class="breadcrumb">
+            <a href="client_index.html">← マニュアル一覧に戻る</a>
+        </div>
+
+        <h1 style="border-bottom: 3px solid #4CAF50; padding-bottom: 10px; margin-bottom: 30px;">
+            Googleしごと検索 設定マニュアル
+        </h1>
+
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px;">
+            本マニュアルでは、貴社の採用LPを<strong>Googleしごと検索</strong>（Google for Jobs）に掲載するための構造化データ（JSON-LD）の実装方法を解説します。
+        </p>
+
+        <!-- セクション1: Googleしごと検索とは -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #4CAF50; padding-left: 15px; margin-bottom: 20px;">1. Googleしごと検索とは？</h2>
+            
+            <div class="step-block">
+                <p><strong>Googleしごと検索</strong>は、Googleの検索結果に求人情報を表示する機能です。</p>
+                <ul style="line-height: 1.8; margin-top: 15px;">
+                    <li>✅ 「施工管理 鈴鹿」などで検索すると、求人情報が上位に表示される</li>
+                    <li>✅ 完全無料で設定可能</li>
+                    <li>✅ Google検索からの直接流入が見込める</li>
+                </ul>
+
+                <div class="alert-box">
+                    <strong>⚠️ 重要な注意点</strong><br>
+                    構造化データを設定しても、GoogleのアルゴリズムがあるためGoogleしごと検索に必ず表示されるわけではありません。ただし、設定しておくことで可能性を最大化できます。
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション2: 必須項目 -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #4CAF50; padding-left: 15px; margin-bottom: 20px;">2. 構造化データの必須項目</h2>
+            
+            <div class="step-block">
+                <p>Googleしごと検索に掲載されるためには、以下の項目が必須です：</p>
+                
+                <table class="property-table">
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>必須/推奨</th>
+                            <th>説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>title</code></td>
+                            <td><span class="required-badge">必須</span></td>
+                            <td>職種名（例：「施工管理スタッフ募集」）</td>
+                        </tr>
+                        <tr>
+                            <td><code>description</code></td>
+                            <td><span class="required-badge">必須</span></td>
+                            <td>求人の詳細説明（HTML形式可）</td>
+                        </tr>
+                        <tr>
+                            <td><code>datePosted</code></td>
+                            <td><span class="required-badge">必須</span></td>
+                            <td>求人投稿日（ISO 8601形式）</td>
+                        </tr>
+                        <tr>
+                            <td><code>validThrough</code></td>
+                            <td><span class="required-badge">必須</span></td>
+                            <td>求人有効期限（ISO 8601形式）</td>
+                        </tr>
+                        <tr>
+                            <td><code>hiringOrganization</code></td>
+                            <td><span class="required-badge">必須</span></td>
+                            <td>採用企業の名前・ロゴ・URL</td>
+                        </tr>
+                        <tr>
+                            <td><code>jobLocation</code></td>
+                            <td><span class="required-badge">必須</span></td>
+                            <td>勤務地の住所</td>
+                        </tr>
+                        <tr>
+                            <td><code>baseSalary</code></td>
+                            <td><span class="recommended-badge">推奨</span></td>
+                            <td>給与額（通貨・期間含む）</td>
+                        </tr>
+                        <tr>
+                            <td><code>employmentType</code></td>
+                            <td><span class="recommended-badge">推奨</span></td>
+                            <td>雇用形態（正社員・契約社員等）</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- セクション3: コード例 -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #4CAF50; padding-left: 15px; margin-bottom: 20px;">3. JSON-LDコード例（コピペ用）</h2>
+            
+            <div class="step-block">
+                <h3>基本的なコード例</h3>
+                <p>以下のコードをLPの<code>&lt;head&gt;</code>セクション内、または<code>&lt;body&gt;</code>の最後に追加してください。</p>
+                
+                <div class="code-block">
+<pre>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org/",
+  "@type": "JobPosting",
+  "title": "施工管理スタッフ募集",
+  "description": "&lt;p&gt;建設現場での施工管理業務をお任せします。未経験者歓迎、丁寧な研修制度あり。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;現場の進捗管理&lt;/li&gt;&lt;li&gt;安全管理&lt;/li&gt;&lt;li&gt;品質管理&lt;/li&gt;&lt;/ul&gt;",
+  "datePosted": "2024-02-14",
+  "validThrough": "2024-12-31",
+  "employmentType": "FULL_TIME",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "株式会社〇〇建設",
+    "sameAs": "https://example.com",
+    "logo": "https://example.com/images/logo.png"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "〇〇町1-2-3",
+      "addressLocality": "鈴鹿市",
+      "addressRegion": "三重県",
+      "postalCode": "510-0000",
+      "addressCountry": "JP"
+    }
+  },
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "JPY",
+    "value": {
+      "@type": "QuantitativeValue",
+      "value": 300000,
+      "unitText": "MONTH"
+    }
+  }
+}
+&lt;/script&gt;</pre>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 カスタマイズ方法</strong><br>
+                    上記のコード例で、<strong>赤字の部分を貴社の情報に書き換えてください</strong>：
+                    <ul style="margin-top: 10px;">
+                        <li>職種名（title）</li>
+                        <li>仕事内容（description）</li>
+                        <li>投稿日・有効期限（datePosted, validThrough）</li>
+                        <li>会社名・URL・ロゴ（hiringOrganization）</li>
+                        <li>勤務地（jobLocation）</li>
+                        <li>給与（baseSalary）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>各項目の詳しい説明</h3>
+                
+                <h4 style="color: #4CAF50; margin-top: 20px;">📅 日付の形式（ISO 8601）</h4>
+                <p><code>datePosted</code>と<code>validThrough</code>は「YYYY-MM-DD」形式で記載します。</p>
+                <ul>
+                    <li>例：2024年2月14日 → <code>"2024-02-14"</code></li>
+                    <li>例：2024年12月31日 → <code>"2024-12-31"</code></li>
+                </ul>
+
+                <h4 style="color: #4CAF50; margin-top: 20px;">💼 雇用形態（employmentType）</h4>
+                <p>以下の値から選択してください：</p>
+                <ul>
+                    <li><code>"FULL_TIME"</code>：正社員</li>
+                    <li><code>"PART_TIME"</code>：アルバイト・パート</li>
+                    <li><code>"CONTRACTOR"</code>：契約社員</li>
+                    <li><code>"TEMPORARY"</code>：派遣社員</li>
+                    <li><code>"INTERN"</code>：インターン</li>
+                </ul>
+
+                <h4 style="color: #4CAF50; margin-top: 20px;">💰 給与（baseSalary）</h4>
+                <p><code>unitText</code>で期間を指定します：</p>
+                <ul>
+                    <li><code>"MONTH"</code>：月給</li>
+                    <li><code>"YEAR"</code>：年収</li>
+                    <li><code>"HOUR"</code>：時給</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- セクション4: 設置方法 -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #4CAF50; padding-left: 15px; margin-bottom: 20px;">4. LPへの設置方法</h2>
+            
+            <div class="step-block">
+                <h3>設置手順</h3>
+                <ol style="line-height: 1.8;">
+                    <li>
+                        <strong>コードをカスタマイズ</strong>
+                        <p>上記のJSON-LDコード例を貴社の情報に書き換えます。</p>
+                    </li>
+                    <li>
+                        <strong>LPのHTMLファイルを開く</strong>
+                        <p>採用LPのHTMLファイルをテキストエディタで開きます。</p>
+                    </li>
+                    <li>
+                        <strong>コードを貼り付け</strong>
+                        <p><code>&lt;/head&gt;</code>の直前、または<code>&lt;/body&gt;</code>の直前に、カスタマイズしたJSON-LDコードを貼り付けます。</p>
+                    </li>
+                    <li>
+                        <strong>保存してアップロード</strong>
+                        <p>ファイルを保存し、サーバーにアップロードします。</p>
+                    </li>
+                </ol>
+
+                <div class="success-box">
+                    <strong>✅ 設置完了</strong><br>
+                    これで構造化データの設置は完了です。次のセクションで動作確認を行いましょう。
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション5: 動作確認 -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #4CAF50; padding-left: 15px; margin-bottom: 20px;">5. Google Search Consoleでの確認方法</h2>
+            
+            <div class="step-block">
+                <h3>リッチリザルトテストツールで確認</h3>
+                <ol style="line-height: 1.8;">
+                    <li>
+                        <strong>テストツールを開く</strong>
+                        <p><a href="https://search.google.com/test/rich-results" target="_blank" style="color: #4CAF50;">リッチリザルト テスト</a>を開きます。</p>
+                    </li>
+                    <li>
+                        <strong>LPのURLを入力</strong>
+                        <p>貴社のLPのURLを入力し、「URLをテスト」をクリックします。</p>
+                    </li>
+                    <li>
+                        <strong>結果を確認</strong>
+                        <p>「JobPosting」が検出されていれば成功です。エラーが表示された場合は、コードを見直してください。</p>
+                    </li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 ヒント</strong><br>
+                    エラーが出る場合、よくある原因は：
+                    <ul style="margin-top: 10px;">
+                        <li>カンマ（,）の付け忘れ・付けすぎ</li>
+                        <li>ダブルクォーテーション（"）の閉じ忘れ</li>
+                        <li>日付形式の間違い</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-block">
+                <h3>Google Search Consoleでの確認</h3>
+                <ol style="line-height: 1.8;">
+                    <li>
+                        <strong>Search Consoleにログイン</strong>
+                        <p><a href="https://search.google.com/search-console" target="_blank" style="color: #4CAF50;">Google Search Console</a>にアクセスし、貴社のサイトを選択します。</p>
+                    </li>
+                    <li>
+                        <strong>「拡張」→「求人情報」を確認</strong>
+                        <p>左メニューの「拡張」から「求人情報」をクリックします。</p>
+                    </li>
+                    <li>
+                        <strong>インデックス状況を確認</strong>
+                        <p>数日〜数週間後に、求人情報がGoogleにインデックスされているか確認できます。</p>
+                    </li>
+                </ol>
+
+                <div class="alert-box">
+                    <strong>⚠️ 注意</strong><br>
+                    構造化データを設定しても、すぐにはGoogleしごと検索に表示されません。Googleのクロールとインデックスには数日〜数週間かかることがあります。
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション6: よくある質問 -->
+        <section class="manual-section">
+            <h2 style="border-left: 5px solid #4CAF50; padding-left: 15px; margin-bottom: 20px;">6. よくある質問</h2>
+            
+            <div class="step-block">
+                <h4 style="color: #4CAF50;">Q. 構造化データを設定すれば必ず表示されますか？</h4>
+                <p><strong>A.</strong> いいえ、Googleのアルゴリズムがあるため、必ず表示されるわけではありません。ただし、設定しておくことで表示される可能性を最大化できます。</p>
+
+                <h4 style="color: #4CAF50; margin-top: 20px;">Q. 複数の求人がある場合はどうすればいいですか？</h4>
+                <p><strong>A.</strong> 1つの求人ページには1つのJobPosting構造化データを記載してください。複数の求人を掲載する場合は、求人ごとに別のページを作成することを推奨します。</p>
+
+                <h4 style="color: #4CAF50; margin-top: 20px;">Q. どのくらいの頻度で更新すべきですか？</h4>
+                <p><strong>A.</strong> 求人内容に変更がない場合でも、<code>validThrough</code>（有効期限）を定期的に更新することで、検索結果での露出を維持できます。</p>
+
+                <h4 style="color: #4CAF50; margin-top: 20px;">Q. エラーが出た場合はどうすればいいですか？</h4>
+                <p><strong>A.</strong> リッチリザルトテストツールでエラー内容を確認し、該当箇所を修正してください。不明な場合はお問い合わせください。</p>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <div style="text-align: center; margin-top: 60px; padding: 30px; background: #f5f5f5; border-radius: 8px;">
+            <p style="margin-bottom: 15px;">Googleしごと検索の設定でお困りの際は、いつでもご相談ください。</p>
+            <a href="client_index.html" style="display: inline-block; background: #4CAF50; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                マニュアル一覧に戻る
+            </a>
+        </div>
+    </div>
+</body>
+</html>
