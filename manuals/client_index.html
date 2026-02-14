@@ -220,10 +220,70 @@
                 flex-direction: column;
             }
             .step-arrow {
-                transform: rotate(90deg);
-                padding: 10px 0;
-            }
+            transform: rotate(90deg);
+            padding: 10px 0;
         }
+    }
+
+    /* Tab Navigation CSS */
+    .tab-container {
+        background: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .tab-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #eee;
+        flex-wrap: wrap;
+    }
+    .tab-button {
+        flex: 1;
+        min-width: 150px;
+        padding: 15px 20px;
+        border: none;
+        background: transparent;
+        color: #666;
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s;
+        position: relative;
+        bottom: -2px;
+    }
+    .tab-button:hover {
+        color: #2c3e50;
+        background: #f9f9f9;
+    }
+    .tab-button.active {
+        color: #06c755;
+        border-bottom-color: #06c755;
+        background: transparent;
+    }
+    .tab-button.reference {
+        color: #999;
+        font-size: 0.95rem;
+    }
+    .tab-button.reference.active {
+        color: #666;
+        border-bottom-color: #999;
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    @media (max-width: 768px) {
+        .tab-button {
+            font-size: 0.9rem;
+            padding: 12px 15px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -291,16 +351,115 @@
             </div>
         </div>
 
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <!-- Tab Buttons -->
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="switchTab('setup')">🏗️ 初期設定</button>
+                <button class="tab-button" onclick="switchTab('operation')">📲 日常運用</button>
+                <button class="tab-button reference" onclick="switchTab('reference')">📚 参考資料</button>
+            </div>
+
+            <!-- Tab Content: 初期設定 -->
+            <div id="tab-setup" class="tab-content active">
+                <a href="07_account_prep.html" class="menu-card line" style="border-left-color: #003366;">
+                    <div class="icon-box">🔑</div>
+                    <div class="card-content">
+                        <h2>【必須】アカウント準備ガイド</h2>
+                        <p>「資産の所有権」は誰のもの？<br>業者任せにせず、お客様ご自身で管理すべき3つのアカウントについて。</p>
+                    </div>
+                </a>
+                <a href="01_line.html" class="menu-card line">
+                    <div class="icon-box">💬</div>
+                    <div class="card-content">
+                        <h2>LINE公式アカウント 設定マニュアル</h2>
+                        <p>採用専用LINEの開設方法と、求職者とのコミュニケーション設計について。</p>
+                    </div>
+                </a>
+                <a href="02_google_form.html" class="menu-card form">
+                    <div class="icon-box">📝</div>
+                    <div class="card-content">
+                        <h2>Googleフォーム 作成マニュアル</h2>
+                        <p>自動面接官となる「応募フォーム」の作成手順と、通知設定の方法。</p>
+                    </div>
+                </a>
+                <a href="03_analytics_setup.html" class="menu-card line" style="border-left-color: #4285F4;">
+                    <div class="icon-box">⚙️</div>
+                    <div class="card-content">
+                        <h2>Google Analytics 4 セットアップマニュアル</h2>
+                        <p>GA4アカウントの作成から、タグ設置、動作確認まで、初めての方向けに完全解説。</p>
+                    </div>
+                </a>
+                <a href="02_analytics.html" class="menu-card line" style="border-left-color: #34A853;">
+                    <div class="icon-box">📊</div>
+                    <div class="card-content">
+                        <h2>Google Analytics 4 基本マニュアル</h2>
+                        <p>リアルタイム確認、ユーザー数の見方、流入経路の確認など、基本的な使い方を解説。</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Tab Content: 日常運用 -->
+            <div id="tab-operation" class="tab-content">
+                <a href="00_strategy.html" class="menu-card strategy">
+                    <div class="icon-box">📘</div>
+                    <div class="card-content">
+                        <h2>採用資産構築・完全運用バイブル</h2>
+                        <p>【必読】仕組みの全体像、HPとの違い、そして「鮮度」を保つための運用ルールまでを網羅した決定版ガイド。</p>
+                    </div>
+                </a>
+                <a href="06_job_sites.html" class="menu-card line" style="border-left-color: #2196F3;">
+                    <div class="icon-box">🔍</div>
+                    <div class="card-content">
+                        <h2>無料求人サイト活用マニュアル</h2>
+                        <p>Indeed・求人ボックス・スタンバイの3つの無料求人サイトを使った、効果的なLP活用方法を解説。</p>
+                    </div>
+                </a>
+                <a href="07_google_jobs.html" class="menu-card line" style="border-left-color: #4CAF50;">
+                    <div class="icon-box">🔎</div>
+                    <div class="card-content">
+                        <h2>Googleしごと検索 設定マニュアル</h2>
+                        <p>構造化データ（JSON-LD）を設定し、Googleしごと検索への掲載を目指すための技術ガイド。</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Tab Content: 参考資料 -->
+            <div id="tab-reference" class="tab-content">
+                <a href="00_zero_cost.html" class="menu-card strategy" style="border-left-color: #555;">
+                    <div class="icon-box">💰</div>
+                    <div class="card-content">
+                        <h2>維持費0円の仕組み（技術解説）</h2>
+                        <p>「なぜ安いの？」「怪しくない？」<br>その技術的根拠と、銀行レベルの安全性について。</p>
+                    </div>
+                </a>
+                <a href="07_domain_setup.html" class="menu-card line" style="border-left-color: #999; background: #fdfdfd; opacity: 0.9;">
+                    <div class="icon-box" style="filter: grayscale(100%); opacity: 0.6;">🌐</div>
+                    <div class="card-content">
+                        <h2>ドメイン設定仕様書（Reference）</h2>
+                        <p>独自ドメイン（web-tsukuru.jp）のDNS設定およびセキュリティ接続の技術詳細。</p>
+                    </div>
+                </a>
+                <a href="08_email_routing.html" class="menu-card line" style="border-left-color: #999; background: #fdfdfd; opacity: 0.9;">
+                    <div class="icon-box" style="filter: grayscale(100%); opacity: 0.6;">📧</div>
+                    <div class="card-content">
+                        <h2>メールシステム仕様書（Reference）</h2>
+                        <p>サーバーレス運用におけるメールルーティング（転送・送信）の構築手順。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
         <!-- Phase 1 -->
-        <div class="phase-label"><span>STEP 1</span> まずはじめに（マインドセット）</div>
-        <a href="00_strategy.html" class="menu-card strategy">
+        <div class="phase-label" style="display: none;"><span>STEP 1</span> まずはじめに（マインドセット）</div>
+        <a href="00_strategy.html" class="menu-card strategy" style="display: none;">
             <div class="icon-box">📘</div>
             <div class="card-content">
                 <h2>採用資産構築・完全運用バイブル</h2>
                 <p>【必読】仕組みの全体像、HPとの違い、そして「鮮度」を保つための運用ルールまでを網羅した決定版ガイド。</p>
             </div>
         </a>
-        <a href="00_zero_cost.html" class="menu-card strategy" style="border-left-color: #555;">
+        <a href="00_zero_cost.html" class="menu-card strategy" style="border-left-color: #555; display: none;">
             <div class="icon-box">💰</div>
             <div class="card-content">
                 <h2>維持費0円の仕組み（技術解説）</h2>
@@ -312,9 +471,9 @@
 
         <!-- Phase 2 -->
         <!-- Phase 2 -->
-        <div class="phase-label"><span>STEP 2</span> 環境構築（アカウント準備）</div>
+        <div class="phase-label" style="display: none;"><span>STEP 2</span> 環境構築（アカウント準備）</div>
         
-        <a href="07_account_prep.html" class="menu-card line" style="border-left-color: #003366;">
+        <a href="07_account_prep.html" class="menu-card line" style="border-left-color: #003366; display: none;">
             <div class="icon-box">🔑</div>
             <div class="card-content">
                 <h2>【必須】アカウント準備ガイド</h2>
@@ -323,60 +482,60 @@
         </a>
 
         <!-- Technical Reference (Sub-section) -->
-         <p style="margin: 30px 0 15px 0; font-size: 0.95rem; color: #888; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+         <p style="margin: 30px 0 15px 0; font-size: 0.95rem; color: #888; border-bottom: 1px solid #eee; padding-bottom: 10px; display: none;">
             ▼ 以下はエンジニアが実施する技術設定作業の仕様書です（参考閲覧用）
         </p>
 
-        <a href="07_domain_setup.html" class="menu-card line" style="border-left-color: #999; background: #fdfdfd; opacity: 0.9;">
+        <a href="07_domain_setup.html" class="menu-card line" style="border-left-color: #999; background: #fdfdfd; opacity: 0.9; display: none;">
             <div class="icon-box" style="filter: grayscale(100%); opacity: 0.6;">🌐</div>
             <div class="card-content">
                 <h2>ドメイン設定仕様書（Reference）</h2>
                 <p>独自ドメイン（web-tsukuru.jp）のDNS設定およびセキュリティ接続の技術詳細。</p>
             </div>
         </a>
-        <a href="08_email_routing.html" class="menu-card line" style="border-left-color: #999; background: #fdfdfd; opacity: 0.9;">
+        <a href="08_email_routing.html" class="menu-card line" style="border-left-color: #999; background: #fdfdfd; opacity: 0.9; display: none;">
             <div class="icon-box" style="filter: grayscale(100%); opacity: 0.6;">📧</div>
             <div class="card-content">
                 <h2>メールシステム仕様書（Reference）</h2>
                 <p>サーバーレス運用におけるメールルーティング（転送・送信）の構築手順。</p>
             </div>
         </a>
-        <a href="01_line.html" class="menu-card line">
+        <a href="01_line.html" class="menu-card line" style="display: none;">
             <div class="icon-box">💬</div>
             <div class="card-content">
                 <h2>LINE公式アカウント 設定マニュアル</h2>
                 <p>採用専用LINEの開設方法と、求職者とのコミュニケーション設計について。</p>
             </div>
         </a>
-        <a href="02_google_form.html" class="menu-card form">
+        <a href="02_google_form.html" class="menu-card form" style="display: none;">
             <div class="icon-box">📝</div>
             <div class="card-content">
                 <h2>Googleフォーム 作成マニュアル</h2>
                 <p>自動面接官となる「応募フォーム」の作成手順と、通知設定の方法。</p>
             </div>
         </a>
-        <a href="03_analytics_setup.html" class="menu-card line" style="border-left-color: #4285F4;">
+        <a href="03_analytics_setup.html" class="menu-card line" style="border-left-color: #4285F4; display: none;">
             <div class="icon-box">⚙️</div>
             <div class="card-content">
                 <h2>Google Analytics 4 セットアップマニュアル</h2>
                 <p>GA4アカウントの作成から、タグ設置、動作確認まで、初めての方向けに完全解説。</p>
             </div>
         </a>
-        <a href="02_analytics.html" class="menu-card line" style="border-left-color: #34A853;">
+        <a href="02_analytics.html" class="menu-card line" style="border-left-color: #34A853; display: none;">
             <div class="icon-box">📊</div>
             <div class="card-content">
                 <h2>Google Analytics 4 基本マニュアル</h2>
                 <p>リアルタイム確認、ユーザー数の見方、流入経路の確認など、基本的な使い方を解説。</p>
             </div>
         </a>
-        <a href="06_job_sites.html" class="menu-card line" style="border-left-color: #2196F3;">
+        <a href="06_job_sites.html" class="menu-card line" style="border-left-color: #2196F3; display: none;">
             <div class="icon-box">🔍</div>
             <div class="card-content">
                 <h2>無料求人サイト活用マニュアル</h2>
                 <p>Indeed・求人ボックス・スタンバイの3つの無料求人サイトを使った、効果的なLP活用方法を解説。</p>
             </div>
         </a>
-        <a href="07_google_jobs.html" class="menu-card line" style="border-left-color: #4CAF50;">
+        <a href="07_google_jobs.html" class="menu-card line" style="border-left-color: #4CAF50; display: none;">
             <div class="icon-box">🔎</div>
             <div class="card-content">
                 <h2>Googleしごと検索 設定マニュアル</h2>
@@ -439,7 +598,26 @@
     <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="繝壹・繧ｸ繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
 </div>
 <script>
+    // Tab switching function
+    function switchTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Deactivate all tab buttons
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => button.classList.remove('active'));
+        
+        // Show selected tab content
+        document.getElementById('tab-' + tabName).classList.add('active');
+        
+        // Activate selected tab button
+        event.target.classList.add('active');
+    }
+
+    // Scroll to top button
     window.addEventListener('scroll', () => {
+
         const toTop = document.querySelector('.to-top');
         if (window.scrollY > 300) toTop.classList.add('visible');
         else toTop.classList.remove('visible');
