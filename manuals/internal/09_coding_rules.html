@@ -400,8 +400,99 @@ git checkout HEAD -- file.css</pre>
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
 
+            <div class="highlight-box" style="background: #ffebee; border-left: 4px solid #e53935; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🛡️ 文字化け防止の最優先ルール</h3>
+                <p>今回のような「ナビゲーション文字化け大量発生」を二度と起こさないための必須プロトコル</p>
+            </div>
+
+            <h2>11. 文字化け完全防止プロトコル</h2>
+            <p><strong>【最重要】文字化けは「起きてから直す」のではなく「起きないようにする」</strong></p>
+
+            <h3>① プロジェクト設定を強制する</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">必須設定</span>
+                <p><strong>`.vscode/settings.json` を作成</strong>（プロジェクト全体に適用）:</p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">{
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": false,
+  "files.eol": "\n"
+}</pre>
+                <p style="margin-top:10px;"><strong>`.editorconfig` を確認</strong>（既存ファイルを更新）:</p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true</pre>
+            </div>
+
+            <h3>② ファイル作成時の鉄則</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">3ステップチェック</span>
+                <p><strong>絶対に守る3つのステップ:</strong></p>
+                <ol style="margin-left: 20px; line-height: 2;">
+                    <li><strong>テンプレートからコピー</strong>（ゼロから作らない）</li>
+                    <li><strong>右下のエンコーディング表示を確認</strong>（必ずUTF-8）</li>
+                    <li><strong>日本語を1文字入力→保存→ブラウザ確認</strong>（文字化けテスト）</li>
+                </ol>
+            </div>
+
+            <h3>③ PowerShellスクリプトのテンプレート</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">安全なヘルパー関数</span>
+                <p><strong>全てのスクリプトに必須のヘッダー:</strong></p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># ===== エンコーディング安全設定 =====
+$OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+# ファイル保存時は必ずこのヘルパー関数を使う
+function Save-Utf8NoBom {
+    param([string]$Path, [string]$Content)
+    $utf8 = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText($Path, $Content, $utf8)
+}</pre>
+            </div>
+
+            <h3>④ 文字化けチェックリスト（毎回実行）</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">作業前チェック</span>
+                <p><strong>新規HTMLファイル作成後:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ VSCode右下が「UTF-8」表示か？</li>
+                    <li>☐ 日本語コメント <code>&lt;!-- テスト --&gt;</code> を入力して保存</li>
+                    <li>☐ ブラウザで開いて日本語が正しく表示されるか？</li>
+                    <li>☐ Gitでコミット（<code>git add</code> → <code>git commit</code>）</li>
+                </ul>
+                
+                <p style="margin-top:15px;"><strong>PowerShellでファイル操作後:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ <code>-Encoding UTF8</code> パラメータを付けたか？</li>
+                    <li>☐ または <code>Save-Utf8NoBom</code> 関数を使ったか？</li>
+                    <li>☐ VSCodeで開いて日本語が崩れていないか？</li>
+                </ul>
+            </div>
+
+            <h3>⑤ 緊急復旧コマンド</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">文字化け発見時</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;"># 1. Gitで元に戻す（最優先）
+git checkout HEAD -- ファイル名.html
+
+# 2. または手動で修正
+$content = Get-Content "ファイル.html" -Raw -Encoding UTF8
+$utf8 = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText("ファイル.html", $content, $utf8)</pre>
+            </div>
+
+            <div class="rule-box" style="background: #fff3cd; border-color: #ffc107;">
+                <span class="badge" style="background: #ff6f00; color: white;">重要な習慣</span>
+                <p><strong>作業開始前に必ずこのルールをAntigravityに見せる</strong></p>
+                <p>「これから〇〇の作業をします。コーディング規則を確認してください」と伝えることで、<br>
+                AIが事前にエンコーディングやGitコミットの注意点を意識した提案をしてくれます。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
             <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
-                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：10の鉄則</h3>
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：11の鉄則</h3>
                 <ol style="line-height: 2;">
                     <li>モバイルファースト</li>
                     <li>単一の情報源（One Source of Truth）</li>
@@ -413,6 +504,7 @@ git checkout HEAD -- file.css</pre>
                     <li><strong>CVボタンは共通パーツ化</strong></li>
                     <li><strong>Performance First</strong></li>
                     <li><strong>AI協働時の注意点</strong></li>
+                    <li><strong style="color: #e53935;">文字化け完全防止プロトコル</strong></li>
                 </ol>
                 <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
             </div>
