@@ -297,7 +297,7 @@
 
             try {
                 // Fetch TODAY.md from parent directory
-                const response = await fetch('../TODAY.md');
+                const response = await fetch('TODAY.md');
                 
                 if (!response.ok) {
                     throw new Error('TODAY.md が見つかりません');
