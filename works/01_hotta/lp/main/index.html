@@ -83,12 +83,7 @@
         .hero-video { display: none !important; } /* 重い動画をモバイルで強制排除 */
         .hero-image-mobile { display: block; width: 100%; height: 100%; object-fit: cover; }
       }
-      @media (max-width:768px){
-        body .hero-teto-container{padding:130px 1rem 15px}
-        body .teto-main-title{font-size:2.2rem}
-        body .teto-sub-title{font-size:.95rem;margin-bottom:1rem}
-        body .header-logo-img{height:24px}
-      }
+
       /* Critical: Prevent PRIDE text FOUC */
       body .teto-catch-en{position:absolute;top:3%;right:5%;left:auto;font-family:var(--font-en);font-weight:900;font-size:clamp(5rem,12vw,14rem);color:rgba(255,255,255,.08);letter-spacing:.05em;z-index:0;pointer-events:none;user-select:none;white-space:nowrap;transform:rotate(-5deg);opacity:0;animation:fadeInPride 0.6s ease-in 0.3s forwards}
       @keyframes fadeInPride{to{opacity:1}}
@@ -101,6 +96,7 @@
       @keyframes scroll{0%,100%{opacity:1;top:8px}50%{opacity:.3;top:20px}}
       body .mouse-text{color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;font-weight:600;font-family:var(--font-en)}
       @media (max-width:1200px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-tagline-grid{grid-template-columns:1fr;gap:.75rem;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:8px;padding:.5rem 1.2rem}body .hero-actions{display:flex;flex-direction:column;align-items:center;width:100%}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
+      @media (max-width:768px){body #hero.hero-teto{height:auto!important;min-height:100dvh;overflow:visible!important}body .hero-teto-visual{height:100%;position:absolute;top:0;right:0;width:100%;clip-path:none}body .hero-teto-container{width:100%!important;padding:80px 1rem 120px!important}body .teto-main-title{font-size:2.2rem}body .teto-sub-title{font-size:.95rem;margin-bottom:1rem}body .header-logo-img{height:24px}}
       @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:0}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
     </style>
     
@@ -111,17 +107,14 @@
     <!-- 非クリティカルCSS (非同期読み込み) -->
     <link rel="stylesheet" href="css/style.min.css?v=5.3" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="css/renewal.css?v=8.7" />
+    <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
     <noscript>
       <link rel="stylesheet" href="css/style.min.css?v=5.3" />
       <link rel="stylesheet" href="css/renewal.css?v=8.6" />
+      <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
     </noscript>
     
     <!-- Google Fonts (最適化: 必要なウェイトのみ) -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
-    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
@@ -266,6 +259,41 @@
           <div class="mouse-wheel"></div>
         </div>
         <span class="mouse-text">SCROLL</span>
+      </div>
+    </section>
+
+    <!-- 2.5. 選ばれる3つの理由（モバイル専用セクション） -->
+    <section class="hero-features-mobile" id="hero-features-mobile">
+      <div class="container">
+        <div class="hero-tagline-grid-mobile">
+          <div class="hero-cta-tagline-mobile">
+            <div class="tagline-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="tagline-text">
+              <h3>未経験者大歓迎</h3>
+              <p>履歴書も志望動機も不要。<br />「とりあえず」で始めて大丈夫。</p>
+            </div>
+          </div>
+          <div class="hero-cta-tagline-mobile">
+            <div class="tagline-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="tagline-text">
+              <h3>地元・三重で働き続ける</h3>
+              <p>転勤なし、直行直帰OK。<br />地域に根ざした安定した環境。</p>
+            </div>
+          </div>
+          <div class="hero-cta-tagline-mobile">
+            <div class="tagline-icon">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="tagline-text">
+              <h3>資格取得、全額会社負担</h3>
+              <p>受験料も教材費も学校費用も。<br />一生使える技術を習得。</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
