@@ -126,12 +126,11 @@
         }
         
         /* Phase colors */
-        .phase-1 .phase-icon { color: #0d9488; }
-        .phase-2 .phase-icon { color: #3b82f6; }
-        .phase-3 .phase-icon { color: #f59e0b; }
+        .phase-planning .phase-icon { color: #0d9488; }
+        .phase-coding .phase-icon { color: #3b82f6; }
+        .phase-infrastructure .phase-icon { color: #7c3aed; }
+        .phase-quality .phase-icon { color: #f59e0b; }
         .phase-emergency .phase-icon { color: #ef4444; }
-        .phase-4 .phase-icon { color: #7c3aed; }
-        .phase-5 .phase-icon { color: #475569; }
         
         footer {
             text-align: center;
@@ -145,7 +144,7 @@
     <div class="container">
         <header>
             <h1>📚 制作マニュアル一覧</h1>
-            <div class="subtitle">Web Production Manual Index</div>
+            <div class="subtitle">Web Production Manual Index - 役割別分類</div>
         </header>
         
         <div class="quick-links">
@@ -157,23 +156,13 @@
             </a>
         </div>
         
-        <!-- Phase 1: Planning -->
-        <div class="phase-section phase-1">
+        <!-- 企画・提案 -->
+        <div class="phase-section phase-planning">
             <div class="phase-header">
                 <div class="phase-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                <div class="phase-title">1. 戦略・ヒアリング</div>
+                <div class="phase-title">企画・提案</div>
             </div>
             <table class="manual-table">
-                <tr>
-                    <td class="manual-name">
-                        <a href="../internal/15_recruit_content_guide.html" target="_blank">
-                            <i class="fa-solid fa-pen-nib"></i>
-                            コンテンツ戦略ガイド
-                        </a>
-                    </td>
-                    <td class="manual-timing">企画段階</td>
-                    <td class="manual-desc">採用文章の構成・Type診断</td>
-                </tr>
                 <tr>
                     <td class="manual-name">
                         <a href="../internal/13_lp_hearing_sheet.html" target="_blank">
@@ -186,6 +175,16 @@
                 </tr>
                 <tr>
                     <td class="manual-name">
+                        <a href="../internal/15_recruit_content_guide.html" target="_blank">
+                            <i class="fa-solid fa-pen-nib"></i>
+                            コンテンツ戦略ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">企画段階</td>
+                    <td class="manual-desc">採用文章の構成・Type診断</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
                         <a href="../client/00_strategy.html" target="_blank">
                             <i class="fa-regular fa-map"></i>
                             採用戦略ガイドBOOK
@@ -194,14 +193,24 @@
                     <td class="manual-timing">提案時</td>
                     <td class="manual-desc">クライアント提示用資料</td>
                 </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/01_zero_cost.html" target="_blank">
+                            <i class="fa-solid fa-coins"></i>
+                            維持費0円の仕組み
+                        </a>
+                    </td>
+                    <td class="manual-timing">提案時</td>
+                    <td class="manual-desc">技術的根拠・セキュリティ解説</td>
+                </tr>
             </table>
         </div>
         
-        <!-- Phase 2: Production -->
-        <div class="phase-section phase-2">
+        <!-- コーディング -->
+        <div class="phase-section phase-coding">
             <div class="phase-header">
                 <div class="phase-icon"><i class="fa-solid fa-code"></i></div>
-                <div class="phase-title">2. 制作・実装</div>
+                <div class="phase-title">コーディング</div>
             </div>
             <table class="manual-table">
                 <tr>
@@ -254,6 +263,16 @@
                     <td class="manual-timing">制作全般</td>
                     <td class="manual-desc">プロンプトと時短術</td>
                 </tr>
+            </table>
+        </div>
+        
+        <!-- デプロイ・インフラ -->
+        <div class="phase-section phase-infrastructure">
+            <div class="phase-header">
+                <div class="phase-icon"><i class="fa-solid fa-server"></i></div>
+                <div class="phase-title">デプロイ・インフラ</div>
+            </div>
+            <table class="manual-table">
                 <tr>
                     <td class="manual-name">
                         <a href="../internal/10_deployment_guide/index.html" target="_blank">
@@ -264,14 +283,34 @@
                     <td class="manual-timing">公開・更新時</td>
                     <td class="manual-desc">Cloudflare Pages公開手順</td>
                 </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/11_domain_setup.html" target="_blank">
+                            <i class="fa-solid fa-globe"></i>
+                            ドメイン設定仕様書
+                        </a>
+                    </td>
+                    <td class="manual-timing">サイト公開前</td>
+                    <td class="manual-desc">Cloudflare DNS・ネームサーバー設定</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/12_email_routing.html" target="_blank">
+                            <i class="fa-solid fa-envelope"></i>
+                            メールシステム仕様書
+                        </a>
+                    </td>
+                    <td class="manual-timing">ドメイン設定後</td>
+                    <td class="manual-desc">Email Routing・Gmail SMTP設定</td>
+                </tr>
             </table>
         </div>
         
-        <!-- Phase 3: QA & Release -->
-        <div class="phase-section phase-3">
+        <!-- 品質・運用 -->
+        <div class="phase-section phase-quality">
             <div class="phase-header">
                 <div class="phase-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                <div class="phase-title">3. 品質管理・納品</div>
+                <div class="phase-title">品質・運用</div>
             </div>
             <table class="manual-table">
                 <tr>
@@ -294,76 +333,6 @@
                     <td class="manual-timing">公開直後</td>
                     <td class="manual-desc">キャッシュ設定でスコア+20点</td>
                 </tr>
-            </table>
-        </div>
-        
-        <!-- Emergency -->
-        <div class="phase-section phase-emergency">
-            <div class="phase-header">
-                <div class="phase-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                <div class="phase-title">緊急対応</div>
-            </div>
-            <table class="manual-table">
-                <tr>
-                    <td class="manual-name">
-                        <a href="../internal/trouble_recovery.html" target="_blank">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            トラブル・復旧マニュアル
-                        </a>
-                    </td>
-                    <td class="manual-timing">表示異常発生時</td>
-                    <td class="manual-desc">文字化け・表示崩れの直し方</td>
-                </tr>
-            </table>
-        </div>
-        
-        <!-- Phase 4: Technical Setup -->
-        <div class="phase-section phase-4">
-            <div class="phase-header">
-                <div class="phase-icon"><i class="fa-solid fa-server"></i></div>
-                <div class="phase-title">4. 初期構築（技術作業）</div>
-            </div>
-            <table class="manual-table">
-                <tr>
-                    <td class="manual-name">
-                        <a href="../client/11_domain_setup.html" target="_blank">
-                            <i class="fa-solid fa-globe"></i>
-                            ドメイン設定仕様書
-                        </a>
-                    </td>
-                    <td class="manual-timing">サイト公開前</td>
-                    <td class="manual-desc">Cloudflare DNS・ネームサーバー設定</td>
-                </tr>
-                <tr>
-                    <td class="manual-name">
-                        <a href="../client/12_email_routing.html" target="_blank">
-                            <i class="fa-solid fa-envelope"></i>
-                            メールシステム仕様書
-                        </a>
-                    </td>
-                    <td class="manual-timing">ドメイン設定後</td>
-                    <td class="manual-desc">Email Routing・Gmail SMTP設定</td>
-                </tr>
-                <tr>
-                    <td class="manual-name">
-                        <a href="../client/01_zero_cost.html" target="_blank">
-                            <i class="fa-solid fa-coins"></i>
-                            維持費0円の仕組み
-                        </a>
-                    </td>
-                    <td class="manual-timing">提案時</td>
-                    <td class="manual-desc">技術的根拠・セキュリティ解説</td>
-                </tr>
-            </table>
-        </div>
-        
-        <!-- Phase 5: Operations -->
-        <div class="phase-section phase-5">
-            <div class="phase-header">
-                <div class="phase-icon"><i class="fa-solid fa-gears"></i></div>
-                <div class="phase-title">5. 運用・その他設定</div>
-            </div>
-            <table class="manual-table">
                 <tr>
                     <td class="manual-name">
                         <a href="../client/13_line.html" target="_blank">
@@ -403,6 +372,26 @@
                     </td>
                     <td class="manual-timing">記事執筆時</td>
                     <td class="manual-desc">HTMLテンプレート・執筆開始</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- 緊急対応 -->
+        <div class="phase-section phase-emergency">
+            <div class="phase-header">
+                <div class="phase-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div class="phase-title">緊急対応</div>
+            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/trouble_recovery.html" target="_blank">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            トラブル・復旧マニュアル
+                        </a>
+                    </td>
+                    <td class="manual-timing">表示異常発生時</td>
+                    <td class="manual-desc">文字化け・表示崩れの直し方</td>
                 </tr>
             </table>
         </div>
