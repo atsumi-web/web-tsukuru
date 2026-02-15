@@ -432,52 +432,58 @@
         </section>
 
         <!-- 10. FAQ -->
-        <section class="feature-section" style="background-color: #f8fafc;">
+        <section id="qa" class="qa-section">
             <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge">FAQ</span>
-                    <h2 class="section-title text-dark">よくある質問</h2>
-                </div>
-
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div class="problem-card js-fade-up" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q1. 本当に維持費0円ですか？</h3>
-                        <p>はい。<strong>ドメイン代（年額1,000〜3,000円程度、お客様ご自身で取得）</strong>のみご負担いただければ、サーバー代や保守管理費は一切かかりません。無料の高速サーバー（Cloudflare Pages等）を活用することで実現しています。ドメイン取得は丁寧にサポートしますので、ご安心ください。</p>
+                <div class="section-badge">Q&A</div>
+                <h2 class="section-title">よくある質問</h2>
+                <div class="qa-list">
+                    <div class="qa-item js-fade-up">
+                        <div class="q">本当に維持費0円ですか？</div>
+                        <div class="a">
+                            はい、弊社への月額管理費は0円です。ただし、独自の「<strong>ドメイン代（年額1,000〜3,000円程度、お客様ご自身で取得）</strong>」のみご負担いただきます。ドメイン取得は丁寧にサポートしますので、ご安心ください。それ以外に、弊社から費用を請求することは一切ありません。<br><br>
+                            <strong class="text-highlight-gold">なぜ0円が可能なのか?</strong><br>
+                            世界標準のサーバーレス技術とGitHubによるバージョン管理を組み合わせることで、サーバー代やメンテナンス費用を徹底的に排除しています。これにより、ドメイン代以外の固定費をゼロにし、かつサイトの全履歴を安全に保全。御社だけの<strong class="text-highlight-gold">「一生モノの採用資産」</strong>が実現します。
+                        </div>
                     </div>
-
-                    <div class="problem-card js-fade-up" data-delay="50" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q2. 写真はスマホ撮影でOKですか？</h3>
-                        <p>はい、問題ありません。スマホで撮影した写真をGoogleドライブ等で共有いただければ、こちらで最適化して使用します。</p>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">Indeedなどの無料掲載とは何が違いますか？</div>
+                        <div class="a">無料掲載は「文字情報」が中心ですが、このLPは写真とデザインで御社の魅力を伝える<strong class="text-highlight-gold">「受け皿」</strong>となります。IndeedやハローワークからこのLPに誘導することで、求職者に会社の雰囲気をしっかり伝えることができます。</div>
                     </div>
-
-                    <div class="problem-card js-fade-up" data-delay="100" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q3. 納期はどれくらいですか？</h3>
-                        <p>ヒアリングから納品まで、約3〜4週間が目安です。</p>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">写真はスマホ撮影でOKですか？</div>
+                        <div class="a">はい、問題ありません。スマホで撮影した写真をGoogleドライブ等で共有いただければ、こちらで最適化して使用します。</div>
                     </div>
-
-                    <div class="problem-card js-fade-up" data-delay="150" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q4. 途中でキャンセルできますか？</h3>
-                        <p>制作開始前であれば、キャンセル料は発生しません。制作開始後は、進捗に応じてキャンセル料が発生します（詳細は次項をご確認ください）。</p>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">三重県以外（遠方）でも大丈夫ですか？</div>
+                        <div class="a">はい、全国対応です。オンライン完結で制作可能ですので、地域に関わらずご相談ください。</div>
                     </div>
-
-                    <div class="problem-card js-fade-up" data-delay="200" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q5. 修正は何回までできますか？</h3>
-                        <p>納品後1ヶ月間は、修正回数に制限なく無料で対応します。1ヶ月以降の修正は、更新サポートプラン（月額5,000円）またはスポット対応（5,000円〜）となります。</p>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">納期はどれくらいですか？</div>
+                        <div class="a">ヒアリングから納品まで、約3〜4週間が目安です。</div>
                     </div>
-
-                    <div class="problem-card js-fade-up" data-delay="250" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q6. 更新サポートは必須ですか？</h3>
-                        <p>いいえ、必須ではありません。必要な方のみご契約いただけます。ご自身で更新作業が難しい場合にご検討ください。</p>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">納品後のLINE運用はどうすればいい？</div>
+                        <div class="a">納品時に簡単なマニュアルをお渡しします。まずは窓口として自由に活用してください。もし「更新も丸投げしたい」という場合は、別途運用サポートプランもご用意しています。</div>
                     </div>
-
-                    <div class="problem-card js-fade-up" data-delay="300" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q7. Instagram運用もお願いできますか？</h3>
-                        <p>申し訳ございません。現在、Instagram運用代行は提供しておりません。LP制作に専念することで、高品質なサービスを提供しています。</p>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">途中でキャンセルできますか？</div>
+                        <div class="a">制作開始前であれば、キャンセル料は発生しません。制作開始後は、進捗に応じてキャンセル料が発生します（詳細は下記「キャンセルポリシー」をご確認ください）。</div>
                     </div>
-
-                    <div class="problem-card js-fade-up" data-delay="350" style="background: #fff;">
-                        <h3 style="color: var(--renewal-navy);">Q8. 契約期間の縛りはありますか？</h3>
-                        <p>ありません。更新サポートプラン（月額5,000円）を継続いただいている間は、当社がCloudflare Pagesで管理し、維持費0円のまま運営できます。解約される場合は、サイトファイル一式を納品いたしますので、その後はレンタルサーバーへの移管や他社への依頼など、自由にお選びいただけます。</p>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">修正は何回までできますか？</div>
+                        <div class="a">納品後1ヶ月間は、修正回数に制限なく無料で対応します。1ヶ月以降の修正は、更新サポートプラン（月額5,000円）またはスポット対応（5,000円〜）となります。</div>
+                    </div>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">更新サポートは必須ですか？</div>
+                        <div class="a">いいえ、必須ではありません。必要な方のみご契約いただけます。ご自身で更新作業が難しい場合にご検討ください。</div>
+                    </div>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">Instagram運用もお願いできますか？</div>
+                        <div class="a">申し訳ございません。現在、Instagram運用代行は提供しておりません。LP制作に専念することで、高品質なサービスを提供しています。</div>
+                    </div>
+                    <div class="qa-item js-fade-up">
+                        <div class="q">契約期間の縛りはありますか？</div>
+                        <div class="a">ありません。更新サポートプラン（月額5,000円）を継続いただいている間は、当社がCloudflare Pagesで管理し、維持費0円のまま運営できます。解約される場合は、サイトファイル一式を納品いたしますので、その後はレンタルサーバーへの移管や他社への依頼など、自由にお選びいただけます。</div>
                     </div>
                 </div>
             </div>
