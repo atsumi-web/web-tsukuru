@@ -1,0 +1,12 @@
+# デプロイ対象外のアーカイブフォルダ
+# images/keep/  # Phase C修正: 最適化画像をデプロイするためコメントアウト
+
+# PowerShellスクリプト（開発ツール）
+*.ps1
+
+# バックアップファイル
+*.backup_*
+
+# 一時ファイル
+deploy_status.html
+ichiou/
