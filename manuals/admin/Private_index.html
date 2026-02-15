@@ -3,449 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webをつくるしごと | 制作コックピット</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap">
+    <title>制作マニュアル一覧 | Webとしくみをつくる</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #0f172a;
-            --accent: #3b82f6;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
+            background: #f8fafc;
+            color: #334155;
             line-height: 1.6;
+            padding: 20px;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
         }
-        
-        /* Header */
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #0f172a;
         }
         h1 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin: 0;
-            letter-spacing: 0.05em;
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 8px;
         }
         .subtitle {
             color: #64748b;
-            font-size: 1rem;
-            margin-top: 10px;
+            font-size: 0.9rem;
         }
-
-        /* Timeline / Phase Styles */
+        
+        .quick-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .quick-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .quick-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        
         .phase-section {
-            margin-bottom: 60px;
-            position: relative;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .phase-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
         }
-        .phase-number {
-            background: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-right: 15px;
+        .phase-icon {
+            font-size: 1.5rem;
         }
         .phase-title {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--primary);
-        }
-
-        /* Workflow Grid */
-        .workflow-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-        }
-
-        /* Workflow Button */
-        .workflow-btn {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-            border-left: 6px solid #ccc; /* Default accent */
-        }
-
-        .workflow-btn:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            background: #fff;
-        }
-
-        .btn-icon {
-            font-size: 1.8rem;
-            margin-right: 15px;
-            width: 40px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        
-        .btn-content {
-            flex-grow: 1;
-        }
-
-        .btn-title {
+            font-size: 1.2rem;
             font-weight: 700;
-            font-size: 1.05rem;
-            display: block;
-            margin-bottom: 4px;
-            color: var(--primary);
+            color: #0f172a;
         }
-
-        .btn-desc {
-            font-size: 0.8rem;
-            color: #64748b;
-            display: block;
-            line-height: 1.3;
-        }
-
-        .btn-arrow {
-            color: #cbd5e1;
-            margin-left: 10px;
-            font-size: 0.9rem;
-        }
-
-        /* Colors by Phase */
-        /* Planning: Teal */
-        .phase-1 .phase-number { background: #0d9488; }
-        .phase-1 .workflow-btn { border-left-color: #0d9488; }
-        .phase-1 .btn-icon { color: #0d9488; }
-
-        /* Production: Blue */
-        .phase-2 .phase-number { background: #3b82f6; }
-        .phase-2 .workflow-btn { border-left-color: #3b82f6; }
-        .phase-2 .btn-icon { color: #3b82f6; }
-
-        /* QA: Orange */
-        .phase-3 .phase-number { background: #f59e0b; }
-        .phase-3 .workflow-btn { border-left-color: #f59e0b; }
-        .phase-3 .btn-icon { color: #f59e0b; }
         
-        /* Emergency: Red */
-        .phase-emergency .phase-number { background: #ef4444; }
-        .phase-emergency .workflow-btn { border-left-color: #ef4444; background: #fff1f2; }
-        .phase-emergency .btn-icon { color: #ef4444; }
-
-        /* Quick Portals */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 50px;
-            background: #e2e8f0;
-            padding: 20px;
-            border-radius: 16px;
+        .manual-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .action-chip {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-            color: var(--primary);
+        .manual-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.85rem;
+        }
+        .manual-table tr:last-child td {
+            border-bottom: none;
+        }
+        .manual-table tr:hover {
+            background: #f8fafc;
+        }
+        .manual-name {
+            width: 30%;
+            font-weight: 600;
+        }
+        .manual-name a {
+            color: #0f172a;
             text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            gap: 8px;
         }
-        .action-chip:hover {
-            background: #f1f5f9;
-            transform: translateY(-2px);
+        .manual-name a:hover {
+            color: #3b82f6;
         }
-
+        .manual-name i {
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        .manual-timing {
+            width: 20%;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+        .manual-desc {
+            width: 50%;
+            color: #475569;
+        }
+        
+        /* Phase colors */
+        .phase-1 .phase-icon { color: #0d9488; }
+        .phase-2 .phase-icon { color: #3b82f6; }
+        .phase-3 .phase-icon { color: #f59e0b; }
+        .phase-emergency .phase-icon { color: #ef4444; }
+        .phase-4 .phase-icon { color: #7c3aed; }
+        .phase-5 .phase-icon { color: #475569; }
+        
         footer {
             text-align: center;
-            margin-top: 80px;
+            margin-top: 40px;
             color: #cbd5e1;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <header>
-            <h1>WEB PRODUCTION COCKPIT</h1>
-            <div class="subtitle">制作フロー・マニュアル一元管理ハブ</div>
+            <h1>📚 制作マニュアル一覧</h1>
+            <div class="subtitle">Web Production Manual Index</div>
         </header>
-
-        <!-- Quick Access -->
-        <div class="quick-actions">
-            <a href="../client/index.html" class="action-chip" target="_blank">
+        
+        <div class="quick-links">
+            <a href="../client/index.html" class="quick-btn" target="_blank">
                 <i class="fa-solid fa-users"></i> クライアント用
             </a>
-            <a href="index.html" class="action-chip">
+            <a href="index.html" class="quick-btn">
                 <i class="fa-solid fa-tower-broadcast"></i> 運用司令室
             </a>
         </div>
-
+        
         <!-- Phase 1: Planning -->
         <div class="phase-section phase-1">
             <div class="phase-header">
-                <div class="phase-number">1</div>
-                <div class="phase-title">戦略・ヒアリング</div>
+                <div class="phase-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="phase-title">1. 戦略・ヒアリング</div>
             </div>
-            <div class="workflow-grid">
-                <a href="../internal/15_recruit_content_guide.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-pen-nib"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">コンテンツ戦略ガイド</span>
-                        <span class="btn-desc">採用文章の構成・Type診断</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../internal/13_lp_hearing_sheet.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-ear-listen"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">制作ヒアリングシート</span>
-                        <span class="btn-desc">顧客要望の引き出しリスト</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../client/00_strategy.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-regular fa-map"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">採用戦略ガイドBOOK</span>
-                        <span class="btn-desc">クライアント提示用資料</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/15_recruit_content_guide.html" target="_blank">
+                            <i class="fa-solid fa-pen-nib"></i>
+                            コンテンツ戦略ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">企画段階</td>
+                    <td class="manual-desc">採用文章の構成・Type診断</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/13_lp_hearing_sheet.html" target="_blank">
+                            <i class="fa-solid fa-ear-listen"></i>
+                            制作ヒアリングシート
+                        </a>
+                    </td>
+                    <td class="manual-timing">初回MTG前</td>
+                    <td class="manual-desc">顧客要望の引き出しリスト</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/00_strategy.html" target="_blank">
+                            <i class="fa-regular fa-map"></i>
+                            採用戦略ガイドBOOK
+                        </a>
+                    </td>
+                    <td class="manual-timing">提案時</td>
+                    <td class="manual-desc">クライアント提示用資料</td>
+                </tr>
+            </table>
         </div>
-
+        
         <!-- Phase 2: Production -->
         <div class="phase-section phase-2">
             <div class="phase-header">
-                <div class="phase-number">2</div>
-                <div class="phase-title">制作・実装</div>
+                <div class="phase-icon"><i class="fa-solid fa-code"></i></div>
+                <div class="phase-title">2. 制作・実装</div>
             </div>
-            <div class="workflow-grid">
-                <a href="../internal/09_coding_rules.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-code"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">コーディングの鉄則</span>
-                        <span class="btn-desc">命名規則とCSS設計</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../internal/mobile_optimization_guide.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">モバイル最適化ガイド</span>
-                        <span class="btn-desc">1024pxの壁・レスポンシブ</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../internal/responsive_lp_guide.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-ruler-combined"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">レスポンシブLP制作ガイド</span>
-                        <span class="btn-desc">スペーシング・ブレークポイント実践</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../internal/12_production_guidelines.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-folder-tree"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">制作進行・画像ガイド</span>
-                        <span class="btn-desc">フォルダ構成と画像命名</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../internal/10_ai_efficiency_guide.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-robot"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">AI効率活用ガイド</span>
-                        <span class="btn-desc">プロンプトと時短術</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../internal/10_deployment_guide/index.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-rocket"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">デプロイメントガイド</span>
-                        <span class="btn-desc">Cloudflare Pages公開手順</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/09_coding_rules.html" target="_blank">
+                            <i class="fa-solid fa-code"></i>
+                            コーディングの鉄則
+                        </a>
+                    </td>
+                    <td class="manual-timing">コーディング開始前</td>
+                    <td class="manual-desc">命名規則とCSS設計</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/mobile_optimization_guide.html" target="_blank">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                            モバイル最適化ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">レスポンシブ実装時</td>
+                    <td class="manual-desc">1024pxの壁・レスポンシブ</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/responsive_lp_guide.html" target="_blank">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            レスポンシブLP制作ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">レスポンシブ実装時</td>
+                    <td class="manual-desc">スペーシング・ブレークポイント実践</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/12_production_guidelines.html" target="_blank">
+                            <i class="fa-solid fa-folder-tree"></i>
+                            制作進行・画像ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">プロジェクト開始時</td>
+                    <td class="manual-desc">フォルダ構成と画像命名</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/10_ai_efficiency_guide.html" target="_blank">
+                            <i class="fa-solid fa-robot"></i>
+                            AI効率活用ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">制作全般</td>
+                    <td class="manual-desc">プロンプトと時短術</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/10_deployment_guide/index.html" target="_blank">
+                            <i class="fa-solid fa-rocket"></i>
+                            デプロイメントガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">公開・更新時</td>
+                    <td class="manual-desc">Cloudflare Pages公開手順</td>
+                </tr>
+            </table>
         </div>
-
+        
         <!-- Phase 3: QA & Release -->
         <div class="phase-section phase-3">
             <div class="phase-header">
-                <div class="phase-number">3</div>
-                <div class="phase-title">品質管理・納品</div>
+                <div class="phase-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                <div class="phase-title">3. 品質管理・納品</div>
             </div>
-            <div class="workflow-grid">
-                <a href="../internal/14_quality_check_sheet.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">納品前チェックシート</span>
-                        <span class="btn-desc">最終確認・バリデーション</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../internal/cloudflare_optimization.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">Cloudflare最適化ガイド</span>
-                        <span class="btn-desc">キャッシュ設定でスコア+20点</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/14_quality_check_sheet.html" target="_blank">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                            納品前チェックシート
+                        </a>
+                    </td>
+                    <td class="manual-timing">納品直前</td>
+                    <td class="manual-desc">最終確認・バリデーション</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/cloudflare_optimization.html" target="_blank">
+                            <i class="fa-solid fa-bolt"></i>
+                            Cloudflare最適化ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">公開直後</td>
+                    <td class="manual-desc">キャッシュ設定でスコア+20点</td>
+                </tr>
+            </table>
         </div>
-
+        
         <!-- Emergency -->
         <div class="phase-section phase-emergency">
-             <div class="phase-header">
-                <div class="phase-number">!</div>
-                <div class="phase-title" style="color:#ef4444;">緊急対応</div>
+            <div class="phase-header">
+                <div class="phase-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div class="phase-title">緊急対応</div>
             </div>
-            <div class="workflow-grid">
-                <a href="../internal/trouble_recovery.html" class="workflow-btn" target="_blank">
-                    <div class="btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">ドラブル・復旧マニュアル</span>
-                        <span class="btn-desc">文字化け・表示崩れの直し方</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="../internal/trouble_recovery.html" target="_blank">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            トラブル・復旧マニュアル
+                        </a>
+                    </td>
+                    <td class="manual-timing">表示異常発生時</td>
+                    <td class="manual-desc">文字化け・表示崩れの直し方</td>
+                </tr>
+            </table>
         </div>
         
-        <!-- Phase 4: Initial Setup (Technical) -->
-        <div class="phase-section" style="opacity: 0.95; border-top: 2px solid #e2e8f0; padding-top: 40px;">
-             <div class="phase-header">
-                <div class="phase-number" style="background:#7c3aed;">4</div>
-                <div class="phase-title" style="color:#7c3aed;">初期構築（技術作業）</div>
+        <!-- Phase 4: Technical Setup -->
+        <div class="phase-section phase-4">
+            <div class="phase-header">
+                <div class="phase-icon"><i class="fa-solid fa-server"></i></div>
+                <div class="phase-title">4. 初期構築（技術作業）</div>
             </div>
-            <div class="workflow-grid">
-                <a href="../client/11_domain_setup.html" class="workflow-btn" style="border-left-color:#7c3aed;" target="_blank">
-                    <div class="btn-icon" style="color:#7c3aed;"><i class="fa-solid fa-globe"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">ドメイン設定仕様書</span>
-                        <span class="btn-desc">Cloudflare DNS・ネームサーバー設定</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../client/12_email_routing.html" class="workflow-btn" style="border-left-color:#7c3aed;" target="_blank">
-                    <div class="btn-icon" style="color:#7c3aed;"><i class="fa-solid fa-envelope"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">メールシステム仕様書</span>
-                        <span class="btn-desc">Email Routing・Gmail SMTP設定</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-                <a href="../client/01_zero_cost.html" class="workflow-btn" style="border-left-color:#7c3aed;" target="_blank">
-                    <div class="btn-icon" style="color:#7c3aed;"><i class="fa-solid fa-coins"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">維持費0円の仕組み</span>
-                        <span class="btn-desc">技術的根拠・セキュリティ解説</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right btn-arrow"></i>
-                </a>
-            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/11_domain_setup.html" target="_blank">
+                            <i class="fa-solid fa-globe"></i>
+                            ドメイン設定仕様書
+                        </a>
+                    </td>
+                    <td class="manual-timing">サイト公開前</td>
+                    <td class="manual-desc">Cloudflare DNS・ネームサーバー設定</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/12_email_routing.html" target="_blank">
+                            <i class="fa-solid fa-envelope"></i>
+                            メールシステム仕様書
+                        </a>
+                    </td>
+                    <td class="manual-timing">ドメイン設定後</td>
+                    <td class="manual-desc">Email Routing・Gmail SMTP設定</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/01_zero_cost.html" target="_blank">
+                            <i class="fa-solid fa-coins"></i>
+                            維持費0円の仕組み
+                        </a>
+                    </td>
+                    <td class="manual-timing">提案時</td>
+                    <td class="manual-desc">技術的根拠・セキュリティ解説</td>
+                </tr>
+            </table>
         </div>
         
-        <!-- Others -->
-        <div class="phase-section" style="opacity: 0.8;">
-             <div class="phase-header">
-                <div class="phase-number" style="background:#475569;">5</div>
-                <div class="phase-title" style="color:#475569;">運用・その他設定</div>
+        <!-- Phase 5: Operations -->
+        <div class="phase-section phase-5">
+            <div class="phase-header">
+                <div class="phase-icon"><i class="fa-solid fa-gears"></i></div>
+                <div class="phase-title">5. 運用・その他設定</div>
             </div>
-            <div class="workflow-grid">
-                <a href="../client/13_line.html" class="workflow-btn" style="border-left-color:#475569;" target="_blank">
-                    <div class="btn-icon" style="color:#475569;"><i class="fa-brands fa-line"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">LINE公式アカウント</span>
-                        <span class="btn-desc">開設・設定手順</span>
-                    </div>
-                </a>
-                <a href="../client/14_google_form.html" class="workflow-btn" style="border-left-color:#475569;" target="_blank">
-                    <div class="btn-icon" style="color:#475569;"><i class="fa-brands fa-google"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">Googleフォーム</span>
-                        <span class="btn-desc">問い合わせフォーム作成</span>
-                    </div>
-                </a>
-                <a href="17_content_ecosystem_guide.html" class="workflow-btn" style="border-left-color:#475569;" target="_blank">
-                    <div class="btn-icon" style="color:#475569;"><i class="fa-solid fa-pen-nib"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">コンテンツ運用ガイド</span>
-                        <span class="btn-desc">ブログ・インスタ連携ルール</span>
-                    </div>
-                </a>
-                <a href="../blog/posts/template.html" class="workflow-btn" style="border-left-color:#475569;" target="_blank">
-                    <div class="btn-icon" style="color:#475569;"><i class="fa-solid fa-file-lines"></i></div>
-                    <div class="btn-content">
-                        <span class="btn-title">ブログ記事テンプレート</span>
-                        <span class="btn-desc">HTMLテンプレート・執筆開始</span>
-                    </div>
-                </a>
-            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/13_line.html" target="_blank">
+                            <i class="fa-brands fa-line"></i>
+                            LINE公式アカウント
+                        </a>
+                    </td>
+                    <td class="manual-timing">サイト公開後</td>
+                    <td class="manual-desc">開設・設定手順</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../client/14_google_form.html" target="_blank">
+                            <i class="fa-brands fa-google"></i>
+                            Googleフォーム
+                        </a>
+                    </td>
+                    <td class="manual-timing">フォーム作成時</td>
+                    <td class="manual-desc">問い合わせフォーム作成</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="17_content_ecosystem_guide.html" target="_blank">
+                            <i class="fa-solid fa-pen-nib"></i>
+                            コンテンツ運用ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">サイト公開後</td>
+                    <td class="manual-desc">ブログ・インスタ連携ルール</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="../blog/posts/template.html" target="_blank">
+                            <i class="fa-solid fa-file-lines"></i>
+                            ブログ記事テンプレート
+                        </a>
+                    </td>
+                    <td class="manual-timing">記事執筆時</td>
+                    <td class="manual-desc">HTMLテンプレート・執筆開始</td>
+                </tr>
+            </table>
         </div>
-
-
+        
         <footer>
-            <p>&copy; 2026 Web Tsukuru Production Team. </p>
+            <p>&copy; 2026 Webとしくみをつくる | Production Manual Index</p>
         </footer>
     </div>
-
-<!-- GLOBAL NAVIGATION -->
-<style>
-    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
-    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
-    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
-    .to-top { opacity: 0; pointer-events: none; }
-    .to-top.visible { opacity: 1; pointer-events: all; }
-</style>
-<div class="global-nav">
-    <a href="admin.html" class="nav-btn" title="運用司令室へ"><i class="fa-solid fa-tower-broadcast"></i></a>
-    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
-</div>
-<script>
-    window.addEventListener('scroll', () => {
-        const toTop = document.querySelector('.to-top');
-        if (window.scrollY > 300) toTop.classList.add('visible');
-        else toTop.classList.remove('visible');
-    });
-</script>
 </body>
 </html>
