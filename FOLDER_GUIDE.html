@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォルダ構成ガイド | web-tsukuru</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f9f9f9; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 30px 0; margin-bottom: 40px; }
+        header h1 { margin: 0; text-align: center; font-size: 2rem; }
+        header p { text-align: center; margin: 10px 0 0 0; opacity: 0.9; }
+        .section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .section h2 { margin: 0 0 20px 0; color: #667eea; font-size: 1.5rem; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+        th { background: #667eea; color: #fff; padding: 12px; text-align: left; font-weight: 700; position: sticky; top: 0; }
+        td { padding: 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+        tr:hover { background: #f5f7ff; }
+        .icon { font-size: 1.2rem; width: 40px; text-align: center; }
+        .name { font-weight: 700; color: #667eea; }
+        .desc { color: #666; font-size: 0.85rem; line-height: 1.5; margin-top: 3px; }
+        .safe { background: #10b981; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
+        .warning { background: #f59e0b; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
+        .danger { background: #ef4444; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
+        .auto { background: #6b7280; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
+        .legend { display: flex; gap: 20px; margin: 20px 0; flex-wrap: wrap; padding: 15px; background: #f0f0f0; border-radius: 8px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+        footer { text-align: center; color: #999; margin-top: 60px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📁 フォルダ・ファイル完全ガイド</h1>
+        <p>削除してはいけないもの・削除してもいいものが一目でわかる（VSCode表示順）</p>
+    </header>
+
+    <div class="container">
+        <!-- 凡例 -->
+        <div class="legend">
+            <div class="legend-item">
+                <span class="danger">🚫 削除禁止</span>
+                <span>削除するとプロジェクトが壊れます</span>
+            </div>
+            <div class="legend-item">
+                <span class="warning">⚠️ 注意</span>
+                <span>削除すると一部機能が動かなくなります</span>
+            </div>
+            <div class="legend-item">
+                <span class="safe">✅ 削除OK</span>
+                <span>削除しても問題ありません</span>
+            </div>
+            <div class="legend-item">
+                <span class="auto">🔄 自動生成</span>
+                <span>自動で作られるので触らないでOK</span>
+            </div>
+        </div>
+
+        <!-- 完全一覧 -->
+        <div class="section">
+            <h2>📂 全フォルダ・ファイル一覧（VSCode表示順）</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">種類</th>
+                        <th style="width: 220px;">名前</th>
+                        <th style="width: 350px;">何のためにあるか</th>
+                        <th style="width: 120px;">削除</th>
+                        <th>削除したらどうなるか</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- フォルダ（アルファベット順） -->
+                    <tr>
+                        <td class="icon">📁</td>
+                        <td><span class="name">.git/</span></td>
+                        <td>
+                            <strong>Gitの履歴データ（非表示）</strong>
+                            <div class="desc">変更履歴を管理するGitが使うフォルダ。通常は非表示です</div>
+                        </td>
+                        <td><span class="danger">🚫 削除禁止</span></td>
+                        <td>全ての変更履歴が消えて、過去に戻れなくなります</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">.vscode/</span></td>
+                        <td>
+                            <strong>VSCodeの設定</strong>
+                            <div class="desc">VSCode（エディタ）専用の設定フォルダ。文字化け防止設定などが入ってます</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>VSCodeの設定がリセットされて、日本語が文字化けする可能性</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">_archive/</span></td>
+                        <td>
+                            <strong>過去バージョンの保管庫</strong>
+                            <div class="desc">古いバージョンや、もう使わないファイルを保管。念のため残してあります</div>
+                        </td>
+                        <td><span class="safe">✅ 削除OK</span></td>
+                        <td>過去バージョンが消えます。困ったら戻せなくなりますが、通常は問題なし</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">manuals/</span></td>
+                        <td>
+                            <strong>内部管理用のマニュアル統合ハブ</strong>
+                            <div class="desc">自分用の作業マニュアルや管理画面へのリンク集。index.htmlから全マニュアルにアクセスできます</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>日々の作業マニュアルが見れなくなり、作業効率が落ちます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">node_modules/</span></td>
+                        <td>
+                            <strong>npmの部品倉庫（自動生成）</strong>
+                            <div class="desc">npmが自動で作るフォルダ。プログラムに必要な部品が入ってます。手動で触る必要なし</div>
+                        </td>
+                        <td><span class="auto">🔄 自動生成</span></td>
+                        <td>削除してもnpm installで復活します。でも触らないほうが安全</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">planning/</span></td>
+                        <td>
+                            <strong>企画・アイデア置き場</strong>
+                            <div class="desc">ブログ記事のネタリストや、新規プロジェクトの企画書</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>ブログネタや企画メモが消えます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">📁</td>
+                        <td><span class="name">scripts/</span></td>
+                        <td>
+                            <strong>自動化プログラム</strong>
+                            <div class="desc">面倒な作業を自動でやってくれるスクリプト（プログラム）</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>自動化ツールが使えなくなります</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">site/</span></td>
+                        <td>
+                            <strong>公開サイト本体のフォルダ</strong>
+                            <div class="desc">web-tsukuru.jpで実際に表示されるファイルが全部入っています</div>
+                        </td>
+                        <td><span class="danger">🚫 削除禁止</span></td>
+                        <td>サイト全体が消えます。公開中のページが全て見れなくなります</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">wireframe_components/</span></td>
+                        <td>
+                            <strong>UI設計用のパーツ</strong>
+                            <div class="desc">ワイヤーフレーム（画面設計図）を作るときに使うコンポーネント</div>
+                        </td>
+                        <td><span class="safe">✅ 削除OK</span></td>
+                        <td>設計用パーツが消えますが、サイトは動きます</td>
+                    </tr>
+                    
+                    <!-- ファイル（アルファベット順） -->
+                    <tr style="border-top: 2px solid #667eea;">
+                        <td class="icon">�</td>
+                        <td><span class="name">.editorconfig</span></td>
+                        <td>
+                            <strong>エディタ共通設定</strong>
+                            <div class="desc">どのエディタでも同じように動くための設定（インデント、改行コードなど）</div>
+                        </td>
+                        <td><span class="safe">✅ 削除OK</span></td>
+                        <td>エディタの設定がバラバラになる可能性がありますが、大きな問題なし</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">.gitignore</span></td>
+                        <td>
+                            <strong>Gitに入れないファイルのリスト</strong>
+                            <div class="desc">Gitで管理しなくていいファイル（node_modulesなど）を指定</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>余計なファイルまでGitに入ってしまい、リポジトリが重くなります</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">📄</td>
+                        <td><span class="name">FOLDER_GUIDE.html</span></td>
+                        <td>
+                            <strong>このファイル！</strong>
+                            <div class="desc">フォルダ構成の説明ファイル。今見ているページです</div>
+                        </td>
+                        <td><span class="safe">✅ 削除OK</span></td>
+                        <td>このガイドが消えますが、プロジェクトには影響なし</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">fix_encoding.ps1</span></td>
+                        <td>
+                            <strong>文字化け修正スクリプト</strong>
+                            <div class="desc">日本語が文字化けしたときに使うPowerShellスクリプト</div>
+                        </td>
+                        <td><span class="safe">✅ 削除OK</span></td>
+                        <td>文字化け修正ツールが使えなくなりますが、手動で直せます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">input.css</span></td>
+                        <td>
+                            <strong>Tailwindのソースファイル</strong>
+                            <div class="desc">TailwindでCSSを作るときの元ファイル</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>TailwindのCSSをビルドできなくなります</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">package-lock.json</span></td>
+                        <td>
+                            <strong>npmのバージョン記録（自動生成）</strong>
+                            <div class="desc">npmが自動で作るファイル。部品のバージョンを固定します。手動で編集しないこと</div>
+                        </td>
+                        <td><span class="auto">🔄 自動生成</span></td>
+                        <td>削除してもnpm installで復活しますが、触らないほうが安全</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">package.json</span></td>
+                        <td>
+                            <strong>npmの設定ファイル</strong>
+                            <div class="desc">どんな部品（パッケージ）を使うか書いてあります。npmが読みます</div>
+                        </td>
+                        <td><span class="danger">🚫 削除禁止</span></td>
+                        <td>npmコマンドが使えなくなり、開発ツールが全て壊れます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">📄</td>
+                        <td><span class="name">PROJECT_INDEX.md</span></td>
+                        <td>
+                            <strong>プロジェクト全体の地図</strong>
+                            <div class="desc">どこに何があるか書いてある案内図。迷ったらこれを見ます</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>プロジェクト構造がわからなくなりますが、サイトは動きます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">README.md</span></td>
+                        <td>
+                            <strong>プロジェクトの説明書</strong>
+                            <div class="desc">このプロジェクトが何なのか、どうやって使うか書いてあります</div>
+                        </td>
+                        <td><span class="safe">✅ 削除OK</span></td>
+                        <td>説明が消えますが、サイトは動きます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">tailwind.config.js</span></td>
+                        <td>
+                            <strong>Tailwind CSSの設定</strong>
+                            <div class="desc">Tailwind（CSSフレームワーク）をどう使うか設定するファイル</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>Tailwindを使ってるページのデザインが崩れます</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- site/フォルダ詳細 -->
+        <div class="section">
+            <h2>🌐 site/ フォルダの中身</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">種類</th>
+                        <th style="width: 220px;">名前</th>
+                        <th style="width: 350px;">何のためにあるか</th>
+                        <th style="width: 120px;">削除</th>
+                        <th>削除したらどうなるか</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">site/client-work/</span></td>
+                        <td>
+                            <strong>クライアント案件の納品物置き場</strong>
+                            <div class="desc">堀田建設など、完成したクライアント案件を保管。将来ドメインを割り当てる際に使います</div>
+                        </td>
+                        <td><span class="danger">🚫 削除禁止</span></td>
+                        <td>クライアントに納品した成果物が全て消えます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">site/manuals/</span></td>
+                        <td>
+                            <strong>クライアント向け公開マニュアル</strong>
+                            <div class="desc">お客様に見せるマニュアル（LINE設定、GA4設定など）が入っています</div>
+                        </td>
+                        <td><span class="danger">� 削除禁止</span></td>
+                        <td>クライアントがマニュアルを見れなくなります</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">📁</td>
+                        <td><span class="name">site/templates/</span></td>
+                        <td>
+                            <strong>再利用できるテンプレート集</strong>
+                            <div class="desc">採用LPのパーツやコンポーネントなど、何度も使えるテンプレートが241個入っています</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>テンプレートが全て消えて、新規案件で再利用できなくなります</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">📁</td>
+                        <td><span class="name">site/works/</span></td>
+                        <td>
+                            <strong>作業中のファイル置き場</strong>
+                            <div class="desc">開発中のページ、テスト中のファイルなど。今は堀田建設のURLが公開中なので一時保管</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>現在公開中のURL（/works/01_hotta/）が使えなくなります</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- manuals/フォルダ詳細 -->
+        <div class="section">
+            <h2>📋 manuals/ フォルダの中身</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">種類</th>
+                        <th style="width: 220px;">名前</th>
+                        <th style="width: 350px;">何のためにあるか</th>
+                        <th style="width: 120px;">削除</th>
+                        <th>削除したらどうなるか</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="icon">📁</td>
+                        <td><span class="name">manuals/admin/</span></td>
+                        <td>
+                            <strong>運用司令室（管理画面）</strong>
+                            <div class="desc">90日ロードマップ、制作コックピットなど、ビジネス戦略関連のマニュアル</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>経営・戦略資料が消えます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">manuals/daily/</span></td>
+                        <td>
+                            <strong>毎日の作業フロー</strong>
+                            <div class="desc">朝・午後・夜のルーチンや、今日のタスク管理ページ</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>日次業務の手順書が消えます</td>
+                    </tr>
+                    <tr>
+                        <td class="icon">�</td>
+                        <td><span class="name">manuals/internal/</span></td>
+                        <td>
+                            <strong>技術マニュアル</strong>
+                            <div class="desc">コーディング規則、GitHub使い方、LP制作ガイドなど、技術的なマニュアル</div>
+                        </td>
+                        <td><span class="warning">⚠️ 注意</span></td>
+                        <td>技術マニュアルが消えて、作業手順を忘れます</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Webとしくみをつくる | 最終更新: 2026-02-16</p>
+        </footer>
+    </div>
+</body>
+</html>
