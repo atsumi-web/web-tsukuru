@@ -835,7 +835,7 @@ body .interview-card {
   display: grid;
   grid-template-columns: 380px 1fr;
   gap: 3rem;
-  align-items: center;
+  align-items: start; /* centerからstartに変更: sticky positioningを有効化 */
   background: var(--bg-white);
   border-radius: 20px;
   padding: 3.5rem 3rem;
