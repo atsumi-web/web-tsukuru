@@ -1018,6 +1018,7 @@ body .btn-read-more i {
   }
   body .interview-card .interview-visual,
   body .interview-card.reverse .interview-visual {
+    position: relative; /* モバイルではstickyを無効化 */
     width: 100%;
     margin: 0;
     aspect-ratio: 3 / 2;
