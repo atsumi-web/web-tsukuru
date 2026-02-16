@@ -426,28 +426,20 @@
             </h3>
 
             <div class="daily-routine">
-                <h4><i class="fa-solid fa-sun"></i> 毎日の「黄金習慣」 (Daily Reset)</h4>
+                <h4><i class="fa-solid fa-sun"></i> 毎日の「最優先アクション」</h4>
+                <p style="margin:10px 0; font-size:0.9rem; color:#cbd5e1;">1日1つ、AIと一緒にこなしていく。完璧を目指さず、前進を優先。</p>
                 <ul class="routine-list">
-                    <li class="routine-item" onclick="window.open('daily_routine_morning.html', '_blank')">
-                        <div style="display:flex; align-items:center; flex-grow:1;">
-                           <i class="fa-solid fa-sun" style="color:#F59E0B; margin-right:10px;"></i>
-                           <span style="border-bottom:1px solid rgba(255,255,255,0.3);">モーニング・ルーティン (ブログ指示書)</span>
-                           <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; margin-left:8px; opacity:0.7;"></i>
-                        </div>
+                    <li class="routine-item" onclick="toggleRoutine(this)">
+                        <div class="routine-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span>ブログ1記事をAIで下書き → 投稿</span>
                     </li>
-                    <li class="routine-item" onclick="window.open('daily_routine_afternoon.html', '_blank')">
-                        <div style="display:flex; align-items:center; flex-grow:1;">
-                            <i class="fa-solid fa-cloud-sun" style="color:#EA580C; margin-right:8px;"></i>
-                            <span style="border-bottom:1px solid rgba(255,255,255,0.3);">アフタヌーン・ルーティン (SNS指示書)</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; margin-left:8px; opacity:0.7;"></i>
-                        </div>
+                    <li class="routine-item" onclick="toggleRoutine(this)">
+                        <div class="routine-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span>SNS投稿1件(実績・制作過程・学び)</span>
                     </li>
-                    <li class="routine-item" onclick="window.open('daily_routine_night.html', '_blank')">
-                        <div style="display:flex; align-items:center; flex-grow:1;">
-                            <i class="fa-solid fa-moon" style="color:#818cf8; margin-right:11px;"></i>
-                            <span style="border-bottom:1px solid rgba(255,255,255,0.3);">ナイト・ルーティン (翌日準備)</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; margin-left:8px; opacity:0.7;"></i>
-                        </div>
+                    <li class="routine-item" onclick="toggleRoutine(this)">
+                        <div class="routine-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span>次のタスクをAIに指示(今日やったことを明日に繋げる)</span>
                     </li>
                 </ul>
             </div>
@@ -591,6 +583,13 @@
                     <h3><i class="fa-solid fa-bolt-lightning"></i> AI並列製作システム</h3>
                 </div>
                 <p>1人で月10件以上のサイトを作れるよう、AIを活用した製作工程の完全テンプレート化を完了させる。</p>
+            </div>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p3-task4">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-gauge-high"></i> テンプレート基盤改善(パフォーマンス最適化)</h3>
+                </div>
+                <p>Font Awesome置き換え(SVG化)、Google Fontsサブセット化、CSS統合・最小化で、モバイルスコア70+を目指す。テンプレート品質の底上げ。</p>
             </div>
         </div>
     </section>
