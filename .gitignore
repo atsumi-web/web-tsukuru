@@ -5,6 +5,7 @@ Thumbs.db
 
 # Private Data & Planning
 planning/
+client-work/
 # Allow manuals/leads (public sales/lead materials)
 !manuals/leads/
 leads/
