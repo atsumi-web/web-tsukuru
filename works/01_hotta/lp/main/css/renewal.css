@@ -852,7 +852,8 @@ body .interview-card.reverse .interview-visual {
 }
 
 body .interview-visual {
-  position: relative;
+  position: sticky;
+  top: 100px; /* ヘッダー高さ(70px) + 余白 */
   width: 125%; /* 115% -> 125% (More presence) */
   margin-left: -25%; /* -15% -> -25% */
   aspect-ratio: 3 / 2;
