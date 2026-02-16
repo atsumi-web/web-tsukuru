@@ -44,7 +44,7 @@ body .container {
 
 /* --- Header / Navigation --- */
 body .site-header {
-  height: 100px;
+  height: 70px; /* 80px → 70px: ヘッダーをさらに縮小 */
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -57,7 +57,7 @@ body .site-header {
 }
 
 body .site-header.scrolled {
-  height: 80px;
+  height: 70px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -102,7 +102,7 @@ body .nav-menu li a.nav-cta {
     box-shadow: none !important;
   }
 
-  /* ヘッダーの高さをモバイル用に適正化（平均的サイズ） */
+  /* ヘッダーの高さを統一 */
   body .site-header,
   body .site-header.scrolled {
     height: 70px;
@@ -347,6 +347,37 @@ body .hero-image-mobile {
 
 /* Hero Section - Tablet & Mobile Optimization */
 
+/* 横長PC画面対応: 縦幅が900px以下(ノートPCなど)では余白を大幅削減 */
+@media (max-height: 900px) {
+  body #hero.hero-teto {
+    height: auto !important;
+    min-height: 100dvh;
+  }
+  body .hero-teto-container {
+    padding-top: 2.5rem !important; /* 8rem → 2.5rem: 上部余白を大幅削減 */
+    padding-bottom: 0.5rem !important;
+  }
+  body .hero-teto-content {
+    padding-top: 0rem !important; /* 2rem → 0rem */
+  }
+  body .teto-main-title {
+    margin-bottom: 1rem !important; /* 余白を縮小 */
+    font-size: clamp(2rem, 4vw, 4rem) !important;
+  }
+  body .teto-sub-title {
+    margin-bottom: 1rem !important; /* 2.5rem → 1rem */
+    font-size: 1.05rem !important;
+  }
+  body .hero-actions {
+    margin-top: 0.8rem !important; /* 2rem → 0.8rem */
+    gap: 1rem !important;
+  }
+  body .hero-tagline-grid {
+    gap: 0.6rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
 /* 大きめのPC（1401-1600px）の調整 */
 @media (min-width: 1401px) and (max-width: 1600px) {
   body .hero-teto-visual {
@@ -364,7 +395,7 @@ body .hero-image-mobile {
     min-height: 600px;
     flex-direction: column;
     justify-content: center;
-    padding-top: 0;
+    /* padding-top: 0を削除 - .hero-teto-containerのpaddingを使用 */
   }
   body .hero-teto-visual {
     width: 100%;
@@ -403,7 +434,7 @@ body .hero-image-mobile {
   }
   body .hero-teto-container {
     width: 100%;
-    padding: 120px 2rem 40px; /* ヘッダー100px + 最小限の余白、下部も確保 */
+    /* padding指定を削除 - index.htmlのインラインCSSで管理 */
     margin-top: 0; /* PC版のmargin-top: 80pxをリセット（重要） */
     display: flex;
     flex-direction: column;
@@ -433,24 +464,11 @@ body .hero-image-mobile {
     padding-left: 0;
     font-size: 1rem;
   }
-  body .hero-tagline-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 1.8rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
   body .hero-cta-tagline {
     border-left: 4px solid var(--accent-gold);
     border-radius: 0 8px 8px 0;
     padding: 0.5rem 1.2rem;
     animation: none;
-  }
-  body .hero-tagline-grid {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
   }
   body .hero-actions {
     display: flex;
@@ -538,6 +556,21 @@ body .hero-image-mobile {
     padding: 0.8rem 0.5rem;
     font-size: 0.8rem; /* Slightly smaller text to fit */
     white-space: nowrap; /* Prevent breaking lines inside button */
+  }
+
+  /* モバイル: 1列レイアウト + 1つ目のカードのみ表示 */
+  body .hero-tagline-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  body .hero-tagline-grid .hero-cta-tagline:nth-child(2),
+  body .hero-tagline-grid .hero-cta-tagline:nth-child(3) {
+    display: none;
   }
 }
 

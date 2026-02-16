@@ -35,7 +35,7 @@
       body .logo-sub{font-size:.7rem;color:var(--color-neutral-light);font-weight:800;letter-spacing:.15em;border-left:1px solid var(--color-neutral-border);padding-left:12px;margin-top:2px}
       /* Nav Menu - PC (defined in renewal.css) */
       body .nav-menu{display:flex;list-style:none;gap:1.5rem;align-items:center;margin:0;padding:0}
-      body .nav-menu a{color:var(--navy-deep);text-decoration:none;font-weight:500;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
+      body .nav-menu a{color:var(--navy-deep);text-decoration:none;font-weight:600;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
       body .nav-menu a:hover{color:var(--navy-light)}
       body .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:#c5a059;transition:all .2s ease}
       body .nav-menu a:hover::after{width:100%}
@@ -60,7 +60,7 @@
       .hero-video{display:block}
       /* Hero - Mobile */
       @media (max-width:1135px){
-        body .mobile-menu-toggle{display:block;position:relative;z-index:1100;width:30px;height:24px;background:transparent;border:none;cursor:pointer;padding:0;margin-left:auto}
+        body .mobile-menu-toggle{display:block;position:relative;z-index:1100;width:30px;height:24px;background:transparent;border:none;cursor:pointer;padding:0;margin-left:auto;margin-right:1rem}
         body .mobile-menu-toggle span{display:block;width:100%;height:2px;background-color:#001a3d;position:absolute;left:0;transition:all .3s;border-radius:2px}
         body .mobile-menu-toggle.active span{background-color:#fff}
         body .mobile-menu-toggle span:nth-child(1){top:0}
@@ -79,9 +79,10 @@
       }
       /* Hero - Mobile Optimization (Prevention of Double Loading) */
       .hero-image-mobile { display: none; }
-      @media (max-width:1200px){
+      @media (min-width:769px) and (max-width:1200px){
         .hero-video { display: none !important; } /* 重い動画をモバイルで強制排除 */
         .hero-image-mobile { display: block; width: 100%; height: 100%; object-fit: cover; }
+        body .hero-teto-container{padding:170px 2rem 40px!important} /* タイトルに十分な余白を確保 */
       }
 
       /* Critical: Prevent PRIDE text FOUC */
@@ -95,8 +96,8 @@
       body .mouse-wheel{width:4px;height:8px;background:rgba(255,255,255,.7);border-radius:2px;position:absolute;top:8px;left:50%;transform:translateX(-50%);animation:scroll 1.5s infinite}
       @keyframes scroll{0%,100%{opacity:1;top:8px}50%{opacity:.3;top:20px}}
       body .mouse-text{color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;font-weight:600;font-family:var(--font-en)}
-      @media (max-width:1200px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-tagline-grid{grid-template-columns:1fr;gap:.75rem;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:8px;padding:.5rem 1.2rem}body .hero-actions{display:flex;flex-direction:column;align-items:center;width:100%}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
-      @media (max-width:768px){body #hero.hero-teto{height:auto!important;min-height:100dvh;overflow:visible!important}body .hero-teto-visual{height:100%;position:absolute;top:0;right:0;width:100%;clip-path:none}body .hero-teto-container{width:100%!important;padding:80px 1rem 120px!important}body .teto-main-title{font-size:2.2rem}body .teto-sub-title{font-size:.95rem;margin-bottom:1rem}body .header-logo-img{height:24px}}
+      @media (max-width:768px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-tagline-grid{grid-template-columns:1fr;gap:.75rem;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:8px;padding:.5rem 1.2rem}body .hero-actions{display:flex;flex-direction:column;align-items:center;width:100%}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
+      @media (max-width:768px){body #hero.hero-teto{height:auto!important;min-height:100dvh;overflow:visible!important}body .hero-teto-visual{height:100%;position:absolute;top:0;right:0;width:100%;clip-path:none}body .hero-teto-container{width:100%!important;padding:220px 1rem 120px!important}body .teto-main-title{font-size:2.2rem}body .teto-sub-title{font-size:.95rem;margin-bottom:1rem}body .header-logo-img{height:24px}}
       @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:0}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
     </style>
     
@@ -179,14 +180,14 @@
           </h1>
           <p class="teto-sub-title">
             「とりあえず」で選んだ仕事でもいい。<br />
-            ここで過ごす時間は、あなたの人生の「資産」になる。<br />
+            ここで過ごす時間は、<br class="br-sp-only" />あなたの人生の「資産」になる。<br />
             私たちは、地域を担う新しい仲間のために最高の環境を用意しています。
           </p>
 
           <div class="hero-actions">
             <div class="hero-tagline-grid">
               <div class="hero-cta-tagline">
-                履歴書も志望動機も不要。<br />未経験者大歓迎。
+                未経験者大歓迎。<br />「とりあえず」で始めてOK。
               </div>
               <div class="hero-cta-tagline">
                 地元・三重で働き続ける。<br />転勤なし、直行直帰OK。
@@ -266,15 +267,6 @@
     <section class="hero-features-mobile" id="hero-features-mobile">
       <div class="container">
         <div class="hero-tagline-grid-mobile">
-          <div class="hero-cta-tagline-mobile">
-            <div class="tagline-icon">
-              <i class="fas fa-seedling"></i>
-            </div>
-            <div class="tagline-text">
-              <h3>未経験者大歓迎</h3>
-              <p>履歴書も志望動機も不要。<br />「とりあえず」で始めて大丈夫。</p>
-            </div>
-          </div>
           <div class="hero-cta-tagline-mobile">
             <div class="tagline-icon">
               <i class="fas fa-map-marker-alt"></i>

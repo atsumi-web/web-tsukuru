@@ -76,8 +76,5 @@
     margin: 0;
   }
 
-  /* ヒーロー内のカードをモバイルで非表示 */
-  body .hero-tagline-grid {
-    display: none !important;
-  }
 }
+
