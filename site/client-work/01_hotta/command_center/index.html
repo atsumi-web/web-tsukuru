@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>堀田建設株式会社 採用司令室</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .last-updated {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #4a5568;
+            margin-top: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .icon-line { background: #00c300; }
+        .icon-form { background: #4285f4; }
+        .icon-drive { background: #0f9d58; }
+        .icon-blog { background: #f4b400; }
+        .icon-sns { background: #e4405f; }
+        .icon-web { background: #667eea; }
+        .icon-guide { background: #ff6b6b; }
+        .icon-interview { background: #4ecdc4; }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .card-description {
+            color: #718096;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .card-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .card-link.secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            box-shadow: none;
+        }
+
+        .card-link.secondary:hover {
+            background: #f7fafc;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid white;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .status-active {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status-preparing {
+            background: #feebc8;
+            color: #7c2d12;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ 堀田建設株式会社 採用司令室</h1>
+            <p>採用活動に必要なすべてのリソースを一元管理</p>
+            <div class="last-updated">最終更新: 2026年2月13日</div>
+        </div>
+
+        <h2 class="section-title">📱 応募者とのコミュニケーション</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-line">📱</div>
+                    <div class="card-title">公式LINE</div>
+                </div>
+                <p class="card-description">応募者とのコミュニケーション窓口。問い合わせ対応や選考進捗の連絡に活用。</p>
+                <span class="status-badge status-preparing">準備中</span>
+                <br><br>
+                <a href="#" class="card-link" target="_blank">LINE管理画面へ</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-form">📝</div>
+                    <div class="card-title">応募フォーム</div>
+                </div>
+                <p class="card-description">Googleフォームで作成した応募フォーム。応募者情報を自動収集。</p>
+                <span class="status-badge status-preparing">準備中</span>
+                <br><br>
+                <a href="#" class="card-link" target="_blank">フォーム管理へ</a>
+            </div>
+        </div>
+
+        <h2 class="section-title">📁 資料・素材管理</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-drive">💾</div>
+                    <div class="card-title">Googleドライブ</div>
+                </div>
+                <p class="card-description">写真・動画素材、インタビュー資料、その他のファイルを保管。</p>
+                <span class="status-badge status-active">運用中</span>
+                <br><br>
+                <a href="#" class="card-link" target="_blank">ドライブを開く</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-guide">📖</div>
+                    <div class="card-title">運用ガイド</div>
+                </div>
+                <p class="card-description">採用LPの運用マニュアル。ペルソナ戦略、FAQ、更新方法をまとめています。</p>
+                <span class="status-badge status-active">運用中</span>
+                <br><br>
+                <a href="./client_guide.md" class="card-link" target="_blank">ガイドを見る</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-interview">🎤</div>
+                    <div class="card-title">ヒアリングシート</div>
+                </div>
+                <p class="card-description">今後のインタビュー時に活用できるテンプレート。質問項目と設計意図をまとめています。</p>
+                <span class="status-badge status-active">運用中</span>
+                <br><br>
+                <a href="../interviews/okayasu_hearing_sheet.md" class="card-link" style="margin-right: 0.5rem;" target="_blank">岡安さん</a>
+                <a href="./sugawara_hearing_sheet_print.html" target="_blank" class="card-link" style="margin-right: 0.5rem;">菅原さん</a>
+                <a href="../interviews/ha_interview_round2_questions.md" target="_blank" class="card-link">H.Aさん</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-interview">📋</div>
+                    <div class="card-title">インタビュー結果</div>
+                </div>
+                <p class="card-description">対面ヒアリング後の詳細な回答記録。LP掲載用のエピソードを抽出できます。</p>
+                <span class="status-badge status-active">運用中</span>
+                <br><br>
+                <a href="../interviews/okayasu_hearing_result.md" class="card-link" style="margin-right: 0.5rem;" target="_blank">岡安さん</a>
+                <a href="../interviews/sugawara_hearing_result.md" class="card-link" style="margin-right: 0.5rem;" target="_blank">菅原さん</a>
+                <a href="../interviews/ha_interview_final.md" class="card-link" target="_blank">H.Aさん</a>
+            </div>
+        </div>
+
+        <h2 class="section-title">🌐 公式サイト・発信</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-web">🏢</div>
+                    <div class="card-title">公式ホームページ</div>
+                </div>
+                <p class="card-description">堀田建設の公式サイト。会社概要、事業内容、施工実績など。</p>
+                <span class="status-badge status-active">運用中</span>
+                <br><br>
+                <a href="http://www.hottacon.co.jp/" target="_blank" class="card-link">サイトへ</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-blog">✍️</div>
+                    <div class="card-title">採用ブログ</div>
+                </div>
+                <p class="card-description">社員インタビュー、現場レポート、イベント情報などを発信。</p>
+                <span class="status-badge status-preparing">準備中</span>
+                <br><br>
+                <a href="#" class="card-link secondary" target="_blank">準備中</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-sns">📣</div>
+                    <div class="card-title">SNS連携</div>
+                </div>
+                <p class="card-description">Instagram、X（Twitter）などのSNSアカウントと連携。</p>
+                <span class="status-badge status-preparing">準備中</span>
+                <br><br>
+                <a href="#" class="card-link secondary" target="_blank">準備中</a>
+            </div>
+        </div>
+
+        <div class="header" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: #2d3748;">💡 使い方のヒント</h2>
+            <ul style="color: #718096; line-height: 2; padding-left: 1.5rem;">
+                <li>各カードをクリックすると対応するページやツールにアクセスできます</li>
+                <li>運用ガイドには採用LPの更新方法や活用のヒントが記載されています</li>
+                <li>インタビュー資料は新規採用時の参考資料としても活用できます</li>
+                <li>質問や要望があれば下記までご連絡ください</li>
+            </ul>
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
+                <p style="color: #4a5568; font-size: 0.875rem;">
+                    <strong>お問い合わせ</strong><br>
+                    株式会社Web-Tsukuru 渥美絵里<br>
+                    📧 <a href="mailto:eriin8588@gmail.com" style="color: #667eea;">eriin8588@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

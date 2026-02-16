@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>堀田建設 採用資料ハブ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #c5a059 0%, #d4a854 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        
+        .card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #c5a059;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #c5a059;
+        }
+        
+        .card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📚 堀田建設 採用資料ハブ</h1>
+            <p>Hotta Construction Recruitment Resources Hub</p>
+        </header>
+        
+        <div class="card-grid">
+            <a href="lp/main/" class="card">
+                <div class="card-icon">🏗️</div>
+                <h2>採用LP（メイン）</h2>
+                <p>一般向けの採用ランディングページ。三重県を中心とした施工管理職の募集情報を掲載。</p>
+            </a>
+            
+            <a href="command_center/" class="card">
+                <div class="card-icon">📊</div>
+                <h2>採用司令室</h2>
+                <p>クライアント向けの採用ダッシュボード。全採用ツールと資料への一元アクセス。</p>
+            </a>
+            
+            <a href="interviews/" class="card">
+                <div class="card-icon">🎤</div>
+                <h2>社員インタビュー</h2>
+                <p>岡安氏、菅原氏、H.A氏のヒアリング記録と分析資料。採用コンテンツの基礎データ。</p>
+            </a>
+            
+            <a href="docs/" class="card">
+                <div class="card-icon">📄</div>
+                <h2>ドキュメント</h2>
+                <p>プロジェクト関連のドキュメント、仕様書、技術資料など。</p>
+            </a>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2026 Hotta Construction Co., Ltd. | Webとしくみをつくる</p>
+        </footer>
+    </div>
+</body>
+</html>

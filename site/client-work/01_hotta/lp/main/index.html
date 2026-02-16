@@ -1,0 +1,266 @@
+﻿<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- v8.0 Critical CSS最適化版 -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>私たちが、続けている理由。｜堀田建設株式会社（完全版）</title>
+    <meta
+      name="description"
+      content="地元で続ける、未経験から挑戦、若手が育つ。3人のリアルな声と、数字・制度で証明する「働き続けられる環境」"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#001a3d" />
+    
+    <!-- DNS Prefetch & Preconnect (Google Fonts のみ) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- ⚡ Critical CSS (インライン化でFirst View高速化) -->
+    <style>
+      /* CSS変数 */
+      :root{--accent-gold:#c5a059;--navy-deep:#001a3d;--navy-light:#002d6b;--line-green:#06c755;--line-green-dark:#05a346;--text-main:#333;--text-inverse:#fff;--bg-white:#fff;--bg-light:#f4f6f9;--font-en:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-jp:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;--font-serif:"Shippori Mincho B1",Georgia,"Times New Roman",serif;--color-neutral-dark:#333;--color-neutral-light:#999;--color-neutral-border:#e0e0e0;--space-md:1.5rem}
+      /* 基本リセット */
+      *{margin:0;padding:0;box-sizing:border-box}
+      html{scroll-behavior:smooth;font-size:16px}
+      body{font-family:var(--font-jp);line-height:1.8;color:var(--text-main);background-color:var(--bg-white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+      /* Header 基本 */
+      body .site-header{height:100px;background:rgba(255,255,255,.92);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:fixed;top:0;left:0;width:100%;z-index:1000;transition:all .4s ease;padding:.75rem 0;box-shadow:0 2px 8px rgba(0,0,0,.08);border-bottom:1px solid var(--color-neutral-border)}
+      body .site-header.scrolled{height:80px;box-shadow:0 5px 20px rgba(0,0,0,.05)}
+      /* Header Layout (defined in renewal.css) */
+      body .site-header .header-full-width{display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 0 0 3%;margin:0;height:100%}
+      body .header-nav{display:flex;margin-right:1.5rem}
+      body .logo-link{display:flex;align-items:center;gap:12px;text-decoration:none}
+      body .header-logo-img{height:32px;width:auto;display:block}
+      body .logo-sub{font-size:.7rem;color:var(--color-neutral-light);font-weight:800;letter-spacing:.15em;border-left:1px solid var(--color-neutral-border);padding-left:12px;margin-top:2px}
+      /* Nav Menu - PC (defined in renewal.css) */
+      body .nav-menu{display:flex;list-style:none;gap:1.5rem;align-items:center;margin:0;padding:0}
+      body .nav-menu a{color:var(--navy-deep);text-decoration:none;font-weight:600;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
+      body .nav-menu a:hover{color:var(--navy-light)}
+      body .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:#c5a059;transition:all .2s ease}
+      body .nav-menu a:hover::after{width:100%}
+      /* Header CTA - Critical styles to prevent FOUC */
+      html body .header-nav .nav-menu li .nav-cta{background:linear-gradient(135deg,#06C755 0%,#05a346 100%);color:#fff;padding:.75rem 1.6rem;border-radius:50px;margin-left:1.2rem;font-weight:800;font-size:.85rem;box-shadow:0 4px 15px rgba(6,199,85,.3);transition:all .2s ease;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+      html body .header-nav .nav-menu li .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,199,85,.4);text-decoration:none;color:#fff}
+      html body .header-nav .nav-menu li .nav-cta::after{display:none}
+      /* Entry Area CTA Buttons */
+      body .btn-line,body .btn-primary{display:inline-flex;align-items:center;gap:8px}
+      body .btn-large{width:100%;min-width:280px;justify-content:center}
+      /* Entry Form Card Icon */
+      body .entry-card .card-icon{width:100px;height:100px;margin:0 auto 1.5rem auto}
+      body .mobile-menu-toggle{display:none}
+      /* Hero - Critical FOUC Prevention */
+      body #hero.hero-teto{height:100dvh;display:flex;position:relative;background-color:#001a3d;overflow:hidden}
+      body .hero-teto-container{width:50%;padding-top:8rem;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;position:relative;z-index:2;height:100%;color:#fff}
+      body .hero-teto-content{width:100%;max-width:800px;position:relative;z-index:2}
+      body .hero-teto-visual{position:absolute;top:0;right:0;width:60%;height:100%;clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);overflow:hidden;z-index:1}
+      body .hero-teto-visual video{width:100%;height:100%;object-fit:cover}
+      body .hero-actions .btn-primary{max-width:400px;display:inline-flex}
+      .hero-image-mobile{display:none}
+      .hero-video{display:block}
+      /* Hero - Mobile */
+      @media (max-width:1135px){
+        body .mobile-menu-toggle{display:block;position:relative;z-index:1100;width:30px;height:24px;background:transparent;border:none;cursor:pointer;padding:0;margin-left:auto;margin-right:1rem}
+        body .mobile-menu-toggle span{display:block;width:100%;height:2px;background-color:#001a3d;position:absolute;left:0;transition:all .3s;border-radius:2px}
+        body .mobile-menu-toggle.active span{background-color:#fff}
+        body .mobile-menu-toggle span:nth-child(1){top:0}
+        body .mobile-menu-toggle span:nth-child(2){top:50%;transform:translateY(-50%)}
+        body .mobile-menu-toggle span:nth-child(3){bottom:0}
+        body .mobile-menu-toggle.active span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+        body .mobile-menu-toggle.active span:nth-child(2){opacity:0}
+        body .mobile-menu-toggle.active span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg)}
+        body .header-nav{display:block;position:fixed;top:0;right:-100%;width:85%;max-width:320px;height:100vh;background-color:#001a3d;box-shadow:-5px 0 20px rgba(0,0,0,.15);padding:80px 2rem 3rem;transition:right .3s cubic-bezier(.4,0,.2,1);z-index:1000;overflow-y:auto}
+        body .header-nav.active{right:0}
+        body .nav-menu{display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem}
+        body .nav-menu li{width:100%;padding-bottom:.5rem}
+        body .nav-menu a{font-size:1.1rem;display:block;width:100%;color:#fff}
+        body .nav-menu a:hover{color:#c5a059}
+        body .nav-cta{margin-left:0;margin-top:1rem;text-align:center;justify-content:center;width:100%;display:flex}
+      }
+      /* Hero - Mobile Optimization (Prevention of Double Loading) */
+      .hero-image-mobile { display: none; }
+      @media (min-width:769px) and (max-width:1200px){
+        .hero-video { display: none !important; } /* 重い動画をモバイルで強制排除 */
+        .hero-image-mobile { display: block; width: 100%; height: 100%; object-fit: cover; }
+        body .hero-teto-container{padding:170px 2rem 40px!important} /* タイトルに十分な余白を確保 */
+      }
+
+      /* Critical: Prevent PRIDE text FOUC */
+      body .teto-catch-en{position:absolute;top:3%;right:5%;left:auto;font-family:var(--font-en);font-weight:900;font-size:clamp(5rem,12vw,14rem);color:rgba(255,255,255,.08);letter-spacing:.05em;z-index:0;pointer-events:none;user-select:none;white-space:nowrap;transform:rotate(-5deg);opacity:0;animation:fadeInPride 0.6s ease-in 0.3s forwards}
+      @keyframes fadeInPride{to{opacity:1}}
+      /* Hero Contact Elements */
+      body .hero-contact-minimal{margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;gap:2rem;max-width:700px}
+      body .contact-minimal-item{display:flex;align-items:center;gap:1rem;color:#fff;font-weight:700;padding:.8rem 1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px}
+      body .mouse-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.8}
+      body .mouse-icon{width:26px;height:40px;border:2px solid rgba(255,255,255,.5);border-radius:20px;position:relative}
+      body .mouse-wheel{width:4px;height:8px;background:rgba(255,255,255,.7);border-radius:2px;position:absolute;top:8px;left:50%;transform:translateX(-50%);animation:scroll 1.5s infinite}
+      @keyframes scroll{0%,100%{opacity:1;top:8px}50%{opacity:.3;top:20px}}
+      body .mouse-text{color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;font-weight:600;font-family:var(--font-en)}
+      @media (max-width:768px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-tagline-grid{grid-template-columns:1fr;gap:.75rem;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:8px;padding:.5rem 1.2rem}body .hero-actions{display:flex;flex-direction:column;align-items:center;width:100%}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
+      @media (max-width:768px){body #hero.hero-teto{height:auto!important;min-height:100dvh;overflow:visible!important}body .hero-teto-visual{height:100%;position:absolute;top:0;right:0;width:100%;clip-path:none}body .hero-teto-container{width:100%!important;padding:220px 1rem 120px!important}body .teto-main-title{font-size:2.2rem}body .teto-sub-title{font-size:.95rem;margin-bottom:1rem}body .header-logo-img{height:24px}}
+      @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:0}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
+    </style>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <!-- 非クリティカルCSS (非同期読み込み) -->
+    <link rel="stylesheet" href="css/style.min.css?v=5.3" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/renewal.css?v=8.8" />
+    <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
+    <noscript>
+      <link rel="stylesheet" href="css/style.min.css?v=5.3" />
+      <link rel="stylesheet" href="css/renewal.css?v=8.6" />
+      <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
+    </noscript>
+    
+    <!-- Google Fonts (最適化: 必要なウェイトのみ) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@400;700&display=swap"
+      />
+    </noscript>
+  </head>
+  <body>
+    <!-- 1. ヘッダー（成約率に直結する入り口） -->
+    <header class="site-header">
+      <div class="header-full-width">
+        <div class="header-brand">
+          <a href="#hero" class="logo-link">
+            <img
+              src="images/common/logo_blue.svg"
+              alt="堀田建設株式会社"
+              class="header-logo-img"
+              width="140" height="auto"
+            />
+            <span class="logo-sub">RECRUITMENT</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="header-nav">
+          <ul class="nav-menu">
+            <li><a href="#message">想い</a></li>
+            <li><a href="#voice">先輩の声</a></li>
+            <li><a href="#environment">働く環境</a></li>
+            <li><a href="#positions">募集要項</a></li>
+            <li><a href="#company">会社概要</a></li>
+            <li>
+              <a href="#entry" class="nav-cta"><i class="fab fa-line"></i>LINEで聞いてみる</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 2. ヒーローセクション（スプリット・没入型） -->
+    <section class="hero-teto" id="hero">
+      <div class="hero-teto-container">
+        <!-- 背景に添える英語テキスト -->
+        <div class="teto-catch-en">PRIDE</div>
+
+        <!-- メッセージコンテンツ -->
+        <div class="hero-teto-content">
+          <h1 class="teto-main-title">
+            <span>三重の現場に、</span><br />
+            一生モノの誇りを。
+          </h1>
+          <p class="teto-sub-title">
+            「とりあえず」で選んだ仕事でもいい。<br />
+            ここで過ごす時間は、<br class="br-sp-only" />あなたの人生の「資産」になる。<br />
+            私たちは、地域を担う新しい仲間のために最高の環境を用意しています。
+          </p>
+
+          <div class="hero-actions">
+            <div class="hero-tagline-grid">
+              <div class="hero-cta-tagline">
+                未経験者大歓迎。<br />「とりあえず」で始めてOK。
+              </div>
+              <div class="hero-cta-tagline">
+                地元・三重で働き続ける。<br />転勤なし、直行直帰OK。
+              </div>
+              <div class="hero-cta-tagline">
+                資格取得、全額会社負担。<br />一生使える技術を習得。
+              </div>
+            </div>
+            <a href="#entry" class="btn btn-primary btn-large">
+              <i class="fab fa-line"></i>まずはLINEで聞いてみる
+            </a>
+          </div>
+
+          <!-- プレミアム連絡先情報 -->
+          <div class="hero-contact-minimal">
+            <div class="contact-minimal-item">
+              <i class="fas fa-phone-alt"></i> 0595-82-1262
+            </div>
+            <div class="contact-minimal-item">
+              <i class="fab fa-line"></i> LINE質問受付中
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右側：動画ビジュアル -->
+      <div class="hero-teto-visual">
+        <!-- デスクトップ用：動画 (JS Lazy Load) -->
+        <video
+          id="heroVideo"
+          class="hero-video"
+          loop
+          muted
+          playsinline
+          preload="none"
+          poster="images/hero/hero-background_mobile.webp"
+        >
+          <!-- Source removed for mobile optimization. Injected via JS. -->
+        </video>
+        <script>
+            // Mobile Optimization: Only load video on Desktop (>1200px)
+            if (window.innerWidth > 1200) {
+                const v = document.getElementById('heroVideo');
+                if (v) {
+                    const s = document.createElement('source');
+                    s.src = 'images/hero/hattakensetsu_rp_optimized.mp4';
+                    s.type = 'video/mp4';
+                    v.appendChild(s);
+                    v.autoplay = true;
+                    v.load();
+                }
+            }
+        </script>
+        
+        <!-- モバイル用：静止画 -->
+        <img 
+          class="hero-image-mobile" 
+          srcset="images/hero/hero-background_mobile.webp 400w, images/hero/hero-background.webp 800w"
+          sizes="(max-width: 768px) 400px, 100vw"
+          src="images/hero/hero-background_mobile.webp" 
+          alt="堀田建設の現場" 
+          width="1920" 
+          height="1080"
+        >
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="mouse-scroll">
+        <div class="mouse-icon">
+          <div class="mouse-wheel"></div>
+        </div>
+        <span class="mouse-text">SCROLL</span>
+      </div>
+    </section>
+
+[... 以降のコード、中略し全て含む ...]
