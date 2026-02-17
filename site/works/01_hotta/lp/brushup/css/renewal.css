@@ -225,6 +225,11 @@ body .teto-main-title .subtitle-line:not(.target-highlight) {
   body .teto-main-title .subtitle-line-medium {
     font-size: 0.75em !important;
   }
+  
+  /* Subtitle - smaller on mobile */
+  body .teto-sub-title {
+    font-size: 0.9rem !important;
+  }
 }
 
 /* Line 2 with gold gradient - larger */
@@ -236,6 +241,14 @@ body .teto-main-title .target-highlight.subtitle-line {
 body .teto-main-title .line-break-large {
   display: block;
   margin-bottom: 0.5rem;
+}
+
+/* Gold underline for emphasis */
+body .teto-main-title .gold-underline {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, transparent, var(--accent-gold), transparent) 1;
+  padding-bottom: 0.3rem;
+  display: inline-block;
 }
 
 /* Mobile-specific breaks - hidden on desktop */
@@ -408,7 +421,6 @@ body .hero-image-mobile {
   }
   body .teto-sub-title {
     margin-bottom: 1rem !important; /* 2.5rem → 1rem */
-    font-size: 1.05rem !important;
   }
   body .hero-actions {
     margin-top: 0.8rem !important; /* 2rem → 0.8rem */
