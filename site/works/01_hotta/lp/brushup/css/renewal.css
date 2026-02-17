@@ -180,10 +180,10 @@ body .teto-catch-en {
 
 body .teto-main-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 5.5vw, 6rem); /* 2.2rem → 2.8rem, 5rem → 6rem: より大きく */
+  font-size: clamp(2.4rem, 4.8vw, 5.2rem); /* バランスの取れたサイズ */
   color: #fff;
-  line-height: 1.1; /* 1.35 → 1.1: メイン版と同じ詰まった行間 */
-  margin-bottom: clamp(1.8rem, 2.5vh, 2.5rem); /* 3rem → 2.5rem: メイン版と同じ */
+  line-height: 1.1;
+  margin-bottom: clamp(1.8rem, 2.5vh, 2.5rem);
   opacity: 0;
   animation: fadeInTitle 0.8s ease-out 0.2s forwards;
 }
@@ -256,7 +256,7 @@ body .br-mobile {
 }
 
 body .teto-sub-title {
-  font-size: 1.3rem; /* 1.2rem → 1.3rem: より読みやすく */
+  font-size: 1.25rem; /* 1.2remより読みやすく */
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
@@ -501,8 +501,9 @@ body .hero-image-mobile {
     align-items: center;
   }
   body .teto-main-title {
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem); /* タブレットサイズでも読みやすく */
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
-    margin-bottom: 2.5rem; /* タイトル下のスペースを確保 */
+    margin-bottom: 2.5rem;
   }
   body .teto-main-title span {
     background: none;
@@ -511,6 +512,7 @@ body .hero-image-mobile {
     animation: none;
   }
   body .teto-sub-title {
+    font-size: 1.1rem; /* タブレット用サイズ */
     border-left: none;
     padding-left: 0;
   }
@@ -577,13 +579,6 @@ body .hero-image-mobile {
 @media (max-width: 1200px) {
   body .hero-teto-container {
     padding: 130px 1rem 15px; /* 100px -> 130px: Lower content by 30px */
-  }
-  body .teto-main-title {
-    font-size: 2.2rem;
-  }
-  body .teto-sub-title {
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
   }
   body .hero-cta-tagline {
     font-size: 0.85rem;
@@ -2550,20 +2545,10 @@ body .header-nav {
     background: #001a3d !important;
   }
   
+  
   body .hero-teto-visual {
     opacity: 0 !important;
     pointer-events: none !important;
-  }
-  
-  body .teto-main-title {
-    font-size: 1.85rem !important;
-    line-height: 1.25 !important;
-    margin-bottom: 2rem !important;
-  }
-  
-  body .teto-sub-title {
-    font-size: 0.85rem !important;
-    margin-bottom: 1.5rem !important;
   }
   
   body .hero-teto-container {
