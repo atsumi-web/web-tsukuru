@@ -192,28 +192,19 @@ body .teto-main-title .subtitle-line:first-of-type {
   color: #fff !important;
 }
 
-/* Mobile: move sub text below button */
+/* Mobile: hide sub text for cleaner look */
 @media (max-width: 1200px) {
-  body #hero .cta-enhanced {
-    position: relative !important;
+  body #hero.hero-teto .cta-enhanced .cta-sub {
+    display: none;
   }
   
-  body #hero .cta-sub {
-    position: absolute !important;
-    bottom: -2.75rem !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    white-space: nowrap !important;
-    font-size: 0.75rem !important;
+  /* No need for extra margin since sub text is hidden */
+  body #hero.hero-teto .cta-enhanced-block {
+    margin-bottom: 1.5rem;
   }
   
-  body #hero .cta-enhanced-block {
-    margin-bottom: 3.5rem !important;
-  }
-  
-  /* Add space above trust signals to prevent overlap with sub text */
-  body #hero .cta-trust-signals {
-    margin-top: 3.25rem !important;
+  body #hero.hero-teto .cta-trust-signals {
+    margin-top: 1rem;
   }
 }
 

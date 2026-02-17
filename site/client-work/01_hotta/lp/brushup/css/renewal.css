@@ -512,6 +512,16 @@ body .hero-image-mobile {
     flex-direction: column;
     align-items: center;
   }
+  
+  /* Move CTA button below subtitle on mobile */
+  body .hero-teto-content .teto-sub-title {
+    order: 1;
+  }
+  
+  body .hero-teto-content .hero-actions {
+    order: 2;
+  }
+  
   body .teto-main-title {
     font-size: clamp(2.2rem, 4.5vw, 4.5rem); /* タブレットサイズでも読みやすく */
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
@@ -527,6 +537,7 @@ body .hero-image-mobile {
     font-size: 1.1rem; /* タブレット用サイズ */
     border-left: none;
     padding-left: 0;
+    margin-bottom: 2rem; /* Add margin before CTA */
   }
   body .hero-cta-tagline {
     border-left: 4px solid var(--accent-gold);
