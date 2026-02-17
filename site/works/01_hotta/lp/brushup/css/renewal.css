@@ -180,10 +180,10 @@ body .teto-catch-en {
 
 body .teto-main-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-size: clamp(2.8rem, 5.5vw, 6rem); /* 2.2rem → 2.8rem, 5rem → 6rem: より大きく */
   color: #fff;
-  line-height: 1.35;
-  margin-bottom: clamp(2rem, 3vh, 3rem);
+  line-height: 1.1; /* 1.35 → 1.1: メイン版と同じ詰まった行間 */
+  margin-bottom: clamp(1.8rem, 2.5vh, 2.5rem); /* 3rem → 2.5rem: メイン版と同じ */
   opacity: 0;
   animation: fadeInTitle 0.8s ease-out 0.2s forwards;
 }
@@ -256,7 +256,7 @@ body .br-mobile {
 }
 
 body .teto-sub-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem; /* 1.2rem → 1.3rem: より読みやすく */
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
