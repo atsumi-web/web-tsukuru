@@ -501,7 +501,6 @@ body .hero-image-mobile {
     align-items: center;
   }
   body .teto-main-title {
-    font-size: clamp(2rem, 5vw, 2.8rem);
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
     margin-bottom: 2.5rem; /* タイトル下のスペースを確保 */
   }
@@ -514,7 +513,6 @@ body .hero-image-mobile {
   body .teto-sub-title {
     border-left: none;
     padding-left: 0;
-    font-size: 1rem;
   }
   body .hero-cta-tagline {
     border-left: 4px solid var(--accent-gold);
