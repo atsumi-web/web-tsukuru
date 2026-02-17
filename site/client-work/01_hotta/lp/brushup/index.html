@@ -1,10 +1,13 @@
-﻿
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
   <head>
     <!-- v8.0 Critical CSS最適化版 -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- TEST ENVIRONMENT - Do not index -->
+    <meta name="robots" content="noindex, nofollow" />
+    
     <title>私たちが、続けている理由。｜堀田建設株式会社（完全版）</title>
     <meta
       name="description"
@@ -98,7 +101,8 @@
       @keyframes scroll{0%,100%{opacity:1;top:8px}50%{opacity:.3;top:20px}}
       body .mouse-text{color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;font-weight:600;font-family:var(--font-en)}
       @media (max-width:768px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-tagline-grid{grid-template-columns:1fr;gap:.75rem;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:8px;padding:.5rem 1.2rem}body .hero-actions{display:flex;flex-direction:column;align-items:center;width:100%}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
-      @media (max-width:768px){body #hero.hero-teto{height:auto!important;min-height:100dvh;overflow:visible!important}body .hero-teto-visual{height:100%;position:absolute;top:0;right:0;width:100%;clip-path:none}body .hero-teto-container{width:100%!important;padding:220px 1rem 120px!important}body .teto-main-title{font-size:2.2rem}body .teto-sub-title{font-size:.95rem;margin-bottom:1rem}body .header-logo-img{height:24px}}
+      @media (max-width:1200px){body #hero.hero-teto{height:auto!important;min-height:100dvh;overflow:visible!important;background:#001a3d!important}body .hero-teto-visual{opacity:0!important;pointer-events:none}body .hero-teto-container{width:100%!important;padding:260px 1rem 120px!important;position:relative;z-index:2;text-align:center!important;margin-left:auto!important;margin-right:auto!important}body .teto-main-title{font-size:1.85rem;line-height:1.25;margin-bottom:2rem}body .teto-sub-title{font-size:.78rem;margin-bottom:1.5rem}body .header-logo-img{height:24px}body .hero-actions{margin-top:1.5rem}}
+      @media (min-width:1201px){body #hero.hero-teto{align-items:center!important}body .hero-teto-container{text-align:left!important;padding-left:3%!important}body .hero-teto-content{text-align:left!important}body .teto-main-title{text-align:left!important}}
       @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:0}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
     </style>
     
@@ -108,8 +112,9 @@
 
     <!-- 非クリティカルCSS (非同期読み込み) -->
     <link rel="stylesheet" href="css/style.min.css?v=5.3" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="css/renewal.css?v=8.8" />
+    <link rel="stylesheet" href="css/renewal.css?v=24.0&t=1739826716" />
     <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
+    <link rel="stylesheet" href="css/cta-enhancement.css?v=3.0" />
     <noscript>
       <link rel="stylesheet" href="css/style.min.css?v=5.3" />
       <link rel="stylesheet" href="css/renewal.css?v=8.6" />
@@ -174,45 +179,73 @@
         <div class="teto-catch-en">PRIDE</div>
 
         <!-- メッセージコンテンツ -->
-        <div class="hero-teto-content">
-          <h1 class="teto-main-title">
-            <span>三重の現場に、</span><br />
-            一生モノの誇りを。
+        <div class="hero-teto-content" style="text-align: center;">
+          <!-- ============================================
+               ヒーローコピー A/Bテスト実装
+               現在アクティブ: 案A（不安解消型）
+               切り替え方法: 案Aをコメントアウト、案Bのコメントを解除
+               ============================================ -->
+          
+          <!-- ▼ 案A：不安解消型（アクティブ） -->
+          <h1 class="teto-main-title" style="text-align: center;">
+            <span class="target-highlight">未経験のあなたへ。</span><br class="line-break-large" />
+            <span class="target-highlight subtitle-line subtitle-line-medium">「建設業、やってみようかな」</span><br />
+            <span class="subtitle-line subtitle-line-small">その一歩を、全力で守ります。</span>
           </h1>
+          
+          <!-- ▼ 案B：成果訴求型（コメントアウト中）
+          <h1 class="teto-main-title">
+            「地図に残る仕事」を、<br />
+            あなたの手で。
+          </h1>
+          -->
+          <!-- ▼ 案A：不安解消型サブコピー（アクティブ） -->
           <p class="teto-sub-title">
-            「とりあえず」で選んだ仕事でもいい。<br />
-            ここで過ごす時間は、<br class="br-sp-only" />あなたの人生の「資産」になる。<br />
-            私たちは、地域を担う新しい仲間のために最高の環境を用意しています。
+            資格取得費用0円。残業月20H以内。<br class="br-mobile" />
+            地元・三重で働き続ける。<br />
+            1年目から月給23万円〜。<br class="br-mobile" />
+            「とりあえず」で始めて、一生モノの技術を。
           </p>
+          
+          <!-- ▼ 案B：成果訴求型サブコピー（コメントアウト中）
+          <p class="teto-sub-title">
+            亀山中学校、ホンダドリーム、荏原製作所。<br />
+            地元・三重のランドマークを、私たちが創ってきた。<br />
+            次はあなたの番です。未経験から、一生モノの誇りを。
+          </p>
+          -->
 
-          <div class="hero-actions">
-            <div class="hero-tagline-grid">
-              <div class="hero-cta-tagline">
-                未経験者大歓迎。<br />「とりあえず」で始めてOK。
+          <div class="hero-actions" style="margin-top: 4rem;">
+
+            <!-- ▼ CTA強化ブロック -->
+            <div class="cta-enhanced-block">
+              <!-- メインCTA：LINE登録（低ハードル） -->
+              <a href="#entry" class="btn btn-primary btn-large cta-enhanced">
+                <i class="fab fa-line"></i>
+                <span class="cta-content">
+                  <span class="cta-main">60秒で完了！LINEで質問する</span>
+                  <span class="cta-sub">「未経験でも大丈夫？」「仕事の内容は？」今すぐ聞く</span>
+                </span>
+              </a>
+              
+              <!-- 信頼シグナル（社会的証明） -->
+              <div class="cta-trust-signals" style="text-align: center; justify-content: center;">
+                <span>✓ 返信率100%</span>
+                <span>✓ 履歴書不要</span>
+                <span>✓ 今月の問い合わせ: 37件</span>
+                <span>✓ 平均返信時間: 15分</span>
               </div>
-              <div class="hero-cta-tagline">
-                地元・三重で働き続ける。<br />転勤なし、直行直帰OK。
-              </div>
-              <div class="hero-cta-tagline">
-                資格取得、全額会社負担。<br />一生使える技術を習得。
+              
+              <!-- サブCTA：即応募希望者向け -->
+              <div class="cta-direct-apply">
+                <p>※「すぐに応募したい」方は <br class="br-mobile" /><a href="#entry-form">こちらから直接エントリー</a><br class="br-mobile" />（2分で完了）</p>
               </div>
             </div>
-            <a href="#entry" class="btn btn-primary btn-large">
-              <i class="fab fa-line"></i>まずはLINEで聞いてみる
-            </a>
-          </div>
-
-          <!-- プレミアム連絡先情報 -->
-          <div class="hero-contact-minimal">
-            <div class="contact-minimal-item">
-              <i class="fas fa-phone-alt"></i> 0595-82-3311
-            </div>
-            <div class="contact-minimal-item">
-              <i class="fab fa-line"></i> LINE質問受付中
             </div>
           </div>
         </div>
       </div>
+
 
       <!-- 右側：動画ビジュアル -->
       <div class="hero-teto-visual">
@@ -300,7 +333,7 @@
                 srcset="images/company/president_mobile.webp 400w, images/company/president.webp 800w"
                 sizes="(max-width: 768px) 400px, 600px"
                 src="images/company/president.webp" 
-                alt="代表取締役 堀田 誠" 
+                alt="代表取締役 堀田 智之" 
                 width="800" height="533"
                 loading="lazy">
             </div>
@@ -332,7 +365,7 @@
               亀山の地で、一緒に新しい歴史を刻んでいきましょう。
             </p>
             <div class="signature">
-              <p>代表取締役　堀田 誠</p>
+              <p>代表取締役　堀田 智之</p>
             </div>
           </div>
         </div>
@@ -1638,7 +1671,7 @@
             <h3>カンタン応募フォーム</h3>
             <p>
               名前と電話番号だけでOK。<br />
-              後ほど担当者（0595-82-3311）よりご連絡します。
+              後ほど担当者（0595-82-1262）よりご連絡します。
             </p>
 
             <form class="simple-entry-form">
@@ -1665,7 +1698,7 @@
         <div class="entry-phone">
           <p>お電話でのご相談・ご応募も歓迎します</p>
           <a href="tel:0595821262" class="phone-link">
-            <i class="fas fa-phone-alt"></i> 0595-82-3311
+            <i class="fas fa-phone-alt"></i> 0595-82-1262
           </a>
           <span>（採用担当まで / 平日 8:00〜17:00）</span>
         </div>
@@ -1836,7 +1869,7 @@
             <div class="footer-contact">
               <p>〒519-0124 三重県亀山市東御幸町233番地3</p>
               <a href="tel:0595821262" class="footer-phone">
-                <i class="fas fa-phone-alt"></i> 0595-82-3311
+                <i class="fas fa-phone-alt"></i> 0595-82-1262
               </a>
               <p class="mt-sm fs-xs">
                 （採用担当直通 / 平日 8:00〜17:00）
@@ -1922,5 +1955,6 @@ document.addEventListener("DOMContentLoaded", function () {
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8bb9abb724cd4108ab1265f35ecbb38a","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
+
 
 
