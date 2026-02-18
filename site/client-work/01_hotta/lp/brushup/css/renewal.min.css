@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    works/hotta/css/renewal.css
    堀田建設様 LP プレミアムデザイン (Refactored)
    ============================================ */
@@ -245,8 +245,8 @@ body .teto-main-title .line-break-large {
 
 /* Gold underline for emphasis */
 body .teto-main-title .gold-underline {
-  border-bottom: 3px solid;
-  border-image: linear-gradient(to right, transparent, var(--accent-gold), transparent) 1;
+  border-bottom: 5px solid;
+  border-image: linear-gradient(to right, var(--accent-gold), transparent) 1;
   padding-bottom: 0.3rem;
   display: inline-block;
 }

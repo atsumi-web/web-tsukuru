@@ -23,7 +23,7 @@
     <!-- ⚡ Critical CSS (インライン化でFirst View高速化) -->
     <style>
       /* CSS変数 */
-      :root{--accent-gold:#c5a059;--navy-deep:#001a3d;--navy-light:#002d6b;--line-green:#06c755;--line-green-dark:#05a346;--text-main:#333;--text-inverse:#fff;--bg-white:#fff;--bg-light:#f4f6f9;--font-en:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-jp:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;--font-serif:"Shippori Mincho B1",Georgia,"Times New Roman",serif;--color-neutral-dark:#333;--color-neutral-light:#999;--color-neutral-border:#e0e0e0;--space-md:1.5rem}
+      :root{--accent-gold:#e6c068;--navy-deep:#001a3d;--navy-light:#002d6b;--line-green:#06c755;--line-green-dark:#05a346;--text-main:#333;--text-inverse:#fff;--bg-white:#fff;--bg-light:#f4f6f9;--font-en:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-jp:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;--font-serif:"Shippori Mincho B1",Georgia,"Times New Roman",serif;--color-neutral-dark:#333;--color-neutral-light:#999;--color-neutral-border:#e0e0e0;--space-md:1.5rem}
       /* 基本リセット */
       *{margin:0;padding:0;box-sizing:border-box}
       html{scroll-behavior:smooth;font-size:16px}
@@ -102,7 +102,7 @@
       body .mouse-text{color:rgba(255,255,255,.6);font-size:.7rem;letter-spacing:.15em;font-weight:600;font-family:var(--font-en)}
       @media (max-width:768px){body .teto-catch-en,body .mouse-scroll{display:none}body .hero-tagline-grid{grid-template-columns:1fr;gap:.75rem;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}body .hero-cta-tagline{border:1px solid var(--accent-gold);border-radius:8px;padding:.5rem 1.2rem}body .hero-actions{display:flex;flex-direction:column;align-items:center;width:100%}body .hero-contact-minimal{flex-direction:row;gap:.75rem;margin-top:.75rem;margin-bottom:0;max-width:100%;width:100%;justify-content:center;border-top:none;padding-top:0}body .contact-minimal-item{flex:1;background:rgba(0,26,61,.8);justify-content:center;font-size:.85rem}}
       @media (max-width:1200px){body #hero.hero-teto{height:auto!important;min-height:100dvh;overflow:visible!important;background:#001a3d!important}body .hero-teto-visual{opacity:0!important;pointer-events:none}body .hero-teto-container{width:100%!important;padding:260px 1rem 120px!important;position:relative;z-index:2;text-align:center!important;margin-left:auto!important;margin-right:auto!important}body .header-logo-img{height:24px}body .hero-actions{margin-top:1.5rem}}
-      @media (min-width:1201px){body #hero.hero-teto{align-items:center!important}body .hero-teto-container{text-align:left!important;padding-left:3%!important}body .hero-teto-content{text-align:left!important}body .teto-main-title{text-align:left!important}}
+      @media (min-width:1201px){body #hero.hero-teto{align-items:center!important}body .hero-teto-container{text-align:left!important;padding-left:3%!important}body .hero-teto-content{text-align:left!important}body .teto-main-title{text-align:left!important}body .teto-main-title .line-break-large{display:block;margin-bottom:1.2rem}body .teto-main-title .subtitle-line-medium{letter-spacing:-0.06em}}
       @media (max-width:768px){body .hero-cta-tagline{font-size:.85rem;padding:.4rem 1.2rem;margin-bottom:0}body .hero-contact-minimal{flex-direction:row;gap:.5rem}body .contact-minimal-item{width:auto;flex:1;justify-content:center;padding:.8rem .5rem;font-size:.8rem;white-space:nowrap}}
     </style>
     
@@ -112,7 +112,7 @@
 
     <!-- 非クリティカルCSS (非同期読み込み) -->
     <link rel="stylesheet" href="css/style.min.css?v=5.3" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="css/renewal.css?v=30.0" />
+    <link rel="stylesheet" href="css/renewal.css?v=30.1" />
     <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
     <link rel="stylesheet" href="css/cta-enhancement.css?v=3.0" />
     <noscript>
@@ -188,8 +188,8 @@
           
           <!-- ▼ 案A：不安解消型（アクティブ） -->
           <h1 class="teto-main-title" style="text-align: center;">
-            <span class="target-highlight">未経験のあなたへ。</span><br class="line-break-large" />
-            <span class="target-highlight subtitle-line subtitle-line-medium">「建設業、やってみようかな」</span><br />
+            <span style="color:#fff;">未経験のあなたへ。</span><br class="line-break-large" />
+            <span class="target-highlight subtitle-line subtitle-line-medium" style="display:inline-block; margin-top:1.2rem; letter-spacing:-0.08em;">「建設業、やってみようかな」</span><br />
             <span class="subtitle-line subtitle-line-small gold-underline">その一歩を、全力で守ります。</span>
           </h1>
           
@@ -201,11 +201,12 @@
           -->
           <!-- ▼ 案A：不安解消型サブコピー（アクティブ） -->
           <p class="teto-sub-title">
-            資格取得費用0円。残業月20H以内。<br class="br-mobile" />
+            資格取得費用0円。残業月13.5h（昨年度実績）。<br class="br-mobile" />
             地元・三重で働き続ける。<br />
             1年目から月給23万円〜。<br class="br-mobile" />
             「とりあえず」で始めて、一生モノの技術を。
           </p>
+
           
           <!-- ▼ 案B：成果訴求型サブコピー（コメントアウト中）
           <p class="teto-sub-title">
@@ -215,31 +216,31 @@
           </p>
           -->
 
-          <div class="hero-actions" style="margin-top: 4rem;">
+          <div class="hero-actions" style="margin-top: 3rem; margin-right: auto;">
 
             <!-- ▼ CTA強化ブロック -->
-            <div class="cta-enhanced-block">
+            <div class="cta-enhanced-block" style="max-width: 800px; align-items: center;">
               
               <!-- 信頼シグナル（社会的証明）- CTAの前に配置 -->
-              <div class="cta-trust-signals" style="text-align: center; justify-content: center; margin-bottom: 1.5rem;">
-                <span>✓ 返信率100%</span>
-                <span>✓ 気軽に質問OK</span>
-                <span>✓ 今月の問い合わせ: 37件</span>
-                <span>✓ 平均返信時間: 15分</span>
+              <div class="cta-trust-signals" style="text-align: center; justify-content: center; margin-bottom: 0.2rem;">
+                <span><i class="fas fa-circle-check" style="color: var(--accent-gold); margin-right: 0.3em;"></i>質問だけでもOK</span>
+                <span><i class="fas fa-circle-check" style="color: var(--accent-gold); margin-right: 0.3em;"></i>在職中でもOK</span>
+                <span><i class="fas fa-circle-check" style="color: var(--accent-gold); margin-right: 0.3em;"></i>未経験の方も歓迎</span>
+                <span><i class="fas fa-circle-check" style="color: var(--accent-gold); margin-right: 0.3em;"></i>資料請求・見学もOK</span>
               </div>
               
               <!-- メインCTA：LINE登録（低ハードル） -->
-              <a href="#entry" class="btn btn-primary btn-large cta-enhanced">
-                <i class="fab fa-line"></i>
+              <a href="#entry" class="btn btn-primary btn-large cta-enhanced" style="width: 700px; max-width: 100%; padding: 1.5rem 3rem; min-height: 85px;">
+                <i class="fab fa-line" style="font-size: 2rem;"></i>
                 <span class="cta-content">
-                  <span class="cta-main">60秒で完了！LINEで質問する</span>
+                  <span class="cta-main" style="font-size: 1.25rem;">60秒で完了！LINEで質問する</span>
                   <span class="cta-sub">「未経験でも大丈夫？」「仕事の内容は？」今すぐ聞く</span>
                 </span>
               </a>
               
               <!-- サブCTA：即応募希望者向け -->
-              <div class="cta-direct-apply">
-                <p>※「すぐに応募したい」方は <br class="br-mobile" /><a href="#entry-form">こちらから直接エントリー</a><br class="br-mobile" />（2分で完了）</p>
+              <div class="cta-direct-apply" style="text-align: center; width: 700px; max-width: 100%; margin-top: 0.5rem;">
+                <p>※いきなり面接はしません。履歴書もまだ不要です。</p>
               </div>
             </div>
             </div>
@@ -297,9 +298,42 @@
       </div>
     </section>
 
-    <!-- 2.5. 選ばれる3つの理由（モバイル専用セクション） -->
-    <section class="hero-features-mobile" id="hero-features-mobile">
+    <!-- 2.5. 数値ハイライト＋選ばれる理由（PC・モバイル共通） -->
+    <section class="hero-features" id="hero-features">
       <div class="container">
+        <!-- 数値インパクトバッジ（Gemini推奨 #4） -->
+        <div class="hero-impact-badges">
+          <div class="impact-badge">
+            <span class="badge-number">2<span class="unit">万円</span></span>
+            <span class="badge-label">3LDK社宅 家賃</span>
+          </div>
+          <div class="impact-badge">
+            <span class="badge-number">13.5<span class="unit">h</span></span>
+            <span class="badge-label">月平均残業</span>
+          </div>
+          <div class="impact-badge">
+            <span class="badge-number">0<span class="unit">円</span></span>
+            <span class="badge-label">資格取得費用</span>
+          </div>
+          <div class="impact-badge">
+            <span class="badge-number">23<span class="unit">万円〜</span></span>
+            <span class="badge-label">1年目月給</span>
+          </div>
+          <div class="impact-badge">
+            <span class="badge-number">100<span class="unit">年超</span></span>
+            <span class="badge-label">創業の歴史</span>
+          </div>
+          <div class="impact-badge">
+            <span class="badge-number">17<span class="unit">年</span></span>
+            <span class="badge-label">平均勤続年数</span>
+          </div>
+          <div class="impact-badge">
+            <span class="badge-number">11<span class="unit">日</span></span>
+            <span class="badge-label">有給取得平均</span>
+          </div>
+        </div>
+
+        <!-- 選ばれる理由カード（モバイルのみ表示） -->
         <div class="hero-tagline-grid-mobile">
           <div class="hero-cta-tagline-mobile">
             <div class="tagline-icon">
@@ -632,8 +666,6 @@
           </div>
         </div>
       </div>
-    </section>
-
     </section>
 
 

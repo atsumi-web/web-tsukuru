@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5大AI診断ハブ | 2ラウンド制・インタラクティブ診断ツール</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #f3f4f6;
+            --card-bg: #fff;
+            --text: #333;
+            --text-light: #666;
+            --radius: 12px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.7; color: var(--text); margin: 0; padding: 0; background: var(--bg); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+
+        /* ── ヘッダー ── */
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 30px 20px; text-align: center; }
+        header h1 { margin: 0; font-size: 2rem; }
+        header p { margin: 8px 0 0; opacity: 0.9; }
+
+        /* ── URL入力バー ── */
+        .url-bar { background: var(--card-bg); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 24px; box-shadow: var(--shadow); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .url-bar label { font-weight: 700; white-space: nowrap; font-size: 0.95rem; }
+        .url-bar input { flex: 1; min-width: 200px; padding: 10px 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; font-family: inherit; transition: border-color 0.2s; }
+        .url-bar input:focus { outline: none; border-color: var(--primary); }
+        .url-bar .apply-btn { background: var(--primary); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.95rem; transition: background 0.2s; }
+        .url-bar .apply-btn:hover { background: var(--primary-dark); }
+
+        /* ── LP種別セレクタ ── */
+        .lp-type-selector { background: var(--card-bg); border-radius: var(--radius); padding: 16px 24px; margin-bottom: 24px; box-shadow: var(--shadow); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .lp-type-selector label { font-weight: 700; font-size: 0.95rem; margin-right: 8px; }
+        .lp-type-btn { padding: 8px 16px; border: 2px solid #ddd; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.85rem; background: #fff; transition: all 0.2s; }
+        .lp-type-btn.active { border-color: var(--primary); background: var(--primary); color: #fff; }
+        .lp-type-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+        /* ── 発見ボックス ── */
+        .discovery-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow); }
+        .discovery-box h2 { margin: 0 0 12px; color: #92400e; font-size: 1.3rem; }
+        .discovery-box p { margin: 0 0 16px; color: #78350f; }
+        .discovery-box table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .discovery-box th, .discovery-box td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #d4a849; }
+        .discovery-box th { color: #92400e; font-weight: 700; }
+
+        /* ── AIカード ── */
+        .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .ai-card { background: var(--card-bg); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); transition: transform 0.2s; text-align: center; }
+        .ai-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+        .ai-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: var(--primary); }
+        .badge { padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin: 2px; font-weight: 700; }
+        .badge-r1 { background: var(--success); color: #fff; }
+        .badge-r2 { background: var(--accent); color: #fff; }
+        .ai-card p { font-size: 0.85rem; color: var(--text-light); margin: 8px 0; }
+        .ai-card .link { display: inline-block; background: var(--primary); color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; margin-top: 8px; font-weight: 700; font-size: 0.85rem; }
+        .ai-card .link:hover { background: var(--primary-dark); }
+
+        /* ── ワークフロー（チェックリスト） ── */
+        .workflow { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow); }
+        .workflow h2 { margin: 0 0 16px; color: var(--primary); font-size: 1.3rem; }
+        .step-list { list-style: none; padding: 0; margin: 0; }
+        .step-list li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .step-list li:last-child { border-bottom: none; }
+        .step-check { width: 24px; height: 24px; border: 2px solid #ccc; border-radius: 6px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; margin-top: 2px; }
+        .step-check.checked { background: var(--success); border-color: var(--success); }
+        .step-check.checked::after { content: '✓'; color: #fff; font-weight: 700; font-size: 0.85rem; }
+        .round-label { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; color: #fff; margin-right: 6px; }
+        .round-label.r1 { background: var(--primary); }
+        .round-label.r2 { background: var(--accent); }
+        .round-label.final { background: var(--success); }
+
+        /* ── アコーディオン ── */
+        .accordion { background: var(--card-bg); border-radius: var(--radius); margin-bottom: 24px; box-shadow: var(--shadow); overflow: hidden; }
+        .accordion-header { padding: 18px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.1rem; color: var(--primary); user-select: none; transition: background 0.2s; }
+        .accordion-header:hover { background: #f5f7ff; }
+        .accordion-header .arrow { transition: transform 0.3s; font-size: 1.2rem; }
+        .accordion-header.open .arrow { transform: rotate(180deg); }
+        .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .accordion-body.open { max-height: 8000px; }
+        .accordion-inner { padding: 0 24px 24px; }
+
+        /* ── プロンプトボックス ── */
+        .prompt-box { background: #f5f7ff; border-left: 4px solid var(--primary); padding: 20px; margin: 16px 0; border-radius: 4px; position: relative; }
+        .prompt-box.round2 { border-left-color: var(--accent); background: #fffbeb; }
+        .prompt-box h4 { margin: 0 0 10px; color: var(--text); font-size: 1.05rem; }
+        .prompt-box .use-case { background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-bottom: 10px; }
+        .prompt-box .round2-badge { background: var(--danger); color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-bottom: 10px; }
+        .prompt-box pre { background: #fff; padding: 15px; border-radius: 4px; overflow-x: auto; margin: 10px 0; white-space: pre-wrap; word-wrap: break-word; font-size: 0.9rem; line-height: 1.6; }
+        .copy-btn { position: absolute; top: 16px; right: 16px; background: var(--primary); color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 700; transition: background 0.2s; }
+        .copy-btn:hover { background: var(--primary-dark); }
+
+        /* ── 回答ペーストエリア ── */
+        .paste-section { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow); }
+        .paste-section h2 { margin: 0 0 16px; color: var(--accent-dark); font-size: 1.3rem; }
+        .paste-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; margin-bottom: 20px; }
+        .paste-card { border: 2px solid #e5e7eb; border-radius: 10px; padding: 14px; transition: border-color 0.2s; }
+        .paste-card.has-content { border-color: var(--success); }
+        .paste-card h4 { margin: 0 0 8px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .paste-card h4 .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; display: inline-block; }
+        .paste-card.has-content h4 .status-dot { background: var(--success); }
+        .paste-card textarea { width: 100%; height: 120px; border: 1px solid #ddd; border-radius: 6px; padding: 10px; font-family: inherit; font-size: 0.85rem; resize: vertical; }
+        .paste-card textarea:focus { outline: none; border-color: var(--primary); }
+        .generate-r2-btn { background: var(--accent); color: #fff; border: none; padding: 14px 28px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 8px; transition: background 0.2s; margin: 0 auto; }
+        .generate-r2-btn:hover { background: var(--accent-dark); }
+        .generate-r2-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+        /* ── R2生成結果 ── */
+        .r2-output { background: #fffbeb; border: 2px solid var(--accent); border-radius: 10px; padding: 20px; margin-top: 20px; display: none; }
+        .r2-output h3 { margin: 0 0 12px; color: var(--accent-dark); }
+        .r2-tabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+        .r2-tab { padding: 6px 14px; border: 2px solid #ddd; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 700; background: #fff; transition: all 0.2s; }
+        .r2-tab.active { border-color: var(--accent); background: var(--accent); color: #fff; }
+        .r2-prompt-display { background: #fff; padding: 15px; border-radius: 6px; font-size: 0.85rem; white-space: pre-wrap; word-wrap: break-word; max-height: 400px; overflow-y: auto; line-height: 1.6; position: relative; }
+        .r2-copy-btn { background: var(--accent); color: #fff; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.85rem; margin-top: 10px; }
+
+        /* ── フッター ── */
+        footer { text-align: center; color: #999; margin-top: 40px; padding: 20px; font-size: 0.85rem; }
+
+        /* ── レスポンシブ ── */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.5rem; }
+            .url-bar { flex-direction: column; }
+            .url-bar input { min-width: 100%; }
+            .ai-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+            .paste-grid { grid-template-columns: 1fr; }
+            .discovery-box table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🤖 5大AI診断ハブ</h1>
+        <p>2ラウンド制・インタラクティブLP診断ツール</p>
+    </header>
+
+    <div class="container">
+
+        <!-- ====== ① URL入力バー ====== -->
+        <div class="url-bar">
+            <label>🔗 診断対象URL：</label>
+            <input type="url" id="targetUrl" placeholder="https://example.com/lp/" value="https://web-tsukuru.jp/works/01_hotta/lp/main/">
+            <button class="apply-btn" onclick="applyUrl()">全プロンプトに反映</button>
+        </div>
+
+        <!-- ====== ② 診断モード＆種別セレクタ ====== -->
+        <div class="lp-type-selector">
+            <label>🎯 診断モード：</label>
+            <button class="lp-type-btn active" onclick="setMode(this, 'mywork')" data-mode="mywork">� 自社制作チェック</button>
+            <button class="lp-type-btn" onclick="setMode(this, 'client')" data-mode="client">🔍 クライアントサイト診断</button>
+        </div>
+        <div class="lp-type-selector" id="modeDescription" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-left:4px solid var(--primary);">
+            <p id="modeDescText" style="margin:0;font-size:0.9rem;color:#1e40af;">🔧 <strong>自社制作チェック</strong>：あなたが作ったLPの品質を診断し、改善ポイントを見つけます。</p>
+        </div>
+        <div class="lp-type-selector">
+            <label>📄 対象種別：</label>
+            <button class="lp-type-btn active" onclick="setLpType(this, 'recruit')" data-type="recruit">🏗 採用LP</button>
+            <button class="lp-type-btn" onclick="setLpType(this, 'corporate')" data-type="corporate">🏢 公式サイト</button>
+            <button class="lp-type-btn" onclick="setLpType(this, 'service')" data-type="service">💼 サービスLP</button>
+            <button class="lp-type-btn" onclick="setLpType(this, 'product')" data-type="product">🛒 商品LP</button>
+        </div>
+
+        <!-- ====== ③ ヒアリング情報（クライアントモード時のみ表示） ====== -->
+        <div class="accordion" id="hearingPanel" style="display:none;">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                📝 クライアントヒアリング情報（入力するとプロンプトに反映） <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-inner">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+                        <div>
+                            <label style="font-weight:700;font-size:0.85rem;display:block;margin-bottom:4px;">🏢 会社名</label>
+                            <input type="text" id="h-company" placeholder="例：堀田建設株式会社" style="width:100%;padding:8px 12px;border:2px solid #ddd;border-radius:6px;font-family:inherit;" oninput="updatePrompt2()">
+                        </div>
+                        <div>
+                            <label style="font-weight:700;font-size:0.85rem;display:block;margin-bottom:4px;">🔧 業種</label>
+                            <input type="text" id="h-industry" placeholder="例：建設業（土木・建築）" style="width:100%;padding:8px 12px;border:2px solid #ddd;border-radius:6px;font-family:inherit;" oninput="updatePrompt2()">
+                        </div>
+                        <div>
+                            <label style="font-weight:700;font-size:0.85rem;display:block;margin-bottom:4px;">👥 従業員数</label>
+                            <input type="text" id="h-employees" placeholder="例：25名" style="width:100%;padding:8px 12px;border:2px solid #ddd;border-radius:6px;font-family:inherit;" oninput="updatePrompt2()">
+                        </div>
+                        <div>
+                            <label style="font-weight:700;font-size:0.85rem;display:block;margin-bottom:4px;">🎯 ターゲット像</label>
+                            <input type="text" id="h-target" placeholder="例：地元の未経験若手、Uターン希望者" style="width:100%;padding:8px 12px;border:2px solid #ddd;border-radius:6px;font-family:inherit;" oninput="updatePrompt2()">
+                        </div>
+                        <div style="grid-column:1/-1;">
+                            <label style="font-weight:700;font-size:0.85rem;display:block;margin-bottom:4px;">⚠️ 現在の採用課題</label>
+                            <textarea id="h-challenges" placeholder="例：応募が来ない、地元の若者が都会に流出、求人掲載費が高い" style="width:100%;height:60px;padding:8px 12px;border:2px solid #ddd;border-radius:6px;font-family:inherit;resize:vertical;" oninput="updatePrompt2()"></textarea>
+                        </div>
+                        <div style="grid-column:1/-1;">
+                            <label style="font-weight:700;font-size:0.85rem;display:block;margin-bottom:4px;">💪 会社の強み・差別化ポイント</label>
+                            <textarea id="h-strengths" placeholder="例：資格取得費用全額負担、残業月20h以下、ユースエール認定企業" style="width:100%;height:60px;padding:8px 12px;border:2px solid #ddd;border-radius:6px;font-family:inherit;resize:vertical;" oninput="updatePrompt2()"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== 発見ボックス ====== -->
+        <div class="discovery-box">
+            <h2>💡 AIクロスレビュー（2ラウンド制）の発見</h2>
+            <p>5つのAIに同じ診断を依頼 → 全回答を再度全AIに見せると、各AIが<strong>自然に異なる役割</strong>で深掘りしてくれる。</p>
+            <table>
+                <tr><th>AI</th><th>R1の強み</th><th>R2の自然発生的役割</th></tr>
+                <tr><td>🔍 Manus</td><td>ファクト・データ収集</td><td>📚 外部調査官 — 外部データで補強</td></tr>
+                <tr><td>💬 ChatGPT</td><td>バランスの取れた分析</td><td>🧭 実務コンサル — 優先順位を明確化</td></tr>
+                <tr><td>🔎 Gemini</td><td>心理学的・技術的洞察</td><td>👑 議長 — 良いとこ取りで最終判断</td></tr>
+                <tr><td>🧠 Claude</td><td>批判的思考・数値分析</td><td>🔬 分析官 — 盲点を数値で指摘</td></tr>
+                <tr><td>⚡ DeepSeek</td><td>統合・まとめ</td><td>📊 比較官 — 一覧表で可視化</td></tr>
+            </table>
+        </div>
+
+        <!-- ====== AIカード ====== -->
+        <div class="ai-grid">
+            <div class="ai-card">
+                <h3>Manus</h3>
+                <span class="badge badge-r1">R1:データ収集</span>
+                <span class="badge badge-r2">R2:📚外部調査</span>
+                <p>外部ソースで裏付け</p>
+                <a href="https://manus.im/" target="_blank" class="link">起動 →</a>
+            </div>
+            <div class="ai-card">
+                <h3>ChatGPT</h3>
+                <span class="badge badge-r1">R1:バランス分析</span>
+                <span class="badge badge-r2">R2:🧭実務コンサル</span>
+                <p>優先順位を明確化</p>
+                <a href="https://chat.openai.com/" target="_blank" class="link">起動 →</a>
+            </div>
+            <div class="ai-card">
+                <h3>Gemini</h3>
+                <span class="badge badge-r1">R1:心理・技術</span>
+                <span class="badge badge-r2">R2:👑議長</span>
+                <p>最終実装判断</p>
+                <a href="https://gemini.google.com/" target="_blank" class="link">起動 →</a>
+            </div>
+            <div class="ai-card">
+                <h3>Claude</h3>
+                <span class="badge badge-r1">R1:批判的思考</span>
+                <span class="badge badge-r2">R2:🔬分析官</span>
+                <p>盲点を数値で指摘</p>
+                <a href="https://claude.ai/" target="_blank" class="link">起動 →</a>
+            </div>
+            <div class="ai-card">
+                <h3>DeepSeek</h3>
+                <span class="badge badge-r1">R1:統合・まとめ</span>
+                <span class="badge badge-r2">R2:📊比較官</span>
+                <p>一覧表で可視化</p>
+                <a href="https://chat.deepseek.com/" target="_blank" class="link">起動 →</a>
+            </div>
+        </div>
+
+        <!-- ====== 診断フロー（チェックリスト） ====== -->
+        <div class="workflow">
+            <h2>📋 診断フロー（チェックリスト）</h2>
+            <ul class="step-list">
+                <li>
+                    <div class="step-check" onclick="toggleCheck(this)"></div>
+                    <div><span class="round-label r1">R1</span><strong>全AIへ一斉投入</strong> — プロンプト#2を5つ全てのAIに投げる</div>
+                </li>
+                <li>
+                    <div class="step-check" onclick="toggleCheck(this)"></div>
+                    <div><span class="round-label r1">R1</span><strong>回答収集</strong> — 5つの回答を下のペーストエリアに貼り付ける</div>
+                </li>
+                <li>
+                    <div class="step-check" onclick="toggleCheck(this)"></div>
+                    <div><span class="round-label r2">R2</span><strong>クロスレビュー</strong> — 生成されたAI別R2プロンプトを各AIに投げる</div>
+                </li>
+                <li>
+                    <div class="step-check" onclick="toggleCheck(this)"></div>
+                    <div><span class="round-label final">最終</span><strong>統合判断</strong> — 全AIの一致点 = 最優先改善として実行する</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ====== R1プロンプト（アコーディオン） ====== -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                📝 ラウンド1：プロンプト集 <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-inner">
+
+                    <!-- プロンプト1 -->
+                    <div class="prompt-box">
+                        <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                        <h4>#1：業界データ収集（Manus専用・任意）</h4>
+                        <span class="use-case">LP診断前のリサーチ</span>
+                        <pre class="prompt-template" data-template="recruit">あなたは世界最高峰のビジネスリサーチャーです。以下の業界について、最新のデータを収集してください：
+
+【業界】：建設業（採用市場）
+【収集データ】：
+1. 建設業の平均採用コスト（1人あたり）
+2. Indeed等の求人サイトの平均クリック単価
+3. 建設業の平均応募率・採用率
+4. 競合他社のLP事例（URL付き）
+5. 建設業採用市場のトレンド（2024-2026年）
+
+データは必ず出典を明記してください。</pre>
+                    </div>
+
+                    <!-- プロンプト2（モード別に切り替わる主力プロンプト） -->
+                    <div class="prompt-box" id="prompt2Box">
+                        <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                        <h4>#2：総合診断 ★ラウンド1の主力</h4>
+                        <span class="use-case" id="prompt2Badge">全5つのAIに同時に投げる</span>
+                        <pre class="prompt-text" id="prompt2Text">あなたは世界最高峰のビジネスコンサルタントです。私が作ったLPを診断してください。
+
+【LP URL】：<span class="url-placeholder">https://web-tsukuru.jp/works/01_hotta/lp/main/</span>
+
+【診断項目】：
+1. ファーストビューの訴求力（ターゲット・ベネフィットの明確さ）
+2. 信頼構築（実績・数値・お客様の声）
+3. CTAの最適化（配置・文言・心理的障壁）
+4. モバイル対応
+5. 成約率向上のための具体的改善案（優先度順に3つ）
+
+診断結果は、具体的な改善案と期待される効果を含めて提示してください。</pre>
+                    </div>
+
+                    <!-- プロンプト3 -->
+                    <div class="prompt-box">
+                        <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                        <h4>#3：SEO・技術診断（深掘りオプション）</h4>
+                        <span class="use-case">技術面を深掘りしたい場合</span>
+                        <pre class="prompt-text">あなたは世界最高峰のSEOスペシャリストです。以下のLPを技術的観点から診断してください。
+
+【LP URL】：<span class="url-placeholder">https://web-tsukuru.jp/works/01_hotta/lp/main/</span>
+
+【診断項目】：
+1. SEO最適化（タイトル・メタディスクリプション・構造化データ）
+2. ページ速度・Core Web Vitals
+3. モバイルフレンドリー度
+4. アクセシビリティ（WCAG基準）
+5. 技術的改善案（具体的なコード例付き）
+
+Googleの視点から、検索順位向上に直結する改善点を優先的に提示してください。</pre>
+                    </div>
+
+                    <!-- プロンプト4 -->
+                    <div class="prompt-box">
+                        <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                        <h4>#4：UX・心理分析（深掘りオプション）</h4>
+                        <span class="use-case">ユーザー心理を深掘りしたい場合</span>
+                        <pre class="prompt-text">あなたは世界最高峰のUXデザイナーです。以下のLPをユーザー心理の観点から診断してください。
+
+【LP URL】：<span class="url-placeholder">https://web-tsukuru.jp/works/01_hotta/lp/main/</span>
+
+【診断項目】：
+1. ユーザーの心理的な流れ（気づき→興味→検討→行動）
+2. 心理的障壁の発見（不安・疑問・躊躇のポイント）
+3. 信頼構築の要素（権威性・社会的証明・透明性）
+4. 情動的訴求の適切さ
+5. ユーザー体験向上のための具体的改善案
+
+ユーザーの視点に立ち、「なぜこのLPで行動しないのか」を深掘りしてください。</pre>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== 回答ペーストエリア ====== -->
+        <div class="paste-section">
+            <h2>📋 R1回答ペーストエリア</h2>
+            <p style="color:var(--text-light);margin:0 0 16px;font-size:0.9rem;">各AIの診断結果をここに貼り付けてください。全て入力後「R2プロンプト生成」で、AI別にカスタマイズされたR2プロンプトが自動生成されます。</p>
+            <div class="paste-grid">
+                <div class="paste-card" id="paste-manus">
+                    <h4><span class="status-dot"></span> 🔍 Manus</h4>
+                    <textarea placeholder="ManusのR1回答を貼り付け..." oninput="updatePasteStatus(this)"></textarea>
+                </div>
+                <div class="paste-card" id="paste-chatgpt">
+                    <h4><span class="status-dot"></span> 💬 ChatGPT</h4>
+                    <textarea placeholder="ChatGPTのR1回答を貼り付け..." oninput="updatePasteStatus(this)"></textarea>
+                </div>
+                <div class="paste-card" id="paste-gemini">
+                    <h4><span class="status-dot"></span> 🔎 Gemini</h4>
+                    <textarea placeholder="GeminiのR1回答を貼り付け..." oninput="updatePasteStatus(this)"></textarea>
+                </div>
+                <div class="paste-card" id="paste-claude">
+                    <h4><span class="status-dot"></span> 🧠 Claude</h4>
+                    <textarea placeholder="ClaudeのR1回答を貼り付け..." oninput="updatePasteStatus(this)"></textarea>
+                </div>
+                <div class="paste-card" id="paste-deepseek">
+                    <h4><span class="status-dot"></span> ⚡ DeepSeek</h4>
+                    <textarea placeholder="DeepSeekのR1回答を貼り付け..." oninput="updatePasteStatus(this)"></textarea>
+                </div>
+            </div>
+            <button class="generate-r2-btn" onclick="generateR2Prompts()" id="generateBtn">
+                🚀 R2プロンプトを生成（AI別カスタマイズ版）
+            </button>
+
+            <!-- R2出力エリア -->
+            <div class="r2-output" id="r2Output">
+                <h3>⚡ AI別R2プロンプト（クロスレビュー用）</h3>
+                <p style="font-size:0.85rem;color:var(--text-light);margin:0 0 12px;">各AIの役割に合わせたカスタマイズ済みプロンプトです。タブで切り替えてコピーしてください。</p>
+                <div class="r2-tabs" id="r2Tabs"></div>
+                <div class="r2-prompt-display" id="r2PromptDisplay"></div>
+                <button class="r2-copy-btn" onclick="copyR2Prompt()">📋 このプロンプトをコピー</button>
+            </div>
+        </div>
+
+        <!-- ====== STEP 3：最終判断＆実装 ====== -->
+        <div class="accordion" style="margin-top:24px;">
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:4px solid #f59e0b;">
+                👑 STEP 3：最終判断 → 実装（Gemini + Antigravity） <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-inner">
+                    <p style="color:var(--text-light);font-size:0.9rem;margin:0 0 16px;">R2が完了したら、① Geminiに最終判断を出させ → ② Antigravityに実装を依頼します。</p>
+
+                    <!-- R2回答ペースト（AI個別） -->
+                    <div style="background:#f0fdf4;border:2px solid #86efac;border-radius:10px;padding:16px;margin-bottom:16px;">
+                        <h4 style="margin:0 0 4px;color:#166534;">📋 各AIのR2回答を貼り付け↓</h4>
+                        <p style="font-size:0.8rem;color:#15803d;margin:0 0 12px;">入力するとGemini用プロンプトに自動で組み込まれます。</p>
+                        <div class="paste-grid">
+                            <div class="paste-card">
+                                <h4><span class="status-dot"></span> 🔍 Manus（R2）</h4>
+                                <textarea id="r2-manus" placeholder="ManusのR2回答..." oninput="updateFinalPrompts()"></textarea>
+                            </div>
+                            <div class="paste-card">
+                                <h4><span class="status-dot"></span> 💬 ChatGPT（R2）</h4>
+                                <textarea id="r2-chatgpt" placeholder="ChatGPTのR2回答..." oninput="updateFinalPrompts()"></textarea>
+                            </div>
+                            <div class="paste-card">
+                                <h4><span class="status-dot"></span> 🔎 Gemini（R2）</h4>
+                                <textarea id="r2-gemini" placeholder="GeminiのR2回答..." oninput="updateFinalPrompts()"></textarea>
+                            </div>
+                            <div class="paste-card">
+                                <h4><span class="status-dot"></span> 🧠 Claude（R2）</h4>
+                                <textarea id="r2-claude" placeholder="ClaudeのR2回答..." oninput="updateFinalPrompts()"></textarea>
+                            </div>
+                            <div class="paste-card">
+                                <h4><span class="status-dot"></span> ⚡ DeepSeek（R2）</h4>
+                                <textarea id="r2-deepseek" placeholder="DeepSeekのR2回答..." oninput="updateFinalPrompts()"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gemini最終判断プロンプト -->
+                    <div class="prompt-box" style="border-left:4px solid #f59e0b;">
+                        <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                        <h4>👑 Gemini最終判断プロンプト</h4>
+                        <span class="use-case">Geminiに投げる → 最終実装リストが出る</span>
+                        <pre class="prompt-text" id="geminiFinalPrompt">あなたは「議長」役です。5つのAIが2ラウンドにわたってLP診断を行いました。あなたの役割は、全ての意見を統合し、最終的な「実装判断リスト」を作成することです。
+
+【対象URL】：<span class="url-placeholder">https://web-tsukuru.jp/works/01_hotta/lp/main/</span>
+
+【あなたの判断基準】：
+1. ✅ 採用（即実装すべき）— 複数のAIが指摘＋効果が明確
+2. 🔄 検討（要テスト）— 意見が割れている＋効果は見込める
+3. ❌ 却下（過剰・不要）— 1つのAIだけの指摘＋効果が不明確
+
+【出力フォーマット】：
+## ✅ 即実装リスト（優先度順）
+| # | 改善項目 | 期待効果 | 根拠（何AIが指摘） |
+各改善項目について「何を」「どう変えるか」「なぜ効果があるか」を1行で。
+
+## 🔄 検討リスト
+| # | 改善項目 | 賛成AI | 反対/未言及AI | 判断保留の理由 |
+
+## ❌ 却下リスト
+| # | 提案内容 | 却下理由 |
+
+## 📋 実装順序
+上記「✅ 即実装」項目を、依存関係を考慮した最適な実装順序で並べ替えてください。
+
+---
+以下が5つのAIによるR2クロスレビュー回答です：
+
+<span id="r2ResponsePlaceholder">[ここにR2回答が自動挿入されます]</span></pre>
+                    </div>
+
+                    <!-- Antigravity実装指示プロンプト -->
+                    <div class="prompt-box" style="border-left:4px solid #6366f1;">
+                        <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                        <h4>🚀 Antigravity実装指示プロンプト</h4>
+                        <span class="use-case">Antigravity（VSCode IDE）に投げる → 即実装される</span>
+                        <pre class="prompt-text" id="antigravityPrompt">以下はGeminiが議長として出した「LP改善の最終判断リスト」です。
+この判断に基づいて、対象LPのコードを改善してください。
+
+【対象ファイル】：[対象HTMLファイルのパスをここに入力]
+
+【実装ルール】：
+1. ✅マークの「即実装リスト」の項目を上から順に実装
+2. 各改善を実装したら、何を変えたか簡潔に報告
+3. CSSの変更はインラインではなく、既存のスタイルシートに追加
+4. 元のデザインの雰囲気は維持しつつ改善
+5. モバイル対応も忘れずに
+
+【Geminiの最終判断リスト】：
+<span id="geminiResultPlaceholder">[ここにGeminiの最終判断を貼り付け]</span></pre>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== 営業活用プロンプト（アコーディオン） ====== -->
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                💼 営業活用：クライアント提案用プロンプト <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-inner">
+                    <div class="prompt-box">
+                        <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                        <h4>#6：クライアント提案用</h4>
+                        <span class="use-case">提案資料作成</span>
+                        <pre class="prompt-text">あなたは世界最高峰のビジネスコンサルタントです。以下のクライアントLPを診断し、提案資料を作成してください。
+
+【クライアント情報】：
+- 業種：[建設業]
+- 従業員数：[20名]
+- 現在の採用課題：[応募が来ない、採用コストが高い]
+
+【LP URL】：<span class="url-placeholder">https://web-tsukuru.jp/works/01_hotta/lp/main/</span>
+
+【診断・提案内容】：
+1. 現状のLP課題（3つ）
+2. 改善後の期待効果（数値で提示）
+3. 具体的な改善案（ビフォー・アフターで説明）
+4. 投資対効果（改善にかかるコストと期待される削減額）
+5. 実施スケジュール（4週間プラン）
+
+経営者が意思決定しやすいよう、財務的視点を重視して提案してください。</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Webとしくみをつくる | 最終更新: 2026-02-18</p>
+    </footer>
+
+    <script>
+        // ===== URL自動反映 =====
+        function applyUrl() {
+            const url = document.getElementById('targetUrl').value.trim();
+            if (!url) { alert('URLを入力してください'); return; }
+            const targets = document.querySelectorAll('.url-placeholder');
+            targets.forEach(el => {
+                el.textContent = url;
+                // 一瞬ハイライトして反映箇所を視覚化
+                el.style.background = '#fde68a';
+                el.style.padding = '2px 6px';
+                el.style.borderRadius = '4px';
+                el.style.transition = 'background 1.5s';
+                setTimeout(() => { el.style.background = 'transparent'; }, 2000);
+            });
+            // プロンプトのアコーディオンを自動で開く
+            const firstAccordion = document.querySelector('.accordion-header');
+            if (firstAccordion && !firstAccordion.classList.contains('open')) {
+                firstAccordion.classList.add('open');
+                firstAccordion.nextElementSibling.classList.add('open');
+            }
+            // ボタン表示変更（箇所数を表示）
+            const btn = document.querySelector('.url-bar .apply-btn');
+            btn.textContent = `✅ ${targets.length}箇所に反映済み`;
+            btn.style.background = '#10b981';
+            setTimeout(() => { btn.textContent = '全プロンプトに反映'; btn.style.background = ''; }, 3000);
+        }
+
+        // ===== 診断モード切替 =====
+        let currentMode = 'mywork';
+        let currentLpType = 'recruit';
+
+        function setMode(btn, mode) {
+            document.querySelectorAll('[data-mode]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentMode = mode;
+            // モード説明を更新
+            const descs = {
+                mywork: '🔧 <strong>自社制作チェック</strong>：あなたが作ったLP/サイトの品質を診断し、改善ポイントを見つけます。',
+                client: '🔍 <strong>クライアントサイト診断</strong>：クライアントの既存サイトを監査し、課題を発見 → 提案資料のベースにします。ヒアリング情報は任意です。'
+            };
+            document.getElementById('modeDescText').innerHTML = descs[mode];
+            // ヒアリングパネルの表示切替
+            const panel = document.getElementById('hearingPanel');
+            if (mode === 'client') {
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+            // プロンプト#2を更新
+            updatePrompt2();
+        }
+
+        // ===== LP種別切替 =====
+        function setLpType(btn, type) {
+            document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentLpType = type;
+            // プロンプト#1のテンプレートを更新
+            const templates = {
+                recruit: `あなたは世界最高峰のビジネスリサーチャーです。以下の業界について、最新のデータを収集してください：\n\n【業界】：建設業（採用市場）\n【収集データ】：\n1. 建設業の平均採用コスト（1人あたり）\n2. Indeed等の求人サイトの平均クリック単価\n3. 建設業の平均応募率・採用率\n4. 競合他社のLP事例（URL付き）\n5. 建設業採用市場のトレンド（2024-2026年）\n\nデータは必ず出典を明記してください。`,
+                corporate: `あなたは世界最高峰のビジネスリサーチャーです。以下の企業の公式サイトについて、業界データを収集してください：\n\n【業界】：[業界名を入力]\n【収集データ】：\n1. 業界の平均的なWebサイト構成とベストプラクティス\n2. 採用ページの業界トレンド（専用LP vs コーポレートサイト内）\n3. 業界の採用難易度と求職者の動向\n4. 同業他社のサイト事例（URL付き）\n5. 中小企業のWeb採用戦略の成功事例\n\nデータは必ず出典を明記してください。`,
+                service: `あなたは世界最高峰のビジネスリサーチャーです。以下の業界について、最新のデータを収集してください：\n\n【業界】：[業界名を入力]（BtoBサービス市場）\n【収集データ】：\n1. 業界平均のLP成約率\n2. 主要競合のLP事例（URL付き）\n3. ターゲット層のWeb行動データ\n4. 業界のデジタルマーケティングトレンド\n5. 効果的なCTA・オファーの事例\n\nデータは必ず出典を明記してください。`,
+                product: `あなたは世界最高峰のビジネスリサーチャーです。以下の商品カテゴリについて、最新のデータを収集してください：\n\n【商品カテゴリ】：[カテゴリ名を入力]\n【収集データ】：\n1. カテゴリ平均のEC転換率\n2. 主要競合の商品LP事例（URL付き）\n3. 顧客の購買決定要因トップ5\n4. 効果的な商品LP構成パターン\n5. カゴ落ち率の業界平均と改善策\n\nデータは必ず出典を明記してください。`
+            };
+            const templateEl = document.querySelector('.prompt-template');
+            if (templateEl) templateEl.textContent = templates[type] || templates.recruit;
+            // プロンプト#2も更新
+            updatePrompt2();
+        }
+
+        // ===== プロンプト#2のモード別更新 =====
+        function updatePrompt2() {
+            const url = document.getElementById('targetUrl').value.trim() || 'https://example.com';
+            const p2 = document.getElementById('prompt2Text');
+            if (!p2) return;
+
+            const prompts = {
+                'mywork_recruit': `あなたは世界最高峰のビジネスコンサルタントです。私が作った採用LPを診断してください。\n\n【LP URL】：${url}\n\n【診断項目】：\n1. ファーストビューの訴求力（ターゲット・ベネフィットの明確さ）\n2. 信頼構築（実績・数値・お客様の声）\n3. CTAの最適化（配置・文言・心理的障壁）\n4. モバイル対応\n5. 成約率向上のための具体的改善案（優先度順に3つ）\n\n診断結果は、具体的な改善案と期待される効果を含めて提示してください。`,
+
+                'mywork_corporate': `あなたは世界最高峰のビジネスコンサルタントです。私が作った公式サイトを診断してください。\n\n【サイトURL】：${url}\n\n【診断項目】：\n1. ファーストビューの印象と企業イメージの伝達力\n2. 信頼構築（実績・会社概要・代表メッセージの効果）\n3. 問い合わせまでの導線設計\n4. モバイル対応\n5. 改善案（優先度順に3つ）\n\n診断結果は、具体的な改善案と期待される効果を含めて提示してください。`,
+
+                'mywork_service': `あなたは世界最高峰のビジネスコンサルタントです。私が作ったサービスLPを診断してください。\n\n【LP URL】：${url}\n\n【診断項目】：\n1. ファーストビューの訴求力（ターゲット・ベネフィットの明確さ）\n2. 信頼構築（実績・数値・お客様の声）\n3. CTAの最適化（配置・文言・心理的障壁）\n4. モバイル対応\n5. 成約率向上のための具体的改善案（優先度順に3つ）\n\n診断結果は、具体的な改善案と期待される効果を含めて提示してください。`,
+
+                'mywork_product': `あなたは世界最高峰のビジネスコンサルタントです。私が作った商品LPを診断してください。\n\n【LP URL】：${url}\n\n【診断項目】：\n1. ファーストビューの訴求力（ターゲット・ベネフィットの明確さ）\n2. 信頼構築（実績・数値・お客様の声）\n3. CTAの最適化（配置・文言・心理的障壁）\n4. モバイル対応\n5. 成約率向上のための具体的改善案（優先度順に3つ）\n\n診断結果は、具体的な改善案と期待される効果を含めて提示してください。`,
+
+                'client_recruit': `あなたは世界最高峰のビジネスコンサルタントです。以下はある建設会社のWebサイトです。このサイトを「採用力」の観点から徹底的に診断してください。\n\n【サイトURL】：${url}\n\n【前提】：\nこの会社は専用の採用LPを持っていません。現在のサイトで採用活動をしている状態です。\n\n【診断項目】：\n1. 現在のサイトで「求職者」はどういう印象を受けるか\n2. 採用情報の見つけやすさ・充実度\n3. 「この会社で働きたい」と思わせる要素があるか\n4. 競合他社と比較したときの採用訴求力\n5. 最も効果的な改善策（優先度順に3つ）\n\n特に「なぜ専用の採用LPが必要なのか」という観点も含めて診断してください。\n求職者の心理に立ち、具体的な改善案を提示してください。`,
+
+                'client_corporate': `あなたは世界最高峰のビジネスコンサルタントです。以下の企業の公式サイトを総合的に診断してください。\n\n【サイトURL】：${url}\n\n【診断項目】：\n1. ファーストビューの印象（信頼感・プロフェッショナル感）\n2. 企業の強み・特徴が伝わっているか\n3. 問い合わせ・採用などの導線設計\n4. モバイル対応・表示速度\n5. 具体的な改善策（優先度順に3つ）\n\n「このサイトを見た見込み客や求職者がどう感じるか」をリアルに想像し、課題と改善案を具体的に提示してください。`,
+
+                'client_service': `あなたは世界最高峰のビジネスコンサルタントです。以下のサービスLPを診断してください。\n\n【LP URL】：${url}\n\n【前提】：\nこのLPはクライアント企業のものです。改善提案の材料として診断結果が必要です。\n\n【診断項目】：\n1. ファーストビューの訴求力\n2. サービスの価値が伝わっているか\n3. CTA（問い合わせ・申込）への導線\n4. モバイル対応\n5. 改善策（優先度順に3つ・ROI重視）\n\n経営者向けの提案資料として使える形で、課題と改善案を提示してください。`,
+
+                'client_product': `あなたは世界最高峰のビジネスコンサルタントです。以下の商品LPを診断してください。\n\n【LP URL】：${url}\n\n【前提】：\nこのLPはクライアント企業のものです。改善提案の材料として診断結果が必要です。\n\n【診断項目】：\n1. 商品の魅力が伝わっているか\n2. 購入までの導線設計\n3. 信頼構築（レビュー・実績）\n4. モバイル対応\n5. 改善策（優先度順に3つ・ROI重視）\n\n経営者向けの提案資料として使える形で、課題と改善案を提示してください。`
+            };
+
+            const key = `${currentMode}_${currentLpType}`;
+            let prompt = prompts[key] || prompts['mywork_recruit'];
+
+            // クライアントモード時：ヒアリング情報があれば付加
+            if (currentMode === 'client') {
+                const h = {
+                    company: (document.getElementById('h-company')?.value || '').trim(),
+                    industry: (document.getElementById('h-industry')?.value || '').trim(),
+                    employees: (document.getElementById('h-employees')?.value || '').trim(),
+                    target: (document.getElementById('h-target')?.value || '').trim(),
+                    challenges: (document.getElementById('h-challenges')?.value || '').trim(),
+                    strengths: (document.getElementById('h-strengths')?.value || '').trim()
+                };
+                const infoParts = [];
+                if (h.company) infoParts.push(`- 会社名：${h.company}`);
+                if (h.industry) infoParts.push(`- 業種：${h.industry}`);
+                if (h.employees) infoParts.push(`- 従業員数：${h.employees}`);
+                if (h.target) infoParts.push(`- ターゲット像：${h.target}`);
+                if (h.challenges) infoParts.push(`- 現在の課題：${h.challenges}`);
+                if (h.strengths) infoParts.push(`- 会社の強み：${h.strengths}`);
+                if (infoParts.length > 0) {
+                    prompt += `\n\n【ヒアリング情報】：\n${infoParts.join('\n')}`;
+                }
+            }
+
+            p2.textContent = prompt;
+        }
+
+        // ===== 最終プロンプト更新 =====
+        function updateFinalPrompts() {
+            const ais = [
+                { id: 'r2-manus', label: '🔍 Manus（外部調査官）' },
+                { id: 'r2-chatgpt', label: '💬 ChatGPT（実務コンサル）' },
+                { id: 'r2-gemini', label: '🔎 Gemini（議長）' },
+                { id: 'r2-claude', label: '🧠 Claude（分析官）' },
+                { id: 'r2-deepseek', label: '⚡ DeepSeek（比較官）' }
+            ];
+            const parts = [];
+            ais.forEach(ai => {
+                const val = document.getElementById(ai.id)?.value.trim();
+                if (val) parts.push(`--- ${ai.label} ---\n${val}`);
+                // ステータスドット更新
+                const card = document.getElementById(ai.id)?.closest('.paste-card');
+                const dot = card?.querySelector('.status-dot');
+                if (dot) dot.style.background = val ? '#10b981' : '#d1d5db';
+            });
+            const placeholder = document.getElementById('r2ResponsePlaceholder');
+            if (placeholder) {
+                placeholder.textContent = parts.length > 0
+                    ? parts.join('\n\n')
+                    : '[ここにR2回答が自動挿入されます]';
+            }
+        }
+
+        // ===== アコーディオン =====
+        function toggleAccordion(header) {
+            header.classList.toggle('open');
+            const body = header.nextElementSibling;
+            body.classList.toggle('open');
+        }
+
+        // ===== チェックリスト =====
+        function toggleCheck(el) {
+            el.classList.toggle('checked');
+        }
+
+        // ===== コピーボタン =====
+        function copyPrompt(button) {
+            const promptBox = button.parentElement;
+            const pre = promptBox.querySelector('pre');
+            const text = pre.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = '✅ 完了';
+                button.style.background = '#10b981';
+                setTimeout(() => { button.textContent = 'コピー'; button.style.background = ''; }, 2000);
+            });
+        }
+
+        // ===== ペーストエリア状態更新 =====
+        function updatePasteStatus(textarea) {
+            const card = textarea.closest('.paste-card');
+            if (textarea.value.trim().length > 10) {
+                card.classList.add('has-content');
+            } else {
+                card.classList.remove('has-content');
+            }
+        }
+
+        // ===== R2プロンプト生成 =====
+        let currentR2Tab = 'manus';
+
+        function generateR2Prompts() {
+            const responses = {
+                manus: document.querySelector('#paste-manus textarea').value.trim(),
+                chatgpt: document.querySelector('#paste-chatgpt textarea').value.trim(),
+                gemini: document.querySelector('#paste-gemini textarea').value.trim(),
+                claude: document.querySelector('#paste-claude textarea').value.trim(),
+                deepseek: document.querySelector('#paste-deepseek textarea').value.trim()
+            };
+
+            const filledCount = Object.values(responses).filter(v => v.length > 10).length;
+            if (filledCount < 2) {
+                alert('少なくとも2つ以上のAI回答を貼り付けてください。');
+                return;
+            }
+
+            const url = document.getElementById('targetUrl').value.trim();
+            const allResponses = buildAllResponses(responses);
+
+            // AI別R2プロンプトを生成
+            window.r2Prompts = {
+                manus: buildR2Prompt('manus', url, allResponses),
+                chatgpt: buildR2Prompt('chatgpt', url, allResponses),
+                gemini: buildR2Prompt('gemini', url, allResponses),
+                claude: buildR2Prompt('claude', url, allResponses),
+                deepseek: buildR2Prompt('deepseek', url, allResponses)
+            };
+
+            // タブ生成
+            const tabsEl = document.getElementById('r2Tabs');
+            tabsEl.innerHTML = '';
+            const aiNames = {
+                manus: '🔍 Manus', chatgpt: '💬 ChatGPT', gemini: '🔎 Gemini',
+                claude: '🧠 Claude', deepseek: '⚡ DeepSeek'
+            };
+            Object.keys(aiNames).forEach(key => {
+                const tab = document.createElement('button');
+                tab.className = 'r2-tab' + (key === 'manus' ? ' active' : '');
+                tab.textContent = aiNames[key];
+                tab.onclick = () => switchR2Tab(key);
+                tabsEl.appendChild(tab);
+            });
+
+            currentR2Tab = 'manus';
+            document.getElementById('r2PromptDisplay').textContent = window.r2Prompts.manus;
+            document.getElementById('r2Output').style.display = 'block';
+            document.getElementById('r2Output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function buildAllResponses(responses) {
+            const labels = {
+                manus: 'Manus（Perplexity）', chatgpt: 'ChatGPT', gemini: 'Gemini',
+                claude: 'Claude', deepseek: 'DeepSeek'
+            };
+            let text = '';
+            for (const [key, val] of Object.entries(responses)) {
+                if (val.length > 10) {
+                    text += `\n=== ${labels[key]}の診断結果 ===\n${val}\n`;
+                }
+            }
+            return text;
+        }
+
+        function buildR2Prompt(aiKey, url, allResponses) {
+            const baseIntro = `以下は、私のLPを複数の異なるAIに診断させた結果です。\n\n【LP URL】：${url}\n\n【各AI診断結果】：\n${allResponses}\n---\n\n`;
+
+            const rolePrompts = {
+                manus: `あなたは世界最高峰のビジネスリサーチャーです。
+${baseIntro}
+【あなたの役割：外部調査官 📚】
+他のAIの診断結果を読んだ上で、以下を実行してください：
+
+1. 各AIが主張しているデータや数値の裏取り（出典の確認・補足データの追加）
+2. 外部ソース（OpenWork・厚労省・業界レポート等）から、診断を補強する追加データを提示
+3. 競合他社の具体的な事例やベンチマークデータを追加
+4. 各AIの改善提案について、実際の業界データに基づく実現可能性を評価
+
+データに基づいた客観的な検証を重視してください。`,
+
+                chatgpt: `あなたは世界最高峰のビジネス実務コンサルタントです。
+${baseIntro}
+【あなたの役割：実務コンサル 🧭】
+他のAIの診断結果を読んだ上で、以下を実行してください：
+
+1. 全AIの意見が一致している最重要改善ポイントをTOP3で抽出
+2. AI間で意見が分かれているポイントについて「結局どうすべきか」の実務判断を提示
+3. 「今すぐやるべきこと」「来月まで」「3ヶ月以内」の実務的タイムラインを作成
+4. 各改善案の工数（時間）と難易度を見積もり、最もROIが高い順に並べ替え
+
+「何が正しいか」ではなく「何を優先すべきか」に集中してください。`,
+
+                gemini: `あなたは世界最高峰のビジネス戦略コンサルタントです。
+${baseIntro}
+【あなたの役割：議長・最終決裁者 👑】
+他のAIの診断結果を全て俯瞰した上で、最終的な実装判断を行ってください：
+
+1. 各AIの優れた指摘を取り入れた「ベスト・オブ・ベスト」の改善リストを作成
+2. 「これは過剰な指摘」「これは的外れ」という判断も含めて、各AIの意見を評価
+3. 「これだけやれば公開OK」という最小限の必須改善リストを提示
+4. 心理学的・技術的観点から、改善の優先順位に独自の根拠を付与
+
+全AIの意見を統括し、最終決裁者として判断を下してください。`,
+
+                claude: `あなたは世界最高峰のデータ分析専門コンサルタントです。
+${baseIntro}
+【あなたの役割：批判的分析官 🔬】
+他のAIの診断結果を読んだ上で、以下を実行してください：
+
+1. 他のAIが見落としている「盲点」を最低3つ発見し指摘
+2. 各AIの改善提案について、数値シミュレーション（CVR変化の推定値等）を付与
+3. 市場データに基づく戦略的リスクの分析（市場規模の限界、ターゲット設定の妥当性等）
+4. ROI計算を含む、経営判断に直結する定量分析を提示
+
+褒めるよりも「他AIが気づいていない問題」の発見に注力してください。`,
+
+                deepseek: `あなたは世界最高峰のビジネス戦略コンサルタントです。
+${baseIntro}
+【あなたの役割：統合比較官 📊】
+他のAIの診断結果を読んだ上で、以下を実行してください：
+
+1. 全AIの評価を一覧比較表にまとめる（評価軸ごとに各AIの見解を並べる）
+2. 「全AI一致」の改善ポイントと「意見が分かれた」ポイントを明確に分離
+3. 意見が分かれたポイントについて、あなた独自の最適解を提示
+4. 最終的な統合アクションプラン（優先度・実施時期・期待効果）を作成
+
+全てを俯瞰して比較し、一枚の見やすい統合レポートにまとめてください。`
+            };
+
+            return rolePrompts[aiKey] || rolePrompts.deepseek;
+        }
+
+        function switchR2Tab(key) {
+            currentR2Tab = key;
+            document.querySelectorAll('.r2-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.r2-tab:nth-child(${['manus','chatgpt','gemini','claude','deepseek'].indexOf(key) + 1})`).classList.add('active');
+            document.getElementById('r2PromptDisplay').textContent = window.r2Prompts[key];
+        }
+
+        function copyR2Prompt() {
+            const text = window.r2Prompts[currentR2Tab];
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.r2-copy-btn');
+                btn.textContent = '✅ コピー完了！';
+                setTimeout(() => { btn.textContent = '📋 このプロンプトをコピー'; }, 2000);
+            });
+        }
+
+        // ===== ページ読み込み時にURLを反映 =====
+        window.addEventListener('DOMContentLoaded', () => {
+            applyUrl();
+        });
+    </script>
+</body>
+</html>
