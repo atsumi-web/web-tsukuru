@@ -491,8 +491,44 @@ $utf8 = New-Object System.Text.UTF8Encoding $false
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
 
+            <div class="highlight-box" style="background: #e3f2fd; border-left: 4px solid #1565c0; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📁 CSSファイル管理</h3>
+                <p>「ちょっとした追加」のたびにCSSファイルが増えると、優先順位が複雑化し、修正が効かなくなります</p>
+            </div>
+
+            <h2>12. CSSファイルは増やさない（1LP = 1CSS）</h2>
+            <p><strong>【重要】機能追加のたびに新しいCSSファイルを作るのは絶対禁止。</strong></p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：ファイル増殖</span>
+                <p>「CTAを強化したい」→ <code>cta-enhancement.css</code> を新規作成<br>
+                「ヒーローを調整したい」→ <code>hero-fix.css</code> を新規作成<br>
+                → どのファイルが優先されるか分からなくなり、修正が効かない事態に。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：1LP = 最大2ファイル</span>
+                <h4 style="margin:10px 0; font-size:0.95rem;">許可されるCSS構成</h4>
+                <ul style="margin-left:20px;">
+                    <li>✅ <strong>インラインCSS（<code>&lt;style&gt;</code>タグ）</strong>：フォント定義・CSS変数・FOUC防止の最小限のみ</li>
+                    <li>✅ <strong>外部CSS 1本（<code>renewal.css</code>）</strong>：全スタイルをここに集約</li>
+                </ul>
+                
+                <h4 style="margin:10px 0; font-size:0.95rem; color:#d73a49;">禁止事項</h4>
+                <ul style="margin-left:20px;">
+                    <li>❌ 機能単位でCSSファイルを分割（<code>cta-enhancement.css</code> など）</li>
+                    <li>❌ 修正用の上書きCSS（<code>hero-fix.css</code> など）</li>
+                    <li>❌ AIに「新しいCSSファイルを作って」と依頼すること</li>
+                </ul>
+                
+                <p style="margin-top:15px;"><strong>新機能を追加したいときは：</strong><br>
+                <code>renewal.css</code> の該当セクションを探して、そこに直接追記する。</p>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
             <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
-                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：11の鉄則</h3>
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：12の鉄則</h3>
                 <ol style="line-height: 2;">
                     <li>モバイルファースト</li>
                     <li>単一の情報源（One Source of Truth）</li>
@@ -505,6 +541,7 @@ $utf8 = New-Object System.Text.UTF8Encoding $false
                     <li><strong>Performance First</strong></li>
                     <li><strong>AI協働時の注意点</strong></li>
                     <li><strong style="color: #e53935;">文字化け完全防止プロトコル</strong></li>
+                    <li><strong style="color: #1565c0;">CSSファイルは増やさない（1LP = 1CSS）</strong></li>
                 </ol>
                 <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
             </div>

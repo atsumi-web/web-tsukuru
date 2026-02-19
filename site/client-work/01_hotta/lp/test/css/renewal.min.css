@@ -44,7 +44,7 @@ body .container {
 
 /* --- Header / Navigation --- */
 body .site-header {
-  height: 70px; /* 80px → 70px: ヘッダーをさらに縮小 */
+  height: 100px;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -57,7 +57,7 @@ body .site-header {
 }
 
 body .site-header.scrolled {
-  height: 70px;
+  height: 80px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -102,7 +102,7 @@ body .nav-menu li a.nav-cta {
     box-shadow: none !important;
   }
 
-  /* ヘッダーの高さを統一 */
+  /* ヘッダーの高さをモバイル用に適正化（平均的サイズ） */
   body .site-header,
   body .site-header.scrolled {
     height: 70px;
@@ -347,37 +347,6 @@ body .hero-image-mobile {
 
 /* Hero Section - Tablet & Mobile Optimization */
 
-/* 横長PC画面対応: 縦幅が900px以下(ノートPCなど)では余白を大幅削減 */
-@media (max-height: 900px) {
-  body #hero.hero-teto {
-    height: auto !important;
-    min-height: 100dvh;
-  }
-  body .hero-teto-container {
-    padding-top: 2.5rem !important; /* 8rem → 2.5rem: 上部余白を大幅削減 */
-    padding-bottom: 0.5rem !important;
-  }
-  body .hero-teto-content {
-    padding-top: 0rem !important; /* 2rem → 0rem */
-  }
-  body .teto-main-title {
-    margin-bottom: 1rem !important; /* 余白を縮小 */
-    font-size: clamp(2rem, 4vw, 4rem) !important;
-  }
-  body .teto-sub-title {
-    margin-bottom: 1rem !important; /* 2.5rem → 1rem */
-    font-size: 1.05rem !important;
-  }
-  body .hero-actions {
-    margin-top: 0.8rem !important; /* 2rem → 0.8rem */
-    gap: 1rem !important;
-  }
-  body .hero-tagline-grid {
-    gap: 0.6rem !important;
-    margin-bottom: 1rem !important;
-  }
-}
-
 /* 大きめのPC（1401-1600px）の調整 */
 @media (min-width: 1401px) and (max-width: 1600px) {
   body .hero-teto-visual {
@@ -395,7 +364,7 @@ body .hero-image-mobile {
     min-height: 600px;
     flex-direction: column;
     justify-content: center;
-    /* padding-top: 0を削除 - .hero-teto-containerのpaddingを使用 */
+    padding-top: 0;
   }
   body .hero-teto-visual {
     width: 100%;
@@ -434,7 +403,7 @@ body .hero-image-mobile {
   }
   body .hero-teto-container {
     width: 100%;
-    /* padding指定を削除 - index.htmlのインラインCSSで管理 */
+    padding: 120px 2rem 40px; /* ヘッダー100px + 最小限の余白、下部も確保 */
     margin-top: 0; /* PC版のmargin-top: 80pxをリセット（重要） */
     display: flex;
     flex-direction: column;
@@ -464,11 +433,24 @@ body .hero-image-mobile {
     padding-left: 0;
     font-size: 1rem;
   }
+  body .hero-tagline-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   body .hero-cta-tagline {
     border-left: 4px solid var(--accent-gold);
     border-radius: 0 8px 8px 0;
     padding: 0.5rem 1.2rem;
     animation: none;
+  }
+  body .hero-tagline-grid {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
   body .hero-actions {
     display: flex;
@@ -557,21 +539,6 @@ body .hero-image-mobile {
     font-size: 0.8rem; /* Slightly smaller text to fit */
     white-space: nowrap; /* Prevent breaking lines inside button */
   }
-
-  /* モバイル: 1列レイアウト + 1つ目のカードのみ表示 */
-  body .hero-tagline-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  body .hero-tagline-grid .hero-cta-tagline:nth-child(2),
-  body .hero-tagline-grid .hero-cta-tagline:nth-child(3) {
-    display: none;
-  }
 }
 
 /* --- Common Components --- */
@@ -592,14 +559,13 @@ body .premium-title {
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 1.5rem !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 body .premium-title::after {
   content: "" !important;
   display: block !important;
   width: 60px;
   height: 3px;
-  background-color: var(--accent-gold);
+  background-color: var(--navy-deep);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -836,7 +802,7 @@ body .interview-card {
   display: grid;
   grid-template-columns: 380px 1fr;
   gap: 3rem;
-  align-items: start; /* centerからstartに変更: sticky positioningを有効化 */
+  align-items: center;
   background: var(--bg-white);
   border-radius: 20px;
   padding: 3.5rem 3rem;
@@ -853,8 +819,7 @@ body .interview-card.reverse .interview-visual {
 }
 
 body .interview-visual {
-  position: sticky;
-  top: 100px; /* ヘッダー高さ(70px) + 余白 */
+  position: relative;
   width: 125%; /* 115% -> 125% (More presence) */
   margin-left: -25%; /* -15% -> -25% */
   aspect-ratio: 3 / 2;
@@ -1019,7 +984,6 @@ body .btn-read-more i {
   }
   body .interview-card .interview-visual,
   body .interview-card.reverse .interview-visual {
-    position: relative; /* モバイルではstickyを無効化 */
     width: 100%;
     margin: 0;
     aspect-ratio: 3 / 2;
@@ -1139,7 +1103,7 @@ body .environment-card i {
   border-radius: 50%;
 }
 body .environment-card h3 {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   color: var(--navy-deep);
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -1163,7 +1127,7 @@ body .environment-visual-card .content-box {
   padding: 2rem;
 }
 body .environment-visual-card h3 {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 body .environment-visual-card p {
   font-size: 0.95rem;
@@ -1214,7 +1178,7 @@ body .data-card {
 }
 body .data-label {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1rem;
   font-weight: 700;
@@ -1226,14 +1190,7 @@ body .data-val {
   color: var(--accent-gold);
   font-family: var(--font-en);
   margin-bottom: 1rem;
-  text-shadow: none;
-}
-body .data-val .data-unit {
-  font-size: 1.2rem;
-  font-family: var(--font-jp);
-  font-weight: 700;
-  opacity: 0.85;
-  margin: 0 0.15em;
+  text-shadow: 0 0 20px rgba(201, 169, 73, 0.3);
 }
 body .data-card p {
   font-size: 0.9rem;
@@ -1320,7 +1277,7 @@ body .guardians-text {
   animation: fadeInTitle 0.8s ease-out 0.4s forwards;
 }
 body .guardians-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--navy-deep);
   margin-bottom: 1.5rem;
@@ -1337,14 +1294,13 @@ body .guardians-points {
 /* --- Guardian Cards (Navy Background) --- */
 body .guardians-points li {
   display: flex;
-  gap: 0.2rem;
+  gap: 1rem;
   align-items: flex-start;
   background: var(--navy-deep);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  min-height: 100px;
 }
 
 body .guardians-points strong {
@@ -1362,68 +1318,29 @@ body .guardians-points p {
 body .check-icon {
   display: inline-flex;
   align-items: center;
-  padding-top: 1px;
   justify-content: center;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background: var(--accent-gold);
   color: var(--navy-deep);
   border-radius: 50%;
-  font-size: 0.85rem;
   font-weight: 900;
-  -webkit-text-stroke: 0.5px var(--navy-deep);
-  margin-top: 5px;
+  font-size: 0.8rem;
+  margin-top: 2px;
 }
 
-/* --- Special Notes (Single Card Layout) --- */
-body .notes-card {
-  max-width: 700px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 20px;
-  padding: 2.5rem 3rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-body .notes-card .features-list {
-  margin-bottom: 1.5rem;
-}
-body .notes-card .features-list li {
-  border-left: none;
-  box-shadow: none;
-  background: transparent;
-  padding: 0.8rem 0;
-  margin-bottom: 0;
-  border-radius: 0;
-  border-bottom: none;
-  font-size: 1rem;
-}
-body .notes-card .features-list li:last-child {
-  border-bottom: none;
-}
-body .notes-card .features-list li:hover {
-  transform: none;
-  box-shadow: none;
-}
-body .notes-card .features-list li i {
+/* --- Special Notes (Red -> Navy) --- */
+body .features-list li i {
   color: var(--navy-deep);
-  font-size: 1rem;
-  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
   vertical-align: middle;
 }
-body .notes-card .simple-note {
-  font-size: 0.85rem;
-  color: #999;
-  line-height: 1.8;
-  margin-top: 1rem;
-  text-align: left;
-}
 
-@media (max-width: 768px) {
-  body .notes-card {
-    padding: 1.5rem;
-  }
+/* Special Notes Card Border (Red -> Navy) */
+body .features-list li {
+  border-left: 4px solid var(--navy-deep);
 }
 
 @media (max-width: 900px) {
@@ -1445,13 +1362,6 @@ body .notes-card .simple-note {
 body .positions {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background: #fff;
-}
-body .positions .section-subtitle {
-  margin-top: 0;
-  padding-top: 1.5rem;
-  font-size: 1.1rem;
-  color: #666;
-  line-height: 1.8;
 }
 body .recruit-wrapper {
   max-width: 900px;
@@ -1515,9 +1425,9 @@ body .recruit-row .note {
   margin-top: 0.5rem;
 }
 body .benefit-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
   list-style: none;
   padding: 0;
 }
@@ -1544,8 +1454,7 @@ body .benefit-list li::before {
     padding-right: 0;
   }
   body .benefit-list {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 0.5rem 1rem;
   }
 }
 
@@ -1605,25 +1514,6 @@ body .map-link {
 }
 body .map-link:hover {
   text-decoration: underline;
-}
-body .ceo-signature {
-  display: block;
-  width: 280px;
-  height: auto;
-  min-height: 50px;
-  margin-top: 0.5rem;
-  opacity: 0.85;
-  max-width: 100%;
-}
-body .signature-badge {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #fff;
-  background: var(--navy-deep);
-  padding: 0.3rem 1rem;
-  border-radius: 30px;
-  letter-spacing: 0.15em;
 }
 
 /* Company Mobile Optimization */
@@ -2202,7 +2092,7 @@ body .faq-section {
 }
 body .faq-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -2484,7 +2374,6 @@ body .culture-ticker img:hover {
   color: var(--color-neutral-dark);
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 0;
 }
 
 /* モバイル対応 */
