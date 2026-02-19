@@ -19,14 +19,39 @@
   margin-bottom: 2rem;
 }
 
+/* セクション見出し */
+.section-heading-badges {
+  text-align: center;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+  position: relative;
+}
+
+.section-heading-badges::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-gold);
+  margin: 0.6rem auto 0;
+}
+
+/* ダーク背景用ゴールドライン */
+.gold-line::after {
+  background: var(--accent-gold);
+}
+
 .impact-badge {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
   padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(197, 160, 89, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.5);
   border-radius: 12px;
   min-width: 100px;
   transition: all 0.3s ease;
@@ -71,17 +96,40 @@
   }
 
   .hero-impact-badges {
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0 0.8rem;
   }
 
   .impact-badge {
-    padding: 0.8rem 1rem;
-    min-width: 85px;
+    padding: 1rem 0.8rem;
+    min-width: unset;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: 16px;
   }
 
+
   .impact-badge .badge-number {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #c5a059, #e8d5a3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .impact-badge .badge-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.2rem;
+  }
+
+  .hide-mobile {
+    display: none;
   }
 
   /* 選ばれる理由カード：モバイルで表示 */

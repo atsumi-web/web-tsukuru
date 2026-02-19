@@ -139,9 +139,10 @@ body #hero.hero-teto {
 
 body .hero-teto-container {
   width: 60%;
-  padding: 0 clamp(1rem, 4vw, 3rem);
+  padding-top: 70px;
+  padding-left: clamp(1rem, 4vw, 3rem);
   padding-right: 0;
-  margin-top: 0;
+  padding-bottom: 0;
   margin-right: -10%;
   display: flex;
   flex-direction: column;
@@ -180,7 +181,7 @@ body .teto-catch-en {
 
 body .teto-main-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.8vw, 5.2rem); /* バランスの取れたサイズ */
+  font-size: clamp(2rem, 4.8vw, 5.2rem); /* モバイルで少し小さく */
   color: #fff;
   line-height: 1.1;
   margin-bottom: clamp(2.5rem, 4vh, 4rem);
@@ -272,7 +273,7 @@ body .teto-sub-title {
   font-size: 1.25rem; /* 1.2remより読みやすく */
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
-  max-width: 700px;
+  max-width: 100%;
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   opacity: 0;

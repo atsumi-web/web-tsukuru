@@ -55,7 +55,7 @@
       body .mobile-menu-toggle{display:none}
       /* Hero - Critical FOUC Prevention */
       body #hero.hero-teto{height:100dvh;display:flex;position:relative;background-color:#001a3d;overflow:hidden}
-      body .hero-teto-container{width:50%;padding-left:3%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;z-index:2;height:100%;color:#fff}
+      body .hero-teto-container{width:50%;padding-left:3%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;z-index:2;color:#fff}
       body .hero-teto-content{width:100%;max-width:800px;position:relative;z-index:2}
       body .hero-teto-visual{position:absolute;top:0;right:0;width:60%;height:100%;clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);overflow:hidden;z-index:1}
       body .hero-teto-visual video{width:100%;height:100%;object-fit:cover}
@@ -112,14 +112,15 @@
 
     <!-- 非クリティカルCSS (非同期読み込み) -->
     <link rel="stylesheet" href="css/style.min.css?v=5.3" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="css/renewal.css?v=30.1" />
+    <link rel="stylesheet" href="css/renewal.css?v=30.2" />
     <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
-    <link rel="stylesheet" href="css/cta-enhancement.css?v=3.0" />
+    <link rel="stylesheet" href="css/cta-enhancement.css?v=3.1" />
     <noscript>
       <link rel="stylesheet" href="css/style.min.css?v=5.3" />
       <link rel="stylesheet" href="css/renewal.css?v=8.6" />
       <link rel="stylesheet" href="css/hero-features-mobile.css?v=1.0" />
     </noscript>
+
     
     <!-- Google Fonts (最適化: 必要なウェイトのみ) -->
     <link
@@ -219,10 +220,10 @@
           <div class="hero-actions" style="margin-top: 3rem; margin-right: auto;">
 
             <!-- ▼ CTA強化ブロック -->
-            <div class="cta-enhanced-block" style="max-width: 800px; align-items: flex-start;">
+            <div class="cta-enhanced-block" style="align-items: flex-start; width: 100%;">
               
               <!-- 信頼シグナル（社会的証明）- CTAの前に配置 -->
-              <div class="cta-trust-signals" style="text-align: center; justify-content: center; margin-bottom: 0.2rem; width: 700px; max-width: 100%;">
+              <div class="cta-trust-signals" style="text-align: center; justify-content: center; margin-bottom: 0.2rem;">
                 <span><i class="fas fa-circle-check" style="color: var(--accent-gold); margin-right: 0.3em;"></i>質問だけでもOK</span>
                 <span><i class="fas fa-circle-check" style="color: var(--accent-gold); margin-right: 0.3em;"></i>在職中でもOK</span>
                 <span><i class="fas fa-circle-check" style="color: var(--accent-gold); margin-right: 0.3em;"></i>未経験の方も歓迎</span>
@@ -230,8 +231,8 @@
               </div>
               
               <!-- メインCTA：LINE登録（低ハードル） -->
-              <a href="#entry" class="btn btn-primary btn-large cta-enhanced" style="width: 700px; max-width: 100%; padding: 1.5rem 3rem; min-height: 85px;">
-                <i class="fab fa-line" style="font-size: 2rem;"></i>
+              <a href="#entry" class="btn btn-primary btn-large cta-enhanced" style="max-width: 100%; padding: 1.5rem 2rem;">
+                <i class="fab fa-line"></i>
                 <span class="cta-content">
                   <span class="cta-main" style="font-size: 1.25rem;">60秒で完了！LINEで質問する</span>
                   <span class="cta-sub">「未経験でも大丈夫？」「仕事の内容は？」今すぐ聞く</span>
@@ -239,7 +240,7 @@
               </a>
               
               <!-- サブCTA：即応募希望者向け -->
-              <div class="cta-direct-apply" style="text-align: center; width: 700px; max-width: 100%; margin-top: 0.5rem;">
+              <div class="cta-direct-apply" style="text-align: center; margin-top: 0.3rem;">
                 <p>※いきなり面接はしません。履歴書もまだ不要です。</p>
               </div>
             </div>
@@ -302,6 +303,8 @@
     <section class="hero-features" id="hero-features">
       <div class="container">
         <!-- 数値インパクトバッジ（Gemini推奨 #4） -->
+        <span class="label-en" style="color: rgba(255,255,255,0.5);">FACTS & NUMBERS</span>
+        <h2 class="premium-title gold-line" style="color: #fff; margin-bottom: 1.5rem;">数字で見る堀田建設</h2>
         <div class="hero-impact-badges">
           <div class="impact-badge">
             <span class="badge-number">2<span class="unit">万円</span></span>
@@ -311,7 +314,7 @@
             <span class="badge-number">13.5<span class="unit">h</span></span>
             <span class="badge-label">月平均残業</span>
           </div>
-          <div class="impact-badge">
+          <div class="impact-badge hide-mobile">
             <span class="badge-number">0<span class="unit">円</span></span>
             <span class="badge-label">資格取得費用</span>
           </div>

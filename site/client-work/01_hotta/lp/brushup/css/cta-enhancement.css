@@ -10,17 +10,29 @@
   align-items: flex-start;
   gap: 1rem;
   width: 100%;
-  max-width: 650px;
+  max-width: 100%;
+}
+
+/* Hero Actions wrapper */
+.hero-actions {
+  margin-top: 3rem;
+  margin-right: auto;
 }
 
 /* Enhanced CTA Button */
 .cta-enhanced {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  padding: 1.2rem 2.5rem !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
   font-size: 1.1rem;
+  min-height: 85px;
+  max-width: 100%;
+}
+
+.cta-enhanced .fab {
+  font-size: 2rem;
 }
 
 .cta-content {
@@ -28,11 +40,11 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.25rem;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .cta-main {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -51,7 +63,9 @@
   gap: 0.75rem;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.9);
-  margin-top: 0.5rem;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0.2rem;
 }
 
 .cta-trust-signals span {
@@ -65,7 +79,8 @@
 /* Direct Apply Link */
 .cta-direct-apply {
   width: 100%;
-  margin-top: 0.5rem;
+  text-align: center;
+  margin-top: 0.3rem;
 }
 
 .cta-direct-apply p {
@@ -117,22 +132,30 @@
   color: white;
 }
 
-/* Mobile Optimization */
+/* Mobile/Tablet Optimization */
 @media (max-width: 1200px) {
+  /* Hero content width constraint */
+  body .hero-teto-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   .cta-enhanced-block {
     align-items: center;
     max-width: 100%;
   }
   
   .cta-enhanced {
-    width: 100% !important;
-    justify-content: center !important;
+    width: 66%;
+    margin: 0 auto;
+    justify-content: center;
     text-align: center;
   }
   
   .cta-content {
     align-items: center;
     text-align: center;
+    white-space: normal;
   }
   
   .cta-main {
@@ -153,6 +176,8 @@
   }
   
   .cta-direct-apply {
+    width: 66%;
+    margin: 0 auto;
     text-align: center;
   }
   
@@ -164,17 +189,21 @@
   .micro-cta p {
     font-size: 0.9rem;
   }
+
+  /* Title first line white */
+  body .teto-main-title span[style*="color:#fff"] {
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+  }
 }
 
 /* Target Highlight (for Pattern A hero copy) */
 body .teto-main-title .target-highlight {
-  background: linear-gradient(to right, #c5a059, #ffebbc, #c5a059);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shineText 6s linear infinite;
-  display: inline;
+  color: #c5a059;
+  -webkit-text-fill-color: #c5a059;
+  display: inline-block;
+  margin-top: 1.2rem;
+  letter-spacing: -0.08em;
 }
 
 /* Subtitle Line - smaller secondary text in hero title */
@@ -183,14 +212,14 @@ body .teto-main-title .subtitle-line {
   font-size: 0.8em;
   display: inline;
   line-height: 1.3;
-  color: #fff !important;
+  color: #fff;
 }
 
 /* Line 2: 「建設業、やってみようかな」 */
 body .teto-main-title .subtitle-line-medium {
   font-size: 0.8em;
-  color: #fff !important;
-  letter-spacing: -0.06em;
+  color: #fff;
+  letter-spacing: -0.08em;
 }
 
 /* Mobile: hide sub text for cleaner look */
@@ -205,3 +234,28 @@ body .teto-main-title .subtitle-line-medium {
   }
 }
 
+/* Mobile: full width CTA */
+@media (max-width: 768px) {
+  .cta-enhanced {
+    width: 100%;
+    min-height: 60px;
+  }
+
+  .cta-enhanced .fab {
+    font-size: 1.5rem;
+  }
+
+  .cta-trust-signals {
+    font-size: 0.7rem;
+    gap: 0.2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .cta-trust-signals span {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .cta-direct-apply {
+    width: 100%;
+  }
+}
