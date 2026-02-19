@@ -65,7 +65,7 @@
 /* 1201-1400px: コンテンツがはみ出さないよう微調整 */
 @media (min-width: 1201px) and (max-width: 1400px) {
   #hero .hero-teto-container {
-    width: 52%;
+    width: 53%;
     padding-right: 2rem;
   }
 }
@@ -192,7 +192,7 @@
 
 .teto-main-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 4.8vw, 5.2rem);
+  font-size: clamp(1.8rem, 4.8vw, 5.2rem);
   color: #fff;
   line-height: 1.1;
   margin-bottom: clamp(2.5rem, 4vh, 4rem);
@@ -324,7 +324,14 @@
 
 @media (min-width: 1201px) {
   .teto-sub-title {
-    max-width: 90%;
+    max-width: 95%;
+  }
+}
+
+/* 1201-1400px: サブタイトルの孤立改行を防止 */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .teto-sub-title {
+    font-size: 1.05rem;
   }
 }
 
@@ -626,8 +633,11 @@
 @media (max-width: 768px) {
   .cta-trust-signals {
     font-size: 0.7rem;
-    gap: 0.2rem;
+    gap: 0.4rem 0.8rem;
     margin-bottom: 0.3rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
   }
 
   .cta-trust-signals span {
