@@ -52,6 +52,7 @@
     width: 100%;
     padding: 260px 1rem 120px;
     text-align: center;
+    align-items: center;
     margin: 0 auto;
   }
 }
@@ -107,8 +108,7 @@
     z-index: 0;
   }
 }
-
-/* Tablet: 静止画切替 */
+/* タブレット以下: 静止画に切替（パフォーマンス＋安定性） */
 .hero-image-mobile {
   display: none;
 }
@@ -117,7 +117,7 @@
   display: block;
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
   .hero-video {
     display: none;
   }
@@ -645,17 +645,25 @@
   }
 }
 
-/* Direct Apply Link */
+/* Direct Apply Link - CTAボタン直下の安心テキスト */
 .cta-direct-apply {
   width: 100%;
+  max-width: 480px;
   text-align: center;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
 }
 
 .cta-direct-apply p {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
   margin: 0;
+}
+
+/* 1201-1600px: ボタンのmax-widthに合わせる */
+@media (min-width: 1201px) and (max-width: 1600px) {
+  .cta-direct-apply {
+    max-width: 420px;
+  }
 }
 
 .cta-direct-apply a {
@@ -672,7 +680,8 @@
 @media (max-width: 1200px) {
   .cta-direct-apply {
     width: 66%;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0.5rem auto 0;
     text-align: center;
   }
 }
@@ -832,7 +841,7 @@
   font-family: var(--font-en);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .mouse-scroll {
     display: none;
   }
