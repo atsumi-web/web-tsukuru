@@ -592,13 +592,14 @@ body .premium-title {
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 1.5rem !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 body .premium-title::after {
   content: "" !important;
   display: block !important;
   width: 60px;
   height: 3px;
-  background-color: var(--navy-deep);
+  background-color: var(--accent-gold);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1225,7 +1226,7 @@ body .data-val {
   color: var(--accent-gold);
   font-family: var(--font-en);
   margin-bottom: 1rem;
-  text-shadow: 0 0 20px rgba(201, 169, 73, 0.3);
+  text-shadow: none;
 }
 body .data-card p {
   font-size: 0.9rem;
@@ -1312,7 +1313,7 @@ body .guardians-text {
   animation: fadeInTitle 0.8s ease-out 0.4s forwards;
 }
 body .guardians-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--navy-deep);
   margin-bottom: 1.5rem;
@@ -1329,13 +1330,14 @@ body .guardians-points {
 /* --- Guardian Cards (Navy Background) --- */
 body .guardians-points li {
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
   align-items: flex-start;
   background: var(--navy-deep);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 100px;
 }
 
 body .guardians-points strong {
@@ -1355,27 +1357,65 @@ body .check-icon {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: var(--accent-gold);
   color: var(--navy-deep);
   border-radius: 50%;
+  font-size: 0.85rem;
   font-weight: 900;
-  font-size: 0.8rem;
-  margin-top: 2px;
+  -webkit-text-stroke: 0.5px var(--navy-deep);
+  margin-top: 5px;
 }
 
-/* --- Special Notes (Red -> Navy) --- */
-body .features-list li i {
+/* --- Special Notes (Single Card Layout) --- */
+body .notes-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+body .notes-card .features-list {
+  margin-bottom: 1.5rem;
+}
+body .notes-card .features-list li {
+  border-left: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0.8rem 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+}
+body .notes-card .features-list li:last-child {
+  border-bottom: none;
+}
+body .notes-card .features-list li:hover {
+  transform: none;
+  box-shadow: none;
+}
+body .notes-card .features-list li i {
   color: var(--navy-deep);
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.75rem;
   vertical-align: middle;
 }
+body .notes-card .simple-note {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.8;
+  margin-top: 1rem;
+  text-align: left;
+}
 
-/* Special Notes Card Border (Red -> Navy) */
-body .features-list li {
-  border-left: 4px solid var(--navy-deep);
+@media (max-width: 768px) {
+  body .notes-card {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1549,6 +1589,25 @@ body .map-link {
 }
 body .map-link:hover {
   text-decoration: underline;
+}
+body .ceo-signature {
+  display: block;
+  width: 280px;
+  height: auto;
+  min-height: 50px;
+  margin-top: 0.5rem;
+  opacity: 0.85;
+  max-width: 100%;
+}
+body .signature-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--navy-deep);
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+  letter-spacing: 0.15em;
 }
 
 /* Company Mobile Optimization */
@@ -2409,6 +2468,7 @@ body .culture-ticker img:hover {
   color: var(--color-neutral-dark);
   font-size: 0.95rem;
   line-height: 1.6;
+  margin-bottom: 0;
 }
 
 /* モバイル対応 */

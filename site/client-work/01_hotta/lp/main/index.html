@@ -36,7 +36,7 @@
       body .logo-sub{font-size:.7rem;color:var(--color-neutral-light);font-weight:800;letter-spacing:.15em;border-left:1px solid var(--color-neutral-border);padding-left:12px;margin-top:2px}
       /* Nav Menu - PC (defined in renewal.css) */
       body .nav-menu{display:flex;list-style:none;gap:1.5rem;align-items:center;margin:0;padding:0}
-      body .nav-menu a{color:var(--navy-deep);text-decoration:none;font-weight:600;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
+      body .nav-menu a{color:var(--navy-deep);text-decoration:none;font-weight:400;padding:.5rem 0;position:relative;transition:all .2s ease;font-size:.95rem}
       body .nav-menu a:hover{color:var(--navy-light)}
       body .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:#c5a059;transition:all .2s ease}
       body .nav-menu a:hover::after{width:100%}
@@ -332,7 +332,15 @@
               亀山の地で、一緒に新しい歴史を刻んでいきましょう。
             </p>
             <div class="signature">
-              <p>代表取締役　堀田 誠</p>
+              <span class="signature-badge">代表取締役</span>
+              <img
+                class="ceo-signature"
+                srcset="images/company/hottamakoto_mobile.webp 400w, images/company/hottamakoto.webp 800w"
+                sizes="(max-width: 768px) 150px, 200px"
+                src="images/company/hottamakoto.webp"
+                alt="代表取締役 堀田 誠"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -719,6 +727,7 @@
           <span class="schedule-time">10:00</span>
           <div class="schedule-detail">
             <h4>15分休憩</h4>
+            <p>水分補給や職人さんとのコミュニケーションの時間</p>
           </div>
         </div>
         <div class="schedule-item">
@@ -753,6 +762,7 @@
           <span class="schedule-time">15:00</span>
           <div class="schedule-detail">
             <h4>15分休憩</h4>
+            <p>午後の作業に向けてリフレッシュ</p>
           </div>
         </div>
         <div class="schedule-item">
@@ -796,6 +806,7 @@
           <span class="schedule-time">10:00</span>
           <div class="schedule-detail">
             <h4>15分休憩</h4>
+            <p>水分補給や職人さんとのコミュニケーションの時間</p>
           </div>
         </div>
         <div class="schedule-item">
@@ -1609,7 +1620,6 @@
         <div class="entry-options">
           <!-- Option 1: LINE -->
           <div class="entry-card line">
-            <div class="card-badge">一番カンタン！</div>
             <div class="card-icon"><i class="fab fa-line"></i></div>
             <h3>LINEで聞く</h3>
             <p>
@@ -1629,7 +1639,6 @@
 
           <!-- Option 2: 簡易フォーム -->
           <div class="entry-card form">
-            <div class="card-badge sub">LINEなしでOK</div>
             <div class="card-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
                 <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
@@ -1696,14 +1705,14 @@
 
             <ul class="guardians-points">
               <li>
-                <span class="check-icon">✓</span>
+                <span class="check-icon"><i class="fas fa-check"></i></span>
                 <div>
                   <strong>創業60年以上の安定基盤</strong>
                   <p>官公庁案件も多数手がける、地域屈指の安定企業です。</p>
                 </div>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="check-icon"><i class="fas fa-check"></i></span>
                 <div>
                   <strong>地域の「防災拠点」となる本社</strong>
                   <p>
@@ -1712,7 +1721,7 @@
                 </div>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="check-icon"><i class="fas fa-check"></i></span>
                 <div>
                   <strong>資格取得を100%バックアップ</strong>
                   <p>
@@ -1738,34 +1747,19 @@
       <div class="container">
         <h2 class="premium-title title-clean-center"><span>NOTES</span>特記事項</h2>
 
-        <ul class="features-list">
-          <li>
-            <i class="fas fa-info-circle"></i>
-            学歴不問（高卒・専門学校卒・大卒すべて歓迎）
-          </li>
-          <li>
-            <i class="fas fa-info-circle"></i>
-            未経験者大歓迎（第二新卒・社会人経験者）
-          </li>
-          <li>
-            <i class="fas fa-info-circle"></i>
-            地元三重県在住者優先ですが、県外からの転職も歓迎
-          </li>
-          <li>
-            <i class="fas fa-info-circle"></i>
-            資格取得支援制度あり（建築士、施工管理技士など）
-          </li>
-          <li>
-            <i class="fas fa-info-circle"></i>
-            借上げ社宅制度あり（一人暮らし開始をサポート）
-          </li>
-        </ul>
-
-        <p class="simple-note">
-          ※ 求人内容に関する詳細は、面談時にご説明いたします。<br />
-          ※
-          当社は、国籍・年齢・性別・障害の有無にかかわらず、能力と意欲を重視した採用を行っています。
-        </p>
+        <div class="notes-card">
+          <ul class="features-list">
+            <li><i class="fas fa-info-circle"></i>学歴不問（高卒・専門学校卒・大卒すべて歓迎）</li>
+            <li><i class="fas fa-info-circle"></i>未経験者大歓迎（第二新卒・社会人経験者）</li>
+            <li><i class="fas fa-info-circle"></i>地元三重県在住者優先ですが、県外からの転職も歓迎</li>
+            <li><i class="fas fa-info-circle"></i>資格取得支援制度あり（建築士、施工管理技士など）</li>
+            <li><i class="fas fa-info-circle"></i>借上げ社宅制度あり（一人暮らし開始をサポート）</li>
+          </ul>
+          <p class="simple-note">
+            ※ 求人内容に関する詳細は、面談時にご説明いたします。<br />
+            ※ 当社は、国籍・年齢・性別・障害の有無にかかわらず、能力と意欲を重視した採用を行っています。
+          </p>
+        </div>
       </div>
     </section>
 
