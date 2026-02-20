@@ -403,12 +403,12 @@ body .hero-image-mobile {
     z-index: 0;
     clip-path: none;
   }
-  
+
   /* モバイル: ビデオ非表示 */
   body .hero-video {
     display: none;
   }
-  
+
   /* モバイル: 静止画表示 */
   body .hero-image-mobile {
     display: block;
@@ -416,7 +416,7 @@ body .hero-image-mobile {
     height: 100%;
     object-fit: cover;
   }
-  
+
   body .hero-teto-visual::after {
     content: "";
     position: absolute;
@@ -567,7 +567,7 @@ body .hero-image-mobile {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   body .hero-tagline-grid .hero-cta-tagline:nth-child(2),
   body .hero-tagline-grid .hero-cta-tagline:nth-child(3) {
     display: none;
@@ -1001,45 +1001,44 @@ body .btn-read-more i {
   font-size: 0.9rem;
 }
 
-
 @media (max-width: 900px) {
   body .voice-grid {
     gap: 4rem;
     margin-top: 2rem;
   }
-  body .interview-card,
-  body .interview-card.reverse {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 0 !important;
-    gap: 0 !important;
+  body #voice .interview-card,
+  body #voice .interview-card.reverse {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
     overflow: hidden;
-    background: #fff;
+    background: var(--bg-white);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
   }
-  body .interview-card .interview-visual,
-  body .interview-card.reverse .interview-visual {
-    order: -1 !important;
-    position: static !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    top: auto !important;
-    transform: none !important;
+  body #voice .interview-card .interview-visual,
+  body #voice .interview-card.reverse .interview-visual {
+    order: -1;
+    position: static;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    top: auto;
+    transform: none;
     flex-shrink: 0;
     line-height: 0;
     height: auto;
     aspect-ratio: auto;
     border-radius: 0;
   }
-  body .interview-card .interview-visual img,
-  body .interview-card.reverse .interview-visual img {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
+  body #voice .interview-card .interview-visual img,
+  body #voice .interview-card.reverse .interview-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
     object-fit: cover;
     border-radius: 0;
     max-height: none;
@@ -2380,7 +2379,6 @@ body .culture-ticker img:hover {
     height: 160px;
   }
 }
-
 
 /* ===== 1日の業務フローセクション ===== */
 /* 1日の業務フローセクションのCSS */
