@@ -620,6 +620,7 @@ body .btn-read-more i {
   }
   body .interview-card.reverse .interview-visual {
     order: -1; /* デスクトップのorder:2をリセット → 画像を上に */
+    margin: 0; /* デスクトップのmargin-right:-25%をリセット → 右の見切れ解消 */
   }
   body .interview-visual img {
     border-radius: 0;
