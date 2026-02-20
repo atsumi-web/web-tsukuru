@@ -592,8 +592,8 @@ body .btn-read-more i {
     margin-left: auto;
     margin-right: auto;
   }
-  body .interview-card,
-  body .interview-card.reverse {
+  body .voice-grid .interview-card,
+  body .voice-grid .interview-card.reverse {
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -602,11 +602,11 @@ body .btn-read-more i {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   }
-  body .interview-card .interview-visual,
-  body .interview-card.reverse .interview-visual {
+  body .voice-grid .interview-card .interview-visual,
+  body .voice-grid .interview-card.reverse .interview-visual {
     display: block;
     position: relative;
-    top: auto; /* デスクトップのsticky用top:100pxをリセット ← 根本原因！ */
+    top: auto;
     width: 100%;
     height: 240px;
     margin: 0;
@@ -618,9 +618,9 @@ body .btn-read-more i {
     z-index: auto;
     overflow: hidden;
   }
-  body .interview-card.reverse .interview-visual {
-    order: -1; /* デスクトップのorder:2をリセット → 画像を上に */
-    margin: 0; /* デスクトップのmargin-right:-25%をリセット → 右の見切れ解消 */
+  body .voice-grid .interview-card.reverse .interview-visual {
+    order: -1;
+    margin: 0;
   }
   body .interview-visual img {
     border-radius: 0;
