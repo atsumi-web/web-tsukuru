@@ -593,32 +593,38 @@ body .btn-read-more i {
   }
   body .interview-card,
   body .interview-card.reverse {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     padding: 0;
-    gap: 0;
-    overflow: hidden; /* 画像上の白い余白を防ぐ */
+    overflow: hidden;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   }
   body .interview-card .interview-visual,
   body .interview-card.reverse .interview-visual {
-    position: relative; /* モバイルではstickyを無効化 */
+    display: block;
+    position: relative;
+    top: auto; /* デスクトップのsticky用top:100pxをリセット ← 根本原因！ */
     width: 100%;
+    height: 240px;
     margin: 0;
-    aspect-ratio: 3 / 2;
-    height: auto;
     border-radius: 0;
     padding: 0;
-    background: transparent; /* デスクトップのwhite背景をリセット */
+    background: transparent;
     box-shadow: none;
-    order: -1;
     transform: none;
+    z-index: auto;
+    overflow: hidden;
   }
   body .interview-visual img {
-    border-radius: 0; /* overflow:hiddenのカードが角をクリップする */
-    max-height: 100%;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* 人in物の上部を表示 */
     filter: none;
+    max-height: none;
   }
   body .role-badge {
     top: auto;
@@ -639,7 +645,7 @@ body .btn-read-more i {
     color: var(--navy-deep);
   }
   body .interview-content {
-    padding: 2rem 1.5rem;
+    padding: 3.5rem 1.5rem 2rem;
   }
   body .qa-item {
     padding: 1rem 1.5rem 1rem 0.8rem;
@@ -651,11 +657,6 @@ body .btn-read-more i {
   }
   body .interview-catch {
     font-size: 1.1rem;
-  }
-  body .role-badge {
-    bottom: 10px;
-    left: 10px;
-    padding: 0.6rem 1rem;
   }
 }
 
