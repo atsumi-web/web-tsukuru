@@ -2160,19 +2160,24 @@ body .header-nav {
   position: relative;
   overflow: hidden;
   margin-top: 2rem;
+  /* containerを突き破って全幅に */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 1rem 0;
   /* 両端をフェードアウト */
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 8%,
-    #000 92%,
+    #000 6%,
+    #000 94%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    #000 8%,
-    #000 92%,
+    #000 6%,
+    #000 94%,
     transparent 100%
   );
 }
