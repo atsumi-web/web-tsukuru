@@ -1984,6 +1984,9 @@ body .culture-ticker img:hover {
   .pc-only {
     display: none;
   }
+  body .premium-title .pc-only {
+    display: none;
+  }
   body .culture-ticker-wrapper {
     margin-top: 3rem;
   }
