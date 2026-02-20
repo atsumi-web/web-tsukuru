@@ -2336,15 +2336,3 @@ body .header-nav {
     font-size: 0.85rem;
   }
 }
-
-/* --- Hero Container: Mobile Vertical Centering --- */
-@media (max-width: 1200px) {
-  #hero .hero-teto-container {
-    padding: 80px 1.5rem 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100dvh;
-    box-sizing: border-box;
-  }
-}
