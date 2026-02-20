@@ -2122,6 +2122,14 @@ body .header-nav {
   margin-right: 1.5rem;
 }
 
+@media (max-width: 1135px) {
+  body .header-nav {
+    margin-right: 0;
+    width: 100%;
+    max-width: none;
+  }
+}
+
 /* ========================================
    CTA Buttons - Rebuilt Clean Implementation
    ======================================== */
