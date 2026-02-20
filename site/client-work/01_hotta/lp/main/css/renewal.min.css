@@ -977,7 +977,7 @@ body .btn-read-more i {
     grid-template-columns: 1fr;
     padding: 0;
     gap: 0;
-    overflow: visible;
+    overflow: hidden;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -988,8 +988,9 @@ body .btn-read-more i {
     margin: 0;
     aspect-ratio: 3 / 2;
     height: auto;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     padding: 0;
+    background: transparent;
     box-shadow: none;
     order: -1;
     transform: none;
