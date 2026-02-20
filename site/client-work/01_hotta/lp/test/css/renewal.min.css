@@ -145,9 +145,9 @@ body .premium-title {
   font-weight: 700;
   color: var(--navy-deep);
   line-height: 1.4;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2.5rem;
   border-bottom: none;
 }
 body .premium-title::after {
@@ -744,6 +744,7 @@ body .data-section::before {
 }
 body .hero-features {
   text-align: center;
+  padding-top: clamp(3rem, 6vw, 5rem);
 }
 body .hero-features .label-en {
   display: block;
@@ -753,12 +754,13 @@ body .hero-features .premium-title {
   color: #fff;
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   font-weight: 600;
-  padding-bottom: 0;
   margin-bottom: 2rem;
   letter-spacing: 0.05em;
 }
 body .hero-features .premium-title::after {
-  display: none;
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 body .data-section .premium-title {
   color: #fff;
@@ -1661,15 +1663,16 @@ body .fs-xs {
 }
 body .premium-title.title-clean-center,
 body .section-title.title-clean-center {
-  text-align: center !important;
-  padding-bottom: 0 !important;
-  border-bottom: none !important;
-  margin-bottom: 2rem !important;
+  text-align: center;
+  border-bottom: none;
+  margin-bottom: 2rem;
+  padding-bottom: 2.5rem;
 }
 body .premium-title.title-clean-center::after,
 body .section-title.title-clean-center::after {
-  display: none !important;
-  content: none !important;
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* --- Culture Section (BBQ) --- */
