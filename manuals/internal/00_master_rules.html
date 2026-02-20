@@ -382,6 +382,16 @@ http://127.0.0.1:5500/manuals/internal/09_coding_rules.html
 【作業ファイル】
 （例：site/client-work/クライアント名/lp/test/）</pre>
         </div>
+
+        <!-- 知見追記ボタン -->
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5d5b0;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <strong style="font-size: 0.85rem; color: #92400e;">📚 今日の知見をルール化（作業後に使う）</strong>
+            <button onclick="copyUpdateRules()" id="updateRulesBtn" style="background: #0f172a; color: #c5a059; border: none; border-radius: 6px; padding: 4px 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; font-family: 'Noto Sans JP', sans-serif;">コピー</button>
+          </div>
+          <pre style="background: #1e293b; color: #e2e8f0; padding: 14px 16px; border-radius: 8px; font-size: 0.82rem; margin: 0; white-space: pre-wrap; font-family: Consolas, monospace;">/update-rules</pre>
+          <p style="font-size: 0.78rem; color: #78350f; margin: 8px 0 0;">↑ コピーしてチャットに貼るだけで、今日のデバッグ事例・知見をルールブックに自動追記します。</p>
+        </div>
       </div>
 
       <!-- 1. プロジェクト基本情報 -->
@@ -755,6 +765,19 @@ http://127.0.0.1:5500/manuals/internal/09_coding_rules.html
             btn.textContent = "コピー";
             btn.style.background = "#c5a059";
             btn.style.color = "#0f172a";
+          }, 2000);
+        });
+      }
+      function copyUpdateRules() {
+        navigator.clipboard.writeText("/update-rules").then(() => {
+          const btn = document.getElementById("updateRulesBtn");
+          btn.textContent = "✅ コピーしました";
+          btn.style.background = "#16a34a";
+          btn.style.color = "white";
+          setTimeout(() => {
+            btn.textContent = "コピー";
+            btn.style.background = "#0f172a";
+            btn.style.color = "#c5a059";
           }, 2000);
         });
       }

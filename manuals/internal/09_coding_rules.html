@@ -602,6 +602,71 @@ $utf8 = New-Object System.Text.UTF8Encoding $false
             </div>
 
 
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #f0f4ff; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🔍 困った時の事例集</h3>
+                <p>実際のデバッグで発見した「これが原因だった」を症状ベースで記録。同じ罠に2度ハマらないために。<br><small>📅 2026-02-21 追記（堀田建設LP モバイルデバッグセッション）</small></p>
+            </div>
+
+            <h2>事例1：モバイルで画像の上に空白が出る</h2>
+            <p><strong>症状：</strong>Broken GridをモバイルでリセットしたのにデスクトップのCSS（position:sticky）が残り、画像が下にずれる。</p>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">原因</span>
+                <p><code>position: sticky</code> の <code>top: 100px</code> が、<code>position: relative</code> にリセット後も残る。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">解決策</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">.visual { position: relative; top: auto; /* ← 必須！ */ width: 100%; margin: 0; }</pre>
+            </div>
+
+            <h2>事例2：モバイルでカードの右側が見切れる</h2>
+            <p><strong>症状：</strong>特定のカード（reverseクラス）だけ右端が画面からはみ出す。他のカードは正常。</p>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">原因</span>
+                <p>デスクトップの <code>max-width: 1100px</code> がモバイルで残り、containerのpaddingを超えて画面幅を突き破る。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">解決策</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* モバイル用に親カードへ追加 */
+.card { max-width: 100%; overflow: hidden; }</pre>
+            </div>
+
+            <h2>事例3：モバイルCSSが効かない（詳細度負け）</h2>
+            <p><strong>症状：</strong>モバイル用の <code>margin: 0</code> を書いたのにデスクトップのスタイルが残っている。</p>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">原因</span>
+                <p>デスクトップセレクターのクラス数が多く（詳細度が高く）、モバイルセレクターが負けている。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">解決策：親セレクターを追加して詳細度を上げる</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* NG（詳細度が低くてデスクトップに負ける） */
+body .card .visual { margin: 0; }
+
+/* OK（親クラスを足して詳細度を上げる。!importantは不要） */
+body .voice-grid .card .visual { margin: 0; }</pre>
+            </div>
+
+            <h2>事例4：デプロイ成功なのにスマホに反映されない</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">デバッグ手順（この順番で試す）</span>
+                <ol style="margin-left: 20px; line-height: 2;">
+                    <li><strong>ファイル確認：</strong><code>Select-String</code>で変更が実際に書き込まれているか確認</li>
+                    <li><strong>PCで確認：</strong>F12 → Network → 「キャッシュを無効化」→ Ctrl+Shift+R</li>
+                    <li><strong>バージョンバンプ：</strong>CSS読み込みを <code>renewal.css?v=9.2</code> のように更新</li>
+                    <li><strong>スマホのシークレットモード：</strong>スマホはPCと別キャッシュのためIncognitoで確認</li>
+                </ol>
+            </div>
+
+            <h2>事例5：カード内h3の改行でカード高さが揃わない</h2>
+            <div class="rule-box good">
+                <span class="badge badge-good">ルール：br-sp-only の使い分け</span>
+                <ul style="margin-left: 20px;">
+                    <li>✅ セクション <code>&lt;h2&gt;</code>：<strong>残してOK</strong>（リズム調整）</li>
+                    <li>❌ カード内 <code>&lt;h3&gt;</code>：<strong>必ず削除</strong>（高さが揃わなくなる）</li>
+                </ul>
+            </div>
+
         </main>
 
         <footer>
