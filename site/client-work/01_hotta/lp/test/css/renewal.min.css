@@ -822,12 +822,16 @@ body .trust-badges {
 }
 body .trust-badge-item {
   background: var(--bg-white);
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  min-width: 220px;
+  text-align: center;
 }
 body .trust-badge-item img {
   height: 50px;
@@ -837,8 +841,13 @@ body .trust-badge-item span {
   font-size: 0.9rem;
   font-weight: 700;
   color: #333;
-  line-height: 1.2;
-  text-align: left;
+  line-height: 1.3;
+}
+body .trust-badge-item p {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
 }
 
 @media (max-width: 900px) {
