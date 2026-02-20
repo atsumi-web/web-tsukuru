@@ -13,21 +13,21 @@
   --line-green: #06c755;
   --line-green-dark: #05a346;
 
-  /* --- Text Colors (No Magic Hex) --- */
-  --text-main: var(--text-main);
-  --text-sub: var(--text-sub);
-  --text-muted: var(--text-muted);
+  /* --- Text Colors --- */
+  --text-main: #333333;
+  --text-sub: #555555;
+  --text-muted: #888888;
   --text-inverse: #ffffff;
 
   /* --- Backgrounds --- */
   --bg-white: #ffffff;
-  --bg-light: var(--bg-light);
+  --bg-light: #f4f6f9;
   --bg-navy-overlay: rgba(0, 26, 61, 0.9);
 
   /* --- UI Tokens --- */
   --premium-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --border-light: var(--border-light);
+  --border-light: rgba(0, 26, 61, 0.1);
 
   /* --- Fonts --- */
   --font-en: "Inter", sans-serif;
@@ -744,6 +744,7 @@ body .data-section::before {
   height: 100%;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.5;
+  z-index: 0; /* コンテンツの後ろに確実に配置 */
 }
 body .hero-features {
   text-align: center;
@@ -769,6 +770,8 @@ body .hero-features .premium-title::after {
 }
 body .data-section .premium-title {
   color: #fff;
+  position: relative;
+  z-index: 2; /* ::beforeより前面に確実に表示する */
 }
 body .data-section .premium-title span {
   color: var(--accent-gold);

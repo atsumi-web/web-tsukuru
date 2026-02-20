@@ -527,8 +527,62 @@ $utf8 = New-Object System.Text.UTF8Encoding $false
 
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
 
+            <div class="highlight-box" style="background: #fce4ec; border-left: 4px solid #c62828; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">🔗 CSS変数の罠</h3>
+                <p>「変数は定義したはず」と思っていたら、実は自分自身を参照していた——このバグは発見が非常に困難です</p>
+            </div>
+
+            <h2>13. CSS変数は必ず具体値で定義する（循環参照禁止）</h2>
+            <p><strong>【重要】<code>:root</code> で変数を定義するとき、値に同名の変数を使ってはいけません。</strong></p>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：自己参照（循環参照）</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">:root {
+  /* ❌ 自分自身を参照 → 値が無効になる（テキストが消える） */
+  --text-main: var(--text-main);
+  --text-muted: var(--text-muted);
+  --bg-light: var(--bg-light);
+}</pre>
+                <p>→ この変数を使った <code>color: var(--text-main)</code> などは値なしになり、<strong>テキストが見えなくなります。</strong></p>
+            </div>
+
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：他ファイル依存（暗黙の参照）</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* renewal.css の :root で定義 */
+:root {
+  /* ❌ base.cssで定義されているはず、という前提で書く */
+  --text-main: var(--color-neutral-dark); /* base.cssにあるかも？ */
+}</pre>
+                <p>→ 読み込み順や定義の有無によって動いたり動かなかったりする <strong>不安定なコード</strong>になります。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：必ず具体値を書く</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">:root {
+  /* ✅ 具体的な値を直接書く */
+  --text-main: #333333;
+  --text-sub: #555555;
+  --text-muted: #888888;
+  --bg-light: #f4f6f9;
+  --border-light: rgba(0, 26, 61, 0.1);
+}</pre>
+                <p>→ どのファイルが先に読まれても、必ず正しい値が適用されます。</p>
+            </div>
+
+            <div class="rule-box good">
+                <span class="badge badge-good">確認コマンド（DevTools）</span>
+                <p>変数の値が正しく設定されているかは、ブラウザのDevToolsで確認できます：</p>
+                <ol style="margin-left: 20px; line-height: 2;">
+                    <li>F12 → 「要素」タブで対象の要素を選択</li>
+                    <li>右の「スタイル」パネルで <code>color: var(--text-main)</code> を探す</li>
+                    <li>変数名の横に色が表示されていれば正常。何も表示されなければ循環参照の疑いあり</li>
+                </ol>
+            </div>
+
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
             <div class="highlight-box" style="background: #fff9c4; border-left: 4px solid #fbc02d; padding: 15px; margin-bottom: 30px;">
-                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：12の鉄則</h3>
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📝 まとめ：13の鉄則</h3>
                 <ol style="line-height: 2;">
                     <li>モバイルファースト</li>
                     <li>単一の情報源（One Source of Truth）</li>
@@ -542,9 +596,11 @@ $utf8 = New-Object System.Text.UTF8Encoding $false
                     <li><strong>AI協働時の注意点</strong></li>
                     <li><strong style="color: #e53935;">文字化け完全防止プロトコル</strong></li>
                     <li><strong style="color: #1565c0;">CSSファイルは増やさない（1LP = 1CSS）</strong></li>
+                    <li><strong style="color: #c62828;">CSS変数は必ず具体値で定義する（循環参照禁止）</strong></li>
                 </ol>
                 <p><strong>これらを守れば、「修正の無限ループ」から必ず脱出できます。</strong></p>
             </div>
+
 
         </main>
 

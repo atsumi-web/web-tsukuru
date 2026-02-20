@@ -371,6 +371,7 @@
           </div>
           <pre id="sessionTemplate" style="background: #1e293b; color: #e2e8f0; padding: 14px 16px; border-radius: 8px; font-size: 0.82rem; margin: 0; white-space: pre-wrap; font-family: Consolas, monospace;">ルールを確認してください：
 http://127.0.0.1:5500/manuals/internal/00_master_rules.html
+http://127.0.0.1:5500/manuals/internal/09_coding_rules.html
 
 【今日の作業】
 
@@ -379,7 +380,7 @@ http://127.0.0.1:5500/manuals/internal/00_master_rules.html
 
 
 【作業ファイル】
-site/client-work/01_hotta/lp/test/</pre>
+（例：site/client-work/クライアント名/lp/test/）</pre>
         </div>
       </div>
 
@@ -621,12 +622,10 @@ site/client-work/01_hotta/lp/test/</pre>
                 ><i class="fa-solid fa-triangle-exclamation"></i
               ></span>
               <div>
-                <strong>作業前にこのURLを貼る</strong>
-                新しいチャットを始めるたびに
-                <code
-                  >http://127.0.0.1:5500/manuals/internal/00_master_rules.html</code
-                >
-                を共有すること。
+                <strong>作業前に必ず2つのURLを貼る</strong>
+                新しいチャットを始めるたびに以下2つを共有すること。<br />
+                <code>http://127.0.0.1:5500/manuals/internal/00_master_rules.html</code><br />
+                <code>http://127.0.0.1:5500/manuals/internal/09_coding_rules.html</code>
               </div>
             </li>
             <li>
@@ -688,28 +687,35 @@ site/client-work/01_hotta/lp/test/</pre>
       <!-- 6. CSS変数一覧 -->
       <div class="section">
         <div class="section-header gold">
-          <i class="fa-solid fa-palette"></i> 6. CSS変数一覧（renewal.css :root）
+          <i class="fa-solid fa-palette"></i> 6. CSS変数テンプレート（renewal.css :root 共通定義）
         </div>
         <div class="section-body">
+          <p style="font-size: 0.85rem; color: #92400e; margin: 0 0 12px; background: #fef9ee; padding: 8px 12px; border-radius: 6px;">
+            ⚠️ <strong>ブランドカラーはプロジェクトごとに変更すること。</strong>テキスト・背景・UIは汎用値としてそのまま使用可。
+          </p>
           <pre>
-/* Brand Colors */
---accent-gold: #c5a059
---navy-deep:   #001a3d
---navy-light:  #002d6b
+/* ★ Brand Colors — プロジェクトごとに変更 ★ */
+--accent-gold: #c5a059   ← メインアクセント色
+--navy-deep:   #001a3d   ← メイン背景・テキスト色
+--navy-light:  #002d6b   ← サブ背景色
+--line-green:  #06c755   ← CTAボタン色（LINE/応募）
 
-/* Text Colors */
---text-main:    #333333  ← #333 の代わりに使う
---text-sub:     #555555  ← #555 の代わりに使う
---text-muted:   #666666  ← #666 の代わりに使う
+/* Text Colors — 共通（変更不要） */
+--text-main:    #333333
+--text-sub:     #555555
+--text-muted:   #888888
 --text-inverse: #ffffff
 
-/* Backgrounds */
+/* Backgrounds — 共通（変更不要） */
 --bg-white: #ffffff
 --bg-light: #f4f6f9
 
-/* UI */
---border-light: #eeeeee
+/* UI — 共通（変更不要） */
+--border-light: rgba(0, 26, 61, 0.1)
 --shadow-md:    0 10px 30px rgba(0,0,0,0.05)</pre>
+          <p style="font-size: 0.8rem; color: #dc2626; margin: 10px 0 0;">
+            ⛔ <strong>循環参照禁止</strong>：<code>--text-main: var(--text-main);</code> のように自分自身を参照しない。必ず具体値を書く。
+          </p>
         </div>
       </div>
 
