@@ -1010,30 +1010,38 @@ body .btn-read-more i {
   body .interview-card,
   body .interview-card.reverse {
     grid-template-columns: 1fr;
-    padding: 0;
+    padding: 0 !important;
     gap: 0;
     overflow: hidden;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    align-items: stretch;
   }
   body .interview-card .interview-visual,
   body .interview-card.reverse .interview-visual {
-    position: relative; /* モバイルではstickyを無効化 */
+    position: static; /* モバイルではstickyもrelativeも排除 */
     width: 100%;
     margin: 0;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: auto; /* 親の余計な高さ計算を排除 */
     height: auto;
-    border-radius: 0; /* overflow:hiddenでカードがクリップするので不要 */
+    border-radius: 0;
     padding: 0;
-    background: transparent; /* デスクトップ用白背景をリセット */
+    background: transparent;
     box-shadow: none;
     order: -1;
     transform: none;
+    top: auto; /* sticky の top プロパティをリセット */
+    line-height: 0; /* img の下のインラインスペースを消す */
   }
-  body .interview-visual img {
-    border-radius: 20px 20px 0 0;
-    max-height: 100%;
+  body .interview-card .interview-visual img,
+  body .interview-card.reverse .interview-visual img {
+    display: block; /* インラインスペース排除 */
+    width: 100%;
+    height: auto; /* 自然な縦横比で表示 */
+    object-fit: cover;
+    border-radius: 0;
+    max-height: none;
     filter: none;
   }
   body .role-badge {
