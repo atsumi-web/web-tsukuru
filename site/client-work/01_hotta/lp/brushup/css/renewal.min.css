@@ -657,6 +657,9 @@ body .btn-read-more i {
     left: 10px;
     padding: 0.6rem 1rem;
   }
+  body .qa-item h4 {
+    font-size: 1.15rem; /* モバイル: 1.05rem → 1.15rem に拡大 */
+  }
 }
 
 /* --- Works Section --- */
