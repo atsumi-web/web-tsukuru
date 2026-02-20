@@ -522,15 +522,15 @@ body .interviewee-name {
 body .interviewee-name span {
   font-family: var(--font-en);
   font-size: 1rem;
-  color: var(--accent-gold);
-  font-weight: 600;
+  color: var(--text-muted); /* ゴールドから控えめに変更 */
+  font-weight: 400;
   letter-spacing: 0.05em;
 }
 body .interview-catch {
   font-size: 1.25rem;
   line-height: 1.8;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--navy-deep); /* キャッチコピーはネイビーで見やすく */
   padding-bottom: 2rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
