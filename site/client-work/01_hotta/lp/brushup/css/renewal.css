@@ -507,6 +507,7 @@ body .role-jp {
 
 body .interview-content {
   padding-right: 0;
+  padding-top: 0; /* モバイルでのオーバーライド準備 */
 }
 body .interviewee-name {
   font-family: "Shippori Mincho B1", serif;
@@ -648,7 +649,7 @@ body .btn-read-more i {
     color: var(--navy-deep);
   }
   body .interview-content {
-    padding: 1.5rem 1.5rem 2rem;
+    padding: 0.8rem 1.5rem 2rem;
   }
   body .qa-item {
     padding: 1rem 1.5rem 1rem 0.8rem;
