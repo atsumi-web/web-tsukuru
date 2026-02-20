@@ -1009,36 +1009,37 @@ body .btn-read-more i {
   }
   body .interview-card,
   body .interview-card.reverse {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
     padding: 0 !important;
-    gap: 0;
+    gap: 0 !important;
     overflow: hidden;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    align-items: stretch;
   }
   body .interview-card .interview-visual,
   body .interview-card.reverse .interview-visual {
-    position: static; /* モバイルではstickyもrelativeも排除 */
-    width: 100%;
-    margin: 0;
-    aspect-ratio: auto; /* 親の余計な高さ計算を排除 */
+    order: -1 !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    top: auto !important;
+    transform: none !important;
+    flex-shrink: 0;
+    line-height: 0;
     height: auto;
+    aspect-ratio: auto;
     border-radius: 0;
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-    order: -1;
-    transform: none;
-    top: auto; /* sticky の top プロパティをリセット */
-    line-height: 0; /* img の下のインラインスペースを消す */
   }
   body .interview-card .interview-visual img,
   body .interview-card.reverse .interview-visual img {
-    display: block; /* インラインスペース排除 */
-    width: 100%;
-    height: auto; /* 自然な縦横比で表示 */
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
     object-fit: cover;
     border-radius: 0;
     max-height: none;
