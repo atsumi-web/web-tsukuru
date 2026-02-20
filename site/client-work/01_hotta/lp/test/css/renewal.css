@@ -2152,3 +2152,110 @@ body .header-nav {
 .trust-badge-item:nth-child(3) img {
   margin-bottom: 0.5rem;
 }
+
+/* ============================================
+   FACTS & NUMBERS ティッカー（右→左スクロール）
+   ============================================ */
+.badges-ticker-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+  /* 両端をフェードアウト */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.badges-ticker {
+  display: flex;
+  gap: 1.2rem;
+  width: max-content;
+  animation: badgesTicker 28s linear infinite;
+}
+
+/* ホバーで一時停止 */
+.badges-ticker-wrapper:hover .badges-ticker {
+  animation-play-state: paused;
+}
+
+@keyframes badgesTicker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 9バッジ分（セット1）だけずらしてループ */
+    transform: translateX(-50%);
+  }
+}
+
+/* バッジ個別スタイル（ティッカー内） */
+.badges-ticker .impact-badge {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  background: #fff;
+  border: 2px solid rgba(197, 160, 89, 0.3);
+  border-radius: 12px;
+  padding: 1.2rem 1.8rem;
+  min-width: 140px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.badges-ticker .impact-badge:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 8px 30px rgba(197, 160, 89, 0.2);
+}
+
+.badges-ticker .badge-number {
+  font-family: var(--font-en);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+  line-height: 1;
+}
+
+.badges-ticker .badge-number .unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-left: 2px;
+}
+
+.badges-ticker .badge-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .badges-ticker {
+    animation-duration: 22s;
+    gap: 0.9rem;
+  }
+
+  .badges-ticker .impact-badge {
+    padding: 1rem 1.3rem;
+    min-width: 120px;
+  }
+
+  .badges-ticker .badge-number {
+    font-size: 1.6rem;
+  }
+}
