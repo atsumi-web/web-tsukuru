@@ -540,7 +540,7 @@ body .qa-stack {
   gap: 1.5rem;
 }
 body .qa-item h4 {
-  font-size: 1.2rem; /* 1.05rem → 1.2rem: 全カード見出しに合わせてサイズアップ */
+  font-size: 1.2rem;
   color: var(--navy-deep);
   margin-bottom: 0.5rem;
   display: flex;
@@ -903,7 +903,7 @@ body .trust-badge-item p {
   /* ENVIRONMENT / BENEFITS カード見出し: モバイルで統一サイズに */
   body .environment-card h3,
   body .environment-visual-card h3 {
-    font-size: 1.9rem; /* モバイル: 1.7rem → 1.9rem に統一 */
+    font-size: 1.9rem;
   }
 }
 

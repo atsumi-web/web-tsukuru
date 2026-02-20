@@ -300,13 +300,8 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- 非クリティカルCSS (非同期読み込み) -->
-    <link
-      rel="stylesheet"
-      href="css/base.css?v=1.0"
-      media="print"
-      onload="this.media = 'all'"
-    />
+    <!-- CSS読み込み順: base → renewal → hero (後勝ちルール。renewal/heroが上書き権を持つ) -->
+    <link rel="stylesheet" href="css/base.css?v=1.0" />
     <link rel="stylesheet" href="css/renewal.css?v=9.1" />
     <link rel="stylesheet" href="css/hero.css?v=3.1" />
     <noscript>
