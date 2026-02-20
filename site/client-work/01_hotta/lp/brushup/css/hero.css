@@ -313,13 +313,13 @@
   }
 
   .teto-main-title .subtitle-line-medium {
-    font-size: 0.62em;
+    font-size: 0.72em;
     letter-spacing: -0.05em;
   }
 
   /* 詳細度(0,3,0)で上書き：target-highlightの0.9emを確実に打ち消す */
   .teto-main-title .target-highlight.subtitle-line {
-    font-size: 0.62em;
+    font-size: 0.72em;
     letter-spacing: -0.05em;
   }
 }
