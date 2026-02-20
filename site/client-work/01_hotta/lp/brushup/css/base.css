@@ -631,6 +631,14 @@ section {
     display: block;
   }
 }
+.sp-hide {
+  display: inline;
+}
+@media (max-width: 768px) {
+  .sp-hide {
+    display: none;
+  }
+}
 :root {
   --text-white: #ffffff;
   --text-white-90: rgba(255, 255, 255, 0.9);
