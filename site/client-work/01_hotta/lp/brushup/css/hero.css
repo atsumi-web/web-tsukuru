@@ -1070,6 +1070,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin-top: 2rem;
   }
 
   .hero-cta-tagline-mobile {
@@ -1091,15 +1092,15 @@
 
   .tagline-icon {
     flex-shrink: 0;
-    width: 48px;
-    height: 48px;
+    width: 28px;
+    height: 28px;
     background: linear-gradient(135deg, #c5a059 0%, #d4b070 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 20px;
+    font-size: 12px;
     box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
   }
 
