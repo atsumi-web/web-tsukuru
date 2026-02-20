@@ -185,7 +185,7 @@ body .premium-title span {
   }
   body .premium-title {
     font-size: clamp(1.6rem, 4.5vw, 1.9rem);
-    letter-spacing: 0.05em;
+    letter-spacing: -0.03em;
     font-feature-settings: "palt";
   }
 }
