@@ -760,6 +760,9 @@ body .hero-features .premium-title {
 body .hero-features .premium-title::after {
   display: none;
 }
+body .data-section .premium-title {
+  color: #fff;
+}
 body .data-section .premium-title span {
   color: var(--accent-gold);
   opacity: 1;
