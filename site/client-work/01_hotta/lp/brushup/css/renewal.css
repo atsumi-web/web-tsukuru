@@ -84,6 +84,11 @@ body .nav-menu li a.nav-cta {
     display: none;
   }
 
+  /* ロゴサイズをモバイル向けに縮小 */
+  body .header-logo-img {
+    height: 24px;
+  }
+
   /* ハンバーガーメニューの位置微調整 */
   body .mobile-menu-toggle {
     margin-top: 2px; /* ロゴのベースラインに合わせる微調整 */
@@ -178,6 +183,17 @@ body .premium-title span {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   font-family: var(--font-en);
+}
+/* pc-only は premium-title 内でも inline を維持 */
+body .premium-title .pc-only {
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin-bottom: 0;
+  text-transform: none;
+  font-family: inherit;
 }
 @media (max-width: 768px) {
   body .premium-title span {
@@ -570,6 +586,10 @@ body .btn-read-more i {
   body .voice-grid {
     gap: 4rem;
     margin-top: 2rem;
+  }
+  body .btn-read-more {
+    margin-left: auto;
+    margin-right: auto;
   }
   body .interview-card,
   body .interview-card.reverse {
@@ -1867,6 +1887,9 @@ body .faq-a {
   body .environment-card {
     padding: 2rem;
   }
+  body .environment-card h3 {
+    font-size: 1.1rem;
+  }
 
   body .faq-grid {
     grid-template-columns: 1fr;
@@ -1953,6 +1976,12 @@ body .culture-ticker img:hover {
 
 @media (max-width: 768px) {
   .br-pc-only {
+    display: none;
+  }
+  .br-sp-only {
+    display: block;
+  }
+  .pc-only {
     display: none;
   }
   body .culture-ticker-wrapper {
@@ -2133,7 +2162,8 @@ body .header-nav {
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    width: fit-content;
+    justify-content: center;
+    width: 90%;
   }
 }
 
@@ -2274,15 +2304,19 @@ body .header-nav {
 @media (max-width: 768px) {
   .badges-ticker {
     animation-duration: 32s;
-    gap: 0.9rem;
+    gap: 1.2rem;
   }
 
   .badges-ticker .impact-badge {
-    padding: 1rem 1.3rem;
-    min-width: 120px;
+    padding: 1.4rem 1.8rem;
+    min-width: 150px;
   }
 
   .badges-ticker .badge-number {
-    font-size: 1.6rem;
+    font-size: 2rem;
+  }
+
+  .badges-ticker .badge-label {
+    font-size: 0.85rem;
   }
 }
