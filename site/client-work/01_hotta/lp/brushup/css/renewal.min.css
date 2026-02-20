@@ -900,6 +900,14 @@ body .trust-badge-item p {
     border-radius: 15px;
     padding: 1.5rem;
   }
+  /* ENVIRONMENTカードの見出し: モバイルで一回り大きく */
+  body .environment-card h3 {
+    font-size: 1.95rem; /* 1.7rem → 1.95rem */
+  }
+  /* BENEFITSカード（画像付き）の見出し: モバイルで一回り大きく */
+  body .environment-visual-card h3 {
+    font-size: 1.8rem; /* 1.6rem → 1.8rem */
+  }
 }
 
 /* --- Guardians --- */
