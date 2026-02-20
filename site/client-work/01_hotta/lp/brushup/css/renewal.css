@@ -1425,6 +1425,19 @@ body .phone-link {
   }
   body .entry-card {
     padding: 2rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  body .entry-card .btn,
+  body .entry-card input,
+  body .entry-card button {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  /* btn-largeのmin-width: 280pxをリセット */
+  body .btn-large {
+    min-width: unset;
   }
   /* 電話番号の文字サイズを調整して1行に収める */
   body .phone-link {
@@ -2321,5 +2334,17 @@ body .header-nav {
 
   .badges-ticker .badge-label {
     font-size: 0.85rem;
+  }
+}
+
+/* --- Hero Container: Mobile Vertical Centering --- */
+@media (max-width: 1200px) {
+  #hero .hero-teto-container {
+    padding: 80px 1.5rem 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100dvh;
+    box-sizing: border-box;
   }
 }
