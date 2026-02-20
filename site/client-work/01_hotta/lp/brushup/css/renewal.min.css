@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    works/hotta/css/renewal.css
    堀田建設様 LP プレミアムデザイン (Refactored)
    ============================================ */
@@ -14,20 +14,20 @@
   --line-green-dark: #05a346;
 
   /* --- Text Colors (No Magic Hex) --- */
-  --text-main: #333333;
-  --text-sub: #555555;
-  --text-muted: #666666;
+  --text-main: var(--text-main);
+  --text-sub: var(--text-sub);
+  --text-muted: var(--text-muted);
   --text-inverse: #ffffff;
 
   /* --- Backgrounds --- */
   --bg-white: #ffffff;
-  --bg-light: #f4f6f9;
+  --bg-light: var(--bg-light);
   --bg-navy-overlay: rgba(0, 26, 61, 0.9);
 
   /* --- UI Tokens --- */
   --premium-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --border-light: #eeeeee;
+  --border-light: var(--border-light);
 
   /* --- Fonts --- */
   --font-en: "Inter", sans-serif;
@@ -125,511 +125,10 @@ body .nav-menu li a.nav-cta {
   }
 }
 
-/* --- Hero Section (CV Optimization) --- */
-body #hero.hero-teto {
-  height: 100dvh;
-  min-height: 550px;
-  max-height: 100dvh;
-  display: flex;
-  align-items: center; /* 上下方向に中央配置 */
-  position: relative;
-  background-color: var(--navy-deep);
-  overflow: hidden;
-}
-
-body .hero-teto-container {
-  width: 60%;
-  padding: 0 clamp(1rem, 4vw, 3rem);
-  padding-right: 0;
-  margin-top: 0;
-  margin-right: -10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* flex-start → center */
-  align-items: flex-start;
-  background: transparent;
-  position: relative;
-  z-index: 2;
-  color: #ff0000 !important; /* テスト用：赤色 */
-}
-
-body .hero-teto-content {
-  width: 100%;
-  max-width: 800px;
-  position: relative;
-  z-index: 2;
-  /* padding-top削除: justify-content: centerで垂直中央配置 */
-}
-
-body .teto-catch-en {
-  position: absolute;
-  top: 3%;
-  right: 5%;
-  left: auto;
-  font-family: var(--font-en);
-  font-weight: 900;
-  font-size: clamp(5rem, 12vw, 14rem);
-  color: rgba(255, 255, 255, 0.08);
-  letter-spacing: 0.05em;
-  z-index: 0;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  transform: rotate(-5deg);
-}
-
-body .teto-main-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.8vw, 5.2rem); /* バランスの取れたサイズ */
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: clamp(1.8rem, 2.5vh, 2.5rem);
-  opacity: 0;
-  animation: fadeInTitle 0.8s ease-out 0.2s forwards;
-}
-
-@keyframes fadeInTitle {
-  to {
-    opacity: 1;
-  }
-}
-
-body .teto-main-title .target-highlight {
-  background: linear-gradient(to right, #c5a059, #ffebbc, #c5a059);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shineText 6s linear infinite;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-
-/* Subtitle lines - only apply white to non-highlighted lines (line 3) */
-body .teto-main-title .subtitle-line:not(.target-highlight) {
-  font-size: 0.8em;
-  color: #fff !important;
-  background: none !important;
-  -webkit-text-fill-color: #fff !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-}
-
-/* Line 3 (white, smallest) */
-@media (max-width: 768px) {
-  body .teto-main-title .subtitle-line-small {
-    font-size: 0.65em !important;
-  }
-  
-  /* Line 2 - smaller on mobile to fit in one line */
-  body .teto-main-title .subtitle-line-medium {
-    font-size: 0.75em !important;
-  }
-  
-  /* Subtitle - smaller on mobile */
-  body .teto-sub-title {
-    font-size: 0.9rem !important;
-  }
-}
-
-/* Line 2 with gold gradient - larger */
-body .teto-main-title .target-highlight.subtitle-line {
-  font-size: 0.9em;
-}
-
-/* Custom spacing for first line break */
-body .teto-main-title .line-break-large {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* Gold underline for emphasis */
-body .teto-main-title .gold-underline {
-  border-bottom: 5px solid;
-  border-image: linear-gradient(to right, var(--accent-gold), transparent) 1;
-  padding-bottom: 0.3rem;
-  display: inline-block;
-}
-
-/* Mobile-specific breaks - hidden on desktop */
-body .br-mobile {
-  display: none;
-}
-
-@media (max-width: 1200px) {
-  body .br-mobile {
-    display: block;
-  }
-}
-
-@keyframes shineText {
-  to {
-    background-position: 200% center;
-  }
-}
-
-body .teto-sub-title {
-  font-size: 1.25rem; /* 1.2remより読みやすく */
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 700px;
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeInTitle 0.8s ease-out 0.4s forwards;
-}
-
-body .hero-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-body .hero-tagline-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-body .hero-cta-tagline {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--accent-gold);
-  border-left: 4px solid var(--accent-gold);
-  border-radius: 0 8px 8px 0;
-  padding: 0.8rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  backdrop-filter: blur(10px);
-}
-
-/* 中間サイズ：2列レイアウト */
-@media (max-width: 1610px) {
-  body .hero-tagline-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-body .hero-actions .btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--line-green) 0%,
-    var(--line-green-dark) 100%
-  );
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: 700;
-  padding: 1.4rem 3rem;
-  border-radius: 50px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem; /* 1rem -> 0.5rem: Reduce space between icon and text */
-  text-decoration: none;
-  box-shadow: 0 20px 40px rgba(6, 199, 85, 0.3);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  max-width: 400px;
-}
-
-body .hero-actions .btn-primary:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 30px 60px rgba(6, 199, 85, 0.5);
-}
-
-body .hero-contact-minimal {
-  margin-top: 2.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1.5rem;
-  display: flex;
-  gap: 2rem;
-  max-width: 700px;
-}
-
-body .contact-minimal-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: #fff;
-  font-weight: 700;
-  padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-}
-
-body .hero-teto-visual {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
-  overflow: hidden;
-  z-index: 1;
-}
-
-body .hero-teto-visual video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* デフォルト（デスクトップ）: ビデオ表示、静止画非表示 */
-body .hero-video {
-  display: block;
-}
-
-body .hero-image-mobile {
-  display: none;
-}
-/* グラデーションオーバーレイ - PC版（1101px以上） */
-@media (min-width: 1101px) {
-  body .hero-teto-visual::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 26, 61, 0.3) 0%,
-      transparent 40%,
-      rgba(0, 26, 61, 0.85) 100%
-    );
-  }
-}
-
-/* Hero Section - Tablet & Mobile Optimization */
-
-/* 横長PC画面対応: 縦幅が900px以下(ノートPCなど)では余白を大幅削減 */
-@media (max-height: 900px) {
-  body #hero.hero-teto {
-    min-height: 100dvh;
-  }
-  body .hero-teto-content {
-    padding-top: 0rem !important; /* 2rem → 0rem */
-  }
-  body .hero-actions {
-    margin-top: 5.5rem !important; /* CTAセクションを下に */
-  }
-  body .teto-main-title {
-    margin-bottom: 1rem !important; /* 余白を縮小 */
-    font-size: clamp(2rem, 4vw, 4rem) !important;
-  }
-  body .teto-sub-title {
-    margin-bottom: 1rem !important; /* 2.5rem → 1rem */
-  }
-  body .hero-actions {
-    margin-top: 0.8rem !important; /* 2rem → 0.8rem */
-    gap: 1rem !important;
-  }
-  body .hero-tagline-grid {
-    gap: 0.6rem !important;
-    margin-bottom: 1rem !important;
-  }
-}
-
-/* 大きめのPC（1401-1600px）の調整 */
-@media (min-width: 1401px) and (max-width: 1600px) {
-  body .hero-teto-visual {
-    width: 55%;
-    clip-path: polygon(20% 0, 100% 0, 100% 100%, 5% 100%);
-  }
-  body .hero-teto-container {
-    padding-right: 2rem;
-  }
-}
-
-/* PC: Hero title nowrap to prevent line breaks in gold text */
-@media (min-width: 1201px) {
-  body .teto-main-title .target-highlight {
-    white-space: nowrap;
-  }
-  body .teto-main-title .subtitle-line {
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 1200px) {
-  body #hero.hero-teto {
-    height: 100dvh;
-    min-height: 600px;
-    flex-direction: column;
-    justify-content: center;
-    /* padding-top: 0を削除 - .hero-teto-containerのpaddingを使用 */
-  }
-  body .hero-teto-visual {
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    clip-path: none;
-  }
-  
-  /* モバイル: ビデオ非表示 */
-  body .hero-video {
-    display: none;
-  }
-  
-  /* モバイル: 静止画表示 */
-  body .hero-image-mobile {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  body .hero-teto-visual::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 45, 120, 0.65) 0%,
-      rgba(0, 20, 60, 0.8) 100%
-    );
-    backdrop-filter: blur(3px);
-    z-index: 1;
-  }
-  body .hero-teto-container {
-    width: 100%;
-    /* padding指定を削除 - index.htmlのインラインCSSで管理 */
-    margin-top: 0; /* PC版のmargin-top: 80pxをリセット（重要） */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    z-index: 10;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-  }
-  body .hero-teto-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  body .teto-main-title {
-    font-size: clamp(2.2rem, 4.5vw, 4.5rem); /* タブレットサイズでも読みやすく */
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
-    margin-bottom: 2.5rem;
-  }
-  body .teto-main-title span {
-    background: none;
-    -webkit-text-fill-color: #c5a059;
-    color: #c5a059;
-    animation: none;
-  }
-  body .teto-sub-title {
-    font-size: 1.1rem; /* タブレット用サイズ */
-    border-left: none;
-    padding-left: 0;
-  }
-  body .hero-cta-tagline {
-    border-left: 4px solid var(--accent-gold);
-    border-radius: 0 8px 8px 0;
-    padding: 0.5rem 1.2rem;
-    animation: none;
-  }
-  body .hero-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 1.2rem;
-  }
-  body .hero-actions .btn-primary {
-    width: 90%;
-    max-width: 400px;
-    justify-content: center;
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
-  }
-  body .hero-contact-minimal {
-    flex-direction: row;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-    margin-bottom: 0;
-    max-width: 100%;
-    width: 100%;
-    justify-content: center;
-    border-top: none;
-    padding-top: 0;
-  }
-  body .contact-minimal-item {
-    flex: 1;
-    background: rgba(0, 26, 61, 0.8);
-    justify-content: center;
-    font-size: 0.85rem;
-  }
-  body .teto-catch-en,
-  body .mouse-scroll {
-    display: none;
-  }
-}
-
-/* 小画面：上部スペースをさらに縮小 */
-@media (max-width: 1200px) {
-  body .hero-teto-container {
-    padding-top: 110px; /* ヘッダー100px + 最小限の余白 */
-  }
-}
-
-/* Hero Button Fix for Small Screens (e.g. OPPO Reno5) */
-@media (max-width: 480px) {
-  body .hero-actions .btn-primary {
-    font-size: 0.95rem !important; /* Prevent wrapping */
-    padding: 1rem 0.5rem !important; /* Maximize text space */
-    white-space: nowrap;
-    width: 95%;
-  }
-}
-
-@media (max-width: 1200px) {
-  body .hero-teto-container {
-    padding: 130px 1rem 15px; /* 100px -> 130px: Lower content by 30px */
-  }
-  body .hero-cta-tagline {
-    font-size: 0.85rem;
-    padding: 0.4rem 1.2rem;
-    margin-bottom: 0.8rem;
-  }
-  body .hero-actions .btn-primary {
-    font-size: 1.05rem;
-  }
-
-  /* Restore side-by-side layout for buttons on mobile */
-  body .hero-contact-minimal {
-    flex-direction: row; /* Column -> Row (Restore) */
-    gap: 0.5rem; /* Gap reduction for small screens */
-  }
-  body .contact-minimal-item {
-    width: auto;
-    flex: 1; /* Distribute space equally */
-    justify-content: center;
-    padding: 0.8rem 0.5rem;
-    font-size: 0.8rem; /* Slightly smaller text to fit */
-    white-space: nowrap; /* Prevent breaking lines inside button */
-  }
-
-  /* モバイル: 1列レイアウト + 1つ目のカードのみ表示 */
-  body .hero-tagline-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  body .hero-tagline-grid .hero-cta-tagline:nth-child(2),
-  body .hero-tagline-grid .hero-cta-tagline:nth-child(3) {
-    display: none;
-  }
-}
+/* --- Hero Section ---
+   ※ ヒーローのスタイルは hero.css で一元管理
+   ※ このファイルにヒーロー関連のスタイルを書かないこと
+   ============================================ */
 
 /* --- Common Components --- */
 body .label-en {
@@ -646,19 +145,29 @@ body .premium-title {
   font-weight: 700;
   color: var(--navy-deep);
   line-height: 1.4;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
-  padding-bottom: 1.5rem !important;
+  padding-bottom: 2.5rem;
+  border-bottom: none;
 }
 body .premium-title::after {
-  content: "" !important;
-  display: block !important;
-  width: 60px;
+  content: "";
+  display: block;
+  width: 40%;
   height: 3px;
-  background-color: var(--navy-deep);
+  background: linear-gradient(
+    to right,
+    var(--accent-gold),
+    rgba(197, 160, 89, 0.3)
+  );
   position: absolute;
   bottom: 0;
   left: 0;
+}
+/* 紺背景用：テキスト白＋ライン金色 */
+body .premium-title.gold-line {
+  color: #fff;
+  margin-bottom: 1.5rem;
 }
 body .premium-title span {
   display: block;
@@ -670,7 +179,7 @@ body .premium-title span {
   text-transform: uppercase;
   font-family: var(--font-en);
 }
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   body .premium-title span {
     font-size: 0.8rem;
   }
@@ -811,7 +320,7 @@ body .job-step-title {
 }
 body .job-step-desc {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-muted);
 }
 body .job-note {
   font-size: 0.85rem;
@@ -879,7 +388,7 @@ body .gallery-item:hover img {
 /* --- Voice Section (Interviews) --- */
 body .voice-section {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background-color: #f4f6f9;
+  background-color: var(--bg-light);
   overflow: hidden;
 }
 body .voice-grid {
@@ -1027,7 +536,7 @@ body .qa-item h4 i {
 }
 body .qa-item p {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text-sub);
   line-height: 1.7;
   margin-left: 1.7rem;
 }
@@ -1056,7 +565,6 @@ body .btn-read-more svg,
 body .btn-read-more i {
   font-size: 0.9rem;
 }
-
 
 @media (max-width: 900px) {
   body .voice-grid {
@@ -1138,10 +646,6 @@ body .works-section {
 }
 body .works-section .premium-title {
   color: #fff;
-  border-bottom-color: rgba(255, 255, 255, 0.3) !important;
-}
-body .works-section .premium-title::after {
-  background-color: #fff !important;
 }
 body .works-section .premium-title span {
   color: var(--accent-gold);
@@ -1161,7 +665,7 @@ body .works-caption {
 /* --- Features / Environment / Data --- */
 body .features {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: linear-gradient(180deg, #f4f6f9 0%, #fff 100%);
+  background: linear-gradient(180deg, var(--bg-light) 0%, #fff 100%);
 }
 body .environment-grid {
   display: grid;
@@ -1195,14 +699,14 @@ body .environment-card i {
   border-radius: 50%;
 }
 body .environment-card h3 {
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   color: var(--navy-deep);
   margin-bottom: 1.5rem;
   font-weight: 700;
 }
 body .environment-card p {
   line-height: 1.8;
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.95rem;
   text-align: left;
 }
@@ -1219,7 +723,7 @@ body .environment-visual-card .content-box {
   padding: 2rem;
 }
 body .environment-visual-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 body .environment-visual-card p {
   font-size: 0.95rem;
@@ -1241,12 +745,28 @@ body .data-section::before {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.5;
 }
+body .hero-features {
+  text-align: center;
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+body .hero-features .label-en {
+  display: block;
+  text-align: center;
+}
+body .hero-features .premium-title {
+  color: #fff;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+body .hero-features .premium-title::after {
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 body .data-section .premium-title {
   color: #fff;
-  border-bottom-color: rgba(255, 255, 255, 0.3) !important;
-}
-body .data-section .premium-title::after {
-  background-color: #fff !important;
 }
 body .data-section .premium-title span {
   color: var(--accent-gold);
@@ -1270,7 +790,7 @@ body .data-card {
 }
 body .data-label {
   display: block;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1rem;
   font-weight: 700;
@@ -1282,7 +802,14 @@ body .data-val {
   color: var(--accent-gold);
   font-family: var(--font-en);
   margin-bottom: 1rem;
-  text-shadow: 0 0 20px rgba(201, 169, 73, 0.3);
+  text-shadow: none;
+}
+body .data-val .data-unit {
+  font-size: 1.2rem;
+  font-family: var(--font-jp);
+  font-weight: 700;
+  opacity: 0.85;
+  margin: 0 0.15em;
 }
 body .data-card p {
   font-size: 0.9rem;
@@ -1300,12 +827,16 @@ body .trust-badges {
 }
 body .trust-badge-item {
   background: var(--bg-white);
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  min-width: 220px;
+  text-align: center;
 }
 body .trust-badge-item img {
   height: 50px;
@@ -1314,9 +845,14 @@ body .trust-badge-item img {
 body .trust-badge-item span {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #333;
-  line-height: 1.2;
-  text-align: left;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+body .trust-badge-item p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
 }
 
 @media (max-width: 900px) {
@@ -1363,13 +899,13 @@ body .guardians-image img {
 body .guardians-text {
   font-size: 1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-main);
   margin-bottom: 2rem;
   opacity: 0;
   animation: fadeInTitle 0.8s ease-out 0.4s forwards;
 }
 body .guardians-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--navy-deep);
   margin-bottom: 1.5rem;
@@ -1386,13 +922,14 @@ body .guardians-points {
 /* --- Guardian Cards (Navy Background) --- */
 body .guardians-points li {
   display: flex;
-  gap: 1rem;
+  gap: 0.2rem;
   align-items: flex-start;
   background: var(--navy-deep);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 100px;
 }
 
 body .guardians-points strong {
@@ -1410,29 +947,68 @@ body .guardians-points p {
 body .check-icon {
   display: inline-flex;
   align-items: center;
+  padding-top: 1px;
   justify-content: center;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: var(--accent-gold);
   color: var(--navy-deep);
   border-radius: 50%;
+  font-size: 0.85rem;
   font-weight: 900;
-  font-size: 0.8rem;
-  margin-top: 2px;
+  -webkit-text-stroke: 0.5px var(--navy-deep);
+  margin-top: 5px;
 }
 
-/* --- Special Notes (Red -> Navy) --- */
-body .features-list li i {
+/* --- Special Notes (Single Card Layout) --- */
+body .notes-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+body .notes-card .features-list {
+  margin-bottom: 1.5rem;
+}
+body .notes-card .features-list li {
+  border-left: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0.8rem 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  border-bottom: none;
+  font-size: 1rem;
+}
+body .notes-card .features-list li:last-child {
+  border-bottom: none;
+}
+body .notes-card .features-list li:hover {
+  transform: none;
+  box-shadow: none;
+}
+body .notes-card .features-list li i {
   color: var(--navy-deep);
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.75rem;
   vertical-align: middle;
 }
+body .notes-card .simple-note {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.8;
+  margin-top: 1rem;
+  text-align: left;
+}
 
-/* Special Notes Card Border (Red -> Navy) */
-body .features-list li {
-  border-left: 4px solid var(--navy-deep);
+@media (max-width: 768px) {
+  body .notes-card {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1454,6 +1030,13 @@ body .features-list li {
 body .positions {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background: #fff;
+}
+body .positions .section-subtitle {
+  margin-top: 0;
+  padding-top: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
 }
 body .recruit-wrapper {
   max-width: 900px;
@@ -1491,7 +1074,7 @@ body .recruit-row dd {
   flex-grow: 1;
   font-size: 1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-main);
 }
 body .recruit-row dd strong {
   font-size: 1.2rem;
@@ -1513,13 +1096,13 @@ body .recruit-row .tag {
 body .recruit-row .note {
   display: block;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-muted);
   margin-top: 0.5rem;
 }
 body .benefit-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 2rem;
   list-style: none;
   padding: 0;
 }
@@ -1535,7 +1118,7 @@ body .benefit-list li::before {
   font-weight: bold;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   body .recruit-row {
     flex-direction: column;
     padding: 1.5rem 0;
@@ -1546,7 +1129,8 @@ body .benefit-list li::before {
     padding-right: 0;
   }
   body .benefit-list {
-    gap: 0.5rem 1rem;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 }
 
@@ -1581,7 +1165,7 @@ body .company-table {
 body .company-row {
   display: flex;
   padding: 1.5rem 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-light);
 }
 body .company-row:last-child {
   border-bottom: none;
@@ -1594,7 +1178,7 @@ body .company-row dt {
 }
 body .company-row dd {
   flex-grow: 1;
-  color: #333;
+  color: var(--text-main);
   line-height: 1.6;
 }
 body .map-link {
@@ -1606,6 +1190,25 @@ body .map-link {
 }
 body .map-link:hover {
   text-decoration: underline;
+}
+body .ceo-signature {
+  display: block;
+  width: 280px;
+  height: auto;
+  min-height: 50px;
+  margin-top: 0.5rem;
+  opacity: 0.85;
+  max-width: 100%;
+}
+body .signature-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--navy-deep);
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+  letter-spacing: 0.15em;
 }
 
 /* Company Mobile Optimization */
@@ -1645,7 +1248,7 @@ body .entry-lead {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-top: 2rem;
-  color: #555;
+  color: var(--text-sub);
 }
 body .entry-options {
   display: grid;
@@ -1683,7 +1286,7 @@ body .card-badge {
   white-space: nowrap;
 }
 body .card-badge.sub {
-  background: #555;
+  background: var(--text-sub);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 body .card-icon {
@@ -1698,7 +1301,7 @@ body .entry-card h3 {
 }
 body .entry-card p {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -1741,7 +1344,7 @@ body .form-group label {
   display: block;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-main);
   font-size: 0.9rem;
 }
 body .form-group .required {
@@ -1778,7 +1381,7 @@ body .form-group input:focus {
 body .entry-phone {
   text-align: center;
   margin-top: 4rem;
-  color: #666;
+  color: var(--text-muted);
 }
 body .phone-link {
   display: block;
@@ -1850,7 +1453,7 @@ body .floating-line-cta i {
     box-shadow: 0 0 0 0 rgba(6, 199, 85, 0);
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   body .floating-line-cta {
     bottom: 1.5rem;
     right: 1.5rem;
@@ -1910,7 +1513,7 @@ body .scroll-top.adjust-for-cta {
   height: 44px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   body .scroll-top {
     bottom: 1.5rem;
     right: 1.5rem;
@@ -2017,7 +1620,7 @@ body .copyright {
   font-family: var(--font-en);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   body .footer-top {
     flex-direction: column;
     gap: 2.5rem;
@@ -2063,15 +1666,16 @@ body .fs-xs {
 }
 body .premium-title.title-clean-center,
 body .section-title.title-clean-center {
-  text-align: center !important;
-  padding-bottom: 0 !important;
-  border-bottom: none !important;
-  margin-bottom: 2rem !important;
+  text-align: center;
+  border-bottom: none;
+  margin-bottom: 2rem;
+  padding-bottom: 2.5rem;
 }
 body .premium-title.title-clean-center::after,
 body .section-title.title-clean-center::after {
-  display: none !important;
-  content: none !important;
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* --- Culture Section (BBQ) --- */
@@ -2184,7 +1788,7 @@ body .faq-section {
 }
 body .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -2230,7 +1834,7 @@ body .faq-a {
   font-family: var(--font-serif);
   font-weight: 700;
 }
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   /* Office Gallery: Scroll -> Grid for Visibility */
   body .office-scroll-wrapper {
     overflow-x: visible;
@@ -2341,7 +1945,7 @@ body .culture-ticker img:hover {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   .br-pc-only {
     display: none;
   }
@@ -2352,7 +1956,6 @@ body .culture-ticker img:hover {
     height: 160px;
   }
 }
-
 
 /* ===== 1日の業務フローセクション ===== */
 /* 1日の業務フローセクションのCSS */
@@ -2466,10 +2069,11 @@ body .culture-ticker img:hover {
   color: var(--color-neutral-dark);
   font-size: 0.95rem;
   line-height: 1.6;
+  margin-bottom: 0;
 }
 
 /* モバイル対応 */
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   .schedule-tabs {
     flex-direction: column;
     gap: 15px;
@@ -2503,14 +2107,14 @@ body .culture-ticker img:hover {
    Header Styles (Full Width Override)
    ======================================== */
 body .site-header .header-full-width {
-  width: 100% !important;
-  padding: 0 0 0 3% !important;
-  max-width: none !important;
-  margin: 0 !important;
+  width: 100%;
+  padding: 0 0 0 3%;
+  max-width: none;
+  margin: 0;
 }
 
 body .header-nav {
-  margin-right: 1.5rem !important;
+  margin-right: 1.5rem;
 }
 
 /* ========================================
@@ -2547,56 +2151,4 @@ body .header-nav {
 
 .trust-badge-item:nth-child(3) img {
   margin-bottom: 0.5rem;
-}
-
-/* ===================================================================
-   MOBILE HERO SECTION OVERRIDES
-   ================================================================ */
-@media (max-width: 1200px) {
-  body #hero.hero-teto {
-    background: #001a3d !important;
-  }
-  
-  
-  body .hero-teto-visual {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-  
-  body .hero-teto-container {
-    padding: 260px 1rem 120px !important;
-  }
-  
-  /* Mobile CTA layout - sub text below button */
-  body #hero .cta-enhanced {
-    position: relative !important;
-  }
-  
-  body #hero .cta-sub {
-    position: absolute !important;
-    bottom: -2.75rem !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    white-space: nowrap !important;
-    font-size: 0.75rem !important;
-    opacity: 0.9 !important;
-  }
-  
-  body #hero .cta-enhanced-block {
-    margin-bottom: 3.5rem !important;
-  }
-}
-
-/* Desktop: Center hero content vertically */
-@media (min-width: 1201px) {
-  body .hero-teto {
-    display: flex !important;
-    align-items: center !important;
-    min-height: 100vh !important;
-  }
-  
-  body .hero-teto-container {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-  }
 }
