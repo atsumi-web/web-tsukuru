@@ -2207,25 +2207,25 @@ body .header-nav {
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  background: #fff;
-  border: 2px solid rgba(197, 160, 89, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.4);
   border-radius: 12px;
   padding: 1.2rem 1.8rem;
   min-width: 140px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.2s, background 0.2s;
 }
 
 .badges-ticker .impact-badge:hover {
   border-color: var(--accent-gold);
-  box-shadow: 0 8px 30px rgba(197, 160, 89, 0.2);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .badges-ticker .badge-number {
   font-family: var(--font-en);
   font-size: 2rem;
   font-weight: 700;
-  color: var(--navy-deep);
+  color: #fff;
   line-height: 1;
 }
 
@@ -2239,7 +2239,7 @@ body .header-nav {
 .badges-ticker .badge-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #666;
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.03em;
   white-space: nowrap;
 }
