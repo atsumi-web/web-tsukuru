@@ -540,7 +540,7 @@ body .qa-stack {
   gap: 1.5rem;
 }
 body .qa-item h4 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: var(--navy-deep);
   margin-bottom: 0.5rem;
   display: flex;
@@ -657,9 +657,6 @@ body .btn-read-more i {
     left: 10px;
     padding: 0.6rem 1rem;
   }
-  body .qa-item h4 {
-    font-size: 1.2rem; /* デスクトップと同値で統一 */
-  }
 }
 
 /* --- Works Section --- */
@@ -747,7 +744,7 @@ body .environment-visual-card .content-box {
   padding: 2rem;
 }
 body .environment-visual-card h3 {
-  font-size: 1.7rem; /* environment-card h3 と統一 */
+  font-size: 1.6rem;
 }
 body .environment-visual-card p {
   font-size: 0.95rem;
@@ -899,11 +896,6 @@ body .trust-badge-item p {
     justify-content: center;
     border-radius: 15px;
     padding: 1.5rem;
-  }
-  /* ENVIRONMENT / BENEFITS カード見出し: モバイルで統一サイズに */
-  body .environment-card h3,
-  body .environment-visual-card h3 {
-    font-size: 1.9rem;
   }
 }
 
