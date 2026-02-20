@@ -13,21 +13,21 @@
   --line-green: #06c755;
   --line-green-dark: #05a346;
 
-  /* --- Text Colors (No Magic Hex) --- */
-  --text-main: var(--text-main);
-  --text-sub: var(--text-sub);
-  --text-muted: var(--text-muted);
+  /* --- Text Colors --- */
+  --text-main: #333333;
+  --text-sub: #555555;
+  --text-muted: #888888;
   --text-inverse: #ffffff;
 
   /* --- Backgrounds --- */
   --bg-white: #ffffff;
-  --bg-light: var(--bg-light);
+  --bg-light: #f4f6f9;
   --bg-navy-overlay: rgba(0, 26, 61, 0.9);
 
   /* --- UI Tokens --- */
   --premium-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --border-light: var(--border-light);
+  --border-light: rgba(0, 26, 61, 0.1);
 
   /* --- Fonts --- */
   --font-en: "Inter", sans-serif;
@@ -744,10 +744,13 @@ body .data-section::before {
   height: 100%;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   opacity: 0.5;
+  z-index: 0; /* コンテンツの後ろに確実に配置 */
 }
 body .hero-features {
   text-align: center;
   padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  overflow-x: hidden;
 }
 body .hero-features .label-en {
   display: block;
@@ -767,6 +770,8 @@ body .hero-features .premium-title::after {
 }
 body .data-section .premium-title {
   color: #fff;
+  position: relative;
+  z-index: 2; /* ::beforeより前面に確実に表示する */
 }
 body .data-section .premium-title span {
   color: var(--accent-gold);
@@ -2117,6 +2122,20 @@ body .header-nav {
   margin-right: 1.5rem;
 }
 
+@media (max-width: 1135px) {
+  body .header-nav {
+    margin-right: 0;
+    width: 100%;
+    max-width: none;
+  }
+  html body .header-nav .nav-menu li .nav-cta {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    width: fit-content;
+  }
+}
+
 /* ========================================
    CTA Buttons - Rebuilt Clean Implementation
    ======================================== */
@@ -2151,4 +2170,118 @@ body .header-nav {
 
 .trust-badge-item:nth-child(3) img {
   margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   FACTS & NUMBERS ティッカー（右→左スクロール）
+   ============================================ */
+.badges-ticker-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+  /* containerを突き破って全幅に */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 1rem 0;
+  /* 両端をフェードアウト */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+.badges-ticker {
+  display: flex;
+  gap: 1.2rem;
+  width: max-content;
+  animation: badgesTicker 40s linear infinite;
+}
+
+/* ホバーで一時停止 */
+.badges-ticker-wrapper:hover .badges-ticker {
+  animation-play-state: paused;
+}
+
+@keyframes badgesTicker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 9バッジ分（セット1）だけずらしてループ */
+    transform: translateX(-50%);
+  }
+}
+
+/* バッジ個別スタイル（ティッカー内） */
+.badges-ticker .impact-badge {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 12px;
+  padding: 1.2rem 1.8rem;
+  min-width: 140px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.badges-ticker .impact-badge:hover {
+  border-color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.badges-ticker .badge-number {
+  font-family: var(--font-en);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.badges-ticker .badge-number .unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-left: 2px;
+}
+
+.badges-ticker .badge-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .badges-ticker {
+    animation-duration: 32s;
+    gap: 0.9rem;
+  }
+
+  .badges-ticker .impact-badge {
+    padding: 1rem 1.3rem;
+    min-width: 120px;
+  }
+
+  .badges-ticker .badge-number {
+    font-size: 1.6rem;
+  }
 }
