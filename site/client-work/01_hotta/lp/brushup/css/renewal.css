@@ -522,9 +522,10 @@ body .interviewee-name {
 body .interviewee-name span {
   font-family: var(--font-en);
   font-size: 1rem;
-  color: var(--text-muted); /* ゴールドから控えめに変更 */
+  color: var(--text-muted);
   font-weight: 400;
   letter-spacing: 0.05em;
+  word-break: break-all; /* 長いテキストの横溢れを防ぐ */
 }
 body .interview-catch {
   font-size: 1.25rem;
@@ -598,6 +599,7 @@ body .btn-read-more i {
     flex-direction: column;
     padding: 0;
     overflow: hidden;
+    max-width: 100%; /* 画面幅を超えないように鞋定 */
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
