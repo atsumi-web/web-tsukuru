@@ -748,6 +748,8 @@ body .data-section::before {
 body .hero-features {
   text-align: center;
   padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  overflow-x: hidden;
 }
 body .hero-features .label-en {
   display: block;
