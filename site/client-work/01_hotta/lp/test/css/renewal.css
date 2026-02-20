@@ -14,20 +14,20 @@
   --line-green-dark: #05a346;
 
   /* --- Text Colors (No Magic Hex) --- */
-  --text-main: #333333;
-  --text-sub: #555555;
-  --text-muted: #666666;
+  --text-main: var(--text-main);
+  --text-sub: var(--text-sub);
+  --text-muted: var(--text-muted);
   --text-inverse: #ffffff;
 
   /* --- Backgrounds --- */
   --bg-white: #ffffff;
-  --bg-light: #f4f6f9;
+  --bg-light: var(--bg-light);
   --bg-navy-overlay: rgba(0, 26, 61, 0.9);
 
   /* --- UI Tokens --- */
   --premium-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --border-light: #eeeeee;
+  --border-light: var(--border-light);
 
   /* --- Fonts --- */
   --font-en: "Inter", sans-serif;
@@ -320,7 +320,7 @@ body .job-step-title {
 }
 body .job-step-desc {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-muted);
 }
 body .job-note {
   font-size: 0.85rem;
@@ -388,7 +388,7 @@ body .gallery-item:hover img {
 /* --- Voice Section (Interviews) --- */
 body .voice-section {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background-color: #f4f6f9;
+  background-color: var(--bg-light);
   overflow: hidden;
 }
 body .voice-grid {
@@ -536,7 +536,7 @@ body .qa-item h4 i {
 }
 body .qa-item p {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text-sub);
   line-height: 1.7;
   margin-left: 1.7rem;
 }
@@ -665,7 +665,7 @@ body .works-caption {
 /* --- Features / Environment / Data --- */
 body .features {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: linear-gradient(180deg, #f4f6f9 0%, #fff 100%);
+  background: linear-gradient(180deg, var(--bg-light) 0%, #fff 100%);
 }
 body .environment-grid {
   display: grid;
@@ -706,7 +706,7 @@ body .environment-card h3 {
 }
 body .environment-card p {
   line-height: 1.8;
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.95rem;
   text-align: left;
 }
@@ -845,12 +845,12 @@ body .trust-badge-item img {
 body .trust-badge-item span {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-main);
   line-height: 1.3;
 }
 body .trust-badge-item p {
   font-size: 0.8rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.5;
   margin: 0;
 }
@@ -899,7 +899,7 @@ body .guardians-image img {
 body .guardians-text {
   font-size: 1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-main);
   margin-bottom: 2rem;
   opacity: 0;
   animation: fadeInTitle 0.8s ease-out 0.4s forwards;
@@ -1035,7 +1035,7 @@ body .positions .section-subtitle {
   margin-top: 0;
   padding-top: 1.5rem;
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.8;
 }
 body .recruit-wrapper {
@@ -1074,7 +1074,7 @@ body .recruit-row dd {
   flex-grow: 1;
   font-size: 1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-main);
 }
 body .recruit-row dd strong {
   font-size: 1.2rem;
@@ -1096,7 +1096,7 @@ body .recruit-row .tag {
 body .recruit-row .note {
   display: block;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-muted);
   margin-top: 0.5rem;
 }
 body .benefit-list {
@@ -1165,7 +1165,7 @@ body .company-table {
 body .company-row {
   display: flex;
   padding: 1.5rem 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-light);
 }
 body .company-row:last-child {
   border-bottom: none;
@@ -1178,7 +1178,7 @@ body .company-row dt {
 }
 body .company-row dd {
   flex-grow: 1;
-  color: #333;
+  color: var(--text-main);
   line-height: 1.6;
 }
 body .map-link {
@@ -1248,7 +1248,7 @@ body .entry-lead {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-top: 2rem;
-  color: #555;
+  color: var(--text-sub);
 }
 body .entry-options {
   display: grid;
@@ -1286,7 +1286,7 @@ body .card-badge {
   white-space: nowrap;
 }
 body .card-badge.sub {
-  background: #555;
+  background: var(--text-sub);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 body .card-icon {
@@ -1301,7 +1301,7 @@ body .entry-card h3 {
 }
 body .entry-card p {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -1344,7 +1344,7 @@ body .form-group label {
   display: block;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-main);
   font-size: 0.9rem;
 }
 body .form-group .required {
@@ -1381,7 +1381,7 @@ body .form-group input:focus {
 body .entry-phone {
   text-align: center;
   margin-top: 4rem;
-  color: #666;
+  color: var(--text-muted);
 }
 body .phone-link {
   display: block;
