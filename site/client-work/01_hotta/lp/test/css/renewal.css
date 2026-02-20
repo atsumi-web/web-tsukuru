@@ -2186,7 +2186,7 @@ body .header-nav {
   display: flex;
   gap: 1.2rem;
   width: max-content;
-  animation: badgesTicker 28s linear infinite;
+  animation: badgesTicker 40s linear infinite;
 }
 
 /* ホバーで一時停止 */
@@ -2251,7 +2251,7 @@ body .header-nav {
 
 @media (max-width: 768px) {
   .badges-ticker {
-    animation-duration: 22s;
+    animation-duration: 32s;
     gap: 0.9rem;
   }
 
