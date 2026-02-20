@@ -26,8 +26,10 @@
     height: auto;
     min-height: 100dvh;
     overflow: visible;
+    align-items: flex-start; /* ← モバイルは上揃え。padding-topで位置調整 */
   }
 }
+
 
 /* Hero Text Container */
 #hero .hero-teto-container {
@@ -49,7 +51,7 @@
 @media (max-width: 1200px) {
   #hero .hero-teto-container {
     width: 100%;
-    padding: 120px 1.5rem;
+    padding: 85px 1.5rem 2rem;
     text-align: center;
     align-items: center;
     margin: 0 auto;
