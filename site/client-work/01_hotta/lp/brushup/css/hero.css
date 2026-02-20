@@ -309,12 +309,12 @@
 
   .teto-main-title .subtitle-line-small {
     font-size: 0.65em;
-    letter-spacing: -0.08em; /* 文字詰めで改行防止 */
+    letter-spacing: -0.04em;
   }
 
   .teto-main-title .subtitle-line-medium {
     font-size: 0.75em;
-    letter-spacing: -0.1em; /* 文字詰めで改行防止 */
+    letter-spacing: -0.05em;
   }
 }
 
