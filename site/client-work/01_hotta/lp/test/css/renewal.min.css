@@ -155,7 +155,11 @@ body .premium-title::after {
   display: block;
   width: 40%;
   height: 3px;
-  background: linear-gradient(to right, var(--accent-gold), rgba(197, 160, 89, 0.3));
+  background: linear-gradient(
+    to right,
+    var(--accent-gold),
+    rgba(197, 160, 89, 0.3)
+  );
   position: absolute;
   bottom: 0;
   left: 0;
@@ -561,7 +565,6 @@ body .btn-read-more svg,
 body .btn-read-more i {
   font-size: 0.9rem;
 }
-
 
 @media (max-width: 900px) {
   body .voice-grid {
@@ -1954,7 +1957,6 @@ body .culture-ticker img:hover {
   }
 }
 
-
 /* ===== 1日の業務フローセクション ===== */
 /* 1日の業務フローセクションのCSS */
 
@@ -2105,14 +2107,14 @@ body .culture-ticker img:hover {
    Header Styles (Full Width Override)
    ======================================== */
 body .site-header .header-full-width {
-  width: 100% !important;
-  padding: 0 0 0 3% !important;
-  max-width: none !important;
-  margin: 0 !important;
+  width: 100%;
+  padding: 0 0 0 3%;
+  max-width: none;
+  margin: 0;
 }
 
 body .header-nav {
-  margin-right: 1.5rem !important;
+  margin-right: 1.5rem;
 }
 
 /* ========================================

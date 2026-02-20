@@ -5,7 +5,6 @@
    ※全スタイルをこのファイルで一元管理（Critical CSS不使用）
    ============================================= */
 
-
 /* ===========================================
    0. HERO LAYOUT（レイアウト骨格）
    =========================================== */
@@ -185,7 +184,6 @@
   }
 }
 
-
 /* ===========================================
    1. TITLE & ANIMATION
    =========================================== */
@@ -201,7 +199,9 @@
 }
 
 @keyframes fadeInTitle {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 1201px) {
@@ -234,7 +234,9 @@
 }
 
 @keyframes shineText {
-  to { background-position: 200% center; }
+  to {
+    background-position: 200% center;
+  }
 }
 
 /* Subtitle Lines */
@@ -366,7 +368,9 @@
 }
 
 @keyframes fadeInPride {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -374,7 +378,6 @@
     display: none;
   }
 }
-
 
 /* ===========================================
    2. CTA ENHANCEMENT
@@ -417,7 +420,11 @@
 
 /* Hero CTA Button - Green Gradient (#heroで詳細度確保) */
 #hero .hero-actions .btn-primary {
-  background: linear-gradient(135deg, var(--line-green) 0%, var(--line-green-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--line-green) 0%,
+    var(--line-green-dark) 100%
+  );
   color: #fff;
   font-size: 1.15rem;
   font-weight: 700;
@@ -712,7 +719,11 @@
 .micro-cta {
   margin: 2rem auto;
   padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(6, 199, 85, 0.05) 0%, rgba(5, 163, 70, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(6, 199, 85, 0.05) 0%,
+    rgba(5, 163, 70, 0.05) 100%
+  );
   border-left: 4px solid var(--line-green);
   border-radius: 8px;
   text-align: center;
@@ -750,7 +761,6 @@
     font-size: 0.9rem;
   }
 }
-
 
 /* ===========================================
    3. HERO SUPPLEMENTARY ELEMENTS
@@ -837,8 +847,15 @@
 }
 
 @keyframes scroll {
-  0%, 100% { opacity: 1; top: 8px; }
-  50% { opacity: 0.3; top: 20px; }
+  0%,
+  100% {
+    opacity: 1;
+    top: 8px;
+  }
+  50% {
+    opacity: 0.3;
+    top: 20px;
+  }
 }
 
 .mouse-text {
@@ -875,7 +892,6 @@
   }
 }
 
-
 /* ===========================================
    4. DATA HIGHLIGHTS (数値バッジ + 選ばれる理由)
    =========================================== */
@@ -898,7 +914,7 @@
 }
 
 .section-heading-badges::after {
-  content: '';
+  content: "";
   display: block;
   width: 40px;
   height: 2px;
@@ -1094,7 +1110,6 @@
     margin: 0;
   }
 }
-
 
 /* ===========================================
    5. LAPTOP HEIGHT ADJUSTMENT
