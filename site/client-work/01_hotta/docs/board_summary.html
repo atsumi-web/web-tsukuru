@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>採用LP 導入提案書｜堀田建設株式会社</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: #f5f5f5;
+      color: #1a1a2e;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20mm auto;
+      background: #fff;
+      padding: 16mm 16mm 12mm;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    /* ヘッダー */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 3px solid #001a3d;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+    .doc-header h1 {
+      font-size: 18px;
+      font-weight: 900;
+      color: #001a3d;
+      line-height: 1.3;
+    }
+    .doc-header .meta {
+      font-size: 11px;
+      color: #777;
+      text-align: right;
+    }
+    .doc-header .meta strong {
+      display: block;
+      color: #001a3d;
+      font-size: 12px;
+    }
+
+    /* セクション */
+    .section {
+      margin-bottom: 18px;
+    }
+    .section-title {
+      background: #001a3d;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    /* コンセプトグリッド */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .concept-card {
+      border: 1px solid #e0e4f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #f8f9ff;
+    }
+    .concept-card .label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #667eea;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .concept-card .value {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+    .concept-card p {
+      font-size: 11px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    /* ポイントリスト */
+    .point-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #f8f9ff;
+      border-radius: 6px;
+      padding: 8px 10px;
+      border-left: 3px solid #c5a059;
+    }
+    .point-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .point-text strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .point-text span {
+      font-size: 11px;
+      color: #666;
+    }
+
+    /* ロードマップ */
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .phase {
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .phase.done { background: #e8f8ef; border: 2px solid #48bb78; }
+    .phase.active { background: #ebf0ff; border: 2px solid #667eea; }
+    .phase.next { background: #fff8e6; border: 2px solid #c5a059; }
+    .phase.future { background: #f5f5f5; border: 2px dashed #ccc; }
+    .phase-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .phase.done .phase-badge { background: #48bb78; color: #fff; }
+    .phase.active .phase-badge { background: #667eea; color: #fff; }
+    .phase.next .phase-badge { background: #c5a059; color: #fff; }
+    .phase.future .phase-badge { background: #aaa; color: #fff; }
+    .phase-title {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #1a1a2e;
+    }
+    .phase-items {
+      font-size: 10px;
+      color: #555;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    /* アクションリスト */
+    .action-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+    .action-table th {
+      background: #001a3d;
+      color: #fff;
+      padding: 6px 10px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .action-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #e8eaf0;
+      vertical-align: top;
+    }
+    .action-table tr:last-child td { border-bottom: none; }
+    .action-table tr:nth-child(even) td { background: #f8f9ff; }
+    .tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .tag-eri { background: #667eea; color: #fff; }
+    .tag-hotta { background: #e59866; color: #fff; }
+
+    /* フッター */
+    .doc-footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #888;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ヘッダー -->
+    <div class="doc-header">
+      <div>
+        <h1>採用LP 導入提案書</h1>
+        <div style="font-size:12px; color:#555; margin-top:3px;">求職者に「まず知ってもらう」採用専用ランディングページの制作・運用計画</div>
+      </div>
+      <div class="meta">
+        <strong>堀田建設株式会社 御中</strong>
+        2026年2月24日（火）役員会<br>
+        制作：Web-Tsukuru
+      </div>
+    </div>
+
+    <!-- コンセプト -->
+    <div class="section">
+      <div class="section-title">01 ｜ 採用LPのコンセプト</div>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <div class="label">TARGET</div>
+          <div class="value">未経験・転職検討者</div>
+          <p>建設業に興味はあるが、まだ応募に踏み切れていない人</p>
+        </div>
+        <div class="concept-card">
+          <div class="label">URL</div>
+          <div class="value">recruit.hottacon.co.jp</div>
+          <p>公式サイトとは独立した採用専用ページ。既存採用ページと共存。</p>
+        </div>
+        <div class="concept-card">
+          <div class="label">GOAL</div>
+          <div class="value">公式LINEへの登録</div>
+          <p>「応募」ではなく「まず知る」から始めるハードルの低い設計</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 制作ポイント -->
+    <div class="section">
+      <div class="section-title">02 ｜ 制作ポイント</div>
+      <div class="point-list">
+        <div class="point-item">
+          <div class="point-icon">👥</div>
+          <div class="point-text">
+            <strong>3名のリアルな社員インタビュー</strong>
+            <span>岡安さん・菅原さん・渥美さんの声で共感を生む</span>
+          </div>
+        </div>
+        <div class="point-item">
+          <div class="point-icon">📊</div>
+          <div class="point-text">
+            <strong>数字で証明する働きやすさ</strong>
+            <span>残業10h・有給11日・資格0円など具体的な実績を掲載</span>
+          </div>
+        </div>
+        <div class="point-item">
+          <div class="point-icon">📱</div>
+          <div class="point-text">
+            <strong>スマホ最適化・高速表示</strong>
+            <span>求職者の90%以上がスマホで閲覧するため徹底的に最適化</span>
+          </div>
+        </div>
+        <div class="point-item">
+          <div class="point-icon">💬</div>
+          <div class="point-text">
+            <strong>低ハードルなCTA設計</strong>
+            <span>「応募」でなく「まず登録するだけでOK」の心理設計</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ロードマップ -->
+    <div class="section">
+      <div class="section-title">03 ｜ 公開ロードマップ</div>
+      <div class="roadmap">
+        <div class="phase done">
+          <div class="phase-badge">✅ 完了</div>
+          <div class="phase-title">Phase 1<br>基盤構築</div>
+          <div class="phase-items">
+            🏗 採用LP制作<br>
+            🎯 採用司令室<br>
+            📋 インタビュー
+          </div>
+        </div>
+        <div class="phase active">
+          <div class="phase-badge">🔵 進行中</div>
+          <div class="phase-title">Phase 1.5<br>公開準備</div>
+          <div class="phase-items">
+            ✔ 役員会確認<br>
+            📤 FTPアップロード<br>
+            📲 LINE登録準備
+          </div>
+        </div>
+        <div class="phase next">
+          <div class="phase-badge">🟡 提案中</div>
+          <div class="phase-title">Phase 2<br>集客強化</div>
+          <div class="phase-items">
+            📣 Meta広告配信<br>
+            🔁 LP→LINE誘導<br>
+            📊 効果測定
+          </div>
+        </div>
+        <div class="phase future">
+          <div class="phase-badge">⬜ 将来</div>
+          <div class="phase-title">Phase 3<br>資産化</div>
+          <div class="phase-items">
+            ✍️ 採用ブログ<br>
+            📈 Indeed広告<br>
+            🔄 継続改善
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 公開後アクション -->
+    <div class="section">
+      <div class="section-title">04 ｜ 公開後アクション（御社ご担当者様へ）</div>
+      <table class="action-table">
+        <thead>
+          <tr>
+            <th width="22%">対応項目</th>
+            <th width="48%">内容</th>
+            <th width="15%">担当</th>
+            <th width="15%">連絡先</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ハローワーク求人票</strong></td>
+            <td>採用ページURLを recruit.hottacon.co.jp に変更<br><span style="color:#888">※IndeedやスタンバイへHW連携で自動反映</span></td>
+            <td><span class="tag tag-hotta">堀田さん</span></td>
+            <td>最寄りHW窓口</td>
+          </tr>
+          <tr>
+            <td><strong>おしごと三重</strong></td>
+            <td>企業ページのURL更新を申請</td>
+            <td><span class="tag tag-hotta">堀田さん</span></td>
+            <td>三重県雇用対策課</td>
+          </tr>
+          <tr>
+            <td><strong>各転職サイト</strong></td>
+            <td>マイナビ・エン転職・doda等の採用URLを更新</td>
+            <td><span class="tag tag-hotta">堀田さん</span></td>
+            <td>各サイト担当者</td>
+          </tr>
+          <tr>
+            <td><strong>公式HP（O-GOEさん）</strong></td>
+            <td>既存採用ページに採用LPへのリンクを追加依頼</td>
+            <td><span class="tag tag-hotta">堀田さん</span></td>
+            <td>O-GOE 福冨様</td>
+          </tr>
+          <tr>
+            <td><strong>公式LINE開設</strong></td>
+            <td>LINEアカウント権限をWeb-Tsukuruに付与<br><span style="color:#888">→ 設定・LP内リンク差し替えをWeb-Tsukuruが代行</span></td>
+            <td><span class="tag tag-hotta">堀田さん</span></td>
+            <td>Web-Tsukuru</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- フッター -->
+    <div class="doc-footer">
+      <span>堀田建設株式会社 採用LP 導入提案書｜2026年2月</span>
+      <span>制作・運用サポート：Web-Tsukuru（渥美絵里）｜eriin8588@gmail.com</span>
+    </div>
+
+  </div>
+</body>
+</html>
