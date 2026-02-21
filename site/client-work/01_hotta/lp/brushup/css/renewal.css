@@ -1828,6 +1828,31 @@ body .office-scroll img {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Team Gallery (horizontal scroll on all breakpoints) */
+body .team-scroll-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+}
+body .team-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+body .team-scroll {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  padding: 0 1rem;
+}
+body .team-scroll img {
+  height: 250px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  object-fit: cover;
+}
+
 /* FAQ Section */
 body .faq-section {
   padding: 6rem 0;
