@@ -1841,36 +1841,25 @@ body .office-scroll img {
 
 /* Team Gallery (horizontal scroll on all breakpoints) */
 body .team-scroll-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: visible;
   margin-top: 2rem;
   padding-bottom: 1rem;
-  scrollbar-width: none;
   position: relative;
 }
 body .team-scroll-wrapper::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 1rem;
-  width: 80px;
-  background: linear-gradient(to right, transparent, #eef2f9);
-  pointer-events: none;
-  z-index: 1;
-}
-body .team-scroll-wrapper::-webkit-scrollbar {
-  display: none;
+  display: none; /* PC: gradient hidden */
 }
 body .team-scroll {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  width: max-content;
-  padding: 0 1rem;
+  width: 100%;
+  padding: 0;
 }
 body .team-scroll img {
-  height: 250px;
-  width: auto;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 4/3;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   object-fit: cover;
@@ -1952,6 +1941,39 @@ body .faq-a {
     width: 100%;
     aspect-ratio: 4/3;
     object-fit: cover;
+  }
+
+  /* Team Gallery: Grid -> Horizontal Scroll on Mobile */
+  body .team-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  body .team-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  body .team-scroll-wrapper::after {
+    display: block;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 1rem;
+    width: 80px;
+    background: linear-gradient(to right, transparent, #eef2f9);
+    pointer-events: none;
+    z-index: 1;
+  }
+  body .team-scroll {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    padding: 0 1rem;
+  }
+  body .team-scroll img {
+    height: 200px;
+    width: auto;
+    aspect-ratio: unset;
   }
 
   /* Environment & Benefits: 1 Column */
