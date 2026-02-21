@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>採用LP 構成資料｜堀田建設株式会社</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: #f5f5f5;
+      color: #1a1a2e;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+    .page {
+      width: 210mm;
+      margin: 15mm auto;
+      background: #fff;
+      padding: 14mm 14mm 10mm;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 3px solid #001a3d;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .doc-header h1 { font-size: 16px; font-weight: 900; color: #001a3d; }
+    .doc-header .meta { font-size: 10px; color: #888; text-align: right; }
+    .doc-header .meta strong { display: block; color: #001a3d; font-size: 11px; }
+
+    .intro {
+      background: #f0f4ff;
+      border-left: 4px solid #667eea;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      font-size: 11px;
+      color: #444;
+      border-radius: 0 6px 6px 0;
+    }
+    .intro strong { color: #001a3d; }
+
+    /* セクションブロック */
+    .section-block {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0 12px;
+      margin-bottom: 10px;
+      align-items: stretch;
+    }
+    .section-num {
+      background: #001a3d;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      padding: 6px 0;
+    }
+    .section-content {
+      border: 1px solid #e0e4f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: #001a3d;
+    }
+    .section-header.light { background: #f0f4ff; }
+    .section-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .section-header.light .section-name { color: #001a3d; }
+    .section-badge {
+      font-size: 9px;
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-left: auto;
+    }
+    .badge-key { background: #c5a059; color: #fff; }
+    .badge-trust { background: #48bb78; color: #fff; }
+    .badge-empathy { background: #667eea; color: #fff; }
+    .badge-cta { background: #e53e3e; color: #fff; }
+    .badge-nav { background: #718096; color: #fff; }
+
+    .section-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .section-col {
+      padding: 8px 12px;
+      border-right: 1px solid #e8eaf0;
+      font-size: 11px;
+    }
+    .section-col:last-child { border-right: none; }
+    .col-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #667eea;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .col-text { color: #444; }
+    .col-text ul { padding-left: 14px; margin-top: 2px; }
+    .col-text li { margin-bottom: 1px; }
+
+    .persona-tag {
+      display: inline-block;
+      font-size: 9px;
+      padding: 1px 6px;
+      border-radius: 10px;
+      margin: 1px;
+      font-weight: 700;
+    }
+    .p-career { background: #ebf0ff; color: #3a5bd9; }
+    .p-youth { background: #fff0e6; color: #c05621; }
+    .p-local { background: #f0fff4; color: #276749; }
+    .p-all { background: #f5f0ff; color: #553c9a; }
+
+    .doc-footer {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: #aaa;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; }
+      .page + .page { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="doc-header">
+    <div>
+      <h1>採用LP 構成資料</h1>
+      <div style="font-size:11px;color:#555;margin-top:2px;">各セクションの目的・コンテンツ・ターゲットペルソナ一覧</div>
+    </div>
+    <div class="meta">
+      <strong>堀田建設株式会社 御中</strong>
+      2026年2月24日（火）役員会<br>
+      制作：Web-Tsukuru
+    </div>
+  </div>
+
+  <div class="intro">
+    本LPは「まず知るだけでいい」というコンセプトのもと、<strong>応募へのハードルを下げ、公式LINEへの登録</strong>を主な目標としています。
+    ページ全体で求職者の不安を段階的に解消し、自然に行動を促す設計になっています。<br>
+    ターゲットペルソナ：
+    <span class="persona-tag p-career">●転職検討者</span>
+    <span class="persona-tag p-youth">●若者・女性</span>
+    <span class="persona-tag p-local">●地元出身者</span>
+  </div>
+
+  <!-- 01 ヘッダー -->
+  <div class="section-block">
+    <div class="section-num">01</div>
+    <div class="section-content">
+      <div class="section-header light">
+        <span class="section-name">🔝 ヘッダー（固定ナビゲーション）</span>
+        <span class="section-badge badge-nav">常時表示</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">会社ロゴ・ナビメニュー・公式LINE登録ボタン</div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">どのセクションを見ていても常にLINE登録に誘導できる</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 ヒーロー -->
+  <div class="section-block">
+    <div class="section-num">02</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">🎬 ヒーローセクション（最初に目に入る画面）</span>
+        <span class="section-badge badge-key">最重要</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li>動画背景（現場の映像）</li>
+              <li>キャッチコピー「私たちが、続けている理由。」</li>
+              <li>LINE登録CTAボタン</li>
+              <li>直接応募ボタン（サブ）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            最初の3秒で「ここは自分に関係ある」と感じてもらう。
+            仕事のリアルな映像で親近感を持たせ、離脱を防ぐ。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 数字 -->
+  <div class="section-block">
+    <div class="section-num">03</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">📊 数字で見る堀田建設</span>
+        <span class="section-badge badge-trust">信頼構築</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li>平均残業時間：月10h</li>
+              <li>有給消化日数：年11日</li>
+              <li>資格取得費用：0円</li>
+              <li>創業年数・従業員数など</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            「ブラックじゃないか？」という不安を数字で即解消。
+            言葉よりも数値が信頼を生む。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 ペルソナ -->
+  <div class="section-block">
+    <div class="section-num">04</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">🎯 あなたへのメッセージ（ペルソナ別）</span>
+        <span class="section-badge badge-empathy">共感</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li><span class="persona-tag p-career">転職検討者</span>「今の仕事に悩んでいる方へ」</li>
+              <li><span class="persona-tag p-youth">若者・女性</span>「建設業は初めての方へ」</li>
+              <li><span class="persona-tag p-local">地元出身者</span>「地元で働きたい方へ」</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            「自分のことを言っている」と感じてもらい、
+            「読み続けよう」という意欲を引き出す。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 インタビュー -->
+  <div class="section-block">
+    <div class="section-num">05</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">👥 社員インタビュー</span>
+        <span class="section-badge badge-trust">信頼構築</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li>岡安さん（現場職・ベテラン）</li>
+              <li>菅原さん（異業種からの転職）</li>
+              <li>渥美さん（若手女性スタッフ）</li>
+            </ul>
+            各人の入社前の不安・現在の仕事・会社の魅力を掲載
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            上司や同僚を「先に知っておける」安心感を提供。
+            リアルな体験談が「自分にもできる」という自信につながる。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>堀田建設株式会社 採用LP 構成資料（1/2）｜2026年2月24日</span>
+    <span>制作：Web-Tsukuru｜info@web-tsukuru.jp｜https://web-tsukuru.jp</span>
+  </div>
+</div>
+
+<!-- ページ2 -->
+<div class="page">
+  <div class="doc-header">
+    <div>
+      <h1>採用LP 構成資料（つづき）</h1>
+    </div>
+    <div class="meta">
+      <strong>堀田建設株式会社 御中</strong>
+      2026年2月24日（火）役員会<br>
+      制作：Web-Tsukuru
+    </div>
+  </div>
+
+  <!-- 06 職場環境 -->
+  <div class="section-block">
+    <div class="section-num">06</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">🏢 職場環境・制度・待遇</span>
+        <span class="section-badge badge-trust">信頼構築</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li>給与・賞与・昇給の説明</li>
+              <li>資格支援・研修制度</li>
+              <li>休日・有給・育休実績</li>
+              <li>現場の写真・社内の雰囲気</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            「実際どんな職場なの？」という疑問に具体的に答える。
+            感情的な共感を得た後に、条件面での納得感を補強する。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 FAQ -->
+  <div class="section-block">
+    <div class="section-num">07</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">❓ よくある質問（FAQ）</span>
+        <span class="section-badge badge-empathy">不安解消</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li>未経験でも大丈夫？</li>
+              <li>転勤はある？</li>
+              <li>県外からでも応募できる？</li>
+              <li>給与・女性スタッフについてなど全6項目</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            応募直前に生まれる「でも…」という最後の不安を先回りして解消。
+            残っている疑問を消してからエントリーへ誘導する。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 保護者・先生へ -->
+  <div class="section-block">
+    <div class="section-num">08</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">👨‍👩‍👧 保護者・先生の方へ</span>
+        <span class="section-badge badge-empathy">共感</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li>安全管理・社会保険について</li>
+              <li>資格・スキルアップ支援</li>
+              <li>女性・若手の活躍実績</li>
+              <li>会社の安定性・創業年数</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            若者の就職を応援する立場の人（保護者・教師）の
+            「建設業は体力的・安全に不安」という懸念を解消する。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 エントリー -->
+  <div class="section-block">
+    <div class="section-num">09</div>
+    <div class="section-content">
+      <div class="section-header">
+        <span class="section-name">🎯 エントリーセクション（行動させるゾーン）</span>
+        <span class="section-badge badge-cta">CTA</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">
+            <ul>
+              <li>「まずは知るだけでいい」見出し</li>
+              <li>① 公式LINE登録ボタン（メインCTA）</li>
+              <li>② 簡単フォーム（名前・電話番号のみ）</li>
+              <li>③ 電話での問い合わせ</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">
+            「応募」でも「面談」でもなく「まず知る」という
+            最低限のアクションを促す。心理的ハードルを限界まで下げた設計。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 フッター -->
+  <div class="section-block">
+    <div class="section-num">10</div>
+    <div class="section-content">
+      <div class="section-header light">
+        <span class="section-name">📋 フッター</span>
+        <span class="section-badge badge-nav">補足情報</span>
+      </div>
+      <div class="section-body">
+        <div class="section-col">
+          <div class="col-label">コンテンツ</div>
+          <div class="col-text">会社情報・所在地・電話番号・個人情報の取り扱い・著作権表示</div>
+        </div>
+        <div class="section-col">
+          <div class="col-label">目的</div>
+          <div class="col-text">信頼性の担保。「実在する会社だ」という確認ができる。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フローティングCTA補足 -->
+  <div style="background:#fff8e6;border:1px solid #c5a059;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:11px;">
+    <strong style="color:#c5a059;">💡 補足：フローティングCTA（常時表示）</strong><br>
+    スマホで閲覧中、画面下部に常に「公式LINEで知る」ボタンが固定表示されます。
+    どのセクションを読んでいてもワンタップでLINEに誘導できる仕組みです。
+  </div>
+
+  <div class="doc-footer">
+    <span>堀田建設株式会社 採用LP 構成資料（2/2）｜2026年2月24日</span>
+    <span>制作：Web-Tsukuru｜info@web-tsukuru.jp｜https://web-tsukuru.jp</span>
+  </div>
+</div>
+
+</body>
+</html>
