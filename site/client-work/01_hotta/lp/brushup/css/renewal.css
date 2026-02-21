@@ -1793,11 +1793,11 @@ body .culture-tag {
     gap: 3rem;
   }
   body .culture-text {
-    order: 2;
+    order: 1;
   }
   body .culture-visual {
-    order: 1;
-    margin: 0 -1rem; /* スマホで少し横幅いっぱいに */
+    order: 2;
+    margin: 0 -1rem;
   }
   body .culture-visual img {
     transform: rotate(0);
@@ -2389,5 +2389,18 @@ body .header-nav {
 
   .badges-ticker .badge-label {
     font-size: 0.85rem;
+  }
+}
+
+/* --- WHAT WE DO: Mobile order (image first) --- */
+@media (max-width: 768px) {
+  body .job-grid {
+    grid-template-columns: 1fr;
+  }
+  body .visual-frame {
+    order: -1;
+  }
+  body .job-text {
+    order: 1;
   }
 }
