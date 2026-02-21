@@ -152,6 +152,16 @@
         .comp-input-grid input, .comp-input-grid textarea { width: 100%; padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.9rem; }
         .comp-input-grid textarea { height: 60px; resize: vertical; }
 
+        /* ── クイックスタートカード ── */
+        .quickstart { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border-radius: var(--radius); padding: 24px 28px; margin-bottom: 24px; }
+        .quickstart h2 { margin: 0 0 16px; font-size: 1.2rem; }
+        .qs-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+        .qs-step { display: flex; gap: 14px; align-items: flex-start; background: rgba(255,255,255,0.12); border-radius: 10px; padding: 14px; }
+        .qs-num { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: var(--primary); font-weight: 900; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .qs-step strong { display: block; font-size: 0.95rem; margin-bottom: 4px; }
+        .qs-step span { font-size: 0.8rem; opacity: 0.88; line-height: 1.5; }
+        .qs-step .qs-anchor { color: #fde68a; font-weight: 700; cursor: pointer; text-decoration: underline; }
+
         /* ── レスポンシブ ── */
         @media (max-width: 768px) {
             header h1 { font-size: 1.5rem; }
@@ -174,6 +184,34 @@
     </div>
 
     <div class="container" id="lp-section">
+
+        <!-- ====== クイックスタートガイド ====== -->
+        <div class="quickstart">
+            <h2>🚀 はじめての方へ — 3ステップで完了！</h2>
+            <div class="qs-steps">
+                <div class="qs-step">
+                    <div class="qs-num">1</div>
+                    <div>
+                        <strong>URLを入力して反映</strong>
+                        <span>↓ 下のURL欄に診断したLPのURLを貼り付け、「全プロンプトに反映」を押す</span>
+                    </div>
+                </div>
+                <div class="qs-step">
+                    <div class="qs-num">2</div>
+                    <div>
+                        <strong>プロンプト#2を1回発送（R1）</strong>
+                        <span><span class="qs-anchor" onclick="openR1Accordion()">R1プロンプト集↓</span> を開いて「#2 総合診断」をコピー→全AIに貼り付けて履行</span>
+                    </div>
+                </div>
+                <div class="qs-step">
+                    <div class="qs-num">3</div>
+                    <div>
+                        <strong>回答を貼り付け→R2生成→最終判断</strong>
+                        <span>5AIの回答をペーストエリアに貼る→「R2生成」→各AIに投げ→Geminiに最終判断させる</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- ====== ① URL入力バー ====== -->
         <div class="url-bar">
@@ -236,18 +274,25 @@
             </div>
         </div>
 
-        <!-- ====== 発見ボックス ====== -->
-        <div class="discovery-box">
-            <h2>💡 AIクロスレビュー（2ラウンド制）の発見</h2>
-            <p>5つのAIに同じ診断を依頼 → 全回答を再度全AIに見せると、各AIが<strong>自然に異なる役割</strong>で深掘りしてくれる。</p>
-            <table>
-                <tr><th>AI</th><th>R1の強み</th><th>R2の自然発生的役割</th></tr>
-                <tr><td>🔍 Manus</td><td>ファクト・データ収集</td><td>📚 外部調査官 — 外部データで補強</td></tr>
-                <tr><td>💬 ChatGPT</td><td>バランスの取れた分析</td><td>🧭 実務コンサル — 優先順位を明確化</td></tr>
-                <tr><td>🔎 Gemini</td><td>心理学的・技術的洞察</td><td>👑 議長 — 良いとこ取りで最終判断</td></tr>
-                <tr><td>🧠 Claude</td><td>批判的思考・数値分析</td><td>🔬 分析官 — 盲点を数値で指摘</td></tr>
-                <tr><td>⚡ DeepSeek</td><td>統合・まとめ</td><td>📊 比較官 — 一覧表で可視化</td></tr>
-            </table>
+        <!-- ====== 発見ボックス（挪って読むコラム） ====== -->
+        <div class="accordion" style="margin-bottom:24px;">
+            <div class="accordion-header" onclick="toggleAccordion(this)" style="background:#fffbeb; color:#92400e;">
+                💡 2ラウンド制でどういいの？（仕組みを知りたい方は→） <span class="arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-inner">
+                    <h2 style="margin:0 0 8px;color:#92400e;">💡 AIクロスレビュー（2ラウンド制）の発見</h2>
+                    <p>5つのAIに同じ診断を依頼 → 全回答を再度全AIに見せると、各AIが<strong>自然に異なる役割</strong>で深掘りしてくれる。</p>
+                    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                        <tr style="color:#92400e;"><th style="padding:6px 8px;text-align:left;border-bottom:1px solid #d4a849;">AI</th><th style="padding:6px 8px;text-align:left;border-bottom:1px solid #d4a849;">R1の強み</th><th style="padding:6px 8px;text-align:left;border-bottom:1px solid #d4a849;">R2の自然発生的役割</th></tr>
+                        <tr><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">🔍 Manus</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">ファクト・データ収集</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">📚 外部調査官 — 外部データで補強</td></tr>
+                        <tr><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">💬 ChatGPT</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">バランスの取れた分析</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">🧭 実務コンサル — 優先順位を明確化</td></tr>
+                        <tr><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">🔎 Gemini</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">心理学的・技術的洞察</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">👑 議長 — 良いとこ取りで最終判断</td></tr>
+                        <tr><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">🧠 Claude</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">批判的思考・数値分析</td><td style="padding:6px 8px;border-bottom:1px solid #e5e7eb;">🔬 分析官 — 盲点を数値で指摘</td></tr>
+                        <tr><td style="padding:6px 8px;">⚡ DeepSeek</td><td style="padding:6px 8px;">統合・まとめ</td><td style="padding:6px 8px;">📊 比較官 — 一覧表で可視化</td></tr>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <!-- ====== AIカード ====== -->
@@ -298,31 +343,51 @@
 
         <!-- ====== 診断フロー（チェックリスト） ====== -->
         <div class="workflow">
-            <h2>📋 診断フロー（チェックリスト）</h2>
+            <h2>📋 診断フロー（全体の流れ）</h2>
             <ul class="step-list">
                 <li>
                     <div class="step-check" onclick="toggleCheck(this)"></div>
-                    <div><span class="round-label r1">R1</span><strong>全AIへ一斉投入</strong> — プロンプト#2を5つ全てのAIに投げる</div>
+                    <div>
+                        <span class="round-label r1">STEP 1</span><strong>URL入力 &amp; プロンプトに反映</strong>
+                        <div style="font-size:0.82rem;color:var(--text-light);margin-top:3px;">診断したLPのURLを入力し、「全プロンプトに反映」を押す。モード（自社/クライアント）と種別（採用LP/公式サイト等）も選択する。</div>
+                    </div>
                 </li>
                 <li>
                     <div class="step-check" onclick="toggleCheck(this)"></div>
-                    <div><span class="round-label r1">R1</span><strong>回答収集</strong> — 5つの回答を下のペーストエリアに貼り付ける</div>
+                    <div>
+                        <span class="round-label r1">STEP 2</span><strong>R1：プロンプト#2を全AIに投射</strong>
+                        <div style="font-size:0.82rem;color:var(--text-light);margin-top:3px;">下の「ラウンド1：プロンプト集」を開いて「#2 総合診断」をコピー→Manus・ChatGPT・Gemini・Claude・DeepSeekに全部貼り付けて送信する。</div>
+                    </div>
                 </li>
                 <li>
                     <div class="step-check" onclick="toggleCheck(this)"></div>
-                    <div><span class="round-label r2">R2</span><strong>クロスレビュー</strong> — 生成されたAI別R2プロンプトを各AIに投げる</div>
+                    <div>
+                        <span class="round-label r1">STEP 3</span><strong>R1：5AIの回答をペーストエリアに貼いて「R2生成」</strong>
+                        <div style="font-size:0.82rem;color:var(--text-light);margin-top:3px;">各AIの回答を下の「R1回答ペーストエリア」に貼り付け、「R2プロンプトを生成」を押す。</div>
+                    </div>
                 </li>
                 <li>
                     <div class="step-check" onclick="toggleCheck(this)"></div>
-                    <div><span class="round-label final">最終</span><strong>統合判断</strong> — 全AIの一致点 = 最優先改善として実行する</div>
+                    <div>
+                        <span class="round-label r2">STEP 4</span><strong>R2：各AIのカスタムプロンプトを各AIに投射</strong>
+                        <div style="font-size:0.82rem;color:var(--text-light);margin-top:3px;">生成されたAI別タブを切り替えてコピー→それぞれのAIに貼り付けて送信する。</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-check" onclick="toggleCheck(this)"></div>
+                    <div>
+                        <span class="round-label final">STEP 5</span><strong>Geminiに最終判断させて実装</strong>
+                        <div style="font-size:0.82rem;color:var(--text-light);margin-top:3px;">下の「STEP3：最終判断」セクションでR2回答を貼り付け→Geminiの最終判断プロンプトを履行→Antigravityで実装。</div>
+                    </div>
                 </li>
             </ul>
         </div>
 
         <!-- ====== R1プロンプト（アコーディオン） ====== -->
         <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                📝 ラウンド1：プロンプト集 <span class="arrow">▼</span>
+            <div class="accordion-header" id="r1AccordionHeader" onclick="toggleAccordion(this)" style="border-left:4px solid var(--primary); background:linear-gradient(135deg,#f0f4ff,#e8edff);">
+                <span style="background:var(--primary);color:#fff;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;margin-right:8px;">STEP 2</span>
+                📝 ラウンド1：プロンプト集（← まずここを開く！） <span class="arrow">▼</span>
             </div>
             <div class="accordion-body">
                 <div class="accordion-inner">
@@ -1114,6 +1179,18 @@ ${baseIntro}
             btn.classList.add('active');
             document.getElementById('lp-section').style.display = hub === 'lp' ? 'block' : 'none';
             document.getElementById('competitor-section').style.display = hub === 'competitor' ? 'block' : 'none';
+        }
+
+        // ===== R1アコーディオンを開く =====
+        function openR1Accordion() {
+            const header = document.getElementById('r1AccordionHeader');
+            if (header && !header.classList.contains('open')) {
+                header.classList.add('open');
+                header.nextElementSibling.classList.add('open');
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (header) {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         // ===== 競合プロンプト反映 =====
