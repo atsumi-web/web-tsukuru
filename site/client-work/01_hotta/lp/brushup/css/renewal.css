@@ -288,6 +288,12 @@ body .signature p {
   }
 }
 
+/* --- Gallery Section (OUR TEAM) --- */
+body .gallery-section {
+  background: #eef2f9;
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
 /* --- Job Description Section --- */
 body .job-description {
   padding: clamp(4rem, 8vw, 6rem) 0;
@@ -1849,7 +1855,7 @@ body .team-scroll-wrapper::after {
   top: 0;
   bottom: 1rem;
   width: 80px;
-  background: linear-gradient(to right, transparent, #ffffff);
+  background: linear-gradient(to right, transparent, #eef2f9);
   pointer-events: none;
   z-index: 1;
 }
