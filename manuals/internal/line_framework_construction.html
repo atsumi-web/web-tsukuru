@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建築業界特化 LINE採用フレームワーク | 汎用テンプレート</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        :root {
+            --line-green: #06c755;
+            --line-dark: #04a044;
+            --primary: #667eea;
+            --accent: #f59e0b;
+            --bg: #f3f4f6;
+            --card: #fff;
+            --text: #333;
+            --text-light: #666;
+            --radius: 12px;
+            --shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.7; }
+        header { background: linear-gradient(135deg, #667eea, #06c755); color: #fff; padding: 30px 20px; text-align: center; }
+        header h1 { margin: 0 0 6px; font-size: 1.8rem; }
+        header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+        .container { max-width: 960px; margin: 0 auto; padding: 30px 20px; }
+
+        .var-badge { display: inline-block; background: #fef3c7; border: 1px solid #fbbf24; color: #92400e; padding: 1px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; font-family: monospace; }
+
+        .section { background: var(--card); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow); }
+        .section-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--primary); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-right: 10px; flex-shrink: 0; }
+        .section h2 { display: flex; align-items: center; margin: 0 0 16px; font-size: 1.15rem; color: #1e1b4b; }
+
+        /* メッセージ構成 */
+        .msg-steps { display: flex; flex-direction: column; gap: 14px; }
+        .msg-step { display: flex; gap: 14px; }
+        .msg-step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .msg-bubble { background: #f5f7ff; border: 1px solid #c7d2fe; border-radius: 10px 10px 10px 0; padding: 12px 14px; font-size: 0.87rem; line-height: 1.6; margin-top: 6px; }
+        .msg-bubble .var-badge { margin: 0 2px; }
+
+        /* 3大コンテンツ */
+        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+        .menu-panel { background: linear-gradient(135deg, #1e1b4b, #312e81); color: #fff; border-radius: 10px; padding: 16px 12px; text-align: center; }
+        .menu-panel .emoji { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+        .menu-panel strong { display: block; font-size: 0.85rem; margin-bottom: 4px; }
+        .menu-panel span { font-size: 0.75rem; opacity: 0.8; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 14px; }
+        .faq-item { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
+        .faq-q { background: #f9fafb; padding: 12px 16px; font-weight: 700; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 8px; }
+        .faq-q-badge { background: var(--line-green); color: #fff; width: 22px; height: 22px; min-width: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; margin-top: 2px; }
+        .faq-a { padding: 12px 16px; font-size: 0.87rem; background: #f0fdf4; border-top: 1px solid #e5e7eb; }
+
+        /* タイムライン */
+        .timeline { display: flex; flex-direction: column; gap: 0; }
+        .timeline-item { display: flex; gap: 16px; padding-bottom: 20px; position: relative; }
+        .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: 19px; top: 38px; bottom: 0; width: 2px; background: #d1d5db; }
+        .timeline-dot { width: 38px; height: 38px; border-radius: 50%; background: var(--line-green); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.72rem; text-align: center; line-height: 1.2; flex-shrink: 0; z-index: 1; }
+        .timeline-body { flex: 1; padding-top: 4px; }
+        .timeline-body strong { display: block; font-size: 0.9rem; color: #1e1b4b; margin-bottom: 4px; }
+        .timeline-body p { margin: 0; font-size: 0.85rem; color: var(--text-light); }
+
+        /* カスタマイズ変数表 */
+        .var-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 12px; }
+        .var-table th { background: #f5f7ff; padding: 10px 12px; text-align: left; border-bottom: 2px solid #c7d2fe; color: #3730a3; }
+        .var-table td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+        .var-table tr:last-child td { border-bottom: none; }
+
+        /* 価値提案ボックス */
+        .value-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+        .value-box h2 { margin: 0 0 12px; color: #92400e; font-size: 1.1rem; }
+        .value-box p { margin: 0; color: #78350f; font-size: 0.9rem; }
+        .value-box strong { color: #92400e; }
+
+        footer { text-align: center; color: #999; padding: 24px 20px; font-size: 0.82rem; }
+
+        @media (max-width: 600px) {
+            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+            header h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🏗 建築業界特化</h1>
+    <p>LINE採用導線 汎用フレームワーク | 他社案件への転用テンプレート</p>
+</header>
+
+<div class="container">
+
+    <!-- 価値提案 -->
+    <div class="value-box">
+        <h2>💡 このフレームワークの価値</h2>
+        <p>建築業界は「2024年問題（残業規制）」でホワイト化が進んでいるが、その実態が求職者に届いていない。このLINEパッケージを<strong>「付帯サービス」として提供</strong>すれば、「LPを作って終わり」ではなく「採用を成功させるパートナー」として圧倒的なポジションを築ける。<br><br><span class="var-badge">[会社名]</span> などの黄色ラベルが「変数」です。新しい案件では各変数を書き換えてください。</p>
+    </div>
+
+    <!-- 1. あいさつメッセージ -->
+    <div class="section">
+        <h2><span class="section-num">1</span>あいさつメッセージ（汎用構成）</h2>
+        <div class="msg-steps">
+            <div class="msg-step">
+                <div class="msg-step-num">①</div>
+                <div style="flex:1;">
+                    <strong style="font-size:0.88rem;color:#333;">ハードルを下げる挨拶</strong>
+                    <div class="msg-bubble">友だち追加ありがとうございます！<span class="var-badge">[会社名]</span> 採用担当です。まずは当社のことを知っていただくために、この3分動画をご覧ください！</div>
+                </div>
+            </div>
+            <div class="msg-step">
+                <div class="msg-step-num">②</div>
+                <div style="flex:1;">
+                    <strong style="font-size:0.88rem;color:#333;">動画・スライド誘導</strong>
+                    <div class="msg-bubble">🎬 <span class="var-badge">[仕事の風景・完成物のスライドURL]</span><br>現場の迫力と、完成後の達成感を視覚的に伝えます。</div>
+                </div>
+            </div>
+            <div class="msg-step">
+                <div class="msg-step-num">③</div>
+                <div style="flex:1;">
+                    <strong style="font-size:0.88rem;color:#333;">アクションの示唆</strong>
+                    <div class="msg-bubble">いきなり応募は不要です。まずは下のメニューから、気になる「数字」や「本音」を覗いてみてくださいね👇</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. リッチメニュー -->
+    <div class="section">
+        <h2><span class="section-num">2</span>リッチメニューの「3大キラーコンテンツ」</h2>
+        <p style="font-size:0.87rem;color:var(--text-light);margin:0 0 12px;">建築業界の求職者が必ず気にするポイントを3分割。</p>
+        <div class="menu-grid">
+            <div class="menu-panel">
+                <span class="emoji">💰</span>
+                <strong>給与・数字</strong>
+                <span>給与・残業・有給取得率</span>
+            </div>
+            <div class="menu-panel" style="background:#065f46;">
+                <span class="emoji">👷</span>
+                <strong>先輩の本音</strong>
+                <span>失敗談・やりがい・1日の流れ</span>
+            </div>
+            <div class="menu-panel" style="background:#06c755;">
+                <span class="emoji">📅</span>
+                <strong>面談を予約</strong>
+                <span>カジュアル・手ぶらOK</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 自動応答FAQ -->
+    <div class="section">
+        <h2><span class="section-num">3</span>業界共通の「自動応答FAQ」設定</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q"><div class="faq-q-badge">Q</div>「未経験でも大丈夫？」と入力されたら</div>
+                <div class="faq-a">OKです！<span class="var-badge">[社名]</span>では教育担当の先輩がつく「ブラザー制度」があり、道具の名前から丁寧に教えます。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><div class="faq-q-badge">Q</div>「休みは取れる？」と入力されたら</div>
+                <div class="faq-a">はい！事前申請で希望休も取得可能です。<span class="var-badge">[4週8休]</span>の導入も進めており、プライベートも大切にできます。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><div class="faq-q-badge">Q</div>「体力に自信がない…」と入力されたら</div>
+                <div class="faq-a">最初は慣れが必要ですが、最新の重機や道具で効率化しています。<span class="var-badge">[女性・若手の活躍事例]</span>も多いです！</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. ステップ配信 -->
+    <div class="section">
+        <h2><span class="section-num">4</span>志望度を高める「ステップ配信」シナリオ（7日間）</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot">当日</div>
+                <div class="timeline-body">
+                    <strong>挨拶 ＋ 会社紹介動画</strong>
+                    <p>あいさつメッセージ＋<span class="var-badge">[会社紹介動画URL]</span>を送信。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">2日後</div>
+                <div class="timeline-body">
+                    <strong>【数字で見る<span class="var-badge">[社名]</span>】</strong>
+                    <p>平均勤続年数、平均残業、有給取得率など。競合との差を数字で示す。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">4日後</div>
+                <div class="timeline-body">
+                    <strong>【現場のリアル】社員インタビュー</strong>
+                    <p>一番大変だったことと、それをどう乗り越えたか。失敗談が信頼を生む。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">7日後</div>
+                <div class="timeline-body">
+                    <strong>【最後の一押し】限定感を演出</strong>
+                    <p>「実は今、<span class="var-badge">[○○の現場]</span>が動いています。見学だけでも来ませんか？」と誘導。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. カスタマイズ変数表 -->
+    <div class="section">
+        <h2><span class="section-num">5</span>汎用化するための「カスタマイズ変数」一覧</h2>
+        <p style="font-size:0.87rem;color:var(--text-light);margin:0 0 12px;">各社に合わせて以下の変数を書き換えるだけで完成します。</p>
+        <table class="var-table">
+            <tr>
+                <th>変数</th>
+                <th>説明</th>
+                <th>建設業でよくある例</th>
+            </tr>
+            <tr>
+                <td><span class="var-badge">[会社名]</span></td>
+                <td>クライアント企業名</td>
+                <td>堀田建設株式会社</td>
+            </tr>
+            <tr>
+                <td><span class="var-badge">[動画URL]</span></td>
+                <td>会社紹介動画・スライドのURL</td>
+                <td>YouTubeリンク or GoogleスライドURL</td>
+            </tr>
+            <tr>
+                <td><span class="var-badge">[ターゲット属性]</span></td>
+                <td>メインターゲット層</td>
+                <td>新卒：「部活の延長のような楽しさ」<br>中途：「家庭を守れる安定性」</td>
+            </tr>
+            <tr>
+                <td><span class="var-badge">[工種]</span></td>
+                <td>施工の種類</td>
+                <td>土木：「地図に残る規模感」<br>内装：「デザインとこだわり」</td>
+            </tr>
+            <tr>
+                <td><span class="var-badge">[4週8休]</span></td>
+                <td>実際の休日制度</td>
+                <td>週休2日制・完全週休2日・4週8休など</td>
+            </tr>
+            <tr>
+                <td><span class="var-badge">[○○の現場]</span></td>
+                <td>現在進行中のプロジェクト名</td>
+                <td>○○橋梁工事・○○マンション内装など</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Webとしくみをつくる | 建築業界特化 LINE採用汎用フレームワーク | 作成: 2026-02-22</p>
+    <p style="margin-top:4px;"><a href="line_operation_hotta.html" style="color:#06c755;font-weight:700;">← 堀田建設個別版を見る</a></p>
+</footer>
+</body>
+</html>
