@@ -35,6 +35,11 @@
   --font-serif: "Shippori Mincho B1", serif;
 }
 
+/* Override base.css: body overflow-x:hidden blocks all horizontal scroll */
+body {
+  overflow-x: visible;
+}
+
 /* --- Layout Optimization (PC) --- */
 body .container {
   max-width: 1400px;
