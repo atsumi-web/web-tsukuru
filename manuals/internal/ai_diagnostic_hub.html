@@ -126,6 +126,32 @@
         /* ── フッター ── */
         footer { text-align: center; color: #999; margin-top: 40px; padding: 20px; font-size: 0.85rem; }
 
+        /* ── ハブ切り替えタブ ── */
+        .hub-tabs { display: flex; gap: 8px; padding: 14px 20px; background: rgba(0,0,0,0.2); justify-content: center; flex-wrap: wrap; }
+        .hub-tab { padding: 10px 28px; border-radius: 24px; cursor: pointer; font-weight: 700; font-size: 0.95rem; border: 2px solid rgba(255,255,255,0.3); background: transparent; color: rgba(255,255,255,0.7); transition: all 0.2s; font-family: inherit; }
+        .hub-tab.active { background: #fff; color: var(--primary); border-color: #fff; }
+        .hub-tab:hover:not(.active) { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.5); }
+
+        /* ── 競合調査：フェーズカード ── */
+        .phase-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow); border-left: 4px solid var(--primary); }
+        .phase-card.phase2 { border-left-color: #10b981; }
+        .phase-card.phase3 { border-left-color: #f59e0b; }
+        .phase-card.phase4 { border-left-color: #8b5cf6; }
+        .phase-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; color: #fff; background: var(--primary); margin-bottom: 12px; }
+        .phase-card.phase2 .phase-badge { background: #10b981; }
+        .phase-card.phase3 .phase-badge { background: #f59e0b; }
+        .phase-card.phase4 .phase-badge { background: #8b5cf6; }
+        .phase-card h2 { margin: 0 0 6px; font-size: 1.2rem; }
+        .phase-card .sub-text { font-size: 0.85rem; color: var(--text-light); margin: 0 0 16px; }
+        .axis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .axis-card { background: #f5f7ff; border-radius: 8px; padding: 14px; }
+        .axis-card h4 { margin: 0 0 6px; font-size: 0.85rem; color: var(--primary); }
+        .axis-card p { margin: 0; font-size: 0.78rem; color: var(--text-light); line-height: 1.5; }
+        .comp-input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 16px; }
+        .comp-input-grid label { font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 4px; }
+        .comp-input-grid input, .comp-input-grid textarea { width: 100%; padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.9rem; }
+        .comp-input-grid textarea { height: 60px; resize: vertical; }
+
         /* ── レスポンシブ ── */
         @media (max-width: 768px) {
             header h1 { font-size: 1.5rem; }
@@ -140,10 +166,14 @@
 <body>
     <header>
         <h1>🤖 5大AI診断ハブ</h1>
-        <p>2ラウンド制・インタラクティブLP診断ツール</p>
+        <p>2ラウンド制・インタラクティブLP診断 ＋ 競合調査フレームワーク</p>
     </header>
+    <div class="hub-tabs">
+        <button class="hub-tab active" onclick="switchHub(this,'lp')">🔬 LP診断ハブ</button>
+        <button class="hub-tab" onclick="switchHub(this,'competitor')">🏢 競合調査ハブ</button>
+    </div>
 
-    <div class="container">
+    <div class="container" id="lp-section">
 
         <!-- ====== ① URL入力バー ====== -->
         <div class="url-bar">
@@ -538,7 +568,202 @@ Googleの視点から、検索順位向上に直結する改善点を優先的�
             </div>
         </div>
 
-    </div>
+    </div><!-- /#lp-section -->
+
+    <!-- ====== 競合調査ハブ ====== -->
+    <div id="competitor-section" class="container" style="display:none;">
+
+        <!-- 事前設定 -->
+        <div class="phase-card">
+            <span class="phase-badge">📋 事前設定</span>
+            <h2>調査基本情報を入力</h2>
+            <p class="sub-text">入力後「プロンプトに反映」を押すと全フェーズのプロンプトに自動反映されます。</p>
+            <div class="comp-input-grid">
+                <div>
+                    <label>🏢 クライアント会社名</label>
+                    <input type="text" id="c-company" placeholder="例：堀田建設株式会社">
+                </div>
+                <div>
+                    <label>📍 エリア・商圏</label>
+                    <input type="text" id="c-area" placeholder="例：三重県（亀山・鈴鹿エリア）">
+                </div>
+                <div>
+                    <label>💼 職種・ターゲット</label>
+                    <input type="text" id="c-job" placeholder="例：施工管理・20〜30代若手">
+                </div>
+                <div>
+                    <label>💪 自社の強み</label>
+                    <textarea id="c-strength" placeholder="例：ユースエール認定、若者会議、スポーツジム無料"></textarea>
+                </div>
+            </div>
+            <button class="apply-btn" onclick="applyCompetitorInfo()" style="background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-weight:700;font-size:0.95rem;">全プロンプトに反映</button>
+        </div>
+
+        <!-- PHASE 1 -->
+        <div class="phase-card">
+            <span class="phase-badge">PHASE 1</span>
+            <h2>🧠 調査設計（Claude）</h2>
+            <p class="sub-text">競合3層を定義し、分析フレームを設計する。10社前後のリスト選定方針を固める。</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                <h4>Claude：調査設計プロンプト</h4>
+                <span class="use-case">調査の骨格を設計する</span>
+                <pre class="comp-prompt" id="comp-p1">あなたは建設業界の採用マーケティング専門コンサルタントです。
+
+【クライアント情報】
+- 会社名：__COMPANY__
+- エリア：__AREA__
+- 職種：__JOB__
+- 自社の強み：__STRENGTH__
+
+以下を出力してください：
+1. 競合3層の定義と選定候補（直接競合5〜8社、間接競合2〜3社、ベンチマーク2〜3社）
+2. デジタル接点ごとの評価項目リスト（採用LP・SNS・LINE・求人媒体）
+3. 差別化を見つけるための比較マトリクス（訴求軸×社名の表）
+4. 求職者が「答えを求めているのに競合が答えていない問い」のリスト
+
+目標は「競合の空白地帯」と「言葉の解像度の差」を見つけることです。</pre>
+            </div>
+        </div>
+
+        <!-- PHASE 2 -->
+        <div class="phase-card phase2">
+            <span class="phase-badge">PHASE 2</span>
+            <h2>🔍 情報収集（Perplexity → Manus）</h2>
+            <p class="sub-text">Perplexityで競合URLリストを取得し、ManusでLP横断比較を実施する。</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                <h4>① Perplexity：競合リスト抽出</h4>
+                <span class="use-case">最新検索で競合URLを収集</span>
+                <pre class="comp-prompt" id="comp-p2a">__AREA__で__JOB__を採用している建設会社を教えてください。
+
+条件：
+- 採用LP・採用情報ページを持っている企業
+- 中小〜中堅規模（従業員50〜300名程度）
+- 新卒／若手採用を実施中
+
+以下の情報をセットでリスト化してください（10社程度）：
+・会社名
+・採用LP/採用ページのURL
+・SNS（Instagram・YouTube・LINE等）のURL
+・Indeed/マイナビ等の求人URL（あれば）
+・採用の特徴・差別化ポイント（分かる範囲で）</pre>
+            </div>
+            <div class="prompt-box" style="margin-top:16px;">
+                <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                <h4>② Manus：LP横断比較</h4>
+                <span class="use-case">複数URLを一気に横断分析</span>
+                <pre class="comp-prompt" id="comp-p2b">以下は__AREA__の建設会社の採用LPです。
+
+【URL一覧】
+（ここにPerplexityで取得したURLを貼る）
+
+以下の観点で横断比較を表で出力してください：
+| 会社名 | FVの訴求 | ターゲット明確さ | 給与以外の訴求 | 信頼要素 | SNS連携 | LINE有無 | モバイル対応 | あるある表現 |
+
+さらに：
+1. 最も差別化できている会社とその理由
+2. 全社共通の「横並び表現」（空白地帯逆引き）
+3. 誰も言及していない訴求の空白（クライアントが先手を打てる領域）</pre>
+            </div>
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="phase-card phase3">
+            <span class="phase-badge">PHASE 3</span>
+            <h2>⚡ 差別化抽出（Claude × Gemini式5軸）</h2>
+            <p class="sub-text">ManusのLP分析結果をClaudeに渡し、差別化軸と「勝てるポジション」を言語化する。</p>
+            <div class="axis-grid">
+                <div class="axis-card"><h4>① スキル・キャリアの可視化</h4><p>「何年目で何を任せてもらえるか」の具体性。資格取得率・DX活用状況。</p></div>
+                <div class="axis-card"><h4>② 社会的意義の解像度</h4><p>「地域貢献」以上に具体的か。「誰の笑顔」まで表現できているか。</p></div>
+                <div class="axis-card"><h4>③ 人間関係の透明性</h4><p>上司・先輩の人柄が伝わるか。相談しやすい仕組みの有無。</p></div>
+                <div class="axis-card"><h4>④ ワークスタイルの適合性</h4><p>給与外の「時間の質」。現場直行直帰・男性育休・副業容認度。</p></div>
+                <div class="axis-card"><h4>⑤ 言葉の解像度</h4><p>「アットホーム」「安定」を脱した具体的エピソード・数字・実名。</p></div>
+            </div>
+            <div class="prompt-box round2">
+                <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                <h4>Claude：差別化ポジション抽出</h4>
+                <span class="use-case">Manusの出力を貼り付けて実行</span>
+                <pre class="comp-prompt" id="comp-p3">以下は__AREA__の競合採用LP分析結果です（Manus出力）：
+
+[Manusの出力をここに貼る]
+
+---
+__COMPANY__が勝つために：
+
+1. 競合マトリクスの「空白地帯」（誰も訴求していない軸）を特定
+2. 避けるべき「同質化表現トップ5」
+3. 以下5軸ごとの差別化余地：
+   - スキル・キャリアの可視化
+   - 社会的意義の解像度
+   - 人間関係の透明性
+   - ワークスタイルの適合性
+   - 言葉の解像度
+4. LP戦略コンセプト案（3パターン）
+
+【クライアントの強み】：__STRENGTH__
+
+「何を前面に出せば地域で一番選ばれるか」を最終的に1文で表現してください。</pre>
+            </div>
+        </div>
+
+        <!-- PHASE 4 -->
+        <div class="phase-card phase4">
+            <span class="phase-badge">PHASE 4</span>
+            <h2>👑 LP設計へ統合（Gemini 議長）</h2>
+            <p class="sub-text">全フェーズの調査・分析結果をGeminiに渡し、「勝てるLP設計方針」の最終判断を出す。</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this)">コピー</button>
+                <h4>Gemini：LP設計統合プロンプト</h4>
+                <span class="use-case">全フェーズの結果を貼り付けて最終判断</span>
+                <pre class="comp-prompt" id="comp-p4">あなたは「議長」として、以下の競合調査結果を統合し、
+採用LP設計の最終方針を出してください。
+
+【クライアント】：__COMPANY__（__AREA__）
+【ターゲット】：__JOB__
+
+＜Phase2：Manus競合比較＞
+[Manus結果を貼る]
+
+＜Phase3：Claude差別化分析＞
+[Claude結果を貼る]
+
+---
+以下を出力してください：
+
+## ✅ 採用LPの勝ち筋ポジション（1文）
+
+## 📐 LP構成の設計方針
+- ファーストビューのコピー方向性（2〜3案）
+- 最も強調すべきセクション TOP3
+- 避けるべき表現・構成
+
+## 🎯 ターゲット別メッセージ戦略
+- メインターゲット向け
+- サブターゲット向け（Uターン・女性等）
+
+## 🚫 競合との差別化チェックリスト（5つ）
+
+## 📋 実装優先順位（Antigravity連携用）
+1. 最優先（FV・CTA）
+2. 重要（社員の声・数字訴求）
+3. 加点（Instagram・LINE誘導）</pre>
+            </div>
+        </div>
+
+        <!-- ペーストエリア -->
+        <div class="paste-section">
+            <h2>📋 調査結果ペーストエリア（任意）</h2>
+            <p style="color:var(--text-light);margin:0 0 16px;font-size:0.9rem;">各フェーズの結果をここに蓄積しておくと、次プロンプトへのコピペが楽になります。</p>
+            <div class="paste-grid">
+                <div class="paste-card"><h4><span class="status-dot"></span> 🔍 Perplexity（競合リスト）</h4><textarea placeholder="Perplexityの競合リストを貼り付け..."></textarea></div>
+                <div class="paste-card"><h4><span class="status-dot"></span> 🔍 Manus（LP横断比較）</h4><textarea placeholder="ManusのLP比較分析を貼り付け..."></textarea></div>
+                <div class="paste-card"><h4><span class="status-dot"></span> 🧠 Claude（差別化分析）</h4><textarea placeholder="Claudeの差別化分析を貼り付け..."></textarea></div>
+                <div class="paste-card"><h4><span class="status-dot"></span> 👑 Gemini（最終方針）</h4><textarea placeholder="Geminiの最終LP設計方針を貼り付け..."></textarea></div>
+            </div>
+        </div>
+
+    </div><!-- /#competitor-section -->
 
     <footer>
         <p>&copy; 2026 Webとしくみをつくる | 最終更新: 2026-02-18</p>
@@ -876,9 +1101,42 @@ ${baseIntro}
             });
         }
 
+        // ===== ハブ切り替え =====
+        function switchHub(btn, hub) {
+            document.querySelectorAll('.hub-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('lp-section').style.display = hub === 'lp' ? 'block' : 'none';
+            document.getElementById('competitor-section').style.display = hub === 'competitor' ? 'block' : 'none';
+        }
+
+        // ===== 競合プロンプト反映 =====
+        const COMP_TEMPLATES = {};
+        function initCompTemplates() {
+            document.querySelectorAll('.comp-prompt').forEach(el => {
+                COMP_TEMPLATES[el.id] = el.textContent;
+            });
+        }
+        function applyCompetitorInfo() {
+            const company = document.getElementById('c-company')?.value.trim() || '__COMPANY__';
+            const area = document.getElementById('c-area')?.value.trim() || '__AREA__';
+            const job = document.getElementById('c-job')?.value.trim() || '__JOB__';
+            const strength = document.getElementById('c-strength')?.value.trim() || '__STRENGTH__';
+            document.querySelectorAll('.comp-prompt').forEach(el => {
+                let t = COMP_TEMPLATES[el.id] || el.textContent;
+                t = t.replace(/__COMPANY__/g, company)
+                      .replace(/__AREA__/g, area)
+                      .replace(/__JOB__/g, job)
+                      .replace(/__STRENGTH__/g, strength);
+                el.textContent = t;
+            });
+            const btn = document.querySelector('#competitor-section .apply-btn');
+            if (btn) { btn.textContent = '✅ 反映済み'; btn.style.background = '#10b981'; setTimeout(() => { btn.textContent = '全プロンプトに反映'; btn.style.background = ''; }, 2500); }
+        }
+
         // ===== ページ読み込み時にURLを反映 =====
         window.addEventListener('DOMContentLoaded', () => {
             applyUrl();
+            initCompTemplates();
         });
     </script>
 </body>
