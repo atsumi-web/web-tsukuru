@@ -1840,6 +1840,18 @@ body .team-scroll-wrapper {
   margin-top: 2rem;
   padding-bottom: 1rem;
   scrollbar-width: none;
+  position: relative;
+}
+body .team-scroll-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 1rem;
+  width: 80px;
+  background: linear-gradient(to right, transparent, #ffffff);
+  pointer-events: none;
+  z-index: 1;
 }
 body .team-scroll-wrapper::-webkit-scrollbar {
   display: none;
