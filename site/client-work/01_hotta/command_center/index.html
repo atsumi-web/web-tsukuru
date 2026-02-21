@@ -119,13 +119,26 @@
             display: inline-block;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.45rem 1rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.875rem;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
         }
+
+        /* 求人サイトリスト */
+        .site-list-card { background: rgba(255,255,255,0.95); border-radius: 16px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .site-list-cat { font-size: 0.78rem; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 0 0.5rem; border-bottom: 1px solid #e2e8f0; margin-bottom: 0.25rem; }
+        .site-list-cat:first-child { padding-top: 0; }
+        .site-list-item { display: flex; align-items: center; gap: 12px; padding: 0.6rem 0; border-bottom: 1px solid #f0f0f0; }
+        .site-list-item:last-child { border-bottom: none; }
+        .site-icon-sm { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+        .site-name { flex: 1; font-size: 0.9rem; font-weight: 600; color: #2d3748; }
+        .site-desc { font-size: 0.78rem; color: #a0aec0; display: block; }
+        .site-btn { display: inline-block; background: #667eea; color: #fff; padding: 0.3rem 0.8rem; border-radius: 6px; text-decoration: none; font-size: 0.78rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
+        .site-btn:hover { background: #5a67d8; }
 
         .card-link:hover {
             transform: translateY(-2px);
@@ -310,137 +323,78 @@
         <!-- 求人掲載サイト一覧 -->
         <h2 class="section-title" style="margin-top:2rem;">📋 求人掲載サイト一覧</h2>
 
-        <!-- 自社サイト -->
-        <h3 style="color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:0.75rem;padding-left:0.5rem;">🏢 自社サイト</h3>
-        <div class="grid" style="margin-bottom:1rem;">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-web">🏗</div>
-                    <div class="card-title">採用サイト TOP</div>
-                </div>
-                <p class="card-description">亀山・鈴鹿エリアの総合建設会社。採用情報トップページ。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://www.hottacon.co.jp/recruit/" class="card-link" target="_blank">開く →</a>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-web">📄</div>
-                    <div class="card-title">募集要項一覧</div>
-                </div>
-                <p class="card-description">自社サイト内の募集要項ページ。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://www.hottacon.co.jp/recruit/job-info/" class="card-link" target="_blank">開く →</a>
-            </div>
-        </div>
+        <div class="site-list-card">
 
-        <!-- 新卒向け -->
-        <h3 style="color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:0.75rem;padding-left:0.5rem;">🎓 新卒向け</h3>
-        <div class="grid" style="margin-bottom:1rem;">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-blog" style="background:#e60033;">M</div>
-                    <div class="card-title">マイナビ2026 会社概要</div>
-                </div>
-                <p class="card-description">マイナビ2026の会社概要ページ。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://job.mynavi.jp/26/pc/search/corp213828/outline.html" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-cat">🏢 自社サイト</div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#667eea;">🏗</div>
+                <div class="site-name">採用サイト TOP<span class="site-desc">亀山・鈴鹿エリアの総合建設会社</span></div>
+                <a href="https://www.hottacon.co.jp/recruit/" class="site-btn" target="_blank">開く →</a>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-blog" style="background:#e60033;">M</div>
-                    <div class="card-title">マイナビ2026 採用データ</div>
-                </div>
-                <p class="card-description">マイナビ2026の採用データ・募集コースページ。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://job.mynavi.jp/26/pc/search/corp213828/recruiting_course26042250/recruiting_course.html" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#667eea;">📄</div>
+                <div class="site-name">募集要項一覧<span class="site-desc">自社サイト内の募集要項ページ</span></div>
+                <a href="https://www.hottacon.co.jp/recruit/job-info/" class="site-btn" target="_blank">開く →</a>
             </div>
-        </div>
 
-        <!-- 中途・転職向け -->
-        <h3 style="color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:0.75rem;padding-left:0.5rem;">💼 中途・転職向け</h3>
-        <div class="grid" style="margin-bottom:1rem;">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-blog" style="background:#e60033;">M</div>
-                    <div class="card-title">マイナビ転職</div>
-                </div>
-                <p class="card-description">マイナビ転職の企業別求人一覧。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://tenshoku.mynavi.jp/company/320713/joblist/" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-cat">🎓 新卒向け</div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#e60033;">M</div>
+                <div class="site-name">マイナビ2026 会社概要<span class="site-desc">会社概要ページ</span></div>
+                <a href="https://job.mynavi.jp/26/pc/search/corp213828/outline.html" class="site-btn" target="_blank">開く →</a>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-blog" style="background:#ff6600;">en</div>
-                    <div class="card-title">エン転職</div>
-                </div>
-                <p class="card-description">エン転職の企業ページ。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://employment.en-japan.com/comp-106255/" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#e60033;">M</div>
+                <div class="site-name">マイナビ2026 採用データ<span class="site-desc">採用データ・募集コース</span></div>
+                <a href="https://job.mynavi.jp/26/pc/search/corp213828/recruiting_course26042250/recruiting_course.html" class="site-btn" target="_blank">開く →</a>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-blog" style="background:#005bac;">d</div>
-                    <div class="card-title">doda</div>
-                </div>
-                <p class="card-description">dodaの企業求人ページ。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://doda.jp/DodaFront/View/CompanyJobs/j_id__10012631402/" class="card-link" target="_blank">開く →</a>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-blog" style="background:#1a5276;">総</div>
-                    <div class="card-title">総合資格career</div>
-                </div>
-                <p class="card-description">建築施工管理の専門求人サイト。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://www.arc-career.shikaku.co.jp/career/search/detail.php?enterprise_id=2855&id=1276" class="card-link" target="_blank">開く →</a>
-            </div>
-        </div>
 
-        <!-- 一般求人ポータル -->
-        <h3 style="color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:0.75rem;padding-left:0.5rem;">🔍 一般求人ポータル</h3>
-        <div class="grid" style="margin-bottom:1rem;">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon" style="background:#003a9b;">in</div>
-                    <div class="card-title">Indeed</div>
-                </div>
-                <p class="card-description">Indeed 三重県亀山市での堀田建設求人一覧。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://jp.indeed.com/q-%E5%A0%80%E7%94%B0%E5%BB%BA%E8%A8%AD%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-l-%E4%B8%89%E9%87%8D%E7%9C%8C" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-cat">💼 中途・転職向け</div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#e60033;">M</div>
+                <div class="site-name">マイナビ転職<span class="site-desc">企業別求人一覧</span></div>
+                <a href="https://tenshoku.mynavi.jp/company/320713/joblist/" class="site-btn" target="_blank">開く →</a>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon" style="background:#e53e3e;">TW</div>
-                    <div class="card-title">タウンワーク</div>
-                </div>
-                <p class="card-description">タウンワークの正社員求人ページ。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://townwork.net/viewjob/jobid_164007991a2d4ab8/" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#ff6600;">en</div>
+                <div class="site-name">エン転職<span class="site-desc">企業ページ</span></div>
+                <a href="https://employment.en-japan.com/comp-106255/" class="site-btn" target="_blank">開く →</a>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon" style="background:#2d6a4f;">エ</div>
-                    <div class="card-title">エール転職（三重）</div>
-                </div>
-                <p class="card-description">三重の求人情報サイト「エール転職サポート」。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://www.yell.mie.jp/search/data.php?c=y1_info&item=5eeaf59f" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#005bac;">d</div>
+                <div class="site-name">doda<span class="site-desc">企業求人ページ</span></div>
+                <a href="https://doda.jp/DodaFront/View/CompanyJobs/j_id__10012631402/" class="site-btn" target="_blank">開く →</a>
             </div>
-        </div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#1a5276;">総</div>
+                <div class="site-name">総合資格career<span class="site-desc">建築施工管理専門</span></div>
+                <a href="https://www.arc-career.shikaku.co.jp/career/search/detail.php?enterprise_id=2855&id=1276" class="site-btn" target="_blank">開く →</a>
+            </div>
 
-        <!-- 行政系 -->
-        <h3 style="color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:0.75rem;padding-left:0.5rem;">🏛 行政系</h3>
-        <div class="grid" style="margin-bottom:2rem;">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon" style="background:#1a3a6b;">厚</div>
-                    <div class="card-title">若者雇用促進総合サイト</div>
-                </div>
-                <p class="card-description">厚生労働省の若者雇用促進総合サイト。ユースエール認定企業詳細。</p>
-                <span class="status-badge status-active">掲載中</span><br><br>
-                <a href="https://wakamono-koyou-sokushin.mhlw.go.jp/search/service/portalkigyodetail.action?action=showDetail&kigyo_id=26846" class="card-link" target="_blank">開く →</a>
+            <div class="site-list-cat">🔍 一般求人ポータル</div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#003a9b;">in</div>
+                <div class="site-name">Indeed<span class="site-desc">三重県亀山市での求人一覧</span></div>
+                <a href="https://jp.indeed.com/q-%E5%A0%80%E7%94%B0%E5%BB%BA%E8%A8%AD%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-l-%E4%B8%89%E9%87%8D%E7%9C%8C" class="site-btn" target="_blank">開く →</a>
             </div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#e53e3e;">TW</div>
+                <div class="site-name">タウンワーク<span class="site-desc">正社員求人ページ</span></div>
+                <a href="https://townwork.net/viewjob/jobid_164007991a2d4ab8/" class="site-btn" target="_blank">開く →</a>
+            </div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#2d6a4f;">エ</div>
+                <div class="site-name">エール転職（三重）<span class="site-desc">三重の求人情報サイト</span></div>
+                <a href="https://www.yell.mie.jp/search/data.php?c=y1_info&item=5eeaf59f" class="site-btn" target="_blank">開く →</a>
+            </div>
+
+            <div class="site-list-cat">🏛 行政系</div>
+            <div class="site-list-item">
+                <div class="site-icon-sm" style="background:#1a3a6b;">厚</div>
+                <div class="site-name">若者雇用促進総合サイト<span class="site-desc">ユースエール認定企業詳細（厚生労働省）</span></div>
+                <a href="https://wakamono-koyou-sokushin.mhlw.go.jp/search/service/portalkigyodetail.action?action=showDetail&kigyo_id=26846" class="site-btn" target="_blank">開く →</a>
+            </div>
+
         </div>
 
         <div class="header" style="margin-top: 2rem;">
