@@ -48,7 +48,7 @@ body {
   color: var(--color-neutral-dark);
   background-color: var(--color-bg-white);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 .container {
   width: 100%;
