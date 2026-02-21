@@ -1881,6 +1881,11 @@ body .faq-a {
   font-family: var(--font-serif);
   font-weight: 700;
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  body .faq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 768px) {
   /* Office Gallery: Scroll -> Grid for Visibility */
   body .office-scroll-wrapper {
