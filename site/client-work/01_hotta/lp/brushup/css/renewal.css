@@ -1971,9 +1971,10 @@ body .faq-a {
     padding: 0 1rem;
   }
   body .team-scroll img {
-    height: 200px;
-    width: auto;
+    height: 160px;
+    width: 213px;
     aspect-ratio: unset;
+    object-fit: cover;
   }
 
   /* Environment & Benefits: 1 Column */
