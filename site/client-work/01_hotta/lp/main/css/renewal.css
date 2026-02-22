@@ -297,7 +297,7 @@ body .gallery-section {
 /* --- Job Description Section --- */
 body .job-description {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: var(--bg-light);
+  background: var(--bg-white);
 }
 body .job-grid {
   display: grid;
@@ -705,7 +705,7 @@ body .works-caption {
 /* --- Features / Environment / Data --- */
 body .features {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: linear-gradient(180deg, var(--bg-light) 0%, #fff 100%);
+  background: var(--bg-light);
 }
 body .environment-grid {
   display: grid;
@@ -1074,7 +1074,7 @@ body .notes-card .simple-note {
 /* --- Recruit (Positions) --- */
 body .positions {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: #fff;
+  background: var(--bg-light);
 }
 body .positions .section-subtitle {
   margin-top: 0;
@@ -1282,7 +1282,9 @@ body .signature-badge {
 /* --- Entry Section --- */
 body .entry-section {
   padding: clamp(4rem, 8vw, 8rem) 0;
-  background: #f0f4f8;
+  background: var(--navy-deep);
+  color: #fff;
+  position: relative;
 }
 body .entry-header {
   text-align: center;
@@ -1293,7 +1295,7 @@ body .entry-lead {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-top: 2rem;
-  color: var(--text-sub);
+  color: rgba(255, 255, 255, 0.8);
 }
 body .entry-options {
   display: grid;
@@ -1349,6 +1351,14 @@ body .entry-card p {
   color: var(--text-muted);
   margin-bottom: 2rem;
   line-height: 1.6;
+}
+/* ネイビー背景に対してタイトルを白に */
+body .entry-section .premium-title {
+  color: #fff;
+}
+body .entry-section .premium-title span {
+  color: var(--accent-gold);
+  opacity: 1;
 }
 
 body .entry-card.line {
@@ -1426,13 +1436,17 @@ body .form-group input:focus {
 body .entry-phone {
   text-align: center;
   margin-top: 4rem;
-  color: var(--text-muted);
+  color: #fff;
+}
+body .entry-phone p,
+body .entry-phone span {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 body .phone-link {
   display: block;
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--navy-deep);
+  color: var(--accent-gold);
   margin: 0.5rem 0;
   font-family: var(--font-en);
 }
