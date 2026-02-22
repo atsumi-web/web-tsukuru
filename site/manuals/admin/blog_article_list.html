@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ記事リスト | 制作コックピット</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        header {
+            border-bottom: 3px solid #0f172a;
+            padding-bottom: 16px;
+            margin-bottom: 28px;
+        }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 10px; }
+        .breadcrumb a { color: #64748b; text-decoration: none; }
+        .breadcrumb a:hover { color: #3b82f6; }
+        h1 { font-size: 1.6rem; color: #0f172a; }
+        .subtitle { font-size: 0.9rem; color: #64748b; margin-top: 4px; }
+
+        /* Stats Bar */
+        .stats-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+        .stat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 20px; text-align: center; min-width: 100px; }
+        .stat-num { font-size: 1.6rem; font-weight: 700; color: #0f172a; }
+        .stat-label { font-size: 0.75rem; color: #64748b; }
+        .stat-card.done .stat-num { color: #16a34a; }
+        .stat-card.wip .stat-num { color: #d97706; }
+        .stat-card.todo .stat-num { color: #94a3b8; }
+
+        /* Table */
+        .table-wrap { background: #fff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); overflow: hidden; margin-bottom: 12px; }
+        .section-header { background: #1e293b; color: #e2e8f0; padding: 8px 16px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; }
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: #0f172a; color: #fff; }
+        thead th { padding: 10px 14px; text-align: left; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; }
+        tbody tr { border-bottom: 1px solid #f1f5f9; transition: background 0.15s; }
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: #f8fafc; }
+        td { padding: 11px 14px; font-size: 0.86rem; vertical-align: middle; }
+        .num { color: #94a3b8; font-size: 0.78rem; font-weight: 700; width: 32px; }
+        .article-title { font-weight: 700; color: #0f172a; line-height: 1.4; }
+        .keyword-tag { display: inline-block; background: #eff6ff; color: #1d4ed8; padding: 2px 7px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; margin-top: 4px; }
+        .date-tag { font-size: 0.72rem; color: #94a3b8; margin-left: 6px; }
+
+        /* Persona badge */
+        .persona { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+        .p-switch  { background: #fef3c7; color: #92400e; }
+        .p-local   { background: #dcfce7; color: #166534; }
+        .p-youth   { background: #fce7f3; color: #9d174d; }
+        .p-uturn   { background: #e0e7ff; color: #3730a3; }
+        .p-general { background: #f1f5f9; color: #475569; }
+
+        /* Status badge */
+        .status { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s; white-space: nowrap; }
+        .status:hover { opacity: 0.75; }
+        .s-done { background: #dcfce7; color: #166534; }
+        .s-wip  { background: #fef9c3; color: #92400e; }
+        .s-todo { background: #f1f5f9; color: #475569; }
+
+        .link-btn { display: inline-flex; align-items: center; gap: 5px; color: #3b82f6; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; border: 1px solid #bfdbfe; background: #eff6ff; transition: all 0.2s; }
+        .link-btn:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+        .link-btn.disabled { opacity: 0.35; pointer-events: none; }
+
+        /* Filter */
+        .filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .filter-btn { padding: 5px 13px; border-radius: 20px; border: 2px solid #e2e8f0; background: #fff; font-size: 0.78rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; }
+        .filter-btn.active, .filter-btn:hover { border-color: #0f172a; background: #0f172a; color: #fff; }
+
+        /* Global Nav */
+        .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
+        .nav-btn { width: 46px; height: 46px; border-radius: 50%; background: #0f172a; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid #C5A059; transition: all 0.3s; cursor: pointer; }
+        .nav-btn:hover { background: #C5A059; color: #0f172a; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <div class="breadcrumb">
+            <a href="index.html">← 採用司令室</a> / <a href="17_content_ecosystem_guide.html">コンテンツ運用ガイド</a>
+        </div>
+        <h1>📝 ブログ記事リスト</h1>
+        <p class="subtitle">公開済み・プランニング中の全記事を管理 ｜ web-tsukuru.jp/blog/posts/</p>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat-card done"><div class="stat-num" id="cnt-done">0</div><div class="stat-label">公開済み</div></div>
+        <div class="stat-card wip"><div class="stat-num" id="cnt-wip">0</div><div class="stat-label">執筆中</div></div>
+        <div class="stat-card todo"><div class="stat-num" id="cnt-todo">0</div><div class="stat-label">未着手</div></div>
+        <div class="stat-card" style="margin-left:auto;"><div class="stat-num" id="cnt-total">0</div><div class="stat-label">合計記事</div></div>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterTable('all', this)">すべて</button>
+        <button class="filter-btn" onclick="filterTable('s-done', this)">✅ 公開済み</button>
+        <button class="filter-btn" onclick="filterTable('s-wip', this)">✏️ 執筆中</button>
+        <button class="filter-btn" onclick="filterTable('s-todo', this)">⬜ 未着手</button>
+        <button class="filter-btn" onclick="filterTable('p-general', this)">汎用</button>
+        <button class="filter-btn" onclick="filterTable('p-switch', this)">キャリアスイッチ</button>
+        <button class="filter-btn" onclick="filterTable('p-local', this)">地元卒業生</button>
+        <button class="filter-btn" onclick="filterTable('p-youth', this)">若手・女性</button>
+        <button class="filter-btn" onclick="filterTable('p-uturn', this)">Uターン</button>
+    </div>
+
+    <!-- 公開済み記事（既存） -->
+    <div class="table-wrap">
+        <div class="section-header">✅ 公開済み記事（既存）</div>
+        <table id="article-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>記事タイトル / キーワード</th>
+                    <th>ターゲット</th>
+                    <th>ステータス</th>
+                    <th>リンク</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">01</td>
+                    <td>
+                        <div class="article-title">若手が辞めない会社の共通点。「給料」よりも大切なものとは？</div>
+                        <span class="date-tag">2026.02.01</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260201_retention_secrets.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">02</td>
+                    <td>
+                        <div class="article-title">建設業界の「掛け捨て採用」を、今すぐ終わらせる方法</div>
+                        <span class="date-tag">2026.02.01</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260201_stop_wasting_ad_budget.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">03</td>
+                    <td>
+                        <div class="article-title">「良いホームページ」には、必ずこの3つの要素がある。</div>
+                        <span class="date-tag">2026.02.01</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260201_three_elements_of_good_web.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">04</td>
+                    <td>
+                        <div class="article-title">WebP最適化だけでは足りなかった。CSS最適化の方が重要だった話</div>
+                        <span class="date-tag">2026.02.02</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260202_webp_optimization.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">05</td>
+                    <td>
+                        <div class="article-title">なぜ私が「建設業×採用LP」に特化したのか</div>
+                        <span class="date-tag">2026.02.02</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260202_why_i_specialize.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-youth" data-status="s-done">
+                    <td class="num">06</td>
+                    <td>
+                        <div class="article-title">Z世代が優先するのは？「給料」より「働き方」を選ぶ理由</div>
+                        <span class="date-tag">2026.02.02</span>
+                    </td>
+                    <td><span class="persona p-youth">若手・女性</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260202_z_gen_priority.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">07</td>
+                    <td>
+                        <div class="article-title">IndeedとLPの違い：建設業の採用、どっちを選ぶべき？</div>
+                        <span class="date-tag">2026.02.04</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260204_indeed_vs_lp.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">08</td>
+                    <td>
+                        <div class="article-title">LINE窓口が採用を変える理由：建設業の応募ハードルを下げる</div>
+                        <span class="date-tag">2026.02.04</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260204_line_benefits.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">09</td>
+                    <td>
+                        <div class="article-title">【実録】動画を使った採用LPを、スマホで高速表示する技術</div>
+                        <span class="date-tag">2026.02.05</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260205_hotta_performance.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">10</td>
+                    <td>
+                        <div class="article-title">WebP最適化だけでは足りなかった。CSS最適化の方が重要だった話（モバイル編）</div>
+                        <span class="date-tag">2026.02.06</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260206_mobile_optimization.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-general" data-status="s-done">
+                    <td class="num">11</td>
+                    <td>
+                        <div class="article-title">【2026年最新】求人サイト料金比較｜建設業の採用コストを徹底解説</div>
+                        <span class="date-tag">2026.02.10</span>
+                    </td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260210_recruitment_site_cost.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+
+                <!-- ===== 三重SEO記事プラン（堀田建設向け提案コンテンツ） ===== -->
+                <tr data-persona="p-switch" data-status="s-todo">
+                    <td class="num">12</td>
+                    <td>
+                        <div class="article-title">【2026年版】三重県で建設業に未経験から転職する完全ガイド｜30代からでも間に合う理由</div>
+                        <span class="keyword-tag">三重県 建設 採用 未経験</span>
+                    </td>
+                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-switch" data-status="s-todo">
+                    <td class="num">13</td>
+                    <td>
+                        <div class="article-title">建設業は本当にキツい？三重県の現場で働く5つのメリットとホワイト企業の見極め方</div>
+                        <span class="keyword-tag">建設業 働きやすい 三重</span>
+                    </td>
+                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-switch" data-status="s-todo">
+                    <td class="num">14</td>
+                    <td>
+                        <div class="article-title">【給与公開】三重県の建設業、年収はいくら？職種別・経験年数別の平均給与を徹底解説</div>
+                        <span class="keyword-tag">建設 年収 三重県 平均</span>
+                    </td>
+                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-local" data-status="s-todo">
+                    <td class="num">15</td>
+                    <td>
+                        <div class="article-title">津市で施工管理職を目指す新卒必見！地元企業で働く5つのメリットと就活ガイド</div>
+                        <span class="keyword-tag">津市 施工管理 求人 新卒</span>
+                    </td>
+                    <td><span class="persona p-local">地元卒業生</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-local" data-status="s-todo">
+                    <td class="num">16</td>
+                    <td>
+                        <div class="article-title">【鈴鹿市】建築業界で正社員になるには？地元密着企業の選び方と応募の流れ</div>
+                        <span class="keyword-tag">鈴鹿 建築 求人 正社員</span>
+                    </td>
+                    <td><span class="persona p-local">地元卒業生</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-youth" data-status="s-todo">
+                    <td class="num">17</td>
+                    <td>
+                        <div class="article-title">建設業界で週休2日は当たり前？三重県のホワイト企業が実践する働き方改革</div>
+                        <span class="keyword-tag">建設業 週休2日 三重</span>
+                    </td>
+                    <td><span class="persona p-youth">若手・女性</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-youth" data-status="s-todo">
+                    <td class="num">18</td>
+                    <td>
+                        <div class="article-title">三重県の建設業界で活躍する女性たち｜女性が働きやすい環境づくりの最前線</div>
+                        <span class="keyword-tag">三重 建設 女性 活躍</span>
+                    </td>
+                    <td><span class="persona p-youth">若手・女性</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-uturn" data-status="s-todo">
+                    <td class="num">19</td>
+                    <td>
+                        <div class="article-title">Uターン転職で三重に戻る！建設業界で地元貢献しながら稼ぐ方法</div>
+                        <span class="keyword-tag">建設業 Uターン 三重県</span>
+                    </td>
+                    <td><span class="persona p-uturn">Uターン</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-uturn" data-status="s-todo">
+                    <td class="num">20</td>
+                    <td>
+                        <div class="article-title">施工管理でキャリアアップするなら三重県！資格取得支援が充実した企業の選び方</div>
+                        <span class="keyword-tag">施工管理 キャリアアップ 三重</span>
+                    </td>
+                    <td><span class="persona p-uturn">Uターン</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+                <tr data-persona="p-switch" data-status="s-todo">
+                    <td class="num">21</td>
+                    <td>
+                        <div class="article-title">【完全保存版】三重県の土木業界、未経験でも大丈夫！研修制度が手厚い企業の見つけ方</div>
+                        <span class="keyword-tag">三重 土木 未経験 研修</span>
+                    </td>
+                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
+                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
+                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="font-size:0.78rem; color:#94a3b8; margin-top:8px; text-align:right;">
+        ※ ステータスをクリックで切り替え（⬜未着手 → ✏️執筆中 → ✅公開済み）　|　参照: <a href="blog_seo_strategy_mie_construction.md" style="color:#3b82f6;">SEO戦略資料</a>
+    </p>
+</div>
+
+<!-- Global Nav -->
+<div class="global-nav">
+    <a href="index.html" class="nav-btn" title="採用司令室へ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+
+<script>
+    function cycleStatus(el) {
+        const row = el.closest('tr');
+        if (el.classList.contains('s-todo')) {
+            el.className = 'status s-wip'; el.textContent = '✏️ 執筆中'; row.dataset.status = 's-wip';
+        } else if (el.classList.contains('s-wip')) {
+            el.className = 'status s-done'; el.textContent = '✅ 公開済み'; row.dataset.status = 's-done';
+            row.querySelector('.link-btn').classList.remove('disabled');
+        } else {
+            el.className = 'status s-todo'; el.textContent = '⬜ 未着手'; row.dataset.status = 's-todo';
+            row.querySelector('.link-btn').classList.add('disabled');
+        }
+        updateStats();
+    }
+
+    function updateStats() {
+        const rows = document.querySelectorAll('#article-table tbody tr');
+        let done = 0, wip = 0, todo = 0;
+        rows.forEach(r => {
+            if (r.dataset.status === 's-done') done++;
+            else if (r.dataset.status === 's-wip') wip++;
+            else todo++;
+        });
+        document.getElementById('cnt-done').textContent = done;
+        document.getElementById('cnt-wip').textContent = wip;
+        document.getElementById('cnt-todo').textContent = todo;
+        document.getElementById('cnt-total').textContent = done + wip + todo;
+    }
+
+    function filterTable(type, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('#article-table tbody tr').forEach(row => {
+            if (type === 'all') row.style.display = '';
+            else if (type.startsWith('s-')) row.style.display = row.dataset.status === type ? '' : 'none';
+            else row.style.display = row.dataset.persona === type ? '' : 'none';
+        });
+    }
+
+    updateStats();
+</script>
+</body>
+</html>
