@@ -396,7 +396,7 @@
     }
 
     function updateStats() {
-        const rows = document.querySelectorAll('#article-table tbody tr');
+        const rows = document.querySelectorAll('#article-table tbody tr, #plan-table tbody tr');
         let done = 0, wip = 0, todo = 0;
         rows.forEach(r => {
             if (r.dataset.status === 's-done') done++;
