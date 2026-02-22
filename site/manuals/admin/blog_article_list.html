@@ -90,7 +90,7 @@
             <a href="index.html">← 採用司令室</a> / <a href="17_content_ecosystem_guide.html">コンテンツ運用ガイド</a>
         </div>
         <h1>📝 ブログ記事リスト</h1>
-        <p class="subtitle">公開済み・プランニング中の全記事を管理 ｜ web-tsukuru.jp/blog/posts/</p>
+        <p class="subtitle">公開済み記事を管理 ｜ web-tsukuru.jp/blog/posts/</p>
     </header>
 
     <!-- Stats -->
@@ -108,15 +108,12 @@
         <button class="filter-btn" onclick="filterTable('s-wip', this)">✏️ 執筆中</button>
         <button class="filter-btn" onclick="filterTable('s-todo', this)">⬜ 未着手</button>
         <button class="filter-btn" onclick="filterTable('p-general', this)">汎用</button>
-        <button class="filter-btn" onclick="filterTable('p-switch', this)">キャリアスイッチ</button>
-        <button class="filter-btn" onclick="filterTable('p-local', this)">地元卒業生</button>
         <button class="filter-btn" onclick="filterTable('p-youth', this)">若手・女性</button>
-        <button class="filter-btn" onclick="filterTable('p-uturn', this)">Uターン</button>
     </div>
 
-    <!-- 公開済み記事（既存） -->
+    <!-- 公開済み記事 -->
     <div class="table-wrap">
-        <div class="section-header">✅ 公開済み記事（既存）</div>
+        <div class="section-header">✅ 公開済み記事（web-tsukuru.jp）</div>
         <table id="article-table">
             <thead>
                 <tr>
@@ -239,113 +236,12 @@
                     <td><a href="../../blog/posts/20260210_recruitment_site_cost.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
 
-                <!-- ===== 三重SEO記事プラン（堀田建設向け提案コンテンツ） ===== -->
-                <tr data-persona="p-switch" data-status="s-todo">
-                    <td class="num">12</td>
-                    <td>
-                        <div class="article-title">【2026年版】三重県で建設業に未経験から転職する完全ガイド｜30代からでも間に合う理由</div>
-                        <span class="keyword-tag">三重県 建設 採用 未経験</span>
-                    </td>
-                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-switch" data-status="s-todo">
-                    <td class="num">13</td>
-                    <td>
-                        <div class="article-title">建設業は本当にキツい？三重県の現場で働く5つのメリットとホワイト企業の見極め方</div>
-                        <span class="keyword-tag">建設業 働きやすい 三重</span>
-                    </td>
-                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-switch" data-status="s-todo">
-                    <td class="num">14</td>
-                    <td>
-                        <div class="article-title">【給与公開】三重県の建設業、年収はいくら？職種別・経験年数別の平均給与を徹底解説</div>
-                        <span class="keyword-tag">建設 年収 三重県 平均</span>
-                    </td>
-                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-local" data-status="s-todo">
-                    <td class="num">15</td>
-                    <td>
-                        <div class="article-title">津市で施工管理職を目指す新卒必見！地元企業で働く5つのメリットと就活ガイド</div>
-                        <span class="keyword-tag">津市 施工管理 求人 新卒</span>
-                    </td>
-                    <td><span class="persona p-local">地元卒業生</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-local" data-status="s-todo">
-                    <td class="num">16</td>
-                    <td>
-                        <div class="article-title">【鈴鹿市】建築業界で正社員になるには？地元密着企業の選び方と応募の流れ</div>
-                        <span class="keyword-tag">鈴鹿 建築 求人 正社員</span>
-                    </td>
-                    <td><span class="persona p-local">地元卒業生</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-youth" data-status="s-todo">
-                    <td class="num">17</td>
-                    <td>
-                        <div class="article-title">建設業界で週休2日は当たり前？三重県のホワイト企業が実践する働き方改革</div>
-                        <span class="keyword-tag">建設業 週休2日 三重</span>
-                    </td>
-                    <td><span class="persona p-youth">若手・女性</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-youth" data-status="s-todo">
-                    <td class="num">18</td>
-                    <td>
-                        <div class="article-title">三重県の建設業界で活躍する女性たち｜女性が働きやすい環境づくりの最前線</div>
-                        <span class="keyword-tag">三重 建設 女性 活躍</span>
-                    </td>
-                    <td><span class="persona p-youth">若手・女性</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-uturn" data-status="s-todo">
-                    <td class="num">19</td>
-                    <td>
-                        <div class="article-title">Uターン転職で三重に戻る！建設業界で地元貢献しながら稼ぐ方法</div>
-                        <span class="keyword-tag">建設業 Uターン 三重県</span>
-                    </td>
-                    <td><span class="persona p-uturn">Uターン</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-uturn" data-status="s-todo">
-                    <td class="num">20</td>
-                    <td>
-                        <div class="article-title">施工管理でキャリアアップするなら三重県！資格取得支援が充実した企業の選び方</div>
-                        <span class="keyword-tag">施工管理 キャリアアップ 三重</span>
-                    </td>
-                    <td><span class="persona p-uturn">Uターン</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
-                <tr data-persona="p-switch" data-status="s-todo">
-                    <td class="num">21</td>
-                    <td>
-                        <div class="article-title">【完全保存版】三重県の土木業界、未経験でも大丈夫！研修制度が手厚い企業の見つけ方</div>
-                        <span class="keyword-tag">三重 土木 未経験 研修</span>
-                    </td>
-                    <td><span class="persona p-switch">キャリアスイッチ</span></td>
-                    <td><span class="status s-todo" onclick="cycleStatus(this)">⬜ 未着手</span></td>
-                    <td><a href="#" class="link-btn disabled"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
-                </tr>
             </tbody>
         </table>
     </div>
 
     <p style="font-size:0.78rem; color:#94a3b8; margin-top:8px; text-align:right;">
-        ※ ステータスをクリックで切り替え（⬜未着手 → ✏️執筆中 → ✅公開済み）　|　参照: <a href="blog_seo_strategy_mie_construction.md" style="color:#3b82f6;">SEO戦略資料</a>
+        ※ ステータスをクリックで切り替え（⬜未着手 → ✏️執筆中 → ✅公開済み）
     </p>
 </div>
 
