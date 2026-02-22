@@ -23,6 +23,6 @@ clients/
 node_modules/
 
 # Marketing Assets (PDF)
+*.pdf
 # Allow recruitment manual PDF in root
 !saiyou-manual.pdf
-*.pdf
