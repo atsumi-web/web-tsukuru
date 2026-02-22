@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クライアント様専用ポータル | Webとしくみをつくる</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .welcome-message {
+            background: #e0f2fe;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #0284c7;
+        }
+        .welcome-message p {
+            margin: 0;
+            color: #0c4a6e;
+            font-size: 0.95rem;
+        }
+        
+        .category-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .category-icon {
+            font-size: 1.5rem;
+        }
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        
+        .manual-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .manual-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.85rem;
+        }
+        .manual-table tr:last-child td {
+            border-bottom: none;
+        }
+        .manual-table tr:hover {
+            background: #f8fafc;
+        }
+        .manual-name {
+            width: 30%;
+            font-weight: 600;
+        }
+        .manual-name a {
+            color: #0f172a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .manual-name a:hover {
+            color: #0284c7;
+        }
+        .manual-name i {
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        .manual-timing {
+            width: 20%;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+        .manual-desc {
+            width: 50%;
+            color: #475569;
+        }
+        
+        /* Category colors */
+        .cat-intro .category-icon { color: #8b5cf6; }
+        .cat-setup .category-icon { color: #0284c7; }
+        .cat-operation .category-icon { color: #06c755; }
+        .cat-reference .category-icon { color: #64748b; }
+        
+        .support-section {
+            background: #fff7ed;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 4px solid #f59e0b;
+            text-align: center;
+        }
+        .support-section a {
+            display: inline-block;
+            background: #06c755;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        .support-section a:hover {
+            background: #05b54d;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #cbd5e1;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 採用資産構築プロジェクト</h1>
+            <div class="subtitle">クライアント様専用マニュアルポータル</div>
+        </header>
+        
+        <div class="welcome-message">
+            <p>
+                <strong>ようこそ！</strong> このポータルでは、採用活動に必要な各種設定マニュアルを一覧できます。<br>
+                初期設定から日常運用まで、必要な情報をいつでもご確認いただけます。
+            </p>
+        </div>
+        
+        <!-- 初めに -->
+        <div class="category-section cat-intro">
+            <div class="category-header">
+                <div class="category-icon"><i class="fa-solid fa-circle-info"></i></div>
+                <div class="category-title">初めに</div>
+            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="00_strategy.html" target="_blank">
+                            <i class="fa-solid fa-book"></i>
+                            採用資産構築・完全運用バイブル
+                        </a>
+                    </td>
+                    <td class="manual-timing">最初に必読</td>
+                    <td class="manual-desc">仕組みの全体像、HPとの違い、「鮮度」を保つための運用ルール</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- 初期設定 -->
+        <div class="category-section cat-setup">
+            <div class="category-header">
+                <div class="category-icon"><i class="fa-solid fa-rocket"></i></div>
+                <div class="category-title">初期設定</div>
+            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="10_account_prep.html" target="_blank">
+                            <i class="fa-solid fa-key"></i>
+                            アカウント準備ガイド
+                        </a>
+                    </td>
+                    <td class="manual-timing">プロジェクト開始時</td>
+                    <td class="manual-desc">資産の所有権確保のため、ご自身で管理すべき3つのアカウントについて</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="13_line.html" target="_blank">
+                            <i class="fa-brands fa-line"></i>
+                            LINE公式アカウント設定
+                        </a>
+                    </td>
+                    <td class="manual-timing">アカウント準備後</td>
+                    <td class="manual-desc">採用専用LINEの開設方法と、求職者とのコミュニケーション設計</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="14_google_form.html" target="_blank">
+                            <i class="fa-brands fa-google"></i>
+                            Googleフォーム作成
+                        </a>
+                    </td>
+                    <td class="manual-timing">アカウント準備後</td>
+                    <td class="manual-desc">自動面接官となる「応募フォーム」の作成手順と通知設定</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- 日常運用 -->
+        <div class="category-section cat-operation">
+            <div class="category-header">
+                <div class="category-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="category-title">日常運用</div>
+            </div>
+            <table class="manual-table">
+                <tr>
+                    <td class="manual-name">
+                        <a href="21_analytics.html" target="_blank">
+                            <i class="fa-solid fa-chart-bar"></i>
+                            Google Analytics 4 基本マニュアル
+                        </a>
+                    </td>
+                    <td class="manual-timing">サイト運用中</td>
+                    <td class="manual-desc">リアルタイム確認、ユーザー数の見方、流入経路の確認など基本操作</td>
+                </tr>
+                <tr>
+                    <td class="manual-name">
+                        <a href="22_job_sites.html" target="_blank">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            無料求人サイト活用マニュアル
+                        </a>
+                    </td>
+                    <td class="manual-timing">サイト公開後</td>
+                    <td class="manual-desc">Indeed・求人ボックス・スタンバイの3つの無料求人サイトでのLP活用方法</td>
+                </tr>
+            </table>
+        </div>
+        
+
+        
+        <!-- サポート -->
+        <div class="support-section">
+            <p style="margin-bottom: 10px; color: #92400e; font-weight: 600;">
+                <i class="fa-solid fa-headset"></i> 設定で不明な点がございましたら
+            </p>
+            <a href="https://lin.ee/eKNHAte" target="_blank">
+                <i class="fa-brands fa-line"></i> 担当者へLINEで連絡する
+            </a>
+        </div>
+        
+        <footer>
+            <p>&copy; 2026 Webとしくみをつくる | All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
