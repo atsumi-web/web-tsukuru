@@ -76,12 +76,19 @@ body {
 }
 
 /* Headings use mincho for elegance */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-mincho);
 }
 
 /* Paragraphs and body text use regular weight */
-p, li, div {
+p,
+li,
+div {
   font-weight: 400;
 }
 
@@ -808,7 +815,6 @@ section {
   max-width: 850px;
 }
 
-
 .hero-tagline {
   display: block;
   margin-bottom: 25px;
@@ -1366,6 +1372,51 @@ section {
   min-height: 110px; /* 内容に合わせて少し高さを確保 */
   margin: 10px 0;
   display: block; /* 改行を有効にするため block に戻す */
+}
+.price-note-detail {
+  display: block;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+.price-badge-zero {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--renewal-gold);
+  color: #000;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+.price-badge-domain {
+  display: block;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85em;
+}
+.price-note-regular p {
+  color: #475569;
+}
+.price-note-sub {
+  display: block;
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 0.85em;
+}
+.price-section-link {
+  margin-top: 60px;
+  text-align: center;
+}
+.price-section-note {
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+.more-button-light {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 /* Price card media query removed as clamp() and max-width now handle it */
 

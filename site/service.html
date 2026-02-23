@@ -1,582 +1,1168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-7LZB4B8VQE');
+      gtag("config", "G-7LZB4B8VQE");
     </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>サービス・料金｜WEBとしくみをつくる</title>
-    <meta name="description" content="建設業界専門の採用LP制作サービス。料金プラン、提供内容、オプションサービスを詳しくご説明します。モニター募集中。">
+    <meta
+      name="description"
+      content="建設業界専門の採用LP制作サービス。料金プラン、提供内容、オプションサービスを詳しくご説明します。モニター募集中。"
+    />
 
     <!-- Global Styles & Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@400;600;800&display=swap">
-    <link rel="stylesheet" href="css/renewal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@400;600;800&display=swap"
+    />
+    <link rel="stylesheet" href="css/renewal.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <!-- Scripts -->
     <script src="js/main.js" defer></script>
-</head>
+    <script src="js/shared-nav.js" defer></script>
+  </head>
 
-<body class="brand-lp">
-
+  <body class="brand-lp">
     <!-- Header -->
     <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="logo">
-                <img src="images/logo_icon3.webp" alt="Logo" width="40" height="40">
-                <span>Webとしくみをつくる</span>
-            </a>
-            <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <nav class="site-nav">
-                <a href="index.html#problem">課題</a>
-                <a href="index.html#solution">解決策</a>
-                <a href="index.html#flow">流れ</a>
-                <a href="index.html#works">デザイン</a>
-                <a href="index.html#price">料金</a>
-                <a href="index.html#qa">Q&A</a>
-                <a href="blog/index.html">ブログ</a>
-                <a href="works.html">実績</a>
-                <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"><i class="fa-brands fa-line"></i> 無料相談</a>
-            </nav>
-        </div>
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="images/logo_icon3.webp" alt="Logo" width="40" height="40" />
+          <span>Webとしくみをつくる</span>
+        </a>
+        <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html#problem">課題</a>
+          <a href="index.html#solution">解決策</a>
+          <a href="index.html#flow">流れ</a>
+          <a href="index.html#works">デザイン</a>
+          <a href="index.html#price">料金</a>
+          <a href="index.html#qa">Q&A</a>
+          <a href="blog/index.html">ブログ</a>
+          <a href="works.html">実績</a>
+          <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"
+            ><i class="fa-brands fa-line"></i> 無料相談</a
+          >
+        </nav>
+      </div>
     </header>
 
     <main>
+      <!-- Service Hero -->
+      <section class="works-hero">
+        <div class="container js-fade-up">
+          <h1>SERVICE & PRICING</h1>
+          <p>
+            サービス内容・料金体系<br />
+            すべて明確にお伝えします。
+          </p>
+        </div>
+      </section>
 
-        <!-- Service Hero -->
-        <section class="works-hero">
-            <div class="container js-fade-up">
-                <h1>SERVICE & PRICING</h1>
-                <p>
-                    サービス内容・料金体系<br>
-                    すべて明確にお伝えします。
-                </p>
+      <!-- 1. 基本サービス内容 -->
+      <section class="intro-section" style="background-color: #fff">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-navy); color: #fff"
+              >BASIC SERVICE</span
+            >
+            <h2 class="section-title text-dark">基本サービス内容</h2>
+          </div>
+
+          <div class="problem-grid-wide">
+            <div
+              class="problem-card js-fade-up"
+              style="
+                background: var(--renewal-navy);
+                border: 2px solid var(--renewal-gold);
+              "
+            >
+              <div class="p-num" style="color: rgba(197, 160, 89, 0.4)">01</div>
+              <h3 style="color: var(--renewal-gold)">採用LP制作</h3>
+              <p style="color: rgba(255, 255, 255, 0.9)">
+                建設業界に特化した採用ランディングページを制作します。求職者視点の設計で、応募の可能性を広げます。
+              </p>
             </div>
-        </section>
-
-        <!-- 1. 基本サービス内容 -->
-        <section class="intro-section" style="background-color: #fff;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">BASIC SERVICE</span>
-                    <h2 class="section-title text-dark">基本サービス内容</h2>
-                </div>
-
-                <div class="problem-grid-wide">
-                    <div class="problem-card js-fade-up" style="background: var(--renewal-navy); border: 2px solid var(--renewal-gold);">
-                        <div class="p-num" style="color: rgba(197, 160, 89, 0.4);">01</div>
-                        <h3 style="color: var(--renewal-gold);">採用LP制作</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">建設業界に特化した採用ランディングページを制作します。求職者視点の設計で、応募の可能性を広げます。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="100" style="background: var(--renewal-navy); border: 2px solid var(--renewal-gold);">
-                        <div class="p-num" style="color: rgba(197, 160, 89, 0.4);">02</div>
-                        <h3 style="color: var(--renewal-gold);">LINE公式アカウント初期設定</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">LINE公式アカウントの開設からLP連携、基本的な自動応答メッセージの設定まで代行します。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="200" style="background: var(--renewal-navy); border: 2px solid var(--renewal-gold);">
-                        <div class="p-num" style="color: rgba(197, 160, 89, 0.4);">03</div>
-                        <h3 style="color: var(--renewal-gold);">アクセス解析ツール設置</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">Google Analytics 4とGoogleサーチコンソールを設置。ご自身でアクセス状況を確認できる状態にします。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="300" style="background: var(--renewal-navy); border: 2px solid var(--renewal-gold);">
-                        <div class="p-num" style="color: rgba(197, 160, 89, 0.4);">04</div>
-                        <h3 style="color: var(--renewal-gold);">維持費0円設計</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">無料の高速サーバー（Cloudflare Pages等）を活用し、サーバー維持費を0円に。ドメイン代（年額数千円程度）のみご負担いただきます。<br><span style="font-size: 0.9em; opacity: 0.8;">※ご要望により、レンタルサーバー（さくら、エックスサーバーなど）での展開にも対応できます。</span></p>
-                    </div>
-                </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="100"
+              style="
+                background: var(--renewal-navy);
+                border: 2px solid var(--renewal-gold);
+              "
+            >
+              <div class="p-num" style="color: rgba(197, 160, 89, 0.4)">02</div>
+              <h3 style="color: var(--renewal-gold)">
+                LINE公式アカウント初期設定
+              </h3>
+              <p style="color: rgba(255, 255, 255, 0.9)">
+                LINE公式アカウントの開設からLP連携、基本的な自動応答メッセージの設定まで代行します。
+              </p>
             </div>
-        </section>
-
-        <!-- 2. 料金プラン -->
-        <section class="feature-section" style="background-color: #f8fafc;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge">PRICING</span>
-                    <h2 class="section-title text-dark">料金プラン</h2>
-                </div>
-
-                <div class="flow-grid-wide">
-                    <!-- モニター価格 -->
-                    <div class="flow-card js-fade-up" style="border: 3px solid var(--renewal-gold); position: relative; background: #fff;">
-                        <div style="display: inline-block; background: var(--renewal-gold); color: #fff; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem; margin-bottom: 20px;">モニター</div>
-                        <h3>0円モニター<span style="font-size: 0.9rem; color: var(--renewal-alert); display: block; margin-top: 5px;">残り2社限定</span></h3>
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--renewal-gold); margin: 20px 0;">¥0</div>
-                        <ul style="text-align: left; line-height: 2;">
-                            <li>✅ 制作費：0円</li>
-                            <li>✅ 初年度更新サポート：無料</li>
-                            <li>✅ 維持費：0円（ドメイン代のみ）</li>
-                        </ul>
-                        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--renewal-dark);">
-                            <strong>条件：</strong>実績公開へのご協力<br>
-                            本気で採用を変革したい意欲のある方
-                        </p>
-                    </div>
-
-                    <!-- 通常価格 -->
-                    <div class="flow-card js-fade-up" data-delay="100" style="background: #fff;">
-                        <div style="display: inline-block; background: var(--renewal-navy); color: #fff; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem; margin-bottom: 20px;">通常</div>
-                        <h3>通常価格</h3>
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--renewal-navy); margin: 20px 0;">¥98,000<span style="font-size: 1rem; font-weight: 400;">〜</span></div>
-                        <ul style="text-align: left; line-height: 2;">
-                            <li>✅ 基本サービス全て含む</li>
-                            <li>✅ 維持費：0円（ドメイン代のみ）</li>
-                            <li>✅ 修正：納品後1ヶ月間無料</li>
-                        </ul>
-                        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--renewal-dark);">
-                            ※更新サポートは別途オプション
-                        </p>
-                    </div>
-
-                    <!-- 更新サポート -->
-                    <div class="flow-card js-fade-up" data-delay="200" style="background: #fff;">
-                        <div style="display: inline-block; background: var(--renewal-navy); color: #fff; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem; margin-bottom: 20px;">オプション</div>
-                        <h3>更新サポート</h3>
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--renewal-navy); margin: 20px 0;">¥5,000<span style="font-size: 1rem; font-weight: 400;">/月</span></div>
-                        <ul style="text-align: left; line-height: 2;">
-                            <li>✅ テキスト・画像修正</li>
-                            <li>✅ 簡単なレイアウト調整</li>
-                            <li>✅ 技術サポート</li>
-                        </ul>
-                        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--renewal-dark);">
-                            ※必要な方のみご契約いただけます<br>
-                            ※大幅な修正(セクション追加、デザイン変更など)は別途お見積り
-                        </p>
-                    </div>
-                </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="200"
+              style="
+                background: var(--renewal-navy);
+                border: 2px solid var(--renewal-gold);
+              "
+            >
+              <div class="p-num" style="color: rgba(197, 160, 89, 0.4)">03</div>
+              <h3 style="color: var(--renewal-gold)">アクセス解析ツール設置</h3>
+              <p style="color: rgba(255, 255, 255, 0.9)">
+                Google Analytics
+                4とGoogleサーチコンソールを設置。ご自身でアクセス状況を確認できる状態にします。
+              </p>
             </div>
-        </section>
-
-        <!-- 3. オプションサービス -->
-        <section class="intro-section" style="background-color: #fff;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">OPTION</span>
-                    <h2 class="section-title text-dark">オプションサービス</h2>
-                    <p class="section-desc text-dark">必要に応じてご契約いただけます</p>
-                </div>
-
-                <div class="problem-grid-wide">
-                    <div class="problem-card js-fade-up" style="background: #f8fafc;">
-                        <h3>LINE運営代行</h3>
-                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--renewal-navy); margin: 15px 0;">月額10,000円〜</p>
-                        <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
-                            <li>応募者への初回返信テンプレート作成</li>
-                            <li>月1回の情報配信代行</li>
-                        </ul>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="100" style="background: #f8fafc;">
-                        <h3>分析レポート作成</h3>
-                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--renewal-navy); margin: 15px 0;">月額15,000円〜</p>
-                        <ul style="text-align: left; line-height: 2; font-size: 0.95rem;">
-                            <li>月次PV数・応募数レポート</li>
-                            <li>流入経路分析</li>
-                            <li>簡単な改善提案</li>
-                        </ul>
-                    </div>
-                </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="300"
+              style="
+                background: var(--renewal-navy);
+                border: 2px solid var(--renewal-gold);
+              "
+            >
+              <div class="p-num" style="color: rgba(197, 160, 89, 0.4)">04</div>
+              <h3 style="color: var(--renewal-gold)">維持費0円設計</h3>
+              <p style="color: rgba(255, 255, 255, 0.9)">
+                無料の高速サーバー（Cloudflare
+                Pages等）を活用し、サーバー維持費を0円に。ドメイン代（年額数千円程度）のみご負担いただきます。<br /><span
+                  style="font-size: 0.9em; opacity: 0.8"
+                  >※ご要望により、レンタルサーバー（さくら、エックスサーバーなど）での展開にも対応できます。</span
+                >
+              </p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- 4. 提供する/しないもの -->
-        <section class="feature-section" style="background-color: #f8fafc;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge">SCOPE</span>
-                    <h2 class="section-title text-dark">提供する/しないもの</h2>
-                    <p class="section-desc text-dark">明確にお伝えします</p>
-                </div>
+      <!-- 2. 料金プラン -->
+      <section class="feature-section" style="background-color: #f8fafc">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span class="section-badge">PRICING</span>
+            <h2 class="section-title text-dark">料金プラン</h2>
+          </div>
 
-                <div class="flow-grid-wide">
-                    <div class="flow-card js-fade-up" style="background: rgba(197, 160, 89, 0.08); border: 2px solid var(--renewal-gold);">
-                        <h3 style="color: var(--renewal-gold);"><i class="fa-solid fa-check-circle"></i> 提供するもの</h3>
-                        <ul style="text-align: left; line-height: 2.2;">
-                            <li>✅ 採用LP制作（レスポンシブ対応）</li>
-                            <li>✅ LINE公式アカウント初期設定</li>
-                            <li>✅ GA4・サーチコンソール設置</li>
-                            <li>✅ 維持費0円設計</li>
-                            <li>✅ 基本的な操作マニュアル</li>
-                            <li>✅ ソースコード（Git管理）</li>
-                        </ul>
-                    </div>
-
-                    <div class="flow-card js-fade-up" data-delay="100" style="background: rgba(15, 23, 42, 0.04); border: 2px solid var(--renewal-navy);">
-                        <h3 style="color: var(--renewal-navy);"><i class="fa-solid fa-times-circle"></i> 提供しないもの</h3>
-                        <ul style="text-align: left; line-height: 2.2;">
-                            <li>❌ Instagram運用代行</li>
-                            <li>❌ MEO（Googleマップ）運用代行</li>
-                            <li>❌ Web広告運用</li>
-                            <li>❌ 動画制作</li>
-                            <li>❌ プロカメラマン撮影</li>
-                        </ul>
-                        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--renewal-dark);">
-                            ※スマホ撮影の写真で制作します
-                        </p>
-                    </div>
-                </div>
+          <div class="flow-grid-wide">
+            <!-- モニター価格 -->
+            <div
+              class="flow-card js-fade-up"
+              style="
+                border: 3px solid var(--renewal-gold);
+                position: relative;
+                background: #fff;
+              "
+            >
+              <div
+                style="
+                  display: inline-block;
+                  background: var(--renewal-gold);
+                  color: #fff;
+                  padding: 8px 20px;
+                  border-radius: 30px;
+                  font-weight: 700;
+                  font-size: 0.9rem;
+                  margin-bottom: 20px;
+                "
+              >
+                モニター
+              </div>
+              <h3>
+                0円モニター<span
+                  style="
+                    font-size: 0.9rem;
+                    color: var(--renewal-alert);
+                    display: block;
+                    margin-top: 5px;
+                  "
+                  >残り2社限定</span
+                >
+              </h3>
+              <div
+                style="
+                  font-size: 2rem;
+                  font-weight: 700;
+                  color: var(--renewal-gold);
+                  margin: 20px 0;
+                "
+              >
+                ¥0
+              </div>
+              <ul style="text-align: left; line-height: 2">
+                <li>✅ 制作費：0円</li>
+                <li>✅ 初年度更新サポート：無料</li>
+                <li>✅ 維持費：0円（ドメイン代のみ）</li>
+              </ul>
+              <p
+                style="
+                  margin-top: 20px;
+                  font-size: 0.9rem;
+                  color: var(--renewal-dark);
+                "
+              >
+                <strong>条件：</strong>実績公開へのご協力<br />
+                本気で採用を変革したい意欲のある方
+              </p>
             </div>
-        </section>
 
-        <!-- 5. 制作の流れ -->
-        <section class="intro-section" style="background-color: #fff;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">FLOW</span>
-                    <h2 class="section-title text-dark">制作の流れ</h2>
-                    <p class="section-desc text-dark">約3〜4週間で納品します</p>
-                </div>
-
-                <div class="flow-grid-wide">
-                    <div class="flow-card js-fade-up" style="background: #f8fafc;">
-                        <div class="step-num">STEP 1</div>
-                        <h3>詳細ヒアリング</h3>
-                        <p>オンライン（Zoom）または対面で、60〜90分のヒアリングを実施。御社の採用課題、社風、求める人材像を深掘りします。</p>
-                        <p style="margin-top: 10px; font-weight: 700;">所要時間：60〜90分</p>
-                    </div>
-                    <div class="flow-card js-fade-up" data-delay="100" style="background: #f8fafc;">
-                        <div class="step-num">STEP 2</div>
-                        <h3>素材収集</h3>
-                        <p>スマホで撮影した写真を、Googleドライブで共有いただくだけ。社員インタビュー、現場写真、イベント風景など。</p>
-                        <p style="margin-top: 10px; font-weight: 700;">期間：約1週間</p>
-                    </div>
-                    <div class="flow-card js-fade-up" data-delay="200" style="background: #f8fafc;">
-                        <div class="step-num">STEP 3</div>
-                        <h3>制作</h3>
-                        <p>いただいた素材をもとに、採用LPを制作します。途中経過も共有しますので、安心してお任せください。</p>
-                        <p style="margin-top: 10px; font-weight: 700;">期間：約3週間</p>
-                    </div>
-                    <div class="flow-card js-fade-up" data-delay="300" style="background: #f8fafc;">
-                        <div class="step-num">STEP 4</div>
-                        <h3>確認・公開</h3>
-                        <p>テストサイトで確認いただき、修正はメールで詳細にやりとり。納得いくまで調整し、完成後は<strong>HTMLファイル一式を納品</strong>します。</p>
-                        <p style="margin-top: 15px;">更新サポートをご希望の場合、弊社管理の環境(GitHub + Cloudflare Pages)で運用いたします。</p>
-                        <p style="margin-top: 10px; font-weight: 700;">期間：約3日</p>
-                    </div>
-                </div>
+            <!-- 通常価格 -->
+            <div
+              class="flow-card js-fade-up"
+              data-delay="100"
+              style="background: #fff"
+            >
+              <div
+                style="
+                  display: inline-block;
+                  background: var(--renewal-navy);
+                  color: #fff;
+                  padding: 8px 20px;
+                  border-radius: 30px;
+                  font-weight: 700;
+                  font-size: 0.9rem;
+                  margin-bottom: 20px;
+                "
+              >
+                通常
+              </div>
+              <h3>通常価格</h3>
+              <div
+                style="
+                  font-size: 2rem;
+                  font-weight: 700;
+                  color: var(--renewal-navy);
+                  margin: 20px 0;
+                "
+              >
+                ¥98,000<span style="font-size: 1rem; font-weight: 400">〜</span>
+              </div>
+              <ul style="text-align: left; line-height: 2">
+                <li>✅ 基本サービス全て含む</li>
+                <li>✅ 維持費：0円（ドメイン代のみ）</li>
+                <li>✅ 修正：納品後1ヶ月間無料</li>
+              </ul>
+              <p
+                style="
+                  margin-top: 20px;
+                  font-size: 0.9rem;
+                  color: var(--renewal-dark);
+                "
+              >
+                ※更新サポートは別途オプション
+              </p>
             </div>
-        </section>
 
-        <!-- リードマグネットプレゼント -->
-        <section class="feature-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 0;">
-            <div class="container">
-                <div class="section-header js-fade-up" style="text-align: center;">
-                    <span class="section-badge" style="background: rgba(255,255,255,0.2); color: white;">LINE登録特典</span>
-                    <h2 class="section-title" style="color: white; margin-top: 20px;">採用資産マニュアル 無料プレゼント</h2>
-                    <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-top: 15px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                        求人広告費を「掛け捨て」から<strong>「0円資産」</strong>に変える方法を、20ページのPDFマニュアルで詳しく解説。<br>
-                        LINE登録だけで今すぐ受け取れます。
-                    </p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    <div class="js-fade-up" style="text-align: center;">
-                        <img src="images/lead-magnet-cover.webp" alt="採用資産マニュアル表紙" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.3);" loading="lazy">
-                        <p style="margin-top: 15px; color: rgba(255,255,255,0.9); font-size: 0.9rem;">表紙</p>
-                    </div>
-                    <div class="js-fade-up" data-delay="100" style="text-align: center;">
-                        <img src="images/lead-magnet-contents.webp" alt="採用資産マニュアル目次" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.3);" loading="lazy">
-                        <p style="margin-top: 15px; color: rgba(255,255,255,0.9); font-size: 0.9rem;">目次</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 50px;" class="js-fade-up" data-delay="200">
-                    <p style="color: white; font-size: 1.2rem; margin-bottom: 25px; font-weight: bold;">
-                        🎁 LINE登録するだけで、すぐに受け取れます
-                    </p>
-                    <a href="https://lin.ee/eKNHAte" target="_blank" class="cta-button primary" style="display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; max-width: 450px; width: auto; margin: 0 auto;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-                        </svg>
-                        LINE登録して無料で受け取る
-                    </a>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 15px;">
-                        ※ LINEアプリが起動します。登録は無料です。
-                    </p>
-                </div>
+            <!-- 更新サポート -->
+            <div
+              class="flow-card js-fade-up"
+              data-delay="200"
+              style="background: #fff"
+            >
+              <div
+                style="
+                  display: inline-block;
+                  background: var(--renewal-navy);
+                  color: #fff;
+                  padding: 8px 20px;
+                  border-radius: 30px;
+                  font-weight: 700;
+                  font-size: 0.9rem;
+                  margin-bottom: 20px;
+                "
+              >
+                オプション
+              </div>
+              <h3>更新サポート</h3>
+              <div
+                style="
+                  font-size: 2rem;
+                  font-weight: 700;
+                  color: var(--renewal-navy);
+                  margin: 20px 0;
+                "
+              >
+                ¥5,000<span style="font-size: 1rem; font-weight: 400">/月</span>
+              </div>
+              <ul style="text-align: left; line-height: 2">
+                <li>✅ テキスト・画像修正</li>
+                <li>✅ 簡単なレイアウト調整</li>
+                <li>✅ 技術サポート</li>
+              </ul>
+              <p
+                style="
+                  margin-top: 20px;
+                  font-size: 0.9rem;
+                  color: var(--renewal-dark);
+                "
+              >
+                ※必要な方のみご契約いただけます<br />
+                ※大幅な修正(セクション追加、デザイン変更など)は別途お見積り
+              </p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- 6. 納品物の詳細 -->
-        <section class="feature-section" style="background-color: #f8fafc;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge">DELIVERABLES</span>
-                    <h2 class="section-title text-dark">納品物の詳細</h2>
-                </div>
+      <!-- 3. オプションサービス -->
+      <section class="intro-section" style="background-color: #fff">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-navy); color: #fff"
+              >OPTION</span
+            >
+            <h2 class="section-title text-dark">オプションサービス</h2>
+            <p class="section-desc text-dark">必要に応じてご契約いただけます</p>
+          </div>
 
-                <div class="problem-grid-wide">
-                    <div class="problem-card js-fade-up" style="background: #fff;">
-                        <div class="p-num">01</div>
-                        <h3>採用LPサイト</h3>
-                        <p>完全レスポンシブ対応。PC・タブレット・スマホすべてで美しく表示されます。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="100" style="background: #fff;">
-                        <div class="p-num">02</div>
-                        <h3>LINE公式アカウント</h3>
-                        <p>開設からLP連携、基本的な自動応答メッセージの設定まで完了した状態でお渡しします。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="200" style="background: #fff;">
-                        <div class="p-num">03</div>
-                        <h3>アクセス解析設定</h3>
-                        <p>Google Analytics 4とGoogleサーチコンソールを設置済み。ご自身で確認できます。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="300" style="background: #fff;">
-                        <div class="p-num">04</div>
-                        <h3>操作マニュアル</h3>
-                        <p>LINEの使い方、アクセス解析の見方などを記載したマニュアルをPDFでお渡しします。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="400" style="background: #fff;">
-                        <div class="p-num">05</div>
-                        <h3>ソースコード</h3>
-                        <p>GitHubでソースコードを管理。万が一の際も安心です。</p>
-                    </div>
-                </div>
+          <div class="problem-grid-wide">
+            <div class="problem-card js-fade-up" style="background: #f8fafc">
+              <h3>LINE運営代行</h3>
+              <p
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: var(--renewal-navy);
+                  margin: 15px 0;
+                "
+              >
+                月額10,000円〜
+              </p>
+              <ul style="text-align: left; line-height: 2; font-size: 0.95rem">
+                <li>応募者への初回返信テンプレート作成</li>
+                <li>月1回の情報配信代行</li>
+              </ul>
             </div>
-        </section>
-
-        <!-- 7. 追加料金が発生するケース -->
-        <section class="intro-section" style="background-color: #fff;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-alert); color: #fff;">ADDITIONAL FEE</span>
-                    <h2 class="section-title text-dark">追加料金が発生するケース</h2>
-                    <p class="section-desc text-dark">透明性を大切にしています</p>
-                </div>
-
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <table style="width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                        <thead>
-                            <tr style="background: var(--renewal-navy); color: #fff;">
-                                <th style="padding: 15px; text-align: left; border: 1px solid #ddd;">項目</th>
-                                <th style="padding: 15px; text-align: left; border: 1px solid #ddd;">料金</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="padding: 15px; border: 1px solid #ddd;">ページ追加（1ページあたり）</td>
-                                <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700;">30,000円〜</td>
-                            </tr>
-                            <tr style="background: #f8fafc;">
-                                <td style="padding: 15px; border: 1px solid #ddd;">大幅な修正（納品後1ヶ月以降）</td>
-                                <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700;">5,000円〜</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--renewal-dark); line-height: 1.8;">
-                        ※大幅な修正：セクション構成の変更、デザインテイストの変更、大量のコンテンツ追加など<br>
-                        ※軽微な修正（テキスト修正、写真差し替え1-2枚、色の微調整など）は納品後1ヶ月間無料です
-                    </p>
-                </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="100"
+              style="background: #f8fafc"
+            >
+              <h3>分析レポート作成</h3>
+              <p
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: var(--renewal-navy);
+                  margin: 15px 0;
+                "
+              >
+                月額15,000円〜
+              </p>
+              <ul style="text-align: left; line-height: 2; font-size: 0.95rem">
+                <li>月次PV数・応募数レポート</li>
+                <li>流入経路分析</li>
+                <li>簡単な改善提案</li>
+              </ul>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- 8. 支払い条件 -->
-        <section class="feature-section" style="background-color: #f8fafc;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge">PAYMENT</span>
-                    <h2 class="section-title text-dark">支払い条件</h2>
-                </div>
+      <!-- 4. 提供する/しないもの -->
+      <section class="feature-section" style="background-color: #f8fafc">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span class="section-badge">SCOPE</span>
+            <h2 class="section-title text-dark">提供する/しないもの</h2>
+            <p class="section-desc text-dark">明確にお伝えします</p>
+          </div>
 
-                <div style="max-width: 700px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                    <dl style="line-height: 2.5;">
-                        <dt style="font-weight: 700; color: var(--renewal-navy);"><i class="fa-solid fa-credit-card"></i> 支払い方法</dt>
-                        <dd style="margin-left: 30px; margin-bottom: 20px;">銀行振込 または PayPal</dd>
-
-                        <dt style="font-weight: 700; color: var(--renewal-navy);"><i class="fa-solid fa-calendar-check"></i> 支払いタイミング</dt>
-                        <dd style="margin-left: 30px; margin-bottom: 20px;">納品後7日以内</dd>
-
-                        <dt style="font-weight: 700; color: var(--renewal-navy);"><i class="fa-solid fa-hand-holding-dollar"></i> 分割払い</dt>
-                        <dd style="margin-left: 30px; margin-bottom: 20px;">ご相談ください（2回まで対応可能）</dd>
-
-                        <dt style="font-weight: 700; color: var(--renewal-navy);"><i class="fa-solid fa-file-invoice-dollar"></i> 請求書発行</dt>
-                        <dd style="margin-left: 30px;">可能</dd>
-                    </dl>
-                </div>
+          <div class="flow-grid-wide">
+            <div
+              class="flow-card js-fade-up"
+              style="
+                background: rgba(197, 160, 89, 0.08);
+                border: 2px solid var(--renewal-gold);
+              "
+            >
+              <h3 style="color: var(--renewal-gold)">
+                <i class="fa-solid fa-check-circle"></i> 提供するもの
+              </h3>
+              <ul style="text-align: left; line-height: 2.2">
+                <li>✅ 採用LP制作（レスポンシブ対応）</li>
+                <li>✅ LINE公式アカウント初期設定</li>
+                <li>✅ GA4・サーチコンソール設置</li>
+                <li>✅ 維持費0円設計</li>
+                <li>✅ 基本的な操作マニュアル</li>
+                <li>✅ ソースコード（Git管理）</li>
+              </ul>
             </div>
-        </section>
 
-        <!-- 9. 対応地域・方法 -->
-        <section class="intro-section" style="background-color: #fff;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">AREA</span>
-                    <h2 class="section-title text-dark">対応地域・方法</h2>
-                </div>
-
-                <div class="flow-grid-wide">
-                    <div class="flow-card js-fade-up" style="background: #f8fafc;">
-                        <h3><i class="fa-solid fa-earth-asia"></i> 全国対応</h3>
-                        <p>オンライン完結のため、全国どこからでもご依頼いただけます。</p>
-                    </div>
-                    <div class="flow-card js-fade-up" data-delay="100" style="background: #f8fafc;">
-                        <h3><i class="fa-solid fa-video"></i> オンライン対応</h3>
-                        <p>Zoomでのヒアリング・打ち合わせに対応しています。</p>
-                    </div>
-                    <div class="flow-card js-fade-up" data-delay="200" style="background: #f8fafc;">
-                        <h3><i class="fa-solid fa-handshake"></i> 対面も可能</h3>
-                        <p>三重県内は対面対応可。<br>その他の地域は、ご相談に応じて対応いたします。</p>
-                    </div>
-                </div>
+            <div
+              class="flow-card js-fade-up"
+              data-delay="100"
+              style="
+                background: rgba(15, 23, 42, 0.04);
+                border: 2px solid var(--renewal-navy);
+              "
+            >
+              <h3 style="color: var(--renewal-navy)">
+                <i class="fa-solid fa-times-circle"></i> 提供しないもの
+              </h3>
+              <ul style="text-align: left; line-height: 2.2">
+                <li>❌ Instagram運用代行</li>
+                <li>❌ MEO（Googleマップ）運用代行</li>
+                <li>❌ Web広告運用</li>
+                <li>❌ 動画制作</li>
+                <li>❌ プロカメラマン撮影</li>
+              </ul>
+              <p
+                style="
+                  margin-top: 15px;
+                  font-size: 0.9rem;
+                  color: var(--renewal-dark);
+                "
+              >
+                ※スマホ撮影の写真で制作します
+              </p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- 10. FAQ -->
-        <section id="qa" class="qa-section">
-            <div class="container">
-                <div class="section-badge">Q&A</div>
-                <h2 class="section-title">よくある質問</h2>
-                <div class="qa-list">
-                    <div class="qa-item js-fade-up">
-                        <div class="q">本当に維持費0円ですか？</div>
-                        <div class="a">
-                            はい、弊社への月額管理費は0円です。ただし、独自の「<strong>ドメイン代（年額1,000〜3,000円程度、お客様ご自身で取得）</strong>」のみご負担いただきます。ドメイン取得は丁寧にサポートしますので、ご安心ください。それ以外に、弊社から費用を請求することは一切ありません。<br><br>
-                            <strong class="text-highlight-gold">なぜ0円が可能なのか?</strong><br>
-                            世界標準のサーバーレス技術とGitHubによるバージョン管理を組み合わせることで、サーバー代やメンテナンス費用を徹底的に排除しています。これにより、ドメイン代以外の固定費をゼロにし、かつサイトの全履歴を安全に保全。御社だけの<strong class="text-highlight-gold">「一生モノの採用資産」</strong>が実現します。
-                        </div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">Indeedなどの無料掲載とは何が違いますか？</div>
-                        <div class="a">無料掲載は「文字情報」が中心ですが、このLPは写真とデザインで御社の魅力を伝える<strong class="text-highlight-gold">「受け皿」</strong>となります。IndeedやハローワークからこのLPに誘導することで、求職者に会社の雰囲気をしっかり伝えることができます。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">写真はスマホ撮影でOKですか？</div>
-                        <div class="a">はい、問題ありません。スマホで撮影した写真をGoogleドライブ等で共有いただければ、こちらで最適化して使用します。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">三重県以外（遠方）でも大丈夫ですか？</div>
-                        <div class="a">はい、全国対応です。オンライン完結で制作可能ですので、地域に関わらずご相談ください。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">納期はどれくらいですか？</div>
-                        <div class="a">ヒアリングから納品まで、約3〜4週間が目安です。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">納品後のLINE運用はどうすればいい？</div>
-                        <div class="a">納品時に簡単なマニュアルをお渡しします。まずは窓口として自由に活用してください。もし「更新も丸投げしたい」という場合は、別途運用サポートプランもご用意しています。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">途中でキャンセルできますか？</div>
-                        <div class="a">制作開始前であれば、キャンセル料は発生しません。制作開始後は、進捗に応じてキャンセル料が発生します（詳細は下記「キャンセルポリシー」をご確認ください）。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">修正は何回までできますか？</div>
-                        <div class="a">納品後1ヶ月間は、修正回数に制限なく無料で対応します。1ヶ月以降の修正は、更新サポートプラン（月額5,000円）またはスポット対応（5,000円〜）となります。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">更新サポートは必須ですか？</div>
-                        <div class="a">いいえ、必須ではありません。必要な方のみご契約いただけます。ご自身で更新作業が難しい場合にご検討ください。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">Instagram運用もお願いできますか？</div>
-                        <div class="a">申し訳ございません。現在、Instagram運用代行は提供しておりません。LP制作に専念することで、高品質なサービスを提供しています。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">契約期間の縛りはありますか？</div>
-                        <div class="a">ありません。更新サポートプラン（月額5,000円）を継続いただいている間は、当社がCloudflare Pagesで管理し、維持費0円のまま運営できます。解約される場合は、サイトファイル一式を納品いたしますので、その後はレンタルサーバーへの移管や他社への依頼など、自由にお選びいただけます。</div>
-                    </div>
-                </div>
+      <!-- 5. 制作の流れ -->
+      <section class="intro-section" style="background-color: #fff">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-navy); color: #fff"
+              >FLOW</span
+            >
+            <h2 class="section-title text-dark">制作の流れ</h2>
+            <p class="section-desc text-dark">約3〜4週間で納品します</p>
+          </div>
+
+          <div class="flow-grid-wide">
+            <div class="flow-card js-fade-up" style="background: #f8fafc">
+              <div class="step-num">STEP 1</div>
+              <h3>詳細ヒアリング</h3>
+              <p>
+                オンライン（Zoom）または対面で、60〜90分のヒアリングを実施。御社の採用課題、社風、求める人材像を深掘りします。
+              </p>
+              <p style="margin-top: 10px; font-weight: 700">
+                所要時間：60〜90分
+              </p>
             </div>
-        </section>
-
-        <!-- 11. キャンセルポリシー -->
-        <section class="intro-section" style="background-color: #fff;">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-alert); color: #fff;">CANCELLATION</span>
-                    <h2 class="section-title text-dark">キャンセルポリシー</h2>
-                    <p class="section-desc text-dark">安心してご依頼いただくために</p>
-                </div>
-
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <table style="width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                        <thead>
-                            <tr style="background: var(--renewal-navy); color: #fff;">
-                                <th style="padding: 15px; text-align: left; border: 1px solid #ddd;">キャンセル時期</th>
-                                <th style="padding: 15px; text-align: left; border: 1px solid #ddd;">キャンセル料</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="padding: 15px; border: 1px solid #ddd;">ヒアリング実施前</td>
-                                <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700;">無料</td>
-                            </tr>
-                            <tr style="background: #f8fafc;">
-                                <td style="padding: 15px; border: 1px solid #ddd;">ヒアリング実施後〜制作開始前</td>
-                                <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700;">無料</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 15px; border: 1px solid #ddd;">制作開始後〜初稿提示前</td>
-                                <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700;">制作費の30%</td>
-                            </tr>
-                            <tr style="background: #f8fafc;">
-                                <td style="padding: 15px; border: 1px solid #ddd;">初稿提示後〜納品前</td>
-                                <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700;">制作費の50%</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 15px; border: 1px solid #ddd;">納品後</td>
-                                <td style="padding: 15px; border: 1px solid #ddd; font-weight: 700;">返金不可</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p style="margin-top: 30px; font-size: 0.95rem; line-height: 2; color: var(--renewal-dark);">
-                        ※モニター価格（0円）の場合は、キャンセル料は発生しません。<br>
-                        ※お客様都合によるキャンセルの場合のみ適用されます。当方の都合によるキャンセルの場合は、全額返金いたします。
-                    </p>
-                </div>
+            <div
+              class="flow-card js-fade-up"
+              data-delay="100"
+              style="background: #f8fafc"
+            >
+              <div class="step-num">STEP 2</div>
+              <h3>素材収集</h3>
+              <p>
+                スマホで撮影した写真を、Googleドライブで共有いただくだけ。社員インタビュー、現場写真、イベント風景など。
+              </p>
+              <p style="margin-top: 10px; font-weight: 700">期間：約1週間</p>
             </div>
-        </section>
-
-        <!-- Contact CTA -->
-        <section class="footer-cta-section">
-            <div class="container js-fade-up">
-                <h2 class="footer-cta-title">
-                    <span class="cta-main">まずは無料相談から。</span>
-                    <span class="cta-sub">LINEで30秒、<br>カンタン登録。</span>
-                </h2>
-                <p class="footer-cta-text">
-                    「うちの会社でも本当にできるかな？」<br>
-                    そんな不安も、<br class="br-sp">まずは気軽にご相談ください。<br>
-                    しつこい営業は一切ありません。
-                </p>
-                <div style="max-width: 400px; margin: 0 auto;">
-                    <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary large">
-                        <i class="fa-brands fa-line" style="margin-right: 10px;"></i> LINEで無料相談する
-                    </a>
-                </div>
-                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 20px;">
-                    ※24時間受付中 / 30秒でカンタン登録
-                </p>
+            <div
+              class="flow-card js-fade-up"
+              data-delay="200"
+              style="background: #f8fafc"
+            >
+              <div class="step-num">STEP 3</div>
+              <h3>制作</h3>
+              <p>
+                いただいた素材をもとに、採用LPを制作します。途中経過も共有しますので、安心してお任せください。
+              </p>
+              <p style="margin-top: 10px; font-weight: 700">期間：約3週間</p>
             </div>
-        </section>
+            <div
+              class="flow-card js-fade-up"
+              data-delay="300"
+              style="background: #f8fafc"
+            >
+              <div class="step-num">STEP 4</div>
+              <h3>確認・公開</h3>
+              <p>
+                テストサイトで確認いただき、修正はメールで詳細にやりとり。納得いくまで調整し、完成後は<strong>HTMLファイル一式を納品</strong>します。
+              </p>
+              <p style="margin-top: 15px">
+                更新サポートをご希望の場合、弊社管理の環境(GitHub + Cloudflare
+                Pages)で運用いたします。
+              </p>
+              <p style="margin-top: 10px; font-weight: 700">期間：約3日</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- リードマグネットプレゼント -->
+      <section
+        class="feature-section"
+        style="
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 80px 0;
+        "
+      >
+        <div class="container">
+          <div class="section-header js-fade-up" style="text-align: center">
+            <span
+              class="section-badge"
+              style="background: rgba(255, 255, 255, 0.2); color: white"
+              >LINE登録特典</span
+            >
+            <h2 class="section-title" style="color: white; margin-top: 20px">
+              採用資産マニュアル 無料プレゼント
+            </h2>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1.1rem;
+                margin-top: 15px;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            >
+              求人広告費を「掛け捨て」から<strong>「0円資産」</strong>に変える方法を、20ページのPDFマニュアルで詳しく解説。<br />
+              LINE登録だけで今すぐ受け取れます。
+            </p>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 30px;
+              margin-top: 50px;
+              max-width: 900px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            <div class="js-fade-up" style="text-align: center">
+              <img
+                src="images/lead-magnet-cover.webp"
+                alt="採用資産マニュアル表紙"
+                style="
+                  width: 100%;
+                  max-width: 400px;
+                  border-radius: 8px;
+                  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+                "
+                loading="lazy"
+              />
+              <p
+                style="
+                  margin-top: 15px;
+                  color: rgba(255, 255, 255, 0.9);
+                  font-size: 0.9rem;
+                "
+              >
+                表紙
+              </p>
+            </div>
+            <div class="js-fade-up" data-delay="100" style="text-align: center">
+              <img
+                src="images/lead-magnet-contents.webp"
+                alt="採用資産マニュアル目次"
+                style="
+                  width: 100%;
+                  max-width: 400px;
+                  border-radius: 8px;
+                  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+                "
+                loading="lazy"
+              />
+              <p
+                style="
+                  margin-top: 15px;
+                  color: rgba(255, 255, 255, 0.9);
+                  font-size: 0.9rem;
+                "
+              >
+                目次
+              </p>
+            </div>
+          </div>
+
+          <div
+            style="text-align: center; margin-top: 50px"
+            class="js-fade-up"
+            data-delay="200"
+          >
+            <p
+              style="
+                color: white;
+                font-size: 1.2rem;
+                margin-bottom: 25px;
+                font-weight: bold;
+              "
+            >
+              🎁 LINE登録するだけで、すぐに受け取れます
+            </p>
+            <a
+              href="https://lin.ee/eKNHAte"
+              target="_blank"
+              class="cta-button primary"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 1.1rem;
+                padding: 18px 40px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: bold;
+                max-width: 450px;
+                width: auto;
+                margin: 0 auto;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"
+                />
+              </svg>
+              LINE登録して無料で受け取る
+            </a>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.9rem;
+                margin-top: 15px;
+              "
+            >
+              ※ LINEアプリが起動します。登録は無料です。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. 納品物の詳細 -->
+      <section class="feature-section" style="background-color: #f8fafc">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span class="section-badge">DELIVERABLES</span>
+            <h2 class="section-title text-dark">納品物の詳細</h2>
+          </div>
+
+          <div class="problem-grid-wide">
+            <div class="problem-card js-fade-up" style="background: #fff">
+              <div class="p-num">01</div>
+              <h3>採用LPサイト</h3>
+              <p>
+                完全レスポンシブ対応。PC・タブレット・スマホすべてで美しく表示されます。
+              </p>
+            </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="100"
+              style="background: #fff"
+            >
+              <div class="p-num">02</div>
+              <h3>LINE公式アカウント</h3>
+              <p>
+                開設からLP連携、基本的な自動応答メッセージの設定まで完了した状態でお渡しします。
+              </p>
+            </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="200"
+              style="background: #fff"
+            >
+              <div class="p-num">03</div>
+              <h3>アクセス解析設定</h3>
+              <p>
+                Google Analytics
+                4とGoogleサーチコンソールを設置済み。ご自身で確認できます。
+              </p>
+            </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="300"
+              style="background: #fff"
+            >
+              <div class="p-num">04</div>
+              <h3>操作マニュアル</h3>
+              <p>
+                LINEの使い方、アクセス解析の見方などを記載したマニュアルをPDFでお渡しします。
+              </p>
+            </div>
+            <div
+              class="problem-card js-fade-up"
+              data-delay="400"
+              style="background: #fff"
+            >
+              <div class="p-num">05</div>
+              <h3>ソースコード</h3>
+              <p>GitHubでソースコードを管理。万が一の際も安心です。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. 追加料金が発生するケース -->
+      <section class="intro-section" style="background-color: #fff">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-alert); color: #fff"
+              >ADDITIONAL FEE</span
+            >
+            <h2 class="section-title text-dark">追加料金が発生するケース</h2>
+            <p class="section-desc text-dark">透明性を大切にしています</p>
+          </div>
+
+          <div style="max-width: 800px; margin: 0 auto">
+            <table
+              style="
+                width: 100%;
+                border-collapse: collapse;
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+              "
+            >
+              <thead>
+                <tr style="background: var(--renewal-navy); color: #fff">
+                  <th
+                    style="
+                      padding: 15px;
+                      text-align: left;
+                      border: 1px solid #ddd;
+                    "
+                  >
+                    項目
+                  </th>
+                  <th
+                    style="
+                      padding: 15px;
+                      text-align: left;
+                      border: 1px solid #ddd;
+                    "
+                  >
+                    料金
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 15px; border: 1px solid #ddd">
+                    ページ追加（1ページあたり）
+                  </td>
+                  <td
+                    style="
+                      padding: 15px;
+                      border: 1px solid #ddd;
+                      font-weight: 700;
+                    "
+                  >
+                    30,000円〜
+                  </td>
+                </tr>
+                <tr style="background: #f8fafc">
+                  <td style="padding: 15px; border: 1px solid #ddd">
+                    大幅な修正（納品後1ヶ月以降）
+                  </td>
+                  <td
+                    style="
+                      padding: 15px;
+                      border: 1px solid #ddd;
+                      font-weight: 700;
+                    "
+                  >
+                    5,000円〜
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p
+              style="
+                margin-top: 20px;
+                font-size: 0.9rem;
+                color: var(--renewal-dark);
+                line-height: 1.8;
+              "
+            >
+              ※大幅な修正：セクション構成の変更、デザインテイストの変更、大量のコンテンツ追加など<br />
+              ※軽微な修正（テキスト修正、写真差し替え1-2枚、色の微調整など）は納品後1ヶ月間無料です
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. 支払い条件 -->
+      <section class="feature-section" style="background-color: #f8fafc">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span class="section-badge">PAYMENT</span>
+            <h2 class="section-title text-dark">支払い条件</h2>
+          </div>
+
+          <div
+            style="
+              max-width: 700px;
+              margin: 0 auto;
+              background: #fff;
+              padding: 40px;
+              border-radius: 10px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            "
+          >
+            <dl style="line-height: 2.5">
+              <dt style="font-weight: 700; color: var(--renewal-navy)">
+                <i class="fa-solid fa-credit-card"></i> 支払い方法
+              </dt>
+              <dd style="margin-left: 30px; margin-bottom: 20px">
+                銀行振込 または PayPal
+              </dd>
+
+              <dt style="font-weight: 700; color: var(--renewal-navy)">
+                <i class="fa-solid fa-calendar-check"></i> 支払いタイミング
+              </dt>
+              <dd style="margin-left: 30px; margin-bottom: 20px">
+                納品後7日以内
+              </dd>
+
+              <dt style="font-weight: 700; color: var(--renewal-navy)">
+                <i class="fa-solid fa-hand-holding-dollar"></i> 分割払い
+              </dt>
+              <dd style="margin-left: 30px; margin-bottom: 20px">
+                ご相談ください（2回まで対応可能）
+              </dd>
+
+              <dt style="font-weight: 700; color: var(--renewal-navy)">
+                <i class="fa-solid fa-file-invoice-dollar"></i> 請求書発行
+              </dt>
+              <dd style="margin-left: 30px">可能</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. 対応地域・方法 -->
+      <section class="intro-section" style="background-color: #fff">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-navy); color: #fff"
+              >AREA</span
+            >
+            <h2 class="section-title text-dark">対応地域・方法</h2>
+          </div>
+
+          <div class="flow-grid-wide">
+            <div class="flow-card js-fade-up" style="background: #f8fafc">
+              <h3><i class="fa-solid fa-earth-asia"></i> 全国対応</h3>
+              <p>オンライン完結のため、全国どこからでもご依頼いただけます。</p>
+            </div>
+            <div
+              class="flow-card js-fade-up"
+              data-delay="100"
+              style="background: #f8fafc"
+            >
+              <h3><i class="fa-solid fa-video"></i> オンライン対応</h3>
+              <p>Zoomでのヒアリング・打ち合わせに対応しています。</p>
+            </div>
+            <div
+              class="flow-card js-fade-up"
+              data-delay="200"
+              style="background: #f8fafc"
+            >
+              <h3><i class="fa-solid fa-handshake"></i> 対面も可能</h3>
+              <p>
+                三重県内は対面対応可。<br />その他の地域は、ご相談に応じて対応いたします。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. FAQ -->
+      <section id="qa" class="qa-section">
+        <div class="container">
+          <div class="section-badge">Q&A</div>
+          <h2 class="section-title">よくある質問</h2>
+          <div class="qa-list">
+            <div class="qa-item js-fade-up">
+              <div class="q">本当に維持費0円ですか？</div>
+              <div class="a">
+                はい、弊社への月額管理費は0円です。ただし、独自の「<strong>ドメイン代（年額1,000〜3,000円程度、お客様ご自身で取得）</strong>」のみご負担いただきます。ドメイン取得は丁寧にサポートしますので、ご安心ください。それ以外に、弊社から費用を請求することは一切ありません。<br /><br />
+                <strong class="text-highlight-gold">なぜ0円が可能なのか?</strong
+                ><br />
+                世界標準のサーバーレス技術とGitHubによるバージョン管理を組み合わせることで、サーバー代やメンテナンス費用を徹底的に排除しています。これにより、ドメイン代以外の固定費をゼロにし、かつサイトの全履歴を安全に保全。御社だけの<strong
+                  class="text-highlight-gold"
+                  >「一生モノの採用資産」</strong
+                >が実現します。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">Indeedなどの無料掲載とは何が違いますか？</div>
+              <div class="a">
+                無料掲載は「文字情報」が中心ですが、このLPは写真とデザインで御社の魅力を伝える<strong
+                  class="text-highlight-gold"
+                  >「受け皿」</strong
+                >となります。IndeedやハローワークからこのLPに誘導することで、求職者に会社の雰囲気をしっかり伝えることができます。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">写真はスマホ撮影でOKですか？</div>
+              <div class="a">
+                はい、問題ありません。スマホで撮影した写真をGoogleドライブ等で共有いただければ、こちらで最適化して使用します。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">三重県以外（遠方）でも大丈夫ですか？</div>
+              <div class="a">
+                はい、全国対応です。オンライン完結で制作可能ですので、地域に関わらずご相談ください。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">納期はどれくらいですか？</div>
+              <div class="a">
+                ヒアリングから納品まで、約3〜4週間が目安です。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">納品後のLINE運用はどうすればいい？</div>
+              <div class="a">
+                納品時に簡単なマニュアルをお渡しします。まずは窓口として自由に活用してください。もし「更新も丸投げしたい」という場合は、別途運用サポートプランもご用意しています。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">途中でキャンセルできますか？</div>
+              <div class="a">
+                制作開始前であれば、キャンセル料は発生しません。制作開始後は、進捗に応じてキャンセル料が発生します（詳細は下記「キャンセルポリシー」をご確認ください）。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">修正は何回までできますか？</div>
+              <div class="a">
+                納品後1ヶ月間は、修正回数に制限なく無料で対応します。1ヶ月以降の修正は、更新サポートプラン（月額5,000円）またはスポット対応（5,000円〜）となります。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">更新サポートは必須ですか？</div>
+              <div class="a">
+                いいえ、必須ではありません。必要な方のみご契約いただけます。ご自身で更新作業が難しい場合にご検討ください。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">Instagram運用もお願いできますか？</div>
+              <div class="a">
+                申し訳ございません。現在、Instagram運用代行は提供しておりません。LP制作に専念することで、高品質なサービスを提供しています。
+              </div>
+            </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">契約期間の縛りはありますか？</div>
+              <div class="a">
+                ありません。更新サポートプラン（月額5,000円）を継続いただいている間は、当社がCloudflare
+                Pagesで管理し、維持費0円のまま運営できます。解約される場合は、サイトファイル一式を納品いたしますので、その後はレンタルサーバーへの移管や他社への依頼など、自由にお選びいただけます。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. キャンセルポリシー -->
+      <section class="intro-section" style="background-color: #fff">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-alert); color: #fff"
+              >CANCELLATION</span
+            >
+            <h2 class="section-title text-dark">キャンセルポリシー</h2>
+            <p class="section-desc text-dark">安心してご依頼いただくために</p>
+          </div>
+
+          <div style="max-width: 800px; margin: 0 auto">
+            <table
+              style="
+                width: 100%;
+                border-collapse: collapse;
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+              "
+            >
+              <thead>
+                <tr style="background: var(--renewal-navy); color: #fff">
+                  <th
+                    style="
+                      padding: 15px;
+                      text-align: left;
+                      border: 1px solid #ddd;
+                    "
+                  >
+                    キャンセル時期
+                  </th>
+                  <th
+                    style="
+                      padding: 15px;
+                      text-align: left;
+                      border: 1px solid #ddd;
+                    "
+                  >
+                    キャンセル料
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 15px; border: 1px solid #ddd">
+                    ヒアリング実施前
+                  </td>
+                  <td
+                    style="
+                      padding: 15px;
+                      border: 1px solid #ddd;
+                      font-weight: 700;
+                    "
+                  >
+                    無料
+                  </td>
+                </tr>
+                <tr style="background: #f8fafc">
+                  <td style="padding: 15px; border: 1px solid #ddd">
+                    ヒアリング実施後〜制作開始前
+                  </td>
+                  <td
+                    style="
+                      padding: 15px;
+                      border: 1px solid #ddd;
+                      font-weight: 700;
+                    "
+                  >
+                    無料
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 15px; border: 1px solid #ddd">
+                    制作開始後〜初稿提示前
+                  </td>
+                  <td
+                    style="
+                      padding: 15px;
+                      border: 1px solid #ddd;
+                      font-weight: 700;
+                    "
+                  >
+                    制作費の30%
+                  </td>
+                </tr>
+                <tr style="background: #f8fafc">
+                  <td style="padding: 15px; border: 1px solid #ddd">
+                    初稿提示後〜納品前
+                  </td>
+                  <td
+                    style="
+                      padding: 15px;
+                      border: 1px solid #ddd;
+                      font-weight: 700;
+                    "
+                  >
+                    制作費の50%
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 15px; border: 1px solid #ddd">納品後</td>
+                  <td
+                    style="
+                      padding: 15px;
+                      border: 1px solid #ddd;
+                      font-weight: 700;
+                    "
+                  >
+                    返金不可
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p
+              style="
+                margin-top: 30px;
+                font-size: 0.95rem;
+                line-height: 2;
+                color: var(--renewal-dark);
+              "
+            >
+              ※モニター価格（0円）の場合は、キャンセル料は発生しません。<br />
+              ※お客様都合によるキャンセルの場合のみ適用されます。当方の都合によるキャンセルの場合は、全額返金いたします。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact CTA -->
+      <section class="footer-cta-section">
+        <div class="container js-fade-up">
+          <h2 class="footer-cta-title">
+            <span class="cta-main">まずは無料相談から。</span>
+            <span class="cta-sub">LINEで30秒、<br />カンタン登録。</span>
+          </h2>
+          <p class="footer-cta-text">
+            「うちの会社でも本当にできるかな？」<br />
+            そんな不安も、<br class="br-sp" />まずは気軽にご相談ください。<br />
+            しつこい営業は一切ありません。
+          </p>
+          <div style="max-width: 400px; margin: 0 auto">
+            <a
+              href="https://lin.ee/nMDNiFg"
+              target="_blank"
+              class="cta-button primary large"
+            >
+              <i class="fa-brands fa-line" style="margin-right: 10px"></i>
+              LINEで無料相談する
+            </a>
+          </div>
+          <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 20px">
+            ※24時間受付中 / 30秒でカンタン登録
+          </p>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
-            <p class="copyright">&copy; 2026 Webとしくみをつくる All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p class="copyright">
+          &copy; 2026 Webとしくみをつくる All Rights Reserved.
+        </p>
+      </div>
     </footer>
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" aria-label="ページトップへ戻る">
-        <i class="fa-solid fa-chevron-up"></i>
+      <i class="fa-solid fa-chevron-up"></i>
     </a>
-
-</body>
+  </body>
 </html>

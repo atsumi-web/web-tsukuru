@@ -1,160 +1,240 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7LZB4B8VQE');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-7LZB4B8VQE");
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>「求人票」だけでは若手に刺さらない。採用LPが必要な3つの理由｜Webとしくみをつくる</title>
-    <meta name="description" content="求人票と採用LPは何が違うのか？Z世代の若手が求人票を見て応募しない本当の理由と、採用LPが必要な3つの理由を建設業向けに解説します。">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      「求人票」だけでは若手に刺さらない。採用LPが必要な3つの理由｜Webとしくみをつくる
+    </title>
+    <meta
+      name="description"
+      content="求人票と採用LPは何が違うのか？Z世代の若手が求人票を見て応募しない本当の理由と、採用LPが必要な3つの理由を建設業向けに解説します。"
+    />
 
     <!-- OGP -->
-    <meta property="og:title" content="「求人票」だけでは若手に刺さらない。採用LPが必要な3つの理由">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://web-tsukuru.jp/blog/posts/20260223_job_ad_limit.html">
-    <meta property="og:image" content="https://web-tsukuru.jp/blog/images/blog_article14_job_ad_limit.webp">
-    <meta property="og:description" content="Z世代が求人票で応募しない理由と採用LPの重要性を解説。">
-    <meta property="og:site_name" content="Webとしくみをつくる">
+    <meta
+      property="og:title"
+      content="「求人票」だけでは若手に刺さらない。採用LPが必要な3つの理由"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://web-tsukuru.jp/blog/posts/20260223_job_ad_limit.html"
+    />
+    <meta
+      property="og:image"
+      content="https://web-tsukuru.jp/blog/images/blog_article14_job_ad_limit.webp"
+    />
+    <meta
+      property="og:description"
+      content="Z世代が求人票で応募しない理由と採用LPの重要性を解説。"
+    />
+    <meta property="og:site_name" content="Webとしくみをつくる" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://web-tsukuru.jp/blog/images/blog_article14_job_ad_limit.webp">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://web-tsukuru.jp/blog/images/blog_article14_job_ad_limit.webp"
+    />
 
     <!-- Favicon -->
-    <link rel="icon" href="../../images/logo_icon_navyblue.webp">
-    <link rel="apple-touch-icon" href="../../images/logo_icon2.webp">
+    <link rel="icon" href="../../images/logo_icon_navyblue.webp" />
+    <link rel="apple-touch-icon" href="../../images/logo_icon2.webp" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../../css/renewal.css">
-    <link rel="stylesheet" href="../css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../css/renewal.css" />
+    <link rel="stylesheet" href="../css/blog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
     <script src="../../js/main.js" defer></script>
-</head>
+    <script src="../../js/shared-nav.js" defer></script>
+  </head>
 
-<body>
-
+  <body>
     <!-- Header -->
     <header class="site-header">
-        <div class="header-inner">
-            <a href="../../index.html" class="logo">
-                <img src="../../images/logo_icon3.webp" alt="Logo" width="40" height="40">
-                <span>Webとしくみをつくる</span>
-            </a>
-            <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <nav class="site-nav">
-                <a href="../../index.html#problem">課題</a>
-                <a href="../../index.html#solution">解決策</a>
-                <a href="../../index.html#flow">流れ</a>
-                <a href="../../index.html#works">デザイン</a>
-                <a href="../../index.html#price">料金</a>
-                <a href="../../index.html#qa">Q&A</a>
-                <a href="../index.html" class="active">ブログ</a>
-                <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"><i class="fa-brands fa-line"></i> 無料相談</a>
-            </nav>
-        </div>
+      <div class="header-inner">
+        <a href="../../index.html" class="logo">
+          <img
+            src="../../images/logo_icon3.webp"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span>Webとしくみをつくる</span>
+        </a>
+        <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="../../index.html#problem">課題</a>
+          <a href="../../index.html#solution">解決策</a>
+          <a href="../../index.html#flow">流れ</a>
+          <a href="../../index.html#works">デザイン</a>
+          <a href="../../index.html#price">料金</a>
+          <a href="../../index.html#qa">Q&A</a>
+          <a href="../index.html" class="active">ブログ</a>
+          <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"
+            ><i class="fa-brands fa-line"></i> 無料相談</a
+          >
+        </nav>
+      </div>
     </header>
 
     <main class="blog-container">
+      <!-- Post Header -->
+      <header class="post-header">
+        <span class="post-category">採用LP・若手採用</span>
+        <h1 class="post-title">
+          「求人票」だけでは若手に刺さらない。<br />採用LPが必要な3つの理由
+        </h1>
+        <div class="post-meta">
+          <time datetime="2026-02-23"
+            ><i class="fa-regular fa-clock"></i> 2026.02.23</time
+          >
+          <span style="margin: 0 10px">|</span>
+          <span><i class="fa-regular fa-user"></i> 渥美 絵里</span>
+        </div>
+      </header>
 
-        <!-- Post Header -->
-        <header class="post-header">
-            <span class="post-category">採用LP・若手採用</span>
-            <h1 class="post-title">「求人票」だけでは若手に刺さらない。<br>採用LPが必要な3つの理由</h1>
-            <div class="post-meta">
-                <time datetime="2026-02-23"><i class="fa-regular fa-clock"></i> 2026.02.23</time>
-                <span style="margin:0 10px;">|</span>
-                <span><i class="fa-regular fa-user"></i> 渥美 絵里</span>
-            </div>
-        </header>
+      <!-- Post Content -->
+      <article class="post-content">
+        <!-- アイキャッチ画像 -->
+        <figure style="margin: 0 0 30px">
+          <img
+            src="../images/blog_article14_job_ad_limit.webp"
+            alt="求人票の限界と採用LPの必要性を示すイメージ"
+            style="border-radius: 12px; width: 100%"
+            onerror="this.style.display = 'none'"
+          />
+          <figcaption
+            style="
+              font-size: 0.8rem;
+              color: #94a3b8;
+              text-align: center;
+              margin-top: 8px;
+            "
+          >
+            採用LP 必要 理由
+          </figcaption>
+        </figure>
 
-        <!-- Post Content -->
-        <article class="post-content">
-            <!-- アイキャッチ画像 -->
-            <figure style="margin: 0 0 30px;">
-                <img src="../images/blog_article14_job_ad_limit.webp" alt="求人票の限界と採用LPの必要性を示すイメージ" style="border-radius: 12px; width: 100%;" onerror="this.style.display='none'">
-                <figcaption style="font-size: 0.8rem; color: #94a3b8; text-align: center; margin-top: 8px;">採用LP 必要 理由</figcaption>
-            </figure>
+        <p>
+          「求人票を出しているのに、なぜか応募が来ない」<br />
+          「若い人が面接に来ても、すぐに辞退される」
+        </p>
 
-            <p>「求人票を出しているのに、なぜか応募が来ない」<br>
-            「若い人が面接に来ても、すぐに辞退される」</p>
+        <p>
+          こんな悩みを抱えた建設会社の採用担当者さんは多いです。<br />
+          実は、その原因の多くは<strong>「求人票だけで採用しようとしていること」</strong>にあります。
+        </p>
 
-            <p>こんな悩みを抱えた建設会社の採用担当者さんは多いです。<br>
-            実は、その原因の多くは<strong>「求人票だけで採用しようとしていること」</strong>にあります。</p>
+        <p>
+          若年層（18〜39歳）を対象にした調査では、建設業を就職・転職先の選択肢に入れると回答した割合は<strong>わずか28%</strong>にとどまります。敬遠される主な理由として「体力的な厳しさ（50.3%）」「事故・怪我のリスク（44.8%）」「長時間労働のイメージ（34.4%）」が挙げられています（出典：建設業界のイメージに関する調査／branu.jp）。これらは求人票の条件を変えるだけでは払拭できない、イメージの課題です。
+        </p>
 
-            <p>若年層（18〜39歳）を対象にした調査では、建設業を就職・転職先の選択肢に入れると回答した割合は<strong>わずか28%</strong>にとどまります。敬遠される主な理由として「体力的な厳しさ（50.3%）」「事故・怪我のリスク（44.8%）」「長時間労働のイメージ（34.4%）」が挙げられています（出典：建設業界のイメージに関する調査／branu.jp）。これらは求人票の条件を変えるだけでは払拭できない、イメージの課題です。</p>
+        <h2>求人票の「3つの限界」</h2>
 
-            <h2>求人票の「3つの限界」</h2>
+        <h3>① スペックしか伝えられない</h3>
+        <p>
+          求人票に書けることは決まっています。給料、勤務時間、仕事内容——これらはすべて「スペック（条件）」です。<br />
+          しかし、特にZ世代の若手が応募を決める理由は、<strong>「この会社で働いてみたい」というイメージや共感</strong>です。スペックだけでは、心は動きません。
+        </p>
 
-            <h3>① スペックしか伝えられない</h3>
-            <p>求人票に書けることは決まっています。給料、勤務時間、仕事内容——これらはすべて「スペック（条件）」です。<br>
-            しかし、特にZ世代の若手が応募を決める理由は、<strong>「この会社で働いてみたい」というイメージや共感</strong>です。スペックだけでは、心は動きません。</p>
+        <h3>② 他社と横並びで埋もれる</h3>
+        <p>
+          Indeedやハローワークでは、自社の求人票が無数の競合と並んで表示されます。フォーマットが決まっているため、<strong>どの会社も似たように見えてしまいます</strong>。
+        </p>
 
-            <h3>② 他社と横並びで埋もれる</h3>
-            <p>Indeedやハローワークでは、自社の求人票が無数の競合と並んで表示されます。フォーマットが決まっているため、<strong>どの会社も似たように見えてしまいます</strong>。</p>
+        <h3>③ 「続きを見たい」と思わせられない</h3>
+        <p>
+          現代の求職者は、気になった会社をSNSやWebで徹底的に調べます。求人票を見た後に「もっと知りたい」と思わせる場所がなければ、そこで興味は終わりです。
+        </p>
 
-            <h3>③ 「続きを見たい」と思わせられない</h3>
-            <p>現代の求職者は、気になった会社をSNSやWebで徹底的に調べます。求人票を見た後に「もっと知りたい」と思わせる場所がなければ、そこで興味は終わりです。</p>
+        <h2>採用LPが必要な3つの理由</h2>
 
-            <h2>採用LPが必要な3つの理由</h2>
+        <h3>理由1：「人間性」を伝えられる</h3>
+        <p>
+          採用LPでは、文字数・写真・動画・レイアウトに制限がありません。代表のメッセージ、社員インタビュー、現場の雰囲気写真——これらを組み合わせることで、<strong>「この会社で働くって、こういう感じなんだ」</strong>とイメージさせることができます。
+        </p>
 
-            <h3>理由1：「人間性」を伝えられる</h3>
-            <p>採用LPでは、文字数・写真・動画・レイアウトに制限がありません。代表のメッセージ、社員インタビュー、現場の雰囲気写真——これらを組み合わせることで、<strong>「この会社で働くって、こういう感じなんだ」</strong>とイメージさせることができます。</p>
+        <h3>理由2：スマホで「体験」させられる</h3>
+        <p>
+          採用LPはスマートフォンでの閲覧に最適化されています。スクロールするたびに新しい情報が展開され、動画や写真ギャラリーで現場の雰囲気を体験させる——これが、求職者の興味を持続させます。
+        </p>
 
-            <h3>理由2：スマホで「体験」させられる</h3>
-            <p>採用LPはスマートフォンでの閲覧に最適化されています。スクロールするたびに新しい情報が展開され、動画や写真ギャラリーで現場の雰囲気を体験させる——これが、求職者の興味を持続させます。</p>
+        <h3>理由3：応募への「ハードル」を下げられる</h3>
+        <p>
+          採用LPには、LINEでの問い合わせや「まずは話を聞くだけ」という低ハードルの応募ボタンを設置できます。<br />
+          「本当に応募していいのかな」と迷っている求職者に、<strong>「話を聞くだけでOKですよ」と背中を押す仕組み</strong>が作れます。
+        </p>
 
-            <h3>理由3：応募への「ハードル」を下げられる</h3>
-            <p>採用LPには、LINEでの問い合わせや「まずは話を聞くだけ」という低ハードルの応募ボタンを設置できます。<br>
-            「本当に応募していいのかな」と迷っている求職者に、<strong>「話を聞くだけでOKですよ」と背中を押す仕組み</strong>が作れます。</p>
+        <blockquote>
+          求人票は「選考の入口」に過ぎません。採用LPは、「応募したい気持ちを育てる場所」です。<br />
+          — Webとしくみをつくる
+        </blockquote>
 
-            <blockquote>
-                求人票は「選考の入口」に過ぎません。採用LPは、「応募したい気持ちを育てる場所」です。<br>
-                — Webとしくみをつくる
-            </blockquote>
+        <h2>まとめ</h2>
+        <p>
+          求人票とLPは、役割が全く異なります。両方を使い分けることで、採用の精度が格段に上がります。
+        </p>
+        <ul>
+          <li>求人票＝条件の提示（スペック訴求）</li>
+          <li>採用LP＝会社の魅力を体験させる（共感訴求）</li>
+          <li>LINEで低ハードルの応募導線を作る</li>
+        </ul>
 
-            <h2>まとめ</h2>
-            <p>求人票とLPは、役割が全く異なります。両方を使い分けることで、採用の精度が格段に上がります。</p>
-            <ul>
-                <li>求人票＝条件の提示（スペック訴求）</li>
-                <li>採用LP＝会社の魅力を体験させる（共感訴求）</li>
-                <li>LINEで低ハードルの応募導線を作る</li>
-            </ul>
-
-            <!-- CTA Box -->
-            <div class="blog-cta-box">
-                <h3>若手が「応募したい」と思う採用LPを作ります。</h3>
-                <p>求人票では伝えきれない「人・現場・想い」を、スマホ最適化された採用LPで届けましょう。<br>
-                まずはLINEでお気軽にご相談ください。</p>
-                <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary">
-                    <i class="fa-brands fa-line"></i> LINEで無料相談する
-                </a>
-            </div>
-
-        </article>
-
+        <!-- CTA Box -->
+        <div class="blog-cta-box">
+          <h3>若手が「応募したい」と思う採用LPを作ります。</h3>
+          <p>
+            求人票では伝えきれない「人・現場・想い」を、スマホ最適化された採用LPで届けましょう。<br />
+            まずはLINEでお気軽にご相談ください。
+          </p>
+          <a
+            href="https://lin.ee/nMDNiFg"
+            target="_blank"
+            class="cta-button primary"
+          >
+            <i class="fa-brands fa-line"></i> LINEで無料相談する
+          </a>
+        </div>
+      </article>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
-            <p class="copyright">&copy; 2026 Webとしくみをつくる All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p class="copyright">
+          &copy; 2026 Webとしくみをつくる All Rights Reserved.
+        </p>
+      </div>
     </footer>
-
-</body>
+  </body>
 </html>

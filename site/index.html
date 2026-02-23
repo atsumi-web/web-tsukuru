@@ -1,720 +1,1085 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-7LZB4B8VQE');
+      gtag("config", "G-7LZB4B8VQE");
     </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>建設業界の「掛け捨て採用」を終わらせる｜web-tsukuru.jp</title>
-    <meta name="description" content="建設・建築業界専門の「採用特化型LP制作」サービス。求人サイトでは伝わらない現場の魅力を、あなた専用のLPで伝える。スマホ最適化、LINE直結で応募のハードルを下げます。">
-    <meta property="og:description" content="建設・建築業界専門の「採用特化型LP制作」。求職者に響く構成とデザインで、自社専用の採用資産を構築。制作費0円モニター募集中。">
-    <meta property="og:site_name" content="web-tsukuru.jp">
+    <meta
+      name="description"
+      content="建設・建築業界専門の「採用特化型LP制作」サービス。求人サイトでは伝わらない現場の魅力を、あなた専用のLPで伝える。スマホ最適化、LINE直結で応募のハードルを下げます。"
+    />
+    <meta
+      property="og:description"
+      content="建設・建築業界専門の「採用特化型LP制作」。求職者に響く構成とデザインで、自社専用の採用資産を構築。制作費0円モニター募集中。"
+    />
+    <meta property="og:site_name" content="web-tsukuru.jp" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://web-tsukuru.jp/images/hero-wide-active-site.webp">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://web-tsukuru.jp/images/hero-wide-active-site.webp"
+    />
 
     <!-- Favicon -->
-    <link rel="icon" href="images/logo_icon_navyblue.webp">
-    <link rel="apple-touch-icon" href="images/logo_icon2.webp">
-    
+    <link rel="icon" href="images/logo_icon_navyblue.webp" />
+    <link rel="apple-touch-icon" href="images/logo_icon2.webp" />
+
     <!-- Fonts loaded via @font-face in inline CSS below -->
-    
+
     <!-- Critical Optimization -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preload" as="image" href="images/hero-unified-mobile_sp.webp" media="(max-width: 768px)">
-    <link rel="preload" as="image" href="images/hero-wide-active-site.webp" media="(min-width: 769px)">
-
-
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      href="images/hero-unified-mobile_sp.webp"
+      media="(max-width: 768px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="images/hero-wide-active-site.webp"
+      media="(min-width: 769px)"
+    />
 
     <!-- Critical CSS (Inlined for Performance) -->
     <style>
-/* Direct Font Loading to bypass cache issues */
-@font-face {
-  font-family: 'Noto Sans JP';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFE8j75s.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Noto Sans JP';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj75s.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Noto Sans JP';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFPYk75s.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/outfit/v15/QGYyz_MVcBeNP4NjuGObqx1XmO1I4bCyC4E.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Shippori Mincho';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/shipporimincho/v17/VdGDAZweH5EbgHY6YExcZfDoj0B4e9Om5A.ttf) format('truetype');
-}
+      /* Direct Font Loading to bypass cache issues */
+      @font-face {
+        font-family: "Noto Sans JP";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFE8j75s.ttf)
+          format("truetype");
+      }
+      @font-face {
+        font-family: "Noto Sans JP";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj75s.ttf)
+          format("truetype");
+      }
+      @font-face {
+        font-family: "Noto Sans JP";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosansjp/v56/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFPYk75s.ttf)
+          format("truetype");
+      }
+      @font-face {
+        font-family: "Outfit";
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/outfit/v15/QGYyz_MVcBeNP4NjuGObqx1XmO1I4bCyC4E.ttf)
+          format("truetype");
+      }
+      @font-face {
+        font-family: "Shippori Mincho";
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/shipporimincho/v17/VdGDAZweH5EbgHY6YExcZfDoj0B4e9Om5A.ttf)
+          format("truetype");
+      }
 
-/* CSS Variables */
-:root {
-  --renewal-navy: #0f172a;
-  --renewal-gold: #c5a059;
-  --renewal-gold-soft: rgba(197, 160, 89, 0.4);
-  --renewal-dark: #333333;
-  --renewal-gray: #f4f5f7;
-  --renewal-text-soft: #4b5563;
-  --renewal-line-green: #06c755;
-  --renewal-line-green-hover: #05b34c;
-  --renewal-alert: #ef4444;
-  --bg-header: rgba(15, 23, 42, 0.95);
-  --bg-hero-desc: rgba(15, 23, 42, 0.6);
-  --bg-problem-card: rgba(15, 23, 42, 0.6);
-  --bg-light: #f8fafc;
-  --font-mincho: "Shippori Mincho", serif;
-  --font-outfit: "Outfit", sans-serif;
-  --section-padding: clamp(60px, 10vw, 120px);
-  --container-width: 1200px;
-  --radius-lg: 25px;
-  --radius-md: 15px;
-  --radius-sm: 8px;
-  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
-  --transition-base: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+      /* CSS Variables */
+      :root {
+        --renewal-navy: #0f172a;
+        --renewal-gold: #c5a059;
+        --renewal-gold-soft: rgba(197, 160, 89, 0.4);
+        --renewal-dark: #333333;
+        --renewal-gray: #f4f5f7;
+        --renewal-text-soft: #4b5563;
+        --renewal-line-green: #06c755;
+        --renewal-line-green-hover: #05b34c;
+        --renewal-alert: #ef4444;
+        --bg-header: rgba(15, 23, 42, 0.95);
+        --bg-hero-desc: rgba(15, 23, 42, 0.6);
+        --bg-problem-card: rgba(15, 23, 42, 0.6);
+        --bg-light: #f8fafc;
+        --font-mincho: "Shippori Mincho", serif;
+        --font-outfit: "Outfit", sans-serif;
+        --section-padding: clamp(60px, 10vw, 120px);
+        --container-width: 1200px;
+        --radius-lg: 25px;
+        --radius-md: 15px;
+        --radius-sm: 8px;
+        --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+        --transition-base: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
 
-/* Basic Layout & Typography */
-html {
-  scroll-behavior: smooth;
-  height: 100%;
-}
+      /* Basic Layout & Typography */
+      html {
+        scroll-behavior: smooth;
+        height: 100%;
+      }
 
-body {
-  font-family: "Noto Sans JP", sans-serif;
-  color: var(--renewal-navy);
-  line-height: 1.6;
-  background: #fff;
-  overflow-x: hidden;
-  height: 100%;
-  -webkit-font-smoothing: antialiased;
-  font-feature-settings: "palt";
-  font-weight: 400;
-}
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        color: var(--renewal-navy);
+        line-height: 1.6;
+        background: #fff;
+        overflow-x: hidden;
+        height: 100%;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "palt";
+        font-weight: 400;
+      }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-mincho);
-}
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-mincho);
+      }
 
-p, li, div {
-  font-weight: 400;
-}
+      p,
+      li,
+      div {
+        font-weight: 400;
+      }
 
-/* Mobile text flow fix for OPPO RENO5 and similar devices */
-@media (max-width: 480px) {
-  .text-block {
-    display: inline !important;
-  }
-  
-  .hero-title-primary,
-  .section-title,
-  h1, h2, h3 {
-    word-break: keep-all;
-    overflow-wrap: anywhere;
-  }
-  
-  /* Optimize mobile heading display */
-  .section-title {
-    font-size: clamp(1.5rem, 4.5vw, 1.8rem) !important;
-    line-height: 1.5;
-  }
-  
-  /* Hide manual breaks on mobile for natural text flow */
-  .section-title br,
-  h1 br, h2 br, h3 br {
-    display: none;
-  }
-  
-  /* Hide 0円 on mobile CTA buttons for better spacing */
-  .hide-mobile-zero,
-  .hide-mobile-period {
-    display: none;
-  }
-}
+      /* Mobile text flow fix for OPPO RENO5 and similar devices */
+      @media (max-width: 480px) {
+        .text-block {
+          display: inline !important;
+        }
+
+        .hero-title-primary,
+        .section-title,
+        h1,
+        h2,
+        h3 {
+          word-break: keep-all;
+          overflow-wrap: anywhere;
+        }
+
+        /* Optimize mobile heading display */
+        .section-title {
+          font-size: clamp(1.5rem, 4.5vw, 1.8rem) !important;
+          line-height: 1.5;
+        }
+
+        /* Hide manual breaks on mobile for natural text flow */
+        .section-title br,
+        h1 br,
+        h2 br,
+        h3 br {
+          display: none;
+        }
+
+        /* Hide 0円 on mobile CTA buttons for better spacing */
+        .hide-mobile-zero,
+        .hide-mobile-period {
+          display: none;
+        }
+      }
     </style>
 
     <!-- Custom CSS (Synchronous Loading to ensure font-weight applies) -->
-    <link rel="stylesheet" href="css/renewal.min.css?v=padding_fix_v2">
+    <link rel="stylesheet" href="css/renewal.min.css?v=padding_fix_v2" />
 
     <!-- Font Awesome (Async Loading) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media = 'all'"
+    />
     <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      />
     </noscript>
 
     <script src="js/main.min.js" defer></script>
-</head>
+    <script src="js/shared-nav.js" defer></script>
+  </head>
 
-<body class="brand-lp construction-renewal">
-
+  <body class="brand-lp construction-renewal">
     <!-- Header -->
     <header class="site-header">
-        <div class="header-inner">
-            <a href="#" class="logo">
-                <img src="images/logo_icon3.webp" alt="Logo" width="40" height="40">
-                <span>Webとしくみをつくる</span>
-            </a>
-            <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <nav class="site-nav">
-                <a href="#problem">課題</a>
-                <a href="#solution">解決策</a>
-                <a href="#flow">流れ</a>
-                <a href="#works">デザイン</a>
-                <a href="service.html">料金</a>
-                <a href="#qa">Q&A</a>
-                <a href="blog/index.html">ブログ</a>
-                <a href="works.html">実績</a>
-                <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"><i class="fa-brands fa-line"></i> 無料相談</a>
-            </nav>
-        </div>
+      <div class="header-inner">
+        <a href="#" class="logo">
+          <img src="images/logo_icon3.webp" alt="Logo" width="40" height="40" />
+          <span>Webとしくみをつくる</span>
+        </a>
+        <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="#problem">課題</a>
+          <a href="#solution">解決策</a>
+          <a href="#flow">流れ</a>
+          <a href="#works">デザイン</a>
+          <a href="service.html">料金</a>
+          <a href="#qa">Q&A</a>
+          <a href="blog/index.html">ブログ</a>
+          <a href="works.html">実績</a>
+          <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"
+            ><i class="fa-brands fa-line"></i> 無料相談</a
+          >
+        </nav>
+      </div>
     </header>
 
     <main>
+      <!-- Hero Area -->
+      <section class="hero renewal-hero">
+        <div class="hero-bg">
+          <!-- Mobile Optimized Hero Swap -->
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="images/hero-unified-mobile_sp.webp"
+            />
+            <img
+              src="images/hero-wide-active-site.webp"
+              alt="活気ある建設現場の全景"
+              fetchpriority="high"
+              width="1200"
+              height="675"
+            />
+          </picture>
+          <div class="hero-overlay"></div>
+        </div>
 
-        <!-- Hero Area -->
-        <section class="hero renewal-hero">
-            <div class="hero-bg">
-                <!-- Mobile Optimized Hero Swap -->
-                <picture>
-                    <source media="(max-width: 768px)" srcset="images/hero-unified-mobile_sp.webp">
-                    <img src="images/hero-wide-active-site.webp" alt="活気ある建設現場の全景" fetchpriority="high" width="1200" height="675">
-                </picture>
-                <div class="hero-overlay"></div>
+        <div class="hero-container">
+          <div class="hero-content">
+            <p class="hero-tagline">建設・建築業界専門｜採用特化型LP制作</p>
+            <h1 class="hero-title-primary">
+              建設・建築業界の<br />
+              <span class="text-block"
+                >「<span class="accent-text">掛け捨て採用</span>」から</span
+              ><br />
+              <span class="text-block"
+                ><span class="highlight text-white">資産型採用へ。</span></span
+              >
+            </h1>
+            <p class="hero-desc">
+              <span class="text-block">求人サイトでは伝わらない</span
+              ><span class="text-block">「現場の空気感」を、</span
+              ><span class="text-block">あなた専用の採用LPで</span
+              ><span class="text-block">しっかり届ける。</span
+              ><span class="text-block">長く使える</span
+              ><span class="text-block">「採用資産」を構築します。</span>
+            </p>
+            <div class="hero-actions">
+              <div class="urgency-badge">＼0円モニター残り2社／</div>
+              <a
+                href="https://lin.ee/nMDNiFg"
+                target="_blank"
+                class="cta-button primary"
+              >
+                <i class="fa-brands fa-line"></i> 今すぐ<span
+                  class="hide-mobile-zero"
+                  >0円</span
+                >モニターに申し込む
+              </a>
+              <p class="hero-note">
+                ※無理な勧誘は一切ありません。まずはLINEで適性を診断してください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem / Pain Section -->
+      <section id="problem" class="problem-section dark-bg">
+        <div class="container" style="position: relative; z-index: 2">
+          <div class="section-header js-fade-up">
+            <span class="section-badge inverted">PROBLEM</span>
+            <h2 class="section-title">
+              <span class="text-block">なぜ、求人広告に</span><br />
+              <span class="text-block"
+                ><span class="text-highlight">「掛け捨ての家賃」</span>を</span
+              ><br />
+              <span class="text-block">払い続けるのですか？</span>
+            </h2>
+          </div>
+
+          <!-- コンテンツラッパー（従来の左右分割を廃止し、グリッドへ戻す） -->
+          <div class="problem-grid-wide">
+            <div class="problem-card js-fade-up">
+              <div class="p-num">01</div>
+              <h3>積み上がらないコスト</h3>
+              <p>
+                掲載を止めた瞬間、募集情報は消滅します。手元には何も残りません。それは、借り物の家に高い家賃を払い続けているのと同じです。
+              </p>
+            </div>
+            <div class="problem-card js-fade-up" data-delay="100">
+              <div class="p-num">02</div>
+              <h3>高額な掲載費、<br />回収できていますか？</h3>
+              <p>
+                求人サイトは<span class="text-highlight">「給与比較」</span
+                >の場。一覧に並べられれば、資金力のある大手との競争は厳しくなります。毎月の掲載費だけが積み上がり、応募には繋がらない...そんな悪循環に陥っていませんか？
+              </p>
+            </div>
+            <div class="problem-card js-fade-up" data-delay="200">
+              <div class="p-num">03</div>
+              <h3>間に「業者」が入る<br />スピードロス</h3>
+              <p>
+                求人サイトの管理画面越しでは連絡が遅れ、その間に若手は他社へ。<span
+                  class="text-highlight"
+                  >自社専用LP</span
+                >なら、応募と同時に<span class="text-highlight">社長のLINE</span
+                >へ直通知。この「直接」のスピード感が、採用の可能性を広げます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solution Section -->
+      <section id="solution" class="solution-section">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-navy); color: #fff"
+              >SOLUTION</span
+            >
+            <h2 class="section-title text-dark">
+              <span class="text-block">「いい会社」を、</span><br />
+              <span class="text-block"
+                ><span class="text-gold">「強い会社」</span>に変える</span
+              ><br />
+              <span class="text-block">3つの武器。</span>
+            </h2>
+          </div>
+
+          <!-- 01: RECRUIT (採用特化) -->
+          <div class="solution-item js-fade-up">
+            <div class="s-content">
+              <div class="s-num">01</div>
+              <span class="s-tag">RECRUIT STRATEGY</span>
+              <h3>「採用特化型」の構成で、<br />若手の心を掴む。</h3>
+              <p>
+                ただ綺麗なだけのホームページでは、人は採れません。<br />
+                「どうすれば若手が応募したくなるか」を徹底的に計算し、<br />
+                応募のハードルを最小限に抑えます。
+              </p>
+              <!-- Proof Badge -->
+              <div class="proof-badge">
+                <i class="fa-solid fa-users text-green"></i>
+                <span>Seeker First: <strong>求職者視点</strong>の設計</span>
+              </div>
+            </div>
+            <div class="s-image">
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="images/solution-young-workers_sp.webp"
+                />
+                <img
+                  src="images/solution-young-workers.webp"
+                  alt="スマホで求人を見る若手たち"
+                  class="responsive-img"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+              </picture>
+            </div>
+          </div>
+
+          <!-- 02: LINE (LINE連携) -->
+          <div class="solution-item reverse js-fade-up">
+            <div class="s-content">
+              <div class="s-num">02</div>
+              <span class="s-tag">LINE INTEGRATION</span>
+              <h3>
+                面倒な設定はすべて丸投げ。<br />気軽に応募できるLINE窓口。
+              </h3>
+              <p>
+                電話応募はハードルが高く、メールは面倒くさい。<br />
+                今の求職者が一番動きやすい「LINE応募」の仕組みを導入します。<br />
+                複雑な公式アカウントの開設やWebサイトとの連携は、<br />
+                すべて私たちが代行します。<br />
+                応募があれば、社長のスマホに即座に通知が届きます。
+              </p>
+              <div class="proof-badge">
+                <i
+                  class="fa-brands fa-line text-green"
+                  style="font-size: 1.2rem"
+                ></i>
+                <span>開封率・返信率の向上が期待できます</span>
+              </div>
+            </div>
+            <div class="s-image">
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="images/conversion-line-button_sp.webp"
+                />
+                <img
+                  src="images/conversion-line-button.webp"
+                  alt="LINE応募ボタン"
+                  class="responsive-img"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+              </picture>
+            </div>
+          </div>
+
+          <!-- 03: BRANDING (ブランディング) -->
+          <div class="solution-item js-fade-up">
+            <div class="s-content">
+              <div class="s-num">03</div>
+              <span class="s-tag">BRANDING & CULTURE</span>
+              <h3>「ありきたり」は作りません。「社風」という最強の差別化。</h3>
+              <p>
+                ただ綺麗なだけのサイトでは、人は動きません。<br />
+                御社の持つ「泥臭さ」や「温かさ」といった独自の空気感を言語化。<br />
+                求職者が「自分事」として捉えられる、<br />
+                ミスマッチのない採用ブランドを構築します。
+              </p>
+              <!-- Proof Badge -->
+              <div class="proof-badge">
+                <i class="fa-solid fa-paintbrush text-gold"></i>
+                <span>徹底ヒアリング: <strong>御社だけのデザイン</strong></span>
+              </div>
+            </div>
+            <div class="s-image">
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="images/works/fv_next_sp.webp"
+                />
+                <!-- Desktop Capture for All Devices (User Request) -->
+                <img
+                  src="images/works/fv_next.webp"
+                  alt="圧倒的なインパクトを放つ採用サイトデザイン"
+                  class="responsive-img"
+                  loading="lazy"
+                  decoding="async"
+                  style="max-width: 100%"
+                  width="1200"
+                  height="675"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Proof Section -->
+      <!-- Flow Section -->
+      <section id="flow" class="flow-section">
+        <div class="flow-bg"></div>
+        <!-- CSSで背景画像設定 -->
+
+        <div class="container relative z-10">
+          <div class="section-header js-fade-up">
+            <span class="section-badge badge-blue">FLOW</span>
+            <h2 class="section-title text-navy">制作の流れ</h2>
+            <p class="section-desc text-dark">
+              じっくりヒアリング、<br />スマホ撮影でOK。<br />応募しやすいLPを作ります。
+            </p>
+          </div>
+
+          <div class="flow-grid-wide">
+            <div class="flow-card js-fade-up">
+              <div class="step-num">01</div>
+              <h3>詳細ヒアリング</h3>
+              <p>
+                オンライン（Zoom）または対面で、<strong>60分〜90分</strong>のヒアリングを実施。<br />
+                御社の採用課題、社風、求める人材像を深掘りします。<br />
+                表面的な情報ではなく、<span
+                  class="text-gold"
+                  style="font-weight: 700"
+                  >本質的な魅力</span
+                >を引き出します。
+              </p>
+            </div>
+            <div class="flow-card js-fade-up" data-delay="100">
+              <div class="step-num">02</div>
+              <h3>素材収集（スマホでOK）</h3>
+              <p>
+                スマホで撮影した写真を、<strong>Googleドライブ</strong>で共有いただくだけ。<br />社員インタビュー、現場写真、イベント風景など。<br /><span
+                  class="text-gold"
+                  style="font-weight: 700"
+                  >プロが魅力的に構成</span
+                >し、求職者の心を掴むストーリーを作ります。
+              </p>
+            </div>
+            <div class="flow-card js-fade-up" data-delay="200">
+              <div class="step-num">03</div>
+              <h3>確認・公開</h3>
+              <p>
+                テストサイトで確認いただき、修正は<strong>メール</strong>で詳細にやりとり。<br />納得いくまで調整し、完成後は<strong>HTMLファイル一式を納品</strong>します。
+              </p>
+              <p style="margin-top: 15px">
+                更新サポートをご希望の場合、弊社管理の環境(GitHub + Cloudflare
+                Pages)で運用いたします。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Works Section -->
+      <section id="works" class="works-section">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span
+              class="section-badge"
+              style="background: var(--renewal-navy); color: #fff"
+              >DESIGN SAMPLES</span
+            >
+            <h2 class="section-title text-dark">
+              <span class="text-block">例えば、</span><br />
+              <span class="text-block">こんな「デザイン」も</span><br />
+              <span class="text-block">可能です。</span>
+            </h2>
+            <p class="section-desc text-dark">
+              これらは制作可能なデザインの一例です。<br />
+              「堅実さ」も「勢い」も。御社の社風に最適なデザインをご提案します。
+            </p>
+            <p
+              class="click-instruction"
+              style="
+                margin-top: -1.5rem;
+                margin-bottom: 3rem;
+                color: var(--renewal-navy);
+                font-weight: bold;
+              "
+            >
+              <i class="fa-solid fa-arrow-pointer" style="margin-right: 8px"></i
+              >画像をクリックしてデモを体験
+            </p>
+          </div>
+
+          <div class="works-grid">
+            <!-- Work 1: YAMATO (Standard Model) -->
+            <div class="work-card js-fade-up" data-category="recruitment">
+              <div class="work-card-header">
+                <div class="device-group">
+                  <a
+                    href="templates/type-c/index.html"
+                    target="_blank"
+                    class="browser-mockup"
+                  >
+                    <img
+                      src="images/works/yamato_v3_pc.webp"
+                      alt="株式会社大和建設 PC採用サイト"
+                      width="1200"
+                      height="800"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                  <div class="phone-mockup">
+                    <img
+                      src="images/works/yamato_v3_sp.webp"
+                      alt="株式会社大和建設 スマホ採用サイト"
+                      width="300"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-body">
+                <span class="work-model-label">STANDARD MODEL / DEMO</span>
+                <h3>株式会社大和建設</h3>
+                <p class="work-catch">
+                  <span class="text-block"
+                    >「確かな信頼、未来への架け橋」。</span
+                  ><br />
+                  <span class="text-block"
+                    >創業50年の重みと、先進的な技術力を融合した王道モデル。</span
+                  >
+                </p>
+                <a
+                  href="templates/type-c/index.html"
+                  target="_blank"
+                  class="work-demo-btn"
+                >
+                  デモサイトを見る
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+            <!-- Work 2: CRAFT -->
+            <div class="work-card js-fade-up" data-delay="100">
+              <div class="work-card-header">
+                <div class="device-group">
+                  <a
+                    href="templates/type-a/"
+                    target="_blank"
+                    class="browser-mockup"
+                  >
+                    <img
+                      src="images/works/fv_arc.webp"
+                      alt="CRAFTモデル デモサイト"
+                      width="1200"
+                      height="800"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                  <div class="phone-mockup">
+                    <img
+                      src="images/works/sp_arc.webp"
+                      alt="CRAFTモデル スマホ表示"
+                      width="300"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-body">
+                <span class="work-model-label">CRAFT MODEL / DEMO</span>
+                <h3>ARC BUILD</h3>
+                <p class="work-catch">
+                  「美意識」×「職人魂」。<br />圧倒的な世界観で、腕に覚えのある一流の職人を惹きつける。
+                </p>
+                <a
+                  href="templates/type-a/"
+                  target="_blank"
+                  class="work-demo-btn"
+                >
+                  デモサイトを見る
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
             </div>
 
-            <div class="hero-container">
-                <div class="hero-content">
-                    <p class="hero-tagline">建設・建築業界専門｜採用特化型LP制作</p>
-                    <h1 class="hero-title-primary">
-                        建設・建築業界の<br>
-                        <span class="text-block">「<span class="accent-text">掛け捨て採用</span>」から</span><br>
-                        <span class="text-block"><span class="highlight text-white">資産型採用へ。</span></span>
-                    </h1>
-                    <p class="hero-desc">
-                        <span class="text-block">求人サイトでは伝わらない</span><span class="text-block">「現場の空気感」を、</span><span class="text-block">あなた専用の採用LPで</span><span class="text-block">しっかり届ける。</span><span class="text-block">長く使える</span><span class="text-block">「採用資産」を構築します。</span>
-                    </p>
-                    <div class="hero-actions">
-                        <div class="urgency-badge">
-                            ＼0円モニター残り2社／
-                        </div>
-                        <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary">
-                            <i class="fa-brands fa-line"></i> 今すぐ<span class="hide-mobile-zero">0円</span>モニターに申し込む
-                        </a>
-                        <p class="hero-note">※無理な勧誘は一切ありません。まずはLINEで適性を診断してください。</p>
-                    </div>
+            <!-- Work 3: SPEED -->
+            <div class="work-card js-fade-up" data-delay="200">
+              <div class="work-card-header">
+                <div class="device-group">
+                  <a
+                    href="templates/type-b/"
+                    target="_blank"
+                    class="browser-mockup"
+                  >
+                    <img
+                      src="images/works/fv_next.webp"
+                      alt="Next Frontier"
+                      width="600"
+                      height="400"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                  <div class="phone-mockup">
+                    <img
+                      src="images/works/fv.webp"
+                      alt="Next Frontier Mobile"
+                      width="300"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
+              </div>
+              <div class="work-card-body">
+                <span class="work-model-label">SPEED MODEL / DEMO</span>
+                <h3>ネクスト・フロンティア</h3>
+                <p class="work-catch">
+                  「勢い」×「成長性」。<br />上昇志向の強い若手層に刺さる、エネルギッシュなベンチャー型。
+                </p>
+                <a
+                  href="templates/type-b/"
+                  target="_blank"
+                  class="work-demo-btn"
+                >
+                  デモサイトを見る
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Problem / Pain Section -->
-        <section id="problem" class="problem-section dark-bg">
+          <div class="works-actions js-fade-up">
+            <a href="design.html" class="more-button">
+              <span>詳細を見る</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
 
+      <!-- Price Section -->
+      <section id="price" class="price-section dark-bg">
+        <div class="container">
+          <div class="section-badge inverted">PRICE</div>
+          <h2 class="section-title">料金プラン</h2>
 
-            <div class="container" style="position: relative; z-index: 2;">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge inverted">PROBLEM</span>
-                    <h2 class="section-title">
-                        <span class="text-block">なぜ、求人広告に</span><br>
-                        <span class="text-block"><span class="text-highlight">「掛け捨ての家賃」</span>を</span><br>
-                        <span class="text-block">払い続けるのですか？</span>
-                    </h2>
+          <div class="price-card-container">
+            <div class="price-card monitor js-fade-up featured-plan">
+              <div class="card-label">限定オファー</div>
+              <h3>0円モニター</h3>
+              <div class="price">
+                <span class="amount">0</span><span class="unit">円</span>
+              </div>
+              <div class="price-note">
+                <p>（先着3社 / <span class="text-alert">残り2社</span>）</p>
+                <div class="price-note-detail">
+                  <strong>【モニターで得られるもの】</strong><br />
+                  ・LP制作費用が0円<br />
+                  ・採用課題を共に解決するパートナーとして、初期段階から深く関わります<br /><br />
+                  <strong>【ご協力いただくこと】</strong><br />
+                  ・実績公開へのご協力<br />
+                  ・本気で採用を変革したい意欲<br /><br />
+                  <span class="price-badge-zero">月額管理費なし</span>
+                  <span class="price-badge-domain"
+                    >（ドメイン実費：年額数千円のみご負担）</span
+                  >
                 </div>
-                
-                <!-- コンテンツラッパー（従来の左右分割を廃止し、グリッドへ戻す） -->
-                <div class="problem-grid-wide">
-                    <div class="problem-card js-fade-up">
-                        <div class="p-num">01</div>
-                        <h3>積み上がらないコスト</h3>
-                        <p>掲載を止めた瞬間、募集情報は消滅します。手元には何も残りません。それは、借り物の家に高い家賃を払い続けているのと同じです。</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="100">
-                        <div class="p-num">02</div>
-                        <h3>高額な掲載費、<br>回収できていますか？</h3>
-                        <p>求人サイトは<span class="text-highlight">「給与比較」</span>の場。一覧に並べられれば、資金力のある大手との競争は厳しくなります。毎月の掲載費だけが積み上がり、応募には繋がらない...そんな悪循環に陥っていませんか？</p>
-                    </div>
-                    <div class="problem-card js-fade-up" data-delay="200">
-                        <div class="p-num">03</div>
-                        <h3>間に「業者」が入る<br>スピードロス</h3>
-                        <p>求人サイトの管理画面越しでは連絡が遅れ、その間に若手は他社へ。<span class="text-highlight">自社専用LP</span>なら、応募と同時に<span class="text-highlight">社長のLINE</span>へ直通知。この「直接」のスピード感が、採用の可能性を広げます。</p>
-                    </div>
-                </div>
+              </div>
+              <ul class="price-features">
+                <li><i class="fa-solid fa-check"></i> 採用LP制作</li>
+                <li><i class="fa-solid fa-check"></i> LINE窓口初期設定</li>
+                <li><i class="fa-solid fa-check"></i> サーバー維持費0円</li>
+              </ul>
+              <a
+                href="https://lin.ee/nMDNiFg"
+                target="_blank"
+                class="cta-button primary"
+                >今すぐ枠を確保する</a
+              >
             </div>
-        </section>
 
-        <!-- Solution Section -->
-        <section id="solution" class="solution-section">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">SOLUTION</span>
-                    <h2 class="section-title text-dark">
-                        <span class="text-block">「いい会社」を、</span><br>
-                        <span class="text-block"><span class="text-gold">「強い会社」</span>に変える</span><br>
-                        <span class="text-block">3つの武器。</span>
-                    </h2>
-                </div>
-
-                <!-- 01: RECRUIT (採用特化) -->
-                <div class="solution-item js-fade-up">
-                    <div class="s-content">
-                        <div class="s-num">01</div>
-                        <span class="s-tag">RECRUIT STRATEGY</span>
-                        <h3>「採用特化型」の構成で、<br>若手の心を掴む。</h3>
-                        <p>
-                            ただ綺麗なだけのホームページでは、人は採れません。<br>
-                            「どうすれば若手が応募したくなるか」を徹底的に計算し、<br>
-                            応募のハードルを最小限に抑えます。
-                        </p>
-                        <!-- Proof Badge -->
-                        <div class="proof-badge">
-                            <i class="fa-solid fa-users text-green"></i>
-                            <span>Seeker First: <strong>求職者視点</strong>の設計</span>
-                        </div>
-                    </div>
-                    <div class="s-image">
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="images/solution-young-workers_sp.webp">
-                            <img src="images/solution-young-workers.webp" alt="スマホで求人を見る若手たち" class="responsive-img" loading="lazy" width="600" height="400">
-                        </picture>
-                    </div>
-                </div>
-
-                <!-- 02: LINE (LINE連携) -->
-                <div class="solution-item reverse js-fade-up">
-                    <div class="s-content">
-                        <div class="s-num">02</div>
-                        <span class="s-tag">LINE INTEGRATION</span>
-                        <h3>面倒な設定はすべて丸投げ。<br>気軽に応募できるLINE窓口。</h3>
-                        <p>
-                            電話応募はハードルが高く、メールは面倒くさい。<br>
-                            今の求職者が一番動きやすい「LINE応募」の仕組みを導入します。<br>
-                            複雑な公式アカウントの開設やWebサイトとの連携は、<br>
-                            すべて私たちが代行します。<br>
-                            応募があれば、社長のスマホに即座に通知が届きます。
-                        </p>
-                        <div class="proof-badge">
-                            <i class="fa-brands fa-line text-green" style="font-size: 1.2rem;"></i>
-                            <span>開封率・返信率の向上が期待できます</span>
-                        </div>
-                    </div>
-                    <div class="s-image">
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="images/conversion-line-button_sp.webp">
-                            <img src="images/conversion-line-button.webp" alt="LINE応募ボタン" class="responsive-img" loading="lazy" width="600" height="400">
-                        </picture>
-                    </div>
-                </div>
-
-                <!-- 03: BRANDING (ブランディング) -->
-                <div class="solution-item js-fade-up">
-                    <div class="s-content">
-                        <div class="s-num">03</div>
-                        <span class="s-tag">BRANDING & CULTURE</span>
-                        <h3>「ありきたり」は作りません。「社風」という最強の差別化。</h3>
-                        <p>
-                            ただ綺麗なだけのサイトでは、人は動きません。<br>
-                            御社の持つ「泥臭さ」や「温かさ」といった独自の空気感を言語化。<br>
-                            求職者が「自分事」として捉えられる、<br>
-                            ミスマッチのない採用ブランドを構築します。
-                        </p>
-                        <!-- Proof Badge -->
-                        <div class="proof-badge">
-                            <i class="fa-solid fa-paintbrush text-gold"></i>
-                            <span>徹底ヒアリング: <strong>御社だけのデザイン</strong></span>
-                        </div>
-                    </div>
-                    <div class="s-image">
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="images/works/fv_next_sp.webp">
-                            <!-- Desktop Capture for All Devices (User Request) -->
-                            <img src="images/works/fv_next.webp" alt="圧倒的なインパクトを放つ採用サイトデザイン" class="responsive-img" loading="lazy" decoding="async" style="max-width: 100%;" width="1200" height="675">
-                        </picture>
-                    </div>
-                </div>
+            <div class="price-card regular js-fade-up" data-delay="100">
+              <div class="card-label gray">通常プラン</div>
+              <h3>制作パッケージ</h3>
+              <div class="price">
+                <span class="amount">98,000</span><span class="unit">円</span>
+              </div>
+              <div class="price-note price-note-regular">
+                <p>（税込）</p>
+                <span class="price-note-sub"
+                  >平均相場：初期30万〜＋月額管理費</span
+                >
+              </div>
+              <ul class="price-features">
+                <li><i class="fa-solid fa-check"></i> 採用LP制作</li>
+                <li><i class="fa-solid fa-check"></i> LINE窓口初期設定</li>
+                <li><i class="fa-solid fa-check"></i> サーバー維持費0円</li>
+              </ul>
+              <p class="price-sub-note">
+                求人掲載1回分の費用よりも安く、<br />一生モノの資産が手に入ります。<br />
+                ※ドメイン維持費（実費：年額数千円程度）のみご負担。
+              </p>
+              <a
+                href="https://lin.ee/nMDNiFg"
+                target="_blank"
+                class="cta-button secondary"
+                >相談する</a
+              >
             </div>
-        </section>
+          </div>
 
-        <!-- Tech Proof Section -->
-        <!-- Flow Section -->
-        <section id="flow" class="flow-section">
-            <div class="flow-bg"></div> <!-- CSSで背景画像設定 -->
+          <div class="js-fade-up price-section-link">
+            <p class="price-section-note">
+              料金プランの詳細、納品物、支払い条件など<br />詳しくはサービス・料金ページをご覧ください
+            </p>
+            <a href="service.html" class="more-button more-button-light">
+              <span>サービス詳細を見る</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
 
-            <div class="container relative z-10">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge badge-blue">FLOW</span>
-                    <h2 class="section-title text-navy">制作の流れ</h2>
-                    <p class="section-desc text-dark">じっくりヒアリング、<br>スマホ撮影でOK。<br>応募しやすいLPを作ります。</p>
-                </div>
-                
-                <div class="flow-grid-wide">
-                    <div class="flow-card js-fade-up">
-                        <div class="step-num">01</div>
-                        <h3>詳細ヒアリング</h3>
-                        <p>
-                            オンライン（Zoom）または対面で、<strong>60分〜90分</strong>のヒアリングを実施。<br>
-                            御社の採用課題、社風、求める人材像を深掘りします。<br>
-                            表面的な情報ではなく、<span class="text-gold" style="font-weight:700;">本質的な魅力</span>を引き出します。
-                        </p>
-                    </div>
-                    <div class="flow-card js-fade-up" data-delay="100">
-                        <div class="step-num">02</div>
-                        <h3>素材収集（スマホでOK）</h3>
-                        <p>スマホで撮影した写真を、<strong>Googleドライブ</strong>で共有いただくだけ。<br>社員インタビュー、現場写真、イベント風景など。<br><span class="text-gold" style="font-weight:700;">プロが魅力的に構成</span>し、求職者の心を掴むストーリーを作ります。</p>
-                    </div>
-                    <div class="flow-card js-fade-up" data-delay="200">
-                        <div class="step-num">03</div>
-                        <h3>確認・公開</h3>
-                        <p>テストサイトで確認いただき、修正は<strong>メール</strong>で詳細にやりとり。<br>納得いくまで調整し、完成後は<strong>HTMLファイル一式を納品</strong>します。</p>
-                        <p style="margin-top: 15px;">更新サポートをご希望の場合、弊社管理の環境(GitHub + Cloudflare Pages)で運用いたします。</p>
-                    </div>
-                </div>
+      <!-- Q&A Section -->
+      <section id="qa" class="qa-section">
+        <div class="container">
+          <div class="section-badge">Q&A</div>
+          <h2 class="section-title">よくある質問</h2>
+          <div class="qa-list">
+            <div class="qa-item js-fade-up">
+              <div class="q">Indeedなどの無料掲載とは何が違いますか？</div>
+              <div class="a">
+                無料掲載は「文字情報」が中心ですが、このLPは写真とデザインで御社の魅力を伝える<strong
+                  class="text-highlight-gold"
+                  >「受け皿」</strong
+                >となります。IndeedやハローワークからこのLPに誘導することで、求職者に会社の雰囲気をしっかり伝えることができます。
+              </div>
             </div>
-        </section>
-
-        <!-- Works Section -->
-        <section id="works" class="works-section">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge" style="background: var(--renewal-navy); color: #fff;">DESIGN SAMPLES</span>
-                    <h2 class="section-title text-dark">
-                        <span class="text-block">例えば、</span><br>
-                        <span class="text-block">こんな「デザイン」も</span><br>
-                        <span class="text-block">可能です。</span>
-                    </h2>
-                    <p class="section-desc text-dark">
-                        これらは制作可能なデザインの一例です。<br>
-                        「堅実さ」も「勢い」も。御社の社風に最適なデザインをご提案します。
-                    </p>
-                    <p class="click-instruction" style="margin-top: -1.5rem; margin-bottom: 3rem; color: var(--renewal-navy); font-weight: bold;">
-                        <i class="fa-solid fa-arrow-pointer" style="margin-right: 8px;"></i>画像をクリックしてデモを体験
-                    </p>
-                </div>
-
-                <div class="works-grid">
-                    <!-- Work 1: YAMATO (Standard Model) -->
-                    <div class="work-card js-fade-up" data-category="recruitment">
-                        <div class="work-card-header">
-                            <div class="device-group">
-                                <a href="templates/type-c/index.html" target="_blank" class="browser-mockup">
-                                    <img src="images/works/yamato_v3_pc.webp" alt="株式会社大和建設 PC採用サイト" width="1200" height="800" loading="lazy" decoding="async">
-                                </a>
-                                <div class="phone-mockup">
-                                    <img src="images/works/yamato_v3_sp.webp" alt="株式会社大和建設 スマホ採用サイト" width="300" height="600" loading="lazy" decoding="async">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="work-card-body">
-                            <span class="work-model-label">STANDARD MODEL / DEMO</span>
-                            <h3>株式会社大和建設</h3>
-                            <p class="work-catch">
-                                <span class="text-block">「確かな信頼、未来への架け橋」。</span><br>
-                                <span class="text-block">創業50年の重みと、先進的な技術力を融合した王道モデル。</span>
-                            </p>
-                            <a href="templates/type-c/index.html" target="_blank" class="work-demo-btn">
-                                デモサイトを見る <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Work 2: CRAFT -->
-                    <div class="work-card js-fade-up" data-delay="100">
-                        <div class="work-card-header">
-                            <div class="device-group">
-                                <a href="templates/type-a/" target="_blank" class="browser-mockup">
-                                    <img src="images/works/fv_arc.webp" alt="CRAFTモデル デモサイト" width="1200" height="800" loading="lazy" decoding="async">
-                                </a>
-                                <div class="phone-mockup">
-                                    <img src="images/works/sp_arc.webp" alt="CRAFTモデル スマホ表示" width="300" height="600" loading="lazy" decoding="async">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="work-card-body">
-                            <span class="work-model-label">CRAFT MODEL / DEMO</span>
-                            <h3>ARC BUILD</h3>
-                            <p class="work-catch">「美意識」×「職人魂」。<br>圧倒的な世界観で、腕に覚えのある一流の職人を惹きつける。</p>
-                            <a href="templates/type-a/" target="_blank" class="work-demo-btn">
-                                デモサイトを見る <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Work 3: SPEED -->
-                    <div class="work-card js-fade-up" data-delay="200">
-                        <div class="work-card-header">
-                            <div class="device-group">
-                                <a href="templates/type-b/" target="_blank" class="browser-mockup">
-                                    <img src="images/works/fv_next.webp" alt="Next Frontier" width="600" height="400" loading="lazy" decoding="async">
-                                </a>
-                                <div class="phone-mockup">
-                                    <img src="images/works/fv.webp" alt="Next Frontier Mobile" width="300" height="600" loading="lazy" decoding="async">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="work-card-body">
-                            <span class="work-model-label">SPEED MODEL / DEMO</span>
-                            <h3>ネクスト・フロンティア</h3>
-                            <p class="work-catch">「勢い」×「成長性」。<br>上昇志向の強い若手層に刺さる、エネルギッシュなベンチャー型。</p>
-                            <a href="templates/type-b/" target="_blank" class="work-demo-btn">
-                                デモサイトを見る <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="works-actions js-fade-up">
-                    <a href="design.html" class="more-button">
-                        <span>詳細を見る</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+            <div class="qa-item js-fade-up">
+              <div class="q">本当に維持費は0円ですか？</div>
+              <div class="a">
+                はい、弊社への月額管理費は0円です。ただし、独自の「<strong>ドメイン代（年額1,000〜3,000円程度、お客様ご自身で取得）</strong>」のみご負担いただきます。ドメイン取得は丁寧にサポートしますので、ご安心ください。それ以外に、弊社から費用を請求することは一切ありません。<br /><br />
+                <strong class="text-highlight-gold">なぜ0円が可能なのか?</strong
+                ><br />
+                世界標準のサーバーレス技術とGitHubによるバージョン管理を組み合わせることで、サーバー代やメンテナンス費用を徹底的に排除しています。これにより、ドメイン代以外の固定費をゼロにし、かつサイトの全履歴を安全に保全。御社だけの<strong
+                  class="text-highlight-gold"
+                  >「一生モノの採用資産」</strong
+                >が実現します。
+              </div>
             </div>
-        </section>
+          </div>
+          <div class="js-fade-up" style="text-align: center; margin-top: 50px">
+            <p
+              style="
+                color: var(--renewal-dark);
+                font-size: 1rem;
+                margin-bottom: 20px;
+              "
+            >
+              その他のよくある質問は、<br />サービス・料金ページをご覧ください
+            </p>
+            <a href="service.html#qa" class="more-button">
+              <span>Q&Aをもっと見る</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
 
-        <!-- Price Section -->
-        <section id="price" class="price-section dark-bg">
-            <div class="container">
-                <div class="section-badge inverted">PRICE</div>
-                <h2 class="section-title">料金プラン</h2>
-                
-                <div class="price-card-container">
-                    <div class="price-card monitor js-fade-up featured-plan">
-                        <div class="card-label">限定オファー</div>
-                        <h3>0円モニター</h3>
-                        <div class="price">
-                            <span class="amount">0</span><span class="unit">円</span>
-                        </div>
-                        <p class="price-note">
-                            （先着3社 / <span class="text-alert">残り2社</span>）<br>
-                            <span style="font-size:0.95em; display:block; margin-top:8px; color:#fff; line-height:1.6;">
-                            <strong>【モニターで得られるもの】</strong><br>
-                            ・LP制作費用が0円<br>
-                            ・採用課題を共に解決するパートナーとして、初期段階から深く関わります<br><br>
-                            <strong>【ご協力いただくこと】</strong><br>
-                            ・実績公開へのご協力<br>
-                            ・本気で採用を変革したい意欲<br><br>
-                            <span style="font-size:0.9em; color:#FAFAFA; font-weight:bold; background:var(--renewal-gold); color:#000; padding:2px 6px; border-radius:4px; display:inline-block; margin-top:4px;">月額管理費なし</span>
-                            <span style="font-size:0.85em; color:rgba(255,255,255,0.8); display:block; margin-top:2px;">（ドメイン実費：年額数千円のみご負担）</span>
-                            </span>
-                        </p>
-                        <ul class="price-features">
-                            <li><i class="fa-solid fa-check"></i> 採用LP制作</li>
-                            <li><i class="fa-solid fa-check"></i> LINE窓口初期設定</li>
-                            <li><i class="fa-solid fa-check"></i> サーバー維持費0円</li>
-                        </ul>
-                        <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary">今すぐ枠を確保する</a>
-                    </div>
+      <!-- リードマグネットプレゼント -->
+      <section
+        id="lead-magnet"
+        class="feature-section"
+        style="background-color: #e8eef3; padding: 80px 0"
+      >
+        <div class="container">
+          <div class="section-header js-fade-up" style="text-align: center">
+            <span class="section-badge badge-blue">LINE登録特典</span>
+            <h2 class="section-title text-navy">
+              採用資産マニュアル 無料プレゼント
+            </h2>
+            <p
+              class="section-desc text-dark"
+              style="max-width: 700px; margin-left: auto; margin-right: auto"
+            >
+              求人広告費を「掛け捨て」から<strong>「0円資産」</strong>に変える方法を、20ページのPDFマニュアルで詳しく解説。<br />
+              LINE登録だけで今すぐ受け取れます。
+            </p>
+          </div>
 
-                    <div class="price-card regular js-fade-up" data-delay="100">
-                        <div class="card-label gray">通常プラン</div>
-                        <h3>制作パッケージ</h3>
-                        <div class="price">
-                            <span class="amount">98,000</span><span class="unit">円</span>
-                        </div>
-                        <p class="price-note" style="color:#475569;">（税込）<br>
-                            <span style="font-size:0.85em; display:block; margin-top:5px; color:#64748b;">
-                            平均相場：初期30万〜＋月額管理費
-                            </span>
-                        </p>
-                        <ul class="price-features">
-                            <li><i class="fa-solid fa-check"></i> 採用LP制作</li>
-                            <li><i class="fa-solid fa-check"></i> LINE窓口初期設定</li>
-                            <li><i class="fa-solid fa-check"></i> サーバー維持費0円</li>
-                        </ul>
-                        <p class="price-sub-note">
-                            求人掲載1回分の費用よりも安く、<br>一生モノの資産が手に入ります。<br>
-                            ※ドメイン維持費（実費：年額数千円程度）のみご負担。
-                        </p>
-                        <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button secondary">相談する</a>
-                    </div>
-                </div>
-
-                <div class="js-fade-up" style="text-align: center; margin-top: 60px;">
-                    <p style="color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 20px;">
-                        料金プランの詳細、納品物、支払い条件など<br>
-                        詳しくはサービス・料金ページをご覧ください
-                    </p>
-                    <a href="service.html" class="more-button" style="border-color: rgba(255,255,255,0.3); color: #fff;">
-                        <span>サービス詳細を見る</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 30px;
+              margin-top: 50px;
+              max-width: 900px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            <div class="js-fade-up" style="text-align: center">
+              <img
+                src="images/lead-magnet-cover.webp"
+                alt="採用資産マニュアル表紙"
+                style="
+                  width: 100%;
+                  max-width: 400px;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                "
+                loading="lazy"
+              />
+              <p style="margin-top: 15px; color: #666; font-size: 0.9rem">
+                表紙
+              </p>
             </div>
-        </section>
-
-        <!-- Q&A Section -->
-        <section id="qa" class="qa-section">
-            <div class="container">
-                <div class="section-badge">Q&A</div>
-                <h2 class="section-title">よくある質問</h2>
-                <div class="qa-list">
-                    <div class="qa-item js-fade-up">
-                        <div class="q">Indeedなどの無料掲載とは何が違いますか？</div>
-                        <div class="a">無料掲載は「文字情報」が中心ですが、このLPは写真とデザインで御社の魅力を伝える<strong class="text-highlight-gold">「受け皿」</strong>となります。IndeedやハローワークからこのLPに誘導することで、求職者に会社の雰囲気をしっかり伝えることができます。</div>
-                    </div>
-                    <div class="qa-item js-fade-up">
-                        <div class="q">本当に維持費は0円ですか？</div>
-                        <div class="a">
-                            はい、弊社への月額管理費は0円です。ただし、独自の「<strong>ドメイン代（年額1,000〜3,000円程度、お客様ご自身で取得）</strong>」のみご負担いただきます。ドメイン取得は丁寧にサポートしますので、ご安心ください。それ以外に、弊社から費用を請求することは一切ありません。<br><br>
-                            <strong class="text-highlight-gold">なぜ0円が可能なのか?</strong><br>
-                            世界標準のサーバーレス技術とGitHubによるバージョン管理を組み合わせることで、サーバー代やメンテナンス費用を徹底的に排除しています。これにより、ドメイン代以外の固定費をゼロにし、かつサイトの全履歴を安全に保全。御社だけの<strong class="text-highlight-gold">「一生モノの採用資産」</strong>が実現します。
-                        </div>
-                    </div>
-                </div>
-                <div class="js-fade-up" style="text-align: center; margin-top: 50px;">
-                    <p style="color: var(--renewal-dark); font-size: 1rem; margin-bottom: 20px;">
-                        その他のよくある質問は、<br>サービス・料金ページをご覧ください
-                    </p>
-                    <a href="service.html#qa" class="more-button">
-                        <span>Q&Aをもっと見る</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+            <div class="js-fade-up" data-delay="100" style="text-align: center">
+              <img
+                src="images/lead-magnet-contents.webp"
+                alt="採用資産マニュアル目次"
+                style="
+                  width: 100%;
+                  max-width: 400px;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                "
+                loading="lazy"
+              />
+              <p style="margin-top: 15px; color: #666; font-size: 0.9rem">
+                目次
+              </p>
             </div>
-        </section>
+          </div>
 
-        <!-- リードマグネットプレゼント -->
-        <section id="lead-magnet" class="feature-section" style="background-color: #e8eef3; padding: 80px 0;">
-            <div class="container">
-                <div class="section-header js-fade-up" style="text-align: center;">
-                    <span class="section-badge badge-blue">LINE登録特典</span>
-                    <h2 class="section-title text-navy">採用資産マニュアル 無料プレゼント</h2>
-                    <p class="section-desc text-dark" style="max-width: 700px; margin-left: auto; margin-right: auto;">
-                        求人広告費を「掛け捨て」から<strong>「0円資産」</strong>に変える方法を、20ページのPDFマニュアルで詳しく解説。<br>
-                        LINE登録だけで今すぐ受け取れます。
-                    </p>
-                </div>
+          <div
+            style="text-align: center; margin-top: 50px"
+            class="js-fade-up"
+            data-delay="200"
+          >
+            <p
+              style="
+                color: #1e3a5f;
+                font-size: 1.2rem;
+                margin-bottom: 25px;
+                font-weight: bold;
+              "
+            >
+              🎁 LINE登録するだけで、すぐに受け取れます
+            </p>
+            <a
+              href="https://lin.ee/eKNHAte"
+              target="_blank"
+              class="cta-button primary"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 1.1rem;
+                padding: 18px 40px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: bold;
+                max-width: 450px;
+                width: auto;
+                margin: 0 auto;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"
+                />
+              </svg>
+              LINE登録して無料で受け取る
+            </a>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 15px">
+              ※ LINEアプリが起動します。登録は無料です。
+            </p>
+          </div>
+        </div>
+      </section>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    <div class="js-fade-up" style="text-align: center;">
-                        <img src="images/lead-magnet-cover.webp" alt="採用資産マニュアル表紙" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
-                        <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">表紙</p>
-                    </div>
-                    <div class="js-fade-up" data-delay="100" style="text-align: center;">
-                        <img src="images/lead-magnet-contents.webp" alt="採用資産マニュアル目次" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
-                        <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">目次</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 50px;" class="js-fade-up" data-delay="200">
-                    <p style="color: #1e3a5f; font-size: 1.2rem; margin-bottom: 25px; font-weight: bold;">
-                        🎁 LINE登録するだけで、すぐに受け取れます
-                    </p>
-                    <a href="https://lin.ee/eKNHAte" target="_blank" class="cta-button primary" style="display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; max-width: 450px; width: auto; margin: 0 auto;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-                        </svg>
-                        LINE登録して無料で受け取る
-                    </a>
-                    <p style="color: #666; font-size: 0.9rem; margin-top: 15px;">
-                        ※ LINEアプリが起動します。登録は無料です。
-                    </p>
-                </div>
+      <!-- Profile Section -->
+      <section id="about" class="profile-section dark-bg">
+        <div class="container">
+          <div class="section-badge inverted">MESSAGE</div>
+          <h2 class="section-title">
+            <span class="text-block">「汗をかく現場が、</span
+            ><br class="br-sp" />
+            <span class="text-block">一番に報われる世界へ」</span>
+          </h2>
+          <div class="profile-content js-fade-up">
+            <div class="profile-image">
+              <img
+                src="images/trust-digital-collaboration.webp"
+                alt="デジタル連携"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="images/work-scaffold-check.webp"
+                alt="足場チェック作業"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="images/work-heavy-excavator.webp"
+                alt="重機作業"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-        </section>
-
-        <!-- Profile Section -->
-        <section id="about" class="profile-section dark-bg">
-            <div class="container">
-                <div class="section-badge inverted">MESSAGE</div>
-                <h2 class="section-title">
-                    <span class="text-block">「汗をかく現場が、</span><br class="br-sp">
-                    <span class="text-block">一番に報われる世界へ」</span>
-                </h2>
-                <div class="profile-content js-fade-up">
-                    <div class="profile-image">
-                        <img src="images/trust-digital-collaboration.webp" alt="デジタル連携" loading="lazy" decoding="async">
-                        <img src="images/work-scaffold-check.webp" alt="足場チェック作業" loading="lazy" decoding="async">
-                        <img src="images/work-heavy-excavator.webp" alt="重機作業" loading="lazy" decoding="async">
-                    </div>
-                    <div class="profile-text">
-                        <p>
-                            私の娘は今、とある建設会社で<strong>「現場監督」</strong>として働いています。<br>
-                            日々ヘルメットを被り、厳しい現場の最前線で奮闘する娘を見て、改めて思います。<br><br>
-                            建設現場の仕事は、キツいかもしれない。でも、誰よりも社会を支えている、本当にかっこいい仕事だと。<br><br>
-                            私は、その現場の熱気や、社長の心意気を、Webの力で<b>「正しく」</b>世の中に伝えたいと思ってこのサービスを作りました。<br><br>
-                            広告費を払い続けるだけの採用は、もう終わりにしましょう。<br>
-                            自社の力で人を集め、利益を現場に還元できる<b>「強い会社」</b>を作る。<br><br>
-                            そのための採用を変える武器を、私が責任を持ってお渡しします。
-                        </p>
-                        <div class="profile-meta">
-                            <span class="name">web-tsukuru.jp 運営代表</span>
-                            <span class="name-jp">渥美 絵里</span>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="profile-text">
+              <p>
+                私の娘は今、とある建設会社で<strong>「現場監督」</strong>として働いています。<br />
+                日々ヘルメットを被り、厳しい現場の最前線で奮闘する娘を見て、改めて思います。<br /><br />
+                建設現場の仕事は、キツいかもしれない。でも、誰よりも社会を支えている、本当にかっこいい仕事だと。<br /><br />
+                私は、その現場の熱気や、社長の心意気を、Webの力で<b>「正しく」</b>世の中に伝えたいと思ってこのサービスを作りました。<br /><br />
+                広告費を払い続けるだけの採用は、もう終わりにしましょう。<br />
+                自社の力で人を集め、利益を現場に還元できる<b>「強い会社」</b>を作る。<br /><br />
+                そのための採用を変える武器を、私が責任を持ってお渡しします。
+              </p>
+              <div class="profile-meta">
+                <span class="name">web-tsukuru.jp 運営代表</span>
+                <span class="name-jp">渥美 絵里</span>
+              </div>
             </div>
-        </section>
-
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer CTA Section -->
     <section class="footer-cta-section">
-        <div class="container">
-            <h2 class="footer-cta-title">
-                <span class="cta-main">まずはLINEで聞いてみる<span class="hide-mobile-period">。</span></span>
-                <span class="cta-sub">30秒でカンタン登録<span class="hide-mobile-period">。</span></span>
-            </h2>
-            <p class="footer-cta-text">
-                「うちの会社でも本当にできるかな？」<br>
-                そんな不安も、<br class="br-sp">まずは気軽にご相談ください。<br>
-                しつこい営業は一切ありません。
-            </p>
-            <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary large">
-                <i class="fa-brands fa-line" style="margin-right: 10px;"></i> 今すぐLINEで聞いてみる
-            </a>
-            <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;">※24時間受付中 / 30秒でカンタン登録</p>
-        </div>
+      <div class="container">
+        <h2 class="footer-cta-title">
+          <span class="cta-main"
+            >まずはLINEで聞いてみる<span class="hide-mobile-period"
+              >。</span
+            ></span
+          >
+          <span class="cta-sub"
+            >30秒でカンタン登録<span class="hide-mobile-period">。</span></span
+          >
+        </h2>
+        <p class="footer-cta-text">
+          「うちの会社でも本当にできるかな？」<br />
+          そんな不安も、<br class="br-sp" />まずは気軽にご相談ください。<br />
+          しつこい営業は一切ありません。
+        </p>
+        <a
+          href="https://lin.ee/nMDNiFg"
+          target="_blank"
+          class="cta-button primary large"
+        >
+          <i class="fa-brands fa-line" style="margin-right: 10px"></i>
+          今すぐLINEで聞いてみる
+        </a>
+        <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8">
+          ※24時間受付中 / 30秒でカンタン登録
+        </p>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
-            <p class="copyright">&copy; 2026 Webとしくみをつくる All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p class="copyright">
+          &copy; 2026 Webとしくみをつくる All Rights Reserved.
+        </p>
+      </div>
     </footer>
 
     <!-- Fixed LINE Button -->
     <a href="https://lin.ee/nMDNiFg" target="_blank" class="fixed-line-btn">
-        <i class="fa-brands fa-line"></i>
-        <span>30秒でカンタン登録</span>
+      <i class="fa-brands fa-line"></i>
+      <span>30秒でカンタン登録</span>
     </a>
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" aria-label="ページトップへ戻る">
-        <i class="fa-solid fa-chevron-up"></i>
+      <i class="fa-solid fa-chevron-up"></i>
     </a>
-
-</body>
-
+  </body>
 </html>
