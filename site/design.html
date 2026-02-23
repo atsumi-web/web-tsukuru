@@ -1,302 +1,431 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-7LZB4B8VQE');
+      gtag("config", "G-7LZB4B8VQE");
     </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>デザインサンプル｜Webとしくみをつくる</title>
-    <meta name="description" content="Webとしくみをつくるのデザインサンプル一覧。建設業向け採用LP制作のテンプレートをご紹介します。">
+    <meta
+      name="description"
+      content="Webとしくみをつくるのデザインサンプル一覧。建設業向け採用LP制作のテンプレートをご紹介します。"
+    />
 
     <!-- Global Styles & Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@400;600;800&display=swap">
-    <link rel="stylesheet" href="css/renewal.css?v=works_v2">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@400;600;800&display=swap"
+    />
+    <link rel="stylesheet" href="css/renewal.css?v=works_v2" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <!-- Scripts -->
     <script src="js/main.js" defer></script>
 
     <!-- Critical CSS (Inlined for Performance) -->
     <style>
-    /* Fix for User-Provided Mockup Images (All items are pre-mocked) */
-    .phone-mockup { 
-        background: transparent !important; 
-        border: none !important; 
-        box-shadow: none !important;
-    }
-    .phone-mockup img {
+      /* Fix for User-Provided Mockup Images (All items are pre-mocked) */
+      .phone-mockup {
         background: transparent !important;
-        border: none !important; 
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .phone-mockup img {
+        background: transparent !important;
+        border: none !important;
         border-radius: 0 !important;
-    } 
+      }
     </style>
-</head>
+  </head>
 
-<body class="brand-lp">
-
+  <body class="brand-lp">
     <!-- Header -->
     <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="logo">
-                <img src="images/logo_icon3.webp" alt="Logo" width="40" height="40">
-                <span>Webとしくみをつくる</span>
-            </a>
-            <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <nav class="site-nav">
-                <a href="index.html#problem">課題</a>
-                <a href="index.html#solution">解決策</a>
-                <a href="index.html#flow">流れ</a>
-                <a href="design.html">デザイン</a>
-                <a href="index.html#price">料金</a>
-                <a href="index.html#qa">Q&A</a>
-                <a href="blog/index.html">ブログ</a>
-                <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"><i class="fa-brands fa-line"></i> 無料相談</a>
-            </nav>
-        </div>
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="images/logo_icon3.webp" alt="Logo" width="40" height="40" />
+          <span>Webとしくみをつくる</span>
+        </a>
+        <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html#problem">課題</a>
+          <a href="index.html#solution">解決策</a>
+          <a href="index.html#flow">流れ</a>
+          <a href="design.html">デザイン</a>
+          <a href="index.html#price">料金</a>
+          <a href="index.html#qa">Q&A</a>
+          <a href="blog/index.html">ブログ</a>
+          <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"
+            ><i class="fa-brands fa-line"></i> 無料相談</a
+          >
+        </nav>
+      </div>
     </header>
 
     <main>
+      <!-- Works Hero -->
+      <section class="works-hero">
+        <div class="container js-fade-up">
+          <h1>DESIGN SAMPLES</h1>
+          <p>
+            建設業界に特化した<br />
+            採用LP制作のデザインサンプル。
+          </p>
+          <div
+            style="
+              margin-top: 30px;
+              font-size: 0.9rem;
+              opacity: 0.8;
+              font-family: var(--font-outfit);
+              letter-spacing: 0.2em;
+            "
+          >
+            TEMPLATE / CONCEPT / MOCKUP
+          </div>
+        </div>
+      </section>
 
-        <!-- Works Hero -->
-        <section class="works-hero">
-            <div class="container js-fade-up">
-                <h1>DESIGN SAMPLES</h1>
-                <p>
-                    建設業界に特化した<br>
-                    採用LP制作のデザインサンプル。
+      <!-- Introduction -->
+      <section class="intro-section" style="background-color: #fff">
+        <div
+          class="container js-fade-up"
+          style="max-width: 850px; text-align: center"
+        >
+          <p
+            style="
+              font-size: 1.15rem;
+              line-height: 2.2;
+              color: var(--renewal-dark);
+            "
+          >
+            以下は、建設業界向けに制作した採用LPのデザインサンプルです。<br />
+            「WEBとしくみをつくる」では、<br />
+            クライアント企業の理念や情熱を、採用に特化したWebページを用いて、<br />
+            永続的に価値を生み出し続ける<strong class="text-gold"
+              >「採用資産」</strong
+            >へと昇華させます。<br />
+            <br />
+            ターゲットが抱く「人生の課題」を解決する物語を設計すること。<br />
+            そのために、3つの異なるアプローチ（しくみ）を用意しました。<br />
+            <span
+              style="
+                font-size: 0.85em;
+                color: var(--renewal-alert);
+                display: block;
+                margin-top: 20px;
+                font-weight: 700;
+              "
+              >※掲載されている企業名はすべてデモ用の架空のものです。</span
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- Works Grid -->
+      <section class="feature-section" style="background-color: #f8fafc">
+        <div class="container">
+          <div class="works-grid">
+            <!-- Type-A (TRUST) -->
+            <div class="work-card js-fade-up">
+              <div class="work-card-header">
+                <div class="device-group">
+                  <a
+                    href="templates/type-c/index.html"
+                    target="_blank"
+                    class="browser-mockup"
+                  >
+                    <img
+                      src="images/works/yamato_v3_pc.webp"
+                      alt="株式会社大和建設 PC採用サイト"
+                      width="1200"
+                      height="800"
+                    />
+                  </a>
+                  <div class="phone-mockup">
+                    <img
+                      src="images/works/yamato_v3_sp.webp"
+                      alt="株式会社大和建設 スマホ採用サイト"
+                      width="300"
+                      height="600"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-body">
+                <span class="work-model-label">STANDARD MODEL / DEMO</span>
+                <h3>株式会社大和建設</h3>
+                <p class="work-catch">
+                  「堅実」×「スマート」。<br />安心感と先進性を両立した、王道の信頼獲得モデル。
                 </p>
-                <div style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8; font-family: var(--font-outfit); letter-spacing: 0.2em;">
-                    TEMPLATE / CONCEPT / MOCKUP
-                </div>
-            </div>
-        </section>
+                <a
+                  href="templates/type-c/index.html"
+                  target="_blank"
+                  class="work-demo-btn"
+                  style="margin-bottom: 20px"
+                >
+                  デモサイトを見る
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
 
-        <!-- Introduction -->
-        <section class="intro-section" style="background-color: #fff;">
-            <div class="container js-fade-up" style="max-width: 850px; text-align: center;">
-                <p style="font-size: 1.15rem; line-height: 2.2; color: var(--renewal-dark);">
-                    以下は、建設業界向けに制作した採用LPのデザインサンプルです。<br>
-                    「WEBとしくみをつくる」では、<br>
-                    クライアント企業の理念や情熱を、採用に特化したWebページを用いて、<br>
-                    永続的に価値を生み出し続ける<strong class="text-gold">「採用資産」</strong>へと昇華させます。<br>
-                    <br>
-                    ターゲットが抱く「人生の課題」を解決する物語を設計すること。<br>
-                    そのために、3つの異なるアプローチ（しくみ）を用意しました。<br>
-                    <span style="font-size: 0.85em; color: var(--renewal-alert); display: block; margin-top: 20px; font-weight: 700;">※掲載されている企業名はすべてデモ用の架空のものです。</span>
+                <div class="work-strategy-box">
+                  <dl class="strategy-list">
+                    <div class="strategy-item">
+                      <dt><i class="fa-solid fa-bullseye"></i> 標的層</dt>
+                      <dd>30〜40代の経験者・家族がいる安定志向層</dd>
+                    </div>
+                    <div class="strategy-item">
+                      <dt><i class="fa-solid fa-building"></i> 企業色</dt>
+                      <dd>地域密着の老舗・規律ある洗練された社風</dd>
+                    </div>
+                    <div class="strategy-item highlight">
+                      <dt><i class="fa-solid fa-lightbulb"></i> 狙い</dt>
+                      <dd>
+                        「現場がきれい」「環境が整っている」という価値を訴求し、長く働ける「安心感」で定着率を高める。
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
+            <!-- Type-B (CRAFT) -->
+            <div class="work-card js-fade-up" data-delay="100">
+              <div class="work-card-header">
+                <div class="device-group">
+                  <a
+                    href="templates/type-a/"
+                    target="_blank"
+                    class="browser-mockup"
+                  >
+                    <img
+                      src="images/works/fv_arc.webp"
+                      alt="ARC BUILD"
+                      width="1200"
+                      height="800"
+                    />
+                  </a>
+                  <div class="phone-mockup">
+                    <img
+                      src="images/works/sp_arc.webp"
+                      alt="ARC BUILD Mobile"
+                      width="300"
+                      height="600"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-body">
+                <span class="work-model-label">CRAFT MODEL / DEMO</span>
+                <h3>ARC BUILD</h3>
+                <p class="work-catch">
+                  「美意識」×「職人魂」。<br />圧倒的な世界観で、腕に覚えのある一流の職人を惹きつける。
                 </p>
-            </div>
-        </section>
+                <a
+                  href="templates/type-a/"
+                  target="_blank"
+                  class="work-demo-btn"
+                  style="margin-bottom: 20px"
+                >
+                  デモサイトを見る
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
 
-        <!-- Works Grid -->
-        <section class="feature-section" style="background-color: #f8fafc;">
-            <div class="container">
-                <div class="works-grid">
-
-                    <!-- Type-A (TRUST) -->
-                    <div class="work-card js-fade-up">
-                        <div class="work-card-header">
-                            <div class="device-group">
-                                <a href="templates/type-c/index.html" target="_blank" class="browser-mockup">
-                                    <img src="images/works/yamato_v3_pc.webp" alt="株式会社大和建設 PC採用サイト" width="1200" height="800">
-                                </a>
-                                <div class="phone-mockup">
-                                    <img src="images/works/yamato_v3_sp.webp" alt="株式会社大和建設 スマホ採用サイト" width="300" height="600">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="work-card-body">
-                            <span class="work-model-label">STANDARD MODEL / DEMO</span>
-                            <h3>株式会社大和建設</h3>
-                            <p class="work-catch">「堅実」×「スマート」。<br>安心感と先進性を両立した、王道の信頼獲得モデル。</p>
-                            <a href="templates/type-c/index.html" target="_blank" class="work-demo-btn" style="margin-bottom: 20px;">
-                                デモサイトを見る <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            
-                            <div class="work-strategy-box">
-                                <dl class="strategy-list">
-                                    <div class="strategy-item">
-                                        <dt><i class="fa-solid fa-bullseye"></i> 標的層</dt>
-                                        <dd>30〜40代の経験者・家族がいる安定志向層</dd>
-                                    </div>
-                                    <div class="strategy-item">
-                                        <dt><i class="fa-solid fa-building"></i> 企業色</dt>
-                                        <dd>地域密着の老舗・規律ある洗練された社風</dd>
-                                    </div>
-                                    <div class="strategy-item highlight">
-                                        <dt><i class="fa-solid fa-lightbulb"></i> 狙い</dt>
-                                        <dd>「現場がきれい」「環境が整っている」という価値を訴求し、長く働ける「安心感」で定着率を高める。</dd>
-                                    </div>
-                                </dl>
-                            </div>
-                        </div>
+                <div class="work-strategy-box">
+                  <dl class="strategy-list">
+                    <div class="strategy-item">
+                      <dt><i class="fa-solid fa-bullseye"></i> 標的層</dt>
+                      <dd>
+                        腕に自信がある職人・最先端技術(BIM)に関心のある若手
+                      </dd>
                     </div>
-
-                    <!-- Type-B (CRAFT) -->
-                    <div class="work-card js-fade-up" data-delay="100">
-                        <div class="work-card-header">
-                            <div class="device-group">
-                                <a href="templates/type-a/" target="_blank" class="browser-mockup">
-                                    <img src="images/works/fv_arc.webp" alt="ARC BUILD" width="1200" height="800">
-                                </a>
-                                <div class="phone-mockup">
-                                    <img src="images/works/sp_arc.webp" alt="ARC BUILD Mobile" width="300" height="600">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="work-card-body">
-                            <span class="work-model-label">CRAFT MODEL / DEMO</span>
-                            <h3>ARC BUILD</h3>
-                            <p class="work-catch">「美意識」×「職人魂」。<br>圧倒的な世界観で、腕に覚えのある一流の職人を惹きつける。</p>
-                            <a href="templates/type-a/" target="_blank" class="work-demo-btn" style="margin-bottom: 20px;">
-                                デモサイトを見る <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            
-                            <div class="work-strategy-box">
-                                <dl class="strategy-list">
-                                    <div class="strategy-item">
-                                        <dt><i class="fa-solid fa-bullseye"></i> 標的層</dt>
-                                        <dd>腕に自信がある職人・最先端技術(BIM)に関心のある若手</dd>
-                                    </div>
-                                    <div class="strategy-item">
-                                        <dt><i class="fa-solid fa-building"></i> 企業色</dt>
-                                        <dd>「美意識」と「合理性」が共存する、モダンで洗練された社風</dd>
-                                    </div>
-                                    <div class="strategy-item highlight">
-                                        <dt><i class="fa-solid fa-lightbulb"></i> 狙い</dt>
-                                        <dd>DXを「効率化」だけでなく「より良いモノづくり（美学）」の手段として提示し、意識の高い職人を惹きつける。</dd>
-                                    </div>
-                                </dl>
-                            </div>
-                        </div>
+                    <div class="strategy-item">
+                      <dt><i class="fa-solid fa-building"></i> 企業色</dt>
+                      <dd>
+                        「美意識」と「合理性」が共存する、モダンで洗練された社風
+                      </dd>
                     </div>
-
-                    <!-- Type-C (SPEED) -->
-                    <div class="work-card js-fade-up" data-delay="200">
-                        <div class="work-card-header">
-                            <div class="device-group">
-                                <a href="templates/type-speed/" target="_blank" class="browser-mockup">
-                                    <img src="images/works/fv_next.webp" alt="Next Frontier" width="1200" height="800">
-                                </a>
-                                <div class="phone-mockup">
-                                    <img src="images/works/fv.webp" alt="Next Frontier Mobile" width="300" height="600">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="work-card-body">
-                            <span class="work-model-label">SPEED MODEL / DEMO</span>
-                            <h3>ネクスト・フロンティア</h3>
-                            <p class="work-catch">「未来を、追い抜け。」<br>若手の情熱を加速させる。</p>
-                            <a href="templates/type-speed/" target="_blank" class="work-demo-btn" style="margin-bottom: 20px;">
-                                デモサイトを見る <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                            
-                            <div class="work-strategy-box">
-                                <dl class="strategy-list">
-                                    <div class="strategy-item">
-                                        <dt><i class="fa-solid fa-bullseye"></i> 標的層</dt>
-                                        <dd>高収入・早期キャリアアップを狙う野心ある若手20代</dd>
-                                    </div>
-                                    <div class="strategy-item">
-                                        <dt><i class="fa-solid fa-building"></i> 企業色</dt>
-                                        <dd>完全実力主義・スピード重視のテックベンチャー</dd>
-                                    </div>
-                                    <div class="strategy-item highlight">
-                                        <dt><i class="fa-solid fa-lightbulb"></i> 狙い</dt>
-                                        <dd>「稼げる」「独立」という直球のメリットを提示し、現状に不満を持つ若手の野心を刺激する。</dd>
-                                    </div>
-                                </dl>
-                            </div>
-                        </div>
+                    <div class="strategy-item highlight">
+                      <dt><i class="fa-solid fa-lightbulb"></i> 狙い</dt>
+                      <dd>
+                        DXを「効率化」だけでなく「より良いモノづくり（美学）」の手段として提示し、意識の高い職人を惹きつける。
+                      </dd>
                     </div>
-
+                  </dl>
                 </div>
+              </div>
             </div>
-        </section>
 
-        <!-- Technical Logic -->
-        <section class="tech-reasons">
-            <div class="container">
-                <div class="section-header js-fade-up">
-                    <span class="section-badge">LOGIC</span>
-                    <h2 class="section-title">なぜ、私の「しくみ」は資産になるのか</h2>
-                    <p class="section-desc">デザインの裏側にある、経営的な「勝ち筋」。</p>
+            <!-- Type-C (SPEED) -->
+            <div class="work-card js-fade-up" data-delay="200">
+              <div class="work-card-header">
+                <div class="device-group">
+                  <a
+                    href="templates/type-speed/"
+                    target="_blank"
+                    class="browser-mockup"
+                  >
+                    <img
+                      src="images/works/fv_next.webp"
+                      alt="Next Frontier"
+                      width="1200"
+                      height="800"
+                    />
+                  </a>
+                  <div class="phone-mockup">
+                    <img
+                      src="images/works/fv.webp"
+                      alt="Next Frontier Mobile"
+                      width="300"
+                      height="600"
+                    />
+                  </div>
                 </div>
-
-                <div class="reason-grid">
-                    <div class="reason-card js-fade-up">
-                        <div class="reason-icon"><i class="fa-solid fa-fingerprint"></i></div>
-                        <h3>「選ばれる」ためのブランド設計</h3>
-                        <p>
-                            条件だけの勝負では、大手には勝てません。<br>
-                            「御社だけの魅力」を言語化し、求職者に「ここで働きたい」と思わせる独自のブランド価値を構築します。
-                        </p>
-                    </div>
-                    <div class="reason-card js-fade-up" data-delay="100">
-                        <div class="reason-icon"><i class="fa-solid fa-heart"></i></div>
-                        <h3>心動かす「感情設計」</h3>
-                        <p>
-                            求職者が「何を知りたいか」を徹底的に重視。<br>
-                            「憧れ」や「安心」を醸成するコンテンツと導線設計で、応募への心理的ハードルを下げます。
-                        </p>
-                    </div>
-                    <div class="reason-card js-fade-up" data-delay="200">
-                        <div class="reason-icon"><i class="fa-brands fa-line" style="color: #06C755;"></i></div>
-                        <h3>LINEで「資産」化する</h3>
-                        <p>
-                            LPを入り口に、LINE公式アカウントと連携。<br>
-                            応募候補者を直接アプローチ可能な<strong class="text-gold">「自社リスト」</strong>として蓄積し、長期的な採用につなげます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact CTA -->
-        <section class="footer-cta-section">
-            <div class="container js-fade-up">
-                <h2 class="footer-cta-title">あなたの会社の「魂」を、形にしませんか？</h2>
-                <p class="footer-cta-text">
-                    現状維持で終わらせない。<br>
-                    御社だけの「採用資産」を、一緒に作りましょう。
+              </div>
+              <div class="work-card-body">
+                <span class="work-model-label">SPEED MODEL / DEMO</span>
+                <h3>ネクスト・フロンティア</h3>
+                <p class="work-catch">
+                  「未来を、追い抜け。」<br />若手の情熱を加速させる。
                 </p>
-                <div style="max-width: 400px; margin: 0 auto;">
-                    <a href="https://lin.ee/nMDNiFg" target="_blank" class="cta-button primary large">
-                        <i class="fa-brands fa-line" style="margin-right: 10px;"></i> 無料相談はこちら
-                    </a>
-                </div>
-                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 20px;">
-                    ※しつこい営業は一切ありませんのでご安心ください
-                </p>
-            </div>
-        </section>
+                <a
+                  href="templates/type-speed/"
+                  target="_blank"
+                  class="work-demo-btn"
+                  style="margin-bottom: 20px"
+                >
+                  デモサイトを見る
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
 
+                <div class="work-strategy-box">
+                  <dl class="strategy-list">
+                    <div class="strategy-item">
+                      <dt><i class="fa-solid fa-bullseye"></i> 標的層</dt>
+                      <dd>高収入・早期キャリアアップを狙う野心ある若手20代</dd>
+                    </div>
+                    <div class="strategy-item">
+                      <dt><i class="fa-solid fa-building"></i> 企業色</dt>
+                      <dd>完全実力主義・スピード重視のテックベンチャー</dd>
+                    </div>
+                    <div class="strategy-item highlight">
+                      <dt><i class="fa-solid fa-lightbulb"></i> 狙い</dt>
+                      <dd>
+                        「稼げる」「独立」という直球のメリットを提示し、現状に不満を持つ若手の野心を刺激する。
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Logic -->
+      <section class="tech-reasons">
+        <div class="container">
+          <div class="section-header js-fade-up">
+            <span class="section-badge">LOGIC</span>
+            <h2 class="section-title">なぜ、私の「しくみ」は資産になるのか</h2>
+            <p class="section-desc">
+              デザインの裏側にある、経営的な「勝ち筋」。
+            </p>
+          </div>
+
+          <div class="reason-grid">
+            <div class="reason-card js-fade-up">
+              <div class="reason-icon">
+                <i class="fa-solid fa-fingerprint"></i>
+              </div>
+              <h3>「選ばれる」ためのブランド設計</h3>
+              <p>
+                条件だけの勝負では、大手には勝てません。<br />
+                「御社だけの魅力」を言語化し、求職者に「ここで働きたい」と思わせる独自のブランド価値を構築します。
+              </p>
+            </div>
+            <div class="reason-card js-fade-up" data-delay="100">
+              <div class="reason-icon"><i class="fa-solid fa-heart"></i></div>
+              <h3>心動かす「感情設計」</h3>
+              <p>
+                求職者が「何を知りたいか」を徹底的に重視。<br />
+                「憧れ」や「安心」を醸成するコンテンツと導線設計で、応募への心理的ハードルを下げます。
+              </p>
+            </div>
+            <div class="reason-card js-fade-up" data-delay="200">
+              <div class="reason-icon">
+                <i class="fa-brands fa-line" style="color: #06c755"></i>
+              </div>
+              <h3>LINEで「資産」化する</h3>
+              <p>
+                LPを入り口に、LINE公式アカウントと連携。<br />
+                応募候補者を直接アプローチ可能な<strong class="text-gold"
+                  >「自社リスト」</strong
+                >として蓄積し、長期的な採用につなげます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact CTA -->
+      <section class="footer-cta-section">
+        <div class="container js-fade-up">
+          <h2 class="footer-cta-title">
+            あなたの会社の「魂」を、形にしませんか？
+          </h2>
+          <p class="footer-cta-text">
+            現状維持で終わらせない。<br />
+            御社だけの「採用資産」を、一緒に作りましょう。
+          </p>
+          <div style="max-width: 400px; margin: 0 auto">
+            <a
+              href="https://lin.ee/nMDNiFg"
+              target="_blank"
+              class="cta-button primary large"
+            >
+              <i class="fa-brands fa-line" style="margin-right: 10px"></i>
+              無料相談はこちら
+            </a>
+          </div>
+          <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 20px">
+            ※しつこい営業は一切ありませんのでご安心ください
+          </p>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
-            <p class="copyright">&copy; 2026 Webとしくみをつくる All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p class="copyright">
+          &copy; 2026 Webとしくみをつくる All Rights Reserved.
+        </p>
+      </div>
     </footer>
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" aria-label="ページトップへ戻る">
-        <i class="fa-solid fa-chevron-up"></i>
+      <i class="fa-solid fa-chevron-up"></i>
     </a>
-
-</body>
+  </body>
 </html>
