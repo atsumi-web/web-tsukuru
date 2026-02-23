@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>繝悶Ο繧ｰ險倅ｺ九Μ繧ｹ繝・| 蛻ｶ菴懊さ繝・け繝斐ャ繝・/title>
+    <title>ブログ記事リスト | 制作コックピット</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -76,11 +76,11 @@
         .filter-btn { padding: 5px 13px; border-radius: 20px; border: 2px solid #e2e8f0; background: #fff; font-size: 0.78rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; }
         .filter-btn.active, .filter-btn:hover { border-color: #0f172a; background: #0f172a; color: #fff; }
 
-        /* 繝壹Ν繧ｽ繝雁・繧帝撼陦ｨ遉ｺ */
+        /* ペルソナ列を非表示 */
         #article-table th:nth-child(3), #article-table td:nth-child(3),
         #plan-table th:nth-child(3), #plan-table td:nth-child(3) { display: none; }
 
-        /* 繧ｿ繝ｼ繧ｲ繝・ヨ蟶ｯ */
+        /* ターゲット帯 */
         .target-banner { background: #0f172a; color: #e2e8f0; padding: 10px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
         .target-banner strong { color: #C5A059; }
 
@@ -95,156 +95,156 @@
 
     <header>
         <div class="breadcrumb">
-            <a href="../manuals/admin/index.html">竊・謗｡逕ｨ蜿ｸ莉､螳､</a> / <a href="17_content_ecosystem_guide.html">繧ｳ繝ｳ繝・Φ繝・°逕ｨ繧ｬ繧､繝・/a>
+            <a href="../manuals/admin/index.html">📡 採用司令室</a> / <a href="17_content_ecosystem_guide.html">コンテンツ運用ガイド</a>
         </div>
-        <h1>統 繝悶Ο繧ｰ險倅ｺ九Μ繧ｹ繝・/h1>
-        <p class="subtitle">蜈ｬ髢区ｸ医∩險倅ｺ九ｒ邂｡逅・・・web-tsukuru.jp/blog/posts/</p>
+        <h1>📋 ブログ記事リスト</h1>
+        <p class="subtitle">公開済み記事を管理 — web-tsukuru.jp/blog/posts/</p>
     </header>
 
-    <!-- 繧ｿ繝ｼ繧ｲ繝・ヨ譏手ｨ・-->
+    <!-- ターゲット帯 -->
     <div class="target-banner">
-        識 <span><strong>繧ｿ繝ｼ繧ｲ繝・ヨ・・/strong>蜈ｨ蝗ｽ縺ｮ蟒ｺ險ｭ莨夂､ｾ縺ｮ遉ｾ髟ｷ繝ｻ謗｡逕ｨ諡・ｽ楢・ｼ域治逕ｨLP繝ｻWeb蛻ｶ菴懊し繝ｼ繝薙せ縺ｸ縺ｮ豬∝・繧堤岼逧・→縺励◆髮・ｮ｢險倅ｺ具ｼ・/span>
+        🎯 <span><strong>ターゲット：</strong>全国の建設業界の事業主・採用担当（建設用LP・Web制作サービスへの誘導を目的とした専門記事）</span>
     </div>
 
     <!-- Stats -->
     <div class="stats-bar">
-        <div class="stat-card done"><div class="stat-num" id="cnt-done">0</div><div class="stat-label">蜈ｬ髢区ｸ医∩</div></div>
-        <div class="stat-card wip"><div class="stat-num" id="cnt-wip">0</div><div class="stat-label">蝓ｷ遲・ｸｭ</div></div>
-        <div class="stat-card todo"><div class="stat-num" id="cnt-todo">0</div><div class="stat-label">譛ｪ逹謇・/div></div>
-        <div class="stat-card" style="margin-left:auto;"><div class="stat-num" id="cnt-total">0</div><div class="stat-label">蜷郁ｨ郁ｨ倅ｺ・/div></div>
+        <div class="stat-card done"><div class="stat-num" id="cnt-done">0</div><div class="stat-label">公開済み</div></div>
+        <div class="stat-card wip"><div class="stat-num" id="cnt-wip">0</div><div class="stat-label">執筆中</div></div>
+        <div class="stat-card todo"><div class="stat-num" id="cnt-todo">0</div><div class="stat-label">未着手</div></div>
+        <div class="stat-card" style="margin-left:auto;"><div class="stat-num" id="cnt-total">0</div><div class="stat-label">総記事数</div></div>
     </div>
 
     <!-- Filter -->
     <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterTable('all', this)">縺吶∋縺ｦ</button>
-        <button class="filter-btn" onclick="filterTable('s-done', this)">笨・蜈ｬ髢区ｸ医∩</button>
-        <button class="filter-btn" onclick="filterTable('s-wip', this)">笨擾ｸ・蝓ｷ遲・ｸｭ</button>
-        <button class="filter-btn" onclick="filterTable('s-todo', this)">筮・譛ｪ逹謇・/button>
+        <button class="filter-btn active" onclick="filterTable('all', this)">すべて</button>
+        <button class="filter-btn" onclick="filterTable('s-done', this)">✅ 公開済み</button>
+        <button class="filter-btn" onclick="filterTable('s-wip', this)">🔶 執筆中</button>
+        <button class="filter-btn" onclick="filterTable('s-todo', this)">⬜ 未着手</button>
     </div>
 
-    <!-- 蜈ｬ髢区ｸ医∩險倅ｺ・-->
+    <!-- 公開済み記事 -->
     <div class="table-wrap">
-        <div class="section-header">笨・蜈ｬ髢区ｸ医∩險倅ｺ具ｼ・eb-tsukuru.jp・・/div>
+        <div class="section-header">✅ 公開済み記事（web-tsukuru.jp）</div>
         <table id="article-table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>險倅ｺ九ち繧､繝医Ν / 繧ｭ繝ｼ繝ｯ繝ｼ繝・/th>
-                    <th>繧ｿ繝ｼ繧ｲ繝・ヨ</th>
-                    <th>繧ｹ繝・・繧ｿ繧ｹ</th>
-                    <th>繝ｪ繝ｳ繧ｯ</th>
+                    <th>記事タイトル / キーワード</th>
+                    <th>ターゲット</th>
+                    <th>ステータス</th>
+                    <th>リンク</th>
                 </tr>
             </thead>
             <tbody>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">01</td>
                     <td>
-                        <div class="article-title">闍･謇九′霎槭ａ縺ｪ縺・ｼ夂､ｾ縺ｮ蜈ｱ騾夂せ縲ゅ檎ｵｦ譁吶阪ｈ繧翫ｂ螟ｧ蛻・↑繧ゅ・縺ｨ縺ｯ・・/div>
+                        <div class="article-title">社長が決められない「今の求人」よりも大切なものとは</div>
                         <span class="date-tag">2026.02.01</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260201_retention_secrets.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260201_retention_secrets.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">02</td>
                     <td>
-                        <div class="article-title">蟒ｺ險ｭ讌ｭ逡後・縲梧寺縺第昏縺ｦ謗｡逕ｨ縲阪ｒ縲∽ｻ翫☆縺千ｵゅｏ繧峨○繧区婿豕・/div>
+                        <div class="article-title">建設業後継者の「地元で採用」を、すぐ叶わせる方法</div>
                         <span class="date-tag">2026.02.01</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260201_stop_wasting_ad_budget.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260201_stop_wasting_ad_budget.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">03</td>
                     <td>
-                        <div class="article-title">縲瑚憶縺・・繝ｼ繝繝壹・繧ｸ縲阪↓縺ｯ縲∝ｿ・★縺薙・3縺､縺ｮ隕∫ｴ縺後≠繧九・/div>
+                        <div class="article-title">「良いホームページ」には、必ずこの3つの要素がある</div>
                         <span class="date-tag">2026.02.01</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260201_three_elements_of_good_web.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260201_three_elements_of_good_web.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">04</td>
                     <td>
-                        <div class="article-title">WebP譛驕ｩ蛹悶□縺代〒縺ｯ雜ｳ繧翫↑縺九▲縺溘・SS譛驕ｩ蛹悶・譁ｹ縺碁㍾隕√□縺｣縺溯ｩｱ</div>
+                        <div class="article-title">WebP最適化だけでは足りなかった。CSS最適化の方が急務だった話</div>
                         <span class="date-tag">2026.02.02</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260202_webp_optimization.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260202_webp_optimization.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">05</td>
                     <td>
-                        <div class="article-title">縺ｪ縺懃ｧ√′縲悟ｻｺ險ｭ讌ｭﾃ玲治逕ｨLP縲阪↓迚ｹ蛹悶＠縺溘・縺・/div>
+                        <div class="article-title">なぜ私が「建設業採用LP」に特化したのか</div>
                         <span class="date-tag">2026.02.02</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260202_why_i_specialize.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260202_why_i_specialize.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-youth" data-status="s-done">
                     <td class="num">06</td>
                     <td>
-                        <div class="article-title">Z荳紋ｻ｣縺悟━蜈医☆繧九・縺ｯ・溘檎ｵｦ譁吶阪ｈ繧翫悟ロ縺肴婿縲阪ｒ驕ｸ縺ｶ逅・罰</div>
+                        <div class="article-title">Z世代が就職するのは「給料」より「別の道」を選ぶ理由</div>
                         <span class="date-tag">2026.02.02</span>
                     </td>
-                    <td><span class="persona p-youth">闍･謇九・螂ｳ諤ｧ</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260202_z_gen_priority.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-youth">若者・女性</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260202_z_gen_priority.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">07</td>
                     <td>
-                        <div class="article-title">Indeed縺ｨLP縺ｮ驕輔＞・壼ｻｺ險ｭ讌ｭ縺ｮ謗｡逕ｨ縲√←縺｣縺｡繧帝∈縺ｶ縺ｹ縺搾ｼ・/div>
+                        <div class="article-title">Indeedと採用LPの違い・建設業の採用、どっちを選ぶべき？</div>
                         <span class="date-tag">2026.02.04</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260204_indeed_vs_lp.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260204_indeed_vs_lp.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">08</td>
                     <td>
-                        <div class="article-title">LINE遯灘哨縺梧治逕ｨ繧貞､峨∴繧狗炊逕ｱ・壼ｻｺ險ｭ讌ｭ縺ｮ蠢懷供繝上・繝峨Ν繧剃ｸ九￡繧・/div>
+                        <div class="article-title">LINE活用が採用を変える理由・建設業の応募ハードルを下げる</div>
                         <span class="date-tag">2026.02.04</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260204_line_benefits.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260204_line_benefits.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">09</td>
                     <td>
-                        <div class="article-title">縲仙ｮ滄鹸縲大虚逕ｻ繧剃ｽｿ縺｣縺滓治逕ｨLP繧偵√せ繝槭・縺ｧ鬮倬溯｡ｨ遉ｺ縺吶ｋ謚陦・/div>
+                        <div class="article-title">「実績」動画を使った採用LP を、スマホで高解像度表示する技術</div>
                         <span class="date-tag">2026.02.05</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260205_hotta_performance.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260205_hotta_performance.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">10</td>
                     <td>
-                        <div class="article-title">WebP譛驕ｩ蛹悶□縺代〒縺ｯ雜ｳ繧翫↑縺九▲縺溘・SS譛驕ｩ蛹悶・譁ｹ縺碁㍾隕√□縺｣縺溯ｩｱ・医Δ繝舌う繝ｫ邱ｨ・・/div>
+                        <div class="article-title">WebP最適化だけでは足りなかった。CSS最適化の方が急務だった話（モバイル編）</div>
                         <span class="date-tag">2026.02.06</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260206_mobile_optimization.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260206_mobile_optimization.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">11</td>
                     <td>
-                        <div class="article-title">縲・026蟷ｴ譛譁ｰ縲第ｱゆｺｺ繧ｵ繧､繝域侭驥第ｯ碑ｼ・ｽ懷ｻｺ險ｭ讌ｭ縺ｮ謗｡逕ｨ繧ｳ繧ｹ繝医ｒ蠕ｹ蠎戊ｧ｣隱ｬ</div>
+                        <div class="article-title">【2026年最新】求人サイト掲載費用相場・中小建設業の採用コストを徹底解説</div>
                         <span class="date-tag">2026.02.10</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260210_recruitment_site_cost.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260210_recruitment_site_cost.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
 
             </tbody>
@@ -252,131 +252,131 @@
     </div>
 
     <p style="font-size:0.78rem; color:#94a3b8; margin-top:8px; text-align:right;">
-        窶ｻ 繧ｹ繝・・繧ｿ繧ｹ繧偵け繝ｪ繝・け縺ｧ蛻・ｊ譖ｿ縺茨ｼ遺ｬ懈悴逹謇・竊・笨擾ｸ丞濤遲・ｸｭ 竊・笨・・髢区ｸ医∩・・    </p>
+        ↑ ステータスをクリックで切り替え（⬜未着手 → 🔶執筆中 → ✅公開済み）    </p>
 
-    <!-- 蜈ｬ髢区ｸ医∩險倅ｺ具ｼ域眠隕・0譛ｬ・・-->
+    <!-- 公開済み記事（新規10本） -->
     <div class="table-wrap" style="margin-top:20px;">
-        <div class="section-header" style="background:#1e3a5f;">笨・蜈ｬ髢区ｸ医∩險倅ｺ具ｼ亥・蝗ｽ縺ｮ蟒ｺ險ｭ莨夂､ｾ蜷代￠髮・ｮ｢險倅ｺ具ｼ・/div>
+        <div class="section-header" style="background:#1e3a5f;">✅ 公開済み記事（全国の建設業界向け専門記事）</div>
         <table id="plan-table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>險倅ｺ九ち繧､繝医Ν / 繧ｭ繝ｼ繝ｯ繝ｼ繝・/th>
-                    <th>繧ｿ繝ｼ繧ｲ繝・ヨ</th>
-                    <th>繧ｹ繝・・繧ｿ繧ｹ</th>
-                    <th>繝ｪ繝ｳ繧ｯ</th>
+                    <th>記事タイトル / キーワード</th>
+                    <th>ターゲット</th>
+                    <th>ステータス</th>
+                    <th>リンク</th>
                 </tr>
             </thead>
             <tbody>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">12</td>
                     <td>
-                        <div class="article-title">謗｡逕ｨLP縺ｮ蛻ｶ菴懆ｲｻ逕ｨ縺ｯ縺・￥繧会ｼ溽嶌蝣ｴ縺ｨ螟ｱ謨励＠縺ｪ縺・∈縺ｳ譁ｹ</div>
-                        <span class="keyword-tag">謗｡逕ｨLP 雋ｻ逕ｨ 逶ｸ蝣ｴ</span>
+                        <div class="article-title">採用LPの制作費用はいくら？失敗しない選び方</div>
+                        <span class="keyword-tag">採用LP 費用 相場</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_lp_cost.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_lp_cost.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">13</td>
                     <td>
-                        <div class="article-title">蟒ｺ險ｭ讌ｭ縺ｮ謗｡逕ｨ縺ｫ繝帙・繝繝壹・繧ｸ縺ｯ蠢・ｦ・ｼ櫑ndeed縺縺代〒縺ｯ雜ｳ繧翫↑縺・炊逕ｱ</div>
-                        <span class="keyword-tag">蟒ｺ險ｭ讌ｭ 謗｡逕ｨ 繝帙・繝繝壹・繧ｸ</span>
+                        <div class="article-title">建設業の採用にホームページは必要？Indeedだけでは足りない理由</div>
+                        <span class="keyword-tag">建設業 採用 ホームページ</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_hp_needed.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_hp_needed.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">14</td>
                     <td>
-                        <div class="article-title">縲梧ｱゆｺｺ逾ｨ縲阪□縺代〒縺ｯ闍･謇九↓蛻ｺ縺輔ｉ縺ｪ縺・よ治逕ｨLP縺悟ｿ・ｦ√↑3縺､縺ｮ逅・罰</div>
-                        <span class="keyword-tag">謗｡逕ｨLP 蠢・ｦ・逅・罰</span>
+                        <div class="article-title">「求人票」だけでは若者に刺さらない。採用LPが必要な3つの理由</div>
+                        <span class="keyword-tag">採用LP 必要 理由</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_job_ad_limit.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_job_ad_limit.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">15</td>
                     <td>
-                        <div class="article-title">蟒ｺ險ｭ讌ｭ縺ｧ闍･謇区治逕ｨ縺後〒縺阪↑縺・ｼ夂､ｾ縺ｫ蜈ｱ騾壹☆繧九瑚・蜻ｽ逧・↑繝溘せ縲・/div>
-                        <span class="keyword-tag">蟒ｺ險ｭ讌ｭ 闍･謇・謗｡逕ｨ 縺ｧ縺阪↑縺・/span>
+                        <div class="article-title">建設業で若者採用ができない会社に共通する「致命的なミス」</div>
+                        <span class="keyword-tag">建設業 若者 採用 できない</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_fatal_mistake.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_fatal_mistake.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">16</td>
                     <td>
-                        <div class="article-title">謗｡逕ｨLP縺ｮ莠倶ｾ狗ｴｹ莉具ｽ懷ｻｺ險ｭ莨夂､ｾ縺悟ｿ懷供謨ｰ繧貞｢励ｄ縺励◆螳滄鹸</div>
-                        <span class="keyword-tag">謗｡逕ｨLP 莠倶ｾ・蟒ｺ險ｭ讌ｭ</span>
+                        <div class="article-title">採用LPの事前制作（中小建設業界が応募数を増やした実績）</div>
+                        <span class="keyword-tag">採用LP 事前 建設業</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_case_study.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_case_study.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">17</td>
                     <td>
-                        <div class="article-title">豎ゆｺｺ逾ｨ縺ｮ譖ｸ縺肴婿縺ｧ蠢懷供邇・′螟峨ｏ繧九ょｻｺ險ｭ讌ｭ縺ｫ蛻ｺ縺輔ｋ險闡峨→蛻ｺ縺輔ｉ縺ｪ縺・ｨ闡・/div>
-                        <span class="keyword-tag">豎ゆｺｺ逾ｨ 譖ｸ縺肴婿 蟒ｺ險ｭ讌ｭ</span>
+                        <div class="article-title">給与の書き方で応募数が変わる。建設業に刺さる言葉と刺さらない言葉</div>
+                        <span class="keyword-tag">給与 書き方 建設業</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_job_writing.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_job_writing.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">18</td>
                     <td>
-                        <div class="article-title">蟒ｺ險ｭ讌ｭ縺ｮ謗｡逕ｨ繧ｳ繧ｹ繝医ｒ蜊雁・縺ｫ縺吶ｋLINE豢ｻ逕ｨ陦・/div>
-                        <span class="keyword-tag">蟒ｺ險ｭ讌ｭ 謗｡逕ｨ繧ｳ繧ｹ繝・蜑頑ｸ・/span>
+                        <div class="article-title">建設業の採用コストを半分にするLINE活用術</div>
+                        <span class="keyword-tag">建設業 採用コスト 半減</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_line_tips.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_line_tips.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">19</td>
                     <td>
-                        <div class="article-title">謗｡逕ｨ繝悶Λ繝ｳ繝・ぅ繝ｳ繧ｰ縺ｨ縺ｯ・溷ｻｺ險ｭ莨夂､ｾ縺後碁∈縺ｰ繧後ｋ莨夂､ｾ縲阪↓縺ｪ繧九∪縺ｧ</div>
-                        <span class="keyword-tag">謗｡逕ｨ繝悶Λ繝ｳ繝・ぅ繝ｳ繧ｰ 蟒ｺ險ｭ讌ｭ</span>
+                        <div class="article-title">採用ブランディングとは？建設業界が「選ばれる会社」になるまで</div>
+                        <span class="keyword-tag">採用ブランディング 建設業</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_branding.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_branding.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">20</td>
                     <td>
-                        <div class="article-title">謗｡逕ｨ繧ｵ繧､繝医→LP縺ｮ驕輔＞縺ｨ縺ｯ・滉ｸｭ蟆丞ｻｺ險ｭ莨夂､ｾ縺ｯ縺ｩ縺｡繧峨ｒ菴懊ｋ縺ｹ縺阪°</div>
-                        <span class="keyword-tag">謗｡逕ｨ繧ｵ繧､繝・LP 驕輔＞</span>
+                        <div class="article-title">採用サイトとLPの違いとは？中小建設業界はどちらを作るべきか</div>
+                        <span class="keyword-tag">採用サイト LP 違い</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_site_vs_lp.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_site_vs_lp.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
                 <tr data-persona="p-general" data-status="s-done">
                     <td class="num">21</td>
                     <td>
-                        <div class="article-title">蜈･遉ｾ蠕後☆縺占ｾ槭ａ繧句撫鬘後る屬閨ｷ邇・ｒ荳九￡繧九◆繧√↓謗｡逕ｨ蜑阪↓繧・ｋ縺ｹ縺阪％縺ｨ</div>
-                        <span class="keyword-tag">謗｡逕ｨ 髮｢閨ｷ邇・蟒ｺ險ｭ讌ｭ</span>
+                        <div class="article-title">入社後すぐ辞めない組織へ。定着率を上げるために採用前にやるべきこと</div>
+                        <span class="keyword-tag">採用 定着率 建設業</span>
                         <span class="date-tag">2026.02.23</span>
                     </td>
-                    <td><span class="persona p-general">豎守畑</span></td>
-                    <td><span class="status s-done" onclick="cycleStatus(this)">笨・蜈ｬ髢区ｸ医∩</span></td>
-                    <td><a href="../../blog/posts/20260223_retention.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 險倅ｺ・/a></td>
+                    <td><span class="persona p-general">汎用</span></td>
+                    <td><span class="status s-done" onclick="cycleStatus(this)">✅ 公開済み</span></td>
+                    <td><a href="../../blog/posts/20260223_retention.html" target="_blank" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 記事</a></td>
                 </tr>
             </tbody>
         </table>
@@ -385,20 +385,20 @@
 
 <!-- Global Nav -->
 <div class="global-nav">
-    <a href="../manuals/admin/index.html" class="nav-btn" title="謗｡逕ｨ蜿ｸ莉､螳､縺ｸ"><i class="fa-solid fa-tower-broadcast"></i></a>
-    <div class="nav-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="繝医ャ繝励∈"><i class="fa-solid fa-arrow-up"></i></div>
+    <a href="../manuals/admin/index.html" class="nav-btn" title="採用司令室へ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ"><i class="fa-solid fa-arrow-up"></i></div>
 </div>
 
 <script>
     function cycleStatus(el) {
         const row = el.closest('tr');
         if (el.classList.contains('s-todo')) {
-            el.className = 'status s-wip'; el.textContent = '笨擾ｸ・蝓ｷ遲・ｸｭ'; row.dataset.status = 's-wip';
+            el.className = 'status s-wip'; el.textContent = '🔶 執筆中'; row.dataset.status = 's-wip';
         } else if (el.classList.contains('s-wip')) {
-            el.className = 'status s-done'; el.textContent = '笨・蜈ｬ髢区ｸ医∩'; row.dataset.status = 's-done';
+            el.className = 'status s-done'; el.textContent = '✅ 公開済み'; row.dataset.status = 's-done';
             row.querySelector('.link-btn').classList.remove('disabled');
         } else {
-            el.className = 'status s-todo'; el.textContent = '筮・譛ｪ逹謇・; row.dataset.status = 's-todo';
+            el.className = 'status s-todo'; el.textContent = '⬜ 未着手'; row.dataset.status = 's-todo';
             row.querySelector('.link-btn').classList.add('disabled');
         }
         updateStats();
@@ -432,5 +432,3 @@
 </script>
 </body>
 </html>
-
-
