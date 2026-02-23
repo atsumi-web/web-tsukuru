@@ -95,11 +95,24 @@
             </div>
 
             <!-- Recent Articles Grid -->
-            <h3 style="margin-bottom: 20px; font-size: 1.2rem; border-left: 4px solid var(--navy); padding-left: 10px;">新着記事</h3>
-            <div class="blog-grid">
+            <h3 style="margin-bottom: 16px; font-size: 1.2rem; border-left: 4px solid var(--navy); padding-left: 10px;">新着記事</h3>
+
+            <!-- カテゴリフィルター -->
+            <div id="category-filter" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
+                <button class="cat-btn active" data-cat="all">すべて</button>
+                <button class="cat-btn" data-cat="採用LP">採用LP</button>
+                <button class="cat-btn" data-cat="採用戦略">採用戦略</button>
+                <button class="cat-btn" data-cat="採用ノウハウ">採用ノウハウ</button>
+                <button class="cat-btn" data-cat="LINE活用">LINE活用</button>
+                <button class="cat-btn" data-cat="Web活用">Web活用</button>
+                <button class="cat-btn" data-cat="技術解説">技術解説</button>
+                <button class="cat-btn" data-cat="定着率">定着率</button>
+            </div>
+
+            <div class="blog-grid" id="blog-grid">
                 
                 <!-- Article NEW: Recruitment Site Cost Comparison -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用ノウハウ">
                     <a href="posts/20260210_recruitment_site_cost.html">
                         <img src="images/blog_illust_cost_comparison.webp" alt="求人サイト料金比較" class="blog-card-img" style="object-fit: cover; object-position: center;">
                         <div class="blog-card-content">
@@ -112,7 +125,7 @@
                 </article>
                 
                 <!-- Article: Mobile Optimization -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="技術解説">
                     <a href="posts/20260206_mobile_optimization.html">
                         <img src="images/blog_mobile_optimization.webp" alt="モバイル最適化" class="blog-card-img" style="object-fit: cover; object-position: top;">
                         <div class="blog-card-content">
@@ -125,7 +138,7 @@
                 </article>
                 
                 <!-- Article: Performance -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="技術解説">
                     <a href="posts/20260205_hotta_performance.html">
                         <img src="images/blog_illust_optimization.webp" alt="最適化のイメージ" class="blog-card-img" style="object-fit: cover; object-position: top;">
                         <div class="blog-card-content">
@@ -138,7 +151,7 @@
                 </article>
 
                 <!-- Article 2 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="定着率">
                     <a href="posts/20260201_retention_secrets.html">
                         <img src="images/blog_illust_team_1769998623467.png" alt="結束するチーム" class="blog-card-img">
                         <div class="blog-card-content">
@@ -151,7 +164,7 @@
                 </article>
 
                 <!-- Article 3 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="Web活用">
                     <a href="posts/20260201_three_elements_of_good_web.html">
                         <img src="images/blog_illust_web_design_1769998636709.png" alt="Webデザイン" class="blog-card-img">
                         <div class="blog-card-content">
@@ -179,7 +192,7 @@
                 -->
 
                 <!-- Article 4: 特化理由 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="Web活用">
                     <a href="posts/20260202_why_i_specialize.html">
                         <img src="images/blog_illust_designer_1769998669815.png" alt="デザイナー" class="blog-card-img">
                         <div class="blog-card-content">
@@ -192,7 +205,7 @@
                 </article>
 
                 <!-- Article 5: Z世代の優先順位 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用戦略">
                     <a href="posts/20260202_z_gen_priority.html">
                         <img src="images/blog_illust_team_1769998623467.png" alt="若手作業員" class="blog-card-img">
                         <div class="blog-card-content">
@@ -205,7 +218,7 @@
                 </article>
 
                 <!-- Article 6: IndeedとLPの違い (2/4公開) -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用戦略">
                     <a href="posts/20260204_indeed_vs_lp.html">
                         <img src="images/blog_indeed_vs_lp.png" alt="IndeedとLPの分岐点" class="blog-card-img">
                         <div class="blog-card-content">
@@ -218,7 +231,7 @@
                 </article>
 
                 <!-- Article 7: LINE窓口のメリット (2/4公開) -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="LINE活用">
                     <a href="posts/20260204_line_benefits.html">
                         <img src="images/blog_line_benefits.png" alt="LINEで相談" class="blog-card-img">
                         <div class="blog-card-content">
@@ -231,7 +244,7 @@
                 </article>
 
                 <!-- No.12: LP費用 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用LP">
                     <a href="posts/20260223_lp_cost.html">
                         <img src="images/blog_article12_lp_cost.webp" alt="採用LP費用" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -244,7 +257,7 @@
                 </article>
 
                 <!-- No.13: HP必要性 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="Web活用">
                     <a href="posts/20260223_hp_needed.html">
                         <img src="images/blog_article13_hp_needed.webp" alt="ホームページの必要性" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -257,7 +270,7 @@
                 </article>
 
                 <!-- No.14: 求人票の限界 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用LP">
                     <a href="posts/20260223_job_ad_limit.html">
                         <img src="images/blog_article14_job_ad_limit.webp" alt="求人票の限界" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -270,7 +283,7 @@
                 </article>
 
                 <!-- No.15: 致命的なミス -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用戦略">
                     <a href="posts/20260223_fatal_mistake.html">
                         <img src="images/blog_article15_fatal_mistake.webp" alt="採用の致命的ミス" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -283,7 +296,7 @@
                 </article>
 
                 <!-- No.17: 求人ライティング -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用ノウハウ">
                     <a href="posts/20260223_job_writing.html">
                         <img src="images/blog_article17_job_writing.webp" alt="求人票のライティング" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -296,7 +309,7 @@
                 </article>
 
                 <!-- No.18: LINE活用術 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="LINE活用">
                     <a href="posts/20260223_line_tips.html">
                         <img src="images/blog_article18_line_tips.webp" alt="LINE活用術" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -309,7 +322,7 @@
                 </article>
 
                 <!-- No.19: ブランディング -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用戦略">
                     <a href="posts/20260223_branding.html">
                         <img src="images/blog_article19_branding.webp" alt="採用ブランディング" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -322,7 +335,7 @@
                 </article>
 
                 <!-- No.20: サイトvsLP -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="採用LP">
                     <a href="posts/20260223_site_vs_lp.html">
                         <img src="images/blog_article20_site_vs_lp.webp" alt="採用サイトとLP比較" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -335,7 +348,7 @@
                 </article>
 
                 <!-- No.21: 定着率 -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="定着率">
                     <a href="posts/20260223_retention.html">
                         <img src="images/blog_article21_retention.webp" alt="定着率改善" class="blog-card-img" style="object-fit: cover;">
                         <div class="blog-card-content">
@@ -373,6 +386,56 @@
             <p class="copyright">&copy; 2026 Webとしくみをつくる All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- カテゴリフィルター スタイル & JS -->
+    <style>
+        .cat-btn {
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 2px solid #cbd5e1;
+            background: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: #64748b;
+            font-family: 'Noto Sans JP', sans-serif;
+            transition: all 0.2s;
+        }
+        .cat-btn:hover,
+        .cat-btn.active {
+            border-color: var(--renewal-navy, #001a3d);
+            background: var(--renewal-navy, #001a3d);
+            color: #fff;
+        }
+        /* フィルター後の空グリッド対応 */
+        #blog-grid:empty::after {
+            content: '該当する記事がありません';
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        (function () {
+            const btns = document.querySelectorAll('.cat-btn');
+            const cards = document.querySelectorAll('#blog-grid .blog-card');
+
+            btns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    btns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const cat = this.dataset.cat;
+                    cards.forEach(card => {
+                        if (cat === 'all' || card.dataset.category === cat) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
 
 </body>
 </html>
