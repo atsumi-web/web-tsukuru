@@ -206,6 +206,13 @@
       body .mobile-menu-toggle {
         display: none;
       }
+      /* ── Hero visual: モバイル/デスクトップ切り替え（FOUC防止） ── */
+      .hero-video { display: block; }
+      .hero-image-mobile { display: none; }
+      @media (max-width: 1200px) {
+        .hero-video { display: none !important; }
+        .hero-image-mobile { display: block; }
+      }
       /* Mobile Menu Toggle */
       @media (max-width: 1135px) {
         body .mobile-menu-toggle {
