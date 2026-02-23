@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>未経験から始める建設業｜堀田建設株式会社</title>
+  <meta name="description" content="三重で一緒に働く仲間を募集中。未経験OK・資格取得費用0円・残業月13.5h。地元で一生働ける環境があります。" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho+B1:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    /* ── RESET & TOKEN ──────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:   #001a3d;
+      --navy2:  #002d6b;
+      --gold:   #c5a059;
+      --gold-lt:#e8c98a;
+      --green:  #06c755;
+      --green-d:#05a346;
+      --white:  #fff;
+      --light:  #f4f6f9;
+      --text:   #222;
+      --ease:   cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── SCROLL REVEAL ──────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── HEADER ─────────────────────────────── */
+    .site-header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e8e8e8;
+      padding: 0 5%;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: box-shadow .3s;
+    }
+    .site-header.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.1); }
+    .logo-wrap { display: flex; align-items: center; gap: 12px; }
+    .logo-wrap img { height: 26px; width: auto; }
+    .logo-sub {
+      font-size: .65rem; font-weight: 700; letter-spacing: .14em; color: #aaa;
+      border-left: 1px solid #e0e0e0; padding-left: 12px;
+    }
+    .h-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: linear-gradient(135deg, var(--green), var(--green-d));
+      color: #fff; font-weight: 800; font-size: .82rem;
+      padding: 10px 22px; border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(6,199,85,.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .h-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(6,199,85,.45); }
+
+    /* ── HERO ────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      background: linear-gradient(135deg, var(--navy) 0%, #012a5e 50%, #003380 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 120px 5% 80px;
+      text-align: center;
+    }
+    /* 背景テキスト */
+    .hero-bg-text {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Inter", sans-serif;
+      font-size: clamp(80px, 22vw, 240px); font-weight: 900;
+      color: rgba(255,255,255,.035); letter-spacing: .2em;
+      pointer-events: none; user-select: none;
+      white-space: nowrap;
+    }
+    /* 斜線ライン */
+    .hero::after {
+      content: "";
+      position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 80px;
+      background: var(--white);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(197,160,89,.15);
+      border: 1px solid rgba(197,160,89,.5);
+      color: var(--gold-lt);
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      padding: 6px 18px; border-radius: 24px; margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: "Shippori Mincho B1", serif;
+      font-size: clamp(1.8rem, 5.5vw, 3rem);
+      font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: 24px;
+    }
+    .hero-title .accent { color: var(--gold); }
+    .hero-sub {
+      color: rgba(255,255,255,.82);
+      font-size: clamp(.88rem, 2.2vw, 1.05rem);
+      line-height: 2; margin-bottom: 36px;
+    }
+    /* trust pills */
+    .trust-row {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      margin-bottom: 36px;
+    }
+    .trust-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92); font-size: .82rem; font-weight: 700;
+      padding: 7px 16px; border-radius: 50px;
+      backdrop-filter: blur(4px);
+    }
+    .trust-pill i { color: var(--gold); font-size: .9rem; }
+    /* CTA Button */
+    .hero-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 4px;
+      background: linear-gradient(135deg, var(--green), var(--green-d));
+      color: #fff; font-weight: 800;
+      padding: 20px 48px; border-radius: 60px;
+      box-shadow: 0 8px 32px rgba(6,199,85,.45);
+      transition: transform .25s, box-shadow .25s;
+      min-width: 300px;
+    }
+    .hero-btn .btn-main { font-size: 1.08rem; }
+    .hero-btn .btn-sub { font-size: .72rem; font-weight: 500; opacity: .88; }
+    .hero-btn:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(6,199,85,.55); }
+    .hero-note { color: rgba(255,255,255,.4); font-size: .76rem; margin-top: 14px; }
+
+    /* ── NUMBERS ─────────────────────────────── */
+    .numbers {
+      background: var(--navy);
+      padding: 100px 5% 100px;
+      text-align: center;
+      position: relative;
+    }
+    .numbers::after {
+      content: "";
+      position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 80px;
+      background: var(--light);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    .label-en {
+      font-family: "Inter", sans-serif;
+      font-size: .72rem; font-weight: 700; letter-spacing: .25em;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .sec-title {
+      font-family: "Shippori Mincho B1", serif;
+      font-size: clamp(1.55rem, 4vw, 2.4rem); font-weight: 700;
+      color: #fff; line-height: 1.3; margin-bottom: 56px;
+      position: relative; display: inline-block;
+    }
+    .sec-title::after {
+      content: ""; display: block;
+      width: 48px; height: 3px; border-radius: 2px;
+      background: var(--gold); margin: 14px auto 0;
+    }
+    .sec-title.dark { color: var(--navy); }
+
+    .nums-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px; max-width: 900px; margin: 0 auto;
+    }
+    .num-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(197,160,89,.2);
+      border-radius: 14px; padding: 30px 16px;
+      transition: transform .25s, background .25s, border-color .25s;
+      position: relative; overflow: hidden;
+    }
+    .num-card::before {
+      content: ""; position: absolute;
+      inset: 0; border-radius: 14px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(197,160,89,.12), transparent 70%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .num-card:hover { transform: translateY(-6px); background: rgba(255,255,255,.1); border-color: rgba(197,160,89,.5); }
+    .num-card:hover::before { opacity: 1; }
+    .num-val {
+      font-family: "Inter", sans-serif;
+      font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 900;
+      color: var(--gold); line-height: 1; margin-bottom: 8px;
+    }
+    .num-val .u { font-size: .52em; font-weight: 700; }
+    .num-label { color: rgba(255,255,255,.72); font-size: .82rem; font-weight: 700; }
+    .num-note { color: rgba(255,255,255,.35); font-size: .67rem; margin-top: 4px; }
+
+    /* ── VOICE ───────────────────────────────── */
+    .voice {
+      background: var(--light);
+      padding: 110px 5% 100px;
+      text-align: center;
+    }
+    .voice .sec-title.dark::after { background: var(--navy); opacity: .35; }
+    .voice-lead {
+      color: #666; font-size: .95rem; margin-bottom: 56px; line-height: 2;
+    }
+    .voice-stack { display: flex; flex-direction: column; gap: 24px; max-width: 860px; margin: 0 auto; }
+    .v-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(0,0,0,.07);
+      overflow: hidden;
+      display: grid; grid-template-columns: 260px 1fr;
+      text-align: left;
+    }
+    .v-photo {
+      width: 100%; height: 100%; min-height: 280px;
+      object-fit: cover; object-position: top center;
+    }
+    .v-body { padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; gap: 0; }
+    .v-role {
+      display: inline-block;
+      background: var(--navy); color: #fff;
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+      padding: 4px 12px; border-radius: 4px; margin-bottom: 14px; align-self: flex-start;
+    }
+    .v-name {
+      font-size: 1.15rem; font-weight: 900; color: var(--navy); margin-bottom: 2px;
+    }
+    .v-meta { font-size: .78rem; color: #888; margin-bottom: 16px; }
+    .v-quote {
+      position: relative;
+      font-size: .9rem; font-weight: 700; color: var(--navy);
+      border-left: 4px solid var(--gold);
+      padding: 10px 14px;
+      background: rgba(197,160,89,.07);
+      border-radius: 0 8px 8px 0;
+      line-height: 1.65; margin-bottom: 16px;
+    }
+    .v-text { font-size: .86rem; color: #555; line-height: 1.95; }
+
+    /* ── CTA SECTION ────────────────────────── */
+    .cta-sec {
+      background: linear-gradient(150deg, #001128 0%, var(--navy) 40%, #002755 100%);
+      padding: 110px 5%;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-sec::before {
+      content: "ENTRY";
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Inter", sans-serif;
+      font-size: clamp(70px,18vw,200px); font-weight: 900;
+      color: rgba(255,255,255,.025); letter-spacing: .25em;
+      pointer-events: none;
+    }
+    .cta-sec .label-en { position: relative; }
+    .cta-sec .sec-title { position: relative; color: #fff; }
+    .cta-lead { position: relative; color: rgba(255,255,255,.78); font-size: .96rem; line-height: 2; margin-bottom: 36px; }
+    .check-row {
+      position: relative;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+      margin-bottom: 40px;
+    }
+    .check-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.16);
+      color: #fff; font-size: .84rem; font-weight: 700;
+      padding: 9px 20px; border-radius: 50px;
+      backdrop-filter: blur(6px);
+    }
+    .check-pill i { color: var(--gold); }
+    .big-btn {
+      position: relative;
+      display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      background: linear-gradient(135deg, var(--green), var(--green-d));
+      color: #fff; font-weight: 800;
+      padding: 22px 56px; border-radius: 70px;
+      box-shadow: 0 10px 40px rgba(6,199,85,.5);
+      transition: transform .25s, box-shadow .25s;
+      min-width: 320px;
+    }
+    .big-btn .bm { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+    .big-btn .bs { font-size: .72rem; font-weight: 500; opacity: .85; }
+    .big-btn:hover { transform: translateY(-5px); box-shadow: 0 18px 52px rgba(6,199,85,.6); }
+    .cta-note { position: relative; color: rgba(255,255,255,.38); font-size: .76rem; margin-top: 16px; }
+
+    /* ── FOOTER ──────────────────────────────── */
+    .lp-footer {
+      background: #00091f;
+      color: rgba(255,255,255,.35);
+      text-align: center; padding: 28px 5%;
+      font-size: .76rem; line-height: 2;
+    }
+    .lp-footer strong { color: rgba(255,255,255,.55); }
+
+    /* ── FLOAT CTA (モバイル) ───────────────── */
+    .float-btn {
+      display: none;
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 200; width: calc(100% - 32px); max-width: 420px;
+    }
+    .float-btn a {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, var(--green), var(--green-d));
+      color: #fff; font-weight: 800; font-size: .95rem;
+      padding: 16px 28px; border-radius: 60px;
+      box-shadow: 0 8px 28px rgba(6,199,85,.55);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 768px) {
+      .logo-sub { display: none; }
+      .hero-btn { min-width: 280px; padding: 18px 32px; }
+      .v-card { grid-template-columns: 1fr; }
+      .v-photo { height: 240px; }
+      .v-body { padding: 24px 20px; }
+      .big-btn { min-width: 280px; padding: 20px 32px; }
+      .float-btn { display: block; }
+      body { padding-bottom: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════ -->
+<header class="site-header" id="topHeader">
+  <div class="logo-wrap">
+    <img src="../lp/main/images/common/logo_blue.svg" alt="堀田建設株式会社" />
+    <span class="logo-sub">RECRUITMENT</span>
+  </div>
+  <a href="#entry" class="h-cta">
+    <i class="fab fa-line"></i> LINEで話を聞く
+  </a>
+</header>
+
+<!-- ══ HERO ════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg-text" aria-hidden="true">PRIDE</div>
+  <div class="hero-content reveal">
+    <div class="hero-badge">
+      <i class="fas fa-map-marker-alt" style="font-size:.8rem;"></i>
+      三重県亀山市 ／ 建設業 ／ 未経験歓迎
+    </div>
+    <h1 class="hero-title">
+      「建設業、やってみようかな」<br>
+      その一歩を、<span class="accent">全力で守ります。</span>
+    </h1>
+    <p class="hero-sub">
+      資格取得費用0円。残業月13.5h（昨年度実績）。<br>
+      1年目から月給23万円〜。地元・三重で、一生モノの技術を。
+    </p>
+    <div class="trust-row">
+      <span class="trust-pill"><i class="fas fa-circle-check"></i>質問だけでもOK</span>
+      <span class="trust-pill"><i class="fas fa-circle-check"></i>在職中でもOK</span>
+      <span class="trust-pill"><i class="fas fa-circle-check"></i>未経験歓迎</span>
+      <span class="trust-pill"><i class="fas fa-circle-check"></i>履歴書は後でOK</span>
+    </div>
+    <a href="#entry" class="hero-btn">
+      <span class="btn-main"><i class="fab fa-line"></i> 公式LINEで堀田を知る</span>
+      <span class="btn-sub">登録するだけでOK。会社のことをもっと知ってから決める</span>
+    </a>
+    <p class="hero-note">※いきなり面接はしません。お気軽にどうぞ。</p>
+  </div>
+</section>
+
+<!-- ══ NUMBERS ═══════════════════════ -->
+<section class="numbers" id="numbers">
+  <p class="label-en reveal">FACTS & NUMBERS</p>
+  <h2 class="sec-title reveal">数字で見る堀田建設</h2>
+  <div class="nums-grid reveal">
+    <div class="num-card">
+      <div class="num-val"><span class="count" data-target="23">0</span><span class="u">万円〜</span></div>
+      <div class="num-label">1年目 月給</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val"><span class="count" data-target="13" data-decimal=".5">0</span><span class="u">h</span></div>
+      <div class="num-label">月平均残業</div>
+      <div class="num-note">昨年度実績</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val"><span class="count" data-target="0">0</span><span class="u">円</span></div>
+      <div class="num-label">資格取得費用</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val"><span class="count" data-target="17">0</span><span class="u">年</span></div>
+      <div class="num-label">平均勤続年数</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val"><span class="count" data-target="100">0</span><span class="u">年超</span></div>
+      <div class="num-label">創業の歴史</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val"><span class="count" data-target="73">0</span><span class="u">%</span></div>
+      <div class="num-label">未経験からの採用</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VOICE ════════════════════════ -->
+<section class="voice" id="voice">
+  <p class="label-en reveal" style="color:var(--navy);opacity:.5;">VOICE OF STAFF</p>
+  <h2 class="sec-title dark reveal">先輩の声</h2>
+  <p class="voice-lead reveal">実際に働く社員が語る、入社の決め手とやりがい。</p>
+
+  <div class="voice-stack">
+    <!-- Card 1 -->
+    <div class="v-card reveal">
+      <img class="v-photo"
+        src="../lp/main/images/voice/hotta-107_optimized.webp"
+        alt="K.O 建築部現場監督" loading="lazy" />
+      <div class="v-body">
+        <span class="v-role">建築部 現場監督</span>
+        <p class="v-name">K.O</p>
+        <p class="v-meta">26歳 ／ 入社4年目 ／ 大卒</p>
+        <p class="v-quote">「1年目から現場の最前線へ。<br>地元で働くからこその、特別なやりがいがある。」</p>
+        <p class="v-text">インターンで現場を案内してもらった時、林専務がお昼まで一緒に連れて行ってくれて。「この会社なら本気で育ててくれる」と確信しました。今は母校・亀山中学校の現場を担当しています。地元の友人に「あそこ俺が担当してる」と言えるのが誇らしい。</p>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="v-card reveal">
+      <img class="v-photo"
+        src="../lp/main/images/voice/hotta-59_optimized.webp"
+        alt="T.S 土木部" loading="lazy"
+        onerror="this.src='../lp/main/images/voice/hotta-107_optimized.webp'" />
+      <div class="v-body">
+        <span class="v-role">土木部 現場監督</span>
+        <p class="v-name">T.S</p>
+        <p class="v-meta">異業種から転職 ／ 建設業未経験スタート</p>
+        <p class="v-quote">「未経験でも、ちゃんと成長できる環境がある。<br>今では施工管理技士の資格を持っています。」</p>
+        <p class="v-text">前職はまったく別の業界でした。「建設業は自分には無理かも」と思っていたけど、先輩が一つひとつ丁寧に教えてくれました。資格の費用も全額会社負担。気づけば一生モノの仕事になっていました。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ═══════════════════════════ -->
+<section class="cta-sec" id="entry">
+  <p class="label-en reveal">ENTRY VIA LINE</p>
+  <h2 class="sec-title reveal">まず、話を聞いてみませんか？</h2>
+  <p class="cta-lead reveal">
+    いきなり面接はしません。履歴書もまだ不要です。<br>
+    「気になる」くらいの気持ちで、LINEからご連絡ください。
+  </p>
+  <div class="check-row reveal">
+    <span class="check-pill"><i class="fas fa-circle-check"></i> 質問・見学のみもOK</span>
+    <span class="check-pill"><i class="fas fa-circle-check"></i> 在職中・転職検討中もOK</span>
+    <span class="check-pill"><i class="fas fa-circle-check"></i> 未経験・無資格OK</span>
+    <span class="check-pill"><i class="fas fa-circle-check"></i> 24時間受付中</span>
+  </div>
+  <a href="https://lin.ee/xxxxx" target="_blank" rel="noopener" class="big-btn reveal">
+    <span class="bm"><i class="fab fa-line fa-lg"></i> LINEで公式アカウントに登録する</span>
+    <span class="bs">登録するだけでOK。会社のことをもっと知ってから決める</span>
+  </a>
+  <p class="cta-note reveal">※無料 ／ 24時間受付 ／ いつでも退会できます</p>
+</section>
+
+<!-- ══ FOOTER ════════════════════════ -->
+<footer class="lp-footer">
+  <strong>堀田建設株式会社</strong><br>
+  〒519-0152 三重県亀山市川合町1215番地<br>
+  &copy; 2026 Hotta Construction Co., Ltd. All Rights Reserved.
+</footer>
+
+<!-- ══ FLOATING CTA (Mobile) ════════ -->
+<div class="float-btn">
+  <a href="#entry">
+    <i class="fab fa-line"></i> LINEで話を聞く（無料）
+  </a>
+</div>
+
+<script>
+  /* ── Header scroll ── */
+  const header = document.getElementById('topHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Scroll Reveal ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── Count Up ── */
+  function countUp(el) {
+    const target = parseFloat(el.dataset.target);
+    const decimal = el.dataset.decimal || '';
+    const duration = 1400;
+    const step = 16;
+    const increment = target / (duration / step);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(current) + decimal;
+    }, step);
+  }
+
+  const numObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.count').forEach(countUp);
+        numObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const numSection = document.querySelector('.nums-grid');
+  if (numSection) numObserver.observe(numSection);
+</script>
+</body>
+</html>
