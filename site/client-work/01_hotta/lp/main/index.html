@@ -484,6 +484,9 @@
               s.type = "video/mp4";
               v.appendChild(s);
               v.autoplay = true;
+              v.addEventListener("canplay", function () {
+                v.style.opacity = "1";
+              }, { once: true });
               v.load();
             }
           }
