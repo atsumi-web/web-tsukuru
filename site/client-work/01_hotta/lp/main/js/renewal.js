@@ -120,14 +120,65 @@ document.addEventListener("DOMContentLoaded", function () {
    5. Toggle Expandable VOICE Content
    ============================================ */
 function toggleVoiceContent(button) {
-  const card = button.closest('.interview-card');
-  const moreContent = card.querySelector('.qa-more-content');
-  
-  if (moreContent.style.display === 'none' || moreContent.style.display === '') {
-    moreContent.style.display = 'block';
+  const card = button.closest(".interview-card");
+  const moreContent = card.querySelector(".qa-more-content");
+
+  if (
+    moreContent.style.display === "none" ||
+    moreContent.style.display === ""
+  ) {
+    moreContent.style.display = "block";
     button.innerHTML = '<i class="fas fa-chevron-up"></i> 閉じる';
   } else {
-    moreContent.style.display = 'none';
+    moreContent.style.display = "none";
     button.innerHTML = '<i class="fas fa-chevron-down"></i> もっと見る';
   }
 }
+
+/* ============================================
+   6. Scroll Reveal
+   ============================================ */
+(function () {
+  const SELECTORS = [
+    ".label-en",
+    ".premium-title",
+    ".interview-card",
+    ".environment-card",
+    ".gallery-item",
+    ".visual-frame",
+    ".section-lead",
+    ".point-card",
+    ".benefit-card",
+    ".init-card",
+    ".faq-item",
+    ".positions-table",
+  ].join(", ");
+
+  const targets = document.querySelectorAll(SELECTORS);
+  targets.forEach(function (el) {
+    if (!el.closest("#hero") && !el.closest("#hero-features")) {
+      el.classList.add("scroll-reveal");
+    }
+  });
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry, i) {
+        if (entry.isIntersecting) {
+          setTimeout(
+            function () {
+              entry.target.classList.add("active");
+            },
+            (i % 4) * 80,
+          );
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  document.querySelectorAll(".scroll-reveal").forEach(function (el) {
+    observer.observe(el);
+  });
+})();
