@@ -124,8 +124,7 @@
 }
 
 .post-meta {
-  color: #64748b;
-  font-size: 0.9rem;
+  display: none;
 }
 
 /* CTA Box within Article */
