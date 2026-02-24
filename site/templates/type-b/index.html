@@ -52,11 +52,11 @@
                     <div class="text-white font-black text-sm tracking-tighter uppercase">株式会社ネクスト・フロンティア</div>
                 </div>
             </div>
-            <nav class="hidden lg:flex items-center gap-10 text-[10px] font-bold tracking-[0.25em] uppercase">
+            <nav class="hidden lg:flex items-center gap-8 text-[10px] font-bold tracking-[0.25em] uppercase">
                 <a href="#mission" class="hover:text-brand-yellow transition">Mission</a>
-                <a href="#work" class="hover:text-brand-yellow transition">Actual Work</a>
-                <a href="#career" class="hover:text-brand-yellow transition">Career Path</a>
-                <a href="#interview" class="hover:text-brand-yellow transition">Frontrunners</a>
+                <a href="#work" class="hover:text-brand-yellow transition">Work</a>
+                <a href="#career" class="hover:text-brand-yellow transition">Career</a>
+                <a href="#interview" class="hover:text-brand-yellow transition">People</a>
                 <a href="#company" class="hover:text-brand-yellow transition">Company</a>
                 <a href="#faq" class="hover:text-brand-yellow transition">Q&A</a>
             </nav>
@@ -79,9 +79,9 @@
     <div id="mobile-menu" class="fixed inset-0 bg-brand-yellow z-40 transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center">
         <nav class="flex flex-col items-center gap-8 text-2xl font-black italic uppercase tracking-tighter">
             <a href="#mission" class="menu-link text-black hover:text-white transition">Mission</a>
-            <a href="#work" class="menu-link text-black hover:text-white transition">Actual Work</a>
-            <a href="#career" class="menu-link text-black hover:text-white transition">Career Path</a>
-            <a href="#interview" class="menu-link text-black hover:text-white transition">Frontrunners</a>
+            <a href="#work" class="menu-link text-black hover:text-white transition">Work</a>
+            <a href="#career" class="menu-link text-black hover:text-white transition">Career</a>
+            <a href="#interview" class="menu-link text-black hover:text-white transition">People</a>
             <a href="#company" class="menu-link text-black hover:text-white transition">Company</a>
             <a href="#faq" class="menu-link text-black hover:text-white transition">Q&A</a>
             <a href="#entry" class="menu-link mt-8 bg-black text-white px-12 py-4 hover:bg-white hover:text-black transition">Entry Now</a>
@@ -497,6 +497,287 @@
                     <p class="text-gray-400 text-lg leading-relaxed font-bold border-l-4 border-gray-700 pl-8 ml-12 italic">
                         移動時間の削減と事務作業の自動化により、直近3年で平均残業時間を40%削減しました。ダラダラ残る人は評価しません。決められた時間で最大の成果を出す人を評価します。
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <section class="py-20 md:py-32 bg-brand-black overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6 text-center mb-16 md:mb-20">
+            <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">The Scenes</span>
+            <h2 class="text-5xl md:text-[9rem] font-display font-black text-white italic tracking-tighter uppercase leading-none opacity-10 select-none">Gallery</h2>
+        </div>
+
+        <div class="relative w-full">
+            <style>
+                @keyframes marquee-nf {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-25%); }
+                }
+                .gallery-marquee-nf {
+                    display: flex;
+                    width: max-content;
+                    animation: marquee-nf 70s linear infinite;
+                }
+                .gallery-marquee-nf:hover { animation-play-state: paused; }
+            </style>
+            <div class="gallery-marquee-nf">
+                <!-- Set 1 -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_solar_real.webp" srcset="./work_solar_real_sp.webp 800w, ./work_solar_real.webp 1024w" sizes="360px" alt="Mega Solar Survey" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_tablet_real.webp" srcset="./work_tablet_real_sp.webp 800w, ./work_tablet_real.webp 1024w" sizes="360px" alt="Remote Management" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_bim_real.webp" srcset="./work_bim_real_sp.webp 800w, ./work_bim_real.webp 1024w" sizes="360px" alt="BIM Renovation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work1.webp" srcset="./Image_fx_s_work1_sp.webp 800w, ./Image_fx_s_work1.webp 1024w" sizes="360px" alt="Site Operation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Site Operation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work2.webp" srcset="./Image_fx_s_work2_sp.webp 800w, ./Image_fx_s_work2.webp 1024w" sizes="360px" alt="Premium Project" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_company.webp" srcset="./Image_fx_s_company_sp.webp 800w, ./Image_fx_s_company.webp 1024w" sizes="360px" alt="Smart Office" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+                <!-- Set 2 (loop) -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_solar_real.webp" sizes="360px" alt="Mega Solar Survey" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_tablet_real.webp" sizes="360px" alt="Remote Management" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_bim_real.webp" sizes="360px" alt="BIM Renovation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work1.webp" sizes="360px" alt="Site Operation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Site Operation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work2.webp" sizes="360px" alt="Premium Project" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_company.webp" sizes="360px" alt="Smart Office" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+                <!-- Set 3 (loop) -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_solar_real.webp" sizes="360px" alt="Mega Solar Survey" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_tablet_real.webp" sizes="360px" alt="Remote Management" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_bim_real.webp" sizes="360px" alt="BIM Renovation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work1.webp" sizes="360px" alt="Site Operation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Site Operation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work2.webp" sizes="360px" alt="Premium Project" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_company.webp" sizes="360px" alt="Smart Office" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+                <!-- Set 4 (loop) -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_solar_real.webp" sizes="360px" alt="Mega Solar Survey" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_tablet_real.webp" sizes="360px" alt="Remote Management" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./work_bim_real.webp" sizes="360px" alt="BIM Renovation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work3.webp" srcset="./Image_fx_s_work3_sp.webp 800w, ./Image_fx_s_work3.webp 1024w" sizes="360px" alt="DX Innovation" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">DX Innovation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_work2.webp" sizes="360px" alt="Premium Project" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500">
+                        <img src="./Image_fx_s_company.webp" sizes="360px" alt="Smart Office" class="w-full h-[220px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NUMBERS / 待遇 SECTION ===== -->
+    <section class="py-20 md:py-40 bg-brand-dark border-y border-white/5">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16 md:mb-28">
+                <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">The Numbers</span>
+                <h2 class="text-5xl md:text-[10rem] font-display font-black text-white italic tracking-tighter uppercase leading-none opacity-10 select-none">Benefits</h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-20 text-center -mt-16 md:-mt-48">
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Growth Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">250<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">3-Year Revenue Growth</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Avg. Income</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">7.2<span class="text-3xl text-brand-yellow ml-1 italic">M</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Annual (Age 26 Model)</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Raise Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">120<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Best Performer Last Year</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Leave Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">88<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Paid Leave Consumption</p>
+                </div>
+            </div>
+
+            <div class="mt-24 pt-24 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-gray p-8 border border-white/5 hover:border-brand-yellow transition duration-500">
+                    <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-4 italic">Entry Benefit</div>
+                    <h3 class="text-xl font-black text-white mb-4 italic uppercase tracking-tighter">入社初日に<br>iPad Pro支給</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">入社直後からDXツールを完全支給。Notionナレッジ・動画マニュアル・クラウドサインで、生産性を即戦力レベルに引き上げます。</p>
+                </div>
+                <div class="bg-brand-gray p-8 border border-white/5 hover:border-brand-yellow transition duration-500">
+                    <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-4 italic">Qualification</div>
+                    <h3 class="text-xl font-black text-white mb-4 italic uppercase tracking-tighter">資格取得費用<br>全額会社負担</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">BIMモデラー・積算・施工管理技士など、取得した資格の数だけ給与テーブルが上がる制度設計です。上限なし。</p>
+                </div>
+                <div class="bg-brand-gray p-8 border border-white/5 hover:border-brand-yellow transition duration-500">
+                    <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-4 italic">Overtime</div>
+                    <h3 class="text-xl font-black text-white mb-4 italic uppercase tracking-tighter">残業40%削減。<br>成果主義で評価</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">移動時間の削減・事務の自動化で、直近3年で平均残業時間を40%削減。ダラダラ残業よりも、密度の高いアウトプットを評価します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCHEDULE / 1日の流れ SECTION ===== -->
+    <section class="py-20 md:py-40 bg-brand-black">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16 md:mb-24">
+                <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">A Day in the Life</span>
+                <h2 class="text-4xl md:text-6xl font-display font-black text-white italic tracking-tighter uppercase leading-none">メリハリのある<br><span class="text-brand-yellow">1日の流れ。</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- Step 1 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="./Image_fx_s_work1.webp" srcset="./Image_fx_s_work1_sp.webp 800w, ./Image_fx_s_work1.webp 1024w" sizes="(max-width: 768px) 100vw, 300px" alt="Morning Kickoff" class="w-full h-52 object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="208">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">08:00</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">01</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">朝礼・KYK</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">DXシステムで当日の工程を即共有。危険予知活動（KYK）で安全を確認。スマートな滑り出しで、1日の密度が変わります。</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="./work_solar_real.webp" srcset="./work_solar_real_sp.webp 800w, ./work_solar_real.webp 1024w" sizes="(max-width: 768px) 100vw, 300px" alt="Field Work" class="w-full h-52 object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="208">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">09:00</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">02</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">現場・ドローン稼働</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">ドローン測量・BIM確認・遠隔カメラ監視を同時並行で運用。「現場にいない時間」もリアルタイムで状況把握できるのがNFスタイル。</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="./Image_fx_s_work3.webp" srcset="./Image_fx_s_work3_sp.webp 800w, ./Image_fx_s_work3.webp 1024w" sizes="(max-width: 768px) 100vw, 300px" alt="Team Meeting" class="w-full h-52 object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="208">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">16:00</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">03</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">進捗・データ確認</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">クラウドで集約した本日の施工データを確認。翌日の工程計画をトップダウンではなく、現場チーム全員でアジャイル的に調整します。</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="./Image_fx_s_company.webp" srcset="./Image_fx_s_company_sp.webp 800w, ./Image_fx_s_company.webp 1024w" sizes="(max-width: 768px) 100vw, 300px" alt="Smart Work Finish" class="w-full h-52 object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="208">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">17:30</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">04</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">日報・退社</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">日報はNotionに1分で完了。フリーアドレスのスマートオフィスから、17:30にきれいに退社。「残業しない人」が評価される文化です。</p>
                 </div>
             </div>
         </div>
