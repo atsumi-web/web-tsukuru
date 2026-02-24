@@ -8,8 +8,8 @@
 :root {
   /* --- Brand Colors --- */
   --accent-gold: #c5a059;
-  --navy-deep: #001a3d;
-  --navy-light: #002d6b;
+  --navy-deep: #012454;
+  --navy-light: #01357e;
   --line-green: #06c755;
   --line-green-dark: #05a346;
 
@@ -33,6 +33,11 @@
   --font-en: "Inter", sans-serif;
   --font-jp: "Noto Sans JP", sans-serif;
   --font-serif: "Shippori Mincho B1", serif;
+}
+
+/* Override base.css: body overflow-x:hidden blocks all horizontal scroll */
+body {
+  overflow-x: visible;
 }
 
 /* --- Layout Optimization (PC) --- */
@@ -254,6 +259,9 @@ body .message {
     rgba(197, 160, 89, 0.02) 100%
   );
 }
+body .message .premium-title::after {
+  width: 80%;
+}
 body .intro-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -281,6 +289,12 @@ body .signature p {
   body .intro-visuals .visual-company {
     display: none; /* スマホでは社長のみ表示（本社画像を隠す） */
   }
+}
+
+/* --- Gallery Section (OUR TEAM) --- */
+body .gallery-section {
+  background: #eef2f9;
+  padding: clamp(4rem, 8vw, 6rem) 0;
 }
 
 /* --- Job Description Section --- */
@@ -1445,8 +1459,8 @@ body .phone-link {
     gap: 4rem;
   }
   body .entry-card {
-    padding: 2rem;
-    width: 95%;
+    padding: 1.5rem 1.2rem;
+    width: 98%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1801,11 +1815,11 @@ body .culture-tag {
     gap: 3rem;
   }
   body .culture-text {
-    order: 2;
+    order: 1;
   }
   body .culture-visual {
-    order: 1;
-    margin: 0 -1rem; /* スマホで少し横幅いっぱいに */
+    order: 2;
+    margin: 0 -1rem;
   }
   body .culture-visual img {
     transform: rotate(0);
@@ -1839,6 +1853,32 @@ body .office-scroll img {
   width: auto;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Team Gallery (horizontal scroll on all breakpoints) */
+body .team-scroll-wrapper {
+  overflow-x: visible;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  position: relative;
+}
+body .team-scroll-wrapper::after {
+  display: none; /* PC: gradient hidden */
+}
+body .team-scroll {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  padding: 0;
+}
+body .team-scroll img {
+  height: auto;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  object-fit: cover;
 }
 
 /* FAQ Section */
@@ -1916,6 +1956,40 @@ body .faq-a {
     height: auto;
     width: 100%;
     aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  /* Team Gallery: Grid -> Horizontal Scroll on Mobile */
+  body .team-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  body .team-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  body .team-scroll-wrapper::after {
+    display: block;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 1rem;
+    width: 80px;
+    background: linear-gradient(to right, transparent, #eef2f9);
+    pointer-events: none;
+    z-index: 1;
+  }
+  body .team-scroll {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    padding: 0 1rem;
+  }
+  body .team-scroll img {
+    height: 160px;
+    width: 213px;
+    aspect-ratio: unset;
     object-fit: cover;
   }
 
@@ -2013,7 +2087,12 @@ body .culture-ticker img:hover {
   }
 }
 
+/* sp-only / pc-only ユーティリティ（デフォルト = PC） */
+.br-sp-only {
+  display: none;
+}
 @media (max-width: 768px) {
+
   .br-pc-only {
     display: none;
   }
@@ -2361,4 +2440,44 @@ body .header-nav {
   .badges-ticker .badge-label {
     font-size: 0.85rem;
   }
+}
+
+/* --- WHAT WE DO: Mobile order (image first) --- */
+@media (max-width: 768px) {
+  body .job-grid {
+    grid-template-columns: 1fr;
+  }
+  body .visual-frame {
+    order: -1;
+  }
+  body .job-text {
+    order: 1;
+  }
+}
+
+/* ============================================
+   Scroll Reveal
+   ============================================ */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Title Center Variant --- */
+body .premium-title.title-center {
+  text-align: center;
+}
+body .premium-title.title-center::after {
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-gold);
 }

@@ -259,6 +259,9 @@ body .message {
     rgba(197, 160, 89, 0.02) 100%
   );
 }
+body .message .premium-title::after {
+  width: 80%;
+}
 body .intro-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1967,7 +1970,7 @@ body .faq-a {
   }
   body .team-scroll-wrapper::after {
     display: block;
-    content: '';
+    content: "";
     position: absolute;
     right: 0;
     top: 0;
@@ -2084,7 +2087,12 @@ body .culture-ticker img:hover {
   }
 }
 
+/* sp-only / pc-only ユーティリティ（デフォルト = PC） */
+.br-sp-only {
+  display: none;
+}
 @media (max-width: 768px) {
+
   .br-pc-only {
     display: none;
   }
@@ -2453,10 +2461,23 @@ body .header-nav {
 .scroll-reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .scroll-reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* --- Title Center Variant --- */
+body .premium-title.title-center {
+  text-align: center;
+}
+body .premium-title.title-center::after {
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-gold);
 }
