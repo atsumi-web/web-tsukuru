@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7LZB4B8VQE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-7LZB4B8VQE");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIとペアプロしてCSSのバグを直してみた | Webとしくみをつくる</title>
+    <meta
+      name="description"
+      content="Tailwind CSSのクラスがコンパイルされていなくてスタイルが当たらない──。AIと一緒に原因を特定し修正するまでのリアルな作業プロセスを動画付きで公開します。"
+    />
+
+    <!-- OGP -->
+    <meta
+      property="og:title"
+      content="AIとペアプロしてCSSのバグを直してみた | Webとしくみをつくる"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://web-tsukuru.jp/blog/posts/20260224_ai_css_debug.html"
+    />
+    <meta
+      property="og:image"
+      content="https://web-tsukuru.jp/blog/images/blog_illust_ai_css_debug.png"
+    />
+    <meta
+      property="og:description"
+      content="Tailwind CSSのクラスがコンパイルされていなくてスタイルが当たらない──。AIと一緒に原因を特定し修正するまでのリアルな作業プロセスを動画付きで公開します。"
+    />
+    <meta property="og:site_name" content="Webとしくみをつくる" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://web-tsukuru.jp/blog/images/blog_illust_ai_css_debug.png"
+    />
+    <meta
+      name="twitter:description"
+      content="TailwindのCSSバグをAIとペアプロで解決。ブラウザが開けない環境でも、コード分析だけで根本原因を突き止めた実例を公開。"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/logo_icon_navyblue.webp" />
+    <link rel="apple-touch-icon" href="../../images/logo_icon2.webp" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/renewal.css" />
+    <link rel="stylesheet" href="../css/blog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <script src="../../js/main.js" defer></script>
+    <script src="../../js/shared-nav.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="../../index.html" class="logo">
+          <img
+            src="../../images/logo_icon3.webp"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span>Webとしくみをつくる</span>
+        </a>
+        <button class="hamburger-btn" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="../../index.html#problem">課題</a>
+          <a href="../../index.html#solution">解決策</a>
+          <a href="../../works.html">実績</a>
+          <a href="../../index.html#price">料金</a>
+          <a href="../index.html" class="active">ブログ</a>
+          <a href="https://lin.ee/nMDNiFg" target="_blank" class="nav-btn"
+            ><i class="fa-brands fa-line"></i> 無料相談</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="blog-container">
+      <!-- Post Header -->
+      <header class="post-header">
+        <span class="post-category">Web活用</span>
+        <h1 class="post-title">
+          AIとペアプロしてCSSのバグを直してみた<br />〜Tailwindのクラスがコンパイルされていなかった話〜
+        </h1>
+        <div class="post-meta">
+          <time datetime="2026-02-24"
+            ><i class="fa-regular fa-clock"></i> 2026.02.24</time
+          >
+          <span style="margin: 0 10px">|</span>
+          <span><i class="fa-regular fa-user"></i> 渥美 絵里</span>
+        </div>
+      </header>
+
+      <!-- Post Content -->
+      <article class="post-content">
+        <!-- アイキャッチ画像 -->
+        <figure style="margin: 0 0 30px">
+          <img
+            src="../images/blog_illust_ai_css_debug.png"
+            alt="AIと一緒にコードのバグを調査するイメージ"
+            style="border-radius: 12px; width: 100%"
+          />
+        </figure>
+
+        <p>
+          こんにちは、渥美です。今日は前回の「AIとWebサイトを作る現場を公開」の続編として、<strong>実際に発生したバグをAIと一緒に修正した作業</strong>をそのまま公開します。
+        </p>
+
+        <p>
+          「AIに頼んだらどうやって問題を解決するの？」という疑問に、リアルなケーススタディでお答えします。
+        </p>
+
+        <h2>今回のバグ：スタイルが当たっていなかった</h2>
+
+        <p>
+          作業中、テンプレートの画像ギャラリーセクションで<strong>高さの指定が効いていない</strong>箇所を発見しました。
+        </p>
+
+        <p>
+          コードを見ると <code>h-52</code> というTailwind CSSのクラスが使われていたのですが、<strong>実際にはスタイルが反映されていない</strong>状態。
+        </p>
+
+        <h2>原因の特定：deploy.cssのコンパイル漏れ</h2>
+
+        <p>
+          AIと一緒にコードを読み解いた結果、根本原因が判明しました。
+        </p>
+
+        <ul>
+          <li>
+            <strong>本番用CSS（deploy.css）に <code>h-52</code> クラスが含まれていなかった</strong>
+          </li>
+          <li>
+            Tailwind CSSは「実際にHTMLファイルで使われているクラスだけ」を最終的なCSSに出力する仕組みになっている
+          </li>
+          <li>
+            そのため、コンパイル時に <code>h-52</code> が読み取られないと、スタイルが生成されない
+          </li>
+        </ul>
+
+        <p>
+          ブラウザで直接確認できない状況でも、<strong>AIがコードを読んで「コンパイル対象に含まれていない」と特定</strong>してくれました。ブラウザなしで原因究明できたのはAIならではの強みです。
+        </p>
+
+        <h2>修正方法</h2>
+
+        <p>
+          解決策は2つ。どちらを使うかは開発環境・状況によります。
+        </p>
+
+        <ul>
+          <li>
+            <strong>方法①：Tailwindを再コンパイルする</strong><br />
+            <code>h-52</code> が含まれるHTMLをコンパイル対象に含めた上で <code>deploy.css</code> を再生成する
+          </li>
+          <li>
+            <strong>方法②：直接CSSで記述する</strong><br />
+            Tailwindに頼らず、<code>height: 13rem</code> 相当の記述をインラインまたはカスタムCSSに直接書く
+          </li>
+        </ul>
+
+        <p>
+          今回は即時対応できる<strong>方法②（直接CSS記述）</strong>を採用し、画像の高さ表示を修正しました。
+        </p>
+
+        <h2>実際の作業動画（全2本）</h2>
+
+        <p>
+          AIと私のやり取りをそのまま録画しました。バグ発見から修正完了まで、ぜひ雰囲気だけでも見てみてください。
+        </p>
+
+        <p><strong>▼ Part 01：バグの発見と原因分析</strong></p>
+
+        <!-- Loom動画 01 -->
+        <div style="position: relative; padding-bottom: 62.5%; height: 0; margin-bottom: 32px;">
+          <iframe
+            src="https://www.loom.com/embed/26d0a791ace749bf86804472a368d81d"
+            frameborder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+          ></iframe>
+        </div>
+
+        <p><strong>▼ Part 02：修正作業と動作確認</strong></p>
+
+        <!-- Loom動画 02 -->
+        <div style="position: relative; padding-bottom: 62.5%; height: 0; margin-bottom: 32px;">
+          <iframe
+            src="https://www.loom.com/embed/ad3dd2429aab405b956e2797a781b0b3"
+            frameborder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+          ></iframe>
+        </div>
+
+        <h2>AIとのペアプロで気づいたこと</h2>
+
+        <p>
+          今回の修正で改めて実感したことがあります。
+        </p>
+
+        <ul>
+          <li>
+            <strong>ブラウザなしでも原因が分かる</strong>：AIはコードを読んで論理的に推論するので、環境に依存しない
+          </li>
+          <li>
+            <strong>あるあるバグに即座に気づく</strong>：「Tailwindのコンパイル漏れ」は経験者なら知っているが、初見では気づきにくい
+          </li>
+          <li>
+            <strong>修正の選択肢を複数提示してくれる</strong>：状況に応じてどの方法が適切か判断できる
+          </li>
+        </ul>
+
+        <p>
+          AIは万能ではありませんが、<strong>「原因の仮説を立てて絞り込む」作業は非常に得意</strong>です。エラーの全体像を伝えると、人間なら見落としそうな箇所もすぐに指摘してくれます。
+        </p>
+
+        <h2>まとめ</h2>
+
+        <p>
+          今回のケース（Tailwindのコンパイル漏れ）は、知っていれば一瞬で解決できるバグです。でも、知らなければ「なぜかスタイルが当たらない…」と長時間悩む可能性があります。
+        </p>
+
+        <p>
+          AIをパートナーにすることで、<strong>経験値の差を縮められる</strong>のが最大のメリットだと感じています。
+        </p>
+
+        <p>
+          こういった制作の裏側を、これからも定期的に公開していく予定です。もし「うちのサイトのバグも気になる」「どんな仕組みで作ってもらえるの？」と気になった方は、お気軽にご相談ください。
+        </p>
+
+        <!-- CTA Box -->
+        <div class="blog-cta-box">
+          <h3>まずは、サクッと話を聞いてみませんか？</h3>
+          <p>
+            「どんな仕組みなのか知りたい」「実際の制作フローを聞いてみたい」<br />
+            そんな軽い気持ちでのご相談、大歓迎です。しつこい営業は一切しません。
+          </p>
+          <a
+            href="https://lin.ee/nMDNiFg"
+            target="_blank"
+            class="cta-button primary"
+          >
+            <i class="fa-brands fa-line"></i> LINEで無料相談する
+          </a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2026 Webとしくみをつくる All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
