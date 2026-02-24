@@ -668,6 +668,53 @@ body .voice-grid .card .visual { margin: 0; }</pre>
                 </ul>
             </div>
 
+
+            <h2>事例6：ブログページからのリンクが /blog/works.html になる（2026-02-24）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p>ブログページ（<code>https://web-tsukuru.jp/blog/</code>）から「実績」リンクをクリックすると <code>/blog/works.html</code> に飛んでしまう</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と解決策</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因：</strong> <code>/blog/</code>（末尾スラッシュ）のURLでは <code>pathname.split("/").filter(Boolean)</code> が <code>["blog"]</code>となりdepth=1になる。<code>/blog/index.html</code>ならdepth=2。同じページなのにdepthが変わる</li>
+                    <li><strong>解決策A（根本修正）：</strong> 末尾が<code>/</code>のURLは<code>"index.html"</code>を付与してからdepth計算する
+                        <pre style="background:#f4f4f4;padding:10px;border-radius:4px;font-size:0.85em;">var pathname = window.location.pathname;
+if (pathname.endsWith("/")) pathname += "index.html";
+var depth = pathname.split("/").filter(Boolean).length;</pre>
+                    </li>
+                    <li><strong>解決策B（確実）：</strong> 全サイト共通の重要リンク（実績・デザイン）は <code>href="/works.html"</code> のように<strong>絶対パスを使う</strong></li>
+                </ul>
+            </div>
+
+            <h2>事例7：shared-nav.js を追加したのに一部ページで反映されない（2026-02-24）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p><code>design.html</code> のナビに「実績」リンクがなく、古いハードコードのナビのまま</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と解決策</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因：</strong> 新しいJSファイルを追加する際、一部ページへの適用を漏らした</li>
+                    <li><strong>チェック方法：</strong> <code>grep -r "shared-nav.js" site/</code> で全ページの適用状況を確認する</li>
+                    <li><strong>ルール：</strong> 全ページ共通のスクリプトを追加した際は、<strong>必ず全HTMLを対象にgrepして確認</strong>する</li>
+                </ul>
+            </div>
+
+            <h2>事例8：デモサイトのリンクが存在しないフォルダを参照している（2026-02-24）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p><code>design.html</code> のネクスト・フロンティアの「デモサイトを見る」ボタンをクリックしても404になる</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と解決策</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因：</strong> テンプレートフォルダ名が <code>type-speed/</code>（過去の仮称）のまま残っており、実際のフォルダ名 <code>type-b/</code> と不一致だった</li>
+                    <li><strong>チェック方法：</strong> <code>href="templates/</code> でgrepし、実際のフォルダ一覧と照合する</li>
+                    <li><strong>ルール：</strong> テンプレートを追加・改名したとき、<strong>参照しているHTML全ファイルのリンクも同時に更新</strong>する</li>
+                </ul>
+            </div>
+
         </main>
 
         <footer>
