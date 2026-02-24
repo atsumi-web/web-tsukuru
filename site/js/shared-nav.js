@@ -12,8 +12,11 @@
   // 例: /index.html → depth=1 → root='./'
   //     /blog/index.html → depth=2 → root='../'
   //     /blog/posts/xxx.html → depth=3 → root='../../'
-  var depth = window.location.pathname.split("/").filter(Boolean).length;
+  var pathname = window.location.pathname;
+  if (pathname.endsWith("/")) pathname += "index.html";
+  var depth = pathname.split("/").filter(Boolean).length;
   var root = depth <= 1 ? "./" : new Array(depth).join("../");
+
 
   // アクティブページ判定
   var p = window.location.pathname;
