@@ -715,6 +715,22 @@ var depth = pathname.split("/").filter(Boolean).length;</pre>
                 </ul>
             </div>
 
+            <h2>事例9：PowerShell で日本語ファイルを編集したら全テキストが文字化け（2026-02-24）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p>PowerShell の <code>Get-Content -Raw</code> + <code>-replace</code> + <code>Set-Content -Encoding UTF8</code> でクラス名を一括置換した直後、ブラウザで日本語が全て文字化けした（例：「未来を、」→「譛ｪ譚･繧偵・」）</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と解決策</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因A（読み込み）：</strong> 日本語Windowsでは <code>Get-Content -Raw</code> のデフォルトエンコードが <strong>Shift-JIS</strong>。UTF-8のHTMLをShift-JISとして誤読して内部文字列が壊れる</li>
+                    <li><strong>原因B（書き込み）：</strong> <code>Set-Content -Encoding UTF8</code> は <strong>BOM付きUTF-8</strong> で書き出す。ブラウザが誤解釈して文字化けする場合がある</li>
+                    <li><strong>解決策（根本）：</strong> <strong>日本語テキストを含むHTMLファイルは <code>replace_file_content</code> / <code>multi_replace_file_content</code> ツールのみで編集する</strong>。PowerShellの文字列操作は使わない</li>
+                    <li><strong>解決策（復旧）：</strong> <code>git checkout &lt;正常commitハッシュ&gt; -- &lt;ファイルパス&gt;</code> で正常版に戻してから、編集ツールで再適用する</li>
+                    <li><strong>例外（OK）：</strong> バイト操作（<code>[System.IO.File]::ReadAllBytes</code>）でBOM除去など、<strong>文字列を一切解釈しない処理</strong>は安全</li>
+                </ul>
+            </div>
+
         </main>
 
         <footer>
