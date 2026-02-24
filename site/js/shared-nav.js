@@ -37,7 +37,7 @@
     link(root + "index.html#problem", "課題"),
     link(root + "index.html#solution", "解決策"),
     link(root + "index.html#flow", "流れ"),
-    link(root + "index.html#works", "デザイン"),
+    link("/design.html", "デザイン"),
     link(root + "service.html", "料金", isService),
     link(root + "index.html#qa", "Q&A"),
     link(root + "blog/index.html", "ブログ", isBlog),
