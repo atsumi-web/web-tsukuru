@@ -41,7 +41,7 @@
     link(root + "service.html", "料金", isService),
     link(root + "index.html#qa", "Q&A"),
     link(root + "blog/index.html", "ブログ", isBlog),
-    link(root + "works.html", "実績", isWorks),
+    link("/works.html", "実績", isWorks),
     link(
       "https://lin.ee/nMDNiFg",
       '<i class="fa-brands fa-line"></i> 無料相談',
