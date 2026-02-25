@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTubeサムネイル制作マニュアル</title>
+  <style>
+    :root {
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --dark: #1e293b;
+      --mid: #475569;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, #1a56db, #3b82f6);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    header p { opacity: 0.85; font-size: 0.95rem; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    main { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .philosophy {
+      background: var(--dark);
+      color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .philosophy .big { font-size: 1.5rem; font-weight: 900; color: #facc15; }
+    .philosophy .sub { font-size: 0.9rem; opacity: 0.8; margin-top: 0.3rem; }
+    .step {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--blue-light);
+      border-bottom: 1px solid var(--border);
+    }
+    .step-num {
+      background: var(--blue);
+      color: white;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .step-title { font-size: 1.1rem; font-weight: 700; color: var(--blue); }
+    .step-body { padding: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; }
+    th { background: var(--dark); color: white; padding: 0.6rem 1rem; text-align: left; font-size: 0.85rem; }
+    td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--light); }
+    .code-block { position: relative; margin: 1rem 0; }
+    .code-block pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 2.5rem 1.5rem 1.2rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: #1d4ed8; }
+    .copy-btn.copied { background: var(--green); }
+    .alert {
+      display: flex;
+      gap: 0.7rem;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+    }
+    .alert-info { background: #eff6ff; border-left: 4px solid var(--blue); }
+    .alert-warn { background: #fffbeb; border-left: 4px solid var(--yellow); }
+    .alert-green { background: #f0fdf4; border-left: 4px solid var(--green); }
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist input[type="checkbox"] { width: 1.1rem; height: 1.1rem; accent-color: var(--blue); cursor: pointer; }
+    .label {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.1rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .label.green { background: var(--green); }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .sample-task {
+      background: #fff8e1;
+      border: 2px solid var(--yellow);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .sample-task h3 { color: var(--dark); margin-bottom: 0.7rem; font-size: 1rem; }
+    .sample-task p { font-size: 0.9rem; margin: 0.3rem 0; }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--mid);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .service-links {
+      background: var(--dark);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .service-btn {
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .service-btn:hover { opacity: 0.8; }
+    .btn-green { background: #10b981; color: white; }
+    .btn-blue { background: var(--blue); color: white; }
+    .btn-sky { background: #0ea5e9; color: white; }
+    .btn-orange { background: var(--yellow); color: white; }
+    .btn-red { background: var(--red); color: white; }
+    .btn-purple { background: #7c3aed; color: white; }
+    .service-label { color: #94a3b8; font-size: 0.75rem; display: flex; align-items: center; }
+    .manual-nav {
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .manual-nav a {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .manual-nav a:hover { opacity: 0.8; }
+    .nav-ai { background: #7c3aed; color: white !important; }
+    .nav-canva { background: #00c4cc; color: white !important; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>&#x1F3AC; YouTubeサムネイル制作マニュアル</h1>
+  <p>Adobe Firefly + Gemini を使った 4ステップ方式</p>
+  <div class="badge">&#x2705; コピペですぐできる</div>
+</header>
+
+<!-- サービスリンク -->
+<div class="service-links">
+  <span class="service-label">&#x1F517; よく使うサービス：</span>
+  <a class="service-btn btn-green" href="https://thumbnail-gallery.net/" target="_blank">&#x1F50D; サムネ参考</a>
+  <a class="service-btn btn-blue" href="https://wiz.ooo/apps/yt-thumbnail-dl" target="_blank">&#x1F4E5; サムネ保存</a>
+  <a class="service-btn btn-red" href="https://www.remove.bg/ja" target="_blank">&#x2702; 背景削除</a>
+  <a class="service-btn btn-sky" href="https://gemini.google.com/app?hl=ja" target="_blank">&#x1F4AC; Gemini</a>
+  <a class="service-btn btn-orange" href="https://firefly.adobe.com/" target="_blank">&#x1F525; Firefly</a>
+  <a class="service-btn btn-purple" href="https://www.photopea.com" target="_blank">&#x1F3A8; Photopea</a>
+</div>
+
+<div class="manual-nav">
+  <a class="nav-ai" href="./ai-assist.html">🤖 AI活用版マニュアル →</a>
+  <a class="nav-canva" href="https://www.canva.com/design/DAHCMfhpTTE/h64MtxaZ2o8MNA2ny2j1cw/edit" target="_blank">📑 セミナー資料（Canva）</a>
+</div>
+
+<main>
+
+  <div class="philosophy">
+    <div class="big">クリック率＝命</div>
+    <div class="sub">「キレイに作る」より「クリックされる」を最優先にすること</div>
+  </div>
+
+  <!-- 全体フロー -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">&#x1F4CB;</div>
+      <div class="step-title">全体の流れ（4ステップ）</div>
+    </div>
+    <div class="step-body">
+      <table>
+        <tr><th>ステップ</th><th>ツール</th><th>やること</th></tr>
+        <tr><td><strong>STEP 1</strong></td><td>thumbnail-gallery.net<br><small>wiz.ooo</small></td><td>参考デザインを探す・保存する</td></tr>
+        <tr><td><strong>STEP 2</strong></td><td>Gemini</td><td>載せる言葉（テキスト）を考える</td></tr>
+        <tr><td><strong>STEP 3</strong></td><td>エクスプローラー</td><td>素材に名前をつけて準備する</td></tr>
+        <tr><td><strong>STEP 4</strong></td><td>Firefly</td><td>サムネイルを生成する</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-title">&#x1F50D; 参考デザインを探して保存する</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://thumbnail-gallery.net/" target="_blank">thumbnail-gallery.net</a> を開く</li>
+        <li style="margin-bottom:0.5rem;">動画のジャンルに合ったカテゴリを選ぶ（例：ビジネス・教養）</li>
+        <li style="margin-bottom:0.5rem;">気に入ったデザインを右クリック → 「名前をつけて保存」</li>
+        <li style="margin-bottom:0.5rem;">ファイル名を <strong>「デザイン参考.jpg」</strong> に変更して保存</li>
+      </ol>
+      <div class="alert alert-info">
+        <span>&#x1F4A1;</span>
+        <div><strong>YouTubeのサムネをそのまま保存したい場合：</strong><br>
+        <a href="https://wiz.ooo/apps/yt-thumbnail-dl" target="_blank">wiz.ooo/apps/yt-thumbnail-dl</a> にYouTube URLを貼り付けるとダウンロードできる</div>
+      </div>
+      <div class="alert alert-info">
+        <span>&#x1F4A1;</span>
+        <div>「キレイ」より「同ジャンルでバズっているデザイン」を選ぶのがコツ！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-title">&#x1F4AC; 載せる言葉をGeminiで考える</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem; margin-bottom:1rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://gemini.google.com/app?hl=ja" target="_blank">gemini.google.com</a> を開く</li>
+        <li style="margin-bottom:0.5rem;"><strong>「デザイン参考.jpg」を添付</strong>してから以下のプロンプトを送る</li>
+        <li style="margin-bottom:0.5rem;">GeminiがFirefly用の指示文をそのまま出力してくれる → コピーして使う</li>
+      </ol>
+      <div class="label">Gemini用プロンプト（コピペ）</div>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">&#x1F4CB; コピー</button>
+        <pre>添付画像を参考にYoutubeのサムネイルを制作します。
+動画タイトルは「[ここに動画タイトルを入力]」です。
+添付画像にぴったり合うように、掲載する言葉を考えてください。
+レイアウトはそのまま利用します。
+
+出力形式は、掲載する文章をAIに指示して伝わる形にして、テキストでお願いします。</pre>
+      </div>
+      <div class="alert alert-info">
+        <span>&#x1F4A1;</span>
+        <div><strong>ポイント：</strong>Geminiが「Fireflyに貼り付けられる形式」で出力してくれる。そのままコピーしてFireflyへ！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-title">&#x1F4C1; 素材に名前をつけて準備する</div>
+    </div>
+    <div class="step-body">
+      <table>
+        <tr><th>ファイル名（必ずこの名前に！）</th><th>内容</th><th>入手元</th></tr>
+        <tr><td><strong>デザイン参考.jpg</strong></td><td>STEP 1で選んだデザイン</td><td>SAMUNEからDL</td></tr>
+        <tr><td><strong>プロフィール画像.png</strong></td><td>人物写真（<span style="color:var(--red);font-weight:600;">背景透過済み</span>）</td><td>Google Drive → <a href="https://www.remove.bg/ja" target="_blank">remove.bg</a> で背景削除</td></tr>
+        <tr><td><strong>現在のサムネイル.jpg</strong></td><td>既存サムネ（参考用）</td><td>クライアントのYouTubeから</td></tr>
+      </table>
+      <div class="alert alert-green">
+        <span>&#x2705;</span>
+        <div>ファイル名を統一しておけば、Fireflyへの指示がコピペだけで済む！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-title">&#x1F525; Fireflyでサムネイルを生成する</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem; margin-bottom:1rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://firefly.adobe.com/" target="_blank">firefly.adobe.com</a> を開く → 「テキストから画像」</li>
+        <li style="margin-bottom:0.5rem;">「被写体参照」に <strong>プロフィール画像.png</strong>（背景透過済み）をセット</li>
+        <li style="margin-bottom:0.5rem;">「スタイル参照」に <strong>デザイン参考.jpg</strong> をセット</li>
+        <li style="margin-bottom:0.5rem;">以下の指示書テキストをコピペして送信</li>
+      </ol>
+
+      <div class="alert alert-green" style="margin-bottom:0.5rem;">
+        <span>📌</span>
+        <div>
+          <strong>Firefly指示のルール2つ</strong><br>
+          ① <strong>変更は最小限に</strong>：指示が多いほどAIがデザインを再解釈して崩れる。まずは「人物差し替え＋テキスト1〜2箇所」から始める。<br>
+          ② <strong>1変更につき1文</strong>：複数の変更をまとめて書くと誤認識することがある。
+        </div>
+      </div>
+
+      <div class="label">Firefly指示書テンプレート（コピペ）</div>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">&#x1F4CB; コピー</button>
+        <pre>デザイン参考.jpgをベースにして、
+人物画像をプロフィール画像.jpgに差し替えてください。
+
+"[元のテキスト①]"
+を
+"[新しいテキスト①]"
+に変更してください。
+
+"[元のテキスト②]"
+を
+"[新しいテキスト②]"
+に変更してください。</pre>
+      </div>
+
+      <div class="label green">記入例</div>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">&#x1F4CB; コピー</button>
+        <pre>デザイン参考.jpgをベースにして、
+人物画像をプロフィール画像.jpgに差し替えてください。
+
+"部下のやる気を
+高める方法"
+を
+"Canvaで
+月収10万円を稼ぐ"
+に変更してください。</pre>
+      </div>
+
+      <div class="alert alert-warn">
+        <span>&#x26A0;&#xFE0F;</span>
+        <div>テキストは必ず <strong>" "</strong>（ダブルクォーテーション）で囲む！</div>
+      </div>
+
+      <div class="alert alert-info" style="background:#f0fdf4; border-left:4px solid #10b981; margin-top:1rem;">
+        <span>✨</span>
+        <div>
+          <strong>応用：ポーズも変えられる！</strong><br>
+          通常の立ち姿の写真でも、Fireflyへの指示にポーズを追加するだけで変えられる。<br>
+          例：<code style="background:#e2e8f0; padding:0.1rem 0.4rem; border-radius:4px;">人物を、右側のテキストに向かって手を広げてプレゼンするポーズにしてください。</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 今週の課題 -->
+  <div class="sample-task">
+    <h3>&#x1F3AF; 今週の課題（第1回）&#x3000;&#x203B;締切：<span style="color:#ef4444; font-weight:900;">3/2</span></h3>
+    <p><strong>動画URL：</strong><a href="https://youtu.be/77yQQoUHufk" target="_blank">https://youtu.be/77yQQoUHufk</a></p>
+    <p><strong>動画タイトル：</strong>【未経験OK】Canvaだけで月10万円稼ぐ方法、全部話します</p>
+    <p><strong>参考デザイン：</strong>「部下のやる気を高める方法」黄×黒デザイン（<a href="https://youtu.be/HQcPiUEw2aM" target="_blank">参考URL</a>）</p>
+    <p><strong>掲載文章：</strong>現在のものでOK（変更可）</p>
+    <p><strong>画像素材：</strong><a href="https://drive.google.com/drive/folders/1uPmo9fQ5vuy5MjnBNpYlf_fVfhk_QHkW?usp=drive_link" target="_blank">Google Drive を開く</a></p>
+  </div>
+
+  <!-- 納品前チェック -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">&#x2705;</div>
+      <div class="step-title">納品前チェックリスト</div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><input type="checkbox"> テキストの誤字・表記ゆれがない</li>
+        <li><input type="checkbox"> 人物の顔が自然に合成されている</li>
+        <li><input type="checkbox"> デザイン参考のカラーテーマが維持されている</li>
+        <li><input type="checkbox"> 1280×720px（YouTube標準サイズ）になっている</li>
+        <li><input type="checkbox"> ファイル形式はJPGまたはPNG</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- エラー対処 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">&#x1F6A8;</div>
+      <div class="step-title">よくある失敗と対処法</div>
+    </div>
+    <div class="step-body">
+      <table>
+        <tr><th>問題</th><th>対処法</th></tr>
+        <tr><td style="color:var(--red);font-weight:600;">テキストが変わらない</td><td>" " で囲んでBefore→Afterを明示する</td></tr>
+        <tr><td style="color:var(--red);font-weight:600;">人物が不自然</td><td>プロフィール.jpgを背景透過してからセット</td></tr>
+        <tr><td style="color:var(--red);font-weight:600;">デザインが崩れる</td><td>指示を1つずつ分けて送る</td></tr>
+        <tr><td style="color:var(--red);font-weight:600;">画質が低い</td><td><a href="https://upscale.media/" target="_blank">Upscale.media</a>で解像度アップ</td></tr>
+      </table>
+    </div>
+  </div>
+
+
+
+</main>
+
+<footer>
+  <p>web-tsukuru.jp | YouTubeサムネイル制作マニュアル | 2026年2月</p>
+</footer>
+
+<script>
+  function copyCode(btn) {
+    const pre = btn.nextElementSibling;
+    navigator.clipboard.writeText(pre.textContent).then(() => {
+      btn.textContent = '\u2705 コピーしました！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '\u1F4CB コピー'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

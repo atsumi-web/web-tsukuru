@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI活用版｜サムネイル制作手順書</title>
+  <style>
+    :root {
+      --purple: #7c3aed;
+      --purple-light: #ede9fe;
+      --dark: #1e293b;
+      --mid: #475569;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --blue: #1a56db;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    header p { opacity: 0.85; font-size: 0.95rem; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .compare {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .compare-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem;
+      border: 2px solid var(--border);
+    }
+    .compare-card.old { border-color: var(--border); }
+    .compare-card.new { border-color: var(--purple); background: var(--purple-light); }
+    .compare-card h3 { font-size: 0.95rem; margin-bottom: 0.6rem; }
+    .compare-card ol { padding-left: 1.2rem; font-size: 0.85rem; color: var(--mid); }
+    .compare-card li { margin-bottom: 0.3rem; }
+    .compare-card.new ol { color: var(--dark); }
+
+    main { max-width: 800px; margin: 0 auto; padding: 0 1.5rem 2rem; }
+
+    .step {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--purple-light);
+      border-bottom: 1px solid var(--border);
+    }
+    .step-num {
+      background: var(--purple);
+      color: white;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .step-title { font-size: 1.1rem; font-weight: 700; color: var(--purple); }
+    .step-body { padding: 1.5rem; }
+
+    .code-block { position: relative; margin: 1rem 0; }
+    .code-block pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 2.5rem 1.5rem 1.2rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      background: var(--purple);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: #6d28d9; }
+    .copy-btn.copied { background: var(--green); }
+
+    .alert {
+      display: flex;
+      gap: 0.7rem;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+    }
+    .alert-purple { background: var(--purple-light); border-left: 4px solid var(--purple); }
+    .alert-green { background: #f0fdf4; border-left: 4px solid var(--green); }
+    .alert-warn { background: #fffbeb; border-left: 4px solid var(--yellow); }
+
+    .label {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.1rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-bubble {
+      background: #f3f0ff;
+      border-left: 4px solid var(--purple);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+    }
+    .chat-bubble .who {
+      font-size: 0.75rem;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .nav-link {
+      display: inline-block;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-link:hover { background: var(--purple-light); }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--mid);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .service-links {
+      background: var(--dark);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .service-btn {
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .service-btn:hover { opacity: 0.8; }
+    .btn-green { background: #10b981; color: white; }
+    .btn-blue { background: #1a56db; color: white; }
+    .btn-orange { background: #f59e0b; color: white; }
+    .btn-red { background: #ef4444; color: white; }
+    .btn-purple { background: var(--purple); color: white; }
+    .service-label { color: #94a3b8; font-size: 0.75rem; display: flex; align-items: center; }
+    .manual-nav {
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .manual-nav a {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .manual-nav a:hover { opacity: 0.8; }
+    .nav-basic { background: #1a56db; color: white !important; }
+    .nav-canva { background: #00c4cc; color: white !important; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>&#x1F916; AI（Antigravity）活用版<br>サムネイル制作手順書</h1>
+  <p>Geminiをスキップ。AIとの会話で指示書を作り、Photopeaで色調整まで完結</p>
+  <div class="badge">&#x26A1; 実証済み最速バージョン</div>
+</header>
+
+<!-- サービスリンク -->
+<div class="service-links">
+  <span class="service-label">&#x1F517; よく使うサービス：</span>
+  <a class="service-btn btn-green" href="https://thumbnail-gallery.net/" target="_blank">&#x1F50D; サムネ参考</a>
+  <a class="service-btn btn-blue" href="https://wiz.ooo/apps/yt-thumbnail-dl" target="_blank">&#x1F4E5; サムネ保存</a>
+  <a class="service-btn btn-red" href="https://www.remove.bg/ja" target="_blank">&#x2702; 背景削除</a>
+  <a class="service-btn btn-orange" href="https://firefly.adobe.com/" target="_blank">&#x1F525; Firefly</a>
+  <a class="service-btn btn-purple" href="https://www.photopea.com" target="_blank">&#x1F3A8; Photopea</a>
+</div>
+
+<div class="manual-nav">
+  <a class="nav-basic" href="./index.html">← 基本マニュアル</a>
+  <a class="nav-canva" href="https://www.canva.com/design/DAHCMfhpTTE/h64MtxaZ2o8MNA2ny2j1cw/edit" target="_blank">📑 セミナー資料（Canva）</a>
+</div>
+
+<div class="compare">
+
+  <div class="compare-grid">
+    <div class="compare-card old">
+      <h3>&#x1F4DA; 通常手順（4ステップ）</h3>
+      <ol>
+        <li>SAMUNEで参考を探す</li>
+        <li>Geminiにプロンプト送る</li>
+        <li>素材に名前をつける</li>
+        <li>Fireflyで生成する</li>
+      </ol>
+    </div>
+    <div class="compare-card new">
+      <h3>&#x26A1; AI活用版（4ステップ）</h3>
+      <ol>
+        <li>SAMUNEで参考を探す</li>
+        <li><span style="color:var(--purple);font-weight:700;">AIに画像を貼る → Firefly指示書が完成</span></li>
+        <li>Fireflyで人物・テキスト差し替え生成</li>
+        <li><span style="color:var(--purple);font-weight:700;">Photopeaでチャンネルカラーに色変更</span></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-title">&#x1F50D; SAMUNEで参考デザインを選ぶ</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://thumbnail-gallery.net/" target="_blank">thumbnail-gallery.net</a> を開く</li>
+        <li style="margin-bottom:0.5rem;">気に入ったサムネを右クリック → 保存</li>
+        <li>ファイル名を <strong>「デザイン参考.jpg」</strong> に変更</li>
+      </ol>
+      <div class="alert alert-purple">
+        <span>&#x1F4A1;</span>
+        <div>この画像を次のステップでAIに貼り付けるだけでOK！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2（メイン） -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-title">&#x1F916; AIに頼んでFirefly指示書を作る ← ここがポイント</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem; margin-bottom:1rem;">
+        <li style="margin-bottom:0.5rem;">Antigravity（このAI）のチャットを開く</li>
+        <li style="margin-bottom:0.5rem;"><strong>参考デザイン画像を貼り付け</strong>てから以下をコピペして送る</li>
+        <li>出てきたテキストをFireflyにそのままコピペ</li>
+      </ol>
+
+      <div class="label">AIへのメッセージ（コピペ）</div>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">&#x1F4CB; コピー</button>
+        <pre>この参考サムネイルをベースに、以下の動画用のFirefly指示書を作成してください。
+
+動画タイトル：[ここに動画タイトルを入力]
+
+・デザイン参考.jpgのレイアウト・色・構造はそのまま維持
+・人物はプロフィール画像.pngに差し替える
+・画像内のすべてのテキストを動画に合わせて変更する
+・縦書きテキスト・背景ウォーターマーク文字も含めて変更する
+・Fireflyにそのまま貼り付けられる形式で出力してください</pre>
+      </div>
+
+      <div class="alert alert-warn">
+        <span>&#x26A0;&#xFE0F;</span>
+        <div><strong>重要：</strong>「背景色を〇〇に変更」はFireflyに指示しないこと！デザイン構造が崩れます。色変更はSTEP4のPhotopeaで行う。</div>
+      </div>
+
+      <div class="alert alert-green">
+        <span>&#x2705;</span>
+        <div>AIが出力したテキストをそのままコピー → Fireflyに貼り付けるだけ！Geminiは不要！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2.5 素材準備 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num" style="font-size:0.75rem;">2.5</div>
+      <div class="step-title">&#x1F4C1; 素材を準備する（並行してOK）</div>
+    </div>
+    <div class="step-body">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <tr style="background:var(--dark); color:white;">
+          <th style="padding:0.6rem 1rem; text-align:left;">ファイル名</th>
+          <th style="padding:0.6rem 1rem; text-align:left;">入手方法</th>
+        </tr>
+        <tr>
+          <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);"><strong>デザイン参考.jpg</strong></td>
+          <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">STEP 1で保存済み</td>
+        </tr>
+        <tr>
+          <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);"><strong>プロフィール画像.png</strong><br><span style="color:var(--red); font-size:0.8rem;">※背景透過済み</span></td>
+          <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">Google Drive から DL → <a href="https://www.remove.bg/ja" target="_blank">remove.bg</a> で背景削除 → PNG保存</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-title">&#x1F525; Fireflyで人物・テキストを差し替え生成する</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://firefly.adobe.com/" target="_blank">firefly.adobe.com</a> を開く → 「テキストから画像」</li>
+        <li style="margin-bottom:0.5rem;">縦横比を <strong>「ワイドスクリーン（16:9）」</strong> に設定</li>
+        <li style="margin-bottom:0.5rem;">被写体参照：<strong>プロフィール画像.png</strong>（背景透過済み）をセット</li>
+        <li style="margin-bottom:0.5rem;">スタイル参照：<strong>デザイン参考.jpg</strong> をセット</li>
+        <li style="margin-bottom:0.5rem;">AIが作った指示文を貼り付けて生成</li>
+        <li>良いものが出たら <strong>PNG でダウンロード</strong></li>
+      </ol>
+      <div class="alert alert-warn">
+        <span>&#x26A0;&#xFE0F;</span>
+        <div>クレジット不足：Adobe Express Premiumは月250クレジット。2K生成や参照画像は消費が多いので注意。次のリセット日はアカウントページで確認。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-title">&#x1F3A8; Photopeaでチャンネルカラーに色変更する</div>
+    </div>
+    <div class="step-body">
+      <p style="font-size:0.9rem; margin-bottom:1rem;">Fireflyで生成した画像の背景色をクライアントのチャンネルカラーに変更する。</p>
+      <ol style="padding-left:1.2rem; font-size:0.9rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://www.photopea.com" target="_blank">photopea.com</a> を開く（無料・登録不要）</li>
+        <li style="margin-bottom:0.5rem;">「ファイル」→「開く」でFirefly生成画像をアップロード</li>
+        <li style="margin-bottom:0.5rem;">「画像」→「色調補正」→ <strong>「色を交換」</strong></li>
+        <li style="margin-bottom:0.5rem;">変更したい色の上をクリック → あいまいさを調整</li>
+        <li style="margin-bottom:0.5rem;">色相スライダーを動かしてターゲットカラーに調整</li>
+        <li>「ファイル」→「Export As」→ <strong>PNG でダウンロード</strong><br>
+        <span style="font-size:0.85rem; color:var(--mid);">※ 幅 <strong>1280px</strong> を基準に保存（高さはFirefly生成に依存するが多少ズレても問題なし）</span></li>
+      </ol>
+      <div class="alert alert-green">
+        <span>&#x2705;</span>
+        <div>色の16進コード（例：#00b2e6）はクライアントのYouTubeチャンネルページから確認する</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- よくある質問 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">&#x2753;</div>
+      <div class="step-title">トラブルシューティング・実際にやって分かったこと</div>
+    </div>
+    <div class="step-body" style="font-size:0.9rem;">
+      <p style="font-weight:700; margin-bottom:0.3rem;">&#x26A0;&#xFE0F; 背景色を変えたら全体が崩れた</p>
+      <p style="color:var(--mid); margin-bottom:1rem;">→ Fireflyに「背景色を〇〇に」と指示すると、デザイン構造（黄色ブロック・四角ライン等）が全部消えてしまう。<strong>色変更はFireflyではやらずPhotopea（STEP4）でやること。</strong></p>
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">&#x26A0;&#xFE0F; 縦書きテキストや背景ウォーターマークが残った</p>
+      <p style="color:var(--mid); margin-bottom:1rem;">→ 参考デザインには見落としやすい縦書きや背景文字がある。AIへの指示に「すべてのテキスト（縦書き・背景文字含む）を変更」と書くとFirefly指示書に含めてくれる。</p>
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">&#x26A0;&#xFE0F; クレジットが不足と表示される</p>
+      <p style="color:var(--mid); margin-bottom:1rem;">→ Adobe Express Premiumでも月250クレジット制限あり。来月リセットまで待つか、Fireflyの追加クレジット購入。頻繁に使うならFirefly Proプラン（月¥3,180）が効率的。</p>
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">Q. Fireflyの生成結果がイメージと違う</p>
+      <p style="color:var(--mid); margin-bottom:1rem;">→ 生成結果の画像をAIに貼って「修正した指示書を作って」と伝えるとすぐ対応してくれる。</p>
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">&#x26A0;&#xFE0F; 実案件では著作権に注意！</p>
+      <p style="color:var(--mid);">→ Fireflyの「スタイル参照」に参考デザインを使うと、人物の背後に元画像の背景が残る場合がある。<br>
+      練習はOKだが、<strong>実案件ではPhotopea/CanvaでAI生成の単色背景に合成する</strong>こと。参考デザインの流用はグレーゾーンになる可能性あり。</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>web-tsukuru.jp | AI活用版サムネイル手順書 | 2026年2月</p>
+</footer>
+
+<script>
+  function copyCode(btn) {
+    const pre = btn.nextElementSibling;
+    navigator.clipboard.writeText(pre.textContent).then(() => {
+      btn.textContent = '\u2705 コピーしました！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '\u1F4CB コピー'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
