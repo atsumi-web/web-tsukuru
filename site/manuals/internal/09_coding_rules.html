@@ -731,6 +731,46 @@ var depth = pathname.split("/").filter(Boolean).length;</pre>
                 </ul>
             </div>
 
+            <h2>事例10：LINEアプリで開くとヒーローのテキストが見切れる（2026-02-25）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p>スマホのLINEからサイトURLを開くと、ヒーローセクションのh1テキスト冒頭が見えず、途中から表示される。Chromeでは正常。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と解決策</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因：</strong> CSSの <code>height: 100dvh</code> / <code>min-height: 100dvh</code> を使用。<code>dvh</code>（Dynamic Viewport Height）はLINEの内蔵ブラウザ（LINE IAB）が非対応のため高さ計算が崩れる</li>
+                    <li><strong>解決策：</strong> <code>dvh</code> を <code>vh</code> に全て置き換える。<code>vh</code> はほぼ全ブラウザで対応しており、見た目への影響は数px程度で軽微</li>
+                    <li><strong>ルール：</strong> <code>svh</code> / <code>dvh</code> / <code>lvh</code> などの新しいビューポート単位はLINE IABで動作しない。<strong>モバイルでは <code>vh</code> を使う</strong></li>
+                </ul>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* NG: LINE IAbで非対応 */
+height: 100dvh;
+min-height: 100dvh;
+
+/* OK: 全ブラウザ対応 */
+height: 100vh;
+min-height: 100vh;</pre>
+            </div>
+
+            <h2>事例11：CSSを修正してFTPアップしたのにLINEブラウザに反映されない（2026-02-25）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p>CSSを修正してサーバーにアップロードしたのに、スマホのLINEブラウザでは古い表示のまま変わらない。PCのChromeでは反映されている。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と解決策</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因：</strong> CSSファイルが <code>hero.css?v=3.1</code> のようにバージョン番号付きでブラウザにキャッシュされている。ファイルの中身を変えてもURLが同じなら古いキャッシュを使い続ける</li>
+                    <li><strong>解決策：</strong> <code>index.html</code> の CSS読み込みのバージョン番号を上げる（例: <code>?v=3.1</code> → <code>?v=3.2</code>）</li>
+                    <li><strong>ルール：</strong> <strong>CSSを修正したら必ずバージョン番号を上げてからアップロードする</strong>。PCは「キャッシュを無効化」で確認できるがスマホ・LINEは無効化できないため、バージョンバンプが唯一の確実な方法</li>
+                </ul>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">&lt;!-- NG: CSSを変えてもURLが同じなのでキャッシュされたまま --&gt;
+&lt;link rel="stylesheet" href="css/hero.css?v=3.1" /&gt;
+
+&lt;!-- OK: バージョン番号を上げてキャッシュを無効化 --&gt;
+&lt;link rel="stylesheet" href="css/hero.css?v=3.2" /&gt;</pre>
+            </div>
+
         </main>
 
         <footer>
