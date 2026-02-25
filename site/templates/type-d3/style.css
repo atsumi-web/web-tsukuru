@@ -2119,7 +2119,7 @@ ul {
     padding: 0;
   }
   .hero {
-    height: 100dvh !important;
+    height: 100vh !important;
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
@@ -2266,7 +2266,7 @@ ul {
 
   /* 3. Hero Layout & Marquee */
   .hero-full-width-wrapper {
-    height: 100dvh !important;
+    height: 100vh !important;
     width: 100% !important;
     flex-direction: column !important;
     justify-content: flex-start !important;

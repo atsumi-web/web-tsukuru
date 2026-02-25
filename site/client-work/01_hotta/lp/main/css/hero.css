@@ -1159,7 +1159,7 @@
 
 @media (max-height: 900px) and (min-width: 1201px) {
   #hero.hero-teto {
-    min-height: 100dvh;
+    min-height: 100vh;
   }
 
   .hero-teto-content {
