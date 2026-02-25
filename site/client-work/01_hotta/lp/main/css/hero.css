@@ -11,9 +11,9 @@
 
 /* Hero Section */
 #hero.hero-teto {
-  height: 100dvh;
+  height: 100vh;
   min-height: 550px;
-  max-height: 100dvh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -24,7 +24,7 @@
 @media (max-width: 1200px) {
   #hero.hero-teto {
     height: auto;
-    min-height: 100dvh;
+    min-height: 100vh;
     overflow: visible;
   }
 }
@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: 100dvh;
+    min-height: 100vh;
     box-sizing: border-box;
   }
 }
@@ -64,7 +64,7 @@
 /* スマホ: calc()で縦中央配置（コンテンツ高さ約500pxを想定） */
 @media (max-width: 768px) {
   #hero .hero-teto-container {
-    padding-top: clamp(80px, calc(50dvh - 240px), 180px);
+    padding-top: clamp(80px, calc(50vh - 240px), 180px);
     padding-bottom: 30px;
     justify-content: flex-start;
   }
