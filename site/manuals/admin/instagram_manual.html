@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram コンテンツマニュアル｜Webとしくみをつくる</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-pink: #E4405F;
+            --accent-purple: #8B5CF6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--space-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        a { color: var(--accent-blue); text-decoration: none; }
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin: 0 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin: 16px 0 8px 0;
+        }
+
+        header {
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-pink);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subtitle { color: var(--text-dim); font-size: 0.85rem; margin-top: 4px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+        .back-link:hover { color: var(--text-main); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .panel-header {
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--panel-border);
+        }
+        .panel-body { padding: 16px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            background: rgba(255,255,255,0.05);
+            padding: 8px 12px;
+            text-align: left;
+            color: var(--text-dim);
+            font-weight: 600;
+            border-bottom: 1px solid var(--panel-border);
+        }
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: top;
+        }
+        tr:last-child td { border-bottom: none; }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .tag-ok { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+        .tag-ng { background: rgba(239,68,68,0.15); color: #EF4444; }
+        .tag-blue { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+
+        .slide-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .slide-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+        .slide-content { color: var(--text-dim); font-size: 0.85rem; }
+        .slide-content strong { color: var(--text-main); }
+
+        .prompt-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--panel-border);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 4px;
+            padding: 14px 16px;
+            font-size: 0.82rem;
+            white-space: pre-wrap;
+            color: #CBD5E1;
+            margin: 10px 0;
+        }
+
+        .color-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--panel-border);
+            font-size: 0.8rem;
+            margin: 3px;
+        }
+        .chip-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+
+        .example-post {
+            background: rgba(228,64,95,0.05);
+            border: 1px solid rgba(228,64,95,0.3);
+            border-radius: 6px;
+            padding: 14px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        .example-label {
+            font-size: 0.7rem;
+            color: var(--accent-pink);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .note {
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 0.82rem;
+            color: #FDE68A;
+            margin: 10px 0;
+        }
+
+        ul { padding-left: 18px; margin: 8px 0; }
+        li { margin-bottom: 4px; font-size: 0.85rem; color: var(--text-dim); }
+        li strong { color: var(--text-main); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <div class="title"><i class="fa-brands fa-instagram"></i> Instagram コンテンツマニュアル</div>
+            <div class="subtitle">@web_tsukuru_jp｜建設業採用LP専門｜ブレない投稿を量産するための設計書</div>
+        </div>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> 司令室へ</a>
+    </header>
+
+    <div class="grid">
+
+        <!-- COL 1 -->
+        <div>
+            <!-- 1. アカウント基本設計 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 style="margin:0;color:var(--accent-pink);"><i class="fa-solid fa-bullseye"></i> 1. アカウント基本設計</h2>
+                </div>
+                <div class="panel-body">
+                    <table>
+                        <tr><th>項目</th><th>内容</th></tr>
+                        <tr><td>アカウント名</td><td>@web_tsukuru_jp</td></tr>
+                        <tr><td>ターゲット</td><td>建設会社の経営者・採用担当者（30〜40代男性）</td></tr>
+                        <tr><td>テーマ</td><td>建設業の採用をWebで変える</td></tr>
+                        <tr><td>一言ポジション</td><td>採用LP制作の専門家</td></tr>
+                        <tr><td>投稿頻度</td><td>週5〜7本（毎朝8時）</td></tr>
+                        <tr><td>最終CTA</td><td>プロフィールリンク → LINE無料相談</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. ネタ選定の基準 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 style="margin:0;color:var(--accent-gold);"><i class="fa-solid fa-lightbulb"></i> 2. ネタ選定の基準</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>OKネタの条件</h3>
+                    <ul>
+                        <li><strong>建設会社の社長が「これ、うちだ」と感じる</strong></li>
+                        <li>採用の痛みポイントを直撃している</li>
+                        <li>すぐ実践できる内容（3つのコツ、〇つのNG等）</li>
+                        <li>知っていそうで知らない事実・盲点を突く</li>
+                    </ul>
+
+                    <h3>ネタ切れ時のフレームワーク</h3>
+                    <table>
+                        <tr><th>切り口</th><th>例</th></tr>
+                        <tr><td>ミス・失敗</td><td>採用でやりがちな5つのミス</td></tr>
+                        <tr><td>比較・違い</td><td>求人票 vs 採用LP</td></tr>
+                        <tr><td>数字</td><td>採用コスト1人あたり◯万円の現実</td></tr>
+                        <tr><td>逆張り</td><td>「経験者優遇」が逆効果な理由</td></tr>
+                        <tr><td>ツール紹介</td><td>LINEで採用をラクにする方法</td></tr>
+                        <tr><td>実例・Behind</td><td>実際のLP制作で気づいたこと</td></tr>
+                    </table>
+
+                    <div class="note"><i class="fa-solid fa-ban"></i> <strong>NGネタ：</strong>IT・マーケ全般・美容・飲食など、建設業採用と無関係なもの。「広く刺さる」ネタはターゲットがぼける。</div>
+                </div>
+            </div>
+
+            <!-- 3. スライド構成 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 style="margin:0;color:var(--accent-blue);"><i class="fa-solid fa-layer-group"></i> 3. スライド構成（カルーセル型）</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="slide-card">
+                        <div class="slide-num">SLIDE 1｜表紙（カバー）</div>
+                        <div class="slide-content">
+                            <strong>バッジ（小ラベル）：</strong>投稿カテゴリ（例：採用担当者必見）<br>
+                            <strong>メインコピー①：</strong>状態・問題提起（細字）<br>
+                            <strong>メインコピー②：</strong>キーワード（太字・大）<br>
+                            <strong>サブコピー：</strong>補足説明<br>
+                            <strong>パンダ：</strong>左下または右下に配置
+                        </div>
+                    </div>
+                    <div class="slide-card">
+                        <div class="slide-num">SLIDE 2〜4｜内スライド（情報）</div>
+                        <div class="slide-content">
+                            白背景カード＋見出し＋箇条書き or 図解<br>
+                            1スライド1メッセージを鉄則とする<br>
+                            右下に「>>>」で次へ促す
+                        </div>
+                    </div>
+                    <div class="slide-card">
+                        <div class="slide-num">SLIDE 最終｜CTA（行動喚起）</div>
+                        <div class="slide-content">
+                            「御社の採用、一緒に見直しませんか？」<br>
+                            → 「プロフィールのリンクから」<br>
+                            パンダ＋吹き出し＋ロゴで統一
+                        </div>
+                    </div>
+                    <div class="note"><i class="fa-solid fa-info-circle"></i> 単体画像投稿の場合も表紙と同じデザインルールを適用する。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COL 2 -->
+        <div>
+            <!-- 4. ビジュアルデザインルール -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 style="margin:0;color:var(--accent-purple);"><i class="fa-solid fa-palette"></i> 4. ビジュアルデザインルール</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>カラーパレット</h3>
+                    <div>
+                        <span class="color-chip"><span class="chip-dot" style="background:#0F172A; border:1px solid #fff;"></span>Navy #0F172A（背景）</span>
+                        <span class="color-chip"><span class="chip-dot" style="background:#C5A059;"></span>Gold #C5A059（バッジ）</span>
+                        <span class="color-chip"><span class="chip-dot" style="background:#FFFFFF; border:1px solid #ccc;"></span>White（文字・カード）</span>
+                    </div>
+
+                    <h3>パンダマスコット</h3>
+                    <ul>
+                        <li>必ず表紙 or CTAスライドに配置</li>
+                        <li>ヘルメット着用・工事ベスト着用バージョンを使用</li>
+                        <li>背景を除去した透過PNGで配置</li>
+                    </ul>
+
+                    <h3>フォント</h3>
+                    <ul>
+                        <li><strong>メインコピー①：</strong>細字・白</li>
+                        <li><strong>メインコピー②（強調）：</strong>極太・白</li>
+                        <li><strong>内スライド：</strong>ゴシック太字・ネイビー</li>
+                    </ul>
+
+                    <table style="margin-top:10px;">
+                        <tr><th>NG</th><th>理由</th></tr>
+                        <tr><td>縁取り・線画スタイル</td><td>品質感が下がる</td></tr>
+                        <tr><td>写真素材の多用</td><td>当社との関連性が薄れる</td></tr>
+                        <tr><td>カラーの逸脱</td><td>ブランド統一感が崩れる</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 5. キャプション作成ルール -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 style="margin:0;color:var(--accent-green);"><i class="fa-solid fa-pen-nib"></i> 5. キャプション作成ルール</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>基本構造（5ブロック）</h3>
+                    <div class="prompt-box">①共感フック（1〜2行）
+「建設会社の採用ページを
+　たくさん見てきて気づいたこと。」
+
+②問題提起（1行）
+「なぜ応募が来ないのか」
+
+③本文（箇条書きor短文3〜5行）
+①〜③の内容を端的に列挙
+
+④まとめ（1〜2行）
+「どれか一つでも当てはまるなら」
+
+⑤CTA（1行）
+「▷ 詳しくはプロフィールのリンクから」</div>
+
+                    <h3>トーンルール</h3>
+                    <ul>
+                        <li><strong>語り口：</strong>「〜ました」「〜です」丁寧だが親しみある口語</li>
+                        <li><strong>NG：</strong>専門用語の多用・上から目線・自慢話</li>
+                        <li><strong>OK：</strong>現場視点・共感・事実ベースの問いかけ</li>
+                        <li><strong>文字数：</strong>150〜250文字が目安</li>
+                        <li><strong>改行：</strong>1〜2文で改行、詰め込まない</li>
+                    </ul>
+
+                    <div class="note"><i class="fa-solid fa-lightbulb"></i> 最初の1行が命。スクロールを止める「痛い問い」か「驚きの事実」で始める。</div>
+                </div>
+            </div>
+
+            <!-- 6. ハッシュタグ戦略 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 style="margin:0;"><i class="fa-solid fa-hashtag"></i> 6. ハッシュタグ戦略</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>固定タグ（毎回必ず含める）</h3>
+                    <div class="prompt-box">#建設業採用 #採用LP #建設会社 #中小企業採用 #採用の仕組み</div>
+
+                    <h3>投稿内容に合わせて追加</h3>
+                    <table>
+                        <tr><th>テーマ</th><th>追加タグ</th></tr>
+                        <tr><td>採用LP・LP全般</td><td>#ランディングページ #採用改善</td></tr>
+                        <tr><td>社員インタビュー</td><td>#社員インタビュー #定着率向上</td></tr>
+                        <tr><td>LINE活用</td><td>#LINE採用 #採用担当者</td></tr>
+                        <tr><td>コスト・費用</td><td>#求人広告 #採用コスト</td></tr>
+                    </table>
+
+                    <div class="note"><i class="fa-solid fa-ban"></i> <strong>NG：</strong>#採用サイト は「LP」と混同されるため使用禁止。採用サイト≠採用LPと明確に区別。</div>
+                </div>
+            </div>
+
+            <!-- 7. AIとの連携フロー -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 style="margin:0;color:var(--accent-blue);"><i class="fa-solid fa-robot"></i> 7. AI（Antigravity）との連携フロー</h2>
+                </div>
+                <div class="panel-body">
+                    <table>
+                        <tr><th>STEP</th><th>担当</th><th>内容</th></tr>
+                        <tr><td>ネタ決め</td><td>AI主導</td><td>状況・データから次の投稿テーマを提案</td></tr>
+                        <tr><td>スライド構成</td><td>AI</td><td>各スライドのテキスト案を出力</td></tr>
+                        <tr><td>デザイン制作</td><td>えりさん</td><td>Canvaでスライドを視覚化</td></tr>
+                        <tr><td>キャプション</td><td>AI</td><td>上記ルールに沿って生成</td></tr>
+                        <tr><td>ハッシュタグ</td><td>AI</td><td>投稿内容に合わせて選定</td></tr>
+                        <tr><td>予約投稿</td><td>えりさん</td><td>Meta Business Suiteで予約</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
