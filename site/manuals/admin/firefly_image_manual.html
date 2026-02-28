@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firefly AI素材生成マニュアル｜建設現場画像を量産する</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-orange: #F97316;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--space-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        header {
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subtitle { color: var(--text-dim); font-size: 0.82rem; margin-top: 4px; }
+        .back-link { color: var(--text-dim); font-size: 0.8rem; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .panel-header {
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--panel-border);
+        }
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .panel-body { padding: 16px; }
+
+        .prompt-box {
+            background: rgba(0,0,0,0.35);
+            border: 1px solid var(--panel-border);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 4px;
+            padding: 14px 16px;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            color: #CBD5E1;
+            margin: 10px 0;
+        }
+        .note {
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #FDE68A;
+            margin: 10px 0;
+        }
+        .tip {
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #6EE7B7;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin: 8px 0;
+        }
+        th {
+            background: rgba(255,255,255,0.05);
+            padding: 7px 10px;
+            text-align: left;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--panel-border);
+        }
+        td {
+            padding: 7px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-dim);
+        }
+        td strong { color: var(--text-main); }
+        tr:last-child td { border-bottom: none; }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: var(--accent-orange);
+            color: white;
+            min-width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-body { font-size: 0.85rem; }
+        .step-body strong { color: var(--text-main); display: block; margin-bottom: 2px; }
+        .step-body span { color: var(--text-dim); }
+
+        ul { padding-left: 18px; margin: 6px 0; }
+        li { margin-bottom: 4px; font-size: 0.85rem; color: var(--text-dim); }
+        li strong { color: var(--text-main); }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <div class="title"><i class="fa-solid fa-wand-magic-sparkles"></i> Firefly AI素材生成マニュアル</div>
+            <div class="subtitle">Pexels参考画像 × Adobe Firefly で建設現場の高品質素材を量産する手法</div>
+        </div>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> 司令室へ</a>
+    </header>
+
+    <!-- 概要 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-orange);"><i class="fa-solid fa-circle-info"></i> この手法でできること</div>
+        </div>
+        <div class="panel-body">
+            <table>
+                <tr><th>用途</th><th>内容</th></tr>
+                <tr><td><strong>Instagramリール背景</strong></td><td>Canvaにアップしてテキストリールの背景として使用</td></tr>
+                <tr><td><strong>採用LPの写真素材</strong></td><td>制作コストゼロで日本人作業員画像を調達</td></tr>
+                <tr><td><strong>ブログアイキャッチ</strong></td><td>記事テーマに合った建設現場画像を生成</td></tr>
+                <tr><td><strong>将来的な素材販売</strong></td><td>Adobe Stock / PIXTAへ出品（テキストプロンプトのみの場合）</td></tr>
+            </table>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 参考画像と生成画像は<strong>人物・室内・構図が全く別物</strong>になるため、オリジナル素材として活用可能。</div>
+        </div>
+    </div>
+
+    <!-- ワークフロー -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-arrow-right-arrow-left"></i> 基本ワークフロー（4ステップ）</div>
+        </div>
+        <div class="panel-body">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                    <strong>Pexelsで参考画像を探す</strong>
+                    <span>「建設」「construction」で検索 → 雰囲気のよいものをスクリーンショット保存</span>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                    <strong>Adobe Fireflyを開く</strong>
+                    <span>「テキストから画像生成」→ スタイル参照にスクリーンショットをアップロード</span>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                    <strong>下記プロンプトを貼り付けて生成</strong>
+                    <span>縦長9:16 or ワイドスクリーン16:9を選択して実行</span>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                    <strong>ダウンロードして素材フォルダへ保存</strong>
+                    <span>Canvaにアップしてリール背景・LP画像として使用</span>
+                </div>
+            </div>
+            <div class="note"><i class="fa-solid fa-info-circle"></i> サイズ：リールのみ → 9:16｜リール＋サイト兼用 → <strong>16:9がおすすめ</strong>（Canvaでトリミング可）</div>
+        </div>
+    </div>
+
+    <!-- プロンプト -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-code"></i> 汎用プロンプト（コピーして使用）</div>
+        </div>
+        <div class="panel-body">
+            <p style="color:var(--text-dim); font-size:0.82rem; margin-bottom:8px;">参考画像をスタイル参照にアップした上で、以下を貼り付けて生成：</p>
+            <div class="prompt-box">参考画像と同じような雰囲気で、建設現場の写真を生成してください。
+
+ただし、以下は必ず参考画像と異なるものにしてください：
+・人物の顔・体型・人数は全て別人に変える
+・室内の場合：窓の位置・壁のデザイン・天井の形状を変える
+・屋外の場合：建物の構造・周囲の景色・空の状態を変える
+
+共通条件：
+日本人作業員、青い作業服、白いヘルメット着用、
+プロフェッショナルな雰囲気、自然光、
+テキストなし、ロゴなし、透かしなし</div>
+
+            <p style="color:var(--text-dim); font-size:0.82rem; margin-top:14px; margin-bottom:6px;">バリエーション用の場面指定（上記の後に追加）：</p>
+            <table>
+                <tr><th>場面</th><th>追加テキスト</th></tr>
+                <tr><td><strong>室内・打ち合わせ</strong></td><td>工事中のマンション室内、右側に縦長窓、コンクリート床、2人が図面確認中</td></tr>
+                <tr><td><strong>廊下</strong></td><td>工事中のマンション廊下、奥へ続く直線的な空間、1人が作業中</td></tr>
+                <tr><td><strong>屋外・外観</strong></td><td>マンション外観の建設現場、足場、青空、2人が作業中、黄色いヘルメット</td></tr>
+                <tr><td><strong>広いフロア</strong></td><td>オフィスフロアの工事中、大きな窓から都市の景色、3人が打ち合わせ中</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 注意点 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title"><i class="fa-solid fa-triangle-exclamation" style="color:#F59E0B;"></i> 注意事項</div>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>参考画像付きで生成したものは<strong>自社・クライアント用途のみ</strong>。Adobe Stock等への販売は避ける</li>
+                <li><strong>テキストプロンプトのみ</strong>で生成した場合は販売可（Adobe Stockガイドライン準拠）</li>
+                <li>Fireflyは<strong>Adobe Creative Cloud（有料）</strong>が必要な場合あり</li>
+            </ul>
+            <div class="note"><i class="fa-solid fa-scale-balanced"></i> 将来的に素材販売を検討する場合は、参考画像なしのテキストプロンプトのみで量産する。</div>
+        </div>
+    </div>
+
+</body>
+</html>
