@@ -26,3 +26,6 @@ node_modules/
 *.pdf
 # Allow recruitment manual PDF in root
 !saiyou-manual.pdf
+
+# SNS Review Folder (temporary review only, not for deployment)
+_sns_review/

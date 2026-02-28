@@ -307,37 +307,45 @@
   <div class="step">
     <div class="step-header">
       <div class="step-num">2</div>
-      <div class="step-title">&#x1F916; AIに頼んでFirefly指示書を作る ← ここがポイント</div>
+      <div class="step-title">&#x1F525; Fireflyに画像を読み込んで差し替え指示を書く ← ここがポイント</div>
     </div>
     <div class="step-body">
       <ol style="padding-left:1.2rem; font-size:0.9rem; margin-bottom:1rem;">
-        <li style="margin-bottom:0.5rem;">Antigravity（このAI）のチャットを開く</li>
-        <li style="margin-bottom:0.5rem;"><strong>参考デザイン画像を貼り付け</strong>てから以下をコピペして送る</li>
-        <li>出てきたテキストをFireflyにそのままコピペ</li>
+        <li style="margin-bottom:0.5rem;"><a href="https://firefly.adobe.com/" target="_blank">firefly.adobe.com</a> を開く → <strong>「参照画像から編集」または「テキストから画像」</strong></li>
+        <li style="margin-bottom:0.5rem;">縦横比を <strong>「ワイドスクリーン（16:9）」</strong> に設定</li>
+        <li style="margin-bottom:0.5rem;">スタイル参照に <strong>デザイン参考.jpg</strong>、被写体参照に <strong>プロフィール画像.png（背景透過済み）</strong> をセット</li>
+        <li style="margin-bottom:0.5rem;">以下のテンプレートを参考に、差し替えたい要素だけを指示として貼り付けて生成</li>
       </ol>
 
-      <div class="label">AIへのメッセージ（コピペ）</div>
+      <div class="label">Fireflyへの指示テンプレート（コピペして編集）</div>
       <div class="code-block">
         <button class="copy-btn" onclick="copyCode(this)">&#x1F4CB; コピー</button>
-        <pre>この参考サムネイルをベースに、以下の動画用のFirefly指示書を作成してください。
+        <pre>デザイン参考.jpgをベースにして、
+人物画像をプロフィール画像.jpgに差し替えてください。
 
-動画タイトル：[ここに動画タイトルを入力]
+人物の向き：[例：右斜め向き・正面向き]
+表情：[例：真剣な表情・やや微笑んでいる]
+視線：[例：カメラ目線・右方向を見ている]
+ポーズ：[例：腕を組んでいる・手を前に出している]
 
-・デザイン参考.jpgのレイアウト・色・構造はそのまま維持
-・人物はプロフィール画像.pngに差し替える
-・画像内のすべてのテキストを動画に合わせて変更する
-・縦書きテキスト・背景ウォーターマーク文字も含めて変更する
-・Fireflyにそのまま貼り付けられる形式で出力してください</pre>
+1行目 "[元のテキスト]" を "[新しいテキスト]" に変更してください。
+2行目 "[元のテキスト]" を "[新しいテキスト]" に変更してください。
+3行目 "[元のテキスト]" を "[新しいテキスト]" に変更してください。</pre>
+      </div>
+
+      <div class="alert alert-purple">
+        <span>&#x1F4A1;</span>
+        <div>
+          <strong>【ルール①】テキストは1行ずつ指示する</strong><br>
+          まとめて指示すると行がズレることがある。<strong>「◯行目 "元テキスト" を "新テキスト" に変更」</strong>と1行ごとに明示するのが確実。<br><br>
+          <strong>【ルール②】人物の向き・表情・視線・ポーズも指示する</strong><br>
+          参考デザインの人物の動きを観察して、<strong>向き・表情・視線・ポーズ</strong>をテキストで明示すると、差し替え後もデザインの雰囲気が崩れにくい。
+        </div>
       </div>
 
       <div class="alert alert-warn">
         <span>&#x26A0;&#xFE0F;</span>
         <div><strong>重要：</strong>「背景色を〇〇に変更」はFireflyに指示しないこと！デザイン構造が崩れます。色変更はSTEP4のPhotopeaで行う。</div>
-      </div>
-
-      <div class="alert alert-green">
-        <span>&#x2705;</span>
-        <div>AIが出力したテキストをそのままコピー → Fireflyに貼り付けるだけ！Geminiは不要！</div>
       </div>
     </div>
   </div>
