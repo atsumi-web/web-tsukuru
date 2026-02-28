@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>リール台本生成ガイド｜AI指示書テンプレート</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --space-bg: #0f172a;
+        --panel-bg: #1e293b;
+        --panel-border: #334155;
+        --text-main: #f1f5f9;
+        --text-dim: #94a3b8;
+        --accent-gold: #d4af37;
+        --accent-blue: #3b82f6;
+        --accent-green: #10b981;
+        --accent-purple: #8b5cf6;
+        --accent-red: #ef4444;
+        --accent-orange: #f97316;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--space-bg);
+        color: var(--text-main);
+        margin: 0;
+        padding: 20px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      header {
+        border-bottom: 1px solid var(--panel-border);
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .title {
+        font-family: "Outfit", sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--accent-gold);
+      }
+      .subtitle {
+        color: var(--text-dim);
+        font-size: 0.82rem;
+        margin-top: 4px;
+      }
+      .back-link {
+        color: var(--text-dim);
+        font-size: 0.8rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .panel {
+        background: var(--panel-bg);
+        border: 1px solid var(--panel-border);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+      .panel-header {
+        padding: 12px 15px;
+        background: rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid var(--panel-border);
+      }
+      .panel-title {
+        font-family: "Outfit", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+      .panel-body {
+        padding: 16px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.82rem;
+        margin: 8px 0;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 7px 10px;
+        text-align: left;
+        color: var(--text-dim);
+        border-bottom: 1px solid var(--panel-border);
+      }
+      td {
+        padding: 7px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        color: var(--text-dim);
+        vertical-align: top;
+      }
+      td strong {
+        color: var(--text-main);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .note {
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 0.82rem;
+        color: #fde68a;
+        margin: 10px 0;
+      }
+      .tip {
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 0.82rem;
+        color: #6ee7b7;
+        margin: 10px 0;
+      }
+      .danger {
+        background: rgba(239, 68, 68, 0.08);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 0.82rem;
+        color: #fca5a5;
+        margin: 10px 0;
+      }
+      .prompt-box {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid var(--panel-border);
+        border-left: 3px solid var(--accent-blue);
+        border-radius: 4px;
+        padding: 14px 16px;
+        font-size: 0.85rem;
+        white-space: pre-wrap;
+        color: #cbd5e1;
+        margin: 10px 0;
+      }
+      ul,
+      ol {
+        padding-left: 18px;
+        margin: 6px 0;
+      }
+      li {
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        color: var(--text-dim);
+      }
+      li strong {
+        color: var(--text-main);
+      }
+      .badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        padding: 1px 7px;
+        border-radius: 10px;
+        font-weight: 700;
+        margin-left: 4px;
+      }
+      .badge-ok {
+        background: rgba(16, 185, 129, 0.2);
+        color: #6ee7b7;
+      }
+      .badge-ng {
+        background: rgba(239, 68, 68, 0.2);
+        color: #fca5a5;
+      }
+
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 640px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <div class="title">
+          <i class="fa-solid fa-scroll"></i> リール台本生成ガイド
+        </div>
+        <div class="subtitle">
+          AIへの指示書テンプレート｜建設業採用LP特化・Instagram Reels
+          5パーツ構成
+        </div>
+      </div>
+      <a href="index.html" class="back-link"
+        ><i class="fa-solid fa-chevron-left"></i> 司令室へ</a
+      >
+    </header>
+
+    <!-- ターゲット定義 -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" style="color: var(--accent-blue)">
+          <i class="fa-solid fa-bullseye"></i> ターゲット定義
+        </div>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tr>
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+          <tr>
+            <td><strong>視聴者</strong></td>
+            <td>建設業の経営者・採用担当者（主に40〜60代男性）</td>
+          </tr>
+          <tr>
+            <td><strong>悩み</strong></td>
+            <td>人手不足・求人を出しても応募が来ない・採用コストが高い</td>
+          </tr>
+          <tr>
+            <td><strong>求めていること</strong></td>
+            <td>採用を改善したいが方法がわからない・コストを下げたい</td>
+          </tr>
+          <tr>
+            <td><strong>えりさんの立場</strong></td>
+            <td>建設業採用LP専門のWeb制作者（Webとしくみをつくる）</td>
+          </tr>
+          <tr>
+            <td><strong>発信の目的</strong></td>
+            <td>採用LPの必要性を認識させ、プロフィールリンクへ誘導する</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5パーツ構成 -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" style="color: var(--accent-purple)">
+          <i class="fa-solid fa-layer-group"></i> 5パーツ構成（15秒リール）
+        </div>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tr>
+            <th>パーツ</th>
+            <th>役割</th>
+            <th>秒数</th>
+            <th>文字数目安</th>
+          </tr>
+          <tr>
+            <td><strong>① フック</strong></td>
+            <td>冒頭の1〜2秒で止め、続きを見たくさせる</td>
+            <td>3秒</td>
+            <td>30〜40字</td>
+          </tr>
+          <tr>
+            <td><strong>② 問題</strong></td>
+            <td>視聴者が抱える課題・状況を言語化して共感させる</td>
+            <td>3秒</td>
+            <td>30〜45字</td>
+          </tr>
+          <tr>
+            <td><strong>③ 解説</strong></td>
+            <td>なぜそうなるのか・知られていない事実を教える</td>
+            <td>3秒</td>
+            <td>30〜45字</td>
+          </tr>
+          <tr>
+            <td><strong>④ 解決</strong></td>
+            <td>採用LPによってどう解決するかを示す</td>
+            <td>3秒</td>
+            <td>30〜40字</td>
+          </tr>
+          <tr>
+            <td><strong>⑤ CTA</strong></td>
+            <td>プロフィールのリンクへ誘導する行動喚起</td>
+            <td>3秒</td>
+            <td>20〜30字</td>
+          </tr>
+        </table>
+        <div class="note">
+          <i class="fa-solid fa-info-circle"></i>
+          1スライドあたり<strong>30〜45字以内</strong>を目安に。Canvaで縦書きにならないよう横書きで設計すること。
+        </div>
+      </div>
+    </div>
+
+    <!-- フックのルール -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" style="color: var(--accent-gold)">
+          <i class="fa-solid fa-bolt"></i> フックの書き方ルール
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="grid2">
+          <div>
+            <p
+              style="
+                color: var(--accent-green);
+                font-size: 0.82rem;
+                margin: 0 0 6px;
+              "
+            >
+              <strong
+                ><i class="fa-solid fa-circle-check"></i> OK パターン</strong
+              >
+            </p>
+            <ul>
+              <li>
+                驚きの事実で始める<br /><span style="color: #6ee7b7"
+                  >「採用コスト、実は1人80万円以上かかっています」</span
+                >
+              </li>
+              <li>
+                問いかけ形式（柔らかく）<br /><span style="color: #6ee7b7"
+                  >「採用ページ、スマホで見てみたことはありますか？」</span
+                >
+              </li>
+              <li>
+                心当たり形式<br /><span style="color: #6ee7b7"
+                  >「採用がうまくいかない…心当たりはありませんか？」</span
+                >
+              </li>
+              <li>「〜という言葉、実は逆効果かも」形式</li>
+              <li>「〜を知っていますか？」形式</li>
+            </ul>
+          </div>
+          <div>
+            <p
+              style="
+                color: var(--accent-red);
+                font-size: 0.82rem;
+                margin: 0 0 6px;
+              "
+            >
+              <strong
+                ><i class="fa-solid fa-circle-xmark"></i> NG パターン</strong
+              >
+            </p>
+            <ul>
+              <li>
+                責める・批判する表現<br /><span style="color: #fca5a5"
+                  >「採用できていませんか？」</span
+                >
+              </li>
+              <li>
+                試すような表現<br /><span style="color: #fca5a5"
+                  >「説明できますか？」</span
+                >
+              </li>
+              <li>
+                曖昧な批判<br /><span style="color: #fca5a5"
+                  >「ぼんやりしていませんか？」</span
+                >
+              </li>
+              <li>
+                上から目線<br /><span style="color: #fca5a5"
+                  >「まだやっていないんですか？」</span
+                >
+              </li>
+              <li>
+                誇大表現<br /><span style="color: #fca5a5"
+                  >「必ず採用できる」「100%効果あり」</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA パターン集 -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" style="color: var(--accent-green)">
+          <i class="fa-solid fa-arrow-pointer"></i> CTAパターン集（使い回し用）
+        </div>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tr>
+            <th>#</th>
+            <th>CTA文</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>プロフィールのリンクから採用LPをご確認ください</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>詳しい事例はプロフィールのリンクから</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>採用LPの仕組みはプロフィールのリンクで解説しています</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>まずはプロフィールのリンクから無料相談へ</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>採用改善の第一歩、プロフィールのリンクから</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>続きはプロフィールのリンクでご確認ください</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>実績はプロフィールのリンクから見られます</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>興味があればプロフィールのリンクからお気軽にどうぞ</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>採用LPの制作事例はリンクから確認できます</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>お役に立てそうな方はリンクからご連絡ください</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- キーワード -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <i class="fa-solid fa-tags"></i> 使えるキーワード / NGキーワード
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="grid2">
+          <div>
+            <p
+              style="
+                color: var(--accent-green);
+                font-size: 0.82rem;
+                margin: 0 0 6px;
+              "
+            >
+              <strong>使えるキーワード</strong>
+            </p>
+            <ul>
+              <li>採用LP・採用ページ・採用サイト</li>
+              <li>建設業・建設会社・工事会社</li>
+              <li>人手不足・採用難・応募数</li>
+              <li>離脱率・応募率・採用コスト</li>
+              <li>スマホ対応・導線設計</li>
+              <li>社員インタビュー・リアルな声</li>
+              <li>GA4・アクセス解析</li>
+              <li>LINE・Meta・Instagram</li>
+              <li>未経験歓迎・女性採用</li>
+            </ul>
+          </div>
+          <div>
+            <p
+              style="
+                color: var(--accent-red);
+                font-size: 0.82rem;
+                margin: 0 0 6px;
+              "
+            >
+              <strong>NGキーワード</strong>
+            </p>
+            <ul>
+              <li>競合他社の名前・サービス名</li>
+              <li>「必ず」「絶対」「100%」などの断言</li>
+              <li>「簡単」「誰でも」などの誇大表現</li>
+              <li>「儲かる」「稼げる」などの金銭断言</li>
+              <li>統計の出典が不明確な数字</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 年間テーマカレンダー -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" style="color: var(--accent-purple)">
+          <i class="fa-solid fa-calendar"></i> 年間テーマカレンダー
+        </div>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tr>
+            <th>月</th>
+            <th>テーマ</th>
+            <th>切り口</th>
+          </tr>
+          <tr>
+            <td><strong>3月</strong></td>
+            <td>採用LP基礎知識</td>
+            <td>なぜ採用が難しいか・LPの必要性</td>
+          </tr>
+          <tr>
+            <td><strong>4月</strong></td>
+            <td>採用の失敗パターン</td>
+            <td>よくある間違い・改善への共感</td>
+          </tr>
+          <tr>
+            <td><strong>5月</strong></td>
+            <td>求職者の本音</td>
+            <td>応募者は実は何を見ているか</td>
+          </tr>
+          <tr>
+            <td><strong>6月</strong></td>
+            <td>SNS×採用</td>
+            <td>Instagram・LINE活用の具体策</td>
+          </tr>
+          <tr>
+            <td><strong>7月</strong></td>
+            <td>採用LPの作り方</td>
+            <td>構成・デザイン・文章の基本</td>
+          </tr>
+          <tr>
+            <td><strong>8月</strong></td>
+            <td>採用コスト削減</td>
+            <td>お金をかけない採用の仕組み</td>
+          </tr>
+          <tr>
+            <td><strong>9月</strong></td>
+            <td>秋の採用準備</td>
+            <td>年度末採用に向けた仕込み</td>
+          </tr>
+          <tr>
+            <td><strong>10月</strong></td>
+            <td>若者・女性採用</td>
+            <td>新卒・未経験・女性へのアプローチ</td>
+          </tr>
+          <tr>
+            <td><strong>11月</strong></td>
+            <td>採用成功事例</td>
+            <td>具体的な変化・数字・ビフォーアフター</td>
+          </tr>
+          <tr>
+            <td><strong>12月</strong></td>
+            <td>来年の採用戦略</td>
+            <td>年初に刺さる計画・準備系</td>
+          </tr>
+          <tr>
+            <td><strong>1月</strong></td>
+            <td>採用ブランディング</td>
+            <td>会社の魅力を言語化する方法</td>
+          </tr>
+          <tr>
+            <td><strong>2月</strong></td>
+            <td>LP改善・振り返り</td>
+            <td>アクセス数・応募数の改善策</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- AIへの指示文テンプレート -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" style="color: var(--accent-blue)">
+          <i class="fa-solid fa-robot"></i>
+          AIへの指示文テンプレート（次回そのままコピー）
+        </div>
+      </div>
+      <div class="panel-body">
+        <p
+          style="color: var(--text-dim); font-size: 0.82rem; margin-bottom: 8px"
+        >
+          以下を月ごとのテーマに書き換えてAntigravityに貼り付けるだけでOK：
+        </p>
+        <div class="prompt-box">
+          以下の条件でInstagramリール用の台本を30本生成してCSVにしてください。
+          【ターゲット】 建設業の経営者・採用担当者（40〜60代・男性が多い）
+          悩み：人手不足・応募が来ない・採用コストが高い 【今月のテーマ】
+          ※ここにテーマを入れる（例：採用の失敗パターン）
+          【構成】5パーツ（フック・問題・解説・解決・CTA）
+          【1スライドの文字数】30〜45字以内 【フックのルール】
+          ・責めない・試さない・上から目線NG
+          ・驚きの事実、問いかけ、心当たり形式で始める 【CTAのルール】
+          ・10パターンのCTAをローテーションして使う ・全部同じにしない
+          【出力形式】 CSVファイルで出力：列名は「フック,問題,解説,解決,CTA」
+          1行目はヘッダー行、2〜31行目が台本データ
+        </div>
+        <div class="tip">
+          <i class="fa-solid fa-lightbulb"></i>
+          テーマ部分だけ書き換えれば毎月そのまま使えます。
+        </div>
+      </div>
+    </div>
+
+    <!-- 品質チェックリスト -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <i class="fa-solid fa-clipboard-check"></i>
+          品質チェックリスト（CSV確認時）
+        </div>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>フックに責める・試す表現がないか</li>
+          <li>1スライドが45字以内に収まっているか</li>
+          <li>CTAが30本でバリエーションがあるか（全部同じでないか）</li>
+          <li>「必ず」「絶対」などの誇大表現がないか</li>
+          <li>出典不明の統計数字がないか</li>
+          <li>「でを」「はが」など助詞の重複ミスがないか</li>
+          <li>解決がCTAと被っていないか（解決は「方向性」、CTAは「行動」）</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
