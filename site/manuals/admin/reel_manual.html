@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvaリール量産マニュアル｜建設業採用LP専門</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-pink: #E4405F;
+            --accent-purple: #8B5CF6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--space-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        a { color: var(--accent-blue); text-decoration: none; }
+
+        header {
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subtitle { color: var(--text-dim); font-size: 0.82rem; margin-top: 4px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .panel-header {
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--panel-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .panel-body { padding: 16px; }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: var(--accent-purple);
+            color: white;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-body strong { color: var(--text-main); display: block; margin-bottom: 4px; }
+        .step-body p { color: var(--text-dim); margin: 0; font-size: 0.85rem; }
+        .step-body .sub { margin-top: 6px; }
+
+        .prompt-box {
+            background: rgba(0,0,0,0.35);
+            border: 1px solid var(--panel-border);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 4px;
+            padding: 14px 16px;
+            font-size: 0.82rem;
+            white-space: pre-wrap;
+            color: #CBD5E1;
+            margin: 10px 0;
+            position: relative;
+        }
+        .copy-label {
+            font-size: 0.7rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .note {
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #FDE68A;
+            margin: 10px 0;
+        }
+        .tip {
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #6EE7B7;
+            margin: 10px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+        .badge-pro { background: rgba(212,175,55,0.2); color: var(--accent-gold); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin: 8px 0;
+        }
+        th {
+            background: rgba(255,255,255,0.05);
+            padding: 7px 10px;
+            text-align: left;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--panel-border);
+        }
+        td {
+            padding: 7px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-dim);
+        }
+        td strong { color: var(--text-main); }
+        tr:last-child td { border-bottom: none; }
+
+        ul { padding-left: 18px; margin: 6px 0; }
+        li { margin-bottom: 3px; font-size: 0.85rem; color: var(--text-dim); }
+        li strong { color: var(--text-main); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <div class="title"><i class="fa-solid fa-clapperboard"></i> Canvaリール量産マニュアル</div>
+            <div class="subtitle">出永さんセミナー（2026.02.25）をもとにえりさん専用にカスタマイズ｜建設業採用リールを30本ほぼ自動作成</div>
+        </div>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> 司令室へ</a>
+    </header>
+
+    <!-- 概要 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-purple);"><i class="fa-solid fa-map"></i> 全体の流れ（5ステップ）</div>
+        </div>
+        <div class="panel-body">
+            <table>
+                <tr><th>STEP</th><th>作業</th><th>ツール</th><th>時間目安</th></tr>
+                <tr><td><strong>1</strong></td><td>AIに台本30本を生成させる</td><td>Canva Sheets</td><td>5分</td></tr>
+                <tr><td><strong>2</strong></td><td>リールテンプレートを選んでカスタマイズ</td><td>Canvaテンプレート</td><td>10分</td></tr>
+                <tr><td><strong>3</strong></td><td>一括作成で30本を自動生成</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>5分</td></tr>
+                <tr><td><strong>4</strong></td><td>微調整してMP4でダウンロード</td><td>Canva</td><td>10分〜</td></tr>
+                <tr><td><strong>5</strong></td><td>Instagramに投稿 or 予約</td><td>Meta Business Suite</td><td>—</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-1"></i> STEP 1｜Canva Sheetsで台本30本を生成</div>
+        </div>
+        <div class="panel-body">
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>Canvaホーム画面を開く</strong>
+                    <p>「Canvaシート」（青いアイコン）をクリックして新規作成</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>「アクション」→「表を作成する」を選択</strong>
+                    <p>AIが入力できるテキストボックスが表示される</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>以下のプロンプトをそのまま貼り付けて実行</strong>
+                </div>
+            </div>
+
+            <span class="copy-label">▼ えりさん専用プロンプト（コピーして貼り付けてください）</span>
+            <div class="prompt-box">あなたはプロのWEB制作者です。
+以下の指示に従って、Instagramに投稿するリール動画の台本を30本作ってください。
+投稿ターゲット：建設会社の採用に悩んでいる経営者・採用担当者（30〜40代男性）
+内容：「建設業の採用」に関して、ターゲットが思わず見てしまう内容にしてください。
+
+条件1：文字数は200文字以内
+条件2：採用が初めての経営者でもわかるように
+条件3：冒頭／中間／最後の3列で書いてください
+
+構成1（冒頭）：建設業採用に関する驚きの事実や痛い問いかけ
+構成2（中間）：1の根拠・解決の糸口を簡潔に説明
+構成3（最後）：「プロフィールのリンクから採用LPをご確認ください」という行動促進</div>
+
+            <div class="step" style="margin-top:10px;">
+                <div class="step-num">④</div>
+                <div class="step-body">
+                    <strong>「追加」ボタンで台本をシートに保存</strong>
+                    <p>30行（冒頭・中間・最後の3列）のシートが完成したらOK</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-2"></i> STEP 2｜リールテンプレートを準備</div>
+        </div>
+        <div class="panel-body">
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>Canvaホームに戻り「テンプレート」を開く</strong>
+                    <p>「リール シンプル」で検索 → シンプルなテキスト中心のものを選択</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>「カスタマイズ」で編集画面へ</strong>
+                    <p>タイムライン形式の動画編集画面が開く</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>3カット構成に設定</strong>
+                    <p>冒頭・中間・最後 をそれぞれ <strong>3秒ずつ</strong>（合計9秒）に設定<br>
+                    不要な装飾を削除してシンプルに。テキストボックスを3つ残す</p>
+                </div>
+            </div>
+            <div class="note"><i class="fa-solid fa-info-circle"></i> 背景動画は全カット合計9秒に調整する。文字が読みやすいようコントラストを確保。</div>
+        </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-3"></i> STEP 3｜一括作成で30本を自動生成 <span class="badge badge-pro">Canva Pro必須</span></div>
+        </div>
+        <div class="panel-body">
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>編集画面左下「アプリ」→「一括作成」を選択</strong>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>「スプレッドシート」→ Canvaシートを選択</strong>
+                    <p>STEP1で作ったシートを読み込む</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>テキストとデータを接続</strong>
+                    <p>各テキストボックスを右クリック →「データの接続」→ 対応する列（冒頭・中間・最後）をリンク</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">④</div>
+                <div class="step-body">
+                    <strong>「続行」→「◯点のデザインを作成」を実行</strong>
+                    <p>30本分のリール動画がワンクリックで生成される</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-green);"><i class="fa-solid fa-4"></i> STEP 4｜微調整してMP4ダウンロード</div>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>鉛筆マークから個別に編集（フォントサイズ・改行・配置）</li>
+                <li>問題なければ「共有」→「ダウンロード」→「<strong>MP4形式</strong>」</li>
+                <li>一括ダウンロードも可能</li>
+            </ul>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 文字の改行位置がおかしい場合は手動で調整。長すぎるテキストは削ってシンプルに。</div>
+        </div>
+    </div>
+
+    <!-- 参考 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i> 参考セミナー動画</div>
+        </div>
+        <div class="panel-body">
+            <a href="https://www.youtube.com/watch?v=NO2uiuLbR1c" target="_blank" style="color:var(--accent-blue);">
+                【インスタラボ】Canvaを使ってほぼ自動でリール動画を30本作る方法 ｜ 2026.02.25
+            </a>
+            <p style="color:var(--text-dim); font-size:0.82rem; margin-top:6px;">出永さん（Inspire Lab）主催セミナー。Canva Sheets × 一括作成の具体的な操作手順を解説。</p>
+        </div>
+    </div>
+
+</body>
+</html>
