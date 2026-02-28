@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI分析マニュアル｜週次データ分析</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-purple: #8B5CF6;
+            --danger: #EF4444;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--space-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        header {
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subtitle { color: var(--text-dim); font-size: 0.85rem; margin-top: 4px; }
+
+        .section {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title i { font-size: 1rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            background: rgba(255,255,255,0.05);
+            padding: 8px 12px;
+            text-align: left;
+            color: var(--text-dim);
+            font-weight: 600;
+            border-bottom: 1px solid var(--panel-border);
+        }
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: top;
+        }
+        tr:last-child td { border-bottom: none; }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .badge-green { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+        .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+        .badge-gold { background: rgba(212,175,55,0.15); color: var(--accent-gold); }
+
+        .prompt-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--panel-border);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 4px;
+            padding: 14px 16px;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            color: #CBD5E1;
+            margin: 10px 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 14px;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: var(--accent-blue);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-content { flex: 1; }
+        .step-content strong { color: var(--text-main); }
+        .step-content p { color: var(--text-dim); margin: 4px 0 0 0; font-size: 0.82rem; }
+
+        .tip {
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            color: #FDE68A;
+        }
+        .tip i { margin-right: 6px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+        }
+        .back-link:hover { color: var(--text-main); }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> 運用司令室に戻る</a>
+
+    <header>
+        <div class="title"><i class="fa-solid fa-chart-line"></i> AI分析マニュアル</div>
+        <div class="subtitle">週次データをAIに渡して「次やること」を決める手順書</div>
+    </header>
+
+    <!-- STEP 1: どのデータを取るか -->
+    <div class="section">
+        <div class="section-title" style="color:var(--accent-blue);"><i class="fa-solid fa-database"></i> STEP 1｜収集するデータ一覧</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ツール</th>
+                    <th>取得する数値</th>
+                    <th>頻度</th>
+                    <th>リンク</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge badge-green">Instagram</span></td>
+                    <td>リーチ・インプレッション・いいね・保存・フォロワー数</td>
+                    <td>週1回</td>
+                    <td><a href="https://business.facebook.com/latest/insights/results?platform=Instagram" target="_blank">インサイトを開く</a></td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-blue">Facebook</span></td>
+                    <td>リーチ・エンゲージメント・フォロワー数</td>
+                    <td>週1回</td>
+                    <td><a href="https://business.facebook.com/latest/insights/results?platform=Facebook" target="_blank">インサイトを開く</a></td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-gold">GA4</span></td>
+                    <td>セッション数・ユーザー数・直帰率・上位ページ</td>
+                    <td>週1回</td>
+                    <td><a href="https://analytics.google.com/" target="_blank">GA4を開く</a></td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-green">Search Console</span></td>
+                    <td>クリック数・表示回数・CTR・検索キーワード上位10件</td>
+                    <td>週1回</td>
+                    <td><a href="https://search.google.com/search-console" target="_blank">コンソールを開く</a></td>
+                </tr>
+                <tr>
+                    <td><span class="badge" style="background:rgba(6,199,85,0.15);color:#06C755;">LINE</span></td>
+                    <td>友だち数・ブロック数・チャット件数</td>
+                    <td>週1回</td>
+                    <td><a href="https://manager.line.biz/account/@788iztqa" target="_blank">LINEマネージャー</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- STEP 2: AIへの渡し方 -->
+    <div class="section">
+        <div class="section-title" style="color:var(--accent-green);"><i class="fa-solid fa-robot"></i> STEP 2｜AIへのデータの渡し方</div>
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <strong>各ツールのスクリーンショットを撮る</strong>
+                <p>週ごとのデータ画面を画像で保存。または数字をコピーしてテキストにまとめる。</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <strong>Antigravity（このAI）に画像 or テキストを貼り付ける</strong>
+                <p>スクリーンショットを直接チャットに貼り付けるだけでOK。</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <strong>以下のプロンプトをそのまま使う</strong>
+            </div>
+        </div>
+
+        <div class="prompt-box">【週次分析依頼】
+
+今週のデータを貼ります。分析して来週やることを教えてください。
+
+■ Instagram
+- フォロワー：〇人（前週比 ±〇）
+- リーチ：〇
+- 保存数：〇（最多投稿：投稿タイトル）
+
+■ Facebook
+- フォロワー：〇人
+- リーチ：〇
+
+■ GA4（web-tsukuru.jp）
+- セッション：〇
+- 上位ページ：①〇 ②〇 ③〇
+
+■ Search Console
+- クリック：〇
+- 上位キーワード：①〇 ②〇
+
+■ LINE
+- 友だち：〇人（前週比 ±〇）
+- チャット：〇件
+
+お願いすること：
+1. 伸びているもの・課題の特定
+2. 来週の投稿テーマの提案
+3. 改善すべき優先順位（1〜3位）</div>
+    </div>
+
+    <!-- STEP 3: 分析結果の使い方 -->
+    <div class="section">
+        <div class="section-title" style="color:var(--accent-gold);"><i class="fa-solid fa-lightbulb"></i> STEP 3｜分析結果の活かし方</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>AIから出てきた提案</th>
+                    <th>すること</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>「この投稿が保存率高い」</td>
+                    <td>同じ型で次の投稿を作る</td>
+                </tr>
+                <tr>
+                    <td>「HPには来ているがLINE登録ゼロ」</td>
+                    <td>CTAボタンの位置・文言を見直す</td>
+                </tr>
+                <tr>
+                    <td>「このキーワードでSEO流入がある」</td>
+                    <td>そのキーワードでブログ記事を書く</td>
+                </tr>
+                <tr>
+                    <td>「フォロワーが伸びていない」</td>
+                    <td>ハッシュタグ・投稿時間を変える</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tip">
+        <i class="fa-solid fa-bolt"></i>
+        <strong>毎週金曜日の夜に5分だけ</strong>データを見てAIに貼るだけ。来週の作業が自動的に決まります。
+    </div>
+
+</body>
+</html>
