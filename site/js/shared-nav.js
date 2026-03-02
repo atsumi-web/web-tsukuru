@@ -17,7 +17,6 @@
   var depth = pathname.split("/").filter(Boolean).length;
   var root = depth <= 1 ? "./" : new Array(depth).join("../");
 
-
   // アクティブページ判定
   var p = window.location.pathname;
   var isBlog = p.indexOf("/blog/") !== -1;
@@ -43,14 +42,12 @@
     link(root + "blog/index.html", "ブログ", isBlog),
     link("/works.html", "実績", isWorks),
     link(
-      "https://lin.ee/nMDNiFg",
-      '<i class="fa-brands fa-line"></i> 無料相談',
+      root + "index.html#lead-magnet",
+      '<i class="fa-brands fa-line"></i> LINE登録特典',
       false,
       "nav-btn",
     ),
   ].join("");
 
-  // LINE リンクは別タブで開く
-  var lineBtn = nav.querySelector(".nav-btn");
-  if (lineBtn) lineBtn.setAttribute("target", "_blank");
+  // nav-btn はページ内リンク（別タブ不要）
 })();
