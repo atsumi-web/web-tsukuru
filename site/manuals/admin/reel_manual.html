@@ -446,12 +446,22 @@
             <div class="step">
                 <div class="step-num">①'</div>
                 <div class="step-body">
-                    <strong>残り5本のファイル名を正しいものに変更</strong>
-                    <p>後でDLした5本はファイル名が「1〜5」になってしまう。<br>
-                    正しいファイル名（26〜30）に手動またはPowerShellで変更する</p>
-                    <p class="sub" style="margin-top:8px; color:#94A3B8; font-size:0.8rem;">例：<code>1.mp4</code> → <code>reel_26.mp4</code>、<code>2.mp4</code> → <code>reel_27.mp4</code>…</p>
+                    <strong>ファイル名から先頭の番号を一括削除（PowerShell）</strong>
+                    <p>CanvaのDLファイルは <code>1_reel_04.mp4</code> のように先頭に番号がつく。<br>
+                    以下のPowerShellコマンドで一括削除できる：</p>
+                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--panel-border); border-left:3px solid var(--accent-blue); border-radius:4px; padding:10px 14px; font-size:0.82rem; color:#CBD5E1; margin:8px 0; font-family:monospace;">
+                        Get-ChildItem "*.mp4" | Rename-Item -NewName { $_.Name -replace '^\d+_', '' }
+                    </div>
+                    <p style="color:#94A3B8; font-size:0.8rem;">
+                        ①ダウンロードしたフォルダをエクスプローラーで開く<br>
+                        ②アドレスバーをクリックして <code>powershell</code> と入力 → Enter<br>
+                        ③上のコマンドをコピペ → Enter<br>
+                        → <code>1_reel_04.mp4</code> が <code>reel_04.mp4</code> に変換される
+                    </p>
+                    <p style="color:#94A3B8; font-size:0.8rem;">残り5本（26〜30）は後からDLしてリネーム。Canvaでは26〜30が1〜5の名前になるので要注意。</p>
                 </div>
             </div>
+
             <div class="step">
                 <div class="step-num">②</div>
                 <div class="step-body">
