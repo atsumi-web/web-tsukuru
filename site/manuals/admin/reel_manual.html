@@ -501,7 +501,22 @@
                     <img src="../images/meta-share-settings.png" alt="Metaシェア画面" class="manual-img">
                 </div>
             </div>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> キャプションの共通テンプレ例：<br>建設会社の採用でお悩みの方へ。採用ページを活用することで応募数・質ともに改善できます。<br>👇プロフィールのリンクから詳しく見られます<br>#建設業採用 #採用ページ #採用サイト #建設会社 #人手不足対策 #採用担当 #中小企業採用</div>
+            <div style="margin-top:12px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+                    <span style="font-size:0.82rem; color:var(--accent-green); font-weight:700;"><i class="fa-solid fa-copy"></i> 共通キャプション（コピーして使い回す）</span>
+                    <button onclick="copyCaption()" id="copyBtn" style="background:var(--accent-blue); color:white; border:none; border-radius:4px; padding:4px 12px; font-size:0.75rem; cursor:pointer; font-family:'Noto Sans JP',sans-serif;">コピー</button>
+                </div>
+                <pre id="captionText" style="background:rgba(0,0,0,0.35); border:1px solid var(--panel-border); border-left:3px solid var(--accent-green); border-radius:4px; padding:14px 16px; font-size:0.82rem; color:#CBD5E1; margin:0; white-space:pre-wrap; font-family:'Noto Sans JP',sans-serif; line-height:1.8;">建設会社の採用でお悩みの方へ。
+採用ページを活用することで、
+応募数・質ともに改善できます。
+
+👇プロフィールのリンクから詳しく見られます
+
+#建設業採用 #採用ページ #採用サイト #建設会社 #人手不足対策
+#採用担当 #中小企業採用 #採用マーケティング</pre>
+            </div>
+            <div class="note" style="margin-top:10px;"><i class="fa-solid fa-triangle-exclamation"></i> <strong>音源を編集すると予約投稿が使えなくなる。</strong>BGMはCanva側で設定してからDLし、Meta上では音源をいじらない。</div>
+
         </div>
     </div>
 
@@ -518,5 +533,21 @@
         </div>
     </div>
 
+
+<script>
+function copyCaption() {
+    const text = document.getElementById('captionText').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✓ コピーしました！';
+        btn.style.background = 'var(--accent-green)';
+        setTimeout(() => {
+            btn.textContent = 'コピー';
+            btn.style.background = 'var(--accent-blue)';
+        }, 2000);
+    });
+}
+</script>
 </body>
 </html>
+
