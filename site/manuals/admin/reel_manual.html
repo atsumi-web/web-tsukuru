@@ -19,6 +19,7 @@
             --accent-green: #10B981;
             --accent-pink: #E4405F;
             --accent-purple: #8B5CF6;
+            --accent-orange: #F97316;
         }
         * { box-sizing: border-box; }
         body {
@@ -31,6 +32,7 @@
             line-height: 1.7;
         }
         a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
         header {
             border-bottom: 1px solid var(--panel-border);
@@ -102,27 +104,6 @@
         }
         .step-body strong { color: var(--text-main); display: block; margin-bottom: 4px; }
         .step-body p { color: var(--text-dim); margin: 0; font-size: 0.85rem; }
-        .step-body .sub { margin-top: 6px; }
-
-        .prompt-box {
-            background: rgba(0,0,0,0.35);
-            border: 1px solid var(--panel-border);
-            border-left: 3px solid var(--accent-blue);
-            border-radius: 4px;
-            padding: 14px 16px;
-            font-size: 0.82rem;
-            white-space: pre-wrap;
-            color: #CBD5E1;
-            margin: 10px 0;
-            position: relative;
-        }
-        .copy-label {
-            font-size: 0.7rem;
-            color: var(--accent-blue);
-            font-weight: 700;
-            margin-bottom: 6px;
-            display: block;
-        }
 
         .note {
             background: rgba(212,175,55,0.08);
@@ -142,6 +123,15 @@
             color: #6EE7B7;
             margin: 10px 0;
         }
+        .danger {
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #FCA5A5;
+            margin: 10px 0;
+        }
 
         .badge {
             display: inline-block;
@@ -152,6 +142,7 @@
             margin-left: 6px;
         }
         .badge-pro { background: rgba(212,175,55,0.2); color: var(--accent-gold); }
+        .badge-new { background: rgba(16,185,129,0.2); color: var(--accent-green); }
 
         table {
             width: 100%;
@@ -177,6 +168,23 @@
         ul { padding-left: 18px; margin: 6px 0; }
         li { margin-bottom: 3px; font-size: 0.85rem; color: var(--text-dim); }
         li strong { color: var(--text-main); }
+
+        .link-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            transition: opacity 0.2s;
+        }
+        .link-row:hover { opacity: 0.8; text-decoration: none; }
+        .link-row .lr-text { flex: 1; font-weight: 500; }
+        .link-row .lr-sub { font-size: 0.75rem; color: var(--text-dim); }
+        .link-row .lr-icon { font-size: 1rem; width: 20px; text-align: center; }
     </style>
 </head>
 <body>
@@ -184,24 +192,59 @@
     <header>
         <div>
             <div class="title"><i class="fa-solid fa-clapperboard"></i> Canvaリール量産マニュアル</div>
-            <div class="subtitle">出永さんセミナー（2026.02.25）をもとにえりさん専用にカスタマイズ｜建設業採用リールを30本ほぼ自動作成</div>
+            <div class="subtitle">5パーツ構成・1シート完結・30本一括作成｜建設業採用リール専用（2026.03更新）</div>
         </div>
         <a href="index.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> 司令室へ</a>
     </header>
 
-    <!-- 概要 -->
+    <!-- クイックリンク -->
     <div class="panel">
         <div class="panel-header">
-            <div class="panel-title" style="color:var(--accent-purple);"><i class="fa-solid fa-map"></i> 全体の流れ（5ステップ）</div>
+            <div class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-link"></i> クイックリンク</div>
+        </div>
+        <div class="panel-body">
+            <a href="https://www.canva.com/folder/FAHClkJ0WHU" target="_blank" class="link-row" style="background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.3);">
+                <i class="fa-solid fa-folder-open lr-icon" style="color:var(--accent-purple);"></i>
+                <span class="lr-text">リール動画フォルダ（全般）</span>
+                <span class="lr-sub">Canva</span>
+            </a>
+            <a href="https://www.canva.com/design/DAHCli5QE1o/sNDiGn0cTKbz2fIucV7Jzg/edit" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                <i class="fa-solid fa-table lr-icon" style="color:var(--accent-blue);"></i>
+                <span class="lr-text">リールデータ（Canvaシート）</span>
+                <span class="lr-sub">スプレッドシートの内容をここにコピペする</span>
+            </a>
+            <a href="https://www.canva.com/folder/FAHCo4MwBHs" target="_blank" class="link-row" style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3);">
+                <i class="fa-solid fa-film lr-icon" style="color:var(--accent-green);"></i>
+                <span class="lr-text">リール動画（テンプレ＆完成品）</span>
+                <span class="lr-sub">Canva</span>
+            </a>
+            <a href="https://www.canva.com/folder/FAHCu5n00BM" target="_blank" class="link-row" style="background:rgba(228,64,95,0.08); border:1px solid rgba(228,64,95,0.3);">
+                <i class="fa-solid fa-image lr-icon" style="color:var(--accent-pink);"></i>
+                <span class="lr-text">リール表紙（テンプレ＆完成品）</span>
+                <span class="lr-sub">Canva</span>
+            </a>
+            <a href="https://drive.google.com/drive/u/0/folders/1ZkNJkyPli2yJIln6i2ry0qDZO8Z93aLF" target="_blank" class="link-row" style="background:rgba(66,133,244,0.08); border:1px solid rgba(66,133,244,0.3);">
+                <i class="fa-brands fa-google-drive lr-icon" style="color:#4285F4;"></i>
+                <span class="lr-text">Googleドライブフォルダ（リール用）</span>
+                <span class="lr-sub">AIに作ってもらったデータでスプレッドシートを作成・保存</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 全体フロー -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-purple);"><i class="fa-solid fa-map"></i> 全体の流れ（6ステップ）</div>
         </div>
         <div class="panel-body">
             <table>
                 <tr><th>STEP</th><th>作業</th><th>ツール</th><th>時間目安</th></tr>
-                <tr><td><strong>1</strong></td><td>AIに台本30本を生成させる</td><td>Canva Sheets</td><td>5分</td></tr>
-                <tr><td><strong>2</strong></td><td>リールテンプレートを選んでカスタマイズ</td><td>Canvaテンプレート</td><td>10分</td></tr>
-                <tr><td><strong>3</strong></td><td>一括作成で30本を自動生成</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>5分</td></tr>
-                <tr><td><strong>4</strong></td><td>微調整してMP4でダウンロード</td><td>Canva</td><td>10分〜</td></tr>
-                <tr><td><strong>5</strong></td><td>Instagramに投稿 or 予約</td><td>Meta Business Suite</td><td>—</td></tr>
+                <tr><td><strong>1</strong></td><td>AIに台本CSVを生成させる</td><td>Antigravity AI</td><td>5分</td></tr>
+                <tr><td><strong>2</strong></td><td>CSVをCanvaシートにコピペ</td><td>Canvaシート</td><td>3分</td></tr>
+                <tr><td><strong>3</strong></td><td>5ページのリールテンプレートを準備</td><td>Canvaテンプレート</td><td>15分（初回のみ）</td></tr>
+                <tr><td><strong>4</strong></td><td>一括作成で30本を自動生成</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>5分</td></tr>
+                <tr><td><strong>5</strong></td><td>表紙も同様に30枚一括生成</td><td>Canva 一括作成</td><td>5分</td></tr>
+                <tr><td><strong>6</strong></td><td>MP4ダウンロード → Meta Business Suiteで投稿予約</td><td>Meta Business Suite</td><td>—</td></tr>
             </table>
         </div>
     </div>
@@ -209,90 +252,99 @@
     <!-- STEP 1 -->
     <div class="panel">
         <div class="panel-header">
-            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-1"></i> STEP 1｜Canva Sheetsで台本30本を生成</div>
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-1"></i> STEP 1｜AIにCSVを生成させる</div>
         </div>
         <div class="panel-body">
             <div class="step">
                 <div class="step-num">①</div>
                 <div class="step-body">
-                    <strong>Canvaホーム画面を開く</strong>
-                    <p>「Canvaシート」（青いアイコン）をクリックして新規作成</p>
+                    <strong>reel_script_guideのAI指示テンプレを開く</strong>
+                    <p>「リール台本生成ガイド」→「AIへの指示文テンプレート」をコピー<br>テーマ部分だけ今月のものに書き換えてAntigravityに貼り付ける</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">②</div>
                 <div class="step-body">
-                    <strong>「アクション」→「表を作成する」を選択</strong>
-                    <p>AIが入力できるテキストボックスが表示される</p>
+                    <strong>Antigravityが生成したCSVをローカルに保存</strong>
+                    <p>ファイル名：<code>reel_all_in_one.csv</code>（6行×35列の1シート完結型）</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">③</div>
                 <div class="step-body">
-                    <strong>以下のプロンプトをそのまま貼り付けて実行</strong>
+                    <strong>GoogleドライブのスプレッドシートにCSVをインポート</strong>
+                    <p>Googleドライブフォルダ → 新規スプレッドシート → ファイル → インポート</p>
                 </div>
             </div>
-
-            <span class="copy-label">▼ えりさん専用プロンプト（コピーして貼り付けてください）</span>
-            <div class="prompt-box">あなたはプロのWEB制作者です。
-以下の指示に従って、Instagramに投稿するリール動画の台本を30本作ってください。
-投稿ターゲット：建設会社の採用に悩んでいる経営者・採用担当者（30〜40代男性）
-内容：「建設業の採用」に関して、ターゲットが思わず見てしまう内容にしてください。
-
-条件1：文字数は200文字以内
-条件2：採用が初めての経営者でもわかるように
-条件3：冒頭／中間／最後の3列で書いてください
-
-構成1（冒頭）：建設業採用に関する驚きの事実や痛い問いかけ
-構成2（中間）：1の根拠・解決の糸口を簡潔に説明
-構成3（最後）：「プロフィールのリンクから採用LPをご確認ください」という行動促進</div>
-
-            <div class="step" style="margin-top:10px;">
-                <div class="step-num">④</div>
-                <div class="step-body">
-                    <strong>「追加」ボタンで台本をシートに保存</strong>
-                    <p>30行（冒頭・中間・最後の3列）のシートが完成したらOK</p>
-                </div>
-            </div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> CSVの列構成：<strong>ファイル名1, 表紙1, フック1, 問題1, 解説1, 解決1, 最後1</strong> × 5テンプレ＝35列</div>
         </div>
     </div>
 
     <!-- STEP 2 -->
     <div class="panel">
         <div class="panel-header">
-            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-2"></i> STEP 2｜リールテンプレートを準備</div>
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-2"></i> STEP 2｜Canvaシートにデータを貼り付ける</div>
         </div>
         <div class="panel-body">
             <div class="step">
                 <div class="step-num">①</div>
                 <div class="step-body">
-                    <strong>Canvaホームに戻り「テンプレート」を開く</strong>
-                    <p>「リール シンプル」で検索 → シンプルなテキスト中心のものを選択</p>
+                    <strong>「リールデータ（Canvaシート）」を開く</strong>
+                    <p>上のクイックリンクからアクセス</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">②</div>
                 <div class="step-body">
-                    <strong>「カスタマイズ」で編集画面へ</strong>
-                    <p>タイムライン形式の動画編集画面が開く</p>
+                    <strong>GoogleスプレッドシートからCanvaシートへコピペ</strong>
+                    <p>Googleシートの全データをコピー → Canvaシートに貼り付け<br>列名（ヘッダー行）も含めて貼り付けること</p>
                 </div>
             </div>
-            <div class="step">
-                <div class="step-num">③</div>
-                <div class="step-body">
-                    <strong>3カット構成に設定</strong>
-                    <p>冒頭・中間・最後 をそれぞれ <strong>3秒ずつ</strong>（合計9秒）に設定<br>
-                    不要な装飾を削除してシンプルに。テキストボックスを3つ残す</p>
-                </div>
-            </div>
-            <div class="note"><i class="fa-solid fa-info-circle"></i> 背景動画は全カット合計9秒に調整する。文字が読みやすいようコントラストを確保。</div>
+            <div class="note"><i class="fa-solid fa-info-circle"></i> Canvaシートはブラウザでスプレッドシートのように使える。列名がそのまま「一括作成」のデータ接続名になる。</div>
         </div>
     </div>
 
     <!-- STEP 3 -->
     <div class="panel">
         <div class="panel-header">
-            <div class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-3"></i> STEP 3｜一括作成で30本を自動生成 <span class="badge badge-pro">Canva Pro必須</span></div>
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-3"></i> STEP 3｜5ページのリールテンプレートを準備</div>
+        </div>
+        <div class="panel-body">
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>「リール動画（テンプレ＆完成品）」フォルダを開く</strong>
+                    <p>既存のテンプレートがあれば流用。なければ新規作成</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>5ページ構成のテンプレートを作る（初回のみ）</strong>
+                    <p>
+                        ページ1：背景A（建設現場写真など）＋テキストボックス×6（表紙1・フック1・問題1・解説1・解決1・最後1）<br>
+                        ページ2：背景B ＋ テキストボックス×6（表紙2〜最後2）<br>
+                        …ページ5まで同様に作成
+                    </p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>テキストボックスに名前をつける</strong>
+                    <p>各テキストボックスを選択 → 右クリック →「データの接続」→ 列名と一致するよう命名<br>
+                    例：ページ1の表紙テキスト →「表紙1」、フックテキスト →「フック1」</p>
+                </div>
+            </div>
+            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>縦書きフォント使用時の注意：</strong>CTAや最後スライドに英字・数字（LP・30など）を使わない。使う場合は「採用ページ」など純粋な日本語に書き換える。</div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> フォントはNoto Sans JPで統一。表紙と本文で揃えるとグリッドの統一感が出る。</div>
+        </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-4"></i> STEP 4｜一括作成で30本を自動生成 <span class="badge badge-pro">Canva Pro必須</span></div>
         </div>
         <div class="panel-body">
             <div class="step">
@@ -305,42 +357,91 @@
                 <div class="step-num">②</div>
                 <div class="step-body">
                     <strong>「スプレッドシート」→ Canvaシートを選択</strong>
-                    <p>STEP1で作ったシートを読み込む</p>
+                    <p>STEP2で用意したCanvaシートを読み込む</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">③</div>
                 <div class="step-body">
-                    <strong>テキストとデータを接続</strong>
-                    <p>各テキストボックスを右クリック →「データの接続」→ 対応する列（冒頭・中間・最後）をリンク</p>
+                    <strong>「高度なオプション」→ ページ名の列を選択</strong>
+                    <p>「各ページの名前を選択する際に使用する列」→「ファイル名1」を選択<br>→ デザインがreel_01〜reel_06で自動命名される</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">④</div>
                 <div class="step-body">
                     <strong>「続行」→「◯点のデザインを作成」を実行</strong>
-                    <p>30本分のリール動画がワンクリックで生成される</p>
+                    <p>6行×5ページ = 30本分のリール動画が一括生成される</p>
                 </div>
             </div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「1つのデザインで複数ページを作成」を選択するとページ管理が楽になる。</div>
         </div>
     </div>
 
-    <!-- STEP 4 -->
+    <!-- STEP 5 表紙 -->
     <div class="panel">
         <div class="panel-header">
-            <div class="panel-title" style="color:var(--accent-green);"><i class="fa-solid fa-4"></i> STEP 4｜微調整してMP4ダウンロード</div>
+            <div class="panel-title" style="color:var(--accent-pink);"><i class="fa-solid fa-5"></i> STEP 5｜表紙を30枚一括生成</div>
         </div>
         <div class="panel-body">
-            <ul>
-                <li>鉛筆マークから個別に編集（フォントサイズ・改行・配置）</li>
-                <li>問題なければ「共有」→「ダウンロード」→「<strong>MP4形式</strong>」</li>
-                <li>一括ダウンロードも可能</li>
-            </ul>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 文字の改行位置がおかしい場合は手動で調整。長すぎるテキストは削ってシンプルに。</div>
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>「リール表紙（テンプレ＆完成品）」フォルダを開く</strong>
+                    <p>5ページ構成の表紙テンプレートを使用（背景×5種類、各ページに「表紙1〜5」のテキスト接続済み）</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>同じCSVデータで一括作成を実行</strong>
+                    <p>「一括作成」→ Canvaシートを選択 → 「表紙1〜5」列が自動的に接続される<br>
+                    6行 × 5ページ = 30枚の表紙が一括完成</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>Meta Business SuiteでReels投稿時に表紙を設定</strong>
+                    <p>動画を追加 → 「FacebookとInstagram用の投稿をカスタマイズ」をオン → サムネイルをアップロード</p>
+                </div>
+            </div>
+            <div class="note"><i class="fa-solid fa-info-circle"></i> 表紙の縦書きフォントは日本語のみ使用（英字・数字は横倒しになるため使わない）。</div>
         </div>
     </div>
 
-    <!-- 参考 -->
+    <!-- STEP 6 投稿 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-green);"><i class="fa-solid fa-6"></i> STEP 6｜Meta Business Suiteで投稿・予約</div>
+        </div>
+        <div class="panel-body">
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>MP4でダウンロード</strong>
+                    <p>「共有」→「ダウンロード」→「MP4形式」→ Googleドライブフォルダに保存</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>Meta Business Suite（business.facebook.com）へ</strong>
+                    <p>「コンテンツを作成」→「リール」→ 動画を追加</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>キャプション・表紙・投稿日時を設定</strong>
+                    <p>キャプションは共通テンプレを使い回しでOK。「FacebookとInstagram用の投稿をカスタマイズ」をオンにすると表紙を個別設定できる</p>
+                </div>
+            </div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> キャプションの共通テンプレ例：<br>建設会社の採用でお悩みの方へ。採用ページを活用することで応募数・質ともに改善できます。<br>👇プロフィールのリンクから詳しく見られます<br>#建設業採用 #採用ページ #採用サイト #建設会社 #人手不足対策 #採用担当 #中小企業採用</div>
+        </div>
+    </div>
+
+    <!-- 参考動画 -->
     <div class="panel">
         <div class="panel-header">
             <div class="panel-title"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i> 参考セミナー動画</div>
