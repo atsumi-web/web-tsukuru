@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リール アップロードチェックシート（2026年3月）</title>
+  <style>
+    /* ── 画面表示用 ── */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a2e;
+      padding: 32px 24px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+
+    /* ── ヘッダー ── */
+    .sheet-header {
+      background: linear-gradient(135deg, #2d3561 0%, #4752c4 100%);
+      color: #fff;
+      padding: 24px 32px 20px;
+    }
+
+    .sheet-header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .sheet-header .sub {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      letter-spacing: 0.02em;
+    }
+
+    .sheet-header .meta {
+      margin-top: 10px;
+      display: flex;
+      gap: 20px;
+      font-size: 0.82rem;
+      opacity: 0.85;
+    }
+
+    .sheet-header .meta span strong {
+      opacity: 1;
+    }
+
+    /* ── テーブル ── */
+    .table-wrapper {
+      padding: 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead tr {
+      background: #e8eaf6;
+    }
+
+    thead th {
+      padding: 10px 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: #3c3c6e;
+      border-bottom: 2px solid #b0b8e8;
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #e4e8f0;
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover {
+      background: #f0f3ff;
+    }
+
+    tbody tr.done {
+      background: #f0faf4;
+    }
+
+    tbody tr.done td {
+      color: #888;
+    }
+
+    tbody td {
+      padding: 9px 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    td.no {
+      font-weight: 700;
+      color: #5c6bc0;
+      width: 44px;
+    }
+
+    td.date {
+      text-align: left;
+      font-weight: 600;
+      min-width: 110px;
+    }
+
+    td.time {
+      color: #666;
+      width: 72px;
+    }
+
+    td.file {
+      text-align: left;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.82rem;
+      color: #3a3a5c;
+      min-width: 140px;
+    }
+
+    td.check-cell {
+      width: 80px;
+    }
+
+    /* チェックボックス（画面） */
+    .check-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .check-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #4752c4;
+      cursor: pointer;
+    }
+
+    .check-label .check-text {
+      font-size: 0.78rem;
+      color: #666;
+    }
+
+    /* 完了バッジ */
+    .badge-done {
+      display: inline-block;
+      background: #4caf50;
+      color: #fff;
+      border-radius: 12px;
+      padding: 1px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* ── フッター ── */
+    .sheet-footer {
+      padding: 14px 32px;
+      background: #f8f9ff;
+      border-top: 1px solid #e4e8f0;
+      font-size: 0.8rem;
+      color: #999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #4752c4;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .print-btn:hover {
+      background: #3741b0;
+      transform: translateY(-1px);
+    }
+
+    /* ── 印刷スタイル ── */
+    @media print {
+      body {
+        background: #fff;
+        padding: 6mm 8mm;
+      }
+
+      .container {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+
+      .sheet-header {
+        background: #2d3561 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 14px 20px 12px;
+      }
+
+      .sheet-header h1 {
+        font-size: 1.1rem;
+      }
+
+      .print-btn {
+        display: none;
+      }
+
+      .sheet-footer {
+        padding: 8px 20px;
+      }
+
+      thead tr {
+        background: #e8eaf6 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      tbody tr.done {
+        background: #f0faf4 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      table {
+        font-size: 0.78rem;
+      }
+
+      thead th,
+      tbody td {
+        padding: 6px 8px;
+      }
+
+      /* 印刷時はチェックボックスの文字を隠してボックスだけ表示 */
+      .check-label input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+      }
+
+      .check-label .check-text {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ヘッダー -->
+  <div class="sheet-header">
+    <h1>🎬 リール アップロードチェックシート</h1>
+    <div class="sub">reel_upload_schedule — 2026年3月</div>
+    <div class="meta">
+      <span>投稿本数：<strong>30本</strong></span>
+      <span>投稿時刻：<strong>毎日 12:00</strong></span>
+      <span>期間：<strong>2026/3/2 〜 2026/3/31</strong></span>
+    </div>
+  </div>
+
+  <!-- テーブル -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>投稿予定日</th>
+          <th>時刻</th>
+          <th>動画ファイル</th>
+          <th>表紙ファイル</th>
+          <th>アップ済み</th>
+        </tr>
+      </thead>
+      <tbody id="checkTableBody">
+        <!-- JS で生成 -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- フッター -->
+  <div class="sheet-footer">
+    <span id="progressText">完了: 0 / 30 本</span>
+    <button class="print-btn" onclick="window.print()">🖨️ 印刷する</button>
+  </div>
+
+</div>
+
+<script>
+  // ─── データ定義 ───────────────────────────────────
+  const TOTAL = 30;
+  const START_DATE = new Date(2026, 2, 2); // 3月2日（0-indexed month）
+  const TIME = '12:00';
+
+  const WEEKDAY_JA = ['日', '月', '火', '水', '木', '金', '土'];
+
+  function formatDate(d) {
+    const mm = d.getMonth() + 1;
+    const dd = d.getDate();
+    const w = WEEKDAY_JA[d.getDay()];
+    return `${mm}/${dd}（${w}）`;
+  }
+
+  // ─── ローカルストレージから状態復元 ──────────────
+  function loadChecked() {
+    try {
+      return JSON.parse(localStorage.getItem('reel_upload_checked') || '[]');
+    } catch { return []; }
+  }
+
+  function saveChecked(arr) {
+    localStorage.setItem('reel_upload_checked', JSON.stringify(arr));
+  }
+
+  // ─── テーブル生成 ─────────────────────────────────
+  function buildTable() {
+    const tbody = document.getElementById('checkTableBody');
+    const checked = loadChecked();
+    tbody.innerHTML = '';
+
+    let d = new Date(START_DATE);
+    for (let i = 1; i <= TOTAL; i++) {
+      const dateStr = formatDate(d);
+      const num = String(i).padStart(2, '0');
+      const isDone = checked.includes(i);
+
+      const tr = document.createElement('tr');
+      if (isDone) tr.classList.add('done');
+      tr.id = `row-${i}`;
+
+      tr.innerHTML = `
+        <td class="no">${i}</td>
+        <td class="date">${dateStr}</td>
+        <td class="time">${TIME}</td>
+        <td class="file">reel_${num}.mp4</td>
+        <td class="file">reel_${num}_cover.png</td>
+        <td class="check-cell">
+          <label class="check-label">
+            <input type="checkbox" id="chk-${i}" ${isDone ? 'checked' : ''}
+              onchange="toggleCheck(${i}, this.checked)">
+            <span class="check-text">${isDone ? '完了' : ''}</span>
+          </label>
+        </td>
+      `;
+
+      tbody.appendChild(tr);
+
+      // 翌日へ
+      d.setDate(d.getDate() + 1);
+    }
+
+    updateProgress();
+  }
+
+  function toggleCheck(num, checked) {
+    const arr = loadChecked();
+    if (checked) {
+      if (!arr.includes(num)) arr.push(num);
+    } else {
+      const idx = arr.indexOf(num);
+      if (idx !== -1) arr.splice(idx, 1);
+    }
+    saveChecked(arr);
+
+    // 行スタイル更新
+    const tr = document.getElementById(`row-${num}`);
+    const span = tr.querySelector('.check-text');
+    if (checked) {
+      tr.classList.add('done');
+      span.textContent = '完了';
+    } else {
+      tr.classList.remove('done');
+      span.textContent = '';
+    }
+
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const arr = loadChecked();
+    document.getElementById('progressText').textContent =
+      `完了: ${arr.length} / ${TOTAL} 本`;
+  }
+
+  // ─── 初期化 ───────────────────────────────────────
+  // 初回アクセス時は全件完了済みとして設定（3月分は全て終了）
+  if (localStorage.getItem('reel_upload_checked') === null) {
+    const allDone = Array.from({ length: TOTAL }, (_, i) => i + 1);
+    saveChecked(allDone);
+  }
+  buildTable();
+</script>
+
+</body>
+</html>
