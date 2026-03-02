@@ -105,6 +105,15 @@
         .step-body strong { color: var(--text-main); display: block; margin-bottom: 4px; }
         .step-body p { color: var(--text-dim); margin: 0; font-size: 0.85rem; }
 
+        .manual-img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 6px;
+            border: 1px solid var(--panel-border);
+            margin: 10px 0;
+            display: block;
+        }
+
         .note {
             background: rgba(212,175,55,0.08);
             border: 1px solid rgba(212,175,55,0.3);
@@ -374,7 +383,7 @@
                     <p>6行×5ページ = 30本分のリール動画が一括生成される</p>
                 </div>
             </div>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「1つのデザインで複数ページを作成」を選択するとページ管理が楽になる。</div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「6個のデザイン」を選択。各デザインの名前は「ファイル名5列のデータ」を選択すると番号で自動命名される。</div>
         </div>
     </div>
 
@@ -408,6 +417,7 @@
                         保存先：<strong>リール＞表紙＞完成品（表紙）</strong>を選択<br>
                         → 「続行」→ 一括生成を実行
                     </p>
+                    <img src="../images/canva-advanced-options.png" alt="Canva 高度なオプション設定" class="manual-img">
                 </div>
             </div>
             <div class="step">
@@ -459,6 +469,7 @@
                         → <code>1_reel_04.mp4</code> が <code>reel_04.mp4</code> に変換される
                     </p>
                     <p style="color:#94A3B8; font-size:0.8rem;">残り5本（26〜30）は後からDLしてリネーム。Canvaでは26〜30が1〜5の名前になるので要注意。</p>
+                    <img src="../images/powershell-rename.png" alt="PowerShellリネーム実行結果" class="manual-img">
                 </div>
             </div>
 
@@ -476,14 +487,18 @@
                 <div class="step-num">②</div>
                 <div class="step-body">
                     <strong>Meta Business Suite（business.facebook.com）へ</strong>
-                    <p>「コンテンツを作成」→「リール」→ 動画を追加</p>
+                    <p>「コンテンツを作成」→「リール」→ 動画を追加<br>
+                    編集画面で「音源」タブからBGMを選択。「オリジナル音源の音量」を0にし、「音源の音量」は20～30%で設定</p>
+                    <img src="../images/meta-audio-settings.png" alt="Meta音源設定画面" class="manual-img">
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">③</div>
                 <div class="step-body">
                     <strong>キャプション・表紙・投稿日時を設定</strong>
-                    <p>キャプションは共通テンプレを使い回しでOK。「FacebookとInstagram用の投稿をカスタマイズ」をオンにすると表紙を個別設定できる</p>
+                    <p>キャプションは共通テンプレを使い回しでOK。「FacebookとInstagram用の投稿をカスタマイズ」はオフのままでOK。<br>
+                    「日時を指定」タブで予約投稿も可能。「公開」に設定して「シェアする」をクリック</p>
+                    <img src="../images/meta-share-settings.png" alt="Metaシェア画面" class="manual-img">
                 </div>
             </div>
             <div class="tip"><i class="fa-solid fa-lightbulb"></i> キャプションの共通テンプレ例：<br>建設会社の採用でお悩みの方へ。採用ページを活用することで応募数・質ともに改善できます。<br>👇プロフィールのリンクから詳しく見られます<br>#建設業採用 #採用ページ #採用サイト #建設会社 #人手不足対策 #採用担当 #中小企業採用</div>
