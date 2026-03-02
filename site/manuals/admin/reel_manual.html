@@ -434,6 +434,18 @@
                     <p>動画を追加 → 「FacebookとInstagram用の投稿をカスタマイズ」をオン → サムネイルをアップロード</p>
                 </div>
             </div>
+            <div class="step">
+                <div class="step-num">⑤'</div>
+                <div class="step-body">
+                    <strong>ダウンロードした表紙PNGをリール番号順にリネーム（PowerShell）</strong>
+                    <p>Canvaは「1つのデザインで複数ページを作成」の場合、ページを<strong>テンプレート順×行順</strong>で出力するため、ファイル番号とリール番号がずれる。<br>
+                    例：2.png → reel_07の表紙、6.png → reel_02の表紙</p>
+                    <p style="color:#94A3B8; font-size:0.8rem; margin-bottom:4px;">【手順】①表紙フォルダをエクスプローラーで開く ②アドレスバーに <code>powershell</code> → Enter ③以下を実行</p>
+                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--panel-border); border-left:3px solid var(--accent-pink); border-radius:4px; padding:10px 14px; font-size:0.82rem; color:#CBD5E1; margin:8px 0; font-family:monospace; white-space:pre-wrap;">$m=@(1,7,13,19,25,2,8,14,20,26,3,9,15,21,27,4,10,16,22,28,5,11,17,23,29,6,12,18,24,30)
+for($i=1;$i -le 30;$i++){$r=$m[$i-1];if(Test-Path "$i.png"){Rename-Item "$i.png" ("reel_{0:D2}_cover.png" -f $r)}}</div>
+                    <p style="color:#94A3B8; font-size:0.8rem;">→ <code>1.png</code>〜<code>30.png</code> が <code>reel_01_cover.png</code>〜<code>reel_30_cover.png</code> にリネームされる</p>
+                </div>
+            </div>
             <div class="note"><i class="fa-solid fa-info-circle"></i> 表紙の縦書きフォントは日本語のみ使用（英字・数字は横倒しになるため使わない）。</div>
         </div>
     </div>
