@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クライアント対応フロー | 運用マニュアル</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0F172A; --panel: #1E293B; --panel2: #263347; --border: #334155;
+      --text: #F1F5F9; --dim: #94A3B8;
+      --gold: #D4AF37; --blue: #3B82F6; --green: #10B981;
+      --purple: #8B5CF6; --orange: #F59E0B; --red: #EF4444; --line: #06C755;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); padding: 24px 20px 60px; line-height: 1.6; font-size: 14px; }
+    a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.72; }
+
+    .max-w { max-width: 860px; margin: 0 auto; }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 28px;
+    }
+    .title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .title i { color: var(--gold); }
+    .back-link { font-size: 0.82rem; color: var(--dim); display: flex; align-items: center; gap: 6px; }
+    .back-link:hover { color: var(--text); }
+
+    /* フローカード */
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; color: var(--dim); text-transform: uppercase; margin-bottom: 14px; }
+
+    .steps { display: flex; flex-direction: column; gap: 4px; }
+
+    .step { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; position: relative; margin-bottom: 4px; }
+    .step::after { content: '↓'; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); color: var(--border); font-size: 1.1rem; z-index: 2; }
+    .step:last-child::after { display: none; }
+
+    /* ステップヘッダー */
+    .step-top { display: flex; align-items: center; gap: 14px; padding: 18px 20px 14px; }
+    .num {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+    }
+    .step-info { flex: 1; }
+    .step-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .step-name { font-size: 1rem; font-weight: 700; }
+    .step-who { font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-weight: 700; margin-left: auto; white-space: nowrap; }
+    .who-client { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
+    .who-eri { background: rgba(212,175,55,0.15); color: var(--gold); border: 1px solid rgba(212,175,55,0.3); }
+
+    /* ステップ本文 */
+    .step-body { padding: 0 20px 18px; display: flex; flex-direction: column; gap: 12px; }
+
+    .step-desc { font-size: 0.82rem; color: var(--dim); line-height: 1.7; }
+
+    /* えりさんがやること */
+    .action-box {
+      background: #12263D;
+      border: 1px solid rgba(212,175,55,0.25);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .action-box-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .action-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .action-list li { font-size: 0.82rem; color: var(--text); display: flex; align-items: flex-start; gap: 7px; line-height: 1.5; }
+    .action-list li::before { content: '▶'; font-size: 0.6rem; color: var(--gold); flex-shrink: 0; margin-top: 3px; }
+
+    /* リンクボタン */
+    .link-row { display: flex; flex-wrap: wrap; gap: 7px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 13px; border-radius: 20px; font-size: 0.76rem; font-weight: 700;
+      border: 1px solid; white-space: nowrap; transition: all 0.2s;
+    }
+    .btn:hover { filter: brightness(1.2); transform: translateY(-1px); }
+    .btn-gold   { color: var(--gold);   border-color: var(--gold);   background: rgba(212,175,55,0.1); }
+    .btn-blue   { color: var(--blue);   border-color: var(--blue);   background: rgba(59,130,246,0.1); }
+    .btn-green  { color: var(--green);  border-color: var(--green);  background: rgba(16,185,129,0.1); }
+    .btn-purple { color: var(--purple); border-color: var(--purple); background: rgba(139,92,246,0.1); }
+    .btn-orange { color: var(--orange); border-color: var(--orange); background: rgba(245,158,11,0.1); }
+    .btn-line   { color: var(--line);   border-color: var(--line);   background: rgba(6,199,85,0.1); }
+
+    /* カラーテーマ */
+    .c1 .num { background: rgba(212,175,55,0.15); color: var(--gold); }
+    .c1 .step-tag { color: var(--gold); }
+    .c2 .num { background: rgba(6,199,85,0.15); color: var(--line); }
+    .c2 .step-tag { color: var(--line); }
+    .c3 .num { background: rgba(59,130,246,0.15); color: var(--blue); }
+    .c3 .step-tag { color: var(--blue); }
+    .c4 .num { background: rgba(139,92,246,0.15); color: var(--purple); }
+    .c4 .step-tag { color: var(--purple); }
+    .c5 .num { background: rgba(245,158,11,0.15); color: var(--orange); }
+    .c5 .step-tag { color: var(--orange); }
+    .c6 .num { background: rgba(16,185,129,0.15); color: var(--green); }
+    .c6 .step-tag { color: var(--green); }
+
+    /* クイックリンク */
+    .quick { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin-top: 32px; }
+    .quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 9px; margin-top: 14px; }
+    .qc {
+      background: var(--panel2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 13px 14px; display: flex; flex-direction: column; gap: 4px;
+      transition: border-color 0.2s;
+    }
+    .qc:hover { border-color: var(--gold); }
+    .qc-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; color: var(--dim); }
+    .qc-name { font-size: 0.86rem; font-weight: 700; color: var(--text); }
+    .qc-icon { font-size: 1.2rem; margin-bottom: 2px; }
+
+    @media (max-width: 600px) {
+      body { padding: 16px 12px 50px; }
+      .step-top { padding: 14px 14px 10px; }
+      .step-body { padding: 0 14px 14px; gap: 10px; }
+      .step-who { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="max-w">
+
+  <header>
+    <div class="title"><i class="fa-solid fa-diagram-project"></i> クライアント対応フロー</div>
+    <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> 運用司令室</a>
+  </header>
+
+  <div class="section-label">LINE登録 → 診断 → Zoom → 契約まで 全ステップ</div>
+
+  <div class="steps">
+
+    <!-- STEP 1 -->
+    <div class="step c1">
+      <div class="step-top">
+        <div class="num">1</div>
+        <div class="step-info">
+          <div class="step-tag">ATTRACT</div>
+          <div class="step-name">集客 — LPやSNSで認知</div>
+        </div>
+        <span class="step-who who-client">クライアントが行動</span>
+      </div>
+      <div class="step-body">
+        <div class="step-desc">潜在クライアントがLP・サービスページ・SNSを見て関心を持つ。LINE登録を促す。</div>
+        <div class="action-box">
+          <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること</div>
+          <ul class="action-list">
+            <li>定期的にSNS投稿・ブログで集客を継続する</li>
+            <li>LPのLINEボタンが正しく表示されているか確認する</li>
+          </ul>
+        </div>
+        <div class="link-row">
+          <a href="https://web-tsukuru.jp/" target="_blank" class="btn btn-gold"><i class="fa-solid fa-house"></i> LP (index)</a>
+          <a href="https://web-tsukuru.jp/service" target="_blank" class="btn btn-gold"><i class="fa-solid fa-scroll"></i> サービスページ</a>
+          <a href="https://web-tsukuru.jp/works.html" target="_blank" class="btn btn-gold"><i class="fa-solid fa-images"></i> 制作実績</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step c2">
+      <div class="step-top">
+        <div class="num">2</div>
+        <div class="step-info">
+          <div class="step-tag">LINE REGISTER</div>
+          <div class="step-name">LINE登録 → 特典①②が自動送信される</div>
+        </div>
+        <span class="step-who who-client">クライアントが行動</span>
+      </div>
+      <div class="step-body">
+        <div class="step-desc">LINE登録と同時にあいさつメッセージが自動送信。特典①PDF・特典②診断テストのURLが届く。</div>
+        <div class="action-box">
+          <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること</div>
+          <ul class="action-list">
+            <li>LINE Managerで「友だち追加」の通知を確認する</li>
+            <li>すぐに動きがなくても問題なし。診断からのメッセージを待つ</li>
+            <li>あいさつメッセージのURLが正しいか定期確認する</li>
+          </ul>
+        </div>
+        <div class="link-row">
+          <a href="https://manager.line.biz/" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINE Manager（管理）</a>
+          <a href="https://web-tsukuru.jp/saiyou-manual.pdf" target="_blank" class="btn btn-blue"><i class="fa-solid fa-file-pdf"></i> 特典① PDF確認</a>
+          <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="btn btn-blue"><i class="fa-solid fa-chart-bar"></i> 特典② 診断テスト確認</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step c3">
+      <div class="step-top">
+        <div class="num">3</div>
+        <div class="step-info">
+          <div class="step-tag">DIAGNOSIS REQUEST</div>
+          <div class="step-name">診断テスト実施 → LINEにメッセージ届く</div>
+        </div>
+        <span class="step-who who-client">クライアントが行動</span>
+      </div>
+      <div class="step-body">
+        <div class="step-desc">クライアントが6問回答 → スコア表示 → 会社名・URL・課題を入力 → LINEに送信。<br>えりさんのLINEに「【採用資産化 診断 申し込み】…」というメッセージが届く。</div>
+        <div class="action-box">
+          <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること（メッセージ受信後）</div>
+          <ul class="action-list">
+            <li>受信したURLを確認してAI診断ハブにコピーする → STEP 4へ進む</li>
+            <li>まずLINEで「受け取りました！分析して返信します😊」と一言返信する</li>
+          </ul>
+        </div>
+        <div class="link-row">
+          <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="btn btn-purple"><i class="fa-solid fa-chart-bar"></i> 診断テストページ（動作確認）</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step c4">
+      <div class="step-top">
+        <div class="num">4</div>
+        <div class="step-info">
+          <div class="step-tag">AI DIAGNOSIS → LINE REPLY</div>
+          <div class="step-name">AI診断実施 → LINEで個別アドバイスを返信</div>
+        </div>
+        <span class="step-who who-eri">えりさんが行動</span>
+      </div>
+      <div class="step-body">
+        <div class="step-desc">AI診断ハブでクライアントのサイトを分析し、個別アドバイスをLINEで送る。</div>
+        <div class="action-box">
+          <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること（手順）</div>
+          <ul class="action-list">
+            <li>① AI診断ハブを開く → モード「クライアントサイト診断」を選択</li>
+            <li>② URLを入力 → 「全プロンプトに反映」→ ヒアリング情報も入力</li>
+            <li>③ プロンプト#2「総合診断」を5つのAIに送信（R1）</li>
+            <li>④ 回答をペーストエリアに貼り付け →「R2生成」→ 各AIに送信</li>
+            <li>⑤ GeminiのR2結果をもとにLINEでアドバイスを返信</li>
+            <li>⑥ Zoom相談の案内をLINEで送る → STEP 5へ</li>
+          </ul>
+        </div>
+        <div class="link-row">
+          <a href="/manuals/internal/ai_diagnostic_hub.html" target="_blank" class="btn btn-purple"><i class="fa-solid fa-robot"></i> AI診断ハブ（内部ツール）</a>
+          <a href="line_talk_script.html" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINEトークスクリプト</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step c5">
+      <div class="step-top">
+        <div class="num">5</div>
+        <div class="step-info">
+          <div class="step-tag">ZOOM CONSULTATION</div>
+          <div class="step-name">Zoom 無料相談（30分）</div>
+        </div>
+        <span class="step-who who-eri">えりさんが行動</span>
+      </div>
+      <div class="step-body">
+        <div class="step-desc">CalendlyからZoom予約。事前にヒアリングシートを送付して面談をスムーズに。</div>
+        <div class="action-box">
+          <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること（手順）</div>
+          <ul class="action-list">
+            <li>① LINEでCalendlyリンクを送り「30分Zoom相談のご予約はこちら」と案内</li>
+            <li>② 予約確認後「事前にヒアリングシートをお送りします」とLINEで連絡</li>
+            <li>③ Zoom前日にリマインドLINEを送る（「明日〇時よろしくです！」）</li>
+            <li>④ Zoom当日：ヒアリングシートをもとにヒアリング（60〜90分）</li>
+          </ul>
+        </div>
+        <div class="link-row">
+          <a href="https://calendly.com/" target="_blank" class="btn btn-orange"><i class="fa-solid fa-calendar-check"></i> Calendly（予約管理）</a>
+          <a href="zoom_hearing_sheet.html" target="_blank" class="btn btn-orange"><i class="fa-solid fa-clipboard-list"></i> Zoomヒアリングシート</a>
+          <a href="line_talk_script.html" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINEトークスクリプト</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step c6">
+      <div class="step-top">
+        <div class="num">6</div>
+        <div class="step-info">
+          <div class="step-tag">CONTRACT & PRODUCTION</div>
+          <div class="step-name">お申し込み → 契約 → 制作開始</div>
+        </div>
+        <span class="step-who who-eri">えりさんが行動</span>
+      </div>
+      <div class="step-body">
+        <div class="step-desc">Zoom後に料金プランを提示。モニターまたは通常プランでお申し込み → 契約書 → 制作開始。</div>
+        <div class="action-box">
+          <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること（手順）</div>
+          <ul class="action-list">
+            <li>① Zoom後24時間以内にLINEでご提案内容を送る</li>
+            <li>② 「モニタープラン」か「通常プラン」を提示 → お申し込み確認</li>
+            <li>③ 契約書を取り交わす</li>
+            <li>④ 詳細ヒアリングシートを送付（素材収集 → 制作開始）</li>
+            <li>⑤ 制作期間：約3〜4週間で公開</li>
+          </ul>
+        </div>
+        <div class="link-row">
+          <a href="https://web-tsukuru.jp/service" target="_blank" class="btn btn-green"><i class="fa-solid fa-file-contract"></i> 料金・プラン詳細</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.steps -->
+
+  <!-- クイックリンク集 -->
+  <div class="quick">
+    <div class="section-label">QUICK ACCESS — よく使うリンク一覧</div>
+    <div class="quick-grid">
+      <a href="https://manager.line.biz/" target="_blank" class="qc">
+        <div class="qc-icon">💬</div>
+        <div class="qc-tag">LINE管理</div>
+        <div class="qc-name">LINE Official Account Manager</div>
+      </a>
+      <a href="/manuals/internal/ai_diagnostic_hub.html" target="_blank" class="qc">
+        <div class="qc-icon">🤖</div>
+        <div class="qc-tag">AI診断ツール（内部）</div>
+        <div class="qc-name">AI診断ハブ</div>
+      </a>
+      <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="qc">
+        <div class="qc-icon">📊</div>
+        <div class="qc-tag">特典②</div>
+        <div class="qc-name">採用資産化 診断テスト</div>
+      </a>
+      <a href="https://web-tsukuru.jp/saiyou-manual.pdf" target="_blank" class="qc">
+        <div class="qc-icon">📄</div>
+        <div class="qc-tag">特典①</div>
+        <div class="qc-name">採用資産マニュアルPDF</div>
+      </a>
+      <a href="zoom_hearing_sheet.html" target="_blank" class="qc">
+        <div class="qc-icon">📋</div>
+        <div class="qc-tag">Zoom面談</div>
+        <div class="qc-name">ヒアリングシート</div>
+      </a>
+      <a href="line_talk_script.html" target="_blank" class="qc">
+        <div class="qc-icon">💬</div>
+        <div class="qc-tag">LINE返信</div>
+        <div class="qc-name">LINEトークスクリプト</div>
+      </a>
+      <a href="https://calendly.com/" target="_blank" class="qc">
+        <div class="qc-icon">📅</div>
+        <div class="qc-tag">Zoom予約</div>
+        <div class="qc-name">Calendly</div>
+      </a>
+      <a href="https://web-tsukuru.jp/service" target="_blank" class="qc">
+        <div class="qc-icon">💰</div>
+        <div class="qc-tag">料金確認</div>
+        <div class="qc-name">サービス・料金ページ</div>
+      </a>
+      <a href="index.html" target="_blank" class="qc">
+        <div class="qc-icon">🚀</div>
+        <div class="qc-tag">管理ホーム</div>
+        <div class="qc-name">運用司令室（admin）</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
