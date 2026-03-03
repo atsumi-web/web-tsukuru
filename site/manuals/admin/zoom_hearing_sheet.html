@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoom前ヒアリングシート｜web-tsukuru.jp</title>
+<style>
+  body { font-family: "Noto Sans JP", sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 20px; color: #1e293b; line-height: 1.7; background: #f8fafc; }
+  .card { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  h1 { font-size: 1.3rem; color: #0f172a; margin: 0 0 6px; }
+  .subtitle { color: #64748b; font-size: 0.9rem; margin-bottom: 0; }
+  h2 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin: 0 0 16px; }
+  label { display: block; font-size: 0.9rem; font-weight: 600; color: #1e293b; margin-bottom: 6px; margin-top: 16px; }
+  label:first-of-type { margin-top: 0; }
+  .required { color: #ef4444; margin-left: 4px; }
+  input[type="text"], input[type="tel"], select, textarea {
+    width: 100%; box-sizing: border-box;
+    border: 1.5px solid #e2e8f0; border-radius: 6px;
+    padding: 10px 12px; font-size: 0.95rem; font-family: inherit;
+    color: #1e293b; background: #f8fafc;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: #0ea5e9; background: #fff; }
+  textarea { resize: vertical; min-height: 80px; }
+  .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; cursor: pointer; }
+  .checkbox-item input { width: 18px; height: 18px; accent-color: #0ea5e9; cursor: pointer; }
+  .hint { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+  .send-box { background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
+  .send-box h3 { font-size: 0.9rem; color: #0369a1; margin: 0 0 8px; }
+  .msg-template { background: #fff; border-left: 4px solid #06c755; padding: 12px 16px; border-radius: 0 8px 8px 0; white-space: pre-wrap; font-size: 0.88rem; color: #1e293b; margin-top: 10px; }
+  button.copy { background: #0f172a; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; margin-top: 10px; }
+  button.copy:hover { background: #334155; }
+  .submit-btn { width: 100%; padding: 14px; background: #0f172a; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-family: inherit; font-weight: 700; cursor: pointer; margin-top: 8px; }
+  .submit-btn:hover { background: #1e293b; }
+  .note-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<!-- LINEで送るメッセージテンプレート -->
+<div class="send-box">
+  <h3>📤 LINEで送るメッセージ（コピーして使う）</h3>
+  <div class="msg-template">○○さん、日程のご調整ありがとうございます！😊
+
+Zoom当日をより充実したお時間にするため、
+事前に簡単なシートにご記入いただけると助かります🙏
+
+所要時間：約5分
+
+📋 【ヒアリングシート】
+https://web-tsukuru.jp/manuals/admin/zoom_hearing_sheet.html
+
+よろしくお願いします！</div>
+  <button class="copy" onclick="copyTemplate()">コピー</button>
+</div>
+
+<div class="note-box">
+  ⚠️ このページのURLは管理者専用ではありません。見込み客に直接URLを送る場合は、このまま使えます。<br>
+  将来的にGoogleフォーム化する場合はこの項目をそのまま流用できます。
+</div>
+
+<div class="card">
+  <h1>📋 事前ヒアリングシート</h1>
+  <p class="subtitle">Webとしくみをつくる｜採用LP制作 無料相談 事前アンケート<br>（所要時間：約5分）</p>
+</div>
+
+<div class="card">
+  <h2>01 基本情報</h2>
+  <label>会社名<span class="required">*</span></label>
+  <input type="text" placeholder="例：株式会社〇〇建設">
+
+  <label>担当者のお名前<span class="required">*</span></label>
+  <input type="text" placeholder="例：山田 太郎">
+
+  <label>役職</label>
+  <input type="text" placeholder="例：代表取締役、総務部長 など">
+
+  <label>会社の所在地（都道府県）<span class="required">*</span></label>
+  <input type="text" placeholder="例：大阪府">
+
+  <label>従業員数</label>
+  <select>
+    <option value="">選択してください</option>
+    <option>1〜5名</option>
+    <option>6〜20名</option>
+    <option>21〜50名</option>
+    <option>51〜100名</option>
+    <option>100名以上</option>
+  </select>
+</div>
+
+<div class="card">
+  <h2>02 採用の現状</h2>
+  <label>現在、採用に使っている方法（複数選択可）</label>
+  <div class="checkbox-group">
+    <label class="checkbox-item"><input type="checkbox">Indeed / ハローワーク</label>
+    <label class="checkbox-item"><input type="checkbox">求人誌・フリーペーパー</label>
+    <label class="checkbox-item"><input type="checkbox">自社ホームページ</label>
+    <label class="checkbox-item"><input type="checkbox">知人・社員の紹介のみ</label>
+    <label class="checkbox-item"><input type="checkbox">SNS（Instagram・Xなど）</label>
+    <label class="checkbox-item"><input type="checkbox">採用エージェント</label>
+    <label class="checkbox-item"><input type="checkbox">現在ほぼ採用活動していない</label>
+    <label class="checkbox-item"><input type="checkbox">その他</label>
+  </div>
+
+  <label>現在の採用費用（月額・概算）</label>
+  <select>
+    <option value="">選択してください</option>
+    <option>ほぼ0円（紹介のみ）</option>
+    <option>〜3万円/月</option>
+    <option>3〜10万円/月</option>
+    <option>10〜30万円/月</option>
+    <option>30万円以上/月</option>
+    <option>わからない</option>
+  </select>
+
+  <label>直近1年で採用できた人数</label>
+  <select>
+    <option value="">選択してください</option>
+    <option>0名（採用できていない）</option>
+    <option>1〜2名</option>
+    <option>3〜5名</option>
+    <option>6名以上</option>
+  </select>
+</div>
+
+<div class="card">
+  <h2>03 採用の悩み・課題</h2>
+  <label>いちばん困っていること（複数選択可）</label>
+  <div class="checkbox-group">
+    <label class="checkbox-item"><input type="checkbox">そもそも応募が来ない</label>
+    <label class="checkbox-item"><input type="checkbox">来ても面接に現れない・音信不通</label>
+    <label class="checkbox-item"><input type="checkbox">採用してもすぐ辞める</label>
+    <label class="checkbox-item"><input type="checkbox">費用がかかる割に成果が出ない</label>
+    <label class="checkbox-item"><input type="checkbox">どんな若手が来るかわからない（ミスマッチ）</label>
+    <label class="checkbox-item"><input type="checkbox">採用活動に時間がとれない</label>
+    <label class="checkbox-item"><input type="checkbox">何から手をつければいいかわからない</label>
+  </div>
+
+  <label>採用の悩みを自由に教えてください</label>
+  <textarea placeholder="例：毎年Indeedに掲載しているが、応募はあっても面接キャンセルが多い。若い子に会社の雰囲気が伝わっていない気がする..."></textarea>
+</div>
+
+<div class="card">
+  <h2>04 理想の採用像</h2>
+  <label>採用したい人材のイメージ</label>
+  <textarea placeholder="例：20〜28歳の未経験者歓迎。体を動かすのが好き、地元で長く働きたい人。車の免許があれば尚可。"></textarea>
+
+  <label>採用LPを作ったら、まず誰に向けて発信したいですか？</label>
+  <div class="checkbox-group">
+    <label class="checkbox-item"><input type="checkbox">地元の高卒・専門卒の若手</label>
+    <label class="checkbox-item"><input type="checkbox">異業種からの転職希望者</label>
+    <label class="checkbox-item"><input type="checkbox">経験者・即戦力</label>
+    <label class="checkbox-item"><input type="checkbox">女性も歓迎したい</label>
+    <label class="checkbox-item"><input type="checkbox">特に絞っていない（まずは応募が来れば）</label>
+  </div>
+</div>
+
+<div class="card">
+  <h2>05 スケジュール・その他</h2>
+  <label>採用LPをどのくらいで使い始めたいですか？</label>
+  <select>
+    <option value="">選択してください</option>
+    <option>できるだけ早く（1ヶ月以内）</option>
+    <option>1〜3ヶ月以内</option>
+    <option>半年くらい</option>
+    <option>まだわからない</option>
+  </select>
+
+  <label>0円モニターへの参加意向</label>
+  <select>
+    <option value="">選択してください</option>
+    <option>ぜひ申し込みたい</option>
+    <option>条件を聞いてから判断したい</option>
+    <option>通常プランで検討したい</option>
+    <option>まだ迷っている</option>
+  </select>
+
+  <label>Zoomで聞きたいこと・確認したいこと</label>
+  <textarea placeholder="例：実際のサイトを見てみたい。費用の支払い方法を知りたい。など、なんでもどうぞ。"></textarea>
+</div>
+
+<div class="card" style="text-align:center; background:#f0fdf4;">
+  <p style="color:#166534; font-size:0.9rem; margin:0 0 12px;">ご記入ありがとうございます！<br>内容を確認してZoomでお会いしましょう😊</p>
+  <p style="color:#64748b; font-size:0.8rem; margin:0;">※ このシートはLINEでそのままお知らせいただくか、<br>スクリーンショットで送っていただいても大丈夫です。</p>
+</div>
+
+<script>
+function copyTemplate() {
+  const text = `○○さん、日程のご調整ありがとうございます！😊
+
+Zoom当日をより充実したお時間にするため、
+事前に簡単なシートにご記入いただけると助かります🙏
+
+所要時間：約5分
+
+📋 【ヒアリングシート】
+https://web-tsukuru.jp/manuals/admin/zoom_hearing_sheet.html
+
+よろしくお願いします！`;
+  navigator.clipboard.writeText(text).then(() => {
+    event.target.textContent = 'コピーしました！';
+    setTimeout(() => event.target.textContent = 'コピー', 2000);
+  });
+}
+</script>
+</body>
+</html>
