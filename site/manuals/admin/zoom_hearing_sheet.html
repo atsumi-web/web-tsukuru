@@ -26,39 +26,12 @@
   .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; cursor: pointer; }
   .checkbox-item input { width: 18px; height: 18px; accent-color: #0ea5e9; cursor: pointer; }
   .hint { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
-  .send-box { background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
-  .send-box h3 { font-size: 0.9rem; color: #0369a1; margin: 0 0 8px; }
-  .msg-template { background: #fff; border-left: 4px solid #06c755; padding: 12px 16px; border-radius: 0 8px 8px 0; white-space: pre-wrap; font-size: 0.88rem; color: #1e293b; margin-top: 10px; }
-  button.copy { background: #0f172a; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; margin-top: 10px; }
-  button.copy:hover { background: #334155; }
   .submit-btn { width: 100%; padding: 14px; background: #0f172a; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-family: inherit; font-weight: 700; cursor: pointer; margin-top: 8px; }
   .submit-btn:hover { background: #1e293b; }
-  .note-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; margin-bottom: 20px; }
 </style>
 </head>
 <body>
 
-<!-- LINEで送るメッセージテンプレート -->
-<div class="send-box">
-  <h3>📤 LINEで送るメッセージ（コピーして使う）</h3>
-  <div class="msg-template">○○さん、日程のご調整ありがとうございます！😊
-
-Zoom当日をより充実したお時間にするため、
-事前に簡単なシートにご記入いただけると助かります🙏
-
-所要時間：約5分
-
-📋 【ヒアリングシート】
-https://web-tsukuru.jp/manuals/admin/zoom_hearing_sheet.html
-
-よろしくお願いします！</div>
-  <button class="copy" onclick="copyTemplate()">コピー</button>
-</div>
-
-<div class="note-box">
-  ⚠️ このページのURLは管理者専用ではありません。見込み客に直接URLを送る場合は、このまま使えます。<br>
-  将来的にGoogleフォーム化する場合はこの項目をそのまま流用できます。
-</div>
 
 <div class="card">
   <h1>📋 事前ヒアリングシート</h1>
@@ -186,24 +159,6 @@ https://web-tsukuru.jp/manuals/admin/zoom_hearing_sheet.html
   <p style="color:#64748b; font-size:0.8rem; margin:0;">※ このシートはLINEでそのままお知らせいただくか、<br>スクリーンショットで送っていただいても大丈夫です。</p>
 </div>
 
-<script>
-function copyTemplate() {
-  const text = `○○さん、日程のご調整ありがとうございます！😊
-
-Zoom当日をより充実したお時間にするため、
-事前に簡単なシートにご記入いただけると助かります🙏
-
-所要時間：約5分
-
-📋 【ヒアリングシート】
-https://web-tsukuru.jp/manuals/admin/zoom_hearing_sheet.html
-
-よろしくお願いします！`;
-  navigator.clipboard.writeText(text).then(() => {
-    event.target.textContent = 'コピーしました！';
-    setTimeout(() => event.target.textContent = 'コピー', 2000);
-  });
-}
-</script>
+<script></script>
 </body>
 </html>
