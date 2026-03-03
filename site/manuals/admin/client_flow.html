@@ -116,6 +116,41 @@
     .qc-name { font-size: 0.86rem; font-weight: 700; color: var(--text); }
     .qc-icon { font-size: 1.2rem; margin-bottom: 2px; }
 
+    /* コピースニペット */
+    .copy-snippet {
+      background: #0a1929;
+      border: 1px solid rgba(6,199,85,0.3);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .copy-text {
+      font-size: 0.84rem;
+      color: #86efac;
+      font-family: monospace;
+      flex: 1;
+      line-height: 1.5;
+    }
+    .copy-btn {
+      background: rgba(6,199,85,0.15);
+      border: 1px solid rgba(6,199,85,0.4);
+      color: var(--line);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .copy-btn:hover { background: rgba(6,199,85,0.3); }
+    .copy-btn.done { background: var(--line); color: #fff; border-color: var(--line); }
+
     @media (max-width: 600px) {
       body { padding: 16px 12px 50px; }
       .step-top { padding: 14px 14px 10px; }
@@ -123,6 +158,15 @@
       .step-who { display: none; }
     }
   </style>
+  <script>
+    function copySnippet(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '✅ コピー済';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('done'); }, 2000);
+      });
+    }
+  </script>
 </head>
 <body>
 <div class="max-w">
@@ -207,8 +251,12 @@
           <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること（メッセージ受信後）</div>
           <ul class="action-list">
             <li>受信したURLを確認してAI診断ハブにコピーする → STEP 4へ進む</li>
-            <li>まずLINEで「受け取りました！分析して返信します😊」と一言返信する</li>
+            <li>まずLINEで一言返信する（下のテキストをコピーして使ってね）</li>
           </ul>
+          <div class="copy-snippet">
+            <span class="copy-text">受け取りました！分析して返信します😊少々お待ちください。</span>
+            <button class="copy-btn" onclick="copySnippet('受け取りました！分析して返信します😊少々お待ちください。', this)">&#128203; コピー</button>
+          </div>
         </div>
         <div class="link-row">
           <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="btn btn-purple"><i class="fa-solid fa-chart-bar"></i> 診断テストページ（動作確認）</a>
@@ -231,13 +279,19 @@
         <div class="action-box">
           <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること（手順）</div>
           <ul class="action-list">
-            <li>① まずLINEで手動返信する →「受け取りました！分析して返信します😊」</li>
+            <li>① LINEで手動返信する（下のテキストをコピーして使ってね）</li>
+          </ul>
+          <div class="copy-snippet">
+            <span class="copy-text">受け取りました！分析して返信します😊少々お待ちください。</span>
+            <button class="copy-btn" onclick="copySnippet('受け取りました！分析して返信します😊少々お待ちください。', this)">&#128203; コピー</button>
+          </div>
+          <ul class="action-list" style="margin-top:8px;">
             <li>② AI診断ハブを開く → モード「クライアントサイト診断」を選択</li>
-            <li>② URLを入力 → 「全プロンプトに反映」→ ヒアリング情報も入力</li>
-            <li>③ プロンプト#2「総合診断」を5つのAIに送信（R1）</li>
-            <li>④ 回答をペーストエリアに貼り付け →「R2生成」→ 各AIに送信</li>
-            <li>⑤ GeminiのR2結果をもとにLINEでアドバイスを返信</li>
-            <li>⑥ Zoom相談の案内をLINEで送る → STEP 5へ</li>
+            <li>③ URLを入力 → 「全プロンプトに反映」→ ヒアリング情報も入力</li>
+            <li>④ プロンプト#2「総合診断」を5つのAIに送信（R1）</li>
+            <li>⑤ 回答をペーストエリアに貼り付け →「R2生成」→ 各AIに送信</li>
+            <li>⑥ GeminiのR2結果をもとにLINEでアドバイスを返信</li>
+            <li>⑦ Zoom相談の案内をLINEで送る → STEP 5へ</li>
           </ul>
         </div>
         <div class="link-row">
