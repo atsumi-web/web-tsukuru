@@ -321,50 +321,166 @@
       margin-top: 1px;
     }
 
-    /* ── CTA ── */
-    .cta-section {
-      background: linear-gradient(135deg, #06c755, #05a849);
+    /* ── 情報入力フォーム ── */
+    .info-form-card {
+      background: var(--white);
       border-radius: var(--radius);
-      padding: 36px 28px;
-      text-align: center;
+      padding: 32px;
       box-shadow: var(--shadow);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      border-top: 5px solid var(--navy);
     }
-    .cta-section p {
-      color: rgba(255,255,255,0.92);
-      font-size: 0.92rem;
-      margin-bottom: 22px;
-      line-height: 1.7;
-    }
-    .cta-section h3 {
-      color: var(--white);
+    .info-form-card h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      color: var(--navy);
+      margin-bottom: 6px;
     }
+    .info-form-card .form-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .form-group label .required {
+      color: #e53e3e;
+      margin-left: 4px;
+      font-size: 0.75rem;
+    }
+    .form-group label .optional {
+      color: var(--text-light);
+      margin-left: 4px;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+      background: #fafbfc;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--navy);
+      background: #fff;
+    }
+    .form-group textarea {
+      height: 80px;
+      resize: vertical;
+    }
+    .form-divider {
+      border: none;
+      border-top: 1px dashed #e2e8f0;
+      margin: 20px 0;
+    }
+    .form-optional-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .form-optional-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,54,93,0.3);
+    }
+
+    /* ── LINE送信ステップ ── */
+    #line-step { display: none; animation: fadeIn 0.4s ease; }
+    .msg-preview {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.8;
+      color: var(--text);
+      font-family: 'Noto Sans JP', monospace;
+    }
+    .copy-msg-btn {
+      width: 100%;
+      padding: 12px;
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #166534;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 16px;
+    }
+    .copy-msg-btn:hover { background: #dcfce7; }
+    .copy-msg-btn.copied { background: #166534; color: #fff; border-color: #166534; }
     .line-btn {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: var(--white);
-      color: #06c755;
+      background: #06c755;
+      color: var(--white);
       font-weight: 700;
       font-size: 1rem;
       padding: 16px 36px;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 16px rgba(6,199,85,0.35);
       transition: all 0.2s;
+      width: 100%;
     }
     .line-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 24px rgba(6,199,85,0.45);
     }
     .cta-note {
-      color: rgba(255,255,255,0.75);
+      color: var(--text-light);
       font-size: 0.8rem;
-      margin-top: 14px;
+      margin-top: 10px;
+      text-align: center;
     }
 
     /* ── フッター ── */
@@ -492,16 +608,54 @@
         <ul class="advice-list" id="advice-list"></ul>
       </div>
 
-      <div class="cta-section">
-        <h3>🎁 診断結果に基づく個別アドバイスを<br>LINEでお届けします</h3>
-        <p>「御社の状況では何から始めるべきか」を<br>個別にお伝えします。完全無料、5分で登録完了。</p>
-        <a href="https://lin.ee/nMDNiFg" target="_blank" class="line-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#06c755">
-            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-          </svg>
-          LINE登録して個別アドバイスを受け取る
-        </a>
-        <p class="cta-note">※ LINEアプリが起動します。登録・相談は無料です。</p>
+      <!-- STEP: 情報入力フォーム -->
+      <div class="info-form-card" id="info-form-section">
+        <h3>📋 詳細診断のための情報を入力してください</h3>
+        <p class="form-subtitle">入力いただいた情報をもとに、えりさんが個別に分析してLINEでアドバイスをお届けします。</p>
+
+        <div class="form-group">
+          <label>会社名<span class="required">※必須</span></label>
+          <input type="text" id="f-company" placeholder="例：◯◯建設株式会社">
+        </div>
+        <div class="form-group">
+          <label>採用サイト・会社HPのURL<span class="required">※必須</span></label>
+          <input type="url" id="f-url" placeholder="https://">
+        </div>
+        <div class="form-group">
+          <label>一番困っている採用課題<span class="required">※必須</span></label>
+          <textarea id="f-challenge" placeholder="例：若手からの応募がほとんどない、求人サイトに依存していてコストが高い"></textarea>
+        </div>
+
+        <hr class="form-divider">
+        <div class="form-optional-label">任意項目（入力するとより詳細な診断が可能です）</div>
+
+        <div class="form-group">
+          <label>Indeed・マイナビ等の求人ページURL<span class="optional">任意</span></label>
+          <input type="url" id="f-jobsite" placeholder="https://">
+        </div>
+        <div class="form-group">
+          <label>Instagram・SNSのURL<span class="optional">任意</span></label>
+          <input type="url" id="f-sns" placeholder="https://">
+        </div>
+
+        <button class="submit-btn" onclick="generateLineMessage()">診断リクエストを送る →</button>
+      </div>
+
+      <!-- STEP: LINEメッセージ送信 -->
+      <div id="line-step">
+        <div class="info-form-card">
+          <h3>✅ 以下のメッセージをLINEに送ってください</h3>
+          <p class="form-subtitle">①コピーボタンでコピー → ②LINE登録 → ③トーク画面に貼り付けて送信</p>
+          <div class="msg-preview" id="line-msg-preview"></div>
+          <button class="copy-msg-btn" id="copy-btn" onclick="copyMsg()">📋 メッセージをコピーする</button>
+          <a href="https://lin.ee/nMDNiFg" target="_blank" class="line-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+            </svg>
+            LINEを開いてメッセージを送る
+          </a>
+          <p class="cta-note">※ LINEアプリが起動します。登録・相談は無料です。</p>
+        </div>
       </div>
 
     </div>
@@ -608,6 +762,52 @@
       // 結果表示
       document.getElementById('result-section').style.display = 'block';
       window.scrollTo({ top: document.getElementById('result-section').offsetTop - 20, behavior: 'smooth' });
+    }
+
+    // 診断スコアをグローバルに保持
+    let finalScore = 0;
+
+    function generateLineMessage() {
+      const company = document.getElementById('f-company').value.trim();
+      const url = document.getElementById('f-url').value.trim();
+      const challenge = document.getElementById('f-challenge').value.trim();
+      const jobsite = document.getElementById('f-jobsite').value.trim();
+      const sns = document.getElementById('f-sns').value.trim();
+
+      if (!company || !url || !challenge) {
+        alert('会社名・URL・採用課題は必須項目です。');
+        return;
+      }
+
+      const total = Object.values(scores).reduce((a, b) => a + b, 0);
+      const scoreLabel = total <= 1 ? '採用費の垂れ流し状態' : total <= 3 ? '基盤構築のスタートライン' : total <= 5 ? '資産化の道を歩んでいます' : '採用資産の先進企業';
+
+      let msg = `【採用資産化 診断 申し込み】\n`;
+      msg += `\n■ 診断スコア：${total}/6点（${scoreLabel}）\n`;
+      msg += `\n■ 会社名：${company}`;
+      msg += `\n■ サイトURL：${url}`;
+      msg += `\n■ 採用課題：${challenge}`;
+      if (jobsite) msg += `\n■ 求人サイト：${jobsite}`;
+      if (sns) msg += `\n■ SNS：${sns}`;
+      msg += `\n\n詳細な診断アドバイスをよろしくお願いします。`;
+
+      document.getElementById('line-msg-preview').textContent = msg;
+      document.getElementById('info-form-section').style.display = 'none';
+      document.getElementById('line-step').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('line-step').offsetTop - 20, behavior: 'smooth' });
+    }
+
+    function copyMsg() {
+      const text = document.getElementById('line-msg-preview').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ コピーしました！';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = '📋 メッセージをコピーする';
+          btn.classList.remove('copied');
+        }, 2500);
+      });
     }
   </script>
 
