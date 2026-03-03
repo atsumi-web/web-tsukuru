@@ -244,6 +244,11 @@
                     <span class="lr-text">reel_all_in_one.csv</span>
                     <span class="lr-sub">30本分の台本データ（Canvaシートにコピペ用）</span>
                 </a>
+                <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/seminars/cover_sheet.csv" class="link-row" style="background:rgba(228,64,95,0.05); border:1px solid rgba(228,64,95,0.2);">
+                    <i class="fa-solid fa-image lr-icon" style="color:var(--accent-pink);"></i>
+                    <span class="lr-text">cover_sheet.csv <span class="badge badge-new">NEW</span></span>
+                    <span class="lr-sub">表紙専用30行CSV（ローテーション方式用）</span>
+                </a>
                 <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/seminars/reel_upload_schedule.csv" class="link-row" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.2);">
                     <i class="fa-solid fa-calendar lr-icon" style="color:var(--accent-green);"></i>
                     <span class="lr-text">reel_upload_schedule.csv</span>
@@ -466,6 +471,20 @@ for($i=1;$i -le 30;$i++){$r=$m[$i-1];if(Test-Path "$i.png"){Rename-Item "$i.png"
                 </div>
             </div>
             <div class="note"><i class="fa-solid fa-info-circle"></i> 表紙の縦書きフォントは日本語のみ使用（英字・数字は横倒しになるため使わない）。</div>
+
+            <!-- 表紙ローテーション新方式 -->
+            <div style="margin-top:20px; padding:16px; background:rgba(228,64,95,0.06); border:1px solid rgba(228,64,95,0.3); border-radius:8px;">
+                <div style="font-size:0.82rem; font-weight:700; color:var(--accent-pink); margin-bottom:10px;"><i class="fa-solid fa-rotate"></i> 表紙テンプレローテーション方式 <span class="badge badge-new">次回バッチから推奨</span></div>
+                <p style="font-size:0.82rem; color:var(--text-dim); margin-bottom:10px;">⚠️ 現行の5ページ方式では、同じテンプレが連続して投稿されやすい（テンプレA×6本、B×6本…の順で書き出されるため）。</p>
+                <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:8px;"><strong style="color:var(--text-main);">✅ 解決策：30ページ方式</strong></div>
+                <ol style="color:var(--text-dim); font-size:0.82rem; padding-left:18px; margin:0 0 10px;">
+                    <li><strong style="color:var(--text-main);">cover_sheet.csv</strong>（上のクイックリンク）をCanvaシートに読み込む<br>→ 30行×2列（ファイル名・表紙テキスト）の縦一列データ</li>
+                    <li>Canvaで<strong style="color:var(--text-main);">30ページの表紙専用デザイン</strong>を新規作成する<br>→ ページ順を<strong style="color:var(--text-main);">A,B,C,D,E,A,B,C,D,E…</strong>と手動で背景を並べる（初回のみ）</li>
+                    <li>一括作成 →「それぞれ個別のデザインを作成」で実行<br>→ 30枚の表紙が<strong style="color:var(--text-main);">reel_01〜reel_30の順&amp;テンプレローテーション順</strong>でDLできる</li>
+                    <li>PowerShellリネーム不要。そのままMeta Business Suiteにアップロード</li>
+                </ol>
+                <div class="tip"><i class="fa-solid fa-lightbulb"></i> 30ページデザインは一度作れば翌月も流用可。CSVを差し替えるだけで毎月使い回せる。</div>
+            </div>
         </div>
     </div>
 

@@ -275,28 +275,29 @@
         <span class="step-who who-eri">えりさんが行動</span>
       </div>
       <div class="step-body">
-        <div class="step-desc">AI診断ハブでクライアントのサイトを分析し、個別アドバイスをLINEで送る。</div>
+        <div class="step-desc">LINE返信文ジェネレーター（AI版）を使って、クライアントのサイトを分析した個別アドバイスをLINEで送る。</div>
         <div class="action-box">
           <div class="action-box-title"><i class="fa-solid fa-bolt"></i> えりさんがやること（手順）</div>
           <ul class="action-list">
-            <li>① LINEで手動返信する（下のテキストをコピーして使ってね）</li>
+            <li>① まずLINEで一言返信する（下のテキストをコピーして使ってね）</li>
           </ul>
           <div class="copy-snippet">
             <span class="copy-text">受け取りました！分析して返信します😊少々お待ちください。</span>
             <button class="copy-btn" onclick="copySnippet('受け取りました！分析して返信します😊少々お待ちください。', this)">&#128203; コピー</button>
           </div>
           <ul class="action-list" style="margin-top:8px;">
-            <li>② AI診断ハブを開く → モード「クライアントサイト診断」を選択</li>
-            <li>③ URLを入力 → 「全プロンプトに反映」→ ヒアリング情報も入力</li>
-            <li>④ プロンプト#2「総合診断」を5つのAIに送信（R1）</li>
-            <li>⑤ 回答をペーストエリアに貼り付け →「R2生成」→ 各AIに送信</li>
-            <li>⑥ GeminiのR2結果をもとにLINEでアドバイスを返信</li>
+            <li>② LINE返信文ジェネレーターを開く</li>
+            <li>③ 届いたLINEメッセージをそのまま貼り付ける</li>
+            <li>④「AIプロンプトを生成する」をクリック → プロンプトをコピー</li>
+            <li>⑤ Perplexity（推奨）またはChatGPT/Geminiに貼り付けて送信</li>
+            <li>⑥ AIが生成した返信文をSTEP 3に貼り付け → LINEチャットへコピー＆送信</li>
             <li>⑦ Zoom相談の案内をLINEで送る → STEP 5へ</li>
           </ul>
         </div>
         <div class="link-row">
-          <a href="/manuals/internal/ai_diagnostic_hub.html" target="_blank" class="btn btn-purple"><i class="fa-solid fa-robot"></i> AI診断ハブ（内部ツール）</a>
-          <a href="line_talk_script.html" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINEトークスクリプト</a>
+          <a href="line_reply_generator.html" target="_blank" class="btn btn-line"><i class="fa-solid fa-wand-magic-sparkles"></i> LINE返信文ジェネレーター ✨新</a>
+          <a href="line_talk_script.html" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINEトークスクリプト（参考）</a>
+          <a href="https://chat.line.biz/U8a92712a4499615a14a04979377eac55" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINEチャット管理画面</a>
         </div>
       </div>
     </div>
@@ -389,9 +390,14 @@
         <div class="qc-tag">Zoom面談</div>
         <div class="qc-name">ヒアリングシート</div>
       </a>
+      <a href="line_reply_generator.html" target="_blank" class="qc">
+        <div class="qc-icon">✨</div>
+        <div class="qc-tag">LINE返信（AI版）</div>
+        <div class="qc-name">LINE返信文ジェネレーター</div>
+      </a>
       <a href="line_talk_script.html" target="_blank" class="qc">
         <div class="qc-icon">💬</div>
-        <div class="qc-tag">LINE返信</div>
+        <div class="qc-tag">LINE返信（参考）</div>
         <div class="qc-name">LINEトークスクリプト</div>
       </a>
       <a href="https://calendly.com/" target="_blank" class="qc">

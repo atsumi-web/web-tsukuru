@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📨 LINE返信文ジェネレーター｜AI対応版</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f172a;
+    --line: #06c755;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --yellow: #eab308;
+    --green: #22c55e;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+
+  .header {
+    background: var(--navy);
+    color: #fff;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .header h1 { font-size: 1.1rem; font-weight: 700; }
+  .header p { font-size: 0.78rem; color: #94a3b8; }
+  .back { margin-left: auto; font-size: 0.8rem; color: #94a3b8; text-decoration: none; }
+  .back:hover { color: #fff; }
+
+  .container { max-width: 800px; margin: 0 auto; padding: 28px 20px 80px; display: flex; flex-direction: column; gap: 18px; }
+
+  /* ── フロー説明 ── */
+  .flow-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow-x: auto;
+  }
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 90px;
+    text-align: center;
+  }
+  .flow-icon { font-size: 1.4rem; }
+  .flow-label { font-size: 0.7rem; font-weight: 700; color: var(--muted); line-height: 1.3; }
+  .flow-arrow { color: #cbd5e0; font-size: 1.2rem; padding: 0 6px; flex-shrink: 0; }
+
+  /* ── カード ── */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* ── テキストエリア ── */
+  textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--text);
+    background: #fafbfd;
+    resize: vertical;
+    line-height: 1.75;
+    transition: border-color 0.2s;
+  }
+  textarea:focus { outline: none; border-color: #94a3b8; background: #fff; }
+  #paste-area { height: 150px; }
+  #ai-reply-input { height: 200px; border-color: #a5f3fc; background: #f0fdfe; }
+  #ai-reply-input:focus { border-color: #22d3ee; }
+
+  /* ── ボタン類 ── */
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--navy), #1e3a5f);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 13px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,23,42,0.3); }
+
+  .btn-copy-prompt {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-copy-prompt:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,58,237,0.35); }
+  .btn-copy-prompt.done { background: linear-gradient(135deg, #059669, #10b981); }
+
+  .btn-copy-line {
+    width: 100%;
+    padding: 16px;
+    background: var(--line);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-copy-line:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(6,199,85,0.4); }
+  .btn-copy-line.done { background: #059669; }
+
+  .btn-sm {
+    padding: 7px 14px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-sm:hover { background: #334155; }
+  .btn-sm.green.done { background: var(--line); }
+
+  /* ── 解析グリッド ── */
+  #parsed-section { display: none; }
+  .parsed-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .p-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .p-pill.score-low { background: #fff1f2; border-color: #fecdd3; color: #be123c; }
+  .p-pill.score-mid { background: #fefce8; border-color: #fef08a; color: #854d0e; }
+  .p-pill.score-high { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+
+  /* ── プロンプトボックス ── */
+  .prompt-box {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 0.82rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.8;
+    font-family: 'Noto Sans JP', monospace;
+    margin-bottom: 14px;
+    max-height: 340px;
+    overflow-y: auto;
+  }
+
+  /* ── AI起動リンク群 ── */
+  .ai-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .ai-link {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.18s;
+    border: 2px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .ai-link.perplexity { background: #f0f4ff; color: #3730a3; border-color: #c7d2fe; }
+  .ai-link.perplexity:hover { background: #e0e7ff; }
+  .ai-link.chatgpt { background: #f0fdf4; color: #065f46; border-color: #a7f3d0; }
+  .ai-link.chatgpt:hover { background: #dcfce7; }
+  .ai-link.gemini { background: #fff7ed; color: #92400e; border-color: #fde68a; }
+  .ai-link.gemini:hover { background: #fef3c7; }
+  .ai-link.claude { background: #faf5ff; color: #6b21a8; border-color: #e9d5ff; }
+  .ai-link.claude:hover { background: #f3e8ff; }
+
+  /* ── 手順説明テキスト ── */
+  .how-to {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.83rem;
+    color: #78350f;
+    line-height: 1.8;
+  }
+  .how-to ol { padding-left: 18px; }
+  .how-to li { margin-bottom: 4px; }
+
+  /* ── 仕切り ── */
+  hr.dashed { border: none; border-top: 1px dashed var(--border); margin: 18px 0; }
+
+  /* ── エラー ── */
+  #parse-error {
+    display: none;
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.83rem;
+    color: #be123c;
+    margin-top: 10px;
+  }
+
+  /* ── 最終返信プレビュー ── */
+  #final-section { display: none; }
+  .final-preview {
+    background: #f0fdf4;
+    border: 2px solid #86efac;
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 0.88rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 14px;
+    min-height: 80px;
+    cursor: text;
+  }
+  .final-note { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span style="font-size:1.8rem;">📨</span>
+  <div>
+    <h1>LINE返信文ジェネレーター <span style="font-size:0.75rem; background:#7c3aed; padding:2px 10px; border-radius:20px; margin-left:6px;">AI版</span></h1>
+    <p>LINEメッセージ → AIプロンプト生成 → ChatGPT/Geminiが返信文を作成</p>
+  </div>
+  <a href="./index.html" class="back">← Admin TOP</a>
+</div>
+
+<div class="container">
+
+  <!-- フロー説明バー -->
+  <div class="flow-bar">
+    <div class="flow-step"><div class="flow-icon">📋</div><div class="flow-label">LINEを<br>ペースト</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-icon">⚡</div><div class="flow-label">プロンプト<br>自動生成</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-icon">🤖</div><div class="flow-label">AIに<br>貼り付け</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-icon">✍️</div><div class="flow-label">AI回答を<br>ここに貼る</div></div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step"><div class="flow-icon">💚</div><div class="flow-label">LINEに<br>コピー</div></div>
+  </div>
+
+  <!-- STEP 1: ペースト -->
+  <div class="card">
+    <div class="card-title">
+      <span class="step-num">1</span>
+      LINEに届いたメッセージをここに貼り付ける
+    </div>
+    <textarea id="paste-area" placeholder="【採用資産化 診断 申し込み】&#10;■ 診断スコア：1/6点（採用費の垂れ流し状態）&#10;■ 会社名：&#10;■ サイトURL：&#10;■ 採用課題：&#10;..."></textarea>
+    <div id="parse-error">⚠️ 「会社名：」「スコア：」「採用課題：」が含まれているか確認してください。</div>
+    <button class="btn-primary" onclick="generate()">⚡ AIプロンプトを生成する</button>
+  </div>
+
+  <!-- STEP 2: 解析 + プロンプト -->
+  <div id="parsed-section">
+    <div class="card">
+      <div class="card-title">
+        <span class="step-num">2</span>
+        解析結果 ＆ AIへのプロンプト
+      </div>
+
+      <!-- 解析ピル -->
+      <div class="parsed-mini" id="parsed-pills"></div>
+
+      <!-- プロンプト表示 -->
+      <div class="prompt-box" id="prompt-box"></div>
+
+      <!-- コピーボタン -->
+      <button class="btn-copy-prompt" id="copy-prompt-btn" onclick="copyPrompt()">
+        📋 AIプロンプトをコピーする
+      </button>
+
+      <hr class="dashed">
+
+      <!-- AI起動リンク + 手順 -->
+      <div class="card-title" style="margin-bottom:10px;"><span>🤖</span> AIを選んで貼り付ける（Web閲覧できるAI推奨）</div>
+      <div class="ai-links">
+        <a class="ai-link perplexity" href="https://www.perplexity.ai/" target="_blank">🔍 Perplexity<small>（URL取得★）</small></a>
+        <a class="ai-link chatgpt" href="https://chat.openai.com/" target="_blank">💬 ChatGPT</a>
+        <a class="ai-link gemini" href="https://gemini.google.com/" target="_blank">✨ Gemini</a>
+        <a class="ai-link claude" href="https://claude.ai/" target="_blank">🧠 Claude</a>
+      </div>
+      <div class="how-to">
+        <ol>
+          <li>上の <strong>「コピー」</strong> でプロンプトをコピーする</li>
+          <li>AIを開いて <strong>貼り付けて送信</strong>（Perplexity推奨：URLを直接クロール）</li>
+          <li>AIが返信文を生成したら <strong>全文コピー</strong> して下のSTEP 3に貼る</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- STEP 3: AI回答を貼り付け → LINE送信 -->
+    <div class="card" id="final-section" style="display:block;">
+      <div class="card-title">
+        <span class="step-num">3</span>
+        AIが生成した返信文をここに貼る → そのままLINEへ
+      </div>
+
+      <!-- LINE管理画面へのダイレクトリンク -->
+      <a href="https://chat.line.biz/U8a92712a4499615a14a04979377eac55"
+         target="_blank"
+         style="
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           gap: 10px;
+           background: #06c755;
+           color: #fff;
+           font-weight: 700;
+           font-size: 0.95rem;
+           padding: 13px 20px;
+           border-radius: 10px;
+           text-decoration: none;
+           margin-bottom: 14px;
+           transition: all 0.2s;
+           box-shadow: 0 3px 12px rgba(6,199,85,0.35);
+         "
+         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(6,199,85,0.45)'"
+         onmouseout="this.style.transform='';this.style.boxShadow='0 3px 12px rgba(6,199,85,0.35)'"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        💬 LINE公式チャット管理画面を開く（ここに貼り付けて送信）
+      </a>
+
+      <textarea id="ai-reply-input" placeholder="AIが生成した返信文をここにペーストする…&#10;（そのまま送れる状態に整えてから下のボタンでコピー）" oninput="syncPreview()"></textarea>
+
+      <hr class="dashed" style="margin:14px 0;">
+
+      <div class="card-title" style="margin-bottom:8px;"><span>👀</span> プレビュー（編集もここで可）</div>
+      <div class="final-preview" id="final-preview" contenteditable="true">AIの返信文がここに表示されます…</div>
+
+      <button class="btn-copy-line" id="copy-line-btn" onclick="copyToLine()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        📋 返信文をコピーする
+      </button>
+      <p class="final-note">① コピー → ② 上のLINE管理画面を開く → ③ トークに貼り付けて送信</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let parsedData = {};
+
+  // ── メッセージ解析 ──
+  function parseMessage(text) {
+    const d = {};
+    const company = text.match(/会社名[：:]\s*(.+)/);
+    d.company = company ? company[1].trim() : '';
+    const score = text.match(/スコア[：:]\s*(\d)/);
+    d.scoreNum = score ? parseInt(score[1]) : -1;
+    const label = text.match(/（([^）]+採用[^）]+|[^）]+状態[^）]*)）/);
+    d.scoreLabel = label ? label[1].trim() : '';
+    const url = text.match(/URL[：:]\s*(https?:\/\/\S+)/);
+    d.url = url ? url[1].trim() : '';
+    const ch = text.match(/採用課題[：:]\s*([\s\S]+?)(?=■|詳細な診断|$)/);
+    d.challenge = ch ? ch[1].trim() : '';
+    // 社名の略称
+    const nm = d.company.match(/^(.+?)(建設|工業|土木|組|建工|興業|産業|工務店|株式会社|有限会社)/);
+    d.shortName = nm ? nm[1] : d.company;
+    return d;
+  }
+
+  // ── スコアに応じたパターン ──
+  function detectPattern(n) {
+    if (n >= 4) return { label: '🟢 高スコア（改善提案型）', css: 'score-high', key: 'A' };
+    if (n >= 2) return { label: '🟡 中スコア（課題共感型）', css: 'score-mid', key: 'B' };
+    return { label: '🔴 低スコア（最優先候補）', css: 'score-low', key: 'C' };
+  }
+
+  // ── AIプロンプト生成（メイン） ──
+  function buildPrompt(d) {
+    const name = d.shortName ? d.shortName + '社長' : '担当者様';
+    const company = d.company || '（会社名不明）';
+    const url = d.url || '（URL不明）';
+    const challenge = d.challenge || '（課題不明）';
+    const scoreText = d.scoreNum >= 0 ? `${d.scoreNum}/6点` + (d.scoreLabel ? `（${d.scoreLabel}）` : '') : '不明';
+    const pat = detectPattern(d.scoreNum);
+
+    const patternGuide =
+      pat.key === 'A'
+        ? '※ 高スコアなので「すでに頑張っている→もう一歩改善できる」という前向きなトーンで書いてください。'
+        : pat.key === 'B'
+        ? '※ 中スコアなので「課題が明確→採用LPで解決できる」という希望を持たせるトーンで書いてください。'
+        : '※ 低スコアなので「今すぐ変えた方がいい→でも方法の問題だけ」という緊迫感＋共感のトーンで書いてください。';
+
+    return `あなたは建設業界専門の採用コンサルタントです。
+以下の会社の社長に送る、個別LINEメッセージを作成してください。
+
+━━━━━━━━━━━━━━━━━━
+【会社名】${company}
+【社長への呼びかけ】${name}
+【診断スコア】${scoreText}
+【社長が記入した採用課題】
+${challenge}
+【会社サイトURL】${url}
+━━━━━━━━━━━━━━━━━━
+
+【作業①】上記URLにアクセスして、以下を調べてください：
+- 会社の創業年・歴史
+- 会社の強み・実績・認証（ISO等）
+- 社是・経営理念・キャッチコピー
+- 採用ページの現状（何が不足しているか）
+- 求職者に伝わっていなさそうな隠れた魅力
+
+【作業②】上記を踏まえてLINE返信文を作成してください。
+
+【返信文の条件】
+- 200〜280字以内
+- 書き出しは「${name}、診断フォームのご回答ありがとうございます！」から始める
+- 次の行に「さっそくサイトを拝見しました。」と書く
+- サイトで調べた会社固有の情報（創業年・社是・強みなど）を必ず1〜2個具体的に入れる
+- 採用ページの「もったいない点」を1つ具体的に指摘する
+- 共感→希望（採用LPで解決できる）→行動（30分Zoom）の流れで締める
+- 絵文字は自然に2〜3個
+- 押しつけがましくない、親しみやすいトーン
+
+${patternGuide}
+
+【出力形式】
+返信文のみを出力してください（前置きや解説は不要）。`;
+  }
+
+  // ── メイン処理 ──
+  function generate() {
+    const text = document.getElementById('paste-area').value.trim();
+    document.getElementById('parse-error').style.display = 'none';
+    if (!text) {
+      showError('メッセージを貼り付けてください。');
+      return;
+    }
+    parsedData = parseMessage(text);
+    if (!parsedData.company && !parsedData.url && !parsedData.challenge) {
+      showError('「会社名：」「スコア：」「採用課題：」が含まれているか確認してください。');
+      return;
+    }
+    // 解析ピル
+    const pat = detectPattern(parsedData.scoreNum);
+    const pills = document.getElementById('parsed-pills');
+    pills.innerHTML = '';
+    addPill(pills, '🏢 ' + (parsedData.company || '会社名不明'), '');
+    addPill(pills, (parsedData.scoreNum >= 0 ? parsedData.scoreNum + '/6点' : '-') + ' ' + (parsedData.scoreLabel ? '| ' + parsedData.scoreLabel : ''), pat.css);
+    if (parsedData.url) {
+      const link = document.createElement('a');
+      link.href = parsedData.url;
+      link.target = '_blank';
+      link.className = 'p-pill';
+      link.style.color = '#3b82f6';
+      link.textContent = '🌐 サイトを確認';
+      pills.appendChild(link);
+    }
+
+    // プロンプト表示
+    const prompt = buildPrompt(parsedData);
+    document.getElementById('prompt-box').textContent = prompt;
+
+    // 表示
+    document.getElementById('parsed-section').style.display = 'block';
+    document.getElementById('parsed-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function addPill(container, text, cssClass) {
+    const el = document.createElement('div');
+    el.className = 'p-pill' + (cssClass ? ' ' + cssClass : '');
+    el.textContent = text;
+    container.appendChild(el);
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('parse-error');
+    el.textContent = '⚠️ ' + msg;
+    el.style.display = 'block';
+  }
+
+  // ── コピー: プロンプト ──
+  function copyPrompt() {
+    const text = document.getElementById('prompt-box').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-prompt-btn');
+      btn.textContent = '✅ コピーしました！AIに貼り付けてください';
+      btn.classList.add('done');
+      setTimeout(() => {
+        btn.textContent = '📋 AIプロンプトをコピーする';
+        btn.classList.remove('done');
+      }, 3000);
+    });
+  }
+
+  // ── テキストエリア→プレビュー同期 ──
+  function syncPreview() {
+    const val = document.getElementById('ai-reply-input').value;
+    const preview = document.getElementById('final-preview');
+    preview.textContent = val || 'AIの返信文がここに表示されます…';
+  }
+
+  // ── コピー: LINE送信用 ──
+  function copyToLine() {
+    const preview = document.getElementById('final-preview');
+    const text = preview.innerText || preview.textContent;
+    if (!text || text === 'AIの返信文がここに表示されます…') {
+      alert('STEP 3にAIの返信文を貼り付けてからコピーしてください。');
+      return;
+    }
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-line-btn');
+      btn.innerHTML = '✅ コピーしました！LINEに貼り付けて送信してください';
+      btn.classList.add('done');
+      setTimeout(() => {
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg> 📋 返信文をコピー → LINEで送る`;
+        btn.classList.remove('done');
+      }, 3000);
+    });
+  }
+
+  // Ctrl+Enter で生成
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('paste-area').addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') generate();
+    });
+  });
+</script>
+</body>
+</html>
