@@ -449,8 +449,84 @@
                         <tr><td>デザイン＆コンテンツチェック</td><td>AI</td><td>完成スライドの内容・表現・整合性を確認</td></tr>
                         <tr><td>予約操作</td><td><strong style="color:var(--accent-gold);">えりさん</strong></td><td>Meta Business Suiteで日時指定して予約</td></tr>
                     </table>
+
+                    <h3 style="margin-top:20px;">🤖 カルーセル生成プロンプト（Antigravityに貼り付けて使用）</h3>
+                    <div class="note"><i class="fa-solid fa-circle-info"></i> 最後の「テーマ：○○」部分だけ変えてそのまま貼り付けてください。</div>
+
+                    <div style="position:relative;">
+                        <button onclick="copyPrompt()" style="position:absolute;top:8px;right:8px;background:var(--accent-blue);color:#fff;border:none;border-radius:4px;padding:5px 12px;cursor:pointer;font-size:0.75rem;z-index:1;">
+                            <i class="fa-solid fa-copy"></i> コピー
+                        </button>
+                        <div class="prompt-box" id="main-prompt">あなたは建設業の採用に精通したSNSマーケターです。
+Instagramのフィード投稿（カルーセル形式・5枚構成）を作成してください。
+
+【ターゲット】
+建設会社・建築会社の経営者・採用担当者（30〜50代男性）
+「若い人が来ない」「ハローワークで反応がない」という悩みを持つ方
+
+【投稿の目的】
+① 共感を得る → ② 採用LPの価値を伝える → ③ LINE無料相談に誘導する
+
+【5枚構成のルール】
+①表紙（カバー）
+・バッジ（小ラベル）：投稿カテゴリ（例：採用担当者必見）
+・メインコピー①：状態・問題提起（細字）
+・メインコピー②：キーワード（太字・大）
+・サブコピー：補足（20文字以内）
+
+②問題提起
+建設会社の社長が「これ、うちだ」と感じる悩みを
+チェックリスト形式で3〜4つ列挙
+
+③解説・原因
+なぜこの問題が起きているのかを1スライドで端的に説明
+
+④改善ポイント
+採用LPで解決できる3つのことを箇条書きで提示
+
+⑤まとめ＋CTA
+「建設会社の採用をWebで変えたい方へ」
+→「プロフィールのリンクからLINE無料相談」
+
+【文章ルール】
+・1スライドの文字数：50字以内を目安
+・改行を多めにする（1文で改行OK）
+・専門用語は少なめ（LPは「採用ページ」と言い換えてもOK）
+・語り口：「〜ました」「〜です」丁寧だが親しみある口語
+・絵文字：各スライドに1〜2個まで
+
+【キャプション（本文）も合わせて作成してください】
+構成：
+① 共感フック（1〜2行）
+② 問題提起（1行）
+③ 本文（箇条書き3〜5行）
+④ まとめ（1〜2行）
+⑤ CTA「▶ プロフィールのリンクからLINE無料相談」
+
+文字数：150〜250文字・改行多めにすること
+
+【ハッシュタグ】
+固定：#建設業採用 #採用LP #建設会社 #中小企業採用 #採用の仕組み
+＋テーマに合わせて2〜3個追加
+
+━━━━━━━━━━━━━━━
+テーマ：「○○○○」
+━━━━━━━━━━━━━━━</div>
+                    </div>
+
+                    <h3 style="margin-top:16px;">💡 テーマ入力例（コピペして○○に入れる）</h3>
+                    <table>
+                        <tr><th>テーマ</th><th>ポイント</th></tr>
+                        <tr><td>ハローワークだけでは若手が来ない理由</td><td>問題提起・共感系</td></tr>
+                        <tr><td>採用LPと求人票の3つの違い</td><td>比較・差別化系</td></tr>
+                        <tr><td>建設会社が採用で損している3つの原因</td><td>ミス・盲点系</td></tr>
+                        <tr><td>スマホで採用ページを見ると分かること</td><td>体験・気づき系</td></tr>
+                        <tr><td>「経験者優遇」が逆効果な理由</td><td>逆張り系</td></tr>
+                        <tr><td>LINEで採用をラクにする方法</td><td>ツール活用系</td></tr>
+                    </table>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -576,6 +652,19 @@
             <div class="note" style="margin-top:10px;"><i class="fa-solid fa-lightbulb"></i> <strong>参考：</strong><a href="https://web-tsukuru.jp/manuals/admin/reel_script_guide" target="_blank">リール台本ガイド</a>のキーワード・OKパターンとの整合性を確認してからテキストを作成すること。</div>
         </div>
     </div>
-
+<script>
+        function copyPrompt() {
+            const text = document.getElementById('main-prompt').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('button[onclick="copyPrompt()"]');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> コピー完了！';
+                btn.style.background = 'var(--accent-green)';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-copy"></i> コピー';
+                    btn.style.background = 'var(--accent-blue)';
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>
