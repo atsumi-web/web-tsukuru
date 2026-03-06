@@ -417,31 +417,30 @@
             <div class="panel-title" style="color:var(--accent-pink);"><i class="fa-solid fa-5"></i> STEP 5｜表紙を30枚一括生成</div>
         </div>
         <div class="panel-body">
+            <div class="tip" style="margin-bottom:14px;"><i class="fa-solid fa-circle-check"></i> <strong>縦書きテンプレート完成済み。</strong>「リール表紙（テンプレ＆完成品）」フォルダの30ページデザインを流用。CSVを差し替えるだけで毎月使い回せる。</div>
+
             <div class="step">
                 <div class="step-num">①</div>
                 <div class="step-body">
-                    <strong>「リール表紙（テンプレ＆完成品）」フォルダを開く</strong>
-                    <p>5ページ構成の表紙テンプレートを使用（背景×5種類、各ページに「表紙1〜5」のテキスト接続済み）</p>
+                    <strong>cover_sheet.csvをCanvaシートに読み込む</strong>
+                    <p>上のクイックリンクから <code>cover_sheet.csv</code> を開く<br>→ 30行×2列（ファイル名・表紙テキスト）のシンプルなデータ</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">②</div>
                 <div class="step-body">
-                    <strong>同じCSVデータで一括作成を実行</strong>
-                    <p>「一括作成」→ Canvaシートを選択 → 「表紙1〜5」列が自動的に接続される</p>
+                    <strong>「リール表紙（テンプレ＆完成品）」の30ページデザインを開く</strong>
+                    <p>上のクイックリンクからアクセス。縦書きテンプレートが<strong>表紙１〜表紙３０</strong>の30ページ構成で並んでいる。<br>
+                    <strong>初回以降はこのデザインを流用するだけでOK。</strong></p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">③</div>
                 <div class="step-body">
-                    <strong>高度なオプションの設定</strong>
-                    <p>
-                        出力：<strong>「1つのデザインで複数ページを作成」</strong>を選択（30ページが1デザインにまとまる）<br>
-                        各デザインの名前：<strong>「オリジナルデザイン名」</strong>のままでOK<br>
-                        保存先：<strong>リール＞表紙＞完成品（表紙）</strong>を選択<br>
-                        → 「続行」→ 一括生成を実行
-                    </p>
-                    <img src="../images/canva-advanced-options.png" alt="Canva 高度なオプション設定" class="manual-img">
+                    <strong>一括作成 →「それぞれ個別のデザインを作成」で実行</strong>
+                    <p>編集画面左下「アプリ」→「一括作成」→ cover_sheet.csv のデータを選択<br>
+                    出力：<strong>「それぞれ個別のデザインを作成」</strong>を選択<br>
+                    → 30枚の表紙が <strong>reel_01〜reel_30の順</strong> かつ <strong>テンプレローテーション順</strong> でDLできる</p>
                 </div>
             </div>
             <div class="step">
@@ -454,37 +453,28 @@
             <div class="step">
                 <div class="step-num">⑤</div>
                 <div class="step-body">
-                    <strong>Meta Business SuiteでReels投稿時に表紙を設定</strong>
-                    <p>動画を追加 → 「FacebookとInstagram用の投稿をカスタマイズ」をオン → サムネイルをアップロード</p>
+                    <strong>PowerShellリネーム不要。そのままMeta Business Suiteへ</strong>
+                    <p>「それぞれ個別のデザインを作成」方式ではファイル番号のズレが発生しない。<br>
+                    DLしたPNGをそのままMeta Business SuiteでサムネイルとしてアップロードすればOK。<br>
+                    ・<strong>サムネイル</strong>：<strong>PNGで可。</strong>CanvaからPNGでDLしてアップロード</p>
                 </div>
             </div>
-            <div class="step">
-                <div class="step-num">⑤'</div>
-                <div class="step-body">
-                    <strong>ダウンロードした表紙PNGをリール番号順にリネーム（PowerShell）</strong>
-                    <p>Canvaは「1つのデザインで複数ページを作成」の場合、ページを<strong>テンプレート順×行順</strong>で出力するため、ファイル番号とリール番号がずれる。<br>
-                    例：2.png → reel_07の表紙、6.png → reel_02の表紙</p>
-                    <p style="color:#94A3B8; font-size:0.8rem; margin-bottom:4px;">【手順】①表紙フォルダをエクスプローラーで開く ②アドレスバーに <code>powershell</code> → Enter ③以下を実行</p>
-                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--panel-border); border-left:3px solid var(--accent-pink); border-radius:4px; padding:10px 14px; font-size:0.82rem; color:#CBD5E1; margin:8px 0; font-family:monospace; white-space:pre-wrap;">$m=@(1,7,13,19,25,2,8,14,20,26,3,9,15,21,27,4,10,16,22,28,5,11,17,23,29,6,12,18,24,30)
-for($i=1;$i -le 30;$i++){$r=$m[$i-1];if(Test-Path "$i.png"){Rename-Item "$i.png" ("reel_{0:D2}_cover.png" -f $r)}}</div>
-                    <p style="color:#94A3B8; font-size:0.8rem;">→ <code>1.png</code>〜<code>30.png</code> が <code>reel_01_cover.png</code>〜<code>reel_30_cover.png</code> にリネームされる</p>
-                </div>
-            </div>
-            <div class="note"><i class="fa-solid fa-info-circle"></i> 表紙の縦書きフォントは日本語のみ使用（英字・数字は横倒しになるため使わない）。</div>
 
-            <!-- 表紙ローテーション新方式 -->
-            <div style="margin-top:20px; padding:16px; background:rgba(228,64,95,0.06); border:1px solid rgba(228,64,95,0.3); border-radius:8px;">
-                <div style="font-size:0.82rem; font-weight:700; color:var(--accent-pink); margin-bottom:10px;"><i class="fa-solid fa-rotate"></i> 表紙テンプレローテーション方式 <span class="badge badge-new">次回バッチから推奨</span></div>
-                <p style="font-size:0.82rem; color:var(--text-dim); margin-bottom:10px;">⚠️ 現行の5ページ方式では、同じテンプレが連続して投稿されやすい（テンプレA×6本、B×6本…の順で書き出されるため）。</p>
-                <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:8px;"><strong style="color:var(--text-main);">✅ 解決策：30ページ方式</strong></div>
-                <ol style="color:var(--text-dim); font-size:0.82rem; padding-left:18px; margin:0 0 10px;">
-                    <li><strong style="color:var(--text-main);">cover_sheet.csv</strong>（上のクイックリンク）をCanvaシートに読み込む<br>→ 30行×2列（ファイル名・表紙テキスト）の縦一列データ</li>
-                    <li>Canvaで<strong style="color:var(--text-main);">30ページの表紙専用デザイン</strong>を新規作成する<br>→ ページ順を<strong style="color:var(--text-main);">A,B,C,D,E,A,B,C,D,E…</strong>と手動で背景を並べる（初回のみ）</li>
-                    <li>一括作成 →「それぞれ個別のデザインを作成」で実行<br>→ 30枚の表紙が<strong style="color:var(--text-main);">reel_01〜reel_30の順&amp;テンプレローテーション順</strong>でDLできる</li>
-                    <li>PowerShellリネーム不要。そのままMeta Business Suiteにアップロード</li>
-                </ol>
-                <div class="tip"><i class="fa-solid fa-lightbulb"></i> 30ページデザインは一度作れば翌月も流用可。CSVを差し替えるだけで毎月使い回せる。</div>
-            </div>
+            <div class="note"><i class="fa-solid fa-info-circle"></i> 縦書きテキストは<strong>日本語のみ</strong>使用。英字・数字（LP・30など）は横倒しになるため使わない。</div>
+
+            <!-- 旧方式メモ（折りたたみ） -->
+            <details style="margin-top:16px;">
+                <summary style="cursor:pointer; font-size:0.8rem; color:var(--text-dim); padding:8px 12px; background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:6px;">
+                    <i class="fa-solid fa-clock-rotate-left"></i> 旧方式メモ（5ページ方式 ＋ PowerShellリネーム）
+                </summary>
+                <div style="padding:12px; font-size:0.82rem; color:var(--text-dim); border:1px solid var(--panel-border); border-top:none; border-radius:0 0 6px 6px;">
+                    <p style="margin:0 0 8px;">⚠️ 5ページ方式では「テンプレA×6本、B×6本…」の順で書き出されるため、同じテンプレが連続して投稿されやすい問題があった。</p>
+                    <p style="margin:0 0 4px;"><strong style="color:var(--text-main);">旧STEP5③：</strong>出力を「1つのデザインで複数ページを作成」で実行すると30ページが1デザインにまとまる。</p>
+                    <p style="margin:0 0 8px;"><strong style="color:var(--text-main);">旧PowerShellリネーム：</strong>上記方式ではファイル番号がずれるため以下のコマンドで修正が必要だった。</p>
+                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--panel-border); border-left:3px solid var(--accent-pink); border-radius:4px; padding:10px 14px; font-family:monospace; white-space:pre-wrap; color:#CBD5E1;">$m=@(1,7,13,19,25,2,8,14,20,26,3,9,15,21,27,4,10,16,22,28,5,11,17,23,29,6,12,18,24,30)
+for($i=1;$i -le 30;$i++){$r=$m[$i-1];if(Test-Path "$i.png"){Rename-Item "$i.png" ("reel_{0:D2}_cover.png" -f $r)}}</div>
+                </div>
+            </details>
         </div>
     </div>
 
@@ -536,18 +526,17 @@ for($i=1;$i -le 30;$i++){$r=$m[$i-1];if(Test-Path "$i.png"){Rename-Item "$i.png"
             <div class="step">
                 <div class="step-num">③</div>
                 <div class="step-body">
-                    <strong>Meta Business Suite → 「リール動画を一括アップロード」</strong>
-                    <p>「投稿を作成」ボタン右の▼ → <strong>「リール動画を一括アップロード」</strong>を選択<br>
-                    「動画を追加」→ 30本まとめて選択（最大50件まで対応）</p>
+                    <strong>Meta Business Suite → 個別でリール投稿</strong>
+                    <p>「投稿を作成」→「リール動画」→ 動画を1本ずつ選択してアップロード</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">④</div>
                 <div class="step-body">
                     <strong>各動画のタイトル・説明・サムネイルを設定</strong>
-                    <p>・<strong>タイトル</strong>：ファイル名から自動入力されるが<strong>必須項目</strong>なので確認する<br>
+                    <p>・<strong>タイトル</strong>：入力必須。reel_01などファイル名ベースでOK<br>
                     ・<strong>説明</strong>：下のキャプションをコピペ<br>
-                    ・<strong>サムネイル</strong>：<strong>JPGのみ対応</strong>。STEP5で作った表紙をCanvaからJPGでDLしてアップロード<br>
+                    ・<strong>サムネイル</strong>：<strong>PNG可。</strong>STEP5で作った表紙（PNG）をそのままアップロード<br>
                     ・「スケジュールと備考のオプション」から予約日時を設定（12時推奨）</p>
                 </div>
             </div>

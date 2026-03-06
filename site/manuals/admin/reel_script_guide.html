@@ -251,7 +251,7 @@
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title" style="color: var(--accent-purple)">
-          <i class="fa-solid fa-layer-group"></i> 5パーツ構成（15秒リール）
+          <i class="fa-solid fa-layer-group"></i> 6パーツ構成（表紙＋5スライド・素4.5秒×4＋3.4秒×1）
         </div>
       </div>
       <div class="panel-body">
@@ -265,31 +265,31 @@
           <tr>
             <td><strong>① フック</strong></td>
             <td>冒頭の1〜2秒で止め、続きを見たくさせる</td>
-            <td>3秒</td>
+            <td>4.5秒</td>
             <td>30〜40字</td>
           </tr>
           <tr>
             <td><strong>② 問題</strong></td>
             <td>視聴者が抱える課題・状況を言語化して共感させる</td>
-            <td>3秒</td>
+            <td>4.5秒</td>
             <td>30〜45字</td>
           </tr>
           <tr>
             <td><strong>③ 解説</strong></td>
             <td>なぜそうなるのか・知られていない事実を教える</td>
-            <td>3秒</td>
+            <td>4.5秒</td>
             <td>30〜45字</td>
           </tr>
           <tr>
             <td><strong>④ 解決</strong></td>
-            <td>採用LPによってどう解決するかを示す</td>
-            <td>3秒</td>
+            <td>採用ページによってどう解決するかを示す</td>
+            <td>4.5秒</td>
             <td>30〜40字</td>
           </tr>
           <tr>
             <td><strong>⑤ CTA</strong></td>
             <td>プロフィールのリンクへ誘導する行動喚起</td>
-            <td>3秒</td>
+            <td>3.4秒</td>
             <td>20〜30字</td>
           </tr>
         </table>
@@ -574,6 +574,25 @@
       </div>
     </div>
 
+    <!-- コンテンツ配分ルール -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" style="color: var(--accent-orange)">
+          <i class="fa-solid fa-chart-pie"></i> コンテンツ配分ルール（8割・2割ミックス方式）
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="color:var(--text-dim); font-size:0.85rem; margin:0 0 10px;">月ごとにテーマを固定しつつ、バリエーションを持たせるための配分ルール。</p>
+        <table>
+          <tr><th>分類</th><th>本数</th><th>内容</th></tr>
+          <tr><td><strong>メインテーマ</strong></td><td><strong style="color:var(--accent-green);">24本</strong></td><td>その月の年間テーマカレンダーのテーマ・切り口</td></tr>
+          <tr><td><strong>ミックス枠</strong></td><td><strong style="color:var(--accent-orange);">6本</strong></td><td>他の月テーマ・切り口からバリエーションとして混在させる</td></tr>
+        </table>
+        <div class="tip"><i class="fa-solid fa-lightbulb"></i> リールは1本ずつ発見されるため、視聴者には月テーマは伝わらない。ミックス枠を入れることで飽きにくく・アルゴリズムにも刺さりやすくなる。</div>
+        <div class="note"><i class="fa-solid fa-shuffle"></i> <strong>ミックス6本の選び方：</strong>前後の月テーマ・または「スマホ対応」「社員の声」など普遍的に刺さる切り口を優先する。</div>
+      </div>
+    </div>
+
     <!-- AIへの指示文テンプレート -->
     <div class="panel">
       <div class="panel-header">
@@ -583,27 +602,45 @@
         </div>
       </div>
       <div class="panel-body">
-        <p
-          style="color: var(--text-dim); font-size: 0.82rem; margin-bottom: 8px"
-        >
-          以下を月ごとのテーマに書き換えてAntigravityに貼り付けるだけでOK：
+        <p style="color: var(--text-dim); font-size: 0.82rem; margin-bottom: 8px">
+          ◯月・テーマ・切り口の3か所を書き換えてAntigravityに貼り付けるだけでOK：
         </p>
-        <div class="prompt-box">
-          以下の条件でInstagramリール用の台本を30本生成してCSVにしてください。
-          【ターゲット】 建設業の経営者・採用担当者（40〜60代・男性が多い）
-          悩み：人手不足・応募が来ない・採用コストが高い 【今月のテーマ】
-          ※ここにテーマを入れる（例：採用の失敗パターン）
-          【構成】5パーツ（フック・問題・解説・解決・CTA）
-          【1スライドの文字数】30〜45字以内 【フックのルール】
-          ・責めない・試さない・上から目線NG
-          ・驚きの事実、問いかけ、心当たり形式で始める 【CTAのルール】
-          ・10パターンのCTAをローテーションして使う ・全部同じにしない
-          【出力形式】 CSVファイルで出力：列名は「フック,問題,解説,解決,CTA」
-          1行目はヘッダー行、2〜31行目が台本データ
-        </div>
+        <div class="prompt-box">以下の条件でInstagramリール用の台本を30本生成してCSVにしてください。
+
+【ターゲット】
+建設業の経営者・採用担当者（40〜60代・男性が多い）
+悩み：人手不足・応募が来ない・採用コストが高い
+
+【今月の情報】※ここを書き換える
+月：◯月
+メインテーマ：◯◯（年間テーマカレンダーより）
+切り口：◯◯
+
+【テーマ配分（8割・2割ミックス方式）】
+・30本のうち24本をメインテーマで作成する
+・残り6本は他の月テーマ・切り口から選んでバリエーションを持たせる
+
+【6パーツ構成（1本あたり）】
+表紙テキスト：10〜15字の短い見出し（縦書き表示されるため英字・数字を含めない）
+① フック（30〜40字）：冒頭で止める。責めない・試さない・上から目線NG。問いかけ・驚きの事実・心当たり形式で。
+② 問題（30〜45字）：視聴者の悩みを言語化して共感させる
+③ 解説（30〜45字）：なぜそうなるのか・知られていない事実
+④ 解決（30〜40字）：採用ページによってどう解決するかの方向性（CTAと被らせない）
+⑤ CTA（20〜30字）：プロフィールのリンクへの行動喚起。10パターンをローテーション。英字・数字を含めず純粋な日本語のみ。
+
+【出力形式】Canvaシート用CSV（2ファイル）
+
+▼ ① reel_all_in_one_YYYYMM.csv（台本用・5テンプレ×6行=30本）
+ヘッダー：ファイル名1,表紙1,フック1,問題1,解説1,解決1,最後1,ファイル名2,表紙2,...（35列）
+データ：6行。テンプレ1=reel_01〜06、テンプレ2=reel_07〜12、…テンプレ5=reel_25〜30。
+各行に5テンプレ分のデータを横に並べる。
+
+▼ ② cover_sheet_YYYYMM.csv（表紙用・30行）
+ヘッダー：ファイル名,表紙テキスト
+データ：reel_01〜reel_30の30行。表紙テキストは各リールの表紙テキストを縦に並べる。</div>
         <div class="tip">
           <i class="fa-solid fa-lightbulb"></i>
-          テーマ部分だけ書き換えれば毎月そのまま使えます。
+          月・テーマ・切り口の3か所を書き換えるだけで毎月使えます。YYYYMMはファイル名に使う年月（例：202604）。
         </div>
       </div>
     </div>
