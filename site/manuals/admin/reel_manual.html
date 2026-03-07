@@ -309,21 +309,16 @@
             </a>
             <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--panel-border);">
                 <div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:4px;"><i class="fa-solid fa-folder-open"></i> ローカルデータファイル（VSCode内）</div>
-                <div style="background:rgba(0,0,0,0.3); border:1px solid var(--panel-border); border-radius:6px; padding:8px 14px; font-family:monospace; font-size:0.78rem; color:#CBD5E1; user-select:all; cursor:text; margin-bottom:8px;">C:\Users\eri76\OneDrive\Desktop\VSC\web-tsukuru\planning\reels</div>
+                <div style="background:rgba(0,0,0,0.3); border:1px solid var(--panel-border); border-radius:6px; padding:8px 14px; font-family:monospace; font-size:0.78rem; color:#CBD5E1; user-select:all; cursor:text; margin-bottom:8px;">C:\Users\eri76\OneDrive\Desktop\VSC\web-tsukuru\planning\reels\YYYYMM\</div>
                 <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels/" class="link-row" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.2);">
                     <i class="fa-solid fa-file-csv lr-icon" style="color:var(--accent-green);"></i>
-                    <span class="lr-text">reel_all_in_one_YYYYMM.csv</span>
-                    <span class="lr-sub"><span style="color:#10B981;font-weight:700;">[VSCode ローカル]</span> 30本分の動画台本データ（例: reel_all_in_one_202604.csv）</span>
+                    <span class="lr-text">reel_YYYYMM_A.csv ／ reel_YYYYMM_B.csv</span>
+                    <span class="lr-sub"><span style="color:#10B981;font-weight:700;">[VSCode ローカル]</span> 動画台本データ・各15行×8列。月別フォルダ（例: planning/reels/202604/reel_202604_A.csv）</span>
                 </a>
                 <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels/" class="link-row" style="background:rgba(228,64,95,0.05); border:1px solid rgba(228,64,95,0.2);">
                     <i class="fa-solid fa-image lr-icon" style="color:var(--accent-pink);"></i>
-                    <span class="lr-text">cover_sheet_YYYYMM.csv <span class="badge badge-new">NEW</span></span>
-                    <span class="lr-sub"><span style="color:#10B981;font-weight:700;">[VSCode ローカル]</span> 30列ヘッダーの表紙専用CSV（例: cover_sheet_202604.csv）</span>
-                </a>
-                <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels/reel_upload_schedule.csv" class="link-row" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.2);">
-                    <i class="fa-solid fa-calendar lr-icon" style="color:var(--accent-green);"></i>
-                    <span class="lr-text">reel_upload_schedule.csv</span>
-                    <span class="lr-sub"><span style="color:#10B981;font-weight:700;">[VSCode ローカル]</span> 投稿スケジュール管理（3/2～3/31）</span>
+                    <span class="lr-text">cover_sheet_YYYYMM.csv</span>
+                    <span class="lr-sub"><span style="color:#10B981;font-weight:700;">[VSCode ローカル]</span> 2行×30列の表紙専用CSV。月別フォルダに保存（例: planning/reels/202604/cover_sheet_202604.csv）</span>
                 </a>
                 <a href="reel_upload_schedule.html" class="link-row" style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.35);">
                     <i class="fa-solid fa-print lr-icon" style="color:var(--accent-gold);"></i>
@@ -350,11 +345,12 @@
                 <tr><th>STEP</th><th>作業</th><th>ツール</th><th>時間目安</th></tr>
                 <tr><td><strong>1</strong></td><td>AIに台本CSVを生成させる</td><td>Antigravity AI</td><td>5分</td></tr>
                 <tr><td><strong>2</strong></td><td>CSVをCanvaシートにコピペ</td><td>Canvaシート</td><td>3分</td></tr>
-                <tr><td><strong>3</strong></td><td>5ページのリールテンプレートを準備</td><td>Canvaテンプレート</td><td>15分（初回のみ）</td></tr>
-                <tr><td><strong>4</strong></td><td>一括作成で30本を自動生成</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>5分</td></tr>
+                <tr><td><strong>3</strong></td><td>6ページのリールテンプレートを準備</td><td>Canvaテンプレート</td><td>15分（初回のみ）</td></tr>
+                <tr><td><strong>4</strong></td><td>一括作成で<strong>15本×2セッション（計30本）</strong>を自動生成</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>10分</td></tr>
                 <tr><td><strong>5</strong></td><td>表紙も同様に30枚一括生成</td><td>Canva 一括作成</td><td>5分</td></tr>
                 <tr><td><strong>6</strong></td><td>MP4ダウンロード → Meta Business Suiteで投稿予約</td><td>Meta Business Suite</td><td>—</td></tr>
             </table>
+            <div class="tip"><i class="fa-solid fa-boxes-stacked"></i> <strong>6ヶ月ストック × ごちゃまぜ投稿：</strong>1テンプレ×15本×12テンプレ＝<strong>180本（6ヶ月分）</strong>をまとめて作成。月テーマには縛られず、プールから<strong>前後でテンプレ・テーマが被らない</strong>ようランダムに予約投稿することで背景の繰り返し・ネタの偏りを最小化できる。</div>
         </div>
     </div>
 
@@ -379,7 +375,7 @@
                 <div class="step-num">②</div>
                 <div class="step-body">
                     <strong>Antigravityが生成したCSVをローカルに保存</strong>
-                    <p>ファイル名：<code>reel_all_in_one.csv</code>（6行×35列の1シート完結型）</p>
+                    <p>ファイル名：<code>reel_YYYYMM_A.csv</code>・<code>reel_YYYYMM_B.csv</code>（<strong>15行×8列 × 2ファイル</strong>）</p>
                 </div>
             </div>
             <div class="step">
@@ -389,7 +385,7 @@
                     <p>Googleドライブフォルダ → 新規スプレッドシート → ファイル → インポート</p>
                 </div>
             </div>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> CSVの列構成：<strong>ファイル名1, 表紙1, フック1, 問題1, 解説1, 解決1, 最後1</strong> × 5テンプレ＝35列</div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> CSVの列構成：<strong>ファイル名, 表紙テキスト, フック, 問題, 解説, 解決, 最後1, 最後2</strong>（8列×15行 × A・B 2ファイル。表紙はcover_sheet別CSV）</div>
         </div>
     </div>
 
@@ -425,7 +421,7 @@
     <!-- STEP 3 -->
     <div class="panel" id="sec-s3">
         <div class="panel-header">
-            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-3"></i> STEP 3｜5ページのリールテンプレートを準備</div>
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-3"></i> STEP 3｜6ページのリールテンプレートを準備</div>
         </div>
         <div class="panel-body">
             <div class="step-links">
@@ -442,11 +438,14 @@
             <div class="step">
                 <div class="step-num">②</div>
                 <div class="step-body">
-                    <strong>5ページ構成のテンプレートを作る（初回のみ）</strong>
+                    <strong>6ページ構成のテンプレートを作る（初回のみ）</strong>
                     <p>
-                        ページ1：背景A（建設現場写真など）＋テキストボックス×6（表紙1・フック1・問題1・解説1・解決1・最後1）<br>
-                        ページ2：背景B ＋ テキストボックス×6（表紙2〜最後2）<br>
-                        …ページ5まで同様に作成
+                        ページ1：表紙スライド ＋ テキストボックス×1（<strong>表紙テキスト</strong>）<br>
+                        ページ2：フックスライド ＋ テキストボックス×1（<strong>フック</strong>）<br>
+                        ページ3：問題スライド ＋ テキストボックス×1（<strong>問題</strong>）<br>
+                        ページ4：解説スライド ＋ テキストボックス×1（<strong>解説</strong>）<br>
+                        ページ5：解決スライド ＋ テキストボックス×1（<strong>解決</strong>）<br>
+                        ページ6：CTAスライド ＋ テキストボックス×2（<strong>最後1・最後2</strong>・縦書き2列）
                     </p>
                 </div>
             </div>
@@ -458,8 +457,12 @@
                     例：ページ1の表紙テキスト →「表紙1」、フックテキスト →「フック1」</p>
                 </div>
             </div>
-            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>縦書きフォント使用時の注意：</strong>CTAや最後スライドに英字・数字（LP・30など）を使わない。使う場合は「採用ページ」など純粋な日本語に書き換える。</div>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> フォントはNoto Sans JPで統一。表紙と本文で揃えるとグリッドの統一感が出る。</div>
+            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>スライド構成：</strong>フック・問題・解説・解決は<strong>横書き・1ブロック（1文まとめて1セルに記入・目安20〜40字・Canvaが自動折返し・最大5行）</strong>。最後(CTA)スライドのみ<strong>縦書き・2行（1行13字以内・計26字以内）</strong>。英字・数字（LP・SNSなど）は縦書きに使わない。</div>
+            <div class="tip"><i class="fa-solid fa-palette"></i> <strong>ブランディング配置：</strong>フック〜解決スライドは<strong>ロゴ・URLなし</strong>（本文テキストに集中させる）。<strong>CTAスライドのみ</strong>パンダマスコット＋「建設業×採用LP専門」フッターバーを配置。</div>
+            <div class="tip"><i class="fa-solid fa-text-height"></i> <strong>フォント設定（フック〜解決）：</strong>文字サイズ <strong>72px</strong>・文字間隔 <strong>104</strong>・行間幅 <strong>2.5</strong>　横書き　／　フォントはNoto Sans JPで統一。</div>
+            <div class="tip"><i class="fa-solid fa-text-height"></i> <strong>フォント設定（CTA・最後）：</strong>文字サイズ <strong>52.2px</strong>・文字間隔 <strong>130</strong>・行間幅 <strong>1.4</strong>　縦書き・2行</div>
+            <div class="tip"><i class="fa-solid fa-music"></i> <strong>BGM設定（Canvaで設定してからDL）：</strong>音量 <strong>20%</strong>・フェードイン <strong>1秒</strong>・フェードアウト <strong>2秒</strong></div>
+            <div class="danger"><i class="fa-solid fa-triangle-exclamation"></i> BGMの設定は必ず<strong>Canva側で完結</strong>させること。Meta Business Suite側で音源を編集すると<strong>予約投稿が使えなくなる</strong>。</div>
         </div>
     </div>
 
@@ -491,17 +494,17 @@
                 <div class="step-num">③</div>
                 <div class="step-body">
                     <strong>「高度なオプション」→ ページ名の列を選択</strong>
-                    <p>「各ページの名前を選択する際に使用する列」→「ファイル名1」を選択<br>→ デザインがreel_01〜reel_06で自動命名される</p>
+                    <p>「各ページの名前を選択する際に使用する列」→「ファイル名」を選択<br>→ デザインがreel_01〜reel_15（またはreel_16〜reel_30）で自動命名される</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">④</div>
                 <div class="step-body">
                     <strong>「続行」→「◯点のデザインを作成」を実行</strong>
-                    <p>6行×5ページ = 30本分のリール動画が一括生成される</p>
+                    <p>15行 = <strong>15本分</strong>のリール動画が生成される（AファイルとBファイルで<strong>2回実行 = 計30本</strong>）</p>
                 </div>
             </div>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「6個のデザイン」を選択。各デザインの名前は「ファイル名5列のデータ」を選択すると番号で自動命名される。</div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「15個のデザイン」を選択。各デザインの名前は「ファイル名」列を選択するとreel_01〜reel_15（またはreel_16〜reel_30）で自動命名される。</div>
         </div>
     </div>
 
@@ -632,11 +635,12 @@ for($i=1;$i -le 30;$i++){$r=$m[$i-1];if(Test-Path "$i.png"){Rename-Item "$i.png"
                 </div>
             </div>
 
+            <div class="tip" style="margin-bottom:10px;"><i class="fa-solid fa-shuffle"></i> <strong>ごちゃまぜ投稿のコツ：</strong>投稿チェックシートを見ながら、1つ前の行と<strong>テンプレが違う・テーマ月が違う</strong>動画を選ぶ。これだけでプロフィールグリッドの背景が映え、アルゴリズム的にも多様なコンテンツが有利になる。</div>
             <div class="step">
                 <div class="step-num">③</div>
                 <div class="step-body">
                     <strong>Meta Business Suite → 個別でリール投稿</strong>
-                    <p>「投稿を作成」→「リール動画」→ 動画を1本ずつ選択してアップロード</p>
+                    <p>「投稿を作成」→「リール動画」→ 180本プールの中から<strong>投稿チェックシートに従って</strong>1本ずつ選択してアップロード</p>
                 </div>
             </div>
             <div class="step">
