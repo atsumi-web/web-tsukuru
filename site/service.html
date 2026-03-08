@@ -355,52 +355,60 @@
               >OPTION</span
             >
             <h2 class="section-title text-dark">オプションサービス</h2>
-            <p class="section-desc text-dark">必要に応じてご契約いただけます</p>
+            <p class="section-desc text-dark">必要に応じてご契約・ご依頼いただけます</p>
           </div>
 
-          <div class="problem-grid-wide">
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:20px; margin-top:32px;">
+
+            <!-- LINE運営代行 -->
             <div class="problem-card js-fade-up" style="background: #f8fafc">
+              <div style="display:inline-block; background:var(--renewal-navy); color:#fff; padding:4px 14px; border-radius:20px; font-size:0.78rem; font-weight:700; margin-bottom:12px;">月額</div>
               <h3>LINE運営代行</h3>
-              <p
-                style="
-                  font-size: 1.5rem;
-                  font-weight: 700;
-                  color: var(--renewal-navy);
-                  margin: 15px 0;
-                "
-              >
-                月額10,000円〜
+              <p style="font-size:1.5rem; font-weight:700; color:var(--renewal-navy); margin:15px 0;">
+                19,800円<span style="font-size:1rem; font-weight:400;">/月〜</span>
               </p>
-              <ul style="text-align: left; line-height: 2; font-size: 0.95rem">
-                <li>応募者への初回返信テンプレート作成</li>
-                <li>月1回の情報配信代行</li>
+              <ul style="text-align:left; line-height:2; font-size:0.95rem;">
+                <li>応募者への初回返信テンプレート作成・運用</li>
+                <li>月1〜2回の情報配信代行</li>
+                <li>既読・ブロック率などの月次レポート</li>
               </ul>
+              <p style="margin-top:16px; font-size:0.82rem; color:#666;">※更新サポートとの併用可</p>
             </div>
-            <div
-              class="problem-card js-fade-up"
-              data-delay="100"
-              style="background: #f8fafc"
-            >
+
+            <!-- 分析レポート作成 -->
+            <div class="problem-card js-fade-up" data-delay="100" style="background: #f8fafc">
+              <div style="display:inline-block; background:var(--renewal-navy); color:#fff; padding:4px 14px; border-radius:20px; font-size:0.78rem; font-weight:700; margin-bottom:12px;">月額</div>
               <h3>分析レポート作成</h3>
-              <p
-                style="
-                  font-size: 1.5rem;
-                  font-weight: 700;
-                  color: var(--renewal-navy);
-                  margin: 15px 0;
-                "
-              >
-                月額15,000円〜
+              <p style="font-size:1.5rem; font-weight:700; color:var(--renewal-navy); margin:15px 0;">
+                19,800円<span style="font-size:1rem; font-weight:400;">/月〜</span>
               </p>
-              <ul style="text-align: left; line-height: 2; font-size: 0.95rem">
+              <ul style="text-align:left; line-height:2; font-size:0.95rem;">
                 <li>月次PV数・応募数レポート</li>
-                <li>流入経路分析</li>
-                <li>簡単な改善提案</li>
+                <li>流入経路分析（Google Analytics）</li>
+                <li>改善提案（優先度付き）</li>
               </ul>
+              <p style="margin-top:16px; font-size:0.82rem; color:#666;">※GA4が設定されていることが条件</p>
             </div>
+
+            <!-- 採用LP有料診断 -->
+            <div class="problem-card js-fade-up" data-delay="200" style="background:#fffbf0; border:2px solid var(--renewal-gold);">
+              <div style="display:inline-block; background:var(--renewal-gold); color:#fff; padding:4px 14px; border-radius:20px; font-size:0.78rem; font-weight:700; margin-bottom:12px;">単発</div>
+              <h3>採用LP有料診断</h3>
+              <p style="font-size:1.5rem; font-weight:700; color:var(--renewal-navy); margin:15px 0;">
+                29,800円<span style="font-size:1rem; font-weight:400;">（税込・単発）</span>
+              </p>
+              <ul style="text-align:left; line-height:2; font-size:0.95rem;">
+                <li>既存LPの課題を詳しく分析</li>
+                <li>競合比較・改善ポイントのレポート作成</li>
+                <li>オンラインでの結果説明（30〜45分）</li>
+              </ul>
+              <p style="margin-top:16px; font-size:0.82rem; color:#666;">※「LPはあるが応募が来ない」会社様向け</p>
+            </div>
+
           </div>
         </div>
       </section>
+
 
       <!-- 4. 提供する/しないもの -->
       <section class="feature-section" style="background-color: #f8fafc">
