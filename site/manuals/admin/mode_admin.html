@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 管理モード | 運用司令室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A; --panel-bg: #1E293B; --panel-border: #334155;
+            --text-main: #F1F5F9; --text-dim: #94A3B8;
+            --accent-gold: #D4AF37; --accent-blue: #3B82F6; --accent-green: #10B981;
+            --mode-color: #10B981;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--space-bg); color: var(--text-main); margin: 0; padding: 20px; font-size: 14px; line-height: 1.5; }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--mode-color); margin-bottom: 24px; }
+        .app-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+        .app-title i { color: var(--mode-color); }
+        .mode-badge { background: rgba(16,185,129,0.15); border: 1px solid var(--mode-color); color: var(--mode-color); font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; }
+        .back-btn { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--panel-border); border-radius: 6px; transition: all 0.2s; }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+        .cockpit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+        .panel { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; overflow: hidden; margin-bottom: 18px; }
+        .panel:last-child { margin-bottom: 0; }
+        .panel-header { padding: 12px 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--panel-border); }
+        .panel-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+        .panel-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .highlight-card { display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); padding: 14px; border-radius: 8px; transition: all 0.2s; }
+        .highlight-card:hover { border-color: var(--mode-color); background: rgba(16,185,129,0.06); }
+        .hc-icon { font-size: 1.4rem; margin-right: 14px; width: 28px; text-align: center; }
+        .hc-content { flex: 1; }
+        .hc-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 2px; }
+        .hc-desc { font-size: 0.72rem; color: var(--text-dim); }
+        .hc-arrow { opacity: 0.4; font-size: 0.8rem; }
+        .link-row { display: flex; align-items: center; padding: 9px 10px; border-radius: 6px; color: var(--text-main); font-weight: 500; transition: all 0.2s; }
+        .link-row:hover { background: rgba(255,255,255,0.06); color: var(--accent-blue); }
+        .lr-icon { width: 26px; color: var(--text-dim); font-size: 0.9rem; }
+        .link-row:hover .lr-icon { color: var(--accent-blue); }
+        .lr-text { flex: 1; }
+        .lr-sub { font-size: 0.7rem; color: var(--text-dim); margin-left: 8px; }
+        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .kpi-card { background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); border-radius: 8px; padding: 14px 12px; text-align: center; transition: all 0.2s; }
+        .kpi-card:hover { border-color: var(--mode-color); background: rgba(16,185,129,0.06); }
+        .kpi-label { font-size: 0.7rem; color: var(--text-dim); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 6px; }
+        .kpi-value { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .kpi-sub { font-size: 0.68rem; color: var(--text-dim); margin-top: 3px; }
+        .divider { border: none; border-top: 1px solid var(--panel-border); margin: 6px 0; }
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; }
+        .dot-green { background: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+        .date-display { font-family: 'Outfit', sans-serif; color: var(--text-dim); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="app-title">
+            <i class="fa-solid fa-chart-pie"></i>
+            <div>
+                <div style="line-height:1;">ADMIN MODE</div>
+                <div style="font-size:0.7rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">アナリティクス・財務・インフラ</div>
+            </div>
+            <span class="mode-badge">📊 管理</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+            <div class="date-display"><span id="current-date"></span> <span class="dot dot-green" style="margin-left:6px;"></span></div>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 司令室へ</a>
+        </div>
+    </header>
+
+    <div class="cockpit-grid">
+
+        <!-- COL 1: アナリティクス -->
+        <div>
+            <div class="panel" style="border-color:rgba(16,185,129,0.35);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--mode-color);"><i class="fa-solid fa-chart-line"></i> Analytics</span>
+                </div>
+                <div class="panel-body">
+                    <a href="analytics_manual.html" target="_blank" class="highlight-card" style="border-color:rgba(16,185,129,0.4); background:rgba(16,185,129,0.07);">
+                        <div class="hc-icon" style="color:var(--mode-color);"><i class="fa-solid fa-book-open"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">AI分析マニュアル</div>
+                            <div class="hc-desc">週次データ分析の手順書</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right hc-arrow"></i>
+                    </a>
+                    <hr class="divider">
+                    <a href="https://analytics.google.com/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-chart-line lr-icon" style="color:#E37400;"></i>
+                        <span class="lr-text">Google Analytics（GA4）</span>
+                    </a>
+                    <a href="https://search.google.com/search-console" target="_blank" class="link-row">
+                        <i class="fa-solid fa-magnifying-glass-chart lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">Google Search Console</span>
+                    </a>
+                    <a href="https://business.facebook.com/latest/insights/results?platform=Instagram" target="_blank" class="link-row">
+                        <i class="fa-brands fa-instagram lr-icon" style="color:#E4405F;"></i>
+                        <span class="lr-text">Instagram インサイト</span>
+                    </a>
+                    <a href="https://business.facebook.com/latest/insights/results?platform=Facebook" target="_blank" class="link-row">
+                        <i class="fa-brands fa-facebook lr-icon" style="color:#1877F2;"></i>
+                        <span class="lr-text">Facebook インサイト</span>
+                    </a>
+                    <a href="https://www.facebook.com/professional_dashboard/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-gauge lr-icon" style="color:#1877F2;"></i>
+                        <span class="lr-text">FBプロダッシュボード</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Google Workspace -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-blue);"><i class="fa-brands fa-google"></i> Google Workspace</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://mail.google.com/" target="_blank" class="link-row">
+                        <i class="fa-regular fa-envelope lr-icon" style="color:#EA4335;"></i>
+                        <span class="lr-text">Gmail</span>
+                    </a>
+                    <a href="https://drive.google.com/" target="_blank" class="link-row">
+                        <i class="fa-brands fa-google-drive lr-icon" style="color:#1FA463;"></i>
+                        <span class="lr-text">Google Drive</span>
+                    </a>
+                    <a href="https://photos.google.com/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-image lr-icon" style="color:#FFC107;"></i>
+                        <span class="lr-text">Google Photos</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- COL 2: 財務・インフラ -->
+        <div>
+            <!-- 財務 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-coins"></i> 財務・決済</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fmep%2F" target="_blank" class="highlight-card" style="border-color:rgba(0,48,135,0.4); background:rgba(0,48,135,0.08);">
+                        <div class="hc-icon" style="color:#009CDE;"><i class="fa-brands fa-paypal"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">PayPal Business</div>
+                            <div class="hc-desc">請求書発行・入金確認</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right hc-arrow"></i>
+                    </a>
+                    <a href="monetization_bible_90days.html" target="_blank" class="link-row" style="background:rgba(212,175,55,0.07); border:1px solid rgba(212,175,55,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-rocket lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">90日ロードマップ</span>
+                        <span class="lr-sub">財務ランウェイ確認</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- インフラ・ホスティング -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-server"></i> インフラ・ホスティング</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://dash.cloudflare.com/2906f71905b1a2ce471a3e4b9e29448f/pages/view/web-tsukuru" target="_blank" class="link-row" style="background:rgba(212,175,55,0.07); border:1px solid rgba(212,175,55,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-cloud lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">Cloudflare Pages（本番デプロイ）</span>
+                    </a>
+                    <a href="https://github.com/atsumi-web" target="_blank" class="link-row">
+                        <i class="fa-brands fa-github lr-icon"></i>
+                        <span class="lr-text">GitHub（ソースコード）</span>
+                    </a>
+                    <a href="https://discord.com/channels/1456467705468027057/1456467706391040213" target="_blank" class="link-row">
+                        <i class="fa-brands fa-discord lr-icon" style="color:#5865F2;"></i>
+                        <span class="lr-text">Discord（開発チャンネル）</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 自分のサービス（管理確認） -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-list-check"></i> 本番サービス確認</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://web-tsukuru.jp/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-rocket lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">LP（web-tsukuru.jp）</span>
+                    </a>
+                    <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-chart-bar lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">採用診断テスト（本番）</span>
+                    </a>
+                    <a href="https://recruit.hottacon.co.jp/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-building lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">堀田建設 採用サイト（本番）</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const now = new Date();
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        document.getElementById('current-date').textContent = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')} (${days[now.getDay()]})`;
+    </script>
+</body>
+</html>
