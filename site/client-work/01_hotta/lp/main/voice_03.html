@@ -57,6 +57,20 @@
         gap: 60px;
         align-items: center;
       }
+      /* ヘッダーナビ */
+      body .header-nav { display: flex; margin-right: 1.5rem; }
+      body .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+      body .header-logo-img { height: 32px; width: auto; display: block; }
+      body .logo-sub { font-size: 0.7rem; color: var(--color-neutral-light); font-weight: 800; letter-spacing: 0.15em; border-left: 1px solid var(--color-neutral-border); padding-left: 12px; margin-top: 2px; }
+      body .nav-menu { display: flex; list-style: none; gap: 1.5rem; align-items: center; margin: 0; padding: 0; }
+      body .nav-menu a { color: var(--navy-deep); text-decoration: none; font-weight: 400; padding: 0.5rem 0; position: relative; transition: all 0.2s ease; font-size: 0.95rem; }
+      body .nav-menu a:hover { color: var(--navy-light); }
+      body .nav-menu a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #c5a059; transition: all 0.2s ease; }
+      body .nav-menu a:hover::after { width: 100%; }
+      html body .header-nav .nav-menu li .nav-cta { background: linear-gradient(135deg, #06c755 0%, #05a346 100%); color: #fff; padding: 0.75rem 1.6rem; border-radius: 50px; margin-left: 1.2rem; font-weight: 800; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3); transition: all 0.2s ease; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+      html body .header-nav .nav-menu li .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6, 199, 85, 0.4); text-decoration: none; color: #fff; }
+      html body .header-nav .nav-menu li .nav-cta::after { display: none; }
+      body .mobile-menu-toggle { display: none; }
       .voice-hero-label {
         display: inline-block;
         font-family: var(--font-en);
