@@ -142,6 +142,75 @@
     }
     .note strong { color: var(--navy); }
 
+    /* LP役割説明 */
+    .lp-role {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .lp-role h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+    .compare-table th {
+      padding: 10px 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .compare-table th.lp-col { background: #e8f0f8; color: var(--blue); }
+    .compare-table th.site-col { background: #e8f5ee; color: var(--green); }
+    .compare-table th.item-col { background: #f4f6f9; color: #555; width: 30%; }
+    .compare-table td {
+      padding: 10px 16px;
+      border-top: 1px solid #eee;
+      vertical-align: middle;
+    }
+    .compare-table td.item { font-weight: 700; color: #555; font-size: 0.85rem; }
+    .compare-table td.lp-col { text-align: center; background: #f6f9fd; }
+    .compare-table td.site-col { text-align: center; background: #f4faf7; }
+    .flow-box {
+      background: #f4f6f9;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-size: 0.88rem;
+    }
+    .flow-box .flow-title { font-weight: 700; color: var(--navy); margin-bottom: 12px; font-size: 0.9rem; }
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .flow-step {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .flow-step.highlight {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+      font-weight: 700;
+    }
+    .flow-arrow { color: #aaa; font-size: 1.2rem; }
+
     footer {
       text-align: center;
       padding: 32px;
@@ -151,6 +220,7 @@
 
     @media(max-width: 600px) {
       .cards { grid-template-columns: 1fr; }
+      .flow-steps { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -163,6 +233,63 @@
 </header>
 
 <div class="container">
+
+  <!-- LP役割の説明 -->
+  <div class="lp-role">
+    <h2>❓ 「LP」と「採用サイト」はどう違うの？</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="item-col"></th>
+          <th class="lp-col">今回作った採用LP</th>
+          <th class="site-col">採用サイト＋ブログ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item">目的</td>
+          <td class="lp-col">来た人を応募に変える</td>
+          <td class="site-col">Googleで見つけてもらう</td>
+        </tr>
+        <tr>
+          <td class="item">Google検索への強さ</td>
+          <td class="lp-col">△ 「堀田建設 採用」程度</td>
+          <td class="site-col">◎ 記事ごとにキーワードが狙える</td>
+        </tr>
+        <tr>
+          <td class="item">更新・運用</td>
+          <td class="lp-col">少ない（年数回）</td>
+          <td class="site-col">継続的に記事を追加</td>
+        </tr>
+        <tr>
+          <td class="item">制作コスト</td>
+          <td class="lp-col">低〜中</td>
+          <td class="site-col">高（継続投資が必要）</td>
+        </tr>
+        <tr>
+          <td class="item">向いている状況</td>
+          <td class="lp-col">窓口から誘導する採用</td>
+          <td class="site-col">検索流入を積み上げる採用</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="flow-box">
+      <div class="flow-title">採用LPへの典型的な流入ルート</div>
+      <div class="flow-steps">
+        <div class="flow-step">求人媒体<br/>（Indeed等）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">SNS<br/>（Instagram等）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">QRコード<br/>（チラシ・名刺）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">LINE・<br/>口コミ</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step highlight">採用LP<br/>（応募）</div>
+      </div>
+    </div>
+  </div>
 
   <div class="lead">
     採用LPは「来てくれた人を応募に変えるページ」です。<br />
@@ -177,9 +304,9 @@
   </div>
   <div class="cards">
     <div class="card green">
-      <span class="tag">設定済み</span>
-      <h3>Google検索からの流入</h3>
-      <p>Googleに認識されるよう設定済み。「堀田建設 採用」などで検索した人が見つけられる状態。</p>
+      <span class="tag">限定的</span>
+      <h3>「堀田建設」での直接検索</h3>
+      <p>会社名で検索した人がLPを見つけられる状態。「施工管理 亀山市 求人」など競合キーワードでの上位表示は別途対策が必要。</p>
     </div>
     <div class="card green">
       <span class="tag done">設定済み</span>
