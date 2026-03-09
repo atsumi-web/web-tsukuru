@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S.Y.インタビュー｜意外となんとかなる、転職のリアル｜堀田建設株式会社</title>
+    <meta
+      name="description"
+      content="「専門外でも、意外となんとかなる。挑戦できる環境があれば、後悔はない。」——建築部現場監督 S.Y.（27歳）のリアルなインタビュー。"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/renewal.css" />
+
+    <style>
+      /* ========================================
+         インタビュー別ページ固有スタイル
+      ======================================== */
+      .voice-detail-hero {
+        background: linear-gradient(135deg, var(--navy-deep) 0%, #012366 100%);
+        padding: 140px 0 80px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .voice-detail-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 70% 50%,
+          rgba(197, 160, 89, 0.15) 0%,
+          transparent 70%
+        );
+      }
+      .voice-detail-hero .container {
+        position: relative;
+        z-index: 1;
+      }
+      .voice-hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .voice-hero-label {
+        display: inline-block;
+        font-family: var(--font-en);
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        color: var(--accent-gold);
+        border: 1px solid var(--accent-gold);
+        padding: 4px 14px;
+        border-radius: 30px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+      }
+      .voice-hero-catch {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+      .voice-hero-catch strong {
+        color: var(--accent-gold);
+      }
+      .voice-hero-profile {
+        margin-top: 2rem;
+      }
+      .voice-hero-profile .name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .voice-hero-profile .meta {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+      }
+      .voice-hero-image {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      }
+      .voice-hero-image img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+      }
+      .role-badge-hero {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--accent-gold);
+        color: white;
+        padding: 6px 18px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      .role-badge-hero .role-en {
+        font-family: var(--font-en);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+      }
+
+      /* インタビュー本文 */
+      .voice-detail-body {
+        padding: 80px 0 100px;
+        background: var(--bg-white);
+      }
+      .interview-full-content {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .interview-lead {
+        background: var(--bg-light);
+        border-left: 4px solid var(--accent-gold);
+        padding: 24px 28px;
+        border-radius: 0 12px 12px 0;
+        font-size: 1.05rem;
+        line-height: 1.9;
+        margin-bottom: 3rem;
+        color: #444;
+      }
+      .qa-section {
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2.5rem;
+      }
+      .qa-section:last-of-type {
+        border-bottom: none;
+      }
+      .qa-question {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+      .qa-q-badge {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--navy-deep);
+        color: white;
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 0.9rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+      }
+      .qa-question h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.5;
+        color: var(--navy-deep);
+        flex: 1;
+      }
+      .qa-answer {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .qa-a-badge {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--accent-gold);
+        color: white;
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 0.9rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+      }
+      .qa-answer p {
+        flex: 1;
+        line-height: 1.9;
+        color: #444;
+        font-size: 0.97rem;
+      }
+
+      /* ハイライトボックス */
+      .highlight-box {
+        background: linear-gradient(
+          135deg,
+          rgba(197, 160, 89, 0.08) 0%,
+          rgba(0, 26, 61, 0.05) 100%
+        );
+        border: 1px solid rgba(197, 160, 89, 0.3);
+        border-radius: 12px;
+        padding: 24px 28px;
+        margin: 2rem 0;
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: #333;
+      }
+      .highlight-box .quote-mark {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        color: var(--accent-gold);
+        line-height: 1;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .highlight-box p {
+        font-style: italic;
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+      }
+
+      /* 戻るボタン */
+      .back-section {
+        background: var(--bg-light);
+        padding: 60px 0;
+        text-align: center;
+      }
+      .back-section p {
+        color: #666;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--navy-deep);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .btn-back:hover {
+        background: var(--navy-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 26, 61, 0.3);
+      }
+      .btn-back i {
+        font-size: 0.85rem;
+      }
+
+      /* 他のインタビューへのナビ */
+      .other-interviews {
+        padding: 80px 0;
+        background: white;
+      }
+      .other-interviews h2 {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #888;
+        font-family: var(--font-en);
+        letter-spacing: 0.15em;
+        margin-bottom: 2.5rem;
+        font-weight: 400;
+      }
+      .other-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .other-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        display: block;
+      }
+      .other-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent-gold);
+      }
+      .other-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        object-position: top;
+      }
+      .other-card-body {
+        padding: 16px;
+      }
+      .other-card-name {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 4px;
+        color: var(--navy-deep);
+      }
+      .other-card-meta {
+        font-size: 0.8rem;
+        color: #888;
+        line-height: 1.6;
+      }
+
+      /* レスポンシブ */
+      @media (max-width: 768px) {
+        .voice-detail-hero {
+          padding: 120px 0 60px;
+        }
+        .voice-hero-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .voice-hero-image {
+          order: -1;
+        }
+        .voice-hero-image img {
+          height: 300px;
+        }
+        .voice-hero-catch {
+          font-size: 1.5rem;
+        }
+        .other-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="site-header">
+      <div class="header-full-width">
+        <a href="index.html" class="header-logo">
+          <span class="logo-main">堀田建設株式会社</span>
+          <span class="logo-sub">HOTTA CONSTRUCTION</span>
+        </a>
+        <nav class="header-nav">
+          <a href="index.html#voice">先輩の声</a>
+          <a href="index.html#positions">募集要項</a>
+          <a href="index.html#entry" class="nav-cta">エントリー</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ヒーロー -->
+    <section class="voice-detail-hero">
+      <div class="container">
+        <div class="voice-hero-grid">
+          <div class="voice-hero-text">
+            <span class="voice-hero-label">Voice of Staff / S.Y.</span>
+            <h1 class="voice-hero-catch">
+              「専門外でも、意外となんとかなる。<br />
+              <strong>挑戦できる環境があれば、後悔はない。</strong>」
+            </h1>
+            <div class="voice-hero-profile">
+              <div class="role-badge-hero">
+                <span class="role-en">BUILDING</span>
+                <span>建築部 現場監督</span>
+              </div>
+              <p class="name" style="margin-top: 1rem">S.Y.</p>
+              <p class="meta">
+                27歳 / 入社3年目 / 商業高校→異業種→建設<br />
+                異業種からの転職組。子育て中のワーキングパパ。
+              </p>
+            </div>
+          </div>
+          <div class="voice-hero-image">
+            <img
+              srcset="
+                images/voice/hotta-44_optimized_mobile.webp 400w,
+                images/voice/hotta-44_optimized.webp        800w
+              "
+              sizes="(max-width: 768px) 100vw, 50vw"
+              src="images/voice/hotta-44_optimized.webp"
+              alt="S.Y. 建築部現場監督"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- インタビュー本文 -->
+    <main class="voice-detail-body">
+      <div class="container">
+        <div class="interview-full-content">
+
+          <div class="interview-lead">
+            商業高校卒業後、異業種を経て建設業へ転職した S.Y.。<br />
+            「なにがわからないかもわからない状況」から始まったキャリアは、今もリアルな正直さで語られる。<br />
+            「不安は解消しない。でも、なんとかなることを知った」——その言葉に、転職を迷う全員へのヒントがある。
+          </div>
+
+          <!-- Q1 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>転職の動機と、最大の不安は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                もともとやりたかったことに挑戦してみようと思ったんです。「建物・建築全般・地図に残る仕事がしたい」って気持ちがずっとあって。前職は商業系で、毎日同じ作業の繰り返し。「これをずっとしていくのか」と思うようになったのが転職のきっかけです。<br /><br />
+                でも、前職では指示をもらって自分が作業する側でした。建設業では指示をして管理する側になる。「本当にやっていけるのか」「何がわからないかもわからない状況で大丈夫か」と、正直不安でした。
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <span class="quote-mark">"</span>
+            <p>不安は解消しない。でも、なんとかなることを知った。<br />その積み重ねが、今の自分を支えている。</p>
+          </div>
+
+          <!-- Q2 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>前職と比べて違うと感じたことは？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                前職では一つのものを作ったらそれで終わりでしたが、建設業では一つの建物を建てるだけでも何業種も関わって、規模が全然違うと思いました。あと、社内的なルールもありつつ、現場ごとにもルールがある。この違いに最初は戸惑いました。<br /><br />
+                でも毎日違う作業で、飽きないのが良いところ。竣工・引渡しのタイミングでの達成感は、前職では味わえなかったものです。「次の参考にできる、実績として積み上がっている」感覚があります。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>「無理だ」と思った瞬間は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                無理と感じたことはあまりないんです。「無理と思わないようにしている（笑）」というか、負けず嫌いなところがあって。2〜3年目のメガテック現場では予定外が続出しましたが、みんなで何とか完成させました。<br /><br />
+                「引き渡しまでいけた実績があるから、そう思えるようになった」という感じです。何度でも聞ける環境が、心の支えになっています。上司も先輩も、職人さんも助けてくれる。最終的に、みんなで何とかしてくれるんです。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>学歴・経験のないことは不安じゃなかった？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                面接時に「学歴は関係ない、やる気があれば」と言われて、気にしなかったです。「知識の差は、入社後にどれだけ知りたいと思うかによる」という言葉が印象に残っています。<br /><br />
+                実際、興味ある業界だったから自然に学べました。現場では学歴は関係ない。でも資格取得では実務経験の差が出るので、資格は早い方がいい——それだけは今でも思います。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>プライベートとの両立はどうですか？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                プライベートの時間は前職より減りましたが、質はメリハリがついて向上した気がします。最近は子どもが小さいので、家族メインの生活です。「この休みをいかに充実させるか考えるようになった」——前職にはなかった発想です。<br /><br />
+                責任感が強くなって、休日も電話対応があることもありますが、「やれること」だと思っています。改善したいと思える怒られ方をしてきたし、職場の空気も良いので、続けられています。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>転職を考えている人へメッセージを</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                専門的な知識や経験がなくても、意外となんとかなります。やりたい気持ちと挑戦できる環境があれば、異業種でも挑戦すべきだと思います。<br /><br />
+                コミュニケーションが大切で、話をしないと進まない仕事です。でも、環境（会社）と気合の両方で支えられています。<strong>今、後悔していない</strong>——それが正直な気持ちです。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- 他のインタビュー -->
+    <section class="other-interviews">
+      <div class="container">
+        <h2>OTHER INTERVIEWS</h2>
+        <div class="other-grid">
+          <a href="voice_01.html" class="other-card">
+            <img
+              src="images/voice/hotta-107_optimized.webp"
+              alt="K.O. インタビュー"
+              loading="lazy"
+            />
+            <div class="other-card-body">
+              <p class="other-card-name">K.O.</p>
+              <p class="other-card-meta">
+                26歳 / 建築部 現場監督<br />
+                「自分の出身校の現場を担当するとは思わなかった。」
+              </p>
+            </div>
+          </a>
+          <a href="voice_03.html" class="other-card">
+            <img
+              src="images/voice/hotta-59_optimized.webp"
+              alt="H.A. インタビュー"
+              loading="lazy"
+            />
+            <div class="other-card-body">
+              <p class="other-card-name">H.A.</p>
+              <p class="other-card-meta">
+                21歳 / 建築部 現場監督<br />
+                「小学生の夢が、今、現実に。」
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 戻るボタン -->
+    <section class="back-section">
+      <div class="container">
+        <p>採用情報はこちらからご確認いただけます</p>
+        <a href="index.html#voice" class="btn-back">
+          <i class="fas fa-arrow-left"></i>
+          先輩の声一覧へ戻る
+        </a>
+      </div>
+    </section>
+
+    <!-- 追従型コンバージョンボタン -->
+    <a href="index.html#entry" class="floating-line-cta">
+      <i class="fab fa-line"></i>
+      <span>LINEで友達追加</span>
+    </a>
+
+    <!-- トップへ戻るボタン -->
+    <a href="#" class="scroll-top">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 0 512 512"
+        fill="currentColor"
+      >
+        <path
+          d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.7c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
+        />
+      </svg>
+    </a>
+
+    <script src="js/renewal.js"></script>
+  </body>
+</html>
