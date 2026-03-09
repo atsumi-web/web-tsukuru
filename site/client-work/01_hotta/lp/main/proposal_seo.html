@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>検索順位を上げるための施策｜堀田建設</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #001a3d;
+      --gold: #c5a059;
+      --green: #2e7d52;
+      --blue: #1a5fa8;
+      --bg: #f4f6f9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: #333; line-height: 1.8; }
+
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header .label {
+      font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold);
+      border: 1px solid var(--gold); display: inline-block;
+      padding: 4px 16px; border-radius: 20px; margin-bottom: 1rem;
+    }
+    header h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; }
+    header p { margin-top: 0.75rem; font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 48px 20px; }
+
+    .intro {
+      background: white;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .step {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      background: var(--navy);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .step-badge {
+      margin-left: auto;
+      font-size: 0.75rem;
+      padding: 3px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .badge-done { background: #e6f4ec; color: var(--green); }
+    .badge-next { background: #e8f0f8; color: var(--blue); }
+    .badge-later { background: #f0f0f0; color: #888; }
+
+    .step p { font-size: 0.9rem; color: #555; margin-bottom: 12px; }
+
+    .example-box {
+      background: #f4f6f9;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 12px;
+    }
+    .example-box .ex-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .kw-row {
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+    }
+    .kw-row .article { color: #333; font-weight: 700; }
+    .kw-row .arrow { color: #aaa; margin: 0 6px; }
+    .kw-row .keywords { color: var(--blue); font-size: 0.82rem; }
+
+    .timeline {
+      display: flex;
+      gap: 0;
+      margin-top: 8px;
+    }
+    .tl-item {
+      flex: 1;
+      text-align: center;
+      padding: 12px 8px;
+      font-size: 0.78rem;
+      border: 1px solid #ddd;
+      background: white;
+      position: relative;
+    }
+    .tl-item:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      z-index: 1;
+    }
+    .tl-item.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+      font-weight: 700;
+    }
+    .tl-item:first-child { border-radius: 8px 0 0 8px; }
+    .tl-item:last-child { border-radius: 0 8px 8px 0; }
+    .tl-label { font-weight: 700; margin-bottom: 4px; }
+    .tl-sub { font-size: 0.72rem; opacity: 0.8; }
+
+    .note {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      font-size: 0.88rem;
+      color: #666;
+      margin-top: 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .note strong { color: var(--navy); }
+
+    footer { text-align: center; padding: 32px; font-size: 0.8rem; color: #999; }
+
+    @media(max-width: 600px) {
+      .step { padding: 20px; }
+      .timeline { flex-direction: column; }
+      .tl-item:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -14px; transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="label">SEO</div>
+  <h1>検索順位を上げるための施策</h1>
+  <p>堀田建設株式会社｜2026年3月</p>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    Googleの検索結果で上位に表示されるには、<strong>「コンテンツ」「技術」「被リンク」</strong>の3つを継続的に整えることが重要です。<br />
+    現在は技術的な基盤（①）が整った段階です。今後はコンテンツ（②）を積み上げていくフェーズに入ります。
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">01</div>
+      <div class="step-title">技術的なSEO基盤を整える</div>
+      <span class="step-badge badge-done">✅ 実施済み</span>
+    </div>
+    <p>Googleがサイトを正しく認識・評価するための設定です。今回の制作で対応済みです。</p>
+    <div class="example-box">
+      <div class="ex-title">対応済み項目</div>
+      <ul style="font-size:0.85rem;color:#555;line-height:2;padding-left:1.2em;">
+        <li>検索インデックスの許可（noindex解除）</li>
+        <li>カノニカルURL設定（重複ページの評価集約）</li>
+        <li>JobPosting構造化データ（Googleの求人検索へ対応）</li>
+        <li>ページタイトル・メタディスクリプションの最適化</li>
+        <li>OGP設定（SNSシェア時の表示最適化）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">02</div>
+      <div class="step-title">採用ブログでキーワードを積み上げる</div>
+      <span class="step-badge badge-next">📝 次のステップ</span>
+    </div>
+    <p>1枚物のLPは検索に強くありません。ブログ記事ごとに特定のキーワードを狙うことで、様々な検索から見つけてもらえるようになります。</p>
+    <div class="example-box">
+      <div class="ex-title">▶ 記事タイトル → 引っかかるキーワードのイメージ</div>
+      <div class="kw-row">
+        <span class="article">「三重県亀山市で施工管理をするリアルな1日」</span><br/>
+        <span class="arrow">→</span><span class="keywords">「施工管理 亀山市」「施工管理 三重県 仕事」</span>
+      </div>
+      <div class="kw-row">
+        <span class="article">「未経験から施工管理になって3年。変わったこと」</span><br/>
+        <span class="arrow">→</span><span class="keywords">「施工管理 未経験 転職」「建設業 未経験 求人」</span>
+      </div>
+      <div class="kw-row">
+        <span class="article">「高卒・女性で建設会社に就職した私のリアル」</span><br/>
+        <span class="arrow">→</span><span class="keywords">「建設業 女性 求人」「高卒 施工管理 就職」</span>
+      </div>
+      <div class="kw-row">
+        <span class="article">「施工管理の資格を会社が全額負担してくれる求人」</span><br/>
+        <span class="arrow">→</span><span class="keywords">「施工管理 資格 会社負担」「建設業 資格取得 支援」</span>
+      </div>
+      <div class="kw-row">
+        <span class="article">「亀山市で転職を考えるなら知っておきたい地元建設会社」</span><br/>
+        <span class="arrow">→</span><span class="keywords">「亀山市 転職 建設」「三重県 建設会社 採用」</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">03</div>
+      <div class="step-title">外部から被リンクを集める</div>
+      <span class="step-badge badge-later">📌 中長期</span>
+    </div>
+    <p>信頼できる外部サイトからリンクされることで、Googleからの評価が高まります。</p>
+    <div class="example-box">
+      <div class="ex-title">具体的な方法</div>
+      <ul style="font-size:0.85rem;color:#555;line-height:2;padding-left:1.2em;">
+        <li>Googleビジネスプロフィールにサイトを登録</li>
+        <li>Indeed・求人ボックスなど無料求人サイトにURL掲載</li>
+        <li>業界団体や地域の商工会サイトへの掲載依頼</li>
+        <li>優良な記事コンテンツが自然に引用・リンクされる</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- タイムライン -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num" style="background:var(--gold);">📅</div>
+      <div class="step-title">成果が出るまでのイメージ</div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item active">
+        <div class="tl-label">今</div>
+        <div class="tl-sub">技術基盤<br/>整備済み</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">〜3ヶ月</div>
+        <div class="tl-sub">ブログ記事<br/>積み上げ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">〜6ヶ月</div>
+        <div class="tl-sub">一部キーワードで<br/>上位表示開始</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">1年〜</div>
+        <div class="tl-sub">安定した<br/>検索流入</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>まとめ</strong><br />
+    SEOは「すぐに結果が出るもの」ではなく、<strong>継続的な投資で積み上がるもの</strong>です。<br />
+    まずは技術基盤（済み）とLINE・求人媒体での集客を並行しながら、ブログ記事を月1〜2本ペースで書いていくことをおすすめします。
+  </div>
+
+</div>
+
+<footer>web-tsukuru｜堀田建設 SEO施策ご提案｜2026年3月</footer>
+</body>
+</html>
