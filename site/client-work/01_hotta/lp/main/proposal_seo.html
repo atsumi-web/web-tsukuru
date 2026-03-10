@@ -158,6 +158,23 @@
       .timeline { flex-direction: column; }
       .tl-item:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -14px; transform: translateX(-50%); }
     }
+
+    @media print {
+      body { background: #fff; color: #000; font-size: 10pt; }
+      header { background: #fff !important; color: #000; border-bottom: 2px solid #000; padding: 16px 0; }
+      header .label { color: #000; border-color: #000; }
+      header h1 { font-size: 14pt; color: #000; }
+      header p { color: #444 !important; }
+      .step { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      .step-num { background: #333 !important; }
+      .step-badge { background: #eee !important; color: #333 !important; }
+      .example-box { background: #f9f9f9; }
+      .tl-item.active { background: #333 !important; border-color: #333 !important; }
+      .note { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      .exp-note { page-break-inside: avoid; }
+      a { color: #000; text-decoration: none; }
+      footer { color: #666; }
+    }
   </style>
 </head>
 <body>
@@ -283,6 +300,12 @@
     <strong>採用の主戦場は「SNS」と「LINE」</strong><br />
     若者採用において、SEO（ブログによる検索流入）の優先度は高くありません。まずはInstagram・LINEに注力して認知と関係構築を進めるのが先決です。<br /><br />
     採用LPの技術的SEO基盤（STEP01）は実施済みです。ブログによるキーワード積み上げは若者採用が安定した後、経験者・転職者層にも裾野を広げたい時の中長期の選択肢ですが、<strong>費用対効果を考えると今は得策ではないかと思っています。</strong>
+  </div>
+
+  <div class="note exp-note" style="margin-top:16px; border-left: 4px solid var(--blue); background:#f0f5ff; box-shadow:none;">
+    <strong style="color:var(--blue);">💡 経験者・転職者も採用したい場合は話が変わります</strong><br />
+    30代以上の転職者はまだGoogleで情報収集する習慣があります。「施工管理 亀山市 転職」のようなキーワードで検索するケースも多く、ブログが有効な集客策になり得ます。<br />
+    若者採用が安定した後、経験者採用にも裾野を広げたいフェーズに入ったら、ブログ運用の開始を一緒に検討しましょう。
   </div>
 
 </div>
