@@ -72,6 +72,33 @@
       .highlight p { color: rgba(255,255,255,0.85); font-size: 0.88rem; line-height: 1.85; }
 
       footer { text-align: center; padding: 28px 24px; font-size: 0.78rem; color: #94a3b8; border-top: 1px solid var(--border); margin-top: 40px; }
+
+      /* PRINT */
+      @media print {
+        body { background: #fff; color: #000; font-size: 10pt; }
+        .page-header { background: #fff !important; border-bottom: 2px solid #000; padding: 16px 0; }
+        .page-header h1 { color: #000 !important; font-size: 14pt; }
+        .page-header p { color: #444 !important; }
+        .badge { background: #000 !important; color: #fff !important; }
+        h2 { color: #000; }
+        .doc-section { border: 1px solid #ccc; box-shadow: none; page-break-inside: avoid; }
+        .doc-section h3 { color: #000; border-left-color: #000; }
+        .data-card { border: 1px solid #ccc; }
+        .data-card .num { color: #000; }
+        .data-card .unit { color: #444; }
+        .fv-card.current { background: #f9f9f9 !important; border-color: #999 !important; }
+        .fv-card.option  { background: #f0f0f0 !important; border-color: #555 !important; }
+        .fv-card.current h4 { color: #000 !important; }
+        .fv-card.option  h4 { color: #000 !important; }
+        .fv-card.current .fv-tag { background: #666 !important; }
+        .fv-card.option  .fv-tag { background: #333 !important; }
+        .highlight { background: #111 !important; page-break-inside: avoid; }
+        .highlight h3 { color: #fff !important; }
+        .highlight p { color: #eee !important; }
+        .doc-section[style*="f97316"] { border-left: 4px solid #333 !important; background: #f9f9f9 !important; }
+        footer { color: #666; border-top: 1px solid #ccc; }
+        a { color: #000; text-decoration: none; }
+      }
     </style>
   </head>
   <body>
