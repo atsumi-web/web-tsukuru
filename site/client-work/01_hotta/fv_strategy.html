@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ファーストビュー設計の考え方｜堀田建設 採用LP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      :root {
+        --navy: #001a3d;
+        --gold: #c5a059;
+        --light: #f8fafc;
+        --white: #fff;
+        --text: #334155;
+        --border: #e2e8f0;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: "Noto Sans JP", sans-serif; background: var(--light); color: var(--text); line-height: 1.8; }
+
+      .page-header { background: var(--navy); padding: 40px 24px; text-align: center; border-bottom: 4px solid var(--gold); }
+      .page-header h1 { font-family: "Outfit", sans-serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+      .page-header p { color: rgba(255,255,255,0.65); font-size: 0.85rem; margin-top: 8px; }
+
+      .container { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+
+      .badge { display: inline-block; background: var(--navy); color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 20px; margin-bottom: 10px; }
+      h2 { font-size: 1.3rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+      .lead { font-size: 0.9rem; color: #64748b; margin-bottom: 28px; }
+
+      /* SECTION */
+      .doc-section { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 24px; border: 1px solid var(--border); }
+      .doc-section h3 { font-size: 1rem; font-weight: 900; color: var(--navy); margin-bottom: 14px; border-left: 4px solid var(--gold); padding-left: 12px; }
+      .doc-section p, .doc-section li { font-size: 0.9rem; line-height: 1.85; }
+      .doc-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+      .doc-section li::before { content: "▶ "; color: var(--gold); font-size: 0.75rem; }
+
+      /* DATA BOX */
+      .data-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+      .data-card { background: var(--light); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 140px; text-align: center; }
+      .data-card .num { font-size: 2rem; font-weight: 900; color: var(--navy); line-height: 1; }
+      .data-card .unit { font-size: 0.85rem; color: var(--gold); font-weight: 700; }
+      .data-card .label { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+
+      /* FV COMPARE */
+      .fv-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+      @media (max-width: 600px) { .fv-compare { grid-template-columns: 1fr; } }
+      .fv-card { border-radius: 10px; padding: 20px; }
+      .fv-card.current { background: #fffbeb; border: 2px solid #f59e0b; }
+      .fv-card.option  { background: #f0fdf4; border: 2px solid #22c55e; }
+      .fv-card .fv-tag { font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+      .fv-card.current .fv-tag { background: #f59e0b; color: #fff; }
+      .fv-card.option  .fv-tag { background: #22c55e; color: #fff; }
+      .fv-card h4 { font-size: 1rem; font-weight: 900; margin-bottom: 8px; line-height: 1.5; }
+      .fv-card.current h4 { color: #92400e; }
+      .fv-card.option  h4 { color: #15803d; }
+      .fv-card p { font-size: 0.82rem; color: #555; margin-bottom: 6px; }
+      .fv-card .target-tag { font-size: 0.72rem; background: rgba(0,0,0,0.07); border-radius: 20px; padding: 2px 10px; display: inline-block; margin-top: 6px; }
+
+      /* ROADMAP */
+      .ab-flow { display: flex; flex-direction: column; gap: 0; margin-top: 16px; }
+      .ab-step { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px dashed var(--border); }
+      .ab-step:last-child { border-bottom: none; }
+      .ab-num { width: 36px; height: 36px; min-width: 36px; border-radius: 50%; background: var(--navy); color: var(--gold); font-weight: 900; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+      .ab-body h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+      .ab-body p { font-size: 0.85rem; color: #64748b; }
+
+      /* HIGHLIGHT BOX */
+      .highlight { background: var(--navy); border-radius: 12px; padding: 24px; margin-top: 24px; }
+      .highlight h3 { color: var(--gold); font-size: 0.95rem; font-weight: 900; margin-bottom: 12px; }
+      .highlight p { color: rgba(255,255,255,0.85); font-size: 0.88rem; line-height: 1.85; }
+
+      footer { text-align: center; padding: 28px 24px; font-size: 0.78rem; color: #94a3b8; border-top: 1px solid var(--border); margin-top: 40px; }
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>ファーストビュー 設計の考え方と今後の展開</h1>
+      <p>堀田建設 採用LP｜Webとしくみをつくる 渥美 © 2026</p>
+    </div>
+
+    <div class="container">
+
+      <!-- SECTION 1: 現FVの設計意図 -->
+      <div style="margin-bottom:10px;"><span class="badge">SECTION 01</span></div>
+      <h2>現在のファーストビューを「未経験者向け」にした理由</h2>
+      <p class="lead">今のFVは「未経験のあなたへ」という言葉から始まります。これは意図的な設計です。</p>
+
+      <div class="doc-section">
+        <h3>① データに基づいたターゲット設定</h3>
+        <p>堀田建設さんのこれまでの採用実績を踏まえ、現状の採用LPのターゲットを「未経験者・地元志向の若手」に絞りました。</p>
+        <div class="data-row">
+          <div class="data-card">
+            <div class="num">73<span class="unit">%</span></div>
+            <div class="label">過去採用の<br>未経験者比率</div>
+          </div>
+          <div class="data-card">
+            <div class="num">17<span class="unit">年</span></div>
+            <div class="label">社員の<br>平均勤続年数</div>
+          </div>
+          <div class="data-card">
+            <div class="num">42<span class="unit">歳</span></div>
+            <div class="label">社員の<br>平均年齢</div>
+          </div>
+        </div>
+        <p style="margin-top:14px;">「未経験から採用し、長く育てる」というモデルが実績として成立していることから、<strong>まずこの層を確実に獲得する設計</strong>を優先しました。</p>
+      </div>
+
+      <div class="doc-section">
+        <h3>② 「ハードルを下げる」ことで応募数を最大化</h3>
+        <p>建設業は「体力勝負・危険・厳しい」というイメージが先行しやすい業種です。特に20代の求職者に対して先入観を取り除き、<strong>「まず話を聞いてみよう」と思わせること</strong>がLPの最初の役割と考えました。</p>
+        <ul>
+          <li>「未経験のあなたへ」で心理的ハードルを下げる</li>
+          <li>「月給23万円〜（1年目）」で生活水準のイメージを持たせる</li>
+          <li>「とりあえず」「いきなり面接はしません」で行動コストを下げる</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h3>③ なぜ「1年目から月給23万円〜」にしたか</h3>
+        <p>社長より「転職者には物足りない」とご指摘をいただきました。これは正しいご指摘です。</p>
+        <p style="margin-top:10px;">23万円という数字は「未経験スタートでもこれだけもらえる」という<strong>安心感</strong>を伝えるために設定しました。ただし、転職者・経験者にとっては「もう少し高い水準が見たい」という心理が働くため、表示の工夫が必要です。</p>
+      </div>
+
+      <!-- SECTION 2: FV案の比較 -->
+      <div style="margin-bottom:10px; margin-top:40px;"><span class="badge">SECTION 02</span></div>
+      <h2>ファーストビューの方向性 2案</h2>
+      <p class="lead">現FV（案A）を維持しつつ、経験者・転職者向けの案B を用意し、データで判断します。</p>
+
+      <div class="fv-compare">
+        <div class="fv-card current">
+          <span class="fv-tag">案A（現状）</span>
+          <h4>未経験のあなたへ。<br>「やってみようかな」<br>その一歩を、全力で守ります。</h4>
+          <p>サブ：1年目から月給23万円〜<br>資格取得費用0円。残業月13.5h。</p>
+          <span class="target-tag">👤 未経験・地元志向の若手</span>
+        </div>
+        <div class="fv-card option">
+          <span class="fv-tag">案B（提案）</span>
+          <h4>三重で、本物の現場力を磨く。<br>経験者も未経験者も、<br>ここでもう一度、始められる。</h4>
+          <p>サブ：月給23万円〜（経験・資格により優遇）<br>残業月13.5h。転職者歓迎。</p>
+          <span class="target-tag">👤 転職者・経験者も含む幅広い層</span>
+        </div>
+      </div>
+
+      <div class="doc-section" style="margin-top:16px;">
+        <h3>給与表示の改善案</h3>
+        <ul>
+          <li>現状：「1年目から月給23万円〜」（未経験スタートを強調）</li>
+          <li>改善案：「月給23万円〜 ／ 経験・資格により月給30万円以上も」（上限も見せる）</li>
+          <li>または：「月給23万円〜（経験・能力・資格により優遇）」（一言追加するだけ）</li>
+        </ul>
+        <p style="margin-top:10px;">※実際の上限額・モデル年収は、明日の打ち合わせで社長・専務に確認します。</p>
+      </div>
+
+      <!-- SECTION 3: A/Bテスト計画 -->
+      <div style="margin-bottom:10px; margin-top:40px;"><span class="badge">SECTION 03</span></div>
+      <h2>今後の進め方（A/Bテスト計画）</h2>
+      <p class="lead">LP公開後、データを見ながら段階的に改善します。</p>
+
+      <div class="doc-section">
+        <div class="ab-flow">
+          <div class="ab-step">
+            <div class="ab-num">1</div>
+            <div class="ab-body">
+              <h4>1〜2ヶ月目：現状（案A）でデータ収集</h4>
+              <p>GA4でアクセス数・LINEクリック率・滞在時間を計測。ベースラインを把握する。</p>
+            </div>
+          </div>
+          <div class="ab-step">
+            <div class="ab-num">2</div>
+            <div class="ab-body">
+              <h4>打ち合わせで方向性を合意</h4>
+              <p>「経験者・転職者も積極採用したいか」を社長・専務と確認し、案Bの方向性を決める。</p>
+            </div>
+          </div>
+          <div class="ab-step">
+            <div class="ab-num">3</div>
+            <div class="ab-body">
+              <h4>案B（経験者向け）に切り替えて2〜3週間テスト</h4>
+              <p>FVのキャッチコピーと給与表示を変更し、LINEクリック率の変化を見る。</p>
+            </div>
+          </div>
+          <div class="ab-step">
+            <div class="ab-num">4</div>
+            <div class="ab-body">
+              <h4>3〜4ヶ月目：データを元に最適案を確定</h4>
+              <p>反応が良かった案を本採用。必要に応じてさらに改良する。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <h3><i class="fa-solid fa-star"></i> 渥美からのひとこと</h3>
+        <p>
+          現FVが「ターゲットを絞りすぎている」というご指摘は、正しいと思います。<br>
+          意図的に未経験者向けに設計しましたが、実際に「経験者も採りたい」という方針であれば、FVは修正の余地があります。<br><br>
+          ただし、いきなり変えるのではなく、<strong>「現状でどれくらい反応があるか」を確認してから改善する</strong>方が、根拠のある判断ができます。<br>
+          まずデータを見てから、一緒に次の手を決めましょう。
+        </p>
+      </div>
+
+    </div>
+
+    <footer>
+      Webとしくみをつくる｜web-tsukuru.jp — 堀田建設 採用LP 設計資料 © 2026
+    </footer>
+  </body>
+</html>
