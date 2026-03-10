@@ -44,18 +44,24 @@
       .data-card .label { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
 
       /* FV COMPARE */
-      .fv-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-      @media (max-width: 600px) { .fv-compare { grid-template-columns: 1fr; } }
+      .fv-compare { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
       .fv-card { border-radius: 10px; padding: 20px; }
-      .fv-card.current { background: #fffbeb; border: 2px solid #f59e0b; }
-      .fv-card.option  { background: #f0fdf4; border: 2px solid #22c55e; }
+      .fv-card.current  { background: #fffbeb; border: 2px solid #f59e0b; }
+      .fv-card.option   { background: #f0fdf4; border: 2px solid #22c55e; }
+      .fv-card.option-b { background: #eff6ff; border: 2px solid #3b82f6; }
+      .fv-card.option-c { background: #fdf4ff; border: 2px solid #a855f7; }
       .fv-card .fv-tag { font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
-      .fv-card.current .fv-tag { background: #f59e0b; color: #fff; }
-      .fv-card.option  .fv-tag { background: #22c55e; color: #fff; }
-      .fv-card h4 { font-size: 1rem; font-weight: 900; margin-bottom: 8px; line-height: 1.5; }
-      .fv-card.current h4 { color: #92400e; }
-      .fv-card.option  h4 { color: #15803d; }
+      .fv-card.current  .fv-tag { background: #f59e0b; color: #fff; }
+      .fv-card.option   .fv-tag { background: #22c55e; color: #fff; }
+      .fv-card.option-b .fv-tag { background: #3b82f6; color: #fff; }
+      .fv-card.option-c .fv-tag { background: #a855f7; color: #fff; }
+      .fv-card h4 { font-size: 1rem; font-weight: 900; margin-bottom: 8px; line-height: 1.6; }
+      .fv-card.current  h4 { color: #92400e; }
+      .fv-card.option   h4 { color: #15803d; }
+      .fv-card.option-b h4 { color: #1e3a8a; }
+      .fv-card.option-c h4 { color: #6b21a8; }
       .fv-card p { font-size: 0.82rem; color: #555; margin-bottom: 6px; }
+      .fv-card .copy-note { font-size: 0.78rem; color: #888; margin-top: 6px; font-style: italic; }
       .fv-card .target-tag { font-size: 0.72rem; background: rgba(0,0,0,0.07); border-radius: 20px; padding: 2px 10px; display: inline-block; margin-top: 6px; }
 
       /* ROADMAP */
@@ -152,32 +158,76 @@
 
       <!-- SECTION 2: FV案の比較 -->
       <div style="margin-bottom:10px; margin-top:40px;"><span class="badge">SECTION 02</span></div>
-      <h2>ファーストビューの方向性 2案</h2>
-      <p class="lead">現FV（案A）を維持しつつ、経験者・転職者向けの案B を用意し、データで判断します。</p>
+      <h2>ファーストビューのコピー案 比較（全4案）</h2>
+      <p class="lead">現FV（案A）の課題を踏まえ、経験者・転職者にも届く方向性の案を3つ追加しました。どの雰囲気が堀田建設に合うか、打ち合わせで絞り込みましょう。</p>
 
       <div class="fv-compare">
+
+        <!-- 案A：現状 -->
         <div class="fv-card current">
-          <span class="fv-tag">案A（現状）</span>
-          <h4>未経験のあなたへ。<br>「やってみようかな」<br>その一歩を、全力で守ります。</h4>
-          <p>サブ：1年目から月給23万円〜<br>資格取得費用0円。残業月13.5h。</p>
-          <span class="target-tag">👤 未経験・地元志向の若手</span>
+          <span class="fv-tag">案A（現状）未経験絞り込み型</span>
+          <h4>未経験のあなたへ。<br>「建設業、やってみようかな」<br>その一歩を、全力で守ります。</h4>
+          <p>サブ：資格取得費用0円。残業月13.5h（昨年度実績）。地元・三重で働き続ける。1年目から月給23万円〜。</p>
+          <span class="target-tag">👤 未経験・地元志向の若手向け</span>
+          <p class="copy-note">⚠ 経験者・転職者は冒頭で「自分には関係ない」と感じる可能性あり</p>
         </div>
+
+        <!-- 案B：対象拡大型 -->
         <div class="fv-card option">
-          <span class="fv-tag">案B（提案）</span>
-          <h4>三重で、本物の現場力を磨く。<br>経験者も未経験者も、<br>ここでもう一度、始められる。</h4>
-          <p>サブ：月給23万円〜（経験・資格により優遇）<br>残業月13.5h。転職者歓迎。</p>
-          <span class="target-tag">👤 転職者・経験者も含む幅広い層</span>
+          <span class="fv-tag">案B 対象拡大型</span>
+          <h4>未経験でも、転職でも。<br>「建設業、やってみようかな」<br>その一歩を、全力で守ります。</h4>
+          <p>サブ：資格取得費用0円。残業月13.5h。初任給22.3万〜25.3万円（学歴別）。経験・資格により優遇。</p>
+          <span class="target-tag">👤 未経験者＋転職者・経験者 両方</span>
+          <p class="copy-note">✅ 現コピーの骨格を活かしつつ、冒頭1行を変えるだけ。最小変更で最大効果</p>
         </div>
+
+        <!-- 案C：会社軸型 -->
+        <div class="fv-card option-b">
+          <span class="fv-tag">案C 会社軸型（堀田建設の強みで語る）</span>
+          <h4>三重で、100年続く会社で働く。<br>未経験歓迎・経験者優遇。<br>腕と年収を、ここで伸ばす。</h4>
+          <p>サブ：初任給22.3万〜25.3万円。モデル年収：32歳480万 / 36歳570万 / 48歳750万。残業月13.5h。資格取得費用0円。</p>
+          <span class="target-tag">👤 30代以上の転職者・年収アップ志向</span>
+          <p class="copy-note">📌 年収の具体数字が刺さる。若手には少し硬い印象になる可能性あり</p>
+        </div>
+
+        <!-- 案D：ストーリー型 -->
+        <div class="fv-card option-c">
+          <span class="fv-tag">案D ストーリー型（感情に訴える）</span>
+          <h4>ここで始めた人が、17年続けている。<br>未経験でも転職でも、<br>長く働ける理由がある。</h4>
+          <p>サブ：社員平均勤続17年。残業月13.5h。初任給22.3万〜25.3万円。48歳モデル年収750万円。</p>
+          <span class="target-tag">👤 安定・長く働きたい層（未経験〜経験者）</span>
+          <p class="copy-note">✅「17年続けた」という実績が信頼感を生む。不安層・家庭持ちの転職者に効きやすい</p>
+        </div>
+
       </div>
 
       <div class="doc-section" style="margin-top:16px;">
-        <h3>給与表示の改善案</h3>
+        <h3>給与表示の改善案（確定データ版）</h3>
+        <p style="margin-bottom:12px;">社長・専務よりデータをいただきました。以下の表示パターンを検討中です。</p>
         <ul>
-          <li>現状：「1年目から月給23万円〜」（未経験スタートを強調）</li>
-          <li>改善案：「月給23万円〜 ／ 経験・資格により月給30万円以上も」（上限も見せる）</li>
-          <li>または：「月給23万円〜（経験・能力・資格により優遇）」（一言追加するだけ）</li>
+          <li><strong>現状（旧）：</strong>「1年目から月給23万円〜」→ 旧データかつ未経験スタート感が強い</li>
+          <li><strong>シンプル更新：</strong>「初任給22.3万〜25.3万円（学歴別）」→ 正確だが上限感がない</li>
+          <li><strong>レンジ表示：</strong>「月給22.3万〜 ／ 経験・資格により大幅優遇」→ 転職者の期待値を下げない</li>
+          <li><strong>モデル年収型（おすすめ）：</strong>「32歳・480万 / 36歳・570万 / 48歳・750万」→ 経験者が具体的にキャリアをイメージできる</li>
         </ul>
-        <p style="margin-top:10px;">※実際の上限額・モデル年収は、明日の打ち合わせで社長・専務に確認します。</p>
+        <div class="data-row" style="margin-top:16px;">
+          <div class="data-card">
+            <div class="num">22.3<span class="unit">万〜</span></div>
+            <div class="label">初任給（高卒）<br>2026年4月〜</div>
+          </div>
+          <div class="data-card">
+            <div class="num">25.3<span class="unit">万</span></div>
+            <div class="label">初任給（大卒）<br>2026年4月〜</div>
+          </div>
+          <div class="data-card">
+            <div class="num">480<span class="unit">万</span></div>
+            <div class="label">モデル年収<br>32歳・主任</div>
+          </div>
+          <div class="data-card">
+            <div class="num">750<span class="unit">万</span></div>
+            <div class="label">モデル年収<br>48歳・課長</div>
+          </div>
+        </div>
       </div>
 
       <!-- SECTION 3: A/Bテスト計画 -->
