@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ファーストビュー コピー案 比較｜堀田建設 採用LP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho+B1:wght@700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* ===== 変数 ===== */
+      :root {
+        --navy: #001a3d;
+        --navy-light: #002d6b;
+        --gold: #c5a059;
+        --line-green: #06c755;
+        --line-green-dark: #05a346;
+        --white: #fff;
+        --light: #f4f6f9;
+        --text: #333;
+        --border: #e0e0e0;
+        --font-serif: "Shippori Mincho B1", Georgia, serif;
+        --font-jp: "Noto Sans JP", sans-serif;
+        --font-en: "Inter", sans-serif;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: var(--font-jp); background: var(--light); color: var(--text); }
+
+      /* ===== ページヘッダー ===== */
+      .page-header {
+        background: var(--navy);
+        padding: 28px 24px;
+        text-align: center;
+        border-bottom: 4px solid var(--gold);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .page-header h1 {
+        font-family: var(--font-en);
+        font-size: 1rem;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        margin-bottom: 6px;
+      }
+      .page-header p {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.78rem;
+      }
+      .nav-pills {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+      .nav-pills a {
+        color: rgba(255,255,255,0.75);
+        font-size: 0.75rem;
+        text-decoration: none;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        padding: 4px 14px;
+        transition: all 0.2s;
+      }
+      .nav-pills a:hover { background: rgba(197,160,89,0.3); color: var(--gold); border-color: var(--gold); }
+
+      /* ===== メインレイアウト ===== */
+      .compare-wrapper { padding: 32px 20px 60px; max-width: 1100px; margin: 0 auto; }
+
+      /* ===== セクションラベル ===== */
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .case-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        font-weight: 900;
+        font-size: 0.9rem;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .badge-a { background: #f59e0b; }
+      .badge-b { background: #22c55e; }
+      .badge-c { background: #3b82f6; }
+      .badge-d { background: #a855f7; }
+
+      .case-title { font-size: 1rem; font-weight: 700; color: var(--navy); }
+      .case-tag {
+        font-size: 0.72rem;
+        padding: 3px 10px;
+        border-radius: 20px;
+        display: inline-block;
+        font-weight: 700;
+        color: #fff;
+        margin-left: 8px;
+      }
+      .tag-a { background: #f59e0b; }
+      .tag-b { background: #22c55e; }
+      .tag-c { background: #3b82f6; }
+      .tag-d { background: #a855f7; }
+
+      .case-note {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin-top: 4px;
+        font-style: italic;
+      }
+
+      /* ===== FV プレビューブロック ===== */
+      .fv-preview-wrap {
+        margin-bottom: 48px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+      }
+
+      .fv-preview {
+        background: var(--navy);
+        height: 480px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding: 32px 5% 32px;
+      }
+
+      /* 背景の「PRIDE」テキスト */
+      .fv-preview .bg-en {
+        position: absolute;
+        top: -5%;
+        right: 28%;
+        font-family: var(--font-en);
+        font-weight: 900;
+        font-size: clamp(6rem, 14vw, 16rem);
+        color: rgba(255,255,255,0.05);
+        letter-spacing: 0.05em;
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
+        transform: rotate(-5deg);
+      }
+
+      /* 右側の写真エリア */
+      .fv-preview .fv-visual-area {
+        position: absolute;
+        top: 0; right: 0;
+        width: 44%;
+        height: 100%;
+        clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+        overflow: hidden;
+        background: #001a3d;
+      }
+      .fv-preview .fv-visual-area img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left center;
+        display: block;
+      }
+      .fv-preview .fv-visual-area::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,26,61,0.3) 0%, transparent 40%, rgba(0,26,61,0.85) 100%);
+      }
+
+      /* テキストコンテンツ */
+      .fv-content { position: relative; z-index: 2; width: 52%; }
+
+      /* メインタイトル */
+      .fv-main-title {
+        font-family: var(--font-serif);
+        font-size: clamp(1.3rem, 3vw, 2.4rem);
+        color: #fff;
+        line-height: 1.25;
+        margin-bottom: 0.8rem;
+      }
+      .fv-main-title .line1 { color: #fff; display: block; margin-bottom: 0.55rem; white-space: nowrap; }
+      .fv-main-title .line2 {
+        display: block;
+        background: linear-gradient(to right, #c5a059, #ffebbc, #c5a059);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 0.9em;
+        margin-bottom: 0.4rem;
+        letter-spacing: -0.05em;
+      }
+      .fv-main-title .line3 {
+        display: block;
+        font-size: 0.72em;
+        color: #fff;
+        border-bottom: 3px solid;
+        border-image: linear-gradient(to right, var(--gold), transparent) 1;
+        padding-bottom: 0.2rem;
+        display: inline-block;
+      }
+
+      /* サブタイトル（キャッチ下の小さいテキスト） */
+      .fv-sub-title {
+        font-size: 0.8rem;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.9);
+        margin-top: 0.6rem;
+        margin-bottom: 0.8rem;
+      }
+
+      /* トラストシグナル */
+      .fv-trust {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.95);
+        background: rgba(0,20,60,0.5);
+        backdrop-filter: blur(6px);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+        margin-bottom: 0.6rem;
+      }
+      .fv-trust span { display: inline-flex; align-items: center; gap: 0.3em; }
+      .fv-trust i { color: var(--gold); }
+
+      /* CTAボタン */
+      .fv-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, var(--line-green) 0%, var(--line-green-dark) 100%);
+        color: #fff;
+        font-size: 0.88rem;
+        font-weight: 700;
+        padding: 0.7rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(6,199,85,0.3);
+        border: none;
+        cursor: default;
+      }
+      .fv-cta-btn i { font-size: 1.2rem; }
+
+      .fv-cta-note {
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.6);
+        margin-top: 0.4rem;
+      }
+
+      /* スクロールインジケーター */
+      .fv-scroll {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        opacity: 0.4;
+      }
+      .scroll-mouse {
+        width: 22px; height: 34px;
+        border: 2px solid rgba(255,255,255,0.6);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        padding-top: 5px;
+      }
+      .scroll-wheel {
+        width: 3px; height: 6px;
+        background: rgba(255,255,255,0.8);
+        border-radius: 2px;
+      }
+      .scroll-text {
+        font-family: var(--font-en);
+        font-size: 0.6rem;
+        color: rgba(255,255,255,0.7);
+        letter-spacing: 0.15em;
+      }
+
+      /* ===== 変更差分バー ===== */
+      .diff-bar {
+        background: #fff;
+        border-top: 1px solid var(--border);
+        padding: 14px 24px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .diff-bar .diff-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #64748b;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        padding-top: 2px;
+      }
+      .diff-bar .diff-content {
+        font-size: 0.82rem;
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .diff-bar .diff-content strong { color: var(--navy); }
+      .diff-bar .diff-content del {
+        color: #aaa;
+        font-size: 0.78rem;
+      }
+      .diff-bar .diff-content ins {
+        text-decoration: none;
+        background: #fef3c7;
+        padding: 1px 4px;
+        border-radius: 3px;
+        color: #92400e;
+        font-weight: 700;
+      }
+
+      /* ===== 区切り ===== */
+      .divider {
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--border), transparent);
+        margin: 40px 0;
+      }
+
+      /* ===== まとめカード ===== */
+      .summary-box {
+        background: var(--navy);
+        border-radius: 12px;
+        padding: 28px 32px;
+        margin-top: 40px;
+      }
+      .summary-box h2 {
+        color: var(--gold);
+        font-size: 1rem;
+        font-weight: 900;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .summary-table { width: 100%; border-collapse: collapse; }
+      .summary-table th, .summary-table td {
+        padding: 10px 14px;
+        font-size: 0.82rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.85);
+      }
+      .summary-table th { color: var(--gold); font-weight: 700; width: 60px; }
+      .summary-table .target-col { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
+
+      footer {
+        text-align: center;
+        padding: 24px;
+        font-size: 0.75rem;
+        color: #94a3b8;
+        border-top: 1px solid var(--border);
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="page-header">
+      <h1>FV COPY COMPARISON</h1>
+      <p>堀田建設 採用LP｜ファーストビュー コピー案 全4案 プレビュー</p>
+      <div class="nav-pills">
+        <a href="#case-a">案A（現状）</a>
+        <a href="#case-b">案B 対象拡大</a>
+        <a href="#case-c">案C 会社軸</a>
+        <a href="#case-d">案D ストーリー</a>
+      </div>
+    </div>
+
+    <div class="compare-wrapper">
+
+      <!-- ===== 案A ===== -->
+      <div id="case-a">
+        <div class="section-label">
+          <span class="case-badge badge-a">A</span>
+          <div>
+            <span class="case-title">案A（現状）未経験絞り込み型</span>
+            <span class="case-tag tag-a">現在のLP</span>
+            <div class="case-note">⚠ 経験者・転職者が冒頭で「自分には関係ない」と感じる可能性あり</div>
+          </div>
+        </div>
+        <div class="fv-preview-wrap">
+          <div class="fv-preview">
+            <div class="bg-en">PRIDE</div>
+            <div class="fv-visual-area">
+              <img src="lp/main/images/hero/hero-background.webp" alt="堀田建設の現場" />
+            </div>
+            <div class="fv-content">
+              <h1 class="fv-main-title">
+                <span class="line1">未経験のあなたへ。</span>
+                <span class="line2">「建設業、やってみようかな」</span>
+                <span class="line3">その一歩を、全力で守ります。</span>
+              </h1>
+              <p class="fv-sub-title">
+                資格取得費用0円。残業月13.5h（昨年度実績）。<br>
+                地元・三重で働き続ける。<br>
+                1年目から月給23万円〜。<br>
+                「とりあえず」で始めて、一生モノの技術を。
+              </p>
+              <div class="fv-trust">
+                <span><i class="fas fa-circle-check"></i>質問だけでもOK</span>
+                <span><i class="fas fa-circle-check"></i>在職中でもOK</span>
+                <span><i class="fas fa-circle-check"></i>未経験の方も歓迎</span>
+                <span><i class="fas fa-circle-check"></i>資料請求・見学もOK</span>
+              </div>
+              <a class="fv-cta-btn">
+                <i class="fab fa-line"></i>
+                公式LINEに登録して堀田を知る
+              </a>
+              <p class="fv-cta-note">※いきなり面接はしません。履歴書もまだ不要です。</p>
+            </div>
+            <div class="fv-scroll">
+              <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+              <span class="scroll-text">SCROLL</span>
+            </div>
+          </div>
+          <div class="diff-bar">
+            <span class="diff-label">変更点</span>
+            <span class="diff-content">なし（現在のLP）</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ===== 案B ===== -->
+      <div id="case-b">
+        <div class="section-label">
+          <span class="case-badge badge-b">B</span>
+          <div>
+            <span class="case-title">案B 対象拡大型</span>
+            <span class="case-tag tag-b">おすすめ</span>
+            <div class="case-note">✅ 1行を変えるだけ。未経験者も経験者も両方に届く最小コスト案</div>
+          </div>
+        </div>
+        <div class="fv-preview-wrap">
+          <div class="fv-preview">
+            <div class="bg-en">PRIDE</div>
+            <div class="fv-visual-area">
+              <img src="lp/main/images/hero/hero-background.webp" alt="堀田建設の現場" />
+            </div>
+            <div class="fv-content">
+              <h1 class="fv-main-title">
+                <span class="line1">未経験でも、転職でも。</span>
+                <span class="line2">「建設業、やってみようかな」</span>
+                <span class="line3">その一歩を、全力で守ります。</span>
+              </h1>
+              <p class="fv-sub-title">
+                資格取得費用0円。残業月13.5h（昨年度実績）。<br>
+                地元・三重で働き続ける。<br>
+                初任給22.3万〜25.3万円（学歴別）。<br>
+                経験・資格により優遇あり。
+              </p>
+              <div class="fv-trust">
+                <span><i class="fas fa-circle-check"></i>質問だけでもOK</span>
+                <span><i class="fas fa-circle-check"></i>在職中でもOK</span>
+                <span><i class="fas fa-circle-check"></i>未経験の方も歓迎</span>
+                <span><i class="fas fa-circle-check"></i>資料請求・見学もOK</span>
+              </div>
+              <a class="fv-cta-btn">
+                <i class="fab fa-line"></i>
+                公式LINEに登録して堀田を知る
+              </a>
+              <p class="fv-cta-note">※いきなり面接はしません。履歴書もまだ不要です。</p>
+            </div>
+            <div class="fv-scroll">
+              <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+              <span class="scroll-text">SCROLL</span>
+            </div>
+          </div>
+          <div class="diff-bar">
+            <span class="diff-label">変更点</span>
+            <span class="diff-content">
+              冒頭1行：<del>「未経験のあなたへ。」</del>　→　<ins>「未経験でも、転職でも。」</ins><br>
+              給与：<del>「1年目から月給23万円〜」</del>　→　<ins>「初任給22.3万〜25.3万円（学歴別）。経験・資格により優遇あり。」</ins>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ===== 案C ===== -->
+      <div id="case-c">
+        <div class="section-label">
+          <span class="case-badge badge-c">C</span>
+          <div>
+            <span class="case-title">案C 会社軸型（堀田建設の強みで語る）</span>
+            <div class="case-note">📌 年収の具体数字が刺さる。若手には少し硬い印象になる可能性あり</div>
+          </div>
+        </div>
+        <div class="fv-preview-wrap">
+          <div class="fv-preview">
+            <div class="bg-en">PRIDE</div>
+            <div class="fv-visual-area">
+              <img src="lp/main/images/hero/hero-background.webp" alt="堀田建設の現場" />
+            </div>
+            <div class="fv-content">
+              <h1 class="fv-main-title">
+                <span class="line1">三重で、100年続く会社で働く。</span>
+                <span class="line2">未経験歓迎・経験者優遇。</span>
+                <span class="line3">腕と年収を、ここで伸ばす。</span>
+              </h1>
+              <p class="fv-sub-title">
+                初任給22.3万〜25.3万円。<br>
+                モデル年収：32歳480万 / 36歳570万 / 48歳750万。<br>
+                残業月13.5h。資格取得費用0円。
+              </p>
+              <div class="fv-trust">
+                <span><i class="fas fa-circle-check"></i>質問だけでもOK</span>
+                <span><i class="fas fa-circle-check"></i>在職中でもOK</span>
+                <span><i class="fas fa-circle-check"></i>未経験の方も歓迎</span>
+                <span><i class="fas fa-circle-check"></i>資料請求・見学もOK</span>
+              </div>
+              <a class="fv-cta-btn">
+                <i class="fab fa-line"></i>
+                公式LINEに登録して堀田を知る
+              </a>
+              <p class="fv-cta-note">※いきなり面接はしません。履歴書もまだ不要です。</p>
+            </div>
+            <div class="fv-scroll">
+              <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+              <span class="scroll-text">SCROLL</span>
+            </div>
+          </div>
+          <div class="diff-bar">
+            <span class="diff-label">変更点</span>
+            <span class="diff-content">
+              キャッチコピー全体を刷新。<ins>「三重で、100年続く会社で働く。未経験歓迎・経験者優遇。腕と年収を、ここで伸ばす。」</ins><br>
+              給与：モデル年収（32歳・36歳・48歳）を前面に出す。
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ===== 案D ===== -->
+      <div id="case-d">
+        <div class="section-label">
+          <span class="case-badge badge-d">D</span>
+          <div>
+            <span class="case-title">案D ストーリー型（感情に訴える）</span>
+            <div class="case-note">✅「17年続けた」という実績が信頼感を生む。不安層・家庭持ちの転職者に効きやすい</div>
+          </div>
+        </div>
+        <div class="fv-preview-wrap">
+          <div class="fv-preview">
+            <div class="bg-en">PRIDE</div>
+            <div class="fv-visual-area">
+              <img src="lp/main/images/hero/hero-background.webp" alt="堀田建設の現場" />
+            </div>
+            <div class="fv-content">
+              <h1 class="fv-main-title">
+                <span class="line1">ここで始めた人が、17年続けている。</span>
+                <span class="line2">未経験でも転職でも、</span>
+                <span class="line3">長く働ける理由がある。</span>
+              </h1>
+              <p class="fv-sub-title">
+                社員平均勤続17年。残業月13.5h。<br>
+                初任給22.3万〜25.3万円。<br>
+                48歳モデル年収750万円。
+              </p>
+              <div class="fv-trust">
+                <span><i class="fas fa-circle-check"></i>質問だけでもOK</span>
+                <span><i class="fas fa-circle-check"></i>在職中でもOK</span>
+                <span><i class="fas fa-circle-check"></i>未経験の方も歓迎</span>
+                <span><i class="fas fa-circle-check"></i>資料請求・見学もOK</span>
+              </div>
+              <a class="fv-cta-btn">
+                <i class="fab fa-line"></i>
+                公式LINEに登録して堀田を知る
+              </a>
+              <p class="fv-cta-note">※いきなり面接はしません。履歴書もまだ不要です。</p>
+            </div>
+            <div class="fv-scroll">
+              <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+              <span class="scroll-text">SCROLL</span>
+            </div>
+          </div>
+          <div class="diff-bar">
+            <span class="diff-label">変更点</span>
+            <span class="diff-content">
+              キャッチコピー全体を刷新。<ins>「ここで始めた人が、17年続けている。未経験でも転職でも、長く働ける理由がある。」</ins><br>
+              冒頭に「社員平均勤続17年」を強調。安定・長期就業を訴求。
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== まとめ ===== -->
+      <div class="summary-box">
+        <h2><i class="fas fa-table-list"></i> 4案まとめ</h2>
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>案</th>
+              <th>キャッチコピー（1行目）</th>
+              <th>ターゲット</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:#f59e0b;">A</strong></td>
+              <td>未経験のあなたへ。</td>
+              <td class="target-col">未経験・地元志向若手</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#22c55e;">B</strong></td>
+              <td>未経験でも、転職でも。</td>
+              <td class="target-col">未経験＋経験者 両方</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#3b82f6;">C</strong></td>
+              <td>三重で、100年続く会社で働く。</td>
+              <td class="target-col">30代〜転職者・年収重視層</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#a855f7;">D</strong></td>
+              <td>ここで始めた人が、17年続けている。</td>
+              <td class="target-col">安定・長期就業を求める層</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <footer>
+      Webとしくみをつくる｜web-tsukuru.jp — 堀田建設 採用LP FV比較資料 © 2026
+    </footer>
+
+  </body>
+</html>
