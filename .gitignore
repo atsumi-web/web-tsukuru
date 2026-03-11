@@ -29,3 +29,7 @@ node_modules/
 
 # SNS Review Folder (temporary review only, not for deployment)
 _sns_review/
+
+# Duplicate LPs (already deployed on official subdomains)
+site/client-work/01_hotta/lp/main/index.html
+site/client-work/01_hotta/lp/main/voice_*.html
