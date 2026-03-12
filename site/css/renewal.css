@@ -1875,21 +1875,7 @@ section {
   transform: translateY(20px);
   pointer-events: none;
 }
-.fixed-diagnosis-btn::before {
-  content: "採用LP無料診断";
-  position: absolute;
-  top: -15px;
-  right: 10px;
-  padding: 4px 10px;
-  background: var(--renewal-alert);
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 900;
-  border-radius: 4px;
-  line-height: 1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  animation: bounce-in 1s ease-out forwards;
-}
+
 .fixed-diagnosis-btn.show {
   opacity: 1;
   visibility: visible;
