@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---------------------------------------------------------
   // Fixed CTA Button - Show on Scroll
   // ---------------------------------------------------------
-  const fixedCta = document.querySelector(".fixed-line-btn");
+  const fixedCta = document.querySelector(".fixed-line-btn, .fixed-diagnosis-btn");
 
   if (fixedCta) {
     let scrollThreshold = 200; // Show after 200px scroll
