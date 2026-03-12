@@ -196,11 +196,12 @@ section {
   transform: translateY(-5px) scale(1.02);
 }
 .cta-button.diagnosis {
-  background: var(--renewal-navy);
-  border: 2px solid var(--renewal-gold);
-  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
+  background: linear-gradient(135deg, #d4af66 0%, #b48e4b 100%);
+  border: none;
+  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
   color: #fff;
   max-width: 450px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .cta-button.diagnosis::after {
   content: "";
@@ -212,17 +213,16 @@ section {
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.4) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: rotate(30deg);
   animation: cta-shine 3s infinite;
 }
 .cta-button.diagnosis:hover {
-  background: var(--renewal-navy);
-  box-shadow: 0 15px 40px rgba(197, 160, 89, 0.4);
+  background: linear-gradient(135deg, #ebd197 0%, #c5a059 100%);
+  box-shadow: 0 15px 40px rgba(197, 160, 89, 0.6);
   transform: translateY(-5px) scale(1.02);
-  border-color: #d4af66;
 }
 .cta-button.secondary {
   border: 2px solid var(--renewal-gold);
@@ -817,8 +817,8 @@ section {
   }
   /* Rule #2遵守: !importantを削除し、セレクタ詳細度(body .class)で上書き */
   body .fixed-diagnosis-btn {
-    background: var(--renewal-navy);
-    border-top: 1px solid var(--renewal-gold);
+    background: linear-gradient(135deg, #d4af66 0%, #b48e4b 100%);
+    border-top: none;
     color: #fff;
     right: 0;
     left: 0;
@@ -842,7 +842,7 @@ section {
     font-size: 1.15rem;
   }
   .fixed-diagnosis-btn .fa-clipboard-check {
-    color: var(--renewal-gold);
+    color: #fff;
     background: transparent;
     border-radius: 0;
     width: auto;
@@ -1862,9 +1862,9 @@ section {
   gap: 12px;
   padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
   border-radius: 60px;
-  background: var(--renewal-navy);
-  border: 2px solid var(--renewal-gold);
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.4);
+  background: linear-gradient(135deg, #d4af66 0%, #b48e4b 100%);
+  border: none;
+  box-shadow: 0 15px 40px rgba(197, 160, 89, 0.5);
   color: #fff;
   transition:
     var(--transition-base),
@@ -1906,9 +1906,8 @@ section {
 }
 .fixed-diagnosis-btn:hover {
   transform: scale(1.08) translateY(-8px);
-  background: var(--renewal-navy);
-  border-color: #d4af66;
-  box-shadow: 0 20px 50px rgba(197, 160, 89, 0.6);
+  background: linear-gradient(135deg, #ebd197 0%, #c5a059 100%);
+  box-shadow: 0 20px 50px rgba(197, 160, 89, 0.7);
 }
 @media (max-width: 768px) {
   .fixed-diagnosis-btn {
