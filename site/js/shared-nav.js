@@ -42,8 +42,8 @@
     link(root + "blog/index.html", "ブログ", isBlog),
     link("/works.html", "実績", isWorks),
     link(
-      root + "index.html#lead-magnet",
-      '<i class="fa-brands fa-line"></i> LINE登録特典',
+      root + "saiyou-shindan.html",
+      '<i class="fa-solid fa-clipboard-check"></i> 無料診断テスト',
       false,
       "nav-btn",
     ),
