@@ -909,7 +909,7 @@
               color: var(--renewal-navy);
             ">
               <i class="fa-solid fa-file-pdf" style="color: #e74c3c; font-size: 1.4rem;"></i>
-              採用資産マニュアル PDF（20ページ）
+              採用資産マニュアル PDF（21ページ）
             </div>
             <div style="
               background: #fff;
@@ -928,93 +928,67 @@
             </div>
           </div>
 
-          <div
-            style="
+          <style>
+            .lm-grid-container {
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              grid-template-columns: 1fr;
               gap: 30px;
               margin-top: 50px;
               max-width: 900px;
               margin-left: auto;
               margin-right: auto;
-            "
-          >
-            <div class="js-fade-up" style="text-align: center">
+            }
+            @media (min-width: 768px) {
+              .lm-grid-container {
+                grid-template-columns: 1fr 1fr;
+              }
+            }
+          </style>
+          <div class="lm-grid-container">
+            <div class="js-fade-up" style="display: flex; justify-content: center; align-items: stretch;">
               <img
                 src="images/lead-magnet-cover.webp"
                 alt="採用資産マニュアル表紙"
                 style="
                   width: 100%;
                   max-width: 400px;
+                  height: auto;
                   border-radius: 8px;
                   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                  display: block;
+                  object-fit: cover;
                 "
                 loading="lazy"
               />
-              <p style="margin-top: 15px; color: #666; font-size: 0.9rem">
-                表紙
-              </p>
             </div>
-            <div class="js-fade-up" data-delay="100" style="text-align: left; background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
-              <h3 style="color: var(--renewal-navy); font-size: 1.1rem; margin-bottom: 20px; text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px;">
-                【マニュアル目次（全20ページ）】
+            <div class="js-fade-up" data-delay="100" style="background: #f8f9fa; border: 1px solid #e2e8f0; border-top: 4px solid var(--renewal-navy); border-radius: 8px; padding: 40px 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
+              <h3 style="color: var(--renewal-navy); font-size: 1.15rem; margin-bottom: 25px; text-align: center; border-bottom: 2px dashed #cbd5e1; padding-bottom: 15px; font-weight: bold;">
+                【収録テーマ一覧（全21ページ）】
               </h3>
-              <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8; font-size: 0.95rem; color: #444;">
-                <li style="margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-alert); font-weight: bold; white-space: nowrap;">第1章</span>
-                    <div>なぜ御社の求人はスルーされるのか？（採用LPの正体）</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 3</div>
+              <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8; font-size: 0.95rem; color: #333;">
+                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--renewal-gold); flex-shrink: 0; margin-top: 2px;"><i class="fa-solid fa-check"></i></span>
+                  <div>なぜ御社の求人はスルーされるのか？</div>
                 </li>
-                <li style="margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-alert); font-weight: bold; white-space: nowrap;">第2章</span>
-                    <div>9割の企業が陥る「掛け捨て求人広告」の落とし穴</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 6</div>
+                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--renewal-gold); flex-shrink: 0; margin-top: 2px;"><i class="fa-solid fa-check"></i></span>
+                  <div>9割の企業が陥る「掛け捨て求人広告」の落とし穴</div>
                 </li>
-                <li style="margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-alert); font-weight: bold; white-space: nowrap;">第3章</span>
-                    <div>求人を「消費」から「資産」に変える4つの条件</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 10</div>
+                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--renewal-gold); flex-shrink: 0; margin-top: 2px;"><i class="fa-solid fa-check"></i></span>
+                  <div>求人を「消費」から「資産」に変える4つの条件</div>
                 </li>
-                <li style="margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-alert); font-weight: bold; white-space: nowrap;">第4章</span>
-                    <div>スマホ世代の「応募ハードル」を下げるLINE連携</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 12</div>
+                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--renewal-gold); flex-shrink: 0; margin-top: 2px;"><i class="fa-solid fa-check"></i></span>
+                  <div>スマホ世代の「応募ハードル」を下げるLINE連携</div>
                 </li>
-                <li style="margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-alert); font-weight: bold; white-space: nowrap;">第5章</span>
-                    <div>無駄な固定費を抑える「維持費0円」設計の裏側</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 13</div>
+                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--renewal-gold); flex-shrink: 0; margin-top: 2px;"><i class="fa-solid fa-check"></i></span>
+                  <div>無駄な固定費を抑える「維持費0円」設計の裏側</div>
                 </li>
-                <li style="margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-alert); font-weight: bold; white-space: nowrap;">第6章</span>
-                    <div>採用資産化プロジェクト・導入の流れ</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 16</div>
-                </li>
-                <li style="margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-navy); font-weight: bold; white-space: nowrap;">終わりに</span>
-                    <div>【枠数限定】実績モニター特別プランのご案内</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 19</div>
-                </li>
-                <li style="display: flex; justify-content: space-between; gap: 8px;">
-                  <div style="display: flex; gap: 8px;">
-                    <span style="color: var(--renewal-navy); font-weight: bold; white-space: nowrap;">ご案内</span>
-                    <div>LINE無料相談・個別フィードバック窓口</div>
-                  </div>
-                  <div style="color: #999; flex-shrink: 0;">P. 20</div>
+                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="color: var(--renewal-gold); flex-shrink: 0; margin-top: 2px;"><i class="fa-solid fa-check"></i></span>
+                  <div>採用資産化プロジェクト・導入の流れ</div>
                 </li>
               </ul>
             </div>
