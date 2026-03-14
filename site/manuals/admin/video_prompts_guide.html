@@ -265,7 +265,7 @@
     <header id="top">
       <div>
         <div class="title">
-          <i class="fa-solid fa-image"></i> 動画生成プロンプト集（全24選）
+          <i class="fa-solid fa-image"></i> 動画生成プロンプト集（全28選）
         </div>
         <div class="subtitle">
           建設業採用リール用 AI背景動画・画像生成プロンプトマニュアル
@@ -288,7 +288,7 @@
         <button id="btn-color-lightgrey" class="color-btn" onclick="changeColor('lightgrey')"><span class="color-dot" style="background:#e2e8f0;"></span> ライトグレー</button>
         <button id="btn-color-random" class="color-btn" onclick="randomizeColors()" style="margin-left: 10px; border-color: rgba(228,64,95,0.4);"><span class="color-dot" style="background:conic-gradient(red, yellow, lime, aqua, blue, magenta, red);"></span> ランダム配色</button>
       </div>
-      <div class="color-selector-desc">※「混色」や「風景」のプロンプトを除く、単一指定のプロンプト（全18個）の指定色を一括で切り替えます。<br>※上のボタンを押すと、各プロンプト文と見出しが瞬時に最新の指定色にリライトされます。「ランダム配色」は1つ1つに異なる色を割り当てます。</div>
+      <div class="color-selector-desc">※「混色」や「風景」のプロンプトを除く、単一指定のプロンプト（全22個）の指定色を一括で切り替えます。<br>※上のボタンを押すと、各プロンプト文と見出しが瞬時に最新の指定色にリライトされます。「ランダム配色」は1つ1つに異なる色を割り当てます。</div>
     </div>
 
     <div class="grid2">
@@ -550,6 +550,42 @@
       </div>
     </div>
 
+    <!-- G. 女性の活躍（多様な働き方） -->
+    <div class="panel" style="border-color: rgba(236, 72, 153, 0.3);">
+      <div class="panel-header" style="background: rgba(236, 72, 153, 0.1);">
+        <div class="panel-title" style="color: #ec4899;">
+          <i class="fa-solid fa-person-dress"></i> G. 女性の活躍・多様性（スマートさ・親しみやすさ）
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="color:var(--text-dim); font-size:0.85rem; margin-bottom:16px;">用途：女性ターゲットや、「業界の古いイメージを払拭したい」時に。現場のクリーンさも強調されます。</p>
+
+        <div class="prompt-title">25. タブレットで指示を出す女性現場監督（ネイビーブルー）</div>
+        <div class="copy-container">
+          <button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> コピー</button>
+          <div class="prompt-box" style="border-left-color: #ec4899;">A confident young Japanese female construction manager in clean navy blue workwear and a plain white hard hat, holding a digital tablet and smiling kindly, bright local construction site, photorealistic, distinct female face, no text. --ar 9:16</div>
+        </div>
+
+        <div class="prompt-title">26. 現場でヘルメットを小脇に抱え微笑む女性（シルバーグレー）</div>
+        <div class="copy-container">
+          <button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> コピー</button>
+          <div class="prompt-box" style="border-left-color: #ec4899;">Portrait of a beautiful Japanese female construction worker in clean silver grey work clothes, holding a plain white hard hat under her arm, smiling softly at the camera, soft cinematic sunlight, beautifully blurred construction site background, 8k, no text, no logos. --ar 9:16</div>
+        </div>
+
+        <div class="prompt-title">27. 重機の運転席に座るカッコいい女性（カーキ）</div>
+        <div class="copy-container">
+          <button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> コピー</button>
+          <div class="prompt-box" style="border-left-color: #ec4899;">A cool Japanese female heavy equipment operator in khaki workwear and a plain white hard hat sitting confidently in the cabin of an excavator, giving a slight smile, cinematic lighting, highly realistic, empowering, no text. --ar 9:16</div>
+        </div>
+
+        <div class="prompt-title">28. 女性作業員同士の和やかなコーヒー休憩（チャコール）</div>
+        <div class="copy-container">
+          <button class="copy-btn" onclick="copyPrompt(this)"><i class="fa-regular fa-copy"></i> コピー</button>
+          <div class="prompt-box" style="border-left-color: #ec4899;">Two Japanese female construction workers in charcoal work uniforms and plain white hard hats sitting together during a break, holding canned coffee and laughing cheerfully, clean local construction site, bright daylight, distinct female faces, no clones, no text. --ar 9:16</div>
+        </div>
+      </div>
+    </div>
+
     <a href="#top" id="back-to-top"><i class="fa-solid fa-arrow-up"></i> TOP</a>
 
     <script>
@@ -570,8 +606,8 @@
 
       // 制服カラー変更のスクリプト
       document.addEventListener('DOMContentLoaded', () => {
-        // 単一色指定のターゲットプロンプト番号（混色・風景を除く18個）
-        const targetPrompts = [1,2,3,4,7,8,9,10,11,12,13,14,15,16,21,22,23,24];
+        // 単一色指定のターゲットプロンプト番号（混色・風景を除く22個）
+        const targetPrompts = [1,2,3,4,7,8,9,10,11,12,13,14,15,16,21,22,23,24,25,26,27,28];
         const promptTitles = document.querySelectorAll('.prompt-title');
         
         promptTitles.forEach(title => {
