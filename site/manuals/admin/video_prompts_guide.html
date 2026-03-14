@@ -204,6 +204,61 @@
         opacity: 1;
         transform: translateY(-2px);
       }
+      .color-selector-panel {
+        background: rgba(59, 130, 246, 0.05);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 24px;
+      }
+      .color-selector-title {
+        font-weight: 700;
+        color: var(--accent-blue);
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+      }
+      .color-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .color-btn {
+        background: var(--panel-bg);
+        border: 1px solid var(--panel-border);
+        color: var(--text-dim);
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: inherit;
+        font-weight: 500;
+      }
+      .color-btn:hover {
+        background: rgba(255,255,255,0.05);
+        color: var(--text-main);
+      }
+      .color-btn.active {
+        border-color: var(--accent-blue);
+        color: var(--text-main);
+        background: rgba(59, 130, 246, 0.1);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+      }
+      .color-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      .color-selector-desc {
+        font-size: 0.75rem;
+        color: var(--text-dim);
+      }
     </style>
   </head>
   <body>
@@ -216,10 +271,23 @@
           建設業採用リール用 AI背景動画・画像生成プロンプトマニュアル
         </div>
       </div>
-      <a href="index.html" class="back-link"
-        ><i class="fa-solid fa-chevron-left"></i> 司令室へ</a
-      >
+      <div style="display:flex; align-items:center; gap:12px;">
+        <a href="index.html" class="back-link"
+          ><i class="fa-solid fa-chevron-left"></i> 司令室へ</a
+        >
+      </div>
     </header>
+
+    <div class="color-selector-panel">
+      <div class="color-selector-title"><i class="fa-solid fa-palette"></i> 制服カラーの一括変更（1クリック）</div>
+      <div class="color-buttons">
+        <button id="btn-color-navy" class="color-btn" onclick="changeColor('navy')"><span class="color-dot" style="background:#1e3a8a;"></span> ネイビーブルー</button>
+        <button id="btn-color-silver" class="color-btn" onclick="changeColor('silver')"><span class="color-dot" style="background:#94a3b8;"></span> シルバーグレー</button>
+        <button id="btn-color-khaki" class="color-btn" onclick="changeColor('khaki')"><span class="color-dot" style="background:#d97706;"></span> カーキ</button>
+        <button id="btn-color-charcoal" class="color-btn" onclick="changeColor('charcoal')"><span class="color-dot" style="background:#334155;"></span> チャコール</button>
+      </div>
+      <div class="color-selector-desc">※「混色」や「風景」のプロンプトを除く、単一指定のプロンプト（全14個）の指定色を一括で切り替えます。<br>※上のボタンを押すと、各プロンプト文と見出しが瞬時に最新の指定色にリライトされます。</div>
+    </div>
 
     <div class="grid2">
       <!-- 【必須のプロンプト保護ルール】 -->
@@ -459,6 +527,55 @@
           }, 2000);
         }).catch(err => {
           console.error('Could not copy text: ', err);
+        });
+      }
+
+      // 制服カラー変更のスクリプト
+      document.addEventListener('DOMContentLoaded', () => {
+        // 単一色指定のターゲットプロンプト番号（混色・風景を除く14個）
+        const targetPrompts = [1,2,3,4,7,8,9,10,11,12,13,14,15,16];
+        const promptTitles = document.querySelectorAll('.prompt-title');
+        
+        promptTitles.forEach(title => {
+          const match = title.innerText.match(/^(\d+)\./);
+          if (match) {
+            const num = parseInt(match[1]);
+            const box = title.nextElementSibling.querySelector('.prompt-box');
+            if (targetPrompts.includes(num) && box) {
+              // 元のテキストを保持しておく
+              title.dataset.original = title.innerText;
+              box.dataset.original = box.innerText;
+            }
+          }
+        });
+      });
+
+      const colorMap = {
+        'navy': {en: 'navy blue', ja: 'ネイビーブルー'},
+        'silver': {en: 'silver grey', ja: 'シルバーグレー'},
+        'khaki': {en: 'khaki', ja: 'カーキ'},
+        'charcoal': {en: 'charcoal', ja: 'チャコール'}
+      };
+
+      function changeColor(colorKey) {
+        const color = colorMap[colorKey];
+        if (!color) return;
+        
+        // ボタンのアクティブ状態を更新
+        document.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('btn-color-' + colorKey).classList.add('active');
+
+        // テキストを一括置換
+        const promptTitles = document.querySelectorAll('.prompt-title');
+        promptTitles.forEach(title => {
+          if (title.dataset.original) {
+            let newTitle = title.dataset.original.replace(/ネイビーブルー|シルバーグレー|カーキ|チャコール/g, color.ja);
+            let box = title.nextElementSibling.querySelector('.prompt-box');
+            let newBox = box.dataset.original.replace(/navy blue|silver grey|khaki|charcoal/g, color.en);
+            
+            title.innerText = newTitle;
+            box.innerText = newBox;
+          }
         });
       }
     </script>
