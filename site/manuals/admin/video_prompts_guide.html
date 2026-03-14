@@ -286,8 +286,9 @@
         <button id="btn-color-khaki" class="color-btn" onclick="changeColor('khaki')"><span class="color-dot" style="background:#d97706;"></span> カーキ</button>
         <button id="btn-color-charcoal" class="color-btn" onclick="changeColor('charcoal')"><span class="color-dot" style="background:#334155;"></span> チャコール</button>
         <button id="btn-color-lightgrey" class="color-btn" onclick="changeColor('lightgrey')"><span class="color-dot" style="background:#e2e8f0;"></span> ライトグレー</button>
+        <button id="btn-color-random" class="color-btn" onclick="randomizeColors()" style="margin-left: 10px; border-color: rgba(228,64,95,0.4);"><span class="color-dot" style="background:conic-gradient(red, yellow, lime, aqua, blue, magenta, red);"></span> ランダム配色</button>
       </div>
-      <div class="color-selector-desc">※「混色」や「風景」のプロンプトを除く、単一指定のプロンプト（全14個）の指定色を一括で切り替えます。<br>※上のボタンを押すと、各プロンプト文と見出しが瞬時に最新の指定色にリライトされます。</div>
+      <div class="color-selector-desc">※「混色」や「風景」のプロンプトを除く、単一指定のプロンプト（全14個）の指定色を一括で切り替えます。<br>※上のボタンを押すと、各プロンプト文と見出しが瞬時に最新の指定色にリライトされます。「ランダム配色」は1つ1つに異なる色を割り当てます。</div>
     </div>
 
     <div class="grid2">
@@ -571,6 +572,30 @@
         const promptTitles = document.querySelectorAll('.prompt-title');
         promptTitles.forEach(title => {
           if (title.dataset.original) {
+            let newTitle = title.dataset.original.replace(/ネイビーブルー|シルバーグレー|カーキ|チャコール|ライトグレー/g, color.ja);
+            let box = title.nextElementSibling.querySelector('.prompt-box');
+            let newBox = box.dataset.original.replace(/navy blue|silver grey|khaki|charcoal|light grey/g, color.en);
+            
+            title.innerText = newTitle;
+            box.innerText = newBox;
+          }
+        });
+      }
+
+      function randomizeColors() {
+        // ボタンのアクティブ状態を更新
+        document.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('btn-color-random').classList.add('active');
+
+        const colorKeys = Object.keys(colorMap);
+        const promptTitles = document.querySelectorAll('.prompt-title');
+        
+        // テキストをプロンプトごとにランダム置換
+        promptTitles.forEach(title => {
+          if (title.dataset.original) {
+            const randomKey = colorKeys[Math.floor(Math.random() * colorKeys.length)];
+            const color = colorMap[randomKey];
+
             let newTitle = title.dataset.original.replace(/ネイビーブルー|シルバーグレー|カーキ|チャコール|ライトグレー/g, color.ja);
             let box = title.nextElementSibling.querySelector('.prompt-box');
             let newBox = box.dataset.original.replace(/navy blue|silver grey|khaki|charcoal|light grey/g, color.en);
