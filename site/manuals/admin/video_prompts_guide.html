@@ -285,6 +285,7 @@
         <button id="btn-color-silver" class="color-btn" onclick="changeColor('silver')"><span class="color-dot" style="background:#94a3b8;"></span> シルバーグレー</button>
         <button id="btn-color-khaki" class="color-btn" onclick="changeColor('khaki')"><span class="color-dot" style="background:#d97706;"></span> カーキ</button>
         <button id="btn-color-charcoal" class="color-btn" onclick="changeColor('charcoal')"><span class="color-dot" style="background:#334155;"></span> チャコール</button>
+        <button id="btn-color-lightgrey" class="color-btn" onclick="changeColor('lightgrey')"><span class="color-dot" style="background:#e2e8f0;"></span> ライトグレー</button>
       </div>
       <div class="color-selector-desc">※「混色」や「風景」のプロンプトを除く、単一指定のプロンプト（全14個）の指定色を一括で切り替えます。<br>※上のボタンを押すと、各プロンプト文と見出しが瞬時に最新の指定色にリライトされます。</div>
     </div>
@@ -554,7 +555,8 @@
         'navy': {en: 'navy blue', ja: 'ネイビーブルー'},
         'silver': {en: 'silver grey', ja: 'シルバーグレー'},
         'khaki': {en: 'khaki', ja: 'カーキ'},
-        'charcoal': {en: 'charcoal', ja: 'チャコール'}
+        'charcoal': {en: 'charcoal', ja: 'チャコール'},
+        'lightgrey': {en: 'light grey', ja: 'ライトグレー'}
       };
 
       function changeColor(colorKey) {
@@ -569,9 +571,9 @@
         const promptTitles = document.querySelectorAll('.prompt-title');
         promptTitles.forEach(title => {
           if (title.dataset.original) {
-            let newTitle = title.dataset.original.replace(/ネイビーブルー|シルバーグレー|カーキ|チャコール/g, color.ja);
+            let newTitle = title.dataset.original.replace(/ネイビーブルー|シルバーグレー|カーキ|チャコール|ライトグレー/g, color.ja);
             let box = title.nextElementSibling.querySelector('.prompt-box');
-            let newBox = box.dataset.original.replace(/navy blue|silver grey|khaki|charcoal/g, color.en);
+            let newBox = box.dataset.original.replace(/navy blue|silver grey|khaki|charcoal|light grey/g, color.en);
             
             title.innerText = newTitle;
             box.innerText = newBox;
