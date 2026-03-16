@@ -3,6 +3,9 @@
     "tailwindcss": "^4.1.18"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.18"
+    "@tailwindcss/cli": "^4.1.18",
+    "adm-zip": "^0.5.16",
+    "glob": "^13.0.6",
+    "xlsx": "^0.18.5"
   }
 }
