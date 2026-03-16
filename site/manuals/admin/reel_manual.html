@@ -497,6 +497,9 @@
                 </div>
             </div>
             <div class="tip"><i class="fa-solid fa-lightbulb"></i> CSVの列構成：<strong>ファイル名, 表紙テキスト, フック, 問題, 解説, 解決, 最後1, 最後2</strong>（8列×15行 × A・B 2ファイル。表紙はcover_sheet別CSV）</div>
+            <div class="danger" style="margin-top:10px;"><i class="fa-solid fa-triangle-exclamation"></i> <strong>【重要】AIで台本（フック等）を修正・再生成した場合の注意：</strong><br>
+            AIによるブラッシュアップ等で「表紙テキスト」の内容が変わった場合、そのままでは本文用と表紙用（<code>cover_*.csv</code>）のデータがズレてしまいます。<br>
+            必ずAI（Antigravity等）に「<strong>新しい表紙テキストを抽出して、表紙用CSVの中身も更新して</strong>」と指示を出し、データを完全に同期させてから各種Canva作業に進んでください。</div>
         </div>
     </div>
 
@@ -610,9 +613,9 @@
                     例：ページ1の表紙テキスト →「表紙1」、フックテキスト →「フック1」</p>
                 </div>
             </div>
-            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>スライド構成：</strong>フック・問題・解説・解決は<strong>横書き・1ブロック（1文まとめて1セルに記入・目安20〜40字・Canvaが自動折返し・最大5行）</strong>。最後(CTA)スライドのみ<strong>縦書き・2行（1行13字以内・計26字以内）</strong>。英字・数字（LP・SNSなど）は縦書きに使わない。</div>
+            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>スライド構成：</strong>フック・問題・解説・解決は<strong>横書き・1ブロック（1文まとめて1セルに記入・目安40字以内・最大55字まで）</strong>。最後(CTA)スライドのみ<strong>縦書き・2行（1行13字以内・計26字以内）</strong>。英字・数字（LP・SNSなど）は縦書きに使わない。</div>
             <div class="tip"><i class="fa-solid fa-palette"></i> <strong>ブランディング配置：</strong>フック〜解決スライドは<strong>ロゴ・URLなし</strong>（本文テキストに集中させる）。<strong>CTAスライドのみ</strong>パンダマスコット＋「建設業×採用LP専門」フッターバーを配置。</div>
-            <div class="tip"><i class="fa-solid fa-text-height"></i> <strong>フォント設定（フック〜解決）：</strong>文字サイズ <strong>72px</strong>・文字間隔 <strong>104</strong>・行間幅 <strong>2.5</strong>　横書き　／　フォントはNoto Sans JPで統一。</div>
+            <div class="tip"><i class="fa-solid fa-text-height"></i> <strong>フォント設定（フック〜解決）：</strong>長文を背景の座布団枠にフィットさせるため、文字サイズ <strong>72px</strong>・文字間隔 <strong>104</strong>・行間幅 <strong>2.5</strong>　横書き　／　フォントはNoto Sans JPで統一。<br><span style="color:var(--accent-red); font-size: 0.75rem;">※この設定で「4行以内（40文字）」が理想的に収まり、「5行～最大6行（55文字）」までは許容。7行以上の文字あふれは絶対NG。</span></div>
             <div class="tip"><i class="fa-solid fa-text-height"></i> <strong>フォント設定（CTA・最後）：</strong>文字サイズ <strong>52.2px</strong>・文字間隔 <strong>130</strong>・行間幅 <strong>1.4</strong>　縦書き・2行</div>
             <div class="tip"><i class="fa-solid fa-music"></i> <strong>BGM設定（Canvaで設定してからDL）：</strong>音量 <strong>20%</strong>・フェードイン <strong>1秒</strong>・フェードアウト <strong>2秒</strong></div>
             <div class="danger"><i class="fa-solid fa-triangle-exclamation"></i> BGMの設定は必ず<strong>Canva側で完結</strong>させること。Meta Business Suite側で音源を編集すると<strong>予約投稿が使えなくなる</strong>。</div>
