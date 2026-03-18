@@ -324,12 +324,36 @@
     <header id="top">
         <div>
             <div class="title"><i class="fa-solid fa-clapperboard"></i> Canvaリール量産マニュアル（AI動画対応版）</div>
-            <div class="subtitle">Google Flow動画活用・2シーン構成（8秒+8秒）｜建設業採用リール専用（2026.03最新版）</div>
+            <div class="subtitle">テーマ別CSV設計・マルチAIレビュー・自動再配置方式｜建設業採用リール専用（2026.03改訂版）</div>
         </div>
         <a href="index.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> 司令室へ</a>
     </header>
 
-    <!-- 目次ナビ（スティッキー） -->
+    <!-- ✅ Antigravityへの依頼方法 -->
+    <div class="panel" style="border-color:rgba(139,92,246,0.5); background:rgba(139,92,246,0.06); margin-bottom:0;">
+      <div class="panel-header" style="background:rgba(139,92,246,0.15); border-bottom:1px solid rgba(139,92,246,0.3);">
+        <div class="panel-title" style="color:#c4b5fd; font-size:1.0rem;">
+          <i class="fa-solid fa-robot"></i> Antigravityへの依頼方法（STEP1〜1.8は全自動）
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="font-size:0.9rem; color:var(--text-main); margin:0 0 12px;">
+          <strong>新しい会話を開いて</strong>、以下をそのままAntigravityに送るだけ。STEP1（CSV生成）〜STEP1.8（再配置）まで全自動。<br>
+          <span style="color:var(--text-dim); font-size:0.8rem;">STEP2以降（Canvaでの動画生成・DL・投稿）はこのマニュアルを参照。</span>
+        </p>
+        <div style="position:relative;">
+          <div style="background:rgba(0,0,0,0.4); border:1px solid rgba(139,92,246,0.5); border-left:4px solid #8b5cf6; border-radius:6px; padding:14px 16px; font-family:monospace; font-size:1.0rem; color:#e2e8f0; user-select:all; letter-spacing:0.02em;">
+            /reel_90_production で90本作って
+          </div>
+          <button onclick="navigator.clipboard.writeText('/reel_90_production で90本作って').then(()=>{this.textContent='✅ コピー済み';setTimeout(()=>{this.textContent='📋 コピー'},1500)})"
+            style="position:absolute; top:10px; right:10px; background:rgba(139,92,246,0.3); border:1px solid rgba(139,92,246,0.5); color:#c4b5fd; font-size:0.75rem; padding:4px 10px; border-radius:4px; cursor:pointer; transition:all 0.2s;">
+            📋 コピー
+          </button>
+        </div>
+      </div>
+    </div>
+
+
     <nav class="toc-nav">
         <span style="font-size:0.7rem;color:var(--text-dim);margin-right:4px;">▶</span>
         <a href="#sec-ql" class="toc-link">🔗 クイックリンク</a>
@@ -374,10 +398,10 @@
                     </a>
                     <div style="font-size:0.68rem; color:#CBD5E1; font-weight:700; margin:10px 0 4px 4px; letter-spacing:0.05em;"><i class="fa-solid fa-code"></i> VSCode ローカル</div>
                     <div style="font-family:monospace; font-size:0.68rem; color:#94A3B8; background:rgba(0,0,0,0.25); border:1px solid var(--panel-border); border-radius:4px; padding:4px 8px; margin-bottom:5px; user-select:all; cursor:text; word-break:break-all;">C:\Users\eri76\OneDrive\Desktop\VSC\web-tsukuru\planning\reels</div>
-                    <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels/" class="link-row" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);">
+                    <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels_v2/canva/" class="link-row" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);">
                         <i class="fa-solid fa-file-csv lr-icon" style="color:#EF4444;"></i>
-                        <span class="lr-text"><span style="color:#EF4444;font-weight:700;font-size:0.7rem;">[CSV]</span> reel_YYYYMM_A.csv ／ B.csv</span>
-                        <span class="lr-sub">動画台本データ・各15行×8列</span>
+                        <span class="lr-text"><span style="color:#EF4444;font-weight:700;font-size:0.7rem;">[CSV]</span> reel_A.csv 〜 reel_J.csv</span>
+                        <span class="lr-sub">再配置済み動画台本・各9行×8列×10ファイル</span>
                     </a>
                 </div>
 
@@ -453,15 +477,15 @@
         <div class="panel-body">
             <table>
                 <tr><th>STEP</th><th>作業</th><th>ツール</th><th>時間目安</th></tr>
-                <tr><td><strong>1</strong></td><td>AIに台本CSVを生成させる</td><td>Antigravity AI</td><td>5分</td></tr>
-                <tr style="background:rgba(139,92,246,0.08);"><td><strong style="color:var(--accent-purple);">1.5</strong></td><td><strong style="color:var(--accent-purple);">生成した台本を別AIにレビューさせる</strong></td><td>ChatGPT / Gemini など</td><td>10分</td></tr>
-                <tr><td><strong>2</strong></td><td>CSVをCanvaシートにコピペ</td><td>Canvaシート</td><td>3分</td></tr>
-                <tr><td><strong>3</strong></td><td>6ページのリールテンプレートを準備</td><td>Canvaテンプレート</td><td>15分（初回のみ）</td></tr>
-                <tr><td><strong>4</strong></td><td>一括作成で<strong>15本×2セッション（計30本）</strong>を自動生成</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>10分</td></tr>
-                <tr><td><strong>5</strong></td><td>表紙も同様に30枚一括生成</td><td>Canva 一括作成</td><td>5分</td></tr>
-                <tr><td><strong>6</strong></td><td>MP4ダウンロード → Meta Business Suiteで投稿予約</td><td>Meta Business Suite</td><td>—</td></tr>
+                <tr><td><strong>1</strong></td><td>テーマ設計書を作成 → テーマ別CSV（各6本）をAIで執筆</td><td>Antigravity AI</td><td>30〜60分</td></tr>
+                <tr style="background:rgba(139,92,246,0.08);"><td><strong style="color:var(--accent-purple);">1.5</strong></td><td><strong style="color:var(--accent-purple);">5テーマずつ別AIにレビューさせて修正</strong></td><td>ChatGPT / Gemini / Claude など</td><td>20〜30分</td></tr>
+                <tr><td><strong>1.8</strong></td><td><code>reorganize_reels_v2.js</code> を実行してA〜J（各9本）に自動再配置</td><td>Node.js（VSCode）</td><td>1分</td></tr>
+                <tr><td><strong>2</strong></td><td>reel_A.csv〜J.csvをCanvaの「一括作成」に直接インポート</td><td>Canvaテンプレート</td><td>3分×10テンプレ</td></tr>
+                <tr><td><strong>3</strong></td><td>テンプレートA〜Jで9本ずつ生成（<strong>3〜4テンプレずつ複数日に分けてDL</strong>）</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>—</td></tr>
+                <tr><td><strong>4</strong></td><td>表紙を90枚一括生成</td><td>Canva 一括作成</td><td>5分</td></tr>
+                <tr><td><strong>5</strong></td><td>MP4ダウンロード → Meta Business Suiteで投稿予約</td><td>Meta Business Suite</td><td>—</td></tr>
             </table>
-            <div class="tip"><i class="fa-solid fa-boxes-stacked"></i> <strong>6ヶ月ストック × ごちゃまぜ投稿：</strong>1テンプレ×15本×12テンプレ＝<strong>180本（6ヶ月分）</strong>をまとめて作成。月テーマには縛られず、プールから<strong>前後でテンプレ・テーマが被らない</strong>ようランダムに予約投稿することで背景の繰り返し・ネタの偏りを最小化できる。</div>
+            <div class="tip"><i class="fa-solid fa-boxes-stacked"></i> <strong>90本ストック運用：</strong>15テーマ×6本をA〜J（各9本）のテンプレートに自動分配。テーマが違う動画がテンプレートごとに混在するので、投稿順を並べ替えるだけで背景の繰り返しとネタ偏りを最小化できる。</div>
         </div>
     </div>
 
@@ -475,6 +499,8 @@
                 <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
                 <a href="reel_script_guide.html" target="_blank" class="step-link"><i class="fa-solid fa-book"></i> リール台本生成ガイド</a>
             </div>
+            <div class="tip"><i class="fa-solid fa-robot"></i> <strong>Antigravityへの依頼方法：</strong>新しい会話を開いて <code>/reel_90_production</code> と入力するだけ。AIが <code>_agents/workflows/reel_90_production.md</code> を自動で読み込んで手順通りに動きます。<br>
+            ※ reel_manualではなく<strong>ワークフローファイルを参照させればOK</strong>。reel_manualはCanvaでの操作（STEP2以降）用。</div>
             <div class="step">
                 <div class="step-num">①</div>
                 <div class="step-body">
@@ -485,18 +511,19 @@
             <div class="step">
                 <div class="step-num">②</div>
                 <div class="step-body">
-                    <strong>Antigravityが生成したCSVをローカルに保存</strong>
-                    <p>ファイル名：<code>reel_YYYYMM_A.csv</code>・<code>reel_YYYYMM_B.csv</code>（<strong>15行×8列 × 2ファイル</strong>）</p>
+                    <strong>Antigravityが生成したテーマ別CSVをローカルに保存</strong>
+                    <p>保存先：<code>planning/reels_v2/theme_XX_テーマ名.csv</code>（<strong>6行×8列 × 15テーマ = 90本</strong>）</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">③</div>
                 <div class="step-body">
-                    <strong>GoogleドライブのスプレッドシートにCSVをインポート</strong>
-                    <p>Googleドライブフォルダ → 新規スプレッドシート → ファイル → インポート</p>
+                    <strong>再配置スクリプトを実行してA〜J（各9本）に自動変換</strong>
+                    <p>VSCodeターミナルで：<code>node planning/reorganize_reels_v2.js</code><br>
+                    出力先：<code>planning/reels_v2/canva/reel_A.csv</code>〜<code>reel_J.csv</code></p>
                 </div>
             </div>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> CSVの列構成：<strong>ファイル名, 表紙テキスト, フック, 問題, 解説, 解決, 最後1, 最後2</strong>（8列×15行 × A・B 2ファイル。表紙はcover_sheet別CSV）</div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> CSVの列構成：<strong>ファイル名, 表紙テキスト, フック, 問題, 解説, 解決, 最後1, 最後2</strong>（8列）。文字数：フック25字以内・問題/解説/解決各40字以内</div>
             <div class="danger" style="margin-top:10px;"><i class="fa-solid fa-triangle-exclamation"></i> <strong>【重要】AIで台本（フック等）を修正・再生成した場合の注意：</strong><br>
             AIによるブラッシュアップ等で「表紙テキスト」の内容が変わった場合、そのままでは本文用と表紙用（<code>cover_*.csv</code>）のデータがズレてしまいます。<br>
             必ずAI（Antigravity等）に「<strong>新しい表紙テキストを抽出して、表紙用CSVの中身も更新して</strong>」と指示を出し、データを完全に同期させてから各種Canva作業に進んでください。</div>
@@ -650,17 +677,18 @@
                 <div class="step-num">③</div>
                 <div class="step-body">
                     <strong>「高度なオプション」→ ページ名の列を選択</strong>
-                    <p>「各ページの名前を選択する際に使用する列」→「ファイル名」を選択<br>→ デザインがreel_01〜reel_15（またはreel_16〜reel_30）で自動命名される</p>
+                    <p>「各ページの名前を選択する際に使用する列」→「ファイル名」を選択<br>→ デザインが <code>reel_A_01〜reel_A_09</code> のように自動命名される</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">④</div>
                 <div class="step-body">
                     <strong>「続行」→「◯点のデザインを作成」を実行</strong>
-                    <p>15行 = <strong>15本分</strong>のリール動画が生成される（AファイルとBファイルで<strong>2回実行 = 計30本</strong>）</p>
+                    <p>9行 = <strong>9本分</strong>が生成される。テンプレートA〜Jで<strong>10回実行 = 計90本</strong></p>
                 </div>
             </div>
-            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「15個のデザイン」を選択。各デザインの名前は「ファイル名」列を選択するとreel_01〜reel_15（またはreel_16〜reel_30）で自動命名される。</div>
+            <div class="danger"><i class="fa-solid fa-triangle-exclamation"></i> <strong>1日のMP4ダウンロード上限に注意：</strong>有料会員でも1日あたりの動画DL数に上限あり。<strong>1日3〜4テンプレ（27〜36本）ずつ</strong>複数日に分けてDLすること。上限は日本時間0時にリセット。</div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「9個のデザイン」を選択。ファイル名列で <code>reel_A_01〜09</code> のようにテンプレ別・連番で自動命名される。</div>
         </div>
     </div>
 

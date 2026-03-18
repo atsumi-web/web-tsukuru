@@ -234,7 +234,47 @@
       </div>
     </header>
 
-    <!-- 【最重要】AI活用時の絶対ルール（Safe Realism） -->
+    <!-- ✅ Antigravityへの依頼方法 -->
+    <div class="panel" style="border-color:rgba(139,92,246,0.5); background:rgba(139,92,246,0.06);">
+      <div class="panel-header" style="background:rgba(139,92,246,0.15); border-bottom:1px solid rgba(139,92,246,0.3);">
+        <div class="panel-title" style="color:#c4b5fd; font-size:1.0rem;">
+          <i class="fa-solid fa-robot"></i> Antigravityへの依頼方法（これだけでOK）
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="font-size:0.9rem; color:var(--text-main); margin:0 0 12px;">
+          <strong>新しい会話を開いて</strong>、以下をそのままAntigravityに送るだけで90本分のCSVを全自動生成します。
+        </p>
+
+        <!-- コピーボタン付きコマンド -->
+        <div style="position:relative;">
+          <div id="copy-cmd" style="background:rgba(0,0,0,0.4); border:1px solid rgba(139,92,246,0.5); border-left:4px solid #8b5cf6; border-radius:6px; padding:14px 16px; font-family:monospace; font-size:1.0rem; color:#e2e8f0; user-select:all; letter-spacing:0.02em;">
+            /reel_90_production で90本作って
+          </div>
+          <button onclick="navigator.clipboard.writeText('/reel_90_production で90本作って').then(()=>{this.textContent='✅ コピー済み';setTimeout(()=>{this.textContent='📋 コピー'},1500)})"
+            style="position:absolute; top:10px; right:10px; background:rgba(139,92,246,0.3); border:1px solid rgba(139,92,246,0.5); color:#c4b5fd; font-size:0.75rem; padding:4px 10px; border-radius:4px; cursor:pointer; transition:all 0.2s;">
+            📋 コピー
+          </button>
+        </div>
+
+        <div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; font-size:0.8rem;">
+          <div style="background:rgba(0,0,0,0.2); border:1px solid var(--panel-border); border-radius:6px; padding:8px 10px;">
+            <div style="color:#c4b5fd; font-weight:700; margin-bottom:4px;"><i class="fa-solid fa-1"></i> AIが読み込むもの</div>
+            <div style="color:var(--text-dim);">_agents/workflows/<br>reel_90_production.md</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.2); border:1px solid var(--panel-border); border-radius:6px; padding:8px 10px;">
+            <div style="color:#c4b5fd; font-weight:700; margin-bottom:4px;"><i class="fa-solid fa-2"></i> AIがやること</div>
+            <div style="color:var(--text-dim);">テーマ別CSV生成 → AIレビュー →<br>再配置スクリプト実行</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.2); border:1px solid var(--panel-border); border-radius:6px; padding:8px 10px;">
+            <div style="color:#c4b5fd; font-weight:700; margin-bottom:4px;"><i class="fa-solid fa-3"></i> えりさんがやること</div>
+            <div style="color:var(--text-dim);">このマニュアルのSTEP2以降<br>（Canva操作・DL・投稿）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="panel">
       <div class="panel-header" style="background: rgba(239, 68, 68, 0.15); border-bottom: 1px solid rgba(239, 68, 68, 0.3);">
         <div class="panel-title" style="color: #fca5a5; font-size: 1.05rem;">
@@ -333,25 +373,25 @@
             <td><strong>① フック</strong></td>
             <td>冒頭の1〜2秒で止め、続きを見たくさせる</td>
             <td>4.5秒</td>
-            <td>30〜50字（3〜5行）</td>
+            <td><strong style="color:#fca5a5;">25字以内（CSV厳守）</strong></td>
           </tr>
           <tr>
             <td><strong>② 問題</strong></td>
             <td>視聴者が抱える課題・状況を言語化して共感させる</td>
             <td>4.5秒</td>
-            <td>30〜50字（3〜5行）</td>
+            <td><strong style="color:#fca5a5;">40字以内（CSV厳守）</strong></td>
           </tr>
           <tr>
             <td><strong>③ 解説</strong></td>
             <td>なぜそうなるのか・知られていない事実を教える</td>
             <td>4.5秒</td>
-            <td>30〜50字（3〜5行）</td>
+            <td><strong style="color:#fca5a5;">40字以内（CSV厳守）</strong></td>
           </tr>
           <tr>
             <td><strong>④ 解決</strong></td>
             <td>採用ページによってどう解決するかを示す</td>
             <td>4.5秒</td>
-            <td>30〜50字（3〜5行）</td>
+            <td><strong style="color:#fca5a5;">40字以内（CSV厳守）</strong></td>
           </tr>
           <tr>
             <td><strong>⑤ CTA</strong></td>
@@ -487,7 +527,7 @@
       <div class="panel-body" style="padding-top:0;">
         <h4 style="color:var(--accent-gold); margin-top:16px;"><i class="fa-solid fa-shuffle"></i> バリエーション技法：2文リズム型（問題パート）</h4>
         <p style="font-size:0.82rem; color:var(--text-dim); margin-bottom:8px;">
-          問題パートは通常「共感疑問型（〜ていませんか）」の1文で書きますが、<strong>短い事実宣告＋共感疑問」の2文構成</strong>にすると視聴者の目が止まりやすくなります。30本中5〜6本程度に活用してみてください。
+          問題パートは通常「共感疑問型（〜ていませんか）」の1文で書きますが、<strong>短い事実宣告＋共感疑問」の2文構成</strong>にすると視聴者の目が止まりやすくなります。<strong>6本中1〜2本程度</strong>に活用してみてください。
         </p>
         <table>
           <tr><th>パターン</th><th>例文</th></tr>
@@ -600,7 +640,7 @@
         </div>
       </div>
       <div class="panel-body">
-        <p style="color:var(--text-dim); font-size:0.85rem; margin:0 0 10px;">投稿はランダムミックスのため、<strong>季節・月に依存しないテーマ</strong>で作成する。各テーマ30本（A・B各15本）をストックし、投稿時にシャッフルする。</p>
+        <p style="color:var(--text-dim); font-size:0.85rem; margin:0 0 10px;">投稿はランダムミックスのため、<strong>季節・月に依存しないテーマ</strong>で作成する。<strong>15テーマ×6本=90本</strong>をストックして、<code>reorganize_reels_v2.js</code>でA〜J（各9本）に自動再配置してから使用する。</p>
         <table>
           <tr>
             <th>#</th>
@@ -640,19 +680,20 @@
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title" style="color: var(--accent-orange)">
-          <i class="fa-solid fa-shuffle"></i> バランス型カレンダー向け生成ルール（1バッチ＝15テーマ全部乗せ方式）
+          <i class="fa-solid fa-shuffle"></i> テーマ別生成方式（1テーマ×6本切り口）
         </div>
       </div>
       <div class="panel-body">
-        <p style="color:var(--text-dim); font-size:0.85rem; margin:0 0 10px;">Meta Business Suiteでの予約投稿時に「テーマを手動でシャッフルする手間」をゼロにするため、<strong>AI生成の段階で15テーマを均等にミックス</strong>して出力させます。</p>
+        <p style="color:var(--text-dim); font-size:0.85rem; margin:0 0 10px;">テーマ別にCSVを生成し、<code>reorganize_reels_v2.js</code>でA〜Jに自動再配置する方式です。AIには「1テーマ×6本」単位で依頼します。</p>
         <table>
           <tr><th>項目</th><th>内容</th></tr>
-          <tr><td><strong>1バッチの本数</strong></td><td><strong style="color:var(--accent-green);">15本（A）+ 15本（B）= 30本</strong></td></tr>
-          <tr><td><strong>テーマの配分</strong></td><td>テーマバンクの全15テーマから<strong>均等に（各2本ずつ）</strong>選んでミックスする</td></tr>
-          <tr><td><strong>ミックスのタイミング</strong></td><td><strong>AI生成時に</strong>15テーマをごちゃまぜにして出力させ、1つのCSVで「完璧な1ヶ月のカレンダー」を完成させる</td></tr>
+          <tr><td><strong>1テーマの本数</strong></td><td><strong style="color:var(--accent-green);">6本（1テーマ×6切り口）</strong></td></tr>
+          <tr><td><strong>全体の本数</strong></td><td>15テーマ×6本 = <strong style="color:var(--accent-green);">90本</strong></td></tr>
+          <tr><td><strong>ミックスのタイミング</strong></td><td><code>reorganize_reels_v2.js</code>実行時に15テーマをA〜Jに自動分配</td></tr>
+          <tr><td><strong>文字数制限</strong></td><td>フック<strong>25字以内</strong>・問題/解説/解決各<strong>40字以内</strong>（厳守）</td></tr>
         </table>
-        <div class="tip"><i class="fa-solid fa-lightbulb"></i> この方式により、完成したCSVを下から順に予約投稿していくだけで、視聴者を飽きさせないバランスの取れたアカウント運用が自動的に実現します。</div>
-        <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>AIによる「ネタ重複」を防ぐ（重要）：</strong>AIは表現を変えただけの全く同じ論点（例「求人広告は消える」「掲載費は消える」）を別ネタとして出力する傾向があります。必ず<strong>「同じ論点・同じ結論の台本は30本中2本まで」</strong>と制限をかけてください。</div>
+        <div class="tip"><i class="fa-solid fa-lightbulb"></i> テーマ別CSVを下のプロンプトテンプレートで生成し、全テーマ分たまったら<code>node planning/reorganize_reels_v2.js</code>を実行するだけで自動完成。</div>
+        <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>AIによる「ネタ重複」を防ぐ（重要）：</strong>6本内で同じ論点・同じ結論の台本は<strong>1本まで</strong>と制限をかけてください。</div>
       </div>
     </div>
 
@@ -666,73 +707,66 @@
       </div>
       <div class="panel-body">
         <p style="color: var(--text-dim); font-size: 0.82rem; margin-bottom: 8px">
-          テーマ・切り口の2か所を書き換えてAntigravityに貼り付けるだけでOK：
+          【テーマ名】と【切り口6つ】の2か所を書き換えてAntigravityに貼り付けるだけでOK：
         </p>
-        <div class="prompt-box">以下の条件でInstagramリール用の台本を<strong>15本</strong>生成してCSVにしてください。1ヶ月の投稿は2バッチ（15本×2）なので、AとBの2ファイルで出力してください。
+        <div class="prompt-box">以下の条件でInstagramリール用の台本を<strong>1テーマ×6本</strong>生成してCSVにしてください。
 
 【ターゲット】
 建設業の経営者・採用担当者（40〜60代・男性が多い）
 悩み：人手不足・応募が来ない・採用コストが高い
 
-【バッチの情報】
-テーマ：テーマバンクの全15テーマを使用
+【テーマ情報】← ここを書き換える
+テーマ名：（テーマ名を入れる）
+切り口6つ：
+1.（切り口1）
+2.（切り口2）
+3.（切り口3）
+4.（切り口4）
+5.（切り口5）
+6.（切り口6）
 
-【テーマ・配分・バリエーション】
-・30本の台本を作成する際、テーマバンクの15個のテーマを均等に（各2本ずつ）使用すること。
-・出力順は同じテーマが連続しないように「ごちゃまぜ（ランダム順）」に配置すること。
-・これにより、このCSVファイル1つで「1ヶ月分のバランスの取れた運用カレンダー」が完結するようにする。
+【文字数制限】※最重要（1字でも超えるとCanvaで表示が崩れる）
+・フック：25字以内（厳守）
+・問題・解説・解決：各40字以内（厳守）
+
 【出力の品質（AIの暴走を防ぐ魔法の指示）】※極めて重要
 ・凡庸なマーケティング表現は避け、建設業の現場社長が「それは知らなかった」と感じる【不都合な事実・意外な事実】を優先してください。
 ・「〜かもしれません」「〜でしょう」等の弱気な推量表現を使わず、事実は「〜です」「〜ます」で力強く言い切ること。
 ・無難で綺麗な言葉に逃げず、現場の泥臭い単語（汗、重機、残業、休日出勤、請求書、現場代理人等）を積極的に使うこと。
 ・「インプレッション」「コンバージョン」「UI」「LP」など、建設業の経営者が直感で理解できないWeb・IT専門用語は絶対に使用せず、「表示回数」「応募」「採用専用ページ」等に必ず翻訳すること。
-・動画の横書きテキストは「1行10文字」で改行されるため、視聴者の読むストレスをなくすベストは「30文字〜50文字以内（3〜5行）」です。
-・無駄に短くして意味をパサパサにするよりは、5行（約50字）を使ってでも現場の泥臭さや情景情報を具体的に伝えることを優先してください。ただし、70文字以上は画面からはみ出すため絶対NGです。
-
-【トーン＆マナーの出力理想形（この泥臭い事実ベースのトーンを模倣すること）】
-フック：求人広告費は一切残らない完全な「掛け捨て」です。
-問題：広告費が消え、人手が全く来ないと悩んでいませんか？
-解説：媒体は課金し続けなければ勝てない構造だからです。
-解決：無駄な掲載料を断ち独自の採用ページを持つ時です。
 
 【提供する解決策（自社の強み）※「解決」パーツに自然に散りばめること】
 ・丸投げではなく採用を共に作り上げる「完全伴走型」であること
 ・一度作れば月額の「保守費用が0円（維持費ゼロ）」で運用できる独自LP（採用資産）であること
 
-【最終確認（セルフレビュー）と修正パイプライン】※必須
-CSVとして確定する前に、作成した30本に対して下記の自己レビューを必ず行い、NGがあれば修正してから出力してください。
-1. 問題パートに「〜すべきです」「〜が必要です」等の解決策や提案が混入していないか？（問題は状況描写のみ）
-2. 解説パートが「〜とは〜のことです」等の定義文になっていないか？（「〜からです」と原因を語っているか）
-3. フックに相手の無知を試す「説教くさい探り（知っていますか？）」が入っていないか？（共感の疑問形はOK）
-4. 解決や解説の語尾に「〜はずです」「〜でしょう」等、読者の感情を推測する語尾がないか？
-5. 解決やCTAで「10倍刺さる」「採用できます」「目に見えて変わる」等の誇大表現・曖昧な結果の約束をしていないか？
-6. 解決パートの着地語尾が単調になっていないか？（「作りましょう」「切り替えましょう」等が5本以上連続していないか。持ちましょう、見直しましょう、捨てましょう等に分散）
-7. フックで提起した問題と、その後の解説・解決の文脈がねじれていないか？（→論理が一直線か）
-8. CSVの各セル内に改行（\n）やカンマ（,）が含まれていないか？（絶対NG）
-9. 解決パートで「フルオープン」「赤裸々」「不都合な真実まで全て見せる」等の過剰開示約束をしていないか？→「良い面も厳しい面も正直に見せる」「包み隠さず伝える」等に差し替えること。
+【最終確認（セルフレビュー）】※必須
+CSVとして確定する前に下記を自己レビューし、NGがあれば修正してください。
+1. 問題パートに「〜すべきです」等の解決策・提案が混入していないか？
+2. 解説パートが「〜とは〜のことです」等の定義文になっていないか？
+3. フックに「知っていますか？」等の説教くさい探りが入っていないか？
+4. 「〜はずです」「〜でしょう」等、感情を推測する語尾がないか？
+5. 誇大表現（「10倍刺さる」「採用できます」等）がないか？
+6. フック25字・問題/解説/解決40字の文字数制限を守れているか？
+7. CSVの各セル内に改行（\n）やカンマ（,）が含まれていないか？
 
 【6パーツ構成（1本あたり）】
-表紙テキスト：5〜8字の短い見出し。「問題型(40%)」「衝撃型(30%)」「解決型(30%)」に分散させ、内容は必ずフックのテーマを要約したものにすること。英数字なし。
-① フック：冒頭で止める。相手を試す質問は禁止。6大心理トリガー（損失・不都合な真実・常識破壊・競争回避・見えない損・意外な事実）に基づき、「共感疑問」「事実宣告」「比喩＋事実」「逆説」のいずれかの型で記述すること。文字数は基本30〜40字（3〜4行）、最大50字強（5行）まで。
-② 問題：視聴者（経営者）が今まさに直面している具体的な場面・状況を描写して共感させる。※解決策や提案（〜すべき等）は絶対に書かないこと。※以下の探り構文は問題パートでも絶対NG：「〜のではないですか？」「〜たことはありませんか？」「〜のに気づいていませんか？」「〜状態ですか？」「〜状況ですか？」「〜見えていますか？」→すべて「〜を続けていませんか？」「〜の状況が続いていませんか？」「〜なっていませんか？」など現状寄り添い型に変換すること。文字数は基本30〜40字（3〜4行）、最大50字強（5行）まで。
-③ 解説：②の問題がなぜ起きているのかを、構造的な原因1つに絞って言い切る。文末は「〜からです」「〜ためです」で終わること。※定義や説明はNG。「LP」という単語は使わず「採用専用ページ」と言い換えること。文字数は基本30〜40字（3〜4行）、最大50字強（5行）まで。
-④ 解決：採用ページでどう解決できるかを方向性として示す。動詞バリエーションを豊かにし、同じ語尾を連続させないこと。※「絶対」「必ず」等の誇大表現や、「完全伴走型で」のような自社サービスの直接的な売り込み（PR・広告化）は視聴者が離脱するため絶対NG。フラットな提案にとどめること。※効果を示す場合は必ず「〜ことがあります」「〜ケースがあります」で終え、「〜します」「〜なります」など断言する語尾は使わないこと。文字数は基本30〜40字（3〜4行）、最大50字強（5行）まで。
-⑤ CTA：縦書き・13字×2行。プロフィールのリンクへの行動喚起。診断型・相談型に分散。英・数字なし。
-⑥ 背景動画案：映像制作時のBロール選定用イメージ（例：夕暮れの足場、険しい顔の作業着の男性 等）を15字以内で記載。
+表紙テキスト：5〜8字。「問題型(40%)」「衝撃型(30%)」「解決型(30%)」に分散。英数字なし。
+① フック：6大心理トリガーに基づき、「共感疑問」「事実宣告」「比喩＋事実」「逆説」のいずれかの型で記述。25字以内（厳守）。
+② 問題：経営者が直面している具体的な状況を描写して共感させる。解決策NG。40字以内（厳守）。
+③ 解説：問題の構造的な原因1つに絞って言い切る。文末「〜からです」「〜ためです」。40字以内（厳守）。
+④ 解決：採用ページでどう解決するかを方向性として示す。断言NG。「〜ことがあります」等で終える。40字以内（厳守）。
+⑤ CTA：縦書き・13字×2行。診断型・相談型に分散。英・数字なし。
+⑥ 背景動画案：Bロール選定用イメージ（15字以内）。
 
-【出力形式】Canvaシート用CSV（2ファイル）
-
-▼ ① reel_YYYYMM_[AまたはB].csv（台本用・15行×9列）
-ヘッダー：ファイル名,表紙テキスト,フック,問題,解説,解決,最後1,最後2,背景動画案
-データ：15行（A：reel_01〜reel_15、B：reel_16〜reel_30）。表紙テキストはcover_sheetと同じ内容を入れる。各セクションは1文まとめて1セルに入れる。最後1・最後2はCTA縦書き2行（各13字以内）。背景動画案には「泥だらけのヘルメット」などテキストに合う泥臭い映像イメージ（人物や風景）を15字以内で記載。
-
-▼ ② cover_sheet_YYYYMM.csv（表紙用・2行×30列）
-ヘッダー（1行目）：表紙1,表紙2,...,表紙30（30列）
-データ（2行目）：30本分の表紙テキストを横に並べる。</div>
+【出力形式】Canva一括作成用CSV（1ファイル）
+ファイル名：theme_XX_テーマ名.csv（例：theme_06_現場が見えない.csv）
+ヘッダー：ファイル名,表紙テキスト,フック,問題,解説,解決,最後1,最後2
+データ：6行（ファイル名：themeXX_reel_01〜06）。最後1・最後2はCTA縦書き2行（各13字以内）。</div>
         <div class="tip">
           <i class="fa-solid fa-lightbulb"></i>
-          テーマ・切り口の2か所を書き換えるだけで毎回使えます。YYYYMMはファイル名に使う年月（例：202604）。
+          テーマ名と切り口の2か所だけ書き換えれば毎回使えます。15テーマ分生成が終わったら <code>node planning/reorganize_reels_v2.js</code> を実行してCanva用A〜Jに自動変換。
         </div>
+
       </div>
     </div>
 
