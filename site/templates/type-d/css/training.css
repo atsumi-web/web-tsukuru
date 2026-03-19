@@ -173,18 +173,29 @@
 }
 
 .support-item__image {
-  height: 120px;
+  height: 160px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.support-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 .support-item__title {
   font-size: 18px;
   font-weight: 700;
+  font-family: "Noto Sans JP", sans-serif;
   margin-bottom: 15px;
   text-align: center;
+  color: var(--dark);
 }
 
 .support-item__text {
