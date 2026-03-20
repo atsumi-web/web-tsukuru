@@ -8,6 +8,21 @@
 
 ---
 
+## ⚡ クイックリファレンス（Antigravityへの依頼コピペ用）
+
+```
+スタイルガイド: https://web-tsukuru.jp/blog/docs/eyecatch_style_guide.md
+
+上記を踏まえて、以下の記事のアイキャッチプロンプト（英語）を作って。
+記事URL: https://web-tsukuru.jp/blog/posts/[ファイル名]
+保存ファイル名: blog_article[番号]_[テーマ].webp
+```
+
+> **Whiskに貼り付けて使用。アスペクト比はWhiskのUI側で Landscape 16:9 を選択。**
+
+---
+
+
 ## コア哲学: 信頼のためのリアリズムと一貫性
 
 B2BおよびリクルートIG分野（特に建設業界）では、「Generic AIっぽい画像」（過剰彩度・プラスチックのような肌・完璧すぎる照明）は信頼を損なう。  
