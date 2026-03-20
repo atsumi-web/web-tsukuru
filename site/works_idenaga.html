@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>制作実績まとめ｜Webとしくみをつくる</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;600;800&family=Outfit:wght@400;600;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      /* ===== RESET & BASE ===== */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { font-size: 16px; scroll-behavior: smooth; }
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        color: #1a1a2e;
+        background: #0a0f1e;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+      img { max-width: 100%; height: auto; display: block; }
+      a { color: inherit; text-decoration: none; }
+
+      /* ===== VARIABLES ===== */
+      :root {
+        --navy:      #0a0f1e;
+        --navy-mid:  #111827;
+        --navy-card: #141c2e;
+        --gold:      #c5a059;
+        --gold-light:#e8c97a;
+        --blue-glow: #3b82f6;
+        --green:     #06c755;
+        --text-muted: rgba(255,255,255,0.55);
+        --text-body:  rgba(255,255,255,0.85);
+        --font-serif: 'Shippori Mincho', serif;
+        --font-sans:  'Noto Sans JP', sans-serif;
+        --font-en:    'Outfit', sans-serif;
+      }
+
+      /* ===== UTILITIES ===== */
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+      .container-sm { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+      .tag {
+        display: inline-block;
+        font-family: var(--font-en);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        padding: 4px 12px;
+        border-radius: 20px;
+        background: rgba(197,160,89,0.15);
+        border: 1px solid rgba(197,160,89,0.4);
+        color: var(--gold-light);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .tag.blue {
+        background: rgba(59,130,246,0.15);
+        border-color: rgba(59,130,246,0.4);
+        color: #93c5fd;
+      }
+      .tag.green {
+        background: rgba(6,199,85,0.15);
+        border-color: rgba(6,199,85,0.4);
+        color: #4ade80;
+      }
+      section { padding: 80px 0; }
+
+      /* ===== FADE IN ===== */
+      .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+      .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+      /* ===== TOP HERO ===== */
+      .hero {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 24px 80px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1a0a2e 100%);
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        width: 700px; height: 700px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(197,160,89,0.12) 0%, transparent 70%);
+        top: -200px; left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+      .hero-label {
+        font-family: var(--font-en);
+        font-size: 0.78rem;
+        letter-spacing: 0.35em;
+        color: var(--gold);
+        margin-bottom: 24px;
+        text-transform: uppercase;
+      }
+      .hero-title {
+        font-family: var(--font-serif);
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.3;
+        margin-bottom: 24px;
+      }
+      .hero-title span { color: var(--gold); }
+      .hero-desc {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        max-width: 600px;
+        line-height: 2;
+        margin-bottom: 40px;
+      }
+      .hero-meta {
+        display: flex;
+        gap: 32px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .hero-meta-item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .hero-meta-num {
+        font-family: var(--font-en);
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: var(--gold);
+      }
+      .hero-meta-label {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+      }
+      .hero-divider {
+        width: 1px;
+        height: 50px;
+        background: rgba(255,255,255,0.15);
+        align-self: center;
+      }
+
+      /* ===== SECTION TITLE ===== */
+      .section-head { text-align: center; margin-bottom: 56px; }
+      .section-en {
+        font-family: var(--font-en);
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.4;
+      }
+      .section-title span { color: var(--gold); }
+      .section-desc {
+        margin-top: 16px;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 2;
+      }
+
+      /* ===== WORK SECTION ===== */
+      .work-section { background: #0d1425; }
+      .work-section:nth-child(even) { background: #0a0f1e; }
+
+      /* ===== PROJECT CARD (BIG) ===== */
+      .project-block {
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--navy-card);
+        margin-bottom: 60px;
+      }
+      .project-block:last-child { margin-bottom: 0; }
+      .project-header {
+        background: linear-gradient(135deg, #141c2e, #1f2d4a);
+        padding: 40px 48px 48px;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-header::after {
+        content: attr(data-en);
+        position: absolute;
+        right: -10px; bottom: -30px;
+        font-family: var(--font-en);
+        font-size: 5rem;
+        font-weight: 800;
+        color: rgba(255,255,255,0.03);
+        letter-spacing: 0.05em;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .project-number {
+        font-family: var(--font-en);
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+      .project-name {
+        font-family: var(--font-serif);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 12px;
+      }
+      .project-catch {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.9;
+        max-width: 600px;
+      }
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 24px;
+      }
+      .ptag {
+        font-family: var(--font-en);
+        font-size: 0.68rem;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.15);
+        color: rgba(255,255,255,0.6);
+        letter-spacing: 0.08em;
+      }
+
+      .project-body {
+        padding: 40px 48px;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      @media (max-width: 768px) {
+        .project-grid { grid-template-columns: 1fr; }
+        .project-header { padding: 32px 28px 36px; }
+        .project-body { padding: 32px 28px; }
+      }
+
+      /* ===== DETAIL LIST ===== */
+      .detail-block { margin-bottom: 28px; }
+      .detail-block:last-child { margin-bottom: 0; }
+      .detail-label {
+        font-family: var(--font-en);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .detail-label i { font-size: 0.75rem; }
+      .detail-content {
+        font-size: 0.9rem;
+        color: var(--text-body);
+        line-height: 1.9;
+        padding-left: 4px;
+      }
+      .detail-content ul {
+        list-style: none;
+        padding: 0;
+      }
+      .detail-content ul li {
+        padding: 6px 0 6px 20px;
+        position: relative;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .detail-content ul li:last-child { border-bottom: none; }
+      .detail-content ul li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--gold);
+        font-size: 0.8rem;
+      }
+
+      /* ===== HIGHLIGHT BOX ===== */
+      .highlight-box {
+        background: linear-gradient(135deg, rgba(197,160,89,0.1), rgba(197,160,89,0.04));
+        border: 1px solid rgba(197,160,89,0.3);
+        border-radius: 12px;
+        padding: 24px 28px;
+        margin-top: 8px;
+      }
+      .highlight-box .detail-label { color: var(--gold-light); }
+      .highlight-box .detail-content { color: #fff; }
+
+      /* ===== LINK BUTTON ===== */
+      .link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 22px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        margin-top: 12px;
+        transition: all 0.25s ease;
+        border: 1px solid rgba(255,255,255,0.2);
+        color: rgba(255,255,255,0.8);
+        background: rgba(255,255,255,0.05);
+      }
+      .link-btn:hover {
+        background: rgba(197,160,89,0.15);
+        border-color: var(--gold);
+        color: var(--gold-light);
+        transform: translateY(-2px);
+      }
+      .link-btn.gold {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #000;
+        font-weight: 700;
+      }
+      .link-btn.gold:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+      }
+
+      /* ===== DIVIDER ===== */
+      .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(197,160,89,0.3), transparent);
+        margin: 0;
+      }
+
+      /* ===== SNS SECTION ===== */
+      .sns-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .sns-card {
+        background: var(--navy-card);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        padding: 32px 28px;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .sns-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(197,160,89,0.3);
+      }
+      .sns-icon {
+        width: 52px; height: 52px;
+        border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      .sns-icon.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+      .sns-icon.line { background: #06c755; color: #fff; }
+      .sns-icon.web { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; }
+      .sns-card-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .sns-card-desc {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+      .big-num {
+        font-family: var(--font-en);
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--gold);
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .big-num-label {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+      }
+
+      /* ===== TEMPLATE SECTION ===== */
+      .template-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+      .template-card {
+        background: var(--navy-card);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        padding: 24px;
+        transition: transform 0.25s, border-color 0.25s;
+      }
+      .template-card:hover { transform: translateY(-4px); border-color: rgba(197,160,89,0.3); }
+      .template-label {
+        font-family: var(--font-en);
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .template-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .template-desc {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      /* ===== TECH STACK ===== */
+      .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .tech-tag {
+        font-family: var(--font-en);
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 5px 14px;
+        border-radius: 20px;
+        background: rgba(59,130,246,0.1);
+        border: 1px solid rgba(59,130,246,0.25);
+        color: #93c5fd;
+        letter-spacing: 0.05em;
+      }
+
+      /* ===== FOOTER ===== */
+      .page-footer {
+        background: #060a14;
+        padding: 48px 24px;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+      .footer-brand {
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .footer-contact {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+      .footer-contact a {
+        color: var(--gold-light);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .footer-copy {
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.25);
+        font-family: var(--font-en);
+      }
+
+      /* ===== SCROLL LINE ===== */
+      .line-deco {
+        width: 1px;
+        height: 80px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <p class="hero-label">Portfolio · 2026</p>
+      <h1 class="hero-title">
+        <span>制作実績</span>の<br />総まとめ
+      </h1>
+      <p class="hero-desc">
+        「Webとしくみをつくる」が手がけた<br />
+        すべての制作物・戦略・仕組みをご覧ください。
+      </p>
+      <div class="hero-meta fade-in">
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">1</span>
+          <span class="hero-meta-label">実クライアント納品</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">4</span>
+          <span class="hero-meta-label">LP テンプレート</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">90</span>
+          <span class="hero-meta-label">Reel スクリプト制作</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">0<small style="font-size:1.2rem">円</small></span>
+          <span class="hero-meta-label">毎月の維持費</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="line-deco"></div>
+
+    <!-- ===== PROJECT 01: 堀田建設 ===== -->
+    <section class="work-section" style="padding-top: 60px;">
+      <div class="container">
+        <div class="section-head fade-in">
+          <p class="section-en">Client Work · 01</p>
+          <h2 class="section-title">実クライアント<span>制作実績</span></h2>
+          <p class="section-desc">実際に納品した採用LP。掲載許可をいただき公開しています。</p>
+        </div>
+
+        <div class="project-block fade-in">
+          <div class="project-header" data-en="HOTTA CONSTRUCTION">
+            <p class="project-number">PROJECT 01 — LIVE</p>
+            <h3 class="project-name">堀田建設株式会社</h3>
+            <p class="project-catch">
+              建設会社の採用課題を、「捨て広告」から「採用資産」へ転換。<br />
+              社員の顔・声・誇りを軸にした、3ペルソナ設計の採用ランディングページ。
+            </p>
+            <div class="project-tags">
+              <span class="ptag">採用LP</span>
+              <span class="ptag">スマホ最適化</span>
+              <span class="ptag">LINE連携</span>
+              <span class="ptag">GA4追跡</span>
+              <span class="ptag">0円維持費</span>
+              <span class="ptag">Cloudflare Pages</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-grid">
+              <div>
+                <div class="detail-block">
+                  <p class="detail-label"><i class="fa-solid fa-bullseye"></i> 課題・背景</p>
+                  <div class="detail-content">
+                    公式採用ページはあったが、スマホから即応募できる導線がなく「いいかも」で終わる構造。<br />
+                    若者・女性・未経験者に刺さる訴求もなかった。
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <p class="detail-label"><i class="fa-solid fa-wrench"></i> 制作物一覧</p>
+                  <div class="detail-content">
+                    <ul>
+                      <li>採用LP フルスクラッチ制作（100+セクション）</li>
+                      <li>社員インタビュー 3名分（ヒアリングシート作成〜原稿化）</li>
+                      <li>LINE応募導線 設計・設定</li>
+                      <li>採用司令室（クライアント専用ダッシュボード）</li>
+                      <li>GA4・Search Console 設置</li>
+                      <li>モバイルパフォーマンス最適化（スコア 31→73）</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <p class="detail-label"><i class="fa-solid fa-users"></i> 3ペルソナ戦略</p>
+                  <div class="detail-content">
+                    <ul>
+                      <li>地元出身・地元就職型（岡安さん）</li>
+                      <li>他業界からの転職型（菅原さん）</li>
+                      <li>女性・高卒若手型（H.A ・社長令嬢）</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="highlight-box fade-in">
+                  <p class="detail-label"><i class="fa-solid fa-star"></i> 主な成果・特徴</p>
+                  <div class="detail-content">
+                    <ul>
+                      <li>100% 実写・実名で構成（AIアバターゼロ）</li>
+                      <li>Mobile PageSpeed 31→<strong style="color:var(--gold-light)">73</strong> に改善</li>
+                      <li>GitHub × Cloudflare で維持費 <strong style="color:var(--gold-light)">月0円</strong></li>
+                      <li>代表許可のもと採用サイトとして現在稼働中</li>
+                    </ul>
+                  </div>
+                </div>
+                <div style="margin-top: 20px;">
+                  <p class="detail-label"><i class="fa-solid fa-globe"></i> リンク</p>
+                  <a href="https://recruit.hottacon.co.jp/" target="_blank" class="link-btn gold">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    採用サイトを見る
+                  </a>
+                  <a href="https://www.hottacon.co.jp/" target="_blank" class="link-btn" style="margin-left: 8px;">
+                    <i class="fa-solid fa-building"></i>
+                    公式サイト
+                  </a>
+                </div>
+                <div style="margin-top: 24px;">
+                  <p class="detail-label"><i class="fa-solid fa-palette"></i> デザイン詳細</p>
+                  <div class="detail-content" style="font-size:0.83rem;">
+                    Navy Deep (#001a3d) × Gold (#c5a059)<br />
+                    PRIDE-HOPE-ALLY の5段階感情アーク設計<br />
+                    「採用サイト」ではなく「企業ドキュメント」として設計
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== PROJECT 02: 葛葉接骨院 ===== -->
+    <section class="work-section">
+      <div class="container">
+        <div class="project-block fade-in">
+          <div class="project-header" data-en="KUZUHA CLINIC">
+            <p class="project-number">PROJECT 02 — TEMPLATE DEMO</p>
+            <h3 class="project-name">葛葉接骨院（枚方市）</h3>
+            <p class="project-catch">
+              医療・ウェルネス向け LP テンプレ「Type-F」の制作事例。<br />
+              柔道整復師の権威性と安心感を軸に設計したヘルスケア特化ランディングページ。
+            </p>
+            <div class="project-tags">
+              <span class="ptag">ヘルスケア LP</span>
+              <span class="ptag">Type-F テンプレート</span>
+              <span class="ptag">モジュール CSS</span>
+              <span class="ptag">Vanilla JS</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-grid">
+              <div>
+                <div class="detail-block">
+                  <p class="detail-label"><i class="fa-solid fa-layer-group"></i> 制作物</p>
+                  <div class="detail-content">
+                    <ul>
+                      <li>11 セクション構成の LP（Hero〜FAQ / Footer）</li>
+                      <li>AI生成画像：院長ビジュアル・施術室インテリア</li>
+                      <li>モジュール CSS（base / components / sections）</li>
+                      <li>Vanilla JS インタラクション実装</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <p class="detail-label"><i class="fa-solid fa-palette"></i> デザイン戦略</p>
+                  <div class="detail-content">
+                    Deep Green (#2d5e45) × Gold (#d4a574)<br />
+                    「信頼・安心・専門性」の3軸コンセプト<br />
+                    見出しに Noto Serif JP（権威性）、本文に Noto Sans JP（可読性）
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="highlight-box fade-in">
+                  <p class="detail-label"><i class="fa-solid fa-code"></i> テンプレート活用方針</p>
+                  <div class="detail-content">
+                    Type-F は今後、建設業向け採用 LP テンプレへの<br />
+                    転用も想定している汎用設計。<br />
+                    医療 → 建設への業種横断的なテンプレ展開が強み。
+                  </div>
+                </div>
+                <div style="margin-top:20px;">
+                  <p class="detail-label"><i class="fa-solid fa-calendar"></i> 完了時期</p>
+                  <div class="detail-content">2026年2月3日 完成</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== LP TEMPLATES ===== -->
+    <section style="background: #0a0f1e; padding: 80px 0;">
+      <div class="container">
+        <div class="section-head fade-in">
+          <p class="section-en">Template Library</p>
+          <h2 class="section-title">LP <span>テンプレート</span>ライブラリ</h2>
+          <p class="section-desc">スクラッチ開発した汎用テンプレ。業種・方向性に合わせて即展開可能。</p>
+        </div>
+        <div class="template-row fade-in">
+          <div class="template-card">
+            <p class="template-label">Type A</p>
+            <p class="template-name">職人・匠型</p>
+            <p class="template-desc">Ken Burns Hero + Craftsmanship Gallery。深い信頼と熟練感を訴求するデザイン。</p>
+          </div>
+          <div class="template-card">
+            <p class="template-label">Type B</p>
+            <p class="template-name">テクノロジー型</p>
+            <p class="template-desc">DX・スピード・最先端を訴求。BIM / ドローン / リモート管理などハイテク建設企業向け。</p>
+          </div>
+          <div class="template-card">
+            <p class="template-label">Type C</p>
+            <p class="template-name">フロンティア型</p>
+            <p class="template-desc">挑戦・拡大志向のスタートアップ系建設企業向け。ダイナミックなビジュアル設計。</p>
+          </div>
+          <div class="template-card">
+            <p class="template-label">Type F</p>
+            <p class="template-name">ヘルスケア型</p>
+            <p class="template-desc">医療・ウェルネス特化。権威性と安心感の両立設計。業種横断転用可能。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== AGENCY SITE ===== -->
+    <section style="background: #0d1425; padding: 80px 0;">
+      <div class="container">
+        <div class="section-head fade-in">
+          <p class="section-en">Agency Site · web-tsukuru.jp</p>
+          <h2 class="section-title">エージェンシー<span>サイト</span></h2>
+          <p class="section-desc">自社サービスのLPからブログ・管理ダッシュボードまで自己完結で構築。</p>
+        </div>
+
+        <div class="project-block fade-in">
+          <div class="project-header" data-en="WEB-TSUKURU">
+            <p class="project-number">AGENCY SITE — LIVE</p>
+            <h3 class="project-name">web-tsukuru.jp</h3>
+            <p class="project-catch">
+              建設・建築業界の採用DXに特化した B2B エージェンシーサイト。<br />
+              LP・ブログ・管理ダッシュボード・デジタル名刺まですべて自社設計・自社運営。
+            </p>
+            <div class="project-tags">
+              <span class="ptag">HTML / CSS / JS</span>
+              <span class="ptag">GitHub Pages</span>
+              <span class="ptag">Cloudflare Pages</span>
+              <span class="ptag">GA4 / Search Console</span>
+              <span class="ptag">SMTP メール設定済</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-grid">
+              <div>
+                <div class="detail-block">
+                  <p class="detail-label"><i class="fa-solid fa-sitemap"></i> サイト構成</p>
+                  <div class="detail-content">
+                    <ul>
+                      <li><code style="color:var(--gold)">index.html</code> — メインLP</li>
+                      <li><code style="color:var(--gold)">works.html</code> — 制作実績ページ</li>
+                      <li><code style="color:var(--gold)">service.html</code> — サービス詳細</li>
+                      <li><code style="color:var(--gold)">saiyou-shindan.html</code> — 採用LP無料診断</li>
+                      <li><code style="color:var(--gold)">blog/</code> — コンテンツマーケティング（8記事以上）</li>
+                      <li><code style="color:var(--gold)">links/</code> — デジタル名刺（SNSトラフィック捕捉）</li>
+                      <li><code style="color:var(--gold)">manuals/</code> — 内部管理ダッシュボード</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <p class="detail-label"><i class="fa-solid fa-newspaper"></i> ブログ・コンテンツ</p>
+                  <div class="detail-content">
+                    <ul>
+                      <li>マガジンスタイルのブログシステム（静的HTML）</li>
+                      <li>採用・Web戦略・人材定着の3軸コンテンツ</li>
+                      <li>全記事：SEO / OGP / CTA 最適化済み</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="highlight-box fade-in">
+                  <p class="detail-label"><i class="fa-solid fa-gauge-high"></i> パフォーマンス</p>
+                  <div class="detail-content">
+                    <ul>
+                      <li>Mobile PageSpeed <strong style="color:var(--gold-light)">85</strong> 達成</li>
+                      <li>FFmpeg + ImageMagick で画像 <strong style="color:var(--gold-light)">90% 削減</strong></li>
+                      <li>Google Fonts 最小化・WebP 最適化済み</li>
+                    </ul>
+                  </div>
+                </div>
+                <div style="margin-top:20px;">
+                  <p class="detail-label"><i class="fa-solid fa-globe"></i> リンク</p>
+                  <a href="https://web-tsukuru.jp/" target="_blank" class="link-btn gold">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    サイトを見る
+                  </a>
+                  <a href="https://web-tsukuru.jp/works.html" target="_blank" class="link-btn" style="margin-left:8px; margin-top:8px; display:inline-flex;">
+                    <i class="fa-solid fa-briefcase"></i>
+                    制作実績
+                  </a>
+                </div>
+                <div style="margin-top:20px;">
+                  <p class="detail-label"><i class="fa-solid fa-envelope"></i> 問い合わせ窓口</p>
+                  <div class="detail-content">
+                    info@web-tsukuru.jp（独自ドメインメール稼働中）
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== SNS / INSTAGRAM ===== -->
+    <section style="background: #0a0f1e; padding: 80px 0;">
+      <div class="container">
+        <div class="section-head fade-in">
+          <p class="section-en">SNS Strategy · Instagram</p>
+          <h2 class="section-title">Instagram <span>大量制作</span>戦略</h2>
+          <p class="section-desc">
+            ＃建設業採用 ニッチに特化した Reel 一括制作システム。<br />
+            スクリプト設計から Canva 配置・投稿スケジュールまで、全工程を仕組み化。
+          </p>
+        </div>
+        <div class="sns-grid fade-in">
+          <div class="sns-card">
+            <div class="sns-icon ig"><i class="fa-brands fa-instagram"></i></div>
+            <div class="big-num">90</div>
+            <div class="big-num-label">Reel スクリプト制作</div>
+            <p class="sns-card-desc" style="margin-top:12px;">
+              12ヶ月×テーマ別に設計したスクリプトCSV。<br />
+              Hook・問題提起・解決策・CTA の4構成を統一。<br />
+              「Safe Realism」ガイドライン準拠で誇張ゼロ。
+            </p>
+          </div>
+          <div class="sns-card">
+            <div class="sns-icon ig"><i class="fa-solid fa-film"></i></div>
+            <div class="big-num">30<small style="font-size:1rem">ページ</small></div>
+            <div class="big-num-label">カバー・テンプレートローテーション</div>
+            <p class="sns-card-desc" style="margin-top:12px;">
+              Canva「個別デザイン」一括作成ワークフロー。<br />
+              30ページローテーションで視覚疲労を防ぎ、<br />
+              アルゴリズム向けの新鮮さシグナルを維持。
+            </p>
+          </div>
+          <div class="sns-card">
+            <div class="sns-icon web"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="big-num">4</div>
+            <div class="big-num-label">ステップ・エンゲージメント設計</div>
+            <p class="sns-card-desc" style="margin-top:12px;">
+              Buzz（認知）→ Save（教育）→ Case（信頼）→ CTA（行動）の<br />
+              4サイクルで視聴者を LINE 問い合わせへ誘導する<br />
+              ファネル構造を Instagram だけで完結させる戦略。
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 48px; background: var(--navy-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 36px; " class="fade-in">
+          <p class="detail-label" style="margin-bottom:16px;"><i class="fa-solid fa-list-check"></i> 制作した成果物一覧</p>
+          <div class="project-grid">
+            <div class="detail-content">
+              <ul>
+                <li>スクリプト CSV（A〜Lファイル / 90本分）</li>
+                <li>投稿順 CSV（cover_batch1_1-60 / cover_batch2_61-90）</li>
+                <li>投稿スケジュール V2（posting_schedule_v2.csv）</li>
+                <li>カバーデザイン命名ルール・PowerShell 自動リネームスクリプト</li>
+              </ul>
+            </div>
+            <div class="detail-content">
+              <ul>
+                <li>Canva 配置ガイド（captions_template_v2.md）</li>
+                <li>Instagram ハイライト原稿（自己紹介・無料診断・FAQ・制作フロー）</li>
+                <li>AIプロンプト集（建設現場リアル映像 × 7カテゴリ / 42本）</li>
+                <li>Reel マニュアル HTML（reel_manual.html）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== TECH STACK ===== -->
+    <section style="background: #0d1425; padding: 80px 0;">
+      <div class="container">
+        <div class="section-head fade-in">
+          <p class="section-en">Tech Stack</p>
+          <h2 class="section-title">使用<span>技術スタック</span></h2>
+        </div>
+        <div style="background: var(--navy-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 36px 40px;" class="fade-in">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+            <div>
+              <p class="detail-label" style="margin-bottom:14px;"><i class="fa-solid fa-code"></i> フロントエンド</p>
+              <div class="tech-list">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3 (Vanilla)</span>
+                <span class="tech-tag">JavaScript (ES6+)</span>
+                <span class="tech-tag">WebP 最適化</span>
+                <span class="tech-tag">clamp() / dvh</span>
+              </div>
+            </div>
+            <div>
+              <p class="detail-label" style="margin-bottom:14px;"><i class="fa-solid fa-server"></i> インフラ</p>
+              <div class="tech-list">
+                <span class="tech-tag">GitHub Pages</span>
+                <span class="tech-tag">Cloudflare Pages</span>
+                <span class="tech-tag">Cloudflare Workers</span>
+                <span class="tech-tag">Google Workspace</span>
+                <span class="tech-tag">SMTP Relay</span>
+              </div>
+            </div>
+            <div>
+              <p class="detail-label" style="margin-bottom:14px;"><i class="fa-solid fa-chart-bar"></i> 分析・計測</p>
+              <div class="tech-list">
+                <span class="tech-tag">Google Analytics 4</span>
+                <span class="tech-tag">Search Console</span>
+                <span class="tech-tag">UTM パラメータ</span>
+                <span class="tech-tag">PageSpeed Insights</span>
+              </div>
+            </div>
+            <div>
+              <p class="detail-label" style="margin-bottom:14px;"><i class="fa-solid fa-wand-magic-sparkles"></i> 制作ツール</p>
+              <div class="tech-list">
+                <span class="tech-tag">Canva (一括作成)</span>
+                <span class="tech-tag">FFmpeg</span>
+                <span class="tech-tag">ImageMagick</span>
+                <span class="tech-tag">PowerShell</span>
+                <span class="tech-tag">Node.js スクリプト</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== POLICY / APPROACH ===== -->
+    <section style="background: #0a0f1e; padding: 80px 0;">
+      <div class="container container-sm">
+        <div class="section-head fade-in">
+          <p class="section-en">Philosophy</p>
+          <h2 class="section-title">制作の<span>こだわり</span></h2>
+        </div>
+        <div style="display: grid; gap: 20px;" class="fade-in">
+          <div style="background: var(--navy-card); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; padding: 24px 28px;">
+            <p style="font-weight:700; color: var(--gold-light); margin-bottom: 8px;">「捨て広告」から「採用資産」へ</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.9;">
+              求人媒体は掲載期間が終われば消える。作ったLPはずっと残る。維持費0円で永続する「採用資産」を作ることが、私たちの根幹のコンセプトです。
+            </p>
+          </div>
+          <div style="background: var(--navy-card); border-left: 3px solid #3b82f6; border-radius: 0 12px 12px 0; padding: 24px 28px;">
+            <p style="font-weight:700; color: #93c5fd; margin-bottom: 8px;">Safe Realism（誇張しない誠実さ）</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.9;">
+              「応募100件保証」のような過剰な約束は一切しません。実際の社員・実際の現場・実際のデータだけで信頼を築くのが私たちのスタンスです。
+            </p>
+          </div>
+          <div style="background: var(--navy-card); border-left: 3px solid #22c55e; border-radius: 0 12px 12px 0; padding: 24px 28px;">
+            <p style="font-weight:700; color: #86efac; margin-bottom: 8px;">PRIDE - HOPE - ALLY の感情設計</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.9;">
+              採用LPは「情報」ではなく「感情の旅」。誇り → 希望 → 仲間という5段階の心理アークで、応募者が「ここで働きたい」と確信するよう設計します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="page-footer">
+      <p class="footer-brand">Webとしくみをつくる</p>
+      <p class="footer-contact">
+        制作のご相談・お問い合わせ：
+        <a href="mailto:info@web-tsukuru.jp">info@web-tsukuru.jp</a>
+        ／
+        <a href="https://lin.ee/nMDNiFg" target="_blank">LINE @web_tsukuru</a>
+      </p>
+      <p class="footer-copy">© 2026 Webとしくみをつくる All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      // Fade-in on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

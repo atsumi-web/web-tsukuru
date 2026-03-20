@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>制作実績まとめ｜えり</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;800&family=Outfit:wght@400;600;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Noto Sans JP',sans-serif;background:#0c111f;color:#e8eaf0;line-height:1.7;font-size:15px}
+    a{color:inherit;text-decoration:none}
+    :root{
+      --gold:#c5a059;--gold-l:#e8c97a;
+      --card:#141c2e;--border:rgba(255,255,255,0.08);--muted:rgba(255,255,255,0.5);
+      --serif:'Shippori Mincho',serif;--en:'Outfit',sans-serif;
+    }
+
+    .page{max-width:1060px;margin:0 auto;padding:64px 36px 100px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    @media(max-width:760px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr}}
+
+    /* HEADER */
+    .hero{text-align:center;padding-bottom:56px;border-bottom:1px solid rgba(197,160,89,0.22);margin-bottom:72px}
+    .hero-label{font-family:var(--en);font-size:.72rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+    .hero-name{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;color:#fff;margin-bottom:14px;line-height:1.2}
+    .hero-name span{color:var(--gold)}
+    .hero-sub{font-size:.92rem;color:var(--muted);line-height:2;margin-bottom:36px}
+    .stats{display:flex;justify-content:center;gap:44px;flex-wrap:wrap}
+    .stat-num{font-family:var(--en);font-size:2.3rem;font-weight:800;color:var(--gold);display:block;line-height:1}
+    .stat-label{font-size:.7rem;color:var(--muted);margin-top:4px}
+    .stat-div{width:1px;height:36px;background:rgba(255,255,255,0.12);align-self:center}
+
+    /* SECTION */
+    .sec{margin-bottom:80px}
+    .sec-label{font-family:var(--en);font-size:.68rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .sec-title{font-family:var(--serif);font-size:1.55rem;font-weight:800;color:#fff;margin-bottom:28px}
+    .sec-title span{color:var(--gold)}
+
+    /* DIVIDER */
+    .div{height:1px;background:linear-gradient(90deg,transparent,rgba(197,160,89,.2),transparent);margin:72px 0}
+
+    /* BROWSER MOCKUP */
+    .mockup-wrap{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.08);background:#1e2a3a;margin-bottom:24px;cursor:pointer;transition:transform .25s,box-shadow .25s}
+    .mockup-wrap:hover{transform:translateY(-4px);box-shadow:0 32px 80px rgba(0,0,0,0.7)}
+    .mockup-bar{background:#1e2a3a;padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.07)}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .dot.r{background:#ff5f57}
+    .dot.y{background:#febc2e}
+    .dot.g{background:#28c940}
+    .url-bar{flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:4px 12px;font-family:var(--en);font-size:.68rem;color:rgba(255,255,255,0.4);letter-spacing:.02em;margin-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .mockup-img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top}
+    /* smaller thumbnail variant - same as mockup but 3/2 crop */
+    .mockup-wrap.sm .mockup-img{aspect-ratio:4/3}
+    /* empty placeholder */
+    .mockup-empty{aspect-ratio:16/9;background:#0c1528;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(255,255,255,0.18)}
+    .mockup-empty i{font-size:2rem}
+    .mockup-empty p{font-size:.75rem;font-family:var(--en)}
+
+    /* OVERLAY LINK BADGE */
+    .mockup-link{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);color:#fff;font-size:.72rem;padding:5px 12px;border-radius:6px;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,0.12);transition:background .2s}
+    .mockup-wrap:hover .mockup-link{background:var(--gold);color:#000;border-color:var(--gold)}
+
+    /* CARD */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .card-hd{background:linear-gradient(135deg,#141c2e,#1d2b45);padding:24px 30px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .card-hd::after{content:attr(data-bg);position:absolute;right:-6px;bottom:-18px;font-family:var(--en);font-size:3rem;font-weight:800;color:rgba(255,255,255,0.025);pointer-events:none;white-space:nowrap}
+    .ctag{font-family:var(--en);font-size:.6rem;letter-spacing:.15em;padding:3px 10px;border-radius:20px;border:1px solid rgba(197,160,89,.4);color:var(--gold);display:inline-block;margin-bottom:8px;text-transform:uppercase}
+    .ctag.blue{border-color:rgba(99,179,237,.4);color:#90cdf4}
+    .ctag.green{border-color:rgba(72,187,120,.4);color:#9ae6b4}
+    .ctag.pink{border-color:rgba(237,100,166,.4);color:#f9a8d4}
+    .card-name{font-family:var(--serif);font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:5px}
+    .card-catch{font-size:.82rem;color:var(--muted);line-height:1.8}
+    .card-bd{padding:24px 30px}
+
+    /* DETAIL LIST */
+    .ul{list-style:none;padding:0}
+    .ul li{font-size:.82rem;color:rgba(255,255,255,.75);padding:6px 0 6px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.6}
+    .ul li:last-child{border-bottom:none}
+    .ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:.75rem}
+
+    /* HIGHLIGHT */
+    .hl{background:linear-gradient(135deg,rgba(197,160,89,.09),rgba(197,160,89,.03));border:1px solid rgba(197,160,89,.25);border-radius:10px;padding:14px 18px;margin-top:14px}
+    .hl-lbl{font-family:var(--en);font-size:.6rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+    .hl-txt{font-size:.82rem;color:rgba(255,255,255,.8);line-height:1.8}
+    .hl-txt strong{color:var(--gold-l)}
+
+    /* CHIPS */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);transition:all .2s}
+    .chip:hover{border-color:var(--gold);color:var(--gold-l)}
+    .chip.gold{background:var(--gold);border-color:var(--gold);color:#000;font-weight:700}
+    .chip.gold:hover{background:var(--gold-l)}
+
+    /* MINI CARD (template) */
+    .mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px;transition:border-color .2s}
+    .mini:hover{border-color:rgba(197,160,89,.3)}
+    .mini-lbl{font-family:var(--en);font-size:1rem;font-weight:800;color:var(--gold);margin-bottom:5px}
+    .mini-name{font-weight:700;color:#fff;font-size:.88rem;margin-bottom:4px}
+    .mini-desc{font-size:.76rem;color:var(--muted);line-height:1.7}
+
+    /* GALLERY (non-mockup: for Instagram / past works) */
+    .gallery{display:grid;gap:10px}
+    .gallery.cols-2{grid-template-columns:repeat(2,1fr)}
+    .gallery.cols-3{grid-template-columns:repeat(3,1fr)}
+    .gallery.cols-4{grid-template-columns:repeat(4,1fr)}
+    @media(max-width:720px){.gallery.cols-3,.gallery.cols-4{grid-template-columns:repeat(2,1fr)}}
+    .gal-item{border-radius:9px;overflow:hidden;aspect-ratio:1;background:#0c1528;border:1px solid var(--border);cursor:pointer;transition:transform .2s,border-color .2s}
+    .gal-item:hover{transform:scale(1.03);border-color:rgba(197,160,89,.4)}
+    .gal-item img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+    .gal-item.wide{aspect-ratio:16/9}
+    .gal-item.empty{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:rgba(255,255,255,.2)}
+    .gal-item.empty i{font-size:1.5rem}
+    .feed-panel .gal-item{aspect-ratio:4/5}
+    .gal-item.empty span{font-size:.65rem;font-family:var(--en)}
+
+    /* TECH TAGS */
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+    .tech{font-family:var(--en);font-size:.62rem;padding:4px 10px;border-radius:20px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);color:#93c5fd;font-weight:600}
+
+    /* PHILOSOPHY */
+    .ph-list{display:flex;flex-direction:column;gap:12px}
+    .ph-item{background:var(--card);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 20px}
+    .ph-item.blue{border-left-color:#63b3ed}
+    .ph-item.green{border-left-color:#68d391}
+    .ph-t{font-weight:700;font-size:.9rem;color:#fff;margin-bottom:3px}
+    .ph-b{font-size:.79rem;color:var(--muted);line-height:1.8}
+
+    /* LABEL */
+    .lbl{font-family:var(--en);font-size:.6rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+
+    /* LIGHTBOX */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+    .lb.open{display:flex}
+    .lb img{max-width:92vw;max-height:90vh;border-radius:8px;object-fit:contain;box-shadow:0 8px 60px rgba(0,0,0,0.8)}
+    .lb-close{position:absolute;top:18px;right:24px;font-size:2rem;color:#fff;cursor:pointer;opacity:.6;transition:opacity .2s;line-height:1}
+    .lb-close:hover{opacity:1}
+
+    /* FOOTER */
+    .foot{margin-top:60px;padding-top:40px;border-top:1px solid rgba(197,160,89,.2);text-align:center}
+    .foot-name{font-family:var(--serif);font-size:1.1rem;color:var(--gold);margin-bottom:8px}
+    .foot-c{font-size:.8rem;color:var(--muted);margin-bottom:5px}
+    .foot-c a{color:var(--gold-l)}
+    .foot-copy{font-family:var(--en);font-size:.65rem;color:rgba(255,255,255,.2);margin-top:10px}
+
+    @media print{body{background:#fff;color:#111}.card,.mini,.card-hd{background:#f0f4f8;border-color:#ddd}}
+
+    /* REEL CARD */
+    .reel-card{cursor:pointer}
+    .reel-thumb{aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#0c1528 center/cover no-repeat;position:relative;border:1px solid var(--border);transition:transform .25s,box-shadow .25s}
+    .reel-card:hover .reel-thumb{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+    .reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);transition:background .2s}
+    .reel-play i{font-size:1.8rem;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.6));transition:transform .2s}
+    .reel-card:hover .reel-play{background:rgba(0,0,0,0.5)}
+    .reel-card:hover .reel-play i{transform:scale(1.15)}
+    .reel-title{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:8px;text-align:center;line-height:1.5}
+
+    /* FEED TABS */
+    .feed-tabs{display:flex;gap:8px}
+    .feed-tab{font-family:var(--en);font-size:.72rem;padding:7px 18px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;letter-spacing:.05em}
+    .feed-tab.active{background:rgba(197,160,89,.15);border-color:rgba(197,160,89,.4);color:var(--gold-l);font-weight:700}
+    .feed-tab:hover:not(.active){border-color:rgba(255,255,255,.3);color:#fff}
+
+    /* VIDEO MODAL */
+    .vmod{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+    .vmod.open{display:flex}
+    .vmod video{max-height:88vh;max-width:92vw;border-radius:10px;box-shadow:0 8px 60px rgba(0,0,0,.8)}
+    .vmod-close{position:absolute;top:18px;right:24px;font-size:2rem;color:#fff;cursor:pointer;opacity:.6;transition:opacity .2s;line-height:1}
+    .vmod-close:hover{opacity:1}
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="hero">
+    <p class="hero-label">Personal Portfolio · 2026</p>
+    <h1 class="hero-name"><span>えり</span>の制作実績まとめ</h1>
+    <p class="hero-sub">
+      建設・建築業界の採用DXに特化したWebクリエイター。<br />
+      LP設計・コーディング・SNS戦略・仕組みづくりをひとりでフルスタックで担当。
+    </p>
+    <div class="stats">
+      <div style="text-align:center"><span class="stat-num">1</span><div class="stat-label">実クライアント納品</div></div>
+      <div class="stat-div"></div>
+      <div style="text-align:center"><span class="stat-num">4</span><div class="stat-label">LPテンプレート</div></div>
+      <div class="stat-div"></div>
+      <div style="text-align:center"><span class="stat-num">90<small style="font-size:.85rem">本</small></span><div class="stat-label">Reelスクリプト</div></div>
+      <div class="stat-div"></div>
+      <div style="text-align:center"><span class="stat-num">0<small style="font-size:.85rem">円</small></span><div class="stat-label">月額維持費</div></div>
+    </div>
+  </header>
+
+  <!-- ===== 01 堀田建設 ===== -->
+  <section class="sec">
+    <p class="sec-label">01 · Client Work · Live</p>
+    <h2 class="sec-title">堀田建設株式会社 ― <span>採用ランディングページ</span></h2>
+
+    <!-- MOCKUP: PC -->
+    <a href="https://recruit.hottacon.co.jp/" target="_blank" class="mockup-wrap" style="display:block;position:relative;">
+      <div class="mockup-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="url-bar">recruit.hottacon.co.jp</span>
+      </div>
+      <img class="mockup-img" src="portfolio_captures/01_lp_hotta/hotta_top.png" alt="堀田建設採用LP トップ" onerror="this.parentElement.classList.add('has-empty');this.style.display='none'" />
+      <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを見る</span>
+    </a>
+
+    <!-- MOCKUP: 2枚並び（中間） -->
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="mockup-wrap sm" style="cursor:default">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">社長メッセージ・会社概要</span></div>
+        <img class="mockup-img" src="portfolio_captures/01_lp_hotta/hotta_mid.png" alt="堀田建設LP 中間" onerror="this.style.display='none'" />
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;padding-left:4px">
+        <ul class="ul">
+          <li>採用LP フルスクラッチ（100+セクション）</li>
+          <li>社員インタビュー 3名分（ヒアリング〜原稿化）</li>
+          <li>LINE 応募導線 設計・設定</li>
+          <li>採用司令室（クライアントダッシュボード）</li>
+          <li>GA4 / Search Console 設置</li>
+          <li>Mobile PageSpeed 31 → <strong style="color:var(--gold-l)">73</strong> に改善</li>
+        </ul>
+        <div class="hl">
+          <p class="hl-lbl">LIVE</p>
+          <p class="hl-txt"><strong>recruit.hottacon.co.jp</strong><br>現在稼働中 · 維持費：<strong>月0円</strong><br>Navy × Gold · 3ペルソナ · 実写100%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ===== 02 自社サイト ===== -->
+  <section class="sec">
+    <p class="sec-label">02 · Agency Site · web-tsukuru.jp</p>
+    <h2 class="sec-title">自社エージェンシーサイト ― <span>フルスクラッチ構築</span></h2>
+
+    <!-- 大きいメインモックアップ -->
+    <a href="https://web-tsukuru.jp/" target="_blank" class="mockup-wrap" style="display:block;position:relative;">
+      <div class="mockup-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="url-bar">web-tsukuru.jp</span>
+      </div>
+      <img class="mockup-img" src="portfolio_captures/02_lp_agency/agency_top.png" alt="web-tsukuru.jp トップ" onerror="this.style.display='none'" />
+      <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを見る</span>
+    </a>
+
+    <!-- 4枚サブモックアップ -->
+    <div class="grid-4" style="margin-bottom:24px">
+      <a href="https://web-tsukuru.jp/service.html" target="_blank" class="mockup-wrap sm">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">料金・サービス</span></div>
+        <img class="mockup-img" src="portfolio_captures/02_lp_agency/service_page.png" alt="サービス料金ページ" onerror="this.style.display='none'" />
+      </a>
+      <a href="https://web-tsukuru.jp/works.html" target="_blank" class="mockup-wrap sm">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">works.html</span></div>
+        <img class="mockup-img" src="portfolio_captures/02_lp_agency/works_page.png" alt="works page" onerror="this.style.display='none'" />
+      </a>
+      <a href="https://web-tsukuru.jp/blog/index.html" target="_blank" class="mockup-wrap sm">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">blog/index.html</span></div>
+        <img class="mockup-img" src="portfolio_captures/02_lp_agency/blog_top.png" alt="blog" onerror="this.style.display='none'" />
+      </a>
+      <a href="https://web-tsukuru.jp/saiyou-shindan" target="_blank" class="mockup-wrap sm" style="position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">saiyou-shindan</span></div>
+        <img class="mockup-img" src="portfolio_captures/02_lp_agency/shindan_top.png" alt="採用LP 無料診断" onerror="this.style.display='none'" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <p class="lbl">SITE STRUCTURE</p>
+        <ul class="ul">
+          <li>メイン LP / 制作実績 / サービス詳細</li>
+          <li>採用LP 無料診断ページ</li>
+          <li>ブログ（マガジンスタイル / 8記事以上）</li>
+          <li>デジタル名刺（links/）— SNSからの集客口</li>
+          <li>内部管理ダッシュボード（manuals/）</li>
+          <li>独自ドメインメール info@web-tsukuru.jp 稼働</li>
+        </ul>
+      </div>
+      <div>
+        <div class="hl">
+          <p class="hl-lbl">PERFORMANCE</p>
+          <p class="hl-txt">Mobile: <strong>85</strong> · Desktop: 90+<br>FFmpeg + ImageMagick で画像 <strong>90%削減</strong><br>GitHub × Cloudflare Pages（<strong>月0円</strong>）</p>
+        </div>
+        <div class="chips" style="margin-top:14px">
+          <a href="https://web-tsukuru.jp/" target="_blank" class="chip gold"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを見る</a>
+          <a href="https://web-tsukuru.jp/saiyou-shindan" target="_blank" class="chip"><i class="fa-solid fa-magnifying-glass-chart"></i> 採用LP無料診断</a>
+          <a href="https://web-tsukuru.jp/blog/index.html" target="_blank" class="chip"><i class="fa-solid fa-newspaper"></i> ブログ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ===== 03 LP テンプレート ===== -->
+  <section class="sec">
+    <p class="sec-label">03 · LP Template Library</p>
+    <h2 class="sec-title">スクラッチ開発 <span>LPテンプレート</span> × 4種</h2>
+
+    <!-- テンプレートブラウザモックアップ -->
+    <div class="grid-2" style="gap:16px;margin-bottom:24px">
+      <a href="https://web-tsukuru.jp/templates/type-a/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type A — ARC BUILD · 職人型</span></div>
+        <img class="mockup-img" src="portfolio_captures/03_lp_templates/type_a.png" alt="Type A テンプレート" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+      <a href="https://web-tsukuru.jp/templates/type-b/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type B — NEXT FRONTIER · DX型</span></div>
+        <img class="mockup-img" src="portfolio_captures/03_lp_templates/type_b.png" alt="Type B テンプレート" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+      <a href="https://web-tsukuru.jp/templates/type-c/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type C — 大和建設 · 老舗型</span></div>
+        <img class="mockup-img" src="portfolio_captures/03_lp_templates/type_c.png" alt="Type C テンプレート" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+      <a href="https://web-tsukuru.jp/templates/type-d/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type D — IIJ Engineering · 模写制作</span></div>
+        <img class="mockup-img" src="portfolio_captures/03_lp_templates/type_d.png" alt="Type D テンプレート" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+        <span style="position:absolute;top:36px;right:8px;background:#b8962e;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.05em;">模写</span>
+      </a>
+    </div>
+
+    <div class="grid-2">
+      <div class="mini"><p class="mini-lbl">Type A</p><p class="mini-name">職人・匠型</p><p class="mini-desc">Ken Burns Hero + ギャラリー。深い信頼と技術の厚みを訴求。</p></div>
+      <div class="mini"><p class="mini-lbl">Type B</p><p class="mini-name">テクノロジー型</p><p class="mini-desc">BIM / ドローン / DX 推進を訴求。ハイテク建設企業向け。</p></div>
+      <div class="mini"><p class="mini-lbl">Type C</p><p class="mini-name">フロンティア型</p><p class="mini-desc">挑戦・拡大志向のブランドに。採用・新規事業両対応。</p></div>
+      <div class="mini"><p class="mini-lbl">Type D <span style="font-size:.6rem;background:#b8962e;color:#fff;padding:1px 7px;border-radius:20px;vertical-align:middle">模写</span></p><p class="mini-name">IT企業採用型（IIJ Engineering）</p><p class="mini-desc">マーキーヒーロー × フルアニメ。実在する大手IT企業の採用サイトを模写・再現した習作。</p></div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ===== 04 Instagram フィード ===== -->
+  <section class="sec">
+    <p class="sec-label">04 · Instagram · Feed &amp; Reels</p>
+    <h2 class="sec-title">Instagram <span>フィード投稿・Reel 90本</span>制作・仕組み化</h2>
+
+    <!-- ---- ハイライト動画 4本 ---- -->
+    <p class="lbl" style="margin-bottom:8px">HIGHLIGHT VIDEOS</p>
+    <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:20px">Instagram <span style="color:var(--gold)">ハイライト用</span> Canva動画 — 4本</h3>
+    <div class="grid-4" style="margin-bottom:40px" id="reel-cards">
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/Webとしくみをつくる えり.mp4">
+        <div class="reel-thumb" style="background-image:url('portfolio_captures/05_reels/Webとしくみをつくる えり.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">Webとしくみをつくる えり</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/よくある質問.mp4">
+        <div class="reel-thumb" style="background-image:url('portfolio_captures/05_reels/よくある質問.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">よくある質問</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/制作の流れ.mp4">
+        <div class="reel-thumb" style="background-image:url('portfolio_captures/05_reels/制作の流れ.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">制作の流れ</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/無料診断.mp4">
+        <div class="reel-thumb" style="background-image:url('portfolio_captures/05_reels/無料診断.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">無料診断</p>
+      </div>
+
+    </div>
+
+    <!-- ---- 量産リール動画 サンプル ---- -->
+    <p class="lbl" style="margin-bottom:8px">MASS PRODUCTION REELS</p>
+    <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:20px">Reel <span style="color:var(--gold)">90本一括制作</span> — 標準テンプレ × 量産体制</h3>
+    <div class="grid-3" style="margin-bottom:40px">
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/mass_reels/001_20260619.mp4">
+        <div class="reel-thumb reel-thumb-video">
+          <video src="portfolio_captures/05_reels/mass_reels/001_20260619.mp4" poster="portfolio_captures/05_reels/mass_reels/1.png" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:0;display:block"></video>
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">Reel #001 · 2026.06.19</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/mass_reels/003_20260621.mp4">
+        <div class="reel-thumb reel-thumb-video">
+          <video src="portfolio_captures/05_reels/mass_reels/003_20260621.mp4" poster="portfolio_captures/05_reels/mass_reels/3.png" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:0;display:block"></video>
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">Reel #003 · 2026.06.21</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/mass_reels/004_20260622.mp4">
+        <div class="reel-thumb reel-thumb-video">
+          <video src="portfolio_captures/05_reels/mass_reels/004_20260622.mp4" poster="portfolio_captures/05_reels/mass_reels/4.png" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:0;display:block"></video>
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">Reel #004 · 2026.06.22</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/mass_reels/006_20260624.mp4">
+        <div class="reel-thumb reel-thumb-video">
+          <video src="portfolio_captures/05_reels/mass_reels/006_20260624.mp4" poster="portfolio_captures/05_reels/mass_reels/6.png" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:0;display:block"></video>
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">Reel #006 · 2026.06.24</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/mass_reels/007_20260625.mp4">
+        <div class="reel-thumb reel-thumb-video">
+          <video src="portfolio_captures/05_reels/mass_reels/007_20260625.mp4" poster="portfolio_captures/05_reels/mass_reels/7.png" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:0;display:block"></video>
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">Reel #007 · 2026.06.25</p>
+      </div>
+
+      <div class="reel-card" data-video="portfolio_captures/05_reels/mass_reels/009_20260627.mp4">
+        <div class="reel-thumb reel-thumb-video">
+          <video src="portfolio_captures/05_reels/mass_reels/009_20260627.mp4" poster="portfolio_captures/05_reels/mass_reels/9.png" muted preload="metadata" style="width:100%;height:100%;object-fit:cover;border-radius:0;display:block"></video>
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">Reel #009 · 2026.06.27</p>
+      </div>
+
+    </div>
+
+    <!-- ---- 量産リール 説明カード ---- -->
+    <div class="card" style="margin-bottom:32px">
+      <div class="card-hd" data-bg="REELS">
+        <span class="ctag pink">MASS PRODUCTION</span>
+        <h3 class="card-name">Reel 90本 — 15テーマ × 6本のスクリプト設計から一括制作まで</h3>
+        <p class="card-catch">テーマ設計 → スクリプト執筆 → AIレビュー → Canva CSV一括生成 → DLまで完全仕組み化</p>
+      </div>
+      <div class="card-bd">
+        <div class="grid-2" style="gap:20px">
+          <div>
+            <p class="lbl">DELIVERABLES</p>
+            <ul class="ul">
+              <li>スクリプト CSV（15テーマ × 6本 = 90本分）</li>
+              <li>テンプレート別 CSV（A〜J · 各9本）</li>
+              <li>Canva 一括作成ガイド（CSVインポート方式）</li>
+              <li>AIビデオプロンプト集（7カテゴリ × 6本）</li>
+              <li>投稿順 CSV + 投稿スケジュール V2</li>
+              <li>Reel 制作マニュアル HTML</li>
+              <li>PowerShell 自動リネームスクリプト</li>
+            </ul>
+          </div>
+          <div>
+            <div class="hl">
+              <p class="hl-lbl">制作フロー</p>
+              <p class="hl-txt">① テーマ設計（15テーマ · Safe Realism確認）<br>② スクリプト執筆（8列CSV · フック25字以内）<br>③ 他AIレビュー（自然さ・文字数・誇張確認）<br>④ Canva CSVインポートで<strong>一括MP4生成</strong><br>⑤ 毎日1本 × <strong>3ヶ月分</strong>を事前に完成</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- フィード投稿ギャラリー ---- -->
+    <div class="card">
+      <div class="card-hd" data-bg="INSTAGRAM">
+        <span class="ctag pink">SNS CONTENT</span>
+        <h3 class="card-name">フィード投稿 — Canva デザイン制作</h3>
+        <p class="card-catch">建設・採用テーマのフィード投稿をCanvaで一括デザイン。複数パターンで発信。</p>
+      </div>
+      <div class="card-bd">
+
+        <!-- タブ切り替え -->
+        <div class="feed-tabs" style="margin-bottom:16px">
+          <button class="feed-tab active" data-target="feed-01">投稿セット 01</button>
+          <button class="feed-tab" data-target="feed-02">投稿セット 02</button>
+        </div>
+
+        <div id="feed-01" class="feed-panel">
+          <div class="gallery cols-3">
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/01/1.png')"><img src="portfolio_captures/04_instagram_feed/01/1.png" alt="フィード投稿 01-1" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/01/2.png')"><img src="portfolio_captures/04_instagram_feed/01/2.png" alt="フィード投稿 01-2" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/01/3.png')"><img src="portfolio_captures/04_instagram_feed/01/3.png" alt="フィード投稿 01-3" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/01/4.png')"><img src="portfolio_captures/04_instagram_feed/01/4.png" alt="フィード投稿 01-4" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/01/5.png')"><img src="portfolio_captures/04_instagram_feed/01/5.png" alt="フィード投稿 01-5" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/01/6.png')"><img src="portfolio_captures/04_instagram_feed/01/6.png" alt="フィード投稿 01-6" loading="lazy" /></div>
+          </div>
+        </div>
+
+        <div id="feed-02" class="feed-panel" style="display:none">
+          <div class="gallery cols-3">
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/02/1.png')"><img src="portfolio_captures/04_instagram_feed/02/1.png" alt="フィード投稿 02-1" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/02/2.png')"><img src="portfolio_captures/04_instagram_feed/02/2.png" alt="フィード投稿 02-2" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/02/3.png')"><img src="portfolio_captures/04_instagram_feed/02/3.png" alt="フィード投稿 02-3" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/02/4.png')"><img src="portfolio_captures/04_instagram_feed/02/4.png" alt="フィード投稿 02-4" loading="lazy" /></div>
+            <div class="gal-item" onclick="openLb('portfolio_captures/04_instagram_feed/02/5.png')"><img src="portfolio_captures/04_instagram_feed/02/5.png" alt="フィード投稿 02-5" loading="lazy" /></div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:24px;gap:20px">
+          <div>
+            <p class="lbl">DESIGN DETAILS</p>
+            <ul class="ul">
+              <li>建設採用テーマ × 複数デザインパターン</li>
+              <li>Canvaで統一ブランドデザインとして制作</li>
+              <li>テキスト・配色・写真を投稿ごとに最適化</li>
+              <li>LINE・Web-tsukuru への集客導線を設計</li>
+            </ul>
+          </div>
+          <div>
+            <div class="hl">
+              <p class="hl-lbl">デザイン方針</p>
+              <p class="hl-txt">「Safe Realism」準拠 · 誇張なし<br>業界特化ビジュアル × <strong>信頼感重視</strong><br>統一ブランドカラーで世界観を構築</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ===== Tech / Philosophy ===== -->
+  <section class="sec" style="margin-bottom:0">
+    <div class="grid-2" style="gap:40px;align-items:start">
+      <div>
+        <p class="sec-label">Tech Stack</p>
+        <h2 class="sec-title" style="font-size:1.3rem;margin-bottom:20px">使用<span>技術・ツール</span></h2>
+        <p class="lbl">FRONTEND</p>
+        <div class="tags" style="margin-bottom:16px"><span class="tech">HTML5</span><span class="tech">CSS3 Vanilla</span><span class="tech">JavaScript ES6+</span><span class="tech">WebP最適化</span></div>
+        <p class="lbl">INFRA</p>
+        <div class="tags" style="margin-bottom:16px"><span class="tech">GitHub Pages</span><span class="tech">Cloudflare Pages</span><span class="tech">Google Workspace</span></div>
+        <p class="lbl">ANALYTICS</p>
+        <div class="tags" style="margin-bottom:16px"><span class="tech">GA4</span><span class="tech">Search Console</span><span class="tech">UTM</span></div>
+        <p class="lbl">TOOLS</p>
+        <div class="tags"><span class="tech">Canva</span><span class="tech">FFmpeg</span><span class="tech">ImageMagick</span><span class="tech">PowerShell</span><span class="tech">Node.js</span></div>
+      </div>
+      <div>
+        <p class="sec-label">Philosophy</p>
+        <h2 class="sec-title" style="font-size:1.3rem;margin-bottom:20px">制作の<span>こだわり</span></h2>
+        <div class="ph-list">
+          <div class="ph-item"><p class="ph-t">「捨て広告」から「採用資産」へ</p><p class="ph-b">維持費0円で永続する「採用資産」を作ることが根幹のコンセプト。</p></div>
+          <div class="ph-item blue"><p class="ph-t">Safe Realism — 誇張しない誠実さ</p><p class="ph-b">実際の社員・現場・データだけで信頼を築くスタンス。</p></div>
+          <div class="ph-item green"><p class="ph-t">PRIDE - HOPE - ALLY の感情設計</p><p class="ph-b">5段階の心理アークで応募者を「ここで働きたい」に導く。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="foot-name">Webとしくみをつくる ― えり</p>
+    <p class="foot-c"><a href="mailto:info@web-tsukuru.jp">info@web-tsukuru.jp</a> ／ <a href="https://web-tsukuru.jp/" target="_blank">web-tsukuru.jp</a></p>
+    <p class="foot-copy">© 2026 えり / Webとしくみをつくる</p>
+  </footer>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="this.classList.remove('open')">
+  <span class="lb-close">&times;</span>
+  <img id="lb-img" src="" alt="" />
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="vmod" id="vmod">
+  <span class="vmod-close" onclick="document.getElementById('vmod').classList.remove('open');document.getElementById('vmod-video').pause();document.getElementById('vmod-video').src=''">&times;</span>
+  <video id="vmod-video" controls playsinline></video>
+</div>
+
+<script>
+// LIGHTBOX
+function openLb(src){
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb').classList.add('open');
+}
+document.querySelectorAll('.gal-item:not(.empty) img, .mockup-img').forEach(img => {
+  img.parentElement.addEventListener('click', e => {
+    if(img.parentElement.tagName === 'A') return;
+    if(img.parentElement.hasAttribute('onclick')) return;
+    openLb(img.src);
+  });
+});
+
+// VIDEO MODAL
+const vmod = document.getElementById('vmod');
+const vmodEl = document.getElementById('vmod-video');
+document.querySelectorAll('.reel-card').forEach(card => {
+  card.addEventListener('click', () => {
+    vmodEl.src = card.dataset.video;
+    vmod.classList.add('open');
+    vmodEl.play();
+  });
+});
+document.getElementById('vmod').addEventListener('click', () => {
+  vmod.classList.remove('open');
+  vmodEl.pause();
+  vmodEl.src = '';
+});
+
+// FEED TABS
+document.querySelectorAll('.feed-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.feed-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.feed-panel').forEach(p => p.style.display = 'none');
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.target).style.display = 'block';
+  });
+});
+
+// FADE IN
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target); }
+}), {threshold:0.07});
+document.querySelectorAll('.sec,.card,.mini,.mockup-wrap,.gallery,.reel-card').forEach(el => {
+  el.style.cssText += ';opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
