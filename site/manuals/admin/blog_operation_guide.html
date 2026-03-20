@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 ブログ運用ガイド | 運用司令室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A; --panel-bg: #1E293B; --panel-border: #334155;
+            --text-main: #F1F5F9; --text-dim: #94A3B8;
+            --accent-gold: #D4AF37; --accent-blue: #3B82F6; --accent-green: #10B981;
+            --accent-orange: #F97316; --mode-color: #3B82F6;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--space-bg); color: var(--text-main); margin: 0; padding: 20px; font-size: 14px; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--mode-color); margin-bottom: 24px; }
+        .app-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+        .app-title i { color: var(--mode-color); }
+        .back-btn { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--panel-border); border-radius: 6px; }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+
+        /* Quick Reference */
+        .quick-ref {
+            background: rgba(59,130,246,0.1); border: 2px solid var(--accent-blue);
+            border-radius: 10px; padding: 20px; margin-bottom: 24px;
+        }
+        .quick-ref-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-blue); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .prompt-box {
+            background: #0D1525; border: 1px solid var(--panel-border); border-radius: 6px;
+            padding: 14px 16px; font-family: monospace; font-size: 0.82rem; line-height: 1.8;
+            color: #A5B4FC; white-space: pre-wrap; margin: 10px 0;
+        }
+        .copy-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--accent-blue); color: #fff; border: none;
+            padding: 8px 18px; border-radius: 6px; font-size: 0.82rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s; margin-top: 8px;
+        }
+        .copy-btn:hover { background: #2563EB; }
+        .note-text { font-size: 0.78rem; color: var(--text-dim); margin-top: 8px; }
+
+        /* Panels */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .panel { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; overflow: hidden; }
+        .panel-header { padding: 12px 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--panel-border); display: flex; align-items: center; gap: 8px; }
+        .panel-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
+        .panel-body { padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; }
+
+        .link-row { display: flex; align-items: center; padding: 10px 8px; border-radius: 6px; gap: 10px; transition: all 0.2s; }
+        .link-row:hover { background: rgba(255,255,255,0.06); }
+        .link-row i { width: 20px; text-align: center; font-size: 0.9rem; color: var(--text-dim); flex-shrink: 0; }
+        .link-row:hover i { color: var(--accent-blue); }
+        .lr-text { flex: 1; font-size: 0.88rem; font-weight: 600; }
+        .lr-sub { font-size: 0.72rem; color: var(--text-dim); }
+        .lr-badge { font-size: 0.68rem; padding: 2px 8px; border-radius: 20px; font-weight: 700; flex-shrink: 0; }
+        .badge-blue { background: rgba(59,130,246,0.2); color: #93C5FD; }
+        .badge-gold { background: rgba(212,175,55,0.2); color: var(--accent-gold); }
+        .badge-green { background: rgba(16,185,129,0.2); color: var(--accent-green); }
+        .badge-orange { background: rgba(249,115,22,0.2); color: var(--accent-orange); }
+        .divider { border: none; border-top: 1px solid var(--panel-border); margin: 4px 0; }
+
+        /* Checklist */
+        .checklist { list-style: none; padding: 10px; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+        .checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; padding: 6px 8px; border-radius: 6px; }
+        .checklist li:hover { background: rgba(255,255,255,0.04); }
+        .checklist i { color: var(--accent-gold); margin-top: 2px; flex-shrink: 0; }
+
+        /* Article count */
+        .stat-pill { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--accent-green); border-radius: 20px; padding: 2px 10px; font-size: 0.75rem; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="app-title">
+            <i class="fa-solid fa-newspaper"></i>
+            <div>
+                <div style="line-height:1;">BLOG OPERATION GUIDE</div>
+                <div style="font-size:0.7rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">記事管理・アイキャッチ・SEO・執筆フロー</div>
+            </div>
+        </div>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 司令室へ</a>
+    </header>
+
+    <!-- QUICK REFERENCE -->
+    <div class="quick-ref">
+        <div class="quick-ref-title"><i class="fa-solid fa-bolt"></i> アイキャッチ画像 — Antigravityへの依頼テンプレート（コピペ用）</div>
+        <div class="prompt-box" id="prompt-text">スタイルガイド: https://web-tsukuru.jp/blog/docs/eyecatch_style_guide.md
+
+上記を踏まえて、以下の記事のアイキャッチプロンプト（英語）を作って。
+記事URL: https://web-tsukuru.jp/blog/posts/[ファイル名]
+保存ファイル名: blog_article[番号]_[テーマ].webp</div>
+        <button class="copy-btn" onclick="copyPrompt()"><i class="fa-solid fa-copy"></i> コピーする</button>
+        <div class="note-text">👉 コピーしてAntigravityに貼り付け → 生成されたプロンプトを <strong>Whisk</strong>（Landscape 16:9）に貼り付けて生成</div>
+    </div>
+
+    <div class="grid">
+
+        <!-- COL 1 -->
+        <div>
+            <!-- 記事管理 -->
+            <div class="panel" style="margin-bottom:16px;">
+                <div class="panel-header">
+                    <i class="fa-solid fa-list-check" style="color:var(--accent-green);"></i>
+                    <span class="panel-title">記事管理</span>
+                    <span class="stat-pill" style="margin-left:auto;">21記事</span>
+                </div>
+                <div class="panel-body">
+                    <a href="../../blog/index.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                        <span class="lr-text">ブログTOP（公開ページ）</span>
+                        <span class="lr-badge badge-green">LIVE</span>
+                    </a>
+                    <a href="../../blog/docs/blog_article_list.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-table-list"></i>
+                        <div style="flex:1;">
+                            <div class="lr-text">ブログ記事リスト</div>
+                            <div class="lr-sub">公開済み・下書き・追加管理</div>
+                        </div>
+                        <span class="lr-badge badge-blue">管理</span>
+                    </a>
+                    <a href="../../blog/posts/template.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-file-code"></i>
+                        <div style="flex:1;">
+                            <div class="lr-text">ブログ記事テンプレート</div>
+                            <div class="lr-sub">新記事はここからコピーして始める</div>
+                        </div>
+                        <span class="lr-badge badge-gold">START</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 執筆フロー -->
+            <div class="panel">
+                <div class="panel-header">
+                    <i class="fa-solid fa-pen-nib" style="color:var(--accent-gold);"></i>
+                    <span class="panel-title">執筆フロー（記事を書く順番）</span>
+                </div>
+                <ul class="checklist">
+                    <li><i class="fa-solid fa-circle-1"></i><span>SEO戦略でキーワード・テーマを決める</span></li>
+                    <li><i class="fa-solid fa-circle-2"></i><span>テンプレートHTMLをコピーして記事を書く</span></li>
+                    <li><i class="fa-solid fa-circle-3"></i><span>Antigravityにアイキャッチプロンプト依頼（↑テンプレ使用）</span></li>
+                    <li><i class="fa-solid fa-circle-4"></i><span>Whiskで画像生成 → WebPに変換 → blog/images/に保存</span></li>
+                    <li><i class="fa-solid fa-circle-5"></i><span>blog/index.htmlに記事カードを追加</span></li>
+                    <li><i class="fa-solid fa-circle-6"></i><span>git commit & push → 本番反映確認</span></li>
+                    <li><i class="fa-solid fa-circle-7"></i><span>インスタ・SNSで告知</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- COL 2 -->
+        <div>
+            <!-- アイキャッチ -->
+            <div class="panel" style="margin-bottom:16px;">
+                <div class="panel-header">
+                    <i class="fa-solid fa-image" style="color:#8B5CF6;"></i>
+                    <span class="panel-title">アイキャッチ画像</span>
+                </div>
+                <div class="panel-body">
+                    <a href="../../blog/docs/eyecatch_style_guide.md" target="_blank" class="link-row">
+                        <i class="fa-solid fa-book-open"></i>
+                        <div style="flex:1;">
+                            <div class="lr-text">スタイルガイド（全ルール）</div>
+                            <div class="lr-sub">フラットイラスト・NG例・プロンプトテンプレ</div>
+                        </div>
+                        <span class="lr-badge badge-blue">GUIDE</span>
+                    </a>
+                    <a href="https://labs.google/fx/ja/tools/whisk/project" target="_blank" class="link-row">
+                        <i class="fa-solid fa-wand-magic-sparkles" style="color:#8B5CF6;"></i>
+                        <div style="flex:1;">
+                            <div class="lr-text">Whisk（AI画像生成）</div>
+                            <div class="lr-sub">Landscape 16:9 を選択して生成</div>
+                        </div>
+                        <span class="lr-badge badge-gold">TOOL</span>
+                    </a>
+                    <hr class="divider">
+                    <div style="padding: 6px 8px; font-size:0.75rem; color:var(--text-dim);">
+                        📁 保存先：<code style="color:#A5B4FC;">site/blog/images/</code><br>
+                        📛 命名：<code style="color:#A5B4FC;">blog_article[番号]_[テーマ].webp</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO・コンテンツ戦略 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <i class="fa-solid fa-magnifying-glass-chart" style="color:var(--accent-gold);"></i>
+                    <span class="panel-title">SEO・コンテンツ戦略</span>
+                </div>
+                <div class="panel-body">
+                    <a href="../../blog/docs/blog_seo_strategy.md" target="_blank" class="link-row">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div style="flex:1;">
+                            <div class="lr-text">ブログSEO戦略</div>
+                            <div class="lr-sub">キーワード体系・次に書くべき記事ネタ</div>
+                        </div>
+                    </a>
+                    <a href="17_content_ecosystem_guide.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <div style="flex:1;">
+                            <div class="lr-text">コンテンツ運用ガイド</div>
+                            <div class="lr-sub">ブログ・インスタ連携ルール</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyPrompt() {
+            const text = document.getElementById('prompt-text').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> コピー完了！';
+                btn.style.background = '#10B981';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-copy"></i> コピーする';
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
