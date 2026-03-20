@@ -88,7 +88,7 @@ Clean white background. No text, no letters, no Chinese characters, no writing o
 ### 1. プロンプト生成（Antigravity の役割）
 
 - Antigravityは**画像生成は行わない**。記事内容に合った**画像生成プロンプトを英語で用意する**
-- 生成ツール: **Google ImageFX**（https://labs.google/fx/）
+- 生成ツール: **Google Whisk**（https://labs.google/fx/ja/tools/whisk/project）　アスペクト比 **Landscape 16:9** を選択
 - プロンプトはこのスタイルガイドのビジュアル基準に忠実に作成する
 - **ビジュアルの差別化**: 投稿ごとに必ずユニークなビジュアルテーマを設定する（同じ構図・同じ小道具を使い回さない）
 
@@ -154,16 +154,14 @@ SEOのため、シーンを正確に説明するAltテキストを設定する
 ## Antigravityへのプロンプト依頼テンプレート
 
 ```
-まず以下を読んでください：
-site/blog/docs/eyecatch_style_guide.md
+スタイルガイド: https://web-tsukuru.jp/blog/docs/eyecatch_style_guide.md
 
-その上で、site/blog/posts/[ファイル名].html 用のアイキャッチ画像の
-生成プロンプト（英語）を作って。
-保存先ファイル名は blog_article[番号]_[テーマ].webp とする。
-記事のテーマ：[一言で内容を説明]（例：採用LP費用・LINE活用・入社定着率）
+上記を踏まえて、以下の記事のアイキャッチプロンプト（英語）を作って。
+記事URL: https://web-tsukuru.jp/blog/posts/[ファイル名]
+保存ファイル名: blog_article[番号]_[テーマ].webp
 ```
 
-> プロンプトはGoogle ImageFX（https://labs.google/fx/）にコピペして使用。アスペクト比はUI側でLandscape 16:9を選択する。
+> **Whiskに貼り付けて使用。アスペクト比はWhiskのUI側で Landscape 16:9 を選択。**
 
 ---
 
