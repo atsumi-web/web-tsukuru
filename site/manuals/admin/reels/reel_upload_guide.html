@@ -190,5 +190,46 @@
         </div>
 
     </div>
-</body>
-</html>
+
+    <!-- スクリーンショットギャラリー -->
+    <div class="panel" style="max-width:1200px; margin-top:16px; border-color:rgba(99,102,241,0.35);">
+        <div class="panel-header">
+            <span class="panel-title" style="color:#818CF8;"><i class="fa-solid fa-images"></i> 操作スクリーンショット（STEP 1〜7）</span>
+        </div>
+        <div class="panel-body" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:12px;">
+            <div class="ss-wrap" onclick="openLightbox('images/01.png','STEP 1：Meta Business Suiteを開く')"><div class="ss-label">STEP 1</div><img src="images/01.png" alt="STEP1" class="ss-img"></div>
+            <div class="ss-wrap" onclick="openLightbox('images/02.png','STEP 2：投稿先をInstagramのみに設定')"><div class="ss-label">STEP 2</div><img src="images/02.png" alt="STEP2" class="ss-img"></div>
+            <div class="ss-wrap" onclick="openLightbox('images/03.png','STEP 3：動画をアップロード')"><div class="ss-label">STEP 3</div><img src="images/03.png" alt="STEP3" class="ss-img"></div>
+            <div class="ss-wrap" onclick="openLightbox('images/04.png','STEP 4：表紙画像を設定')"><div class="ss-label">STEP 4</div><img src="images/04.png" alt="STEP4" class="ss-img"></div>
+            <div class="ss-wrap" onclick="openLightbox('images/05.png','STEP 5：キャプションを入力')"><div class="ss-label">STEP 5</div><img src="images/05.png" alt="STEP5" class="ss-img"></div>
+            <div class="ss-wrap" onclick="openLightbox('images/06.png','STEP 6：日時を設定')"><div class="ss-label">STEP 6</div><img src="images/06.png" alt="STEP6" class="ss-img"></div>
+            <div class="ss-wrap" onclick="openLightbox('images/07.png','STEP 7：公開日時を指定')"><div class="ss-label">STEP 7</div><img src="images/07.png" alt="STEP7" class="ss-img"></div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:9999; align-items:center; justify-content:center; flex-direction:column; gap:10px;">
+        <div style="color:#94A3B8; font-size:0.8rem;" id="lb-title"></div>
+        <img id="lb-img" src="" alt="" style="max-width:90vw; max-height:85vh; border-radius:8px;">
+        <div style="color:#64748B; font-size:0.72rem;">クリックで閉じる</div>
+    </div>
+
+    <style>
+        .ss-wrap { background:rgba(0,0,0,0.3); border:1px solid var(--panel-border); border-radius:6px; overflow:hidden; cursor:pointer; transition:border-color 0.2s, transform 0.15s; }
+        .ss-wrap:hover { border-color:#818CF8; transform:translateY(-2px); }
+        .ss-label { font-size:0.7rem; font-weight:700; color:#818CF8; padding:4px 8px; background:rgba(99,102,241,0.1); }
+        .ss-img { width:100%; display:block; object-fit:cover; max-height:200px; }
+    </style>
+
+    <script>
+        function openLightbox(src, title) {
+            document.getElementById('lb-img').src = src;
+            document.getElementById('lb-title').textContent = title;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+
+
