@@ -414,23 +414,15 @@ section {
 /* === 赤丸デコレーション (Type-D .hero-left-decoration 相当) === */
 .hero-decoration {
   position: absolute;
-  bottom: 80px;              /* info boxの少し上 */
-  left: -60px;               /* 左に見切れる */
-  width: 180px;
-  height: 180px;
+  bottom: 140px;             /* info box (高さ120px) の上 */
+  left: -100px;              /* 左に大きくはみ出す */
+  width: 260px;
+  height: 260px;
   background-color: var(--color-primary);
   border-radius: 50%;
   z-index: 10;
   pointer-events: none;
-  box-shadow: 8px 8px 24px rgba(0,0,0,0.15);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left: 90px;
-  padding-bottom: 30px;
-  box-sizing: border-box;
+  box-shadow: 10px 10px 32px rgba(0,0,0,0.15);
   overflow: visible;
 }
 
@@ -438,8 +430,8 @@ section {
 .hero-decoration::after {
   content: "";
   position: absolute;
-  left: 78px;
-  top: 100px;
+  left: 108px;
+  top: 145px;
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
@@ -518,16 +510,19 @@ section {
   position: absolute;
   bottom: 0;
   right: 0;
-  left: 0;                   /* モバイルは全幅 */
-  height: 100px;
+  left: auto;                /* 常に右寄せ */
+  width: auto;
+  min-width: min(340px, 90vw);
+  height: 120px;
   background: var(--color-white);
+  border-top-left-radius: 40px; /* Type-Dシグネーチャー角 */
   z-index: 10;
   pointer-events: auto;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 var(--section-px);
+  padding: 0 40px 0 36px;
 }
 
 .info-item {
@@ -1351,25 +1346,16 @@ section {
     display: flex;
   }
 
-  /* Hero */
-  .hero-marquee-item {
-    width: calc(35vw + 40px);
-    border-radius: 20px;
-  }
-
-  .hero-catch {
-    bottom: 48px;
-    left: var(--section-px);
-  }
-
-  .hero-catch-label {
-    font-size: 11px;
+  .hero-marquee-wrap {
+    bottom: 150px;
   }
 
   .hero-info-box {
-    bottom: 48px;
-    right: var(--section-px);
-    width: 320px;
+    bottom: 30px;
+    min-width: 600px;
+    height: 140px;
+    padding: 30px 90px 30px 45px;
+    border-top-left-radius: 40px;
   }
 
   /* About */
