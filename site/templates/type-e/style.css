@@ -200,9 +200,7 @@ section {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 var(--section-px);
-  max-width: 1440px;
-  margin: 0 auto;
+  padding: 0 40px;           /* 全幅: max-widthၪ除、paddingのみ */
 }
 
 /* Logo */
@@ -1335,8 +1333,8 @@ section {
   .nav {
     display: flex;
     align-items: center;
-    gap: 20px;             /* ナビ項目間隔 */
-    margin-left: auto;     /* logo左端・nav+CTA右端 */
+    gap: 28px;             /* 全幅ヘッダーに合わせて広めに */
+    margin-left: auto;
   }
 
   .nav a {
@@ -1350,7 +1348,7 @@ section {
 
   .header-cta {
     display: flex;
-    margin-left: 16px;     /* navとCTAを近づける */
+    margin-left: 28px;     /* 全幅化後の辺りへの遅染角 */
   }
 
   .hero-marquee-wrap {
