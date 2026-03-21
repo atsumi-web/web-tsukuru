@@ -898,13 +898,14 @@ section {
 .pt-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;                    /* 隔陘なしで一体型テーブルに */
+  gap: 16px;                 /* 角丸から間隔ややあり */
 }
 
 .pt-card {
-  border: 1px solid var(--color-gray-200);
-  border-radius: 0;          /* 角なしで水平方向に流れる */
+  border-radius: 12px;       /* 角丸仕様 */
   overflow: hidden;
+  background: #f7fafc;       /* Type-D准拠 */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .pt-card-header {
