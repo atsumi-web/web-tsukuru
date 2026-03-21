@@ -1046,8 +1046,9 @@ section {
 
 .members-marquee {
   display: flex;
-  gap: 12px;
-  animation: memberScroll 40s linear infinite;
+  width: max-content;        /* 正確な幅計算でループを確実に */
+  gap: 16px;
+  animation: memberScroll 35s linear infinite;
   will-change: transform;
   padding: var(--sp-sm) 0;
 }
@@ -1063,16 +1064,18 @@ section {
 
 .member-card {
   flex-shrink: 0;
-  width: 160px;
+  width: 220px;              /* 160px→220pxでType-D顧に */
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .member-card img {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
+  object-position: top;      /* 顏を上部に固定して下クリップを解消 */
 }
 
 .member-card-info {
