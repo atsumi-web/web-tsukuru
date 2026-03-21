@@ -379,10 +379,10 @@ section {
 /* 画像マーキーラッパー：ヘッダー下から info box 上まで */
 .hero-marquee-wrap {
   position: absolute;
-  top: var(--header-h);
+  top: 96px;                 /* 初期 header高さ(96px)に合わせる */
   left: 0;
   right: 0;
-  bottom: 30px;              /* 白スペース透 ※元100pxから削減 */
+  bottom: 30px;
   overflow: hidden;
 }
 
