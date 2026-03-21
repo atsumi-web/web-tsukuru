@@ -388,7 +388,7 @@ section {
   display: flex;
   height: 100%;
   gap: 10px;
-  animation: heroScroll 30s linear infinite;
+  animation: heroScroll 15s linear infinite;
   will-change: transform;
 }
 
@@ -398,8 +398,8 @@ section {
 
 .hero-marquee-item {
   flex-shrink: 0;
-  width: auto;               /* アスペクト比で決まる */
-  aspect-ratio: 3 / 4;       /* ポートレート（正方形近い） */
+  width: auto;
+  aspect-ratio: 1 / 1;       /* 正方形 */
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
@@ -431,8 +431,8 @@ section {
 .hero-decoration::after {
   content: "";
   position: absolute;
-  left: 130px;
-  top: 170px;
+  left: 165px;               /* 画面上で見える位置に調整 */
+  top: 210px;               /* 下側半分に配置 */
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
@@ -446,7 +446,7 @@ section {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 5;
+  z-index: 11;               /* 赤丸(z:6)より上 → テキストが前面に */
 }
 
 /* === キャッチコピー (左下、赤丸の上に層この) === */
@@ -541,12 +541,12 @@ section {
 
 .info-item.active {
   display: flex;
-  animation: slideInNews 0.8s cubic-bezier(0.23,1,0.32,1) forwards;
+  animation: slideInNews 1.5s cubic-bezier(0.23,1,0.32,1) forwards;
 }
 
 .info-item.exit {
   display: flex;
-  animation: slideOutNews 0.8s cubic-bezier(0.23,1,0.32,1) forwards;
+  animation: slideOutNews 1.5s cubic-bezier(0.23,1,0.32,1) forwards;
 }
 
 .info-date {
@@ -1352,7 +1352,7 @@ section {
   }
 
   .hero-marquee-item {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1 / 1;
     width: auto;
     border-radius: 20px;
   }

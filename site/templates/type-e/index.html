@@ -36,7 +36,7 @@
   </style>
 
   <!-- Main CSS (1LP = 1CSS 鉄則) -->
-  <link rel="stylesheet" href="style.css?v=1.0.5">
+  <link rel="stylesheet" href="style.css?v=1.0.6">
 </head>
 <body>
 
@@ -102,35 +102,24 @@
   <!-- 赤丸デコレーション -->
   <div class="hero-decoration"></div>
 
-  <!-- Marquee Images -->
   <div class="hero-marquee-wrap">
     <div class="hero-marquee-track" id="heroMarquee">
       <!-- Set 1 -->
-      <div class="hero-marquee-item">
-        <img src="images/hero-1.png" alt="ARC Construction 施工現場" fetchpriority="high">
-      </div>
-      <div class="hero-marquee-item">
-        <img src="images/hero-2.png" alt="ARC Construction 建物外観" loading="lazy">
-      </div>
-      <div class="hero-marquee-item">
-        <img src="images/hero-3.png" alt="ARC Construction ミーティング" loading="lazy">
-      </div>
-      <div class="hero-marquee-item">
-        <img src="images/hero-4.png" alt="ARC Construction 建築設計" loading="lazy">
-      </div>
+      <div class="hero-marquee-item"><img src="images/hero-1.png"     alt="ARC Construction施工現場"   fetchpriority="high"></div>
+      <div class="hero-marquee-item"><img src="images/hero-2.png"     alt="ARC Construction建物外観"   loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-3.png"     alt="ARC Constructionミーティング" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-4.png"     alt="ARC Construction建築設計" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-evening.png" alt="ARC Construction 射山時現場" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-meeting.png" alt="ARC Construction 打ち合わせ" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-team.png"   alt="ARC Construction チーム"     loading="lazy"></div>
       <!-- Set 2 (ループ用コピー) -->
-      <div class="hero-marquee-item">
-        <img src="images/hero-1.png" alt="ARC Construction 施工現場" loading="lazy">
-      </div>
-      <div class="hero-marquee-item">
-        <img src="images/hero-2.png" alt="ARC Construction 建物外観" loading="lazy">
-      </div>
-      <div class="hero-marquee-item">
-        <img src="images/hero-3.png" alt="ARC Construction ミーティング" loading="lazy">
-      </div>
-      <div class="hero-marquee-item">
-        <img src="images/hero-4.png" alt="ARC Construction 建築設計" loading="lazy">
-      </div>
+      <div class="hero-marquee-item"><img src="images/hero-1.png"     alt="ARC Construction施工現場"   loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-2.png"     alt="ARC Construction建物外観"   loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-3.png"     alt="ARC Constructionミーティング" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-4.png"     alt="ARC Construction建築設計" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-evening.png" alt="ARC Construction 射山時現場" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-meeting.png" alt="ARC Construction 打ち合わせ" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/hero-team.png"   alt="ARC Construction チーム"     loading="lazy"></div>
     </div>
   </div>
 
@@ -864,8 +853,8 @@
         prev.classList.remove('active', 'exit');
         currentInfo = (currentInfo + 1) % infoItems.length;
         infoItems[currentInfo].classList.add('active');
-      }, 800);
-    }, 4000);
+      }, 1500);
+    }, 7000);
   }
 
   // ============================================================
