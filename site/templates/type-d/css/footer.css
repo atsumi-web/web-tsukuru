@@ -74,3 +74,56 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===================================
+   Typography Unification（カスケード最後に定義して確実に上書き）
+   見出し系クラスの font-weight と font-size を統一
+   =================================== */
+
+/* font-weight: 全見出しを 700 に統一 */
+.strategic-message__title-en,
+.strategic-message__title-jp,
+.strategic-message__name,
+.about__title,
+.works__title,
+.work-card__title,
+.work-card__link,
+.voice__title,
+.training__title-main,
+.point__title,
+.point__badge-number,
+.strength-circle__title,
+.strengths__title,
+.data__title,
+.stat-card__number,
+.message__title,
+.section-title,
+.footer-logo,
+.strategic-about__sub-title {
+  font-weight: 700;
+}
+
+/* font-size: セクション見出し（h2レベル）を 44px に統一 */
+/* ※ hero直下の大コピー（message__title, strategic-message__title-en）は除外 */
+.about__title,
+.works__title,
+.voice__title,
+.training__title-main,
+.strengths__title,
+.data__title,
+.section-title {
+  font-size: 44px;
+}
+
+/* モバイルでのセクション見出しサイズ統一 */
+@media (max-width: 768px) {
+  .about__title,
+  .works__title,
+  .voice__title,
+  .training__title-main,
+  .strengths__title,
+  .data__title,
+  .section-title {
+    font-size: 28px;
+  }
+}

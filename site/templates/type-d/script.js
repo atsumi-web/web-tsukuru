@@ -204,5 +204,82 @@ const initNewsSlider = () => {
 // Initialize All
 document.addEventListener("DOMContentLoaded", () => {
   initNewsSlider();
-  console.log("IIJ Engineering Recruiting Site - Initialized");
+  initMemberCarousel();
+  console.log("ARC Construction Recruiting Site - Initialized");
 });
+
+// ===================================
+// Member Carousel
+// ===================================
+function initMemberCarousel() {
+  const track = document.getElementById("memberTrack");
+  const prevBtn = document.getElementById("memberPrev");
+  const nextBtn = document.getElementById("memberNext");
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const cards = Array.from(track.querySelectorAll(".member-card"));
+  let currentIndex = 0;
+
+  const getVisible = () => {
+    if (window.innerWidth >= 1025) return 4;
+    if (window.innerWidth >= 641) return 2;
+    return 1;
+  };
+
+  const update = () => {
+    const visible = getVisible();
+    const maxIndex = Math.max(0, cards.length - visible);
+    currentIndex = Math.min(currentIndex, maxIndex);
+    const wrapperWidth = track.parentElement.offsetWidth;
+    const gap = 24;
+    const cardWidth = (wrapperWidth - gap * (visible - 1)) / visible;
+    const offset = currentIndex * (cardWidth + gap);
+    track.style.transform = `translateX(-${offset}px)`;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+  };
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = Math.max(0, currentIndex - 1);
+    update();
+    resetAutoPlay();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const maxIndex = Math.max(0, cards.length - getVisible());
+    currentIndex = Math.min(maxIndex, currentIndex + 1);
+    update();
+    resetAutoPlay();
+  });
+
+  // Auto-play
+  let autoTimer;
+  const startAutoPlay = () => {
+    autoTimer = setInterval(() => {
+      const maxIndex = Math.max(0, cards.length - getVisible());
+      currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+      update();
+    }, 3500);
+  };
+  const resetAutoPlay = () => {
+    clearInterval(autoTimer);
+    startAutoPlay();
+  };
+
+  // Pause on hover
+  const wrapper = track.closest(".member-carousel");
+  if (wrapper) {
+    wrapper.addEventListener("mouseenter", () => clearInterval(autoTimer));
+    wrapper.addEventListener("mouseleave", startAutoPlay);
+  }
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(update, 100);
+  });
+
+  update();
+  startAutoPlay();
+}
+

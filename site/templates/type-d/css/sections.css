@@ -217,7 +217,7 @@
 
 /* Point 01: Timeline */
 .timeline-container {
-  background-color: #ebf5ff; /* Light blue bg */
+  background-color: #f5f2ed; /* Light warm beige */
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
@@ -249,20 +249,20 @@
 }
 
 .phase-1 {
-  background-color: #4a90e2;
+  background-color: #3a6090;
   width: 33%;
   clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
   padding-right: 15px;
 }
 .phase-2 {
-  background-color: #357abd;
+  background-color: #2d5080;
   width: 34%;
   margin-left: -15px;
   padding-left: 15px;
   clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%, 5% 50%);
 }
 .phase-3 {
-  background-color: #2a629c;
+  background-color: #1e3a5f;
   width: 33%;
   margin-left: -15px;
   padding-left: 15px;
@@ -284,7 +284,7 @@
 }
 
 .training-card-header {
-  background-color: #2c5282; /* Deep Blue */
+  background-color: var(--primary-navy);
   color: var(--white);
   padding: 10px;
   text-align: center;
@@ -303,13 +303,13 @@
 }
 
 .training-sub-card {
-  background-color: #f0f4f8;
+  background-color: #f5f2ed;
   margin-top: 10px;
   padding: 10px;
   text-align: center;
   border-radius: var(--radius-sm);
   font-weight: 700;
-  color: #357abd;
+  color: var(--primary-navy);
 }
 
 .point-description {
@@ -406,3 +406,38 @@
   .training-cards, .support-grid, .career-container { grid-template-columns: 1fr; }
   .career-image { order: -1; height: 200px; }
 }
+
+/* ===================================
+   Member Marquee (Infinite Scroll)
+   =================================== */
+
+@keyframes memberScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.member-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 48px;
+  padding: 8px 0 24px;
+}
+
+.member-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: memberScroll 50s linear infinite;
+}
+
+.member-marquee-wrapper:hover .member-marquee-track {
+  animation-play-state: paused;
+}
+
+.member-marquee-track .member-card {
+  flex-shrink: 0;
+  width: 240px;
+  cursor: default;
+}
+
+
