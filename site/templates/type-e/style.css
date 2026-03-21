@@ -456,7 +456,7 @@ section {
 /* === キャッチコピー (左下、赤丸の上に層) === */
 .hero-catch {
   position: absolute;
-  bottom: 160px;             /* 赤丸top(high:280)より下 → 円にかからせる */
+  bottom: 60px;              /* 160px→-100px下げ */
   left: var(--section-px);
   pointer-events: auto;
   z-index: 12;
@@ -486,7 +486,7 @@ section {
 .hero-build-stack {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 20px;                 /* BuildとBuildの間隔 */
 }
 
 /* "Build" — Poppins太字 (Type-D .hero-text-line 相当) */
@@ -1362,7 +1362,7 @@ section {
   }
 
   .hero-catch {
-    bottom: 160px;
+    bottom: 60px;
     left: var(--section-px);
   }
 
