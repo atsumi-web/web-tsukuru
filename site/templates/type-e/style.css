@@ -434,7 +434,7 @@ section {
 .hero-line {
   position: absolute;
   left: 30px;                /* 円x: -130+160=30px */
-  top: calc(100% - 117px);  /* 円top(330px)から213px下: 330-213=117 */
+  top: calc(100% - 97px);   /* さらに10px下げる */
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
@@ -478,7 +478,7 @@ section {
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: row;
-  align-items: flex-start;   /* 上揃え: Build多上とIT,の上を揃える */
+  align-items: center;       /* 縦方向中央揃え */
   gap: 10px;
 }
 
@@ -493,7 +493,7 @@ section {
 .hero-build-text {
   font-family: var(--font-en);
   font-size: clamp(1.8rem, 8vw, 5rem);
-  font-weight: 900;
+  font-weight: 700;          /* 900→700で少し細く */
   line-height: 0.9;
   color: var(--color-white);
 }
