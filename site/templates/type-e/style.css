@@ -427,15 +427,19 @@ section {
   overflow: visible;
 }
 
-/* 縦ライン (圆の下端に向かって落ちる) */
-.hero-decoration::after {
-  content: "";
+/* 縦ライン—円の::afterではなくヒーロー内の独立要素を使用 */
+/* (hero-decoration::after は border-radiusクリッピング設計にシールするため削除済み) */
+
+/* 圓の内側から変わらず園の下端に教占 */
+.hero-line {
   position: absolute;
-  left: 160px;               /* 画面上でx≈-130+160=30px */
-  top: 213px;                /* 圆底面=320px; 320-107=213 */
+  left: 30px;                /* 圆中心: left= -130+160=30px */
+  bottom: 67px;              /* 圆top(高280px)から213px下: 280-213=67 */
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
+  z-index: 10;               /* 画像上、テキスト下 */
+  pointer-events: none;
   animation: lineDrawMobile 2s ease-in-out infinite;
 }
 
@@ -452,7 +456,7 @@ section {
 /* === キャッチコピー (左下、赤丸の上に層) === */
 .hero-catch {
   position: absolute;
-  bottom: 310px;             /* Type-Dに合わせて上に移動 */
+  bottom: 160px;             /* 赤丸top(high:280)より下 → 円にかからせる */
   left: var(--section-px);
   pointer-events: auto;
   z-index: 12;
@@ -1358,7 +1362,7 @@ section {
   }
 
   .hero-catch {
-    bottom: 310px;
+    bottom: 160px;
     left: var(--section-px);
   }
 
