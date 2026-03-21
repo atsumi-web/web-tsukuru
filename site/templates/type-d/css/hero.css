@@ -432,10 +432,10 @@ section.hero .hero-visual-marquee-full .marquee-item img {
   
   .hero-full-width-wrapper {
     height: 100vh;
-    flex-direction: row; /* Restore Row */
+    flex-direction: row;
     align-items: center;
     padding: 0;
-    padding-top: 140px; /* Increased from 90px to ensure full visibility */
+    padding-top: 80px;
   }
 
   section.hero .hero-visual-marquee-full {
