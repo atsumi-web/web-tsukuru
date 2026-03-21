@@ -32,11 +32,11 @@
       position: fixed; top: 0; left: 0; width: 100%;
       height: var(--header-h); background: var(--color-white); z-index: 1000;
     }
-    .hero { margin-top: var(--header-h); background: var(--color-white); }
+    .hero { margin-top: 0; background: var(--color-white); }
   </style>
 
   <!-- Main CSS (1LP = 1CSS 鉄則) -->
-  <link rel="stylesheet" href="style.css?v=1.0.2">
+  <link rel="stylesheet" href="style.css?v=1.0.3">
 </head>
 <body>
 
@@ -98,6 +98,9 @@
      HERO
      ============================================================ -->
 <section class="hero" id="hero">
+
+  <!-- 赤丸デコレーション -->
+  <div class="hero-decoration"></div>
 
   <!-- Marquee Images -->
   <div class="hero-marquee-wrap">
@@ -849,15 +852,19 @@
   });
 
   // ============================================================
-  // Hero Info Box: auto-rotate every 4s
+  // Hero Info Box: slide-in-out animation
   // ============================================================
   const infoItems = document.querySelectorAll('.info-item');
   let currentInfo = 0;
   if (infoItems.length > 1) {
     setInterval(() => {
-      infoItems[currentInfo].classList.remove('active');
-      currentInfo = (currentInfo + 1) % infoItems.length;
-      infoItems[currentInfo].classList.add('active');
+      const prev = infoItems[currentInfo];
+      prev.classList.add('exit');
+      setTimeout(() => {
+        prev.classList.remove('active', 'exit');
+        currentInfo = (currentInfo + 1) % infoItems.length;
+        infoItems[currentInfo].classList.add('active');
+      }, 800);
     }, 4000);
   }
 

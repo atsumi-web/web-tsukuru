@@ -335,19 +335,52 @@ section {
 /* ============================================================
    6. Hero Section
    ============================================================ */
-.hero {
-  margin-top: var(--header-h);
-  position: relative;
-  overflow: hidden;
-  background: var(--color-white);
-  height: calc(100vh - var(--header-h));
-  min-height: 480px;
+
+/* === アニメーション keyframes === */
+@keyframes heroScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Marquee wrapper */
+@keyframes lineDraw {
+  0%   { height: 0;     transform: translateY(0); }
+  50%  { height: 120px; transform: translateY(0); }
+  100% { height: 0;     transform: translateY(120px); }
+}
+
+@keyframes lineDrawMobile {
+  0%   { height: 0;    transform: translateY(0); }
+  50%  { height: 60px; transform: translateY(0); }
+  100% { height: 0;    transform: translateY(60px); }
+}
+
+@keyframes slideInNews {
+  0%   { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideOutNews {
+  0%   { transform: translateX(0);     opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+/* === Hero 基本 === */
+.hero {
+  margin-top: 0;             /* ヘッダーはfixed、heroはtopから */
+  position: relative;
+  overflow: visible;         /* 赤丸がはみ出せるように */
+  background: var(--color-white);
+  height: 100vh;
+  min-height: 600px;
+}
+
+/* 画像マーキーラッパー：ヘッダー下から info box 上まで */
 .hero-marquee-wrap {
   position: absolute;
-  inset: 0;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  bottom: 100px;             /* info box スペース */
   overflow: hidden;
 }
 
@@ -361,11 +394,6 @@ section {
 
 .hero-marquee-track:hover {
   animation-play-state: paused;
-}
-
-@keyframes heroScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 .hero-marquee-item {
@@ -383,24 +411,63 @@ section {
   border-radius: 20px;
 }
 
-/* Hero overlay content */
+/* === 赤丸デコレーション (Type-D .hero-left-decoration 相当) === */
+.hero-decoration {
+  position: absolute;
+  bottom: 80px;              /* info boxの少し上 */
+  left: -60px;               /* 左に見切れる */
+  width: 180px;
+  height: 180px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 8px 8px 24px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 90px;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* 縦ライン (上から下へ落ちるアニメーション) */
+.hero-decoration::after {
+  content: "";
+  position: absolute;
+  left: 78px;
+  top: 100px;
+  width: 2px;
+  height: 0;
+  background: rgba(255,255,255,0.85);
+  animation: lineDrawMobile 2s ease-in-out infinite;
+}
+
+/* テキスト — catch labelに準ずるため .hero-catch 内で管理 */
+
+/* === Hero overlay === */
 .hero-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 2;
+  z-index: 5;
 }
 
+/* === キャッチコピー (左下) === */
 .hero-catch {
   position: absolute;
-  bottom: 24px;
+  bottom: 110px;             /* marquee bottomに合わせる */
   left: var(--section-px);
   pointer-events: auto;
+  z-index: 6;
 }
 
 .hero-catch-label {
   font-family: var(--font-en);
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -415,10 +482,10 @@ section {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  gap: 12px;
+  gap: 10px;
 }
 
-/* "Build" "Build" 縦積みコンテナ (Type-D .design-words 相当) */
+/* "Build" "Build" 縦積み (Type-D .design-words 相当) */
 .hero-build-stack {
   display: flex;
   flex-direction: column;
@@ -431,48 +498,67 @@ section {
   font-size: clamp(1.8rem, 8vw, 5rem);
   font-weight: 900;
   line-height: 0.9;
+  color: var(--color-white);
 }
 
 /* "IT, Your Life." — Allura手書き (Type-D .handwritten-accent 相当) */
 .hero-handwritten {
   font-family: 'Allura', cursive;
   font-weight: 400;
-  font-size: clamp(2.5rem, 11vw, 7rem);
+  font-size: clamp(2.8rem, 11vw, 7.5rem);
   line-height: 0.9;
+  color: var(--color-white);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-/* Hero info box */
+/* === Info Box (右下 Type-D準拠) === */
 .hero-info-box {
   position: absolute;
-  bottom: 24px;
-  right: var(--section-px);
-  width: min(320px, calc(100% - var(--section-px) * 2 - 180px));
-  background: rgba(255,255,255,0.95);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
+  bottom: 0;
+  right: 0;
+  left: 0;                   /* モバイルは全幅 */
+  height: 100px;
+  background: var(--color-white);
+  z-index: 10;
   pointer-events: auto;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--section-px);
 }
 
 .info-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--section-px);
+  gap: 6px;
 }
 
 .info-item.active {
-  display: block;
+  display: flex;
+  animation: slideInNews 0.8s cubic-bezier(0.23,1,0.32,1) forwards;
+}
+
+.info-item.exit {
+  display: flex;
+  animation: slideOutNews 0.8s cubic-bezier(0.23,1,0.32,1) forwards;
 }
 
 .info-date {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
+  gap: 10px;
+  font-size: 12px;
   color: var(--color-gray-400);
-  margin-bottom: 4px;
 }
 
 .info-badge {
