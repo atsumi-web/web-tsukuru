@@ -433,14 +433,14 @@ section {
 /* 圓の内側から変わらず園の下端に教占 */
 .hero-line {
   position: absolute;
-  left: 30px;                /* 圆中心: -130+160=30px */
-  top: calc(100vh - 67px);   /* 円top(280px)から213px下; 100vh-67 */
+  left: 30px;                /* 円x: -130+160=30px */
+  top: calc(100% - 67px);   /* 親hero(100%)基準 → 67px from hero bottom */
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
   z-index: 10;
   pointer-events: none;
-  animation: lineDrawMobile 2s ease-in-out infinite; /* top配置なので下方向成長 */
+  animation: lineDrawMobile 2s ease-in-out infinite;
 }
 
 /* テキスト — catch labelに準ずるため .hero-catch 内で管理 */
