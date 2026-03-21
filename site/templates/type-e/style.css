@@ -415,7 +415,7 @@ section {
 /* === 赤丸デコレーション (Type-D .hero-left-decoration 相当) === */
 .hero-decoration {
   position: absolute;
-  bottom: -40px;
+  bottom: 10px;              /* -40px + 50px 上げ */
   left: -130px;
   width: 320px;
   height: 320px;
@@ -434,7 +434,7 @@ section {
 .hero-line {
   position: absolute;
   left: 30px;                /* 円x: -130+160=30px */
-  top: calc(100% - 67px);   /* 親hero(100%)基準 → 67px from hero bottom */
+  top: calc(100% - 117px);  /* 円top(330px)から213px下: 330-213=117 */
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
@@ -1374,7 +1374,7 @@ section {
     width: 360px;
     height: 360px;
     left: -140px;
-    bottom: -60px;            /* デスクトップもinfo boxにかかる */
+    bottom: -10px;            /* -60px + 50px 上げ */
   }
 
   .hero-info-box {
