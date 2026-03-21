@@ -799,6 +799,19 @@ section {
   display: flex;
   gap: var(--sp-md);
   margin-bottom: var(--sp-2xl);
+  position: relative;
+}
+
+/* 縦オレンジライン：バッジ中央から下に延びる */
+.pt-point:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 27px;               /* バッジ幅56pxの中央 */
+  top: 60px;
+  bottom: calc(-1 * var(--sp-2xl));
+  width: 2px;
+  background: var(--color-primary);
+  opacity: 0.3;
 }
 
 .pt-badge {
@@ -855,15 +868,16 @@ section {
 }
 
 .pt-phase {
-  padding: 8px 4px;
+  padding: 14px 8px;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  border-radius: 6px;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
 }
 
 .pt-phase--1 { background: var(--color-dark); color: var(--color-white); }
-.pt-phase--2 { background: #e0e0e0; color: var(--color-dark); }
+.pt-phase--2 { background: #e8e8e8; color: #666; }
 .pt-phase--3 { background: #0ea5a8; color: var(--color-white); }
 
 .pt-cards {
