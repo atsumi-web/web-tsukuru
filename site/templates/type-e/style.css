@@ -380,7 +380,7 @@ section {
   top: var(--header-h);
   left: 0;
   right: 0;
-  bottom: 100px;             /* info box スペース */
+  bottom: 30px;              /* 白スペース透 ※元100pxから削減 */
   overflow: hidden;
 }
 
@@ -398,7 +398,8 @@ section {
 
 .hero-marquee-item {
   flex-shrink: 0;
-  width: calc(70vw + 40px);
+  width: auto;               /* アスペクト比で決まる */
+  aspect-ratio: 3 / 4;       /* ポートレート（正方形近い） */
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
@@ -414,13 +415,13 @@ section {
 /* === 赤丸デコレーション (Type-D .hero-left-decoration 相当) === */
 .hero-decoration {
   position: absolute;
-  bottom: 140px;             /* info box (高さ120px) の上 */
-  left: -100px;              /* 左に大きくはみ出す */
-  width: 260px;
-  height: 260px;
+  bottom: 50px;              /* キャッチテキストの下に配置 */
+  left: -130px;              /* 左に大きくはみ出す */
+  width: 320px;
+  height: 320px;
   background-color: var(--color-primary);
   border-radius: 50%;
-  z-index: 10;
+  z-index: 6;                /* テキスト(z:12)の後ろ */
   pointer-events: none;
   box-shadow: 10px 10px 32px rgba(0,0,0,0.15);
   overflow: visible;
@@ -430,8 +431,8 @@ section {
 .hero-decoration::after {
   content: "";
   position: absolute;
-  left: 108px;
-  top: 145px;
+  left: 130px;
+  top: 170px;
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
@@ -448,13 +449,13 @@ section {
   z-index: 5;
 }
 
-/* === キャッチコピー (左下) === */
+/* === キャッチコピー (左下、赤丸の上に層この) === */
 .hero-catch {
   position: absolute;
-  bottom: 110px;             /* marquee bottomに合わせる */
+  bottom: 220px;             /* 赤丸(bottom:50+height:320=370px) の上に */
   left: var(--section-px);
   pointer-events: auto;
-  z-index: 6;
+  z-index: 12;               /* 赤丸(z:6)より上層 */
 }
 
 .hero-catch-label {
@@ -1347,7 +1348,29 @@ section {
   }
 
   .hero-marquee-wrap {
-    bottom: 150px;
+    bottom: 40px;
+  }
+
+  .hero-marquee-item {
+    aspect-ratio: 3 / 4;
+    width: auto;
+    border-radius: 20px;
+  }
+
+  .hero-catch {
+    bottom: 220px;
+    left: var(--section-px);
+  }
+
+  .hero-catch-label {
+    font-size: 11px;
+  }
+
+  .hero-decoration {
+    width: 360px;
+    height: 360px;
+    left: -140px;
+    bottom: 50px;
   }
 
   .hero-info-box {
