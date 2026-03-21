@@ -794,42 +794,40 @@ section {
   margin-bottom: var(--sp-2xl);
 }
 
-/* POINTバッジ + ボディ */
+/* POINTポイント本体 - Type-D方式 */
 .pt-point {
-  display: flex;
-  gap: var(--sp-md);
-  margin-bottom: var(--sp-2xl);
+  margin-bottom: 80px;
   position: relative;
+  padding-left: 40px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1); /* 縦ライン */
 }
 
-/* 縦ライン：バッジから下に延びる */
-.pt-point:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 27px;               /* バッジ幅56pxの中央 */
-  top: 76px;
-  bottom: calc(-1 * var(--sp-2xl));
-  width: 2px;
-  background: #ccc;          /* グレー(オレンジでなく) */
-  opacity: 1;
+.pt-point:last-child {
+  margin-bottom: 0;
 }
 
+/* バッジ - Type-Dと同じrotate技法 */
 .pt-badge {
-  width: 56px;
-  height: 72px;
-  background: var(--color-primary);
-  /* しずく型(clip-path)：上が円で下が尖がる水滴形 */
-  clip-path: path('M 28 72 C 8 58 0 44 0 28 A 28 28 0 0 1 56 28 C 56 44 48 58 28 72 Z');
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;  /* 上円部分に内容を寄せる */
-  padding-top: 12px;            /* 上の円弧部にセンタリング */
-  flex-shrink: 0;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #bf3008 100%);
   color: var(--color-white);
-  line-height: 1;
-  margin-top: 0;
-  filter: drop-shadow(0 4px 8px rgba(232,68,17,0.4)); /* clip-path等の影 */
+  border-radius: 50%;
+  border-bottom-left-radius: 0;  /* 左下の角のみ尖らせる */
+  transform: rotate(-45deg);     /* 全体を左側投スらせる→下が尖のピン */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.pt-badge-content {
+  transform: rotate(45deg);      /* テキストを正立に戻す */
+  text-align: center;
 }
 
 .pt-badge-label {
