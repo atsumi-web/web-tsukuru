@@ -794,6 +794,12 @@ section {
   margin-bottom: var(--sp-2xl);
 }
 
+/* Trainingセクションのsection-labelを中央小整列 */
+.training .section-label {
+  display: block;
+  text-align: center;
+}
+
 /* POINTポイント本体 - Type-D方式 */
 .pt-point {
   margin-bottom: 80px;
@@ -865,24 +871,29 @@ section {
 }
 
 .pt-timeline-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 4px;
-  margin-bottom: 6px;
+  display: flex;             /* 一体型ピル形: Type-D方式 */
+  height: 50px;
+  margin-bottom: 24px;
+  border-radius: 25px;       /* 全体をピル形に */
+  overflow: hidden;          /* 子要素をピル形にクリップ */
 }
 
 .pt-phase {
-  padding: 14px 8px;
-  text-align: center;
-  font-size: 0.82rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
   font-weight: 700;
-  border-radius: 8px;
+  color: var(--color-white);
   letter-spacing: 0.02em;
+  /* border-radiusなし → コンテナのoverflow:hiddenが担当 */
 }
 
-.pt-phase--1 { background: var(--color-dark); color: var(--color-white); }
-.pt-phase--2 { background: #e8e8e8; color: #666; }
-.pt-phase--3 { background: #0ea5a8; color: var(--color-white); }
+/* Type-D配色そのまま */
+.pt-phase--1 { background: #1e3a5f; } /* ダークネイビー */
+.pt-phase--2 { background: #2d5080; } /* ライトネイビー */
+.pt-phase--3 { background: #00a896; } /* ティール */
 
 .pt-cards {
   display: grid;
