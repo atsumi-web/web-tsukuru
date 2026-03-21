@@ -100,14 +100,20 @@
 .hero-full-width-wrapper {
   position: relative;
   width: 100%;
-  height: 100svh; /* Fallback for desktop/stable */
+  height: 100svh;
   background-color: #ffffff;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* Mobile Default */
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 80px; /* Space for mobile header (increased from 60px) */
+  padding-top: 80px; /* Space for mobile header */
+}
+
+@media (min-width: 1200px) {
+  .hero-full-width-wrapper {
+    padding-top: 0; /* Header is fixed, no padding needed on desktop */
+  }
 }
 
 /* Hardcode height on mobile to prevent ALL viewport-related shifts */
@@ -133,8 +139,8 @@
 .hero-visual-marquee-full {
   position: absolute;
   top: 80px;
-  left: 20px;
-  width: calc(100% - 20px);
+  left: 0;
+  width: 100%;
   bottom: 120px;
   height: unset;
   min-height: 0;
@@ -433,10 +439,10 @@ section.hero .hero-visual-marquee-full .marquee-item img {
   }
 
   section.hero .hero-visual-marquee-full {
-    top: 100px; /* Increased from 50px to reveal rounded corners below header */
+    top: 100px;
     bottom: 50px;
-    left: 50px;
-    width: auto;
+    left: 0;
+    width: 100%;
     right: 0;
     overflow: hidden;
   }
@@ -641,3 +647,37 @@ section.hero .hero-visual-marquee-full .marquee-item img {
 }
 
 
+/* ===================================
+   Hero Diagonal White Panel (Logo Background)
+   =================================== */
+
+.hero-diagonal-panel {
+  display: none; /* Mobile: hidden */
+}
+
+@media (min-width: 1200px) {
+  .hero-diagonal-panel {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 160px;
+    background: #ffffff;
+    border-radius: 0 0 24px 0;
+    z-index: 4;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Hide when header has scrolled (logo shrinks back into header) */
+  .header.scrolled ~ main .hero-diagonal-panel,
+  .header.scrolled + main .hero-diagonal-panel {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Orange accent: removed (looks cheap) */
+  .hero-diagonal-accent {
+    display: none;
+  }
+}

@@ -1,17 +1,16 @@
 /* ===================================
-   Strengths Section (3 Circles Layout)
+   Strengths Section (Numbered List Layout)
    =================================== */
 
 .strengths {
   padding: 120px 0;
   background-color: var(--white);
   position: relative;
-  overflow: hidden;
 }
 
 .strengths__header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 64px;
 }
 
 .strengths__label {
@@ -30,101 +29,103 @@
   color: var(--dark);
 }
 
-.strengths__grid {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.strength-circle {
-  width: 320px;
-  height: 320px;
-  background-color: var(--white);
-  border: 1px solid rgba(0,0,0,0.05);
-  border-radius: 50%;
-  padding: 40px;
+/* Numbered list */
+.strengths__list {
   display: flex;
   flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.strength-item {
+  display: grid;
+  grid-template-columns: 72px 64px 1fr;
+  align-items: center;
+  gap: 32px;
+  padding: 44px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
+}
+
+.strength-item:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.strength-item__num {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  font-weight: 800;
+  color: rgba(30, 58, 95, 0.1);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+
+.strength-item__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(30, 58, 95, 0.06);
+  display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
-  position: relative;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  color: var(--primary-navy);
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
 }
 
-.strength-circle:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-  border-color: var(--primary-orange);
+.strength-item:hover .strength-item__icon {
+  background: var(--primary-navy);
+  color: #fff;
 }
 
-.strength-circle::before {
-  content: attr(data-number);
-  position: absolute;
-  top: 22px;
-  left: 28px;
-  font-family: var(--font-heading);
-  font-size: 16px;
-  font-weight: 800;
-  color: rgba(255, 107, 53, 0.4);
-  line-height: 1;
-  pointer-events: none;
+.strength-item__body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: center;
 }
 
-.strength-circle__icon {
-  margin-bottom: 20px;
-  color: var(--primary-orange);
-}
-
-.strength-circle__title {
+.strength-item__title {
   font-size: 20px;
   font-weight: 800;
   color: var(--dark);
-  margin-bottom: 15px;
   line-height: 1.4;
 }
 
-.strength-circle__text {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--medium-gray);
+.strength-item__text {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.85;
 }
 
-/* Tablet Robustness (魔の中間サイズ対応) */
-@media (max-width: 1100px) {
-  .strength-circle {
-    width: 280px;
-    height: 280px;
-    padding: 30px;
-  }
-  .strengths__title {
-    font-size: 36px;
-  }
-}
-
-@media (max-width: 950px) {
-  .strengths__grid {
-    gap: 30px;
-  }
-  .strength-circle {
-    width: 300px;
-    height: 300px;
-  }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
   .strengths {
     padding: 60px 0;
   }
-  .strengths__grid {
-    flex-direction: column;
-    align-items: center;
+  .strengths__title {
+    font-size: 32px;
   }
-  .strength-circle {
-    width: 100%;
-    max-width: 320px;
-    height: 320px;
+  .strength-item {
+    grid-template-columns: 48px 48px 1fr;
+    gap: 16px;
+    padding: 28px 0;
+  }
+  .strength-item__num {
+    font-size: 36px;
+  }
+  .strength-item__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  .strength-item__body {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .strength-item__title {
+    font-size: 18px;
   }
 }

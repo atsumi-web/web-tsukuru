@@ -440,4 +440,284 @@
   cursor: default;
 }
 
+/* ===================================
+   FAQ Section
+   =================================== */
 
+.faq__list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faq__item:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark);
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.faq__question:hover {
+  color: var(--primary-navy);
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--primary-navy);
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.faq__item.open .faq__icon {
+  transform: rotate(45deg);
+}
+
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq__item.open .faq__answer {
+  max-height: 200px;
+  padding-bottom: 20px;
+}
+
+.faq__answer p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+  padding: 0 4px;
+}
+
+
+/* ===================================
+   Company Info Table
+   =================================== */
+
+.company-info {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.company-table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.company-table tr:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.company-table th,
+.company-table td {
+  padding: 20px 16px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.company-table th {
+  width: 180px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  white-space: nowrap;
+  background: rgba(30, 58, 95, 0.03);
+}
+
+.company-table td {
+  color: #444;
+}
+
+/* ===================================
+   Job Requirements Cards
+   =================================== */
+
+.job-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.job-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.job-card__header {
+  background: var(--primary-navy);
+  color: var(--white);
+  padding: 32px 28px;
+}
+
+.job-card__tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.job-card__title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.job-card__subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.job-card__body {
+  padding: 24px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.job-detail {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  align-items: start;
+}
+
+.job-detail:last-child {
+  border-bottom: none;
+}
+
+.job-detail__label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  padding-top: 2px;
+}
+
+.job-detail__value {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.job-detail__value small {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.job-card__footer {
+  padding: 20px 28px 28px;
+}
+
+.job-card__footer .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.job-benefit-note {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  line-height: 2;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 18px 24px;
+  border: 1px solid rgba(0,0,0,0.07);
+}
+
+@media (max-width: 768px) {
+  .job-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .company-table th {
+    width: 120px;
+    font-size: 13px;
+  }
+  .company-table td {
+    font-size: 13px;
+  }
+}
+
+/* ===================================
+   LINE Button
+   =================================== */
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #06C755;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-line:hover {
+  background-color: #05b34c;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.btn-line--large {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-size: 18px;
+  padding: 18px 40px;
+  border-radius: 10px;
+  letter-spacing: 0.02em;
+}
+
+.recruit__line-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+}
