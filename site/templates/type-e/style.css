@@ -843,7 +843,10 @@ section {
   font-weight: 800;
 }
 
-.pt-body { flex: 1; }
+.pt-body {
+  padding-left: 50px; /* バッジ(absolute 60px)の右側へコンテンツをオフセット */
+  padding-top: 4px;
+}
 
 .pt-title {
   font-size: 1.1rem;
