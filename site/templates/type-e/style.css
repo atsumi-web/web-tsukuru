@@ -349,9 +349,9 @@ section {
 }
 
 @keyframes lineDrawMobile {
-  0%   { height: 0;    transform: translateY(0); }
-  50%  { height: 60px; transform: translateY(0); }
-  100% { height: 0;    transform: translateY(60px); }
+  0%   { height: 0;     transform: translateY(0); }
+  50%  { height: 107px; transform: translateY(0); }    /* 円の1/3の長さ */
+  100% { height: 0;     transform: translateY(107px); } /* 円の下端に接続 */
 }
 
 @keyframes slideInNews {
@@ -427,12 +427,12 @@ section {
   overflow: visible;
 }
 
-/* 縦ライン (上から下へ落ちるアニメーション) */
+/* 縦ライン (圆の下端に向かって落ちる) */
 .hero-decoration::after {
   content: "";
   position: absolute;
-  left: 165px;               /* 画面上で見える位置に調整 */
-  top: 210px;               /* 下側半分に配置 */
+  left: 160px;               /* 画面上でx≈-130+160=30px */
+  top: 213px;                /* 圆底面=320px; 320-107=213 */
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
@@ -449,13 +449,13 @@ section {
   z-index: 11;               /* 赤丸(z:6)より上 → テキストが前面に */
 }
 
-/* === キャッチコピー (左下、赤丸の上に層この) === */
+/* === キャッチコピー (左下、赤丸の上に層) === */
 .hero-catch {
   position: absolute;
-  bottom: 220px;             /* 赤丸(bottom:50+height:320=370px) の上に */
+  bottom: 310px;             /* Type-Dに合わせて上に移動 */
   left: var(--section-px);
   pointer-events: auto;
-  z-index: 12;               /* 赤丸(z:6)より上層 */
+  z-index: 12;
 }
 
 .hero-catch-label {
@@ -1358,7 +1358,7 @@ section {
   }
 
   .hero-catch {
-    bottom: 220px;
+    bottom: 310px;
     left: var(--section-px);
   }
 
