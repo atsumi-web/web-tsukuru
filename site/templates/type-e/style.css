@@ -418,7 +418,14 @@ section {
   gap: 12px;
 }
 
-/* "Build" "Build" — Poppins太字 (Type-D .hero-text-line 相当) */
+/* "Build" "Build" 縦積みコンテナ (Type-D .design-words 相当) */
+.hero-build-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* "Build" — Poppins太字 (Type-D .hero-text-line 相当) */
 .hero-build-text {
   font-family: var(--font-en);
   font-size: clamp(1.8rem, 8vw, 5rem);
