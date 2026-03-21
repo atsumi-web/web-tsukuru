@@ -415,13 +415,13 @@ section {
 /* === 赤丸デコレーション (Type-D .hero-left-decoration 相当) === */
 .hero-decoration {
   position: absolute;
-  bottom: 50px;              /* キャッチテキストの下に配置 */
-  left: -130px;              /* 左に大きくはみ出す */
+  bottom: -40px;
+  left: -130px;
   width: 320px;
   height: 320px;
   background-color: var(--color-primary);
   border-radius: 50%;
-  z-index: 6;                /* テキスト(z:12)の後ろ */
+  z-index: 9;                /* info-box(z:8)の上 → 白スペースにかかる */
   pointer-events: none;
   box-shadow: 10px 10px 32px rgba(0,0,0,0.15);
   overflow: visible;
@@ -446,7 +446,7 @@ section {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 11;               /* 赤丸(z:6)より上 → テキストが前面に */
+  z-index: 12;               /* decoration(z:9)より上 → テキストが前面に */
 }
 
 /* === キャッチコピー (左下、赤丸の上に層) === */
@@ -511,13 +511,13 @@ section {
   position: absolute;
   bottom: 0;
   right: 0;
-  left: auto;                /* 常に右寄せ */
+  left: auto;
   width: auto;
   min-width: min(340px, 90vw);
   height: 120px;
   background: var(--color-white);
-  border-top-left-radius: 40px; /* Type-Dシグネーチャー角 */
-  z-index: 10;
+  border-top-left-radius: 40px;
+  z-index: 8;                /* decoration(z:9)の下 → 円が白スペースにかかる */
   pointer-events: auto;
   overflow: hidden;
   display: flex;
@@ -1370,7 +1370,7 @@ section {
     width: 360px;
     height: 360px;
     left: -140px;
-    bottom: 50px;
+    bottom: -60px;            /* デスクトップもinfo boxにかかる */
   }
 
   .hero-info-box {
