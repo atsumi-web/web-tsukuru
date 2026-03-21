@@ -1335,7 +1335,8 @@ section {
   .nav {
     display: flex;
     align-items: center;
-    gap: var(--sp-lg);
+    gap: 20px;             /* ナビ項目間隔 */
+    margin-left: auto;     /* logo左端・nav+CTA右端 */
   }
 
   .nav a {
@@ -1349,6 +1350,7 @@ section {
 
   .header-cta {
     display: flex;
+    margin-left: 16px;     /* navとCTAを近づける */
   }
 
   .hero-marquee-wrap {
