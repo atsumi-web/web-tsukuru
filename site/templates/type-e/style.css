@@ -372,7 +372,7 @@ section {
   flex-shrink: 0;
   width: calc(70vw + 40px);
   height: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: 20px;
   overflow: hidden;
 }
 
@@ -380,6 +380,7 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 20px;
 }
 
 /* Hero overlay content */
@@ -409,17 +410,31 @@ section {
 }
 
 .hero-catch-title {
-  font-family: var(--font-en);
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 900;
-  line-height: 1.1;
   color: var(--color-white);
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 12px;
 }
 
-.hero-catch-title em {
-  font-style: italic;
-  font-weight: 300;
+/* "Build" "Build" — Poppins太字 (Type-D .hero-text-line 相当) */
+.hero-build-text {
+  font-family: var(--font-en);
+  font-size: clamp(1.8rem, 8vw, 5rem);
+  font-weight: 900;
+  line-height: 0.9;
+}
+
+/* "IT, Your Life." — Allura手書き (Type-D .handwritten-accent 相当) */
+.hero-handwritten {
+  font-family: 'Allura', cursive;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 11vw, 7rem);
+  line-height: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Hero info box */
@@ -1246,6 +1261,7 @@ section {
   /* Hero */
   .hero-marquee-item {
     width: calc(35vw + 40px);
+    border-radius: 20px;
   }
 
   .hero-catch {
