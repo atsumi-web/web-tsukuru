@@ -185,10 +185,14 @@ section {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-h);
+  height: 96px;              /* 初期: 1.5倍(64×1.5) */
   background: var(--color-white);
   z-index: 1000;
-  transition: box-shadow var(--transition);
+  transition: height 0.35s ease, box-shadow var(--transition);
+}
+
+.header.compact {
+  height: var(--header-h);   /* スクロール後: 64px */
 }
 
 .header.scrolled {

@@ -36,7 +36,7 @@
   </style>
 
   <!-- Main CSS (1LP = 1CSS 鉄則) -->
-  <link rel="stylesheet" href="style.css?v=1.2.0">
+  <link rel="stylesheet" href="style.css?v=1.2.1">
 </head>
 <body>
 
@@ -802,12 +802,17 @@
      ============================================================ -->
 <script>
   // ============================================================
-  // Header: scroll shadow
+  // Header: scroll shadow + compact height
   // ============================================================
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 10);
+    const scrolled = window.scrollY > 10;
+    const compact  = window.scrollY > 50;
+    header.classList.toggle('scrolled', scrolled);
+    header.classList.toggle('compact',  compact);
   }, { passive: true });
+
+
 
   // ============================================================
   // Hamburger Menu
