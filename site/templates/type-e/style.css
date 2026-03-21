@@ -807,18 +807,18 @@ section {
   content: '';
   position: absolute;
   left: 27px;               /* バッジ幅56pxの中央 */
-  top: 60px;
+  top: 76px;                /* 縦長バッジ(68px)+七見 */
   bottom: calc(-1 * var(--sp-2xl));
   width: 2px;
   background: var(--color-primary);
-  opacity: 0.3;
+  opacity: 0.5;             /* 強化 */
 }
 
 .pt-badge {
   width: 56px;
-  height: 56px;
+  height: 68px;              /* 縦長角丸四角(Type-D養) */
   background: var(--color-primary);
-  border-radius: 50%;
+  border-radius: 8px;        /* 丸でなく角丸 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -827,6 +827,7 @@ section {
   color: var(--color-white);
   line-height: 1;
   margin-top: 4px;
+  box-shadow: 0 4px 12px rgba(232,68,17,0.35); /* 点灯感 */
 }
 
 .pt-badge-label {
@@ -883,12 +884,12 @@ section {
 .pt-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 4px;
+  gap: 0;                    /* 隔陘なしで一体型テーブルに */
 }
 
 .pt-card {
   border: 1px solid var(--color-gray-200);
-  border-radius: 6px;
+  border-radius: 0;          /* 角なしで水平方向に流れる */
   overflow: hidden;
 }
 
