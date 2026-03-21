@@ -491,7 +491,7 @@ section {
 .hero-build-text {
   font-family: var(--font-en);
   font-size: clamp(1.8rem, 8vw, 5rem);
-  font-weight: 700;          /* 900→700で少し細く */
+  font-weight: 500;          /* 700→500 細め */
   line-height: 0.9;
   color: var(--color-white);
 }
