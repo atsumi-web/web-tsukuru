@@ -827,38 +827,41 @@ section {
 
 /* バッジ - Type-Dと同じrotate技法 */
 .pt-badge {
-  display: none;               /* モバイル: バッジを非表示 */
-  position: absolute;
-  left: -30px;
-  top: 0;
-  width: 60px;
-  height: 60px;
+  display: inline-flex;        /* モバイル: フラットピルラベル */
+  position: static;            /* インライン配置 */
+  transform: none;
+  width: auto;
+  height: auto;
+  padding: 4px 14px;
+  border-radius: 20px;         /* ピル形状 */
+  border-bottom-left-radius: 20px;
   background: linear-gradient(135deg, var(--color-primary) 0%, #bf3008 100%);
   color: var(--color-white);
-  border-radius: 50%;
-  border-bottom-left-radius: 0;  /* 左下の角のみ尖らせる */
-  transform: rotate(-45deg);     /* 全体を左側投スらせる→下が尖のピン */
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  z-index: 10;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1;
 }
 
 .pt-badge-content {
-  transform: rotate(45deg);      /* テキストを正立に戻す */
+  transform: none;             /* モバイル: ピルなので回転不要 */
   text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .pt-badge-label {
   font-family: var(--font-en);
-  font-size: 0.45rem;
-  letter-spacing: 0.1em;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
   font-weight: 700;
 }
 
 .pt-badge-num {
   font-family: var(--font-en);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
 }
 
@@ -1736,7 +1739,28 @@ section {
 
   /* Training */
   /* Training: desktopでバッジ・装飾を復元 */
-  .pt-badge { display: flex; }  /* アイコンバッジ 表示 */
+  .pt-badge {
+    display: flex;             /* プラックス → 元のピンバッジ */
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    border-bottom-left-radius: 0;
+    transform: rotate(-45deg);
+    margin-bottom: 0;
+  }
+
+  .pt-badge-content {
+    transform: rotate(45deg);  /* テキスト正立 */
+    gap: 0;
+    display: block;
+  }
+
+  .pt-badge-label { font-size: 0.45rem; letter-spacing: 0.1em; }
+  .pt-badge-num   { font-size: 1.1rem; }
 
   .pt-point {
     margin-left: 30px;
