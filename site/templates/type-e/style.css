@@ -1177,11 +1177,11 @@ section {
 .voice-card {
   background: var(--color-white);
   border-radius: var(--radius-md);
-  padding: 40px;
+  padding: 32px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 32px;
   align-items: flex-start;
 }
 
