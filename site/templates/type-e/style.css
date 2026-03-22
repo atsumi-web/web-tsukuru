@@ -194,7 +194,15 @@ section {
 }
 
 .header.compact {
-  height: var(--header-h);   /* スクロール後: 64px */
+  height: var(--header-h);     /* スクロール後: 64px */
+}
+
+.header.compact .logo-main {
+  font-size: 36px;             /* スクロール後: 通常サイズ */
+}
+
+.header.compact .logo-sub {
+  font-size: 12px;             /* スクロール後: 通常サイズ */
 }
 
 .header.scrolled {
@@ -220,12 +228,13 @@ section {
 
 .logo-main {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 36px;
+  font-size: 52px;             /* スクロール前: 2周り大きく */
   font-weight: bold;
   color: var(--color-dark);
   line-height: 1;
   letter-spacing: -1px;
   position: relative;
+  transition: font-size 0.3s ease;
 }
 
 .logo-dot {
@@ -240,10 +249,11 @@ section {
 
 .logo-sub {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 16px;             /* スクロール前: 大きめ */
   font-weight: 500;
   color: var(--color-dark);
   letter-spacing: 0.1em;
+  transition: font-size 0.3s ease;
 }
 
 /* Desktop Nav — hidden below 1024px */
