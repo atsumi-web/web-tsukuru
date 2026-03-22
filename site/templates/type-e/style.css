@@ -631,21 +631,21 @@ section {
 .data-card {
   background: var(--color-white);
   border-radius: var(--radius-md);
-  padding: var(--sp-lg) var(--sp-md);
+  padding: 16px 12px;          /* モバイル: コンパクト化 */
   text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 /* アイコン円 */
 .data-icon {
-  width: 56px;
-  height: 56px;
+  width: 40px;                 /* モバイル: 56px→40px */
+  height: 40px;
   background: #FEE8E2;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
+  margin: 0 auto 10px;
   color: var(--color-primary);
 }
 
@@ -887,11 +887,11 @@ section {
 }
 
 .pt-timeline-bar {
-  display: flex;             /* 一体型ピル形: Type-D方式 */
+  display: none;               /* モバイル: バー非表示（各カード内に期間を表示） */
   height: 50px;
   margin-bottom: 24px;
-  border-radius: 25px;       /* 全体をピル形に */
-  overflow: hidden;          /* 子要素をピル形にクリップ */
+  border-radius: 25px;
+  overflow: hidden;
 }
 
 .pt-phase {
@@ -931,6 +931,17 @@ section {
   font-size: 0.72rem;
   font-weight: 700;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.pt-card-period {
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
 }
 
 .pt-card-body { padding: 10px; }
@@ -1712,6 +1723,9 @@ section {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .data-card { padding: var(--sp-lg) var(--sp-md); }  /* desktop: 通常サイズ */
+  .data-icon { width: 56px; height: 56px; margin-bottom: 16px; } /* desktop復元 */
+
   /* Works */
   .works-grid {
     display: grid;
@@ -1771,6 +1785,10 @@ section {
   .pt-body { padding-left: 50px; }
 
   .pt-phase { font-size: 0.85rem; }  /* desktopは通常サイズに戻す */
+
+  .pt-timeline-bar { display: flex; }  /* desktop: バー表示を復元 */
+  .pt-card-period  { display: none; }  /* desktop: カード内期間ラベル不要 */
+  .pt-card-header  { flex-direction: row; gap: 0; justify-content: center; } /* 1行に */
 
   .pt-cards { grid-template-columns: 1fr 1fr 1fr; }  /* desktop: 3カラム */
 
