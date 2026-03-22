@@ -404,6 +404,7 @@ section {
   width: max-content;          /* コンテンツ幅で計算(-50%が正確に動く) */
   gap: 10px;
   animation: heroScroll 15s linear infinite;
+  animation-play-state: paused; /* 画像ロード完了後にJSでrunningに切替 */
   will-change: transform;
 }
 
