@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>制作実績｜渥美絵里 — Webデザイナー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;800&family=Outfit:wght@400;600;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Noto Sans JP',sans-serif;background:#111827;color:#e8eaf0;line-height:1.7;font-size:15px}
+    a{color:inherit;text-decoration:none}
+    :root{
+      --gold:#c5a059;--gold-l:#e8c97a;
+      --card:#1a2540;--border:rgba(255,255,255,0.09);--muted:rgba(255,255,255,0.5);
+      --serif:'Shippori Mincho',serif;--en:'Outfit',sans-serif;
+    }
+    .page{max-width:1060px;margin:0 auto;padding:64px 36px 100px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    @media(max-width:760px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.grid-3,.grid-4{grid-template-columns:1fr}}
+
+    /* HEADER */
+    .hero{text-align:center;padding-bottom:56px;border-bottom:1px solid rgba(197,160,89,0.22);margin-bottom:72px}
+    .hero-label{font-family:var(--en);font-size:.72rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+    .hero-name{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;color:#fff;margin-bottom:14px;line-height:1.2}
+    .hero-name span{color:var(--gold)}
+    .hero-sub{font-size:.92rem;color:var(--muted);line-height:2;margin-bottom:36px}
+    .stats{display:flex;justify-content:center;gap:44px;flex-wrap:wrap}
+    .stat-num{font-family:var(--en);font-size:2.3rem;font-weight:800;color:var(--gold);display:block;line-height:1}
+    .stat-label{font-size:.7rem;color:var(--muted);margin-top:4px}
+    .stat-div{width:1px;height:36px;background:rgba(255,255,255,0.12);align-self:center}
+
+    /* SECTION */
+    .sec{margin-bottom:80px}
+    .sec-label{font-family:var(--en);font-size:.68rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .sec-title{font-family:var(--serif);font-size:1.55rem;font-weight:800;color:#fff;margin-bottom:28px}
+    .sec-title span{color:var(--gold)}
+
+    /* DIVIDER */
+    .div{height:1px;background:linear-gradient(90deg,transparent,rgba(197,160,89,.2),transparent);margin:72px 0}
+
+    /* BROWSER MOCKUP */
+    .mockup-wrap{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.08);background:#1e2a3a;margin-bottom:24px;cursor:pointer;transition:transform .25s,box-shadow .25s}
+    .mockup-wrap:hover{transform:translateY(-4px);box-shadow:0 32px 80px rgba(0,0,0,0.7)}
+    .mockup-bar{background:#1e2a3a;padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.07)}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c940}
+    .url-bar{flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:4px 12px;font-family:var(--en);font-size:.68rem;color:rgba(255,255,255,0.4);letter-spacing:.02em;margin-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .mockup-img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top}
+    .mockup-wrap.sm .mockup-img{aspect-ratio:4/3}
+    .mockup-link{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);color:#fff;font-size:.72rem;padding:5px 12px;border-radius:6px;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,0.12);transition:background .2s}
+    .mockup-wrap:hover .mockup-link{background:var(--gold);color:#000;border-color:var(--gold)}
+
+    /* CARD */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .card-hd{background:linear-gradient(135deg,#141c2e,#1d2b45);padding:24px 30px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .card-hd::after{content:attr(data-bg);position:absolute;right:-6px;bottom:-18px;font-family:var(--en);font-size:3rem;font-weight:800;color:rgba(255,255,255,0.025);pointer-events:none;white-space:nowrap}
+    .ctag{font-family:var(--en);font-size:.6rem;letter-spacing:.15em;padding:3px 10px;border-radius:20px;border:1px solid rgba(197,160,89,.4);color:var(--gold);display:inline-block;margin-bottom:8px;text-transform:uppercase}
+    .ctag.blue{border-color:rgba(99,179,237,.4);color:#90cdf4}
+    .ctag.green{border-color:rgba(72,187,120,.4);color:#9ae6b4}
+    .ctag.pink{border-color:rgba(237,100,166,.4);color:#f9a8d4}
+    .card-name{font-family:var(--serif);font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:5px}
+    .card-catch{font-size:.82rem;color:var(--muted);line-height:1.8}
+    .card-bd{padding:24px 30px}
+
+    /* DETAIL LIST */
+    .ul{list-style:none;padding:0}
+    .ul li{font-size:.82rem;color:rgba(255,255,255,.75);padding:6px 0 6px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.6}
+    .ul li:last-child{border-bottom:none}
+    .ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:.75rem}
+
+    /* HIGHLIGHT */
+    .hl{background:linear-gradient(135deg,rgba(197,160,89,.09),rgba(197,160,89,.03));border:1px solid rgba(197,160,89,.25);border-radius:10px;padding:14px 18px;margin-top:14px}
+    .hl-lbl{font-family:var(--en);font-size:.6rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+    .hl-txt{font-size:.82rem;color:rgba(255,255,255,.8);line-height:1.8}
+    .hl-txt strong{color:var(--gold-l)}
+
+    /* CHIPS */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);background:rgba(255,255,255,.04);transition:all .2s}
+    .chip:hover{border-color:var(--gold);color:var(--gold-l)}
+    .chip.gold{background:var(--gold);border-color:var(--gold);color:#000;font-weight:700}
+    .chip.gold:hover{background:var(--gold-l)}
+
+    /* MINI CARD */
+    .mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px;transition:border-color .2s}
+    .mini:hover{border-color:rgba(197,160,89,.3)}
+    .mini-lbl{font-family:var(--en);font-size:1rem;font-weight:800;color:var(--gold);margin-bottom:5px}
+    .mini-name{font-weight:700;color:#fff;font-size:.88rem;margin-bottom:4px}
+    .mini-desc{font-size:.76rem;color:var(--muted);line-height:1.7}
+
+    /* GALLERY */
+    .gallery{display:grid;gap:10px}
+    .gallery.cols-2{grid-template-columns:repeat(2,1fr)}
+    .gallery.cols-3{grid-template-columns:repeat(3,1fr)}
+    .gallery.cols-4{grid-template-columns:repeat(4,1fr)}
+    @media(max-width:720px){.gallery.cols-3,.gallery.cols-4{grid-template-columns:repeat(2,1fr)}}
+    .gal-item{border-radius:9px;overflow:hidden;aspect-ratio:1;background:#0c1528;border:1px solid var(--border);cursor:pointer;transition:transform .2s,border-color .2s}
+    .gal-item:hover{transform:scale(1.03);border-color:rgba(197,160,89,.4)}
+    .gal-item img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+    .gal-item.wide{aspect-ratio:16/9}
+    .gal-item.tall{aspect-ratio:3/4}
+    .gal-item.rect{aspect-ratio:2/1}
+
+    /* TECH TAGS */
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+    .tech{font-family:var(--en);font-size:.62rem;padding:4px 10px;border-radius:20px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);color:#93c5fd;font-weight:600}
+
+    /* REEL CARD */
+    .reel-card{cursor:pointer}
+    .reel-thumb{aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#0c1528 center/cover no-repeat;position:relative;border:1px solid var(--border);transition:transform .25s,box-shadow .25s}
+    .reel-card:hover .reel-thumb{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+    .reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);transition:background .2s}
+    .reel-play i{font-size:1.8rem;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.6));transition:transform .2s}
+    .reel-card:hover .reel-play{background:rgba(0,0,0,0.5)}
+    .reel-card:hover .reel-play i{transform:scale(1.15)}
+    .reel-title{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:8px;text-align:center;line-height:1.5}
+
+    /* LIGHTBOX */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+    .lb.open{display:flex}
+    .lb img{max-width:92vw;max-height:90vh;border-radius:8px;object-fit:contain;box-shadow:0 8px 60px rgba(0,0,0,0.8)}
+    .lb-close{position:absolute;top:18px;right:24px;font-size:2rem;color:#fff;cursor:pointer;opacity:.6;transition:opacity .2s;line-height:1}
+    .lb-close:hover{opacity:1}
+
+    /* VIDEO MODAL */
+    .vmod{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+    .vmod.open{display:flex}
+    .vmod video{max-height:88vh;max-width:92vw;border-radius:10px;box-shadow:0 8px 60px rgba(0,0,0,.8)}
+    .vmod-close{position:absolute;top:18px;right:24px;font-size:2rem;color:#fff;cursor:pointer;opacity:.6;transition:opacity .2s;line-height:1}
+    .vmod-close:hover{opacity:1}
+
+    /* LABEL */
+    .lbl{font-family:var(--en);font-size:.6rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+
+    /* FOOTER */
+    .foot{margin-top:60px;padding-top:40px;border-top:1px solid rgba(197,160,89,.2);text-align:center}
+    .foot-name{font-family:var(--serif);font-size:1.1rem;color:var(--gold);margin-bottom:8px}
+    .foot-c{font-size:.8rem;color:var(--muted);margin-bottom:5px}
+    .foot-c a{color:var(--gold-l)}
+    .foot-copy{font-family:var(--en);font-size:.65rem;color:rgba(255,255,255,.2);margin-top:10px}
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="hero">
+    <p class="hero-label">Portfolio · 2026</p>
+    <h1 class="hero-name"><span>渥美絵里</span>の制作実績</h1>
+    <p class="hero-sub">
+      LP制作・Webデザイン・SNSコンテンツ制作を担当するフリーランスWebデザイナー。<br />
+      HTML/CSS/JSによるフルスクラッチ実装からCanvaデザインまで幅広く対応。
+    </p>
+    <div class="stats">
+      <div style="text-align:center"><span class="stat-num">5+</span><div class="stat-label">LP制作実績</div></div>
+      <div class="stat-div"></div>
+      <div style="text-align:center"><span class="stat-num">90<small style="font-size:.85rem">本</small></span><div class="stat-label">SNSコンテンツ</div></div>
+      <div class="stat-div"></div>
+      <div style="text-align:center"><span class="stat-num">0<small style="font-size:.85rem">円</small></span><div class="stat-label">月額維持費</div></div>
+      <div class="stat-div"></div>
+      <div style="text-align:center"><span class="stat-num">8h</span><div class="stat-label">平日・休日 稼働</div></div>
+    </div>
+  </header>
+
+  <!-- 01 LP実績 -->
+  <section class="sec">
+    <p class="sec-label">01 · LP制作実績 · Live</p>
+    <h2 class="sec-title">採用ランディングページ ― <span>フルスクラッチ制作</span></h2>
+
+    <a href="https://recruit.hottacon.co.jp/" target="_blank" class="mockup-wrap" style="display:block;position:relative;">
+      <div class="mockup-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="url-bar">recruit.hottacon.co.jp</span>
+      </div>
+      <img class="mockup-img" src="cw_portfolio/lp/01_lp_hotta/hotta_top.png" alt="採用LP トップ" onerror="this.style.display='none'" />
+      <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを見る</span>
+    </a>
+
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="mockup-wrap sm" style="cursor:default">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">社長メッセージ・会社概要</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/01_lp_hotta/hotta_mid.png" alt="LP 中間" onerror="this.style.display='none'" />
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;padding-left:4px">
+        <ul class="ul">
+          <li>採用LP フルスクラッチ（100+セクション）</li>
+          <li>社員インタビュー 3名分（ヒアリング〜原稿化）</li>
+          <li>LINE 応募導線 設計・設定</li>
+          <li>GA4 / Search Console 設置</li>
+        </ul>
+        <div class="hl">
+          <p class="hl-lbl">LIVE</p>
+          <p class="hl-txt"><strong>recruit.hottacon.co.jp</strong><br>現在稼働中 · GitHub × Cloudflare Pages<br>月額維持費 0円で運用中</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- 02 自社サイト -->
+  <section class="sec">
+    <p class="sec-label">02 · Agency Site · web-tsukuru.jp</p>
+    <h2 class="sec-title">自社エージェンシーサイト ― <span>フルスクラッチ構築</span></h2>
+
+    <a href="https://web-tsukuru.jp/" target="_blank" class="mockup-wrap" style="display:block;position:relative;">
+      <div class="mockup-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="url-bar">web-tsukuru.jp</span>
+      </div>
+      <img class="mockup-img" src="cw_portfolio/lp/02_lp_agency/agency_top.png" alt="web-tsukuru.jp" onerror="this.style.display='none'" />
+      <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを見る</span>
+    </a>
+
+    <div class="grid-4" style="margin-bottom:24px">
+      <a href="https://web-tsukuru.jp/service.html" target="_blank" class="mockup-wrap sm">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">料金・サービス</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/02_lp_agency/service_page.png" alt="サービスページ" onerror="this.style.display='none'" />
+      </a>
+      <a href="https://web-tsukuru.jp/works.html" target="_blank" class="mockup-wrap sm">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">works.html</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/02_lp_agency/works_page.png" alt="works" onerror="this.style.display='none'" />
+      </a>
+      <a href="https://web-tsukuru.jp/blog/index.html" target="_blank" class="mockup-wrap sm">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">blog</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/02_lp_agency/blog_top.png" alt="ブログ" onerror="this.style.display='none'" />
+      </a>
+      <a href="https://web-tsukuru.jp/saiyou-shindan" target="_blank" class="mockup-wrap sm" style="position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">採用LP無料診断</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/02_lp_agency/shindan_top.png" alt="無料診断" onerror="this.style.display='none'" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- 03 LPテンプレート -->
+  <section class="sec">
+    <p class="sec-label">03 · LP Template Library</p>
+    <h2 class="sec-title">スクラッチ開発 <span>LPテンプレート</span></h2>
+
+    <div class="grid-2" style="gap:16px;margin-bottom:24px">
+      <a href="https://web-tsukuru.jp/templates/type-a/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type A — 職人型</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/03_lp_templates/type_a.png" alt="Type A" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+      <a href="https://web-tsukuru.jp/templates/type-b/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type B — テクノロジー型</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/03_lp_templates/type_b.png" alt="Type B" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+      <a href="https://web-tsukuru.jp/templates/type-c/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type C — フロンティア型</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/03_lp_templates/type_c.png" alt="Type C" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+      <a href="https://web-tsukuru.jp/templates/type-e/" target="_blank" class="mockup-wrap sm" style="display:block;position:relative">
+        <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url-bar">Type E — モダン&middot;プレミアム型</span></div>
+        <img class="mockup-img" src="cw_portfolio/lp/03_lp_templates/type_e.png" alt="Type E" />
+        <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 見る</span>
+      </a>
+    </div>
+
+    <div class="grid-2">
+      <div class="mini"><p class="mini-lbl">Type A</p><p class="mini-name">職人・匠型</p><p class="mini-desc">Ken Burns Hero + ギャラリー。深い信頼と技術の厚みを訴求。</p></div>
+      <div class="mini"><p class="mini-lbl">Type B</p><p class="mini-name">テクノロジー型</p><p class="mini-desc">BIM / ドローン / DX 推進を訴求。ハイテク企業向け。</p></div>
+      <div class="mini"><p class="mini-lbl">Type C</p><p class="mini-name">フロンティア型</p><p class="mini-desc">挑戦・拡大志向のブランドに。採用・新規事業両対応。</p></div>
+      <div class="mini"><p class="mini-lbl">Type E</p><p class="mini-name">モダン・プレミアム型</p><p class="mini-desc">マーキーヒーロー × 建設現場写真のピンボード型デザイン。</p></div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- 04 カフェLP（KOHAKU） -->
+  <section class="sec">
+    <p class="sec-label">04 · Web Design Sample</p>
+    <h2 class="sec-title">カフェ・レストランLP ― <span>KOHAKU / サンプル制作</span></h2>
+
+    <a href="https://web-tsukuru.jp/templates/sample01/" target="_blank" class="mockup-wrap" style="display:block;position:relative;">
+      <div class="mockup-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="url-bar">KOHAKU — Nature, Silence and Coffee.</span>
+      </div>
+      <div style="width:100%;aspect-ratio:16/9;background:#1a1f12;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-family:var(--en);flex-direction:column;gap:8px">
+        <i class="fa-solid fa-mug-hot" style="font-size:2rem"></i>
+        <p style="font-size:.8rem">KOHAKU Café — ダークグリーン × 自然系デザイン</p>
+      </div>
+      <span class="mockup-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを見る</span>
+    </a>
+
+    <div class="hl" style="margin-top:0">
+      <p class="hl-lbl">DESIGN CONCEPT</p>
+      <p class="hl-txt">ダークグリーン × ナチュラルテイスト。カフェ・レストランのLPとして<strong>世界観重視のデザイン</strong>を実装。全セクションをゼロからコーディング。</p>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- 05 SNSコンテンツ -->
+  <section class="sec">
+    <p class="sec-label">05 · SNS Content</p>
+    <h2 class="sec-title">Instagram <span>フィード投稿・Reel動画</span></h2>
+
+    <p class="lbl" style="margin-bottom:12px">INSTAGRAM FEED</p>
+    <div class="gallery cols-3" style="margin-bottom:32px">
+      <div class="gal-item" onclick="openLb('cw_portfolio/sns/04_instagram_feed/01/1.png')"><img src="cw_portfolio/sns/04_instagram_feed/01/1.png" alt="フィード 1" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/sns/04_instagram_feed/01/2.png')"><img src="cw_portfolio/sns/04_instagram_feed/01/2.png" alt="フィード 2" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/sns/04_instagram_feed/01/3.png')"><img src="cw_portfolio/sns/04_instagram_feed/01/3.png" alt="フィード 3" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/sns/04_instagram_feed/01/4.png')"><img src="cw_portfolio/sns/04_instagram_feed/01/4.png" alt="フィード 4" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/sns/04_instagram_feed/01/5.png')"><img src="cw_portfolio/sns/04_instagram_feed/01/5.png" alt="フィード 5" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/sns/04_instagram_feed/01/6.png')"><img src="cw_portfolio/sns/04_instagram_feed/01/6.png" alt="フィード 6" loading="lazy" /></div>
+    </div>
+
+    <p class="lbl" style="margin-bottom:12px">REEL / SHORT VIDEOS</p>
+    <div class="grid-4" style="margin-bottom:32px">
+      <div class="reel-card" data-video="cw_portfolio/sns/05_reels/Webとしくみをつくる えり.mp4">
+        <div class="reel-thumb" style="background-image:url('cw_portfolio/sns/05_reels/Webとしくみをつくる えり.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">ハイライト動画 — えり</p>
+      </div>
+      <div class="reel-card" data-video="cw_portfolio/sns/05_reels/よくある質問.mp4">
+        <div class="reel-thumb" style="background-image:url('cw_portfolio/sns/05_reels/よくある質問.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">よくある質問</p>
+      </div>
+      <div class="reel-card" data-video="cw_portfolio/sns/05_reels/制作の流れ.mp4">
+        <div class="reel-thumb" style="background-image:url('cw_portfolio/sns/05_reels/制作の流れ.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">制作の流れ</p>
+      </div>
+      <div class="reel-card" data-video="cw_portfolio/sns/05_reels/無料診断.mp4">
+        <div class="reel-thumb" style="background-image:url('cw_portfolio/sns/05_reels/無料診断.png')">
+          <div class="reel-play"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <p class="reel-title">無料診断</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- 06 デザイン実績 -->
+  <section class="sec">
+    <p class="sec-label">06 · Design Works</p>
+    <h2 class="sec-title">グラフィックデザイン ― <span>チラシ・名刺・LINE</span></h2>
+
+    <!-- A4チラシ -->
+    <p class="lbl" style="margin-bottom:12px">A4 FLYER</p>
+    <div class="gallery cols-3" style="margin-bottom:32px">
+      <div class="gal-item wide" onclick="openLb('cw_portfolio/design/flyer/2025020｜チラシ｜エステサロン1.png')"><img src="cw_portfolio/design/flyer/2025020｜チラシ｜エステサロン1.png" alt="エステサロンチラシ" loading="lazy" /></div>
+      <div class="gal-item wide" onclick="openLb('cw_portfolio/design/flyer/2025022｜チラシ｜エステサロン.png')"><img src="cw_portfolio/design/flyer/2025022｜チラシ｜エステサロン.png" alt="エステサロンチラシ2" loading="lazy" /></div>
+      <div class="gal-item wide" onclick="openLb('cw_portfolio/design/flyer/2025029｜チラシ｜資産運用セミナー.png')"><img src="cw_portfolio/design/flyer/2025029｜チラシ｜資産運用セミナー.png" alt="セミナーチラシ" loading="lazy" /></div>
+    </div>
+
+    <!-- LINEリッチメニュー -->
+    <p class="lbl" style="margin-bottom:12px">LINE RICH MENU</p>
+    <div class="gallery cols-2" style="margin-bottom:32px">
+      <div class="gal-item rect" onclick="openLb('cw_portfolio/design/line/ラインリッチメニュー.png')"><img src="cw_portfolio/design/line/ラインリッチメニュー.png" alt="LINEリッチメニュー1" loading="lazy" /></div>
+      <div class="gal-item rect" onclick="openLb('cw_portfolio/design/line/リッチメニュー03.png')"><img src="cw_portfolio/design/line/リッチメニュー03.png" alt="LINEリッチメニュー2" loading="lazy" /></div>
+    </div>
+
+    <!-- 名刺 -->
+    <p class="lbl" style="margin-bottom:12px">BUSINESS CARD</p>
+    <div class="gallery cols-4">
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/4-1.png')"><img src="cw_portfolio/design/card/4-1.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/4-2.png')"><img src="cw_portfolio/design/card/4-2.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/5-1.png')"><img src="cw_portfolio/design/card/5-1.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/5-2.png')"><img src="cw_portfolio/design/card/5-2.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/6-1.png')"><img src="cw_portfolio/design/card/6-1.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/6-2.png')"><img src="cw_portfolio/design/card/6-2.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/7-1.png')"><img src="cw_portfolio/design/card/7-1.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/7-2.png')"><img src="cw_portfolio/design/card/7-2.png" alt="名刺" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- Tech -->
+  <section class="sec" style="margin-bottom:0">
+    <div class="grid-2" style="gap:40px;align-items:start">
+      <div>
+        <p class="sec-label">Tech Stack</p>
+        <h2 class="sec-title" style="font-size:1.3rem;margin-bottom:20px">使用<span>技術・ツール</span></h2>
+        <p class="lbl">FRONTEND</p>
+        <div class="tags" style="margin-bottom:16px"><span class="tech">HTML5</span><span class="tech">CSS3 Vanilla</span><span class="tech">JavaScript ES6+</span></div>
+        <p class="lbl">DESIGN</p>
+        <div class="tags" style="margin-bottom:16px"><span class="tech">Canva</span><span class="tech">WebP最適化</span></div>
+        <p class="lbl">INFRA</p>
+        <div class="tags"><span class="tech">GitHub Pages</span><span class="tech">Cloudflare Pages（月0円）</span></div>
+      </div>
+      <div>
+        <p class="sec-label">Conditions</p>
+        <h2 class="sec-title" style="font-size:1.3rem;margin-bottom:20px">稼働<span>条件</span></h2>
+        <ul class="ul">
+          <li>平日・休日問わず 8時間稼働</li>
+          <li>LP制作（HTML/CSS/JS フルスクラッチ）</li>
+          <li>Canvaデザイン（SNS・チラシ・名刺等）</li>
+          <li>修正対応 迅速リターン</li>
+          <li>納期厳守・責任を持って最後まで対応</li>
+        </ul>
+        <div class="chips" style="margin-top:20px">
+          <a href="https://web-tsukuru.jp/" target="_blank" class="chip gold"><i class="fa-solid fa-arrow-up-right-from-square"></i> 自社サイト</a>
+          <a href="mailto:info@web-tsukuru.jp" class="chip"><i class="fa-solid fa-envelope"></i> メールで問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="foot-name">渥美絵里 — Webデザイナー</p>
+    <p class="foot-c"><a href="mailto:info@web-tsukuru.jp">info@web-tsukuru.jp</a> ／ <a href="https://web-tsukuru.jp/" target="_blank">web-tsukuru.jp</a></p>
+    <p class="foot-copy">© 2026 渥美絵里</p>
+  </footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="this.classList.remove('open')">
+  <span class="lb-close">&times;</span>
+  <img id="lb-img" src="" alt="" />
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="vmod" id="vmod">
+  <span class="vmod-close" onclick="document.getElementById('vmod').classList.remove('open');document.getElementById('vmod-video').pause();document.getElementById('vmod-video').src=''">&times;</span>
+  <video id="vmod-video" controls playsinline></video>
+</div>
+
+<script>
+function openLb(src){
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb').classList.add('open');
+}
+
+const vmod = document.getElementById('vmod');
+const vmodEl = document.getElementById('vmod-video');
+document.querySelectorAll('.reel-card').forEach(card => {
+  card.addEventListener('click', () => {
+    vmodEl.src = card.dataset.video;
+    vmod.classList.add('open');
+    vmodEl.play();
+  });
+});
+document.getElementById('vmod').addEventListener('click', () => {
+  vmod.classList.remove('open');
+  vmodEl.pause();
+  vmodEl.src = '';
+});
+
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target); }
+}), {threshold:0.07});
+document.querySelectorAll('.sec,.card,.mini,.mockup-wrap,.gallery,.reel-card').forEach(el => {
+  el.style.cssText += ';opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
