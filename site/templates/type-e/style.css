@@ -228,7 +228,7 @@ section {
 
 .logo-main {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 52px;             /* スクロール前: 2周り大きく */
+  font-size: 36px;             /* モバイル: 通常サイズ（mobile-first） */
   font-weight: bold;
   color: var(--color-dark);
   line-height: 1;
@@ -249,7 +249,7 @@ section {
 
 .logo-sub {
   font-family: var(--font-sans);
-  font-size: 16px;             /* スクロール前: 大きめ */
+  font-size: 12px;             /* モバイル: 通常サイズ */
   font-weight: 500;
   color: var(--color-dark);
   letter-spacing: 0.1em;
@@ -816,8 +816,9 @@ section {
 .pt-point {
   margin-bottom: 80px;
   position: relative;
-  padding-left: 40px;
-  border-left: 1px solid rgba(0, 0, 0, 0.1); /* 縦ライン */
+  padding-left: 60px;          /* モバイル: バッジの占有スペースを前提に辺 40px→ 60px */
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  margin-left: 30px;           /* バッジ(left:-30px)の分をオフセット */
 }
 
 .pt-point:last-child {
@@ -1626,6 +1627,13 @@ section {
   /* Header */
   .hamburger { display: none; }
   .nav-drawer { display: none !important; }
+
+  /* Logo: デスクトップでスクロール前のみ大きく */
+  .logo-main { font-size: 52px; }
+  .logo-sub  { font-size: 16px; }
+
+  /* Members section desc: デスクトップは1行に */
+  .members .section-desc { max-width: none; }
 
   .nav {
     display: flex;
