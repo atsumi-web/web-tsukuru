@@ -641,7 +641,7 @@ section {
 .data-number {
   font-family: var(--font-en);
   font-size: clamp(2rem, 7vw, 3rem);
-  font-weight: 400;          /* 700→400 細字 */
+  font-weight: 600;          /* 細字 */
   color: var(--color-dark);
   line-height: 1;
   margin-bottom: 4px;
