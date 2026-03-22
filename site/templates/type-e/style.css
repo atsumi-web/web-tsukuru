@@ -109,7 +109,7 @@ ul { list-style: none; }
   color: var(--color-gray-700);
   line-height: 1.8;
   max-width: 600px;
-  text-wrap: balance;          /* 行を均等配分して末尾孤立を防ぐ */
+  text-wrap: pretty;           /* 孤立語防止 */
 }
 
 /* ============================================================
