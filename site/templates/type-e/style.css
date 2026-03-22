@@ -448,8 +448,8 @@ section {
 /* 圓の内側から変わらず園の下端に教占 */
 .hero-line {
   position: absolute;
-  left: 5px;                 /* 新丸中心X: -100+100=0px→少し内側に5px */
-  top: calc(100% - 250px);  /* 新丸中心: bottom:250px=(bottom:150px+height:200px/2) */
+  left: 10px;                /* 5px右へ */
+  top: calc(100% - 260px);  /* +5px上げ */
   width: 2px;
   height: 0;
   background: rgba(255,255,255,0.85);
