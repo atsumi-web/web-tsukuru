@@ -36,7 +36,7 @@
   </style>
 
   <!-- Main CSS (1LP = 1CSS 鉄則) -->
-  <link rel="stylesheet" href="style.css?v=1.6.7">
+  <link rel="stylesheet" href="style.css?v=1.6.8">
 </head>
 <body>
 
@@ -1060,6 +1060,23 @@
   }, { threshold: 0.1 });
   revealEls.forEach(el => revealObs.observe(el));
 
+</script>
+
+<!-- ============================================================
+     Back to Top Button
+     ============================================================ -->
+<button id="backToTop" aria-label="ページ先頭に戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M10 14V6M10 6L6 10M10 6l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script>
+  // Back to top: show after 300px scroll
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  });
 </script>
 
 </body>
