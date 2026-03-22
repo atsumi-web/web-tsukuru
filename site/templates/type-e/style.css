@@ -1177,34 +1177,26 @@ section {
 .voice-card {
   background: var(--color-white);
   border-radius: var(--radius-md);
-  padding: 0;                  /* 左右で個別に管理 */
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   display: flex;
   flex-direction: row;
-  align-items: stretch;        /* 左右の高さを揃える */
-  overflow: hidden;            /* border-radiusにクリップ */
+  gap: 32px;
+  align-items: flex-start;
 }
 
-/* 左：ネイビー背景エリア */
 .voice-card-avatar-area {
   flex-shrink: 0;
-  width: 180px;
-  background: #1e3a5f;         /* ネイビー背景 */
-  padding: 32px 24px;
+  width: 150px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .voice-card-avatar {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 16px;
-  border: 3px solid rgba(255,255,255,0.3); /* 白い縁取り */
+  margin: 0 auto 12px;
 }
 
 .voice-card-avatar img {
@@ -1214,11 +1206,10 @@ section {
   object-position: top;
 }
 
-/* 名前・役職（白文字） */
 .voice-card-meta {
   font-size: 0.78rem;
   line-height: 1.8;
-  color: var(--color-white);   /* 白文字 */
+  color: var(--color-dark);
 }
 
 .voice-card-meta strong {
@@ -1229,18 +1220,11 @@ section {
 }
 
 .voice-card-meta small {
-  color: rgba(255,255,255,0.6);
-}
-
-/* 右：テキストエリア */
-.voice-card-body {
-  flex: 1;
-  padding: 32px;
-  display: flex;
-  align-items: center;
+  color: var(--color-gray-400);
 }
 
 .voice-card-text {
+  flex: 1;
   font-size: 0.95rem;
   line-height: 1.9;
   color: var(--color-dark);
