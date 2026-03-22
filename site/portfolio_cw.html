@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>制作実績｜渥美絵里 — Webデザイナー</title>
+  <title>制作実績｜渥美絵里 — Webクリエイター</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;800&family=Outfit:wght@400;600;800&display=swap" />
@@ -105,7 +105,7 @@
     .gal-item img{width:100%;display:block;object-fit:contain;}
     .gal-item.wide{aspect-ratio:16/9}
     .gal-item.tall{aspect-ratio:3/4}
-    .gal-item.rect{aspect-ratio:2/1}
+    .gal-item.rect{overflow:visible}
 
     /* TECH TAGS */
     .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
@@ -162,18 +162,40 @@
     .foot-c{font-size:.8rem;color:var(--muted);margin-bottom:5px}
     .foot-c a{color:var(--accent)}
     .foot-copy{font-family:var(--en);font-size:.65rem;color:#94a3b8;margin-top:10px}
+
+    /* FLOATING NAV */
+    .fnav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;display:flex;align-items:center;gap:6px;background:rgba(15,23,42,.88);backdrop-filter:blur(12px);border-radius:40px;padding:8px 14px;box-shadow:0 8px 32px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .3s ease;white-space:nowrap}
+    .fnav.visible{opacity:1;pointer-events:auto}
+    .fnav a,.fnav button{display:inline-flex;align-items:center;gap:5px;font-family:var(--en);font-size:.68rem;font-weight:700;letter-spacing:.05em;color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;padding:5px 10px;border-radius:20px;transition:background .2s,color .2s;text-decoration:none}
+    .fnav a:hover,.fnav button:hover{background:rgba(255,255,255,.12);color:#fff}
+    .fnav a i,.fnav button i{font-size:.75rem}
+    .fnav-sep{width:1px;height:18px;background:rgba(255,255,255,.15)}
+    .fnav-top{color:rgba(255,255,255,.55)!important}
   </style>
 </head>
 <body>
+
+<!-- FLOATING NAV -->
+<nav class="fnav" id="fnav">
+  <a href="#sec-lp"><i class="fa-solid fa-display"></i> LP</a>
+  <div class="fnav-sep"></div>
+  <a href="#sec-feed"><i class="fa-brands fa-instagram"></i> フィード</a>
+  <div class="fnav-sep"></div>
+  <a href="#sec-reel"><i class="fa-solid fa-film"></i> Reel</a>
+  <div class="fnav-sep"></div>
+  <a href="#sec-design"><i class="fa-solid fa-pen-nib"></i> デザイン</a>
+  <div class="fnav-sep"></div>
+  <button class="fnav-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-angle-up"></i> TOP</button>
+</nav>
 <div class="page">
 
   <header class="hero">
     <p class="hero-label">Portfolio · 2026</p>
     <h1 class="hero-name"><span>渥美絵里</span>の制作実績</h1>
     <p class="hero-sub">
-      LPデザイン・HTML/CSS/JS実装を専門とするフリーランスWebデザイナー。<br />
-      AIコーディング（バイブコーディング）を活用し、クオリティを落とさず<br />
-      効率よく制作。細部の仕上げは必ず人の目で確認しています。
+      LPデザイン・HTML/CSS/JS実装を専門とするフリーランスWebクリエイター。<br />
+      クオリティにこだわったフルスクラッチ制作で、<br />
+      細部の仕上げまで丁寧に対応しています。
     </p>
     <div style="margin-top:24px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
       <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--en);font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:7px 16px;border-radius:20px;background:rgba(79,70,229,.1);border:1px solid rgba(79,70,229,.25);color:var(--accent)"><i class="fa-solid fa-code"></i> ALL FULL-SCRATCH</span>
@@ -184,7 +206,7 @@
   </header>
 
   <!-- LP 作品一覧 -->
-  <section class="sec">
+  <section class="sec" id="sec-lp">
     <p class="sec-label">01 · LP / Web Works</p>
     <h2 class="sec-title">LP・Web制作実績 ― <span>全作品フルスクラッチ</span></h2>
 
@@ -231,27 +253,27 @@
   <div class="div"></div>
 
   <!-- 05 Instagram フィード投稿 -->
-  <section class="sec">
+  <section class="sec" id="sec-feed">
     <p class="sec-label">05 · Instagram Feed</p>
     <h2 class="sec-title">Instagram <span>フィード投稿</span></h2>
 
-    <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('feed','kyoiku',this)">テキスト系 <span style="font-size:.65rem;opacity:.7">4投稿</span></button>
-      <button class="tab-btn" onclick="switchTab('feed','f03',this)">美容系 <span style="font-size:.65rem;opacity:.7">8投稿</span></button>
-    </div>
-    <div id="kyoiku" class="tab-panel active" style="margin-bottom:32px">
+    <p class="lbl" style="margin-bottom:12px">TEXT</p>
+    <div style="margin-bottom:32px">
       <p style="font-size:.78rem;color:var(--muted);margin-bottom:12px">表紙をクリックすると投稿の全画像を確認できます</p>
       <div class="cover-grid" style="grid-template-columns:repeat(4,1fr)">
-        <div class="cover-item" onclick="showKyoikuPost(this,'k01')"><img src="cw_portfolio/sns/04_instagram_feed/01/1.png" alt="教育 投稿01 表紙" loading="lazy" /></div>
-        <div class="cover-item" onclick="showKyoikuPost(this,'k02')"><img src="cw_portfolio/sns/04_instagram_feed/02/1.png" alt="教育 投稿02 表紙" loading="lazy" /></div>
-        <div class="cover-item" onclick="showKyoikuPost(this,'k04')"><img src="cw_portfolio/sns/04_instagram_feed/04/1.png" alt="教育 投稿04 表紙" loading="lazy" /></div>
-        <div class="cover-item" onclick="showKyoikuPost(this,'k05')"><img src="cw_portfolio/sns/04_instagram_feed/05/1.png" alt="教育 投稿05 表紙" loading="lazy" /></div>
+        <div class="cover-item" onclick="showKyoikuPost(this,'k01')"><img src="cw_portfolio/sns/04_instagram_feed/01/1.png" alt="投稿01 表紙" loading="lazy" /></div>
+        <div class="cover-item" onclick="showKyoikuPost(this,'k02')"><img src="cw_portfolio/sns/04_instagram_feed/02/1.png" alt="投稿02 表紙" loading="lazy" /></div>
+        <div class="cover-item" onclick="showKyoikuPost(this,'k04')"><img src="cw_portfolio/sns/04_instagram_feed/04/1.png" alt="投稿04 表紙" loading="lazy" /></div>
+        <div class="cover-item" onclick="showKyoikuPost(this,'k06')"><img src="cw_portfolio/sns/04_instagram_feed/06/1.png" alt="投稿06 表紙" loading="lazy" /></div>
+        <div class="cover-item" onclick="showKyoikuPost(this,'k05')"><img src="cw_portfolio/sns/04_instagram_feed/05/1.png" alt="投稿05 表紙" loading="lazy" /></div>
       </div>
       <div id="kyoiku-detail" class="post-detail">
         <div class="gallery cols-3" id="kyoiku-images"></div>
       </div>
     </div>
-    <div id="f03" class="tab-panel" style="margin-bottom:32px">
+
+    <p class="lbl" style="margin-bottom:12px">BEAUTY</p>
+    <div style="margin-bottom:32px">
       <p style="font-size:.78rem;color:var(--muted);margin-bottom:12px">表紙をクリックすると投稿の全画像を確認できます</p>
       <div class="cover-grid">
         <div class="cover-item" onclick="showBeautyPost(this,'p01')"><img src="cw_portfolio/sns/04_instagram_feed/03/01-01.png" alt="表紙 01" loading="lazy" /></div>
@@ -272,7 +294,7 @@
   <div class="div"></div>
 
   <!-- 06 Instagram Reel動画 -->
-  <section class="sec">
+  <section class="sec" id="sec-reel">
     <p class="sec-label">06 · Instagram Reel</p>
     <h2 class="sec-title">Instagram <span>Reel動画</span></h2>
 
@@ -308,7 +330,7 @@
   <div class="div"></div>
 
   <!-- 06 デザイン実績 -->
-  <section class="sec">
+  <section class="sec" id="sec-design">
     <p class="sec-label">06 · Design Works</p>
     <h2 class="sec-title">グラフィックデザイン ― <span>チラシ・名刺・LINE</span></h2>
 
@@ -334,15 +356,21 @@
 
     <!-- 名刺 -->
     <p class="lbl" style="margin-bottom:12px">BUSINESS CARD</p>
-    <div class="gallery cols-4">
+    <!-- 横長名刺（4・5・7・9番） -->
+    <div class="gallery cols-2" style="margin-bottom:12px">
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/4-1.png')"><img src="cw_portfolio/design/card/4-1.png" alt="名刺" loading="lazy" /></div>
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/4-2.png')"><img src="cw_portfolio/design/card/4-2.png" alt="名刺" loading="lazy" /></div>
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/5-1.png')"><img src="cw_portfolio/design/card/5-1.png" alt="名刺" loading="lazy" /></div>
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/5-2.png')"><img src="cw_portfolio/design/card/5-2.png" alt="名刺" loading="lazy" /></div>
-      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/6-1.png')"><img src="cw_portfolio/design/card/6-1.png" alt="名刺" loading="lazy" /></div>
-      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/6-2.png')"><img src="cw_portfolio/design/card/6-2.png" alt="名刺" loading="lazy" /></div>
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/7-1.png')"><img src="cw_portfolio/design/card/7-1.png" alt="名刺" loading="lazy" /></div>
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/7-2.png')"><img src="cw_portfolio/design/card/7-2.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/9-1.png')"><img src="cw_portfolio/design/card/9-1.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/9-2.png')"><img src="cw_portfolio/design/card/9-2.png" alt="名刺" loading="lazy" /></div>
+    </div>
+    <!-- 縦長名刺（6・8番）cols-4でコンパクトに -->
+    <div class="gallery cols-4">
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/6-1.png')"><img src="cw_portfolio/design/card/6-1.png" alt="名刺" loading="lazy" /></div>
+      <div class="gal-item" onclick="openLb('cw_portfolio/design/card/6-2.png')"><img src="cw_portfolio/design/card/6-2.png" alt="名刺" loading="lazy" /></div>
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/8-1.png')"><img src="cw_portfolio/design/card/8-1.png" alt="名刺" loading="lazy" /></div>
       <div class="gal-item" onclick="openLb('cw_portfolio/design/card/8-2.png')"><img src="cw_portfolio/design/card/8-2.png" alt="名刺" loading="lazy" /></div>
     </div>
@@ -401,30 +429,10 @@
     </div>
   </section>
 
-  <div class="div"></div>
 
-  <!-- CTA -->
-  <section class="sec" style="text-align:center;padding-bottom:20px">
-    <p class="sec-label">Contact</p>
-    <h2 class="sec-title" style="margin-bottom:16px">お仕事のご相談、<span>お気軽にどうぞ</span></h2>
-    <p style="font-size:.9rem;color:var(--muted);line-height:2;margin-bottom:32px">
-      「こんなLP作りたいけどイメージが固まっていない」「まず見積もりだけ知りたい」<br />
-      そんなご相談でも大歓迎です。まずはお気軽にメッセージをお送りください。
-    </p>
-    <a href="mailto:info@web-tsukuru.jp"
-       style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;padding:16px 40px;border-radius:10px;font-weight:700;font-size:1rem;letter-spacing:.03em;box-shadow:0 4px 20px rgba(79,70,229,0.35);transition:background .2s,transform .2s"
-       onmouseover="this.style.background='#4338ca';this.style.transform='translateY(-2px)'"
-       onmouseout="this.style.background='var(--accent)';this.style.transform='translateY(0)'">
-      <i class="fa-solid fa-envelope"></i> メールでお問い合わせ
-    </a>
-    <p style="margin-top:16px;font-size:.78rem;color:var(--muted)">
-      ポートフォリオサイト：<a href="https://web-tsukuru.jp/" target="_blank" style="color:var(--accent)">web-tsukuru.jp</a>
-    </p>
-  </section>
 
   <footer class="foot">
-    <p class="foot-name">渥美絵里 — Webデザイナー</p>
-    <p class="foot-c"><a href="mailto:info@web-tsukuru.jp">info@web-tsukuru.jp</a> ／ <a href="https://web-tsukuru.jp/" target="_blank">web-tsukuru.jp</a></p>
+    <p class="foot-name">渥美絵里 — Webクリエイター</p>
     <p class="foot-copy">© 2026 渥美絵里</p>
   </footer>
 
@@ -435,6 +443,14 @@
   <span class="lb-close">&times;</span>
   <img id="lb-img" src="" alt="" />
 </div>
+
+<script>
+  // Floating nav: show after scrolling 200px
+  const fnav = document.getElementById('fnav');
+  window.addEventListener('scroll', () => {
+    fnav.classList.toggle('visible', window.scrollY > 200);
+  }, { passive: true });
+</script>
 
 <!-- VIDEO MODAL -->
 <div class="vmod" id="vmod">
@@ -469,7 +485,8 @@ const kyoikuPosts = {
   k01: ['01/1.png','01/2.png','01/3.png','01/4.png','01/5.png','01/6.png'],
   k02: ['02/1.png','02/2.png','02/3.png','02/4.png','02/5.png'],
   k04: ['04/1.png','04/2.png','04/3.png','04/4.png','04/5.png','04/6.png','04/7.png','04/8.png','04/9.png','04/10.png'],
-  k05: ['05/1.png','05/2.png','05/3.png','05/4.png','05/5.png','05/6.png','05/7.png','05/8.png','05/9.png','05/10.png','05/11.png','05/12.png']
+  k05: ['05/1.png','05/2.png','05/3.png','05/4.png','05/5.png','05/6.png','05/7.png','05/8.png','05/9.png','05/10.png','05/11.png','05/12.png'],
+  k06: ['06/1.png','06/2.png','06/3.png','06/4.png','06/5.png','06/6.png','06/7.png','06/8.png','06/9.png']
 };
 
 function showKyoikuPost(el, postId){
