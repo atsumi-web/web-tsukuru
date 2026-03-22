@@ -1023,7 +1023,10 @@
       document.head.appendChild(styleTag);
 
       // CSSアニメーションを上書き
-      heroTrack.style.animation = 'heroScrollExact 70s linear infinite';
+      // 速度を px/秒で指定して duration を逆算（画面サイズ依存しない）
+      const SPEED = 60; // px/秒
+      const durationSec = Math.round(set1Width / SPEED);
+      heroTrack.style.animation = `heroScrollExact ${durationSec}s linear infinite`;
     }
 
     // 全画像ロード後に実行（寸法が確定してから）
