@@ -1246,7 +1246,7 @@ section {
 .president-img {
   border-radius: var(--radius-md);
   aspect-ratio: 4/3;
-  position: relative;          /* ::afterのアンカー */
+  position: relative;
 }
 
 .president-img::after {
@@ -1256,17 +1256,18 @@ section {
   right: -16px;
   width: 100%;
   height: 100%;
-  border: 3px solid var(--color-primary); /* オレンジ枠 */
+  border: 3px solid var(--color-primary);
   border-radius: var(--radius-md);
-  z-index: -1;                 /* 画像の後ろ */
 }
 
 .president-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-md); /* imgに直接round */
+  border-radius: var(--radius-md);
   display: block;
+  position: relative;
+  z-index: 1;                  /* ::afterの上に重ねる */
 }
 
 .president-message {
