@@ -1198,6 +1198,7 @@ section {
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 12px;
+  box-shadow: 6px 6px 0 0 #1e3a5f; /* ネイビーオフセットアクセント */
 }
 
 .voice-card-avatar img {
