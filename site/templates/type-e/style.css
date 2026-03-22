@@ -1182,7 +1182,7 @@ section {
   display: flex;
   flex-direction: row;
   gap: 32px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .voice-card-avatar-area {
