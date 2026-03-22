@@ -641,8 +641,8 @@ section {
 .data-number {
   font-family: var(--font-en);
   font-size: clamp(2rem, 7vw, 3rem);
-  font-weight: 700;          /* 900→700 */
-  color: var(--color-dark);  /* オレンジ→ダーク */
+  font-weight: 400;          /* 700→400 細字 */
+  color: var(--color-dark);
   line-height: 1;
   margin-bottom: 4px;
 }
@@ -1403,6 +1403,14 @@ section {
 .job-detail-value small {
   font-size: 0.78rem;
   color: var(--color-gray-400);
+}
+
+.job-benefit-note {
+  margin-top: 48px;
+  font-size: 0.82rem;
+  color: var(--color-gray-700);
+  text-align: center;
+  line-height: 2;
 }
 
 /* ============================================================
