@@ -430,13 +430,13 @@ section {
 /* === 赤丸デコレーション (Type-D .hero-left-decoration 相当) === */
 .hero-decoration {
   position: absolute;
-  bottom: 10px;              /* -40px + 50px 上げ */
-  left: -130px;
-  width: 320px;
-  height: 320px;
+  bottom: 150px;               /* モバイル: info-boxの上まで上げる */
+  left: -100px;
+  width: 200px;               /* モバイル: 320px→200pxに縮小 */
+  height: 200px;
   background-color: var(--color-primary);
   border-radius: 50%;
-  z-index: 9;                /* info-box(z:8)の上 → 白スペースにかかる */
+  z-index: 9;
   pointer-events: none;
   box-shadow: 10px 10px 32px rgba(0,0,0,0.15);
   overflow: visible;
@@ -471,7 +471,7 @@ section {
 /* === キャッチコピー (左下、赤丸の上に層) === */
 .hero-catch {
   position: absolute;
-  bottom: 60px;              /* 160px→-100px下げ */
+  bottom: 200px;             /* モバイル: info-box(120px)+予備マージン */
   left: var(--section-px);
   pointer-events: auto;
   z-index: 12;
