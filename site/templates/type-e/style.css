@@ -1188,13 +1188,13 @@ section {
 /* アバター+メタ情報エリア（左側固定幅） */
 .voice-card-avatar-area {
   flex-shrink: 0;
-  width: 120px;
+  width: 150px;
   text-align: center;
 }
 
 .voice-card-avatar {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 12px;
