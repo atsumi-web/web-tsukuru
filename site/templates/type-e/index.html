@@ -36,7 +36,7 @@
   </style>
 
   <!-- Main CSS (1LP = 1CSS 鉄則) -->
-  <link rel="stylesheet" href="style.css?v=1.5.7">
+  <link rel="stylesheet" href="style.css?v=1.5.8">
 </head>
 <body>
 
@@ -992,6 +992,47 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // ============================================================
+  // Hero Marquee: 実際の幅を計測してループを正確に設定
+  // ============================================================
+  const heroTrack = document.getElementById('heroMarquee');
+  if (heroTrack) {
+    const GAP = 10; // CSS gap値と合わせる
+    function initHeroMarquee() {
+      const items = heroTrack.querySelectorAll('.hero-marquee-item');
+      const halfCount = items.length / 2; // Set1のアイテム数
+
+      // Set1の幅を合計（getBoundingClientRectで正確に計測）
+      let set1Width = 0;
+      for (let i = 0; i < halfCount; i++) {
+        set1Width += items[i].getBoundingClientRect().width;
+      }
+      // gapを含む合計（Set1内 + Set1→Set2間の1gap）
+      set1Width += GAP * halfCount;
+
+      // 動的@keyframesを注入
+      const styleTag = document.createElement('style');
+      styleTag.id = 'marquee-keyframes';
+      styleTag.textContent = `
+        @keyframes heroScrollExact {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-${set1Width}px); }
+        }
+      `;
+      document.head.appendChild(styleTag);
+
+      // CSSアニメーションを上書き
+      heroTrack.style.animation = 'heroScrollExact 22s linear infinite';
+    }
+
+    // 全画像ロード後に実行（寸法が確定してから）
+    if (document.readyState === 'complete') {
+      initHeroMarquee();
+    } else {
+      window.addEventListener('load', initHeroMarquee);
+    }
+  }
 
   // ============================================================
   // Scroll Reveal
