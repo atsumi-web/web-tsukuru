@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CW案件評価記録</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --border: rgba(0,0,0,0.08);
+      --accent: #4f46e5;
+      --green: #059669;
+      --red: #dc2626;
+      --gold: #d97706;
+      --text: #1e293b;
+      --muted: #64748b;
+      --en: 'Outfit', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #ede9fe 100%);
+      padding: 56px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--en);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,70,229,0.08);
+      border: 1px solid rgba(79,70,229,0.15);
+      border-radius: 999px;
+      padding: 6px 16px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero p { color: var(--muted); font-size: .9rem; }
+
+    /* CONTAINER */
+    .container { max-width: 1000px; margin: 0 auto; padding: 32px 16px 80px; }
+
+    /* SESSION HEADER */
+    .session-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .session-date {
+      font-family: var(--en);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .session-count {
+      background: var(--accent);
+      color: white;
+      font-family: var(--en);
+      font-size: .75rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 2px 10px;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .stat-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+    .stat-chip.applied { background: rgba(5,150,105,0.1); color: var(--green); border: 1px solid rgba(5,150,105,0.2); }
+    .stat-chip.rejected { background: rgba(220,38,38,0.08); color: var(--red); border: 1px solid rgba(220,38,38,0.15); }
+    .stat-chip.total { background: rgba(79,70,229,0.08); color: var(--accent); border: 1px solid rgba(79,70,229,0.15); }
+
+    /* TABLE */
+    .log-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .log-table thead tr { background: var(--accent); color: white; }
+    .log-table th { padding: 10px 14px; font-size: .75rem; font-weight: 700; text-align: left; letter-spacing: .05em; }
+    .log-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: .82rem; vertical-align: middle; }
+    .log-table tr:last-child td { border-bottom: none; }
+    .log-table tr:hover td { background: #f8fafc; }
+
+    /* BADGES */
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 999px; font-size: .72rem; font-weight: 700; white-space: nowrap; }
+    .badge-applied { background: rgba(5,150,105,0.1); color: var(--green); }
+    .badge-no { background: rgba(220,38,38,0.08); color: var(--red); }
+    .badge-wait { background: rgba(217,119,6,0.1); color: var(--gold); }
+    .badge-pass { background: rgba(79,70,229,0.1); color: var(--accent); }
+
+    .client-name { font-weight: 700; color: var(--text); }
+    .job-title { color: var(--muted); font-size: .8rem; margin-top: 2px; }
+    .deadline { font-family: var(--en); font-size: .8rem; color: var(--muted); }
+    .deadline.urgent { color: var(--red); font-weight: 700; }
+
+    /* BACK LINK */
+    .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); text-decoration: none; font-size: .85rem; font-weight: 700; margin-bottom: 24px; }
+    .back-link:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge"><i class="fa-solid fa-clipboard-list"></i> CW APPLICATION LOG</div>
+  <h1>📋 案件評価記録</h1>
+  <p>クラウドワークスで確認した案件の評価・応募状況をまとめています</p>
+</div>
+
+<div class="container">
+  <!-- クイックリンク -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;">
+    <a href="cw_manual.html" class="back-link" style="margin-bottom:0;"><i class="fa-solid fa-arrow-left"></i> 応募マニュアルへ戻る</a>
+    <a href="https://crowdworks.jp/e/proposals?ref=login_header" target="_blank" class="back-link" style="margin-bottom:0;color:#3b82f6;"><i class="fa-solid fa-paper-plane"></i> 応募中案件を確認</a>
+  </div>
+
+  <!-- ===== 2026-03-23 ===== -->
+  <div class="session-header">
+    <span class="session-date">2026 / 03 / 23</span>
+    <span class="session-count">評価 26件</span>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-chip total"><i class="fa-solid fa-list"></i> 評価 26件</div>
+    <div class="stat-chip applied"><i class="fa-solid fa-paper-plane"></i> 応募 8件</div>
+    <div class="stat-chip rejected"><i class="fa-solid fa-xmark"></i> スルー 18件</div>
+  </div>
+
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>クライアント</th>
+        <th>案件名</th>
+        <th>判定</th>
+        <th>締切</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 応募案件 -->
+      <tr>
+        <td><div class="client-name">alh_good_day</div><div class="job-title">レビュー1027件 ✅本人確認済</div></td>
+        <td>AIコンテンツ制作・クリエイティブ専門家</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">審査中</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">BaseCareer</div><div class="job-title">レビュー120件 ✅本人確認済</div></td>
+        <td>生成AIでInstagram/YouTube用ショート動画制作</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">risarisa1133</div><div class="job-title">レビュー0件 ✅本人確認済</div></td>
+        <td>若年層向けインフルエンサー案件LINE登録LPデザイン</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Kurokuma.</div><div class="job-title">レビュー10件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>ケーキ屋さんのデザイン＋コーディングLP</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/26 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">wamepol</div><div class="job-title">レビュー531件 本人確認未</div></td>
+        <td>広告用LPデザイン&コーディング（デザイン調整15,000円）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kagu</div><div class="job-title">認定クライアント レビュー273件 ✅</div></td>
+        <td>継続案件｜AIツール活用Webデザイナー募集</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/23 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">takahiro25</div><div class="job-title">レビュー1841件 ✅本人確認済</div></td>
+        <td>LPページの制作【継続依頼前提】</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">novalis</div><div class="job-title">レビュー0件 ✅本人確認済</div></td>
+        <td>LP・Web制作パートナー募集｜継続依頼あり</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <!-- スルー案件 -->
+      <tr>
+        <td><div class="client-name">りーくん1234</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>AI活用の相談パートナー募集（n8n/GAS/Claude）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">スルー：n8n/GAS未経験</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">While05booms</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>AIツール活用サポート＆事務アシスタント</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">都内勤務・週30〜40h</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">CRM・自動化太郎</div><div class="job-title">レビュー8件</div></td>
+        <td>AI×SNS半自動運用パートナー（完全未経験OK）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">MLM的構造・99人募集</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">tsw_pm</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>AI翻訳アシスタント（月5〜10万円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">翻訳専門外・方向性不一致</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ベルウクリエイティブ</div><div class="job-title">レビュー1件</div></td>
+        <td>AIを活用した自動ログ分析システム開発</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/28</span></td>
+        <td><span class="badge badge-no">エンジニア案件・専門外</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">fwconsulting</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>人材採用プロセスのAI化</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">HR・採用コンサル専門外</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">fujikou0624</div><div class="job-title">レビュー30件 ❌本人確認未</div></td>
+        <td>AI顧問（技術パートナー）月2〜3回</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">Python/API/スクレイピング必須</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kouday</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>クリエイティブディレクター（西新宿・30代まで）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/3</span></td>
+        <td><span class="badge badge-no">年齢制限30代・西新宿出社</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kwamk3968</div><div class="job-title">レビュー5件</div></td>
+        <td>複数LP制作（楽天/Yahoo/Amazon出品者向け）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/2</span></td>
+        <td><span class="badge badge-no">EC経験必須・1,500円/バナー</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">IR/Design・UXD・ARCHIC</div><div class="job-title">❌リスク最高・複数アカウント</div></td>
+        <td>LPファーストビュー（表示10万・実際500円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td>—</td>
+        <td><span class="badge badge-no">460円と入力パターン詐欺的</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">小松コトリ</div><div class="job-title">レビュー5件 ✅本人確認済</div></td>
+        <td>化粧品LP制作（Studio/Wix）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">Studio/Wixはコード路線と不一致</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">drbridge_1112</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>医療クリニックYoutube運用代行LP（Illustrator必須）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">124人応募・PSD/AI納品必須</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ちゃい84</div><div class="job-title">レビュー50件 ✅本人確認済</div></td>
+        <td>カフェのLP（20代限定）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/25</span></td>
+        <td><span class="badge badge-no">応募条件：20代のみ</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Wanh</div><div class="job-title">レビュー10件 本人確認未</div></td>
+        <td>旅行LP（WordPress/STUDIO/ペライチ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">WordPress系・既婚等個人情報質問</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">huku_fr</div><div class="job-title">レビュー0件 ✅本人確認済</div></td>
+        <td>独立支援サービスLPデザイン（Figma推奨）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">既婚・住居環境など個人情報質問</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">yuichigo</div><div class="job-title">レビュー3件 ✅本人確認済</div></td>
+        <td>記事LP制作（beyond・美容・サプリ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">記事LP専門・beyondツール必須</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">yumakakehashi ×2</div><div class="job-title">レビュー10件 ✅本人確認済</div></td>
+        <td>職人留学LP / 建設不動産会社HP（WordPress）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">WordPress必須・15,000円</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">skin_care1</div><div class="job-title">レビュー70件 ✅本人確認済</div></td>
+        <td>アンケートLP（WordPress＋PSD納品）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">WordPress・PSD必須・62人応募</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 凡例 -->
+  <div style="margin-top:20px; padding:16px; background:white; border-radius:10px; border:1px solid var(--border); font-size:.8rem; color:var(--muted);">
+    <strong>スルーの主なパターン：</strong>
+    WordPress必須 / 単価安すぎ / クライアントリスク高（0件+本人確認未+発注ルール未） / 都内勤務 / PSD/AI納品必須 / 年齢制限 / 「460円と入力」詐欺的案件
+  </div>
+
+</div>
+
+</body>
+</html>
