@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CW応募マニュアル｜100件チャレンジ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --border: rgba(0,0,0,0.08);
+      --accent: #4f46e5;
+      --accent2: #6366f1;
+      --gold: #d97706;
+      --green: #059669;
+      --red: #dc2626;
+      --text: #1e293b;
+      --muted: #64748b;
+      --en: 'Outfit', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #ede9fe 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(79,70,229,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--en);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,70,229,0.08);
+      border: 1px solid rgba(79,70,229,0.2);
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--en);
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: #0f172a;
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 36px;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-box { text-align: center; }
+    .stat-num {
+      font-family: var(--en);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+    }
+    .stat-lbl { font-size: .72rem; color: var(--muted); margin-top: 4px; }
+
+    /* ===== LAYOUT ===== */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 100px; }
+
+    /* ===== SECTION HEADER ===== */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      margin-top: 56px;
+    }
+    .sec-num {
+      font-family: var(--en);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: rgba(79,70,229,0.15);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .sec-head h2 { font-size: 1.2rem; font-weight: 700; color: #0f172a; }
+    .sec-head p { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    /* ===== STEPS ===== */
+    .step-flow { display: flex; gap: 0; margin-bottom: 40px; }
+    .step-item {
+      flex: 1;
+      text-align: center;
+      padding: 20px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .step-item:first-child { border-radius: 12px 0 0 12px; }
+    .step-item:last-child { border-radius: 0 12px 12px 0; }
+    .step-item::after {
+      content: '→';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-size: .9rem;
+      z-index: 1;
+    }
+    .step-item:last-child::after { display: none; }
+    .step-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .step-title { font-weight: 700; font-size: .88rem; color: #0f172a; margin-bottom: 4px; }
+    .step-time { font-family: var(--en); font-size: .68rem; color: var(--accent); font-weight: 700; }
+
+    /* ===== TABLE ===== */
+    table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    thead th {
+      background: rgba(79,70,229,0.07);
+      color: var(--accent);
+      font-family: var(--en);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(79,70,229,0.15);
+    }
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    .kw { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      font-size: .72rem;
+      background: rgba(79,70,229,0.07);
+      border: 1px solid rgba(79,70,229,0.2);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--en);
+    }
+    .tag.skip {
+      background: rgba(220,38,38,0.06);
+      border-color: rgba(220,38,38,0.2);
+      color: var(--red);
+    }
+    .tag.go {
+      background: rgba(5,150,105,0.06);
+      border-color: rgba(5,150,105,0.2);
+      color: var(--green);
+    }
+
+    /* ===== PROMPT BOX ===== */
+    .prompt-box {
+      background: #f8faff;
+      border: 1px solid rgba(79,70,229,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(79,70,229,0.06);
+    }
+    .prompt-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      background: rgba(79,70,229,0.06);
+      border-bottom: 1px solid rgba(79,70,229,0.12);
+    }
+    .prompt-head span {
+      font-family: var(--en);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--en);
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 12px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .copy-btn.copied { border-color: var(--green); color: var(--green); }
+    .prompt-body {
+      padding: 20px 22px;
+      font-size: .84rem;
+      line-height: 2;
+      color: #334155;
+      font-family: 'Noto Sans JP', sans-serif;
+      white-space: pre-wrap;
+    }
+
+    /* ===== TEMPLATE BOX ===== */
+    .tmpl-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .tmpl-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+    .tmpl-head span {
+      font-family: var(--en);
+      font-size: .68rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .tmpl-body {
+      padding: 22px 24px;
+      font-size: .85rem;
+      line-height: 2.1;
+      color: #334155;
+      white-space: pre-wrap;
+    }
+
+    /* ===== OUTPUT BLOCK ===== */
+    .output-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    @media(max-width:600px){ .output-grid { grid-template-columns: 1fr; } }
+    .output-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .output-item.yes { border-color: rgba(5,150,105,0.2); background: #f0fdf4; }
+    .output-item.doc { border-color: rgba(79,70,229,0.2); background: #f8f9ff; }
+    .oi-lbl {
+      font-family: var(--en);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .oi-lbl.yes { color: var(--green); }
+    .oi-lbl.doc { color: var(--accent); }
+    .oi-desc { font-size: .82rem; color: var(--muted); line-height: 1.7; }
+
+    /* ===== TRACKER ===== */
+    .tracker {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    @media(max-width:540px){ .tracker { grid-template-columns: 1fr; } }
+    .week-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .week-label {
+      font-family: var(--en);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .week-date { font-size: .75rem; color: var(--muted); margin-bottom: 12px; }
+    .week-target {
+      font-family: var(--en);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+    .week-target span { font-size: .8rem; font-weight: 400; color: var(--muted); }
+    .progress-bar {
+      margin-top: 10px;
+      background: rgba(79,70,229,0.1);
+      border-radius: 8px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      width: 0%;
+      transition: width 1s ease;
+    }
+    .total-box {
+      background: linear-gradient(135deg, #eef2ff, #ede9fe);
+      border: 1px solid rgba(79,70,229,0.2);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .total-num {
+      font-family: var(--en);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .total-applied {
+      font-family: var(--en);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #0f172a;
+    }
+    .total-applied span { font-size: .8rem; font-weight: 400; color: var(--muted); }
+
+    /* ===== RULES ===== */
+    .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media(max-width:540px){ .rules { grid-template-columns: 1fr; } }
+    .rule-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .rule-num {
+      font-family: var(--en);
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: rgba(79,70,229,0.25);
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .rule-text { font-size: .83rem; color: var(--text); line-height: 1.7; }
+    .rule-text strong { color: var(--accent); }
+
+    /* ===== QUOTE ===== */
+    .quote-box {
+      border-left: 3px solid var(--accent);
+      background: rgba(79,70,229,0.04);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 22px;
+      margin-top: 20px;
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ===== PORTFOLIO LINK ===== */
+    .portfolio-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid rgba(79,70,229,0.2);
+      border-radius: 12px;
+      padding: 16px 22px;
+      text-decoration: none;
+      transition: all .2s;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(79,70,229,0.06);
+    }
+    .portfolio-link:hover {
+      border-color: var(--accent);
+      background: rgba(79,70,229,0.04);
+      transform: translateX(4px);
+    }
+    .pl-label { font-size: .72rem; color: var(--muted); margin-bottom: 2px; }
+    .pl-url { font-family: var(--en); font-size: .88rem; font-weight: 700; color: var(--accent); }
+    .pl-arrow { font-size: .9rem; color: var(--accent); }
+
+    /* ===== DIVIDER ===== */
+    .div {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(79,70,229,0.15), transparent);
+      margin: 48px 0;
+    }
+
+    /* ===== CATEGORY LINK GRID ===== */
+    .cat-group { margin-bottom: 20px; }
+    .cat-label {
+      font-family: var(--en);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    @media(max-width:540px){ .link-grid { grid-template-columns: 1fr; } }
+    .cw-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      text-decoration: none;
+      transition: all .2s;
+      color: var(--text);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .cw-link:hover {
+      border-color: rgba(79,70,229,0.35);
+      background: rgba(79,70,229,0.04);
+      transform: translateX(3px);
+    }
+    .cw-link-hot {
+      border-color: rgba(217,119,6,0.2);
+      background: #fffbeb;
+    }
+    .cw-link-hot:hover {
+      border-color: rgba(217,119,6,0.45);
+      background: #fef3c7;
+    }
+    .cw-link-icon { color: var(--muted); font-size: .75rem; flex-shrink: 0; transition: color .2s; }
+    .cw-link:hover .cw-link-icon { color: var(--accent); }
+    .cw-link-name {
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .cw-link-cat { font-size: .7rem; color: var(--muted); margin-top: 1px; }
+    .hot-badge {
+      font-family: var(--en);
+      font-size: .6rem;
+      font-weight: 700;
+      background: rgba(217,119,6,0.1);
+      border: 1px solid rgba(217,119,6,0.3);
+      color: var(--gold);
+      padding: 1px 7px;
+      border-radius: 4px;
+    }
+
+    /* ===== FLOATING NAV ===== */
+    .fnav {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+    .fnav a, .fnav button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid rgba(79,70,229,0.2);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+      box-shadow: 0 4px 16px rgba(79,70,229,0.12);
+    }
+    .fnav a:hover, .fnav button:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING NAV -->
+<nav class="fnav">
+  <a href="../portfolio_cw.html" title="ポートフォリオへ"><i class="fa-solid fa-briefcase"></i></a>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ"><i class="fa-solid fa-angle-up"></i></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><i class="fa-solid fa-rocket"></i> 100件チャレンジ</div>
+  <h1>CW 応募マニュアル</h1>
+  <p class="hero-sub">クラウドワークスで案件を「探す → 判断 → 送る」を高速化する手順書</p>
+  <div class="stats-row">
+    <div class="stat-box">
+      <span class="stat-num">5</span>
+      <div class="stat-lbl">1日の目標件数</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">20</span>
+      <div class="stat-lbl">稼働日数</div>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">100</span>
+      <div class="stat-lbl">総応募目標</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- FLOW -->
+  <div class="sec-head">
+    <div class="sec-num">00</div>
+    <div>
+      <h2>全体の流れ</h2>
+      <p>1セッション 30〜45分で5〜10件応募できる速度を目指す</p>
+    </div>
+  </div>
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-icon">🔍</div>
+      <div class="step-title">探す</div>
+      <div class="step-time">5分</div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">🤖</div>
+      <div class="step-title">Antigravityに判断させる</div>
+      <div class="step-time">1分/件</div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">✉️</div>
+      <div class="step-title">応募文を送る</div>
+      <div class="step-time">コピペのみ</div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <div>
+      <h2>必ず使うURL（応募文に毎回入れる）</h2>
+    </div>
+  </div>
+  <a class="portfolio-link" href="https://web-tsukuru.jp/portfolio_cw" target="_blank">
+    <div>
+      <div class="pl-label">ポートフォリオサイト</div>
+      <div class="pl-url">https://web-tsukuru.jp/portfolio_cw</div>
+    </div>
+    <div class="pl-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+  </a>
+
+  <div class="div"></div>
+
+  <!-- STEP 1: 探す -->
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div>
+      <h2>STEP 1 ── 案件を探す</h2>
+      <p>カテゴリ別の検索キーワードとスルー基準</p>
+    </div>
+  </div>
+
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:16px;">
+    <table>
+      <thead>
+        <tr><th>カテゴリ</th><th>検索キーワード</th><th>予算目安</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>LP制作</strong></td><td><div class="kw"><span class="tag">LP</span><span class="tag">ランディングページ</span><span class="tag">コーディング</span></div></td><td>¥10,000〜</td></tr>
+        <tr><td><strong>グラフィック</strong></td><td><div class="kw"><span class="tag">チラシ</span><span class="tag">名刺</span><span class="tag">バナー</span><span class="tag">Canva</span></div></td><td>¥3,000〜</td></tr>
+        <tr><td><strong>Instagram</strong></td><td><div class="kw"><span class="tag">Instagram</span><span class="tag">インスタ</span><span class="tag">リール</span><span class="tag">フィード</span></div></td><td>¥3,000〜</td></tr>
+        <tr><td><strong>LINE</strong></td><td><div class="kw"><span class="tag">LINEリッチメニュー</span><span class="tag">LINE</span></div></td><td>¥5,000〜</td></tr>
+        <tr><td><strong>Web修正</strong></td><td><div class="kw"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">修正</span></div></td><td>¥5,000〜</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="padding:0;overflow:hidden;">
+    <table>
+      <thead><tr><th colspan="2">⛔ スルー基準（即スキップ）</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag skip">予算¥1,000以下</span></td><td>時間の無駄になりやすい</td></tr>
+        <tr><td><span class="tag skip">応募20件超・締切間近</span></td><td>埋もれる可能性大</td></tr>
+        <tr><td><span class="tag skip">動画編集・ライティングのみ</span></td><td>スキルセット外</td></tr>
+        <tr><td><span class="tag skip">発注者評価★3.0以下</span></td><td>トラブルリスクあり</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- カテゴリ別リンク集 -->
+  <div class="sec-head">
+    <div class="sec-num">02b</div>
+    <div>
+      <h2>カテゴリ別 案件リンク集</h2>
+      <p>クリックするとCWの該当カテゴリ（新着・固定給）が開きます</p>
+    </div>
+  </div>
+
+  <!-- ビジネス -->
+  <div class="cat-group">
+    <div class="cat-label"><i class="fa-solid fa-briefcase"></i> ビジネス・マーケティング・企画</div>
+    <div class="link-grid">
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=225&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">全体</div><div class="cw-link-cat">ビジネス・マーケティング・企画</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- AI活用 -->
+  <div class="cat-group">
+    <div class="cat-label"><i class="fa-solid fa-robot"></i> AI活用・業務改善</div>
+    <div class="link-grid">
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=367&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">全体</div><div class="cw-link-cat">AI活用・業務改善</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=368&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">AI営業・マーケティング支援</div><div class="cw-link-cat">AI活用</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=369&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">AIバックオフィス支援</div><div class="cw-link-cat">AI活用</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=370&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">AIシステム開発・自動化支援</div><div class="cw-link-cat">AI活用</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=371&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">AIメディア・コンテンツ構築支援</div><div class="cw-link-cat">AI活用</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=372&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">その他業務AI化支援</div><div class="cw-link-cat">AI活用</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Web制作 -->
+  <div class="cat-group">
+    <div class="cat-label"><i class="fa-solid fa-code"></i> ホームページ制作・WEBデザイン</div>
+    <div class="link-grid">
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=230&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">全体</div><div class="cw-link-cat">ホームページ制作・WEBデザイン</div></div>
+      </a>
+      <a class="cw-link cw-link-hot" href="https://crowdworks.jp/public/jobs/search?category_id=17&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">ランディングページ制作・デザイン <span class="hot-badge">得意</span></div><div class="cw-link-cat">Web制作</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=14&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">ホームページ作成</div><div class="cw-link-cat">Web制作</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=15&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">Webデザイン</div><div class="cw-link-cat">Web制作</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=16&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">HTML・CSSコーディング</div><div class="cw-link-cat">Web制作</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=285&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">Webサイト修正・更新・機能追加</div><div class="cw-link-cat">Web制作</div></div>
+      </a>
+      <a class="cw-link" href="https://crowdworks.jp/public/jobs/search?category_id=286&order=new&payment_type=fixed_price" target="_blank">
+        <span class="cw-link-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        <div><div class="cw-link-name">アイコン・ボタン・ヘッダー制作</div><div class="cw-link-cat">Web制作</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- STEP 2&3: Antigravityに任せる -->
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div>
+      <h2>STEP 2 & 3 ── Antigravityに判断 → 応募文を作らせる</h2>
+      <p>案件詳細をコピペするだけ。判断から応募文まで全部やってもらう</p>
+    </div>
+  </div>
+
+  <div class="prompt-box" style="margin-bottom:16px;">
+    <div class="prompt-head">
+      <span><i class="fa-solid fa-robot"></i> Antigravityへのプロンプト（コピペ用）</span>
+      <button class="copy-btn" onclick="copyPrompt(this)" data-target="prompt-text">
+        <i class="fa-solid fa-copy"></i> コピー
+      </button>
+    </div>
+    <div class="prompt-body" id="prompt-text">以下の案件を見てください。
+
+1. この案件に応募すべきか判断してください（YES/NO＋理由を簡単に）
+2. YESの場合はベーステンプレをもとに、案件に合わせた応募文を作成してください
+
+【案件詳細】
+（ここに案件ページの文章をそのままペースト）</div>
+  </div>
+
+  <p style="font-size:.82rem;color:var(--muted);margin-bottom:16px;">Antigravityが返してくる内容：</p>
+  <div class="output-grid">
+    <div class="output-item yes">
+      <div class="oi-lbl yes"><i class="fa-solid fa-check-circle"></i> 応募判断</div>
+      <div class="oi-desc">YES / NO＋その理由（スキル合致・予算・勝算）を即判断。NOなら次の案件へ。</div>
+    </div>
+    <div class="output-item doc">
+      <div class="oi-lbl doc"><i class="fa-solid fa-file-lines"></i> カスタマイズ済み応募文</div>
+      <div class="oi-desc">ベーステンプレを案件に合わせて調整した状態で返す。そのままコピペしてCWに送信。</div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- TEMPLATE -->
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <div>
+      <h2>ベーステンプレ（Antigravityが参照する元文章）</h2>
+    </div>
+  </div>
+
+  <div class="tmpl-box">
+    <div class="tmpl-head">
+      <span>BASE TEMPLATE</span>
+      <button class="copy-btn" onclick="copyPrompt(this)" data-target="base-tmpl">
+        <i class="fa-solid fa-copy"></i> コピー
+      </button>
+    </div>
+    <div class="tmpl-body" id="base-tmpl">〇〇様
+
+はじめまして。Webデザイナーの「渥美絵里」と申します。
+この度、募集されております「[案件名]」を拝見し、ぜひお力添えしたく応募いたしました。
+
+【ポートフォリオサイト】
+これまでの制作実績を以下にまとめております。
+https://web-tsukuru.jp/portfolio_cw
+
+【現在の主な業務内容】
+・個人事業者さま向けホームページ/LPページの制作
+・Instagramの画像作成
+・Youtubeサムネイル制作
+
+【業務使用ソフト】
+・Figma
+・Canva
+・Antigravity（AIコーディング）
+・Adobe Firefly
+
+【稼働時間】
+フリーランスのため、平日・休日問わず8時間稼働です。
+
+クライアント様の事業の成長に貢献できるよう、
+最後まで責任を持って取り組ませていただきます。
+まずは現在の状況やご要望をヒアリングさせていただけますと幸いです。
+
+ご多忙の折とは存じますが、
+ご検討のほど何卒よろしくお願い申し上げます。</div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- TRACKER -->
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <div>
+      <h2>進捗カウンター</h2>
+      <p>実績を入力するとバーが自動で動きます</p>
+    </div>
+  </div>
+
+  <div class="tracker">
+    <div class="week-box">
+      <div class="week-label">Week 1</div>
+      <div class="week-date">3/23 〜 3/29</div>
+      <div class="week-target">
+        <input type="number" id="w1" min="0" max="35" value="0"
+          oninput="updateBar('bar1',this.value,35)"
+          style="width:50px;background:none;border:none;color:var(--accent);font-family:var(--en);font-size:1.8rem;font-weight:900;text-align:center;outline:none;"> <span>/ 35</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="bar1"></div></div>
+    </div>
+    <div class="week-box">
+      <div class="week-label">Week 2</div>
+      <div class="week-date">3/30 〜 4/5</div>
+      <div class="week-target">
+        <input type="number" id="w2" min="0" max="35" value="0"
+          oninput="updateBar('bar2',this.value,35)"
+          style="width:50px;background:none;border:none;color:var(--accent);font-family:var(--en);font-size:1.8rem;font-weight:900;text-align:center;outline:none;"> <span>/ 35</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="bar2"></div></div>
+    </div>
+    <div class="week-box">
+      <div class="week-label">Week 3</div>
+      <div class="week-date">4/6 〜 4/12</div>
+      <div class="week-target">
+        <input type="number" id="w3" min="0" max="30" value="0"
+          oninput="updateBar('bar3',this.value,30)"
+          style="width:50px;background:none;border:none;color:var(--accent);font-family:var(--en);font-size:1.8rem;font-weight:900;text-align:center;outline:none;"> <span>/ 30</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="bar3"></div></div>
+    </div>
+  </div>
+
+  <div class="total-box">
+    <div>
+      <div style="font-size:.72rem;color:var(--muted);margin-bottom:4px;font-family:var(--en);letter-spacing:.1em;text-transform:uppercase;">Total Applied</div>
+      <div class="total-applied"><span id="total-count">0</span><span> / 100件</span></div>
+    </div>
+    <div class="total-num" id="total-pct">0%</div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- RULES -->
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <div><h2>鉄則5か条</h2></div>
+  </div>
+
+  <div class="rules">
+    <div class="rule-item">
+      <div class="rule-num">01</div>
+      <div class="rule-text"><strong>案件はAntigravityに判断させる</strong><br>自分で迷わない。貼るだけでOK</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">02</div>
+      <div class="rule-text"><strong>URLは毎回入れる</strong><br>ポートフォリオが無言の営業マン</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">03</div>
+      <div class="rule-text"><strong>1日5件だけやる</strong><br>完璧より継続。毎日続ける方が大事</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">04</div>
+      <div class="rule-text"><strong>返信は24時間以内に即レス</strong><br>スピードが信頼になる</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">05</div>
+      <div class="rule-text"><strong>採用率1割でOK</strong><br>100件送れば10件取れる計算</div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    「応募数が信頼を作る。最初の10件は実験、次の50件が学習、残り40件で仕事になる。」
+  </div>
+
+</div>
+
+<script>
+function copyPrompt(btn) {
+  const id = btn.getAttribute('data-target');
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> コピー完了';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fa-solid fa-copy"></i> コピー';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function updateBar(barId, val, max) {
+  const pct = Math.min(100, Math.round((val / max) * 100));
+  document.getElementById(barId).style.width = pct + '%';
+  updateTotal();
+}
+
+function updateTotal() {
+  const w1 = parseInt(document.getElementById('w1').value) || 0;
+  const w2 = parseInt(document.getElementById('w2').value) || 0;
+  const w3 = parseInt(document.getElementById('w3').value) || 0;
+  const total = w1 + w2 + w3;
+  document.getElementById('total-count').textContent = total;
+  document.getElementById('total-pct').textContent = Math.min(100, Math.round(total / 100 * 100)) + '%';
+}
+</script>
+
+</body>
+</html>
