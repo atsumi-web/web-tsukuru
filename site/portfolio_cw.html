@@ -506,6 +506,38 @@
 
   <div class="div"></div>
 
+  <!-- マニュアル制作 -->
+  <section class="sec" id="sec-manual">
+    <p class="sec-label">02 · Manual &amp; Document</p>
+    <h2 class="sec-title">マニュアル制作・業務資料の<span>Web化</span></h2>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:28px;line-height:1.9;">
+      「口頭で説明していた内容」を読んで理解できるWebページに仕上げます。<br>
+      比較表・ステップ・FAQを組み合わせた、わかりやすい構成が得意です。
+    </p>
+    <div class="grid-3" style="gap:14px; margin-bottom:28px;">
+      <div class="mini">
+        <div class="mini-lbl">操作マニュアル</div>
+        <div class="mini-name">ツール・サービスの使い方</div>
+        <div class="mini-desc">手順・スクリーンショット・注意点をわかりやすく整理します。</div>
+      </div>
+      <div class="mini">
+        <div class="mini-lbl">業務フロー資料</div>
+        <div class="mini-name">社内手順書のWeb化</div>
+        <div class="mini-desc">紙・Excel・Wordの手順書をスマホでも見やすいWebページにします。</div>
+      </div>
+      <div class="mini">
+        <div class="mini-lbl">クライアント向け説明</div>
+        <div class="mini-name">納品後サポート資料</div>
+        <div class="mini-desc">納品後に困らないよう、運用方法をまとめたマニュアルを制作します。</div>
+      </div>
+    </div>
+    <a href="cw_portfolio/sample_manual_jobsites.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #86efac;color:#059669;font-weight:700;font-size:.85rem;padding:12px 24px;border-radius:999px;text-decoration:none;transition:opacity .2s;">
+      <i class="fa-solid fa-file-lines"></i> 制作サンプルを見る（無料求人サイト活用マニュアル） →
+    </a>
+  </section>
+
+  <div class="div"></div>
+
   <!-- 05 Instagram フィード投稿 -->
   <section class="sec" id="sec-feed">
     <p class="sec-label">05 · Instagram Feed</p>
@@ -686,39 +718,6 @@
     </div>
   </section>
 
-
-
-  <!-- マニュアル制作 -->
-  <div class="div"></div>
-  <section class="sec" id="sec-manual">
-    <p class="sec-label">07 · Manual & Document</p>
-    <h2 class="sec-title">マニュアル制作・業務資料の<span>Web化</span></h2>
-    <p style="font-size:.88rem;color:var(--muted);margin-bottom:28px;line-height:1.9;">
-      「口頭で説明していた内容」を読んで理解できるWebページに仕上げます。<br>
-      比較表・ステップ・FAQを組み合わせた、わかりやすい構成が得意です。
-    </p>
-    <div class="grid-3" style="gap:14px; margin-bottom:28px;">
-      <div class="mini">
-        <div class="mini-lbl">操作マニュアル</div>
-        <div class="mini-name">ツール・サービスの使い方</div>
-        <div class="mini-desc">手順・スクリーンショット・注意点をわかりやすく整理します。</div>
-      </div>
-      <div class="mini">
-        <div class="mini-lbl">業務フロー資料</div>
-        <div class="mini-name">社内手順書のWeb化</div>
-        <div class="mini-desc">紙・Excel・Wordの手順書をスマホでも見やすいWebページにします。</div>
-      </div>
-      <div class="mini">
-        <div class="mini-lbl">クライアント向け説明</div>
-        <div class="mini-name">納品後サポート資料</div>
-        <div class="mini-desc">納品後に困らないよう、運用方法をまとめたマニュアルを制作します。</div>
-      </div>
-    </div>
-    <a href="cw_portfolio/sample_manual_jobsites.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #86efac;color:#059669;font-weight:700;font-size:.85rem;padding:12px 24px;border-radius:999px;text-decoration:none;transition:opacity .2s;">
-      <i class="fa-solid fa-file-lines"></i> 制作サンプルを見る（無料求人サイト活用マニュアル） →
-    </a>
-  </section>
-
   <!-- クロージング -->
   <div class="div"></div>
   <section class="sec" id="sec-contact" style="text-align:center;">
@@ -744,6 +743,9 @@
 
 </div>
 
+<!-- トップへ戻るボタン -->
+<button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:1rem;cursor:pointer;box-shadow:0 4px 16px rgba(79,70,229,.3);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:999;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-angle-up"></i></button>
+
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="this.classList.remove('open')">
   <span class="lb-close">&times;</span>
@@ -755,6 +757,8 @@
   const fnav = document.getElementById('fnav');
   window.addEventListener('scroll', () => {
     fnav.classList.toggle('visible', window.scrollY > 200);
+    const btnTop = document.getElementById('btn-top');
+    if(btnTop){ btnTop.style.opacity = window.scrollY > 300 ? '1' : '0'; btnTop.style.visibility = window.scrollY > 300 ? 'visible' : 'hidden'; }
   }, { passive: true });
 </script>
 
