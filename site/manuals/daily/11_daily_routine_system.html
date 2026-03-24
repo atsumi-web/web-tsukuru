@@ -196,39 +196,79 @@
         毎朝5分で完結。
     </div>
 
-    <!-- Step 1 -->
+    <!-- Step 1: 朝プロンプト -->
     <div class="card">
-        <h2><span class="step-number">1</span> プロンプトをコピーして Antigravity に投げる</h2>
-        
+        <h2><span class="step-number">1</span> <i class="fa-solid fa-sun"></i> 朝プロンプトをコピーして Antigravity に投げる</h2>
+
         <div class="prompt-card">
             <div class="prompt-header">
                 <span class="prompt-title">毎朝の作戦会議プロンプト</span>
                 <button class="copy-btn" onclick="copyToClipboard('morning-prompt')"><i class="fa-regular fa-copy"></i> Copy</button>
             </div>
             <pre id="morning-prompt">@Antigravity
-おはよう。昨日のチャットログを読んで、
+おはよう。まず以下のファイルを読んでから始めてほしい。
+
+- 作業記録: `site/manuals/daily/DAILY_LOG.md`（昨日の引き継ぎ）
+- ロードマップ: `site/manuals/admin/monetization_bible_90days.html`（現在地確認）
+- 今日のタスク: `site/manuals/daily/TODAY.md`
+
+それを踏まえて：
 
 1. 昨日進んだことの整理（日報作成）
-   - 90日ロードマップに基づいた項目だけピックアップ
-   - 細かい作業は省いて、大きな成果や進捗だけ記録
-   - 「こんなことやりましたよね」という形で候補を挙げてから日報作成
+   - DAILY_LOGとチャットログから成果をピックアップ
+   - 90日ロードマップに基づいた大きな進捗だけ記録
 
-2. 今日の `manuals/today.html` サブタイトル提案（1行コピペ用）
+2. 今日の `manuals/daily/today.html` サブタイトル提案（1行コピペ用）
 
 3. 今日やるべきことの洗い出し（TODAY.md更新）
 
-この3つをやってほしい。
-頭が冴えている今、戦略的に動きたいので、90日ロードマップに基づいた鋭い提案を頼む。</pre>
+ロードマップの現在地（フェーズ・Day数）を必ず確認して、戦略的な提案を頼む。</pre>
         </div>
     </div>
 
-    <!-- Step 2 -->
+    <!-- Step 2: TODAY確認 -->
     <div class="card" style="text-align: center;">
         <h2 style="justify-content: center;"><span class="step-number">2</span> 今日のミッションを確認</h2>
         <p style="margin-bottom: 20px;">Antigravity が TODAY.md を更新したら、以下を開く：</p>
         <a href="today.html" class="today-btn">
             <i class="fa-solid fa-rocket"></i> TODAY.md を見る
         </a>
+        <br><br>
+        <a href="../admin/monetization_bible_90days.html" class="today-btn" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); border-color: #10B981;">
+            <i class="fa-solid fa-map"></i> ロードマップの現在地を確認
+        </a>
+    </div>
+
+    <!-- Step 3: 夜プロンプト -->
+    <div class="card">
+        <h2><span class="step-number">3</span> <i class="fa-solid fa-moon"></i> 夜：今日の記録を残す（翌朝のために）</h2>
+        <p style="color:#64748b; font-size:0.95rem;">チャットログは参照できないことがある。<strong>毎晩このプロンプトで作業記録を残すこと</strong>が翌朝の作戦会議の精度を上げる。</p>
+
+        <div class="prompt-card">
+            <div class="prompt-header">
+                <span class="prompt-title">毎晩の作業記録プロンプト</span>
+                <button class="copy-btn" onclick="copyToClipboard('night-prompt')"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
+            <pre id="night-prompt">@Antigravity
+今日の作業が終わった。以下のフォーマットで `site/manuals/daily/DAILY_LOG.md` に今日の記録を追記してほしい。
+
+## [今日の日付] — Day XX
+
+### ✅ 今日やったこと
+（90日ロードマップ関連の成果を中心に）
+
+### 🔑 重要な決定・気づき
+（今後の判断に影響する発見・変更点）
+
+### 📋 明日への引き継ぎ（優先順）
+1. ⭐⭐⭐
+2. ⭐⭐
+3. ⭐
+
+---
+
+今日実際にやったこと: [ここに作業内容を書く]</pre>
+        </div>
     </div>
 
     <div class="motto-banner">
@@ -236,6 +276,7 @@
     </div>
 
 </div>
+
 
 <!-- Global Navigation -->
 <div class="global-nav">
