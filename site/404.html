@@ -38,22 +38,7 @@
     }
     h1 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
     p { font-size: .85rem; color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
-    .links { display: flex; flex-direction: column; gap: 10px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: .88rem;
-      font-weight: 700;
-      transition: opacity .2s;
-    }
-    .btn:hover { opacity: .8; }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-outline { background: #fff; color: var(--accent); border: 1.5px solid rgba(79,70,229,.3); }
+    .links { display: none; }
   </style>
 </head>
 <body>
@@ -61,11 +46,7 @@
   <div class="num">404</div>
   <h1>ページが見つかりません</h1>
   <p>URLが間違っているか、ページが移動した可能性があります。<br>以下からご確認ください。</p>
-  <div class="links">
-    <a class="btn btn-outline" href="javascript:history.back()">
-      <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
-    </a>
-  </div>
+
 </div>
 </body>
 </html>
