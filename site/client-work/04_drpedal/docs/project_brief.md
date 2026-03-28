@@ -58,6 +58,8 @@
 
 | 項目 | 内容 |
 |---|---|
+| ワイヤーフレーム | [Figma Link](https://www.figma.com/design/dDCSKqw14DXtJiwD1pAgJ3/Untitled?node-id=0-1&t=ycJxNADXuTZqDuW3-1) |
+| トップデザイン案 | [Figma Link](https://www.figma.com/design/IpLdOVXQibjHWjOt9w0Rqf/DR.PEDAL--Copy-?node-id=0-1&t=10AGGuT8L2RnJ1hR-1) |
 | ベンチマーク | [aventulife.co.jp](https://aventulife.co.jp) |
 | 方向性 | 余白多め・写真大きめ・信頼系 + 若さ・活気を追加 |
 | ベースカラー | ホワイト `#FFFFFF` |
