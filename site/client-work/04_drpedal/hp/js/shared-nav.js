@@ -36,6 +36,7 @@ function renderHeader() {
   const html = `
     <header class="l-header ${headerTheme}" id="js-header">
       <a href="${rp}index.html" class="l-header-logo">
+        <img src="${rp}images/logo-mark.webp" alt="Dr.Pedal Logo" class="logo-img">
         <span class="logo-text">DR<span style="color:var(--gold);">.</span>PEDAL</span>
       </a>
       
@@ -83,7 +84,10 @@ function renderFooter() {
           
           <!-- Column 1: Company -->
           <div class="f-col">
-            <p class="f-company-name">株式会社ドクターペダル</p>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+              <img src="${rp}images/logo-mark.webp" alt="Dr.Pedal Logo" class="f-logo-img">
+              <p class="f-company-name" style="margin-bottom:0;">株式会社ドクターペダル</p>
+            </div>
             <p class="f-address">
               東京本社 東京都品川区東五反田2-8-5<br><br>
               目黒オフィス 東京都目黒区下目黒3-10-36<br><br>

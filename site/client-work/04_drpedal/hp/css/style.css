@@ -440,6 +440,7 @@ ul, ol {
   .l-footer-inner { grid-template-columns: 1fr; gap: 48px; }
 }
 
+.f-logo-img { height: 28px; width: auto; }
 .f-company-name {
   font-size: 1.1rem;
   font-weight: 900;
