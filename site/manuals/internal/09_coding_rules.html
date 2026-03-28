@@ -900,25 +900,7 @@ top: calc(100% - 260px);</pre>
                     <li>現在のステータス（どのStepか）</li>
                 </ul>
                 <p style="margin-top: 10px;">「<code>docs/project_brief.md</code> を読んで作業してください」とAntigravityに伝えるだけで即スタートできる。</p>
-            <h2>事例14：実装したサイトが「提案FV（Figma）」より少し安っぽく見える（2026-03-28追加）</h2>
-            <p><strong>症状：</strong>レイアウトは合っているのに、数字やローマ字ロゴ、ヘッダーメニューのテキストがどこか野暮ったく、洗練されていない印象になる。</p>
-            <div class="rule-box bad">
-                <span class="badge badge-bad">原因：フォントの「詳細指定」が漏れている</span>
-                <ul style="margin-left: 20px; line-height: 2;">
-                    <li><strong>Google Fontsの読み込み漏れ：</strong> <code>Outfit:wght@300;400;700;900</code> のように、提案書で使われていた特定のウェイト（太さ）が <code>&lt;link&gt;</code> タグから漏れており、ブラウザ標準フォントで代用されていた。</li>
-                    <li><strong>フォント変数の使い間違い：</strong> 英語テキストに対して <code>var(--font-ja)</code> を適用してしまっている。</li>
-                    <li><strong>微調整の省略：</strong> <code>letter-spacing: 0.15em</code> や <code>text-transform: uppercase</code> などの「デザインのキモ」となるタイポグラフィのプロパティをAIが勝手に省略した。</li>
-                </ul>
-            </div>
-            <div class="rule-box good">
-                <span class="badge badge-good">解決策とルール：提案ソースの「完全コピー」</span>
-                <p>美しいデザインを作る上で、フォントは命です。提案用HTML（<code>fv_proposal.html</code>やFigma）がある場合は、以下のルールを徹底します。</p>
-                <ul style="margin-left: 20px; line-height: 2;">
-                    <li><strong>Headの完全コピー：</strong> Google Fontsの指定URLは1文字も変えずに本番 <code>index.html</code> へコピーする。</li>
-                    <li><strong>英数字は必ず英語フォント：</strong> 数字（Stats Barなど）や英語メニューには必ず <code>font-family: var(--font-en)</code> を明示する。</li>
-                    <li><strong>字間と形状の厳守：</strong> <code>letter-spacing</code>、<code>border-radius</code>、<code>uppercase</code> などの微細な指定は「余分なコード」ではなく「必要不可欠なデザイン」であるため、削減リファクタリングの対象外とする。</li>
-                </ul>
-            </div>
+
 
         </main>
 
