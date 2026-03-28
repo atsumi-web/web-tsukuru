@@ -1734,6 +1734,12 @@ section {
     bottom: -10px;            /* -60px + 50px 上げ */
   }
 
+  .hero-line {
+    top: calc(100% - 470px); /* 円の上端(350px)より120px上→lineDrawで円上端まで落下 */
+    left: 10px;
+    animation: lineDraw 2s ease-in-out infinite;
+  }
+
   .hero-info-box {
     bottom: 30px;
     min-width: 600px;
