@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <!-- ポートフォリオテンプレート用（検索除外） -->
+  <meta name="robots" content="noindex,nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>株式会社ドクターペダル | 自転車修理に関するすべての困りごとを解決する</title>
   <meta name="description" content="ドコモバイクシェア・Limeなど大手企業との取引実績。平均年齢31歳の若いプロフェッショナルチームが、モビリティの未来を支えています。">
@@ -24,7 +26,12 @@
   <main>
     <!-- ======== HERO SECTION (from fv_proposal.html) ======== -->
     <section class="hero-fv">
-      <div class="hero-bg"></div>
+      <!-- AI動画（FLOW等）用のアセット受け皿 -->
+      <div class="hero-bg" style="background-image: url('./images/ai_service.webp');">
+        <video autoplay loop muted playsinline class="hero-video">
+          <source src="./images/hero_movie.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="hero-overlay"></div>
       <div class="hero-accent-bar"></div>
 
@@ -153,6 +160,7 @@
           <!-- Card 3 -->
           <a href="./service/maintenance.html" class="service-card reveal delay-200" style="display:block; position:relative; aspect-ratio:4/3; background:#718096; overflow:hidden; border-radius:4px; transition:transform var(--trans-base);">
             <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%); z-index:1;"></div>
+            <div style="position:absolute; inset:0; background:url('./images/ai_maintenance.webp') center/cover; opacity:0.3; z-index:0;"></div>
             <div style="position:absolute; inset:0; padding:32px; z-index:2; display:flex; flex-direction:column; justify-content:space-between;">
               <div style="font-family:var(--font-en); font-size:0.7rem; font-weight:700; color:var(--gold); letter-spacing:0.1em;">MAINTENANCE</div>
               <div>
@@ -165,6 +173,7 @@
           <!-- Card 4 -->
           <a href="./service/b2c-repair.html" class="service-card reveal" style="display:block; position:relative; aspect-ratio:4/3; background:#A0AEC0; overflow:hidden; border-radius:4px; transition:transform var(--trans-base);">
             <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%); z-index:1;"></div>
+            <div style="position:absolute; inset:0; background:url('./images/ai_repair.webp') center/cover; opacity:0.3; z-index:0;"></div>
             <div style="position:absolute; inset:0; padding:32px; z-index:2; display:flex; flex-direction:column; justify-content:space-between;">
               <div style="font-family:var(--font-en); font-size:0.7rem; font-weight:700; color:var(--gold); letter-spacing:0.1em;">INDIVIDUAL</div>
               <div>
@@ -177,6 +186,7 @@
           <!-- Card 5 -->
           <a href="./service/tourism.html" class="service-card reveal delay-100" style="display:block; position:relative; aspect-ratio:4/3; background:#CBD5E0; overflow:hidden; border-radius:4px; transition:transform var(--trans-base);">
             <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%); z-index:1;"></div>
+            <div style="position:absolute; inset:0; background:url('./images/ai_service.webp') center/cover; opacity:0.3; z-index:0;"></div>
             <div style="position:absolute; inset:0; padding:32px; z-index:2; display:flex; flex-direction:column; justify-content:space-between;">
               <div style="font-family:var(--font-en); font-size:0.7rem; font-weight:700; color:var(--gold); letter-spacing:0.1em;">RENTAL BRAND</div>
               <div>
@@ -189,6 +199,7 @@
           <!-- Card 6 -->
           <a href="./service/b2b-repair.html" class="service-card reveal delay-200" style="display:block; position:relative; aspect-ratio:4/3; background:#1A202C; overflow:hidden; border-radius:4px; transition:transform var(--trans-base);">
             <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%); z-index:1;"></div>
+            <div style="position:absolute; inset:0; background:url('./images/ai_sales.webp') center/cover; opacity:0.3; z-index:0;"></div>
             <div style="position:absolute; inset:0; padding:32px; z-index:2; display:flex; flex-direction:column; justify-content:space-between;">
               <div style="font-family:var(--font-en); font-size:0.7rem; font-weight:700; color:var(--gold); letter-spacing:0.1em;">SALES SUPPORT</div>
               <div>
@@ -203,7 +214,7 @@
 
     <!-- ======== RECRUIT CTA ======== -->
     <section class="section-padding" style="position:relative; overflow:hidden; text-align:center;">
-      <div style="position:absolute; inset:0; background:url('../images/hero_bg.png') center/cover; filter:grayscale(50%) blur(2px);"></div>
+      <div style="position:absolute; inset:0; background:url('./images/ai_recruit_hero.webp') center/cover; filter:grayscale(50%) blur(2px);"></div>
       <div style="position:absolute; inset:0; background:rgba(0,0,0,0.78);"></div>
       
       <div class="container" style="position:relative; z-index:2; max-width:600px;">
