@@ -967,11 +967,342 @@ ul, ol {
   background-image: url('../images/ai_recruit_hero.webp');
   background-size: cover; background-position: center; opacity: 0.35; z-index: 0;
 }
-.clients-grid img:hover {
-  opacity: 1;
-  filter: grayscale(0%);
+/* Old clients-grid block removed */
+
+/* =========================================================================
+   SUBPAGES (Service Details & Recruit)
+   ========================================================================= */
+
+/* --- 1. PROBLEM BOX (課題解決) --- */
+.problem-box {
+  background: var(--white);
+  border: 1px solid var(--gray-line);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 48px auto;
+}
+.problem-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.problem-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.4;
+}
+.problem-list {
+  padding: 32px 40px 16px;
+}
+.problem-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.problem-item i {
+  color: var(--gold);
+  font-size: 1.2rem;
+  background: rgba(248,177,10,0.1);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.problem-footer {
+  background: var(--gray-bg);
+  padding: 24px 40px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-main);
+  border-top: 1px solid var(--gray-line);
 }
 @media (max-width: 768px) {
-  .clients-grid { gap: 24px 32px; }
-  .clients-grid img { height: 28px; }
+  .problem-header, .problem-list, .problem-footer { padding: 24px; }
+  .problem-title { font-size: 1.3rem; }
+  .problem-item { font-size: 0.95rem; }
+}
+
+/* --- 2. SUPPORT GRID --- */
+.support-heading {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin: 80px 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.support-card {
+  background: var(--white);
+  border: 1px solid var(--gray-line);
+  border-radius: 8px;
+  padding: 40px 32px 32px;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.support-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+  border-color: rgba(248,177,10,0.3);
+}
+.support-badge {
+  position: absolute;
+  top: -16px; left: 32px;
+  background: var(--black);
+  color: var(--gold);
+  padding: 6px 16px;
+  border-radius: 0;
+  display: flex; gap: 8px; align-items: center;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+}
+.support-badge .en { font-family: var(--font-en); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; }
+.support-badge .num { font-family: var(--font-en); font-weight: 900; font-size: 1.2rem; }
+.support-card-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.support-card-title i { color: var(--gold); font-size: 1.5rem; opacity: 0.5; }
+.support-card-desc {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px dotted var(--gray-line);
+}
+.support-card-list { list-style: none; padding: 0; margin: 0; }
+.support-card-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+.support-card-list li::before {
+  content: ''; position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
+}
+
+/* --- 3. ROLE CONTAINER --- */
+.role-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+@media (max-width: 800px) {
+  .role-container { grid-template-columns: 1fr; }
+}
+.role-box {
+  background: var(--white);
+  border: 1px solid var(--gray-line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.role-box.drpedal { border-top: 4px solid var(--black); }
+.role-box.client { border-top: 4px solid #10B981; }
+.role-box-title {
+  background: var(--gray-bg);
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--gray-line);
+}
+.role-list { padding: 32px; }
+.role-item { margin-bottom: 24px; }
+.role-item:last-child { margin-bottom: 0; }
+.role-item-title {
+  font-weight: 900;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.role-item-title .circle {
+  width: 24px; height: 24px;
+  background: var(--black); color: var(--gold);
+  font-family: var(--font-en); font-size: 0.8rem;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.role-item-text { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); }
+
+/* --- 4. FLOW CONTAINER --- */
+.flow-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+@media (max-width: 900px) {
+  .flow-container { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+@media (max-width: 600px) {
+  .flow-container { grid-template-columns: 1fr; }
+}
+.flow-step {
+  background: var(--white);
+  padding: 32px 24px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--gray-line);
+}
+.flow-step-num {
+  font-family: var(--font-en);
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--gray-bg);
+  position: absolute;
+  top: 10px; right: 16px;
+  line-height: 1;
+  z-index: 0;
+}
+.flow-step-badge {
+  background: var(--gold);
+  color: var(--white);
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 900;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  position: relative; z-index: 1;
+  margin-bottom: 16px;
+}
+.flow-step-icon {
+  font-size: 2.5rem; color: var(--black);
+  margin-bottom: 16px; position: relative; z-index: 1;
+}
+.flow-step-title {
+  font-weight: 900; font-size: 1.1rem; margin-bottom: 12px; position: relative; z-index: 1;
+}
+.flow-step-text {
+  font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; position: relative; z-index: 1;
+}
+
+/* --- 5. RECRUIT INTRO --- */
+.recruit-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+@media (max-width: 800px) {
+  .recruit-intro-grid { grid-template-columns: 1fr; flex-direction: column-reverse; }
+}
+.recruit-intro-text p {
+  font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;
+}
+.recruit-intro-img {
+  width: 100%; aspect-ratio: 4/3;
+  background: url('../images/ai_ceo.webp') center/cover;
+  border-radius: 8px;
+}
+
+/* --- 6. JOB ANCHORS --- */
+.job-anchors {
+  display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.job-anchor {
+  padding: 12px 32px;
+  border: 1px solid var(--gray-line);
+  border-radius: 30px;
+  font-weight: 700; font-size: 0.95rem;
+  color: var(--text-muted); text-decoration: none;
+  background: var(--white);
+  transition: all 0.2s;
+}
+.job-anchor:hover { border-color: var(--gold); color: var(--text-main); }
+.job-anchor.active {
+  background: var(--black); color: var(--gold); border-color: var(--black);
+}
+
+/* --- 7. JOB SECTION & DESC CARD --- */
+.job-section { margin-bottom: 120px; padding-top: 80px; }
+.job-section-title {
+  font-size: 1.6rem; font-weight: 900; border-bottom: 3px solid var(--gold);
+  padding-bottom: 16px; margin-bottom: 32px; display: inline-block;
+}
+.job-desc-card {
+  display: grid; grid-template-columns: 3fr 2fr; gap: 32px; margin-bottom: 48px;
+  background: var(--gray-bg); padding: 40px; border-radius: 8px;
+}
+@media (max-width: 800px) { .job-desc-card { grid-template-columns: 1fr; padding: 24px; } }
+.job-desc-text { font-size: 0.95rem; line-height: 1.8; }
+.job-desc-img {
+  width: 100%; aspect-ratio: 4/3;
+  background: url('../images/ai_repair.webp') center/cover; border-radius: 8px;
+}
+
+/* --- 8. INTERVIEW GRID --- */
+.job-sub-heading {
+  font-size: 1.2rem; font-weight: 900; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.job-sub-heading::before {
+  content: ''; width: 4px; height: 1.2rem; background: var(--gold);
+}
+.interview-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 56px;
+}
+@media (max-width: 900px) { .interview-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .interview-grid { grid-template-columns: 1fr; } }
+.interview-card {
+  display: block; text-decoration: none;
+  border-radius: 8px; overflow: hidden; position: relative;
+  aspect-ratio: 1/1;
+}
+.interview-img {
+  width: 100%; height: 100%;
+  background: url('../images/ai_ceo.webp') center/cover;
+  transition: transform 0.5s;
+}
+.interview-card:hover .interview-img { transform: scale(1.05); }
+.interview-meta {
+  position: absolute; bottom: 0; left: 0; width: 100%;
+  padding: 32px 16px 16px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+  color: var(--white); z-index: 2;
+}
+.interview-name { font-weight: 900; font-size: 1rem; }
+.interview-tenure { font-size: 0.75rem; color: var(--gold); font-weight: 700; margin-top: 4px; }
+
+/* --- 9. REQ TABLE (募集要項) --- */
+.req-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+.req-table th, .req-table td {
+  padding: 24px; border-bottom: 1px solid var(--gray-line);
+}
+.req-table th {
+  width: 25%; background: var(--gray-bg); font-weight: 900; text-align: left;
+}
+.req-table td { font-size: 0.95rem; line-height: 1.7; }
+@media (max-width: 600px) {
+  .req-table th, .req-table td { display: block; width: 100%; padding: 16px; }
+  .req-table th { border-bottom: none; padding-bottom: 8px; }
+}
+.job-cta {
+  text-align: center; padding: 48px 0; border-top: 1px dashed var(--gray-line);
+}
+.micro-copy {
+  display: inline-block; font-size: 0.85rem; font-weight: 700;
+  color: var(--text-main); background: var(--gray-bg); padding: 4px 16px;
+  border-radius: 16px; margin-bottom: 16px;
 }
