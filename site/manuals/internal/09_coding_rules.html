@@ -851,6 +851,57 @@ top: calc(100% - 260px);</pre>
 }</pre>
             </div>
 
+            <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
+
+            <div class="highlight-box" style="background: #f0f4ff; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 30px;">
+                <h3 style="margin-top:0; border:none; padding:0; background:none;">📁 クライアントフォルダ命名規則（2026-03-28 追加）</h3>
+                <p>案件ごとにフォルダを整理するルール。Antigravityがすぐ資料を参照できる状態にしておくことが目的。</p>
+            </div>
+
+            <h2>フォルダ命名・構成ルール</h2>
+            <p><strong>全案件は <code>site/client-work/</code> 以下に配置する。</strong></p>
+
+            <h3>① フォルダ名の命名規則</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：連番 + クライアント名（英数小文字）</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">site/client-work/
+  01_hotta/          ← 完了案件
+  02_hokkaido_cafe/  ← 完了案件
+  03_okagesama/      ← 進行中
+  04_drpedal/        ← 進行中
+  05_（次の案件）/</pre>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>番号は2桁（01, 02, 03...）</li>
+                    <li>クライアント名は英数小文字＋アンダースコア</li>
+                    <li>スペース・日本語・大文字は使わない</li>
+                </ul>
+            </div>
+
+            <h3>② フォルダ内部の構成ルール</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">標準構成</span>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">XX_clientname/
+  docs/              ← ヒアリング資料・設計書（.md形式）
+    project_brief.md ← 必ず作成する（Antigravityが読める形式）
+  design/            ← Figmaスクリーンショット・参考画像
+  images/            ← 本番で使用する画像素材
+  index.html         ← メインファイル
+  style.css          ← スタイルシート（1案件1CSS）</pre>
+            </div>
+
+            <h3>③ project_brief.md は必ず作る</h3>
+            <div class="rule-box good">
+                <span class="badge badge-good">Antigravityとの引き継ぎ資料</span>
+                <p>セッションをまたいでも即座に作業再開できるよう、<strong>受注時にproject_brief.mdを作成する。</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>目的・KPI・ターゲット・デザイン方向</li>
+                    <li>ページ構成（全ページ一覧）</li>
+                    <li>企業情報・SNSリンク・連絡先</li>
+                    <li>現在のステータス（どのStepか）</li>
+                </ul>
+                <p style="margin-top: 10px;">「<code>docs/project_brief.md</code> を読んで作業してください」とAntigravityに伝えるだけで即スタートできる。</p>
+            </div>
+
         </main>
 
         <footer>
