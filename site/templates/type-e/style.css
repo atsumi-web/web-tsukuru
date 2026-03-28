@@ -449,14 +449,13 @@ section {
 /* 圓の内側から変わらず園の下端に教占 */
 .hero-line {
   position: absolute;
-  left: 10px;                /* 5px右へ */
-  top: calc(100% - 260px);  /* +5px上げ */
+  left: 10px;
+  bottom: 360px;             /* 円上端(bottom:350px)の10px上に固定 */
   width: 2px;
-  height: 0;
+  height: 120px;             /* 静的ライン */
   background: rgba(255,255,255,0.85);
   z-index: 10;
   pointer-events: none;
-  animation: lineDrawMobile 2s ease-in-out infinite;
 }
 
 /* テキスト — catch labelに準ずるため .hero-catch 内で管理 */
@@ -1734,11 +1733,7 @@ section {
     bottom: -10px;            /* -60px + 50px 上げ */
   }
 
-  .hero-line {
-    top: calc(100% - 360px); /* 円の上端(350px from bottom)の10px上から開始 */
-    left: 10px;
-    animation: lineDraw 2s ease-in-out infinite;
-  }
+  /* hero-line: bottom基準で固定のためPCオーバーライド不要 */
 
   .hero-info-box {
     bottom: 30px;
