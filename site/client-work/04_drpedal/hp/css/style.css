@@ -1491,3 +1491,110 @@ ul, ol {
     margin: 0 16px; /* スマホ時の外側余白 */
   }
 }
+
+/* --- 14. CONTACT FORM --- */
+.contact-form {
+  background: var(--white);
+  padding: 56px;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+}
+.form-row {
+  display: flex; gap: 32px;
+}
+.form-group.half {
+  flex: 1;
+}
+.form-group {
+  margin-bottom: 32px;
+}
+.form-label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+.badge-req {
+  background: #E53E3E;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+.badge-opt {
+  background: var(--gray-text);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 12px;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--gray-line);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--gray-bg);
+  transition: all var(--trans-base);
+  font-family: inherit;
+  color: var(--text-main);
+}
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #adb5bd;
+}
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(248,177,10,0.15);
+}
+.form-textarea {
+  min-height: 240px;
+  resize: vertical;
+}
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper::after {
+  content: '\f107';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-text);
+  pointer-events: none;
+}
+.select-wrapper select {
+  appearance: none;
+  cursor: pointer;
+}
+.form-privacy {
+  background: var(--gray-bg);
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 40px 0 24px;
+}
+.w-100 {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .contact-form { padding: 32px 24px; }
+  .form-row { flex-direction: column; gap: 0; }
+}
