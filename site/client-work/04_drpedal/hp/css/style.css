@@ -1388,15 +1388,39 @@ ul, ol {
 .interview-text { line-height: 1.8; font-size: 1rem; }
 .interview-photo { width: 100%; aspect-ratio: 4/3; background-color: var(--gray-bg); background-size: cover; background-position: center; border-radius: 8px; }
 
-/* --- 12. MESSAGE BOX --- */
+/* --- 12. ABOUT PAGE STYLING --- */
+.vision-statement {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.8;
+  margin: 64px 0;
+  color: var(--black);
+  position: relative;
+}
+.vision-statement .gold {
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 4px;
+}
+.vision-text-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 80px; /* 余白追加 */
+}
+
+/* --- 13. MESSAGE BOX --- */
 .message-box {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 40px;
+  grid-template-columns: 320px 1fr;
+  gap: 64px; /* 余白拡充 */
   background: var(--white);
-  padding: 48px;
+  padding: 64px; /* 余白拡充 */
   border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+  max-width: 1080px; /* 見出しとの横幅を調整 */
+  margin: 0 auto;
 }
 .message-photo {
   width: 100%;
@@ -1405,12 +1429,13 @@ ul, ol {
   background-size: cover;
   background-position: center;
   border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1); /* 写真に浮遊感 */
 }
 .message-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 900;
-  line-height: 1.6;
-  margin-bottom: 24px;
+  line-height: 1.7;
+  margin-bottom: 32px;
   color: var(--text-main);
   border-bottom: 2px solid var(--gold);
   padding-bottom: 16px;
@@ -1418,13 +1443,13 @@ ul, ol {
 }
 .message-text {
   font-size: 1.05rem;
-  line-height: 1.9;
+  line-height: 2.0; /* 文字サイズに対して行間を広く */
   color: var(--text-muted);
   margin-bottom: 40px;
 }
 .message-sign {
   font-family: var(--font-en);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 900;
   color: var(--text-main);
   text-align: right;
@@ -1435,19 +1460,13 @@ ul, ol {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--gray-text);
-  margin-top: 4px;
+  margin-top: 8px;
 }
 @media (max-width: 768px) {
   .message-box {
     grid-template-columns: 1fr;
     gap: 32px;
-    padding: 32px 24px;
-  }
-  .message-photo {
-    max-width: 240px;
-    margin: 0 auto;
-  }
-  .message-title {
-    font-size: 1.3rem;
+    padding: 40px 24px;
+    margin: 0 16px; /* スマホ時の外側余白 */
   }
 }
