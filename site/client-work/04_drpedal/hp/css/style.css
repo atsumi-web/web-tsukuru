@@ -1306,3 +1306,63 @@ ul, ol {
   color: var(--text-main); background: var(--gray-bg); padding: 4px 16px;
   border-radius: 16px; margin-bottom: 16px;
 }
+
+/* --- 10. BUTTONS & STICKY CTA --- */
+.btn-gray {
+  display: inline-block;
+  background: var(--black);
+  color: var(--white);
+  padding: 16px 48px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-gray:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(248,177,10,0.3);
+}
+
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 16px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+@media (min-width: 769px) {
+  .sticky-cta { display: none; /* Hide on PC */ }
+}
+.sticky-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--gold);
+  color: var(--black);
+  width: 100%;
+  max-width: 400px;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(248,177,10,0.4);
+  animation: pulse-gold 2s infinite;
+}
+.sticky-btn i {
+  font-size: 1.4rem;
+}
+@keyframes pulse-gold {
+  0% { box-shadow: 0 0 0 0 rgba(248,177,10,0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(248,177,10,0); }
+  100% { box-shadow: 0 0 0 0 rgba(248,177,10,0); }
+}
