@@ -66,6 +66,17 @@
         「まずTOPページでデザインを確定させてから、同じコンポーネントを使ってサブページを展開」が基本戦略です。
     </div>
 
+    <div class="diff-box" style="background: rgba(16,185,129,0.07); border-color: rgba(16,185,129,0.3);">
+        <strong>🌟 【Antigravity流】多ページコーポレートサイト量産の5つの絶対原則（必勝パターン）</strong><br>
+        <ul style="margin-top: 8px; padding-left: 20px;">
+            <li><strong>【役割分担の極致】</strong> クリエイティブ（AI連携ディレクション等）は人間が、実装・最適化・パス管理はAntigravityが100%分業する。</li>
+            <li><strong>【脱・ストックフォト】</strong> プレースホルダーに頼らず、「AI専用アクター（例: 佐藤健太/整備）」のプロンプトを固定してシーンを展開し、別人が並ぶのを防ぐ。</li>
+            <li><strong>【アーキテクチャの勝利】</strong> <code>shared-nav.js</code> にヘッダー/フッターだけでなく、「FaviconとOGP」も集約し、全ページのパス切れを防ぐ。</li>
+            <li><strong>【段階的デプロイの隔離】</strong> <code>noindex</code> を付けたままテストアップし、トラブル検知とSEOリスク（コピーサイト判定）を分離する。</li>
+            <li><strong>【トラブルからの瞬時リカバリー】</strong> Terminal等の文字化け事故（Mojibake）が起きたらパニックにならず、<code>git checkout</code> で秒速タイムリープ復旧する。</li>
+        </ul>
+    </div>
+
     <div class="step-list">
 
         <div class="step">
@@ -125,6 +136,7 @@
                     <ul>
                         <li><strong>共通ナビ（header/footer）</strong>を <code>shared-nav.js</code> として分離しておく</li>
                         <li><strong>共通CSS</strong>（カラー変数・フォント・ボタン）を <code>css/style.css</code> にまとめる</li>
+                        <li><strong>ファビコン・OGPの一括管理：</strong> HTMLの <code>&lt;head&gt;</code> に直書きせず、<code>shared-nav.js</code> 内で <code>data-root-path</code> を用いて全ページに動的挿入（inject）させる。これにより階層ごとのパス切れを防ぐ。</li>
                         <li><strong>提案デザインの完全再現（Fidelity）：</strong> 提案用FVやFigmaがある場合、Google Fontsの <code>&lt;link&gt;</code> タグ（ウェイト指定含む）や <code>letter-spacing</code> などの精緻なタイポグラフィ設定を勝手に省略せず、完全にコピーして高級感を維持する</li>
                         <li>TOPページでデザインテイストを確定させてから、他ページに展開</li>
                         <li>Go Live で確認しながら進める</li>
@@ -148,6 +160,7 @@
                         <li>TOPのコンポーネント（カード・セクション・CTA）を再利用して各ページを作成</li>
                         <li>各ページには <code>shared-nav.js</code> の読み込みを忘れずに</li>
                         <li>ページごとに <code>&lt;title&gt;</code> と <code>&lt;meta name="description"&gt;</code> を変える</li>
+                        <li><strong>AIアクターの一貫性担保：</strong> インタビュー等で同一人物の画像を連続して使う場合、顔立ち・服装のプロンプトを固定しシーンだけを変更して生成する。（フリー素材のツギハギ感を排す）</li>
                         <li>全ページ作成後、Antigravityに「全ページのリンクが正しいか確認して」と依頼</li>
                     </ul>
                     <div class="note">⚠️ 新しいCSSファイルを追加させない。全スタイルは <code>css/style.css</code> に集約</div>
@@ -189,13 +202,30 @@
                         <li><code>git add .</code> → <code>git commit -m "feat: complete corporate site"</code> → <code>git push origin main</code></li>
                         <li>本番URLで全ページのリンクを再度確認（シークレットモードで）</li>
                         <li>クライアントに確認URLを共有 → 修正対応 → 再push</li>
-                        <li>最終納品：GA4コード挿入・Search Console登録・URL/ログイン情報の引き渡し</li>
+                        <li>最終納品：GA4コード挿入・Search Console登録、本番サーバーへの移行</li>
                     </ul>
-                    <div class="warn-note">❗ PowerShellでは <code>&&</code> は使えない。<code>git add .</code> → 実行→ <code>git commit ...</code> → 実行 の2段階で run する</div>
+                    <div class="warn-note">❗ 【要注意】<code>web-tsukuru.jp</code> 上のテスト環境としてデプロイ中は、絶対に全ページの <code>&lt;meta name="robots" content="noindex,nofollow"&gt;</code> を外さないこと。Google等にインデックスされると、後日クライアント（独自ドメイン）が公開した際に「コピーコンテンツ」判定される。外すのはクライアントの本番環境へ移行する時のみ。</div>
                 </div>
             </div>
         </div>
 
+    </div>
+
+    <!-- トラブルシューティング セクション -->
+    <div style="max-width: 860px; margin: 40px auto 0; padding: 24px; border: 1px solid var(--panel-border); background: var(--panel-bg); border-radius: 10px;">
+        <h3 style="color: var(--accent-red); margin-bottom: 16px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-triangle-exclamation"></i> 🚨 デバッグ・トラブルシューティング
+        </h3>
+        <div style="color: var(--text-dim); font-size: 0.9rem;">
+            <p style="margin-bottom: 8px;"><strong>一括置換での「文字化け（Mojibake）」事故</strong></p>
+            <p>WindowsのPowerShellで安易に正規表現でのテキスト全置換（ターミナルコマンド）を実行すると、BOMなしUTF-8の日本語がShift-JIS等の別コードとして解釈され、HTML内の日本語が完全に文字化けして画面が壊れる事故が発生しやすい。</p>
+            <p style="margin-top: 8px; padding: 12px; background: rgba(0,0,0,0.2); border-left: 3px solid var(--accent-red);">
+                <i class="fa-solid fa-code-commit"></i> <strong>リカバリー方法：</strong><br>
+                事故が起きたら手作業で直そうとせず、ターミナルで直近の正常なコミットハッシュを確認し、<br>
+                <code>git checkout &lt;hash&gt; -- &lt;path/to/folder&gt;</code> <br>
+                を実行して数秒で正常時点へタイムリープ（復旧）させること。Gitの強みを活かし、パニックにならずに即座に戻すのがプロの鉄則。
+            </p>
+        </div>
     </div>
 
     <hr>
