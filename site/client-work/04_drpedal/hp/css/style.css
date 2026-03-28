@@ -777,21 +777,105 @@ ul, ol {
   line-height: 1.8;
 }
 
-/* Clients Logos */
-.clients-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 40px 64px;
-  margin-top: 48px;
+/* ===== CLIENTS ===== */
+.clients-section {
+  background: var(--white);
+  padding: 56px 0 80px;
 }
-.clients-grid img {
-  height: 40px;
-  opacity: 0.6;
-  filter: grayscale(100%);
-  transition: all var(--trans-base);
+.clients-inner { max-width: 1280px; margin: 0 auto; padding: 0 72px; }
+.clients-label {
+  font-family: var(--font-en); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--text-muted); text-align: center; margin-bottom: 36px;
 }
+.clients-logos {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 48px 64px;
+}
+.client-name {
+  font-family: var(--font-en); font-size: 1.2rem; font-weight: 900;
+  letter-spacing: 0.05em; color: #C4C9D4;
+  transition: color 0.25s;
+}
+.client-name:hover { color: var(--text-main); }
+
+/* ===== OUR STRENGTHS (Improve) ===== */
+.improve-section { background: var(--gray-bg); padding-top: 100px; padding-bottom: 120px; }
+.improve-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px;
+}
+.improve-card {
+  background: var(--white); border-radius: 10px;
+  padding: 36px 40px;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+@media (max-width: 768px) {
+  .improve-grid { grid-template-columns: 1fr; }
+  .improve-card { padding: 24px; }
+}
+.improve-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-3px); }
+.improve-card.before { border-top: 3px solid var(--gray-line); }
+.improve-card.after  { border-top: 3px solid var(--gold); }
+.card-label {
+  font-family: var(--font-ja); font-size: 0.9rem; font-weight: 900;
+  letter-spacing: 0.1em;
+  padding-bottom: 14px; margin-bottom: 20px;
+  border-bottom: 1px solid var(--gray-line);
+}
+.card-label.before-label { color: var(--text-muted); }
+.card-label.after-label  { color: var(--gold); }
+.improve-card .point {
+  display: flex; gap: 12px; padding: 11px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04); font-size: 0.9rem; line-height: 1.7;
+  align-items: flex-start;
+}
+.improve-card .point:last-child { border-bottom: none; }
+.improve-card .point-icon { flex-shrink: 0; font-size: 1rem; margin-top: 2px; }
+
+/* ===== SPLIT SECTION (About Us) ===== */
+.split-section { padding: 0; }
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 620px; }
+@media (max-width: 800px) {
+  .split-grid { grid-template-columns: 1fr; min-height: auto; }
+  .split-photo { min-height: 400px; }
+  .split-text { padding: 56px 32px; }
+}
+.split-photo {
+  background: url('../images/ai_ceo.webp') center 25% / cover no-repeat;
+  position: relative;
+}
+.split-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+}
+.split-photo::before {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 80px; height: 80px;
+  background: var(--gold); z-index: 2;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+.split-text {
+  background: var(--black); padding: 88px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.split-text::before {
+  content: ''; position: absolute;
+  top: -120px; right: -120px; width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(248,177,10,0.12), transparent 70%);
+  pointer-events: none;
+}
+.split-text .section-title { color: var(--white); font-size: clamp(1.5rem, 3vw, 2.2rem); }
+.split-text p { color: rgba(255,255,255,0.7); line-height: 2.2; margin-top: 24px; font-size: 0.95rem; }
+.split-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.split-badges .badge {
+  border: 1px solid rgba(248,177,10,0.4); color: var(--gold);
+  font-family: var(--font-en); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; padding: 6px 16px; border-radius: 2px;
+  transition: background 0.2s;
+}
+.split-badges .badge:hover { background: rgba(248,177,10,0.1); }
 
 /* =========================================================================
    About & Company Profile Components
