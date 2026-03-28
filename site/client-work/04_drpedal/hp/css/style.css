@@ -1387,3 +1387,67 @@ ul, ol {
 
 .interview-text { line-height: 1.8; font-size: 1rem; }
 .interview-photo { width: 100%; aspect-ratio: 4/3; background-color: var(--gray-bg); background-size: cover; background-position: center; border-radius: 8px; }
+
+/* --- 12. MESSAGE BOX --- */
+.message-box {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  background: var(--white);
+  padding: 48px;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+}
+.message-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: var(--gray-line);
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+.message-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: var(--text-main);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 16px;
+  display: inline-block;
+}
+.message-text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+.message-sign {
+  font-family: var(--font-en);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text-main);
+  text-align: right;
+}
+.message-job {
+  display: block;
+  font-family: var(--font-ja);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gray-text);
+  margin-top: 4px;
+}
+@media (max-width: 768px) {
+  .message-box {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+  .message-photo {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .message-title {
+    font-size: 1.3rem;
+  }
+}
