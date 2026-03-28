@@ -808,6 +808,49 @@ min-height: 100vh;</pre>
 &lt;link rel="stylesheet" href="css/hero.css?v=3.2" /&gt;</pre>
             </div>
 
+            <h2>事例12：absoluteで配置した要素、topとbottomどちらで指定するか（2026-03-28）</h2>
+            <p><strong>症状：</strong><code>top: calc(100% - Xpx)</code> で位置指定した装飾ライン（<code>.hero-line</code>）が、モバイルとPCでズレる。数値を大きくすると上に行き、小さくすると下に行く——直感に反した動きで修正ループに入る。</p>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：topで下端基準の位置を管理</span>
+                <p><code>top: calc(100% - 260px)</code> のように書くと、<strong>数値を増やすほど上に行く</strong>（直感に反する）。モバイルとPCで <code>100%</code> の値（ヒーロー高さ）が異なるため、ズレも変わる。</p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* NG: 数値を増やすと上に動く（直感に反する） */
+top: calc(100% - 260px);</pre>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：bottomで下端基準を直接指定</span>
+                <p>要素の下端を基準にしたいなら <code>bottom: Xpx</code> を使う。「ヒーロー下から何px上」が直接数値で表せるため、他の要素（赤丸など）と合わせやすい。</p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* OK: ヒーロー下端からの距離を直接指定 */
+.hero-decoration { bottom: 150px; height: 200px; } /* 円の上端 = bottom:350px */
+.hero-line        { bottom: 150px; }                /* ラインの下端 = 円の下端に一致 */</pre>
+                <p>👆 円の <code>bottom</code> 値に合わせれば「ラインが円の下端まで届く」を1行で実現できる。</p>
+            </div>
+
+            <h2>事例13：PCのみ表示の装飾要素は「最初から非表示→PCで解除」で設計する（2026-03-28）</h2>
+            <p><strong>症状：</strong>モバイル向けに調整した装飾要素がPCでズレて、モバイルとPCの両方で位置計算が複雑になり、修正の無限ループに入る。</p>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">NG：モバイルにも表示しつつPC用に上書き</span>
+                <p>モバイルでも表示させつつ、メディアクエリでPC用位置を上書きしようとする。ヒーロー高さが端末ごとに違うため計算がずれ続ける。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">OK：ベースでdisplay:none、PCメディアクエリで解除</span>
+                <p>スマホに不要な装飾は最初から非表示にする。PCのスタイルをひとつの <code>@media</code> ブロックに集約できるため、管理がシンプルになる。</p>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* ベースCSS（モバイル）：最初から非表示 */
+.hero-line {
+  display: none;
+  position: absolute;
+  /* 以下はPC用の初期値として書いておいてもOK */
+}
+
+/* PC（1024px以上）のみ表示・配置 */
+@media (min-width: 1024px) {
+  .hero-line {
+    display: block;
+    bottom: -10px;   /* 円のbottom値に合わせる */
+    height: 240px;
+  }
+}</pre>
+            </div>
+
         </main>
 
         <footer>
