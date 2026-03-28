@@ -263,7 +263,8 @@ ul, ol {
 .logo-img {
   height: 28px;
   width: auto;
-  transition: filter var(--trans-base);
+  border-radius: 6px;
+  transition: all var(--trans-base);
 }
 /* Text Logo fallback based on FV design */
 .logo-text {
@@ -274,9 +275,10 @@ ul, ol {
   color: var(--black);
 }
 .l-header.is-transparent.theme-dark .logo-text { color: var(--white); }
-.l-header.is-transparent.theme-dark .logo-img { filter: brightness(0) invert(1); }
+/* フルカラーのロゴマークは反転させず、動画背景でも視認できるよう仄かな光彩を追加 */
+.l-header.is-transparent.theme-dark .logo-img { box-shadow: 0 0 16px rgba(255,255,255,0.15); }
 .l-header.is-scrolled .logo-text { color: var(--black) !important; }
-.l-header.is-scrolled .logo-img { filter: none !important; }
+.l-header.is-scrolled .logo-img { box-shadow: none !important; }
 
 .l-nav {
   display: none; /* Mobile first, shown on PC */
@@ -440,7 +442,7 @@ ul, ol {
   .l-footer-inner { grid-template-columns: 1fr; gap: 48px; }
 }
 
-.f-logo-img { height: 28px; width: auto; }
+.f-logo-img { height: 28px; width: auto; border-radius: 6px; }
 .f-company-name {
   font-size: 1.1rem;
   font-weight: 900;
