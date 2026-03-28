@@ -450,9 +450,9 @@ section {
 .hero-line {
   position: absolute;
   left: 10px;
-  bottom: 360px;             /* 円上端(bottom:350px)の10px上に固定 */
+  bottom: 150px;             /* モバイル: 円のBottom値と一致 */
   width: 2px;
-  height: 120px;             /* 静的ライン */
+  height: 240px;             /* 150px(円の上)まで伸びる */
   background: rgba(255,255,255,0.85);
   z-index: 10;
   pointer-events: none;
@@ -1733,7 +1733,11 @@ section {
     bottom: -10px;            /* -60px + 50px 上げ */
   }
 
-  /* hero-line: bottom基準で固定のためPCオーバーライド不要 */
+  /* hero-line: PC用は円のBottomが-10pxのため別途設定 */
+  .hero-line {
+    bottom: -10px;           /* PC: 円のBottom値と一致 */
+    height: 240px;
+  }
 
   .hero-info-box {
     bottom: 30px;
