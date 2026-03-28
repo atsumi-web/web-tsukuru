@@ -1738,6 +1738,7 @@ section {
   .hero-line {
     display: block;          /* PCのみ表示 */
     bottom: -10px;           /* PC: 円のBottom値と一致 */
+    left: 20px;              /* 10px右に移動 */
     height: 240px;
   }
 
