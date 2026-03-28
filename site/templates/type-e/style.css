@@ -1735,7 +1735,7 @@ section {
   }
 
   .hero-line {
-    top: calc(100% - 470px); /* 円の上端(350px)より120px上→lineDrawで円上端まで落下 */
+    top: calc(100% - 360px); /* 円の上端(350px from bottom)の10px上から開始 */
     left: 10px;
     animation: lineDraw 2s ease-in-out infinite;
   }
