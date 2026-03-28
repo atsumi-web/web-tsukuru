@@ -1366,3 +1366,24 @@ ul, ol {
   70% { box-shadow: 0 0 0 10px rgba(248,177,10,0); }
   100% { box-shadow: 0 0 0 0 rgba(248,177,10,0); }
 }
+
+/* --- 11. INTERVIEW ARTICLE LAYOUT --- */
+.interview-header { margin-bottom: 24px; }
+.interview-profile { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+.interview-banner { width: 100%; aspect-ratio: 21/9; background-color: var(--gray-bg); background-size: cover; border-radius: 8px; margin-bottom: 64px; }
+@media (max-width: 768px) { .interview-banner { aspect-ratio: 16/9; } }
+
+.interview-split, .interview-split-rev {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; margin-bottom: 80px;
+}
+.interview-split-rev .interview-text { order: 2; }
+.interview-split-rev .interview-photo { order: 1; }
+
+@media (max-width: 768px) {
+  .interview-split, .interview-split-rev { grid-template-columns: 1fr; gap: 24px; margin-bottom: 56px; }
+  .interview-split-rev .interview-text { order: unset; }
+  .interview-split-rev .interview-photo { order: unset; }
+}
+
+.interview-text { line-height: 1.8; font-size: 1rem; }
+.interview-photo { width: 100%; aspect-ratio: 4/3; background-color: var(--gray-bg); background-size: cover; background-position: center; border-radius: 8px; }
