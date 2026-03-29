@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Routine System | web-tsukuru</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0F172A;
+            --gold: #C5A059;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --code-bg: #1e293b;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .concept-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .concept-box strong {
+            color: var(--navy);
+        }
+
+        /* Simple Card */
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 i { color: var(--gold); }
+
+        .step-number {
+            background: var(--navy);
+            color: var(--gold);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Prompt Card */
+        .prompt-card {
+            background: var(--code-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            color: #e2e8f0;
+        }
+
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .prompt-title {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .copy-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+
+        pre {
+            white-space: pre-wrap;
+            font-family: 'Consolas', monospace;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .today-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 20px;
+            border: 2px solid var(--gold);
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .today-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+        }
+
+        .motto-banner {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            color: var(--navy);
+            opacity: 0.5;
+        }
+
+        /* Global Nav */
+        .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+        .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>毎日やること<br>Daily Routine System</h1>
+    </header>
+
+    <div class="concept-box">
+        💡 <strong>コンセプト</strong><br>
+        「昨日やったこと、どれぐらい進んでる、今日やること」をシンプルに確認。<br>
+        毎朝5分で完結。
+    </div>
+
+    <!-- Step 1: 朝プロンプト -->
+    <div class="card">
+        <h2><span class="step-number">1</span> <i class="fa-solid fa-sun"></i> 朝プロンプトをコピーして Antigravity に投げる</h2>
+
+        <div class="prompt-card">
+            <div class="prompt-header">
+                <span class="prompt-title">毎朝の作戦会議プロンプト</span>
+                <button class="copy-btn" onclick="copyToClipboard('morning-prompt')"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
+            <pre id="morning-prompt">@Antigravity
+おはよう。まず以下のファイルを読んでから始めてほしい。
+
+- 作業記録: `site/manuals/daily/DAILY_LOG.md`（昨日の引き継ぎ）
+- ロードマップ: `site/manuals/admin/monetization_bible_90days.html`（現在地確認）
+- 今日のタスク: `site/manuals/daily/TODAY.md`
+
+それを踏まえて：
+
+1. 昨日進んだことの整理（日報作成）
+   - DAILY_LOGとチャットログから成果をピックアップ
+   - 90日ロードマップに基づいた大きな進捗だけ記録
+
+2. 今日の `manuals/daily/today.html` サブタイトル提案（1行コピペ用）
+
+3. 今日やるべきことの洗い出し（TODAY.md更新）
+
+ロードマップの現在地（フェーズ・Day数）を必ず確認して、戦略的な提案を頼む。</pre>
+        </div>
+    </div>
+
+    <!-- Step 2: TODAY確認 -->
+    <div class="card" style="text-align: center;">
+        <h2 style="justify-content: center;"><span class="step-number">2</span> 今日のミッションを確認</h2>
+        <p style="margin-bottom: 20px;">Antigravity が TODAY.md を更新したら、以下を開く：</p>
+        <a href="today.html" class="today-btn">
+            <i class="fa-solid fa-rocket"></i> TODAY.md を見る
+        </a>
+        <br><br>
+        <a href="../admin/monetization_bible_90days.html" class="today-btn" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); border-color: #10B981;">
+            <i class="fa-solid fa-map"></i> ロードマップの現在地を確認
+        </a>
+    </div>
+
+    <!-- Step 3: 夜プロンプト -->
+    <div class="card">
+        <h2><span class="step-number">3</span> <i class="fa-solid fa-moon"></i> 夜：今日の記録を残す（翌朝のために）</h2>
+        <p style="color:#64748b; font-size:0.95rem;">チャットログは参照できないことがある。<strong>毎晩このプロンプトで作業記録を残すこと</strong>が翌朝の作戦会議の精度を上げる。</p>
+
+        <div class="prompt-card">
+            <div class="prompt-header">
+                <span class="prompt-title">毎晩の作業記録プロンプト</span>
+                <button class="copy-btn" onclick="copyToClipboard('night-prompt')"><i class="fa-regular fa-copy"></i> Copy</button>
+            </div>
+            <pre id="night-prompt">@Antigravity
+今日の作業が終わった。以下のフォーマットで `site/manuals/daily/DAILY_LOG.md` に今日の記録を追記してほしい。
+
+## [今日の日付] — Day XX
+
+### ✅ 今日やったこと
+（90日ロードマップ関連の成果を中心に）
+
+### 🔑 重要な決定・気づき
+（今後の判断に影響する発見・変更点）
+
+### 📋 明日への引き継ぎ（優先順）
+1. ⭐⭐⭐
+2. ⭐⭐
+3. ⭐
+
+---
+
+今日実際にやったこと: [ここに作業内容を書く]</pre>
+        </div>
+    </div>
+
+    <div class="motto-banner">
+        「頑張らない。仕組みにする。」
+    </div>
+
+</div>
+
+
+<!-- Global Navigation -->
+<div class="global-nav">
+    <a href="../admin/Private_index.html" class="nav-btn" title="運用司令室へ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+
+<script>
+    function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+            btn.style.background = '#10B981';
+            btn.style.borderColor = '#10B981';
+            btn.style.color = '#fff';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.background = '';
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 2000);
+        });
+    }
+</script>
+</body>
+</html>

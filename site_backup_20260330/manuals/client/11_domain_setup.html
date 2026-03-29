@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ドメイン接続マニュアル（Cloudflare） | Webとしくみをつくる</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: #333; background-color: #f4f7f6; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .manual-box { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { color: #f38020; /* Cloudflare Orange */ border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 30px; }
+        h2 { font-size: 1.3rem; margin-top: 40px; margin-bottom: 15px; color: #333; border-left: 5px solid #f38020; padding-left: 15px; }
+        .step-box { background: #fff8f0; border: 1px solid #ffe0b2; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .step-number { display: inline-block; background: #f38020; color: #fff; width: 25px; height: 25px; line-height: 25px; text-align: center; border-radius: 50%; margin-right: 10px; font-weight: bold; }
+        img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; margin-top: 10px; }
+        .alert { background: #ffebee; color: #c62828; padding: 15px; border-radius: 8px; margin-top: 20px; font-weight: bold; }
+        /* Floating Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .back-to-index {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #fff;
+            color: #06c755;
+            border: 2px solid #06c755;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 46px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .back-to-index.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-index:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            background: #06c755;
+            color: #fff;
+        }
+        .line-support {
+            position: fixed;
+            bottom: 150px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .line-support.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .line-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            border: 2px solid #fff;
+        }
+        @media (max-width: 768px) {
+            .back-to-top, .back-to-index, .line-support {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="manual-box">
+            <h1>ドメイン接続マニュアル</h1>
+            <p>取得した独自ドメインを、Cloudflare（世界最速・無料のサーバーレス基盤）に接続する手順です。<br>
+            この作業は最初の1回だけ行います。</p>
+
+            <div class="alert">
+                ⚠️ 作業を始める前に<br>
+                ドメインを取得したサービス（お名前.com、Xserverドメインなど）のログイン情報をご用意ください。
+            </div>
+
+            <!-- Content will be added here interactively -->
+            <div id="content-area">
+                
+                <h2>STEP 1: Cloudflareにドメインを追加する</h2>
+                <div class="step-box">
+                    <span class="step-number">1</span> Cloudflareの管理画面にログイン<br>
+                    <span class="step-number">2</span> 右上の「+ 追加」をクリックし、メニューから<strong>「ドメインを接続する」</strong>を選択<br>
+                    <img src="images/01_cf_add_site_dropdown.png" alt="Cloudflareドメイン接続メニュー" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">3</span> 取得したドメイン名（例: example.com）を入力<br>
+                    <img src="images/02_cf_enter_domain.png" alt="ドメイン入力画面" style="margin-bottom: 15px;"><br>
+                    <span style="font-size:0.9em; color:#666;">※「DNSレコードのクイックスキャン」や「robots.txtでAIボット...」は、<strong>すべてチェックが入ったまま（初期状態）</strong>でOKです。</span><br>
+                    <span class="step-number">4</span> 画面下の「続行」をクリック
+                </div>
+
+                <h2>STEP 2: プランの選択</h2>
+                <div class="step-box">
+                    <span class="step-number">5</span> 画面を一番下までスクロールし、<strong>「Free（$0）」</strong>のボックスをクリックして選択<br>
+                    <img src="images/03_cf_select_plan.png" alt="プラン選択画面" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">6</span> 「続行」をクリック
+                </div>
+
+                <h2>STEP 3: DNSレコードの確認</h2>
+                <div class="step-box">
+                    <span class="step-number">6</span> 現在のDNS設定が自動でスキャンされて表示されます。<br>
+                    <img src="images/04_cf_dns_review.png" alt="DNSレコード確認画面" style="margin-bottom: 15px;"><br>
+                    特に変更せず、そのまま画面を一番下までスクロールして<strong>「アクティベーションに進む」</strong>（または「続行」）をクリックしてください。
+                </div>
+
+                <h2>STEP 4: Cloudflareのネームサーバーをコピー</h2>
+                <div class="step-box">
+                    <span class="step-number">7</span> 画面に<strong>「Cloudflareのネームサーバー」</strong>という項目が表示されます。<br>
+                    <img src="images/05_cf_nameservers.png" alt="ネームサーバー画面" style="margin-bottom: 15px;"><br>
+                    ここに表示されている2つの行（例：darwin.ns.cloudflare.com など）を、次のステップで<strong>「お名前.com」の画面に入力</strong>します。<br>
+                    この画面はまだ閉じないでください。
+                </div>
+
+                <h2>STEP 5: お名前.comでの設定変更</h2>
+                <div class="step-box">
+                    <p>ここからは「お名前.com」の管理画面（お名前.com Navi）での操作です。</p>
+                    
+                    <span class="step-number">8</span> お名前.com Naviにログイン<br>
+                    <span class="step-number">9</span> 上部メニューの<strong>「ネームサーバーの設定」</strong> ＞ <strong>「ネームサーバーの変更」</strong>をクリック<br>
+                    <img src="images/06_onamae_top.png" alt="お名前.comメニュー" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">10</span> 設定したいドメイン（web-tsukuru.jp）の<strong>左端にあるチェックボックス</strong>をクリックしてチェックを入れる<br>
+                    <span style="font-size:0.9em; margin-left: 2.5em; color:#666; display:block; margin-bottom:5px;">※右側の「初期設定」などの文字はクリックしなくて大丈夫です。</span>
+                    <span class="step-number">11</span> <strong>「他のネームサーバーを利用」</strong>タブを選択<br>
+                    <img src="images/07_onamae_select_other.png" alt="他のネームサーバーを利用タブ" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">12</span> ネームサーバー1、ネームサーバー2の欄に、先ほどCloudflareで表示された名前をそれぞれ入力（コピペ）する<br>
+                    <img src="images/08_onamae_input_complete.png" alt="ネームサーバー入力完了画面" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">13</span> 画面右下の「確認」をクリック<br>
+                    <img src="images/09_onamae_confirm_modal.png" alt="確認ポップアップ" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">14</span> ポップアップが表示されたら「OK」をクリック
+                </div>
+
+                <h2>STEP 6: 完了確認</h2>
+                <div class="step-box">
+                    <span class="step-number">14</span> Cloudflareの画面に戻り、画面下の<strong>「ネームサーバーを更新しました」</strong>ボタンをクリック<br>
+                    <img src="images/10_cf_check_nameservers.png" alt="ネームサーバー更新ボタン" style="margin-bottom: 15px;"><br>
+                    <span class="step-number">15</span> 「クイックスタートガイド」が表示されたら「後で」でスキップして構いません。<br>
+                    <br>
+                    <strong>🎉 設定完了です！</strong><br>
+                    最後、以下のような画面（「伝播するのを待っています」）になれば成功です。<br>
+                    <img src="images/11_cf_pending.png" alt="完了待機画面" style="margin-bottom: 15px;"><br>
+                    完全に切り替わるまで数分〜24時間かかります。後ほどCloudflareのトップ画面で、ドメインの下に「アクティブ」と表示されれば完了です。<br>
+                    <span style="font-size:0.9em; color:#666;">※画面右下にある「ゾーンID」や「アカウントID」は、システム開発などが使うものなので書き留める必要はありません。（使いません）</span>
+                </div>
+        </div>
+    </div>
+    <a href="#" id="lineSupport" class="line-support"> LINEで相談</a>
+    <a href="index.html" id="backToIndex" class="back-to-index"> 一覧に戻る</a>
+    <a href="#" id="backToTop" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        const backToIndex = document.getElementById('backToIndex');
+        const lineSupport = document.getElementById('lineSupport');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+                backToIndex.classList.add('show');
+                lineSupport.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+                backToIndex.classList.remove('show');
+                lineSupport.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        lineSupport.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('https://lin.ee/eKNHAte', '_blank');
+        });
+    </script>
+
+</body>
+</html>

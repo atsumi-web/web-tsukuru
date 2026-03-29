@@ -1,0 +1,922 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社ネクスト・フロンティア | 施工管理採用特設サイト | REVOLUTION</title>
+    <meta name="description" content="【平均年齢28歳・昇給率120%】建設DXの最前線を走る。ドローン、3Dスキャン、遠隔管理。テクノロジーで「現場」を革命する、次世代の施工管理集団。">
+    <meta name="keywords" content="施工管理,採用,DX,ドローン,建設テック,ベンチャー,ネクストフロンティア">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- OGP -->
+    <meta property="og:title" content="株式会社ネクスト・フロンティア | 施工管理採用特設サイト">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="建設DXで、世界を変える。テクノロジー×施工管理の最前線。">
+    <meta property="og:url" content="https://next-frontier.jp/recruit/">
+    <meta property="og:image" content="./Image_fx_s_hero.webp">
+    <meta property="og:site_name" content="株式会社ネクスト・フロンティア採用サイト">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="../deploy.css?v=3">
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Teko:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Teko:wght@500;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="image" href="./Image_fx_sp.webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="./Image_fx.webp" media="(min-width: 769px)">
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FACC15; }
+        .text-outline { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
+        @media (min-width: 768px) {
+            .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-gray-300 font-sans antialiased overflow-x-hidden">
+
+    <header class="fixed w-full bg-brand-black/95 backdrop-blur-md border-b border-white/5 z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-yellow text-black flex items-center justify-center font-black text-2xl font-display tracking-tighter italic shadow-lg">NF</div>
+                <div class="hidden md:block leading-none">
+                    <div class="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1 italic">Next Frontier</div>
+                    <div class="text-white font-black text-sm tracking-tighter uppercase">株式会社ネクスト・フロンティア</div>
+                </div>
+            </div>
+            <nav class="hidden lg:flex items-center gap-6 text-[10px] font-bold tracking-[0.25em] uppercase">
+                <a href="#mission" class="hover:text-brand-yellow transition">Mission</a>
+                <a href="#work" class="hover:text-brand-yellow transition">Work</a>
+                <a href="#gallery" class="hover:text-brand-yellow transition">Gallery</a>
+                <a href="#benefits" class="hover:text-brand-yellow transition">Benefits</a>
+                <a href="#schedule" class="hover:text-brand-yellow transition">Day</a>
+                <a href="#career" class="hover:text-brand-yellow transition">Career</a>
+                <a href="#interview" class="hover:text-brand-yellow transition">People</a>
+                <a href="#faq" class="hover:text-brand-yellow transition">Q&A</a>
+            </nav>
+            <div class="flex items-center gap-6">
+                <a href="#entry" class="hidden md:block bg-white text-black px-8 py-3 text-[10px] font-black hover:bg-brand-yellow transition duration-500 uppercase tracking-widest">
+                    Entry Now
+                </a>
+                <button id="menu-toggle" class="lg:hidden text-white hover:text-brand-yellow transition z-50 relative group">
+                    <span class="sr-only">Menu</span>
+                    <div class="space-y-2">
+                        <span class="block w-8 h-0.5 bg-current transition-transform duration-300"></span>
+                        <span class="block w-8 h-0.5 bg-current transition-transform duration-300"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-yellow z-40 transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center">
+        <nav class="flex flex-col items-center gap-8 text-2xl font-black italic uppercase tracking-tighter">
+            <a href="#mission" class="menu-link text-black hover:text-white transition">Mission</a>
+            <a href="#work" class="menu-link text-black hover:text-white transition">Work</a>
+            <a href="#gallery" class="menu-link text-black hover:text-white transition">Gallery</a>
+            <a href="#benefits" class="menu-link text-black hover:text-white transition">Benefits</a>
+            <a href="#schedule" class="menu-link text-black hover:text-white transition">Day in the Life</a>
+            <a href="#career" class="menu-link text-black hover:text-white transition">Career</a>
+            <a href="#interview" class="menu-link text-black hover:text-white transition">People</a>
+            <a href="#faq" class="menu-link text-black hover:text-white transition">Q&A</a>
+            <a href="#entry" class="menu-link mt-8 bg-black text-white px-12 py-4 hover:bg-white hover:text-black transition">Entry Now</a>
+        </nav>
+    </div>
+
+    <section class="relative min-h-screen flex items-center justify-start overflow-hidden py-28 md:py-20">
+        <div class="absolute inset-0 z-0">
+            <img src="./Image_fx.webp" srcset="./Image_fx_sp.webp 800w, ./Image_fx.webp 1400w" sizes="100vw" class="w-full h-full object-cover grayscale opacity-40 scale-105" alt="Hero" fetchpriority="high" width="1400" height="900">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/60 to-transparent"></div>
+        </div>
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 text-[25vw] font-display font-black text-outline pointer-events-none z-0 uppercase italic leading-none">UPDATE</div>
+        
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="max-w-4xl">
+                <div class="font-display text-brand-yellow text-2xl md:text-5xl tracking-[0.4em] mb-6 uppercase italic animate-pulse">
+                    Overtake the Future.
+                </div>
+                <h1 class="text-6xl md:text-7xl lg:text-9xl font-black text-white leading-tight mb-8 md:mb-10 tracking-tighter">
+                        未来を、<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-100 uppercase whitespace-nowrap">追い抜け。</span>
+                    </h1>
+                <p class="text-lg md:text-2xl text-gray-400 max-w-xl mb-12 leading-relaxed font-medium italic">
+                    朝5時起き、長い通勤、数年ごとの転勤。<br>
+                    そんな『業界の当たり前』に、あなたはいつまで耐え続けますか？
+                </p>
+                <div class="flex flex-wrap gap-10 items-center">
+                    <a href="#entry" class="bg-brand-yellow text-black px-12 py-6 text-lg font-black tracking-widest hover:bg-white transition-all duration-500 shadow-[0_0_40px_rgba(250,204,21,0.2)]">
+                        エントリーする
+                    </a>
+                    <div class="text-xs font-bold tracking-[0.2em] space-y-2 border-l border-white/20 pl-8">
+                        <p class="text-white/40 uppercase italic">Expected Annual Income</p>
+                        <p class="text-3xl font-display text-white tracking-widest">¥7,200,000 <span class="text-xs font-sans text-gray-500 ml-1">AVG.</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission" class="py-20 md:py-40 bg-brand-black relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10 grayscale">
+            <img src="./Image_fx5.webp" srcset="./Image_fx5_sp.webp 800w, ./Image_fx5.webp 1200w" sizes="100vw" class="w-full h-full object-cover" alt="Mission Background" loading="lazy" width="1200" height="800">
+        </div>
+        <div class="container mx-auto px-4 md:px-6 max-w-6xl relative z-10">
+            <div class="flex flex-col lg:flex-row items-start gap-24">
+                <div class="lg:w-2/5 lg:sticky lg:top-32">
+                    <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">The Philosophy</span>
+                    <h2 class="text-5xl md:text-6xl lg:text-8xl font-display font-black text-white mb-8 italic tracking-tighter uppercase leading-none">Mission<span class="text-brand-yellow">.</span></h2>
+                    <p class="text-gray-500 font-bold leading-relaxed text-xl italic mb-8">
+                        まだ、下積みに<br>
+                        数年を費やすつもりですか？
+                    </p>
+                    <div class="w-12 h-1 bg-brand-yellow hidden lg:block"></div>
+                </div>
+                <div class="lg:w-3/5 space-y-24">
+                    <div>
+                        <h3 class="text-3xl font-black text-white mb-8 italic border-l-4 border-brand-yellow pl-8 uppercase tracking-tighter leading-none">年功序列は、過去のもの。</h3>
+                        <p class="text-gray-400 leading-9 text-xl font-medium">
+                            ネクスト・フロンティアは、年功序列を過去のものにしました。ここでは、最新のデジタルツールと独自の『しくみ』が、あなたの成長を圧倒的な速度でバックアップします。
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black text-white mb-8 italic border-l-4 border-brand-yellow pl-8 uppercase tracking-tighter leading-none">高い成果には、<br class="md:hidden">高い報酬で応える。</h3>
+                        <p class="text-gray-400 leading-9 text-xl font-medium">
+                            建設の仕事は、街の未来を創る付加価値の高いクリエイティブな仕事です。徹底した効率化で生まれた利益は、社員へダイレクトに、かつ適正に還元。実力ある者が正当に評価され、豊かさを実感できる透明性の高い仕組みを追求しています。
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black text-white mb-8 italic border-l-4 border-brand-yellow pl-8 uppercase tracking-tighter leading-none">誇れる仕事、<br class="md:hidden">進化し続けるスタイル。</h3>
+                        <p class="text-gray-400 leading-9 text-xl font-medium">
+                            やり方は変える。道具も変える。だが、「地図に残る仕事をする」という本質的な誇りだけは、創業時から変わりません。最先端の技術を武器に、誰よりも誠実に情熱を持って現場に向き合う。それがネクスト・フロンティアのスタイルです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-20 md:py-40 bg-brand-dark clip-diagonal relative">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-24">
+                <h2 class="text-5xl md:text-[10rem] font-display font-black text-white mb-6 italic tracking-tighter uppercase leading-none opacity-80">Actual Work</h2>
+                <p class="text-brand-yellow font-bold uppercase tracking-[0.5em] text-xs italic">Professional Operations</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Case 1 -->
+                <div class="group relative overflow-hidden bg-brand-gray border border-white/5 hover:border-brand-yellow transition-all duration-500 shadow-2xl">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./work_solar_real_sp.webp">
+                            <img src="./work_solar_real.webp" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Drone Survey" loading="lazy" decoding="async" width="1024" height="640">
+                        </picture>
+                        <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-3 italic">Renewable Energy x Tech</div>
+                        <h3 class="text-2xl font-black text-white mb-4 italic uppercase tracking-tighter leading-none">Mega Solar Project</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-bold">
+                            東京ドーム3個分の測量を、ドローン1機でわずか30分で完遂。取得した3次元点群データから、造成計画を即日自動生成。
+                        </p>
+                    </div>
+                </div>
+                <!-- Case 2 -->
+                <div class="group relative overflow-hidden bg-brand-gray border border-white/5 hover:border-brand-yellow transition-all duration-500 shadow-2xl">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./work_tablet_real_sp.webp">
+                            <img src="./work_tablet_real.webp" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Remote Management" loading="lazy" decoding="async" width="1024" height="640">
+                        </picture>
+                        <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-3 italic">Remote Management</div>
+                        <h3 class="text-2xl font-black text-white mb-4 italic uppercase tracking-tighter leading-none">Multi-Site Control</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-bold">
+                            iPadとクラウドカメラを駆使し、1人の監督が3つの現場を同時指揮。移動時間をゼロにし、判断と指示のスピードを最大化。
+                        </p>
+                    </div>
+                </div>
+                <!-- Case 3 -->
+                <div class="group relative overflow-hidden bg-brand-gray border border-white/5 hover:border-brand-yellow transition-all duration-500 shadow-2xl">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="./work_bim_real_sp.webp">
+                            <img src="./work_bim_real.webp" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="BIM Renovation" loading="lazy" decoding="async" width="1024" height="640">
+                        </picture>
+                        <div class="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition duration-500"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-3 italic">BIM Renovation</div>
+                        <h3 class="text-2xl font-black text-white mb-4 italic uppercase tracking-tighter leading-none">Urban Redevelopment</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-bold">
+                            既存ビルの改修案件。LiDARスキャナで建物全体をデジタルツイン化。BIM上での干渉チェックにより、手戻りを100%削減。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="career" class="py-20 md:py-40 bg-brand-black">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col lg:flex-row gap-24 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-10 italic uppercase tracking-tighter leading-[1.1]">
+                        3年で職長へ。<br>
+                        他社の2倍の速度で、<br>
+                        <span class="text-brand-yellow uppercase">自分の未来を切り拓け。</span>
+                    </h2>
+                    <p class="text-gray-400 text-xl leading-relaxed mb-12 font-bold italic">
+                        スピードこそ価値。私たちはそう考えます。未経験からでも最短でトッププレイヤーになれるロードマップがここにはあります。
+                    </p>
+                </div>
+                <div class="lg:w-1/2 w-full space-y-10">
+                    <div class="flex items-center gap-10 opacity-60 transition duration-500 hover:opacity-100">
+                        <div class="font-display text-5xl font-bold text-gray-500 italic w-32 leading-none tracking-tighter uppercase">Step 01</div>
+                        <div class="flex-1 bg-brand-gray p-8 border border-gray-800 relative">
+                            <h4 class="font-black text-white uppercase italic text-2xl tracking-tighter leading-none mb-2">爆速インプット</h4>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest leading-loose">
+                                入社初日にiPad Pro支給。<br>
+                                Notionナレッジ共有 / 動画マニュアル
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-10">
+                        <div class="font-display text-5xl font-bold text-brand-yellow italic w-32 leading-none tracking-tighter uppercase">Step 02</div>
+                        <div class="flex-1 bg-brand-gray p-8 border-2 border-brand-yellow relative shadow-[0_0_40px_rgba(250,204,21,0.15)]">
+                            <div class="absolute -top-3 -right-3 bg-brand-yellow text-black text-[10px] font-black px-2 py-1 uppercase italic tracking-tighter">Current Target</div>
+                            <h4 class="font-black text-white uppercase italic text-2xl tracking-tighter leading-none mb-2 whitespace-nowrap">早期チームリード</h4>
+                            <p class="text-xs text-brand-yellow font-bold uppercase tracking-widest italic leading-loose">
+                                1年目〜 / SaaS導入PJTリーダー<br>
+                                積算・BIMモデラー資格取得 (全額会社負担)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-10">
+                        <div class="font-display text-7xl font-bold text-brand-yellow italic w-40 leading-none tracking-tighter uppercase relative z-10">
+                            Step 03
+                        </div>
+                        <div class="flex-1 bg-gradient-to-r from-brand-yellow to-yellow-600 p-12 transform lg:scale-105 shadow-2xl -ml-8 relative z-20">
+                            <h4 class="font-black text-black uppercase italic text-3xl tracking-tighter leading-none mb-2">開拓者 (Frontier)</h4>
+                            <p class="text-[10px] text-black font-black uppercase tracking-[0.2em] leading-none italic">
+                                3年目〜 / 新規事業立ち上げ・DXコンサル
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interview" class="py-20 md:py-40 bg-brand-dark">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-5xl md:text-[11rem] font-display font-black text-white mb-16 md:mb-32 text-center italic tracking-tighter uppercase leading-none opacity-10 select-none">Frontrunners</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 -mt-48">
+                <!-- Member 1 -->
+                <div class="flex flex-col gap-6 group">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member1.webp" srcset="./Image_fx_s_member1_sp.webp 800w, ./Image_fx_s_member1.webp 1024w" sizes="(max-width: 768px) 100vw, 500px" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="DX Lead" loading="lazy" decoding="async" width="800" height="1024">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">DX Promotion Lead</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">29 years old / Ex-IT Engineer</div>
+                        </div>
+                    </div>
+                    <div class="pl-4 border-l-2 border-brand-yellow">
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「単純作業は自動化。<br>評価が爆上がりした。」
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            元ITエンジニアからの転身。写真整理や日報作成を自動化するスクリプトを組んだら、社内で英雄扱いされました。ここは「建設業界」というより、「建設現場を持ったテックベンチャー」です。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="flex flex-col gap-6 group md:mt-24">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member2.webp" srcset="./Image_fx_s_member2_sp.webp 800w, ./Image_fx_s_member2.webp 1024w" sizes="(max-width: 768px) 100vw, 500px" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="Area Manager" loading="lazy" decoding="async" width="800" height="1024">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">Area Manager</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">26 years old / Income: 7.2M</div>
+                        </div>
+                    </div>
+                    <div class="pl-4 border-l-2 border-brand-yellow">
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「年齢なんて関係ない。<br>結果が全て。」
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            入社3年目でエリア統括、年収720万。iPadひとつで3つの現場を回しています。「若いうちは下積み」とか言っている会社より、圧倒的にチャンスがありますよ。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="flex flex-col gap-6 group">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member3.webp" srcset="./Image_fx_s_member3_sp.webp 800w, ./Image_fx_s_member3.webp 1024w" sizes="(max-width: 768px) 100vw, 500px" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="Drone Specialist" loading="lazy" decoding="async" width="800" height="1024">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">Drone Surveyor</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">25 years old / Specialist</div>
+                        </div>
+                    </div>
+                    <div class="pl-4 border-l-2 border-brand-yellow">
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「コントローラー捌きが、<br>職人芸になる。」
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            趣味のドローンやゲームのスキルが、ここでは「測量」という最強の武器になりました。かつて数日かかった仕事を、空から30分で終わらせる。この快感は他では味わえません。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="flex flex-col gap-6 group md:mt-24">
+                    <div class="aspect-[3/4] bg-gray-900 relative overflow-hidden rounded-sm border border-white/5 shadow-2xl">
+                        <img src="./Image_fx_s_member4.webp" srcset="./Image_fx_s_member4_sp.webp 800w, ./Image_fx_s_member4.webp 1024w" sizes="(max-width: 768px) 100vw, 500px" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 group-hover:scale-105" alt="HR & Dev" loading="lazy" decoding="async" width="800" height="1024">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="text-brand-yellow font-black italic uppercase tracking-tighter text-2xl">HR & Org Dev</div>
+                            <div class="text-white text-xs font-bold tracking-widest uppercase">28 years old / Ex-Consultant</div>
+                        </div>
+                    </div>
+                    <div class="pl-4 border-l-2 border-brand-yellow">
+                        <h3 class="text-xl font-black text-white mb-4 leading-snug italic uppercase tracking-tighter">
+                            「給与テーブルは公開。<br>100%フェアです。」
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed text-sm font-bold">
+                            「なぜあの人が昇格？」という不満をゼロにするため、評価基準と給与テーブルを完全公開しました。成果を出せば、誰でも・いつからでも突き抜けられる制度を設計しています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="company" class="py-20 md:py-40 bg-brand-black border-y border-white/5">
+        <div class="container mx-auto px-4 md:px-6">
+            <!-- Message -->
+            <div class="flex flex-col lg:flex-row gap-20 items-center mb-40">
+                <div class="lg:w-1/2 relative group">
+                    <div class="absolute -inset-4 bg-brand-yellow/20 blur-2xl group-hover:bg-brand-yellow/30 transition duration-700"></div>
+                    <img src="./Image_fx_s_ceo.webp" srcset="./Image_fx_s_ceo_sp.webp 600w, ./Image_fx_s_ceo.webp 1024w" sizes="(max-width: 1024px) 100vw, 600px" width="1024" height="1024" class="relative w-full shadow-2xl grayscale group-hover:grayscale-0 transition duration-700" alt="CEO Message" loading="lazy" decoding="async">
+                    <div class="absolute bottom-10 left-10 z-10">
+                        <p class="text-brand-yellow font-black uppercase tracking-widest text-xs italic mb-2">Representative</p>
+                        <h3 class="text-white text-4xl font-black italic uppercase tracking-tighter leading-none">Keisuke <br>Matsushita</h3>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl md:text-7xl font-display font-black text-white mb-12 italic uppercase tracking-tighter leading-none">
+                        建設業を、<br>
+                        <span class="text-brand-yellow">クールにハックせよ。</span>
+                    </h2>
+                    <div class="space-y-8 text-gray-400 font-medium leading-loose text-lg">
+                        <p>
+                            私たちのライバルは、競合の建設会社ではありません。GoogleやAmazonのような、テクノロジー企業です。
+                        </p>
+                        <p>
+                            建設現場は、実は「データの宝庫」です。ドローン、AI、IoT。これらを駆使すれば、きつい肉体労働はもっとクリエイティブな「管理業務」に変わります。私が作りたいのは、汗水垂らして働く現場ではなく、涼しい顔をしてスマートに巨大建造物を作り上げる、そんな新しい建設の常識です。
+                        </p>
+                        <p class="text-white font-bold italic">
+                            古いやり方に疑問を持つあなたへ。<br>
+                            その「違和感」こそが、私たちの最大の武器になります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Info & Office -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-brand-gray p-12 md:p-20 border border-white/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 448 512" fill="currentColor"><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32 0-97.2-78.8-176-176-176zM448 128c0-70.7-57.3-128-128-128H128C57.3 0 0 57.3 0 128v64c0 70.7 57.3 128 128 128h192c70.7 0 128-57.3 128-128v-64zM240 160h-48c-8.8 0-16-7.2-16-16s7.2-16 16-16h48c8.8 0 16 7.2 16 16s-7.2 16-16 16zm-48-64h48c8.8 0 16-7.2 16-16s-7.2-16-16-16h-48c-8.8 0-16 7.2-16 16s7.2 16 16 16zm-16 64h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0-64h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16z"/></svg>
+                </div>
+                
+                <div>
+                     <h2 class="text-3xl md:text-5xl font-display font-black text-white mb-10 italic uppercase tracking-tighter leading-none">Company Profile</h2>
+                     <dl class="space-y-6 text-sm md:text-base font-bold text-gray-400">
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Company Name</dt>
+                             <dd class="text-white">株式会社ネクスト・フロンティア (Next Frontier Co., Ltd.)</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Founded</dt>
+                             <dd class="text-white">2015年 4月</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Capital</dt>
+                             <dd class="text-white">5,000万円</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Employees</dt>
+                             <dd class="text-white">45名 (平均年齢 28.5歳)</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Business</dt>
+                             <dd class="text-white">総合建設業、建設DXコンサルティング</dd>
+                         </div>
+                         <div class="flex flex-col md:flex-row md:items-center border-b border-gray-700 pb-4">
+                             <dt class="w-40 text-brand-yellow uppercase italic tracking-widest mb-2 md:mb-0">Location</dt>
+                             <dd class="text-white">
+                                 [本社] 東京都渋谷区渋谷2-24-12<br>
+                                 [技術センター] 千葉県柏市の葉キャンパス
+                             </dd>
+                         </div>
+                     </dl>
+                </div>
+                <div class="relative h-full min-h-[300px] overflow-hidden group">
+                    <img src="./Image_fx_s_company.webp" srcset="./Image_fx_s_company_sp.webp 800w, ./Image_fx_s_company.webp 1024w" sizes="(max-width: 768px) 100vw, 600px" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="Office Environment" loading="lazy" decoding="async" width="1024" height="600">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black/80 to-transparent flex items-end p-8">
+                        <p class="text-white font-bold italic">
+                            <span class="text-brand-yellow text-xl mr-2">■</span>
+                            フリーアドレス制のオフィス。現場とリモートを柔軟に使い分ける「Smart Work」推奨企業。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Numbers (moved inside section) -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-16 text-center mt-24 pt-24 border-t border-white/5">
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Growth Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">250<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-wider">3-Year Growth</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">DX Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">100<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-wider">Cloud Adoption</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Avg Raise</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">5.0<span class="text-2xl text-brand-yellow ml-1 italic">万/年</span></div>
+                    <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-wider">Annual Raise</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-4 italic group-hover:text-brand-yellow transition">Paid Leave</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">88<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 md:py-40 bg-brand-dark">
+        <div class="container mx-auto px-4 md:px-6 max-w-4xl">
+            <h2 class="text-5xl md:text-8xl font-display font-black text-white mb-16 md:mb-24 text-center italic tracking-tighter uppercase leading-none">The Q&A</h2>
+            <div class="space-y-10 text-left font-medium">
+                <div class="bg-brand-gray p-12 border border-white/5 group hover:border-brand-yellow transition duration-500 relative overflow-hidden">
+                    <div class="absolute -top-6 -right-6 text-white/5 text-8xl font-display font-bold italic select-none">Q1</div>
+                    <h3 class="text-2xl font-black text-white mb-6 italic flex items-center gap-6 uppercase tracking-tighter">
+                        <span class="text-brand-yellow text-5xl leading-none">Q.</span>
+                        実力主義って本当ですか？
+                    </h3>
+                    <p class="text-gray-400 text-lg leading-relaxed font-bold border-l-4 border-gray-700 pl-8 ml-12 italic">
+                        本当です。年齢や社歴は一切関係ありません。昨年は入社2年目の社員が、DX推進による原価低減を評価され、年収ベースで120%の昇給を実現しました。成果はダイレクトに報酬に反映します。
+                    </p>
+                </div>
+                <div class="bg-brand-gray p-12 border border-white/5 group hover:border-brand-yellow transition duration-500 relative overflow-hidden">
+                    <div class="absolute -top-6 -right-6 text-white/5 text-8xl font-display font-bold italic select-none">Q2</div>
+                    <h3 class="text-2xl font-black text-white mb-6 italic flex items-center gap-6 uppercase tracking-tighter">
+                        <span class="text-brand-yellow text-5xl leading-none">Q.</span>
+                        どんなデジタルツールを使いますか？
+                    </h3>
+                    <p class="text-gray-400 text-lg leading-relaxed font-bold border-l-4 border-gray-700 pl-8 ml-12 italic">
+                        iPad Pro、Matterport(3Dカメラ)、点群処理用ワークステーション、クラウドサイン等、生産性が上がるものには投資を惜しみません。「ハンコのために帰社する」ような無駄は全廃しています。
+                    </p>
+                </div>
+                <div class="bg-brand-gray p-12 border border-white/5 group hover:border-brand-yellow transition duration-500 relative overflow-hidden">
+                    <div class="absolute -top-6 -right-6 text-white/5 text-8xl font-display font-bold italic select-none">Q3</div>
+                    <h3 class="text-2xl font-black text-white mb-6 italic flex items-center gap-6 uppercase tracking-tighter">
+                        <span class="text-brand-yellow text-5xl leading-none">Q.</span>
+                        残業は減っていますか？
+                    </h3>
+                    <p class="text-gray-400 text-lg leading-relaxed font-bold border-l-4 border-gray-700 pl-8 ml-12 italic">
+                        移動時間の削減と事務作業の自動化により、直近3年で平均残業時間を40%削減しました。ダラダラ残る人は評価しません。決められた時間で最大の成果を出す人を評価します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <section id="gallery" class="py-20 md:py-32 bg-brand-black overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6 text-center mb-16 md:mb-20">
+            <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">The Scenes</span>
+            <h2 class="text-5xl md:text-[9rem] font-display font-black text-white italic tracking-tighter uppercase leading-none opacity-10 select-none">Gallery</h2>
+        </div>
+
+        <div class="relative w-full">
+            <style>
+                @keyframes marquee-nf {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-25%); }
+                }
+                .gallery-marquee-nf {
+                    display: flex;
+                    align-items: flex-start;
+                    width: max-content;
+                    animation: marquee-nf 70s linear infinite;
+                }
+                .gallery-marquee-nf:hover { animation-play-state: paused; }
+                .gallery-img-container {
+                    height: 13rem; /* = h-52 (208px) */
+                }
+            </style>
+            <div class="gallery-marquee-nf">
+                <!-- Set 1 -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_solar_real.webp" srcset="./work_solar_real_sp.webp 800w, ./work_solar_real.webp 1024w" sizes="360px" alt="Mega Solar Survey" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_tablet_real.webp" srcset="./work_tablet_real_sp.webp 800w, ./work_tablet_real.webp 1024w" sizes="360px" alt="Remote Management" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_bim_real.webp" srcset="./work_bim_real_sp.webp 800w, ./work_bim_real.webp 1024w" sizes="360px" alt="BIM Renovation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work1.webp" srcset="./Image_fx_s_work1_sp.webp 800w, ./Image_fx_s_work1.webp 1024w" sizes="360px" alt="Site Operation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Site Operation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work2.webp" srcset="./Image_fx_s_work2_sp.webp 800w, ./Image_fx_s_work2.webp 1024w" sizes="360px" alt="Premium Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_company.webp" srcset="./Image_fx_s_company_sp.webp 800w, ./Image_fx_s_company.webp 1024w" sizes="360px" alt="Smart Office" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+                <!-- Set 2 (loop) -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_solar_real.webp" sizes="360px" alt="Mega Solar Survey" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_tablet_real.webp" sizes="360px" alt="Remote Management" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_bim_real.webp" sizes="360px" alt="BIM Renovation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work1.webp" sizes="360px" alt="Site Operation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Site Operation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work2.webp" sizes="360px" alt="Premium Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_company.webp" sizes="360px" alt="Smart Office" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+                <!-- Set 3 (loop) -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_solar_real.webp" sizes="360px" alt="Mega Solar Survey" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_tablet_real.webp" sizes="360px" alt="Remote Management" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_bim_real.webp" sizes="360px" alt="BIM Renovation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work1.webp" sizes="360px" alt="Site Operation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Site Operation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work2.webp" sizes="360px" alt="Premium Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_company.webp" sizes="360px" alt="Smart Office" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+                <!-- Set 4 (loop) -->
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_solar_real.webp" sizes="360px" alt="Mega Solar Survey" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Drone Survey / Mega Solar</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_tablet_real.webp" sizes="360px" alt="Remote Management" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Remote Management / Multi-Site</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./work_bim_real.webp" sizes="360px" alt="BIM Renovation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">BIM / Urban Redevelopment</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work3.webp" srcset="./Image_fx_s_work3_sp.webp 800w, ./Image_fx_s_work3.webp 1024w" sizes="360px" alt="DX Innovation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">DX Innovation</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_work2.webp" sizes="360px" alt="Premium Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Premium Project</p>
+                </div>
+                <div class="w-[280px] md:w-[360px] flex-shrink-0 group pr-6">
+                    <div class="overflow-hidden border border-white/5 group-hover:border-brand-yellow transition duration-500 gallery-img-container">
+                        <img src="./Image_fx_s_company.webp" sizes="360px" alt="Smart Office" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="360" height="220">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-600 mt-4 tracking-widest uppercase italic">Smart Office / Free Address</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NUMBERS / 待遇 SECTION ===== -->
+    <section id="benefits" class="py-20 md:py-40 bg-brand-dark border-y border-white/5">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16 md:mb-28">
+                <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">The Numbers</span>
+                <h2 class="text-5xl md:text-[10rem] font-display font-black text-white italic tracking-tighter uppercase leading-none opacity-10 select-none">Benefits</h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-20 text-center -mt-16 md:-mt-48">
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Growth Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">250<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">3-Year Revenue Growth</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Avg. Income</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">7.2<span class="text-3xl text-brand-yellow ml-1 italic">M</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Annual (Age 26 Model)</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Raise Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">120<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Best Performer Last Year</p>
+                </div>
+                <div class="group">
+                    <div class="text-gray-600 text-[10px] font-bold tracking-[0.5em] uppercase mb-6 italic group-hover:text-brand-yellow transition">Leave Rate</div>
+                    <div class="text-6xl md:text-8xl font-display font-bold text-white italic tracking-tighter leading-none">88<span class="text-4xl text-brand-yellow ml-1 italic">%</span></div>
+                    <p class="text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Paid Leave Consumption</p>
+                </div>
+            </div>
+
+            <div class="mt-24 pt-24 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-gray p-8 border border-white/5 hover:border-brand-yellow transition duration-500">
+                    <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-4 italic">Entry Benefit</div>
+                    <h3 class="text-xl font-black text-white mb-4 italic uppercase tracking-tighter">入社初日に<br>iPad Pro支給</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">入社直後からDXツールを完全支給。Notionナレッジ・動画マニュアル・クラウドサインで、生産性を即戦力レベルに引き上げます。</p>
+                </div>
+                <div class="bg-brand-gray p-8 border border-white/5 hover:border-brand-yellow transition duration-500">
+                    <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-4 italic">Qualification</div>
+                    <h3 class="text-xl font-black text-white mb-4 italic uppercase tracking-tighter">資格取得費用<br>全額会社負担</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">BIMモデラー・積算・施工管理技士など、取得した資格の数だけ給与テーブルが上がる制度設計です。上限なし。</p>
+                </div>
+                <div class="bg-brand-gray p-8 border border-white/5 hover:border-brand-yellow transition duration-500">
+                    <div class="text-brand-yellow text-xs font-bold tracking-widest uppercase mb-4 italic">Overtime</div>
+                    <h3 class="text-xl font-black text-white mb-4 italic uppercase tracking-tighter">残業40%削減。<br>成果主義で評価</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">移動時間の削減・事務の自動化で、直近3年で平均残業時間を40%削減。ダラダラ残業よりも、密度の高いアウトプットを評価します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCHEDULE / 1日の流れ SECTION ===== -->
+    <section id="schedule" class="py-20 md:py-40 bg-brand-black">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16 md:mb-24">
+                <span class="text-brand-yellow text-xs font-bold tracking-[0.6em] uppercase block mb-6 italic">A Day in the Life</span>
+                <h2 class="text-4xl md:text-6xl font-display font-black text-white italic tracking-tighter uppercase leading-none">メリハリのある<br><span class="text-brand-yellow">1日の流れ。</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- Step 1 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6" style="aspect-ratio: 1/1;">
+                        <img src="./Image_fx_s_morning.webp" sizes="(max-width: 768px) 100vw, 300px" alt="Morning Kickoff" class="absolute inset-0 w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="300">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">08:00</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">01</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">朝礼・KYK</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">DXシステムで当日の工程を即共有。危険予知活動（KYK）で安全を確認。スマートな滑り出しで、1日の密度が変わります。</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6" style="aspect-ratio: 1/1;">
+                        <img src="./work_drone_real.webp" sizes="(max-width: 768px) 100vw, 300px" alt="Drone Operation" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="300">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">09:00</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">02</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">現場・ドローン稼働</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">ドローン測量・BIM確認・遠隔カメラ監視を同時並行で運用。「現場にいない時間」もリアルタイムで状況把握できるのがNFスタイル。</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6" style="aspect-ratio: 1/1;">
+                        <img src="./Image_fx_s_work3.webp" srcset="./Image_fx_s_work3_sp.webp 800w, ./Image_fx_s_work3.webp 1024w" sizes="(max-width: 768px) 100vw, 300px" alt="Team Meeting" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="300">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">16:00</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">03</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">進捗・データ確認</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">クラウドで集約した本日の施工データを確認。翌日の工程計画をトップダウンではなく、現場チーム全員でアジャイル的に調整します。</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden mb-6" style="aspect-ratio: 1/1;">
+                        <img src="./Image_fx_s_company.webp" srcset="./Image_fx_s_company_sp.webp 800w, ./Image_fx_s_company.webp 1024w" sizes="(max-width: 768px) 100vw, 300px" alt="Smart Work Finish" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700" loading="lazy" decoding="async" width="300" height="300">
+                        <div class="absolute top-0 left-0 bg-brand-yellow text-black text-[10px] font-black px-3 py-2 italic uppercase tracking-widest">17:30</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 to-transparent"></div>
+                    </div>
+                    <div class="absolute top-36 left-4 text-white/5 font-display text-6xl font-black italic select-none pointer-events-none">04</div>
+                    <h3 class="text-lg font-black text-white mb-3 italic uppercase tracking-tighter">日報・退社</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-bold">日報はNotionに1分で完了。フリーアドレスのスマートオフィスから、17:30にきれいに退社。「残業しない人」が評価される文化です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entry" class="py-56 bg-brand-yellow text-brand-black text-center relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 animate-pulse"></div>
+        </div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <h2 class="text-4xl md:text-[10rem] font-display font-black mb-8 md:mb-12 tracking-tighter uppercase italic leading-tight">
+                その熱量を、<br>一瞬も冷まさない。
+            </h2>
+            <p class="text-2xl md:text-4xl font-black mb-24 uppercase italic tracking-tighter drop-shadow-sm text-gray-800">
+                履歴書不要。<br>
+                まずはあなたの「スピード感」を聞かせてください。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-10 items-stretch">
+                <a href="#" class="bg-black text-white px-12 py-8 text-2xl md:text-3xl font-black tracking-[0.1em] hover:bg-white hover:text-black transition-all duration-700 italic uppercase shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform hover:-translate-y-2 flex items-center gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="36" width="36" viewBox="0 0 448 512" fill="currentColor"><path d="M272.1 204.2v-19.1h-44.6v39.7h44.6v-20.6zm-175.4 0v-19.1H52.1v39.7h44.6v-20.6zm43.3 19.1h45.2v-39.7h-45.2v39.7zm87.4 0h45.2v-39.7h-45.2v39.7zm-225 39.7h44.6v-20.6H52.4v20.6h-5zm0-59.3H52.4v-20.1H47.4v20.1h44.6v20h-44.6zM227 48C94.7 48 0 135.5 0 258c0 58.7 21.6 112.5 57.6 153.2-2.3 14.2-11.3 46-12.7 51.9-1 4.2 1.9 6.2 4.2 4.6 2.3-1.6 29.5-16.7 40.6-23 23 9.4 48.7 15.2 75.3 15.2 132.3 0 227-87.5 227-210S359.3 48 227 48z"/></svg>
+                    5秒で完了。LINEで適性診断を始める
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-32 border-t border-white/5">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-start gap-24">
+                <div class="max-w-xl leading-none">
+                    <div class="font-display text-6xl font-black tracking-tighter mb-8 italic uppercase leading-none">NEXT FRONTIER<span class="text-brand-yellow">.</span></div>
+                    <p class="text-[11px] font-bold text-white/40 leading-loose uppercase tracking-[0.5em] italic">
+                        株式会社ネクスト・フロンティア<br>
+                        SHIBUYA SCRAMBLE SQUARE 20F, 2-24-12 SHIBUYA, TOKYO
+                    </p>
+                </div>
+                <div class="flex gap-24">
+                    <nav class="flex flex-col gap-6 text-[10px] font-bold tracking-[0.4em] uppercase italic text-white/30 leading-none">
+                        <span class="text-white/10 mb-2">Navigation</span>
+                        <a href="#mission" class="hover:text-brand-yellow transition">The Mission</a>
+                        <a href="#work" class="hover:text-brand-yellow transition">The Work</a>
+                        <a href="#career" class="hover:text-brand-yellow transition">The Career</a>
+                        <a href="#interview" class="hover:text-brand-yellow transition">Frontrunners</a>
+                        <a href="#company" class="hover:text-brand-yellow transition">The Company</a>
+                        <a href="#faq" class="hover:text-brand-yellow transition">The Q&A</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-32 pt-16 flex flex-col md:flex-row justify-between items-center gap-8 text-center text-[10px] font-bold tracking-[0.6em] text-white/10 uppercase italic">
+                <p>&copy; 2026 NEXT FRONTIER CO., LTD. DISRUPT OR DIE.</p>
+                <p class="tracking-widest">Designed by RECRUITMENT ASSET ENGINE</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" class="fixed bottom-24 right-6 md:bottom-8 md:right-8 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 flex items-center justify-center rounded-sm opacity-0 invisible transition-all duration-300 hover:bg-brand-yellow hover:text-black hover:border-brand-yellow z-40 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="36" width="36" viewBox="0 0 448 512" fill="currentColor"><path d="M272 100.3V224H124.8c-14.2 0-21.3-17.2-11.3-27.3L232.7 77.4c6.2-6.2 16.4-6.2 22.6 0l119.2 119.2c10 10.1 2.9 27.3-11.3 27.3H272V100.3zM256 32c17.7 0 32 14.3 32 32V256h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H288V448c0 17.7-14.3 32-32 32H192c-17.7 0-32-14.3-32-32V320H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h96V64c0-17.7 14.3-32 32-32h96z"/></svg>
+    </a>
+
+    <!-- Sticky CTA -->
+    <div class="fixed bottom-0 left-0 w-full bg-brand-yellow z-50 py-4 px-6 flex justify-center items-center shadow-[0_-10px_40px_rgba(0,0,0,0.3)] transition-transform duration-300 md:hidden">
+        <a href="#" class="w-full bg-black text-white text-center py-4 font-black italic uppercase tracking-wider text-sm flex items-center justify-center gap-3 rounded-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 448 512" fill="currentColor"><path d="M272.1 204.2v-19.1h-44.6v39.7h44.6v-20.6zm-175.4 0v-19.1H52.1v39.7h44.6v-20.6zm43.3 19.1h45.2v-39.7h-45.2v39.7zm87.4 0h45.2v-39.7h-45.2v39.7zm-225 39.7h44.6v-20.6H52.4v20.6h-5zm0-59.3H52.4v-20.1H47.4v20.1h44.6v20h-44.6zM227 48C94.7 48 0 135.5 0 258c0 58.7 21.6 112.5 57.6 153.2-2.3 14.2-11.3 46-12.7 51.9-1 4.2 1.9 6.2 4.2 4.6 2.3-1.6 29.5-16.7 40.6-23 23 9.4 48.7 15.2 75.3 15.2 132.3 0 227-87.5 227-210S359.3 48 227 48z"/></svg>
+            5秒で完了。LINEで適性診断を始める
+        </a>
+    </div>
+
+    <script>
+        // DOM Elements
+        const header = document.querySelector('header');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const spans = menuToggle.querySelectorAll('div span');
+        const backToTop = document.getElementById('back-to-top');
+
+        // Initial State
+        let isMenuOpen = false;
+
+        // Functions
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                // Open Menu
+                mobileMenu.classList.remove('translate-x-full');
+                
+                // Burger Animation
+                spans[0].classList.add('rotate-45', 'translate-y-2.5');
+                spans[1].classList.add('-rotate-45', '-translate-y-2.5');
+                spans.forEach(span => span.classList.remove('bg-current')); 
+                spans.forEach(span => span.classList.add('bg-black')); 
+                
+                // Header Styles (Transparent)
+                header.classList.remove('bg-brand-black/95', 'backdrop-blur-md', 'border-b', 'border-white/5');
+                menuToggle.classList.remove('text-white');
+                menuToggle.classList.add('text-black');
+            } else {
+                // Close Menu
+                mobileMenu.classList.add('translate-x-full');
+                
+                // Burger Animation
+                spans[0].classList.remove('rotate-45', 'translate-y-2.5');
+                spans[1].classList.remove('-rotate-45', '-translate-y-2.5');
+                spans.forEach(span => span.classList.add('bg-current'));
+                spans.forEach(span => span.classList.remove('bg-black'));
+                
+                // Header Styles (Restore)
+                header.classList.add('bg-brand-black/95', 'backdrop-blur-md', 'border-b', 'border-white/5');
+                menuToggle.classList.remove('text-black');
+                menuToggle.classList.add('text-white');
+            }
+        }
+
+        // Event Listeners
+        menuToggle.addEventListener('click', toggleMenu);
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+            }
+        });
+    </script>
+</body>
+</html>

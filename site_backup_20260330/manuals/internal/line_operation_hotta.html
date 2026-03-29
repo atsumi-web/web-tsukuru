@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>堀田建設 LINE運用設計書 | 採用コンシェルジュ設定マニュアル</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <style>
+        :root {
+            --line-green: #06c755;
+            --line-dark: #04a044;
+            --navy: #012454;
+            --gold: #c5a059;
+            --bg: #f3f4f6;
+            --card: #fff;
+            --text: #333;
+            --text-light: #666;
+            --radius: 12px;
+            --shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.7; }
+        header { background: linear-gradient(135deg, #06c755, #04a044); color: #fff; padding: 30px 20px; text-align: center; }
+        header h1 { margin: 0 0 6px; font-size: 1.8rem; }
+        header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+        .container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+
+        /* セクション */
+        .section { background: var(--card); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow); }
+        .section-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--line-green); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-right: 10px; flex-shrink: 0; }
+        .section h2 { display: flex; align-items: center; margin: 0 0 16px; font-size: 1.15rem; color: var(--navy); }
+        .section-badge { display: inline-block; background: var(--line-green); color: #fff; padding: 3px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; margin-bottom: 12px; }
+
+        /* コンセプトカード */
+        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 12px; }
+        .concept-card { background: #f0fdf4; border-left: 4px solid var(--line-green); border-radius: 8px; padding: 14px; }
+        .concept-card h4 { margin: 0 0 6px; font-size: 0.85rem; color: var(--line-dark); }
+        .concept-card p { margin: 0; font-size: 0.88rem; }
+
+        /* メッセージステップ */
+        .msg-steps { display: flex; flex-direction: column; gap: 12px; }
+        .msg-step { display: flex; gap: 14px; }
+        .msg-step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--line-green); color: #fff; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .msg-step-body { flex: 1; }
+        .msg-step-body strong { display: block; font-size: 0.9rem; margin-bottom: 4px; color: var(--navy); }
+        .msg-bubble { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px 10px 10px 0; padding: 12px 14px; font-size: 0.88rem; line-height: 1.6; margin-top: 6px; }
+
+        /* リッチメニュー */
+        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+        .menu-panel { background: var(--navy); color: #fff; border-radius: 10px; padding: 16px 12px; text-align: center; }
+        .menu-panel .emoji { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+        .menu-panel strong { display: block; font-size: 0.85rem; margin-bottom: 4px; }
+        .menu-panel span { font-size: 0.75rem; opacity: 0.8; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 14px; }
+        .faq-item { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
+        .faq-q { background: #f9fafb; padding: 12px 16px; font-weight: 700; font-size: 0.9rem; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+        .faq-q::before { content: 'Q'; background: var(--line-green); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+        .faq-a { padding: 12px 16px; font-size: 0.88rem; background: #f0fdf4; border-top: 1px solid #e5e7eb; display: flex; gap: 8px; align-items: flex-start; }
+        .faq-a::before { content: 'A'; background: var(--gold); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+
+        /* ステップ配信タイムライン */
+        .timeline { display: flex; flex-direction: column; gap: 0; }
+        .timeline-item { display: flex; gap: 16px; padding-bottom: 20px; position: relative; }
+        .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: 21px; top: 46px; bottom: 0; width: 2px; background: #d1d5db; }
+        .timeline-dot { width: 44px; height: 44px; border-radius: 50%; background: var(--line-green); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; font-size: 0.62rem; line-height: 1.2; text-align: center; flex-shrink: 0; z-index: 1; padding: 2px; }
+        .timeline-body { flex: 1; padding-top: 4px; }
+        .timeline-body strong { display: block; font-size: 0.9rem; color: var(--navy); margin-bottom: 4px; }
+        .timeline-body p { margin: 0; font-size: 0.85rem; color: var(--text-light); }
+
+        /* 3原則 */
+        .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+        .principle { background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: 10px; padding: 16px; }
+        .principle h4 { margin: 0 0 6px; font-size: 0.9rem; color: #92400e; }
+        .principle p { margin: 0; font-size: 0.83rem; color: #78350f; }
+
+        /* チェックリスト */
+        .checklist { list-style: none; padding: 0; margin: 0; }
+        .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+        .checklist li:last-child { border-bottom: none; }
+        .check-box { width: 20px; height: 20px; border: 2px solid #d1d5db; border-radius: 4px; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .check-box.done { background: var(--line-green); border-color: var(--line-green); }
+        .check-box.done::after { content: '✓'; color: #fff; font-size: 0.75rem; font-weight: 700; }
+
+        footer { text-align: center; color: #999; padding: 24px 20px; font-size: 0.82rem; }
+
+        @media (max-width: 600px) {
+            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+            header h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>📱 堀田建設株式会社</h1>
+    <p>LINE公式アカウント 運用設計書 | 採用コンシェルジュ設計</p>
+</header>
+
+<div class="container">
+
+    <!-- 1. 基本コンセプト -->
+    <div class="section">
+        <h2><span class="section-num">1</span>運用の基本コンセプト</h2>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h4>🎯 役割</h4>
+                <p>求職者の不安を24時間自動で解消する「採用コンシェルジュ」</p>
+            </div>
+            <div class="concept-card">
+                <h4>🏆 ゴール</h4>
+                <p>心理的ハードルを下げ、<strong>「カジュアル面談」</strong>の予約を獲得すること</p>
+            </div>
+            <div class="concept-card">
+                <h4>💬 トーン</h4>
+                <p>親しみやすく誠実。堅苦しすぎず、現場の温かさが伝わる言葉遣い</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. あいさつメッセージ -->
+    <div class="section">
+        <h2><span class="section-num">2</span>初期設定・あいさつメッセージ</h2>
+        <span class="section-badge">友だち追加直後に自動送信</span>
+        <div class="msg-steps">
+            <div class="msg-step">
+                <div class="msg-step-num">①</div>
+                <div class="msg-step-body">
+                    <strong>感謝と歓迎</strong>
+                    <div class="msg-bubble">興味を持っていただきありがとうございます！堀田建設 採用担当です😊 まずは肩の力を抜いて、当社のことを知ってください！</div>
+                </div>
+            </div>
+            <div class="msg-step">
+                <div class="msg-step-num">②</div>
+                <div class="msg-step-body">
+                    <strong>動画誘導</strong>
+                    <div class="msg-bubble">まずは3分でわかる会社案内動画をどうぞ！現場の雰囲気や先輩社員の声が伝わると思います。🎬 ※採用動画URL（担当者より共有予定）</div>
+                </div>
+            </div>
+            <div class="msg-step">
+                <div class="msg-step-num">③</div>
+                <div class="msg-step-body">
+                    <strong>リッチメニューへ誘導</strong>
+                    <div class="msg-bubble">いきなり応募は不要！まずは下のメニューから、気になる「数字」や「先輩の本音」を覗いてみてくださいね👇</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. リッチメニュー -->
+    <div class="section">
+        <h2><span class="section-num">3</span>リッチメニュー（画面下部の常駐ボタン）</h2>
+        <p style="font-size:0.88rem;color:var(--text-light);margin:0 0 12px;">求職者が最も知りたい情報を「3枚のパネル」で構成します。</p>
+        <div class="menu-grid">
+            <div class="menu-panel">
+                <span class="emoji">💰</span>
+                <strong>給与・待遇</strong>
+                <span>給与・社宅・残業時間の数字</span>
+            </div>
+            <div class="menu-panel" style="background:#014a8f;">
+                <span class="emoji">👷</span>
+                <strong>先輩の本音</strong>
+                <span>失敗談・やりがい・1日の流れ</span>
+            </div>
+            <div class="menu-panel" style="background:#06c755;">
+                <span class="emoji">📅</span>
+                <strong>面談を予約</strong>
+                <span>カジュアル面談・手ぶらOK</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 自動応答FAQ -->
+    <div class="section">
+        <h2><span class="section-num">4</span>自動応答メッセージ（キーワード応答）</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">「履歴書」「応募」と入力されたら</div>
+                <div class="faq-a">まずは履歴書不要です！私服で、雑談ベースでお話ししましょう。お互いの相性を確認するのが目的です😊</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">「未経験」「初心者」と入力されたら</div>
+                <div class="faq-a">大歓迎です！異業種出身の先輩も多数活躍中。全額会社負担の資格支援制度で、一生モノの技術を身につけられます。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">「社宅」「住居」と入力されたら</div>
+                <div class="faq-a">3LDKの広い社宅が月2万円で利用可能です。遠方からの移住も全力でサポートします！</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ステップ配信 -->
+    <div class="section">
+        <h2><span class="section-num">5</span>ステップ配信（志望度を上げる自動追い風）</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot">DAY<br>0</div>
+                <div class="timeline-body">
+                    <strong>【当日】挨拶 ＋ 会社紹介動画</strong>
+                    <p>あいさつメッセージ＋会社の雰囲気が伝わる動画を送信。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">DAY<br>1</div>
+                <div class="timeline-body">
+                    <strong>【社員のホンネ】失敗談とやりがい</strong>
+                    <p>LPにある「失敗談」や「やりがい」のエピソードを短く紹介。リアルな声が安心感を生む。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">DAY<br>3</div>
+                <div class="timeline-body">
+                    <strong>【代表の想い】地域の守り手として</strong>
+                    <p>社員を大切にする経営理念や、地域インフラを守る使命感を配信。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">DAY<br>7</div>
+                <div class="timeline-body">
+                    <strong>【最後の一押し】カジュアル面談の誘導</strong>
+                    <p>「今週の面談枠に空きがあります。まずは質問だけでもしてみませんか？」と緊急性・限定感を演出。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. 3原則 -->
+    <div class="section">
+        <h2><span class="section-num">6</span>カジュアル面談 予約最大化の3原則</h2>
+        <div class="principles">
+            <div class="principle">
+                <h4>🚫 「面接」という言葉を封印</h4>
+                <p>「カジュアル面談」「おしゃべり」「見学」と言い換える。</p>
+            </div>
+            <div class="principle">
+                <h4>👜 「手ぶら」を強調</h4>
+                <p>履歴書不要、私服OK、事前準備なしを徹底して伝える。</p>
+            </div>
+            <div class="principle">
+                <h4>👤 人間味のある返信</h4>
+                <p>個別メッセージが来たら、3時間以内に人間が返信する。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. チェックリスト -->
+    <div class="section">
+        <h2><span class="section-num">7</span>設定チェックリスト</h2>
+        <ul class="checklist">
+            <li><div class="check-box" onclick="toggleCheck(this)"></div><span>公式アカウント名は「堀田建設株式会社 採用」に設定</span></li>
+            <li><div class="check-box" onclick="toggleCheck(this)"></div><span>プロフィール写真に会社のロゴ、または社員の笑顔の写真を設定</span></li>
+            <li><div class="check-box" onclick="toggleCheck(this)"></div><span>あいさつメッセージ内の動画URLが正しく動作するか確認</span></li>
+            <li><div class="check-box" onclick="toggleCheck(this)"></div><span>リッチメニューの「面談予約」ボタンがフォームと正しく連携しているかテスト</span></li>
+            <li><div class="check-box" onclick="toggleCheck(this)"></div><span>キーワード自動応答（履歴書・未経験・社宅）の動作確認</span></li>
+            <li><div class="check-box" onclick="toggleCheck(this)"></div><span>ステップ配信のDAY1・3・7のタイミングと内容を設定</span></li>
+            <li><div class="check-box" onclick="toggleCheck(this)"></div><span>通知設定をONにして個別メッセージに3時間以内返信体制を確認</span></li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Webとしくみをつくる | 堀田建設 LINE運用設計書 | 作成: 2026-02-22</p>
+    <p style="margin-top:4px;"><a href="line_framework_construction.html" style="color:#06c755;font-weight:700;">→ 建築業界汎用テンプレートを見る</a></p>
+</footer>
+
+<script>
+    function toggleCheck(el) {
+        el.classList.toggle('done');
+    }
+</script>
+</body>
+</html>

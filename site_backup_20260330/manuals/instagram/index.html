@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram投稿 制作マニュアル｜@web_tsukuru_jp</title>
+  <style>
+    :root {
+      --navy: #0F172A;
+      --gold: #C5A059;
+      --gold-light: #fefce8;
+      --dark: #1e293b;
+      --mid: #475569;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --blue: #1a56db;
+      --insta: #e1306c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, #0F172A, #1e293b);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-bottom: 4px solid var(--gold);
+    }
+    header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    header p { opacity: 0.85; font-size: 0.95rem; }
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 20px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    /* サービスリンクバー */
+    .service-links {
+      background: var(--dark);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .service-btn {
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .service-btn:hover { opacity: 0.8; }
+    .btn-insta { background: var(--insta); color: white; }
+    .btn-orange { background: #f59e0b; color: white; }
+    .btn-blue { background: #1a56db; color: white; }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .service-label { color: #94a3b8; font-size: 0.75rem; display: flex; align-items: center; }
+
+    /* タブナビゲーション */
+    .manual-nav {
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .manual-nav a {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .manual-nav a:hover { opacity: 0.8; }
+    .nav-overview { background: var(--navy); color: white !important; }
+    .nav-posts { background: var(--insta); color: white !important; }
+
+    main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+    /* ブランドスペック */
+    .brand-spec {
+      background: var(--navy);
+      color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .brand-spec h2 {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+    }
+    .spec-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .spec-label { color: #94a3b8; font-size: 0.75rem; }
+    .spec-value { font-weight: 700; }
+    .color-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .chip {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* ステップカード */
+    .step {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: #fef9ec;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-num {
+      background: var(--gold);
+      color: var(--navy);
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .step-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+    .step-body { padding: 1.5rem; }
+
+    /* コードブロック */
+    .code-block { position: relative; margin: 1rem 0; }
+    .code-block pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 2.5rem 1.5rem 1.2rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { opacity: 0.85; }
+    .copy-btn.copied { background: var(--green); color: white; }
+
+    /* アラート */
+    .alert {
+      display: flex;
+      gap: 0.7rem;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+    }
+    .alert-gold { background: var(--gold-light); border-left: 4px solid var(--gold); }
+    .alert-green { background: #f0fdf4; border-left: 4px solid var(--green); }
+    .alert-warn { background: #fffbeb; border-left: 4px solid var(--yellow); }
+    .alert-red { background: #fef2f2; border-left: 4px solid var(--red); }
+
+    .label {
+      display: inline-block;
+      background: var(--navy);
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.1rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .label-gold {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* 投稿リスト */
+    .post-list { list-style: none; }
+    .post-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .post-item:last-child { border-bottom: none; }
+    .post-num {
+      background: var(--navy);
+      color: var(--gold);
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .post-num.today { background: var(--insta); color: white; }
+    .post-content { flex: 1; }
+    .post-theme { font-weight: 700; margin-bottom: 0.2rem; }
+    .post-copy { color: var(--mid); font-size: 0.85rem; }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 10px;
+      margin-left: 0.4rem;
+    }
+    .tag-today { background: #fce7f3; color: var(--insta); font-weight: 700; }
+    .tag-stock { background: #f1f5f9; color: var(--mid); }
+
+    /* レイアウト図 */
+    .layout-diagram {
+      background: #f8fafc;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 2;
+      color: var(--mid);
+      margin: 1rem 0;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--mid);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📱 Instagram 投稿制作マニュアル</h1>
+  <p>建設業×採用LP専門 ／ @web_tsukuru_jp</p>
+  <div class="badge">縦型 1080×1920px ／ Firefly + Adobe Express</div>
+</header>
+
+<!-- サービスリンク -->
+<div class="service-links">
+  <span class="service-label">🔗 よく使うサービス：</span>
+  <a class="service-btn btn-insta" href="https://www.instagram.com/web_tsukuru_jp/" target="_blank">📷 Instagram</a>
+  <a class="service-btn btn-orange" href="https://firefly.adobe.com/" target="_blank">🔥 Firefly</a>
+  <a class="service-btn btn-blue" href="https://www.adobe.com/jp/express/" target="_blank">✏️ Adobe Express</a>
+  <a class="service-btn btn-gold" href="posts.html">📋 投稿リスト</a>
+</div>
+
+<!-- タブナビ -->
+<div class="manual-nav">
+  <a class="nav-overview" href="index.html">📖 制作手順</a>
+  <a class="nav-posts" href="posts.html">📋 投稿10本プラン</a>
+</div>
+
+<main>
+
+  <!-- ブランドスペック -->
+  <div class="brand-spec">
+    <h2>🎨 ブランドスペック（制作時の基準値）</h2>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <span class="spec-label">サイズ</span>
+        <span class="spec-value">1080 × 1920px（縦型）</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">ファイル形式</span>
+        <span class="spec-value">PNG / JPG</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">背景色（暗）</span>
+        <span class="spec-value"><span class="color-chip"><span class="chip" style="background:#0F172A; border:1px solid #555;"></span>#0F172A（ネイビー）</span></span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">アクセント</span>
+        <span class="spec-value"><span class="color-chip"><span class="chip" style="background:#C5A059;"></span>#C5A059（ゴールド）</span></span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">見出しフォント</span>
+        <span class="spec-value">Noto Sans JP Bold</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">テキスト原則</span>
+        <span class="spec-value">メインコピー 15文字以内</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 基本レイアウト構造 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">🗂</div>
+      <div class="step-title">基本レイアウト構造（全投稿共通）</div>
+    </div>
+    <div class="step-body">
+      <div class="layout-diagram">
+┌─────────────────────┐<br>
+│                     │<br>
+│  [Firefly 生成画像]  │  ← 上60%：インパクトのある画像<br>
+│                     │<br>
+├─────────────────────┤<br>
+│  【メインコピー】    │  ← 大・太・15文字以内<br>
+│  サブコピー         │  ← 小・補足<br>
+│  ─────────────────  │<br>
+│  @web_tsukuru_jp    │  ← 右下に固定<br>
+└─────────────────────┘
+      </div>
+      <div class="alert alert-gold">
+        <span>💡</span>
+        <div>Expressで<strong>テンプレートを1本作ったら</strong>、あとはコピーして画像とテキストを差し替えるだけ。毎回ゼロから作らない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-title">🔥 Fireflyで背景画像を生成する</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem; margin-bottom:1rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://firefly.adobe.com/" target="_blank">firefly.adobe.com</a> を開く → <strong>「テキストから画像」</strong></li>
+        <li style="margin-bottom:0.5rem;">縦横比を <strong>「縦型（9:16）」</strong> に設定</li>
+        <li style="margin-bottom:0.5rem;">下のプロンプトテンプレートをコピーして貼り付け（投稿内容に合わせて編集）</li>
+        <li style="margin-bottom:0.5rem;">生成結果からベストを選んで <strong>PNGでダウンロード</strong></li>
+      </ol>
+
+      <div class="label">Fireflyプロンプト テンプレート（コピペして編集）</div>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">📋 コピー</button>
+        <pre>Flat vector illustration, [背景の説明],
+[色の雰囲気: deep navy blue and warm golden tones],
+minimalist and clean style, professional B2B mood,
+no text, no watermark, no people,
+9:16 portrait ratio, high quality</pre>
+      </div>
+
+      <div class="alert alert-gold">
+        <span>💡</span>
+        <div>
+          <strong>【ルール①】必ず「no text, no watermark」を入れる</strong><br>
+          入れないとFireflyが勝手に英語テキストを画像内に生成してしまう。<br><br>
+          <strong>【ルール②】人物を入れたい場合は「no people」を外してキャラ指定する</strong><br>
+          例：<code>a flat vector construction worker in safety helmet and navy work vest, pointing gesture</code>
+        </div>
+      </div>
+
+      <div class="alert alert-warn">
+        <span>⚠️</span>
+        <div><strong>クレジット注意：</strong>Adobe Express Premiumは月250クレジット制限あり。2K生成は消費多め。節約したいときは「標準品質」で生成。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-title">✏️ Adobe Expressでテキストを合成する</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem; margin-bottom:1rem;">
+        <li style="margin-bottom:0.5rem;"><a href="https://www.adobe.com/jp/express/" target="_blank">Adobe Express</a> を開く</li>
+        <li style="margin-bottom:0.5rem;">「カスタムサイズ」→ <strong>1080 × 1920px</strong> で新規作成</li>
+        <li style="margin-bottom:0.5rem;">STEP1で生成した画像を背景として配置</li>
+        <li style="margin-bottom:0.5rem;">テキストを追加（フォント：<strong>Noto Sans JP</strong>、太字）</li>
+        <li style="margin-bottom:0.5rem;">右下に <strong>@web_tsukuru_jp</strong> を必ず入れる</li>
+        <li style="margin-bottom:0.5rem;"><strong>PNG でダウンロード</strong></li>
+      </ol>
+
+      <div class="alert alert-gold">
+        <span>💡</span>
+        <div>
+          <strong>テンプレート保存のコツ：</strong><br>
+          1本目を丁寧に作ったら <strong>「デザインをコピー」</strong> → 画像とテキストだけ差し替え。<br>
+          ロゴ・フォントサイズ・余白は毎回いじらない。
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <div class="label label-gold">テキストレイヤー構成（例）</div>
+        <table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-top:0.5rem;">
+          <tr style="background:var(--navy); color:white;">
+            <th style="padding:0.6rem 1rem; text-align:left;">レイヤー</th>
+            <th style="padding:0.6rem 1rem; text-align:left;">フォントサイズ</th>
+            <th style="padding:0.6rem 1rem; text-align:left;">カラー</th>
+          </tr>
+          <tr>
+            <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">メインコピー（15字以内）</td>
+            <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">72〜80px</td>
+            <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">白 #FFFFFF</td>
+          </tr>
+          <tr>
+            <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">サブコピー</td>
+            <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">40〜48px</td>
+            <td style="padding:0.7rem 1rem; border-bottom:1px solid var(--border);">ゴールド #C5A059</td>
+          </tr>
+          <tr>
+            <td style="padding:0.7rem 1rem;">@web_tsukuru_jp</td>
+            <td style="padding:0.7rem 1rem;">30px</td>
+            <td style="padding:0.7rem 1rem;">グレー #94A3B8</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-title">📷 Instagramに投稿する</div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:1.2rem; font-size:0.9rem; margin-bottom:1rem;">
+        <li style="margin-bottom:0.5rem;"><strong>シークレットモード</strong>でInstagramを開く（個人アカウントとの混在を防ぐ）</li>
+        <li style="margin-bottom:0.5rem;"><a href="https://www.instagram.com/web_tsukuru_jp/" target="_blank">@web_tsukuru_jp</a> でログイン</li>
+        <li style="margin-bottom:0.5rem;">作成した画像をアップロード</li>
+        <li style="margin-bottom:0.5rem;">キャプション（投稿文）をコピペ（<a href="posts.html">投稿リストページ</a>から）</li>
+        <li style="margin-bottom:0.5rem;">ハッシュタグを追加（10個程度）</li>
+        <li>投稿！</li>
+      </ol>
+
+      <div class="alert alert-warn">
+        <span>⚠️</span>
+        <div>
+          <strong>1日の投稿ペース：2本まで推奨</strong><br>
+          一気に3本以上投稿するとアルゴリズムに不利。最初の投稿のリーチが落ちる。<br>
+          午前1本・夕方1本など、<strong>時間をずらして投稿</strong>するのが理想。
+        </div>
+      </div>
+
+      <div class="alert alert-green">
+        <span>✅</span>
+        <div>投稿後は24時間以内に「いいね」「コメント」への反応を忘れずに。エンゲージメントが初速に直結する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- トラブルシューティング -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">❓</div>
+      <div class="step-title">トラブルシューティング</div>
+    </div>
+    <div class="step-body" style="font-size:0.9rem;">
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">⚠️ Fireflyで生成したら画像内に英文テキストが入った</p>
+      <p style="color:var(--mid); margin-bottom:1rem;">→ プロンプトに <code>no text, no watermark, no letters</code> を追加する。</p>
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">⚠️ 縦型を選んでも横型で生成される</p>
+      <p style="color:var(--mid); margin-bottom:1rem;">→ 縦横比を先に「9:16」に設定してからプロンプトを入力する。プロンプトにも <code>9:16 portrait ratio</code> を明記する。</p>
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">⚠️ ネイビー系の背景にならない</p>
+      <p style="color:var(--mid); margin-bottom:1rem;">→ プロンプトに <code>deep navy blue background (#0F172A)</code> と16進数で指定すると安定しやすい。</p>
+
+      <p style="font-weight:700; margin-bottom:0.3rem;">⚠️ クレジット不足と表示される</p>
+      <p style="color:var(--mid);">→ 来月リセット待ち（毎月1日リセット）。または標準品質に切り替えて節約。</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>web-tsukuru.jp | Instagram制作マニュアル | 2026年2月</p>
+</footer>
+
+<script>
+  function copyCode(btn) {
+    const pre = btn.nextElementSibling;
+    navigator.clipboard.writeText(pre.textContent).then(() => {
+      btn.textContent = '✅ コピーしました！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '📋 コピー'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

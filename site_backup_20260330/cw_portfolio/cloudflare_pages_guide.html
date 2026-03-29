@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloudflare Pagesとは？ | web-tsukuru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700;900&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0F172A;
+      --green: #059669;
+      --green-l: #d1fae5;
+      --green-b: #86efac;
+      --accent: #4f46e5;
+      --text: #1e293b;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --en: 'Outfit', sans-serif;
+    }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+    .page { max-width: 800px; margin: 0 auto; padding: 64px 24px 100px; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding-bottom: 56px;
+      margin-bottom: 64px;
+      border-bottom: 1px solid rgba(5,150,105,0.2);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--en); font-size: .7rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--green); background: var(--green-l);
+      border: 1px solid var(--green-b);
+      border-radius: 999px; padding: 6px 16px; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--en); font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900; color: var(--navy); margin-bottom: 16px; line-height: 1.3;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero-sub { color: var(--muted); font-size: .95rem; line-height: 2; }
+
+    /* SECTION */
+    .sec { margin-bottom: 56px; }
+    .sec-label {
+      font-family: var(--en); font-size: .65rem; letter-spacing: .25em;
+      color: var(--green); text-transform: uppercase; margin-bottom: 8px;
+    }
+    .sec-title {
+      font-size: 1.3rem; font-weight: 900; color: var(--navy);
+      margin-bottom: 24px; padding-bottom: 12px;
+      border-bottom: 2px solid var(--green-l);
+    }
+
+    /* CARD */
+    .card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 16px;
+    }
+    .card-green { border-left: 4px solid var(--green); }
+
+    /* ANALOGY BOX */
+    .analogy {
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      border: 1px solid var(--green-b); border-radius: 14px;
+      padding: 28px 32px; margin-bottom: 16px;
+    }
+    .analogy-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .analogy h3 { font-size: 1.05rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+    .analogy p { font-size: .88rem; color: #334155; line-height: 1.9; }
+
+    /* COMPARE TABLE */
+    .compare {
+      width: 100%; border-collapse: collapse; background: white;
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 16px;
+    }
+    .compare thead tr { background: var(--navy); color: white; }
+    .compare th { padding: 12px 20px; font-size: .8rem; font-weight: 700; text-align: left; }
+    .compare td { padding: 12px 20px; border-bottom: 1px solid var(--border); font-size: .85rem; vertical-align: middle; }
+    .compare tr:last-child td { border-bottom: none; }
+    .compare .label { color: var(--muted); font-size: .78rem; }
+    .badge-good { display: inline-flex; align-items: center; gap: 4px; background: var(--green-l); color: var(--green); font-weight: 700; font-size: .78rem; padding: 3px 10px; border-radius: 999px; }
+    .badge-bad  { display: inline-flex; align-items: center; gap: 4px; background: #fff1f2; color: #e11d48; font-weight: 700; font-size: .78rem; padding: 3px 10px; border-radius: 999px; }
+
+    /* STEP */
+    .step-wrap { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px 0; border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: var(--green); color: white; font-family: var(--en);
+      font-weight: 900; font-size: .95rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body h4 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .step-body p { font-size: .83rem; color: var(--muted); line-height: 1.8; }
+
+    /* FAQ */
+    .faq { margin-bottom: 12px; }
+    .faq-q {
+      background: var(--navy); color: white;
+      padding: 14px 20px; border-radius: 8px 8px 0 0;
+      font-weight: 700; font-size: .88rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .faq-q i { color: var(--green-b); }
+    .faq-a {
+      background: white; border: 1px solid var(--border);
+      border-top: none; border-radius: 0 0 8px 8px;
+      padding: 16px 20px; font-size: .85rem; color: #334155; line-height: 1.9;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);
+      border-radius: 16px; padding: 40px; text-align: center; color: white;
+    }
+    .cta h2 { font-family: var(--en); font-size: 1.3rem; margin-bottom: 12px; }
+    .cta p { font-size: .88rem; color: rgba(255,255,255,0.7); margin-bottom: 24px; line-height: 1.9; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: white; font-weight: 700;
+      padding: 14px 32px; border-radius: 999px; text-decoration: none;
+      font-size: .9rem; transition: opacity .2s;
+    }
+    .cta-btn:hover { opacity: .85; }
+
+    /* BACK */
+    .back {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--green); font-size: .83rem; font-weight: 700;
+      text-decoration: none; margin-bottom: 32px;
+    }
+    .back:hover { opacity: .7; }
+
+    @media (max-width: 640px) {
+      .page { padding: 40px 16px 80px; }
+      .compare th, .compare td { padding: 10px 14px; font-size: .78rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <a href="portfolio_cw.html" class="back"><i class="fa-solid fa-arrow-left"></i> ポートフォリオに戻る</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge"><i class="fa-solid fa-cloud"></i> HOSTING GUIDE</div>
+    <h1>Cloudflare Pages<span>とは？</span></h1>
+    <p class="hero-sub">
+      サーバー代ゼロでWebサイトを公開できる仕組みです。<br>
+      難しい言葉なしで、わかりやすく説明します。
+    </p>
+  </header>
+
+  <!-- 一言で言うと -->
+  <section class="sec">
+    <p class="sec-label">What is it?</p>
+    <h2 class="sec-title">一言で言うと？</h2>
+    <div class="analogy">
+      <div class="analogy-icon">🏪</div>
+      <h3>「家賃ゼロの商店街の一角に、お店を出せる」イメージです</h3>
+      <p>
+        通常のWebサイト公開は「レンタルサーバーを借りる＝毎月家賃を払う」ことが必要です。<br>
+        Cloudflare Pagesは、Cloudflare社が提供する<strong>無料のWebサイト公開サービス</strong>です。<br>
+        GitHubと連携するだけで、月額0円でサイトを世界中に公開できます。
+      </p>
+    </div>
+    <div class="card card-green">
+      <p style="font-size:.88rem; line-height:2; color:#334155;">
+        <i class="fa-solid fa-circle-check" style="color:var(--green); margin-right:6px;"></i>
+        <strong>Cloudflare</strong>は2009年創業、世界中のWebセキュリティやネットワークインフラを担う大規模なIT企業です。<br>
+        <i class="fa-solid fa-circle-check" style="color:var(--green); margin-right:6px;"></i>
+        個人・法人問わず<strong>無料プランで商用利用OK</strong>です。<br>
+        <i class="fa-solid fa-circle-check" style="color:var(--green); margin-right:6px;"></i>
+        世界100カ国以上にサーバーが分散しているため、安定した公開環境が得られます。
+      </p>
+    </div>
+  </section>
+
+  <!-- 比較 -->
+  <section class="sec">
+    <p class="sec-label">Cost Comparison</p>
+    <h2 class="sec-title">従来の方法と比較すると？</h2>
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>従来（レンタルサーバー）</th>
+          <th>Cloudflare Pages</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">月額費用</td>
+          <td><span class="badge-bad">❌ 1,000〜3,000円</span></td>
+          <td><span class="badge-good">✅ 無料</span></td>
+        </tr>
+        <tr>
+          <td class="label">保守・管理費</td>
+          <td><span class="badge-bad">❌ 月5,000〜20,000円</span></td>
+          <td><span class="badge-good">✅ 不要</span></td>
+        </tr>
+        <tr>
+          <td class="label">セキュリティ</td>
+          <td><span class="badge-bad">❌ 定期的な対応が必要</span></td>
+          <td><span class="badge-good">✅ 静的サイトのためリスク低</span></td>
+        </tr>
+        <tr>
+          <td class="label">サイト表示</td>
+          <td>レンタルサーバーから配信</td>
+          <td>世界中のCDNから高速配信</td>
+        </tr>
+        <tr>
+          <td class="label">独自ドメイン</td>
+          <td>✅ 対応</td>
+          <td><span class="badge-good">✅ 対応（無料で設定可）</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:.78rem; color:var(--muted);">※ 独自ドメイン費用（年約1,000〜2,000円）は別途かかります</p>
+  </section>
+
+  <!-- どうやって動く？ -->
+  <section class="sec">
+    <p class="sec-label">How it works</p>
+    <h2 class="sec-title">どうやって動くの？</h2>
+    <div class="card" style="padding: 8px 32px;">
+      <div class="step-wrap">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>制作者がコードをGitHubに保存</h4>
+            <p>GitHubはコードの保管・管理サービスです。制作したHTMLなどをここに保存します。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Cloudflare PagesがGitHubと連携</h4>
+            <p>GitHubに保存された内容を自動的に読み取り、Webサイトとして公開します。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>URLでアクセスできる状態になる</h4>
+            <p>すぐにインターネット上でサイトが見られる状態に。独自ドメイン（例：あなたの会社名.com）も設定できます。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>更新も自動反映</h4>
+            <p>制作者がGitHubを更新するだけで、サイトも自動的に最新版に切り替わります。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+
+    <div class="faq">
+      <div class="faq-q"><i class="fa-solid fa-circle-question"></i> 本当に無料ですか？落とし穴はありませんか？</div>
+      <div class="faq-a">
+        静的サイト（HTML/CSS/JS）の公開は無料です。落とし穴はありません。<br>
+        ただし<strong>独自ドメイン（〇〇.comなど）を使う場合は年1,000〜2,000円程度のドメイン費用だけが必要</strong>です。<br>
+        Cloudflare Pages自体の利用料は商用サイトでも無料です。
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><i class="fa-solid fa-circle-question"></i> なぜ無料で提供しているのですか？</div>
+      <div class="faq-a">
+        Cloudflareの本業は、企業向けの<strong>有料のセキュリティ・ネットワークサービス</strong>です。<br>
+        Cloudflare Pagesは、開発者や制作者にまず無料で使ってもらい、規模が大きくなった際に有料プランへ移行してもらう<strong>「フリーミアム戦略」</strong>をとっています。<br>
+        Googleが無料でGmailやGoogleドライブを提供して有料サービスにつなげるのと同じ考え方です。<br>
+        個人・小規模サイトなら<strong>無料プランでほぼすべての機能が使えます。</strong>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><i class="fa-solid fa-circle-question"></i> 急にサービスが終了することはありますか？</div>
+      <div class="faq-a">
+        Cloudflareは2009年創業、世界中の大企業が利用する大規模なネットワーク企業です。<br>
+        突然サービス終了するリスクは非常に低いといえます。<br>
+        また万が一に備え、GitHubにソースコードが保存されているため、他サーバーへの移行も可能です。
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><i class="fa-solid fa-circle-question"></i> WordPressは使えますか？</div>
+      <div class="faq-a">
+        Cloudflare Pagesは静的サイト（HTML/CSS/JS）専用のため、<strong>WordPressは使えません</strong>。<br>
+        ただし、私の制作はWordPressを使わずHTML/CSSで構築するため、Cloudflare Pagesで問題なく公開できます。<br>
+        WordPressが必要な場合は従来のレンタルサーバーをご利用ください。
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><i class="fa-solid fa-circle-question"></i> 既にレンタルサーバーを持っています。乗り換えが必要ですか？</div>
+      <div class="faq-a">
+        乗り換えは不要です。<br>
+        <strong>既存のレンタルサーバーへ制作したファイルをアップロードする形でも対応いたします。</strong><br>
+        静的サイト（HTML/CSS/JS）はどのレンタルサーバーにも置けます。セキュリティ面も安心です。
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>ご質問・ご相談はお気軽に</h2>
+    <p>
+      「うちのサイトはどちらが向いている？」<br>
+      まずはヒアリングから丁寧に対応します。
+    </p>
+    <a href="portfolio_cw.html" class="cta-btn">
+      <i class="fa-solid fa-arrow-left"></i> ポートフォリオに戻る
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

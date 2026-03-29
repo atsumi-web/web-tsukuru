@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DR.PEDAL — FV改善提案 | 渥美絵里</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" />
+  <style>
+    :root {
+      --gold: #F8B10A;
+      --gold-dim: rgba(248,177,10,0.15);
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --gray: #F5F5F3;
+      --text: #1A1A1A;
+      --muted: #6B7280;
+      --en: 'Outfit', sans-serif;
+      --ja: 'Noto Sans JP', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ja); color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 68px;
+      background: rgba(10,10,10,0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background .3s;
+    }
+    header.scrolled {
+      background: rgba(255,255,255,0.97);
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+    header.scrolled .logo { color: var(--black); }
+    header.scrolled nav a { color: var(--text); }
+    header.scrolled nav a:hover { color: var(--gold); }
+    .logo {
+      font-family: var(--en); font-weight: 900; font-size: 1.25rem;
+      letter-spacing: .12em; color: var(--white);
+      display: flex; align-items: center; gap: 2px; text-decoration: none;
+      transition: color .3s;
+    }
+    .logo-dot { color: var(--gold); }
+    nav { display: flex; align-items: center; gap: 36px; }
+    nav a {
+      font-family: var(--en); font-size: .72rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.82); text-decoration: none;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--black) !important;
+      padding: 9px 22px; border-radius: 3px; letter-spacing: .08em !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('../images/hero_bg.png') center 40% / cover no-repeat;
+      animation: kenburns 14s ease-out forwards;
+      transform-origin: center 40%;
+    }
+    @keyframes kenburns {
+      from { transform: scale(1.1); }
+      to   { transform: scale(1.0); }
+    }
+    /* Multi-layer overlay for depth */
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(6,6,6,0.62) 0%, rgba(6,6,6,0.38) 55%, rgba(6,6,6,0.1) 100%),
+        linear-gradient(to top, rgba(6,6,6,0.35) 0%, transparent 40%);
+    }
+    /* Gold accent bar - left edge */
+    .hero-accent-bar {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px; background: var(--gold); z-index: 3;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 1280px; margin: 0 auto;
+      padding: 120px 72px 140px;
+    }
+    .hero-eyebrow {
+      font-family: var(--en); font-size: .68rem; font-weight: 700;
+      letter-spacing: .35em; text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 14px; margin-bottom: 32px;
+      opacity: 0; animation: fadeUp .8s .1s ease forwards;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+
+    .hero-heading {
+      font-family: var(--ja); font-size: clamp(1.8rem, 3.2vw, 3.6rem);
+      font-weight: 900; color: var(--white); line-height: 1.25;
+      letter-spacing: -.02em;
+      word-break: keep-all; overflow-wrap: normal;
+      opacity: 0; animation: fadeUp .9s .3s ease forwards;
+    }
+    .hero-heading .accent {
+      color: var(--gold);
+      position: relative; display: inline;
+    }
+    /* Underline sweep on accent */
+    .hero-heading .accent::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0; height: 3px;
+      background: var(--gold); opacity: .5;
+      transform: scaleX(0); transform-origin: left;
+      animation: sweepLine 0.6s 1.4s ease forwards;
+    }
+    @keyframes sweepLine { to { transform: scaleX(1); } }
+
+    .hero-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 32px 0;
+      opacity: 0; animation: fadeUp .8s .5s ease forwards;
+    }
+    .hero-sub {
+      font-size: clamp(.85rem, 1.2vw, 1rem);
+      color: rgba(255,255,255,0.7); line-height: 2.2; max-width: 440px;
+      margin-top: 36px;
+      opacity: 0; animation: fadeUp .9s .6s ease forwards;
+    }
+    .hero-actions {
+      margin-top: 44px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .9s .8s ease forwards;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--black);
+      font-family: var(--ja); font-weight: 900; font-size: .9rem;
+      padding: 16px 38px; border-radius: 3px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: background .2s, transform .25s, box-shadow .25s;
+      box-shadow: 0 4px 24px rgba(248,177,10,0.35);
+    }
+    .btn-primary:hover {
+      background: #ffc115; transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(248,177,10,0.45);
+    }
+    .btn-arrow { display: inline-block; transition: transform .2s; }
+    .btn-primary:hover .btn-arrow { transform: translateX(4px); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.82);
+      font-family: var(--ja); font-weight: 700; font-size: .9rem;
+      padding: 15px 32px; border-radius: 3px; text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute; bottom: 100px; left: 72px; z-index: 3;
+      display: flex; align-items: center; gap: 14px;
+      opacity: 0; animation: fadeIn 1s 1.6s ease forwards;
+    }
+    .scroll-line {
+      width: 1px; height: 48px; background: rgba(255,255,255,0.25);
+      position: relative; overflow: hidden;
+    }
+    .scroll-line::after {
+      content: ''; position: absolute; top: -100%; left: 0; right: 0;
+      height: 100%; background: var(--gold);
+      animation: scrollDrop 1.8s 2s ease-in-out infinite;
+    }
+    @keyframes scrollDrop { 0%{top:-100%} 100%{top:100%} }
+    .scroll-text {
+      font-family: var(--en); font-size: .65rem; font-weight: 700;
+      letter-spacing: .25em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      writing-mode: vertical-rl;
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--black); border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .stats-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 72px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 32px 0; border-right: 1px solid rgba(255,255,255,0.07);
+      display: flex; flex-direction: column; gap: 6px;
+      padding-left: 32px;
+    }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--en); font-size: 2.8rem; font-weight: 900;
+      color: var(--white); line-height: 1; letter-spacing: -.02em;
+    }
+    .stat-num sup { font-size: 1rem; font-weight: 700; color: var(--gold); }
+    .stat-unit { color: var(--gold); }
+    .stat-label {
+      font-size: .75rem; color: rgba(255,255,255,0.45); line-height: 1.7;
+      font-weight: 500; letter-spacing: .02em;
+    }
+
+    /* ===== CLIENTS ===== */
+    .clients-section {
+      background: var(--white);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 56px 0;
+    }
+    .clients-inner { max-width: 1280px; margin: 0 auto; padding: 0 72px; }
+    .clients-label {
+      font-family: var(--en); font-size: .64rem; font-weight: 700;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--muted); text-align: center; margin-bottom: 36px;
+    }
+    .clients-logos {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 48px 64px;
+    }
+    .client-name {
+      font-family: var(--en); font-size: 1rem; font-weight: 900;
+      letter-spacing: .05em; color: #C4C9D4;
+      transition: color .25s;
+    }
+    .client-name:hover { color: var(--text); }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 120px 0; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 72px; }
+    .section-eyebrow {
+      font-family: var(--en); font-size: .65rem; font-weight: 700;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+    .section-eyebrow::before { content:''; width: 28px; height: 1px; background: var(--gold); display: block; }
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 900;
+      color: var(--black); line-height: 1.2; letter-spacing: -.02em;
+    }
+
+    /* ===== IMPROVEMENT SECTION ===== */
+    .improve-section { background: var(--gray); }
+    .improve-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px;
+    }
+    .improve-card {
+      background: var(--white); border-radius: 10px;
+      padding: 36px 40px;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .improve-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-3px); }
+    .improve-card.before { border-top: 3px solid #E2E8F0; }
+    .improve-card.after  { border-top: 3px solid var(--gold); }
+    .card-label {
+      font-family: var(--en); font-size: .65rem; font-weight: 900;
+      letter-spacing: .25em; text-transform: uppercase;
+      padding-bottom: 14px; margin-bottom: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .card-label.before-label { color: #94A3B8; }
+    .card-label.after-label  { color: var(--gold); }
+    .point {
+      display: flex; gap: 12px; padding: 11px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04); font-size: .86rem; line-height: 1.7;
+      align-items: flex-start;
+    }
+    .point:last-child { border-bottom: none; }
+    .point-icon { flex-shrink: 0; font-size: .9rem; margin-top: 2px; }
+
+    /* ===== SPLIT SECTION ===== */
+    .split-section { padding: 0; }
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 620px; }
+    .split-photo {
+      background: url('../images/hero_bg.png') center 25% / cover no-repeat;
+      position: relative;
+    }
+    .split-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.15));
+    }
+    /* Gold corner accent */
+    .split-photo::before {
+      content: ''; position: absolute; bottom: 0; right: 0;
+      width: 80px; height: 80px;
+      background: var(--gold); z-index: 2;
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+    .split-text {
+      background: var(--black); padding: 88px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    /* Decorative glow */
+    .split-text::before {
+      content: ''; position: absolute;
+      top: -120px; right: -120px; width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(248,177,10,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .split-text .section-eyebrow { color: var(--gold); }
+    .split-text .section-title { color: var(--white); font-size: clamp(1.5rem, 2.5vw, 2.2rem); }
+    .split-text p { color: rgba(255,255,255,0.62); line-height: 2.2; margin-top: 20px; font-size: .88rem; }
+    .split-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .badge {
+      border: 1px solid rgba(248,177,10,0.4); color: var(--gold);
+      font-family: var(--en); font-size: .68rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 2px;
+      transition: background .2s;
+    }
+    .badge:hover { background: rgba(248,177,10,0.1); }
+
+    /* ===== PROPOSAL NOTE ===== */
+    .note-section {
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 100px 0;
+    }
+    .note-inner { max-width: 860px; margin: 0 auto; padding: 0 72px; }
+    .note-inner .section-eyebrow { justify-content: center; }
+    .note-inner .section-title { text-align: center; margin-top: 4px; }
+    .note-subtext {
+      text-align: center; color: var(--muted); font-size: .9rem;
+      line-height: 2; margin-top: 16px;
+    }
+    .note-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px;
+    }
+    .note-card {
+      border: 1px solid rgba(0,0,0,0.08); border-radius: 8px;
+      padding: 28px 32px; position: relative; overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .note-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(248,177,10,0.1); }
+    .note-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .note-card:hover::before { transform: scaleX(1); }
+    .note-num {
+      font-family: var(--en); font-size: .62rem; font-weight: 900;
+      letter-spacing: .25em; color: var(--gold); margin-bottom: 8px;
+    }
+    .note-text { font-size: .85rem; color: var(--text); line-height: 1.85; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black); padding: 32px 72px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    footer .logo { color: var(--white); }
+    footer p { font-size: .72rem; color: rgba(255,255,255,0.3); font-family: var(--en); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.delay-1 { transition-delay: .1s; }
+    .reveal.delay-2 { transition-delay: .2s; }
+    .reveal.delay-3 { transition-delay: .3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      header { padding: 0 28px; }
+      nav { gap: 20px; }
+      .hero-content { padding: 100px 32px 120px; }
+      .stats-inner, .clients-inner, .container { padding: 0 32px; }
+      .split-text { padding: 56px 40px; }
+    }
+    @media (max-width: 768px) {
+      nav a:not(.nav-cta) { display: none; }
+      .hero-content { padding: 100px 24px 100px; }
+      .hero-heading { font-size: 2.4rem; }
+      .stats-inner { grid-template-columns: 1fr 1fr; padding: 0 24px; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding-left: 0; }
+      .improve-grid, .split-grid, .note-grid { grid-template-columns: 1fr; }
+      .split-photo { min-height: 300px; }
+      .split-text { padding: 48px 28px; }
+      .container { padding: 0 24px; }
+      section { padding: 80px 0; }
+      footer { flex-direction: column; gap: 14px; text-align: center; padding: 28px 24px; }
+      .scroll-indicator { display: none; }
+      .clients-inner { padding: 0 24px; }
+      .note-inner { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <a href="#" class="logo">DR<span class="logo-dot">.</span>PEDAL</a>
+  <nav>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Company</a>
+    <a href="#">News</a>
+    <a href="#" class="nav-cta">採用情報</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-accent-bar"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Bicycle &times; Mobility Solutions</p>
+    <h1 class="hero-heading">
+      自転車修理に関する<br>
+      すべての困りごとを、<br>
+      <span class="accent">最高のチームで</span>解決する。
+    </h1>
+    <p class="hero-sub">
+      ドコモバイクシェア・Limeなど大手企業との取引実績。<br>
+      平均年齢31歳の若いプロフェッショナルチームが、<br>
+      モビリティの未来を一緒に支えています。
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">採用情報を見る <span class="btn-arrow">→</span></a>
+      <a href="#" class="btn-ghost">サービスを見る</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">31<sup>歳</sup></div>
+      <div class="stat-label">平均年齢<br>業界トップ水準の若さ</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7<span class="stat-unit" style="font-size:1.4rem;font-family:var(--ja);">拠点</span></div>
+      <div class="stat-label">全国展開中<br>（開設準備中含む）</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2021</div>
+      <div class="stat-label">年 設立<br>急成長スタートアップ</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">365<span class="stat-unit" style="font-size:1.2rem;font-family:var(--ja);"> 日</span></div>
+      <div class="stat-label">通年安定稼働<br>季節性に左右されない売上</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<div class="clients-section">
+  <div class="clients-inner">
+    <p class="clients-label">Trusted by Leading Companies</p>
+    <div class="clients-logos">
+      <span class="client-name">docomo bike share</span>
+      <span class="client-name">Lime</span>
+      <span class="client-name">DAICHARI</span>
+      <span class="client-name">Mitsui Fudosan</span>
+      <span class="client-name">Mitsubishi Estate</span>
+      <span class="client-name">TripAdvisor</span>
+    </div>
+  </div>
+</div>
+
+<!-- IMPROVEMENT COMPARISON -->
+<section class="improve-section">
+  <div class="container">
+    <p class="section-eyebrow reveal">Design Proposal</p>
+    <h2 class="section-title reveal delay-1">「WordPressっぽさ」を脱却するための<br>5つの改善ポイント</h2>
+    <div class="improve-grid">
+      <div class="improve-card before reveal delay-1">
+        <p class="card-label before-label">Before — 現状の印象</p>
+        <div class="point"><span class="point-icon">▫️</span>均一なセクション積層で視線のフックが弱い</div>
+        <div class="point"><span class="point-icon">▫️</span>フォントに強弱がなく、テキストが「並んでいる」だけ</div>
+        <div class="point"><span class="point-icon">▫️</span>写真依存が高く、グラフィック要素による独自性が薄い</div>
+        <div class="point"><span class="point-icon">▫️</span>信頼の証拠（実績・取引先）がFV外にある</div>
+        <div class="point"><span class="point-icon">▫️</span>静止画のみで「動かないサイト」の印象が先行</div>
+      </div>
+      <div class="improve-card after reveal delay-2">
+        <p class="card-label after-label">After — この提案が変えること</p>
+        <div class="point"><span class="point-icon">✅</span>左エッジのゴールドバー＋スタッツバーで「変化」を生む</div>
+        <div class="point"><span class="point-icon">✅</span>Outfit × Noto Sans JP ミックスでタイポに差が生まれる</div>
+        <div class="point"><span class="point-icon">✅</span>半透明ヘッダー・重なり・コーナーアクセントで独自性を演出</div>
+        <div class="point"><span class="point-icon">✅</span>取引先ロゴをFV直下に配置、スクロール前に信頼を担保</div>
+        <div class="point"><span class="point-icon">✅</span>Ken Burns効果＋テキストフェードで「生きているサイト」に</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT ABOUT -->
+<section class="split-section">
+  <div class="split-grid">
+    <div class="split-photo"></div>
+    <div class="split-text">
+      <p class="section-eyebrow reveal">Who We Are</p>
+      <h2 class="section-title reveal delay-1">若く、速く、<br>誠実なチームが<br>モビリティを支える。</h2>
+      <p class="reveal delay-2">
+        2021年創業。シェアサイクル・電動キックボードを中心に、大手企業が「頼れる」と判断した修理・保守ネットワークを全国に展開中。
+        経験者が安心して長く働ける、ホワイトな環境を真剣に作っています。
+      </p>
+      <div class="split-badges reveal delay-3">
+        <span class="badge">安心感</span>
+        <span class="badge">清潔感</span>
+        <span class="badge">若さ</span>
+        <span class="badge">機動力</span>
+        <span class="badge">通年安定</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSAL NOTE -->
+<section class="note-section">
+  <div class="note-inner">
+    <p class="section-eyebrow reveal">Proposal from Eri Atsumi</p>
+    <h2 class="section-title reveal delay-1">デザインからコーディングまで<br>一括でお任せください。</h2>
+    <p class="note-subtext reveal delay-2">
+      このページはHTML/CSSのみで実装したプロトタイプです。<br>
+      Figmaからの引き継ぎコストなしに、デザイン〜実装〜Git納品まで一貫対応します。
+    </p>
+    <div class="note-grid">
+      <div class="note-card reveal delay-1">
+        <p class="note-num">POINT 01</p>
+        <p class="note-text">PC / タブレット / スマホ 3ブレイクポイント完全対応。モバイルファースト設計。</p>
+      </div>
+      <div class="note-card reveal delay-2">
+        <p class="note-num">POINT 02</p>
+        <p class="note-text">SEO・AI検索（LLMO/GEO）を意識した見出し構造。採用応募者のオーガニック流入を最大化。</p>
+      </div>
+      <div class="note-card reveal delay-1">
+        <p class="note-num">POINT 03</p>
+        <p class="note-text">GitHubで管理。修正・追加ページも差分管理で迅速に対応可能。</p>
+      </div>
+      <div class="note-card reveal delay-2">
+        <p class="note-num">POINT 04</p>
+        <p class="note-text">スクロールアニメーション実装済み。洗練された動きで「プロが作ったサイト」の印象を与える。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo">DR<span class="logo-dot">.</span>PEDAL</a>
+  <p>〒141-0022 東京都品川区東五反田2-8-5 KNビル5F ｜ 050-1725-6179</p>
+  <p>© 2026 Doctor Pedal Inc.</p>
+</footer>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Reveal on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用LP 構成概要｜堀田建設株式会社</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #f4f6f9;
+      color: #1a1a2e;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    /* ── ヘッダー ── */
+    .doc-header {
+      border-left: 5px solid #001a3d;
+      padding-left: 16px;
+      margin-bottom: 28px;
+    }
+    .doc-header h1 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #001a3d;
+      line-height: 1.3;
+    }
+    .doc-header .sub {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+    .doc-header .meta {
+      font-size: 11px;
+      color: #999;
+      margin-top: 8px;
+    }
+
+    /* ── リード文 ── */
+    .lead-box {
+      background: #fff;
+      border: 1px solid #dce3f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: #444;
+      line-height: 1.8;
+    }
+    .lead-box strong { color: #001a3d; }
+
+    /* ── ページURL ── */
+    .url-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #001a3d;
+      color: #fff;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .url-box:hover { opacity: 0.85; }
+    .url-box .label { font-size: 10px; color: #c5a059; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .url-box .url { font-size: 14px; font-weight: 700; word-break: break-all; }
+    .url-box .arrow { margin-left: auto; font-size: 18px; color: #c5a059; }
+
+    /* ── セクション見出し ── */
+    .block-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #667eea;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+
+    /* ── セクションカード ── */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+    .flow-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid #e0e4f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      position: relative;
+    }
+    .flow-item.key {
+      border-color: #c5a059;
+      background: #fffdf5;
+    }
+    .flow-item.cta {
+      border-color: #e53e3e;
+      background: #fff5f5;
+    }
+    .num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      background: #001a3d;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+    .flow-item.key .num { background: #c5a059; }
+    .flow-item.cta .num { background: #e53e3e; }
+    .fi-body { flex: 1; }
+    .fi-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #001a3d;
+    }
+    .fi-desc {
+      font-size: 11px;
+      color: #666;
+      margin-top: 2px;
+    }
+    .badge {
+      flex-shrink: 0;
+      font-size: 9px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .badge-key   { background: #c5a059; color: #fff; }
+    .badge-trust { background: #48bb78; color: #fff; }
+    .badge-feel  { background: #667eea; color: #fff; }
+    .badge-cta   { background: #e53e3e; color: #fff; }
+    .badge-info  { background: #a0aec0; color: #fff; }
+
+    /* 矢印 */
+    .arrow-down {
+      text-align: center;
+      font-size: 18px;
+      color: #c5a059;
+      line-height: 1;
+      margin: -2px 0;
+    }
+
+    /* ── まとめボックス ── */
+    .summary-box {
+      background: #001a3d;
+      color: #fff;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 28px;
+    }
+    .summary-box h2 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #c5a059;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 480px) {
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+    .summary-item {
+      background: rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 10px 14px;
+    }
+    .summary-item .si-label {
+      font-size: 10px;
+      color: #c5a059;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .summary-item .si-val {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ── フッター ── */
+    .doc-footer {
+      text-align: center;
+      font-size: 11px;
+      color: #aaa;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+    }
+    .doc-footer a { color: #667eea; text-decoration: none; }
+
+    /* ── 詳細リンク ── */
+    .detail-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      padding: 12px;
+      background: #f0f4ff;
+      border: 1px solid #c3cef5;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #3a5bd9;
+      text-decoration: none;
+    }
+    .detail-link:hover { background: #e0e8ff; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヘッダー -->
+  <div class="doc-header">
+    <h1>採用LP 構成概要</h1>
+    <div class="sub">堀田建設株式会社｜採用サイトのページ構成・各セクションの目的</div>
+    <div class="meta">2026年2月 ／ 制作：渥美絵里（web-tsukuru.jp）</div>
+  </div>
+
+  <!-- サイトURL -->
+  <a href="https://recruit.hottacon.co.jp/" target="_blank" class="url-box">
+    <div>
+      <div class="label">採用サイト URL</div>
+      <div class="url">https://recruit.hottacon.co.jp/</div>
+    </div>
+    <div class="arrow">↗</div>
+  </a>
+
+  <!-- リード文 -->
+  <div class="lead-box">
+    このサイトは <strong>「まず知るだけでいい」</strong> というコンセプトで設計しています。<br>
+    求職者が感じる <strong>「不安 → 興味 → 信頼 → 行動」</strong> の流れに沿ってセクションを並べ、<br>
+    公式LINEへの登録（＝最初の接点）を自然に促す構成です。
+  </div>
+
+  <!-- ページ構成フロー -->
+  <div class="block-title">ページの流れ（上から順に）</div>
+  <div class="flow">
+
+    <div class="flow-item key">
+      <div class="num">01</div>
+      <div class="fi-body">
+        <div class="fi-title">🎬 ヒーロー（最初の画面）</div>
+        <div class="fi-desc">「未経験のあなたへ。その一歩を、全力で守ります。」キャッチコピー＋会社の映像。<br>3秒で「ここは自分向けだ」と感じてもらう。</div>
+      </div>
+      <span class="badge badge-key">最重要</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">02</div>
+      <div class="fi-body">
+        <div class="fi-title">📊 数字で見る堀田建設</div>
+        <div class="fi-desc">残業月13.5h・資格費用0円・月給23万〜などを数値で明示。「ブラックじゃないか」の不安を即解消。</div>
+      </div>
+      <span class="badge badge-trust">信頼</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">03</div>
+      <div class="fi-body">
+        <div class="fi-title">💬 代表メッセージ</div>
+        <div class="fi-desc">社長の顔写真・署名付きで「社員は家族」という姿勢を伝える。「信頼できる会社」の印象を形成。</div>
+      </div>
+      <span class="badge badge-trust">信頼</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">04</div>
+      <div class="fi-body">
+        <div class="fi-title">👥 社員インタビュー（3名）</div>
+        <div class="fi-desc">岡安さん（地元新卒）・菅原さん（異業種転職）・渥美さん（高卒女性）のリアルな声。「自分にもできる」という共感を生む。</div>
+      </div>
+      <span class="badge badge-trust">信頼</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">05</div>
+      <div class="fi-body">
+        <div class="fi-title">📸 社員ギャラリー ／ 🏗️ 施工実績</div>
+        <div class="fi-desc">チームの雰囲気と、三重大学・亀山中学校など地域の代表的な施工物件を写真で紹介。「一緒に働く人」と「仕事の規模」をイメージさせる。</div>
+      </div>
+      <span class="badge badge-feel">親近感</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">06</div>
+      <div class="fi-body">
+        <div class="fi-title">🎁 福利厚生 ／ 🔐 カルチャー ／ 🔥 若者会議</div>
+        <div class="fi-desc">スポーツジム無料・社宅・BBQなど充実した制度と、「社長との距離0m」の文化を紹介。社員が主体的に会社を変えられる実績（若者会議7年目）。</div>
+      </div>
+      <span class="badge badge-feel">共感</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">07</div>
+      <div class="fi-body">
+        <div class="fi-title">🏅 認定・認証バッジ</div>
+        <div class="fi-desc">ユースエール（厚生労働省）・三重県働き方改革推進企業・健康経営優良法人。「本当に良い会社？」の疑念を第三者機関の認定で払拭。</div>
+      </div>
+      <span class="badge badge-trust">信頼</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">08</div>
+      <div class="fi-body">
+        <div class="fi-title">❓ よくある質問（Q&amp;A）</div>
+        <div class="fi-desc">未経験・残業・資格・遠方・給与・女性活躍など6問。応募を迷っている人の「最後の一押し」に対応。</div>
+      </div>
+      <span class="badge badge-feel">不安解消</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">09</div>
+      <div class="fi-body">
+        <div class="fi-title">📋 募集要項</div>
+        <div class="fi-desc">給与・休日・勤務地・待遇をフルオープンで掲載。他社との比較で有利に。</div>
+      </div>
+      <span class="badge badge-key">重要</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item cta">
+      <div class="num">10</div>
+      <div class="fi-body">
+        <div class="fi-title">🎯 エントリー（CTA）</div>
+        <div class="fi-desc">① 公式LINE登録（メインCTA）　② 簡単フォーム（名前・電話のみ）　③ 電話問い合わせ。「応募」ではなく「まず知るだけ」で入れる設計。</div>
+      </div>
+      <span class="badge badge-cta">CTA</span>
+    </div>
+
+    <div class="arrow-down">↓</div>
+
+    <div class="flow-item">
+      <div class="num">11</div>
+      <div class="fi-body">
+        <div class="fi-title">👨‍👩‍👧 保護者・先生の方へ ／ 会社情報</div>
+        <div class="fi-desc">安全・安定・女性活躍実績を保護者向けに掲載。創業100年以上の信頼性をアピール。</div>
+      </div>
+      <span class="badge badge-info">補足</span>
+    </div>
+
+  </div>
+
+  <!-- まとめ -->
+  <div class="summary-box">
+    <h2>📌 サイトの設計コンセプト まとめ</h2>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="si-label">ゴール</div>
+        <div class="si-val">公式LINEへの登録</div>
+      </div>
+      <div class="summary-item">
+        <div class="si-label">ターゲット</div>
+        <div class="si-val">未経験者・転職検討者・地元の若者女性</div>
+      </div>
+      <div class="summary-item">
+        <div class="si-label">コンセプト</div>
+        <div class="si-val">「まず知るだけでいい」</div>
+      </div>
+      <div class="summary-item">
+        <div class="si-label">スマホ最適化</div>
+        <div class="si-val">画面下部にLINEボタン常時表示</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 詳細版リンク -->
+  <a href="lp_structure.html" target="_blank" class="detail-link">
+    📄 詳細版（各セクションの構成・コンテンツ）はこちら →
+  </a>
+
+  <!-- フッター -->
+  <div class="doc-footer">
+    堀田建設株式会社 採用LP 構成概要｜2026年2月<br>
+    制作：渥美絵里｜<a href="https://web-tsukuru.jp" target="_blank">web-tsukuru.jp</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>【拡張版】風景・抽象表現・静物 プロンプト集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --space-bg: #0f172a;
+        --panel-bg: #1e293b;
+        --panel-border: #334155;
+        --text-main: #f1f5f9;
+        --text-dim: #94a3b8;
+        --accent-gold: #d4af37;
+        --accent-blue: #3b82f6;
+        --accent-green: #10b981;
+        --accent-purple: #8b5cf6;
+        --accent-red: #ef4444;
+        --accent-orange: #f97316;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--space-bg);
+        color: var(--text-main);
+        margin: 0;
+        padding: 20px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      header {
+        border-bottom: 1px solid var(--panel-border);
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .title {
+        font-family: "Outfit", sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--accent-gold);
+      }
+      .subtitle {
+        color: var(--text-dim);
+        font-size: 0.82rem;
+        margin-top: 4px;
+      }
+      .back-link {
+        color: var(--text-dim);
+        font-size: 0.8rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--panel-bg);
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--panel-border);
+        transition: all 0.2s;
+      }
+      .back-link:hover {
+        background: #334155;
+        color: var(--text-main);
+      }
+      .panel {
+        background: var(--panel-bg);
+        border: 1px solid var(--panel-border);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+      .panel-header {
+        padding: 12px 15px;
+        background: rgba(212, 175, 55, 0.1);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      }
+      .panel-title {
+        font-family: "Outfit", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent-gold);
+      }
+      .panel-body {
+        padding: 16px;
+      }
+      .note {
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 0.82rem;
+        color: #fde68a;
+        margin: 10px 0;
+      }
+      .tip {
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 0.82rem;
+        color: #6ee7b7;
+        margin: 10px 0;
+      }
+      ul {
+        padding-left: 18px;
+        margin: 6px 0;
+      }
+      li {
+        margin-bottom: 4px;
+        font-size: 0.85rem;
+        color: var(--text-dim);
+      }
+      li strong {
+        color: var(--text-main);
+      }
+      .copy-container {
+        position: relative;
+        margin: 8px 0 24px;
+      }
+      .prompt-box {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid var(--panel-border);
+        border-left: 3px solid var(--accent-gold);
+        border-radius: 4px;
+        padding: 14px 16px;
+        font-size: 0.85rem;
+        white-space: pre-wrap;
+        color: #cbd5e1;
+        font-family: inherit;
+        line-height: 1.5;
+      }
+      .prompt-title {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--text-main);
+        margin-bottom: 4px;
+      }
+      .copy-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: var(--panel-border);
+        color: var(--text-main);
+        border: none;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .copy-btn:hover {
+        background: var(--accent-gold);
+        color: #000;
+      }
+      .copy-btn.copied {
+        background: var(--accent-green);
+        color: #0f172a;
+        font-weight: 700;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 768px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      #back-to-top {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: var(--accent-gold);
+        color: #0f172a;
+        font-weight: 700;
+        font-size: 0.8rem;
+        padding: 10px 18px;
+        border-radius: 20px;
+        text-decoration: none;
+        opacity: 0.85;
+        transition: opacity 0.2s;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+      #back-to-top:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+      .intro-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="top">
+      <div>
+        <div class="title">
+          <i class="fa-solid fa-mountain-sun"></i>
+          【拡張版】風景・抽象表現・静物 プロンプト集（全24選）
+        </div>
+        <div class="subtitle">
+          文字を大きく目立たせる「背景専用」の高品質AIプロンプト（リール動画用）
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <a href="video_prompts_guide.html" class="back-link"
+          ><i class="fa-solid fa-chevron-left"></i> メインプロンプト集へ戻る</a
+        >
+      </div>
+    </header>
+
+    <div class="intro-box">
+      <h3
+        style="
+          margin-top: 0;
+          margin-bottom: 10px;
+          font-size: 1rem;
+          color: var(--text-main);
+        "
+      >
+        <i class="fa-solid fa-circle-info"></i> このページの用途
+      </h3>
+      <p
+        style="
+          margin: 0;
+          color: var(--text-dim);
+          font-size: 0.85rem;
+          line-height: 1.6;
+        "
+      >
+        「問題パート」「解説パート」など、<strong>文字数が多く、視聴者にしっかりテキストを読ませたいスライド</strong>の背景として最適なプロンプトを厳選・拡張搭載しています。<br />
+        人物を排し、あえて余白（ネガティブスペース）を広く取ることで、文字の視認性を極限まで高めつつ、建設業の「現場感」を美しく演出できる構成になっています。<br />
+        ※すべて
+        <code>--ar 9:16</code
+        >（スマートフォン縦型サイズ）に最適化済みです。動画AI（Luma/Runway等）を使用する場合は、このプロンプトで生成した画像をリファレンスとして読み込ませてください。
+      </p>
+    </div>
+
+    <!-- 必須のプロンプト保護ルール -->
+    <div class="panel" style="border-color: var(--panel-border)">
+      <div
+        class="panel-header"
+        style="
+          background: rgba(0, 0, 0, 0.2);
+          border-bottom: 1px solid var(--panel-border);
+        "
+      >
+        <div class="panel-title" style="color: var(--text-dim)">
+          <i class="fa-solid fa-shield-halved"></i>
+          静物・風景特化の保護ルール（組み込み済み）
+        </div>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>
+            <strong>テキスト・看板除外</strong>：<code
+              >no text, no letters, no signs, no logos, no banners</code
+            >
+          </li>
+          <li>
+            <strong>クリーンな環境</strong>：<code
+              >no floating dust, extremely clean and clear air</code
+            >
+          </li>
+          <li>
+            <strong>余白の確保</strong>：<code
+              >empty space for text overlay, minimalist</code
+            >
+          </li>
+          <li>
+            <strong>巨大建築の排除</strong>：<code
+              >NOT a massive skyscraper project, small to medium sized local
+              construction</code
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <!-- 1. 空・雲・時間帯 -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i class="fa-solid fa-cloud"></i> 1. 空・雲・時間帯（広大な余白）
+          </div>
+        </div>
+        <div class="panel-body">
+          <p
+            style="
+              color: var(--text-dim);
+              font-size: 0.85rem;
+              margin-bottom: 16px;
+            "
+          >
+            空の面積を広く取り、文字を置くためのパーフェクトなカンバスを作ります。
+          </p>
+
+          <div class="prompt-title">
+            01. 流れる雲と中小規模の現場（タイムラプス風）
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Time-lapse style shot of a small to medium sized local Japanese
+              construction site under a clear blue sky, dynamic clouds passing
+              quickly, high contrast, cinematic atmosphere, clean framing,
+              completely empty sky space for text, no massive skyscrapers, no
+              signs, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            02. 抜けるような青空とそびえ立つ単管パイプ
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Looking straight up at vertical steel scaffolding pipes reaching
+              into a vast, piercingly clear blue sky at a local construction
+              site, clean lines, minimalist, completely empty sky for text
+              overlay, bright daylight, no text, no letters. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            03. 美しいマジックアワーと建築シルエット
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              A beautiful magic hour sunset over a small local Japanese
+              construction site silhouette, deep purple and orange sky,
+              peaceful, cinematic, emotional, massive empty space in the sky for
+              text overlay, no massive skyscrapers, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">04. 朝陽が差し込む美しい足場の中</div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Sun rays filtering through steel scaffolding at a clean
+              construction site during early morning, crystal clear air,
+              cinematic, peaceful industrial aesthetic, 8k, empty areas for text
+              overlay, no floating dust, no text, no signs. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            05. 完成した低層の建物を下から見上げる空（達成感）
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Looking straight up from the ground past a beautiful newly built
+              3-story local Japanese apartment building facade into a clear deep
+              blue sky, bright sunlight, vast empty sky perfect for adding text,
+              no massive skyscrapers, no text, no banners. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            06. 黄金色の夕日に照らされるクレーンと広い空
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              A minimalist shot of a single yellow construction crane
+              illuminated by the golden setting sun, resting against a
+              completely clear, vast evening sky, peaceful, huge negative space
+              for text, photorealistic, no text, no signs. --ar 9:16
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 建築構造・幾何学 -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i class="fa-solid fa-shapes"></i> 2.
+            建築構造・幾何学（ミニマルな図形）
+          </div>
+        </div>
+        <div class="panel-body">
+          <p
+            style="
+              color: var(--text-dim);
+              font-size: 0.85rem;
+              margin-bottom: 16px;
+            "
+          >
+            整理された現場の美しさと、規則的なパターンが知的な印象を与えます。
+          </p>
+
+          <div class="prompt-title">07. クレーンの幾何学的な鉄骨美</div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Cinematic shot of a beautiful geometric steel frame structure and
+              a yellow crane reaching into a clear blue sky, minimal, clean
+              lines, construction aesthetic, empty sky for text, no massive
+              buildings, no text, no signs. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            08. 規則正しく組まれた足場の美しい連続性
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Abstract, repeating geometric pattern of clean metallic
+              scaffolding pipes at a construction site, perfectly aligned,
+              strong shadows from bright sunlight, minimalist industrial
+              background, highly detailed, no text, no letters. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            09. 完成直前のコンクリート壁と差し込む光
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              A completely clean, minimalist raw concrete wall interior of a new
+              building, a single beam of beautiful cinematic sunlight cutting
+              across the surface, massive empty space for text, moody and
+              professional, 8k resolution, no dirt, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">10. 木造建築の美しい骨組みと木漏れ日</div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              The precise and beautiful wooden framework of a traditional
+              Japanese-style new house under construction, golden sunlight
+              filtering through the timber, warm aesthetic, wide angle leaving
+              empty space, perfect craftsmanship, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            11. ローカル現場から見上げる整然とした足場のマス目
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Looking up through the perfect square grid of scaffolding boards
+              towards the blue sky at a residential construction site, geometric
+              framing, bright, hopeful, clean and safe site, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            12. 養生シートの奥から漏れる温かい作業灯の影
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Translucent white construction mesh screen (yojo sheet) glowing
+              softly from behind with a warm yellow temporary work light,
+              silhouette of scaffolding, abstract and calming background,
+              massive negative space, evening time, no text. --ar 9:16
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 現場特有の質感・テクスチャ -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i class="fa-solid fa-magnifying-glass-plus"></i> 3.
+            現場特有の質感・テクスチャ（接写・抽象）
+          </div>
+        </div>
+        <div class="panel-body">
+          <p
+            style="
+              color: var(--text-dim);
+              font-size: 0.85rem;
+              margin-bottom: 16px;
+            "
+          >
+            職人のこだわりや、現場の「匂い」をさりげなく伝えるマクロ（接写）背景です。
+          </p>
+
+          <div class="prompt-title">
+            13. 丁寧に均された美しいコンクリート床の接写
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Macro shot, extremely detailed and perfectly smoothed wet concrete
+              floor reflecting the blue sky and morning light, seamless texture,
+              craftsmanship, highly aesthetic, minimalist background with huge
+              space for text, no dirt, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            14. 鉄骨に落ちる雨のしずくと鈍い反射（課題提起用）
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Cinematic close-up of a dark steel H-beam at a construction site
+              with small raindrops resting on its surface, moody atmospheric
+              lighting, slightly blurred background, perfect for presenting
+              serious problems or facts, pristine, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">15. 削り出された美しい無垢材の木目</div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Extreme close up of freshly planed, beautiful solid wood timber
+              revealing its natural grain, warm golden hour lighting, clean and
+              professional carpentry vibe, abstract texture background,
+              completely empty plain area for text, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">16. 美しく積まれた新建材・木材</div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Neatly stacked clean wooden planks and construction materials
+              under a temporary roof, soft diffused daylight, geometric lines of
+              the wood edges, orderly and safe site environment, abstract crop,
+              no text, no signs. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            17. 敷き詰められた砕石（砂利）の無骨なテクスチャ
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Top down macro view of clean crushed stone (gravel) spread evenly
+              on a construction subbase, sharp focus, high contrast, industrial
+              texture, uniform color, excellent as an abstract background, no
+              text, no letters. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            18. 現場を覆うブルーシートの抽象的なうねりと光
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Abstract close-up of a new, clean blue tarp covering construction
+              materials, sunlight catching the folds and creating soft ripples
+              of shadow and light, vivid blue color, highly aesthetic texture,
+              plenty of empty space, no text. --ar 9:16
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. アイテム・静物 -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i class="fa-solid fa-hard-hat"></i> 4.
+            アイテム・静物（図面・道具など）
+          </div>
+        </div>
+        <div class="panel-body">
+          <p
+            style="
+              color: var(--text-dim);
+              font-size: 0.85rem;
+              margin-bottom: 16px;
+            "
+          >
+            現場の声なき主人公である「道具」たち。静かながらもストーリーを感じさせます。
+          </p>
+
+          <div class="prompt-title">
+            19. 図面と白ヘルメットの静物画（人なし）
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Top-down view, a blank blueprint, a modern digital tablet, and a
+              clean plain white hard hat resting on a wooden table at a
+              construction site office. Soft daylight, neat and organized,
+              minimalist, no text, no letters, no logos on the hat. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">20. 現場事務所の大きなホワイトボード</div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              A pristine, completely blank and empty whiteboard in a brightly
+              lit modern prefab construction site office, holding a single black
+              marker, extremely clean, perfect negative space for adding overlay
+              text, 8k resolution, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            21. 朝の現場にポツンと置かれた安全コーン
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              A single clean orange safety cone sitting on freshly paved dark
+              asphalt at dawn, long shadow cast by the morning sun, vast empty
+              space in the frame, minimalist site preparation, no text, no
+              logos. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            22. 木材の上に無造作に置かれた本革の作業グローブ
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              A pair of clean, high-quality leather work gloves resting
+              naturally on top of cut timber at a carpentry site, warm golden
+              sunlight, shallow depth of field blurring the background, highly
+              realistic, emotional, no text. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            23. 図面の上に伸びたスケール（メジャー）の接写
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Extreme close up of a yellow measuring tape extended across a
+              blank architectural blueprint, very shallow depth of field with
+              the background beautifully blurred out into bokeh, professional
+              engineering vibe, no text, no visible numbers. --ar 9:16
+            </div>
+          </div>
+
+          <div class="prompt-title">
+            24. ミニマルなショベルカーのバケットと青空
+          </div>
+          <div class="copy-container">
+            <button class="copy-btn" onclick="copyPrompt(this)">
+              <i class="fa-regular fa-copy"></i> コピー
+            </button>
+            <div class="prompt-box">
+              Looking up at the yellow metal bucket of a compact excavator
+              hanging elegantly against an infinite, completely clear blue sky,
+              minimalist industrial composition, bright sunlight, vast empty
+              space for text, no logos, no text. --ar 9:16
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#top" id="back-to-top"><i class="fa-solid fa-arrow-up"></i> TOP</a>
+
+    <script>
+      function copyPrompt(btn) {
+        const textToCopy = btn.nextElementSibling.innerText;
+        navigator.clipboard
+          .writeText(textToCopy)
+          .then(() => {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> コピー済';
+            btn.classList.add("copied");
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.classList.remove("copied");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Could not copy text: ", err);
+          });
+      }
+    </script>
+  </body>
+</html>

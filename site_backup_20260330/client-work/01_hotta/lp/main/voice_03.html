@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- ✅ GA4 | IDを取得後に G-XXXXXXXXXX を実際のIDに差し替える -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H.A.インタビュー｜小学生の夢が、今、現実に。｜堀田建設株式会社</title>
+    <meta
+      name="description"
+      content="「小学生の頃の夢が、今、現実に。」——建築部現場監督 H.A.（21歳）のリアルなインタビュー。18歳で50人の前に立った、高卒女性監督のリアル。"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://recruit.hottacon.co.jp/voice_03.html" />
+
+    <!-- OGP -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://recruit.hottacon.co.jp/voice_03.html" />
+    <meta property="og:title" content="H.A.インタビュー｜小学生の夢が、今、現実に。｜堀田建設株式会社" />
+    <meta property="og:description" content="「小学生の頃の夢が、今、現実になっている。」——建築部現場監督 H.A.（21歳）のリアルなインタビュー。18歳で50人の前に立った、高卒女性監督のリアル。" />
+    <meta property="og:image" content="https://recruit.hottacon.co.jp/images/voice/hotta-59_optimized.webp" />
+    <meta property="og:site_name" content="堀田建設株式会社 採用サイト" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/renewal.css" />
+
+    <style>
+      /* ========================================
+         インタビュー別ページ固有スタイル
+      ======================================== */
+      .voice-detail-hero {
+        background: linear-gradient(135deg, var(--navy-deep) 0%, #012366 100%);
+        padding: 140px 0 80px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .voice-detail-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 70% 50%,
+          rgba(197, 160, 89, 0.15) 0%,
+          transparent 70%
+        );
+      }
+      .voice-detail-hero .container {
+        position: relative;
+        z-index: 1;
+      }
+      .voice-hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      /* ヘッダーナビ */
+      body .header-nav { display: flex; margin-right: 1.5rem; }
+      body .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+      body .header-logo-img { height: 32px; width: auto; display: block; }
+      body .logo-sub { font-size: 0.7rem; color: var(--color-neutral-light); font-weight: 800; letter-spacing: 0.15em; border-left: 1px solid var(--color-neutral-border); padding-left: 12px; margin-top: 2px; }
+      body .nav-menu { display: flex; list-style: none; gap: 1.5rem; align-items: center; margin: 0; padding: 0; }
+      body .nav-menu a { color: var(--navy-deep); text-decoration: none; font-weight: 400; padding: 0.5rem 0; position: relative; transition: all 0.2s ease; font-size: 0.95rem; }
+      body .nav-menu a:hover { color: var(--navy-light); }
+      body .nav-menu a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #c5a059; transition: all 0.2s ease; }
+      body .nav-menu a:hover::after { width: 100%; }
+      html body .header-nav .nav-menu li .nav-cta { background: linear-gradient(135deg, #06c755 0%, #05a346 100%); color: #fff; padding: 0.75rem 1.6rem; border-radius: 50px; margin-left: 1.2rem; font-weight: 800; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3); transition: all 0.2s ease; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+      html body .header-nav .nav-menu li .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6, 199, 85, 0.4); text-decoration: none; color: #fff; }
+      html body .header-nav .nav-menu li .nav-cta::after { display: none; }
+      body .mobile-menu-toggle { display: none; }
+      .voice-hero-label {
+        display: inline-block;
+        font-family: var(--font-en);
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        color: var(--accent-gold);
+        border: 1px solid var(--accent-gold);
+        padding: 4px 14px;
+        border-radius: 30px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+      }
+      .voice-hero-catch {
+        font-family: var(--font-serif);
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+      .voice-hero-catch strong {
+        color: var(--accent-gold);
+      }
+      .voice-hero-profile {
+        margin-top: 2rem;
+      }
+      .voice-hero-profile .name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+      }
+      .voice-hero-profile .meta {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+      }
+      .voice-hero-image {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      }
+      .voice-hero-image img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+      }
+      .role-badge-hero {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--accent-gold);
+        color: white;
+        padding: 6px 18px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      .role-badge-hero .role-en {
+        font-family: var(--font-en);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+      }
+
+      /* インタビュー本文 */
+      .voice-detail-body {
+        padding: 80px 0 100px;
+        background: var(--bg-white);
+      }
+      .interview-full-content {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .interview-lead {
+        background: var(--bg-light);
+        border-left: 4px solid var(--accent-gold);
+        padding: 24px 28px;
+        border-radius: 0 12px 12px 0;
+        font-size: 1.05rem;
+        line-height: 1.9;
+        margin-bottom: 3rem;
+        color: #444;
+      }
+      .qa-section {
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2.5rem;
+      }
+      .qa-section:last-of-type {
+        border-bottom: none;
+      }
+      .qa-question {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+      .qa-q-badge {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--navy-deep);
+        color: white;
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 0.9rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+      }
+      .qa-question h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.5;
+        color: var(--navy-deep);
+        flex: 1;
+      }
+      .qa-answer {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .qa-a-badge {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--accent-gold);
+        color: white;
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 0.9rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+      }
+      .qa-answer p {
+        flex: 1;
+        line-height: 1.9;
+        color: #444;
+        font-size: 0.97rem;
+      }
+
+      /* ハイライトボックス */
+      .highlight-box {
+        background: linear-gradient(
+          135deg,
+          rgba(197, 160, 89, 0.12) 0%,
+          rgba(0, 26, 61, 0.06) 100%
+        );
+        border-left: 4px solid var(--accent-gold);
+        border-radius: 0 12px 12px 0;
+        padding: 28px 32px;
+        margin: 2.5rem 0;
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: #222;
+      }
+      .highlight-box .quote-mark {
+        font-family: var(--font-serif);
+        font-size: 3rem;
+        color: var(--accent-gold);
+        line-height: 1;
+        display: block;
+        margin-bottom: 0.3rem;
+        opacity: 0.9;
+      }
+      .highlight-box p {
+        font-style: italic;
+        font-family: var(--font-serif);
+        font-size: 1.15rem;
+        color: #1a1a1a;
+      }
+
+      /* 戻るボタン */
+      .back-section {
+        background: var(--bg-light);
+        padding: 60px 0;
+        text-align: center;
+      }
+      .back-section p {
+        color: #666;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--navy-deep);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .btn-back:hover {
+        background: var(--navy-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 26, 61, 0.3);
+      }
+      .btn-back i {
+        font-size: 0.85rem;
+      }
+
+      /* 他のインタビューへのナビ */
+      .other-interviews {
+        padding: 80px 0;
+        background: white;
+      }
+      .other-interviews h2 {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #888;
+        font-family: var(--font-en);
+        letter-spacing: 0.15em;
+        margin-bottom: 2.5rem;
+        font-weight: 400;
+      }
+      .other-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .other-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        display: block;
+      }
+      .other-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent-gold);
+      }
+      .other-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        object-position: top;
+      }
+      .other-card-body {
+        padding: 16px;
+      }
+      .other-card-name {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 4px;
+        color: var(--navy-deep);
+      }
+      .other-card-meta {
+        font-size: 0.8rem;
+        color: #888;
+        line-height: 1.6;
+      }
+
+      /* レスポンシブ */
+      @media (max-width: 768px) {
+        .voice-detail-hero {
+          padding: 120px 0 60px;
+        }
+        .voice-hero-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .voice-hero-image {
+          order: -1;
+        }
+        .voice-hero-image img {
+          height: 300px;
+        }
+        .voice-hero-catch {
+          font-size: 1.5rem;
+        }
+        .other-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="site-header">
+      <div class="header-full-width">
+        <div class="header-brand">
+          <a href="index.html" class="logo-link">
+            <img
+              src="images/common/logo_blue.svg"
+              alt="堀田建設株式会社"
+              class="header-logo-img"
+              width="140"
+              height="auto"
+            />
+            <span class="logo-sub">RECRUITMENT</span>
+          </a>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="header-nav">
+          <ul class="nav-menu">
+            <li><a href="index.html#voice">先輩の声</a></li>
+            <li><a href="index.html#positions">募集要項</a></li>
+            <li><a href="index.html#entry" class="nav-cta"><i class="fab fa-line"></i>公式LINEで堀田を知る</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ヒーロー -->
+    <section class="voice-detail-hero">
+      <div class="container">
+        <div class="voice-hero-grid">
+          <div class="voice-hero-text">
+            <span class="voice-hero-label">Voice of Staff / H.A.</span>
+            <h1 class="voice-hero-catch">
+              「小学生の頃の夢が、<br />
+              <strong>今、現実になっている。</strong>」
+            </h1>
+            <div class="voice-hero-profile">
+              <div class="role-badge-hero">
+                <span class="role-en">BUILDING</span>
+                <span>建築部 現場監督</span>
+              </div>
+              <p class="name" style="margin-top: 1rem">H.A.</p>
+              <p class="meta">
+                21歳 / 入社3年目 / 高卒（建築科）<br />
+                地元出身。社内唯一の高卒女性現場監督。
+              </p>
+            </div>
+          </div>
+          <div class="voice-hero-image">
+            <img
+              srcset="
+                images/voice/hotta-59_optimized_mobile.webp 400w,
+                images/voice/hotta-59_optimized.webp        800w
+              "
+              sizes="(max-width: 768px) 100vw, 50vw"
+              src="images/voice/hotta-59_optimized.webp"
+              alt="H.A. 建築部現場監督"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- インタビュー本文 -->
+    <main class="voice-detail-body">
+      <div class="container">
+        <div class="interview-full-content">
+
+          <div class="interview-lead">
+            小学生の頃に見た「ビフォーアフター」が、すべての始まりだった。<br />
+            卒業文集に書いた夢は現実になり、18歳で50人の職人を前に立った。<br />
+            「費用は全部、会社が出してくれた。」——失敗しても大丈夫な環境で、夢を追い続ける21歳の記録。
+          </div>
+
+          <!-- Q1 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>建設業を選んだ理由は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                小学生の時から『ビフォーアフター』が好きで、毎週楽しみに見てました。古い家が新しく生まれ変わる瞬間がかっこよくて。それで卒業文集にも「建築関係の仕事がしたい」って書いて、高校も建築科に進学しました。子どもの頃からの夢が、今、実現してる感じです。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>堀田建設を選んだ決め手は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                堀田建設のサイトを見た時に、雰囲気が良くて。人間味があって、温かい感じがしました。あと、もともと住み慣れた地元で働きたいっていう思いもあって。自宅から15分くらいの距離なので、通勤のしやすさも考えて堀田建設に決めました。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>働きやすさはどうですか？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                会社が女性採用に力を入れているので、働きやすい環境です。年の近い先輩にもかわいがってもらっていて、仕事終わりに一緒にスポーツしたり、食事に行ったり。上司にもよくしてもらってます。仕事だけじゃない付き合いがあるから、現場でも話しやすいです。
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <span class="quote-mark">"</span>
+            <p>18歳で、50人の職人の前に立った。<br />「怪我がなくて良かった」——その一言で、安心した。</p>
+          </div>
+
+          <!-- Q4 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>印象に残っている現場は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                入社早々、株式会社よしみねの中部事業所／亀山工場の担当の一人になって、正直不安でした。金額的にもスケール的にも会社の中でも規模の大きい現場で。でも、先輩が優しく導いてくれて、「できることから一つずつやればいい」って教えてくれてなんとか乗り越えられました。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>一番緊張した瞬間は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                株式会社よしみねの現場で50人くらいの職人さんを前に朝礼で話をする時が、一番緊張しました。「今日は私の番だけど、何を話そう」って毎回悩んでいました。高校を出たばかりの18歳の自分が大勢の職人さんの前で話すなんて、最初は想像もできなかったです。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>失敗した経験と、会社の対応は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                入社早々、帰宅する時に社用車をぶつけてしまって、廃車にしてしまったんです。どうしようと思いました。でも、会社は「怪我がなくて良かった」「次から気をつければいい」って親身に対応してくれて。怒られるんじゃないかって思ってたので、安心しました。<strong>失敗しても許してくれる会社なんだな</strong>って実感しました。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>一番大変だったことは？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                今が一番大変かもしれません。そろそろ現場で上に立っていかないといけない時期なのに、1級建築士の受験勉強もあって。正直、プレッシャーを感じています。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>資格取得のサポートで変わったことは？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                2級建築士、1級施工管理士と、会社が受験料も教材費も学校の費用も、全部出してくれました。今は1級建築士に挑戦していて、学校にも通わせてもらっています。正直、難しくて大変ですけど、<strong>お金の心配をせずに勉強に集中できるのは、ありがたいです</strong>。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>働き続けられる理由は？</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                会社全体が温かいんです。入社早々、人事の部長さんが山登りに連れて行ってくれて、亀山の地形を肌で感じることができました。社長も気さくで、会社の行事でビンゴ大会があるんですけど、1等で任天堂のスイッチをもらったこともあります（笑）。
+              </p>
+            </div>
+          </div>
+
+          <!-- Q10 -->
+          <div class="qa-section">
+            <div class="qa-question">
+              <span class="qa-q-badge">Q</span>
+              <h3>これから入社する人へ、メッセージを</h3>
+            </div>
+            <div class="qa-answer">
+              <span class="qa-a-badge">A</span>
+              <p>
+                会社が資格取得を応援してくれるし、上司や先輩も優しいです。失敗しても大丈夫。<strong>興味があるなら、絶対に挑戦してほしいです</strong>。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- 他のインタビュー -->
+    <section class="other-interviews">
+      <div class="container">
+        <h2>OTHER INTERVIEWS</h2>
+        <div class="other-grid">
+          <a href="voice_01.html" class="other-card">
+            <img
+              src="images/voice/hotta-107_optimized.webp"
+              alt="K.O. インタビュー"
+              loading="lazy"
+            />
+            <div class="other-card-body">
+              <p class="other-card-name">K.O.</p>
+              <p class="other-card-meta">
+                26歳 / 建築部 現場監督<br />
+                「1から10まで、全部自分でやれる。」
+              </p>
+            </div>
+          </a>
+          <a href="voice_02.html" class="other-card">
+            <img
+              src="images/voice/hotta-44_optimized.webp"
+              alt="S.Y. インタビュー"
+              loading="lazy"
+            />
+            <div class="other-card-body">
+              <p class="other-card-name">S.Y.</p>
+              <p class="other-card-meta">
+                27歳 / 建築部 現場監督<br />
+                「なにがわからないかもわからない状況から、始めた。」
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 戻るボタン -->
+    <section class="back-section">
+      <div class="container">
+        <p>採用情報はこちらからご確認いただけます</p>
+        <a href="index.html#voice" class="btn-back">
+          <i class="fas fa-arrow-left"></i>
+          先輩の声一覧へ戻る
+        </a>
+      </div>
+    </section>
+
+    <!-- 追従型コンバージョンボタン -->
+    <a href="index.html#entry" class="floating-line-cta">
+      <i class="fab fa-line"></i>
+      <span>LINEで友達追加</span>
+    </a>
+
+    <!-- トップへ戻るボタン -->
+    <a href="#" class="scroll-top">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 0 512 512"
+        fill="currentColor"
+      >
+        <path
+          d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.7c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
+        />
+      </svg>
+    </a>
+
+    <script src="js/renewal.js"></script>
+  </body>
+</html>

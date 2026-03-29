@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌐 マイサービス | 運用司令室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A; --panel-bg: #1E293B; --panel-border: #334155;
+            --text-main: #F1F5F9; --text-dim: #94A3B8;
+            --accent-gold: #D4AF37; --accent-blue: #3B82F6; --accent-green: #10B981;
+            --mode-color: #D4AF37;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--space-bg); color: var(--text-main); margin: 0; padding: 20px; font-size: 14px; line-height: 1.5; }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--mode-color); margin-bottom: 24px; }
+        .app-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+        .app-title i { color: var(--mode-color); }
+        .mode-badge { background: rgba(212,175,55,0.15); border: 1px solid var(--mode-color); color: var(--mode-color); font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; }
+        .back-btn { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--panel-border); border-radius: 6px; transition: all 0.2s; }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+        .cockpit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+        .panel { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; overflow: hidden; margin-bottom: 18px; }
+        .panel:last-child { margin-bottom: 0; }
+        .panel-header { padding: 12px 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--panel-border); }
+        .panel-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+        .panel-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .service-card { display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); padding: 14px; border-radius: 8px; transition: all 0.2s; }
+        .service-card:hover { border-color: var(--mode-color); background: rgba(212,175,55,0.07); transform: translateX(4px); }
+        .sc-icon { font-size: 1.6rem; margin-right: 16px; width: 32px; text-align: center; }
+        .sc-content { flex: 1; }
+        .sc-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 2px; }
+        .sc-url { font-size: 0.7rem; color: var(--text-dim); font-family: 'Outfit', sans-serif; }
+        .sc-badge { font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+        .badge-live { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: #10B981; }
+        .badge-sns { background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #818CF8; }
+        .link-row { display: flex; align-items: center; padding: 9px 10px; border-radius: 6px; color: var(--text-main); font-weight: 500; transition: all 0.2s; }
+        .link-row:hover { background: rgba(255,255,255,0.06); color: var(--accent-blue); }
+        .lr-icon { width: 26px; color: var(--text-dim); font-size: 0.9rem; }
+        .link-row:hover .lr-icon { color: var(--accent-blue); }
+        .lr-text { flex: 1; }
+        .lr-sub { font-size: 0.7rem; color: var(--text-dim); margin-left: 8px; }
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; }
+        .dot-green { background: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+        .date-display { font-family: 'Outfit', sans-serif; color: var(--text-dim); font-size: 0.85rem; }
+        .status-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.02); border-radius: 4px; font-size: 0.78rem; }
+        .status-label { color: var(--text-dim); }
+        .status-val { font-weight: 700; color: var(--accent-green); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="app-title">
+            <i class="fa-solid fa-globe"></i>
+            <div>
+                <div style="line-height:1;">MY SERVICE</div>
+                <div style="font-size:0.7rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">サービス一覧・本番確認・SNS管理</div>
+            </div>
+            <span class="mode-badge">🌐 マイサービス</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+            <div class="date-display"><span id="current-date"></span> <span class="dot dot-green" style="margin-left:6px;"></span></div>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 司令室へ</a>
+        </div>
+    </header>
+
+    <div class="cockpit-grid">
+
+        <!-- COL 1: 本番サービス -->
+        <div>
+            <!-- WEBサービス -->
+            <div class="panel" style="border-color:rgba(212,175,55,0.4);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--mode-color);"><i class="fa-solid fa-rocket"></i> 本番WEBサービス</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://web-tsukuru.jp/" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:var(--mode-color);">🌐</div>
+                        <div class="sc-content">
+                            <div class="sc-title">サービスLP <span class="sc-badge badge-live">LIVE</span></div>
+                            <div class="sc-url">web-tsukuru.jp</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://web-tsukuru.jp/service" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#3B82F6;">💼</div>
+                        <div class="sc-content">
+                            <div class="sc-title">料金・サービスページ <span class="sc-badge badge-live">LIVE</span></div>
+                            <div class="sc-url">web-tsukuru.jp/service</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://web-tsukuru.jp/blog/" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#10B981;">📝</div>
+                        <div class="sc-content">
+                            <div class="sc-title">ブログ <span class="sc-badge badge-live">LIVE</span></div>
+                            <div class="sc-url">web-tsukuru.jp/blog/</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#8B5CF6;">📊</div>
+                        <div class="sc-content">
+                            <div class="sc-title">採用診断テスト <span class="sc-badge badge-live">LIVE</span></div>
+                            <div class="sc-url">web-tsukuru.jp/saiyou-shindan.html</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://web-tsukuru.jp/design" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#F59E0B;">🎨</div>
+                        <div class="sc-content">
+                            <div class="sc-title">デザインページ <span class="sc-badge badge-live">LIVE</span></div>
+                            <div class="sc-url">web-tsukuru.jp/design</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://web-tsukuru.jp/works" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#EC4899;">🏆</div>
+                        <div class="sc-content">
+                            <div class="sc-title">実績ページ <span class="sc-badge badge-live">LIVE</span></div>
+                            <div class="sc-url">web-tsukuru.jp/works</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://web-tsukuru.jp/links/" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#D4AF37;">🔗</div>
+                        <div class="sc-content">
+                            <div class="sc-title">プロフィールリンクページ <span class="sc-badge badge-live">LIVE</span></div>
+                            <div class="sc-url">web-tsukuru.jp/links/</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- クライアント本番サイト -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-star"></i> えりのポートフォリオ</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://web-tsukuru.jp/portfolio_eri.html" target="_blank" class="link-row" style="background:rgba(192,132,252,0.07); border:1px solid rgba(192,132,252,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-user lr-icon" style="color:#c084fc;"></i>
+                        <span class="lr-text">えりのポートフォリオ</span>
+                        <span class="lr-sub">web-tsukuru.jp/portfolio_eri.html</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- COL 2: SNS・LINE -->
+        <div>
+            <!-- SNSアカウント -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:#E4405F;"><i class="fa-brands fa-instagram"></i> SNSアカウント</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://www.instagram.com/web_tsukuru_jp/" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#E4405F;"><i class="fa-brands fa-instagram"></i></div>
+                        <div class="sc-content">
+                            <div class="sc-title">Instagram <span class="sc-badge badge-sns">SNS</span></div>
+                            <div class="sc-url">@web_tsukuru_jp</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://www.facebook.com/webtsukurujp" target="_blank" class="service-card">
+                        <div class="sc-icon" style="color:#1877F2;"><i class="fa-brands fa-facebook"></i></div>
+                        <div class="sc-content">
+                            <div class="sc-title">Facebook <span class="sc-badge badge-sns">SNS</span></div>
+                            <div class="sc-url">facebook.com/webtsukurujp</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://business.facebook.com/" target="_blank" class="link-row">
+                        <i class="fa-brands fa-facebook lr-icon" style="color:#1877F2;"></i>
+                        <span class="lr-text">Meta Business Suite</span>
+                        <span class="lr-sub">投稿・広告管理</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- LINE -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:#06C755;"><i class="fa-brands fa-line"></i> LINE公式アカウント</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://manager.line.biz/" target="_blank" class="service-card" style="border-color:rgba(6,199,85,0.3); background:rgba(6,199,85,0.05);">
+                        <div class="sc-icon" style="color:#06C755;"><i class="fa-brands fa-line"></i></div>
+                        <div class="sc-content">
+                            <div class="sc-title">LINE Official Account Manager</div>
+                            <div class="sc-url">manager.line.biz — メッセージ・応答・配信管理</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem; color:var(--text-dim);"></i>
+                    </a>
+                    <a href="https://lin.ee/nMDNiFg" target="_blank" class="link-row" style="background:rgba(6,199,85,0.05); border:1px solid rgba(6,199,85,0.2); border-radius:6px;">
+                        <i class="fa-brands fa-line lr-icon" style="color:#06C755;"></i>
+                        <span class="lr-text">お客さん側のLINE登録画面を確認</span>
+                        <span class="lr-sub">lin.ee/nMDNiFg（サイト全体共通URL）</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- インフラ状態 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-server"></i> インフラ状態</span>
+                </div>
+                <div class="panel-body" style="font-size:0.8rem;">
+                    <div class="status-row"><span class="status-label">ホスティング</span><span class="status-val">Cloudflare Pages ✅</span></div>
+                    <div class="status-row"><span class="status-label">リポジトリ</span><span class="status-val">GitHub / atsumi-web ✅</span></div>
+                    <div class="status-row"><span class="status-label">ドメイン</span><span class="status-val">web-tsukuru.jp ✅</span></div>
+                    <div class="status-row"><span class="status-label">アナリティクス</span><span class="status-val">GA4 稼働中 ✅</span></div>
+                    <a href="https://dash.cloudflare.com/" target="_blank" class="link-row" style="margin-top:4px;">
+                        <i class="fa-solid fa-cloud lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">Cloudflare ダッシュボード</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const now = new Date();
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        document.getElementById('current-date').textContent = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')} (${days[now.getDay()]})`;
+    </script>
+</body>
+</html>

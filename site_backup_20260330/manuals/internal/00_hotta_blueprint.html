@@ -1,0 +1,524 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>堀田建設株式会社 採用資産構築エンジン 導入提案書 | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --accent: #d4af37;
+            --bg-light: #f4f7f6;
+            --text-main: #333;
+            --danger: #c0392b;
+            --success: #27ae60;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER */
+        .proposal-header {
+            background: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+            margin-bottom: 50px;
+        }
+        .proposal-header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+        .proposal-header .sub-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        /* CARD STYLE */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 6px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        /* SECTION 1: ANALYSIS (VISUAL LEAKAGE) */
+        .analysis-visual {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            align-items: stretch;
+        }
+        .av-box {
+            flex: 1;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .av-bad {
+            background: #fff5f5;
+            border: 2px solid #ffcccc;
+        }
+        .av-good {
+            background: #f0f9ff;
+            border: 2px solid #cceeff;
+        }
+        .av-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .button-mock {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #fff;
+            margin: 15px 0;
+            position: relative;
+        }
+        .btn-indeed { background: #2164f3; }
+        .btn-own { background: #003366; transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,51,102,0.3); }
+        
+        .leak-arrow {
+            color: var(--danger);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        .keep-arrow {
+            color: var(--success);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* SECTION 2: MOTHER SHIP vs FIGHTER */
+        .type-comparison {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .type-box {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        .type-box.fighter {
+            border: 2px solid var(--accent);
+            background: #fffdf5;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+        .type-header {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        /* 6 STEP DIAGRAM */
+        .six-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .step-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #ccc;
+        }
+        .step-item.active {
+            background: #eef2f6;
+            border-left-color: var(--primary);
+        }
+        .step-num {
+            font-weight: 900;
+            color: #ccc;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .step-item.active .step-num { color: var(--primary); }
+
+        /* SECTION 4: TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 4px solid #eee;
+        }
+        .time-point {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .time-point::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+        .tp-label {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* SECTION 5: REQUESTS */
+        .request-list {
+            list-style: none;
+            padding: 0;
+        }
+        .request-item {
+            background: #fafafa;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .req-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* SECTION 6: EXCLUSIVE */
+        .exclusive-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .exclusive-box::before {
+            content: 'SPECIAL';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.05);
+            font-weight: 900;
+        }
+        .ex-title {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .proposal-header h1 { font-size: 1.5rem; }
+            .analysis-visual, .type-comparison, .six-steps { flex-direction: column; }
+            .card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="proposal-header">
+        <div class="container">
+            <h1>堀田建設株式会社<br>採用資産構築エンジン 導入提案書</h1>
+            <div class="sub-title">媒体依存から脱却し、自社で「採用の主導権」を握るための6ヶ月間実証プログラム</div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. 現状分析 -->
+        <section class="card">
+            <h2>1. 現状分析：情報の流出を止める</h2>
+            <p>今のボタンは「他社行き」です。<br>
+            せっかく興味を持った求職者が、クリックした瞬間に他社の広告の海へ流出しています。<br>
+            まずはこのボタンを<strong>「堀田建設（自社）」</strong>に取り戻しましょう。</p>
+
+            <div class="analysis-visual">
+                <div class="av-box av-bad">
+                    <span class="av-title" style="color: #c0392b;">現在（媒体依存）</span>
+                    <img src="images/google_leakage.png" alt="Indeedへの流出" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <span class="leak-arrow">▼ Indeedのリストへ流出...<br><span style="font-size:0.8rem">（競合他社と比較される）</span></span>
+                </div>
+                <div class="av-box av-good">
+                    <span class="av-title" style="color: var(--primary);">未来（自社資産）</span>
+                    <img src="images/google_asset.png" alt="自社への直接応募" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <span class="keep-arrow">▼ 自社サイトとだけ向き合う<br><span style="font-size:0.8rem">（熱意が逃げない）</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 戦略図 -->
+        <section class="card">
+            <h2>2. 戦略図：採用資産構築エンジン</h2>
+            <p>既存のHPを「信頼の母艦」とし、今回作るLPを「攻めの戦闘機」として役割を分けます。</p>
+
+            <div class="type-comparison">
+                <div class="type-box">
+                    <div class="type-header">既存サイト（母艦）</div>
+                    <ul>
+                        <li>会社概要・実績・IR</li>
+                        <li>銀行・取引先向け</li>
+                        <li>更新：年数回（守り）</li>
+                        <li><strong>役割：信頼の担保</strong></li>
+                    </ul>
+                </div>
+                <div class="type-box fighter">
+                    <div class="type-header">★新LP（戦闘機）</div>
+                    <ul>
+                        <li>求人・魅力・先輩の声</li>
+                        <li>未来の社員向け</li>
+                        <li>更新：毎日・毎週（攻め）</li>
+                        <li><strong>役割：獲得と口説き</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>6ステップ・ロードマップ</h3>
+            <div class="six-steps">
+                <div class="step-item active">
+                    <span class="step-num">01</span>
+                    <strong>Googleしごと検索ハック</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">「構造化データ（JSON-LD）」を駆使し、Googleに正しい情報を伝えることで、エリア内の求人枠での露出を最大化します。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">02</span>
+                    <strong>エリアジャック戦略</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">鈴鹿・四日市・津の特定キーワードで、御社の求人が上位に表示される確率を高める施策を打ちます。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">03</span>
+                    <strong>サーバーレスLP構築（Git管理）</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">修正を瞬時に反映でき、変更履歴が全て残る「Git」技術を採用。改善のPDCAを止めません。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">04</span>
+                    <strong>現場のリアルな発信</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">整った写真より、現場の日常を切り取った何気ない一枚。信頼を生む「温度」のある情報を発信します。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">05</span>
+                    <strong>公式LINEへの誘導</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">いきなりの面接ではなく、まずはLINEで繋がり、関係性を資産化します。</p>
+                </div>
+                <div class="step-item active">
+                    <span class="step-num">06</span>
+                    <strong>Googleフォームで無料診断</strong>
+                    <p style="font-size:0.9rem; margin:5px 0;">履歴書不要の「無料診断」を用意。応募の前に適性を判断できる状態にし、ミスマッチを防ぎます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 深掘り -->
+        <section class="card">
+            <h2>3. 深掘り：Google「エリアジャック」の威力</h2>
+            <p>なぜ、広告費0円で露出を増やせるのか。<br>
+            それは<strong>「Googleにだけ聞こえる信号（構造化データ / JSON-LD）」</strong>を送るからです。</p>
+            
+            <div style="background:#f0f7ff; padding:20px; border-radius:8px; border:1px solid #cce0ff; margin-bottom: 30px;">
+                <p style="margin:0;">
+                    多くの競合他社は、求人媒体に情報を預けているため、Googleへの直接通知ができていません。<br>
+                    私たちは、御社の情報をGoogleのデータベースへ直接翻訳して届けます。<br>
+                    結果として、<strong>「三重 建設 求人」などで検索された際、媒体よりも優先的・目立つ位置に表示される</strong>可能性が極めて高くなります。<br>
+                    <small style="color:#666;">（※検索順位はGoogleのアルゴリズムに依存するため、上位表示を100%確約するものではありません）</small>
+                </p>
+            </div>
+
+            <!-- Google Mockup -->
+            <div style="max-width: 400px; margin: 0 auto; border: 1px solid #ddd; border-radius: 15px; overflow: hidden; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <!-- Mock Header -->
+                <div style="background: #fff; padding: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center;">
+                    <span style="font-size: 1.1rem; color: #5f6368; margin-right: 15px;">🔍</span>
+                    <span style="font-size: 1rem; color: #202124;">三重 建設 求人</span>
+                    <span style="margin-left: auto; color: #5f6368;">✖</span>
+                </div>
+                
+                <!-- Jobs Widget -->
+                <div style="background: #fff; padding: 0;">
+                    <div style="padding: 15px; border-bottom: 1px solid #eee;">
+                        <span style="font-size: 1.2rem; color: #202124; display: block; margin-bottom: 5px;">求人</span>
+                        <span style="font-size: 0.8rem; color: #5f6368;">ネット上の求人情報</span>
+                    </div>
+
+                    <!-- Job Card (Winner) -->
+                    <div style="padding: 15px; background: #f8fbff; border-left: 5px solid #1a73e8; border-bottom: 1px solid #eee;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="font-weight: bold; color: #1a73e8; font-size: 1rem;">施工管理（未経験OK）</span>
+                            <span style="background: #e8f0fe; color: #1967d2; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">新着</span>
+                        </div>
+                        <div style="font-size: 0.9rem; color: #202124; margin-bottom: 5px;">堀田建設株式会社</div>
+                        <div style="font-size: 0.8rem; color: #5f6368; margin-bottom: 10px;">三重県 鈴鹿市 • 正社員 • 月給25万〜</div>
+                        <div style="display: flex; gap: 5px;">
+                            <span style="background: #f1f3f4; color: #3c4043; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px;">転勤なし</span>
+                            <span style="background: #f1f3f4; color: #3c4043; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px;">昇給あり</span>
+                        </div>
+                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccdcf5; font-size: 0.8rem; color: #1a73e8; font-weight: bold;">
+                            ➤ 応募ページへ直行（Indeedを経由しません）
+                        </div>
+                    </div>
+
+                    <!-- Job Card (Others) -->
+                    <div style="padding: 15px; background: #fff; border-bottom: 1px solid #eee; opacity: 0.6;">
+                        <div style="font-weight: bold; color: #202124; font-size: 1rem; margin-bottom: 5px;">建築現場監督</div>
+                        <div style="font-size: 0.9rem; color: #202124; margin-bottom: 5px;">〇〇建設</div>
+                        <div style="font-size: 0.8rem; color: #5f6368;">三重県 四日市市</div>
+                    </div>
+                </div>
+                
+                <div style="background: #f1f3f4; padding: 10px; text-align: center; color: #1a73e8; font-weight: bold; font-size: 0.9rem;">
+                    すべて見る
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 0.8rem; color: #888; margin-top: 10px;">
+                ▲ Google検索結果での占有イメージ（エリアジャック）
+            </p>
+
+        </section>
+
+        <!-- 4. 運用の誠実さ -->
+        <section class="card">
+            <h2>4. 運用の誠実さ：6ヶ月間の実証テスト</h2>
+            <p>「作って終わり」ではありません。分析と改善を繰り返す「成長型エンジン」です。</p>
+
+            <div class="timeline">
+                <div class="time-point">
+                    <div class="tp-label">1ヶ月目：基盤構築・公開</div>
+                    <div>サーバーレスLPの公開、Googleしごと検索への連携開始。まずは世に出して反応を見ます。</div>
+                </div>
+                <div class="time-point">
+                    <div class="tp-label">2〜3ヶ月目：実験とデータ収集</div>
+                    <div>「現場写真の方がクリックされる？」「給与表記を変えると？」<br>仮説検証を繰り返し、御社の勝ちパターンを探します。</div>
+                </div>
+                <div class="time-point">
+                    <div class="tp-label">4〜6ヶ月目：資産の磨き上げ</div>
+                    <div>蓄積データに基づき、コンテンツを最適化。採用コストを下げながら、質を高めるフェーズです。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. お願いしたいこと -->
+        <section class="card">
+            <h2>5. 貴社にお願いしたいこと（実戦への約束）</h2>
+            <ul class="request-list">
+                <li class="request-item">
+                    <span class="req-icon">📸</span>
+                    <div>
+                        <strong>現場写真1枚と一言メモ</strong><br>
+                        「現場の体温」をLINEで送ってください。綺麗な写真は不要です。
+                    </div>
+                </li>
+                <li class="request-item">
+                    <span class="req-icon">🤝</span>
+                    <div>
+                        <strong>月1回の定例会</strong><br>
+                        改善結果の共有と、翌月の作戦会議をオンラインで行います。
+                    </div>
+                </li>
+                <li class="request-item">
+                    <span class="req-icon">🔑</span>
+                    <div>
+                        <strong>アカウントの取得（Google/LINE）</strong><br>
+                        資産の権利を御社に持っていただくための手続きです。（設定は代行します）
+                    </div>
+                </li>
+                <li class="request-item">
+                    <span class="req-icon">🌐</span>
+                    <div>
+                        <strong>専用ドメインの取得</strong><br>
+                        Google掲載率を高め、資産を守るために独自のURLを取得します。（年額1,500円程度）
+                    </div>
+                </li>
+                <li class="request-item">
+                    <span class="req-icon">📢</span>
+                    <div>
+                        <strong>実績公開の許可</strong><br>
+                        モニター条件として、本プロジェクトを私の実績として公開させてください。
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 6. 特典 -->
+        <section class="exclusive-box">
+            <span class="ex-title">【特別特典】エリア・業種 独占契約</span>
+            <p style="font-size:1.1rem; margin-top:20px;">
+                <strong>三重県内の同業他社様からのご依頼は、<br>今後一切お引き受けしません。</strong>
+            </p>
+            <p>私の持つノウハウとリソースは、すべて堀田建設様の採用成功のためだけに注ぎ込みます。<br>
+            御社を、私が担当する地域唯一の「採用成功モデル」にします。</p>
+        </section>
+
+    </div>
+    
+    <footer style="text-align:center; padding:50px; color:#888;">
+        &copy; 2026 Webをつくるしごと
+    </footer>
+
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="../admin/Private_index.html" class="nav-btn" title="制作コックピットへ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

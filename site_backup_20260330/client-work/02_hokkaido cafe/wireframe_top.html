@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【ラフ案】北海道カフェ TOPページ ワイヤーフレーム</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', sans-serif; background: #f5f5f0; color: #333; }
+
+    /* ラベル */
+    .label {
+      display: inline-block;
+      background: #e74c3c;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 6px;
+      letter-spacing: .05em;
+    }
+    .label.gray { background: #999; }
+    .label.green { background: #27ae60; }
+    .label.blue { background: #2980b9; }
+
+    /* ノート */
+    .wf-note {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #fffde7;
+      border: 1px solid #f9a825;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 11px;
+      line-height: 1.8;
+      max-width: 220px;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    }
+    .wf-note strong { display: block; margin-bottom: 6px; font-size: 12px; color: #e65100; }
+
+    /* 全体幅 */
+    .page { max-width: 390px; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,.1); }
+
+    /* ヘッダー */
+    .wf-header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .wf-logo { width: 80px; height: 28px; background: #d5cec4; border-radius: 4px; }
+    .wf-hamburger { display: flex; flex-direction: column; gap: 4px; }
+    .wf-hamburger span { display: block; width: 22px; height: 2px; background: #888; border-radius: 2px; }
+
+    /* ヒーロー */
+    .wf-hero {
+      position: relative;
+      background: #d5cec4;
+      height: 280px;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px 20px;
+    }
+    .wf-hero-img-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+    }
+    .wf-hero-text {
+      position: relative;
+      z-index: 1;
+      color: #4a3728;
+      border-left: 3px solid #9c7f5e;
+      padding-left: 12px;
+    }
+    .wf-hero-text .catch { font-size: 13px; font-weight: bold; line-height: 1.6; }
+    .wf-hero-text .sub { font-size: 10px; margin-top: 4px; opacity: .8; }
+
+    /* セクション共通 */
+    .wf-section { padding: 28px 20px; border-bottom: 1px dashed #e0dbd4; }
+    .wf-section-title {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: .15em;
+      color: #9c7f5e;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    /* コンセプト */
+    .wf-concept-text {
+      background: #f9f6f1;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.9;
+    }
+
+    /* メニュープレビュー */
+    .wf-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .wf-menu-item {
+      background: #e8e2da;
+      border-radius: 6px;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 6px;
+      font-size: 9px;
+      color: #888;
+    }
+    .wf-btn {
+      display: block;
+      text-align: center;
+      border: 1px solid #9c7f5e;
+      border-radius: 99px;
+      padding: 8px;
+      font-size: 11px;
+      color: #9c7f5e;
+      text-decoration: none;
+    }
+
+    /* ニュース */
+    .wf-news-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0ebe4;
+      font-size: 11px;
+    }
+    .wf-news-date { color: #aaa; white-space: nowrap; font-size: 10px; }
+    .wf-news-text { color: #555; }
+
+    /* SNS */
+    .wf-sns {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+    .wf-sns-item {
+      background: #e0dbd4;
+      aspect-ratio: 1;
+      border-radius: 4px;
+    }
+
+    /* アクセス */
+    .wf-map {
+      background: #dde8d5;
+      border-radius: 8px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6a8c5a;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    .wf-info-row {
+      display: flex;
+      gap: 8px;
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+    .wf-info-label { color: #9c7f5e; font-weight: bold; white-space: nowrap; min-width: 60px; }
+
+    /* フッター */
+    .wf-footer {
+      background: #4a3728;
+      padding: 24px 20px;
+      text-align: center;
+      color: #c4b5a5;
+      font-size: 10px;
+      line-height: 2;
+    }
+    .wf-footer-logo { width: 60px; height: 20px; background: #6a5040; border-radius: 3px; margin: 0 auto 12px; }
+    .wf-footer-nav { display: flex; justify-content: center; gap: 14px; margin-bottom: 12px; font-size: 9px; }
+  </style>
+</head>
+<body>
+
+<div class="wf-note">
+  <strong>📋 ワイヤーフレーム（ラフ案）</strong>
+  ・スマホ（390px）表示を想定<br>
+  ・グレーブロック = 写真の位置<br>
+  ・緑ブロック = 地図<br>
+  ・文字・色・画像は仮のもの<br>
+  ・方向性確認用です
+</div>
+
+<div class="page">
+
+  <!-- ヘッダー -->
+  <header class="wf-header">
+    <div class="wf-logo"></div>
+    <div class="wf-hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label">01</span>
+    <span style="font-size:11px;color:#888;">　ヘッダー：ロゴ左 ／ ハンバーガーメニュー右（スマホ対応）</span>
+  </div>
+
+  <!-- ヒーロー -->
+  <section class="wf-hero">
+    <div class="wf-hero-img-label">
+      📷 全幅写真<br>（北海道の自然 or 店内雰囲気）<br>開店後に実写に差し替え
+    </div>
+    <div class="wf-hero-text">
+      <div class="catch">ゆっくり、流れる時間を。<br>北海道のコーヒーと共に。</div>
+      <div class="sub">※ キャッチコピーは仮。ヒアリング後に確定します</div>
+    </div>
+  </section>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label">02</span>
+    <span style="font-size:11px;color:#888;">　ヒーロー：全幅写真 ＋ コンセプト一言（左下テキスト）</span>
+  </div>
+
+  <!-- コンセプト -->
+  <section class="wf-section">
+    <div class="wf-section-title">About</div>
+    <div class="wf-concept-text">
+      北海道の豊かな自然の中で、<br>
+      ゆっくりと流れる時間をお過ごしください。<br><br>
+      ※ テキストはヒアリング後に一緒に作成します
+    </div>
+  </section>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label green">03</span>
+    <span style="font-size:11px;color:#888;">　コンセプト：短めテキスト ／「詳しくはこちら」で店舗ページへ</span>
+  </div>
+
+  <!-- メニュープレビュー -->
+  <section class="wf-section">
+    <div class="wf-section-title">Menu</div>
+    <div class="wf-menu-grid">
+      <div class="wf-menu-item">☕<br>DRINK</div>
+      <div class="wf-menu-item">🍽<br>FOOD</div>
+      <div class="wf-menu-item">🍰<br>SWEETS</div>
+    </div>
+    <a href="#" class="wf-btn">メニューをもっと見る →</a>
+  </section>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label green">04</span>
+    <span style="font-size:11px;color:#888;">　メニュー：3カテゴリのカード型 ／「詳しく見る」でメニューページへ</span>
+  </div>
+
+  <!-- ニュース -->
+  <section class="wf-section">
+    <div class="wf-section-title">News</div>
+    <div class="wf-news-item">
+      <span class="wf-news-date">2026.06.01</span>
+      <span class="wf-news-text">グランドオープンのお知らせ</span>
+    </div>
+    <div class="wf-news-item">
+      <span class="wf-news-date">2026.05.15</span>
+      <span class="wf-news-text">プレオープン営業について</span>
+    </div>
+    <div class="wf-news-item">
+      <span class="wf-news-date">2026.05.01</span>
+      <span class="wf-news-text">ウェブサイトを公開しました</span>
+    </div>
+  </section>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label green">05</span>
+    <span style="font-size:11px;color:#888;">　お知らせ：3件表示（開店情報 etc.）</span>
+  </div>
+
+  <!-- Instagram -->
+  <section class="wf-section">
+    <div class="wf-section-title">Instagram</div>
+    <div class="wf-sns">
+      <div class="wf-sns-item"></div>
+      <div class="wf-sns-item"></div>
+      <div class="wf-sns-item"></div>
+      <div class="wf-sns-item"></div>
+    </div>
+    <div style="margin-top:12px;">
+      <a href="#" class="wf-btn">@ インスタグラムをフォロー</a>
+    </div>
+  </section>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label blue">06</span>
+    <span style="font-size:11px;color:#888;">　Instagram：4枚グリッド ／ SNSアカウントがあれば埋め込み</span>
+  </div>
+
+  <!-- アクセス -->
+  <section class="wf-section">
+    <div class="wf-section-title">Access</div>
+    <div class="wf-map">🗺 Google マップ（埋め込み）</div>
+    <div class="wf-info-row"><span class="wf-info-label">住所</span><span>北海道○○市○○町○○</span></div>
+    <div class="wf-info-row"><span class="wf-info-label">営業時間</span><span>10:00 〜 18:00</span></div>
+    <div class="wf-info-row"><span class="wf-info-label">定休日</span><span>火曜日</span></div>
+    <div class="wf-info-row"><span class="wf-info-label">駐車場</span><span>あり（○台）</span></div>
+    <div style="margin-top:12px;">
+      <a href="#" class="wf-btn">詳細アクセスを見る →</a>
+    </div>
+  </section>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label blue">07</span>
+    <span style="font-size:11px;color:#888;">　アクセス：地図 ＋ 基本情報 ／ 詳細はアクセスページへ</span>
+  </div>
+
+  <!-- フッター -->
+  <footer class="wf-footer">
+    <div class="wf-footer-logo"></div>
+    <div class="wf-footer-nav">
+      <span>店舗について</span>
+      <span>メニュー</span>
+      <span>アクセス</span>
+      <span>お問い合わせ</span>
+    </div>
+    <div>© 2026 カフェ名 All Rights Reserved.</div>
+  </footer>
+  <div style="background:#f9f5f0;padding:4px 10px;">
+    <span class="label gray">08</span>
+    <span style="font-size:11px;color:#888;">　フッター：ロゴ ＋ ナビ ＋ コピーライト</span>
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>

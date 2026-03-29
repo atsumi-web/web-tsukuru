@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏢 コーポレートサイト制作フロー（Antigravity版）| 制作モード</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A; --panel-bg: #1E293B; --panel-border: #334155;
+            --text-main: #F1F5F9; --text-dim: #94A3B8;
+            --accent-gold: #D4AF37; --accent-blue: #3B82F6; --accent-green: #10B981;
+            --accent-red: #EF4444; --mode-color: #3B82F6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--space-bg); color: var(--text-main); padding: 24px; font-size: 14px; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--mode-color); margin-bottom: 32px; }
+        .title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+        .back-btn { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid #334155; border-radius: 6px; transition: all 0.2s; }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+        .subtitle { color: var(--text-dim); font-size: 0.8rem; margin-top: 2px; font-weight: 400; letter-spacing: 0.08em; }
+
+        .diff-box { max-width: 860px; margin: 0 auto 32px; padding: 14px 18px; background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; font-size: 0.82rem; color: var(--text-dim); }
+        .diff-box strong { color: var(--text-main); }
+
+        .step-list { display: flex; flex-direction: column; gap: 0; max-width: 860px; margin: 0 auto; }
+        .step { display: flex; gap: 20px; position: relative; }
+        .step:not(:last-child) .step-line { position: absolute; left: 21px; top: 48px; bottom: -8px; width: 2px; background: var(--panel-border); }
+        .step-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--panel-bg); border: 2px solid rgba(59,130,246,0.5); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--accent-blue); z-index: 1; }
+        .step.deploy .step-num { border-color: var(--accent-green); color: var(--accent-green); background: rgba(16,185,129,0.1); }
+        .step-content { flex: 1; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; }
+        .step.deploy .step-content { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.06); }
+        .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .tag { font-size: 0.68rem; padding: 2px 8px; border-radius: 20px; font-weight: 600; letter-spacing: 0.04em; }
+        .tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+        .tag-git { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+        .tag-check { background: rgba(59,130,246,0.15); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
+        .step-body { color: var(--text-dim); font-size: 0.85rem; line-height: 1.8; }
+        .step-body ul { padding-left: 18px; }
+        .step-body li { margin-bottom: 4px; }
+        code { background: rgba(255,255,255,0.08); padding: 1px 6px; border-radius: 4px; font-size: 0.82em; font-family: Consolas, monospace; color: #e2e8f0; }
+        .note { margin-top: 10px; padding: 10px 14px; background: rgba(59,130,246,0.08); border-left: 3px solid var(--accent-blue); border-radius: 0 6px 6px 0; font-size: 0.8rem; color: var(--text-dim); }
+        .warn-note { margin-top: 10px; padding: 10px 14px; background: rgba(239,68,68,0.08); border-left: 3px solid var(--accent-red); border-radius: 0 6px 6px 0; font-size: 0.8rem; }
+        hr { border: none; border-top: 1px solid var(--panel-border); margin: 32px 0; }
+        footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 48px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">
+            <i class="fa-solid fa-building" style="color:var(--accent-blue);"></i>
+            <div>
+                コーポレートサイト制作フロー
+                <div class="subtitle">ANTIGRAVITY 使用前提 ／ 複数ページ対応版</div>
+            </div>
+        </div>
+        <a href="mode_production.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 制作モードへ</a>
+    </header>
+
+    <div class="diff-box">
+        <strong>💡 LP制作との主な違い：</strong>
+        サイトマップ設計・共通ナビ（shared-nav.js）の構築・ページ間リンクの絶対パス管理・SEO一括設定が追加されます。<br>
+        「まずTOPページでデザインを確定させてから、同じコンポーネントを使ってサブページを展開」が基本戦略です。
+    </div>
+
+    <div class="diff-box" style="background: rgba(16,185,129,0.07); border-color: rgba(16,185,129,0.3);">
+        <strong>🌟 【Antigravity流】多ページコーポレートサイト量産の6つの絶対原則（必勝パターン）</strong><br>
+        <ul style="margin-top: 8px; padding-left: 20px;">
+            <li><strong>【０次要件：素材の完全性】</strong> クライアントからの解像度の高い詳細資料（ヒアリングシートや事業背景の共有）が揃っていること。これなしにAIも人間も「推測」で動くと手戻りが爆発するため、着手前の絶対条件とする。</li>
+            <li><strong>【役割分担の極致】</strong> クリエイティブ（AI連携ディレクション等）は人間が、実装・最適化・パス管理はAntigravityが100%分業する。</li>
+            <li><strong>【脱・ストックフォト】</strong> プレースホルダーに頼らず、「AI専用アクター（例: 佐藤健太/整備）」のプロンプトを固定してシーンを展開し、別人が並ぶのを防ぐ。</li>
+            <li><strong>【アーキテクチャの勝利】</strong> <code>shared-nav.js</code> にヘッダー/フッターだけでなく、「FaviconとOGP」も集約し、全ページのパス切れを防ぐ。</li>
+            <li><strong>【段階的デプロイの隔離】</strong> <code>noindex</code> を付けたままテストアップし、トラブル検知とSEOリスク（コピーサイト判定）を分離する。</li>
+            <li><strong>【トラブルからの瞬時リカバリー】</strong> Terminal等の文字化け事故（Mojibake）が起きたらパニックにならず、<code>git checkout</code> で秒速タイムリープ復旧する。</li>
+        </ul>
+    </div>
+
+    <div class="step-list">
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-folder-tree" style="color:var(--accent-blue);"></i>
+                    クライアントフォルダ＆ページ構成を作成する
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li><code>site/client-work/XX_クライアント名/</code> フォルダを作成</li>
+                        <li>ページ数に応じてサブフォルダを並列に作成：
+                            <br><code>index.html</code>（TOP）、<code>company.html</code>、<code>service.html</code>、<code>contact.html</code> 等</li>
+                        <li>共通リソース用に <code>css/style.css</code>、<code>js/shared-nav.js</code>、<code>images/</code> を用意</li>
+                        <li>Antigravityにフォルダ構成を伝えてから作業開始</li>
+                    </ul>
+                    <div class="note">📁 ページ数が多い場合は先にAntigravityにサイトマップをHTMLで作成させると整理しやすい</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-robot" style="color:#a78bfa;"></i>
+                    Antigravityにサイトマップ・方向性を共有する
+                    <span class="tag tag-ai">AI</span>
+                </div>
+                <div class="step-body">
+                    <p>以下をまとめて伝える：</p>
+                    <ul>
+                        <li><strong>サイトマップ</strong>（ページ一覧と階層）</li>
+                        <li><strong>事業内容・ターゲット・競合サイト</strong></li>
+                        <li><strong>カラー・フォント方向</strong>（例：信頼感重視・ネイビー系）</li>
+                        <li><strong>将来のWordPress移行</strong>の有無（ある場合はHTML構造をWP化しやすい形に）</li>
+                        <li><strong>納期・優先ページ</strong>（TOPから作るのが基本）</li>
+                    </ul>
+                    <div class="note">💡「09_coding_rules を読んで作業してください」と一言添えることを忘れずに</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-code" style="color:#a78bfa;"></i>
+                    TOPページと共通パーツを先に作る
+                    <span class="tag tag-ai">AI</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li><strong>共通ナビ（header/footer）</strong>を <code>shared-nav.js</code> として分離しておく</li>
+                        <li><strong>共通CSS</strong>（カラー変数・フォント・ボタン）を <code>css/style.css</code> にまとめる</li>
+                        <li><strong>ファビコン・OGPの一括管理：</strong> HTMLの <code>&lt;head&gt;</code> に直書きせず、<code>shared-nav.js</code> 内で <code>data-root-path</code> を用いて全ページに動的挿入（inject）させる。これにより階層ごとのパス切れを防ぐ。</li>
+                        <li><strong>提案デザインの完全再現（Fidelity）：</strong> 提案用FVやFigmaがある場合、Google Fontsの <code>&lt;link&gt;</code> タグ（ウェイト指定含む）や <code>letter-spacing</code> などの精緻なタイポグラフィ設定を勝手に省略せず、完全にコピーして高級感を維持する</li>
+                        <li>TOPページでデザインテイストを確定させてから、他ページに展開</li>
+                        <li>Go Live で確認しながら進める</li>
+                    </ul>
+                    <div class="note">🔧 shared-nav.jsのリンク先は必ず<strong>絶対パス</strong>（<code>/service.html</code>）。相対パスはURL階層で壊れる</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-clone" style="color:#a78bfa;"></i>
+                    サブページをAntigravityで展開する
+                    <span class="tag tag-ai">AI</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li>TOPのコンポーネント（カード・セクション・CTA）を再利用して各ページを作成</li>
+                        <li>各ページには <code>shared-nav.js</code> の読み込みを忘れずに</li>
+                        <li>ページごとに <code>&lt;title&gt;</code> と <code>&lt;meta name="description"&gt;</code> を変える</li>
+                        <li><strong>AIアクターの一貫性担保：</strong> インタビュー等で同一人物の画像を連続して使う場合、顔立ち・服装のプロンプトを固定しシーンだけを変更して生成する。（フリー素材のツギハギ感を排す）</li>
+                        <li>全ページ作成後、Antigravityに「全ページのリンクが正しいか確認して」と依頼</li>
+                    </ul>
+                    <div class="note">⚠️ 新しいCSSファイルを追加させない。全スタイルは <code>css/style.css</code> に集約</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-magnifying-glass-chart" style="color:var(--accent-blue);"></i>
+                    SEO設定・SP改行最適化・全ページ確認
+                    <span class="tag tag-check">確認</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li>Antigravityに全ページのtitle・meta・OGPを一括設定させる</li>
+                        <li><strong>スマホ表示（SP）の改行最適化：</strong> <code>style.css</code> に <code>.pc-only</code>, <code>.sp-only</code> クラスを必ず定義し、キャッチコピー等の <code>&lt;br&gt;</code> タグを <code>&lt;br class="pc-only"&gt;</code> に置換してスマホでの不自然な折り返しを排除する。</li>
+                        <li>Go Live で全ページのリンク動作を確認（404がないか）</li>
+                        <li>PC・スマホ（DevTools）で全ページの表示崩れを確認</li>
+                        <li>PageSpeed Insights：本番デプロイ後に計測して90点以上を目指す</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="step deploy">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-code-branch" style="color:var(--accent-green);"></i>
+                    <code>?v=</code> バンプ → git push → 本番確認 → 納品
+                    <span class="tag tag-git">Git</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li>全ページの <code>style.css?v=X.X</code> バージョン番号を上げる</li>
+                        <li><code>git add .</code> → <code>git commit -m "feat: complete corporate site"</code> → <code>git push origin main</code></li>
+                        <li>本番URLで全ページのリンクを再度確認（シークレットモードで）</li>
+                        <li>クライアントに確認URLを共有 → 修正対応 → 再push</li>
+                        <li>最終納品：GA4コード挿入・Search Console登録、本番サーバーへの移行</li>
+                    </ul>
+                    <div class="warn-note">❗ 【要注意】<code>web-tsukuru.jp</code> 上のテスト環境としてデプロイ中は、絶対に全ページの <code>&lt;meta name="robots" content="noindex,nofollow"&gt;</code> を外さないこと。Google等にインデックスされると、後日クライアント（独自ドメイン）が公開した際に「コピーコンテンツ」判定される。外すのはクライアントの本番環境へ移行する時のみ。</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- トラブルシューティング セクション -->
+    <div style="max-width: 860px; margin: 40px auto 0; padding: 24px; border: 1px solid var(--panel-border); background: var(--panel-bg); border-radius: 10px;">
+        <h3 style="color: var(--accent-red); margin-bottom: 16px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-triangle-exclamation"></i> 🚨 デバッグ・トラブルシューティング
+        </h3>
+        <div style="color: var(--text-dim); font-size: 0.9rem;">
+            <p style="margin-bottom: 8px;"><strong>一括置換での「文字化け（Mojibake）」事故</strong></p>
+            <p>WindowsのPowerShellで安易に正規表現でのテキスト全置換（ターミナルコマンド）を実行すると、BOMなしUTF-8の日本語がShift-JIS等の別コードとして解釈され、HTML内の日本語が完全に文字化けして画面が壊れる事故が発生しやすい。</p>
+            <p style="margin-top: 8px; padding: 12px; background: rgba(0,0,0,0.2); border-left: 3px solid var(--accent-red);">
+                <i class="fa-solid fa-code-commit"></i> <strong>リカバリー方法：</strong><br>
+                事故が起きたら手作業で直そうとせず、ターミナルで直近の正常なコミットハッシュを確認し、<br>
+                <code>git checkout &lt;hash&gt; -- &lt;path/to/folder&gt;</code> <br>
+                を実行して数秒で正常時点へタイムリープ（復旧）させること。Gitの強みを活かし、パニックにならずに即座に戻すのがプロの鉄則。
+            </p>
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <p>© 2026 Webをつくるしごと | <a href="mode_production.html" style="color:var(--accent-blue);">制作モードへ戻る</a>　｜　<a href="workflow_lp.html" style="color:var(--accent-gold);">LP制作フローへ</a></p>
+    </footer>
+
+</body>
+</html>

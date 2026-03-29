@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔨 制作モード | 運用司令室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A; --panel-bg: #1E293B; --panel-border: #334155;
+            --text-main: #F1F5F9; --text-dim: #94A3B8;
+            --accent-gold: #D4AF37; --accent-blue: #3B82F6; --accent-green: #10B981;
+            --mode-color: #8B5CF6;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--space-bg); color: var(--text-main); margin: 0; padding: 20px; font-size: 14px; line-height: 1.5; }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--mode-color); margin-bottom: 24px; }
+        .app-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+        .app-title i { color: var(--mode-color); }
+        .mode-badge { background: rgba(139,92,246,0.15); border: 1px solid var(--mode-color); color: var(--mode-color); font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; }
+        .back-btn { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--panel-border); border-radius: 6px; transition: all 0.2s; }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+        .cockpit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+        .panel { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; overflow: hidden; margin-bottom: 18px; }
+        .panel:last-child { margin-bottom: 0; }
+        .panel-header { padding: 12px 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--panel-border); }
+        .panel-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+        .panel-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .highlight-card { display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); padding: 14px; border-radius: 8px; transition: all 0.2s; }
+        .highlight-card:hover { border-color: var(--mode-color); background: rgba(139,92,246,0.07); }
+        .hc-icon { font-size: 1.4rem; margin-right: 14px; width: 28px; text-align: center; }
+        .hc-content { flex: 1; }
+        .hc-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 2px; }
+        .hc-desc { font-size: 0.72rem; color: var(--text-dim); }
+        .hc-arrow { opacity: 0.4; font-size: 0.8rem; }
+        .link-row { display: flex; align-items: center; padding: 9px 10px; border-radius: 6px; color: var(--text-main); font-weight: 500; transition: all 0.2s; }
+        .link-row:hover { background: rgba(255,255,255,0.06); color: var(--accent-blue); }
+        .lr-icon { width: 26px; color: var(--text-dim); font-size: 0.9rem; }
+        .link-row:hover .lr-icon { color: var(--accent-blue); }
+        .lr-text { flex: 1; }
+        .lr-sub { font-size: 0.7rem; color: var(--text-dim); margin-left: 8px; }
+        .icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .icon-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); padding: 10px 5px; border-radius: 6px; text-align: center; color: var(--text-dim); font-size: 0.75rem; transition: all 0.2s; display: block; }
+        .icon-btn:hover { border-color: var(--mode-color); color: var(--text-main); background: rgba(139,92,246,0.1); transform: translateY(-2px); }
+        .icon-btn i { font-size: 1.2rem; margin-bottom: 5px; display: block; }
+        .divider { border: none; border-top: 1px solid var(--panel-border); margin: 6px 0; }
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; }
+        .dot-green { background: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+        .date-display { font-family: 'Outfit', sans-serif; color: var(--text-dim); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="app-title">
+            <i class="fa-solid fa-code"></i>
+            <div>
+                <div style="line-height:1;">PRODUCTION MODE</div>
+                <div style="font-size:0.7rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">LP制作・AI活用・テンプレート</div>
+            </div>
+            <span class="mode-badge">🔨 制作</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+            <div class="date-display"><span id="current-date"></span> <span class="dot dot-green" style="margin-left:6px;"></span></div>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 司令室へ</a>
+        </div>
+    </header>
+
+    <div class="cockpit-grid">
+
+        <!-- COL 1: AI制作ツール -->
+        <div>
+            <div class="panel" style="border-color:rgba(139,92,246,0.35);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--mode-color);"><i class="fa-solid fa-robot"></i> AI制作ツール（コーディング・画像）</span>
+                </div>
+                <div class="panel-body">
+                    <div style="font-size:0.7rem; color:var(--text-dim); padding: 4px 4px 6px; font-weight:600;">🧠 AI TOOLS</div>
+                    <div class="icon-grid">
+                        <a href="https://chat.openai.com/" target="_blank" class="icon-btn"><i class="fa-solid fa-comment-dots" style="color:#10A37F;"></i>ChatGPT</a>
+                        <a href="https://claude.ai/" target="_blank" class="icon-btn"><i class="fa-solid fa-wand-magic-sparkles" style="color:#D97706;"></i>Claude</a>
+                        <a href="https://gemini.google.com/" target="_blank" class="icon-btn"><i class="fa-brands fa-google" style="color:#4285F4;"></i>Gemini</a>
+                        <a href="https://www.perplexity.ai/" target="_blank" class="icon-btn"><i class="fa-solid fa-magnifying-glass" style="color:#20B2AA;"></i>Perplexity</a>
+                        <a href="https://firefly.adobe.com/" target="_blank" class="icon-btn"><i class="fa-solid fa-wand-magic-sparkles" style="color:#F97316;"></i>Firefly</a>
+                        <a href="https://labs.google/fx/ja/tools/whisk/project" target="_blank" class="icon-btn"><i class="fa-solid fa-image" style="color:#8B5CF6;"></i>Whisk<span style="font-size:0.6rem;display:block;color:var(--text-dim);">AI画像</span></a>
+                        <a href="https://labs.google/fx/ja/tools/flow" target="_blank" class="icon-btn"><i class="fa-solid fa-film" style="color:#3B82F6;"></i>Flow<span style="font-size:0.6rem;display:block;color:var(--text-dim);">AI動画</span></a>
+                    </div>
+                    <div class="divider"></div>
+                    <a href="mode_diagnosis.html" class="link-row" style="background:rgba(32,178,170,0.08); border:1px solid rgba(32,178,170,0.3); border-radius:6px;">
+                        <i class="fa-solid fa-magnifying-glass-chart lr-icon" style="color:#20B2AA;"></i>
+                        <span class="lr-text">LP診断モードへ（制作前の調査はこちら）</span>
+                        <i class="fa-solid fa-arrow-right" style="color:#20B2AA; font-size:0.8rem;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- テンプレートカタログ -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-layer-group"></i> テンプレートカタログ</span>
+                </div>
+                <div class="panel-body">
+                    <div style="font-size:0.7rem; color:var(--text-dim); padding: 2px 4px 6px; font-weight:600;">DEMO DESIGNS</div>
+                    <div class="icon-grid">
+                        <a href="../../templates/type-a/index.html" target="_blank" class="icon-btn"><i class="fa-solid fa-a"></i>Type-A</a>
+                        <a href="../../templates/type-b/index.html" target="_blank" class="icon-btn"><i class="fa-solid fa-b"></i>Type-B</a>
+                        <a href="../../templates/type-c/index.html" target="_blank" class="icon-btn"><i class="fa-solid fa-c"></i>Type-C</a>
+                        <a href="../../templates/type-d/index.html" target="_blank" class="icon-btn"><i class="fa-solid fa-d"></i>Type-D</a>
+                        <a href="../../templates/type-e/index.html" target="_blank" class="icon-btn"><i class="fa-solid fa-e"></i>Type-E</a>
+                        <a href="../../templates/type-f/index.html" target="_blank" class="icon-btn"><i class="fa-solid fa-f"></i>Type-F</a>
+                        <a href="../../templates/type-g/index.html" target="_blank" class="icon-btn"><i class="fa-solid fa-g"></i>Type-G</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- COL 2: 制作ツール・マニュアル -->
+        <div>
+            <!-- 制作でよく使うツール -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-toolbox"></i> LP制作でよく使うツール</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://pagespeed.web.dev/" target="_blank" class="link-row" style="background:rgba(16,185,129,0.07); border:1px solid rgba(16,185,129,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-gauge-high lr-icon" style="color:var(--accent-green);"></i>
+                        <span class="lr-text">PageSpeed Insights（速度計測）</span>
+                    </a>
+                    <a href="https://www.canva.com/projects" target="_blank" class="link-row">
+                        <i class="fa-solid fa-palette lr-icon" style="color:#7C3AED;"></i>
+                        <span class="lr-text">Canva（デザイン制作）</span>
+                    </a>
+                    <a href="https://squoosh.app/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-file-image lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">Squoosh（画像圧縮）</span>
+                    </a>
+                    <a href="https://labs.google/fx/ja/tools/whisk/project" target="_blank" class="link-row">
+                        <i class="fa-solid fa-image lr-icon" style="color:#8B5CF6;"></i>
+                        <span class="lr-text">Whisk（AI画像生成）</span>
+                        <span class="lr-sub">旧ImageFXの後継</span>
+                    </a>
+                    <a href="https://labs.google/fx/ja/tools/flow" target="_blank" class="link-row">
+                        <i class="fa-solid fa-film lr-icon" style="color:#3B82F6;"></i>
+                        <span class="lr-text">Flow（AI動画生成）</span>
+                        <span class="lr-sub">リール背景動画に</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ワイヤー・コンポーネント -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-pencil-ruler"></i> 設計リソース</span>
+                </div>
+                <div class="panel-body">
+                    <a href="../../../wireframe_components/index.html" target="_blank" class="link-row" style="background:rgba(59,130,246,0.07); border:1px solid rgba(59,130,246,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-table-columns lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">ワイヤーフレームテンプレート</span>
+                        <span class="lr-sub">Hero等コンポーネント集</span>
+                    </a>
+                    <a href="../../../wireframe_components/prompts/construction_specialized.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-image lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">建設関連 画像プロンプト集</span>
+                        <span class="lr-sub">ImageFX/Flow対応</span>
+                    </a>
+                    <a href="video_prompts_guide.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-film lr-icon" style="color:var(--accent-purple);"></i>
+                        <span class="lr-text">リール用 動画生成プロンプト集</span>
+                        <span class="lr-sub">AI背景素材・Runway対応</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 開発・インフラ -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-server"></i> 開発・インフラ</span>
+                </div>
+                <div class="panel-body">
+                    <div class="icon-grid">
+                        <a href="https://github.com/atsumi-web" target="_blank" class="icon-btn"><i class="fa-brands fa-github"></i>GitHub</a>
+                        <a href="https://dash.cloudflare.com/2906f71905b1a2ce471a3e4b9e29448f/pages/view/web-tsukuru" target="_blank" class="icon-btn"><i class="fa-solid fa-cloud" style="color:var(--accent-gold);"></i>CF Pages</a>
+                        <a href="https://github.com/new" target="_blank" class="icon-btn"><i class="fa-solid fa-plus"></i>New Repo</a>
+                    </div>
+                    <a href="tools_links.html" target="_blank" class="link-row" style="margin-top:4px;">
+                        <i class="fa-solid fa-toolbox lr-icon"></i>
+                        <span class="lr-text">Tools &amp; Links（Webツール集）</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- COL 3: コーディングルール・制作フロー -->
+        <div>
+            <!-- コーディングマニュアル -->
+            <div class="panel" style="border-color:rgba(16,185,129,0.35);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-green);"><i class="fa-solid fa-book-open-reader"></i> コーディングマニュアル</span>
+                </div>
+                <div class="panel-body">
+                    <a href="../internal/09_coding_rules.html" target="_blank" class="highlight-card">
+                        <span class="hc-icon">🛡️</span>
+                        <div class="hc-content">
+                            <div class="hc-title">コーディング鉄則（14ルール＋事例集）</div>
+                            <div class="hc-desc">bottom vs top・dvh禁止・バージョンバンプ・文字化け防止など</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right hc-arrow"></i>
+                    </a>
+                    <a href="../internal/mobile_optimization_guide.html" target="_blank" class="highlight-card">
+                        <span class="hc-icon">📱</span>
+                        <div class="hc-content">
+                            <div class="hc-title">モバイル最適化ガイド</div>
+                            <div class="hc-desc">タイポグラフィ・ブレークポイント・PageSpeed対策</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right hc-arrow"></i>
+                    </a>
+                    <a href="../internal/responsive_lp_guide.html" target="_blank" class="highlight-card">
+                        <span class="hc-icon">📐</span>
+                        <div class="hc-content">
+                            <div class="hc-title">レスポンシブLP制作ガイド</div>
+                            <div class="hc-desc">スペーシング・チェックリスト・アニメーション実装</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right hc-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- 制作フローリンク -->
+            <div class="panel" style="border-color:rgba(212,175,55,0.35);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-list-check"></i> 制作フロー（詳細ページ）</span>
+                </div>
+                <div class="panel-body">
+                    <a href="workflow_lp.html" target="_blank" class="highlight-card" style="border-color:rgba(212,175,55,0.4);">
+                        <span class="hc-icon">📄</span>
+                        <div class="hc-content">
+                            <div class="hc-title">LP制作フロー（Antigravity版）</div>
+                            <div class="hc-desc">フォルダ作成 → AI共有 → コーディング → Go Live → push → 納品</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right hc-arrow"></i>
+                    </a>
+                    <a href="workflow_corporate.html" target="_blank" class="highlight-card" style="border-color:rgba(59,130,246,0.4);">
+                        <span class="hc-icon">🏢</span>
+                        <div class="hc-content">
+                            <div class="hc-title">コーポレートサイト制作フロー（Antigravity版）</div>
+                            <div class="hc-desc">フォルダ作成 → サイトマップ共有 → TOP制作 → サブページ展開 → 納品</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right hc-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const now = new Date();
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        document.getElementById('current-date').textContent = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')} (${days[now.getDay()]})`;
+    </script>
+</body>
+</html>

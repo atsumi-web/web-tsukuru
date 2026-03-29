@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👥 クライアントモード | 運用司令室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-line: #06C755;
+            --mode-color: #D4AF37;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--space-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mode-color);
+            margin-bottom: 24px;
+        }
+        .app-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .app-title i { color: var(--mode-color); }
+        .mode-badge {
+            background: rgba(212,175,55,0.15);
+            border: 1px solid var(--mode-color);
+            color: var(--mode-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.08em;
+        }
+        .back-btn {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+
+        .cockpit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+        .panel:last-child { margin-bottom: 0; }
+        .panel-header {
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--panel-border);
+        }
+        .panel-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .panel-body {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Highlight Card */
+        .highlight-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--panel-border);
+            padding: 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .highlight-card:hover { border-color: var(--mode-color); background: rgba(212,175,55,0.06); }
+        .hc-icon { font-size: 1.4rem; margin-right: 14px; width: 28px; text-align: center; }
+        .hc-content { flex: 1; }
+        .hc-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 2px; }
+        .hc-desc { font-size: 0.72rem; color: var(--text-dim); }
+        .hc-arrow { opacity: 0.4; font-size: 0.8rem; }
+
+        /* Link Row */
+        .link-row {
+            display: flex;
+            align-items: center;
+            padding: 9px 10px;
+            border-radius: 6px;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .link-row:hover { background: rgba(255,255,255,0.06); color: var(--accent-blue); }
+        .lr-icon { width: 26px; color: var(--text-dim); font-size: 0.9rem; }
+        .link-row:hover .lr-icon { color: var(--accent-blue); }
+        .lr-text { flex: 1; }
+        .lr-sub { font-size: 0.7rem; color: var(--text-dim); margin-left: 8px; }
+
+        /* Status Badge */
+        .status-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+        .badge-live { background: rgba(16,185,129,0.2); color: var(--accent-green); border: 1px solid rgba(16,185,129,0.4); }
+        .badge-wip  { background: rgba(59,130,246,0.2); color: var(--accent-blue); border: 1px solid rgba(59,130,246,0.4); }
+
+        .divider { border: none; border-top: 1px solid var(--panel-border); margin: 6px 0; }
+
+        .date-display {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .dot-green { background: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="app-title">
+            <i class="fa-solid fa-handshake"></i>
+            <div>
+                <div style="line-height:1;">CLIENT MODE</div>
+                <div style="font-size:0.7rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">納品・運用・サポート管理</div>
+            </div>
+            <span class="mode-badge">👥 クライアント</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+            <div class="date-display"><span id="current-date"></span> <span class="dot dot-green" style="margin-left:6px;"></span>ONLINE</div>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 司令室へ</a>
+        </div>
+    </header>
+
+    <div class="cockpit-grid">
+
+        <!-- COL 1: 堀田建設 -->
+        <div>
+            <div class="panel" style="border-color: rgba(212,175,55,0.4);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-gold);">
+                        <i class="fa-solid fa-building"></i> 堀田建設株式会社
+                        <span class="status-badge badge-live">LIVE</span>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <!-- 採用サイト（最優先リンク） -->
+                    <a href="https://recruit.hottacon.co.jp/" target="_blank" class="highlight-card" style="border-color:rgba(212,175,55,0.5); background:rgba(212,175,55,0.08);">
+                        <div class="hc-icon" style="color:var(--accent-gold);"><i class="fa-solid fa-globe"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">採用サイト（本番）</div>
+                            <div class="hc-desc">recruit.hottacon.co.jp</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square hc-arrow" style="color:var(--accent-gold); opacity:0.7;"></i>
+                    </a>
+
+                    <!-- 司令室 -->
+                    <a href="../../client-work/01_hotta/command_center/index.html" target="_blank" class="highlight-card" style="border-color:rgba(212,175,55,0.3); background:rgba(212,175,55,0.04);">
+                        <div class="hc-icon" style="color:var(--accent-gold);"><i class="fa-solid fa-tower-broadcast"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">採用司令室（Command Center）</div>
+                            <div class="hc-desc">クライアント納品ダッシュボード</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right hc-arrow"></i>
+                    </a>
+
+                    <hr class="divider">
+
+                    <!-- サブリンク群 -->
+                    <a href="https://drive.google.com/drive/folders/1Vz7UNVs31X7UI2jtErLkGG06rO0H0AeM" target="_blank" class="link-row">
+                        <i class="fa-brands fa-google-drive lr-icon" style="color:#1FA463;"></i>
+                        <span class="lr-text">共有フォルダ（素材・写真）</span>
+                        <span class="lr-sub">Google Drive</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/line_operation_hotta.html" target="_blank" class="link-row">
+                        <i class="fa-brands fa-line lr-icon" style="color:var(--accent-line);"></i>
+                        <span class="lr-text">LINE運用設計書</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/docs/board_summary.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-file-lines lr-icon" style="color:#94A3B8;"></i>
+                        <span class="lr-text">採用LP 導入提案書</span>
+                        <span class="lr-sub">役員会資料</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/docs/lp_structure.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-sitemap lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">LP構成資料</span>
+                    </a>
+                    <hr class="divider">
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 10px 4px; font-weight: 700;">★ 採用インフラ戦略（グランドデザイン）</div>
+                    <a href="../../client-work/01_hotta/proposal_architecture.html" target="_blank" class="link-row" style="background:rgba(212,175,55,0.08); border-left: 3px solid var(--accent-gold);">
+                        <i class="fa-solid fa-project-diagram lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text" style="color:var(--accent-gold); font-weight:700;">採用インフラ全体設計図</span>
+                        <span class="lr-sub" style="color:var(--accent-gold);">NEW (最新版)</span>
+                    </a>
+                    <hr class="divider">
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 10px 4px; font-weight: 700;">★ フェーズ1（LP制作）戦略資料</div>
+                    <a href="../../client-work/01_hotta/fv_strategy.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-chess-board lr-icon" style="color:#ed8936;"></i>
+                        <span class="lr-text">【社内用】「3つのペルソナ」戦略</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/fv_target.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-users lr-icon" style="color:#48bb78;"></i>
+                        <span class="lr-text">ファーストビュー（FV）ペルソナ案</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/strategy_school_lp.md" target="_blank" class="link-row">
+                        <i class="fa-solid fa-school lr-icon" style="color:#9f7aea;"></i>
+                        <span class="lr-text">新卒・学校向け求人票のURL戦略</span>
+                        <span class="lr-sub">備忘録メモ</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/fv_compare.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-code-compare lr-icon" style="color:#4299e1;"></i>
+                        <span class="lr-text">FV比較（従来型 vs 今回の提案）</span>
+                    </a>
+                    <hr class="divider">
+                    <a href="../../client-work/01_hotta/lp/main/proposal_traffic.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-bullseye lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">集客施策のご提案</span>
+                        <span class="lr-sub">打ち合わせ用</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/lp/main/proposal_seo.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-magnifying-glass-chart lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">検索順位を上げるための施策</span>
+                        <span class="lr-sub">SEO説明資料</span>
+                    </a>
+                    <hr class="divider">
+                    <div style="font-size: 0.75rem; color: var(--text-dim); margin: 8px 10px 4px; font-weight: 700;">★ フェーズ2（Web/SNS集客）提案資料</div>
+                    <a href="../../client-work/01_hotta/proposal_sns_ad.html" target="_blank" class="link-row" style="background:rgba(212,175,55,0.05);">
+                        <i class="fa-solid fa-lightbulb lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">少額Web広告テスト提案書</span>
+                        <span class="lr-sub">SNS広告用</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/proposal_web_ad.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-globe lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">Web広告・SEO 全体戦略</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/strategy_memo_president.html" target="_blank" class="link-row" style="background:rgba(255,255,255,0.03);">
+                        <i class="fa-solid fa-chess-knight lr-icon" style="color:#d53f8c;"></i>
+                        <span class="lr-text">経営者への最強のアプローチ</span>
+                        <span class="lr-sub">戦略メモ</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/meeting_checklist_0311.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-clipboard-check lr-icon" style="color:#38b2ac;"></i>
+                        <span class="lr-text">3/11 打合せチェックリスト</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/proposal_verification.md" target="_blank" class="link-row">
+                        <i class="fa-solid fa-robot lr-icon" style="color:#9f7aea;"></i>
+                        <span class="lr-text">AI検証用プロンプト・メール案</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 次のクライアント枠（空き） -->
+            <div class="panel" style="border-style: dashed; border-color: #334155;">
+                <div class="panel-header">
+                    <span class="panel-title">
+                        <i class="fa-solid fa-plus"></i> 次のクライアント
+                        <span class="status-badge badge-wip">OPEN</span>
+                    </span>
+                </div>
+                <div class="panel-body" style="padding: 24px 14px; text-align:center; color: var(--text-dim); font-size:0.82rem;">
+                    <i class="fa-solid fa-circle-plus" style="font-size:1.8rem; margin-bottom:10px; display:block; opacity:0.3;"></i>
+                    モニター2件目の契約後にここを追加
+                </div>
+            </div>
+        </div>
+
+        <!-- COL 2: クライアントへ送るもの（フェーズ別） -->
+        <div>
+
+            <!-- フェーズ1: 契約・開始時 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-green);">
+                        <i class="fa-solid fa-paper-plane"></i> ① 契約・開始時に送るもの
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <a href="zoom_hearing_sheet.html" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-clipboard-list lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">事前ヒアリングシート</span>
+                        <span class="lr-sub">Zoom前に送る</span>
+                    </a>
+                    <a href="../client/index.html" target="_blank" class="link-row" style="background:rgba(212,175,55,0.07); border:1px solid rgba(212,175,55,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-book-open lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">クライアントマニュアルポータル</span>
+                        <span class="lr-sub">制作開始時に共有</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- フェーズ2: 制作中 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-blue);">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> ② 制作中にやり取りするもの
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://drive.google.com/drive/folders/1Vz7UNVs31X7UI2jtErLkGG06rO0H0AeM" target="_blank" class="link-row">
+                        <i class="fa-brands fa-google-drive lr-icon" style="color:#1FA463;"></i>
+                        <span class="lr-text">素材・写真の共有フォルダ</span>
+                        <span class="lr-sub">クライアントが入れる場所</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/docs/lp_structure.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-sitemap lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">LP構成資料（確認用）</span>
+                        <span class="lr-sub">構成OK取りに使う</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- フェーズ3: 納品時 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-gold);">
+                        <i class="fa-solid fa-gift"></i> ③ 納品時に渡すもの
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <a href="../../client-work/01_hotta/command_center/index.html" target="_blank" class="link-row" style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.3); border-radius:6px;">
+                        <i class="fa-solid fa-tower-broadcast lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">採用司令室（納品ダッシュボード）</span>
+                        <span class="lr-sub">全資産リンク集約ページ</span>
+                    </a>
+                    <a href="../../client-work/01_hotta/docs/board_summary.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-file-lines lr-icon" style="color:#94A3B8;"></i>
+                        <span class="lr-text">採用LP 導入提案書</span>
+                        <span class="lr-sub">役員・決済者向け説明資料</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- フェーズ4: 運用中 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">
+                        <i class="fa-solid fa-rotate"></i> ④ 運用中に確認・共有するもの
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <a href="../../client-work/01_hotta/line_operation_hotta.html" target="_blank" class="link-row">
+                        <i class="fa-brands fa-line lr-icon" style="color:var(--accent-line);"></i>
+                        <span class="lr-text">LINE運用設計書</span>
+                        <span class="lr-sub">LINE対応手順・自動化設定</span>
+                    </a>
+                    <a href="https://analytics.google.com/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-chart-line lr-icon" style="color:#E37400;"></i>
+                        <span class="lr-text">Google Analytics（GA4）</span>
+                        <span class="lr-sub">月次レポートに使う</span>
+                    </a>
+                    <a href="https://search.google.com/search-console" target="_blank" class="link-row">
+                        <i class="fa-solid fa-magnifying-glass-chart lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">Search Console</span>
+                    </a>
+                    <a href="https://dash.cloudflare.com/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-cloud lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">Cloudflare（ホスティング管理）</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        const now = new Date();
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const dateStr = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')} (${days[now.getDay()]})`;
+        document.getElementById('current-date').textContent = dateStr;
+    </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【堀田建設様】Web広告を活用した「攻めの採用」のご提案</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/renewal.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&display=swap">
+  <style>
+    :root {
+      --gold: #c5a059;
+      --navy: #001a3d;
+      --navy-light: #002d6b;
+      --text: #333;
+      --bg-gray: #f8fafc;
+      --border: #e2e8f0;
+    }
+    body {
+      background-color: #f1f5f9;
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .slide-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .slide {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      padding: 40px 50px;
+      margin-bottom: 40px;
+      scroll-margin-top: 40px;
+    }
+    .slide-header {
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+    }
+    .slide-num {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      background: #fffcf2;
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--gold);
+    }
+    .slide-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--navy);
+      margin: 0;
+    }
+    .slide-intent {
+      background: #f8fafc;
+      border-left: 4px solid #94a3b8;
+      padding: 12px 20px;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+      color: #475569;
+      font-weight: 700;
+      border-radius: 0 8px 8px 0;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    .info-card h4 {
+      color: var(--navy);
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
+    .info-card.alert {
+      border-color: #fca5a5;
+      background: #fef2f2;
+    }
+    .info-card.alert h4 {
+      color: #b91c1c;
+      border-bottom-color: #fecaca;
+    }
+    .info-card.success {
+      border-color: #6ee7b7;
+      background: #f0fdf4;
+    }
+    .info-card.success h4 {
+      color: #047857;
+      border-bottom-color: #a7f3d0;
+    }
+    .conclusion-box {
+      background: var(--navy);
+      color: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 26, 61, 0.2);
+    }
+    .conclusion-box span {
+      color: var(--gold);
+    }
+    .nav-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .nav-buttons a {
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .nav-buttons a:hover {
+      background: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-container">
+
+    <!-- タイトル -->
+    <div style="text-align: center; margin-bottom: 50px; padding: 40px 0;">
+      <h1 style="color: var(--navy); font-size: 2.5rem; font-weight: 900; margin-bottom: 10px;">【ご提案資料】「待つ採用」から「攻める採用」へ</h1>
+      <p style="font-size: 1.2rem; color: #64748b; font-weight: 700;">〜なぜ今、採用LP×Web広告が最強なのか〜</p>
+    </div>
+
+    <!-- スライド1 -->
+    <div id="slide1" class="slide">
+      <div class="slide-header">
+        <span class="slide-num">Slide 1</span>
+        <h2 class="slide-title">これまでの採用（マイナビ等）の限界</h2>
+      </div>
+      <div class="slide-intent">
+        <i class="fas fa-lightbulb" style="color:#f59e0b; margin-right:8px;"></i>【目的】 現在の採用手法が抱える「構造的な弱点」を共有します。
+      </div>
+      
+      <div class="card-grid">
+        <div class="info-card alert">
+          <h4 style="font-size:1.05rem;"><i class="fas fa-hourglass-half" style="margin-right:8px;"></i>高い掲載費と「待ち」の姿勢</h4>
+          <p>求人媒体は、掲載するだけで年間数百万円のコストがかかりますが、基本的には「求職者が検索して見つけてくれるのを待つ」しかありません。</p>
+        </div>
+        <div class="info-card alert">
+          <h4 style="font-size:1.05rem;"><i class="fas fa-building" style="margin-right:8px;"></i>大手企業との「横並び比較」による埋没</h4>
+          <p>媒体の中ではフォーマットが統一されているため、給与や休日といった「数字の条件」だけで比較されてしまい、堀田建設ならではの「温かさ」や「面倒見の良さ」が伝わる前に他社に流れてしまいます。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド2 -->
+    <div id="slide2" class="slide">
+      <div class="slide-header">
+        <span class="slide-num">Slide 2</span>
+        <h2 class="slide-title">Web広告の圧倒的な強み「地元・若者への狙い撃ち」</h2>
+      </div>
+      <div class="slide-intent">
+        <i class="fas fa-lightbulb" style="color:#f59e0b; margin-right:8px;"></i>【目的】 Web広告が地方の建設業にどれほど有利かを伝えます。
+      </div>
+
+      <div class="card-grid">
+        <div class="info-card success">
+          <h4 style="font-size:1.05rem;"><i class="fas fa-search" style="margin-right:8px;"></i>「今すぐ転職したい人」以外にもアプローチできる</h4>
+          <p>媒体を見るのは「今すぐ仕事を探している人」だけです。しかしWeb広告（InstagramやGoogle）を使えば、「今は積極的に転職活動していないが、良い会社があれば地元で働きたい」と考えている潜在的な若手に直接アプローチできます。</p>
+        </div>
+        <div class="info-card success">
+          <h4 style="font-size:1.05rem;"><i class="fas fa-crosshairs" style="margin-right:8px;"></i>「亀山・鈴鹿エリアの〇〇代」だけをピンポイントで狙える</h4>
+          <p>無駄に全国へ広告を出す必要はありません。「亀山から半径〇km以内に住んでいる、建設に興味がある20代〜30代」のスマホ画面にだけ、ピンポイントで広告を配信できます。チラシを配るより圧倒的に無駄がなく、低コストです。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド3 -->
+    <div id="slide3" class="slide">
+      <div class="slide-header">
+        <span class="slide-num">Slide 3</span>
+        <h2 class="slide-title">なぜ「LP」と「広告」はセットでなければならないのか？</h2>
+      </div>
+      <div class="slide-intent">
+        <i class="fas fa-lightbulb" style="color:#f59e0b; margin-right:8px;"></i>【目的】 「広告だけ」「LPだけ」ではダメな理由を図解で伝えます。
+      </div>
+
+      <div class="card-grid">
+        <div class="info-card" style="border-width: 2px;">
+          <h4 style="font-size:1.05rem; color:var(--navy);"><i class="fas fa-bullhorn" style="margin-right:8px;"></i>広告は「優秀なキャッチ」、LPは「最高の接客」</h4>
+          <p>どんなに広告で若者の興味を惹きつけても、クリックした先が既存の「お堅いホームページ（辞書）」だと、難しくてすぐに帰ってしまいます（＝穴の空いたバケツ）。</p>
+        </div>
+        <div class="info-card success" style="border-width: 2px; border-color: var(--gold);">
+          <h4 style="font-size:1.05rem; color:var(--navy); border-bottom-color: var(--gold);"><i class="fas fa-magic" style="margin-right:8px; color:var(--gold);"></i>セットだからこそ魔法がかかる</h4>
+          <p>広告で「未経験でも月給23万！」と興味を惹き、クリックした先のLPで「本当に未経験でも守ってくれるんだ」と安心させ、そのままLINEへ誘導する。<br>この<strong>「広告（集客） ✕ LP（接客） ✕ LINE（クロージング）」</strong>が完全に連動して初めて、採用コストが劇的に下がります。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド4 -->
+    <div id="slide4" class="slide">
+      <div class="slide-header">
+        <span class="slide-num">Slide 4</span>
+        <h2 class="slide-title">私が「広告運用」まで一貫して担う最大のメリット</h2>
+      </div>
+      <div class="slide-intent">
+        <i class="fas fa-lightbulb" style="color:#f59e0b; margin-right:8px;"></i>【目的】 大手代理店にはできない、独自の「最強の価値」をアピールします。
+      </div>
+
+      <div class="card-grid">
+        <div class="info-card alert" style="opacity: 0.9;">
+          <h4 style="font-size:1.05rem;"><i class="fas fa-times-circle" style="margin-right:8px;"></i>「作って終わり」ではなく、データを見た「即日改善」が可能</h4>
+          <p>通常の広告代理店は「広告を回すだけ」です。LPの反応が悪くても、システム会社に修正見積もりを出して数週間待つことになります。</p>
+        </div>
+        <div class="info-card success" style="border-width: 2px; border-color: var(--gold);">
+          <h4 style="font-size:1.05rem; color:var(--navy); border-bottom-color: var(--gold);"><i class="fas fa-bolt" style="margin-right:8px; color:var(--gold);"></i>追加費用ゼロの「超高速PDCA」</h4>
+          <p>私は広告のデータ（Googleアナリティクス等）を分析し、「ここでの離脱が多い」と分かれば、すぐにあたらしい言葉を作り、<strong>私自身が直接LPのコードを書き換えて即日改善</strong>します。<br>「広告運用」と「LP修正」を一人で完結できるため、余計な中間マージンやタイムロスが一切発生しません。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- スライド5 -->
+    <div id="slide5" class="slide">
+      <div class="slide-header">
+        <span class="slide-num">Slide 5</span>
+        <h2 class="slide-title">今後のロードマップ（提案）</h2>
+      </div>
+      <div class="slide-intent">
+        <i class="fas fa-lightbulb" style="color:#f59e0b; margin-right:8px;"></i>【目的】 すぐに莫大な予算が必要なわけではないことを伝え、安心させます。
+      </div>
+
+      <div class="info-card" style="margin-bottom: 20px;">
+        <h4 style="font-size:1.1rem; color:var(--navy);"><i class="fas fa-step-forward" style="margin-right:8px; color:var(--gold);"></i>Step 1：まずは「最強の受け皿（LP）」を完成させる</h4>
+        <p>現在制作中の、ターゲット別（新卒・未経験・経験者）LPを完成させ、穴の空いていないバケツを作ります。</p>
+      </div>
+
+      <div class="info-card" style="margin-bottom: 20px;">
+        <h4 style="font-size:1.1rem; color:var(--navy);"><i class="fas fa-coins" style="margin-right:8px; color:var(--gold);"></i>Step 2：少額予算での「Web広告テスト」</h4>
+        <p>最初から何十万もかける必要はありません。まずは月数万円の少額から、亀山周辺の若者に向けてInstagram等でテスト配信を行います。</p>
+      </div>
+
+      <div class="info-card" style="border-color: var(--gold); border-width: 2px;">
+        <h4 style="font-size:1.1rem; color:var(--navy); border-bottom-color: var(--gold);"><i class="fas fa-chart-bar" style="margin-right:8px; color:var(--gold);"></i>Step 3：データ分析と本稼働</h4>
+        <p>どの層からのLINE登録が多いかを見極め、LPを微調整しながら、最も費用対効果の高い「堀田建設だけの勝ちパターン」を確立します。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="nav-buttons">
+    <a href="#slide1">Slide 1</a>
+    <a href="#slide2">Slide 2</a>
+    <a href="#slide3">Slide 3</a>
+    <a href="#slide4">Slide 4</a>
+    <a href="#slide5">Slide 5</a>
+  </div>
+
+</body>
+</html>

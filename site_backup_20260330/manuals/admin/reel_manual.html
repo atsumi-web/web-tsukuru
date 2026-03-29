@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvaリール量産マニュアル｜建設業採用LP専門</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-pink: #E4405F;
+            --accent-purple: #8B5CF6;
+            --accent-orange: #F97316;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--space-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        header {
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subtitle { color: var(--text-dim); font-size: 0.82rem; margin-top: 4px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .panel-header {
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--panel-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .panel-body { padding: 16px; }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: var(--accent-purple);
+            color: white;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-body strong { color: var(--text-main); display: block; margin-bottom: 4px; }
+        .step-body p { color: var(--text-dim); margin: 0; font-size: 0.85rem; }
+
+        .manual-img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 6px;
+            border: 1px solid var(--panel-border);
+            margin: 10px 0;
+            display: block;
+        }
+
+        .note {
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #FDE68A;
+            margin: 10px 0;
+        }
+        .tip {
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #6EE7B7;
+            margin: 10px 0;
+        }
+        .danger {
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.3);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #FCA5A5;
+            margin: 10px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+        .badge-pro { background: rgba(212,175,55,0.2); color: var(--accent-gold); }
+        .badge-new { background: rgba(16,185,129,0.2); color: var(--accent-green); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin: 8px 0;
+        }
+        th {
+            background: rgba(255,255,255,0.05);
+            padding: 7px 10px;
+            text-align: left;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--panel-border);
+        }
+        td {
+            padding: 7px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-dim);
+        }
+        td strong { color: var(--text-main); }
+        tr:last-child td { border-bottom: none; }
+
+        ul { padding-left: 18px; margin: 6px 0; }
+        li { margin-bottom: 3px; font-size: 0.85rem; color: var(--text-dim); }
+        li strong { color: var(--text-main); }
+
+        .link-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            transition: opacity 0.2s;
+        }
+        .link-row:hover { opacity: 0.8; text-decoration: none; }
+        .link-row .lr-text { flex: 1; font-weight: 500; }
+        .link-row .lr-sub { font-size: 0.75rem; color: var(--text-dim); }
+        .link-row .lr-icon { font-size: 1rem; width: 20px; text-align: center; }
+        .toc-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15,23,42,0.97);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--panel-border);
+            padding: 8px 20px;
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 0 -20px 20px;
+        }
+        .toc-link {
+            color: var(--text-dim);
+            font-size: 0.71rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--panel-border);
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .toc-link:hover { color: var(--text-main); border-color: var(--accent-purple); background: rgba(139,92,246,0.12); text-decoration: none; }
+        .step-links {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+            padding: 8px 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            align-items: center;
+        }
+        .step-links-label { font-size: 0.7rem; color: var(--text-dim); margin-right: 4px; white-space: nowrap; }
+        .step-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.71rem;
+            color: var(--accent-blue);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(59,130,246,0.3);
+            text-decoration: none;
+            background: rgba(59,130,246,0.06);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .step-link:hover { background: rgba(59,130,246,0.18); text-decoration: none; color: #93C5FD; }
+        #back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--accent-gold);
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+            z-index: 200;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        #back-to-top:hover { opacity: 1; text-decoration: none; }
+        #float-nav {
+            position: fixed;
+            right: 24px;
+            bottom: 72px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 200;
+        }
+        .float-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            color: var(--text-dim);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .float-step:hover {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+            color: white;
+            text-decoration: none;
+            transform: translateX(-4px);
+        }
+        .float-step::before {
+            content: attr(data-label);
+            position: absolute;
+            right: 44px;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            color: var(--text-main);
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 400;
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .float-step:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <div>
+            <div class="title"><i class="fa-solid fa-clapperboard"></i> Canvaリール量産マニュアル（AI動画対応版）</div>
+            <div class="subtitle">テーマ別CSV設計・マルチAIレビュー・自動再配置方式｜建設業採用リール専用（2026.03改訂版）</div>
+        </div>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> 司令室へ</a>
+    </header>
+
+    <!-- ✅ Antigravityへの依頼方法 -->
+    <div class="panel" style="border-color:rgba(139,92,246,0.5); background:rgba(139,92,246,0.06); margin-bottom:0;">
+      <div class="panel-header" style="background:rgba(139,92,246,0.15); border-bottom:1px solid rgba(139,92,246,0.3);">
+        <div class="panel-title" style="color:#c4b5fd; font-size:1.0rem;">
+          <i class="fa-solid fa-robot"></i> Antigravityへの依頼方法（STEP1〜1.8は全自動）
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="font-size:0.9rem; color:var(--text-main); margin:0 0 12px;">
+          <strong>新しい会話を開いて</strong>、以下をそのままAntigravityに送るだけ。STEP1（CSV生成）〜STEP1.8（再配置）まで全自動。<br>
+          <span style="color:var(--text-dim); font-size:0.8rem;">STEP2以降（Canvaでの動画生成・DL・投稿）はこのマニュアルを参照。</span>
+        </p>
+        <div style="position:relative;">
+          <div style="background:rgba(0,0,0,0.4); border:1px solid rgba(139,92,246,0.5); border-left:4px solid #8b5cf6; border-radius:6px; padding:14px 16px; font-family:monospace; font-size:1.0rem; color:#e2e8f0; user-select:all; letter-spacing:0.02em;">
+            /reel_90_production で90本作って
+          </div>
+          <button onclick="navigator.clipboard.writeText('/reel_90_production で90本作って').then(()=>{this.textContent='✅ コピー済み';setTimeout(()=>{this.textContent='📋 コピー'},1500)})"
+            style="position:absolute; top:10px; right:10px; background:rgba(139,92,246,0.3); border:1px solid rgba(139,92,246,0.5); color:#c4b5fd; font-size:0.75rem; padding:4px 10px; border-radius:4px; cursor:pointer; transition:all 0.2s;">
+            📋 コピー
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <nav class="toc-nav">
+        <span style="font-size:0.7rem;color:var(--text-dim);margin-right:4px;">▶</span>
+        <a href="#sec-ql" class="toc-link">🔗 クイックリンク</a>
+        <a href="#sec-flow" class="toc-link">📋 全体フロー</a>
+        <a href="#sec-s1" class="toc-link">① CSV生成</a>
+        <a href="#sec-review" class="toc-link">🤖 AIレビュー</a>
+        <a href="#sec-s2" class="toc-link">② Canvaシート</a>
+        <a href="#sec-s3" class="toc-link">③ テンプレ準備</a>
+        <a href="#sec-s4" class="toc-link">④ 一括作成</a>
+        <a href="#sec-s5" class="toc-link">⑤ 表紙生成</a>
+        <a href="#sec-s6" class="toc-link">⑥ 投稿予約</a>
+    </nav>
+
+    <!-- クイックリンク -->
+    <div class="panel" id="sec-ql">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-link"></i> クイックリンク</div>
+        </div>
+        <div class="panel-body" style="padding:0;">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr;">
+
+                <!-- ▶ 左列：動画作成 -->
+                <div style="padding:16px; border-right:1px solid var(--panel-border);">
+                    <div style="font-size:0.8rem; font-weight:700; color:var(--accent-blue); margin-bottom:10px; display:flex; align-items:center; gap:6px; padding:6px 10px; background:rgba(59,130,246,0.08); border-radius:6px;">
+                        <i class="fa-solid fa-film"></i> 動画作成
+                    </div>
+                    <div style="font-size:0.68rem; color:#3B82F6; font-weight:700; margin:0 0 5px 4px; letter-spacing:0.05em; opacity:0.9;"><i class="fa-solid fa-pen-nib"></i> Canva</div>
+                    <a href="https://www.canva.com/design/DAHCli5QE1o/sNDiGn0cTKbz2fIucV7Jzg/edit" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                        <i class="fa-solid fa-film lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text"><span style="color:#3B82F6;font-weight:700;font-size:0.7rem;">[Canvaシート]</span> リールデータ（動画制作用）</span>
+                        <span class="lr-sub">毎月上書きで使用。CSVのデータをここにコピペ</span>
+                    </a>
+                    <a href="https://www.canva.com/folder/FAHCwWNjKyw" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                        <i class="fa-solid fa-film lr-icon" style="color:#3B82F6;"></i>
+                        <span class="lr-text"><span style="color:#3B82F6;font-weight:700;font-size:0.7rem;">[Canvaフォルダ]</span> リール動画（テンプレ）</span>
+                        <span class="lr-sub">動画テンプレートの保管場所</span>
+                    </a>
+                    <a href="https://www.canva.com/folder/FAHCwS1WwQA" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                        <i class="fa-solid fa-film lr-icon" style="color:#3B82F6;"></i>
+                        <span class="lr-text"><span style="color:#3B82F6;font-weight:700;font-size:0.7rem;">[Canvaフォルダ]</span> リール動画（完成品）</span>
+                        <span class="lr-sub">完成品の保管場所</span>
+                    </a>
+                    <div style="font-size:0.68rem; color:#CBD5E1; font-weight:700; margin:10px 0 4px 4px; letter-spacing:0.05em;"><i class="fa-solid fa-code"></i> VSCode ローカル</div>
+                    <div style="font-family:monospace; font-size:0.68rem; color:#94A3B8; background:rgba(0,0,0,0.25); border:1px solid var(--panel-border); border-radius:4px; padding:4px 8px; margin-bottom:5px; user-select:all; cursor:text; word-break:break-all;">C:\Users\eri76\OneDrive\Desktop\VSC\web-tsukuru\planning\reels</div>
+                    <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels_v2/canva/" class="link-row" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);">
+                        <i class="fa-solid fa-file-csv lr-icon" style="color:#EF4444;"></i>
+                        <span class="lr-text"><span style="color:#EF4444;font-weight:700;font-size:0.7rem;">[CSV]</span> reel_A.csv 〜 reel_J.csv</span>
+                        <span class="lr-sub">再配置済み動画台本・各9行×8列×10ファイル</span>
+                    </a>
+                </div>
+
+                <!-- ▶ 中列：表紙作成 -->
+                <div style="padding:16px; border-right:1px solid var(--panel-border);">
+                    <div style="font-size:0.8rem; font-weight:700; color:var(--accent-pink); margin-bottom:10px; display:flex; align-items:center; gap:6px; padding:6px 10px; background:rgba(228,64,95,0.08); border-radius:6px;">
+                        <i class="fa-solid fa-image"></i> 表紙作成
+                    </div>
+                    <div style="font-size:0.68rem; color:#3B82F6; font-weight:700; margin:0 0 5px 4px; letter-spacing:0.05em; opacity:0.9;"><i class="fa-solid fa-pen-nib"></i> Canva</div>
+                    <a href="https://www.canva.com/design/DAHDKbX5iFc/Aq22sT3MF-E-CwFbGVILZA/edit" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                        <i class="fa-solid fa-image lr-icon" style="color:#3B82F6;"></i>
+                        <span class="lr-text"><span style="color:#3B82F6;font-weight:700;font-size:0.7rem;">[Canvaシート]</span> リールデータ（表紙）</span>
+                        <span class="lr-sub">毎月上書きで使用。cover_sheet CSVのデータをここにコピペ</span>
+                    </a>
+                    <a href="https://www.canva.com/folder/FAHCwQdimQg" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                        <i class="fa-solid fa-image lr-icon" style="color:#3B82F6;"></i>
+                        <span class="lr-text"><span style="color:#3B82F6;font-weight:700;font-size:0.7rem;">[Canvaフォルダ]</span> リール表紙（テンプレ）</span>
+                        <span class="lr-sub">表紙テンプレートの保管場所</span>
+                    </a>
+                    <a href="https://www.canva.com/folder/FAHCwVL4TAM" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                        <i class="fa-solid fa-image lr-icon" style="color:#3B82F6;"></i>
+                        <span class="lr-text"><span style="color:#3B82F6;font-weight:700;font-size:0.7rem;">[Canvaフォルダ]</span> リール表紙（完成品）</span>
+                        <span class="lr-sub">完成品の保管場所</span>
+                    </a>
+                    <div style="font-size:0.68rem; color:#CBD5E1; font-weight:700; margin:10px 0 4px 4px; letter-spacing:0.05em;"><i class="fa-solid fa-code"></i> VSCode ローカル</div>
+                    <div style="font-family:monospace; font-size:0.68rem; color:#94A3B8; background:rgba(0,0,0,0.25); border:1px solid var(--panel-border); border-radius:4px; padding:4px 8px; margin-bottom:5px; user-select:all; cursor:text; word-break:break-all;">C:\Users\eri76\OneDrive\Desktop\VSC\web-tsukuru\planning\reels</div>
+                    <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels/" class="link-row" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);">
+                        <i class="fa-solid fa-image lr-icon" style="color:#EF4444;"></i>
+                        <span class="lr-text"><span style="color:#EF4444;font-weight:700;font-size:0.7rem;">[CSV]</span> cover_sheet_YYYYMM.csv</span>
+                        <span class="lr-sub">2行×30列の表紙専用CSV</span>
+                    </a>
+                </div>
+
+                <!-- ▶ 右列：共通・保存先 -->
+                <div style="padding:16px;">
+                    <div style="font-size:0.8rem; font-weight:700; color:var(--text-dim); margin-bottom:10px; display:flex; align-items:center; gap:6px; padding:6px 10px; background:rgba(255,255,255,0.04); border-radius:6px;">
+                        <i class="fa-solid fa-database"></i> 共通・保存先
+                    </div>
+                    <div style="font-size:0.68rem; color:#3B82F6; font-weight:700; margin:0 0 5px 4px; letter-spacing:0.05em;"><i class="fa-solid fa-pen-nib"></i> Canva</div>
+                    <a href="https://www.canva.com/folder/FAHClkJ0WHU" target="_blank" class="link-row" style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.3);">
+                        <i class="fa-solid fa-folder-open lr-icon" style="color:#3B82F6;"></i>
+                        <span class="lr-text"><span style="color:#3B82F6;font-weight:700;font-size:0.7rem;">[Canvaフォルダ]</span> リール動画フォルダ（全般）</span>
+                        <span class="lr-sub">リール全般のデザイン一覧</span>
+                    </a>
+                    <div style="font-size:0.68rem; color:#10B981; font-weight:700; margin:10px 0 5px 4px; letter-spacing:0.05em;"><i class="fa-brands fa-google"></i> Google</div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1ZkNJkyPli2yJIln6i2ry0qDZO8Z93aLF" target="_blank" class="link-row" style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3);">
+                        <i class="fa-brands fa-google-drive lr-icon" style="color:#10B981;"></i>
+                        <span class="lr-text"><span style="color:#10B981;font-weight:700;font-size:0.7rem;">[Google Drive]</span> Googleドライブフォルダ（リール用）</span>
+                        <span class="lr-sub">YYYYMMサブフォルダに月別管理（例: 202604）</span>
+                    </a>
+                    <div style="font-size:0.68rem; color:#EAB308; font-weight:700; margin:10px 0 5px 4px; letter-spacing:0.05em;"><i class="fa-solid fa-print"></i> チェックシート・HDD</div>
+                    <a href="reel_upload_schedule.html" class="link-row" style="background:rgba(234,179,8,0.08); border:1px solid rgba(234,179,8,0.3);">
+                        <i class="fa-solid fa-print lr-icon" style="color:#EAB308;"></i>
+                        <span class="lr-text"><span style="color:#EAB308;font-weight:700;font-size:0.7rem;">[HTML]</span> 印刷用チェックシート</span>
+                        <span class="lr-sub">アップ済み確認・印刷対応（reel_upload_schedule.html）</span>
+                    </a>
+                    <div style="padding:8px 12px; background:rgba(0,0,0,0.2); border:1px solid var(--panel-border); border-radius:6px; margin-top:4px;">
+                        <div style="font-size:0.68rem; color:var(--text-dim); margin-bottom:3px;"><i class="fa-solid fa-hard-drive"></i> 外付けHDD保存先</div>
+                        <div style="font-family:monospace; font-size:0.78rem; color:#CBD5E1; user-select:all; cursor:text;">F:\Webとしくみをつくる\リール動画作成</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 全体フロー -->
+    <div class="panel" id="sec-flow">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-purple);"><i class="fa-solid fa-map"></i> 全体の流れ（6ステップ）</div>
+        </div>
+        <div class="panel-body">
+            <table>
+                <tr><th>STEP</th><th>作業</th><th>ツール</th><th>時間目安</th></tr>
+                <tr><td><strong>1</strong></td><td>テーマ設計書を作成 → テーマ別CSV（各6本）をAIで執筆</td><td>Antigravity AI</td><td>30〜60分</td></tr>
+                <tr style="background:rgba(139,92,246,0.08);"><td><strong style="color:var(--accent-purple);">1.5</strong></td><td><strong style="color:var(--accent-purple);">5テーマずつ別AIにレビューさせて修正</strong></td><td>ChatGPT / Gemini / Claude など</td><td>20〜30分</td></tr>
+                <tr><td><strong>1.8</strong></td><td><code>reorganize_reels_v2.js</code> を実行してA〜J（各9本）に自動再配置</td><td>Node.js（VSCode）</td><td>1分</td></tr>
+                <tr><td><strong>2</strong></td><td>reel_A.csv〜J.csvをCanvaの「一括作成」に直接インポート</td><td>Canvaテンプレート</td><td>3分×10テンプレ</td></tr>
+                <tr><td><strong>3</strong></td><td>テンプレートA〜Jで9本ずつ生成（<strong>3〜4テンプレずつ複数日に分けてDL</strong>）</td><td>Apps → 一括作成 <span class="badge badge-pro">Pro必須</span></td><td>—</td></tr>
+                <tr><td><strong>4</strong></td><td>表紙を90枚一括生成</td><td>Canva 一括作成</td><td>5分</td></tr>
+                <tr><td><strong>5</strong></td><td>MP4ダウンロード → Meta Business Suiteで投稿予約</td><td>Meta Business Suite</td><td>—</td></tr>
+            </table>
+            <div class="tip"><i class="fa-solid fa-boxes-stacked"></i> <strong>90本ストック運用：</strong>15テーマ×6本をA〜J（各9本）のテンプレートに自動分配。テーマが違う動画がテンプレートごとに混在するので、投稿順を並べ替えるだけで背景の繰り返しとネタ偏りを最小化できる。</div>
+        </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="panel" id="sec-s1">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-1"></i> STEP 1｜AIにCSVを生成させる</div>
+        </div>
+        <div class="panel-body">
+            <div class="step-links">
+                <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
+                <a href="reel_script_guide.html" target="_blank" class="step-link"><i class="fa-solid fa-book"></i> リール台本生成ガイド</a>
+            </div>
+            <div class="tip"><i class="fa-solid fa-robot"></i> <strong>Antigravityへの依頼方法：</strong>新しい会話を開いて <code>/reel_90_production</code> と入力するだけ。AIが <code>_agents/workflows/reel_90_production.md</code> を自動で読み込んで手順通りに動きます。<br>
+            ※ reel_manualではなく<strong>ワークフローファイルを参照させればOK</strong>。reel_manualはCanvaでの操作（STEP2以降）用。</div>
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong><a href="reel_script_guide.html" target="_blank" style="color:var(--accent-blue);">リール台本生成ガイド</a> のAI指示テンプレを開く</strong>
+                    <p><a href="reel_script_guide.html" target="_blank" style="color:var(--accent-blue);">「リール台本生成ガイド」</a>→「AIへの指示文テンプレート」をコピー<br>テーマ部分だけ今月のものに書き換えてAntigravityに貼り付ける</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>Antigravityが生成したテーマ別CSVをローカルに保存</strong>
+                    <p>保存先：<code>planning/reels_v2/theme_XX_テーマ名.csv</code>（<strong>6行×8列 × 15テーマ = 90本</strong>）</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>再配置スクリプトを実行してA〜J（各9本）に自動変換</strong>
+                    <p>VSCodeターミナルで：<code>node planning/reorganize_reels_v2.js</code><br>
+                    出力先：<code>planning/reels_v2/canva/reel_A.csv</code>〜<code>reel_J.csv</code></p>
+                </div>
+            </div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> CSVの列構成：<strong>ファイル名, 表紙テキスト, フック, 問題, 解説, 解決, 最後1, 最後2</strong>（8列）。文字数：フック25字以内・問題/解説/解決各40字以内</div>
+            <div class="danger" style="margin-top:10px;"><i class="fa-solid fa-triangle-exclamation"></i> <strong>【重要】AIで台本（フック等）を修正・再生成した場合の注意：</strong><br>
+            AIによるブラッシュアップ等で「表紙テキスト」の内容が変わった場合、そのままでは本文用と表紙用（<code>cover_*.csv</code>）のデータがズレてしまいます。<br>
+            必ずAI（Antigravity等）に「<strong>新しい表紙テキストを抽出して、表紙用CSVの中身も更新して</strong>」と指示を出し、データを完全に同期させてから各種Canva作業に進んでください。</div>
+        </div>
+    </div>
+
+    <!-- AI レビュー -->
+    <div class="panel" id="sec-review">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-purple);"><i class="fa-solid fa-robot"></i> STEP 1.5｜生成した台本をAIにレビューさせる</div>
+        </div>
+        <div class="panel-body">
+            <div class="step-links">
+                <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
+                <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels/ai_review/reel_review_prompt.txt" class="step-link"><i class="fa-solid fa-file-lines"></i> AIレビュー用プロンプト</a>
+            </div>
+            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>このステップはSTEP1の直後・Canvaコピペ前に実施</strong>。複数月分をまとめて生成した場合も同様。</div>
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>レビュー用プロンプトファイルを開く</strong>
+                    <p><code>planning\reels\ai_review\reel_review_prompt.txt</code> を開き、内容を全選択してコピー</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>別のAI（ChatGPT・Gemini・Claude など）に貼り付ける</strong>
+                    <p>プロンプトの末尾にある「③ 台本データ」部分を今月分のCSVに差し替えてから投げる</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>指摘を受けたらCanvaで直接修正</strong>
+                    <p>複数AIに共通して指摘された箇所を優先的に修正。1AIのみの指摘は任意対応でOK</p>
+                </div>
+            </div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> <strong>チェック観点：</strong>
+                「〜したことはありますか？」「〜考えたことはありますか？」「まだ〜ていませんか？」などのNGパターン、
+                出典不明の数値、解決欄の結果断定（「応募が増えます」等）、中黒「・」で2文がつながっている箇所。
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="panel" id="sec-s2">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-2"></i> STEP 2｜Canvaシートにデータを貼り付ける</div>
+        </div>
+        <div class="panel-body">
+            <div class="step-links">
+                <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
+                <a href="https://www.canva.com/design/DAHCli5QE1o/sNDiGn0cTKbz2fIucV7Jzg/edit" target="_blank" class="step-link"><i class="fa-solid fa-film"></i> Canvaシート（動画）</a>
+                <a href="https://drive.google.com/drive/u/0/folders/1ZkNJkyPli2yJIln6i2ry0qDZO8Z93aLF" target="_blank" class="step-link"><i class="fa-brands fa-google-drive"></i> Googleドライブ</a>
+            </div>
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong><a href="https://www.canva.com/design/DAHCli5QE1o/sNDiGn0cTKbz2fIucV7Jzg/edit" target="_blank" style="color:var(--accent-blue);">リールデータ（Canvaシート）</a>を開く</strong>
+                    <p>上のクイックリンクからアクセス</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>GoogleスプレッドシートからCanvaシートへコピペ</strong>
+                    <p>Googleシートの全データをコピー → Canvaシートに貼り付け<br>列名（ヘッダー行）も含めて貼り付けること</p>
+                </div>
+            </div>
+            <div class="note"><i class="fa-solid fa-info-circle"></i> Canvaシートはブラウザでスプレッドシートのように使える。列名がそのまま「一括作成」のデータ接続名になる。</div>
+        </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="panel" id="sec-s3">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-3"></i> STEP 3｜6ページのリールテンプレートを準備</div>
+        </div>
+        <div class="panel-body">
+            <div class="step-links">
+                <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
+                <a href="https://www.canva.com/folder/FAHCo4MwBHs" target="_blank" class="step-link"><i class="fa-solid fa-film"></i> リール動画フォルダ</a>
+            </div>
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong><a href="https://www.canva.com/folder/FAHCo4MwBHs" target="_blank" style="color:var(--accent-blue);">リール動画（テンプレ＆完成品）</a>フォルダを開く</strong>
+                    <p>既存のテンプレートがあれば流用。なければ新規作成</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>【最新版】AI動画を背景にした2シーン構成（計16秒）を作る</strong>
+                    <p style="margin-left:8px;">
+                        <strong><i class="fa-solid fa-video"></i> ページ1：シーン1（0秒〜8秒）／ 動画Aを背景配置</strong><br>
+                        　├ テキスト「<strong>フック</strong>」（表示タイミング：0.0s〜4.0s）<br>
+                        　└ テキスト「<strong>問題</strong>」　（表示タイミング：4.0s〜8.0s）<br>
+                        <br>
+                        <strong><i class="fa-solid fa-video"></i> ページ2：シーン2（8秒〜16秒）／ 動画Bを背景配置</strong><br>
+                        　├ テキスト「<strong>解説</strong>」　（表示タイミング：0.0s〜4.0s）<br>
+                        　├ テキスト「<strong>解決</strong>」　（表示タイミング：4.0s〜8.0s）<br>
+                        　└ テキスト「<strong>CTA（最後）</strong>」（常時表示推奨）
+                    </p>
+                </div>
+            </div>
+            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>横長ビデオ（16:9）の配置法：</strong>9:16の縦長キャンバスの中央に、AI生成した横長動画（16:9）を配置します。上下の黒帯（余白）部分にテキストを配置することで、映像を隠さず文字の視認性も高まる「映画風シネマティックレイアウト」が最も成果が出ます。</div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>テキストボックスに名前をつける</strong>
+                    <p>各テキストボックスを選択 → 右クリック →「データの接続」→ 列名と一致するよう命名<br>
+                    例：ページ1の表紙テキスト →「表紙1」、フックテキスト →「フック1」</p>
+                </div>
+            </div>
+            <div class="note"><i class="fa-solid fa-triangle-exclamation"></i> <strong>スライド構成：</strong>フック・問題・解説・解決は<strong>横書き・1ブロック（1文まとめて1セルに記入・目安40字以内・最大55字まで）</strong>。最後(CTA)スライドのみ<strong>縦書き・2行（1行13字以内・計26字以内）</strong>。英字・数字（LP・SNSなど）は縦書きに使わない。</div>
+            <div class="tip"><i class="fa-solid fa-palette"></i> <strong>ブランディング配置：</strong>フック〜解決スライドは<strong>ロゴ・URLなし</strong>（本文テキストに集中させる）。<strong>CTAスライドのみ</strong>パンダマスコット＋「建設業×採用LP専門」フッターバーを配置。</div>
+            <div class="tip"><i class="fa-solid fa-text-height"></i> <strong>フォント設定（フック〜解決）：</strong>長文を背景の座布団枠にフィットさせるため、文字サイズ <strong>72px</strong>・文字間隔 <strong>104</strong>・行間幅 <strong>2.5</strong>　横書き　／　フォントはNoto Sans JPで統一。<br><span style="color:var(--accent-red); font-size: 0.75rem;">※この設定で「4行以内（40文字）」が理想的に収まり、「5行～最大6行（55文字）」までは許容。7行以上の文字あふれは絶対NG。</span></div>
+            <div class="tip"><i class="fa-solid fa-text-height"></i> <strong>フォント設定（CTA・最後）：</strong>文字サイズ <strong>52.2px</strong>・文字間隔 <strong>130</strong>・行間幅 <strong>1.4</strong>　縦書き・2行</div>
+            <div class="tip"><i class="fa-solid fa-music"></i> <strong>BGM設定（Canvaで設定してからDL）：</strong>音量 <strong>20%</strong>・フェードイン <strong>1秒</strong>・フェードアウト <strong>2秒</strong></div>
+            <div class="danger"><i class="fa-solid fa-triangle-exclamation"></i> BGMの設定は必ず<strong>Canva側で完結</strong>させること。Meta Business Suite側で音源を編集すると<strong>予約投稿が使えなくなる</strong>。</div>
+        </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="panel" id="sec-s4">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-gold);"><i class="fa-solid fa-4"></i> STEP 4｜一括作成で30本を自動生成 <span class="badge badge-pro">Canva Pro必須</span></div>
+        </div>
+        <div class="panel-body">
+            <div class="step-links">
+                <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
+                <a href="https://www.canva.com/design/DAHCli5QE1o/sNDiGn0cTKbz2fIucV7Jzg/edit" target="_blank" class="step-link"><i class="fa-solid fa-film"></i> Canvaシート（動画）</a>
+                <a href="https://www.canva.com/folder/FAHCo4MwBHs" target="_blank" class="step-link"><i class="fa-solid fa-folder-open"></i> リール動画フォルダ</a>
+            </div>
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>編集画面左下「アプリ」→「一括作成」を選択</strong>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>「スプレッドシート」→ Canvaシートを選択</strong>
+                    <p>STEP2で用意したCanvaシートを読み込む</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>「高度なオプション」→ ページ名の列を選択</strong>
+                    <p>「各ページの名前を選択する際に使用する列」→「ファイル名」を選択<br>→ デザインが <code>reel_A_01〜reel_A_09</code> のように自動命名される</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">④</div>
+                <div class="step-body">
+                    <strong>「続行」→「◯点のデザインを作成」を実行</strong>
+                    <p>9行 = <strong>9本分</strong>が生成される。テンプレートA〜Jで<strong>10回実行 = 計90本</strong></p>
+                </div>
+            </div>
+            <div class="danger"><i class="fa-solid fa-triangle-exclamation"></i> <strong>1日のMP4ダウンロード上限に注意：</strong>有料会員でも1日あたりの動画DL数に上限あり。<strong>1日3〜4テンプレ（27〜36本）ずつ</strong>複数日に分けてDLすること。上限は日本時間0時にリセット。</div>
+            <div class="tip"><i class="fa-solid fa-lightbulb"></i> 出力オプションは「9個のデザイン」を選択。ファイル名列で <code>reel_A_01〜09</code> のようにテンプレ別・連番で自動命名される。</div>
+        </div>
+    </div>
+
+    <!-- STEP 5 表紙 -->
+    <div class="panel" id="sec-s5">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-pink);"><i class="fa-solid fa-5"></i> STEP 5｜表紙を30枚一括生成</div>
+        </div>
+        <div class="panel-body">
+            <div class="step-links">
+                <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
+                <a href="file:///C:/Users/eri76/OneDrive/Desktop/VSC/web-tsukuru/planning/reels/" class="step-link"><i class="fa-solid fa-file-csv"></i> cover_sheet CSV</a>
+                <a href="https://www.canva.com/design/DAHDKbX5iFc/Aq22sT3MF-E-CwFbGVILZA/edit" target="_blank" class="step-link"><i class="fa-solid fa-image"></i> Canvaシート（表紙）</a>
+                <a href="https://www.canva.com/folder/FAHCu5n00BM" target="_blank" class="step-link"><i class="fa-solid fa-folder-open"></i> リール表紙フォルダ</a>
+            </div>
+            <div class="tip" style="margin-bottom:14px;"><i class="fa-solid fa-circle-check"></i> <strong>縦書きテンプレート完成済み。</strong><a href="https://www.canva.com/folder/FAHCu5n00BM" target="_blank" style="color:var(--accent-pink);">リール表紙（テンプレ＆完成品）</a>フォルダの30ページデザインを流用。CSVを差し替えるだけで毎月使い回せる。</div>
+
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>cover_sheet_YYYYMM.csvをCanvaシートに読み込む</strong>
+                    <p>上のクイックリンクから <code>cover_sheet_YYYYMM.csv</code> を開く<br>
+                    → <strong>1行目：表紙1〜表紙30（30列ヘッダー）、2行目：30本分の表紙テキスト</strong>の横並び形式<br>
+                    ⚠️ 毎月ファイル名が変わる（例：cover_sheet_202604.csv）</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong><a href="https://www.canva.com/folder/FAHCu5n00BM" target="_blank" style="color:var(--accent-pink);">リール表紙（テンプレ＆完成品）</a>の30ページデザインを開く</strong>
+                    <p>上のクイックリンクからアクセス。縦書きテンプレートが<strong>表紙１〜表紙３０</strong>の30ページ構成で並んでいる。<br>
+                    <strong>初回以降はこのデザインを流用するだけでOK。</strong></p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>一括作成 →「それぞれ個別のデザインを作成」で実行</strong>
+                    <p>編集画面左下「アプリ」→「一括作成」→ cover_sheet.csv のデータを選択<br>
+                    出力：<strong>「それぞれ個別のデザインを作成」</strong>を選択<br>
+                    → 30枚の表紙が <strong>reel_01〜reel_30の順</strong> かつ <strong>テンプレローテーション順</strong> でDLできる</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">④</div>
+                <div class="step-body">
+                    <strong>デザイン名を変更して整理</strong>
+                    <p>生成後、デザイン名を「<strong>202603（表紙）</strong>」に変更する（年月で統一管理）</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">⑤</div>
+                <div class="step-body">
+                    <strong>PowerShellリネーム不要。そのままMeta Business Suiteへ</strong>
+                    <p>「それぞれ個別のデザインを作成」方式ではファイル番号のズレが発生しない。<br>
+                    DLしたPNGをそのままMeta Business SuiteでサムネイルとしてアップロードすればOK。<br>
+                    ・<strong>サムネイル</strong>：<strong>PNGで可。</strong>CanvaからPNGでDLしてアップロード</p>
+                </div>
+            </div>
+
+            <div class="note"><i class="fa-solid fa-info-circle"></i> 縦書きテキストは<strong>日本語のみ</strong>使用。英字・数字（LP・30など）は横倒しになるため使わない。</div>
+
+            <div class="tip"><i class="fa-solid fa-palette"></i> <strong>表紙デザイン仕様：</strong>半透明ダーク帯＋白テキスト＋影あり・フォント135px。背景が明るい場合（約5枚）は帯なし＋ダークテキストに個別手動調整する。</div>
+
+            <!-- 旧方式メモ（折りたたみ） -->
+            <details style="margin-top:16px;">
+                <summary style="cursor:pointer; font-size:0.8rem; color:var(--text-dim); padding:8px 12px; background:rgba(255,255,255,0.03); border:1px solid var(--panel-border); border-radius:6px;">
+                    <i class="fa-solid fa-clock-rotate-left"></i> 旧方式メモ（5ページ方式 ＋ PowerShellリネーム）
+                </summary>
+                <div style="padding:12px; font-size:0.82rem; color:var(--text-dim); border:1px solid var(--panel-border); border-top:none; border-radius:0 0 6px 6px;">
+                    <p style="margin:0 0 8px;">⚠️ 5ページ方式では「テンプレA×6本、B×6本…」の順で書き出されるため、同じテンプレが連続して投稿されやすい問題があった。</p>
+                    <p style="margin:0 0 4px;"><strong style="color:var(--text-main);">旧STEP5③：</strong>出力を「1つのデザインで複数ページを作成」で実行すると30ページが1デザインにまとまる。</p>
+                    <p style="margin:0 0 8px;"><strong style="color:var(--text-main);">旧PowerShellリネーム：</strong>上記方式ではファイル番号がずれるため以下のコマンドで修正が必要だった。</p>
+                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--panel-border); border-left:3px solid var(--accent-pink); border-radius:4px; padding:10px 14px; font-family:monospace; white-space:pre-wrap; color:#CBD5E1;">$m=@(1,7,13,19,25,2,8,14,20,26,3,9,15,21,27,4,10,16,22,28,5,11,17,23,29,6,12,18,24,30)
+for($i=1;$i -le 30;$i++){$r=$m[$i-1];if(Test-Path "$i.png"){Rename-Item "$i.png" ("reel_{0:D2}_cover.png" -f $r)}}</div>
+                </div>
+            </details>
+        </div>
+    </div>
+
+
+    <!-- STEP 6 投稿 -->
+    <div class="panel" id="sec-s6">
+        <div class="panel-header">
+            <div class="panel-title" style="color:var(--accent-green);"><i class="fa-solid fa-6"></i> STEP 6｜Meta Business Suiteで投稿・予約</div>
+        </div>
+        <div class="panel-body">
+            <div class="step-links">
+                <span class="step-links-label"><i class="fa-solid fa-link"></i> このSTEPで使うもの：</span>
+                <a href="https://business.facebook.com/" target="_blank" class="step-link"><i class="fa-brands fa-facebook"></i> Meta Business Suite</a>
+                <a href="reel_upload_schedule.html" class="step-link"><i class="fa-solid fa-print"></i> 投稿チェックシート</a>
+            </div>
+            <div class="step">
+                <div class="step-num">①</div>
+                <div class="step-body">
+                    <strong>MP4でダウンロード（最大25本ずつ）</strong>
+                    <p>「共有」→「ダウンロード」→「MP4形式」<br>
+                    ⚠️ Canvaは一度に25本までしかDL不可。<strong>まず25本DL → 残り5本を後でDL</strong></p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">①'</div>
+                <div class="step-body">
+                    <strong>ファイル名から先頭の番号を一括削除（PowerShell）</strong>
+                    <p>CanvaのDLファイルは <code>1_reel_04.mp4</code> のように先頭に番号がつく。<br>
+                    以下のPowerShellコマンドで一括削除できる：</p>
+                    <div style="background:rgba(0,0,0,0.4); border:1px solid var(--panel-border); border-left:3px solid var(--accent-blue); border-radius:4px; padding:10px 14px; font-size:0.82rem; color:#CBD5E1; margin:8px 0; font-family:monospace;">
+                        Get-ChildItem "*.mp4" | Rename-Item -NewName { $_.Name -replace '^\d+_', '' }
+                    </div>
+                    <p style="color:#94A3B8; font-size:0.8rem;">
+                        ①ダウンロードしたフォルダをエクスプローラーで開く<br>
+                        ②アドレスバーをクリックして <code>powershell</code> と入力 → Enter<br>
+                        ③上のコマンドをコピペ → Enter<br>
+                        → <code>1_reel_04.mp4</code> が <code>reel_04.mp4</code> に変換される
+                    </p>
+                    <p style="color:#94A3B8; font-size:0.8rem;">残り5本（26〜30）は後からDLしてリネーム。Canvaでは26〜30が1〜5の名前になるので要注意。</p>
+                    <img src="../images/powershell-rename.png" alt="PowerShellリネーム実行結果" class="manual-img">
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">②</div>
+                <div class="step-body">
+                    <strong>Googleドライブの保存フォルダに格納</strong>
+                    <p>リール＞リール動画＞完成品 の中に新フォルダを作成<br>
+                    フォルダ名例：<strong>202603（リール動画）</strong>（年月で管理）<br>
+                    30本すべてをここに保存する</p>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-bottom:10px;"><i class="fa-solid fa-shuffle"></i> <strong>ごちゃまぜ投稿のコツ：</strong>投稿チェックシートを見ながら、1つ前の行と<strong>テンプレが違う・テーマ月が違う</strong>動画を選ぶ。これだけでプロフィールグリッドの背景が映え、アルゴリズム的にも多様なコンテンツが有利になる。</div>
+            <div class="step">
+                <div class="step-num">③</div>
+                <div class="step-body">
+                    <strong>Meta Business Suite → 個別でリール投稿</strong>
+                    <p>「投稿を作成」→「リール動画」→ 180本プールの中から<strong>投稿チェックシートに従って</strong>1本ずつ選択してアップロード</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">④</div>
+                <div class="step-body">
+                    <strong>各動画のタイトル・説明・サムネイルを設定</strong>
+                    <p>・<strong>タイトル</strong>：入力必須。reel_01などファイル名ベースでOK<br>
+                    ・<strong>説明</strong>：下のキャプションをコピペ<br>
+                    ・<strong>サムネイル</strong>：<strong>PNG可。</strong>STEP5で作った表紙（PNG）をそのままアップロード<br>
+                    ・「スケジュールと備考のオプション」から予約日時を設定（12時推奨）</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">⑤</div>
+                <div class="step-body">
+                    <strong>「公開」をクリック</strong>
+                    <p>共有範囲が「公開」になっているか確認して投稿</p>
+                </div>
+            </div>
+
+            <div style="margin-top:12px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+                    <span style="font-size:0.82rem; color:var(--accent-green); font-weight:700;"><i class="fa-solid fa-copy"></i> 共通キャプション（コピーして使い回す）</span>
+                    <button onclick="copyCaption()" id="copyBtn" style="background:var(--accent-blue); color:white; border:none; border-radius:4px; padding:4px 12px; font-size:0.75rem; cursor:pointer; font-family:'Noto Sans JP',sans-serif;">コピー</button>
+                </div>
+                <pre id="captionText" style="background:rgba(0,0,0,0.35); border:1px solid var(--panel-border); border-left:3px solid var(--accent-green); border-radius:4px; padding:14px 16px; font-size:0.82rem; color:#CBD5E1; margin:0; white-space:pre-wrap; font-family:'Noto Sans JP',sans-serif; line-height:1.8;">建設会社の採用でお悩みの方へ。
+採用ページを活用することで、
+応募数・質ともに改善できます。
+
+👇プロフィールのリンクから詳しく見られます
+
+#建設業採用 #採用ページ #採用サイト #建設会社 #人手不足対策
+#採用担当 #中小企業採用 #採用マーケティング</pre>
+            </div>
+            <div class="note" style="margin-top:10px;"><i class="fa-solid fa-triangle-exclamation"></i> <strong>音源を編集すると予約投稿が使えなくなる。</strong>BGMはCanva側で設定してからDLし、Meta上では音源をいじらない。</div>
+
+            <div style="margin-top:16px;">
+                <div style="font-size:0.82rem; color:var(--accent-gold); font-weight:700; margin-bottom:8px;"><i class="fa-solid fa-calendar-check"></i> 投稿スケジュール管理</div>
+                <a href="reel_upload_schedule.html" style="display:inline-flex; align-items:center; gap:10px; background:rgba(212,175,55,0.10); border:1px solid rgba(212,175,55,0.35); border-radius:8px; padding:12px 18px; color:var(--text-main); text-decoration:none; font-size:0.88rem; font-weight:600; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                    <i class="fa-solid fa-print" style="color:var(--accent-gold); font-size:1.1rem;"></i>
+                    <span>
+                        <span style="display:block;">印刷用チェックシートを開く</span>
+                        <span style="font-size:0.75rem; color:var(--text-dim); font-weight:400;">reel_upload_schedule.html — アップ済みチェック・印刷対応</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right" style="color:var(--text-dim); margin-left:auto;"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- 参考動画 -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i> 参考セミナー動画</div>
+        </div>
+        <div class="panel-body">
+            <a href="https://www.youtube.com/watch?v=NO2uiuLbR1c" target="_blank" style="color:var(--accent-blue);">
+                【インスタラボ】Canvaを使ってほぼ自動でリール動画を30本作る方法 ｜ 2026.02.25
+            </a>
+            <p style="color:var(--text-dim); font-size:0.82rem; margin-top:6px;">出永さん（Inspire Lab）主催セミナー。Canva Sheets × 一括作成の具体的な操作手順を解説。</p>
+        </div>
+    </div>
+
+
+<script>
+function copyCaption() {
+    const text = document.getElementById('captionText').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✓ コピーしました！';
+        btn.style.background = 'var(--accent-green)';
+        setTimeout(() => {
+            btn.textContent = 'コピー';
+            btn.style.background = 'var(--accent-blue)';
+        }, 2000);
+    });
+}
+</script>
+<div id="float-nav">
+    <a href="#sec-s1" class="float-step" data-label="① CSV生成">①</a>
+    <a href="#sec-review" class="float-step" data-label="🤖 AIレビュー" style="font-size:0.7rem;">★</a>
+    <a href="#sec-s2" class="float-step" data-label="② Canvaシート">②</a>
+    <a href="#sec-s3" class="float-step" data-label="③ テンプレ準備">③</a>
+    <a href="#sec-s4" class="float-step" data-label="④ 一括作成">④</a>
+    <a href="#sec-s5" class="float-step" data-label="⑤ 表紙生成">⑤</a>
+    <a href="#sec-s6" class="float-step" data-label="⑥ 投稿予約">⑥</a>
+</div>
+<a href="#top" id="back-to-top">↑ トップ</a>
+</body>
+</html>
+

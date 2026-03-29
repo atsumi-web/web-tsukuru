@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARC Construction - Build IT, Build Your Life. 地域の未来を建設でつくる建設会社の採用情報サイトです。">
+  <title>ARC Construction - Recruiting Site</title>
+
+  <!-- OGP -->
+  <meta property="og:title" content="ARC Construction - Recruiting Site">
+  <meta property="og:description" content="Build IT, Build Your Life. 建設で地域の未来をつくる仕事。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://web-tsukuru.jp/templates/type-e/images/hero-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Fonts: 必要なウェイトのみ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Noto+Sans+JP:wght@400;700&family=Zen+Old+Mincho:wght@700&family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Critical CSS: FOUC防止（変数・ヘッダー基本・ヒーロー背景色のみ） -->
+  <style>
+    :root {
+      --color-primary: #e84411;
+      --color-dark: #1a2b33;
+      --color-white: #ffffff;
+      --header-h: 64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; background: #fff; }
+    .header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      height: var(--header-h); background: var(--color-white); z-index: 1000;
+    }
+    .hero { margin-top: 0; background: var(--color-white); }
+  </style>
+
+  <!-- Main CSS (1LP = 1CSS 鉄則) -->
+  <link rel="stylesheet" href="style.css?v=1.7.2">
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="header-inner">
+
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <div class="logo-main">AR<span style="color:#e60012;">C</span><span class="logo-dot"></span></div>
+      <div class="logo-sub">Construction</div>
+    </a>
+
+    <!-- Desktop Nav (min-width: 1024px で表示) -->
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a href="#about">私たちについて</a>
+      <a href="#works">事業内容</a>
+      <a href="#training">制度・研修</a>
+      <a href="#members">社員紹介</a>
+      <a href="#faq">FAQ</a>
+      <a href="#recruit">採用情報</a>
+    </nav>
+
+    <!-- CTA Button (desktop only) -->
+    <div class="header-cta">
+      <a href="#recruit" class="btn btn-primary">まず話してみる →</a>
+    </div>
+
+    <!-- Hamburger (1023px以下で表示) -->
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-drawer" id="navDrawer" aria-hidden="true">
+  <ul>
+    <li><a href="#about">私たちについて</a></li>
+    <li><a href="#works">事業内容</a></li>
+    <li><a href="#training">制度・研修</a></li>
+    <li><a href="#members">社員紹介</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#recruit">採用情報</a></li>
+  </ul>
+  <div class="drawer-cta">
+    <a href="#recruit" class="btn btn-primary">まず話してみる →</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+
+  <!-- 赤丸デコレーション -->
+  <div class="hero-decoration"></div>
+  <!-- 縦ライン（円のborder-radiusクリップを避けるため独立要素） -->
+  <div class="hero-line"></div>
+
+  <div class="hero-marquee-wrap">
+    <div class="hero-marquee-track" id="heroMarquee">
+      <!-- Set 1 (01_hero_(04)） -->
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_interior_office2_1774045063733.png" alt="ARC Construction" fetchpriority="high"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_interior_reception3_1774045193098.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_member_f3_1774045914400.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_work_stylish3_1774050355078.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_work_stylish4_1774050412703.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_work_v2_scene2_1774049790297.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/hero_arc_house2_1774044241472.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/hero_arc_interior2_1774043915694.png" alt="ARC Construction" loading="lazy"></div>
+      <!-- Set 2 (ループ用コピー) -->
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_interior_office2_1774045063733.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_interior_reception3_1774045193098.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_member_f3_1774045914400.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_work_stylish3_1774050355078.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_work_stylish4_1774050412703.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/arc_work_v2_scene2_1774049790297.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/hero_arc_house2_1774044241472.png" alt="ARC Construction" loading="lazy"></div>
+      <div class="hero-marquee-item"><img src="images/01_hero_(04)/hero_arc_interior2_1774043915694.png" alt="ARC Construction" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- Overlay: catch copy -->
+  <div class="hero-overlay">
+    <div class="hero-catch">
+      <p class="hero-catch-label">ARC Construction Recruiting Site</p>
+      <div class="hero-catch-title">
+          <div class="hero-build-stack">
+            <div class="hero-build-text">Build</div>
+            <div class="hero-build-text">Build</div>
+          </div>
+          <div class="hero-handwritten">
+            <span>IT,</span>
+            <span>Your Life.</span>
+          </div><!-- /.hero-handwritten -->
+        </div><!-- /.hero-catch-title -->
+    </div><!-- /.hero-catch -->
+  </div><!-- /.hero-overlay -->
+
+  <!-- Info Box (オーバーレイの外に移動→独立したz-index管理) -->
+  <div class="hero-info-box">
+    <div class="info-item active">
+      <div class="info-date"><span class="info-badge">News</span> 2026.01.24</div>
+      <p class="info-text">ARCコンストラクション公式noteを公開しました！</p>
+    </div>
+    <div class="info-item">
+      <div class="info-date"><span class="info-badge">採用</span> 2025.12.10</div>
+      <p class="info-text">2026年度 新卒採用・中途採用の応募受付を開始しました。</p>
+    </div>
+    <div class="info-item">
+      <div class="info-date"><span class="info-badge">実績</span> 2025.11.30</div>
+      <p class="info-text">創業以来の施工実績が累計500棟を突破しました。</p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="about reveal" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-text">
+        <span class="section-label">About Us</span>
+        <h2 class="section-title">地域を、未来を、<br>建設でつくる。</h2>
+        <p>私たちARC Constructionは、地域の住まいをつくり続けて30年。<br>
+        新築住宅からリフォーム、大規模施設まで、「建てる」を通じて人々の生活を支えてきました。</p>
+        <br>
+        <p>当社が大切にしているのは、技術力だけではありません。<br>
+        地域に根ざした信頼、社員一人ひとりの成長、そしてお客さまとの長いお付き合い。<br>
+        「この会社に頼んで良かった」と思っていただける仕事を、これからも続けていきます。</p>
+      </div>
+      <div class="about-img">
+        <img src="images/03_about_(01)/arc_member_m5_1774045806806.png" alt="ARC Construction の施工現場" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DATA
+     ============================================================ -->
+<section class="data section-bg reveal" id="data">
+  <div class="container">
+    <span class="section-label">Numbers</span>
+    <h2 class="section-title">数字で見るARC</h2>
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="data-number">30<span class="data-number-unit">年</span></div>
+        <p class="data-label">地域に根ざした歴史</p>
+      </div>
+      <div class="data-card">
+        <div class="data-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="data-number">50<span class="data-number-unit">名</span></div>
+        <p class="data-label">全員の顔が見えるチーム</p>
+      </div>
+      <div class="data-card">
+        <div class="data-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="data-number">90<span class="data-number-unit">%</span></div>
+        <p class="data-label">前職・学歴不問で入社</p>
+      </div>
+      <div class="data-card">
+        <div class="data-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="data-number">95<span class="data-number-unit">%</span></div>
+        <p class="data-label">3年後も居る職場</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WORKS
+     ============================================================ -->
+<section class="works reveal" id="works">
+  <div class="container">
+    <span class="section-label">Works</span>
+    <h2 class="section-title">私たちの事業</h2>
+    <div class="works-grid">
+
+      <article class="works-card">
+        <div class="works-card-img">
+          <img src="images/04_works_(03)/arc_work_v2_scene3b_1774049892204.png" alt="施工管理の現場" loading="lazy">
+        </div>
+        <div class="works-card-body">
+          <p class="works-card-tag">Construction Management</p>
+          <h3 class="works-card-title">施工管理</h3>
+          <p class="works-card-desc">質・工程・安全を一手に担う施工管理のプロが、クライアントと職人をつなぐ「現場の司令塔」として活躍します。</p>
+          <a href="#recruit" class="btn btn-outline" style="margin-top:16px; font-size:0.85rem; padding:8px 16px;">View Detail →</a>
+        </div>
+      </article>
+
+      <article class="works-card">
+        <div class="works-card-img">
+          <img src="images/04_works_(03)/arc_work_cladding_v2_1774050826688.png" alt="リフォーム施工" loading="lazy">
+        </div>
+        <div class="works-card-body">
+          <p class="works-card-tag">Reform</p>
+          <h3 class="works-card-title">リフォーム</h3>
+          <p class="works-card-desc">家を、もっと暮らしやすく。リフォームは、人の記憶と新たな生活を一緒につくる仕事です。</p>
+          <a href="#recruit" class="btn btn-outline" style="margin-top:16px; font-size:0.85rem; padding:8px 16px;">View Detail →</a>
+        </div>
+      </article>
+
+      <article class="works-card">
+        <div class="works-card-img">
+          <img src="images/04_works_(03)/hero_arc_mansion3_1774044172266.png" alt="新築住宅の建設" loading="lazy">
+        </div>
+        <div class="works-card-body">
+          <p class="works-card-tag">New Construction</p>
+          <h3 class="works-card-title">新築住宅</h3>
+          <p class="works-card-desc">住宅からマンションまで、お客さまの「一番大切な場所」をつくることが、私たちARCの本業です。</p>
+          <a href="#recruit" class="btn btn-outline" style="margin-top:16px; font-size:0.85rem; padding:8px 16px;">View Detail →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     STRENGTHS
+     ============================================================ -->
+<section class="strengths section-bg reveal" id="strengths">
+  <div class="container">
+    <span class="section-label">Strengths</span>
+    <h2 class="section-title">私たちの強み</h2>
+    <div class="strengths-list">
+
+      <div class="strength-item">
+        <div class="strength-num">01</div>
+        <div class="strength-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="strength-content">
+          <h3 class="strength-title">地域No.1の施工実績</h3>
+          <p class="strength-desc">創業以来、地域の住まいを累計500棟以上手がけた実績。国家資格保有者が社員の40%を占める技術集団として、品質と安全で信頼を積み重ねています。</p>
+        </div>
+      </div>
+
+      <div class="strength-item">
+        <div class="strength-num">02</div>
+        <div class="strength-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="strength-content">
+          <h3 class="strength-title">未経験入社90%の育成実績</h3>
+          <p class="strength-desc">入社者の90%が異業種・未経験出身。業界標準の3倍の研修時間と専任トレーナー制度により、1〜2年で施工管理技士試験合格を目指せる環境を整えています。</p>
+        </div>
+      </div>
+
+      <div class="strength-item">
+        <div class="strength-num">03</div>
+        <div class="strength-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div class="strength-content">
+          <h3 class="strength-title">頑張りが正当に評価される仕組み</h3>
+          <p class="strength-desc">入社3年でリーダー職、5年で現場主任も可能。資格手当・昇給ラダーが明確に設定されており、努力が給与と役職に直結する透明性の高い評価制度があります。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TRAINING
+     ============================================================ -->
+<section class="training reveal" id="training">
+  <div class="container">
+    <span class="section-label">Training</span>
+    <h2 class="section-title training__main-title">未経験から建設のプロになれる仕組み</h2>
+
+    <!-- POINT 01 -->
+    <div class="pt-point">
+      <div class="pt-badge">
+        <div class="pt-badge-content">
+          <span class="pt-badge-label">POINT</span>
+          <span class="pt-badge-num">01</span>
+        </div>
+      </div>
+      <div class="pt-body">
+        <h3 class="pt-title">入社初年度から充実した未経験者向け研修</h3>
+        <div class="pt-timeline">
+          <div class="pt-timeline-bar">
+            <div class="pt-phase pt-phase--1">内定から入社まで</div>
+            <div class="pt-phase pt-phase--2">入社後 2ヶ月程</div>
+            <div class="pt-phase pt-phase--3">入社半年〜</div>
+          </div>
+          <div class="pt-cards">
+            <div class="pt-card">
+              <div class="pt-card-header">
+                <div>内定者研修</div>
+                <span class="pt-card-period">内定から入社まで</span>
+              </div>
+              <div class="pt-card-body">
+                <ul class="pt-card-list"><li>技術基礎</li><li>ビジネスマナー</li></ul>
+                <p class="pt-card-note">Eラーニングで準備運動</p>
+              </div>
+            </div>
+            <div class="pt-card">
+              <div class="pt-card-header">
+                <div>新人社員研修</div>
+                <span class="pt-card-period">入社後 2ヶ月程</span>
+              </div>
+              <div class="pt-card-body">
+                <ul class="pt-card-list"><li>ビジネスマナー</li><li>施工管理基礎研修</li><li>建設法規・安全基準</li></ul>
+                <p class="pt-card-note">ビジネススキルと体系的知識の習得</p>
+              </div>
+            </div>
+            <div class="pt-card">
+              <div class="pt-card-header">
+                <div>業務教育研修（OJT）</div>
+                <span class="pt-card-period">入社半年～</span>
+              </div>
+              <div class="pt-card-body">
+                <ul class="pt-card-list"><li>建築施工管理</li><li>品質・安全管理</li><li>現場マネジメント</li></ul>
+                <p class="pt-card-note">チーム配属後のマンツーマン指導</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="pt-desc">入社後の導入研修では、ビジネススキルに加え、施工管理の基礎から安全管理まで体系的に身につけていただきます。知識ゼロからでも安心してスタートできる環境を整えています。</p>
+      </div>
+    </div>
+
+    <!-- POINT 02 -->
+    <div class="pt-point">
+      <div class="pt-badge">
+        <div class="pt-badge-content">
+          <span class="pt-badge-label">POINT</span>
+          <span class="pt-badge-num">02</span>
+        </div>
+      </div>
+      <div class="pt-body">
+        <h3 class="pt-title">さらなる成長を促すサポート体制</h3>
+        <div class="pt-support-grid">
+          <div class="pt-support-item">
+            <div class="pt-support-img">
+              <img src="images/07_training_support_(04)/arc_meetingroom_v2_1774045466132.png" alt="1on1ミーティング" loading="lazy">
+            </div>
+            <h4 class="pt-support-title">1on1ミーティング</h4>
+            <p class="pt-support-text">直属の上司やリーダーとラフに話し合いをする「1on1ミーティング」。今後のキャリアや悩みなど、何でも気軽に相談できます。</p>
+          </div>
+          <div class="pt-support-item">
+            <div class="pt-support-img">
+              <img src="images/07_training_support_(04)/arc_work_interior_real1_1774050605847.png" alt="OJTトレーナー制度" loading="lazy">
+            </div>
+            <h4 class="pt-support-title">OJTトレーナー制度</h4>
+            <p class="pt-support-text">先輩社員がトレーナーとなり、実務を通じてマンツーマンで指導。未経験の方でも無理なく一人前に成長できます。</p>
+          </div>
+          <div class="pt-support-item">
+            <div class="pt-support-img">
+              <img src="images/07_training_support_(04)/arc_training_v3_instructor.png" alt="フォローアップ研修" loading="lazy">
+            </div>
+            <h4 class="pt-support-title">フォローアップ研修</h4>
+            <p class="pt-support-text">新人社員全員を対象とした研修を定期的に実施。スキルアップと共にこれからのキャリアプランを一緒に考えます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POINT 03 -->
+    <div class="pt-point">
+      <div class="pt-badge">
+        <div class="pt-badge-content">
+          <span class="pt-badge-label">POINT</span>
+          <span class="pt-badge-num">03</span>
+        </div>
+      </div>
+      <div class="pt-body">
+        <h3 class="pt-title">志向性に合わせて選べるキャリアパス</h3>
+        <div class="pt-career">
+          <div class="pt-career-content">
+            <p class="pt-support-text">未経験でも、3年で一人前。5年で現場を率いる。当社には、そのための仕組みがあります。</p>
+            <ul class="pt-career-steps">
+              <li><span class="pt-step-year">1年目</span>先輩のそばで現場の基礎を体で覚える</li>
+              <li><span class="pt-step-year">3年目</span>施工管理技士（2級）の取得を目指す</li>
+              <li><span class="pt-step-year">5年目〜</span>現場監督・チームリーダーへ昇格</li>
+            </ul>
+            <p class="pt-support-text" style="margin-top:12px;">技術職はもちろん、事務・管理職への転換も可能。あなたの「こうなりたい」を一緒に実現します。</p>
+          </div>
+          <div class="pt-career-img">
+            <img src="images/04_works_(03)/arc_work_v2_scene3b_1774049892204.png" alt="キャリアパス" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     MEMBERS
+     ============================================================ -->
+<section class="members reveal" id="members">
+  <div class="container">
+    <span class="section-label">Members</span>
+    <h2 class="section-title">メンバーを知る</h2>
+    <p class="section-desc" style="margin-bottom:32px;">多様なバックグラウンドを持つメンバーが、それぞれの専門性を活かして活躍しています。</p>
+  </div>
+  <!-- full-width marquee (containerの外) -->
+  <div style="overflow:hidden;">
+    <div class="members-marquee" id="membersMarquee">
+      <!-- Set 1 -->
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_member_m4_1774045788370.png" alt="メンバー 田中">
+        <div class="member-card-info">
+          <p class="member-name">田中 健太</p>
+          <p class="member-role">施工管理 / 3年目</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_member_m7_1774045854565.png" alt="メンバー 佐藤">
+        <div class="member-card-info">
+          <p class="member-name">佐藤 美咲</p>
+          <p class="member-role">設計 / 5年目</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_f2_1774051164319.png" alt="メンバー 鈴木">
+        <div class="member-card-info">
+          <p class="member-name">鈴木 大樹</p>
+          <p class="member-role">現場監督 / 7年目</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_m2_1774051073432.png" alt="メンバー 山田">
+        <div class="member-card-info">
+          <p class="member-name">山田 裕子</p>
+          <p class="member-role">営業 / 4年目</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_m3_1774051145831.png" alt="メンバー 伊藤">
+        <div class="member-card-info">
+          <p class="member-name">伊藤 雄介</p>
+          <p class="member-role">施工管理 / 2年目</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_stairs_1774051332391.png" alt="メンバー 渡辺">
+        <div class="member-card-info">
+          <p class="member-name">渡辺 さくら</p>
+          <p class="member-role">設計 / 6年目</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_window_1774051316693.png" alt="メンバー 加藤">
+        <div class="member-card-info">
+          <p class="member-name">加藤 俊介</p>
+          <p class="member-role">現場監督 / 10年目</p>
+        </div>
+      </div>
+      <!-- Set 2 (ループ用コピー) -->
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_member_m4_1774045788370.png" alt="メンバー 田中" loading="lazy">
+        <div class="member-card-info"><p class="member-name">田中 健太</p><p class="member-role">施工管理 / 3年目</p></div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_member_m7_1774045854565.png" alt="メンバー 佐藤" loading="lazy">
+        <div class="member-card-info"><p class="member-name">佐藤 美咲</p><p class="member-role">設計 / 5年目</p></div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_f2_1774051164319.png" alt="メンバー 鈴木" loading="lazy">
+        <div class="member-card-info"><p class="member-name">鈴木 大樹</p><p class="member-role">現場監督 / 7年目</p></div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_m2_1774051073432.png" alt="メンバー 山田" loading="lazy">
+        <div class="member-card-info"><p class="member-name">山田 裕子</p><p class="member-role">営業 / 4年目</p></div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_m3_1774051145831.png" alt="メンバー 伊藤" loading="lazy">
+        <div class="member-card-info"><p class="member-name">伊藤 雄介</p><p class="member-role">施工管理 / 2年目</p></div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_stairs_1774051332391.png" alt="メンバー 渡辺" loading="lazy">
+        <div class="member-card-info"><p class="member-name">渡辺 さくら</p><p class="member-role">設計 / 6年目</p></div>
+      </div>
+      <div class="member-card">
+        <img src="images/06_members_(04)/arc_profile_window_1774051316693.png" alt="メンバー 加藤" loading="lazy">
+        <div class="member-card-info"><p class="member-name">加藤 俊介</p><p class="member-role">現場監督 / 10年目</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROFESSIONALS
+     ============================================================ -->
+<section class="professionals reveal" id="professionals">
+  <div class="container">
+    <span class="section-label" style="color:rgba(255,255,255,0.6);">Professionals</span>
+    <h2 class="section-title">あなたを育てる先輩たち</h2>
+    <p class="section-desc">ARCには、各分野で10年以上のキャリアを持つエキスパートが揃っています。<br>未経験の新人が一人前になるまで、責任を持って育てます。</p>
+    <div class="pro-grid">
+
+      <div class="pro-card">
+        <div class="pro-card-img">
+          <img src="images/08_professionals_(03)/arc_member_m6_1774045824375.png" alt="現場監督 山本" loading="lazy">
+        </div>
+        <div class="pro-card-body">
+          <p class="pro-card-role">現場監督 / 入社8年目</p>
+          <h3 class="pro-card-name">山本 健司</h3>
+          <p class="pro-card-desc">施工管理技士2級を入社3年目で取得し、現在は住宅・マンション系現場の品質・安全管理をリード。「未経験でも、現場に出れば必ず成長できる」が口癖。面倒見の良さで若手からの信頼が厚く、新人育成に特に情熱を注ぐ。</p>
+        </div>
+      </div>
+
+      <div class="pro-card">
+        <div class="pro-card-img">
+          <img src="images/08_professionals_(03)/arc_profile_f3_1774051228420.png" alt="一級建築士 中村" loading="lazy">
+        </div>
+        <div class="pro-card-body">
+          <p class="pro-card-role">一級建築士 / 入社12年目</p>
+          <h3 class="pro-card-name">中村 恵子</h3>
+          <p class="pro-card-desc">戸建て・集合住宅の意匠設計を担当。「設計は施主との対話から始まる」という信念のもと、リピート依頼も多数。若手設計士のキャリア相談役としても信頼が厚く、女性エンジニアのロールモデルとして活躍している。</p>
+        </div>
+      </div>
+
+      <div class="pro-card">
+        <div class="pro-card-img">
+          <img src="images/08_professionals_(03)/arc_member_m3_1774045757873.png" alt="施工管理技士1級 松田" loading="lazy">
+        </div>
+        <div class="pro-card-body">
+          <p class="pro-card-role">施工管理技士1級・二級建築士 / 入社15年目</p>
+          <h3 class="pro-card-name">松田 誠一</h3>
+          <p class="pro-card-desc">入社時は全くの未経験。施工管理技士1級・二級建築士を独学で取得し、現在は中規模プロジェクトの全体進行を統括。「自分が育てた後輩が一人前になる瞬間が、この仕事で一番嬉しい」と語る。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     VOICE
+     ============================================================ -->
+<section class="voice reveal" id="voice">
+  <div class="container">
+    <span class="section-label">Voice</span>
+    <h2 class="section-title">社員の声</h2>
+    <div class="voice-list">
+
+      <div class="voice-card">
+        <div class="voice-card-avatar-area">
+          <div class="voice-card-avatar">
+            <img src="images/05_voice_(02)/arc_profile_m5_1774051215332.png" alt="田中 優斗" loading="lazy">
+          </div>
+          <div class="voice-card-meta">
+            <strong>田中 優斗</strong>
+            2022年入社 ／ 施工管理部<br>
+            <small>前職：物流業</small>
+          </div>
+        </div>
+        <p class="voice-card-text">「手に職をつけたい」とまったく別の業界から転職してきました。最初の3か月は覚えることだらけで不安しかなかったけど、先輩がマンツーマンで現場を教えてくれて。入社2年目で初めて担当した戸建て住宅が完成したとき、施主さんご家族が「ありがとう」と笑顔で言ってくれた瞬間――あの感覚はずっと忘れられません。自分の手が確かな形を生み出す仕事を、ここで見つけられました。</p>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-card-avatar-area">
+          <div class="voice-card-avatar">
+            <img src="images/05_voice_(02)/arc_member_f1_1774045869966.png" alt="小川 菜月" loading="lazy">
+          </div>
+          <div class="voice-card-meta">
+            <strong>小川 菜月</strong>
+            2021年入社 ／ 建築設計部<br>
+            <small>新卒入社</small>
+          </div>
+        </div>
+        <p class="voice-card-text">女性で建設業界に入ることを少し不安に思っていましたが、ARCは全然違いました。育休を取った先輩が複数いて、長く働き続けられる環境がちゃんとある。自分がゼロから関わった住宅に、後日「子どもが生まれました」と報告をいただいたとき、設計の向こう側に本当の人生があるんだと気づきました。この仕事を選んで、正解でした。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PRESIDENT MESSAGE
+     ============================================================ -->
+<section class="president reveal" id="president">
+  <div class="container">
+    <div class="president-inner">
+      <div class="president-img">
+        <img src="images/02_president_(01)/arc_president_lobby_1774051495200.png" alt="代表取締役 有我 剛" loading="lazy">
+      </div>
+      <div class="president-text">
+        <span class="section-label">Message</span>
+        <h2 class="section-title">代表からのメッセージ</h2>
+        <p class="president-message">
+          建設という仕事は、人の生活の根幹をつくる仕事です。<br><br>
+          私たちが手がけた建物で、誰かが生まれ、巣立ち、老いていく。
+          そんな「人生の舞台」を創ることができる仕事は、そう多くはありません。<br><br>
+          ARCが大切にしているのは、技術だけでなく「人」そのものです。
+          未経験からでも、意欲があれば必ず成長できる環境を整えています。
+          あなたの挑戦を、私たちは本気で応援します。
+        </p>
+        <p class="president-name">有我 剛</p>
+        <p class="president-title">代表取締役 / ARC Construction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COMPANY INFO
+     ============================================================ -->
+<section class="company reveal" id="company">
+  <div class="container">
+    <span class="section-label">Company</span>
+    <h2 class="section-title">会社概要</h2>
+    <table class="company-table">
+      <tbody>
+        <tr>
+          <td>会社名</td>
+          <td>ARC Construction株式会社</td>
+        </tr>
+        <tr>
+          <td>設立</td>
+          <td>1995年4月</td>
+        </tr>
+        <tr>
+          <td>代表者</td>
+          <td>有我 剛</td>
+        </tr>
+        <tr>
+          <td>所在地</td>
+          <td>〒000-0000 ○○県○○市○○町1-2-3</td>
+        </tr>
+        <tr>
+          <td>事業内容</td>
+          <td>住宅・施設の新築工事、リフォーム工事、施工管理</td>
+        </tr>
+        <tr>
+          <td>資本金</td>
+          <td>3,000万円</td>
+        </tr>
+        <tr>
+          <td>従業員数</td>
+          <td>120名（2025年10月時点）</td>
+        </tr>
+        <tr>
+          <td>許可番号</td>
+          <td>国土交通大臣許可（特-00）第00000号</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     JOB REQUIREMENTS
+     ============================================================ -->
+<section class="jobs reveal" id="jobs">
+  <div class="container">
+    <span class="section-label">Recruit</span>
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-desc" style="margin-bottom:40px;">現在募集中の職種です。<br>未経験・第二新卒・転職者、どなたでもお気軽にご応募ください。</p>
+    <div class="jobs-grid">
+
+      <div class="job-card">
+        <div class="job-card-header">
+          <p class="job-card-tag">メイン職種</p>
+          <h3 class="job-card-title">施工管理職</h3>
+          <p class="job-card-subtitle">建築工事の現場を動かす、現場の司令塔</p>
+        </div>
+        <div class="job-card-body">
+          <div class="job-detail">
+            <span class="job-detail-label">給与</span>
+            <span class="job-detail-value">
+              月給22万円〜35万円（経験・資格により優遇）
+              <small>資格手当別途支給 ｜ 入社1年後に昇給審査</small>
+            </span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">雇用形態</span>
+            <span class="job-detail-value">正社員（試用期間3ヶ月）</span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">勤務地</span>
+            <span class="job-detail-value">本社および担当現場（○○市内・近郊）</span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">勤務時間</span>
+            <span class="job-detail-value">8:00〜17:30（実働8時間）</span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">休日休暇</span>
+            <span class="job-detail-value">
+              週休2日制（土日祝）・年間休日120日
+              <small>年次有給休暇 ｜ 慶弔休暇 ｜ 育休・介護休業</small>
+            </span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">応募資格</span>
+            <span class="job-detail-value">
+              学歴・経験不問（未経験歓迎）
+              <small>施工管理技士資格保有者は優遇</small>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-card-header">
+          <p class="job-card-tag">設計職</p>
+          <h3 class="job-card-title">建築設計職</h3>
+          <p class="job-card-subtitle">住まいと暮らしを、図面から形へ</p>
+        </div>
+        <div class="job-card-body">
+          <div class="job-detail">
+            <span class="job-detail-label">給与</span>
+            <span class="job-detail-value">
+              月給23万円〜40万円（一級建築士は優遇）
+              <small>資格取得支援制度あり</small>
+            </span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">雇用形態</span>
+            <span class="job-detail-value">正社員（試用期間3ヶ月）</span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">勤務地</span>
+            <span class="job-detail-value">本社設計室（○○市）</span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">勤務時間</span>
+            <span class="job-detail-value">9:00〜18:00（実働8時間）</span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">休日休暇</span>
+            <span class="job-detail-value">週休2日制（土日祝）・年間休日120日</span>
+          </div>
+          <div class="job-detail">
+            <span class="job-detail-label">応募資格</span>
+            <span class="job-detail-value">
+              建築・インテリア系学科卒業者または実務経験者
+              <small>二級建築士以上歓迎 ｜ CAD操作可能者優遇</small>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.jobs-grid -->
+
+    <p class="job-benefit-note">
+      🏠 社会保険完備（健康・厚生年金・雇用・労災）&nbsp;&nbsp;
+      📚 資格取得支援（受験料・テキスト代補助）&nbsp;&nbsp;
+      🚗 交通費全額支給&nbsp;&nbsp;
+      👶 育休・産休取得実績あり
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="faq reveal" id="faq">
+  <div class="container">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          未経験でも応募できますか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          はい、もちろんです。入社者の90%が異業種・未経験出身です。専任メンター制度と充実した研修プログラムがあるので、ゼロからでも安心してスタートできます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          資格がなくても大丈夫ですか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          大丈夫です。資格取得は入社後にサポートします。受験料・教材費は全額会社負担で、業務時間内の勉強も認めています。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          転勤はありますか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          基本的に転勤はありません。すべての現場が○○県内のため、地元で長く働き続けることができます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          女性でも働きやすいですか？
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          はい。女性スタッフも多数活躍しており、産休・育休制度も整っています。復職後もキャリアを継続できるよう、会社全体でサポートしています。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          選考の流れを教えてください。
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          ①書類選考 → ②一次面接（オンライン可）→ ③最終面接 → ④内定という流れです。まずはお気軽にご相談ください。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RECRUIT CTA
+     ============================================================ -->
+<section class="recruit reveal" id="recruit">
+  <div class="container">
+    <h2 class="recruit-title">一緒に、地域の未来を<br>つくりませんか。</h2>
+    <p class="recruit-desc">
+      年齢・経験・性別は関係ありません。<br>
+      「建設で何かを変えたい」という気持ちがあれば、それだけで十分です。<br>
+      まずは気軽に話を聞いてみてください。
+    </p>
+    <div class="recruit-img">
+      <img src="images/09_recruit_(01)/hero_arc_hq1_wide_1774044535478.png" alt="ARC Construction チーム" loading="lazy">
+    </div>
+    <div class="recruit-cta">
+      <a href="#" class="btn btn-primary btn-lg">まず話してみる →</a>
+      <p class="recruit-note">※ 履歴書不要。相談だけでもOKです。</p>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo">
+          <div class="logo-main">AR<span style="color:#e84411;">C</span></div>
+          <div class="logo-sub" style="color:rgba(255,255,255,0.5);">Construction</div>
+        </div>
+        <p style="font-size:0.8rem; margin-top:12px; color:rgba(255,255,255,0.4);">© 2026 ARC Construction Inc. All Rights Reserved.</p>
+      </div>
+      <nav class="footer-links" aria-label="フッターナビゲーション">
+        <a href="#about">私たちについて</a>
+        <a href="#works">事業内容</a>
+        <a href="#training">制度・研修</a>
+        <a href="#members">社員紹介</a>
+        <a href="#faq">FAQ</a>
+        <a href="#recruit">採用情報</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JavaScript
+     ============================================================ -->
+<script>
+  // ============================================================
+  // Header: scroll shadow + compact height
+  // ============================================================
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 10;
+    const compact  = window.scrollY > 50;
+    header.classList.toggle('scrolled', scrolled);
+    header.classList.toggle('compact',  compact);
+  }, { passive: true });
+  // ============================================================
+  // Hamburger Menu
+  // ============================================================
+  const hamburger = document.getElementById('hamburger');
+  const navDrawer = document.getElementById('navDrawer');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    navDrawer.classList.toggle('open', isOpen);
+    navDrawer.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close drawer when nav link clicked
+  navDrawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navDrawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      navDrawer.setAttribute('aria-hidden', true);
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ============================================================
+  // Hero Info Box: slide-in-out animation
+  // ============================================================
+  const infoItems = document.querySelectorAll('.info-item');
+  let currentInfo = 0;
+  if (infoItems.length > 1) {
+    setInterval(() => {
+      const prev = infoItems[currentInfo];
+      prev.classList.add('exit');
+      setTimeout(() => {
+        prev.classList.remove('active', 'exit');
+        currentInfo = (currentInfo + 1) % infoItems.length;
+        infoItems[currentInfo].classList.add('active');
+      }, 3000);
+    }, 12000);
+  }
+
+  // ============================================================
+  // FAQ Accordion
+  // ============================================================
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      // Open clicked (if wasn't open)
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ============================================================
+  // Hero Marquee: 実際の幅を計測してループを正確に設定
+  // ============================================================
+  const heroTrack = document.getElementById('heroMarquee');
+  if (heroTrack) {
+    const GAP = 10; // CSS gap値と合わせる
+    function initHeroMarquee() {
+      const items = heroTrack.querySelectorAll('.hero-marquee-item');
+      const halfCount = items.length / 2; // Set1のアイテム数
+
+      // Set1の幅を合計（getBoundingClientRectで正確に計測）
+      let set1Width = 0;
+      for (let i = 0; i < halfCount; i++) {
+        set1Width += items[i].getBoundingClientRect().width;
+      }
+      // gapを含む合計（Set1内 + Set1→Set2間の1gap）
+      set1Width += GAP * halfCount;
+
+      // 動的@keyframesを注入
+      const styleTag = document.createElement('style');
+      styleTag.id = 'marquee-keyframes';
+      styleTag.textContent = `
+        @keyframes heroScrollExact {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-${set1Width}px); }
+        }
+      `;
+      document.head.appendChild(styleTag);
+
+      // CSSアニメーションを上書き
+      // 速度を px/秒で指定して duration を逆算（画面サイズ依存しない）
+      const SPEED = 60; // px/秒
+      const durationSec = Math.round(set1Width / SPEED);
+      heroTrack.style.animation = `heroScrollExact ${durationSec}s linear infinite`;
+    }
+
+    // 全画像ロード後に実行（寸法が確定してから）
+    if (document.readyState === 'complete') {
+      initHeroMarquee();
+    } else {
+      window.addEventListener('load', initHeroMarquee);
+    }
+  }
+
+  // ============================================================
+  // Scroll Reveal
+  // ============================================================
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+</script>
+
+<!-- ============================================================
+     Back to Top Button
+     ============================================================ -->
+<button id="backToTop" aria-label="ページ先頭に戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M10 14V6M10 6L6 10M10 6l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script>
+  // Back to top: show after 300px scroll
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📄 LP制作フロー（Antigravity版）| 制作モード</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A; --panel-bg: #1E293B; --panel-border: #334155;
+            --text-main: #F1F5F9; --text-dim: #94A3B8;
+            --accent-gold: #D4AF37; --accent-blue: #3B82F6; --accent-green: #10B981;
+            --accent-red: #EF4444; --mode-color: #D4AF37;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--space-bg); color: var(--text-main); padding: 24px; font-size: 14px; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--mode-color); margin-bottom: 32px; }
+        .title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+        .back-btn { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid #334155; border-radius: 6px; transition: all 0.2s; }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+        .subtitle { color: var(--text-dim); font-size: 0.8rem; margin-top: 2px; font-weight: 400; letter-spacing: 0.08em; }
+
+        .step-list { display: flex; flex-direction: column; gap: 0; max-width: 860px; margin: 0 auto; }
+        .step { display: flex; gap: 20px; position: relative; }
+        .step:not(:last-child) .step-line { position: absolute; left: 21px; top: 48px; bottom: -8px; width: 2px; background: var(--panel-border); }
+        .step-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--panel-bg); border: 2px solid var(--panel-border); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--accent-gold); z-index: 1; }
+        .step.deploy .step-num { border-color: var(--accent-green); color: var(--accent-green); background: rgba(16,185,129,0.1); }
+        .step.warning .step-num { border-color: var(--accent-red); color: var(--accent-red); background: rgba(239,68,68,0.1); }
+        .step-content { flex: 1; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; }
+        .step.deploy .step-content { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.06); }
+        .step.warning .step-content { border-color: rgba(239,68,68,0.35); background: rgba(239,68,68,0.05); }
+        .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .step-title .tag { font-size: 0.68rem; padding: 2px 8px; border-radius: 20px; font-weight: 600; letter-spacing: 0.04em; }
+        .tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+        .tag-git { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+        .tag-check { background: rgba(59,130,246,0.15); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
+        .tag-warn { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+        .step-body { color: var(--text-dim); font-size: 0.85rem; line-height: 1.8; }
+        .step-body ul { padding-left: 18px; }
+        .step-body li { margin-bottom: 4px; }
+        code { background: rgba(255,255,255,0.08); padding: 1px 6px; border-radius: 4px; font-size: 0.82em; font-family: Consolas, monospace; color: #e2e8f0; }
+        .note { margin-top: 10px; padding: 10px 14px; background: rgba(212,175,55,0.08); border-left: 3px solid var(--accent-gold); border-radius: 0 6px 6px 0; font-size: 0.8rem; color: var(--text-dim); }
+        .warn-note { margin-top: 10px; padding: 10px 14px; background: rgba(239,68,68,0.08); border-left: 3px solid var(--accent-red); border-radius: 0 6px 6px 0; font-size: 0.8rem; }
+        hr { border: none; border-top: 1px solid var(--panel-border); margin: 32px 0; }
+        footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 48px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">
+            <i class="fa-solid fa-file-code" style="color:var(--accent-gold);"></i>
+            <div>
+                LP制作フロー
+                <div class="subtitle">ANTIGRAVITY 使用前提 ／ 受注〜納品まで</div>
+            </div>
+        </div>
+        <a href="mode_production.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 制作モードへ</a>
+    </header>
+
+    <div class="step-list">
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-folder-plus" style="color:var(--accent-gold);"></i>
+                    クライアントフォルダを作成する
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li>VSCode で <code>site/client-work/</code> 内に <code>XX_クライアント名/</code> フォルダを作成</li>
+                        <li>番号は連番（例：<code>05_yamada/</code>）</li>
+                        <li>中に最低限 <code>index.html</code> と <code>style.css</code> を作成（既存テンプレートからコピーが早い）</li>
+                        <li>Antigravityには「フォルダ作成しました。テンプレートはType-Eをベースにします」のように伝える</li>
+                    </ul>
+                    <div class="note">📁 テンプレートカタログ → <code>site/templates/type-X/</code> から丸ごとコピーするのが最速</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-robot" style="color:#a78bfa;"></i>
+                    Antigravityにヒアリング内容を共有する
+                    <span class="tag tag-ai">AI</span>
+                </div>
+                <div class="step-body">
+                    <p>以下の情報をまとめてAntigravityに伝える：</p>
+                    <ul>
+                        <li><strong>業種・会社名</strong>（例：建設業・堀田建設）</li>
+                        <li><strong>ターゲット</strong>（例：未経験の20代・地元就職希望者）</li>
+                        <li><strong>CTA</strong>（例：LINEで応募・フォームで問い合わせ）</li>
+                        <li><strong>デザイン方向</strong>（例：信頼感重視・ダークトーン）</li>
+                        <li><strong>参考サイト・競合</strong>があれば共有</li>
+                        <li><strong>テンプレート番号</strong>と<strong>納期</strong></li>
+                    </ul>
+                    <div class="note">💡「09_coding_rules を読んで作業してください」と一言添えると、ルール違反を防げる</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-code" style="color:#a78bfa;"></i>
+                    Antigravityでセクションごとにコーディング
+                    <span class="tag tag-ai">AI</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li>一度に全部頼まず、<strong>セクション単位</strong>（ヒーロー→基本情報→先輩の声→…）で依頼する</li>
+                        <li><strong>提案書の完全再現：</strong> Figmaや提案FVがある場合、Google FontsのURLや <code>letter-spacing</code> などの微細なフォント設定は「品質の要」となるため、絶対に省略せずそのまま移植させる</li>
+                        <li>1LP = 1CSS の原則：新しいCSSファイルを追加しないよう指示する</li>
+                        <li>モバイルファースト：スマホで確認しながら進める</li>
+                        <li>画像は <code>images/</code> フォルダに入れ、ファイル名は英語小文字</li>
+                    </ul>
+                    <div class="note">⚠️ Antigravityが「新しいCSSファイルを作ります」と言ったら止めて、既存 style.css に追記させる</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-display" style="color:var(--accent-blue);"></i>
+                    Go Live でローカル確認
+                    <span class="tag tag-check">確認</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li>VSCode 右下の「Go Live」でローカルサーバー起動（ポート変更不要）</li>
+                        <li><strong>PC</strong>：Chrome で全セクションをスクロール確認</li>
+                        <li><strong>スマホ（DevTools）</strong>：F12 → デバイスモードで iPhone SE / iPhone 14 確認</li>
+                        <li><strong>実機確認</strong>：ローカルIPでスマホからアクセスし、LINE IABも確認</li>
+                        <li>PageSpeed Insights は本番デプロイ後に計測</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="step deploy">
+            <div class="step-num">5</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-code-branch" style="color:var(--accent-green);"></i>
+                    <code>?v=</code> バンプ → git commit → git push
+                    <span class="tag tag-git">Git</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li><strong>CSS を修正したら必ずバージョン番号を上げる：</strong><br>
+                            <code>index.html</code> の <code>style.css?v=1.0.0</code> → <code>style.css?v=1.0.1</code></li>
+                        <li>PowerShell（<code>&&</code> は使わず2行に分ける）：
+                            <br><code>git add .</code>
+                            <br><code>git commit -m "feat: complete hero section"</code>
+                            <br><code>git push origin main</code>
+                        </li>
+                        <li>Cloudflare Pages が自動でデプロイ（約1〜2分）</li>
+                    </ul>
+                    <div class="warn-note">❗ <code>?v=</code> を上げないと、スマホ・LINE IABで古いCSSが使われ続ける</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <div class="step-title">
+                    <i class="fa-solid fa-paper-plane" style="color:var(--accent-gold);"></i>
+                    本番確認・修正対応・納品
+                    <span class="tag tag-check">確認</span>
+                </div>
+                <div class="step-body">
+                    <ul>
+                        <li>本番URL（web-tsukuru.jp or Cloudflare Pages URL）で全体を再確認</li>
+                        <li>クライアントに確認URLを共有（必要に応じてシークレットモードで確認依頼）</li>
+                        <li>修正が出たら → 修正 → <code>?v=</code> バンプ → push → 再確認 のループ</li>
+                        <li>最終確認後：GA4 計測コード挿入、Search Console 設定</li>
+                        <li>納品完了：URL・ログイン情報をクライアントへ引き渡し</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    <footer>
+        <p>© 2026 Webをつくるしごと | <a href="mode_production.html" style="color:var(--accent-gold);">制作モードへ戻る</a></p>
+    </footer>
+
+</body>
+</html>

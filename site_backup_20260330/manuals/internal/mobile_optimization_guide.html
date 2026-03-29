@@ -1,0 +1,395 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobile_optimization_guide | Webをつくるしごと</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: #334155; margin: 0; background-color: #f1f5f9; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .content { background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        h1 { font-size: 2rem; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 40px; }
+        h2 { font-size: 1.5rem; color: #0f172a; margin-top: 50px; border-left: 5px solid #3b82f6; padding-left: 15px; }
+        h3 { font-size: 1.2rem; color: #334155; margin-top: 30px; font-weight: bold; }
+        p, li { font-size: 1rem; margin-bottom: 1rem; }
+        ul { padding-left: 20px; }
+        code { background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; font-family: monospace; color: #ea580c; }
+        blockquote { background: #eff6ff; border-left: 5px solid #3b82f6; margin: 20px 0; padding: 15px 20px; color: #1e40af; }
+        .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
+        .breadcrumb a { color: #64748b; text-decoration: none; }
+        .breadcrumb a:hover { color: #3b82f6; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #cbd5e1; padding: 12px; text-align: left; }
+        th { background: #f8fafc; color: #334155; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="../admin/index.html">← 制作コックピットに戻る</a></div>
+        <main class="content">
+            <h1>Mobile & Multi-Device Optimization Guidelines</h1>
+            <p>Created: 2026-02-04</p>
+            <p>建設業LPテンプレート（Type-Trust）におけるモバイル最適化の鉄則まとめ。「見やすさ」「崩れにくさ」「使いやすさ」の3点を担保するための技術基準です。</p>
+
+            <h2>1. コンテンツ幅の確保（攻め vs 守り）</h2>
+            <p>スマホ画面では「余白」よりも「文字の可読領域」を優先します。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>モバイル (Mobile)</th>
+                        <th>デスクトップ (Desktop)</th>
+                        <th>意図</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>画面端の余白</strong></td>
+                        <td><strong><code>px-6</code></strong> (24px) or <code>px-4</code></td>
+                        <td><code>px-12</code> (48px)</td>
+                        <td>スマホは物理幅確保を最優先。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>装飾線の余白</strong></td>
+                        <td><strong><code>pl-4</code></strong> (16px)</td>
+                        <td><code>pl-8</code> (32px)</td>
+                        <td>左線があっても文字を圧迫しない。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>カード内余白</strong></td>
+                        <td><strong><code>p-4</code></strong> (16px)</td>
+                        <td><code>p-16</code> ~ <code>p-24</code></td>
+                        <td>枠内でも文字を大きく見せる。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>2. タイポグラフィ（見出しと改行）</h2>
+            <p>「巨大すぎて改行崩れ」を防ぎ、かつ「泣き別れ」を回避します。</p>
+            
+            <h3>見出しサイズ</h3>
+            <ul>
+                <li><strong>モバイル</strong>: <strong><code>text-3xl</code></strong> (約30px)</li>
+                <li><strong>デスクトップ</strong>: <code>text-5xl</code> ~ <code>text-7xl</code> (意図した迫力を維持)</li>
+            </ul>
+
+            <h3>改行・禁則処理</h3>
+            <ul>
+                <li><strong>NG</strong>: <code>keep-all</code> / <code>whitespace-nowrap</code> （本文・引用文）
+                    <ul><li>スマホ幅で「と」「が」などが1文字だけ改行されて浮く原因になるため<strong>使用厳禁</strong>。</li></ul>
+                </li>
+                <li><strong>OK</strong>: <code>br.md:hidden</code> （見出し）
+                    <ul><li>見出しなど、意図した位置で切りたい場合のみ使用。</li></ul>
+                </li>
+            </ul>
+
+            <h2>3. レイアウト順序（Voiceセクション等）</h2>
+            <p>「誰が発言しているか」を直感的に伝える順序。</p>
+            <ul>
+                <li><strong>順序</strong>: <strong>Image</strong> (顔) → <strong>Profile</strong> (誰) → <strong>Quote</strong> (内容)</li>
+                <li>PCは左右レイアウト可だが、モバイルは上記順序の縦積み（flex-col 等）を厳守。</li>
+            </ul>
+
+            <h2>4. フォントの使い分け（機能 vs 情緒）</h2>
+            <ul>
+                <li><strong>Noto Sans JP (ゴシック)</strong>: 情報伝達（理念、仕事内容、データ、FAQ）</li>
+                <li><strong>Zen Old Mincho (明朝)</strong>: 情緒・メッセージ（Voice引用、Contact、Culture、見出し）
+                    <ul><li>※ Worksセクション見出しも「作品」として扱うため明朝体を推奨。</li></ul>
+                </li>
+            </ul>
+
+            <h2>5. 画像表示の安定化 (Padding Hack)</h2>
+            <p><code>position: absolute</code> を使うスライダー等で、タブレット幅で高さが0になり画像が消える現象を防ぐ。最新の <code>aspect-ratio</code> プロパティだけでなく、物理的なpaddingで高さを確保する手法を併用する。</p>
+
+            <h2>6. 操作性の確保 (UI/UX)</h2>
+            <ul>
+                <li><strong>タップ領域</strong>: ハンバーガーメニューや閉じるボタンは、見た目以上に判定を大きくする（<code>p-2</code>以上）。</li>
+                <li><strong>視認性</strong>: <code>backdrop-blur</code> (すりガラス) や <code>bg-white/90</code> を活用し、背景とのコントラストを確保する。</li>
+            </ul>
+
+            <h2>7. ブレークポイント戦略 (1024pxの壁)</h2>
+            <p>「PCかタブレットか」の境界線は原則 <strong><code>lg</code> (1024px)</strong> とし、それ未満はすべてモバイル（縦積み・ハンバーガー）として扱う「広めの安全マージン」を取る。</p>
+            
+            <h3>境界ルール</h3>
+            <ul>
+                <li><strong>&lt; 1024px</strong>: <strong>モバイル扱い</strong>
+                    <ul>
+                        <li>ヘッダー：ハンバーガーメニュー</li>
+                        <li>レイアウト：<code>flex-col</code>で縦積み</li>
+                        <li>余白：<code>px-6</code></li>
+                    </ul>
+                </li>
+                <li><strong>≧ 1024px</strong>: <strong>PC扱い</strong>
+                    <ul>
+                        <li>ヘッダー：フルメニュー（横並び）</li>
+                        <li>レイアウト：<code>flex-row</code>で横並び</li>
+                        <li>余白：<code>px-12</code></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>ヘッダーメニュー崩れへの鉄則</h3>
+            <ul>
+                <li>タブレット幅（768px～1023px）で無理にヘッダーメニューを横並びにすると、<strong>「ロゴと重なる」「リンク文字が改行してレイアウト崩壊」</strong>などの事故が多発する。</li>
+                <li><strong>対策</strong>: ヘッダーナビゲーションは <strong><code>hidden lg:flex</code></strong> を徹底し、タブレット幅では潔くハンバーガーメニューを表示する。無理な「タブレット対応」はしない。</li>
+            </ul>
+
+            <h2>8. 鉄板フォント選定 (迷ったらこれ)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>カテゴリ</th>
+                        <th>推奨フォント</th>
+                        <th>特徴・用途</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>本文</strong></td>
+                        <td><strong>Noto Sans JP</strong></td>
+                        <td>視認性・汎用性最強。迷わずこれ一択。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>見出し(Jp)</strong></td>
+                        <td><strong>Zen Old Mincho</strong></td>
+                        <td><strong>信頼・伝統・高級</strong>。老舗や地域密着型に最適 (Type-Trust採用)。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>英字(En)</strong></td>
+                        <td><strong>Oswald</strong></td>
+                        <td><strong>剛健・インパクト</strong>。建設業と相性抜群の縦長ゴシック。</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><strong>Jost / Outfit</strong></td>
+                        <td><strong>知的・モダン</strong>。幾何学的ですっきりした印象 (DX・テック系)。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        
+        <!-- NEW SECTION ADDED -->
+        <main class="content" style="margin-top: 40px;">
+            <h2>9. 技術的パフォーマンス最適化 (PSI 対策)</h2>
+            <p>PageSpeed Insights (PSI) でモバイルスコア 80+ を叩き出すための「技術的実装ルール」。<br>
+            見た目のリッチさを維持しつつ、モバイルの回線負荷を極限まで減らすための鉄則。</p>
+
+            <h3>9-1. 重量級メディアの完全遮断 (JS Injection)</h3>
+            <ul>
+                <li><strong>問題</strong>: <code>display: none</code> で動画を隠しても、ブラウザは「念のため」裏で動画ファイルをダウンロードしてしまう（1.5MB〜の無駄死に）。</li>
+                <li><strong>解決策</strong>: HTMLに <code>&lt;source&gt;</code> タグを書かず、<strong>JavaScriptで画面幅判定してから注入する</strong>。</li>
+            </ul>
+<pre style="background:#1e293b; color:#fff; padding:15px; border-radius:8px; overflow-x:auto;"><code>&lt;!-- HTML: videoタグの中身は空にしておく --&gt;
+&lt;video id="heroVideo" poster="image.webp"&gt;&lt;/video&gt;
+
+&lt;script&gt;
+// 999px以上（PC）の場合のみ動画ソースを注入
+if (window.innerWidth &gt; 999) {
+    const v = document.getElementById('heroVideo');
+    if (v) {
+        const s = document.createElement('source');
+        s.src = 'movie.mp4';
+        s.type = 'video/mp4';
+        v.appendChild(s);
+        v.load();
+    }
+}
+&lt;/script&gt;</code></pre>
+
+            <h3>9-2. 脱・外部アイコンライブラリ (No FontAwesome)</h3>
+            <ul>
+                <li><strong>禁止</strong>: FontAwesome 等の外部CDN読み込み。
+                    <ul><li>たった数個のアイコンのために 200KB〜 のCSSを読み込むのは、レンダリングブロック（描画遅延）の主犯となるため<strong>厳禁</strong>。</li></ul>
+                </li>
+                <li><strong>推奨</strong>: <strong>Inline SVG</strong>。
+                    <ul><li>必要なアイコンだけをSVGコードとしてHTMLに直接埋め込む。通信発生ゼロ、描画待ち時間ゼロ。</li></ul>
+                </li>
+            </ul>
+
+            <h3>9-3. モバイル画像の「攻め」の圧縮基準</h3>
+            <p>スマホ画面は物理サイズが小さいため、画質を下げても粗が目立ちにくい。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>対象</th>
+                        <th>推奨設定 (ImageMagick)</th>
+                        <th>解説</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Desktop画像</strong></td>
+                        <td><code>-quality 75</code></td>
+                        <td>大画面での美麗さを維持。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile画像</strong></td>
+                        <td><strong><code>-quality 50</code></strong></td>
+                        <td><strong>「攻めのQ50」</strong>。スマホではQ75との違いはほぼ判別不能だが、容量は劇的に減る（例: 80KB→35KB）。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>9-4. LCP High-Speed Checklist（最優先3項目）</h3>
+            <p>Largest Contentful Paint (LCP) は、ページの「体感速度」に最も影響する指標。以下の3つを徹底すれば、スコアが劇的に改善する。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>実装方法</th>
+                        <th>効果</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Hero画像のPreload</strong></td>
+                        <td><code>&lt;link rel="preload" as="image" href="hero_sp.webp" media="(max-width: 768px)"&gt;</code></td>
+                        <td><strong>必須</strong>。ブラウザが「最優先でダウンロード」する。LCP改善の最短ルート。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. 初期opacityの禁止</strong></td>
+                        <td>Hero要素に <code>opacity: 0</code>, <code>scroll-reveal</code>, <code>js-fade-up</code> などのクラスを付けない</td>
+                        <td>アニメーション待ちでLCPが数秒遅延する「Hidden Blocker」を回避。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. fetchpriority="high"</strong></td>
+                        <td><code>&lt;img src="hero.webp" fetchpriority="high"&gt;</code></td>
+                        <td>ブラウザに「これは重要」と明示的に指示。他リソースより優先ダウンロード。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <blockquote>
+                <strong>⚠️ 重要:</strong> Preloadのパスと実際の<code>&lt;img&gt;</code>のパスが<strong>完全一致</strong>していないと、ブラウザが「別ファイル」と認識して二重ダウンロードが発生する（例: <code>hero.webp</code> vs <code>hero_sp.webp</code>）。必ずgrepで検証すること。
+            </blockquote>
+
+            <h3>9-5. Hidden Blockers（見えないブレーキ）の撲滅</h3>
+            <p>CSS/JSアニメーションが原因で、Hero画像が「読み込み済みなのに画面に表示されない」状態が数秒続く致命的バグ。</p>
+            
+            <h4>典型的な原因クラス</h4>
+            <ul>
+                <li><code>scroll-reveal</code>: スクロールするまで<code>opacity: 0</code>のまま</li>
+                <li><code>js-fade-up</code>: JavaScript実行完了まで非表示</li>
+                <li><code>ken-burns</code>: アニメーション開始までディレイ</li>
+                <li>CSS Keyframe の初期値が<code>opacity: 0</code>（Type-Cの<code>heroSequence</code>など）</li>
+            </ul>
+
+            <h4>診断方法</h4>
+<pre style="background:#1e293b; color:#fff; padding:15px; border-radius:8px; overflow-x:auto;"><code># Hero section にopacity/visibilityブロッカーがないか確認
+grep -i "scroll-reveal\|js-fade\|opacity-0" index.html
+
+# 見つかった場合、Hero要素から削除する（下部セクションは残してOK）
+</code></pre>
+
+            <h4>修正例</h4>
+<pre style="background:#1e293b; color:#fff; padding:15px; border-radius:8px; overflow-x:auto;"><code>&lt;!-- ❌ NG: Heroセクションでこれをやると LCP が 5秒以上遅延 --&gt;
+&lt;div class="hero-content js-fade-up"&gt;
+    &lt;img src="hero.webp" class="scroll-reveal" /&gt;
+&lt;/div&gt;
+
+&lt;!-- ✅ OK: アニメーションクラスを削除、即座に表示 --&gt;
+&lt;div class="hero-content"&gt;
+    &lt;img src="hero.webp" fetchpriority="high" /&gt;
+&lt;/div&gt;
+</code></pre>
+
+            <h3>9-6. PageSpeed測定の正しい理解</h3>
+            <p><strong>重要:</strong> PageSpeed Insightsのスコアは<strong>±30点のブレ</strong>がある。同じサイトでも測定のたびに60点→92点→56点のように大きく変動する。</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>現象</th>
+                        <th>原因</th>
+                        <th>対策</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>同じサイトで92点→56点</td>
+                        <td>測定サーバーの負荷、ネットワーク状態のランダム変動</td>
+                        <td><strong>3回測定して平均</strong>を取る。1回の結果で一喜一憂しない。</td>
+                    </tr>
+                    <tr>
+                        <td>改善したのにスコア悪化</td>
+                        <td>測定タイミングの偶然</td>
+                        <td>時間を置いて再測定（5分以上間隔を開ける）。</td>
+                    </tr>
+                    <tr>
+                        <td>クライアントが測定すると低い</td>
+                        <td>同上（測定サーバーのランダム性）</td>
+                        <td><strong>スコアを約束しない</strong>。「60点以上を目標」程度に留める。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <blockquote>
+                <strong>🎯 内部品質基準:</strong> モバイル60点以上を安定維持。80点以上は「達成可能」だが、クライアントへの約束としては出さない。不安定な数字を売りにするとクレームリスクになる。
+            </blockquote>
+
+            <h3>9-7. 製作段階からの軽量化マインドセット</h3>
+            <p>「後から直す」より「最初から作る」方が圧倒的に効率的。以下を制作フローに組み込む。</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>フェーズ</th>
+                        <th>チェック項目</th>
+                        <th>具体的アクション</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>デザイン</strong></td>
+                        <td>画像点数の抑制</td>
+                        <td>Hero, Works, Teamなど、セクションごとに画像を<strong>3-5枚以内</strong>に制限。装飾目的の画像は極力CSS/SVGで代替。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HTML構築</strong></td>
+                        <td>Preload/Lazy自動設定</td>
+                        <td>Hero画像には必ず<code>preload</code>と<code>fetchpriority="high"</code>。2画面目以降は<code>loading="lazy"</code>を標準装備。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アニメーション実装</strong></td>
+                        <td>Hero要素に初期opacityを付けない</td>
+                        <td><code>scroll-reveal</code>などは<strong>2セクション目以降のみ</strong>使用。Heroは「即時表示」を厳守。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>画像書き出し</strong></td>
+                        <td>Quality設定の徹底</td>
+                        <td>Desktop: Q75 / Mobile: Q50 を標準値として、最初から圧縮済みで保存。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>公開前</strong></td>
+                        <td>Preload一致チェック</td>
+                        <td><code>grep "preload"</code>と<code>grep "&lt;img.*hero"</code>でパスが完全一致しているか機械的に確認。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <blockquote>
+                <strong>💡 ポイント:</strong> 「速度最適化」を最後の仕上げ作業と考えず、<strong>設計・デザイン段階から組み込む</strong>ことで、手戻りゼロで高速なサイトを構築できる。
+            </blockquote>
+        </main>
+    </div>
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="../admin/Private_index.html" class="nav-btn" title="制作コックピットへ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

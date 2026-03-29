@@ -1,0 +1,502 @@
+/* ======================================
+   Section Styles - 整体院LP
+   ====================================== */
+
+/* ===== ヒーローセクション ===== */
+.hero {
+    position: relative;
+    min-height: 600px;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/hero-treatment.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 500px;
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+    }
+}
+
+/* ===== お悩みセクション ===== */
+.concerns {
+    background-color: #fff;
+}
+
+.concerns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.concern-item {
+    padding: var(--spacing-md);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-md);
+    text-align: center;
+    border: 2px solid var(--border-light);
+    transition: all var(--transition-base);
+}
+
+.concern-item:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-4px);
+}
+
+.concern-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.concern-text {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* ===== 院長プロフィールセクション ===== */
+.profile {
+    background-color: #fff;
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.profile-image-wrapper {
+    position: relative;
+}
+
+.profile-image-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--accent-gold);
+    border-radius: var(--radius-lg);
+    z-index: 0;
+}
+
+.profile-image {
+    position: relative;
+    z-index: 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-info h3 {
+    color: var(--primary-green);
+    margin-bottom: var(--spacing-sm);
+}
+
+.profile-credentials {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+    flex-wrap: wrap;
+}
+
+.credential-badge {
+    background-color: var(--primary-green);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.profile-message {
+    background-color: var(--bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-gold);
+    margin-top: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== 施術内容セクション ===== */
+.treatments {
+    background-color: var(--bg-white);
+}
+
+.treatment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.treatment-card {
+    background-color: #fff;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.treatment-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.treatment-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.treatment-title {
+    font-size: 1.25rem;
+    color: var(--primary-green);
+    margin-bottom: var(--spacing-sm);
+}
+
+.treatment-description {
+    color: var(--text-gray);
+    line-height: 1.8;
+}
+
+/* ===== 強みセクション ===== */
+.strengths {
+    background-color: #fff;
+}
+
+.strength-list {
+    display: grid;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.strength-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--accent-gold);
+}
+
+.strength-number {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-green), var(--green-light));
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.strength-content h3 {
+    color: var(--primary-green);
+    margin-bottom: var(--spacing-sm);
+}
+
+.strength-content p {
+    color: var(--text-gray);
+    line-height: 1.8;
+}
+
+/* ===== 料金セクション ===== */
+.pricing {
+    background-color: var(--bg-white);
+}
+
+.pricing-table {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.pricing-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.pricing-row:last-child {
+    border-bottom: none;
+}
+
+.pricing-row.header {
+    background-color: var(--primary-green);
+    color: #fff;
+    font-weight: 700;
+}
+
+.pricing-cell {
+    padding: var(--spacing-md);
+}
+
+.pricing-cell:first-child {
+    border-right: 1px solid var(--border-light);
+}
+
+.pricing-note {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    color: var(--text-gray);
+    font-size: 0.875rem;
+}
+
+.first-time-discount {
+    background-color: #fff3cd;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    border: 2px solid var(--accent-gold);
+}
+
+.first-time-discount strong {
+    color: var(--primary-green);
+    font-size: 1.5rem;
+}
+
+/* ===== お客様の声セクション ===== */
+.testimonials {
+    background-color: #fff;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.testimonial-card {
+    background-color: var(--bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    position: relative;
+    border-top: 4px solid var(--accent-gold);
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+.testimonial-info {
+    font-size: 0.875rem;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.testimonial-age {
+    color: var(--text-gray);
+}
+
+/* ===== アクセスセクション ===== */
+.access {
+    background-color: var(--bg-white);
+}
+
+.access-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.access-info {
+    background-color: #fff;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+}
+
+.info-item {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-value {
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+.access-map {
+    background-color: #e5e5e5;
+    border-radius: var(--radius-lg);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-gray);
+}
+
+@media (max-width: 768px) {
+    .access-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== 予約セクション ===== */
+.reservation {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
+    color: #fff;
+    text-align: center;
+}
+
+.reservation h2 {
+    color: #fff;
+}
+
+.reservation-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.reservation-method {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+}
+
+.reservation-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.reservation-method h3 {
+    color: #fff;
+    margin-bottom: var(--spacing-sm);
+}
+
+.reservation-method p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-md);
+}
+
+.phone-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin: var(--spacing-md) 0;
+}
+
+.reservation-form {
+    max-width: 600px;
+    margin: var(--spacing-xl) auto 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    color: var(--text-dark);
+}
+
+.reservation-form h3 {
+    color: var(--primary-green);
+    margin-bottom: var(--spacing-lg);
+}

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💬 商談モード | 運用司令室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A;
+            --panel-bg: #1E293B;
+            --panel-border: #334155;
+            --text-main: #F1F5F9;
+            --text-dim: #94A3B8;
+            --accent-gold: #D4AF37;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-line: #06C755;
+            --mode-color: #06C755;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--space-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mode-color);
+            margin-bottom: 24px;
+        }
+        .app-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .app-title i { color: var(--mode-color); }
+        .mode-badge {
+            background: rgba(6,199,85,0.15);
+            border: 1px solid var(--mode-color);
+            color: var(--mode-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.08em;
+        }
+        .back-btn {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+
+        /* --- Grid --- */
+        .cockpit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* --- Panel --- */
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .panel-header {
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--panel-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .panel-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .panel-body {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* --- Highlight Card (大きいリンク) --- */
+        .highlight-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--panel-border);
+            padding: 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .highlight-card:hover { border-color: var(--mode-color); background: rgba(6,199,85,0.06); }
+        .hc-icon { font-size: 1.4rem; margin-right: 14px; width: 28px; text-align: center; }
+        .hc-content { flex: 1; }
+        .hc-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 2px; }
+        .hc-desc { font-size: 0.72rem; color: var(--text-dim); }
+        .hc-arrow { opacity: 0.5; font-size: 0.8rem; }
+
+        /* --- Link Row (コンパクトリンク) --- */
+        .link-row {
+            display: flex;
+            align-items: center;
+            padding: 9px 10px;
+            border-radius: 6px;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .link-row:hover { background: rgba(255,255,255,0.06); color: var(--accent-blue); }
+        .lr-icon { width: 26px; color: var(--text-dim); font-size: 0.9rem; }
+        .link-row:hover .lr-icon { color: var(--accent-blue); }
+        .lr-text { flex: 1; }
+        .lr-sub { font-size: 0.7rem; color: var(--text-dim); margin-left: 8px; }
+
+        /* --- Flow Steps --- */
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--panel-border);
+        }
+        .step-num {
+            background: var(--mode-color);
+            color: #0F172A;
+            font-weight: 900;
+            font-size: 0.75rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-content { flex: 1; }
+        .step-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 3px; }
+        .step-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.5; }
+        .step-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 7px;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            background: rgba(6,199,85,0.15);
+            border: 1px solid rgba(6,199,85,0.4);
+            color: var(--mode-color);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .step-link:hover { background: rgba(6,199,85,0.25); color: var(--mode-color); }
+        .step-arrow {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            padding: 2px 0;
+        }
+
+        /* --- Dot --- */
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .dot-green { background: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+
+        .date-display {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="app-title">
+            <i class="fa-solid fa-comments"></i>
+            <div>
+                <div style="line-height:1;">SALES MODE</div>
+                <div style="font-size:0.7rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">申し込み → Zoom → 契約</div>
+            </div>
+            <span class="mode-badge">💬 商談</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+            <div class="date-display"><span id="current-date"></span> <span class="dot dot-green" style="margin-left:6px;"></span>ONLINE</div>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 司令室へ</a>
+        </div>
+    </header>
+
+    <div class="cockpit-grid">
+
+        <!-- COL 1: 対応フロー -->
+        <div>
+            <!-- クライアント対応フロー（ハイライト） -->
+            <div class="panel" style="margin-bottom:18px; border-color: rgba(6,199,85,0.4);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--mode-color);"><i class="fa-solid fa-diagram-project"></i> 対応フロー（全手順）</span>
+                </div>
+                <div class="panel-body">
+                    <a href="client_flow.html" target="_blank" class="highlight-card" style="border-color:rgba(6,199,85,0.5); background:rgba(6,199,85,0.07);">
+                        <div class="hc-icon" style="color:var(--mode-color);"><i class="fa-solid fa-diagram-project"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">クライアント対応フロー</div>
+                            <div class="hc-desc">LINE登録 → 診断 → Zoom → 契約 の全手順マニュアル</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right hc-arrow" style="color:var(--mode-color);"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ステップ別ガイド -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-list-ol"></i> STEP BY STEP</span>
+                </div>
+                <div class="panel-body">
+
+                    <div class="flow-step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <div class="step-title">診断テストの着地確認</div>
+                            <div class="step-desc">LINE友だち追加の通知を確認。診断フォームからの申し込みメッセージを待つ。</div>
+                            <a href="https://manager.line.biz/" target="_blank" class="step-link"><i class="fa-brands fa-line"></i> LINE Manager</a>
+                            <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="step-link"><i class="fa-solid fa-vial"></i> 診断ページを確認</a>
+                        </div>
+                    </div>
+
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="flow-step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <div class="step-title">AI LINE返信を生成して送信</div>
+                            <div class="step-desc">届いたLINEメッセージをジェネレーターに貼り付け → プロンプト生成 → Antigravityで返信文作成 → LINEに送信</div>
+                            <a href="line_reply_generator.html" target="_blank" class="step-link"><i class="fa-solid fa-robot"></i> LINE返信ジェネレーター</a>
+                            <a href="https://chat.line.biz/U8a92712a4499615a14a04979377eac55" target="_blank" class="step-link"><i class="fa-brands fa-line"></i> LINEチャット管理</a>
+                        </div>
+                    </div>
+
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="flow-step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Zoom相談の予約案内</div>
+                            <div class="step-desc">CalendlyリンクをLINEで送り、30分Zoom相談の予約を促す。前日リマインドも忘れずに。</div>
+                            <a href="https://calendly.com/" target="_blank" class="step-link"><i class="fa-solid fa-calendar-check"></i> Calendly</a>
+                            <a href="line_talk_script.html" target="_blank" class="step-link"><i class="fa-solid fa-scroll"></i> LINEトークスクリプト</a>
+                        </div>
+                    </div>
+
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="flow-step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Zoom前ヒアリングシートを送付</div>
+                            <div class="step-desc">Zoom当日までにヒアリングシートをLINEで送る。内容を事前に確認しておく。</div>
+                            <a href="zoom_hearing_sheet.html" target="_blank" class="step-link"><i class="fa-solid fa-clipboard-list"></i> ヒアリングシート</a>
+                        </div>
+                    </div>
+
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="flow-step">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Zoom後 → 提案 → 契約</div>
+                            <div class="step-desc">Zoom後24時間以内にLINEでご提案。モニタープランか通常プランを提示して契約へ。</div>
+                            <a href="../../service.html" target="_blank" class="step-link"><i class="fa-solid fa-file-invoice-dollar"></i> 料金・サービス詳細</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- COL 2: クイックアクセス -->
+        <div>
+            <!-- 診断・リード受け皿 -->
+            <div class="panel" style="margin-bottom:18px;">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:#D4AF37;"><i class="fa-solid fa-magnifying-glass-chart"></i> 診断 ＆ リード受け皿</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://web-tsukuru.jp/saiyou-shindan.html" target="_blank" class="link-row" style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.3); border-radius:6px;">
+                        <i class="fa-solid fa-chart-bar lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">採用資産化 診断テスト（本番）</span>
+                        <span class="lr-sub">saiyou-shindan.html</span>
+                    </a>
+                    <a href="https://web-tsukuru.jp/saiyou-manual.pdf" target="_blank" class="link-row">
+                        <i class="fa-solid fa-file-pdf lr-icon" style="color:#EF4444;"></i>
+                        <span class="lr-text">採用資産マニュアル PDF（特典①）</span>
+                    </a>
+                    <a href="https://manager.line.biz/" target="_blank" class="link-row" style="background:rgba(6,199,85,0.07); border:1px solid rgba(6,199,85,0.25); border-radius:6px;">
+                        <i class="fa-brands fa-line lr-icon" style="color:var(--accent-line);"></i>
+                        <span class="lr-text">LINE公式アカウント管理</span>
+                        <span class="lr-sub">LINE Manager</span>
+                    </a>
+                    <a href="https://chat.line.biz/U8a92712a4499615a14a04979377eac55" target="_blank" class="link-row" style="background:rgba(6,199,85,0.07); border:1px solid rgba(6,199,85,0.25); border-radius:6px;">
+                        <i class="fa-solid fa-comment-dots lr-icon" style="color:var(--accent-line);"></i>
+                        <span class="lr-text">LINEチャット管理画面（返信）</span>
+                        <span class="lr-sub">LINE Official Chat</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 商談ツール -->
+            <div class="panel" style="margin-bottom:18px;">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--accent-blue);"><i class="fa-solid fa-toolbox"></i> 商談ツール</span>
+                </div>
+                <div class="panel-body">
+                    <a href="line_reply_generator.html" target="_blank" class="link-row" style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.35); border-radius:6px;">
+                        <i class="fa-solid fa-robot lr-icon" style="color:#8B5CF6;"></i>
+                        <span class="lr-text">LINE返信文ジェネレーター（AI版）</span>
+                        <span class="lr-sub">Antigravity連携</span>
+                    </a>
+                    <a href="line_talk_script.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-scroll lr-icon" style="color:var(--accent-line);"></i>
+                        <span class="lr-text">LINEトークスクリプト</span>
+                        <span class="lr-sub">返信テンプレ集</span>
+                    </a>
+                    <a href="zoom_hearing_sheet.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-clipboard-list lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">Zoom前ヒアリングシート</span>
+                        <span class="lr-sub">見込み客に送る事前アンケート</span>
+                    </a>
+                    <a href="https://calendly.com/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-calendar-check lr-icon" style="color:var(--accent-green);"></i>
+                        <span class="lr-text">Calendly（Zoom予約管理）</span>
+                    </a>
+                    <a href="../../service.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-file-invoice-dollar lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">料金・サービスページ</span>
+                        <span class="lr-sub">提案時に使う</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 自分のサービス（ファネル確認） -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-filter"></i> ファネル確認</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://web-tsukuru.jp/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-rocket lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">LP トップページ</span>
+                    </a>
+                    <a href="../../links/index.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-link lr-icon" style="color:var(--accent-blue);"></i>
+                        <span class="lr-text">Link Page（Instagram Bio）</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const now = new Date();
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const dateStr = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')} (${days[now.getDay()]})`;
+        document.getElementById('current-date').textContent = dateStr;
+    </script>
+</body>
+</html>

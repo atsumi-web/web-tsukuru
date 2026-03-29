@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用資産化 診断テスト【無料特典②】| Webとしくみをつくる</title>
+  <meta name="description" content="御社の採用活動がどれだけ「資産化」できているか、6問で診断します。個別アドバイスをLINEでお届けします。">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+  <style>
+    :root {
+      --navy: #0f172a;
+      --navy-dark: #080d1a;
+      --navy-light: #1e293b;
+      --gold: #c8a55a;
+      --gold-light: #e8c97a;
+      --white: #ffffff;
+      --bg: #f5f7fa;
+      --text: #2d3748;
+      --text-light: #718096;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 32px rgba(0,0,0,0.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── ヘッダー ── */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 140%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(200,165,90,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .header-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 5px 18px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      color: var(--white);
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    header h1 span {
+      color: var(--gold-light);
+    }
+    header p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+
+    /* ── メインコンテナ ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    /* ── プログレスバー ── */
+    .progress-wrap {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .progress-bar-bg {
+      background: #e2e8f0;
+      border-radius: 8px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+      height: 100%;
+      border-radius: 8px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+    }
+
+    /* ── 質問カード ── */
+    .question-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .question-card.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .q-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+    .q-number::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .question-text {
+      font-size: clamp(1.05rem, 3vw, 1.25rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .question-hint {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .answer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .answer-btn {
+      padding: 20px 12px;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      background: #f8fafc;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      transition: all 0.22s;
+      text-align: center;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .answer-btn .btn-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .answer-btn:hover {
+      border-color: var(--navy);
+      background: #eef2fa;
+      color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(26,54,93,0.13);
+    }
+    .answer-btn.yes {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #fffcf2, #fff8e0);
+      color: var(--navy-dark);
+    }
+    .answer-btn.yes:hover {
+      background: linear-gradient(160deg, #fff0c0, #ffe890);
+      border-color: var(--gold);
+      color: var(--navy-dark);
+    }
+    .answer-btn.no {
+      border-color: #cbd5e0;
+      background: #f8fafc;
+    }
+    .answer-btn.no:hover {
+      border-color: #94a3b8;
+      background: #f1f5f9;
+      color: var(--text);
+    }
+
+    /* ── 結果カード ── */
+    #result-section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .result-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .result-label {
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .score-display {
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .score-display span {
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+    .result-type {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 16px 0 12px;
+    }
+    .result-message {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    /* ── アドバイスカード ── */
+    .advice-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      border-left: 5px solid var(--gold);
+    }
+    .advice-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .advice-list {
+      list-style: none;
+      padding: 0;
+    }
+    .advice-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #edf2f7;
+      font-size: 0.92rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+    .advice-list li:last-child { border-bottom: none; }
+    .advice-list li::before {
+      content: '→';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── 情報入力フォーム ── */
+    .info-form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      border-top: 5px solid var(--navy);
+    }
+    .info-form-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .info-form-card .form-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .form-group label .required {
+      color: #e53e3e;
+      margin-left: 4px;
+      font-size: 0.75rem;
+    }
+    .form-group label .optional {
+      color: var(--text-light);
+      margin-left: 4px;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+      background: #fafbfc;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--navy);
+      background: #fff;
+    }
+    .form-group textarea {
+      height: 80px;
+      resize: vertical;
+    }
+    .form-divider {
+      border: none;
+      border-top: 1px dashed #e2e8f0;
+      margin: 20px 0;
+    }
+    .form-optional-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .form-optional-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,54,93,0.3);
+    }
+
+    /* ── LINE送信ステップ ── */
+    #line-step { display: none; animation: fadeIn 0.4s ease; }
+    .msg-preview {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.8;
+      color: var(--text);
+      font-family: 'Noto Sans JP', monospace;
+    }
+    .copy-msg-btn {
+      width: 100%;
+      padding: 12px;
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #166534;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 16px;
+    }
+    .copy-msg-btn:hover { background: #dcfce7; }
+    .copy-msg-btn.copied { background: #166534; color: #fff; border-color: #166534; }
+    .line-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #06c755;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(6,199,85,0.35);
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .line-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(6,199,85,0.45);
+    }
+    .cta-note {
+      color: var(--text-light);
+      font-size: 0.8rem;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ── フッター ── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── レスポンシブ ── */
+    @media (max-width: 480px) {
+      header { padding: 48px 20px 72px; }
+      .question-card { padding: 28px 20px; }
+      .answer-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .answer-btn { padding: 14px 8px; font-size: 0.95rem; }
+      .score-display { font-size: 4rem; }
+      .advice-card, .cta-section { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-badge">特典② 無料診断</div>
+    <h1>御社の採用は<br><span>「資産」</span>になっていますか？</h1>
+    <p>6問に答えるだけで、採用活動の現状をスコア化。<br>個別アドバイスをLINEでお届けします。</p>
+    <div class="time-badge">⏱ 所要時間：約2分</div>
+  </header>
+
+  <div class="container">
+
+    <!-- プログレスバー -->
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-label">Q1 / 6</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- 質問1 -->
+    <div class="question-card active" id="q1">
+      <div class="q-number">QUESTION 01</div>
+      <div class="question-text">採用専用のLP（ランディングページ）や<br>採用サイトを持っていますか？</div>
+      <div class="question-hint">Indeed・マイナビ等の求人媒体のページではなく、自社で用意したページのことです。</div>
+      <div class="answer-grid">
+        <button class="answer-btn yes" onclick="answer(1, 1)"><span class="btn-icon">◎</span>はい、持っています</button>
+        <button class="answer-btn no" onclick="answer(1, 0)"><span class="btn-icon">✕</span>いいえ、ありません</button>
+      </div>
+    </div>
+
+    <!-- 質問2 -->
+    <div class="question-card" id="q2">
+      <div class="q-number">QUESTION 02</div>
+      <div class="question-text">自社ドメイン（例：◯◯.co.jp）で<br>サイトを運用していますか？</div>
+      <div class="question-hint">Indeed・Wantedlyなど外部サービスのページではなく、自社所有のドメインがあるかどうかです。</div>
+      <div class="answer-grid">
+        <button class="answer-btn yes" onclick="answer(2, 1)"><span class="btn-icon">◎</span>はい、あります</button>
+        <button class="answer-btn no" onclick="answer(2, 0)"><span class="btn-icon">✕</span>いいえ、ありません</button>
+      </div>
+    </div>
+
+    <!-- 質問3 -->
+    <div class="question-card" id="q3">
+      <div class="q-number">QUESTION 03</div>
+      <div class="question-text">応募者との最初の連絡に<br>LINEを使えていますか？</div>
+      <div class="question-hint">採用LPにLINEの応募窓口を設けて、問い合わせや応募をLINEで受け付けている状態のことです。</div>
+      <div class="answer-grid">
+        <button class="answer-btn yes" onclick="answer(3, 1)"><span class="btn-icon">◎</span>はい、使えています</button>
+        <button class="answer-btn no" onclick="answer(3, 0)"><span class="btn-icon">✕</span>いいえ、使っていない</button>
+      </div>
+    </div>
+
+    <!-- 質問4 -->
+    <div class="question-card" id="q4">
+      <div class="q-number">QUESTION 04</div>
+      <div class="question-text">若手（20〜30代）からの応募が<br>コンスタントに来ていますか？</div>
+      <div class="question-hint">月1件以上、若手求職者からの応募や問い合わせが継続的にある状態のことです。</div>
+      <div class="answer-grid">
+        <button class="answer-btn yes" onclick="answer(4, 1)"><span class="btn-icon">◎</span>はい、来ています</button>
+        <button class="answer-btn no" onclick="answer(4, 0)"><span class="btn-icon">✕</span>いいえ、少ない</button>
+      </div>
+    </div>
+
+    <!-- 質問5 -->
+    <div class="question-card" id="q5">
+      <div class="q-number">QUESTION 05</div>
+      <div class="question-text">求人サイトへの掲載を止めても<br>応募が来ると思いますか？</div>
+      <div class="question-hint">Indeedやマイナビに頼らず、自社の採用ページやSNSだけで応募を集められる自信があるかどうかです。</div>
+      <div class="answer-grid">
+        <button class="answer-btn yes" onclick="answer(5, 1)"><span class="btn-icon">◎</span>はい、来ると思う</button>
+        <button class="answer-btn no" onclick="answer(5, 0)"><span class="btn-icon">✕</span>正直、来ないと思う</button>
+      </div>
+    </div>
+
+    <!-- 質問6 -->
+    <div class="question-card" id="q6">
+      <div class="q-number">QUESTION 06</div>
+      <div class="question-text">採用ページの内容を<br>定期的に更新できていますか？</div>
+      <div class="question-hint">社員インタビューや現場写真など、採用ページのコンテンツを年に1〜2回以上更新している状態のことです。</div>
+      <div class="answer-grid">
+        <button class="answer-btn yes" onclick="answer(6, 1)"><span class="btn-icon">◎</span>はい、しています</button>
+        <button class="answer-btn no" onclick="answer(6, 0)"><span class="btn-icon">✕</span>いいえ、放置気味</button>
+      </div>
+    </div>
+
+    <!-- 結果セクション -->
+    <div id="result-section">
+
+      <div class="result-header">
+        <div class="result-label">診断結果</div>
+        <div class="score-display" id="score-number">0<span>/ 6点</span></div>
+        <div class="result-type" id="result-type"></div>
+        <p class="result-message" id="result-message"></p>
+      </div>
+
+      <div class="advice-card">
+        <h3>💡 御社へのアドバイス</h3>
+        <ul class="advice-list" id="advice-list"></ul>
+      </div>
+
+      <!-- STEP: 情報入力フォーム -->
+      <div class="info-form-card" id="info-form-section">
+        <h3>📋 詳細診断のための情報を入力してください</h3>
+        <p class="form-subtitle">入力いただいた情報をもとに、個別に分析してLINEでアドバイスをお届けします。</p>
+
+        <div class="form-group">
+          <label>会社名<span class="required">※必須</span></label>
+          <input type="text" id="f-company" placeholder="例：◯◯建設株式会社">
+        </div>
+        <div class="form-group">
+          <label>採用サイト・会社HPのURL<span class="required">※必須</span></label>
+          <input type="url" id="f-url" placeholder="https://">
+        </div>
+        <div class="form-group">
+          <label>一番困っている採用課題<span class="required">※必須</span></label>
+          <textarea id="f-challenge" placeholder="例：若手からの応募がほとんどない、求人サイトに依存していてコストが高い"></textarea>
+        </div>
+
+        <hr class="form-divider">
+        <div class="form-optional-label">任意項目（入力するとより詳細な診断が可能です）</div>
+
+        <div class="form-group">
+          <label>Indeed・マイナビ等の求人ページURL<span class="optional">任意</span></label>
+          <input type="url" id="f-jobsite" placeholder="https://">
+        </div>
+        <div class="form-group">
+          <label>Instagram・SNSのURL<span class="optional">任意</span></label>
+          <input type="url" id="f-sns" placeholder="https://">
+        </div>
+
+        <button class="submit-btn" onclick="generateLineMessage()">診断リクエストを送る →</button>
+      </div>
+
+      <!-- STEP: LINEメッセージ送信 -->
+      <div id="line-step">
+        <div class="info-form-card">
+          <h3>✅ 以下のメッセージをLINEに送ってください</h3>
+          <p class="form-subtitle">①コピーボタンでコピー → ②LINE登録 → ③トーク画面に貼り付けて送信</p>
+          <div class="msg-preview" id="line-msg-preview"></div>
+          <button class="copy-msg-btn" id="copy-btn" onclick="copyMsg()">📋 メッセージをコピーする</button>
+          <a href="https://lin.ee/nMDNiFg" target="_blank" class="line-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.769.039 1.071l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+            </svg>
+            LINEを開いてメッセージを送る
+          </a>
+          <p class="cta-note">※ LINEアプリが起動します。登録・相談は無料です。</p>
+          <p style="text-align:center; margin-top:14px; padding:12px 16px; background:#f0fdf4; border:1px solid #86efac; border-radius:10px; font-size:0.88rem; color:#166534; font-weight:500; line-height:1.6;">
+            📩 送信後は、内容を確認の上<strong>24時間以内にLINEにてご連絡差し上げます。</strong>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- /.container -->
+
+  <footer>
+    <p><a href="https://web-tsukuru.jp/" target="_blank">Webとしくみをつくる</a> &nbsp;|&nbsp; web-tsukuru.jp</p>
+    <p style="margin-top:6px;">© 2025 Webとしくみをつくる. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const scores = {};
+    let currentQ = 1;
+    const totalQ = 6;
+
+    function answer(q, point) {
+      scores[q] = point;
+      if (q < totalQ) {
+        showQuestion(q + 1);
+      } else {
+        showResult();
+      }
+    }
+
+    function showQuestion(n) {
+      document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
+      const card = document.getElementById('q' + n);
+      if (card) {
+        card.classList.add('active');
+        currentQ = n;
+        updateProgress(n);
+        window.scrollTo({ top: document.querySelector('.progress-wrap').offsetTop - 20, behavior: 'smooth' });
+      }
+    }
+
+    function updateProgress(n) {
+      const pct = Math.round(((n - 1) / totalQ) * 100);
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('progress-label').textContent = 'Q' + n + ' / ' + totalQ;
+      document.getElementById('progress-pct').textContent = pct + '%';
+    }
+
+    function showResult() {
+      const total = Object.values(scores).reduce((a, b) => a + b, 0);
+
+      // プログレスを100%に
+      document.getElementById('progress-bar').style.width = '100%';
+      document.getElementById('progress-label').textContent = '診断完了！';
+      document.getElementById('progress-pct').textContent = '100%';
+
+      // 全質問を非表示
+      document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
+
+      // スコア表示
+      document.getElementById('score-number').innerHTML = total + '<span>/ 6点</span>';
+
+      // 結果タイプ・メッセージ
+      let type, message;
+      if (total <= 1) {
+        type = '🔴 採用費の垂れ流し状態';
+        message = '採用の「資産」がほとんどない状態です。求人サイトへの依存が高く、お金を払い続けないと採用できない仕組みになっています。今すぐ根本から見直すことが、状況を変える第一歩になります。';
+      } else if (total <= 3) {
+        type = '🟡 基盤構築のスタートライン';
+        message = '一部の仕組みは整い始めていますが、採用費をまだ「資産」に変えきれていません。あといくつかの仕組みを整えることで、求人サイトに頼らない採用体制が作れます。';
+      } else if (total <= 5) {
+        type = '🟢 資産化の道を歩んでいます';
+        message = '良い取り組みをされています！採用の仕組みが整い始めています。あと一歩の改善で、応募の質と量を高めていけるポイントがあります。';
+      } else {
+        type = '✨ 採用資産の先進企業';
+        message = '素晴らしい！すでに採用の仕組みが整っています。次のステップは、現在の仕組みをさらに磨く具体的なヒントのご提案です。個別アドバイスで、より精度の高い採用体制を一緒に考えませんか。';
+      }
+
+      document.getElementById('result-type').textContent = type;
+      document.getElementById('result-message').textContent = message;
+
+      // アドバイスリストを生成
+      const adviceList = document.getElementById('advice-list');
+      adviceList.innerHTML = '';
+      const allAdvice = [
+        { q: 1, score: scores[1], no: '採用専用LPを作ることで、求職者に「この会社は本気だ」と伝わります。求人票との差別化が、採用力を高める大きなポイントになります。' },
+        { q: 2, score: scores[2], no: '自社ドメインを持つと、サイトが「資産」として蓄積されます。求人サイトを止めても情報が残り続けます。' },
+        { q: 3, score: scores[3], no: 'LINE窓口を設けることで、応募のハードルが大きく下がります。電話・メールよりスマホ世代に届きやすい窓口です。' },
+        { q: 4, score: scores[4], no: 'スマホ最適化と写真・動画コンテンツで、若い求職者の目に留まりやすくなります。' },
+        { q: 5, score: scores[5], no: '自社サイトからの応募導線を持つことが、長期的な採用コスト削減につながります。' },
+        { q: 6, score: scores[6], no: 'コンテンツを定期更新すると検索エンジンの評価が上がり、自然に求職者の目に触れやすくなります。' },
+      ];
+
+      const noAdvice = allAdvice.filter(a => a.score === 0);
+      const yesItems = allAdvice.filter(a => a.score === 1);
+
+      if (noAdvice.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'すべての基盤が整っています。個別アドバイスでさらなる改善策をご提案します。';
+        adviceList.appendChild(li);
+      } else {
+        noAdvice.slice(0, 3).forEach(a => {
+          const li = document.createElement('li');
+          li.textContent = a.no;
+          adviceList.appendChild(li);
+        });
+      }
+
+      // 結果表示
+      document.getElementById('result-section').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('result-section').offsetTop - 20, behavior: 'smooth' });
+    }
+
+    // 診断スコアをグローバルに保持
+    let finalScore = 0;
+
+    function generateLineMessage() {
+      const company = document.getElementById('f-company').value.trim();
+      const url = document.getElementById('f-url').value.trim();
+      const challenge = document.getElementById('f-challenge').value.trim();
+      const jobsite = document.getElementById('f-jobsite').value.trim();
+      const sns = document.getElementById('f-sns').value.trim();
+
+      if (!company || !url || !challenge) {
+        alert('会社名・URL・採用課題は必須項目です。');
+        return;
+      }
+
+      const total = Object.values(scores).reduce((a, b) => a + b, 0);
+      const scoreLabel = total <= 1 ? '採用費の垂れ流し状態' : total <= 3 ? '基盤構築のスタートライン' : total <= 5 ? '資産化の道を歩んでいます' : '採用資産の先進企業';
+
+      let msg = `【採用資産化 診断 申し込み】\n`;
+      msg += `\n■ 診断スコア：${total}/6点（${scoreLabel}）\n`;
+      msg += `\n■ 会社名：${company}`;
+      msg += `\n■ サイトURL：${url}`;
+      msg += `\n■ 採用課題：${challenge}`;
+      if (jobsite) msg += `\n■ 求人サイト：${jobsite}`;
+      if (sns) msg += `\n■ SNS：${sns}`;
+      msg += `\n\n詳細な診断アドバイスをよろしくお願いします。`;
+
+      document.getElementById('line-msg-preview').textContent = msg;
+      document.getElementById('info-form-section').style.display = 'none';
+      document.getElementById('line-step').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('line-step').offsetTop - 20, behavior: 'smooth' });
+    }
+
+    function copyMsg() {
+      const text = document.getElementById('line-msg-preview').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ コピーしました！';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = '📋 メッセージをコピーする';
+          btn.classList.remove('copied');
+        }, 2500);
+      });
+    }
+  </script>
+
+</body>
+</html>

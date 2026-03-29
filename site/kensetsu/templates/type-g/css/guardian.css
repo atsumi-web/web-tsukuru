@@ -1,0 +1,60 @@
+/* ==========================================
+   Type-G ULTRA MODERN DESIGN
+   Guardian Message Section
+   ========================================== */
+
+/* Split screen layout is already defined in sections.css */
+/* This file contains additional guardian-specific styles */
+
+.section-guardian {
+  background: linear-gradient(135deg, var(--darker-grey) 0%, var(--cyber-black) 100%);
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Additional gradient overlay for visual interest */
+.guardian-split::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    transparent 0%, 
+    rgba(181, 68, 254, 0.1) 50%, 
+    transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.guardian-visual {
+  position: relative;
+  z-index: 0;
+}
+
+.guardian-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Guardian CTA within section */
+.guardian-cta {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-2xl);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--cyber-black);
+  background: linear-gradient(135deg, var(--neon-purple), var(--hot-pink));
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--glow-purple);
+}
+
+.guardian-cta:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 36px rgba(181, 68, 254, 0.5);
+}
+

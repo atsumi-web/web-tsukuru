@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90日収益化・最速ロードマップ | web-tsukuru.jp</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;800&family=Outfit:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0F172A;
+            --gold: #C5A059;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --accent: #ef4444;
+            --success: #10B981;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            padding-top: 80px; /* Space for sticky header */
+            background-color: var(--light-bg);
+        }
+
+        /* Sticky Progress Bar */
+        .progress-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            color: white;
+            z-index: 1000;
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .progress-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .progress-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .progress-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .progress-bar-bg {
+            width: 200px;
+            height: 10px;
+            background: #334155;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .next-action {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .category {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--gold);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+        }
+
+        h1 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .intro {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--gold);
+        }
+
+        .phase {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .phase-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            background: var(--gold);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+        }
+
+        .phase-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        /* Interactive Task Card */
+        .task-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+        }
+
+        .task-card.completed {
+            background: #f0fdf4;
+            border-color: var(--success);
+            opacity: 0.8;
+        }
+
+        .task-card.completed::after {
+            content: 'COMPLETED';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            color: var(--success);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .task-card h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .task-card h3 i {
+            color: var(--gold);
+        }
+        
+        .task-card.completed h3 i {
+            color: var(--success);
+        }
+
+        .task-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Checkbox styling */
+        .check-circle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .task-card.completed .check-circle {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        /* Daily Action List Styles */
+        .daily-schedule {
+            margin-top: 60px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .daily-week {
+            margin-bottom: 40px;
+        }
+        .week-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .day-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+            padding: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .day-item:hover {
+            background: #f8fafc;
+        }
+
+        .day-item.completed {
+            background: #f0fdf4;
+            text-decoration: none; /* Removed strikethrough for readability */
+        }
+        
+        .day-item.completed .day-label, 
+        .day-item.completed .day-desc {
+            opacity: 0.6;
+        }
+
+        .day-item.completed .check-circle {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .day-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--navy);
+            min-width: 70px;
+        }
+        .day-desc {
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .daily-routine {
+            background: var(--navy);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .daily-routine h4 {
+            margin-top: 0;
+            color: var(--gold);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .routine-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .routine-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .routine-item:hover { background: rgba(255,255,255,0.1); }
+        .routine-item.completed { opacity: 0.5; text-decoration: line-through; }
+        .routine-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--gold);
+            border-radius: 3px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: transparent;
+        }
+        .routine-item.completed .routine-checkbox {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .footer-action { text-align: center; margin-top: 80px; }
+        .back-link { text-decoration: none; color: var(--text); opacity: 0.7; }
+        .back-link:hover { opacity: 1; }
+        
+        @media (max-width: 600px) {
+            .progress-label { font-size: 0.8rem; }
+            .next-action { display: none; }
+            .progress-bar-bg { width: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Progress Bar -->
+    <div class="progress-header">
+        <div class="progress-container">
+                <div class="progress-info">
+                <a href="admin.html" style="color:var(--gold); font-size:1.2rem; margin-right:15px; text-decoration:none;" title="司令室へ戻る">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                </a>
+                <span class="progress-label">PROGRESS</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <span class="progress-label" id="progressText">0%</span>
+            </div>
+            <div class="next-action" id="nextActionDisplay">Next: モニター納品...</div>
+        </div>
+    </div>
+
+<div class="container">
+    <header>
+        <div class="category">INTERNAL BIBLE</div>
+        <h1>web-tsukuru.jp<br>90日収益化・最速ロードマップ</h1>
+    </header>
+
+    <div class="intro">
+        <p><strong>「泥臭い作業はAIに、えりさんは意思決定と関係構築に」</strong><br>
+        この計画は、Google AI Ultraのパワーを最大限に活用し、最短距離で安定収益を確保するための司令書です。迷った時は、常にここに戻ってください。</p>
+        
+        <div style="background:#FEF3C7; border-left:5px solid #F59E0B; padding:20px; margin-top:20px; border-radius:8px;">
+            <h4 style="margin-top:0; color:#92400E; font-size:1.1rem;">📍 現在地（2026年3月29日時点）Day 56 / Phase 02 🔥</h4>
+            <ul style="margin:10px 0; padding-left:20px; color:#78350F;">
+                <li><strong>完了:</strong> Phase 01周り（堀田等）、CW向けポートフォリオ、CW応募ガイド、案件スクリーニング方針、<strong>バイブコーダー個人ブランド戦略の策定</strong></li>
+                <li><strong>進行中:</strong> クラウドワークスへの応募サイクル稼働、「えり」個人ブランドのInstagram立ち上げ準備</li>
+                <li><strong>次のアクション:</strong> CW 本日の応募継続（1日5件）、バイブコーダーとしての発信（AIを使った裏側プロセス）用リールの企画</li>
+            </ul>
+            <p style="margin:15px 0 0 0; font-weight:700; color:#92400E;">
+                <i class="fa-solid fa-bullseye" style="color:#F59E0B;"></i> 
+                次の一手: <span style="border-bottom:2px solid #F59E0B;">CW案件獲得と並行し、「えり」名義での個人ブランドSNS運用を開始する（Dual Engine戦略）</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Phase Timeline -->
+    <div style="display:flex; gap:0; margin-bottom:50px; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+        <div style="flex:1; background:#10B981; color:white; padding:16px 8px; text-align:center;">
+            <div style="font-family:'Outfit',sans-serif; font-weight:800; font-size:0.75rem; letter-spacing:0.08em; opacity:0.8;">PHASE 01</div>
+            <div style="font-size:1.2rem; margin:4px 0;">✅</div>
+            <div style="font-size:0.7rem; font-weight:700;">完了</div>
+        </div>
+        <div style="flex:1; background:#0F172A; color:#C5A059; padding:16px 8px; text-align:center; box-shadow:inset 0 0 0 3px #C5A059;">
+            <div style="font-family:'Outfit',sans-serif; font-weight:800; font-size:0.75rem; letter-spacing:0.08em; opacity:0.8;">PHASE 02</div>
+            <div style="font-size:1.2rem; margin:4px 0;">🔥</div>
+            <div style="font-size:0.7rem; font-weight:700;">← 現在地</div>
+        </div>
+        <div style="flex:1; background:#e2e8f0; color:#94a3b8; padding:16px 8px; text-align:center;">
+            <div style="font-family:'Outfit',sans-serif; font-weight:800; font-size:0.75rem; letter-spacing:0.08em;">PHASE 03</div>
+            <div style="font-size:1.2rem; margin:4px 0;">⏳</div>
+            <div style="font-size:0.7rem; font-weight:700;">待機中</div>
+        </div>
+        <div style="flex:1; background:#e2e8f0; color:#94a3b8; padding:16px 8px; text-align:center;">
+            <div style="font-family:'Outfit',sans-serif; font-weight:800; font-size:0.75rem; letter-spacing:0.08em;">PHASE 04</div>
+            <div style="font-size:1.2rem; margin:4px 0;">⏳</div>
+            <div style="font-size:0.7rem; font-weight:700;">待機中</div>
+        </div>
+        <div style="flex:1; background:#e2e8f0; color:#94a3b8; padding:16px 8px; text-align:center;">
+            <div style="font-family:'Outfit',sans-serif; font-weight:800; font-size:0.75rem; letter-spacing:0.08em;">PHASE 05</div>
+            <div style="font-size:1.2rem; margin:4px 0;">🌟</div>
+            <div style="font-size:0.7rem; font-weight:700;">Next Stage</div>
+        </div>
+    </div>
+
+    <!-- Phase 1 (Completed - Collapsed by default) -->
+    <section class="phase" style="opacity:0.7;">
+        <div class="phase-header" onclick="togglePhase('phase1-body', 'phase1-icon')" style="cursor:pointer; user-select:none;">
+            <div class="phase-num" style="background:#10B981;">01</div>
+            <h2 class="phase-title">実績構築と「武器」の研磨（Day 1-30）</h2>
+            <span style="margin-left:auto; background:#10B981; color:white; font-family:'Outfit',sans-serif; font-weight:900; font-size:0.8rem; letter-spacing:0.1em; padding:6px 14px; border-radius:50px; white-space:nowrap;">✅ 完了済み</span>
+            <span id="phase1-icon" style="margin-left:12px; color:#94a3b8; font-size:0.9rem;">▼ 展開</span>
+        </div>
+        <div id="phase1-body" style="display:none; margin-top:20px;">
+        <div class="card-grid">
+            <div class="task-card" onclick="toggleTask(this)" data-id="p1-task1">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-trophy"></i> モニター納品とエビデンス回収</h3>
+                </div>
+                <p>モニター案件を最優先で完遂。「モバイル最適化メソッド」を適用し、「社長の喜びの声」を実績として回収。</p>
+            </div>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p1-task2">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-magnet"></i> リードマグネットの完成</h3>
+                </div>
+                <p>「求人広告を一生0円にする：採用資産化マニュアル」をAIで作成。LINE登録時の強力な動機付け（エサ）を用意する。</p>
+            </div>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p1-task3">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-location-dot"></i> 地域特化Webライティング</h3>
+                </div>
+                <p>「三重県 建設 採用」等のキーワードで1位を取るためのブログ10記事をAI Ultraで一気に書き下ろす。</p>
+            </div>
+        </div>
+
+        <!-- Daily Action Breakdown -->
+        <div class="daily-schedule">
+            <h3 style="text-align:center; font-family:'Shippori Mincho',serif; color:var(--navy); margin-bottom:30px;">
+                <i class="fa-solid fa-calendar-check"></i> Day 1-30 毎日の行動リスト
+            </h3>
+
+            <div class="daily-routine">
+                <h4><i class="fa-solid fa-sun"></i> 毎日の「最優先アクション」</h4>
+                <p style="margin:10px 0; font-size:0.9rem; color:#cbd5e1;">1日1つ、AIと一緒にこなしていく。完璧を目指さず、前進を優先。</p>
+                <ul class="routine-list">
+                    <li class="routine-item" onclick="toggleRoutine(this)">
+                        <div class="routine-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span>ブログ1記事をAIで下書き → 投稿</span>
+                    </li>
+                    <li class="routine-item" onclick="toggleRoutine(this)">
+                        <div class="routine-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span>SNS投稿1件(実績・制作過程・学び)</span>
+                    </li>
+                    <li class="routine-item" onclick="toggleRoutine(this)">
+                        <div class="routine-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span>次のタスクをAIに指示(今日やったことを明日に繋げる)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 1: 武器の研磨と堀田建設モデルの完成</span>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w1-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 1-3</div>
+                        <div class="day-desc"><strong>「既存資産のハイブリッド・リミックス」。</strong><br>HP素材を全て回収。AIで動画切り出し×音声合成のドラフトを作成。</div>
+                    </div>
+                </div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w1-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 4-7</div>
+                        <div class="day-desc"><strong>部長を唸らせる「動くプレビュー」提示。</strong><br>リッチな演出（背景動画等）を盛り込み、完成形を提示して即決を勝ち取る。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 2: コンテンツの種まき（SEO）</span>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w2-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 8-10</div>
+                        <div class="day-desc"><strong>地域キーワード検索。</strong><br>周辺地域の建設会社をリストアップし、ターゲット別のブログ記事をAIで10本書き溜める。</div>
+                    </div>
+                </div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w2-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 11-14</div>
+                        <div class="day-desc"><strong>モニター2社目の「爆速公開」。</strong><br>1社目とは異なる業種（例：造園、土木）で実績のバリエーションを作る。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 3: リードマグネット（特典）完成</span>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w3-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 15-18</div>
+                        <div class="day-desc"><strong>「無料プレゼント」PDF作成。</strong><br>AIに構成案を出させ、Canvaでプロ級の資料を完成させる。</div>
+                    </div>
+                </div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w3-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 19-21</div>
+                        <div class="day-desc"><strong>LINE公式アカウントを「自動営業機」に変える。</strong><br>友達登録時にPDFが届く仕組みをテストする。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="daily-week">
+                <span class="week-title">WEEK 4: 紹介依頼と総まとめ</span>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w4-d1">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 22-26</div>
+                        <div class="day-desc"><strong>モニター3社目の完遂。</strong><br>3つの異なる成功事例が揃い、実績ページに圧倒的な説得力が生まれる。</div>
+                    </div>
+                </div>
+                <div class="day-item" onclick="toggleTask(this)" data-id="w4-d2">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <div class="day-label">Day 27-30</div>
+                        <div class="day-desc"><strong>全実績の「キャプチャ」をLPへ。</strong><br>「モバイル最適化済み」「社長の喜びの声」などの実績をトップページに掲載。Phase 2への準備完了。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><!-- /phase1-body -->
+    </section>
+
+    <!-- Phase 2 -->
+    <section class="phase" style="border:3px solid #C5A059; border-radius:16px; padding:30px; background:rgba(197,160,89,0.04);">
+        <div class="phase-header" style="margin-bottom:10px;">
+            <div class="phase-num" style="background:#C5A059;">02</div>
+            <h2 class="phase-title">CW案件 × 個人ブランド構築 × 足固め（Day 31〜）</h2>
+            <span style="margin-left:auto; background:#C5A059; color:#0F172A; font-family:'Outfit',sans-serif; font-weight:900; font-size:0.8rem; letter-spacing:0.1em; padding:6px 14px; border-radius:50px; white-space:nowrap;">🔥 現在地 Day 56</span>
+        </div>
+
+        <p style="color:#64748b; font-size:0.95rem; margin:0 0 20px 0; border-left:3px solid #C5A059; padding-left:12px;">
+            最強の「3本柱（Dual Engine＋）」で進行中。<strong>CWで資金と実戦スタミナを積み</strong>、未来の本業となる<strong>「バイブコーダー・えり」のSNS発信</strong>を開始しつつ、ベースとなる<strong>堀田の採用実績</strong>を待つ。オフライン営業から脱却するための最重要フェーズ。
+        </p>
+
+        <div class="card-grid">
+            <!-- 柱１: CW -->
+            <div class="task-card" onclick="toggleTask(this)" data-id="p2-task-cw" style="border:2px solid #C5A059; background:linear-gradient(135deg, #fefce8 0%, #fff 100%);">
+                <div style="font-family:'Outfit',sans-serif; font-size:0.75rem; font-weight:900; color:#C5A059; letter-spacing:0.15em; margin-bottom:10px;">🏗️ 柱１：資金 &amp; スキル構築</div>
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-laptop-code"></i> クラウドワークス：案件応募サイクル</h3>
+                </div>
+                <p><strong>スクリーニング → 応募 → 記録</strong> を毎日回す（1日5件目標）。AI×Webコンテンツで資金を稼ぎながら、実戦スキルと受注ノウハウを蓄積する。cw_log.html で全案件を記録。</p>
+            </div>
+
+            <!-- 柱２: 個人ブランド -->
+            <div class="task-card" onclick="toggleTask(this)" data-id="p2-task-vibecoder" style="border:2px solid #EC4899; background:linear-gradient(135deg, #fdf2f8 0%, #fff 100%);">
+                <div style="font-family:'Outfit',sans-serif; font-size:0.75rem; font-weight:900; color:#EC4899; letter-spacing:0.15em; margin-bottom:10px;">✨ 柱２：個人ブランド（次世代本業）</div>
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-wand-magic-sparkles"></i> バイブコーダー「えり」SNS立ち上げ</h3>
+                </div>
+                <p>完全オンライン完結・高単価・維持費ゼロの最強フリーランスモデルへシフトするための発信。完成したサイトではなく<strong>「AIでコードを手書きプロンプトで生成する裏側」</strong>を見せ、高単価の指名買いを育てる。</p>
+            </div>
+
+            <!-- 柱３: 堀田 -->
+            <div class="task-card" onclick="toggleTask(this)" data-id="p2-task-hotta" style="border:2px solid #3B82F6; background:linear-gradient(135deg, #eff6ff 0%, #fff 100%);">
+                <div style="font-family:'Outfit',sans-serif; font-size:0.75rem; font-weight:900; color:#3B82F6; letter-spacing:0.15em; margin-bottom:10px;">🏢 柱３：事業実績 &amp; バックアップ</div>
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-hard-hat"></i> 堀田建設：地方特化型インフラの完成</h3>
+                </div>
+                <p>「Webとしくみをつくる」名義のコア実績づくり。LPを軸に採用の仕組みが回るよう継続サポートし、「応募数」の数値を絶対的証拠（エビデンス）として準備する。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: 堀田実績後のマーケティング展開 -->
+    <section class="phase" style="opacity:0.7;">
+        <div class="phase-header" onclick="togglePhase('phase3-body', 'phase3-icon')" style="cursor:pointer; user-select:none;">
+            <div class="phase-num" style="background:#64748b;">03</div>
+            <h2 class="phase-title">実績の最強武器化と、完全インバウンド宣言</h2>
+            <span style="margin-left:auto; background:#64748b; color:white; font-family:'Outfit',sans-serif; font-weight:900; font-size:0.8rem; letter-spacing:0.1em; padding:6px 14px; border-radius:50px; white-space:nowrap;">⏳ 待機中</span>
+            <span id="phase3-icon" style="margin-left:12px; color:#94a3b8; font-size:0.9rem;">▼ 展開</span>
+        </div>
+        <div id="phase3-body" style="display:none; margin-top:20px;">
+            <div style="background:#FEF3C7; border-left:5px solid #F59E0B; padding:16px 20px; margin-bottom:24px; border-radius:8px;">
+                <p style="margin:0; color:#78350F; font-size:0.95rem;">🚦 <strong>方針転換：自ら営業しに行くのは完全ストップ！</strong> 堀田建設の数値を武器に、「向こうから勝手にお願いされる（インバウンド）」までひたすら待つ。浮いた時間はバイブコーダーブランド構築（次フェーズ）に全ベットする。</p>
+            </div>
+            <div class="card-grid">
+                <div class="task-card" onclick="toggleTask(this)" data-id="p3-mkt-task1">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <h3><i class="fa-solid fa-chart-line"></i> 実績データの最強ポートフォリオ化</h3>
+                    </div>
+                    <p>堀田建設における「応募数・採用数」の生データをクライアントの許可を得て公開。これをInstagramやCW上での「圧倒的証拠（エビデンス）」として昇華させる。</p>
+                </div>
+                <div class="task-card" onclick="toggleTask(this)" data-id="p3-mkt-task2">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <h3><i class="fa-solid fa-magnet"></i> 紹介・インバウンド（待ち）エンジンの構築</h3>
+                    </div>
+                    <p>既存顧客（堀田建設等）の社長経由でしか新規の建設業案件は受けないスタンスを構築。泥臭いチラシ配りや飛び込み・DMは一切行わず、「どうしてもえりさんにお願いしたい」という指名買いのみを待機する。</p>
+                </div>
+                <div class="task-card" onclick="toggleTask(this)" data-id="p3-mkt-task3">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <h3><i class="fa-solid fa-comment-dots"></i> LINE問い合わせ自動対応の徹底</h3>
+                    </div>
+                    <p>向こうから来たレアな問い合わせに対しても、初期対応はLINE自動応答などでAI・システムに任せ、労力をかけずに優良顧客だけをフィルタリングする。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Phase 4: 収益最大化 -->
+    <section class="phase" style="opacity:0.7;">
+        <div class="phase-header" onclick="togglePhase('phase4-body', 'phase4-icon')" style="cursor:pointer; user-select:none;">
+            <div class="phase-num" style="background:#64748b;">04</div>
+            <h2 class="phase-title">バイブコーダー「えり」としての独立準備</h2>
+            <span style="margin-left:auto; background:#64748b; color:white; font-family:'Outfit',sans-serif; font-weight:900; font-size:0.8rem; letter-spacing:0.1em; padding:6px 14px; border-radius:50px; white-space:nowrap;">⏳ 待機中</span>
+            <span id="phase4-icon" style="margin-left:12px; color:#94a3b8; font-size:0.9rem;">▼ 展開</span>
+        </div>
+        <div id="phase4-body" style="display:none; margin-top:20px;">
+
+        <!-- マネタイズのシフト -->
+        <div style="background:#EFF6FF; border-left:5px solid #3B82F6; padding:20px; margin-bottom:30px; border-radius:8px;">
+            <h4 style="margin-top:0; color:#1E40AF; font-size:1rem;">🎯 キャッシュポイント（稼ぎ所）の大転換</h4>
+            <p style="margin:0; color:#1E3A8A; font-size:0.95rem;">本命ターゲットを「小〜中規模の地元建設会社」から<strong>「全国のスタートアップ・ITリテラシーの高い発注者（クラウドワークス等）」</strong>へと完全に切り替える。高単価・オンライン完結案件を本命とする。</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="task-card" onclick="toggleTask(this)" data-id="p4-task1">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-handshake"></i> クラウドワークスでの「継続」高単価クライアント獲得</h3>
+                </div>
+                <p>15万円〜のフルスクラッチ案件をリピート発注してくれる優良なオンラインクライアントとのパイプを太くし、毎月のキャッシュフローを安定させる。</p>
+            </div>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p4-task2">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-cart-shopping"></i> Instagramを通じた「オンライン指名買いパッケージ」の販売</h3>
+                </div>
+                <p>バイブコーダー用のアカウント経由で、「維持費ゼロ・AI爆速納品のフルスクラッチサイト作成（15万〜）」をパッケージ化し、対面商談なし・DM契約のみで販売していく。</p>
+            </div>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p4-task3">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-gauge-high"></i> AI並列製作システムの手離れ（限界突破）</h3>
+                </div>
+                <p>受注が増えても「自分の手を極力動かさない（AIにプロンプトを投げるだけ）」状態を極め、1人で超高速・高品質なサイト制作を並行対応できるシステムを完成させる。</p>
+            </div>
+        </div>
+        </div><!-- /phase4-body -->
+    </section>
+
+    <!-- Phase 5 (Next Stage) -->
+    <section class="phase" style="border-top: 3px dashed var(--gold); padding-top: 50px; opacity:0.6;">
+        <div class="phase-header" onclick="togglePhase('phase5-body', 'phase5-icon')" style="cursor:pointer; user-select:none;">
+            <div class="phase-num" style="background: var(--navy);">05</div>
+            <h2 class="phase-title">【Next Stage】AI Web アーキテクトへの完全独立（Day 91〜）</h2>
+            <span style="margin-left:auto; background:#0F172A; color:#C5A059; font-family:'Outfit',sans-serif; font-weight:900; font-size:0.8rem; letter-spacing:0.1em; padding:6px 14px; border-radius:50px; white-space:nowrap; border:1px solid #C5A059;">🌟 Next Stage</span>
+            <span id="phase5-icon" style="margin-left:12px; color:#94a3b8; font-size:0.9rem;">▼ 展開</span>
+        </div>
+        <div id="phase5-body" style="display:none; margin-top:20px;">
+        <div class="card-grid">
+            <div class="task-card" onclick="toggleTask(this)" data-id="p5-task-shift">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-crown"></i> バイブコーダー「えり」への本業完全シフト</h3>
+                </div>
+                <p>オフライン営業を止め、SNS経由の直接受注とクラウドワークス高単価案件のみで稼働する状態へ。自宅のPC1台で完結する「完全オンライン・高単価・人間関係ストレスゼロ」のライフスタイルを完成させる。</p>
+            </div>
+            <div class="task-card" onclick="toggleTask(this)" data-id="p5-task1">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                    <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                    <h3><i class="fa-solid fa-brain"></i> 「構築エンジン」自体の教育・発信化</h3>
+                </div>
+                <p>Antigravityを駆使したAIフルスクラッチのノウハウ自体を商品化。駆け出しクリエイター等に向けたコンサルティング（情報発信ビジネス）への展開。</p>
+            </div>
+        </div>
+        </div><!-- /phase5-body -->
+    </section>
+
+    <!-- ビジネス設計書リンク -->
+    <div style="margin-top:60px; padding:30px; background:#fff; border-radius:15px; border-left:5px solid var(--gold); box-shadow:0 4px 6px rgba(0,0,0,0.05);">
+        <h3 style="margin-top:0; color:var(--navy); font-family:'Shippori Mincho',serif; display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-diagram-project" style="color:var(--gold);"></i>
+            ビジネス設計書（サービス構成・価格・営業導線）
+        </h3>
+        <p style="margin-bottom:20px; color:#475569; font-size:0.95rem;">
+            このロードマップの「行動計画」に対して、サービス3段階構成・価格設計・SNS→診断→制作の営業導線など
+            ビジネスの構造設計をまとめた設計書です。迷ったときに参照してください。
+        </p>
+        <a href="../../../../planning/business_strategy.md" style="display:inline-flex; align-items:center; gap:8px; padding:10px 24px; background:var(--navy); color:var(--gold); border-radius:8px; text-decoration:none; font-weight:700; font-size:0.9rem;">
+            <i class="fa-solid fa-file-lines"></i> business_strategy.md を開く
+        </a>
+    </div>
+
+    <div class="footer-action">
+        <a href="admin.html" class="back-link">← 運用司令室へ戻る</a>
+    </div>
+</div>
+
+<script>
+    // Configuration
+    const STORAGE_KEY = 'web_tsukuru_roadmap_progress';
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        loadProgress();
+        updateProgressBar();
+    });
+
+    function toggleTask(element) {
+        element.classList.toggle('completed');
+        saveProgress();
+        updateProgressBar();
+    }
+
+    function togglePhase(bodyId, iconId) {
+        const body = document.getElementById(bodyId);
+        const icon = document.getElementById(iconId);
+        if (body.style.display === 'none') {
+            body.style.display = 'block';
+            icon.textContent = '▲ 閉じる';
+        } else {
+            body.style.display = 'none';
+            icon.textContent = '▼ 展開';
+        }
+    }
+
+    function toggleRoutine(element) {
+        element.classList.toggle('completed');
+        // Routine items don't strictly count towards "Project Progress" in this version,
+        // but acts as a daily checklist reset. (Optional: Reset logic)
+    }
+
+    function saveProgress() {
+        const completedIds = [];
+        document.querySelectorAll('.task-card.completed, .day-item.completed').forEach(el => {
+            if(el.dataset.id) completedIds.push(el.dataset.id);
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(completedIds));
+    }
+
+    function loadProgress() {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        saved.forEach(id => {
+            const el = document.querySelector(`[data-id="${id}"]`);
+            if (el) el.classList.add('completed');
+        });
+    }
+
+    function updateProgressBar() {
+        const totalTasks = document.querySelectorAll('.task-card[data-id], .day-item[data-id]').length;
+        const completedTasks = document.querySelectorAll('.task-card.completed[data-id], .day-item.completed[data-id]').length;
+        
+        const percentage = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+        
+        document.getElementById('progressBar').style.width = percentage + '%';
+        document.getElementById('progressText').textContent = percentage + '%';
+
+        // Update Next Action
+        const nextTask = document.querySelector('.task-card:not(.completed)[data-id], .day-item:not(.completed)[data-id]');
+        const nextActionDisplay = document.getElementById('nextActionDisplay');
+        
+        if (nextTask) {
+            // Try to find a title
+            let title = nextTask.querySelector('h3') ? nextTask.querySelector('h3').innerText : 
+                        nextTask.querySelector('.day-desc strong') ? nextTask.querySelector('.day-desc strong').innerText :
+                        "次のタスク";
+            nextActionDisplay.textContent = "Next: " + title;
+            nextActionDisplay.style.color = "#cbd5e1";
+        } else {
+            nextActionDisplay.textContent = "All Tasks Completed! 🎉";
+            nextActionDisplay.style.color = "#10B981";
+        }
+    }
+</script>
+
+<!-- GLOBAL NAVIGATION -->
+<style>
+    .global-nav { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+    .nav-btn { width: 50px; height: 50px; border-radius: 50%; background: #0F172A; color: #C5A059; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: all 0.3s; border: 2px solid #C5A059; font-size: 1.2rem; cursor: pointer; }
+    .nav-btn:hover { transform: translateY(-3px); background: #C5A059; color: #0F172A; }
+    .to-top { opacity: 0; pointer-events: none; }
+    .to-top.visible { opacity: 1; pointer-events: all; }
+</style>
+<div class="global-nav">
+    <a href="admin.html" class="nav-btn" title="制作コックピットへ"><i class="fa-solid fa-tower-broadcast"></i></a>
+    <div class="nav-btn to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="ページトップへ"><i class="fa-solid fa-arrow-up"></i></div>
+</div>
+<script>
+    window.addEventListener('scroll', () => {
+        const toTop = document.querySelector('.to-top');
+        if (window.scrollY > 300) toTop.classList.add('visible');
+        else toTop.classList.remove('visible');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10,30 Q30,5 50,30 T90,30" stroke="#D4A017" stroke-width="3" fill="none"/>
+  <circle cx="25" cy="25" r="4" fill="#6F4E37"/>
+  <text x="50" y="40" font-family="serif" font-size="28" fill="#333333" letter-spacing="2">Kohaku Cafe</text>
+</svg>

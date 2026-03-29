@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>チラシ提案資料｜おかげさまエアコン</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;700;900&display=swap" />
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --accent: #1e6fb0;
+      --accent2: #2eaadc;
+      --warn: #e67e22;
+      --green: #27ae60;
+      --text: #1e293b;
+      --muted: #64748b;
+      --en: 'Outfit', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; font-size: 14px; }
+
+    .page-header {
+      background: linear-gradient(135deg, #1e6fb0, #2eaadc);
+      color: white; padding: 40px 24px 32px; text-align: center;
+    }
+    .page-header .badge {
+      display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px; padding: 4px 16px; font-size: .75rem; font-family: var(--en);
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .page-header h1 { font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; }
+    .page-header p { font-size: .875rem; opacity: .85; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 16px 80px; }
+
+    .section { background: white; border-radius: 16px; padding: 32px; margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .section-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.1rem; font-weight: 800; color: var(--accent);
+      border-bottom: 2px solid var(--accent); padding-bottom: 12px; margin-bottom: 24px;
+    }
+    .section-title .icon { font-size: 1.3rem; }
+
+    .copy-block {
+      background: #f8fafc; border-left: 4px solid var(--accent2);
+      border-radius: 0 12px 12px 0; padding: 20px 24px; margin-bottom: 20px;
+    }
+    .copy-block .label {
+      font-family: var(--en); font-size: .7rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+      display: inline-block; background: rgba(30,111,176,0.1); border-radius: 4px; padding: 2px 8px;
+    }
+    .copy-block .headline { font-size: 1.4rem; font-weight: 900; color: var(--text); line-height: 1.4; }
+    .copy-block .sub { font-size: .95rem; color: var(--muted); margin-top: 6px; }
+    .copy-block .body-text { font-size: .9rem; line-height: 1.9; margin-top: 8px; white-space: pre-line; }
+
+    .checklist { list-style: none; margin-top: 10px; }
+    .checklist li { padding: 6px 0; display: flex; align-items: flex-start; gap: 10px; }
+    .checklist li::before { content: "\25A1"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    .bullet-list { list-style: none; margin-top: 10px; }
+    .bullet-list li { padding: 5px 0; display: flex; align-items: flex-start; gap: 10px; }
+    .bullet-list li::before { content: "\25CF"; color: var(--warn); font-weight: 700; flex-shrink: 0; }
+
+    .note { background: #fff7ed; border: 1px solid #fcd34d; border-radius: 10px;
+      padding: 14px 18px; margin-top: 16px; font-size: .85rem; }
+    .note strong { color: var(--warn); }
+
+    .flyer-mock {
+      background: linear-gradient(160deg, #e0f2fe, #bae6fd);
+      border: 3px solid var(--accent2); border-radius: 12px; padding: 28px; display: grid; gap: 16px;
+    }
+    .flyer-mock .fv { background: #1e6fb0; color: white; border-radius: 8px; padding: 24px; text-align: center; }
+    .flyer-mock .fv h2 { font-size: 1.6rem; font-weight: 900; line-height: 1.3; }
+    .flyer-mock .fv p { margin-top: 8px; font-size: .9rem; opacity: .9; }
+    .flyer-zone { background: white; border-radius: 8px; padding: 20px; }
+    .flyer-zone h3 { font-size: 1rem; font-weight: 800; color: var(--accent); margin-bottom: 12px; border-bottom: 2px dashed #bae6fd; padding-bottom: 8px; }
+    .flyer-cta { background: #e67e22; color: white; border-radius: 8px; padding: 20px; text-align: center; }
+    .flyer-cta h3 { font-size: 1.1rem; font-weight: 900; }
+    .flyer-cta .price { font-size: 2rem; font-weight: 900; margin: 8px 0; }
+    .flyer-tel { background: #1e293b; color: white; border-radius: 8px; padding: 16px; text-align: center; }
+    .flyer-tel .tel { font-family: var(--en); font-size: 2rem; font-weight: 900; color: white; letter-spacing: .05em; }
+    .flyer-tel p { font-size: .8rem; opacity: .7; margin-top: 4px; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); font-size: .85rem; }
+    th { background: #f1f5f9; font-weight: 700; color: var(--accent); }
+    tr:last-child td { border-bottom: none; }
+
+    h2.sep { font-size: .75rem; font-family: var(--en); letter-spacing: .2em; text-transform: uppercase;
+      color: var(--muted); margin: 40px 0 16px; display: flex; align-items: center; gap: 12px; }
+    h2.sep::before, h2.sep::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* SEARCH LINKS */
+    .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+    .link-card {
+      display: flex; flex-direction: column; gap: 8px;
+      background: #f8fafc; border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 18px 20px; text-decoration: none;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .link-card:hover { box-shadow: 0 4px 16px rgba(30,111,176,0.15); border-color: var(--accent2); }
+    .link-card .lc-icon { font-size: 1.6rem; }
+    .link-card .lc-name { font-weight: 800; font-size: .95rem; color: var(--text); }
+    .link-card .lc-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+    .link-card .lc-url { font-size: .72rem; color: var(--accent2); font-family: var(--en); margin-top: auto; }
+
+    /* EXAMPLE CARDS */
+    .ex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .ex-card { background: white; border: 2px solid var(--border); border-radius: 14px; overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: box-shadow .2s; }
+    .ex-card:hover { box-shadow: 0 6px 24px rgba(30,111,176,0.12); }
+    .ex-card img { width: 100%; height: auto; display: block; }
+    .ex-card .ex-body { padding: 16px 18px; }
+    .ex-num { font-family: var(--en); font-size: .7rem; font-weight: 900; color: var(--accent2);
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+    .ex-title { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .ex-reason { font-size: .82rem; color: var(--muted); line-height: 1.8; }
+    .ex-points { list-style: none; margin-top: 10px; }
+    .ex-points li { font-size: .82rem; padding: 3px 0; display: flex; gap: 8px; align-items: flex-start; }
+    .ex-points li::before { content: '\2713'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="badge">2026.03 &nbsp;|&nbsp; 渥美絵里</div>
+  <h1>チラシ制作 ご提案書</h1>
+  <p>株式会社おかげさま 様 &nbsp;|&nbsp; エアコンクリーニング A4チラシ 新規制作</p>
+</div>
+
+<div class="container">
+
+  <!-- 1. テキスト全文案 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#x1F4DD;</span>テキスト全文案</div>
+
+    <div class="copy-block" style="background:#e0f2fe;border-left-color:#1e6fb0;">
+      <span class="label" style="background:rgba(30,111,176,0.15);">Target Copy / ターゲットコピー</span>
+      <div class="headline" style="font-size:1.1rem;color:var(--accent);">
+        エアコンのカビ臭や汚れが気になる方へ
+      </div>
+      <div class="sub">（チラシ冒頭の一行目。読み手に「自分のことだ」と気づかせる）</div>
+    </div>
+
+    <div class="copy-block">
+      <span class="label">Headline / キャッチコピー</span>
+      <div class="headline">
+        知らぬ間に、あなたのエアコンが<br>カビ・ウイルスの温床になっています。
+      </div>
+      <div class="sub">今シーズン、エアコンを分解洗浄しませんか？</div>
+    </div>
+
+    <div class="copy-block">
+      <span class="label">共感ゾーン &mdash; こんなこと、気になっていませんか？</span>
+      <ul class="checklist">
+        <li>エアコンをつけると、なんとなくカビ臭い</li>
+        <li>以前より冷え（暖まり）が悪くなってきた気がする</li>
+        <li>お子さまや家族の体調が心配</li>
+        <li>エアコン掃除を、ずっと後回しにしている</li>
+      </ul>
+    </div>
+
+    <div class="copy-block">
+      <span class="label">教育ゾーン &mdash; エアコンが「空気を汚す」理由</span>
+      <div class="body-text">エアコンは、室内の空気を吸い込み → 冷やして → 部屋へ戻す
+という仕組みで動いています。
+
+この流れに乗って、カビ・ほこり・ウイルスも
+エアコン内部にどんどん蓄積されていきます。
+
+【ここにビフォーアフター写真を挿入】
+  汚れたフィルター → 洗浄後のピカピカ状態</div>
+    </div>
+
+    <div class="copy-block">
+      <span class="label">サービス内容</span>
+      <p style="font-weight:700;margin-bottom:8px;">プロによる分解洗浄で、まるごとスッキリ！</p>
+      <ul class="bullet-list">
+        <li>カビ・汚れを内部から徹底洗浄</li>
+        <li>抗菌・防カビコーティングでキレイを長持ち</li>
+        <li>洗浄後は冷暖房効率がアップ &rarr; 電気代の節約にも！</li>
+        <li>イヤなニオイも解消。キレイな空気をお届けします</li>
+      </ul>
+    </div>
+
+    <div class="copy-block">
+      <span class="label">信頼訴求（施工件数を入れる）</span>
+      <div class="body-text">地域のお客様に支えられて、施工実績 ●●件突破！
+「また頼みたい」のお声を多数いただいています。</div>
+    </div>
+
+    <div class="copy-block">
+      <span class="label">CTA &mdash; 行動喚起</span>
+      <div class="headline" style="font-size:1.1rem;">まずは「無料点検」からどうぞ！</div>
+      <div class="body-text">出張点検・お見積もりは 完全無料！
+「汚れ具合だけ見てほしい」だけでも大歓迎です。
+お気軽にご連絡ください。</div>
+    </div>
+
+    <div class="copy-block">
+      <span class="label">会社情報（大きく目立たせる）</span>
+      <div class="body-text">おかげさまエアコン
+
+フリーダイヤル  0120-○○○-○○○
+受付時間：○時〜○時（年中無休）
+
+LINEでのご相談もお気軽に → [QRコード]</div>
+    </div>
+
+    <div class="note">
+      <strong>&#x1F4CC; ご確認をお願いしたい項目：</strong> 施工実績件数・フリーダイヤル・受付時間・節電効果の数字（年間約○○円）が確定次第、テキストへ反映いたします。お知らせください。
+    </div>
+  </div>
+
+  <!-- 2. チラシ構成イメージ -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#x1F5BC;&#xFE0F;</span>チラシ構成イメージ（A4）</div>
+    <div class="flyer-mock">
+
+      <!-- ①ターゲットコピー -->
+      <div style="background:#1e6fb0;color:white;border-radius:8px;padding:10px 20px;text-align:center;font-size:.9rem;font-weight:700;">
+        エアコンのカビ臭や汚れが気になる方へ
+      </div>
+
+      <!-- ②キャッチコピー -->
+      <div class="fv">
+        <h2>知らぬ間に、あなたのエアコンが<br>カビ・ウイルスの温床になっています。</h2>
+        <p>今シーズン、エアコンを分解洗浄しませんか？</p>
+      </div>
+
+      <!-- 共感ゾーン -->
+      <div class="flyer-zone">
+        <h3>こんなこと、気になっていませんか？</h3>
+        <p style="font-size:.85rem;color:#64748b;">□ エアコンをつけるとカビ臭い&nbsp;&nbsp;□ 効きが悪くなった気がする<br>□ お子さまや家族の体調が心配&nbsp;&nbsp;□ 掃除をずっと後回しにしている</p>
+      </div>
+
+      <!-- ③裏付けの証拠（お客様の声） -->
+      <div class="flyer-zone" style="border:2px solid #bae6fd;">
+        <h3 style="color:var(--accent);">&#x1F4AC; お客様から届いた喜びの声</h3>
+        <p style="font-size:.82rem;color:#475569;line-height:1.8;">
+          「カビ臭がなくなりました！家族全員が安心して使えています。」（○○市 30代女性）<br>
+          「電気代が毎月下がりました！また頼みます。」（○○市 40代男性）<br>
+          「作業が丁寧で、説明もわかりやすかったです。」（○○市 60代女性）
+        </p>
+        <p style="font-size:.75rem;color:var(--warn);margin-top:6px;">⚠️ 実際の声に差し替え</p>
+      </div>
+
+      <!-- ④ボディコピー（選ばれる理由） -->
+      <div class="flyer-zone">
+        <h3>おかげさまエアコンが選ばれる理由</h3>
+        <p style="font-size:.85rem;color:#64748b;line-height:1.9;">
+          ① 分解洗浄でカビを根こそぎ除去<br>
+          ② 抗菌・防カビコーティングでキレイが長持ち<br>
+          ③ 冷暖房効率アップ → 電気代節約にも！<br>
+          <span style="color:var(--accent);font-weight:700;">施工実績 ●●件突破！</span>
+        </p>
+        <p style="font-size:.75rem;color:var(--warn);">⚠️ 実際の強み・件数に差し替え</p>
+      </div>
+
+      <!-- ⑤オファー（料金） -->
+      <div class="flyer-cta">
+        <h3>エアコンクリーニング</h3>
+        <div class="price">1台 ¥8,800〜</div>
+        <p style="font-size:.85rem;">出張点検・お見積もり 完全0円</p>
+      </div>
+
+      <!-- ⑥Q&Aリスク対策 -->
+      <div class="flyer-zone" style="background:#f0fdf4;">
+        <h3 style="color:#16a34a;">&#x2753; よくあるご質問</h3>
+        <p style="font-size:.82rem;color:#475569;line-height:2;">
+          <strong>Q: 費用はいくらかかりますか？</strong><br>
+          A: まず無料で点検してお見積もりします。納得してからご依頼ください。<br>
+          <strong>Q: 知らない人が家に来るのが不安です。</strong><br>
+          A: ご安心ください。女性スタッフ対応も可能です。
+        </p>
+      </div>
+
+      <!-- ⑦行動喚起 -->
+      <div style="background:#fff7ed;border:1.5px solid #fcd34d;border-radius:8px;padding:12px 20px;text-align:center;">
+        <p style="font-size:.85rem;color:#92400e;font-weight:700;">🌡️ 夏前に放置すると、カビはどんどん悪化します。今がベストタイミングです！</p>
+      </div>
+
+      <!-- ⑧購入方法 -->
+      <div class="flyer-tel">
+        <p style="font-size:.75rem;opacity:.7;margin-bottom:4px;">まずはお気軽に！</p>
+        <div class="tel">0120-○○○-○○○</div>
+        <p>受付時間 ○時〜○時（年中無休）</p>
+        <p style="font-size:.8rem;margin-top:8px;opacity:.8;">LINEでのご相談 → [QRコード]</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. デザイン方針 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#x1F3A8;</span>デザイン方針</div>
+    <table>
+      <tr><th>デザイン要素</th><th>ご提案内容</th></tr>
+      <tr><td>メインカラー</td><td><strong>青＋白</strong>（清潔感・信頼感を重視）</td></tr>
+      <tr><td>トーン</td><td><strong>プロ感・安心感</strong>を前面に</td></tr>
+      <tr><td>コピー構成</td><td>問題提起 → 共感 → 解決 → CTAの流れ</td></tr>
+      <tr><td>訴求ポイント</td><td>ウイルス・カビの除去 ＋ <strong>電気代節約</strong></td></tr>
+      <tr><td>写真</td><td>スタッフの実写 or 清潔感ある素材</td></tr>
+      <tr><td>電話番号</td><td>チラシ下部に超大きく表示（40〜70代向け）</td></tr>
+    </table>
+  </div>
+
+  <!-- 4. 検索リンク集 -->
+  <h2 class="sep">まず自分で検索してみましょう</h2>
+  <div class="section">
+    <div class="section-title"><span class="icon">&#x1F50D;</span>デザイン参考の探し方 &mdash; 3つのリンク</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:20px;">
+      以下のリンクをクリックすると、エアコンクリーニングのチラシデザイン事例を大量に見られます。
+      「こういう雰囲気にしたい！」と思ったものをスクリーンショットで保存しておいてください。
+    </p>
+    <div class="link-grid">
+      <a class="link-card" href="https://www.google.co.jp/search?q=%E3%82%A8%E3%82%A2%E3%82%B3%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0+%E3%83%81%E3%83%A9%E3%82%B7+%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3+%E5%8F%82%E8%80%83&udm=2" target="_blank">
+        <span class="lc-icon">&#x1F5BC;&#xFE0F;</span>
+        <span class="lc-name">Google 画像検索</span>
+        <span class="lc-desc">「エアコンクリーニング チラシ デザイン 参考」で検索。実際に使われているチラシを大量に確認できます。</span>
+        <span class="lc-url">→ クリックして開く</span>
+      </a>
+      <a class="link-card" href="https://www.canva.com/ja_jp/templates/?query=%E3%82%A8%E3%82%A2%E3%82%B3%E3%83%B3+%E3%83%81%E3%83%A9%E3%82%B7" target="_blank">
+        <span class="lc-icon">&#x270F;&#xFE0F;</span>
+        <span class="lc-name">Canva テンプレート</span>
+        <span class="lc-desc">「エアコン チラシ」テンプレートが11,000件以上。気に入ったものをベースに制作できます。</span>
+        <span class="lc-url">→ クリックして開く</span>
+      </a>
+      <a class="link-card" href="https://jp.pinterest.com/search/pins/?q=%E3%82%A8%E3%82%A2%E3%82%B3%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%20%E3%83%81%E3%83%A9%E3%82%B7" target="_blank">
+        <span class="lc-icon">&#x1F4CC;</span>
+        <span class="lc-name">Pinterest（ピンタレスト）</span>
+        <span class="lc-desc">プロ制作のチラシ事例が豊富。Googleアカウントでログインするとより多く見られます。</span>
+        <span class="lc-url">→ クリックして開く</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 5. デザイン参考事例 -->
+  <h2 class="sep">デザイン参考事例 10選</h2>
+  <div class="section">
+    <div class="section-title"><span class="icon">&#x1F4CB;</span>集客に使われているテクニック &mdash; デザイン事例 解説付き</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:24px;">
+      実際に配布されているチラシやテンプレートから収集した事例です。テンプレートも含まれていますが、それぞれ「集客上うまく機能しているテクニック」に注目して解説しています。
+    </p>
+    <div class="ex-grid">
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 104617.png" alt="電気代節約型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 01</div>
+          <div class="ex-title">電気代節約 × 価格明示型</div>
+          <div class="ex-reason">
+            「年間約9,000円の節約」という具体数値が最大の強み。掃除代が「節約で元が取れる」という視点は、家計を気にする40〜70代の女性に強く刺さります。
+          </div>
+          <ul class="ex-points">
+            <li>節電の具体的な金額で行動の動機を作る</li>
+            <li>価格（¥10,500）が大きくわかりやすい</li>
+            <li>水色・泡の背景が清潔感を演出</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 104818.png" alt="価格ファースト型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 02</div>
+          <div class="ex-title">価格ファースト型</div>
+          <div class="ex-reason">
+            「¥10,000」を最初に大きく見せることで「高そう」という心理的ハードルを払拭。カビ・ホコリ・花粉という3項目で自分の悩みに当てはまりやすくしています。
+          </div>
+          <ul class="ex-points">
+            <li>価格が一番目立つ配置で迷わせない</li>
+            <li>除去対象を明記して不安を具体化</li>
+            <li>3台以上で割引という追加動機</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 104715.png" alt="選ばれる3つの理由型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 03</div>
+          <div class="ex-title">選ばれる3つの理由型</div>
+          <div class="ex-reason">
+            「3つの理由」という構成は読み手が受け取りやすく信頼感を高めます。スタッフキャラクターと女性客のイラストが「安心して頼める」雰囲気を作り出しています。
+          </div>
+          <ul class="ex-points">
+            <li>「なぜ選ぶか」を先に提示して納得感UP</li>
+            <li>キャラクターで初めての不安を和らげる</li>
+            <li>「エアコンの悩み」アイコンで共感を誘う</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 104847.png" alt="3メリットアイコン型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 04</div>
+          <div class="ex-title">3メリット アイコン型</div>
+          <div class="ex-reason">
+            「冷房効率UP・電気代削減・におい軽減」をアイコンバナーで一目で伝えます。キャンペーン期間を前面に出し「今やらないと損」という緊急感を作っています。
+          </div>
+          <ul class="ex-points">
+            <li>アイコンで3メリットを瞬時に伝達</li>
+            <li>「2台目から10%OFF」で複数台の動機づけ</li>
+            <li>電話番号・受付時間・見積無料がすべて揃う</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 114155.png" alt="シンプル清潔型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 05</div>
+          <div class="ex-title">シンプル清潔型</div>
+          <div class="ex-reason">
+            情報を絞ったシンプル構成で、高齢の方でも読みやすい。「節電効果・悪臭除去・カビダニアレルギー対策」という3点をバルーン表示で整理し、スッキリとした印象を与えます。
+          </div>
+          <ul class="ex-points">
+            <li>余白が多く視線が迷わない</li>
+            <li>青ベースの清潔感でプロ感を演出</li>
+            <li>家庭用・業務用の区分けが明確</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 104925.png" alt="スピード・安心型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 06</div>
+          <div class="ex-title">スピード × 安心型</div>
+          <div class="ex-reason">
+            「最短翌日OK！」「複数台お得！」「見積り無料！」の3バナーが上部に並び、頼む前の不安をまとめて解消。スタッフの顔写真で「誰が来るか」の安心感を伝えています。
+          </div>
+          <ul class="ex-points">
+            <li>「最短翌日」で行動の先延ばしを防ぐ</li>
+            <li>スタッフ写真で"知らない人が来る不安"を解消</li>
+            <li>「こんなお悩み」共感ゾーンが効果的</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 114641.png" alt="台数割引段階型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 07</div>
+          <div class="ex-title">台数割引 段階表示型</div>
+          <div class="ex-reason">
+            1台・2台・3台以上の料金を段階的に並べることで「まとめて頼むとお得」と自然に思わせます。客単価が上がりやすく、リピート率も高まる設計です。
+          </div>
+          <ul class="ex-points">
+            <li>¥10,500 &rarr; ¥9,450 &rarr; ¥8,400 の段階が視覚的にわかりやすい</li>
+            <li>業界団体ロゴで信頼感を補強</li>
+            <li>家庭用・業務用を1枚で完結させる構成</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 105036.png" alt="悩み提示フロー型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 08</div>
+          <div class="ex-title">悩み提示 &rarr; 解決フロー型</div>
+          <div class="ex-reason">
+            上部に「効きが悪い・変なにおい・音がうるさい」という悩みを吹き出しで並べ、自分ごとにさせてから大きなタイトルへ誘導。スタッフキャラが親しみやすく初めての不安を和らげます。
+          </div>
+          <ul class="ex-points">
+            <li>冒頭の悩み吹き出しで「私のことだ」と引き込む</li>
+            <li>スタッフのキャラクターで安心感を演出</li>
+            <li>3つのメリット＋価格を下段でまとめる構成</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 114600.png" alt="地域限定キャンペーン型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 09</div>
+          <div class="ex-title">地域限定キャンペーン × 申込書一体型</div>
+          <div class="ex-reason">
+            「地域限定50台」という数量制限で緊急感を演出。セット価格で客単価UP。チラシ下部にFAX申込書を設けることで、すぐ行動できる仕掛けが秀逸です。
+          </div>
+          <ul class="ex-points">
+            <li>「限定50台」の数量制限で今すぐ行動させる</li>
+            <li>セット割引で客単価と付加価値を同時に提供</li>
+            <li>FAX申込書で40〜70代が電話なしで申し込める</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-card">
+        <img src="スクリーンショット 2026-03-27 114415.png" alt="両面チラシFAX型" loading="lazy" />
+        <div class="ex-body">
+          <div class="ex-num">Example 10</div>
+          <div class="ex-title">両面チラシ × FAX申込書型</div>
+          <div class="ex-reason">
+            表面でビジュアル訴求、裏面が申込書という両面構成。業界協会のロゴで信頼感を補強。FAX申込書は「電話が苦手な高齢者」への強力なCTAになります。
+          </div>
+          <ul class="ex-points">
+            <li>表裏の役割分担で情報を整理しやすい</li>
+            <li>協会ロゴで「プロ認定」の安心感をアピール</li>
+            <li>FAX申込書が40〜70代への最強の行動導線</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 6. コピーライティングの考え方 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#x1F4A1;</span>コピーライティングの考え方</div>
+    <table>
+      <tr><th>構成</th><th>ねらい</th><th>対象感情</th></tr>
+      <tr><td>1. 問題提起ヘッドライン</td><td>「カビ・ウイルスが潜んでいる」で危機感を植える</td><td>不安・驚き</td></tr>
+      <tr><td>2. 共感の問いかけ</td><td>「こんなこと、ありませんか？」で経験を呼び起こす</td><td>共感・思い当たり</td></tr>
+      <tr><td>3. なぜ汚れるか</td><td>仕組みを図解で説明して「なるほど」感を作る</td><td>納得・信頼</td></tr>
+      <tr><td>4. 解決策の提示</td><td>「分解洗浄」でスッキリ解決できることを伝える</td><td>期待・安心</td></tr>
+      <tr><td>5. 節電メリット追加</td><td>「電気代節約」で金銭的メリットも提示</td><td>お得感・動機強化</td></tr>
+      <tr><td>6. 無料点検でCTA</td><td>「0円で見てもらえる」でハードルを最大限に下げる</td><td>行動意欲</td></tr>
+      <tr><td>7. 電話番号を超大きく</td><td>40〜70代は電話が最もなじみやすいCTA</td><td>行動</td></tr>
+    </table>
+  </div>
+
+  <!-- 今後の提案：ヒアリングシート -->
+  <h2 class="sep">今後のご提案</h2>
+  <div class="section">
+    <div class="section-title"><span class="icon">&#x1F4AC;</span>2回目以降のチラシをさらに強くするご提案</div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:16px;">
+      初回チラシの配布後、実際のお客様からの声を集めることで、次回のチラシのコピーをさらに精度高く仕上げることができます。以下の項目について、よろしければお客様へのアンケートやヒアリングをお試しください。その内容をそのまま広告の文章に活かします。
+    </p>
+    <table>
+      <tr><th style="width:5%;">#</th><th style="width:50%;">質問</th><th>使う場所</th></tr>
+      <tr><td>Q1</td><td>お客様がエアコンクリーニングを頼もうと思ったきっかけは何ですか？</td><td>ヘッドライン・共感ゾーン</td></tr>
+      <tr><td>Q2</td><td>頼む前はどんな不安がありましたか？（価格？知らない人が来る？など）</td><td>共感ゾーン・安心訴求</td></tr>
+      <tr><td>Q3</td><td>他社と比較しましたか？最終的に選んでいただいた理由は何でしたか？</td><td>「選ばれる理由」セクション</td></tr>
+      <tr><td>Q4</td><td>クリーニング後、一番良かったと感じたことは何ですか？</td><td>メリット・お客様の声</td></tr>
+      <tr><td>Q5</td><td>「また頼みたい」「友人に紹介したい」と思いましたか？その理由は？</td><td>信頼訴求・リピート誘導</td></tr>
+      <tr><td>Q6</td><td>スタッフの接客や作業について、印象に残ったことはありますか？</td><td>スタッフ紹介・安心感演出</td></tr>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>

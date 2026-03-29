@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ファーストビュー設計の考え方｜堀田建設 採用LP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      :root {
+        --navy: #001a3d;
+        --gold: #c5a059;
+        --light: #f8fafc;
+        --white: #fff;
+        --text: #334155;
+        --border: #e2e8f0;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: "Noto Sans JP", sans-serif; background: var(--light); color: var(--text); line-height: 1.8; }
+
+      .page-header { background: var(--navy); padding: 40px 24px; text-align: center; border-bottom: 4px solid var(--gold); }
+      .page-header h1 { font-family: "Outfit", sans-serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+      .page-header p { color: rgba(255,255,255,0.65); font-size: 0.85rem; margin-top: 8px; }
+
+      .container { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+
+      .badge { display: inline-block; background: var(--navy); color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 20px; margin-bottom: 10px; }
+      h2 { font-size: 1.3rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+      .lead { font-size: 0.9rem; color: #64748b; margin-bottom: 28px; }
+
+      /* SECTION */
+      .doc-section { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 24px; border: 1px solid var(--border); }
+      .doc-section h3 { font-size: 1rem; font-weight: 900; color: var(--navy); margin-bottom: 14px; border-left: 4px solid var(--gold); padding-left: 12px; }
+      .doc-section p, .doc-section li { font-size: 0.9rem; line-height: 1.85; }
+      .doc-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+      .doc-section li::before { content: "▶ "; color: var(--gold); font-size: 0.75rem; }
+
+      /* DATA BOX */
+      .data-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+      .data-card { background: var(--light); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 140px; text-align: center; }
+      .data-card .num { font-size: 2rem; font-weight: 900; color: var(--navy); line-height: 1; }
+      .data-card .unit { font-size: 0.85rem; color: var(--gold); font-weight: 700; }
+      .data-card .label { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+
+      /* FV COMPARE */
+      .fv-compare { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+      .fv-card { border-radius: 10px; padding: 20px; }
+      .fv-card.current  { background: #fffbeb; border: 2px solid #f59e0b; }
+      .fv-card.option   { background: #f0fdf4; border: 2px solid #22c55e; }
+      .fv-card.option-b { background: #eff6ff; border: 2px solid #3b82f6; }
+      .fv-card.option-c { background: #fdf4ff; border: 2px solid #a855f7; }
+      .fv-card .fv-tag { font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+      .fv-card.current  .fv-tag { background: #f59e0b; color: #fff; }
+      .fv-card.option   .fv-tag { background: #22c55e; color: #fff; }
+      .fv-card.option-b .fv-tag { background: #3b82f6; color: #fff; }
+      .fv-card.option-c .fv-tag { background: #a855f7; color: #fff; }
+      .fv-card h4 { font-size: 1rem; font-weight: 900; margin-bottom: 8px; line-height: 1.6; }
+      .fv-card.current  h4 { color: #92400e; }
+      .fv-card.option   h4 { color: #15803d; }
+      .fv-card.option-b h4 { color: #1e3a8a; }
+      .fv-card.option-c h4 { color: #6b21a8; }
+      .fv-card p { font-size: 0.82rem; color: #555; margin-bottom: 6px; }
+      .fv-card .copy-note { font-size: 0.78rem; color: #888; margin-top: 6px; font-style: italic; }
+      .fv-card .target-tag { font-size: 0.72rem; background: rgba(0,0,0,0.07); border-radius: 20px; padding: 2px 10px; display: inline-block; margin-top: 6px; }
+
+      /* ROADMAP */
+      .ab-flow { display: flex; flex-direction: column; gap: 0; margin-top: 16px; }
+      .ab-step { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px dashed var(--border); }
+      .ab-step:last-child { border-bottom: none; }
+      .ab-num { width: 36px; height: 36px; min-width: 36px; border-radius: 50%; background: var(--navy); color: var(--gold); font-weight: 900; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+      .ab-body h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+      .ab-body p { font-size: 0.85rem; color: #64748b; }
+
+      /* HIGHLIGHT BOX */
+      .highlight { background: var(--navy); border-radius: 12px; padding: 24px; margin-top: 24px; }
+      .highlight h3 { color: var(--gold); font-size: 0.95rem; font-weight: 900; margin-bottom: 12px; }
+      .highlight p { color: rgba(255,255,255,0.85); font-size: 0.88rem; line-height: 1.85; }
+
+      footer { text-align: center; padding: 28px 24px; font-size: 0.78rem; color: #94a3b8; border-top: 1px solid var(--border); margin-top: 40px; }
+
+      /* PRINT */
+      @media print {
+        body { background: #fff; color: #000; font-size: 10pt; }
+        .page-header { background: #fff !important; border-bottom: 2px solid #000; padding: 16px 0; }
+        .page-header h1 { color: #000 !important; font-size: 14pt; }
+        .page-header p { color: #444 !important; }
+        .badge { background: #000 !important; color: #fff !important; }
+        h2 { color: #000; }
+        .doc-section { border: 1px solid #ccc; box-shadow: none; page-break-inside: avoid; }
+        .doc-section h3 { color: #000; border-left-color: #000; }
+        .data-card { border: 1px solid #ccc; }
+        .data-card .num { color: #000; }
+        .data-card .unit { color: #444; }
+        .fv-card.current { background: #f9f9f9 !important; border-color: #999 !important; }
+        .fv-card.option  { background: #f0f0f0 !important; border-color: #555 !important; }
+        .fv-card.current h4 { color: #000 !important; }
+        .fv-card.option  h4 { color: #000 !important; }
+        .fv-card.current .fv-tag { background: #666 !important; }
+        .fv-card.option  .fv-tag { background: #333 !important; }
+        .highlight { background: #111 !important; page-break-inside: avoid; }
+        .highlight h3 { color: #fff !important; }
+        .highlight p { color: #eee !important; }
+        .doc-section[style*="f97316"] { border-left: 4px solid #333 !important; background: #f9f9f9 !important; }
+        footer { color: #666; border-top: 1px solid #ccc; }
+        a { color: #000; text-decoration: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>ファーストビュー 設計の考え方と今後の展開</h1>
+      <p>堀田建設 採用LP｜Webとしくみをつくる 渥美 © 2026</p>
+    </div>
+
+    <div class="container">
+
+      <!-- SECTION 0: なぜLPが必要なのか -->
+      <div style="margin-bottom:10px;"><span class="badge" style="background:var(--gold); color:var(--navy);">SECTION 00</span></div>
+      <h2 style="color:var(--navy);">なぜ「ホームページがあるのにLPが必要」なのか？</h2>
+      <p class="lead" style="color:#d97706; font-weight:700;">既存の「採用ページ」と、今回作る「採用LP」は役割がまったく異なります。</p>
+
+      <div class="doc-section" style="border:2px solid var(--gold); background:#fffcf2;">
+        <h3 style="border-left-color:#d97706;">1. 「総合カタログ」か、「凄腕の営業マン」か</h3>
+        <p style="margin-bottom:12px;">Web上の役割を例えるなら、以下のようになります。</p>
+        <div class="data-row" style="margin-top:0;">
+          <div class="data-card" style="border-color:#cbd5e1; background:#f8fafc; text-align:left;">
+            <div class="label" style="color:#3b82f6; font-weight:900; font-size:0.9rem; margin-bottom:8px;">🟦 既存のホームページ</div>
+            <strong style="font-size:1.1rem; color:var(--navy); display:block; margin-bottom:8px;">＝「総合案内所（パンフレット）」</strong>
+            <p style="font-size:0.8rem; line-height:1.6; color:#475569;">会社の全体像を正しく、漏れなく伝える非常に重要な場所。しかし情報が豊富である分、求職者が色々な情報に目移りしてしまい<strong>「迷子になって応募ボタンまで辿り着かない」</strong>ケースがあります。</p>
+          </div>
+          <div class="data-card" style="border-color:#f59e0b; background:#fff; text-align:left; box-shadow:0 4px 12px rgba(245,158,11,0.1);">
+            <div class="label" style="color:#d97706; font-weight:900; font-size:0.9rem; margin-bottom:8px;">🟧 今回作る 採用LP</div>
+            <strong style="font-size:1.1rem; color:#92400e; display:block; margin-bottom:8px;">＝「凄腕の営業マン」</strong>
+            <p style="font-size:0.8rem; line-height:1.6; color:#475569;">会社を知らない人に対し、魅力を1ページで一気にプレゼンし、<strong>「迷わせずにそのままLINEへ連れて行く（面接に繋げる）」</strong>ための特攻隊長です。逃げ道をなくし、行動させることに特化しています。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h3>2. ターゲットの「心に刺さる言葉」を分けられる</h3>
+        <p>「新卒」と「中途（経験者）」では、求めている情報が全く違います。<br>
+        メインのHPはどうしても「全員に向けた無難な言葉」になりがちですが、LPであれば一番上の画面（ファーストビュー）で「新卒向け」「経験者向け」と入り口を分け、<strong>それぞれの心に一番響く言葉をダイレクトにぶつける</strong>ことができます。</p>
+      </div>
+
+      <div class="doc-section" style="border:2px solid #ef4444; background:#fef2f2; margin-top:24px;">
+        <h3 style="border-left-color:#b91c1c; color:#b91c1c;">【重要】既存の「採用ページ」はどうするべきか？</h3>
+        <p style="margin-bottom:12px; font-weight:700;">結論：既存の採用ページは非公開（またはLPへの転送）とし、採用窓口は「完全にLPへ一本化」します。</p>
+        <p style="margin-bottom:12px;">専務様のご指摘の通り、現在の公式サイトにある採用ページは<strong>「情報が古い」</strong>状態です。<br>
+        求職者にとって一番のマイナスは、「新しいLPを見た後に、古い情報（退職した社員が載っている、現在の制度と違う等）を見て混乱し、不信感を抱くこと」です。</p>
+        
+        <div style="background: rgba(255,255,255,0.7); border: 1px dashed #fca5a5; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+          <strong style="color: #b91c1c; display: block; margin-bottom: 8px;"><i class="fas fa-exclamation-triangle"></i> 今後の具体策</strong>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 8px; font-size: 0.85rem;"><span style="color:#ef4444; font-weight:bold;">① 古いページは閉鎖：</span>既存の採用ページにアクセスしても、自動で新しいLPへ飛ぶように設定します。</li>
+            <li style="margin-bottom: 8px; font-size: 0.85rem;"><span style="color:#ef4444; font-weight:bold;">② 良い素材だけ移植：</span>既存ページの「良い写真」や「社員の熱い想い」など、今でも使える素材だけを抽出して新しいLPに組み込みます。</li>
+            <li style="font-size: 0.85rem;"><span style="color:#ef4444; font-weight:bold;">③ 情報の一元化：</span>情報の二重管理をやめ、「採用に関する最新情報は、すべて新しいLPを見れば分かる」状態を作ります。</li>
+          </ul>
+        </div>
+        <p style="font-size:0.85rem; color:#7f1d1d;">入り口を2つ残すのではなく、「古い看板を下ろして、最新の特化型LPに完全一本化する」。これが求職者を迷わせず、不信感をゼロにする最適解です。</p>
+      </div>
+
+      <div class="doc-section" style="border:2px solid var(--gold); background:#fffcf2; margin-top:24px;">
+        <h3 style="border-left-color:#d97706;">3. LPを作っただけでは誰も来ない（無人島のレストラン）</h3>
+        <p style="margin-bottom:12px;">「ホームページやLPを作れば勝手に人が来る」わけではありません。<br>
+        LPは内装もメニューも最高な『超豪華なレストラン（凄腕の営業マン）』ですが、今の状態では<strong>『無人島にポツンと建っている（誰も存在を知らない）』</strong>のと同じです。</p>
+        <p style="margin-bottom:24px;">お客さんに来てもらうには、本土から船を出して<strong>『お店までの道（導線）』</strong>を作る必要があります。網（LP）を張っただけでは魚は入らず、魚を網に追い込むための撒き餌（マイナビやSNS）が必要なのです。</p>
+
+        <h4 style="font-size: 1rem; color: var(--navy); margin-bottom: 12px; font-weight: 900; text-align: center;">堀田建設の採用エコシステム（迷わない一本道）</h4>
+        
+        <div style="background: rgba(255,255,255,0.7); border: 2px dashed #cbd5e1; border-radius: 12px; padding: 24px; text-align: center;">
+          
+          <div style="background: #eff6ff; border: 1px solid #93c5fd; padding: 12px; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 4px 6px rgba(59, 130, 246, 0.1);">
+            <strong style="color: #1e3a8a; display: block; font-size: 1.1rem; margin-bottom: 4px;">① 集める（入り口）</strong>
+            <span style="font-size: 0.85rem; color: #475569; font-weight:700;">マイナビ / 合同企業説明会 / Instagram / Web広告</span>
+            <p style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">ここから他のページには行かせず、直接LPへリンクを飛ばす</p>
+          </div>
+          
+          <div style="color: var(--gold); font-size: 1.5rem; margin: 4px 0;"><i class="fas fa-arrow-down"></i></div>
+          
+          <div style="background: #fffbeb; border: 1px solid #fcd34d; padding: 12px; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);">
+            <strong style="color: #92400e; display: block; font-size: 1.1rem; margin-bottom: 4px;">② 伝える（最強の受け皿）</strong>
+            <span style="font-size: 0.85rem; color: #92400e; font-weight:700;">採用特化型LP</span>
+            <p style="font-size: 0.75rem; color: #a16207; margin-top: 4px;">新卒・経験者などターゲットごとに最高のプレゼンをし、感情を動かす</p>
+          </div>
+          
+          <div style="color: var(--gold); font-size: 1.5rem; margin: 4px 0;"><i class="fas fa-arrow-down"></i></div>
+          
+          <div style="background: #f0fdf4; border: 1px solid #86efac; padding: 12px; border-radius: 8px; box-shadow: 0 4px 6px rgba(34, 197, 94, 0.1);">
+            <strong style="color: #166534; display: block; font-size: 1.1rem; margin-bottom: 4px;">③ 繋がる（ゴール）</strong>
+            <span style="font-size: 0.85rem; color: #15803d; font-weight:700;">LINE公式アカウント</span>
+            <p style="font-size: 0.75rem; color: #16a34a; margin-top: 4px;">面接の心理的ハードルを下げ、気軽な質問を促して取りこぼしを完全に防ぐ</p>
+          </div>
+
+        </div>
+
+        <p style="margin-top:20px; font-weight:700; color:#059669; text-align: center; font-size: 1.05rem;">
+          <i class="fas fa-check-circle"></i> 結論：LPを作ることがゴールではありません。<br>
+          <span style="color:#047857; font-size: 0.9rem;">この「①〜③の迷わない一直線」を作ることが、結果的に採用コストを最も下げる戦略です。</span>
+        </p>
+      </div>
+
+      <div class="doc-section" style="margin-top:40px;">
+        <h3 style="border-left-color: var(--navy); color: var(--navy);">4. なぜ「今の採用ページ」ではダメなのか？（LP導入の圧倒的メリット）</h3>
+        <p style="margin-bottom:20px;">
+          既存の採用ページ（WEB会社制作）を使い続けるデメリットと、今回制作した最新LPのメリットを比較します。<br>
+          社長様に<strong>「投資する価値がある（採用コストが下がる）」</strong>と確信いただける、技術とマーケティングの違いです。
+        </p>
+
+        <div class="data-row" style="margin-top:0;">
+          <!-- デメリット（現状） -->
+          <div class="data-card" style="border-color:#fca5a5; background:#fef2f2; text-align:left;">
+            <div class="label" style="color:#b91c1c; font-weight:900; font-size:0.95rem; margin-bottom:12px;">
+              <i class="fas fa-times-circle"></i> 今の採用ページを開き続ける【デメリット】
+            </div>
+            <ul style="padding-left:1.2rem; font-size:0.85rem; color:#7f1d1d; line-height:1.7;">
+              <li style="margin-bottom:8px;"><strong>① いつまでも「情報が古い」</strong><br>
+                更新のたびに外部へ依頼や確認のプロセスが発生し、どうしても時間差が生まれるため、結果的に古い情報が残りやすくなり求職者の不信感を招くリスクがあります。</li>
+              <li style="margin-bottom:8px;"><strong>② 情報が多すぎて「応募へ繋がらない」</strong><br>
+                HPは会社の全体像を伝えるという素晴らしい役割を果たしていますが、採用特化ではないため、求職者が「ここで働きたい！」と感情を動かし直感的に応募ボタンを押す導線になっていません。</li>
+              <li><strong>③ 動作が重く、離脱率が高い</strong><br>
+                システム（WordPress等）の裏側が重く、スマホでの表示速度が遅いため、今の若者は「3秒」でページを閉じてしまいます。</li>
+            </ul>
+          </div>
+
+          <!-- メリット（今回） -->
+          <div class="data-card" style="border-color:#6ee7b7; background:#f0fdf4; text-align:left; box-shadow:0 4px 12px rgba(16,185,129,0.1);">
+            <div class="label" style="color:#047857; font-weight:900; font-size:0.95rem; margin-bottom:12px;">
+              <i class="fas fa-check-circle"></i> 新しい「LP＆仕組み」に切り替える【メリット】
+            </div>
+            <ul style="padding-left:1.2rem; font-size:0.85rem; color:#064e3b; line-height:1.7;">
+              <li style="margin-bottom:8px;"><strong>① 「感情導線」でLINE登録へ直結</strong><br>
+                「悩みの共感→堀田建設なら解決できる理由→働くイメージ」という心理学に基づくストーリーで構成。心が一番動いた瞬間にLINEボタンを置き、応募率を劇的に上げます。</li>
+              <li style="margin-bottom:8px;"><strong>② GA4を駆使した「最速の改善」</strong><br>
+                作って終わりではなく、データ（GA4）で「どこで離脱したか」を監視。<strong>直接サーバーのコードを書き換えて即座に反映できるため、</strong>間に外注を挟むタイムロスがありません。</li>
+              <li><strong>③ 純粋なコード（静的ファイル）による「爆速表示」</strong><br>
+                無駄なシステムを省いた最新のプロ仕様の構成（静的HTML）。スマホで一瞬で表示され、離脱を防ぎます。セキュリティも極めて高く安全です。</li>
+            </ul>
+          </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.7); border: 2px dashed var(--gold); border-radius: 8px; padding: 16px; margin-top:24px; text-align: center;">
+          <strong style="color: var(--navy); display: block; margin-bottom: 8px; font-size:1.1rem;"><i class="fas fa-comment-dots"></i> 社長様へのキラー・トーク</strong>
+          <p style="font-size: 0.95rem; color: #333; line-height: 1.8; text-align:left;">
+            「このLPは、スマホで一瞬で表示され、読んだ人の感情を動かして思わずLINE登録したくなる心理的なストーリー（感情導線）を組み込んでいます。<br><br>
+            そして一番の強みは『作って終わり』ではないことです。データ（GA4）の反響を見ながら<strong>直接サーバーのコードを書き換え、待たずにガンガン改善を回し続ける体制</strong>が組まれています。<br><br>
+            堀田建設の魅力を確実に届け、最速で改善して採用を獲り続ける。これが今回構築した『採用の仕組み』です。だからこそ、古いページは閉じて、こちらのLPに窓口と投資を一本化させてください！」
+          </p>
+        </div>
+      </div>
+
+      <div class="divider" style="height:1px; background:var(--border); margin:40px 0;"></div>
+
+      <!-- SECTION 1: 現FVの設計意図 -->
+      <div style="margin-bottom:10px;"><span class="badge">SECTION 01</span></div>
+      <h2>現在のファーストビューを「未経験者向け」にした理由</h2>
+      <p class="lead">今のFVは「未経験のあなたへ」という言葉から始まります。これは意図的な設計です。</p>
+
+      <div class="doc-section">
+        <h3>① データに基づいたターゲット設定</h3>
+        <p>堀田建設さんのこれまでの採用実績を踏まえ、現状の採用LPのターゲットを「未経験者・地元志向の若手」に絞りました。</p>
+        <div class="data-row">
+          <div class="data-card">
+            <div class="num">73<span class="unit">%</span></div>
+            <div class="label">過去採用の<br>未経験者比率</div>
+          </div>
+          <div class="data-card">
+            <div class="num">17<span class="unit">年</span></div>
+            <div class="label">社員の<br>平均勤続年数</div>
+          </div>
+          <div class="data-card">
+            <div class="num">42<span class="unit">歳</span></div>
+            <div class="label">社員の<br>平均年齢</div>
+          </div>
+        </div>
+        <p style="margin-top:14px;">「未経験から採用し、長く育てる」というモデルが実績として成立していることから、<strong>まずこの層を確実に獲得する設計</strong>を優先しました。</p>
+      </div>
+
+      <div class="doc-section">
+        <h3>② 「ハードルを下げる」ことで応募数を最大化</h3>
+        <p>建設業は「体力勝負・危険・厳しい」というイメージが先行しやすい業種です。特に20代の求職者に対して先入観を取り除き、<strong>「まず話を聞いてみよう」と思わせること</strong>がLPの最初の役割と考えました。</p>
+        <ul>
+          <li>「未経験のあなたへ」で心理的ハードルを下げる</li>
+          <li>「月給23万円〜（1年目）」で生活水準のイメージを持たせる</li>
+          <li>「とりあえず」「いきなり面接はしません」で行動コストを下げる</li>
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h3>③ 「1年目から月給23万円〜」の表記について</h3>
+        <p>社長より「転職者には物足りない」とご指摘をいただきました。これは正しいご指摘です。</p>
+        <p style="margin-top:10px;">正直に申し上げると、この数字はヒアリングで聞いた内容をそのまま載せたもので、特に戦略的な意図はありませんでした。<br>そのため、転職者・経験者向けには物足りない表示になっている可能性があります。<br>給与レンジはすでに把握しています。<strong>どのように見せるか（表現方法・上限との組み合わせ方）を当日の打ち合わせで決定します。</strong></p>
+      </div>
+
+      <!-- SECTION 2: FV案の比較 -->
+      <div style="margin-bottom:10px; margin-top:40px;"><span class="badge">SECTION 02</span></div>
+      <h2>ファーストビューのコピー案 比較（全4案）</h2>
+      <p class="lead">現FV（案A）の課題を踏まえ、経験者・転職者にも届く方向性の案を3つ追加しました。どの雰囲気が堀田建設に合うか、打ち合わせで絞り込みましょう。</p>
+
+      <div class="fv-compare">
+
+        <!-- 案A：現状 -->
+        <div class="fv-card current">
+          <span class="fv-tag">案A（現状）未経験絞り込み型</span>
+          <h4>未経験のあなたへ。<br>「建設業、やってみようかな」<br>その一歩を、全力で守ります。</h4>
+          <p>サブ：資格取得費用0円。残業月13.5h（昨年度実績）。地元・三重で働き続ける。1年目から月給23万円〜。</p>
+          <span class="target-tag">👤 未経験・地元志向の若手向け</span>
+          <p class="copy-note">⚠ 経験者・転職者は冒頭で「自分には関係ない」と感じる可能性あり</p>
+        </div>
+
+        <!-- 案B：対象拡大型 -->
+        <div class="fv-card option">
+          <span class="fv-tag">案B 対象拡大型</span>
+          <h4>未経験でも、転職でも。<br>「建設業、やってみようかな」<br>その一歩を、全力で守ります。</h4>
+          <p>サブ：資格取得費用0円。残業月13.5h。初任給22.3万〜25.3万円（学歴別）。経験・資格により優遇。</p>
+          <span class="target-tag">👤 未経験者＋転職者・経験者 両方</span>
+          <p class="copy-note">✅ 現コピーの骨格を活かしつつ、冒頭1行を変えるだけ。最小変更で最大効果</p>
+        </div>
+
+        <!-- 案C：会社軸型 -->
+        <div class="fv-card option-b">
+          <span class="fv-tag">案C 会社軸型（堀田建設の強みで語る）</span>
+          <h4>三重で、100年続く会社で働く。<br>未経験歓迎・経験者優遇。<br>腕と年収を、ここで伸ばす。</h4>
+          <p>サブ：初任給22.3万〜25.3万円。モデル年収：32歳480万 / 36歳570万 / 48歳750万。残業月13.5h。資格取得費用0円。</p>
+          <span class="target-tag">👤 30代以上の転職者・年収アップ志向</span>
+          <p class="copy-note">📌 年収の具体数字が刺さる。若手には少し硬い印象になる可能性あり</p>
+        </div>
+
+        <!-- 案D：ストーリー型 -->
+        <div class="fv-card option-c">
+          <span class="fv-tag">案D ストーリー型（感情に訴える）</span>
+          <h4>ここで始めた人が、17年続けている。<br>未経験でも転職でも、<br>長く働ける理由がある。</h4>
+          <p>サブ：社員平均勤続17年。残業月13.5h。初任給22.3万〜25.3万円。48歳モデル年収750万円。</p>
+          <span class="target-tag">👤 安定・長く働きたい層（未経験〜経験者）</span>
+          <p class="copy-note">✅「17年続けた」という実績が信頼感を生む。不安層・家庭持ちの転職者に効きやすい</p>
+        </div>
+
+      </div>
+
+      <div class="doc-section" style="margin-top:16px;">
+        <h3>給与表示の改善案（確定データ版）</h3>
+        <p style="margin-bottom:12px;">以下の表示パターンを検討中です。</p>
+        <ul>
+          <li><strong>現状（旧）：</strong>「1年目から月給23万円〜」→ 旧データかつ未経験スタート感が強い</li>
+          <li><strong>シンプル更新：</strong>「初任給22.3万〜25.3万円（学歴別）」→ 正確だが上限感がない</li>
+          <li><strong>レンジ表示：</strong>「月給22.3万〜 ／ 経験・資格により大幅優遇」→ 転職者の期待値を下げない</li>
+          <li><strong>モデル年収型（おすすめ）：</strong>「32歳・480万 / 36歳・570万 / 48歳・750万」→ 経験者が具体的にキャリアをイメージできる</li>
+        </ul>
+        <div class="data-row" style="margin-top:16px;">
+          <div class="data-card">
+            <div class="num">22.3<span class="unit">万〜</span></div>
+            <div class="label">初任給（高卒）<br>2026年4月〜</div>
+          </div>
+          <div class="data-card">
+            <div class="num">25.3<span class="unit">万</span></div>
+            <div class="label">初任給（大卒）<br>2026年4月〜</div>
+          </div>
+          <div class="data-card">
+            <div class="num">480<span class="unit">万</span></div>
+            <div class="label">モデル年収<br>32歳・主任</div>
+          </div>
+          <div class="data-card">
+            <div class="num">750<span class="unit">万</span></div>
+            <div class="label">モデル年収<br>48歳・課長</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: A/Bテスト計画 -->
+      <div style="margin-bottom:10px; margin-top:40px;"><span class="badge">SECTION 03</span></div>
+      <h2>今後の進め方（改善サイクル計画）</h2>
+      <p class="lead">LP公開後、データと感覚を合わせながら段階的に改善します。</p>
+
+      <div class="doc-section">
+        <div class="ab-flow">
+          <div class="ab-step">
+            <div class="ab-num">1</div>
+            <div class="ab-body">
+              <h4>1〜2ヶ月目：現状（案A）でデータ収集</h4>
+              <p>GA4でアクセス数・LINEクリック率・滞在時間を計測。ベースラインを把握する。</p>
+            </div>
+          </div>
+          <div class="ab-step">
+            <div class="ab-num">2</div>
+            <div class="ab-body">
+              <h4>打ち合わせで方向性を合意</h4>
+              <p>「経験者・転職者も積極採用したいか」を社長・専務と確認し、案Bの方向性を決める。</p>
+            </div>
+          </div>
+          <div class="ab-step">
+            <div class="ab-num">3</div>
+            <div class="ab-body">
+              <h4>案B（経験者向け）に切り替えて2〜3週間テスト</h4>
+              <p>FVのキャッチコピーと給与表示を変更し、LINEクリック率の変化を見る。</p>
+            </div>
+          </div>
+          <div class="ab-step">
+            <div class="ab-num">4</div>
+            <div class="ab-body">
+              <h4>3〜4ヶ月目：データを元に最適案を確定</h4>
+              <p>反応が良かった案を本採用。必要に応じてさらに改良する。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section" style="border-left: 4px solid #f97316; background: #fff7ed;">
+        <h3 style="border-left: none; padding-left: 0; color: #c2410c;">⚠️ 懸念事項：最初はアクセス数が少なく、データ計測が難しい</h3>
+        <p>採用LPは一般的なECサイトと異なり、公開直後はアクセス数が限られます。<br>
+        月に数十〜百数十程度の訪問者数では、統計的に意味のある比較判断（A/Bテスト）は難しいのが現実です。</p>
+        <p style="margin-top:12px;"><strong>そのため、以下の「定性的な改善アプローチ」を並行して活用します：</strong></p>
+        <ul style="margin-top:10px;">
+          <li><strong>GA4の定性シグナルを見る</strong> — スクロール率・LINEボタンクリック数・滞在時間など、数が少なくても傾向はわかる指標を使う</li>
+          <li><strong>Microsoft Clarity（無料）を導入する</strong> — ヒートマップとセッション録画で「どこで止まっているか」を視覚的に確認。少数ユーザーでも行動が見える</li>
+          <li><strong>定性ヒアリングを最優先にする</strong> — 面談時に「どこで知ったか・なぜ応募しようと思ったか」を直接聞く。数字より速く、確実な改善につながる</li>
+        </ul>
+        <p style="margin-top:12px;">最初はデータより「社長・専務・担当者の感覚」と「応募者の声」を元に改善するのが現実的です。</p>
+      </div>
+
+      <div class="highlight">
+        <h3><i class="fa-solid fa-star"></i> 渥美からのひとこと</h3>
+        <p>
+          現FVが「ターゲットを絞りすぎている」というご指摘は正しいと思います。<br>
+          FVの方向性・給与の見せ方・修正のタイミングについても、<strong>打ち合わせの中で皆さんのご意見を聞きながら、一緒に最適な選択をしていきたいと思っています。</strong><br><br>
+          GA4のデータや面談時の応募者の声なども参考にしながら、長期的に改善を続けていきましょう。
+        </p>
+      </div>
+
+    </div>
+
+    <footer>
+      Webとしくみをつくる｜web-tsukuru.jp — 堀田建設 採用LP 設計資料 © 2026
+    </footer>
+  </body>
+</html>

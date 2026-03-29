@@ -1,0 +1,1923 @@
+/* ============================================================
+   ARC Construction Recruitment LP — Type-E
+   Single-file CSS. Mobile-first. 1024px breakpoint only.
+   ============================================================ */
+
+/* ============================================================
+   0. CSS Variables
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --color-primary:   #e84411;  /* brand orange-red */
+  --color-dark:      #1a2b33;  /* dark slate */
+  --color-gray-100:  #f5f5f5;
+  --color-gray-200:  #ebebeb;
+  --color-gray-400:  #999;
+  --color-gray-700:  #444;
+  --color-white:     #ffffff;
+  --color-line:      #06C755;
+
+  /* Spacing */
+  --sp-xs:   8px;
+  --sp-sm:   16px;
+  --sp-md:   24px;
+  --sp-lg:   40px;
+  --sp-xl:   64px;
+  --sp-2xl:  80px;
+
+  /* Section padding (mobile) */
+  --section-px: 24px;
+  --section-py: 48px;
+
+  /* Header */
+  --header-h: 64px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+
+  /* Typography */
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --font-serif: 'Zen Old Mincho', serif;
+  --font-en: 'Poppins', sans-serif;
+
+  /* Transition */
+  --transition: 0.25s ease;
+}
+
+/* ============================================================
+   1. Reset & Base
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-dark);
+  background: var(--color-white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; }
+
+/* ============================================================
+   2. Typography Helpers
+   ============================================================ */
+.section-label {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--sp-sm);
+}
+
+.section-title {
+  font-family: var(--font-serif); /* 明朝体統一 */
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--sp-md);
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--color-gray-700);
+  line-height: 1.8;
+  max-width: 600px;
+  text-wrap: pretty;           /* 孤立語防止 */
+}
+
+/* ============================================================
+   3. Layout Helpers
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--section-px);
+}
+
+section {
+  padding: var(--section-py) 0;
+}
+
+.section-bg {
+  background-color: var(--color-gray-100);
+}
+
+.section-dark {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   4. Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition), opacity var(--transition);
+  text-decoration: none;
+}
+
+.btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-line {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-lg {
+  font-size: 1rem;
+  padding: 16px 36px;
+  border-radius: 10px;
+}
+
+/* ============================================================
+   5. Header
+   ============================================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;              /* 初期: 1.5倍(64×1.5) */
+  background: var(--color-white);
+  z-index: 1000;
+  transition: height 0.35s ease, box-shadow var(--transition);
+}
+
+.header.compact {
+  height: var(--header-h);     /* スクロール後: 64px */
+}
+
+.header.compact .logo-main {
+  font-size: 36px;             /* スクロール後: 通常サイズ */
+}
+
+.header.compact .logo-sub {
+  font-size: 12px;             /* スクロール後: 通常サイズ */
+}
+
+.header.scrolled {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 40px;           /* 全幅: max-widthၪ除、paddingのみ */
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-main {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 36px;             /* モバイル: 通常サイズ（mobile-first） */
+  font-weight: bold;
+  color: var(--color-dark);
+  line-height: 1;
+  letter-spacing: -1px;
+  position: relative;
+  transition: font-size 0.3s ease;
+}
+
+.logo-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #e60012;
+  border-radius: 50%;
+  margin-left: 2px;
+  vertical-align: super;
+}
+
+.logo-sub {
+  font-family: var(--font-sans);
+  font-size: 12px;             /* モバイル: 通常サイズ */
+  font-weight: 500;
+  color: var(--color-dark);
+  letter-spacing: 0.1em;
+  transition: font-size 0.3s ease;
+}
+
+/* Desktop Nav — hidden below 1024px */
+.nav {
+  display: none;
+}
+
+/* Hamburger — shown below 1024px */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-dark);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile Nav Drawer */
+.nav-drawer {
+  position: fixed;
+  inset: 0;
+  background: var(--color-white);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--header-h) + 24px) var(--section-px) 40px;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  overflow-y: auto;
+}
+
+.nav-drawer.open {
+  transform: translateX(0);
+}
+
+.nav-drawer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--sp-lg);
+}
+
+.nav-drawer li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--color-gray-200);
+  color: var(--color-dark);
+}
+
+.nav-drawer li a::after {
+  content: '›';
+  font-size: 1.4rem;
+  color: var(--color-primary);
+}
+
+.nav-drawer .drawer-cta {
+  margin-top: auto;
+}
+
+.nav-drawer .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+}
+
+/* Header CTA (desktop only) */
+.header-cta {
+  display: none;
+}
+
+/* ============================================================
+   6. Hero Section
+   ============================================================ */
+
+/* === アニメーション keyframes === */
+@keyframes heroScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes lineDraw {
+  0%   { height: 0;     transform: translateY(0); }
+  50%  { height: 120px; transform: translateY(0); }
+  100% { height: 0;     transform: translateY(120px); }
+}
+
+@keyframes lineDrawMobile {
+  0%   { height: 0;     transform: translateY(0); }
+  50%  { height: 107px; transform: translateY(0); }    /* 円の1/3の長さ */
+  100% { height: 0;     transform: translateY(107px); } /* 円の下端に接続 */
+}
+
+@keyframes slideInNews {
+  0%   { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideOutNews {
+  0%   { transform: translateX(0);     opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+/* === Hero 基本 === */
+.hero {
+  margin-top: 0;             /* ヘッダーはfixed、heroはtopから */
+  position: relative;
+  overflow: visible;         /* 赤丸がはみ出せるように */
+  background: var(--color-white);
+  height: 100vh;
+  min-height: 600px;
+}
+
+/* 画像マーキーラッパー：ヘッダー下から info box 上まで */
+.hero-marquee-wrap {
+  position: absolute;
+  top: 96px;                 /* 初期 header高さ(96px)に合わせる */
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  overflow: hidden;
+}
+
+.hero-marquee-track {
+  display: flex;
+  height: 100%;
+  width: max-content;          /* コンテンツ幅で計算(-50%が正確に動く) */
+  gap: 10px;
+  animation: heroScroll 15s linear infinite;
+  animation-play-state: paused; /* 画像ロード完了後にJSでrunningに切替 */
+  will-change: transform;
+}
+
+.hero-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.hero-marquee-item {
+  flex-shrink: 0;
+  width: auto;
+  aspect-ratio: 1 / 1;       /* 正方形 */
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.hero-marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* === 赤丸デコレーション (Type-D .hero-left-decoration 相当) === */
+.hero-decoration {
+  position: absolute;
+  bottom: 150px;               /* モバイル: info-boxの上まで上げる */
+  left: -100px;
+  width: 200px;               /* モバイル: 320px→200pxに縮小 */
+  height: 200px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  z-index: 9;
+  pointer-events: none;
+  box-shadow: 10px 10px 32px rgba(0,0,0,0.15);
+  overflow: visible;
+}
+
+/* 縦ライン—円の::afterではなくヒーロー内の独立要素を使用 */
+/* (hero-decoration::after は border-radiusクリッピング設計にシールするため削除済み) */
+
+/* 圓の内側から変わらず園の下端に教占 */
+.hero-line {
+  display: none;             /* モバイルは非表示 */
+  position: absolute;
+  left: 10px;
+  bottom: 150px;
+  width: 2px;
+  height: 240px;
+  background: rgba(255,255,255,0.85);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* テキスト — catch labelに準ずるため .hero-catch 内で管理 */
+
+/* === Hero overlay === */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 12;               /* decoration(z:9)より上 → テキストが前面に */
+}
+
+/* === キャッチコピー (左下、赤丸の上に層) === */
+.hero-catch {
+  position: absolute;
+  bottom: 200px;             /* モバイル: info-box(120px)+予備マージン */
+  left: var(--section-px);
+  pointer-events: auto;
+  z-index: 12;
+}
+
+.hero-catch-label {
+  font-family: var(--font-en);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  margin-bottom: 6px;
+}
+
+.hero-catch-title {
+  color: var(--color-white);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: row;
+  align-items: center;         /* 縦方向中央揃え */
+  gap: 10px;
+}
+
+/* "Build" "Build" 縦積み (Type-D .design-words 相当) */
+.hero-build-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;                 /* BuildとBuildの間隔 */
+}
+
+/* "Build" — Poppins太字 (Type-D .hero-text-line 相当) */
+.hero-build-text {
+  font-family: var(--font-en);
+  font-size: clamp(1.8rem, 8vw, 5rem);
+  font-weight: 600;          /* SemiBold: 500より少し太く */
+  line-height: 0.9;
+  color: var(--color-white);
+}
+
+/* "IT, Your Life." — Allura手書き (Type-D .handwritten-accent 相当) */
+.hero-handwritten {
+  font-family: 'Allura', cursive;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 11vw, 7.5rem);
+  line-height: 0.9;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* === Info Box (右下 Type-D準拠) === */
+.hero-info-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: auto;
+  width: auto;
+  min-width: min(340px, 90vw);
+  height: 120px;
+  background: var(--color-white);
+  border-top-left-radius: 40px;
+  z-index: 8;                /* decoration(z:9)の下 → 円が白スペースにかかる */
+  pointer-events: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px 0 36px;
+}
+
+.info-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--section-px);
+  gap: 6px;
+}
+
+.info-item.active {
+  display: flex;
+  animation: slideInNews 3s cubic-bezier(0.23,1,0.32,1) forwards;
+}
+
+.info-item.exit {
+  display: flex;
+  animation: slideOutNews 3s cubic-bezier(0.23,1,0.32,1) forwards;
+}
+
+.info-date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--color-gray-400);
+}
+
+.info-badge {
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.info-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-dark);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   7. About Section
+   ============================================================ */
+.about {
+  background: var(--color-white);
+}
+
+.about-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.about-text .section-title {
+  font-family: var(--font-serif);
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  color: var(--color-gray-700);
+  line-height: 1.9;
+}
+
+/* ============================================================
+   8. Data Section
+   ============================================================ */
+.data {
+  background: var(--color-gray-100);
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+}
+
+.data-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 16px 12px;          /* モバイル: コンパクト化 */
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* アイコン円 */
+.data-icon {
+  width: 40px;                 /* モバイル: 56px→40px */
+  height: 40px;
+  background: #FEE8E2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  color: var(--color-primary);
+}
+
+.data-number {
+  font-family: var(--font-en);
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 600;          /* 細字 */
+  color: var(--color-dark);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.data-number-unit {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.data-label {
+  font-size: 0.78rem;
+  color: var(--color-gray-400);
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   9. Works Section
+   ============================================================ */
+.works-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.works-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+
+/* Padding hack for image */
+.works-card-img {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+}
+
+.works-card-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.works-card-body {
+  padding: var(--sp-md);
+}
+
+.works-card-tag {
+  font-family: var(--font-en);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.works-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.works-card-desc {
+  font-size: 0.88rem;
+  color: var(--color-gray-700);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   10. Strengths Section
+   ============================================================ */
+.strengths {
+  background: var(--color-white);
+}
+
+.strengths-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.strength-item {
+  display: flex;
+  gap: var(--sp-md);
+  padding: var(--sp-lg) 0;
+  border-bottom: 1px solid var(--color-gray-200);
+  align-items: flex-start;
+}
+
+.strength-item:last-child {
+  border-bottom: none;
+}
+
+.strength-num {
+  font-family: var(--font-en);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--color-gray-200);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.strength-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--color-dark);   /* ダークネイビー */
+  border-radius: 12px;             /* 角丸四角 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-white);
+  transition: background 0.25s ease;
+}
+
+.strength-item:hover .strength-icon {
+  background: var(--color-primary); /* ホバーでオレンジに反転 */
+}
+
+.strength-content { flex: 1; }
+
+.strength-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-dark);
+}
+
+.strength-desc {
+  font-size: 0.88rem;
+  color: var(--color-gray-700);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   11. Training Section
+   ============================================================ */
+.training {
+  background: var(--color-gray-100);
+}
+
+.training__main-title {
+  text-align: center;
+  margin-bottom: var(--sp-2xl);
+}
+
+/* Trainingセクションのsection-labelを中央小整列 */
+.training .section-label {
+  display: block;
+  text-align: center;
+}
+
+/* POINTポイント本体 - Type-D方式 */
+.pt-point {
+  margin-bottom: 80px;
+  position: relative;
+  padding-left: 20px;          /* モバイル: バッジなしシンプル */
+  border-left: 3px solid var(--color-primary); /* モバイル: プライマリー芳線強調 */
+  margin-left: 0;
+}
+
+.pt-point:last-child {
+  margin-bottom: 0;
+}
+
+/* バッジ - Type-Dと同じrotate技法 */
+.pt-badge {
+  display: inline-flex;        /* モバイル: フラットピルラベル */
+  position: static;            /* インライン配置 */
+  transform: none;
+  width: auto;
+  height: auto;
+  padding: 4px 14px;
+  border-radius: 20px;         /* ピル形状 */
+  border-bottom-left-radius: 20px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #bf3008 100%);
+  color: var(--color-white);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1;
+}
+
+.pt-badge-content {
+  transform: none;             /* モバイル: ピルなので回転不要 */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pt-badge-label {
+  font-family: var(--font-en);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.pt-badge-num {
+  font-family: var(--font-en);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.pt-body {
+  padding-left: 0;             /* モバイル: バッジなしなのでインデント不要 */
+  padding-top: 4px;
+}
+
+.pt-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: var(--sp-md);
+}
+
+/* タイムライン */
+.pt-timeline {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--sp-sm);
+  margin-bottom: var(--sp-sm);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pt-timeline-bar {
+  display: none;               /* モバイル: バー非表示（各カード内に期間を表示） */
+  height: 50px;
+  margin-bottom: 24px;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.pt-phase {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;         /* モバイル: バー3分割で潰れないよう縮小 */
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+  /* border-radiusなし → コンテナのoverflow:hiddenが担当 */
+}
+
+/* Type-D配色そのまま */
+.pt-phase--1 { background: #1e3a5f; } /* ダークネイビー */
+.pt-phase--2 { background: #2d5080; } /* ライトネイビー */
+.pt-phase--3 { background: #00a896; } /* ティール */
+
+.pt-cards {
+  display: grid;
+  grid-template-columns: 1fr;  /* モバイル: 1カラム */
+  gap: 16px;
+}
+
+.pt-card {
+  border-radius: 12px;       /* 角丸仕様 */
+  overflow: hidden;
+  background: #f7fafc;       /* Type-D准拠 */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.pt-card-header {
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: 8px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.pt-card-period {
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+}
+
+.pt-card-body { padding: 10px; }
+
+.pt-card-list { list-style: none; margin-bottom: 6px; }
+
+.pt-card-list li {
+  font-size: 0.72rem;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.pt-card-list li:last-child { border-bottom: none; }
+
+.pt-card-note {
+  font-size: 0.68rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.pt-desc {
+  font-size: 0.85rem;
+  color: var(--color-gray-700);
+  line-height: 1.7;
+  margin-top: var(--sp-sm);
+}
+
+/* サポートグリッド */
+.pt-support-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-md);
+}
+
+.pt-support-item {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pt-support-img { aspect-ratio: 16/9; overflow: hidden; }
+
+.pt-support-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.pt-support-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 12px 16px 4px;
+  color: var(--color-dark);
+}
+
+.pt-support-text {
+  font-size: 0.85rem;
+  color: var(--color-gray-700);
+  line-height: 1.7;
+  padding: 0 16px 16px;
+}
+
+/* キャリアパス */
+.pt-career {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--sp-lg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pt-career-img { border-radius: var(--radius-sm); overflow: hidden; }
+
+.pt-career-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* キャリアステップリスト */
+.pt-career-steps {
+  list-style: none;
+  margin: var(--sp-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pt-career-steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--color-dark);
+  line-height: 1.5;
+}
+
+.pt-step-year {
+  flex-shrink: 0;
+  background: #1e3a5f;
+  color: var(--color-white);
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.pt-btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-decoration: none;
+  padding: 12px 20px;
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), color var(--transition);
+  margin-top: var(--sp-sm);
+}
+
+.pt-btn-arrow:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+/* ============================================================
+   12. Members Section (Marquee)
+   ============================================================ */
+.members {
+  background: var(--color-white);
+  overflow: hidden;
+}
+
+.members-marquee {
+  display: flex;
+  width: max-content;        /* 正確な幅計算でループを確実に */
+  gap: 16px;
+  animation: memberScroll 35s linear infinite;
+  will-change: transform;
+  padding: var(--sp-sm) 0;
+}
+
+.members-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes memberScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.member-card {
+  flex-shrink: 0;
+  width: 220px;              /* 160px→220pxでType-D顧に */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.member-card img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: top;      /* 顏を上部に固定して下クリップを解消 */
+}
+
+.member-card-info {
+  padding: 8px 10px;
+}
+
+.member-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.member-role {
+  font-size: 0.75rem;
+  color: var(--color-gray-400);
+}
+
+/* ============================================================
+   13. Professionals Section
+   ============================================================ */
+.professionals {
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.professionals .section-title {
+  color: var(--color-white);
+}
+
+.professionals .section-desc {
+  color: rgba(255,255,255,0.7);
+}
+
+.pro-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  margin-top: var(--sp-xl);
+}
+
+.pro-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pro-card-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.pro-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.pro-card-body {
+  padding: var(--sp-md);
+}
+
+.pro-card-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pro-card-role {
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: var(--sp-sm);
+}
+
+.pro-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   14. Voice Section
+   ============================================================ */
+.voice {
+  background: var(--color-gray-100);
+}
+
+/* Type-D方式：縦2枚リスト */
+.voice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.voice-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;      /* モバイル:縦積み */
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.voice-card-avatar-area {
+  flex-shrink: 0;
+  width: 150px;
+  text-align: center;
+}
+
+.voice-card-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 12px;
+}
+
+.voice-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.voice-card-meta {
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--color-dark);
+}
+
+.voice-card-meta strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.voice-card-meta small {
+  color: var(--color-gray-400);
+}
+
+.voice-card-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-dark);
+}
+
+/* ============================================================
+   15. President Section
+   ============================================================ */
+.president {
+  background: var(--color-white);
+}
+
+.president-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.president-img {
+  border-radius: var(--radius-md);
+  aspect-ratio: 4/3;
+  position: relative;
+}
+
+.president-img::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid rgba(212, 98, 15, 0.45);
+  border-radius: var(--radius-md);
+}
+
+.president-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
+  position: relative;
+  z-index: 1;                  /* ::afterの上に重ねる */
+}
+
+.president-message {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--color-gray-700);
+}
+
+.president-name {
+  margin-top: var(--sp-md);
+  font-size: 1.5rem;           /* 2周り大きく */
+  font-family: var(--font-serif); /* 明朝体 */
+  font-weight: 700;
+}
+
+.president-title {
+  font-size: 0.85rem;
+  color: var(--color-gray-400);
+}
+
+/* ============================================================
+   16. Company Info Section
+   ============================================================ */
+.company {
+  background: var(--color-gray-100);
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.company-table tr {
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.company-table td {
+  padding: 14px 8px;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.company-table td:first-child {
+  font-weight: 700;
+  color: var(--color-dark);
+  width: 120px;
+  white-space: nowrap;
+}
+
+.company-table td:last-child {
+  color: var(--color-gray-700);
+}
+
+/* ============================================================
+   17. Job Requirements Section
+   ============================================================ */
+.jobs {
+  background: var(--color-white);
+}
+
+.jobs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.job-card {
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.job-card-header {
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: var(--sp-md);
+}
+
+.job-card-tag {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.job-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.job-card-subtitle {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 4px;
+}
+
+.job-card-body {
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.job-detail {
+  display: flex;
+  gap: 12px;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--color-gray-200);
+  padding-bottom: 14px;
+}
+
+.job-detail:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.job-detail-label {
+  font-weight: 700;
+  color: var(--color-dark);
+  flex-shrink: 0;
+  width: 80px;
+}
+
+.job-detail-value {
+  color: var(--color-gray-700);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.job-detail-value small {
+  font-size: 0.78rem;
+  color: var(--color-gray-400);
+}
+
+.job-benefit-note {
+  margin-top: 48px;
+  padding: 16px 24px;
+  background: var(--color-gray-100);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--color-gray-700);
+  text-align: center;
+  line-height: 2;
+}
+
+/* ============================================================
+   18. FAQ Section
+   ============================================================ */
+.faq {
+  background: #f2f2f2;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-sm);
+  padding: var(--sp-md) 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-dark);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: transform var(--transition);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 0 var(--sp-md);
+  font-size: 0.9rem;
+  color: var(--color-gray-700);
+  line-height: 1.8;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
+}
+
+/* ============================================================
+   19. Recruit CTA Section
+   ============================================================ */
+.recruit {
+  background: var(--color-white);
+  text-align: center;
+}
+
+.recruit-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: var(--sp-md);
+  color: var(--color-dark);
+}
+
+.recruit-desc {
+  font-size: 0.95rem;
+  color: var(--color-gray-700);
+  line-height: 1.9;
+  margin-bottom: var(--sp-xl);
+}
+
+.recruit-img {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--sp-xl);
+  aspect-ratio: 16/9;
+}
+
+.recruit-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recruit-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.recruit-note {
+  font-size: 0.8rem;
+  color: var(--color-gray-400);
+}
+
+/* ============================================================
+   19b. Back to Top Button
+   ============================================================ */
+#backToTop {
+  position: fixed;
+  bottom: 28px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 999;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* ============================================================
+   20. Footer
+   ============================================================ */
+.footer {
+  background: var(--color-dark);
+  color: rgba(255,255,255,0.6);
+  padding: var(--sp-xl) 0 var(--sp-lg);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.footer-logo .logo-main {
+  color: var(--color-white);
+  font-size: 28px;
+}
+
+.footer-logo .logo-sub {
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: var(--color-white); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--sp-md);
+}
+
+/* ============================================================
+   21. Scroll Reveal
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   22. Wave Divider
+   ============================================================ */
+.wave {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-bottom: -1px;
+}
+
+.wave svg {
+  display: block;
+  width: 100%;
+}
+
+/* ============================================================
+   23. DESKTOP OVERRIDES @media (min-width: 1024px)
+   ============================================================ */
+@media (min-width: 1024px) {
+
+  :root {
+    --section-px: 60px;
+    --section-py: 80px;
+  }
+
+  /* Header */
+  .hamburger { display: none; }
+  .nav-drawer { display: none !important; }
+
+  /* Logo: デスクトップでスクロール前のみ大きく */
+  .logo-main { font-size: 52px; }
+  .logo-sub  { font-size: 16px; }
+
+  /* Members section desc: デスクトップは1行に */
+  .members .section-desc { max-width: none; }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;             /* 全幅ヘッダーに合わせて広めに */
+    margin-left: auto;
+  }
+
+  .nav a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-gray-700);
+    transition: color var(--transition);
+  }
+
+  .nav a:hover { color: var(--color-primary); }
+
+  .header-cta {
+    display: flex;
+    margin-left: 28px;     /* 全幅化後の辺りへの遅染角 */
+  }
+
+  .hero-marquee-wrap {
+    bottom: 40px;
+  }
+
+  .hero-marquee-item {
+    aspect-ratio: 1 / 1;
+    width: auto;
+    border-radius: 20px;
+  }
+
+  .hero-catch {
+    bottom: 60px;
+    left: var(--section-px);
+  }
+
+  .hero-catch-label {
+    font-size: 11px;
+  }
+
+  .hero-decoration {
+    width: 360px;
+    height: 360px;
+    left: -140px;
+    bottom: -10px;            /* -60px + 50px 上げ */
+  }
+
+  /* hero-line: PC用は円のBottomが-10pxのため別途設定 */
+  .hero-line {
+    display: block;          /* PCのみ表示 */
+    bottom: -10px;           /* PC: 円のBottom値と一致 */
+    left: 20px;              /* 10px右に移動 */
+    height: 240px;
+  }
+
+  .hero-info-box {
+    bottom: 30px;
+    min-width: 600px;
+    height: 140px;
+    padding: 30px 90px 30px 45px;
+    border-top-left-radius: 40px;
+  }
+
+  /* About */
+  .about-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-2xl);
+  }
+
+  .about-text { flex: 1; }
+  .about-img {
+    flex: 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  /* Data */
+  .data-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .data-card { padding: var(--sp-lg) var(--sp-md); }  /* desktop: 通常サイズ */
+  .data-icon { width: 56px; height: 56px; margin-bottom: 16px; } /* desktop復元 */
+
+  /* Works */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-md);
+  }
+
+  /* Strengths */
+  .strength-item {
+    gap: var(--sp-lg);
+  }
+
+  .strength-num {
+    font-size: 4rem;
+    width: 70px;
+  }
+
+  .strength-content {
+    display: flex;
+    gap: var(--sp-xl);
+    align-items: flex-start;
+  }
+
+  .strength-text { flex: 1; }
+
+  /* Training */
+  /* Training: desktopでバッジ・装飾を復元 */
+  .pt-badge {
+    display: flex;             /* プラックス → 元のピンバッジ */
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    border-bottom-left-radius: 0;
+    transform: rotate(-45deg);
+    margin-bottom: 0;
+  }
+
+  .pt-badge-content {
+    transform: rotate(45deg);  /* テキスト正立 */
+    gap: 0;
+    display: block;
+  }
+
+  .pt-badge-label { font-size: 0.45rem; letter-spacing: 0.1em; }
+  .pt-badge-num   { font-size: 1.1rem; }
+
+  .pt-point {
+    margin-left: 30px;
+    padding-left: 60px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .pt-body { padding-left: 50px; }
+
+  .pt-phase { font-size: 0.85rem; }  /* desktopは通常サイズに戻す */
+
+  .pt-timeline-bar { display: flex; }  /* desktop: バー表示を復元 */
+  .pt-card-period  { display: none; }  /* desktop: カード内期間ラベル不要 */
+  .pt-card-header  { flex-direction: row; gap: 0; justify-content: center; } /* 1行に */
+
+  .pt-cards { grid-template-columns: 1fr 1fr 1fr; }  /* desktop: 3カラム */
+
+  .pt-support-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pt-career {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .pt-career-content { flex: 1; }
+
+  .pt-career-img {
+    flex: 0 0 380px;
+    aspect-ratio: 4/3;
+  }
+
+  /* Pros */
+  .pro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-md);
+  }
+
+  /* Voice */
+  .voice-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+  }
+
+  .voice-card {
+    flex-direction: row;       /* デスクトップ:横並び */
+    padding: 32px;
+    text-align: left;
+    align-items: center;
+    gap: 32px;
+  }
+
+  /* President */
+  .president-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-2xl);
+  }
+
+  .president-img { flex: 1; aspect-ratio: 3/4; }
+  .president-text { flex: 1; }
+
+  /* Jobs */
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Recruit */
+  .recruit-img { aspect-ratio: 21/9; }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .footer-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--sp-md);
+  }
+}
+
+/* ============================================================
+   24. Small mobile adjustment @media (max-width: 400px)
+   ============================================================ */
+@media (max-width: 400px) {
+  .hero-catch-title {
+    font-size: 1.8rem;
+  }
+
+  .data-grid {
+    grid-template-columns: 1fr;
+  }
+}

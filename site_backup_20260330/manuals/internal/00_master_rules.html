@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIセッション開始マスタールール</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --navy: #0f172a;
+        --gold: #c5a059;
+        --green: #16a34a;
+        --red: #dc2626;
+        --bg: #f9fafb;
+        --white: #ffffff;
+        --border: #e5e7eb;
+        --text: #1f2937;
+        --muted: #6b7280;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        line-height: 1.7;
+        color: var(--text);
+        margin: 0;
+        background: var(--bg);
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+        margin: 0 0 8px;
+        color: var(--gold);
+      }
+      .hero p {
+        margin: 0;
+        opacity: 0.8;
+        font-size: 0.95rem;
+      }
+      .hero .badge {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--navy);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+      /* HOW TO USE BOX */
+      .howto-box {
+        background: #fffbeb;
+        border: 2px solid var(--gold);
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin-bottom: 30px;
+      }
+      .howto-box h2 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+        color: #92400e;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .howto-box p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #78350f;
+      }
+      .howto-box code {
+        background: #fef3c7;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: Consolas, monospace;
+        font-size: 0.9rem;
+      }
+      /* SECTION */
+      .section {
+        background: var(--white);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        margin-bottom: 24px;
+        overflow: hidden;
+      }
+      .section-header {
+        padding: 14px 20px;
+        font-weight: 700;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-header.navy {
+        background: var(--navy);
+        color: white;
+      }
+      .section-header.gold {
+        background: #fef9ee;
+        color: #92400e;
+        border-left: 4px solid var(--gold);
+      }
+      .section-header.green {
+        background: #f0fdf4;
+        color: #166534;
+        border-left: 4px solid var(--green);
+      }
+      .section-header.red {
+        background: #fef2f2;
+        color: #991b1b;
+        border-left: 4px solid var(--red);
+      }
+      .section-body {
+        padding: 20px;
+      }
+      /* RULE LIST */
+      .rule-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .rule-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .rule-list li:last-child {
+        border-bottom: none;
+      }
+      .rule-list .icon {
+        flex-shrink: 0;
+        width: 22px;
+        text-align: center;
+        margin-top: 2px;
+      }
+      .ok {
+        color: var(--green);
+      }
+      .ng {
+        color: var(--red);
+      }
+      .warn {
+        color: #d97706;
+      }
+      /* STEP FLOW */
+      .step-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .step {
+        display: flex;
+        gap: 16px;
+        position: relative;
+        padding-bottom: 20px;
+      }
+      .step:last-child {
+        padding-bottom: 0;
+      }
+      .step-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        width: 36px;
+      }
+      .step-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--navy);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+      }
+      .step-line {
+        width: 2px;
+        flex-grow: 1;
+        background: var(--border);
+        margin-top: 4px;
+      }
+      .step:last-child .step-line {
+        display: none;
+      }
+      .step-content {
+        padding-top: 6px;
+        font-size: 0.9rem;
+      }
+      .step-content strong {
+        display: block;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+      }
+      .step-content .commit-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        color: #166534;
+        font-size: 0.8rem;
+        padding: 2px 8px;
+        border-radius: 20px;
+        margin-top: 4px;
+      }
+      .step-content .prettier-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+        font-size: 0.8rem;
+        padding: 2px 8px;
+        border-radius: 20px;
+        margin-top: 4px;
+      }
+      /* CODE */
+      code {
+        background: #f3f4f6;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: Consolas, monospace;
+        font-size: 0.85rem;
+      }
+      pre {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 14px 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 0.85rem;
+        margin: 10px 0 0;
+      }
+      /* INFO GRID */
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      @media (max-width: 600px) {
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .info-card {
+        background: #f9fafb;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 0.85rem;
+      }
+      .info-card strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #374151;
+      }
+      .info-card span {
+        color: #4b5563;
+        word-break: break-all;
+      }
+      /* AI RULES */
+      .ai-rule {
+        background: #fafafa;
+        border-left: 4px solid var(--navy);
+        padding: 10px 14px;
+        margin-bottom: 10px;
+        border-radius: 0 6px 6px 0;
+        font-size: 0.9rem;
+      }
+      .ai-rule:last-child {
+        margin-bottom: 0;
+      }
+      .ai-rule strong {
+        color: var(--navy);
+      }
+      /* FOOTER */
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      /* NAV */
+      .global-nav {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 9999;
+      }
+      .nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--navy);
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+        border: 2px solid var(--gold);
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+      .nav-btn:hover {
+        transform: translateY(-3px);
+        background: var(--gold);
+        color: var(--navy);
+      }
+      .to-top {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .to-top.visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="badge">📋 AIセッション開始時に必ず共有</div>
+      <h1>AIマスタールール</h1>
+      <p>Webとしくみをつくる ／ LP制作ルール統合版</p>
+    </div>
+
+    <div class="container">
+      <!-- HOW TO USE -->
+      <div class="howto-box">
+        <h2><i class="fa-solid fa-circle-info"></i> このファイルの使い方</h2>
+        <p>
+          新しいチャットセッション開始時に、下のテンプレートをコピーして貼るだけでOKです。<br />
+          <small>※ VSCode の Live Server が起動していることを確認してから使ってください。</small>
+        </p>
+        <div style="margin-top: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <strong style="font-size: 0.85rem; color: #92400e;">📋 セッション開始テンプレート（毎回これをコピペ）</strong>
+            <button onclick="copyTemplate()" id="copyBtn" style="background: #c5a059; color: #0f172a; border: none; border-radius: 6px; padding: 4px 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; font-family: 'Noto Sans JP', sans-serif;">コピー</button>
+          </div>
+          <pre id="sessionTemplate" style="background: #1e293b; color: #e2e8f0; padding: 14px 16px; border-radius: 8px; font-size: 0.82rem; margin: 0; white-space: pre-wrap; font-family: Consolas, monospace;">ルールを確認してください：
+http://127.0.0.1:5500/manuals/internal/00_master_rules.html
+http://127.0.0.1:5500/manuals/internal/09_coding_rules.html
+
+【今日の作業】
+
+
+【現在の状況・問題点】
+
+
+【作業ファイル】
+（例：site/client-work/クライアント名/lp/test/）</pre>
+        </div>
+
+        <!-- 知見追記ボタン -->
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5d5b0;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <strong style="font-size: 0.85rem; color: #92400e;">📚 今日の知見をルール化（作業後に使う）</strong>
+            <button onclick="copyUpdateRules()" id="updateRulesBtn" style="background: #0f172a; color: #c5a059; border: none; border-radius: 6px; padding: 4px 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; font-family: 'Noto Sans JP', sans-serif;">コピー</button>
+          </div>
+          <pre style="background: #1e293b; color: #e2e8f0; padding: 14px 16px; border-radius: 8px; font-size: 0.82rem; margin: 0; white-space: pre-wrap; font-family: Consolas, monospace;">/update-rules</pre>
+          <p style="font-size: 0.78rem; color: #78350f; margin: 8px 0 0;">↑ コピーしてチャットに貼るだけで、今日のデバッグ事例・知見をルールブックに自動追記します。</p>
+        </div>
+      </div>
+
+      <!-- 1. プロジェクト基本情報 -->
+      <div class="section">
+        <div class="section-header navy">
+          <i class="fa-solid fa-folder-open"></i> 1. プロジェクト基本情報
+        </div>
+        <div class="section-body">
+          <div class="info-grid">
+            <div class="info-card">
+              <strong>作業ディレクトリ</strong>
+              <span>c:\Users\eri76\OneDrive\Desktop\VSC\web-tsukuru</span>
+            </div>
+            <div class="info-card">
+              <strong>現在の主な作業ファイル</strong>
+              <span>site/client-work/01_hotta/lp/test/</span>
+            </div>
+            <div class="info-card">
+              <strong>CSS構成</strong>
+              <span
+                >hero.css（ヒーロー専用） + renewal.css（全体）<br />※
+                1LP = 最大2CSS まで</span
+              >
+            </div>
+            <div class="info-card">
+              <strong>OS / シェル</strong>
+              <span>Windows / PowerShell</span>
+            </div>
+            <div class="info-card">
+              <strong>文字コード</strong>
+              <span>UTF-8（BOMなし）必須</span>
+            </div>
+            <div class="info-card">
+              <strong>Gitブランチ</strong>
+              <span>main（直接コミット）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. コーディング鉄則 -->
+      <div class="section">
+        <div class="section-header gold">
+          <i class="fa-solid fa-code"></i> 2. コーディング鉄則（絶対遵守）
+        </div>
+        <div class="section-body">
+          <ul class="rule-list">
+            <li>
+              <span class="icon ng"><i class="fa-solid fa-ban"></i></span>
+              <div>
+                <strong>インラインスタイル禁止</strong>
+                HTMLに <code>style="..."</code> を書かない。全スタイルはCSSファイルへ。<br />
+                <small style="color: #ef4444"
+                  >例外：hero内のscript制御に限りCSSカスタムプロパティのみ許容</small
+                >
+              </div>
+            </li>
+            <li>
+              <span class="icon ng"><i class="fa-solid fa-ban"></i></span>
+              <div>
+                <strong>!important 原則禁止</strong>
+                使う前に必ずセレクタの詳細度を上げる方法を試すこと。<br />
+                <small style="color: #ef4444"
+                  >許容ケース：ハンバーガーメニューのブラウザリセット・ユーティリティクラス（.mt-sm等）のみ</small
+                >
+              </div>
+            </li>
+            <li>
+              <span class="icon ng"><i class="fa-solid fa-ban"></i></span>
+              <div>
+                <strong>ハードコード色禁止</strong>
+                <code>#333</code> <code>#666</code> <code>#fff</code> 等は使わず、
+                <code>:root</code> で定義したCSS変数（<code>var(--text-main)</code>等）を使うこと。
+              </div>
+            </li>
+            <li>
+              <span class="icon ok"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <div>
+                <strong>bodyプレフィックス必須</strong>
+                セレクタは <code>body .クラス名</code> の形で書き、詳細度を確保する。
+              </div>
+            </li>
+            <li>
+              <span class="icon ok"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <div>
+                <strong>1LP = 最大2CSSファイル</strong>
+                <code>renewal.css</code>（全体用）と
+                <code>hero.css</code>（ヒーロー専用）のみ。CSSファイルを増やさない。
+              </div>
+            </li>
+            <li>
+              <span class="icon ok"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <div>
+                <strong>モバイルファースト</strong>
+                基本スタイルをモバイル用に書き、<code>@media (min-width: ...)</code
+                >でデスクトップを上書き。
+              </div>
+            </li>
+            <li>
+              <span class="icon ok"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <div>
+                <strong>CSS編集後はmin.cssと同期必須</strong>
+                <code
+                  >Copy-Item -Force "css\renewal.css"
+                  "css\renewal.min.css"</code
+                >
+              </div>
+            </li>
+            <li>
+              <span class="icon ok"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <div>
+                <strong>Prettier整形必須（コミット前）</strong>
+                <code
+                  >npx prettier --write "ファイルパス"</code
+                > を実行してエラーがないことを確認してからコミットする。
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. 制作フロー -->
+      <div class="section">
+        <div class="section-header green">
+          <i class="fa-solid fa-diagram-project"></i> 3. LP制作フロー（コミットタイミング込み）
+        </div>
+        <div class="section-body">
+          <div class="step-flow">
+            <div class="step">
+              <div class="step-left">
+                <div class="step-num">1</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <strong>ベース構築（Setup）</strong>
+                テンプレートをコピー → ディレクトリ作成 → .gitignoreに<code>_backup_*/</code>を追加
+                <span class="commit-note"
+                  ><i class="fa-solid fa-code-commit"></i>
+                  コミット：「init: プロジェクト初期セットアップ」</span
+                >
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-left">
+                <div class="step-num">2</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <strong>コンテンツ流し込み（Content）</strong>
+                テキスト・画像（WebP変換済み）を反映。ダミー画像は<code>_dummy</code>サフィックスを付ける
+                <span class="commit-note"
+                  ><i class="fa-solid fa-code-commit"></i>
+                  コミット：セクション単位で。例「feat(hero): ヒーローコンテンツ反映」</span
+                >
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-left">
+                <div class="step-num">3</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <strong>スタイル調整（Styling）</strong>
+                セクションごとにスタイルを追加 →
+                <span class="prettier-note"
+                  ><i class="fa-brands fa-css3"></i> Prettier実行</span
+                >
+                <span class="commit-note"
+                  ><i class="fa-solid fa-code-commit"></i>
+                  コミット：「style(セクション名): 〇〇のスタイル調整」</span
+                >
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-left">
+                <div class="step-num">4</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <strong>モバイル最適化（Mobile First）</strong>
+                Chrome DevToolsでiPhone SE(375px) / iPhone 12(390px) / iPad(820px)の3サイズ確認
+                <span class="commit-note"
+                  ><i class="fa-solid fa-code-commit"></i>
+                  コミット：「fix(responsive): モバイル表示修正」</span
+                >
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-left">
+                <div class="step-num">5</div>
+                <div class="step-line"></div>
+              </div>
+              <div class="step-content">
+                <strong>クリーンアップ & 納品前チェック（Cleanup）</strong>
+                Prettierを全ファイルに実行 → ハードコード色値の残存確認 → 14_quality_check_sheetで全チェック
+                <span class="prettier-note"
+                  ><i class="fa-brands fa-css3"></i>
+                  npx prettier --write "**/*.css" "**/*.html"</span
+                >
+                <span class="commit-note"
+                  ><i class="fa-solid fa-code-commit"></i>
+                  コミット：「refactor: クリーンアップ完了」</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. AIへの依頼ルール -->
+      <div class="section">
+        <div class="section-header red">
+          <i class="fa-solid fa-robot"></i> 4. AIへの依頼ルール
+        </div>
+        <div class="section-body">
+          <ul class="rule-list">
+            <li>
+              <span class="icon warn"
+                ><i class="fa-solid fa-triangle-exclamation"></i
+              ></span>
+              <div>
+                <strong>1回の依頼は「1セクション・1課題」まで</strong>
+                「まとめて全部直して」はNG。「〇〇セクションのモバイル表示だけ直して」のように限定する。
+              </div>
+            </li>
+            <li>
+              <span class="icon warn"
+                ><i class="fa-solid fa-triangle-exclamation"></i
+              ></span>
+              <div>
+                <strong>作業前に必ず2つのURLを貼る</strong>
+                新しいチャットを始めるたびに以下2つを共有すること。<br />
+                <code>http://127.0.0.1:5500/manuals/internal/00_master_rules.html</code><br />
+                <code>http://127.0.0.1:5500/manuals/internal/09_coding_rules.html</code>
+              </div>
+            </li>
+            <li>
+              <span class="icon ok"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <div>
+                <strong>Prettierエラー時は原因報告を求める</strong>
+                「通りました」ではなく「エラー内容と修正箇所」をAIに報告させる。
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5. AIへの行動指針 -->
+      <div class="section">
+        <div class="section-header navy">
+          <i class="fa-solid fa-shield-halved"></i> 5. AIへの行動指針（Antigravityへ）
+        </div>
+        <div class="section-body">
+          <p
+            style="
+              font-size: 0.85rem;
+              color: var(--muted);
+              margin: 0 0 14px;
+            "
+          >
+            このルールを読んだAntigravityは、以下の行動原則に従って作業してください。
+          </p>
+          <div class="ai-rule">
+            <strong>① 指示がルールと矛盾する場合は必ず指摘する</strong><br />
+            例：「インラインスタイルで直して」と言われても「このルールではCSSファイルに書くべきです。そちらで対応します」と説明してから正しい方法で対処する。
+          </div>
+          <div class="ai-rule">
+            <strong>② 「動けばいい」より「正しいコード」を提案する</strong><br />
+            !importantやハードコードで解決できる場合でも、ルールに沿った方法を優先して提案する。
+          </div>
+          <div class="ai-rule">
+            <strong>③ 大量変更は分割して確認を取る</strong><br />
+            10行を超える変更、複数ファイルの同時編集は、計画を先に提示してから実行する。
+          </div>
+          <div class="ai-rule">
+            <strong>④ コミット前にPrettierの成功を確認する</strong><br />
+            <code>Exit: 0</code>を確認してからgit
+            commitを提案する。失敗した場合はエラー箇所を報告して修正する。
+          </div>
+          <div class="ai-rule">
+            <strong>⑤ PowerShellとUTF-8を常に意識する</strong><br />
+            ファイル操作は<code>[System.IO.File]::WriteAllText()</code>を使い、grepでなく<code>Select-String</code>を使う。
+          </div>
+          <div class="ai-rule">
+            <strong>⑥ バックアップを最初に取る</strong><br />
+            大きな変更の前は必ず<code>_backup_YYYYMMDD_HHMM</code>フォルダにコピーしてから作業開始する。
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. CSS変数一覧 -->
+      <div class="section">
+        <div class="section-header gold">
+          <i class="fa-solid fa-palette"></i> 6. CSS変数テンプレート（renewal.css :root 共通定義）
+        </div>
+        <div class="section-body">
+          <p style="font-size: 0.85rem; color: #92400e; margin: 0 0 12px; background: #fef9ee; padding: 8px 12px; border-radius: 6px;">
+            ⚠️ <strong>ブランドカラーはプロジェクトごとに変更すること。</strong>テキスト・背景・UIは汎用値としてそのまま使用可。
+          </p>
+          <pre>
+/* ★ Brand Colors — プロジェクトごとに変更 ★ */
+--accent-gold: #c5a059   ← メインアクセント色
+--navy-deep:   #001a3d   ← メイン背景・テキスト色
+--navy-light:  #002d6b   ← サブ背景色
+--line-green:  #06c755   ← CTAボタン色（LINE/応募）
+
+/* Text Colors — 共通（変更不要） */
+--text-main:    #333333
+--text-sub:     #555555
+--text-muted:   #888888
+--text-inverse: #ffffff
+
+/* Backgrounds — 共通（変更不要） */
+--bg-white: #ffffff
+--bg-light: #f4f6f9
+
+/* UI — 共通（変更不要） */
+--border-light: rgba(0, 26, 61, 0.1)
+--shadow-md:    0 10px 30px rgba(0,0,0,0.05)</pre>
+          <p style="font-size: 0.8rem; color: #dc2626; margin: 10px 0 0;">
+            ⛔ <strong>循環参照禁止</strong>：<code>--text-main: var(--text-main);</code> のように自分自身を参照しない。必ず具体値を書く。
+          </p>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          最終更新: 2026年2月 ／ © 2026 Webとしくみをつくる All Rights
+          Reserved.
+        </p>
+      </footer>
+    </div>
+
+    <!-- GLOBAL NAV -->
+    <div class="global-nav">
+      <a
+        href="../admin/Private_index.html"
+        class="nav-btn"
+        title="制作コックピットへ"
+        ><i class="fa-solid fa-tower-broadcast"></i
+      ></a>
+      <div
+        class="nav-btn to-top"
+        onclick="window.scrollTo({top:0, behavior:'smooth'})"
+        title="ページトップへ"
+      >
+        <i class="fa-solid fa-arrow-up"></i>
+      </div>
+    </div>
+    <script>
+      function copyTemplate() {
+        const text = document.getElementById("sessionTemplate").innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          const btn = document.getElementById("copyBtn");
+          btn.textContent = "✅ コピーしました";
+          btn.style.background = "#16a34a";
+          btn.style.color = "white";
+          setTimeout(() => {
+            btn.textContent = "コピー";
+            btn.style.background = "#c5a059";
+            btn.style.color = "#0f172a";
+          }, 2000);
+        });
+      }
+      function copyUpdateRules() {
+        navigator.clipboard.writeText("/update-rules").then(() => {
+          const btn = document.getElementById("updateRulesBtn");
+          btn.textContent = "✅ コピーしました";
+          btn.style.background = "#16a34a";
+          btn.style.color = "white";
+          setTimeout(() => {
+            btn.textContent = "コピー";
+            btn.style.background = "#0f172a";
+            btn.style.color = "#c5a059";
+          }, 2000);
+        });
+      }
+      window.addEventListener("scroll", () => {
+        const toTop = document.querySelector(".to-top");
+        if (window.scrollY > 300) toTop.classList.add("visible");
+        else toTop.classList.remove("visible");
+      });
+    </script>
+  </body>
+</html>

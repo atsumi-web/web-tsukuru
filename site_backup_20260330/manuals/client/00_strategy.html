@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【決定版】採用資産構築・完全運用バイブル | Webとしくみをつくる</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #003366;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+        }
+        .toc {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            color: #003366;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 10px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 5px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc a:hover {
+            background: #f0f5ff;
+            color: #003366;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #003366;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #222;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #003366;
+            padding-left: 15px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        /* Philosophy Box */
+        .philosophy-section {
+            background: #fafafa;
+            border-left: 5px solid #333;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+        .philosophy-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .philosophy-item { margin-bottom: 25px; }
+        .philosophy-head {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #003366;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Comparison Table */
+        .comparison-box {
+            background: #fff;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .comparison-table th { padding: 10px; }
+        .comparison-table td { padding: 10px; border: 1px solid #ddd; }
+
+        /* Diagram Steps */
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .diagram-step {
+            display: flex;
+            align-items: center;
+            background: #f8fbff;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        .diagram-step::after {
+            content: "▼";
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ccc;
+        }
+        .diagram-step:last-child::after { display: none; }
+        .step-label {
+            background: #003366;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Advice Box */
+        .advice-box {
+            background: #f0f7ff;
+            border: 1px solid #d6e4ff;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .advice-box h4 {
+            margin: 0 0 15px 0;
+            color: #003366;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .advice-box h4::before {
+            content: '💡';
+            margin-right: 10px;
+        }
+
+        /* Highlight Text */
+        .highlight-text {
+            background: linear-gradient(transparent 60%, #ffe0b2 60%);
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; position: static; }
+            .diagram-step { flex-direction: column; align-items: flex-start; }
+            .step-label { margin-bottom: 10px; }
+        }
+
+        /* Mobile Bottom Nav */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #003366;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            height: 60px;
+            z-index: 10000;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav-item {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 33%;
+        }
+        @media (max-width: 768px) { .mobile-bottom-nav { display: flex; } }
+        /* Floating Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .back-to-index {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #fff;
+            color: #06c755;
+            border: 2px solid #06c755;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 46px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .back-to-index.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-index:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            background: #06c755;
+            color: #fff;
+        }
+        .line-support {
+            position: fixed;
+            bottom: 150px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .line-support.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .line-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            border: 2px solid #fff;
+        }
+        @media (max-width: 768px) {
+            .back-to-top, .back-to-index, .line-support {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">← マニュアル一覧に戻る</a>
+            </div>
+            <h1>採用資産構築・完全運用バイブル</h1>
+            <p style="margin-top: 10px; color: #555; background: #f0f7ff; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+                <span style="font-weight: bold; color: #003366;">対象</span> 経営者様・採用リーダー様 &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <span style="font-weight: bold; color: #003366;">目的</span> 「採用を自動化する」ための戦略と行動を理解する
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <aside class="sidebar">
+                <nav class="toc">
+                    <h3>目次</h3>
+                    <ul>
+                        <li><a href="#intro">はじめに：外部編集長として</a></li>
+                        <li><a href="#strategy">Part 1：戦略（資産 vs 家賃）</a></li>
+                        <li><a href="#blueprint">Part 2：設計図（6つのステップ）</a></li>
+                        <li><a href="#operation">Part 3：運用（写真と鮮度）</a></li>
+                        <li><a href="#partner">おわりに：パートナーシップ</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="content">
+                
+                <section id="intro">
+                    <div class="philosophy-section">
+                        <div class="philosophy-title">はじめに：私が「外部編集長」になる理由</div>
+                        <p>このマニュアルは、単なるホームページの取扱説明書ではありません。<br>
+                        採用活動を貴社の<strong>「資産」</strong>に変えるための、一生モノのガイドブックです。</p>
+
+                        <div class="philosophy-item">
+                            <span class="philosophy-head">「作る」ことより「育て続ける」方が難しい</span>
+                            <p>求人サイトは、公開した瞬間が「完成」ではありません。そこからが「スタート」です。<br>
+                            現場の写真が増えた、新しい仲間が加わった、社長の想いが深まった。<br>
+                            これらの変化を即座に反映し、サイトを成長させ続けるには、技術者ではなく「伴走者」が必要です。</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <span class="philosophy-head">貴社は「主役」でいてください</span>
+                            <p>難しいサーバー管理やデザイン修正は、すべて私が引き受けます。<br>
+                            皆様にお願いしたいのは、難解な管理画面と向き合うことではなく、目の前の仕事や仲間の素敵な姿をスマホで切り取っていただくことだけです。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="strategy">
+                    <h2>Part 1：戦略（資産 vs 家賃）</h2>
+                    <p>なぜ、多くの会社が採用に失敗するのか。それは「場所を借りているだけ（家賃モデル）」だからです。<br>
+                    私たちは、自社だけの「持ち家（資産モデル）」を構築します。</p>
+
+                    <div class="comparison-box">
+                        <h3 style="margin-top: 0; border: none; padding: 0; color: #003366; display: flex; align-items: center; font-size: 1.2rem;">
+                            <span style="background: #003366; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; margin-right: 15px;">POINT</span>
+                            公式HPと「採用LP」の決定的な違い
+                        </h3>
+                        <p>「すでにHPがあるのに、なぜ採用サイトを作るの？」という疑問への答えがこれです。</p>
+                        <table class="comparison-table" style="width: 100%; margin-top: 20px; border-collapse: collapse; font-size: 0.95rem;">
+                            <tr style="background: #f0f5ff;">
+                                <th style="border: 1px solid #cce0ff; padding: 10px; color: #003366;">公式ホームページ</th>
+                                <th style="border: 1px solid #cce0ff; padding: 10px; color: #d35400; background: #fff8e1; border-color: #ffe0b2;">採用特化LP（今回作るもの）</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #cce0ff; padding: 10px;"><strong>「会社の顔」</strong><br>信頼・実績・IR情報を網羅する。<br>対象は銀行・取引先など。</td>
+                                <td style="border: 1px solid #ffe0b2; padding: 10px; font-weight: bold;"><strong>「求職者への手紙」</strong><br>働くメリット・雰囲気に一点集中。<br>対象は「未来の社員」のみ。</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="blueprint">
+                    <h2>Part 2：設計図（6つのステップ）</h2>
+                    <p>では、具体的にどうやって資産を構築するのか。これが私たち独自の「6ステップ・エンジン」です。</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-step">
+                            <div class="step-label">STEP 1：種（現状把握）</div>
+                            <div class="step-content">
+                                <strong>「誰に来てほしいか」の特定</strong>
+                                <span>給与条件だけでなく、「どんな苦労を共有できるか」まで深掘りし、ミスマッチを防ぐ「種」を見つけます。</span>
+                            </div>
+                        </div>
+                        <div class="diagram-step">
+                            <div class="step-label">STEP 2：土台（LP構築）</div>
+                            <div class="step-content">
+                                <strong>維持費0円の「シンプルで安定したLP」</strong>
+                                <span>スマホ世代のためにサーバーレス技術で「壊れにくく、長く使える」最強の受け皿を作ります。</span>
+                            </div>
+                        </div>
+                        <div class="diagram-step">
+                            <div class="step-label">STEP 3：集客（求人サイト活用）</div>
+                            <div class="step-content">
+                                <strong>無料求人サイト ＋ Googleしごと検索</strong>
+                                <span>Indeed、求人ボックスなど無料求人サイトにLPリンクを掲載し、Googleしごと検索用の構造化データも設定します。</span>
+                            </div>
+                        </div>
+                        <div class="diagram-step">
+                            <div class="step-label">STEP 4：囲い込み（LINE公式）</div>
+                            <div class="step-content">
+                                <strong>求職者との「つながり」を作る</strong>
+                                <span>一度訪れた人を逃さず、定期的な配信で信頼関係を構築します。ここで「会社のファン」に育てます。</span>
+                            </div>
+                        </div>
+                        <div class="diagram-step">
+                            <div class="step-label">STEP 5：選別（フォーム）</div>
+                            <div class="step-content">
+                                <strong>適性診断によるフィルタリング</strong>
+                                <span>単に応募させるのではなく、「診断」を通じて熱意のある人だけを面接に誘導するフィルターをかけます。</span>
+                            </div>
+                        </div>
+                        <div class="diagram-step" style="border-color: #d35400; background: #fff0e6;">
+                            <div class="step-label" style="background: #d35400;">STEP 6：運用（伴走）</div>
+                            <div class="step-content">
+                                <strong>外部編集長による継続改善</strong>
+                                <span>ここが最重要です。現場の写真を元に、常に「生きた情報」を発信し続けます（詳細はPart 3へ）。</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="operation">
+                    <h2>Part 3：運用（鮮度が命）</h2>
+                    <p>このLPは、公開した瞬間から「鮮度」との戦いが始まります。<br>
+                    Googleは「動いているサイト」を優遇します。逆に言えば、放置されたサイトは死んでいきます。</p>
+
+                    <div class="advice-box" style="background: #fff8f0; border-color: #ffccbc;">
+                        <h4 style="color: #bf360c;">御社のタスクは「写真1枚」だけ</h4>
+                        <p>「今日は現場でこんなことがあった」「お昼にみんなでラーメンを食べた」<br>
+                        そんな日常のひとコマを、スマホで撮ってLINEで私に送ってください。<br>
+                        一言コメントがあれば最高ですが、写真だけでもOKです。私がそれを「記事」にします。</p>
+                    </div>
+
+                    <h3>「現場のリアル」を伝える写真のコツ</h3>
+                    <p>「綺麗な写真」はいりません。<span class="highlight-text">「ありのままの空気」</span>が最強の採用素材です。</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #d35400;">✔</span>
+                            <strong>休憩中の笑顔：</strong> 無防備な笑顔こそ、職場の雰囲気を雄弁に語ります。
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #d35400;">✔</span>
+                            <strong>真剣な横顔：</strong> 「仕事カッコいいな」と思わせる瞬間です。
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #d35400;">✔</span>
+                            <strong>失敗や苦労：</strong> 雨の日の大変さなども隠さず見せることで、「信頼」が生まれます。
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="partner">
+                    <h2>おわりに：パートナーシップの約束</h2>
+                    
+                    <p>Webの世界は日進月歩で変わります。<br>
+                    しかし、皆様がその技術に詳しくなる必要はありません。私が常に最新の技術をキャッチアップし、裏側でシステムをアップデートし続けます。</p>
+                    
+                    <p>皆様は、どうか<strong>「会社のファン作り」</strong>に専念してください。<br>
+                    そして、困ったときはいつでもLINEをください。<br>
+                    「こんなこと聞いてもいいかな？」と思う前に、まず相談してください。</p>
+                    
+                    <p>最強の採用資産を、一緒に育てていきましょう。</p>
+
+                    <div style="margin-top: 40px; text-align: center;">
+                        <a href="https://lin.ee/eKNHAte" target="_blank" style="background: #06c755; color: #fff; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(6,199,85,0.3);">
+                            LINEですぐに相談する
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p style="text-align: center;">&copy; 2026 Webとしくみをつくる All Rights Reserved.</p>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item">一覧に戻る</a>
+        <a href="https://lin.ee/eKNHAte" class="nav-item">LINEで相談</a>
+        <a href="#" id="mobileBackToTop" class="nav-item">TOP</a>
+    </div>
+
+    <script>
+        const mobileBackToTop = document.getElementById('mobileBackToTop');
+        mobileBackToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+
+    <a href="#" id="lineSupport" class="line-support"> LINEで相談</a>
+    <a href="index.html" id="backToIndex" class="back-to-index"> 一覧に戻る</a>
+    <a href="#" id="backToTop" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        const backToIndex = document.getElementById('backToIndex');
+        const lineSupport = document.getElementById('lineSupport');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+                backToIndex.classList.add('show');
+                lineSupport.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+                backToIndex.classList.remove('show');
+                lineSupport.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        lineSupport.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('https://lin.ee/eKNHAte', '_blank');
+        });
+    </script>
+
+</body>
+</html>

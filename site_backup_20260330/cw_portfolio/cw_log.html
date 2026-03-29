@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CW案件評価記録</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --border: rgba(0,0,0,0.08);
+      --accent: #4f46e5;
+      --green: #059669;
+      --red: #dc2626;
+      --gold: #d97706;
+      --text: #1e293b;
+      --muted: #64748b;
+      --en: 'Outfit', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #ede9fe 100%);
+      padding: 56px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--en);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,70,229,0.08);
+      border: 1px solid rgba(79,70,229,0.15);
+      border-radius: 999px;
+      padding: 6px 16px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero p { color: var(--muted); font-size: .9rem; }
+
+    /* CONTAINER */
+    .container { max-width: 1000px; margin: 0 auto; padding: 32px 16px 80px; }
+
+    /* SESSION HEADER */
+    .session-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .session-date {
+      font-family: var(--en);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .session-count {
+      background: var(--accent);
+      color: white;
+      font-family: var(--en);
+      font-size: .75rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 2px 10px;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .stat-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+    .stat-chip.applied { background: rgba(5,150,105,0.1); color: var(--green); border: 1px solid rgba(5,150,105,0.2); }
+    .stat-chip.rejected { background: rgba(220,38,38,0.08); color: var(--red); border: 1px solid rgba(220,38,38,0.15); }
+    .stat-chip.total { background: rgba(79,70,229,0.08); color: var(--accent); border: 1px solid rgba(79,70,229,0.15); }
+
+    /* TABLE */
+    .log-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .log-table thead tr { background: var(--accent); color: white; }
+    .log-table th { padding: 10px 14px; font-size: .75rem; font-weight: 700; text-align: left; letter-spacing: .05em; }
+    .log-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: .82rem; vertical-align: middle; }
+    .log-table tr:last-child td { border-bottom: none; }
+    .log-table tr:hover td { background: #f8fafc; }
+
+    /* BADGES */
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 999px; font-size: .72rem; font-weight: 700; white-space: nowrap; }
+    .badge-applied { background: rgba(5,150,105,0.1); color: var(--green); }
+    .badge-no { background: rgba(220,38,38,0.08); color: var(--red); }
+    .badge-wait { background: rgba(217,119,6,0.1); color: var(--gold); }
+    .badge-pass { background: rgba(79,70,229,0.1); color: var(--accent); }
+
+    .client-name { font-weight: 700; color: var(--text); }
+    .job-title { color: var(--muted); font-size: .8rem; margin-top: 2px; }
+    .deadline { font-family: var(--en); font-size: .8rem; color: var(--muted); }
+    .deadline.urgent { color: var(--red); font-weight: 700; }
+
+    /* BACK LINK */
+    .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); text-decoration: none; font-size: .85rem; font-weight: 700; margin-bottom: 24px; }
+    .back-link:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge"><i class="fa-solid fa-clipboard-list"></i> CW APPLICATION LOG</div>
+  <h1>📋 案件評価記録</h1>
+  <p>クラウドワークスで確認した案件の評価・応募状況をまとめています</p>
+</div>
+
+<div class="container">
+  <!-- クイックリンク -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;">
+    <a href="cw_manual.html" class="back-link" style="margin-bottom:0;"><i class="fa-solid fa-arrow-left"></i> 応募マニュアルへ戻る</a>
+    <a href="https://crowdworks.jp/e/proposals?ref=login_header" target="_blank" class="back-link" style="margin-bottom:0;color:#3b82f6;"><i class="fa-solid fa-paper-plane"></i> 応募中案件を確認</a>
+  </div>
+
+  <!-- ===== 2026-03-29 ===== -->
+  <div class="session-header">
+    <span class="session-date">2026 / 03 / 29</span>
+    <span class="session-count">評価 3件</span>
+  </div>
+  <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">🔍 検索カテゴリ：ホームページ制作・WEBデザイン、デザイン全体</div>
+
+  <div class="stats-bar">
+    <div class="stat-chip total"><i class="fa-solid fa-list"></i> 評価 3件</div>
+    <div class="stat-chip applied"><i class="fa-solid fa-paper-plane"></i> 応募 1件</div>
+    <div class="stat-chip rejected"><i class="fa-solid fa-xmark"></i> スルー 2件</div>
+  </div>
+
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>クライアント</th>
+        <th>案件名</th>
+        <th>判定</th>
+        <th>締切</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="client-name">yoooota</div><div class="job-title">レビュー140件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>占い好き集客用アンケート型LP作成（SP特化・Xサーバー等）</td>
+        <td><span class="badge badge-applied">✅ 応募済み</span></td>
+        <td><span class="deadline">4/12</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜80,000円提示・フルスクラッチJSアンケート構築・インフラ丸投げアピール</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">スジャータ</div><div class="job-title">レビュー605件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>LPのデザイン調整とデータ作成（Figma復元）</td>
+        <td><span class="badge badge-no">❌ スキップ</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">15,000px以上のFigmaトレース。面倒作業＆時給換算リスクで回避</span></td>
+      </tr>
+      <tr style="background:#fff5f5;">
+        <td><div class="client-name" style="color:var(--red);">info@utility ⚠️要注意</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>【継続依頼あり】記事LP用コンテンツ制作（画像・動画素材）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">🚨 3冠リスク × 28人大量募集。作品収集やスパム誘導の地雷案件</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 2026-03-27 ===== -->
+  <div class="session-header">
+    <span class="session-date">2026 / 03 / 27</span>
+    <span class="session-count">評価 31件</span>
+  </div>
+  <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">🔍 検索カテゴリ：LP制作・ホームページ制作・デザイン全体・動画映像</div>
+
+  <div class="stats-bar">
+    <div class="stat-chip total"><i class="fa-solid fa-list"></i> 評価 31件</div>
+    <div class="stat-chip applied"><i class="fa-solid fa-paper-plane"></i> 応募文作成 7件</div>
+    <div class="stat-chip rejected"><i class="fa-solid fa-xmark"></i> スルー 24件</div>
+  </div>
+
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>クライアント</th>
+        <th>案件名</th>
+        <th>判定</th>
+        <th>締切</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="client-name">工事会社（社名限定公開）</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>【報酬40〜65万円】オプション工事会社のWEBサイト制作／要件整理から伴走・Phase1 CVフォーム完成をゴールに提案</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/29 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜50万円で応募・MicroCMS提案・建設LP実績アピール・3冠リスクあり</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ジェネラリスト</div><div class="job-title">レビュー25件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>東証上場会社の採用サイトWebデザイン（デザインのみ・8ページ・建設業）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline urgent">3/27 ⚡</span></td>
+        <td><span class="badge badge-no">デザインのみ案件・Figma納品・コーディング強みが活かせない・116人応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">drbridge_1112</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>【高単価】医療クリニックYouTube運用代行LPデザイン（15〜20万円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">3冠リスク・PSD/AI納品必須・132人応募・スキップ確定</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">miyazakitaka</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>【法人案件】SEO対策チーム募集・継続案件多数（10〜15万円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">個人応募不可・SEO専門外・3冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">早川拳介</div><div class="job-title">レビュー1件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>【継続案件あり】LP制作パートナー募集・広告代理店・スピード重視（165,000円）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">4/2</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜165,000円で応募・HTML/CSS強み・継続案件狙い・本気で取りにいく案件</span></td>
+      </tr>
+      <!-- Antigravity審査分 3/27 -->
+      <tr>
+        <td><div class="client-name">tanaca021</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>企業コーポレートサイトデザイン11P（ドクターペダル）</td>
+        <td><span class="badge badge-applied">✅ 応募済み</span></td>
+        <td><span class="deadline urgent">3/29 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜詳細資料共有あり・採用LP×コーポレート・デザイン+コーディング一括提案・150,000円</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">梅澤1984</div><div class="job-title">レビュー4件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>【MVP・β版開発】動画求人DBサイトのテスト版構築</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/10</span></td>
+        <td><span class="badge badge-no">WordPress/Bubble/Glide必須・DB開発・スキル完全ミスマッチ・28人応募</span></td>
+      </tr>
+      <tr style="background:#fff5f5;">
+        <td><div class="client-name" style="color:var(--red);">再生クラブ ⚠️要注意</div><div class="job-title">レビュー0件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>LP制作（サプリメント販売用・40〜80万円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/9</span></td>
+        <td><span class="badge badge-no">🚨 「口コミネットワークビジネス」=MLM商材・薬機法リスク・高単価に釣られない・47人応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">株式会社ウェルヴィーナス</div><div class="job-title">レビュー5件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>サプリ記事LP・画像制作〜コーディング（3万円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline urgent">3/27 ⚡</span></td>
+        <td><span class="badge badge-no">PSD/AI納品必須・イラスト制作必須・締切本日</span></td>
+      </tr>
+      <tr style="background:#fff5f5;">
+        <td><div class="client-name" style="color:var(--red);">UXD ⚠️要注意</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>Instagram運用講座LPファーストビュー（表示10〜15万円・実際500円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">🚨 「460円と入力」既知詐欺パターン・3冠・20人大量採用・個人情報収集</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">LFCO</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>リフォーム会社LP制作・HTML限定・LLMO対応（7万円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">コンペ×3冠でスキップ。内容はHTML限定・建設系・LLMO対応でど直球案件。固定報酬で再出品なら即応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Caffe Laver</div><div class="job-title">レビュー6件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>LP・バナー・SNS画像デザイン（LP5,000円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline urgent">3/27 ⚡</span></td>
+        <td><span class="badge badge-no">年齢制限「20代の社会人」・低単価・コーディングなし</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">novalis</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>LP制作パートナー募集・継続依頼あり</td>
+        <td><span class="badge badge-pass">⏭ 応募済</span></td>
+        <td><span class="deadline urgent">3/27 ⚡</span></td>
+        <td><span class="badge badge-wait">3/23応募済み・重複スキップ・WordPress記載あり</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">alh_good_day</div><div class="job-title">レビュー1027件 ✅本人確認済 ✅発注ルール済 認定クライアント</div></td>
+        <td>【継続依頼あり】LPO特化マーケター募集</td>
+        <td><span class="badge badge-no">❌ 断り</span></td>
+        <td><span class="deadline">4/1</span></td>
+        <td><span class="badge badge-no">職種ミスマッチ（LPO分析・ABテスト専任）・クライアント優良だが役割が違う・断った</span></td>
+      </tr>
+      <!-- 夜セッション 3/27 -->
+      <tr>
+        <td><div class="client-name">原田拓人</div><div class="job-title">レビュー0件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>AIナレーション付き動画生成（20分・テスト300円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">「300円と入力」指定・20分動画はAIツールで非現実的・低単価</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">宮川 ももか</div><div class="job-title">レビュー8件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>医療職向けイベントLP（継続・テスト1,000円）</td>
+        <td><span class="badge badge-no">❌ 見送り</span></td>
+        <td><span class="deadline">4/3</span></td>
+        <td><span class="badge badge-no">1,000円テストは低すぎ・えりさんはすでに実績積みの段階を過ぎている・今後の参考に</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">codem2020</div><div class="job-title">レビュー389件 ✅優良クライアント ❌本人確認未 ❌発注ルール未</div></td>
+        <td>HPリニューアル制作進行管理（20〜25万円・2ヶ月）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/10</span></td>
+        <td><span class="badge badge-no">職種ミスマッチ（PM/ディレクター業務）・デザイン・コーディングではない</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">purizo10</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>ハイブランドアパレルHP制作（デザイナー募集）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/10</span></td>
+        <td><span class="badge badge-no">ハイブランド・ミニマル実績なし・えりさんのPFと乖離</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">hibino_3ad9</div><div class="job-title">レビュー8件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>会社HPページ追加・コンテンツ追加・計算機実装</td>
+        <td><span class="badge badge-applied">✅ 応募済み</span></td>
+        <td><span class="deadline urgent">4/1 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜HTML/CSS+JS計算機対応可・30,000円提示・仕様確認後調整</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">mhsc0803</div><div class="job-title">レビュー24件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>ウェブサイトデザインパーツ作成（10点・3,000〜5,000円/点）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/10</span></td>
+        <td><span class="badge badge-no">デザインのみ案件・コーディングなし・バナー量産ポジションに嵌まる</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">mhsc0803</div><div class="job-title">レビュー24件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>LP制作一式（企画〜コーディングまで・25〜30万円）</td>
+        <td><span class="badge badge-applied">✅ 応募済み</span></td>
+        <td><span class="deadline">4/10</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜200,000円提示・デザイン+コーディング全対応・当たればラッキー</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">mhsc0803</div><div class="job-title">レビュー24件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>LPデザイン・コーディング（10〜15万円）</td>
+        <td><span class="badge badge-applied">✅ 応募文作成</span></td>
+        <td><span class="deadline">4/10</span></td>
+        <td><span class="badge badge-wait">⏳ 送付待ち｜100,000円提示・同クライアント複数案件同時応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">yayayayakkk</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>営業会社サービス紹介LP（継続あり・HTML/CSS納品OK）</td>
+        <td><span class="badge badge-no">⛔ 非公開</span></td>
+        <td><span class="deadline">4/10</span></td>
+        <td><span class="badge badge-no">案件が非表示になった・クライアントが削除した可能性・応募できず</span></td>
+      </tr>
+      <tr style="background:#f0fdf4;">
+        <td><div class="client-name">おばら｜Design</div><div class="job-title">レビュー5件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>スポーツ施設サイト制作PC/スマホ（8万円・デザインのみ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline urgent">3/27 ⚡</span></td>
+        <td><span class="badge badge-no">契約済み1人・募集1人=案件終了・実績公開NG</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">らくだリスティング</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>仮想通貨詐欺相談サービスLP（WordPress必須）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/2</span></td>
+        <td><span class="badge badge-no">WordPress必須・グレーゾーン業種（詐欺相談）</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">IWCreation</div><div class="job-title">レビュー2件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>美容クリニック案件LP&サイトコーダー（WordPress含む）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/9</span></td>
+        <td><span class="badge badge-no">WordPress実装が核心業務・美容クリニック=WP納品前提</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">SNS編集部</div><div class="job-title">レビュー6件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>B2BサービスLPデザイン（PSD納品必須）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/9</span></td>
+        <td><span class="badge badge-no">PSD納品必須・即スキップ基準</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">alh_good_day</div><div class="job-title">レビュー1027件 ✅本人確認済 ✅発注ルール済 認定クライアント</div></td>
+        <td>【時給3,000円〜】Webデザイナー募集・LP/コーディング</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/9</span></td>
+        <td><span class="badge badge-no">実務3年以上必須・実績公開NG・90日前解約通知・クライアントは超優良</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 2026-03-25 ===== -->
+  <div class="session-header">
+    <span class="session-date">2026 / 03 / 25</span>
+    <span class="session-count">評価 3件</span>
+  </div>
+  <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">🔍 検索カテゴリ：Webサイト修正・更新・機能追加</div>
+
+  <div class="stats-bar">
+    <div class="stat-chip total"><i class="fa-solid fa-list"></i> 評価 3件</div>
+    <div class="stat-chip applied"><i class="fa-solid fa-paper-plane"></i> 応募 1件</div>
+    <div class="stat-chip rejected"><i class="fa-solid fa-xmark"></i> スルー 2件</div>
+  </div>
+
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>クライアント</th>
+        <th>案件名</th>
+        <th>判定</th>
+        <th>締切</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="client-name">sbs,llc</div><div class="job-title">レビュー229件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>ホームページのサーバー保守（現状月2万→静的移行でほぼゼロ提案）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/25 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち・見積30,000円</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">goto9216</div><div class="job-title">レビュー3件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>webページからPDF作成（PHP5.6 / さくらサーバー）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">PHP5.6旧環境・バックエンド専門外・34人応募</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 2026-03-24 ===== -->
+
+  <div class="session-header">
+    <span class="session-date">2026 / 03 / 24</span>
+    <span class="session-count">評価 45件</span>
+  </div>
+  <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">🔍 検索カテゴリ：ホームページ制作・WEBデザイン系 / SNS集客・AI活用 / LP制作 / AIコンサル / Webディレクション</div>
+
+  <div class="stats-bar">
+    <div class="stat-chip total"><i class="fa-solid fa-list"></i> 評価 45件</div>
+    <div class="stat-chip applied"><i class="fa-solid fa-paper-plane"></i> 応募 5件</div>
+    <div class="stat-chip rejected"><i class="fa-solid fa-xmark"></i> スルー 40件</div>
+  </div>
+
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>クライアント</th>
+        <th>案件名</th>
+        <th>判定</th>
+        <th>締切</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 検討案件 -->
+      <tr>
+        <td><div class="client-name">deaf123</div><div class="job-title">レビュー2件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>utageカスタムHTML改修／保育園向けLP制作</td>
+        <td><span class="badge badge-wait">△ 検討</span></td>
+        <td><span class="deadline urgent">3/25 ⚡</span></td>
+        <td><span class="badge badge-wait">utage未経験・2冠リスク。応募するなら本日中</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">cabcoltd</div><div class="job-title">レビュー19件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>Figma→コーディング アニメーション付きLP（モバイル対応）</td>
+        <td><span class="badge badge-wait">△ 検討</span></td>
+        <td><span class="deadline urgent">3/24 ⚡</span></td>
+        <td><span class="badge badge-no">締切本日・36人応募。ポートフォリオ次第</span></td>
+      </tr>
+      <!-- スルー案件 -->
+      <tr>
+        <td><div class="client-name">言通@証明書翻訳</div><div class="job-title">レビュー16件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>ホームページTOPビュー画像CSS化（約100ページ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/1</span></td>
+        <td><span class="badge badge-no">WordPress必須・41人・コスパ不明</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">codem2020</div><div class="job-title">レビュー389件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>月額Webの更新作業（貸し会議室）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">月額2,000円・超低単価</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kapibiz</div><div class="job-title">レビュー299件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>LP制作コーディングのみ（長期継続あり）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">WordPress必須・LP1枚1,000円</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">あやや♪</div><div class="job-title">レビュー10件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>ライフスタイル系メディア画像作成代行</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">年齢制限20〜30歳まで</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Fujigaya.m（認定）</div><div class="job-title">レビュー214件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>不動産会社HP作成代行（専業主婦歓迎）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">ツール不明・週20h必須・10倍難しい</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">チャイラテらぶ</div><div class="job-title">レビュー24件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>Canva SNS投稿画像編集スタッフ（5人募集）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/26</span></td>
+        <td><span class="badge badge-no">2冠リスク・月15,000円・スキルレベル不一致</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">medroot</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>クリニックHP TOP改修＆分院ページ追加（WP）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/28</span></td>
+        <td><span class="badge badge-no">リスク3冠・WordPress必須・31人応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ooononon</div><div class="job-title">レビュー34件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>旅行・レジャー投稿デザイン担当</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">住居環境質問・トライアル100円・2冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">airlinesan</div><div class="job-title">レビュー8件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>ゼロから簡単なサイト作成</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">情報不足・参考URLがGoogleドライブのみ</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">YUKI.TK.</div><div class="job-title">レビュー7件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>採用サイト下層ページデザイン（図解・グラフ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">PSD/AI納品必須・Figmaデザイン・2冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ちあき|インスタ運用</div><div class="job-title">レビュー37件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>焼肉グルメInstagram投稿デザイン（Canva）</td>
+        <td><span class="badge badge-wait">△ 検討</span></td>
+        <td><span class="deadline">3/28</span></td>
+        <td><span class="badge badge-wait">クライアント優良。月15,000円・Canva作業。継続重視なら検討余地</span></td>
+      </tr>
+      <!-- === 追加分（SNS集客・AI・LP等） === -->
+      <tr>
+        <td><div class="client-name">Kotomi Sato</div><div class="job-title">レビュー63件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>花屋・母の日ギフト予約告知 Instagram投稿画像（6枚）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/26 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Kotomi Sato</div><div class="job-title">レビュー63件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>韓国カフェ風ベーカリー新作スイーツ告知 Instagram投稿（6枚）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/26 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">suihare</div><div class="job-title">レビュー134件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>ラテアート特集バナーデザイン（SNS広告用）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">CPT</div><div class="job-title">レビュー859件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>BtoB企業コーポレートサイトWebデザイン制作</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">実務3年以上必須・コンペ形式・職種ミスマッチ</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">㈱PSA</div><div class="job-title">レビュー52件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>ヨーロッパ発キッチンブランドLP（STATUS・Makuake向け）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/28</span></td>
+        <td><span class="badge badge-no">PNG小刻み納品・Pagefly前提・コード路線と不一致</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">makijr8888</div><div class="job-title">レビュー3件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>ホームページの作成（コーポレート）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">リスク3冠・情報ゼロ・34人応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">idayukari</div><div class="job-title">レビュー21件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>カフェ系Instagram運用サポート（10人大量採用）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">10人大量採用・無報酬テスト・2冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">isinana</div><div class="job-title">レビュー21件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>旅行・レジャー投稿デザイン担当（10人募集）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">住居環境質問・トライアル100円・大量採用</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Fukudamarika</div><div class="job-title">レビュー36件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>美容アカウントInstagram投稿作成（10人大量採用）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">10人大量採用・無報酬テスト・スキルレベル不一致</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">seisaku0503</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>WEBディレクター募集（経験5年以上・20人募集）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">リスク3冠・募集20人・職種ミスマッチ</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">beroa</div><div class="job-title">レビュー6件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>クラファンLP画像・動画・GIF制作（1LP1万円・最大50枚）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">1万円で50枚・GIF・動画は割に合わない</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">risarisa1133</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>若年層向けインフルエンサーLP（LINE登録・20〜30万円）</td>
+        <td><span class="badge badge-wait">⏳ 応募済</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-wait">3/23に応募済み・返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">K TG</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>コーポレートサイト制作（研修系・8ページ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/2</span></td>
+        <td><span class="badge badge-no">62人応募・素材ゼロ・リスク2冠</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Magokoro☆Art</div><div class="job-title">レビュー30件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>AI画像生成×商品ページ制作（EC向け）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">5,000円以下・2冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Nana__31</div><div class="job-title">レビュー3件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>旅館・ホテル紹介Instagram投稿（テスト50円・15人募集）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">テスト50円・15人大量採用・3冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name" style="color:var(--red);">IR/Design ⚠️要注意</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>美容系LPファーストビュー（テスト500円→「460円入力」系）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/2</span></td>
+        <td><span class="badge badge-no">既知の詐欺的パターン・3冠リスク・19人大量採用</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">SHOマネージャー</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>Claude Code活用者急募（5〜10万円・内容不明）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/25</span></td>
+        <td><span class="badge badge-no">依頼内容不明・Claude Code専門外・2冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">koharufun_e9f3</div><div class="job-title">レビュー105件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>X向けAI自動投稿ツール「xshots」テスター</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/4</span></td>
+        <td><span class="badge badge-no">スキルミスマッチ・アフィリエイト誘導型・2冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">masumasuru</div><div class="job-title">レビュー46件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>AI類似意見サマリー＆カウントプログラム（Python）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/4</span></td>
+        <td><span class="badge badge-no">Python/自然言語処理専門外・40人応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Social Biz</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>Instagramアカウント運用サポート（週10〜15h・10人募集）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-no">リスク3冠・10人大量採用・デザインなし事務補助</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Mirai_I</div><div class="job-title">レビュー17件 ❌本人確認未 ✅発注ルール済</div></td>
+        <td>美容サロンフィードデザイナー（テスト100円・3人募集）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/28</span></td>
+        <td><span class="badge badge-no">テスト100円・本契約2000円/8〜10枚・低単価</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">saki sano</div><div class="job-title">レビュー1件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>美容系SNS投稿・リール作成（テスト300円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">テスト300円・3冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">株式会社ライディ</div><div class="job-title">レビュー0件 ✅本人確認済 ❌発注ルール未</div></td>
+        <td>インサイドセールス（テレアポ・BtoB営業代行）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">営業職・専門外・2冠リスク</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">marinorino</div><div class="job-title">レビュー13件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>ホワイトニングサロンInstagram投稿（1投稿2000円・8枚）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/28</span></td>
+        <td><span class="badge badge-no">38人応募・2冠リスク・1枚250円の超低単価</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kuroneko1230</div><div class="job-title">レビュー61件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>旅行・おでかけInstagram投稿（1投稿900円・婚姻状況質問）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/26</span></td>
+        <td><span class="badge badge-no">既婚・同棲お断り明記→プライバシー侵害基準</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">CWテック（公式）</div><div class="job-title">レビュー42件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>Meta広告 保育施設入園者数最大化（月160時間・広告運用）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">Meta広告専門外・月160h稼働必須</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">reiko.corpo</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>Instagramサロン系SNS運用チーム（5人募集・年齢質問）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/3</span></td>
+        <td><span class="badge badge-no">リスク3冠・5人全員採用疑い・年齢質問</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name" style="color:var(--red);">motobu1212 ⚠️要注意</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>広報・PR業務（IPOスタートアップ・「110円入力」指定）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">110円入力指定系・誇大表現・3冠リスク・悪質パターン</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name" style="color:var(--red);">motobu1212 ⚠️要注意</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>美容店舗への営業代行（同一悪質クライアント・複数案件出し）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">営業職・専門外・同一悪質クライアントの複数出し</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">alh_good_day</div><div class="job-title">レビュー1027件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>クリエイティブAI領域コンサルタント（画像・動画生成AI・時絩30,000円～）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">4/1</span></td>
+        <td><span class="badge badge-wait">面談調整中（履歴書は面談で確認導入中）</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">lilydakid55</div><div class="job-title">レビュー17件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>Webサイトのディレクション業務（5ページ55,000円・継続あり）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 2026-03-23 ===== -->
+  <div class="session-header">
+    <span class="session-date">2026 / 03 / 23</span>
+    <span class="session-count">評価 26件</span>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-chip total"><i class="fa-solid fa-list"></i> 評価 26件</div>
+    <div class="stat-chip applied"><i class="fa-solid fa-paper-plane"></i> 応募 8件</div>
+    <div class="stat-chip rejected"><i class="fa-solid fa-xmark"></i> スルー 18件</div>
+  </div>
+
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>クライアント</th>
+        <th>案件名</th>
+        <th>判定</th>
+        <th>締切</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 応募案件 -->
+      <tr>
+        <td><div class="client-name">alh_good_day</div><div class="job-title">レビュー1027件 ✅本人確認済</div></td>
+        <td>AIコンテンツ制作・クリエイティブ専門家</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">審査中</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">BaseCareer</div><div class="job-title">レビュー120件 ✅本人確認済</div></td>
+        <td>生成AIでInstagram/YouTube用ショート動画制作</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">risarisa1133</div><div class="job-title">レビュー0件 ✅本人確認済</div></td>
+        <td>若年層向けインフルエンサー案件LINE登録LPデザイン</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Kurokuma.</div><div class="job-title">レビュー10件 ✅本人確認済 ✅発注ルール済</div></td>
+        <td>ケーキ屋さんのデザイン＋コーディングLP</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/26 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">wamepol</div><div class="job-title">レビュー531件 本人確認未</div></td>
+        <td>広告用LPデザイン&コーディング（デザイン調整15,000円）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/31</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kagu</div><div class="job-title">認定クライアント レビュー273件 ✅</div></td>
+        <td>継続案件｜AIツール活用Webデザイナー募集</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline urgent">3/23 ⚡</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">takahiro25</div><div class="job-title">レビュー1841件 ✅本人確認済</div></td>
+        <td>LPページの制作【継続依頼前提】</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">novalis</div><div class="job-title">レビュー0件 ✅本人確認済</div></td>
+        <td>LP・Web制作パートナー募集｜継続依頼あり</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち</span></td>
+      </tr>
+      <!-- スルー案件 -->
+      <tr>
+        <td><div class="client-name">りーくん1234</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>AI活用の相談パートナー募集（n8n/GAS/Claude）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">スルー：n8n/GAS未経験</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">While05booms</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>AIツール活用サポート＆事務アシスタント</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">都内勤務・週30〜40h</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">CRM・自動化太郎</div><div class="job-title">レビュー8件</div></td>
+        <td>AI×SNS半自動運用パートナー（完全未経験OK）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">MLM的構造・99人募集</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">tsw_pm</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>AI翻訳アシスタント（月5〜10万円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">翻訳専門外・方向性不一致</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ベルウクリエイティブ</div><div class="job-title">レビュー1件</div></td>
+        <td>AIを活用した自動ログ分析システム開発</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/28</span></td>
+        <td><span class="badge badge-no">エンジニア案件・専門外</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">fwconsulting</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>人材採用プロセスのAI化</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">HR・採用コンサル専門外</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">fujikou0624</div><div class="job-title">レビュー30件 ❌本人確認未</div></td>
+        <td>AI顧問（技術パートナー）月2〜3回</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">Python/API/スクレイピング必須</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kouday</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>クリエイティブディレクター（西新宿・30代まで）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/3</span></td>
+        <td><span class="badge badge-no">年齢制限30代・西新宿出社</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">kwamk3968</div><div class="job-title">レビュー5件</div></td>
+        <td>複数LP制作（楽天/Yahoo/Amazon出品者向け）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/2</span></td>
+        <td><span class="badge badge-no">EC経験必須・1,500円/バナー</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">IR/Design・UXD・ARCHIC</div><div class="job-title">❌リスク最高・複数アカウント</div></td>
+        <td>LPファーストビュー（表示10万・実際500円）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td>—</td>
+        <td><span class="badge badge-no">460円と入力パターン詐欺的</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">小松コトリ</div><div class="job-title">レビュー5件 ✅本人確認済</div></td>
+        <td>化粧品LP制作（Studio/Wix）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">4/6</span></td>
+        <td><span class="badge badge-no">Studio/Wixはコード路線と不一致</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">drbridge_1112</div><div class="job-title">レビュー0件 ❌本人確認未</div></td>
+        <td>医療クリニックYoutube運用代行LP（Illustrator必須）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">124人応募・PSD/AI納品必須</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ちゃい84</div><div class="job-title">レビュー50件 ✅本人確認済</div></td>
+        <td>カフェのLP（20代限定）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/25</span></td>
+        <td><span class="badge badge-no">応募条件：20代のみ</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">Wanh</div><div class="job-title">レビュー10件 本人確認未</div></td>
+        <td>旅行LP（WordPress/STUDIO/ペライチ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">WordPress系・既婚等個人情報質問</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">huku_fr</div><div class="job-title">レビュー0件 ✅本人確認済</div></td>
+        <td>独立支援サービスLPデザイン（Figma推奨）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">既婚・住居環境など個人情報質問</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">yuichigo</div><div class="job-title">レビュー3件 ✅本人確認済</div></td>
+        <td>記事LP制作（beyond・美容・サプリ）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">記事LP専門・beyondツール必須</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">yumakakehashi ×2</div><div class="job-title">レビュー10件 ✅本人確認済</div></td>
+        <td>職人留学LP / 建設不動産会社HP（WordPress）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-no">WordPress必須・15,000円</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">skin_care1</div><div class="job-title">レビュー70件 ✅本人確認済</div></td>
+        <td>アンケートLP（WordPress＋PSD納品）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">WordPress・PSD必須・62人応募</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 2026-03-25 ===== -->
+  <div class="session-header">
+    <span class="session-date">2026 / 03 / 25</span>
+    <span class="session-count">評価 5件</span>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-chip total"><i class="fa-solid fa-list"></i> 評価 5件</div>
+    <div class="stat-chip applied"><i class="fa-solid fa-paper-plane"></i> 応募 3件</div>
+    <div class="stat-chip no"><i class="fa-solid fa-xmark"></i> スキップ 2件</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>クライアント</th><th>案件</th><th>判定</th><th>締切</th><th>メモ</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="client-name">LFCO</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>フローリング建材WEBサイト修正・変更（3〜5万円・応募14人）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/29</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜リスク3冠だが競合14人・素材揃い・WordPress不可・LLMO対応アピール</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">LFCO（同一）</div><div class="job-title">レビュー0件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>リフォーム会社WEBサイト修正・変更（3〜5万円・応募46人）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/27</span></td>
+        <td><span class="badge badge-no">46人応募・文章なし・期限2日・同一クライアントのフローリング案件を優先</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">絆！</div><div class="job-title">レビュー352件 ✅本人確認済 ✅発注ルール済 認定クライアント</div></td>
+        <td>WordPress HP制作継続発注（2.3万円・143人応募）</td>
+        <td><span class="badge badge-no">❌ NO</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-no">WordPress必須・優良クライアントだがスキルミスマッチ・WP習得後の目標クライアント</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">1010atsushiueda</div><div class="job-title">レビュー2件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>建設会社コーポレートサイト新規制作（京都・住宅建築）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">4/7</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜建設業実績アピール・WordPress代替提案・実績モニター优待で応募</span></td>
+      </tr>
+      <tr>
+        <td><div class="client-name">ecinter2023</div><div class="job-title">レビュー3件 ❌本人確認未 ❌発注ルール未</div></td>
+        <td>WEB HP制作・事務・SNS運用スタッフ（奈良・宇陀市）</td>
+        <td><span class="badge badge-applied">✅ 応募</span></td>
+        <td><span class="deadline">3/30</span></td>
+        <td><span class="badge badge-wait">⏳ 返信待ち｜実績5.0・旅館HP・旅行会社HP実績あり・サブコン形式か・WordPress以外で山哣で応募</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 凡例 -->
+
+  <div style="margin-top:20px; padding:16px; background:white; border-radius:10px; border:1px solid var(--border); font-size:.8rem; color:var(--muted);">
+    <strong>スルーの主なパターン：</strong>
+    WordPress必須 / 単価安すぎ / クライアントリスク高（0件+本人確認未+発注ルール未） / 都内勤務 / PSD/AI納品必須 / 年齢制限 / 詐欺的案件（依頼文中に「〇〇円と入力してください」の指定がある案件 ※CWの要相談仮表示金額とは別物）
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💴 経費管理 | 運用司令室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --space-bg: #0F172A; --panel-bg: #1E293B; --panel-border: #334155;
+            --text-main: #F1F5F9; --text-dim: #94A3B8;
+            --accent-gold: #D4AF37; --accent-blue: #3B82F6; --accent-green: #10B981;
+            --mode-color: #F59E0B;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: var(--space-bg); color: var(--text-main); margin: 0; padding: 20px; font-size: 14px; line-height: 1.5; }
+        a { text-decoration: none; color: inherit; transition: all 0.2s; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--mode-color); margin-bottom: 24px; }
+        .app-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+        .app-title i { color: var(--mode-color); }
+        .mode-badge { background: rgba(245,158,11,0.15); border: 1px solid var(--mode-color); color: var(--mode-color); font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; }
+        .back-btn { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--panel-border); border-radius: 6px; transition: all 0.2s; }
+        .back-btn:hover { color: var(--text-main); border-color: var(--text-dim); }
+        .cockpit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
+        .panel { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; overflow: hidden; margin-bottom: 18px; }
+        .panel:last-child { margin-bottom: 0; }
+        .panel-header { padding: 12px 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--panel-border); }
+        .panel-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+        .panel-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .highlight-card { display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--panel-border); padding: 14px; border-radius: 8px; transition: all 0.2s; }
+        .highlight-card:hover { border-color: var(--mode-color); background: rgba(245,158,11,0.07); }
+        .hc-icon { font-size: 1.4rem; margin-right: 14px; width: 28px; text-align: center; }
+        .hc-content { flex: 1; }
+        .hc-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 2px; }
+        .hc-desc { font-size: 0.72rem; color: var(--text-dim); }
+        .hc-arrow { opacity: 0.4; font-size: 0.8rem; }
+        .link-row { display: flex; align-items: center; padding: 9px 10px; border-radius: 6px; color: var(--text-main); font-weight: 500; transition: all 0.2s; }
+        .link-row:hover { background: rgba(255,255,255,0.06); color: var(--accent-blue); }
+        .lr-icon { width: 26px; color: var(--text-dim); font-size: 0.9rem; }
+        .link-row:hover .lr-icon { color: var(--accent-blue); }
+        .lr-text { flex: 1; }
+        .lr-sub { font-size: 0.7rem; color: var(--text-dim); margin-left: 8px; }
+        .divider { border: none; border-top: 1px solid var(--panel-border); margin: 6px 0; }
+        .month-badge { font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 8px; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); color: var(--mode-color); }
+        .flow-step { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 6px; background: rgba(255,255,255,0.02); border: 1px solid var(--panel-border); }
+        .step-num { background: var(--mode-color); color: #0F172A; font-weight: 900; font-size: 0.72rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+        .step-content { flex: 1; }
+        .step-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 2px; }
+        .step-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.5; }
+        .step-arrow { text-align: center; color: var(--text-dim); font-size: 0.8rem; padding: 2px 0; }
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; }
+        .dot-green { background: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+        .date-display { font-family: 'Outfit', sans-serif; color: var(--text-dim); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="app-title">
+            <i class="fa-solid fa-coins"></i>
+            <div>
+                <div style="line-height:1;">FINANCE MODE</div>
+                <div style="font-size:0.7rem; font-weight:400; color:var(--text-dim); letter-spacing:0.1em; margin-top:2px;">経費管理・帳簿整理・確定申告</div>
+            </div>
+            <span class="mode-badge">💴 経費管理</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+            <div class="date-display"><span id="current-date"></span> <span class="dot dot-green" style="margin-left:6px;"></span></div>
+            <a href="mode_admin.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 管理モードへ</a>
+        </div>
+    </header>
+
+    <div class="cockpit-grid">
+
+        <!-- COL 1: 月次フロー -->
+        <div>
+            <div class="panel" style="border-color:rgba(245,158,11,0.4);">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--mode-color);"><i class="fa-solid fa-list-ol"></i> 月次経費整理フロー</span>
+                </div>
+                <div class="panel-body">
+                    <div class="flow-step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <div class="step-title">各カードのCSVをダウンロード</div>
+                            <div class="step-desc">PayPal・PayPay・Amex それぞれのマイページからCSVを月次でエクスポート。</div>
+                        </div>
+                    </div>
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                    <div class="flow-step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <div class="step-title">CSV正規化ワークフローで整理</div>
+                            <div class="step-desc">Antigravityに貼り付けてカテゴリ分類（研修費・通信費・外注費など）を確認。</div>
+                        </div>
+                    </div>
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                    <div class="flow-step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Driveの帳簿スプレッドシートに転記</div>
+                            <div class="step-desc">月次レジャー（元帳）にまとめる。確認後はお兄さん（税理士）に共有。</div>
+                        </div>
+                    </div>
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                    <div class="flow-step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <div class="step-title">年次：確定申告（青色申告）</div>
+                            <div class="step-desc">2月〜3月。お兄さんに資料を渡して申告完了。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COL 2: 決済サービス・ツール -->
+        <div>
+            <!-- 決済・収支 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--mode-color);"><i class="fa-solid fa-wallet"></i> 決済・収支確認</span>
+                </div>
+                <div class="panel-body">
+                    <a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fmep%2F" target="_blank" class="highlight-card" style="border-color:rgba(0,48,135,0.4); background:rgba(0,48,135,0.08);">
+                        <div class="hc-icon" style="color:#009CDE;"><i class="fa-brands fa-paypal"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">PayPal Business</div>
+                            <div class="hc-desc">請求書発行・売上・CSV出力</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right hc-arrow"></i>
+                    </a>
+                    <a href="https://www.paypay.ne.jp/" target="_blank" class="link-row">
+                        <i class="fa-solid fa-mobile-screen-button lr-icon" style="color:#FF0033;"></i>
+                        <span class="lr-text">PayPay（経費支払い）</span>
+                        <span class="lr-sub">月次CSVダウンロード</span>
+                    </a>
+                    <a href="https://www.americanexpress.com/ja-jp/account/login" target="_blank" class="link-row">
+                        <i class="fa-solid fa-credit-card lr-icon" style="color:#007BC1;"></i>
+                        <span class="lr-text">American Express</span>
+                        <span class="lr-sub">月次CSVダウンロード</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 帳簿・申告書類 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title"><i class="fa-solid fa-file-invoice-dollar"></i> 帳簿・申告書類</span>
+                </div>
+                <div class="panel-body">
+                    <a href="kakuteishinkoku_manual.html" target="_blank" class="highlight-card" style="border-color:rgba(245,158,11,0.4); background:rgba(245,158,11,0.07);">
+                        <div class="hc-icon" style="color:var(--mode-color);"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <div class="hc-content">
+                            <div class="hc-title">確定申告マニュアル</div>
+                            <div class="hc-desc">CSV整理〜申告完了までの手順書</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right hc-arrow"></i>
+                    </a>
+                    <a href="https://drive.google.com/drive/" target="_blank" class="link-row" style="background:rgba(16,185,129,0.07); border:1px solid rgba(16,185,129,0.25); border-radius:6px;">
+                        <i class="fa-brands fa-google-drive lr-icon" style="color:#1FA463;"></i>
+                        <span class="lr-text">帳簿スプレッドシート（Drive）</span>
+                        <span class="lr-sub">月次レジャー・経費一覧</span>
+                    </a>
+                    <a href="monetization_bible_90days.html" target="_blank" class="link-row">
+                        <i class="fa-solid fa-rocket lr-icon" style="color:var(--accent-gold);"></i>
+                        <span class="lr-text">90日ロードマップ（財務ランウェイ）</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- カテゴリ早見表 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="panel-title" style="color:var(--mode-color);"><i class="fa-solid fa-tags"></i> 経費カテゴリ早見表</span>
+                </div>
+                <div class="panel-body" style="font-size:0.8rem;">
+                    <div style="display:flex; flex-direction:column; gap:5px;">
+                        <div style="display:flex; justify-content:space-between; padding:6px 8px; background:rgba(255,255,255,0.03); border-radius:4px;">
+                            <span style="color:var(--accent-blue);">研修費・図書費</span>
+                            <span style="color:var(--text-dim);">Udemy・書籍・Claude</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding:6px 8px; background:rgba(255,255,255,0.03); border-radius:4px;">
+                            <span style="color:var(--accent-green);">通信費</span>
+                            <span style="color:var(--text-dim);">Cloudflare・GitHub・ドメイン</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding:6px 8px; background:rgba(255,255,255,0.03); border-radius:4px;">
+                            <span style="color:#8B5CF6;">外注費</span>
+                            <span style="color:var(--text-dim);">フリーランスへの支払い</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding:6px 8px; background:rgba(255,255,255,0.03); border-radius:4px;">
+                            <span style="color:var(--mode-color);">広告宣伝費</span>
+                            <span style="color:var(--text-dim);">Canva・Firefly・SNS広告</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding:6px 8px; background:rgba(255,255,255,0.03); border-radius:4px;">
+                            <span style="color:#E4405F;">地代家賃（按分）</span>
+                            <span style="color:var(--text-dim);">在宅勤務の家賃・光熱費</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const now = new Date();
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        document.getElementById('current-date').textContent = `${now.getFullYear()}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getDate().toString().padStart(2,'0')} (${days[now.getDay()]})`;
+    </script>
+</body>
+</html>

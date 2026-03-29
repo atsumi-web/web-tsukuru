@@ -1,0 +1,397 @@
+﻿<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>採用の仕組み全体図｜Webとしくみをつくる</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --navy: #0f172a;
+        --gold: #c5a059;
+        --light: #f8fafc;
+        --white: #ffffff;
+        --text: #334155;
+        --border: #e2e8f0;
+        --alert: #ef4444;
+        --green: #22c55e;
+        --blue: #3b82f6;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: var(--light);
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      /* HEADER */
+      .page-header {
+        background: var(--navy);
+        padding: 40px 30px;
+        text-align: center;
+        border-bottom: 4px solid var(--gold);
+      }
+      .page-header h1 {
+        font-family: "Outfit", sans-serif;
+        font-size: 1.6rem;
+        color: var(--gold);
+        letter-spacing: 0.05em;
+      }
+      .page-header p {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+        margin-top: 8px;
+      }
+
+      .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+      /* SECTION TITLE */
+      .section-label {
+        display: inline-block;
+        background: var(--navy);
+        color: var(--gold);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-size: 1.4rem;
+        font-weight: 900;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+      .section-desc {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-bottom: 32px;
+      }
+
+      /* FUNNEL DIAGRAM */
+      .funnel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin: 40px 0;
+      }
+      .funnel-step {
+        width: 100%;
+        max-width: 640px;
+        display: flex;
+        align-items: stretch;
+        position: relative;
+      }
+      .funnel-body {
+        flex: 1;
+        padding: 20px 24px;
+        border-radius: 12px;
+        position: relative;
+      }
+      .funnel-step:not(:last-child) .funnel-body::after {
+        content: "▼";
+        position: absolute;
+        bottom: -26px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.4rem;
+        color: var(--gold);
+        z-index: 10;
+      }
+      .funnel-connector { height: 28px; }
+
+      .step-sns   { background: #eff6ff; border: 2px solid var(--blue); }
+      .step-lp    { background: #fefce8; border: 3px solid var(--gold); }
+      .step-line  { background: #f0fdf4; border: 2px solid var(--green); }
+      .step-meet  { background: #0f172a; border: 2px solid var(--gold); }
+
+      .funnel-body h3 {
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 6px;
+      }
+      .step-sns h3   { color: var(--blue); }
+      .step-lp h3    { color: #92400e; }
+      .step-line h3  { color: #15803d; }
+      .step-meet h3  { color: var(--gold); }
+
+      .funnel-body p  { font-size: 0.88rem; }
+      .step-meet p    { color: rgba(255,255,255,0.85); }
+
+      .tag {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .tag-now  { background: var(--gold);  color: #fff; }
+      .tag-next { background: var(--blue);  color: #fff; }
+      .tag-goal { background: #0f172a;      color: var(--gold); }
+
+      /* NOTICE BOX */
+      .notice-box {
+        background: #fff7ed;
+        border-left: 5px solid #f97316;
+        border-radius: 8px;
+        padding: 24px 28px;
+        margin: 48px 0 24px;
+      }
+      .notice-box .notice-title {
+        font-size: 1rem;
+        font-weight: 900;
+        color: #c2410c;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .notice-box ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .notice-box li {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        padding-left: 28px;
+        position: relative;
+      }
+      .notice-box li::before {
+        content: "📌";
+        position: absolute;
+        left: 0;
+      }
+      .notice-box strong { color: #c2410c; }
+
+      /* PROMISE BOX */
+      .promise-box {
+        background: var(--navy);
+        border-radius: 12px;
+        padding: 28px;
+        margin-top: 24px;
+        color: rgba(255,255,255,0.9);
+      }
+      .promise-box h3 {
+        color: var(--gold);
+        font-size: 1rem;
+        font-weight: 900;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .promise-box ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .promise-box li {
+        font-size: 0.9rem;
+        padding-left: 24px;
+        position: relative;
+      }
+      .promise-box li::before {
+        content: "✅";
+        position: absolute;
+        left: 0;
+      }
+
+      /* ROADMAP */
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .roadmap-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+      }
+      .roadmap-card .month {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #94a3b8;
+        margin-bottom: 8px;
+      }
+      .roadmap-card h4 {
+        font-size: 0.95rem;
+        font-weight: 900;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+      .roadmap-card p {
+        font-size: 0.8rem;
+        color: #64748b;
+      }
+      .roadmap-card.active {
+        border-color: var(--gold);
+        background: #fefce8;
+      }
+      .roadmap-card.active h4 { color: #92400e; }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+        border-top: 1px solid var(--border);
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>採用の仕組み 全体図</h1>
+      <p>Webとしくみをつくる｜堀田建設 採用プロジェクト 参考資料</p>
+    </div>
+
+    <div class="container">
+
+      <!-- PART 1: 採用仕組み全体図 -->
+      <div class="section-label">STRATEGY MAP</div>
+      <h2 class="section-title">採用LPは「入口」です。<br>人が集まるには「道」が必要です。</h2>
+      <p class="section-desc">
+        LPは「応募を受け取る受け皿」。でも、受け皿だけでは人は来ません。<br>
+        求職者に「この会社を知ってもらう」ための流入経路を整えることで、採用の仕組みが完成します。
+      </p>
+
+      <div class="funnel">
+
+        <div class="funnel-step">
+          <div class="funnel-body step-sns">
+            <span class="tag tag-next">STEP1 — 認知（将来的に）</span>
+            <h3><i class="fa-brands fa-instagram"></i> SNS・検索・広告</h3>
+            <p>
+              「この会社、なんかいいな」と思ってもらう最初の接点。<br>
+              Instagram Reel、Google検索、Facebook広告などから<strong>採用LPへ誘導</strong>します。
+              ここが整うと、採用の母数が大きく増えます。
+            </p>
+          </div>
+        </div>
+        <div class="funnel-connector"></div>
+
+        <div class="funnel-step">
+          <div class="funnel-body step-lp">
+            <span class="tag tag-now">STEP2 — 興味・信頼（今ここ）</span>
+            <h3><i class="fa-solid fa-file-code"></i> 採用LP（今回制作）</h3>
+            <p>
+              会社の魅力・現場の雰囲気・社員インタビューを見せて<strong>「ここで働きたい」に変える</strong>受け皿。<br>
+              <s style="color:#94a3b8;">維持費0円</s>・スマホ最適化・LINE連携まで含む、御社の永続的な採用資産です。<br><span style="display:inline-block;margin-top:6px;font-size:0.8rem;background:#fef9c3;border:1px solid #fde047;border-radius:6px;padding:3px 10px;color:#854d0e;">※ 堀田建設様は公式サイトのサーバーのサブドメインをご利用のため、サーバー維持費は別途発生しません。</span>
+            </p>
+          </div>
+        </div>
+        <div class="funnel-connector"></div>
+
+        <div class="funnel-step">
+          <div class="funnel-body step-line">
+            <span class="tag" style="background:#16a34a;color:#fff;">STEP3 — 接触</span>
+            <h3><i class="fa-brands fa-line"></i> LINE窓口</h3>
+            <p>
+              ハードルの低い「LINE」で応募・問い合わせを受け付ける。<br>
+              電話やメールより<strong>返信率・継続接触率が高く</strong>、候補者を逃しにくい設計です。
+            </p>
+          </div>
+        </div>
+        <div class="funnel-connector"></div>
+
+        <div class="funnel-step">
+          <div class="funnel-body step-meet">
+            <span class="tag tag-goal">STEP4 — 採用ゴール</span>
+            <h3><i class="fa-solid fa-handshake"></i> 面談 → 採用</h3>
+            <p>候補者との対話。この段階で初めてリアルな関係が始まります。<br>LPとLINEが「自己紹介と信頼醸成」を先にやってくれているので、面談がスムーズになります。</p>
+          </div>
+        </div>
+
+      </div><!-- /funnel -->
+
+      <!-- 6ヶ月ロードマップ -->
+      <div style="margin-top:48px;">
+        <div class="section-label">ROADMAP</div>
+        <h2 class="section-title" style="margin-bottom:8px;">6ヶ月の進め方イメージ</h2>
+        <p class="section-desc">まずLPを土台に。慣れてきたらSNS・広告へ展開していきます。</p>
+        <div class="roadmap">
+          <div class="roadmap-card active">
+            <div class="month">1〜2ヶ月目</div>
+            <h4>土台づくり</h4>
+            <p>LP公開・GA4・Search Console・LINE設定。アクセスデータを集め始める。</p>
+          </div>
+          <div class="roadmap-card">
+            <div class="month">3ヶ月目</div>
+            <h4>データ確認・調整</h4>
+            <p>どこから人が来ているか確認。LPのファーストビューやCTAを微調整。</p>
+          </div>
+          <div class="roadmap-card">
+            <div class="month">4ヶ月目〜</div>
+            <h4>SNS・広告を検討</h4>
+            <p>Instagramや求人向けFacebook広告など、流入を増やす手段を追加。<br><span style="font-size:0.78rem;color:#94a3b8;">※この段階については渡美自身も現在勉強・検証中です。実施タイミング・効果は一緒に判断します。</span></p>
+          </div>
+          <div class="roadmap-card">
+            <div class="month">6ヶ月目</div>
+            <h4>振り返り・次の一手</h4>
+            <p>半年のデータをもとに、次のサポート内容を一緒に考えます。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 2: モニタークライアントへの開示事項 -->
+      <div class="notice-box" style="margin-top:64px;">
+        <div class="notice-title">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          事前にお伝えすべきこと（モニタークライアントとして）
+        </div>
+        <ul>
+          <li>
+            堀田建設様は、この採用LP制作サービスの<strong>第1号モニタークライアント</strong>です。
+            建設業に特化した採用LPサービスはまだ前例が少なく、
+            <strong>応募数が確実に増える保証はできません</strong>。
+          </li>
+          <li>
+            成果は<strong>LP単体だけで決まるものではなく</strong>、採用市場の状況・競合の求人状況・会社の知名度・SNS流入の有無など
+            複数の要因が重なります。LP制作はその「土台づくり」です。
+          </li>
+          <li>
+            だからこそ、<strong>GA4・Search Console・LINEのデータを共有しながら、一緒に改善していく</strong>パートナーとして関わります。
+            作って終わりではなく、6ヶ月間伴走します。
+          </li>
+          <li>
+            現時点では<strong>SNS運用代行・広告運用は基本サービスの範囲外</strong>ですが、
+            データが蓄積された段階でご希望があれば、優先的にご提案します。
+          </li>
+        </ul>
+      </div>
+
+      <div class="promise-box">
+        <h3><i class="fa-solid fa-star"></i> 渥美からのお約束</h3>
+        <ul>
+          <li>成果を一緒に追うパートナーとして、6ヶ月間伴走します</li>
+          <li>月1回以上、GA4データをもとに現状報告と改善提案をお送りします</li>
+          <li>判断材料となる数字を常に見える状態にして、次の打ち手を一緒に考えます</li>
+          <li>「使える採用資産」を届けることに、責任を持って取り組みます</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <footer>
+      Webとしくみをつくる｜web-tsukuru.jp — 堀田建設 採用プロジェクト参考資料 © 2026
+    </footer>
+  </body>
+</html>

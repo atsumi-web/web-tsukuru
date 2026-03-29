@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>採用LP 集客施策のご提案｜堀田建設</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #001a3d;
+      --gold: #c5a059;
+      --green: #2e7d52;
+      --blue: #1a5fa8;
+      --red: #b03030;
+      --yellow: #b08020;
+      --bg: #f4f6f9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: #333;
+      line-height: 1.8;
+    }
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    header p {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+
+    .lead {
+      background: white;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 0.97rem;
+      color: #444;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+    .section-title .badge {
+      color: white;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge.green { background: var(--green); }
+    .badge.blue  { background: var(--blue); }
+    .badge.red   { background: var(--red); }
+    .badge.yellow{ background: var(--yellow); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-top: 3px solid;
+    }
+    .card.green  { border-color: var(--green); }
+    .card.blue   { border-color: var(--blue); }
+    .card.red    { border-color: var(--red); }
+    .card.yellow { border-color: var(--yellow); }
+
+    .card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--navy);
+    }
+    .card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.7;
+    }
+    .card .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      background: #f0f0f0;
+      padding: 2px 10px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      color: #888;
+    }
+    .card.done .tag { background: #e6f4ec; color: var(--green); }
+
+    .note {
+      margin-top: 48px;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      font-size: 0.9rem;
+      color: #666;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .note strong { color: var(--navy); }
+
+    /* LP役割説明 */
+    .lp-role {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .lp-role h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+    .compare-table th {
+      padding: 10px 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .compare-table th.lp-col { background: #e8f0f8; color: var(--blue); }
+    .compare-table th.site-col { background: #e8f5ee; color: var(--green); }
+    .compare-table th.item-col { background: #f4f6f9; color: #555; width: 30%; }
+    .compare-table td {
+      padding: 10px 16px;
+      border-top: 1px solid #eee;
+      vertical-align: middle;
+    }
+    .compare-table td.item { font-weight: 700; color: #555; font-size: 0.85rem; }
+    .compare-table td.lp-col { text-align: center; background: #f6f9fd; }
+    .compare-table td.site-col { text-align: center; background: #f4faf7; }
+    .flow-box {
+      background: #f4f6f9;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-size: 0.88rem;
+    }
+    .flow-box .flow-title { font-weight: 700; color: var(--navy); margin-bottom: 12px; font-size: 0.9rem; }
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .flow-step {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .flow-step.highlight {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+      font-weight: 700;
+    }
+    .flow-arrow { color: #aaa; font-size: 1.2rem; }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    @media(max-width: 600px) {
+      .cards { grid-template-columns: 1fr; }
+      .flow-steps { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; font-size: 10pt; }
+      header { background: #fff !important; color: #000; border-bottom: 2px solid #000; padding: 16px 0; }
+      header .label { color: #000; border-color: #000; }
+      header h1 { font-size: 14pt; color: #000; }
+      header p { color: #444 !important; }
+      .container { padding: 16px 0; }
+      .lp-role { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      .lead { border-left-color: #555; }
+      .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      .card.green { border-top-color: #333; }
+      .card.blue  { border-top-color: #555; }
+      .card.red   { border-top-color: #888; }
+      .card.yellow{ border-top-color: #aaa; }
+      .badge.green, .badge.blue, .badge.red, .badge.yellow { background: #333 !important; color: #fff !important; }
+      .flow-step.highlight { background: #000 !important; }
+      .note { box-shadow: none; border: 1px solid #ccc; }
+      .compare-table th.lp-col { background: #eee; color: #000; }
+      .compare-table th.site-col { background: #ddd; color: #000; }
+      .compare-table td.lp-col { background: #f9f9f9; }
+      .compare-table td.site-col { background: #f2f2f2; }
+      a { color: #000; text-decoration: none; }
+      footer { color: #666; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="label">PROPOSAL</div>
+  <h1>採用LP 集客施策のご提案</h1>
+  <p>堀田建設株式会社｜2026年3月</p>
+</header>
+
+<div class="container">
+
+  <!-- LP役割の説明 -->
+  <div class="lp-role">
+    <h2>❓ 「採用LP」と「採用サイト」はどう違うの？</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="item-col"></th>
+          <th class="lp-col">今回作った採用LP</th>
+          <th class="site-col">採用サイト＋ブログ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item">ページ数</td>
+          <td class="lp-col"><strong>1ページ</strong></td>
+          <td class="site-col">複数ページ（記事が増えるほど拡張）</td>
+        </tr>
+        <tr>
+          <td class="item">目的</td>
+          <td class="lp-col">来た人を応募に変える</td>
+          <td class="site-col">Googleで見つけてもらう</td>
+        </tr>
+        <tr>
+          <td class="item">Google検索への強さ</td>
+          <td class="lp-col">△ 「堀田建設 採用」程度</td>
+          <td class="site-col">◎ 記事ごとにキーワードが狙える</td>
+        </tr>
+        <tr>
+          <td class="item">更新・運用</td>
+          <td class="lp-col">少ない（年数回）</td>
+          <td class="site-col">継続的に記事を追加</td>
+        </tr>
+        <tr>
+          <td class="item">制作コスト</td>
+          <td class="lp-col">低〜中</td>
+          <td class="site-col">高（継続投資が必要）</td>
+        </tr>
+        <tr>
+          <td class="item">向いている状況</td>
+          <td class="lp-col">窓口から誘導する採用</td>
+          <td class="site-col">検索流入を積み上げる採用</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="flow-box">
+      <div class="flow-title">採用LPへの典型的な流入ルート</div>
+      <div class="flow-steps">
+        <div class="flow-step">求人媒体<br/>（Indeed等）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">SNS<br/>（Instagram等）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">QRコード<br/>（チラシ・名刺）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">LINE・<br/>口コミ</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step highlight">採用LP<br/>（応募）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lead">
+    採用LPは「来てくれた人を応募に変えるページ」です。<br />
+    LPに人を連れてくる「窓口」を複数つくることが、採用成功のカギになります。<br />
+    以下に、実施できる施策を優先度・コスト別に整理しました。
+  </div>
+
+  <!-- すぐできる・無料 -->
+  <div class="section-title">
+    <span class="badge green">🟢 すぐできる・無料</span>
+    <span style="font-size:0.85rem;color:#888;">優先的に取り組む施策</span>
+  </div>
+  <div class="cards">
+    <div class="card green" style="border-color:#aaa; background:#fafafa;">
+      <span class="tag" style="background:#eee;color:#999;">参考情報</span>
+      <h3 style="color:#777;">Google検索</h3>
+      <p style="color:#999;">「堀田建設」の会社名検索は公式サイト（hottacon.co.jp）が対応します。採用LPの集客窓口としてはカウントしません。</p>
+    </div>
+    <div class="card green">
+      <span class="tag done">設定済み</span>
+      <h3>Google for Jobs</h3>
+      <p>求人情報の構造化データを設置済み。Googleの求人検索欄に表示される可能性あり。</p>
+    </div>
+    <div class="card green">
+      <span class="tag">要対応</span>
+      <h3>Googleビジネスプロフィール（MEO）</h3>
+      <p>「亀山市 建設会社」など地図検索での表示強化。求人投稿・写真発信・レビュー管理ができ、採用候補者の信頼獲得にも有効。無料で始められる。</p>
+    </div>
+    <div class="card green">
+      <span class="tag">要対応</span>
+      <h3>会社HP → LP へのリンク</h3>
+      <p>既存の会社ホームページの採用ページからLPへリンクを貼る。訪問者を逃さない。</p>
+    </div>
+    <div class="card green">
+      <span class="tag">要対応</span>
+      <h3>QRコード展開</h3>
+      <p>会社案内・チラシ・名刺・車のラッピングにQRコードを掲載。オフラインからの誘導。</p>
+    </div>
+    <div class="card green">
+      <span class="tag">要対応</span>
+      <h3>ハローワーク</h3>
+      <p>求人票にLPのURLを記載。公共窓口からの流入を確保する。</p>
+    </div>
+    <div class="card green">
+      <span class="tag">要対応</span>
+      <h3>無料求人サイトへの掲載</h3>
+      <p>Indeed（無料枠）・求人ボックス・スタンバイなどは無料で求人を掲載でき、応募ページにLPのURLを記載できる。まずは無料枠から始めるのが現実的。</p>
+    </div>
+    <div class="card green">
+      <span class="tag">社内施策</span>
+      <h3>社員紹介（リファラル）</h3>
+      <p>社員から友人・知人へ紹介を依頼。インセンティブを設けると効果的。</p>
+    </div>
+  </div>
+
+  <!-- SNS・コンテンツ -->
+  <div class="section-title">
+    <span class="badge blue">🔵 SNS・コンテンツ</span>
+    <span style="font-size:0.85rem;color:#888;">継続的に認知を広げる施策</span>
+  </div>
+  <div class="cards">
+    <div class="card blue">
+      <span class="tag">月次運用</span>
+      <h3>LINE公式アカウント</h3>
+      <p>友だち登録した候補者へ定期的に情報発信。関係を温め、応募意欲を高める。</p>
+    </div>
+    <div class="card blue">
+      <span class="tag">SNS運用</span>
+      <h3>Instagram</h3>
+      <p>現場の日常・社員の1日などを発信。若年層への認知拡大に効果的。</p>
+    </div>
+    <div class="card blue">
+      <span class="tag">中長期</span>
+      <h3>採用ブログ</h3>
+      <p>キーワードを意識した記事を積み上げることで、Googleの検索に出やすくなる。詳しくは別資料へ。<br/><a href="proposal_seo.html" style="color:var(--blue);font-size:0.82rem;">→ 検索順位を上げるための施策</a></p>
+    </div>
+    <div class="card blue">
+      <span class="tag">動画</span>
+      <h3>YouTube / TikTok</h3>
+      <p>現場密着・1日密着動画。建設業に関心のある若者層へのリーチに有効。</p>
+    </div>
+    <div class="card blue" style="border-color:#aaa; background:#fafafa;">
+      <span class="tag" style="background:#eee;color:#999;">優先度低</span>
+      <h3 style="color:#777;">X（Twitter）</h3>
+      <p style="color:#999;">情報収集・ニュース寄りのユーザー層が多く、地域密着の建設採用には刺さりにくい。今後の状況次第で検討。</p>
+    </div>
+    <div class="card blue" style="border-color:#aaa; background:#fafafa;">
+      <span class="tag" style="background:#eee;color:#999;">優先度低</span>
+      <h3 style="color:#777;">Facebook（無料投稿）</h3>
+      <p style="color:#999;">有料広告（Meta広告）は効果的だが、無料の企業ページ投稿はアルゴリズムの影響でリーチが限られる。</p>
+    </div>
+  </div>
+
+  <!-- 有料 -->
+  <div class="section-title">
+    <span class="badge red">🔴 有料広告</span>
+    <span style="font-size:0.85rem;color:#888;">即効性があるが費用が発生する</span>
+  </div>
+  <div class="cards">
+    <div class="card red">
+      <span class="tag">月額〜</span>
+      <h3>Indeed 有料掲載</h3>
+      <p>求人検索での優先表示。クリック課金型で、掲載数に応じて費用が変動する。</p>
+    </div>
+    <div class="card red">
+      <span class="tag">月額〜</span>
+      <h3>Google広告</h3>
+      <p>「施工管理 亀山市 求人」などのキーワードで広告を出稿。検索結果の上位に表示。</p>
+    </div>
+    <div class="card red">
+      <span class="tag">ねらい目 ⭐</span>
+      <h3>Facebook / Meta広告</h3>
+      <p>今すぐ転職を考えていない「潜在層」にリーチできる。亀山市周辺・年齢・職業での精密ターゲティングが可能。Facebook＋Instagramに同時配信できる点も強み。</p>
+    </div>
+    <div class="card red">
+      <span class="tag">ねらい目 ⭐</span>
+      <h3>YouTube広告</h3>
+      <p>現場密着・社員インタビュー動画を活用した動画広告。地域×属性でターゲティングでき、視覚的な訴求力が高い。若年層への認知拡大に有効。</p>
+    </div>
+  </div>
+
+  <!-- 地域特有 -->
+  <div class="section-title">
+    <span class="badge yellow">🟡 地域ならではの施策</span>
+    <span style="font-size:0.85rem;color:#888;">地元密着型の強みを活かす</span>
+  </div>
+  <div class="cards">
+    <div class="card yellow">
+      <span class="tag">訪問営業</span>
+      <h3>工業高校・工専への直営業</h3>
+      <p>先生へ挨拶まわり・会社説明会の実施。高卒採用の安定したパイプになる。</p>
+    </div>
+    <div class="card yellow">
+      <span class="tag">口コミ</span>
+      <h3>既存取引先からの紹介</h3>
+      <p>施工先のお客様や取引業者に「人材紹介」の協力をお願いする。</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>まずどこから始めるか</strong><br />
+    費用0円ですぐに始められる「会社HPへのリンク設置」と「QRコード展開」を最優先に。<br />
+    LINEアカウントの運用が整ったら、Instagram連携やブログへと拡張していくのが現実的なステップです。
+  </div>
+
+</div>
+
+<footer>web-tsukuru｜堀田建設 採用LP 集客施策提案｜2026年3月</footer>
+
+</body>
+</html>

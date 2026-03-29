@@ -1,0 +1,630 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Analytics 4 セットアップマニュアル | Webとしくみをつくる</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #4285F4; /* Google Blue */
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .layout {
+            display: flex;
+            gap: 30px;
+        }
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        .toc {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #4285F4;
+            padding-bottom: 10px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 8px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #555;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .toc a:hover {
+            background: #f0f0f0;
+            color: #4285F4;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .manual-section {
+            margin-bottom: 50px;
+        }
+        .section-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .section-header h2 {
+            margin: 0 0 10px 0;
+            color: #4285F4;
+            font-size: 1.8rem;
+        }
+        .section-header p {
+            margin: 0;
+            color: #666;
+        }
+        h3 {
+            color: #4285F4;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .note {
+            background: #E8F4FD;
+            border-left: 4px solid #4285F4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .note strong {
+            color: #4285F4;
+        }
+        .warning {
+            background: #FFF3CD;
+            border-left: 4px solid #FFC107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning strong {
+            color: #F57C00;
+        }
+        .step {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #34A853;
+        }
+        .step h4 {
+            color: #34A853;
+            margin-top: 0;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+        /* Floating Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .back-to-index {
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #fff;
+            color: #06c755;
+            border: 2px solid #06c755;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 46px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .back-to-index.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-index:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            background: #06c755;
+            color: #fff;
+        }
+        .line-support {
+            position: fixed;
+            bottom: 150px;
+            right: 30px;
+            width: auto;
+            min-width: 140px;
+            height: 50px;
+            background: #06c755;
+            color: #fff;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+        .line-support.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .line-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            border: 2px solid #fff;
+        }
+        @media (max-width: 768px) {
+            .back-to-top, .back-to-index, .line-support {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Site Header -->
+    <div class="site-header">
+        <div class="container">
+            <h1>⚙️ Google Analytics 4 セットアップマニュアル</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">マニュアル一覧</a> &gt; Google Analytics 4 セットアップマニュアル
+        </div>
+
+        <!-- Main Layout -->
+        <div class="layout">
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="toc">
+                    <h3>目次</h3>
+                    <ul>
+                        <li><a href="#overview">このマニュアルについて</a></li>
+                        <li><a href="#account">アカウント作成</a></li>
+                        <li><a href="#property">プロパティ作成</a></li>
+                        <li><a href="#business">ビジネス情報の設定</a></li>
+                        <li><a href="#datastream">データストリーム設定</a></li>
+                        <li><a href="#install">タグの設置</a></li>
+                        <li><a href="#verify">動作確認</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+
+                <!-- Section: Overview -->
+                <section id="overview" class="manual-section">
+                    <div class="section-header">
+                        <h2>📖 このマニュアルについて</h2>
+                        <p>Google Analytics 4（GA4）を初めて設定する方向けのマニュアルです</p>
+                    </div>
+
+                    <p>このマニュアルでは、Google Analytics 4のアカウント作成から、ウェブサイトへのタグ設置まで、ステップバイステップで解説します。</p>
+
+                    <div class="note">
+                        <strong>📌 所要時間</strong><br>
+                        約15〜20分で完了します。
+                    </div>
+
+                    <div class="warning">
+                        <strong>⚠️ 注意事項</strong><br>
+                        ・Googleアカウントが必要です（Gmailアドレス）<br>
+                        ・ウェブサイトのHTMLファイルを編集する必要があります<br>
+                        ・タグを設置するには、サイトの管理者権限が必要です
+                    </div>
+                </section>
+
+                <!-- Section: Account Creation -->
+                <section id="account" class="manual-section">
+                    <div class="section-header">
+                        <h2>🔐 アカウント作成</h2>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 1: Google Analyticsにアクセス</h4>
+                        <p>以下のURLにアクセスし、「測定を開始」をクリックしてください。</p>
+                        <p><strong>https://analytics.google.com/</strong></p>
+                        <img src="../images/ga4/01.png" alt="Google Analytics ウェルカム画面">
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 2: アカウント名を入力</h4>
+                        <p>「新しいアカウント名」に、あなたの会社名やサイト名を入力してください。</p>
+                        <p><strong>例</strong>：「株式会社〇〇」「〇〇工務店」など</p>
+                        <img src="../images/ga4/02.png" alt="アカウント作成画面">
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 3: データ共有設定を確認</h4>
+                        <p>画面下部に「アカウントのデータ共有設定」という項目があります。<br>
+                        以下の4つのチェックボックスは、<strong>基本的に全てチェックを入れたままでOK</strong>です。</p>
+                        
+                        <p><strong>📌 各項目の説明</strong></p>
+                        <ul>
+                            <li><strong>✅ モデリングのためのデータ提供とビジネス分析情報</strong><br>
+                            → Googleがデータを分析して、より正確な情報を提供できるようになります。<br>
+                            <span style="color: #666; font-size: 0.9rem;">（おすすめ：チェックを入れる）</span></li>
+                            
+                            <li><strong>✅ テクニカル サポート</strong><br>
+                            → 問題が起きた時に、Googleのサポートチームが詳細を確認してサポートできます。<br>
+                            <span style="color: #666; font-size: 0.9rem;">（おすすめ：チェックを入れる）</span></li>
+                            
+                            <li><strong>✅ ビジネスの提案と案</strong><br>
+                            → Googleから、あなたのビジネスに役立つアドバイスやおすすめ設定が届きます。<br>
+                            <span style="color: #666; font-size: 0.9rem;">（おすすめ：チェックを入れる）</span></li>
+                            
+                            <li><strong>□ Googleの製品とサービス</strong><br>
+                            → Google広告など、他のGoogleサービスに関する情報が届きます。<br>
+                            <span style="color: #666; font-size: 0.9rem;">（こちらは、広告を使う予定がなければチェックを外してもOK）</span></li>
+                        </ul>
+                        
+                        <p>設定が完了したら、画面下部の「次へ」ボタンをクリックしてください。</p>
+                    </div>
+
+                    <div class="note">
+                        <strong>💡 アカウント名のポイント</strong><br>
+                        ・後から変更できるので、深く考えすぎなくてOKです<br>
+                        ・複数のサイトを持つ場合、会社名にしておくと管理しやすいです
+                    </div>
+                </section>
+
+                <!-- Section: Property Creation -->
+                <section id="property" class="manual-section">
+                    <div class="section-header">
+                        <h2>🏢 プロパティ作成</h2>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 1: プロパティ名を入力</h4>
+                        <p>「プロパティ名」に、測定したいウェブサイトの名前を入力してください。</p>
+                        <p><strong>例</strong>：「web-tsukuru.jp」「採用サイト」など</p>
+                        <img src="../images/ga4/03.png" alt="プロパティ作成画面">
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 2: タイムゾーンと通貨を設定</h4>
+                        <p>以下のように設定してください：</p>
+                        <ul>
+                            <li><strong>レポートのタイムゾーン</strong>：日本（GMT+09:00）日本時間</li>
+                            <li><strong>通貨</strong>：日本円（¥）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note">
+                        <strong>💡 プロパティとは？</strong><br>
+                        1つのウェブサイトやアプリのデータをまとめる単位です。<br>
+                        複数のサイトを持つ場合は、それぞれ別のプロパティを作成します。
+                    </div>
+                </section>
+
+                <!-- Section: Business Information -->
+                <section id="business" class="manual-section">
+                    <div class="section-header">
+                        <h2>🏭 ビジネス情報の設定</h2>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 1: 業種を選択</h4>
+                        <p>あなたのビジネスに最も近い業種を選択してください。</p>
+                        <img src="../images/ga4/04.png" alt="ビジネス詳細画面">
+                        <p><strong>建設業の場合</strong>：「その他のビジネスのアクティビティ」を選択し、<br>
+                        ビジネスの規模は「小規模: 従業員数 1〜10名」または該当するものを選択してください。</p>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 2: ビジネス目標を選択</h4>
+                        <p>以下の選択肢から、あなたの目的に合うものにチェックを入れてください。</p>
+                        <img src="../images/ga4/05.png" alt="ビジネス目標選択画面">
+                        <p><strong>採用LPの場合のおすすめ</strong>：</p>
+                        <ul>
+                            <li>✅ 見込み顧客の発見</li>
+                            <li>✅ ユーザー エンゲージメントとユーザー維持の把握</li>
+                        </ul>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 3: 利用規約に同意</h4>
+                        <p>利用規約を確認し、チェックボックスにチェックを入れて「同意する」をクリックしてください。</p>
+                        <img src="../images/ga4/06.png" alt="利用規約画面">
+                    </div>
+                </section>
+
+                <!-- Section: Data Stream -->
+                <section id="datastream" class="manual-section">
+                    <div class="section-header">
+                        <h2>📊 データストリーム設定</h2>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 1: プラットフォームを選択</h4>
+                        <p>「ウェブ」を選択してください。</p>
+                        <img src="../images/ga4/07.png" alt="プラットフォーム選択画面">
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 2: ウェブサイトのURLを入力</h4>
+                        <p>以下の情報を入力してください：</p>
+                        <ul>
+                            <li><strong>ウェブサイトのURL</strong>：あなたのサイトのURL（例：web-tsukuru.jp）</li>
+                            <li><strong>ストリーム名</strong>：「ウェブサイト」など、分かりやすい名前</li>
+                        </ul>
+                        <img src="../images/ga4/08.png" alt="データストリーム設定画面">
+                        <p>「拡張計測機能」は、ONにしておくことをおすすめします。<br>
+                        これにより、スクロール、クリック、ファイルダウンロードなども自動で計測されます。</p>
+                    </div>
+                </section>
+
+                <!-- Section: Tag Installation -->
+                <section id="install" class="manual-section">
+                    <div class="section-header">
+                        <h2>🏷️ タグの設置</h2>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 1: Googleタグを取得</h4>
+                        <p>データストリームを作成すると、「Googleタグの設定」画面が表示されます。<br>
+                        「手動でインストールする」を選択してください。</p>
+                        <img src="../images/ga4/09.png" alt="Googleタグ表示画面">
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 2: タグをコピー</h4>
+                        <p>表示されたコードをすべてコピーしてください。</p>
+                        <div class="code-block">
+&lt;!-- Google tag (gtag.js) --&gt;<br>
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;<br>
+&lt;script&gt;<br>
+&nbsp;&nbsp;window.dataLayer = window.dataLayer || [];<br>
+&nbsp;&nbsp;function gtag(){dataLayer.push(arguments);}<br>
+&nbsp;&nbsp;gtag('js', new Date());<br>
+<br>
+&nbsp;&nbsp;gtag('config', 'G-XXXXXXXXXX');<br>
+&lt;/script&gt;
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 3: HTMLの&lt;head&gt;タグ内に貼り付け</h4>
+                        <p>コピーしたタグを、ウェブサイトの<strong>すべてのページ</strong>の<strong>&lt;head&gt;タグ内</strong>に貼り付けてください。</p>
+                        <p><strong>貼り付ける位置</strong>：&lt;head&gt;の直後がベストです。</p>
+                        <div class="code-block">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="ja"&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;!-- ここに貼り付け --&gt;</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Google tag (gtag.js) --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&lt;/head&gt;
+                        </div>
+                    </div>
+
+                    <div class="warning">
+                        <strong>⚠️ 重要</strong><br>
+                        ・すべてのページに貼り付ける必要があります<br>
+                        ・貼り付けたら、必ずファイルを保存してサーバーにアップロードしてください
+                    </div>
+                </section>
+
+                <!-- Section: Verification -->
+                <section id="verify" class="manual-section">
+                    <div class="section-header">
+                        <h2>✅ 動作確認</h2>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 1: リアルタイムレポートを開く</h4>
+                        <p>Google Analyticsの左メニューから「リアルタイム」をクリックしてください。</p>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 2: 自分のサイトにアクセス</h4>
+                        <p>別のタブで、あなたのウェブサイトを開いてください。</p>
+                    </div>
+
+                    <div class="step">
+                        <h4>STEP 3: 数字が「1」になることを確認</h4>
+                        <p>リアルタイムレポートの「過去30分のアクティブユーザー数」が「1」になれば、成功です！🎉</p>
+                    </div>
+
+                    <div class="note">
+                        <strong>📌 確認できない場合</strong><br>
+                        ・タグが正しく貼り付けられているか確認してください<br>
+                        ・ファイルを保存し、サーバーにアップロードしたか確認してください<br>
+                        ・ブラウザのキャッシュをクリアしてみてください<br>
+                        ・数分待ってから再度確認してみてください
+                    </div>
+                </section>
+
+                <!-- Section: Next Steps -->
+                <section class="manual-section">
+                    <div class="section-header">
+                        <h2>🚀 次のステップ</h2>
+                    </div>
+
+                    <p>セットアップが完了しました！次は、以下のマニュアルで基本的な使い方を学びましょう。</p>
+
+                    <div class="note">
+                        <strong>📚 関連マニュアル</strong><br>
+                        <a href="21_analytics.html" style="color: #4285F4; font-weight: bold;">→ Google Analytics 4 基本マニュアル</a><br>
+                        <span style="color: #666;">リアルタイム確認、ユーザー数の見方、流入経路の確認方法を解説しています。</span>
+                    </div>
+
+                    <div class="note">
+                        <strong>📞 サポート</strong><br>
+                        不明な点がございましたら、お気軽にLINEでご相談ください。<br>
+                        画面を見ながらサポートさせていただきます。
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+    </div>
+    <a href="#" id="lineSupport" class="line-support"> LINEで相談</a>
+    <a href="index.html" id="backToIndex" class="back-to-index"> 一覧に戻る</a>
+    <a href="#" id="backToTop" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        const backToIndex = document.getElementById('backToIndex');
+        const lineSupport = document.getElementById('lineSupport');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+                backToIndex.classList.add('show');
+                lineSupport.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+                backToIndex.classList.remove('show');
+                lineSupport.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        lineSupport.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('https://lin.ee/eKNHAte', '_blank');
+        });
+    </script>
+
+
+</body>
+</html>

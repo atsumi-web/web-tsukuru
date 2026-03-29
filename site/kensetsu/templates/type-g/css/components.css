@@ -1,0 +1,312 @@
+/* ==========================================
+   Type-G PROFESSIONAL × INNOVATIVE DESIGN
+   Components (Buttons, Cards, Professional Style)
+   ========================================== */
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-primary);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  color: var(--text-white);
+  background: var(--primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--accent-teal);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-blue);
+}
+
+.btn-secondary {
+  color: var(--primary-blue);
+  background: var(--bg-white);
+  border: 2px solid var(--primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-blue);
+  color: var(--text-white);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-blue);
+}
+
+.btn-line {
+  color: var(--text-white);
+  background-color: var(--line-green);
+  box-shadow: 0 4px 12px rgba(6, 199, 85, 0.25);
+}
+
+.btn-line:hover {
+  background-color: var(--line-green-hover);
+  box-shadow: 0 8px 20px rgba(6, 199, 85, 0.35);
+  transform: translateY(-3px);
+}
+
+.btn-lg {
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-size: var(--font-size-body-lg);
+}
+
+.btn-sm {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-small);
+}
+
+/* ===== Cards (Professional, Clean) ===== */
+.card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-smooth);
+}
+
+.card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* ===== Card with subtle glass effect ===== */
+.card-glass-subtle {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-smooth);
+}
+
+.card-glass-subtle:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-blue-lg);
+  transform: translateY(-6px);
+}
+
+/* ===== Q&A Card (Voice Section) ===== */
+.qa-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-smooth);
+}
+
+.qa-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-4px);
+}
+
+.qa-question {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-blue);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.qa-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-black);
+  color: var(--text-white);
+  font-size: var(--font-size-body);
+}
+
+.qa-answer {
+  font-size: var(--font-size-body);
+  color: var(--text-gray);
+  line-height: var(--line-height-relaxed);
+  padding-left: calc(32px + var(--spacing-sm));
+}
+
+/* ===== Benefit/Environment Card ===== */
+.benefit-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+}
+
+.benefit-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-6px);
+}
+
+.benefit-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--spacing-md);
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-blue);
+}
+
+.benefit-icon svg,
+.benefit-icon i {
+  font-size: 32px;
+  color: var(--text-white);
+}
+
+.benefit-title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.benefit-description {
+  font-size: var(--font-size-body);
+  color: var(--text-gray);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== Badge ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  background: var(--bg-soft-gray);
+  color: var(--text-dark);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.badge-blue {
+  background: var(--primary-blue);
+  color: var(--text-white);
+}
+
+.badge-orange {
+  background: var(--fresh-orange);
+  color: var(--text-white);
+}
+
+.badge-green {
+  background: var(--success-green);
+  color: var(--text-white);
+}
+
+/* ===== Icon Box ===== */
+.icon-box {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-blue);
+  margin-bottom: var(--spacing-md);
+}
+
+.icon-box i,
+.icon-box svg {
+  font-size: 32px;
+  color: var(--text-white);
+}
+
+/* ===== Company Info Table ===== */
+.company-table {
+  width: 100%;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.info-table dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-blue);
+  background: var(--bg-soft-gray);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-light);
+  width: 30%;
+  float: left;
+  clear: left;
+}
+
+.info-table dd {
+  color: var(--text-dark);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-light);
+  margin-left: 30%;
+}
+
+.info-table dt:last-of-type,
+.info-table dd:last-of-type {
+  border-bottom: none;
+}
+
+/* ===== Stat Card ===== */
+.stat-card {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-smooth);
+}
+
+.stat-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-black);
+  color: var(--primary-blue);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.stat-label {
+  font-size: var(--font-size-body);
+  color: var(--text-gray);
+  font-weight: var(--font-weight-medium);
+}
