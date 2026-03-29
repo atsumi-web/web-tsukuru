@@ -175,12 +175,13 @@
             <div class="step-content">
                 <div class="step-title">
                     <i class="fa-solid fa-magnifying-glass-chart" style="color:var(--accent-blue);"></i>
-                    SEO設定・全ページ確認
+                    SEO設定・SP改行最適化・全ページ確認
                     <span class="tag tag-check">確認</span>
                 </div>
                 <div class="step-body">
                     <ul>
                         <li>Antigravityに全ページのtitle・meta・OGPを一括設定させる</li>
+                        <li><strong>スマホ表示（SP）の改行最適化：</strong> <code>style.css</code> に <code>.pc-only</code>, <code>.sp-only</code> クラスを必ず定義し、キャッチコピー等の <code>&lt;br&gt;</code> タグを <code>&lt;br class="pc-only"&gt;</code> に置換してスマホでの不自然な折り返しを排除する。</li>
                         <li>Go Live で全ページのリンク動作を確認（404がないか）</li>
                         <li>PC・スマホ（DevTools）で全ページの表示崩れを確認</li>
                         <li>PageSpeed Insights：本番デプロイ後に計測して90点以上を目指す</li>
