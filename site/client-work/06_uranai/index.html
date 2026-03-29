@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Shippori+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #0B0410; /* より漆黒に近い紫 */
-            --accent-gold: #E8D08B; /* 上品なシャンパンゴールド */
-            --accent-gold-dark: #A98539;
+            --primary-bg: #050A1F; /* 深いネイビー宇宙（リファレンス準拠） */
+            --accent-gold: #82C8FF; /* ホログラフィックなシアン・水色 */
+            --accent-gold-dark: #3A6BE8; /* 深いロイヤルブルー */
             --text-main: #FFFFFF;
-            --text-dim: #C5B9D2;
-            --glass-bg: rgba(20, 10, 30, 0.6);
-            --glass-border: rgba(232, 208, 139, 0.15);
+            --text-dim: #A8BCE2;
+            --glass-bg: rgba(10, 20, 50, 0.6);
+            --glass-border: rgba(130, 200, 255, 0.35);
             --line-green: #06C755;
         }
 
@@ -159,17 +159,24 @@
         .choice-btn:hover::before { width: 100%; }
         .choice-btn:hover::after { opacity: 1; transform: translateX(3px); }
 
-        /* --- スタート・次へボタン --- */
+        /* --- スタート・次へボタン（Spidoor風ホログラフィック・ボタン） --- */
         .primary-btn {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
-            border: none; border-radius: 30px; padding: 18px 30px;
-            color: #111; font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 1.1rem;
+            background: rgba(30, 50, 100, 0.5);
+            border: 1px solid var(--accent-gold);
+            border-radius: 40px;
+            padding: 16px 30px;
+            color: #FFF;
+            font-family: 'Shippori Mincho', serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px rgba(255,255,255,0.6);
             width: 100%; cursor: pointer;
-            box-shadow: 0 8px 25px rgba(232, 208, 139, 0.25);
+            box-shadow: 0 0 20px rgba(130, 200, 255, 0.4), inset 0 0 15px rgba(130, 200, 255, 0.2);
             transition: all 0.3s ease;
             margin-top: 10px;
         }
-        .primary-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(232, 208, 139, 0.4); }
+        .primary-btn:hover { transform: translateY(-3px); box-shadow: 0 0 35px rgba(130, 200, 255, 0.7), inset 0 0 20px rgba(130, 200, 255, 0.4); }
 
         /* --- ローディング (魔法陣風) --- */
         .loader-container { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; height: 100%; }
@@ -271,6 +278,42 @@
             box-shadow: 0 5px 15px rgba(232, 208, 139, 0.15);
         }
         .month-btn:hover::before { width: 100%; }
+
+        /* --- LP特有の「作り込み（コンバージョン）」アニメーション --- */
+        @keyframes pulse-btn {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(6, 199, 85, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(6, 199, 85, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 10px rgba(6, 199, 85, 0.4); }
+        }
+        .pulse-animation {
+            animation: pulse-btn 2s infinite;
+        }
+
+        @keyframes pulse-gold {
+            0% { transform: scale(1); box-shadow: 0 8px 25px rgba(232, 208, 139, 0.25); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(232, 208, 139, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 8px 25px rgba(232, 208, 139, 0.25); }
+        }
+        .pulse-gold-animation {
+            animation: pulse-gold 2.5s infinite;
+        }
+        
+        .urgent-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #d32f2f, #ff5252);
+            color: #fff;
+            font-size: 0.75rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: bold;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: -15px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     </style>
 </head>
 <body>
@@ -285,13 +328,18 @@
                 <img src="https://images.unsplash.com/photo-1531649174116-258019a5fbfa?q=80&w=400&auto=format&fit=crop" alt="Tarot" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-gold); padding: 4px; box-shadow: 0 0 30px rgba(232, 208, 139, 0.3);">
             </div>
             <div style="text-align: center;">
-                <p style="font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.3em; margin-bottom: 12px;">SPIRITUAL DOOR</p>
-                <h1 style="font-size: 1.9rem; line-height: 1.4; margin-bottom: 24px; text-shadow: 0 4px 10px rgba(0,0,0,0.8);">あなたの見えない<br>「運命の扉」を開く</h1>
-                <p style="font-family: 'Noto Sans JP', sans-serif; font-size: 0.9rem; color: var(--text-dim); line-height: 1.9; margin-bottom: 40px;">
+                <p style="font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.3em; margin-bottom: 20px; text-shadow: 0 0 10px var(--accent-gold);">SPIRITUAL DOOR Presents</p>
+                <h1 style="font-size: 2.1rem; line-height: 1.4; margin-bottom: 24px; text-shadow: 0 0 25px rgba(130, 200, 255, 0.8), 0 2px 5px rgba(0,0,0,0.9); font-weight: bold; letter-spacing: 0.05em;">
+                    あなたの見えない<br>「運命の扉」を開く
+                </h1>
+                <p style="font-family: 'Noto Sans JP', sans-serif; font-size: 0.9rem; color: var(--text-dim); line-height: 1.9; margin-bottom: 30px;">
                     TV・雑誌で話題の霊視鑑定士監修。<br>
                     たった4つの質問に答えるだけで、<br>あなたの「本当の未来」が浮かび上がります。
                 </p>
-                <button class="primary-btn" onclick="nextStep(1)">無料で霊視鑑定を始める</button>
+                <div style="position: relative;">
+                    <div class="urgent-badge">※現在、鑑定希望者が殺到しております</div>
+                    <button class="primary-btn pulse-gold-animation" onclick="nextStep(1)">無料で霊視鑑定を始める</button>
+                </div>
             </div>
             <!-- アニメーション用 -->
             <style>@keyframes float-slow { 0%, 100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }</style>
@@ -402,7 +450,7 @@
                 結果は長文になっておりますため、<br>あなた様専用のLINE窓口にて<br>完全無料でお渡しいたします。
             </p>
 
-            <a href="#" class="line-btn" onclick="alert('【モックアップ動作確認完了】\n本来はここでLINEの友だち追加画面へ遷移します。\n※納品時にクライアント様の公式LINEURLを設定します。'); return false;">
+            <a href="#" class="line-btn pulse-animation" onclick="alert('【モックアップ動作確認完了】\n本来はここでLINEの友だち追加画面へ遷移します。\n※納品時にクライアント様の公式LINEURLを設定します。'); return false;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738S0 4.935 0 10.304c0 4.814 4.27 8.846 10.035 9.608.391.084.922.258 1.058.592.122.302.079.772.038 1.085l-.164.981c-.049.308-.242 1.186 1.036.65 1.28-.538 6.916-4.075 9.428-6.965C23.111 14.397 24 12.457 24 10.304z" fill="#fff"/>
                     <path d="M7.054 13.045H5.093c-.234 0-.424-.19-.424-.424V7.525c0-.234.19-.424.424-.424.234 0 .424.19.424.424v4.672h1.537c.234 0 .424.19.424.424 0 .234-.19.424-.424.424zm3.033 0H9.238c-.234 0-.424-.19-.424-.424V7.525c0-.234.19-.424.424-.424.234 0 .424.19.424.424v5.096c0 .234-.19.424-.424.424zm4.183-5.52v5.096c0 .234-.19.424-.424.424-.153 0-.293-.082-.367-.215L11.53 9.407v3.214c0 .234-.19.424-.424.424-.234 0-.424-.19-.424-.424V7.525c0-.234.19-.424.424-.424.153 0 .293.082.367.215l1.949 3.424V7.525c0-.234.19-.424.424-.424.234 0 .424.19.424.424zm4.332.424h-1.537v1.442h1.537c.234 0 .424.19.424.424 0 .234-.19.424-.424.424h-1.537v1.537h1.537c.234 0 .424.19.424.424 0 .234-.19.424-.424.424h-1.961c-.234 0-.424-.19-.424-.424V7.525c0-.234.19-.424.424-.424h1.961c.234 0 .424.19.424.424 0 .234-.19.424-.424.424z" fill="#06C755"/>
