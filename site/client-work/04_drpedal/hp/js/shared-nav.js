@@ -53,19 +53,19 @@ function renderHeader() {
       <button class="menu-trigger" id="js-menu-trigger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
-
-      <!-- Mobile Menu -->
-      <div class="mobile-menu" id="js-mobile-menu">
-        <ul>
-          <li><a href="${rp}about.html">About</a></li>
-          <li><a href="${rp}company.html">Company</a></li>
-          <li><a href="${rp}service/index.html">Services</a></li>
-          <li><a href="${rp}index.html#news">News</a></li>
-          <li><a href="${rp}contact.html">Contact</a></li>
-          <li><a href="${rp}recruit.html" class="l-header-cta">採用情報</a></li>
-        </ul>
-      </div>
     </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="js-mobile-menu">
+      <ul>
+        <li><a href="${rp}about.html">About</a></li>
+        <li><a href="${rp}company.html">Company</a></li>
+        <li><a href="${rp}service/index.html">Services</a></li>
+        <li><a href="${rp}index.html#news">News</a></li>
+        <li><a href="${rp}contact.html">Contact</a></li>
+        <li><a href="${rp}recruit.html" class="l-header-cta">採用情報</a></li>
+      </ul>
+    </div>
   `;
   headerContainer.innerHTML = html;
 }
@@ -183,6 +183,16 @@ function initInteractions() {
       trigger.classList.toggle('is-active');
       mobileMenu.classList.toggle('is-active');
       document.body.style.overflow = trigger.classList.contains('is-active') ? 'hidden' : '';
+    });
+
+    // Close menu when a link is clicked
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        trigger.classList.remove('is-active');
+        mobileMenu.classList.remove('is-active');
+        document.body.style.overflow = '';
+      });
     });
   }
 
