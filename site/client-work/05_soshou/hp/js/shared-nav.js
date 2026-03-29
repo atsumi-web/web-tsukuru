@@ -32,7 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li><a href="${rootPath}contact.html" style="background:var(--accent-color); color:var(--primary-color); padding:12px 28px; border-radius:4px; font-weight:700; transition:var(--transition);">ENTRY</a></li>
                 </ul>
             </nav>
+            <button id="menu-btn" class="sp-only" aria-label="Menu" style="background:none; border:none; color:#fff; font-size:1.8rem; cursor:pointer;"><i class="fa-solid fa-bars"></i></button>
         </header>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="mobile-menu sp-only">
+            <ul>
+                <li><a href="${rootPath}about.html">ABOUT</a></li>
+                <li><a href="${rootPath}service/scaffold.html">SERVICE</a></li>
+                <li><a href="${rootPath}recruit.html">RECRUIT</a></li>
+                <li><a href="${rootPath}contact.html" style="color:var(--accent-color);">ENTRY</a></li>
+            </ul>
+        </div>
     `;
     
     // 3. 共通フッターの生成
@@ -50,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 &copy; ${new Date().getFullYear()} SOSHOU CORPORATION. All Rights Reserved.
             </div>
         </footer>
+        
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="back-to-top" aria-label="Back to Top"><i class="fa-solid fa-angle-up"></i></button>
     `;
 
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
@@ -63,4 +77,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     head.appendChild(style);
+
+    // 4. UI Events Logic (Mobile Menu & Back to Top)
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if(menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('is-active');
+            menuBtn.innerHTML = mobileMenu.classList.contains('is-active') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+        
+        // メニュー内リンクタップで閉じる
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('is-active');
+                menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+    }
+
+    const backToTop = document.getElementById('back-to-top');
+    if(backToTop) {
+        // スクロール検知でボタンの表示・非表示を切り替え
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('is-visible');
+            } else {
+                backToTop.classList.remove('is-visible');
+            }
+        });
+        
+        // スムーススクロールでトップへ
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });

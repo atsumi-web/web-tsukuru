@@ -84,6 +84,19 @@ main { padding-top: 80px; }
 .faq-wrap details[open] summary::after { transform:rotate(45deg); color:var(--accent-color); }
 .faq-ans { padding:0 30px 30px 65px; color:var(--text-muted); line-height:1.9; position:relative; }
 
+/* Mobile Menu Overlay */
+.mobile-menu { position: fixed; top: 80px; left: 0; width: 100%; height: calc(100vh - 80px); height: calc(100dvh - 80px); background: rgba(11,25,44,0.98); backdrop-filter: blur(10px); z-index: 999; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 15vh; opacity: 0; pointer-events: none; transition: var(--transition); transform: translateY(-10px); }
+.mobile-menu.is-active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.mobile-menu ul { list-style: none; text-align: center; padding: 0; margin: 0; }
+.mobile-menu li { margin-bottom: 40px; }
+.mobile-menu li:last-child { margin-bottom: 0; }
+.mobile-menu a { color: #fff; font-size: 1.6rem; font-weight: 700; font-family: var(--font-en); letter-spacing: 0.15em; display: block; padding: 10px 20px; }
+
+/* Back to Top */
+.back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--accent-color); color: var(--primary-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; text-decoration: none; z-index: 999; opacity: 0; pointer-events: none; transition: var(--transition); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; border: none; }
+.back-to-top.is-visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+
 /* Utility */
 .text-center { text-align:center; }
 
@@ -102,6 +115,8 @@ main { padding-top: 80px; }
     .sc-label { font-size: 0.95rem; padding: 6px 16px; margin-bottom: 20px; }
     .sc-point { font-size: 0.95rem; }
     .info-table th, .info-table td { display:block; width:100%; }
+    
+    .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.2rem; }
     .info-table th { padding: 15px; }
     .info-table td { padding: 15px 15px 20px; }
     .job-tabs { flex-direction:column; }
