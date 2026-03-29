@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECRUIT | 株式会社蒼翔 (SOSHOU) 採用情報</title>
+    <meta name="description" content="株式会社蒼翔（SOSHOU）の採用情報。未経験でも安心の月給制、完全週休二日、最新フルハーネス等完全支給。若手からベテランまで誇りを持って働ける環境です。">
+    <link rel="stylesheet" href="css/style.css?v=1.1">
+    <script src="js/shared-nav.js" data-root-path="./"></script>
+    <style>
+        .recruit-hero { position:relative; min-height:85vh; background-image:url('images/recruit_hero_new.webp'); background-size:cover; background-position:center 30%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; isolation:isolate; padding-top:80px; }
+        .recruit-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(11,25,44,0.95) 0%, rgba(11,25,44,0.4) 100%); z-index:-1; }
+        .recruit-hero h1 { font-family:var(--font-en); font-size:clamp(3.5rem, 6vw, 5.5rem); color:var(--accent-color); letter-spacing:0.1em; margin-bottom:5px; text-shadow:2px 4px 10px rgba(0,0,0,0.5); }
+        .recruit-hero .sub { font-size:1.3rem; color:#fff; letter-spacing:0.3em; font-weight:700; margin-bottom:60px; text-shadow:1px 2px 5px rgba(0,0,0,0.5); }
+        .recruit-hero .catch { font-size:clamp(2.2rem, 4vw, 3.5rem); color:#fff; font-weight:900; line-height:1.4; text-shadow:2px 4px 10px rgba(0,0,0,0.5); }
+        
+        .recruit-msg { text-align:center; padding:100px 4%; background:var(--bg-light); border-bottom:1px solid #eee; }
+        .recruit-msg p { font-size:1.15rem; color:var(--text-muted); line-height:2.2; margin-bottom:0; font-weight:500; }
+        
+        .interview-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:30px; margin-top:60px; }
+        .interview-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 15px 35px rgba(0,0,0,0.06); transition:var(--transition); display:block; }
+        .interview-card:hover { transform:translateY(-12px); box-shadow:0 25px 45px rgba(0,0,0,0.12); }
+        .interview-thumb { height:400px; background-size:cover; background-position:center 20%; position:relative; }
+        .interview-thumb::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:60%; background:linear-gradient(to top, rgba(11,25,44,0.95), transparent); }
+        .interview-role { position:absolute; bottom:25px; left:25px; right:25px; z-index:2; color:#fff; }
+        .interview-role span { display:inline-block; background:var(--accent-color); color:var(--primary-color); padding:6px 12px; font-size:0.85rem; font-weight:700; border-radius:4px; margin-bottom:12px; }
+        .interview-role h4 { font-size:1.4rem; margin:0; line-height:1.5; }
+        
+        @media (max-width:900px) { .interview-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- 採用トップ ヒーローセクション -->
+        <section class="recruit-hero">
+            <h1>RECRUIT</h1>
+            <div class="sub">蒼翔の採用情報</div>
+            <div class="catch">「キツい・汚い・危険」を、<br>過去のものにする。</div>
+            <div style="position:absolute; bottom:20px; right:20px; background:rgba(0,0,0,0.6); color:#fff; font-size:0.8rem; padding:6px 12px; border-radius:4px; border:1px solid rgba(255,255,255,0.2); letter-spacing:0.05em;">
+                <i class="fa-solid fa-wand-magic-sparkles" style="margin-right:5px; color:var(--accent-color);"></i>
+                ※写真は構成案用のAIイメージです。後日、実際の現場写真へ差し替えます。
+            </div>
+        </section>
+        
+        <section class="recruit-msg">
+            <div class="container" style="max-width:900px;">
+                <p>株式会社蒼翔（SOSHOU）は、建設業界の古い常識を根本から壊すために生まれた次世代型のプロ集団です。<br>最新フルハーネス等・安全装備の全額支給、残業のないスマートな働き方、そして天候に左右されない業界最高水準の「完全月給制」。<br><br>「背中を見て盗め」なんて時代遅れなことは言いません。<br>ヤンチャな若手も、家族の未来を守りたい経験者も、理屈からロジカルに育成し、等しくプロフェッショナルとして主役になれる場所です。</p>
+            </div>
+        </section>
+
+        <!-- CAREER PATH -->
+        <section class="py-20" style="background:var(--primary-color); color:#fff; text-align:center;">
+             <div class="container" style="max-width:900px;">
+                 <div class="section-title">
+                     <span class="section-title-en" style="color:var(--accent-color);">Career Path</span>
+                     <span class="section-title-ja" style="color:#fff;">蒼翔での成長ステップ</span>
+                 </div>
+                 
+                 <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:40px; margin-bottom:40px;">
+                    <h3 style="color:var(--accent-color); font-size:1.4rem; margin-bottom:20px;">STEP 1: 未経験・見習いスタート（入社1年目）</h3>
+                    <p style="color:#ddd; line-height:1.8;">まずは道具の名前を覚えるところから。資材の運搬や、先輩のサポート（下回り）を通じて現場の基本と安全を学びます。怒鳴られたりはしません、iPadの動画マニュアルもフル活用してロジカルに育成します。</p>
+                 </div>
+                 <div style="font-size:2rem; color:var(--accent-color); margin-bottom:40px;"><i class="fa-solid fa-arrow-down"></i></div>
+                 
+                 <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:40px; margin-bottom:40px;">
+                    <h3 style="color:var(--accent-color); font-size:1.4rem; margin-bottom:20px;">STEP 2: 足場・鉄骨とび工（入社2〜3年目）</h3>
+                    <p style="color:#ddd; line-height:1.8;">玉掛けや足場などの国家資格（費用は会社が全額負担！）を取得。実際に高所に上り、花形である足場組みや鉄骨のジョイントを担当します。ここまで来れば、一人前の職人として業界どこでも通用します。</p>
+                 </div>
+                 <div style="font-size:2rem; color:var(--accent-color); margin-bottom:40px;"><i class="fa-solid fa-arrow-down"></i></div>
+
+                 <div style="background:rgba(255,255,255,0.05); border:1px solid var(--accent-color); border-radius:12px; padding:40px;">
+                    <h3 style="color:var(--accent-color); font-size:1.4rem; margin-bottom:20px;">STEP 3: 職長・現場監督（入社4年目〜）</h3>
+                    <p style="color:#ddd; line-height:1.8;">職長教育を修了し、1つの現場を統括するリーダーへ。安全管理、ゼネコンとの打ち合わせ、後輩の育成などマネジメント業務を中心に行います。業績給も大きく跳ね上がり、年収700万〜1000万が見えてきます。</p>
+                 </div>
+             </div>
+        </section>
+
+        <!-- JOBS (TABS) -->
+        <section class="py-20">
+            <div class="container" style="max-width:1000px;">
+                <div class="section-title">
+                    <span class="section-title-en">Jobs</span>
+                    <span class="section-title-ja">募集職種・要項</span>
+                </div>
+
+                <div class="job-tabs">
+                    <div class="job-tab active" onclick="switchTab('rookie')">鳶職人（未経験スタート）</div>
+                    <div class="job-tab" onclick="switchTab('leader')">職長候補・現場監督（経験者）</div>
+                </div>
+
+                <!-- Tab 1 -->
+                <div id="tab-rookie" class="job-content active">
+                    <div style="display:flex; gap:30px; margin-bottom:40px; align-items:flex-start;">
+                        <img src="images/interview_rookie_1.webp" style="width:300px; border-radius:8px; box-shadow:0 10px 20px rgba(0,0,0,0.1);" alt="未経験">
+                        <div>
+                            <h3 style="font-size:1.8rem; color:var(--primary-color); margin-bottom:16px;">鳶職人（未経験・見習い）</h3>
+                            <p style="color:var(--text-muted); line-height:1.8; margin-bottom:20px;">体力と「やってやる！」という熱意があれば、今のスキルは一切問いません。まずは安全第一で、先輩の補助作業からスタート。最新のフルハーネスや腰道具はすべて新品を会社側で買い揃えてプレゼントします。</p>
+                        </div>
+                    </div>
+                    <table class="info-table">
+                        <tr><th>月給</th><td><strong>300,000円〜</strong> ＋ 業績賞与年2回<br><span style="font-size:0.9rem; color:#666;">※天候によって出勤がなくなり給与が下がるようなことはありません。完全月給制です。</span></td></tr>
+                        <tr><th>勤務時間</th><td>8:00〜17:00（休憩合計120分）<br><span style="font-size:0.9rem; color:#666;">※残業は月平均10時間以下、17時撤収を徹底しています。</span></td></tr>
+                        <tr><th>休日休暇</th><td>完全週休二日制（日・祝・他1日シフト休）、GW、夏季・年末年始休暇</td></tr>
+                        <tr><th>必須要件</th><td>普通自動車免許（AT限定可）のみ。<br><span style="font-size:0.9rem; color:#666;">中卒・高卒歓迎。ヤンチャしてた子も礼儀からしっかり教えます！</span></td></tr>
+                    </table>
+                    <div class="text-center"><a href="contact.html" class="btn-primary">この職種にエントリーする</a></div>
+                </div>
+
+                <!-- Tab 2 -->
+                <div id="tab-leader" class="job-content">
+                    <div style="display:flex; gap:30px; margin-bottom:40px; align-items:flex-start;">
+                        <img src="images/interview_leader_1.webp" style="width:300px; border-radius:8px; box-shadow:0 10px 20px rgba(0,0,0,0.1);" alt="経験者">
+                        <div>
+                            <h3 style="font-size:1.8rem; color:var(--primary-color); margin-bottom:16px;">職長候補・現場監督（経験者）</h3>
+                            <p style="color:var(--text-muted); line-height:1.8; margin-bottom:20px;">あなたの経験と資格を、蒼翔で爆発させてください。前職での「サービス残業」や「自腹購入」といった理不尽な環境を捨て、クリーンで最先端な元請け現場で力を発揮していただきます。</p>
+                        </div>
+                    </div>
+                    <table class="info-table">
+                        <tr><th>月給</th><td><strong>450,000円〜600,000円</strong> ＋ 現場利益に応じた還元ボーナス</td></tr>
+                        <tr><th>勤務時間</th><td>8:00〜17:00（休憩合計120分）<br><span style="font-size:0.9rem; color:#666;">※現場の段取りは全てiPadでシステム化されており、書類作成のための無駄な残業はありません。</span></td></tr>
+                        <tr><th>休日休暇</th><td>完全週休二日制（日・祝・他1日シフト休）、有給消化推奨</td></tr>
+                        <tr><th>必須・歓迎要件</th><td>鳶職経験3年以上。<br>【歓迎資格】足場組み立て等作業主任者、玉掛け、職長・安全衛生責任者教育など</td></tr>
+                    </table>
+                    <div class="text-center"><a href="contact.html" class="btn-primary">この職種にエントリーする</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERVIEW -->
+        <section class="py-20" style="background:var(--bg-gray);">
+            <div class="container">
+                <div class="section-title">
+                    <span class="section-title-en">Interview</span>
+                    <span class="section-title-ja">社員の声</span>
+                </div>
+                
+                <div class="interview-grid">
+                    <a href="recruit/interview-rookie.html" class="interview-card">
+                        <div class="interview-thumb" style="background-image:url('images/interview_rookie_1.webp');">
+                            <div class="interview-role"><span>未経験入社（19歳）</span><h4>「先輩が笑わせてくれるから毎日楽しい！」</h4></div>
+                        </div>
+                    </a>
+                    <a href="recruit/interview-leader.html" class="interview-card">
+                        <div class="interview-thumb" style="background-image:url('images/interview_leader_1.webp');">
+                            <div class="interview-role"><span>職長（26歳）</span><h4>「残業なし、給料は前職の倍。人生が変わった。」</h4></div>
+                        </div>
+                    </a>
+                    <a href="recruit/interview-veteran.html" class="interview-card">
+                        <div class="interview-thumb" style="background-image:url('images/interview_veteran_1.webp');">
+                            <div class="interview-role"><span>職長（34歳）</span><h4>「フルハーネス支給。安全第一なのが嬉しい。」</h4></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="py-20">
+            <div class="container" style="max-width:800px;">
+                <div class="section-title">
+                    <span class="section-title-en">FAQ</span>
+                    <span class="section-title-ja">よくある質問</span>
+                </div>
+                
+                <div class="faq-wrap">
+                    <details>
+                        <summary>鳶職や建設業の経験が全くありませんが大丈夫ですか？</summary>
+                        <div class="faq-ans">全く問題ありません。現在のスタッフも半数は異業種（飲食業等）や高校卒業直後の未経験からスタートしています。まずは道具を覚えたり、先輩のサポートをする「下回り」と呼ばれる安全なポジションからゆっくり育てますのでご安心ください。</div>
+                    </details>
+                    <details>
+                        <summary>ヘルメットや安全帯、工具などは自分で買う必要がありますか？</summary>
+                        <div class="faq-ans">いいえ、蒼翔では「職人の命を守る装備に自腹を切らせない」という方針のため、超高価な最新の「フルハーネス型安全帯」をはじめ、ヘルメット、作業着（夏は空調服、冬は電熱ベスト）、腰道具一式をすべて【会社が全額負担】して新品をプレゼントします。</div>
+                    </details>
+                    <details>
+                        <summary>建設業は「雨の日は休み（日給が減る）」イメージがありますが？</summary>
+                        <div class="faq-ans">蒼翔は日給月給制ではなく【完全月給制（固定給）】を採用しています。そのため、台風や休工などの天候理由で現場が休みになったとしても、月のお給料が減らされることは絶対にありません。安定して家族を養えます。</div>
+                    </details>
+                    <details>
+                        <summary>本当に残業はないでのすか？</summary>
+                        <div class="faq-ans">はい、月平均の残業時間は10時間未満です。現場は17時に徹底して作業を終了し、iPadのクラウドシステムを利用して帰りの車内や現場で日報を終わらせるため、事務所に帰ってから夜遅くまで事務作業をするような古い風習は撤廃しています。</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.job-tab').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.job-content').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
