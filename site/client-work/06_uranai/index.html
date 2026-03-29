@@ -297,23 +297,6 @@
         .pulse-gold-animation {
             animation: pulse-gold 2.5s infinite;
         }
-        
-        .urgent-badge {
-            display: inline-block;
-            background: linear-gradient(90deg, #d32f2f, #ff5252);
-            color: #fff;
-            font-size: 0.75rem;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: bold;
-            padding: 6px 16px;
-            border-radius: 20px;
-            margin-bottom: -15px;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     </style>
 </head>
 <body>
@@ -336,10 +319,7 @@
                     TV・雑誌で話題の霊視鑑定士監修。<br>
                     たった4つの質問に答えるだけで、<br>あなたの「本当の未来」が浮かび上がります。
                 </p>
-                <div style="position: relative; margin-top: 10px;">
-                    <div class="urgent-badge">※現在、鑑定希望者が殺到しております</div>
-                    <button class="primary-btn pulse-gold-animation" style="margin-top: 0;" onclick="nextStep(1)">無料で霊視鑑定を始める</button>
-                </div>
+                <button class="primary-btn pulse-gold-animation" onclick="nextStep(1)">無料で霊視鑑定を始める</button>
             </div>
             <!-- アニメーション用 -->
             <style>@keyframes float-slow { 0%, 100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }</style>
