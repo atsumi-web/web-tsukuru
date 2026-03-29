@@ -10,12 +10,13 @@
 
     <style>
         .hero { position: relative; height: 100vh; width: 100%; background-color: var(--primary-color); overflow: hidden; display: flex; align-items: center; padding-top: 80px; }
-        .hero-bg { position: absolute; top:0; left:0; width:100%; height:100%; background-image: url('images/hero_fv.webp'); background-size: cover; background-position: center 20%; z-index: 1; }
-        .hero-bg::after { content: ''; position: absolute; inset:0; background: linear-gradient(to right, rgba(11,25,44,0.85) 0%, rgba(11,25,44,0.3) 100%); }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+        .hero-bg { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; }
+        .hero-bg::after { content: ''; position: absolute; inset:0; background: linear-gradient(to right, rgba(11,25,44,0.6) 0%, rgba(11,25,44,0.2) 100%); }
         .hero-content { position: relative; z-index: 2; color: #fff; padding-left: 8%; max-width: 900px; }
-        .hero-subtitle { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); letter-spacing: 0.2em; margin-bottom: 20px; display: inline-block; border-left: 4px solid var(--accent-color); padding-left: 10px; }
-        .hero-title { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.2; margin-bottom: 30px; text-shadow: 2px 4px 8px rgba(0,0,0,0.5); }
-        .hero-desc { font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px; opacity: 0.9; font-weight: 500; }
+        .hero-subtitle { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); letter-spacing: 0.2em; margin-bottom: 20px; display: inline-block; border-left: 4px solid var(--accent-color); padding-left: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        .hero-title { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.2; margin-bottom: 30px; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
+        .hero-desc { font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
 
         .about-section { display: flex; align-items: center; gap: 80px; }
         .about-image { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
@@ -38,11 +39,12 @@
     <main>
         <!-- HERO -->
         <section class="hero">
+            <video class="hero-video" src="images/fv.mp4" autoplay loop muted playsinline poster="images/hero_fv.webp"></video>
             <div class="hero-bg"></div>
             <div class="hero-content">
                 <span class="hero-subtitle">NEXT GENERATION CONSTRUCTOR</span>
-                <h2 class="hero-title">空を創る。<br>街を守る。</h2>
-                <p class="hero-desc">単なる現場作業員ではない。<br>最新テクノロジーと徹底した安全基準を武器に、<br>最高峰のインフラを構築する次世代のプロフェッショナル集団。</p>
+                <h2 class="hero-title">空を創る。<br class="pc-only">街を守る。</h2>
+                <p class="hero-desc">単なる現場作業員ではない。<br class="pc-only">最新テクノロジーと徹底した安全基準を武器に、<br class="pc-only">最高峰のインフラを構築する次世代のプロフェッショナル集団。</p>
                 <div style="display:flex; gap:20px; flex-wrap:wrap;">
                     <a href="recruit.html" class="btn-primary">採用情報（月給30万〜）を見る</a>
                     <a href="service/scaffold.html" class="btn-primary" style="background:#fff; color:var(--primary-color);">事業内容</a>
@@ -55,19 +57,19 @@
             <div class="stats-inner">
                 <div class="stat-item">
                     <div class="stat-num">30<span class="stat-unit">万〜</span></div>
-                    <div class="stat-label">未経験の初任給<br>安心の月休制</div>
+                    <div class="stat-label">未経験の初任給<br class="pc-only">安心の月休制</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num">10<span class="stat-unit">h以下</span></div>
-                    <div class="stat-label">月平均残業時間<br>プライベート重視</div>
+                    <div class="stat-label">月平均残業時間<br class="pc-only">プライベート重視</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num">100<span class="stat-unit">%</span></div>
-                    <div class="stat-label">安全装備支給率<br>フルハーネス完備</div>
+                    <div class="stat-label">安全装備支給率<br class="pc-only">フルハーネス完備</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num">28<span class="stat-unit">歳</span></div>
-                    <div class="stat-label">現場の平均年齢<br>若手が主役の現場</div>
+                    <div class="stat-label">現場の平均年齢<br class="pc-only">若手が主役の現場</div>
                 </div>
             </div>
         </div>
@@ -85,8 +87,8 @@
                         <img src="images/hero_ceo.webp" alt="株式会社蒼翔 代表">
                     </div>
                     <div class="about-content">
-                        <h3 style="font-size:2.2rem; color:var(--primary-color); margin-bottom:24px;">「キツい・汚い・危険」を<br>過去のものにする。</h3>
-                        <p style="font-size:1.1rem; color:var(--text-muted); margin-bottom:20px; line-height:2;">私たちは、建設業界の古い常識を覆すために設立されました。<br>最新のフルハーネス安全帯の完全支給、iPadを活用した3D図面共有と動画マニュアルによる効率化。そして、業界最高水準の月給体系。</p>
+                        <h3 style="font-size:2.2rem; color:var(--primary-color); margin-bottom:24px;">「キツい・汚い・危険」を<br class="pc-only">過去のものにする。</h3>
+                        <p style="font-size:1.1rem; color:var(--text-muted); margin-bottom:20px; line-height:2;">私たちは、建設業界の古い常識を覆すために設立されました。<br class="pc-only">最新のフルハーネス安全帯の完全支給、iPadを活用した3D図面共有と動画マニュアルによる効率化。そして、業界最高水準の月給体系。</p>
                         <p style="font-size:1.1rem; color:var(--text-muted); margin-bottom:30px; line-height:2;">ヤンチャな若者も、家族を守るベテランも、等しく「プロの職人」として誇り高く輝ける場所が、蒼翔にはあります。</p>
                         <a href="about.html" class="btn-primary" style="background:transparent; color:var(--primary-color); border:2px solid var(--primary-color);"><i class="fa-solid fa-arrow-right" style="margin-right:10px;"></i>代表メッセージを見る</a>
                     </div>
