@@ -1,6 +1,0 @@
-# Cloudflare Pages Ignore File
-# 堀田建設の本番用LPがエージェンシー（web-tsukuru.jp）ドメインでインデックスされたり公開されたりするのを防ぎます。
-# ただし、fv_target.htmlなどのプレゼン資料から参照される画像やCSSはアップロードする必要があるため、HTMLファイルのみを除外します。
-
-client-work/01_hotta/lp/**/*.html
-client-work/01_hotta/lp_short/**/*.html

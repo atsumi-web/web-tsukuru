@@ -1,5 +1,0 @@
-﻿015be0b fix(header): remove logo image inversion filter on dark themes to preserve full-color mark
-7271027 feat(brand): inject ai-generated logo mark into global header and footer
-355c252 feat(seo): add ogp tags to top page and apply global favicon.ico for all 16 pages
-aa4d87a fix(index): correct b2b repair card background image filename from v2 to standard webp
-fe846cf fix(index): apply dedicated ai service scene images to the 6 service cards on the top page and fix broken links

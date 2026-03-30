@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINE対応トークスクリプト｜診断フォーム後</title>
+<style>
+  body { font-family: "Noto Sans JP", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #1e293b; line-height: 1.7; }
+  h1 { font-size: 1.4rem; border-left: 5px solid #0ea5e9; padding-left: 14px; }
+  h2 { font-size: 1.1rem; background: #0f172a; color: #fff; padding: 10px 16px; border-radius: 6px; margin-top: 40px; }
+  h3 { font-size: 1rem; color: #0ea5e9; border-bottom: 2px solid #e2e8f0; padding-bottom: 4px; }
+  .flow { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: 0.95rem; }
+  .msg { background: #f8fafc; border-left: 4px solid #06c755; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 12px 0; white-space: pre-wrap; font-size: 0.95rem; }
+  .note { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px 16px; font-size: 0.9rem; margin: 12px 0; }
+  .tag-a { color: #16a34a; font-weight: bold; }
+  .tag-b { color: #ca8a04; font-weight: bold; }
+  .tag-c { color: #9333ea; font-weight: bold; }
+  hr { border: none; border-top: 1px solid #e2e8f0; margin: 30px 0; }
+  button.copy { background: #0f172a; color: #fff; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; float: right; margin-top: -4px; }
+  button.copy:hover { background: #334155; }
+  .msg-wrap { position: relative; overflow: hidden; }
+</style>
+</head>
+<body>
+
+<h1>📋 LINE対応トークスクリプト<br><small style="font-weight:400;font-size:0.85rem">「採用資産化」診断フォーム 送信後フォローアップ用</small></h1>
+
+<div class="flow">
+  <strong>📌 前提フロー</strong><br>
+  LINE登録 → リッチメニュー「無料診断テスト」→ Googleフォーム送信<br>
+  → Googleフォーム通知でえりさんが確認 → LINEで個別フォローアップ ← ここのスクリプト
+</div>
+
+<div class="note">
+  ⚠️ <strong>フォーム通知の設定：</strong>フォーム → 回答タブ → ︙（3点メニュー） →「新しい回答についてメール通知を受け取る」をONにする
+</div>
+
+<hr>
+
+<h2>STEP 1｜診断フォーム送信への最初の返信</h2>
+<p>フォームを送ってくれたことへの感謝＋診断結果の説明。まずこの1通を送る。</p>
+
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">○○さん、診断フォームのご回答ありがとうございます！😊
+
+内容を確認して、御社に合ったアドバイスをお送りしますね。
+少しお時間をください🙏
+
+（通常24時間以内にご返信いたします）</div>
+</div>
+
+<hr>
+
+<h2>STEP 2｜スコア別 個別返信テンプレート</h2>
+
+<div class="note">
+  <strong>スコアの目安（6問）</strong><br>
+  🟢 高スコア：採用資産の土台がある → 改善提案型<br>
+  🟡 中スコア：課題が明確 → LP導入で大きく改善できる<br>
+  🔴 低スコア：採用がほぼ掛け捨て状態 → モニター最優先候補
+</div>
+
+<h3><span class="tag-a">🟢 パターンA｜スコア高め</span></h3>
+<p>すでに取り組んでいる方。LPでさらに底上げできることを伝える。</p>
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">○○さん、診断結果を拝見しました！
+
+採用についてしっかり取り組まれているのが伝わりました👏
+既存の活動に「採用LP」が加わることで、さらに応募の質と量が上がる可能性があります。
+
+特に気になったのは「○○（課題のあった項目）」の部分です。
+ここをLPで補完すると、かなり改善できそうです。
+
+よろしければ、もう少し詳しいお話を聞かせてもらえますか？
+30分ほどのオンライン相談（無料）のご都合はいかがでしょうか？</div>
+</div>
+
+<h3><span class="tag-b">🟡 パターンB｜スコア中程度</span></h3>
+<p>課題が明確な方。共感して、サービスとの適合性を伝える。</p>
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">○○さん、ご回答ありがとうございました！
+
+診断結果を見ると、まさに「求人広告を出しても積み上がらない」という課題が見えました。
+実はこれ、建設業界ではとても多いパターンです。
+
+採用LPがあると、この悪循環を断ち切るきっかけになります📌
+
+今ちょうど0円モニターの枠が残り2社ありまして、
+○○さんのような課題をお持ちの会社さんにこそ、一緒に取り組みたいと思っています。
+
+まず気軽にお話してみませんか？
+日程さえ合えば、オンラインでサクッとお話できます😊</div>
+</div>
+
+<h3><span class="tag-c">🔴 パターンC｜スコア低め（最優先候補）</span></h3>
+<p>最優先候補。「まさにこの方のために」という熱量で返す。</p>
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">○○さん、診断フォームのご回答ありがとうございました！
+
+診断結果を拝見して、正直に言うと「今すぐ変えた方がいい」と感じました。
+現状の採用活動は、費用だけがかさんで資産がまったく積み上がっていない状態です。
+
+でも、これは御社の問題ではなく「方法」の問題です。
+採用LPを自社に持つだけで、状況はがらりと変わります。
+
+今ちょうど0円モニターの受付をしていまして、
+○○さんのような会社さんにこそ使っていただきたいと思っています。
+
+一度、30分だけお時間いただけますか？
+日程を2〜3個教えていただければ、こちらから調整します📅</div>
+</div>
+
+<hr>
+
+<h2>STEP 3｜日程調整リンクの送付</h2>
+<p>相手が「話を聞きたい」と返事をくれたら送る。</p>
+
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">ありがとうございます！嬉しいです😊
+
+以下のリンクからご都合の良い日時をお選びください👇
+（所要時間：30分 / Zoom / 無料）
+
+📅 【日程調整リンク】
+https://calendly.com/atsumiwebstudio/30min
+
+当日は画面共有しながら、御社に合ったLPのイメージをお見せする予定です。
+お気軽にどうぞ！</div>
+</div>
+
+<hr>
+
+<h2>STEP 4｜ヒアリングシートの送付</h2>
+<p>日程が確定したら、Zoom前に送る。当日をスムーズにするための事前アンケート。</p>
+
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">○○さん、日程のご調整ありがとうございます！😊
+
+Zoom当日をより充実したお時間にするため、
+事前に簡単なシートにご記入いただけると助かります🙏
+
+所要時間：約5分
+
+📋 【ヒアリングシート】
+https://web-tsukuru.jp/manuals/admin/zoom_hearing_sheet.html
+
+よろしくお願いします！</div>
+</div>
+
+<hr>
+
+
+<h3>「まだ検討中です」と言われたら</h3>
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">もちろんです！急かすつもりはありません😊
+
+もし何か気になることがあれば、いつでもここで聞いてください。
+LINE一択で、気軽に話しかけてもらえると嬉しいです。
+
+引き続きよろしくお願いします！</div>
+</div>
+
+<h3>「料金が気になる」と言われたら</h3>
+<div class="msg-wrap">
+<button class="copy" onclick="copyMsg(this)">コピー</button>
+<div class="msg">料金のご確認ありがとうございます！
+
+現在のモニター枠（残り2社）は制作費0円です。
+通常プランは98,000円（税込）で、サーバー維持費・月額管理費はかかりません。
+
+詳しくはこちら👇
+https://web-tsukuru.jp/service
+
+何かご不明な点があればお気軽にどうぞ😊</div>
+</div>
+
+<script>
+function copyMsg(btn) {
+  const msg = btn.nextElementSibling.innerText;
+  navigator.clipboard.writeText(msg).then(() => {
+    btn.textContent = 'コピーしました！';
+    setTimeout(() => btn.textContent = 'コピー', 2000);
+  });
+}
+</script>
+</body>
+</html>
