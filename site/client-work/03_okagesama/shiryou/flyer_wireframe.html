@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おかげさまエアコン｜両面チラシ 構成ワイヤーフレーム</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #f1f5f9; padding: 40px; }
+        /* A4サイズの縦型比率（1 : 1.414）を再現 */
+        .a4-page {
+            width: 700px;
+            height: 990px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin: 0 auto 40px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+        }
+        /* ダミー画像エリアの装飾 */
+        .img-placeholder {
+            background-color: #e2e8f0;
+            border: 2px dashed #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center">
+
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-black text-slate-800 mb-2">チラシ構成ワイヤーフレーム（A4比率）</h1>
+        <p class="text-slate-600">※この構成図を見ながら、Canvaでデザイン（色や画像）を当てはめてください。<br>※黄色×赤はやめて、清潔感のある「青×白」ベースで作ると主婦に刺さります！</p>
+    </div>
+
+    <!-- ==========================
+         オモテ面
+    =========================== -->
+    <h2 class="text-2xl font-bold text-blue-600 mb-4 tracking-wider">【オモテ面】気づき・安心・価格</h2>
+    <div class="a4-page">
+        <!-- ① フック（ヘッダー領域） -->
+        <div class="bg-blue-600 text-white p-6 text-center flex-shrink-0">
+            <p class="text-xl font-bold mb-2 text-yellow-300">知らぬ間に、ご家族の健康を脅かしているかも…</p>
+            <h1 class="text-4xl font-black leading-tight mb-4">
+                そのエアコン、内部は<br>
+                <span class="text-5xl text-yellow-300">「カビ」と「ほこり」</span><br>
+                だらけかもしれません！
+            </h1>
+            <p class="text-sm font-bold opacity-90">フィルター掃除だけでは落ちない奥の汚れ。そのまま使うと電気代のムダにも…</p>
+        </div>
+
+        <!-- ビジュアル画像 -->
+        <div class="img-placeholder h-48 w-full">
+            [衝撃的な「カビ水」の写真、または咳き込む家族のイラスト]
+        </div>
+
+        <!-- ② 信頼ブロック（中央） -->
+        <div class="p-6 bg-white flex-grow flex flex-col justify-center">
+            <div class="text-center mb-4">
+                <span class="bg-yellow-100 text-yellow-800 font-black px-4 py-1 rounded-full border-2 border-yellow-400">🏅 Google口コミ 北九州西部 第1位！月間500件の実績</span>
+            </div>
+            
+            <h2 class="text-2xl font-black text-center text-slate-800 mb-4 border-b-2 border-blue-200 pb-2">「知らない業者を入れるのが怖い…」という方も安心！</h2>
+            
+            <div class="flex gap-4 mb-4">
+                <div class="flex-1 bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                    <div class="img-placeholder w-20 h-20 rounded-full mx-auto mb-2">[店長 勝井]</div>
+                    <p class="font-bold text-blue-900 text-sm">女性スタッフ対応可能！</p>
+                    <p class="text-xs text-slate-600 mt-1">「女性スタッフの同行も可能なので、一人暮らしの方やお子様がいても安心です！」（店長：勝井）</p>
+                </div>
+                <div class="flex-1 bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
+                    <div class="img-placeholder w-20 h-20 rounded-full mx-auto mb-2">[代表写真]</div>
+                    <p class="font-bold text-blue-900 text-sm">元・市役所職員が運営！</p>
+                    <p class="text-xs text-slate-600 mt-1">「代表の夫は元市役所職員。地域密着、誠実第一で責任を持ってお伺いします！」</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ③ 価格＆特典ブロック -->
+        <div class="bg-slate-100 p-6 border-t border-slate-200 text-center">
+            <h3 class="text-lg font-bold text-slate-700 mb-3">＼ さらに今なら！どこでもお掃除10分無料サービス付き ／</h3>
+            <div class="flex justify-center gap-6">
+                <div class="bg-white p-4 w-1/2 rounded-xl shadow-sm border-2 border-blue-500">
+                    <p class="text-blue-800 font-bold mb-1">通常エアコン</p>
+                    <p class="text-slate-400 text-sm line-through">通常 13,800円</p>
+                    <p class="text-4xl font-black text-red-600"><span class="text-xl">特別価格 </span>5,400<span class="text-lg">円〜</span></p>
+                </div>
+                <div class="bg-white p-4 w-1/2 rounded-xl shadow-sm border-2 border-blue-500">
+                    <p class="text-blue-800 font-bold mb-1">お掃除機能付き</p>
+                    <p class="text-slate-400 text-sm line-through">通常 13,800円</p>
+                    <p class="text-4xl font-black text-red-600"><span class="text-xl">特別価格 </span>10,900<span class="text-lg">円〜</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ④ 行動喚起 (CTA) -->
+        <div class="bg-orange-500 text-white p-6 flex items-center justify-between flex-shrink-0">
+            <div>
+                <p class="font-bold text-lg mb-1">▼まずは『無料の出張点検・お見積もり』から！</p>
+                <p class="text-3xl font-black tracking-wider">📞 070-8391-0973</p>
+                <p class="text-sm">年中無休（9:00〜18:00）</p>
+            </div>
+            <div class="bg-white text-slate-800 p-2 rounded text-center">
+                <div class="img-placeholder w-20 h-20 mx-auto">[LINE QR]</div>
+                <p class="text-xs font-bold mt-1">LINEで簡単予約OK!</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==========================
+         ウラ面
+    =========================== -->
+    <h2 class="text-2xl font-bold text-slate-600 mb-4 tracking-wider mt-12">【ウラ面】証拠・納得・クロージング</h2>
+    <div class="a4-page">
+        
+        <!-- ① 証拠（口コミブロック） -->
+        <div class="bg-blue-800 text-white p-6 text-center">
+            <h2 class="text-2xl font-black">おかげさまで実績多数！<br>お客様から感動の声が続々届いています！</h2>
+        </div>
+        
+        <div class="p-6 bg-slate-50 flex-grow">
+            <!-- 口コミ1 -->
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm mb-4 relative">
+                <div class="absolute -top-3 -left-3 text-4xl">💬</div>
+                <p class="text-yellow-500 font-bold text-lg mb-1">★★★★★ 5</p>
+                <h3 class="text-lg font-black text-blue-900 mb-2 border-b pb-2">「真っ黒い水に驚き！女性スタッフで安心でした！」</h3>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                    初めてで不安でしたが、丁寧な説明とスピーディな作業に感動しました。<span class="bg-yellow-200 font-bold px-1">気になっていたカビの匂いが完全に消え、</span>冷えも良くなりました！女性スタッフが来てくれたのも凄くホッとしました。
+                </p>
+                <p class="text-right text-xs text-slate-500 mt-2">（30代 主婦）</p>
+            </div>
+            <!-- 口コミ2 -->
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm mb-6 relative">
+                <div class="absolute -top-3 -left-3 text-4xl">💬</div>
+                <p class="text-yellow-500 font-bold text-lg mb-1">★★★★★ 5</p>
+                <h3 class="text-lg font-black text-blue-900 mb-2 border-b pb-2">「他業者にドタキャンされ…結果こちらで大正解！」</h3>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                    別の業者にドタキャンされて困っていた所、<span class="bg-yellow-200 font-bold px-1">迅速に連絡をいただき飛んできてくださいました。</span>結果的にこちらの方がテキパキと丁寧な対応で、逆にドタキャンされて良かったです（笑）
+                </p>
+                <p class="text-right text-xs text-slate-500 mt-2">（50代 女性）</p>
+            </div>
+
+            <!-- ② 3つの理由 -->
+            <h2 class="text-xl font-black text-center text-slate-800 mb-4 mt-6">おかげさまエアコンが選ばれる【3つの安心】</h2>
+            <div class="flex gap-4">
+                <div class="flex-1 bg-white border-t-4 border-green-500 p-3 shadow-sm text-center rounded-b text-sm">
+                    <p class="font-bold text-green-700 mb-1">1. 安心のエコ洗剤</p>
+                    <p class="text-xs text-slate-600">人体や環境に優しい専用洗剤を使用。ペットや赤ちゃんがいても安心です。</p>
+                </div>
+                <div class="flex-1 bg-white border-t-4 border-blue-500 p-3 shadow-sm text-center rounded-b text-sm">
+                    <p class="font-bold text-blue-700 mb-1">2. 損害保険加入済み</p>
+                    <p class="text-xs text-slate-600">万が一の故障やトラブル時も、責任を持って100%補償対応いたします。</p>
+                </div>
+                <div class="flex-1 bg-white border-t-4 border-purple-500 p-3 shadow-sm text-center rounded-b text-sm">
+                    <p class="font-bold text-purple-700 mb-1">3. 品質保証付き</p>
+                    <p class="text-xs text-slate-600">もし汚れ残り等があった場合、作業後7日以内であれば無料で再度対応します。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ③ オプション・流れ -->
+        <div class="bg-slate-100 p-6 border-t border-slate-200">
+            <h3 class="text-center font-black text-slate-700 mb-3 border-b-2 border-slate-300 pb-2 inline-block mx-auto w-full">ついでにお得！期間限定セット割＆オプション</h3>
+            <div class="flex justify-between items-center text-sm mb-4 bg-white p-3 rounded shadow-sm">
+                <p class="font-bold text-blue-800">まとめて頼むとお得です！</p>
+                <p class="font-black text-red-600 text-lg">2点なら1000円OFF！ / 3点なら2000円OFF！</p>
+            </div>
+            
+            <p class="font-bold text-slate-700 text-center mb-2">▼カンタン！ご利用の流れ</p>
+            <div class="flex justify-between items-center bg-white p-3 rounded-full shadow-sm text-sm border font-bold text-slate-600">
+                <span class="text-blue-600">① ご予約</span> ➡ <span>② ご訪問・事前説明</span> ➡ <span>③ 高圧洗浄</span> ➡ <span>④ 確認・お支払い</span>
+            </div>
+        </div>
+
+        <!-- ④ 行動喚起 (CTA) -->
+        <div class="bg-slate-800 text-white p-6 flex flex-col items-center flex-shrink-0">
+            <p class="text-yellow-400 font-bold mb-2">⚠️ 本格的な夏が来る前に！（4月・5月はご予約が殺到します）</p>
+            <div class="flex items-center justify-between w-full">
+                <div>
+                    <p class="text-3xl font-black tracking-wider mb-1">📞 070-8391-0973</p>
+                    <p class="text-sm">【年中無休 9:00〜18:00】 無料の出張見積もりOK</p>
+                </div>
+                <div class="bg-white text-slate-800 p-2 rounded text-center">
+                    <div class="img-placeholder w-16 h-16 mx-auto">[QR]</div>
+                    <p class="text-[10px] font-bold mt-1">LINEで予約!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
