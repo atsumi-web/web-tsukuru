@@ -3,383 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新生おかげさまエアコン｜両面チラシ 構成ワイヤーフレーム v3（DRM特化型）</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>新生おかげさまエアコン｜ブランド特化型ワイヤーフレーム v3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; background-color: #f1f5f9; padding: 40px; }
-        /* A4サイズの縦型比率（1 : 1.414）を再現 */
         .a4-page {
             width: 700px;
             min-height: 990px;
             background: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             margin: 0 auto 40px;
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 1px solid #cbd5e1;
-            box-sizing: border-box;
+            overflow: hidden; /* 画像のはみ出し防止 */
         }
-        .img-placeholder {
-            background-color: #e2e8f0;
-            border: 2px dashed #94a3b8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-weight: bold;
+        .text-shadow-elegant {
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body class="flex flex-col items-center">
 
-    <div class="mb-4 md:mb-8 text-center bg-red-600 text-white p-4 shadow-md w-full max-w-2xl rounded-b-xl border-b-[6px] border-yellow-400">
-        <h1 class="text-2xl md:text-3xl font-black mb-2 relative inline-block">
-            <span class="text-yellow-300">👑【DRM成果特化版】</span>チラシ構成ワイヤーフレーム v3
-        </h1>
-        <p class="text-xs md:text-sm font-bold text-red-100">※特売チラシ特有の「派手さ・にぎやかさ」を意図的に活用した構成です。<br>お客様に「今すぐ電話しなきゃ損をする」という心理的フックを感じさせる、レスポンス特化型の配色・レイアウトになります。</p>
+    <div class="mb-8 text-center bg-white p-6 rounded-xl shadow-sm border border-slate-200 w-[700px]">
+        <h1 class="text-2xl font-black text-slate-800 mb-2">【v3】ブランド・ビジュアル特化型チラシ（A4）</h1>
+        <p class="text-slate-600 text-sm leading-relaxed">
+            ※「削除しただけ」のスカスカ感を防ぐため、レイアウトの **「型」** を完全に変えました。<br>
+            ※スーパーの安売りチラシ型から、**「高級マンション・エステサロンのポスター型」**へ。<br>
+            ※上部70%を「1枚の美しい写真」で埋め尽くし、文字は最小限に抑えます。
+        </p>
     </div>
 
     <!-- ==========================
          オモテ面
     =========================== -->
-    <h2 class="text-2xl font-bold text-blue-600 mb-4 tracking-wider">【オモテ面】お得感（キャンペーン） ＋ 圧倒的権威・安心感</h2>
-    <div class="a4-page pb-6">
-        <!-- ① プレヘッダー帯（えりさん提案：最上部の帯） -->
-        <div class="bg-yellow-400 text-red-700 text-center py-2 text-[10px] md:text-sm font-black tracking-widest border-b-2 border-yellow-500 shadow-sm">
-            日頃の感謝を込めて！中間マージン完全ゼロだからできる「直販還元価格」
-        </div>
+    <h2 class="text-xl font-bold text-slate-700 mb-3 tracking-widest">【オモテ面】圧倒的な美しさとインパクト</h2>
+    <div class="a4-page">
+        
+        <!-- 上部 70%：フルスクリーンメインビジュアル -->
+        <div class="h-[700px] relative bg-slate-800 flex flex-col justify-end p-10 pb-16">
+            <!-- 背景写真（清潔感のある明るいリビング、光の差し込む部屋など。Canvaで高画質なものを全面配置） -->
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');"></div>
+            <!-- 文字を読みやすくするための上品なグラデーション（下から黒→透明） -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
 
-        <!-- ② フック（ヘッダー領域） -->
-        <div class="text-white p-4 text-center flex-shrink-0 relative overflow-hidden shadow-sm bg-slate-900">
-            
-            <!-- ① 女性スタッフ＋エアコン画像（一番下） -->
-            <div class="absolute inset-0 bg-cover bg-center z-0 opacity-100" style="background-image: url('./okagesama_header_bg_v4.png');"></div>
-            <!-- ② 濃紺オーバーレイ（画像の色を潰さない通常の半透明化 / mix-blendは削除） -->
-            <div class="absolute inset-0 bg-slate-900 bg-opacity-60 z-10"></div>
-            
-            <!-- キャンペーンタイトル（20%OFFを巨大に配置！） -->
-            <div class="relative z-20 flex items-center justify-start gap-3 md:gap-4 mb-3 bg-white text-blue-900 py-3 rounded-xl shadow-lg px-5 mx-2 border-b-4 border-slate-200">
-                <span class="text-red-600 font-black text-5xl md:text-6xl tracking-tighter" style="text-shadow: 2px 2px 0px #fca5a5;">20%<span class="text-2xl md:text-3xl">OFF</span></span>
+            <!-- ▼ 写真の上に堂々と乗せる最小限のコピー ▼ -->
+            <div class="relative z-10 text-white">
                 
-                <!-- キャンペーンテキスト -->
-                <div class="text-left flex flex-col justify-center mt-1 flex-1 min-w-0">
-                    <p class="text-[12px] md:text-lg font-black text-red-700 mb-0.5 tracking-tight whitespace-nowrap">
-                        <span class="bg-yellow-300 text-red-800 px-2 py-0.5 rounded text-xs mr-1 shadow-sm">祝</span>おかげさまで2周年！
-                    </p>
-                    <p class="text-[13px] sm:text-base md:text-xl font-black tracking-tighter text-slate-900 mt-0.5 whitespace-nowrap overflow-hidden text-clip">
-                        【地域還元】特別キャンペーン
-                    </p>
-                </div>
-                
-                <!-- えりさんアイデア：公式ハンコ（ロゴ）を右側に配置して権威性を付与 -->
-                <div class="ml-auto transform rotate-[15deg] opacity-90 pl-2">
-                    <div class="w-[45px] h-[45px] md:w-16 md:h-16 rounded-full border-[3px] md:border-4 border-red-500 flex items-center justify-center p-0.5 md:p-1 shadow-sm mix-blend-multiply">
-                        <div class="w-full h-full rounded-full border-[1.5px] border-red-500 flex items-center justify-center bg-red-50 text-red-600 font-black text-[9px] md:text-xs leading-none text-center" style="font-family: 'Yu Mincho', 'EB Garamond', serif;">
-                            おかげ<br>さま
-                        </div>
+                <!-- キャンペーンタイトル（赤ではなく上品なゴールド・イエロー系） -->
+                <div class="mb-6">
+                    <p class="text-base font-bold tracking-widest text-yellow-300 mb-2">おかげさまで2周年・地域還元キャンペーン</p>
+                    <h1 class="text-5xl font-black leading-tight tracking-tight text-shadow-elegant mb-4">
+                        キレイな空気で、<br>
+                        家族の深呼吸が変わる。
+                    </h1>
+                    <!-- 【重要】限定性の訴求を追加（上品なデザインで行動を促す） -->
+                    <div class="inline-block bg-red-600/90 backdrop-blur-sm px-6 py-2.5 rounded-full border border-red-400 shadow-lg">
+                        <p class="text-white font-bold tracking-widest text-[15px]">
+                            <span class="text-yellow-300 mr-1">⚠️</span> 令和〇年〇月〇日まで！【1日3名様限定】
+                        </p>
                     </div>
                 </div>
-            </div>
-            
-            <h1 class="relative z-20 text-3xl font-black leading-tight mb-3 mt-6" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.8);">
-                本格的な夏が来る前に！<br>
-                フィルターの奥の<span class="text-4xl text-yellow-300">「カビ・ほこり」</span>を<br>一掃しませんか？
-            </h1>
-            
-            <!-- えりさんご指摘の「消えてしまった一番大事な限定バッジ」を完全復旧 -->
-            <div class="relative z-20 bg-red-600 text-white font-black text-lg md:text-xl py-2.5 rounded-full shadow-lg border-2 border-white inline-block px-8 md:px-12 mt-1 mb-4 tracking-wide">
-                令和〇年〇月〇日まで！ 1日3名様限定！
-            </div>
 
-            <!-- えりさん提案：実績（権威性）をバッジの下に移動 -->
-            <div class="relative z-20 font-bold mb-2 bg-blue-800 px-3 py-3 rounded-lg text-yellow-200 shadow-inner text-center border border-blue-900 leading-relaxed mx-2">
-                <span class="text-white text-[13px] md:text-sm">総領事館、病院、歯科医院、介護施設、美容室等の実績多数。</span><br>
-                <span class="text-yellow-100 font-black text-xs tracking-wide underline decoration-blue-400 underline-offset-4">月間<span class="text-yellow-300 text-lg">500</span>件の圧倒的施工実績をもつプロ集団</span>
+                <!-- 圧倒的フック（価格） -->
+                <!-- ごちゃごちゃさせないため、特別価格だけズドンと出す -->
+                <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-xl p-6 inline-flex gap-8 items-center shadow-lg">
+                    <!-- 通常エアコン -->
+                    <div class="flex flex-col">
+                        <p class="text-sm font-medium tracking-wider mb-1 opacity-90">通常エアコン清掃</p>
+                        <p class="text-[40px] font-black tracking-tight leading-none text-yellow-300"><span class="text-xl text-white">特別価格</span> 5,400<span class="text-2xl font-medium text-white">円〜</span></p>
+                    </div>
+                    <!-- 区切り線 -->
+                    <div class="w-px h-16 bg-white/30"></div>
+                    <!-- お掃除機能付き -->
+                    <div class="flex flex-col">
+                        <p class="text-sm font-medium tracking-wider mb-1 opacity-90">お掃除機能付き</p>
+                        <p class="text-3xl font-bold tracking-tight leading-none text-white">10,900<span class="text-xl font-medium">円〜</span></p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- ② アンカリング価格表（超・高コントラスト仕様） -->
-        <div class="px-3 md:px-8 py-6 bg-yellow-50 border-y-8 border-yellow-300">
-            <h2 class="text-center font-black text-white bg-blue-900 px-4 py-3 text-lg md:text-2xl mb-5 shadow-lg mx-auto block relative -skew-x-6 w-full max-w-[90%] border-b-4 border-slate-800">
-                <span class="inline-block skew-x-6 tracking-wide">大人気！お得なクリーニングメニュー</span>
-            </h2>
+        <!-- 下部 30%：洗練された権威性とCTA -->
+        <div class="flex-grow bg-white px-10 py-8 flex flex-col justify-between">
             
-            <div class="w-full text-center space-y-3">
-                
-                <!-- 見出し行 -->
-                <div class="flex items-end justify-end gap-1 md:gap-3 text-[10px] md:text-xs text-slate-800 font-black border-b-2 border-slate-300 pb-1 pr-1 md:pr-2">
-                    <div class="w-[20%] text-center text-slate-500">市場参考価格</div>
-                    <div class="w-[20%] text-center">当店通常</div>
-                    <div class="w-[35%] text-center text-red-700 bg-yellow-200 rounded px-1">【限定20%引】</div>
+            <!-- 権威性エリア（シンプル・コンパクトに） -->
+            <div class="flex items-center justify-between border-b border-slate-200 pb-5">
+                <div class="flex-1 pr-4">
+                    <!-- チラつく要素を全削除。「元市役所職員」のパワーワードだけ残す -->
+                    <p class="text-blue-900 font-black text-[22px] mb-1 tracking-wide leading-tight">元市役所職員が運営する、<br>最高品質の安心をあなたに。</p>
+                    <p class="text-slate-500 text-[13px] font-bold">月間500件の施工実績 / 女性スタッフ同行OK</p>
                 </div>
+                <!-- バッジ（シンプルに） -->
+                <div class="w-40 text-center bg-slate-50 border border-slate-200 rounded-lg py-3 shadow-sm">
+                    <p class="text-[11px] text-slate-500 font-bold mb-0.5">Google口コミ</p>
+                    <p class="text-base font-black text-blue-800">北九州西部 <span class="text-xl text-red-600">No.1</span></p>
+                </div>
+            </div>
 
-                <!-- 通常エアコン -->
-                <div class="flex items-center justify-between border-2 border-slate-200 py-1.5 md:py-2.5 bg-slate-50 px-1 md:px-2 rounded shadow-sm">
-                    <div class="text-left font-black text-sm md:text-base w-[30%] pl-1.5 md:pl-2 border-l-4 border-blue-700 text-slate-900 leading-tight">通常エアコン</div>
-                    <div class="flex flex-1 justify-end items-center gap-1 md:gap-3">
-                        <div class="text-[9px] md:text-xs text-slate-500 w-[20%] text-center font-bold">11,000円〜</div>
-                        <div class="text-[10px] md:text-sm text-slate-600 font-black w-[20%] text-center line-through decoration-red-600 decoration-[2px]">6,900円</div>
-                        <div class="bg-yellow-100 text-red-700 font-black text-[22px] md:text-3xl w-[35%] text-center rounded shadow-inner py-0.5 border-2 border-yellow-300">5,500<span class="text-xs md:text-base">円</span></div>
-                    </div>
+            <!-- CTA（お問い合わせ）エリア -->
+            <div class="flex items-center justify-between pt-4 pb-2">
+                <div class="flex-1">
+                    <p class="text-[13px] font-bold text-slate-500 mb-1">▼ 総合受付ダイヤル（お気軽にご相談ください）</p>
+                    <p class="text-[42px] font-black text-slate-800 tracking-wider font-sans leading-none mb-1">070-8391-0973</p>
+                    <p class="text-[11px] font-bold text-slate-500">営業時間 9:00〜18:00（年中無休）</p>
                 </div>
+                <div class="w-24 flex flex-col items-center bg-slate-50 p-2 rounded-lg border border-slate-200 shadow-sm ml-4">
+                    <div class="w-16 h-16 bg-slate-200 flex items-center justify-center text-xs text-slate-400 mb-1 rounded">[QR]</div>
+                    <p class="text-[10px] font-bold text-slate-600">LINE予約24H</p>
+                </div>
+            </div>
 
-                <!-- お掃除機能付エアコン -->
-                <div class="flex items-center justify-between border-2 border-slate-200 py-1.5 md:py-2.5 bg-slate-50 px-1 md:px-2 rounded shadow-sm">
-                    <div class="text-left font-black text-sm md:text-base w-[30%] pl-1.5 md:pl-2 border-l-4 border-blue-700 text-slate-900 leading-tight">お掃除機能付</div>
-                    <div class="flex flex-1 justify-end items-center gap-1 md:gap-3">
-                        <div class="text-[9px] md:text-xs text-slate-500 w-[20%] text-center font-bold">24,000円〜</div>
-                        <div class="text-[10px] md:text-sm text-slate-600 font-black w-[20%] text-center line-through decoration-red-600 decoration-[2px]">12,800円</div>
-                        <div class="bg-yellow-100 text-red-700 font-black text-[22px] md:text-3xl w-[35%] text-center rounded shadow-inner py-0.5 border-2 border-yellow-300">10,000<span class="text-xs md:text-base">円</span></div>
-                    </div>
-                </div>
-
-                <!-- 縦型洗濯機 -->
-                <div class="flex items-center justify-between border-2 border-slate-200 py-1.5 md:py-2.5 bg-slate-50 px-1 md:px-2 rounded shadow-sm">
-                    <div class="text-left font-black text-sm md:text-base w-[30%] pl-1.5 md:pl-2 border-l-4 border-blue-700 text-slate-900 leading-tight">縦型洗濯機</div>
-                    <div class="flex flex-1 justify-end items-center gap-1 md:gap-3">
-                        <div class="text-[9px] md:text-xs text-slate-500 w-[20%] text-center font-bold">25,300円〜</div>
-                        <div class="text-[10px] md:text-sm text-slate-600 font-black w-[20%] text-center line-through decoration-red-600 decoration-[2px]">14,900円</div>
-                        <div class="bg-yellow-100 text-red-700 font-black text-[22px] md:text-3xl w-[35%] text-center rounded shadow-inner py-0.5 border-2 border-yellow-300">11,900<span class="text-xs md:text-base">円</span></div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="flex flex-col md:flex-row justify-between items-center mt-3 px-1 gap-2">
-                <p class="text-[11px] md:text-xs font-black text-white bg-red-600 border-2 border-red-800 px-3 py-1 rounded-full shadow-sm">
-                    🚫 出張費・駐車場代・汚れによる追加料金は【一切ゼロ】！
-                </p>
-                <p class="text-right text-[11px] text-slate-600 font-bold">※金額はすべて税込価格です</p>
-            </div>
-        </div>
-
-        <!-- ③ 圧倒的信頼ブロック（新兵器投入） -->
-        <div class="p-6 bg-blue-900 flex-grow flex flex-col justify-center text-white border-b-8 border-blue-950">
-            <div class="text-center mb-5">
-                <span class="bg-yellow-400 text-slate-900 font-black px-6 py-2.5 rounded border border-yellow-600 text-base md:text-lg shadow-sm">
-                    🏆 北九州南部 Google口コミ第1位！
-                </span>
-            </div>
-            
-            <h2 class="text-xl md:text-2xl font-black text-center text-white mb-6 bg-red-600 py-3 border-y border-white shadow-md">
-                「見知らぬ業者は怖い…」という方も<span class="text-yellow-300 text-3xl md:text-4xl block mt-1">絶対安心！</span>
-            </h2>
-            
-            <!-- 圧倒的信頼ブロック（えりさん調整版：写真40%、テキスト60%） -->
-            <div class="flex gap-4 mb-2 items-center">
-                
-                <!-- 写真エリア（左40%・少し小さめに） -->
-                <div class="w-2/5 flex flex-col items-center">
-                    <!-- 2枚の正方形を横並び -->
-                    <div class="flex w-full gap-1 mb-1 rounded-xl shadow-md overflow-hidden bg-white border-2 border-white">
-                        <div class="w-1/2 aspect-square relative">
-                            <img src="./family_portrait.png" alt="奥様とお子様の写真" class="w-full h-full object-cover">
-                        </div>
-                        <div class="w-1/2 aspect-square relative">
-                            <img src="./line_449_cleaning.png" alt="作業風景" class="w-full h-full object-cover" onerror="this.src='./449_cleaning.png'">
-                        </div>
-                    </div>
-                    <p class="text-[7px] md:text-[8px] text-blue-200 font-bold text-center mb-0.5 leading-tight mt-1">子育てママ店長だから安心<br>細部まで徹底的に高圧洗浄</p>
-                    <p class="font-black text-white border-b-2 border-blue-400 w-full text-center pb-0.5 tracking-widest text-[10px]">店長 勝井容子</p>
-                </div>
-                
-                <!-- 権威性テキスト（えりさん提案による極限ブラッシュアップ版） -->
-                <div class="w-3/5 flex flex-col justify-between gap-1.5">
-                    <!-- ① ママ店長（共感・心理的安心） -->
-                    <div class="bg-white p-1.5 md:p-2 rounded border border-slate-200 shadow-sm flex flex-col justify-center">
-                        <p class="font-black text-blue-800 text-[10px] mb-0.5"><span class="text-base">👩‍👧</span> 「どんな人が来るの？」女性も絶対安心！</p>
-                        <p class="text-[8px] md:text-[9.5px] text-slate-600 leading-tight">当店は『子育てママ店長』が在籍。初めての方でも安心してご依頼いただけます。</p>
-                    </div>
-                    <!-- ② 身元のモラル（防犯・接客的安心） -->
-                    <div class="bg-white p-1.5 md:p-2 rounded border border-slate-200 shadow-sm flex flex-col justify-center">
-                        <p class="font-black text-blue-800 text-[10px] mb-0.5"><span class="text-base">👮</span> 【元公務員】等の礼儀正しいプロ集団</p>
-                        <p class="text-[8px] md:text-[9.5px] text-slate-600 leading-tight">作業は「元市役所職員」「自衛隊出身」など、身元が確かで真面目な職人が担当します！</p>
-                    </div>
-                    <!-- ③ 技術と実績（品質的安心の集約） -->
-                    <div class="bg-white p-1.5 md:p-2 rounded border border-slate-200 shadow-sm relative flex flex-col justify-center border-l-4 border-l-red-500 bg-red-50">
-                        <span class="absolute -top-3 right-0 text-2xl md:text-3xl opacity-80">🔥</span>
-                        <p class="font-black text-red-700 text-[10px] mb-0.5"><span class="text-base">🏥</span> 医療機関も認める【全国No.1店】の直伝技術</p>
-                        <p class="text-[8px] md:text-[9px] text-slate-600 leading-tight">口コミ全国No.1店で習得した専門技術！総領事館や病院の清掃も任せられる圧倒的品質です。</p>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
-
-        <!-- ④ 行動喚起 (CTA / フッター) -->
-        <div class="mx-6 mt-4 mb-2 bg-yellow-50 border-[6px] border-red-600 rounded-lg p-4 shadow-2xl relative z-20">
-            <!-- 締め切りバッジ -->
-            <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-slate-900 text-yellow-300 font-black px-8 py-2 rounded-sm text-sm md:text-base shadow-lg whitespace-nowrap border-2 border-yellow-400">
-                ⚠️ 【急ぎ！各日3名様のみ】ご予約は今すぐ！
-            </div>
-            
-            <div class="flex items-center justify-between mt-4">
-                <!-- 電話エリア -->
-                <div class="flex-1 text-center border-r-2 border-red-200 pr-3">
-                    <p class="text-blue-900 font-bold mb-0.5 text-[10px] md:text-xs">見積もり完全無料！スマホからワンタップ！</p>
-                    <p class="text-[10px] md:text-sm font-black text-red-600 mb-0.5 tracking-tight border-b-2 border-red-200 inline-block pb-0.5">👩 店長直結ダイヤル（些細な疑問でも誠実にお答えします！）</p>
-                    <p class="text-4xl md:text-[44px] font-black tracking-widest text-red-600 mb-0.5 drop-shadow-sm leading-none py-1">📞070-8391-0973</p>
-                    <p class="text-[10px] md:text-xs text-slate-700 font-black mb-1">【営業時間】 9:00〜18:00 （年中無休）</p>
-                    
-                    <!-- 魔法の一言（手書き風の温かみを想定） -->
-                    <div class="bg-white text-red-700 text-[9px] md:text-[11px] font-black py-1 px-3 rounded-full inline-block border border-red-300 shadow-sm tracking-tight">
-                        ✎「チラシを見た」とお伝えいただくとご案内がスムーズです！
-                    </div>
-                </div>
-                
-                <!-- LINEエリア -->
-                <div class="w-24 md:w-32 text-center pl-3 flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 mb-1.5 bg-green-50 text-green-700 border-2 border-green-500 rounded-xl flex flex-col items-center justify-center font-bold text-[10px] md:text-xs shadow-sm shadow-green-200">
-                        <span class="text-xl md:text-2xl mb-0.5">📱</span>
-                        QRコード
-                    </div>
-                    <p class="text-[9px] md:text-[11px] font-black text-green-700 leading-tight">24時間受付OK<br>LINEでかんたん予約!</p>
-                </div>
-            </div>
-            
-            <!-- 会社情報 -->
-            <div class="mt-4 text-center text-[9px] md:text-[10px] text-slate-700 font-bold">
-                【対応エリア】 <span class="text-red-700 text-sm font-black underline decoration-red-300 underline-offset-2">北九州市全域・遠賀郡・下関市周辺</span> まで幅広く駆けつけます！<br>
-                <div class="text-[8px] font-normal font-sans text-slate-500 mt-1">【店舗情報】 おかげさまエアコン｜〒〇〇〇-〇〇〇 福岡県北九州市〇〇町〇-〇-〇</div>
-            </div>
         </div>
     </div>
-
 
     <!-- ==========================
          ウラ面
     =========================== -->
-    <h2 class="text-2xl font-bold text-slate-600 mb-4 tracking-wider mt-12">【ウラ面】お喜びの声 ＋ 豊富な無料特典・オプション</h2>
-    <div class="a4-page pb-6">
+    <h2 class="text-xl font-bold text-slate-700 mb-3 tracking-widest mt-12">【ウラ面】信頼の証とシンプルメニュー</h2>
+    <div class="a4-page bg-slate-50">
         
-
-        
-        <!-- ① 安心の声（口コミブロック） -->
-        <div class="bg-blue-800 text-white p-6 text-center shadow-inner">
-            <h2 class="text-2xl font-black">おかげさまで実績多数！<br>お客様から感動の声が続々届いています！</h2>
-        </div>
-        
-        <div class="p-6 bg-slate-50 flex-grow">
-            <!-- 証拠写真の小並べ（オモテ面からウラ面へ移動） -->
-            <div class="mb-6 pb-6 border-b-2 border-slate-300 border-dashed">
-                <p class="text-[12px] md:text-sm font-black text-center text-blue-900 mb-3 tracking-wide">▼ 「本当に綺麗になるの？」百聞は一見に如かず！驚きのビフォーアフター</p>
-                <div class="flex gap-2 md:gap-4 justify-between">
-                    <!-- ① Shock (Problem) -->
-                    <div class="w-1/3 relative rounded-lg overflow-hidden shadow-md border-2 border-slate-200 aspect-video">
-                        <img src="./dirty_water.png" alt="真っ黒な汚水バケツ" class="w-full h-full object-cover">
-                        <span class="absolute bottom-0 w-full bg-black/60 text-white text-[9px] md:text-[11px] text-center font-bold py-1">信じられない汚水…</span>
-                    </div>
-                    <!-- ② Action (Solution) -->
-                    <div class="w-1/3 relative rounded-lg overflow-hidden shadow-md border-2 border-slate-200 aspect-video">
-                        <img src="./action_ac.png" alt="高圧洗浄中の横顔" class="w-full h-full object-cover">
-                        <span class="absolute bottom-0 w-full bg-blue-700/80 text-white text-[9px] md:text-[11px] text-center font-bold py-1">隅々まで高圧徹底洗浄</span>
-                    </div>
-                    <!-- ③ Trust (Safety) -->
-                    <div class="w-1/3 relative rounded-lg overflow-hidden shadow-md border-2 border-slate-200 aspect-video bg-white">
-                        <img src="./action_couple.png" alt="ご夫婦での清掃" class="w-full h-full object-cover object-top">
-                        <span class="absolute bottom-0 w-full bg-yellow-600/80 text-white text-[9px] md:text-[11px] text-center font-bold py-1">お部屋全体がピカピカに</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 口コミ1 -->
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-4 relative">
-                <div class="absolute -top-3 -left-3 text-4xl">💬</div>
-                <p class="text-yellow-500 font-bold text-sm mb-1">★★★★★ 5</p>
-                <h3 class="text-base font-black text-blue-900 mb-1 border-b pb-1">「真っ黒い水に驚き！女性スタッフで安心でした！」</h3>
-                <p class="text-[13px] text-slate-700 leading-relaxed">
-                    初めてで不安でしたが、丁寧な説明とスピーディな作業に感動しました。<span class="bg-yellow-200 font-bold px-1">気になっていたカビの匂いが完全に消え、</span>冷えも良くなりました！女性スタッフが来てくれたのも凄くホッとしました。
-                </p>
-            </div>
-
-            <!-- 口コミ2 -->
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-4 relative">
-                <div class="absolute -top-3 -left-3 text-4xl">💬</div>
-                <p class="text-yellow-500 font-bold text-sm mb-1">★★★★★ 5</p>
-                <h3 class="text-base font-black text-blue-900 mb-1 border-b pb-1">「他業者にドタキャンされ…結果こちらで大正解！」</h3>
-                <p class="text-[13px] text-slate-700 leading-relaxed">
-                    別の業者にドタキャンされて困っていた所、<span class="bg-yellow-200 font-bold px-1">迅速に連絡をいただき飛んできてくださいました。</span>結果的にこちらの方がテキパキと丁寧な対応で、逆にドタキャンされて良かったです（笑）
-                </p>
-            </div>
-
-            <!-- 口コミ3 -->
-            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 relative">
-                <div class="absolute -top-3 -left-3 text-4xl">💬</div>
-                <p class="text-yellow-500 font-bold text-sm mb-1">★★★★★ 5</p>
-                <h3 class="text-base font-black text-blue-900 mb-1 border-b pb-1">「礼儀正しくて手際が良い！価格も大満足です」</h3>
-                <p class="text-[13px] text-slate-700 leading-relaxed">
-                    初めてお願いしましたが、スタッフの方の<span class="bg-yellow-200 font-bold px-1">挨拶や礼儀正しさにとても安心</span>できました。作業もテキパキしており、このクオリティでこの価格なら毎年リピート確定です！
-                </p>
-            </div>
-
-            <!-- ② 3つの安心と太っ腹な無料特典 -->
-            <h2 class="text-lg font-black text-center text-white bg-red-600 py-3 mb-4 shadow-md w-full border-y-2 border-red-800 tracking-wide mt-2">
-                おかげさまエアコンが選ばれる<br class="md:hidden">【3つの安心】と【無料特典】
-            </h2>
-            
-            <div class="flex gap-4 mb-5 px-4">
-                <div class="bg-blue-600 border border-blue-700 p-2 text-center rounded-full shadow-md w-1/3 text-[11px] font-black text-white">🌿 エコ洗剤</div>
-                <div class="bg-blue-600 border border-blue-700 p-2 text-center rounded-full shadow-md w-1/3 text-[11px] font-black text-white">🛡️ 損害保険加入</div>
-                <div class="bg-blue-600 border border-blue-700 p-2 text-center rounded-full shadow-md w-1/3 text-[11px] font-black text-white">✨ 品質保証</div>
-            </div>
-            
-            <div class="bg-red-50 border-4 border-red-300 p-3 md:p-4 rounded-xl text-center shadow-inner relative mt-4">
-                <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-red-800 text-[10px] md:text-xs font-black px-4 py-0.5 rounded-full border border-yellow-500 shadow-sm whitespace-nowrap">
-                    🎁 気になる「あの水垢汚れ」もついでに落とします！
-                </span>
-                <p class="text-[12px] md:text-sm text-slate-800 font-bold mt-2 leading-relaxed">
-                    エアコン洗浄をご依頼の方 👉 <span class="text-red-600 bg-white px-1 font-black underline decoration-red-300">「水回りワンポイント清掃」無料サービス！</span><br>
-                    <span class="text-[10px] text-slate-600 font-normal">（※トイレ手洗い場や、お風呂の鏡のウロコ取り等、通常2,000円相当の作業がタダ！）</span>
-                </p>
-                <p class="text-[12px] md:text-sm text-slate-800 font-bold mt-2 border-t border-red-200 pt-1.5 inline-block">
-                    さらに！ 👉 <span class="text-red-600 bg-white px-1 font-black">ドレンホース（排水管）無料点検</span> も同時実施中！
-                </p>
-            </div>
+        <!-- ヘッダー -->
+        <div class="bg-blue-900 text-white py-6 text-center">
+            <h2 class="text-[22px] font-black tracking-widest">おかげさまで実績多数。喜びの声が届いています。</h2>
         </div>
 
-        <!-- ③ オプション・流れ -->
-        <div class="bg-slate-100 px-6 pb-6 text-center border-t-8 border-slate-300">
-            <h3 class="text-center font-black text-white bg-blue-900 py-2 mb-4 mt-6 shadow-sm w-full mx-auto max-w-[95%] border-b-4 border-blue-950">
-                ついでにお得！その他オススメの追加オプション
-            </h3>
+        <div class="p-10 flex flex-col gap-8">
             
-            <div class="flex justify-between items-stretch text-sm gap-2 mb-4">
-                <!-- オプション1 -->
-                <div class="border-2 border-slate-200 p-2 md:p-3 rounded-xl flex-1 flex flex-row items-center justify-start shadow-sm bg-slate-50">
-                    <img src="./icon_anti_mold.png" alt="防カビ抗菌" class="w-8 h-8 md:w-11 md:h-11 object-contain mr-2 opacity-90 flex-shrink-0">
-                    <div class="text-left w-full">
-                        <p class="text-[9px] md:text-xs text-slate-800 font-bold mb-0.5 leading-tight">防カビ抗菌<br>コーティング</p>
-                        <p class="font-black text-blue-700 text-sm md:text-base">2,400円</p>
-                    </div>
+            <!-- ① シンプルな口コミ（ごちゃごちゃさせない） -->
+            <div class="grid grid-cols-2 gap-6">
+                <!-- 口コミ1 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative">
+                    <span class="absolute -top-4 -left-3 text-4xl opacity-80 text-blue-200">💬</span>
+                    <h3 class="font-bold text-blue-900 border-b border-slate-100 pb-2 mb-3 text-[15px]">「真っ黒い水に驚き！女性で安心」</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">丁寧な説明とスピーディな作業に感動しました。気になっていたカビの匂いが完全に消え、冷えも良くなりました！</p>
                 </div>
-                <!-- オプション2 -->
-                <div class="border-2 border-slate-200 p-2 md:p-3 rounded-xl flex-1 flex flex-row items-center justify-start shadow-sm bg-slate-50">
-                    <img src="./icon_drain_hose_v2.png" alt="ドレンホース" class="w-8 h-8 md:w-11 md:h-11 object-contain mr-2 opacity-90 flex-shrink-0">
-                    <div class="text-left w-full">
-                        <p class="text-[9px] md:text-xs text-slate-800 font-bold mb-0.5 leading-tight">ドレンホース<br>（排水管）洗浄</p>
-                        <p class="font-black text-blue-700 text-sm md:text-base">2,400円</p>
-                    </div>
+                <!-- 口コミ2 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm relative">
+                    <span class="absolute -top-4 -left-3 text-4xl opacity-80 text-blue-200">💬</span>
+                    <h3 class="font-bold text-blue-900 border-b border-slate-100 pb-2 mb-3 text-[15px]">「礼儀正しくて手際が良い！」</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">スタッフの方の挨拶や礼儀正しさにとても安心できました。このクオリティでこの価格なら毎年リピート確定です！</p>
                 </div>
-                <!-- オプション3 -->
-                <div class="border-2 border-slate-200 p-2 md:p-3 rounded-xl flex-1 flex flex-row items-center justify-start shadow-sm bg-slate-50">
-                    <img src="./icon_outdoor_unit.png" alt="室外機洗浄" class="w-8 h-8 md:w-11 md:h-11 object-contain mr-2 opacity-90 flex-shrink-0">
-                    <div class="text-left w-full">
-                        <p class="text-[9px] md:text-xs text-slate-800 font-bold mb-0.5 leading-tight">室外機洗浄<br>（節電効果ＵＰ）</p>
-                        <p class="font-black text-blue-700 text-sm md:text-base">2,900円</p>
+            </div>
+
+            <!-- ② 圧倒的にお得な特別価格（アンカリング効果） -->
+            <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden mx-auto w-full">
+                <div class="bg-slate-800 text-white text-center py-4">
+                    <h3 class="text-lg font-bold tracking-widest text-yellow-300">地域還元・特別価格メニュー</h3>
+                </div>
+                <div class="p-6">
+                    <!-- テーブルヘッダー -->
+                    <div class="flex justify-end gap-3 md:gap-4 text-[10px] md:text-xs text-slate-400 font-bold border-b-2 border-slate-100 pb-2 mb-2 pr-2">
+                        <div class="w-16 md:w-20 text-center">市場参考価格</div>
+                        <div class="w-16 md:w-20 text-center">当店通常</div>
+                        <div class="w-24 md:w-32 text-center text-red-600">今だけの特別価格</div>
+                    </div>
+                    
+                    <!-- リスト1 -->
+                    <div class="flex justify-between items-center border-b border-slate-100 py-3 md:py-4">
+                        <p class="text-sm md:text-lg font-bold text-slate-800 border-l-[5px] border-blue-500 pl-3">通常エアコン清掃</p>
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <p class="w-16 md:w-20 text-center text-[10px] md:text-xs text-slate-400">11,000円〜</p>
+                            <p class="w-16 md:w-20 text-center text-[11px] md:text-sm text-slate-500 line-through decoration-slate-400">6,900円</p>
+                            <p class="w-24 md:w-32 text-center text-2xl md:text-3xl font-black text-red-600">5,400<span class="text-xs md:text-base font-medium ml-0.5">円</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- リスト2 -->
+                    <div class="flex justify-between items-center border-b border-slate-100 py-3 md:py-4">
+                        <p class="text-sm md:text-lg font-bold text-slate-800 border-l-[5px] border-blue-500 pl-3">お掃除機能付き</p>
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <p class="w-16 md:w-20 text-center text-[10px] md:text-xs text-slate-400">24,000円〜</p>
+                            <p class="w-16 md:w-20 text-center text-[11px] md:text-sm text-slate-500 line-through decoration-slate-400">12,800円</p>
+                            <p class="w-24 md:w-32 text-center text-2xl md:text-3xl font-black text-red-600">10,900<span class="text-xs md:text-base font-medium ml-0.5">円</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- リスト3 -->
+                    <div class="flex justify-between items-center py-3 md:py-4">
+                        <p class="text-sm md:text-lg font-bold text-slate-800 border-l-[5px] border-blue-500 pl-3">バスルーム清掃</p>
+                        <div class="flex items-center gap-3 md:gap-4">
+                            <p class="w-16 md:w-20 text-center text-[10px] md:text-xs text-slate-400">18,000円〜</p>
+                            <p class="w-16 md:w-20 text-center text-[11px] md:text-sm text-slate-500 line-through decoration-slate-400">14,900円</p>
+                            <p class="w-24 md:w-32 text-center text-2xl md:text-3xl font-black text-red-600">11,900<span class="text-xs md:text-base font-medium ml-0.5">円</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-yellow-100 font-black text-red-700 text-sm py-2 rounded-full mb-2">
-                ✨ 上記3点おまとめ：通常7,700円 👉 【特別価格 5,400円】 ✨
+
+            <!-- ③ 選ばれる安心（簡素化） -->
+            <div class="mt-4">
+                <div class="flex gap-4">
+                    <div class="flex-1 bg-white border border-slate-200 p-5 text-center rounded-xl shadow-sm">
+                        <p class="text-3xl mb-2">🌿</p>
+                        <p class="font-bold text-[15px] text-blue-900 mb-1">エコ洗剤使用</p>
+                        <p class="text-xs text-slate-500 font-medium">人体に優しい専用洗剤</p>
+                    </div>
+                    <div class="flex-1 bg-white border border-slate-200 p-5 text-center rounded-xl shadow-sm">
+                        <p class="text-3xl mb-2">🛡️</p>
+                        <p class="font-bold text-[15px] text-blue-900 mb-1">損害保険加入</p>
+                        <p class="text-xs text-slate-500 font-medium">万一のトラブルも補償</p>
+                    </div>
+                    <div class="flex-1 bg-white border border-slate-200 p-5 text-center rounded-xl shadow-sm">
+                        <p class="text-3xl mb-2">✨</p>
+                        <p class="font-bold text-[15px] text-blue-900 mb-1">品質保証</p>
+                        <p class="text-xs text-slate-500 font-medium">作業後7日以内なら再対応</p>
+                    </div>
+                </div>
             </div>
-            <p class="text-right text-[10px] text-slate-500 font-bold mb-4 pr-2">※金額はすべて税込価格です</p>
-            
-            <p class="font-bold text-slate-700 text-center text-sm mb-2">▼ ご利用の流れはとってもカンタン！</p>
-            <div class="flex justify-between items-center bg-slate-100 p-3 rounded-full text-xs font-bold text-slate-600 border border-slate-300">
-                <span class="text-blue-600">① お電話・LINE予約</span> ➡ <span>② ご訪問・事前説明</span> ➡ <span>③ 高圧技術洗浄</span> ➡ <span>④ 確認・お支払い</span>
-            </div>
+
         </div>
 
     </div>
