@@ -40,25 +40,36 @@ img{display:block;width:100%}
 .float-cta i{font-size:.85rem}
 @keyframes floatIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── HERO ── */
-.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;background:#c8d8c4}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
-.hero-img.z{transform:scale(1.04)}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(20,40,18,.48) 0%,rgba(20,40,18,.08) 55%,transparent 100%)}
+/* ── HERO (Scroll Pin) ── */
+.hero-pin-wrap{position:relative;height:250vh}
+.hero-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#1a2e18}
+/* Layer 1: メイン画像 */
+.hero-img-main{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.hero-img-main.z{transform:scale(1.04)}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(20,40,18,.55) 0%,rgba(20,40,18,.12) 60%,transparent 100%);z-index:1}
 /* 縦書きタイトル */
-.hero-vert{position:absolute;left:60px;top:50%;transform:translateY(-50%);color:#fff;writing-mode:vertical-rl;text-orientation:mixed}
-.hero-vert-ttl{font-family:var(--serif);font-size:clamp(2rem,4vh,3rem);font-weight:800;line-height:1.6;letter-spacing:.12em;margin-bottom:0;opacity:0;animation:vertSlide 1s .3s cubic-bezier(.16,1,.3,1) forwards}
+.hero-vert{position:absolute;left:60px;top:50%;transform:translateY(-50%);color:#fff;writing-mode:vertical-rl;text-orientation:mixed;z-index:2}
+.hero-vert-ttl{font-family:var(--serif);font-size:clamp(2rem,4vh,3rem);font-weight:800;line-height:1.6;letter-spacing:.12em;opacity:0;animation:vertSlide 1s .3s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes vertSlide{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
 .hero-vert-sub{font-family:var(--en);font-size:.58rem;letter-spacing:.24em;color:rgba(255,255,255,.55);text-transform:uppercase;margin-top:28px;opacity:0;animation:vertSlide 1s .6s cubic-bezier(.16,1,.3,1) forwards}
 /* 斜め破線装飾 */
-.hero-deco{position:absolute;top:0;left:50%;width:1px;height:100%;background:none;border-left:1px dashed rgba(255,255,255,.2);opacity:0;animation:fadeA 1s 1s forwards}
-.hero-deco2{position:absolute;top:0;right:120px;width:1px;height:100%;background:none;border-left:1px dashed rgba(255,255,255,.15);opacity:0;animation:fadeA 1s 1.2s forwards;transform:rotate(8deg);transform-origin:top}
+.hero-deco{position:absolute;top:0;left:50%;width:1px;height:100%;border-left:1px dashed rgba(255,255,255,.18);z-index:2;opacity:0;animation:fadeA 1s 1s forwards}
+.hero-deco2{position:absolute;top:0;right:120px;width:1px;height:100%;border-left:1px dashed rgba(255,255,255,.12);z-index:2;opacity:0;animation:fadeA 1s 1.2s forwards;transform:rotate(8deg);transform-origin:top}
 @keyframes fadeA{to{opacity:1}}
-/* ヒーロー下部テキスト */
-.hero-btm{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.5);font-family:var(--en);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;opacity:0;animation:fadeA 1s 1.4s forwards}
-.hero-btm::after{content:'';display:block;width:1px;height:40px;background:rgba(255,255,255,.3)}
-/* 年号 右下 */
-.hero-yr{position:absolute;bottom:48px;right:48px;font-family:var(--en);font-size:.58rem;color:rgba(255,255,255,.4);letter-spacing:.14em;writing-mode:vertical-rl;opacity:0;animation:fadeA 1s 1.3s forwards}
+/* Scroll indicator */
+.hero-btm{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.45);font-family:var(--en);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;z-index:3;opacity:0;animation:fadeA 1s 1.5s forwards}
+.hero-btm::after{content:'';display:block;width:1px;height:36px;background:rgba(255,255,255,.28)}
+.hero-yr{position:absolute;bottom:48px;right:48px;font-family:var(--en);font-size:.56rem;color:rgba(255,255,255,.35);letter-spacing:.14em;writing-mode:vertical-rl;z-index:3;opacity:0;animation:fadeA 1s 1.3s forwards}
+/* Layer 2: スライドアップ画像（スクロール連動） */
+.hero-slide{position:absolute;inset:0;z-index:5;transform:translateY(100%);will-change:transform}
+.hero-slide-img{width:100%;height:100%;object-fit:cover}
+.hero-slide-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,28,10,.6) 0%,rgba(10,28,10,.15) 60%,transparent 100%)}
+.hero-slide-cnt{position:absolute;left:64px;top:50%;transform:translateY(-50%);color:#fff;writing-mode:vertical-rl;z-index:1}
+.hero-slide-ttl{font-family:var(--serif);font-size:clamp(1.6rem,3.5vh,2.6rem);font-weight:800;line-height:1.6;letter-spacing:.12em;margin-bottom:0}
+.hero-slide-sub{font-family:var(--en);font-size:.55rem;letter-spacing:.24em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-top:24px}
+/* 進捗バー */
+.hero-progress{position:absolute;bottom:0;left:0;height:2px;background:rgba(255,255,255,.3);z-index:10;width:0%;transition:width .1s linear}
+.hero-progress-fill{position:absolute;bottom:0;left:0;height:2px;background:#fff;width:0%;z-index:11;transition:width .05s linear}
 
 /* ── MARQUEE ── */
 .mq{overflow:hidden;background:var(--gd);padding:14px 0;border-bottom:none}
@@ -261,19 +272,33 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
   </div>
 </header>
 
-<!-- HERO (縦書き) -->
-<section class="hero" id="top">
-  <img id="heroBg" class="hero-img hero-img" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1800&q=80" alt="子どもたちの笑顔" loading="eager"/>
-  <div class="hero-ov"></div>
-  <div class="hero-deco"></div>
-  <div class="hero-deco2"></div>
-  <div class="hero-vert">
-    <h1 class="hero-vert-ttl">子どもの「なんで？」を、いちばん大切にする場所。</h1>
-    <p class="hero-vert-sub">Midorigaoka Kindergarten · Since 1985</p>
+<!-- HERO (Scroll Pin + Slide Up) -->
+<div class="hero-pin-wrap" id="heroPinWrap">
+  <div class="hero-sticky" id="heroSticky">
+    <!-- 進捗バー -->
+    <div class="hero-progress"><div class="hero-progress-fill" id="hProgressFill"></div></div>
+    <!-- Layer 1: メイン -->
+    <img id="heroBg" class="hero-img-main" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1800&q=80" alt="子どもたちの笑顔" loading="eager"/>
+    <div class="hero-ov"></div>
+    <div class="hero-deco"></div>
+    <div class="hero-deco2"></div>
+    <div class="hero-vert">
+      <h1 class="hero-vert-ttl">子どもの「なんで？」を、いちばん大切にする場所。</h1>
+      <p class="hero-vert-sub">Midorigaoka Kindergarten · Since 1985</p>
+    </div>
+    <div class="hero-yr">2026 · MIDORIGAOKA</div>
+    <div class="hero-btm">Scroll Down</div>
+    <!-- Layer 2: スライドアップ -->
+    <div class="hero-slide" id="heroSlide">
+      <img class="hero-slide-img" src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1800&q=80" alt="園庭で遊ぶ子どもたち" loading="eager"/>
+      <div class="hero-slide-ov"></div>
+      <div class="hero-slide-cnt">
+        <p class="hero-slide-ttl">自然の中で、<br>子どもは育つ。</p>
+        <p class="hero-slide-sub">Garden · Nature · Discovery</p>
+      </div>
+    </div>
   </div>
-  <div class="hero-yr">2026 · MIDORIGAOKA</div>
-  <div class="hero-btm">Scroll Down</div>
-</section>
+</div>
 
 <!-- MARQUEE -->
 <div class="mq" aria-hidden="true">
@@ -461,9 +486,34 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 const hd = document.getElementById('hd');
 window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 60), {passive:true});
 
-// Hero zoom
-const h = document.getElementById('heroBg');
-setTimeout(() => h.classList.add('z'), 100);
+// Hero zoom on load
+const heroBg = document.getElementById('heroBg');
+setTimeout(() => heroBg.classList.add('z'), 100);
+
+// ── SCROLL PIN HERO ──
+const pinWrap  = document.getElementById('heroPinWrap');
+const slide    = document.getElementById('heroSlide');
+const pFill    = document.getElementById('hProgressFill');
+
+function updateHero() {
+  const wrapTop    = pinWrap.getBoundingClientRect().top;
+  const wrapH      = pinWrap.offsetHeight - window.innerHeight;
+  const rawProg    = Math.max(0, Math.min(1, -wrapTop / wrapH));
+
+  // 進捗バー
+  pFill.style.width = (rawProg * 100) + '%';
+
+  // Phase: 0〜0.55 → 縦書きテキストをゆっくり読む
+  // Phase: 0.55〜1.0 → 第2画像がスライドアップ
+  const slideStart = 0.55;
+  const slideP = Math.max(0, Math.min(1, (rawProg - slideStart) / (1 - slideStart)));
+  // easeOutCubic
+  const eased = 1 - Math.pow(1 - slideP, 3);
+  slide.style.transform = `translateY(${(1 - eased) * 100}%)`;
+}
+
+window.addEventListener('scroll', updateHero, {passive:true});
+updateHero();
 
 // Scroll reveal (fu)
 const obs = new IntersectionObserver(es => {
