@@ -567,7 +567,8 @@ function updateScrolly() {
   // 縦書きタイトル: はっきり見えたまま上に上昇して画面外へ
   const vertUp = prog < 0.12 ? 0 : Math.min(1, (prog - 0.12) / 0.16);
   sVert.style.opacity   = 1;
-  sVert.style.transform = `translateY(calc(-50% - ${vertUp * 110}px))`;
+  const liftPx = vertUp * (window.innerHeight * 0.85);
+  sVert.style.transform = `translateY(calc(-50% - ${liftPx}px))`;
 
   // テキスト上昇: 0.18→0.72
   const tStart = 0.18, tEnd = 0.72;
