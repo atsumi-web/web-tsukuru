@@ -568,8 +568,8 @@ function updateScrolly() {
   const textY  = startY + (endY - startY) * tProg;
   sText.style.transform = `translateY(${textY}px)`;
 
-  // Photo2スライドアップ: 0.60→1.0（テキスト最後2行と同時に登場）
-  const p2P = Math.max(0, Math.min(1, (prog - 0.60) / 0.40));
+  // Photo2スライドアップ: テキスト最後2行の時点で下からそっと見え始める
+  const p2P = Math.max(0, Math.min(1, (prog - 0.70) / 0.30));
   const p2E = 1 - Math.pow(1 - p2P, 3);
   sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
 }
