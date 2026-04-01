@@ -43,9 +43,10 @@ img{display:block;width:100%}
 /* ── HERO SCROLLY ── */
 .scrolly{position:relative;height:420vh}
 .scrolly-pin{position:sticky;top:0;height:100vh;overflow:hidden;background:#1a2a18}
-/* Photo 1 */
-.s-photo1{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
-.s-photo1.z{transform:scale(1.04)}
+/* スライドショー */
+.s-slides{position:absolute;inset:0;z-index:1}
+.s-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s cubic-bezier(.4,0,.2,1)}
+.s-slide.active{opacity:1}
 /* Deco lines */
 .s-deco1{position:absolute;top:0;left:40%;height:100%;border-left:1px dashed rgba(255,255,255,.18);z-index:2;pointer-events:none}
 .s-deco2{position:absolute;top:0;right:15%;height:100%;border-left:1px dashed rgba(255,255,255,.1);z-index:2;transform:rotate(6deg);transform-origin:top;pointer-events:none}
@@ -309,8 +310,12 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
   <div class="scrolly-pin" id="scrollyPin">
     <!-- 進捗バー -->
     <div class="s-prog"><div class="s-prog-fill" id="sPF"></div></div>
-    <!-- Photo 1 -->
-    <img id="sPhoto1" class="s-photo1" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1800&q=80" alt="" loading="eager"/>
+    <!-- スライドショー（3枚クロスフェード） -->
+    <div class="s-slides" id="sSlides">
+      <img class="s-slide active" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1800&q=80" alt="" loading="eager"/>
+      <img class="s-slide" src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?w=1800&q=80" alt="" loading="eager"/>
+      <img class="s-slide" src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?w=1800&q=80" alt="" loading="lazy"/>
+    </div>
     <div class="s-deco1"></div>
     <div class="s-deco2"></div>
     <!-- 縦書き初期タイトル -->
@@ -523,9 +528,14 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 const hd = document.getElementById('hd');
 window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 60), {passive:true});
 
-// Photo1 zoom
-const sP1 = document.getElementById('sPhoto1');
-setTimeout(() => sP1 && sP1.classList.add('z'), 100);
+// スライドショー（3枚クロスフェード）
+const slides = document.querySelectorAll('.s-slide');
+let slideIdx = 0;
+const slideTimer = setInterval(() => {
+  slides[slideIdx].classList.remove('active');
+  slideIdx = (slideIdx + 1) % slides.length;
+  slides[slideIdx].classList.add('active');
+}, 3800);
 
 // ── SCROLLY HERO ──
 const scrolly  = document.getElementById('scrolly');
