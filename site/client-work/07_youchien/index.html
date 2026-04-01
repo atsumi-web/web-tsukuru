@@ -23,15 +23,24 @@ a{text-decoration:none;color:inherit}
 img{display:block;width:100%}
 
 /* ── HEADER ── */
-.hd{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
-.hd.sc{background:rgba(253,252,250,.95);backdrop-filter:blur(12px)}
+.hd{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 36px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
+.hd.sc{}
 .logo{display:flex;align-items:center;gap:10px}
-.logo-ic{width:40px;height:40px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.65rem;color:rgba(255,255,255,.9);letter-spacing:.05em;transition:all .3s}
-.hd.sc .logo-ic{border-color:var(--gd);color:var(--gd)}
-.logo-tx{font-family:var(--serif);font-size:.85rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.05em;transition:color .3s}
+.logo-ic{width:40px;height:40px;border:1.5px solid rgba(255,255,255,.7);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.logo-ic svg{width:20px;height:20px;fill:rgba(255,255,255,.9);transition:fill .3s}
+.hd.sc .logo-ic{border-color:var(--gd)}
+.hd.sc .logo-ic svg{fill:var(--gd)}
+.logo-tx{font-family:var(--serif);font-size:.82rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.06em;line-height:1.4;transition:color .3s}
+.logo-tx small{display:block;font-family:var(--en);font-size:.48rem;letter-spacing:.18em;color:rgba(255,255,255,.5);font-weight:400;text-transform:uppercase}
 .hd.sc .logo-tx{color:var(--gd)}
-.hd-menu{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.hd-menu span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.85);transition:background .3s}
+.hd.sc .logo-tx small{color:var(--tl)}
+/* ×形メニューアイコン */
+.hd-menu{width:36px;height:36px;position:relative;cursor:pointer;flex-shrink:0}
+.hd-menu span{position:absolute;width:22px;height:1.5px;left:50%;top:50%;transform-origin:center;transition:background .3s}
+.hd-menu span:nth-child(1){transform:translate(-50%,-50%) rotate(40deg)}
+.hd-menu span:nth-child(2){transform:translate(-50%,-50%) rotate(-40deg)}
+.hd-menu span:nth-child(3){display:none}
+.hd-menu span{background:rgba(255,255,255,.85)}
 .hd.sc .hd-menu span{background:var(--gd)}
 
 /* ── FLOATING CTA ── */
@@ -297,8 +306,10 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 <!-- HEADER -->
 <header class="hd" id="hd">
   <a href="#" class="logo">
-    <div class="logo-ic">みどり</div>
-    <span class="logo-tx">みどりが丘幼稚園</span>
+    <div class="logo-ic">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+    </div>
+    <div class="logo-tx">みどりが丘幼稚園<small>MIDORIGAOKA</small></div>
   </a>
   <div class="hd-menu" aria-label="メニュー">
     <span></span><span></span><span></span>
