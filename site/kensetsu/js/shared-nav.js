@@ -1,6 +1,6 @@
 /*!
  * shared-nav.js — 全ページ共通ヘッダーナビゲーション
- * ページの階層深さからルートパスを自動計算し、常に正しいリンクを生成する
+ * /kensetsu/ を絶対ベースとして、どの階層からでも正しいリンクを生成する
  */
 (function () {
   "use strict";
@@ -8,14 +8,9 @@
   var nav = document.querySelector("nav.site-nav");
   if (!nav) return;
 
-  // pathname の深さからルートパスを算出
-  // 例: /index.html → depth=1 → root='./'
-  //     /blog/index.html → depth=2 → root='../'
-  //     /blog/posts/xxx.html → depth=3 → root='../../'
-  var pathname = window.location.pathname;
-  if (pathname.endsWith("/")) pathname += "index.html";
-  var depth = pathname.split("/").filter(Boolean).length;
-  var root = depth <= 1 ? "./" : new Array(depth).join("../");
+  // /kensetsu/ を絶対ベースパスとして使用
+  // 相対パス計算は階層が変わると壊れるため廃止
+  var base = "/kensetsu/";
 
   // アクティブページ判定
   var p = window.location.pathname;
@@ -33,16 +28,16 @@
   }
 
   nav.innerHTML = [
-    link(root + "index.html#problem", "課題"),
-    link(root + "index.html#solution", "解決策"),
-    link(root + "index.html#flow", "流れ"),
-    link(root + "design.html", "デザイン"),
-    link(root + "service.html", "料金", isService),
-    link(root + "index.html#qa", "Q&A"),
-    link(root + "blog/index.html", "ブログ", isBlog),
-    link(root + "works.html", "実績", isWorks),
+    link(base + "index.html#problem", "課題"),
+    link(base + "index.html#solution", "解決策"),
+    link(base + "index.html#flow", "流れ"),
+    link(base + "design.html", "デザイン"),
+    link(base + "service.html", "料金", isService),
+    link(base + "index.html#qa", "Q&A"),
+    link(base + "blog/index.html", "ブログ", isBlog),
+    link(base + "works.html", "実績", isWorks),
     link(
-      root + "saiyou-shindan.html",
+      base + "saiyou-shindan.html",
       '<i class="fa-solid fa-clipboard-check"></i> 無料診断テスト',
       false,
       "nav-btn",
