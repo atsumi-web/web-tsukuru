@@ -535,7 +535,7 @@ const slideTimer = setInterval(() => {
   slides[slideIdx].classList.remove('active');
   slideIdx = (slideIdx + 1) % slides.length;
   slides[slideIdx].classList.add('active');
-}, 3800);
+}, 3000);
 
 // ── SCROLLY HERO ──
 const scrolly  = document.getElementById('scrolly');
@@ -553,13 +553,12 @@ function updateScrolly() {
   // 進捗バー
   sPF.style.width = (prog * 100) + '%';
 
-  // 縦書きタイトル: 0→0.12 で静止、0.12→0.26 で上昇しながらフェードアウト
+  // 縦書きタイトル: 0→0.12 静止、0.12→0.26 上昇＋フェード
   const vertFade = prog < 0.12 ? 1 : Math.max(0, 1 - (prog - 0.12) / 0.14);
   const vertUp   = prog < 0.12 ? 0 : Math.min(1, (prog - 0.12) / 0.14);
-  // -50% がベース位置、上に最大 80px 移動
-  const vertY = -50 - vertUp * 80;
-  sVert.style.opacity = vertFade;
-  sVert.style.transform = `translateY(${vertY}px)`;
+  sVert.style.opacity   = vertFade;
+  // calc(-50% - Xpx) でCSSのセンタリングを維持したまま上に移動
+  sVert.style.transform = `translateY(calc(-50% - ${vertUp * 90}px))`;
 
   // テキスト上昇: 0.18→0.72
   const tStart = 0.18, tEnd = 0.72;
