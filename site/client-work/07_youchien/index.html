@@ -8,392 +8,408 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --gd:#1a3a1a;--gm:#2d5a27;--gl:#4a8c3f;--gp:#e8f0e4;
-  --cream:#f9f5ef;--warm:#fdfaf6;--gold:#b8960c;
-  --td:#1a2218;--tm:#4a5540;--tl:#7a8c72;
+  --gd:#1e3d1a;--gm:#2f5c29;--gl:#5a9050;--gp:#deebd8;
+  --off:#f8f5f0;--white:#fdfcfa;
+  --td:#1a1f18;--tm:#4a5545;--tl:#8a9585;
+  --coral:#5a9050;
   --serif:'Shippori Mincho',serif;--sans:'Noto Sans JP',sans-serif;--en:'Outfit',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--warm);color:var(--td);line-height:1.7;overflow-x:hidden}
+body{font-family:var(--sans);background:var(--white);color:var(--td);line-height:1.7;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%}
 
-/* ── HEADER ─────────────────────────── */
-.hd{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
-.hd.scrolled{background:rgba(253,250,246,.96);backdrop-filter:blur(14px);border-color:rgba(26,58,26,.07)}
-.logo{display:flex;align-items:center;gap:12px;transition:opacity .3s}
-.logo:hover{opacity:.75}
-.logo-ic{width:34px;height:34px;background:var(--gd);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
-.logo-tx{font-family:var(--serif);font-size:.9rem;font-weight:600;line-height:1.3}
-.logo-tx small{display:block;font-family:var(--en);font-size:.5rem;letter-spacing:.18em;color:var(--tl);font-weight:400}
-.hdnav{display:flex;align-items:center;gap:28px}
-.hdnav a{font-size:.76rem;font-weight:500;color:rgba(255,255,255,.8);transition:color .2s;letter-spacing:.03em}
-.hdnav a:hover{color:#fff}
-.hd.scrolled .hdnav a{color:var(--tm)}
-.hd.scrolled .hdnav a:hover{color:var(--gd)}
-.nav-cta{background:#fff!important;color:var(--gd)!important;padding:7px 18px;border-radius:40px;font-size:.72rem!important;font-weight:700!important}
-.hd.scrolled .nav-cta{background:var(--gd)!important;color:#fff!important}
+/* ── HEADER ── */
+.hd{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
+.hd.sc{background:rgba(253,252,250,.95);backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-ic{width:40px;height:40px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.65rem;color:rgba(255,255,255,.9);letter-spacing:.05em;transition:all .3s}
+.hd.sc .logo-ic{border-color:var(--gd);color:var(--gd)}
+.logo-tx{font-family:var(--serif);font-size:.85rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.05em;transition:color .3s}
+.hd.sc .logo-tx{color:var(--gd)}
+.hd-menu{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hd-menu span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.85);transition:background .3s}
+.hd.sc .hd-menu span{background:var(--gd)}
 
-/* ── HERO ─────────────────────────── */
-.hero{position:relative;height:100vh;min-height:660px;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;width:100%;height:105%;object-fit:cover;transform:scale(1.05);transition:transform 8s ease-out}
-.hero-bg.loaded{transform:scale(1)}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,58,26,.15) 0%,rgba(10,25,10,.65) 100%)}
-.hero-cnt{position:relative;padding:0 72px;color:#fff;max-width:820px}
-.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--en);font-size:.6rem;letter-spacing:.3em;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:28px;overflow:hidden}
-.hero-kicker span{display:block;width:30px;height:1px;background:rgba(255,255,255,.4)}
-.hero-ttl{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.45;letter-spacing:.04em;margin-bottom:24px;overflow:hidden}
-.hero-ttl .line{display:block;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards}
-.hero-ttl .line:nth-child(2){animation-delay:.12s}
-.hero-sub{font-size:.9rem;color:rgba(255,255,255,.78);line-height:2;margin-bottom:40px;opacity:0;animation:fadeIn .8s .5s forwards}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeIn .8s .7s forwards}
-@keyframes slideUp{to{transform:translateY(0)}}
-@keyframes fadeIn{to{opacity:1}}
-.btn-w{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--gd);font-weight:700;font-size:.78rem;padding:13px 26px;border-radius:40px;letter-spacing:.05em;transition:transform .25s,box-shadow .25s}
-.btn-w:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.2)}
-.btn-o{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,.5);color:#fff;font-size:.78rem;padding:13px 26px;border-radius:40px;letter-spacing:.05em;transition:background .2s,border-color .2s}
-.btn-o:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.8)}
-.hero-scroll{position:absolute;right:48px;bottom:40px;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.45);font-family:var(--en);font-size:.52rem;letter-spacing:.22em;opacity:0;animation:fadeIn .8s 1s forwards}
-.hero-scroll i{animation:scrollBounce 1.8s infinite}
-@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-.hero-num{position:absolute;bottom:44px;left:72px;font-family:var(--en);font-size:.58rem;letter-spacing:.18em;color:rgba(255,255,255,.35);opacity:0;animation:fadeIn .8s .9s forwards}
+/* ── FLOATING CTA ── */
+.float-cta{position:fixed;bottom:36px;right:36px;z-index:998;background:var(--gd);color:#fff;font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:14px 22px;border-radius:50px;display:flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(26,61,26,.3);transition:transform .25s,box-shadow .25s;animation:floatIn .8s 1.2s both}
+.float-cta:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,61,26,.4)}
+.float-cta i{font-size:.85rem}
+@keyframes floatIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── MARQUEE ─────────────────────────── */
-.marquee-wrap{background:var(--gd);padding:16px 0;overflow:hidden}
-.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 22s linear infinite}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-item{display:inline-flex;align-items:center;gap:28px;padding:0 28px;font-family:var(--en);font-size:.7rem;letter-spacing:.18em;color:rgba(255,255,255,.6);text-transform:uppercase}
-.marquee-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.3)}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;background:#c8d8c4}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.hero-img.z{transform:scale(1.04)}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(20,40,18,.48) 0%,rgba(20,40,18,.08) 55%,transparent 100%)}
+/* 縦書きタイトル */
+.hero-vert{position:absolute;left:60px;top:50%;transform:translateY(-50%);color:#fff;writing-mode:vertical-rl;text-orientation:mixed}
+.hero-vert-ttl{font-family:var(--serif);font-size:clamp(2rem,4vh,3rem);font-weight:800;line-height:1.6;letter-spacing:.12em;margin-bottom:0;opacity:0;animation:vertSlide 1s .3s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes vertSlide{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.hero-vert-sub{font-family:var(--en);font-size:.58rem;letter-spacing:.24em;color:rgba(255,255,255,.55);text-transform:uppercase;margin-top:28px;opacity:0;animation:vertSlide 1s .6s cubic-bezier(.16,1,.3,1) forwards}
+/* 斜め破線装飾 */
+.hero-deco{position:absolute;top:0;left:50%;width:1px;height:100%;background:none;border-left:1px dashed rgba(255,255,255,.2);opacity:0;animation:fadeA 1s 1s forwards}
+.hero-deco2{position:absolute;top:0;right:120px;width:1px;height:100%;background:none;border-left:1px dashed rgba(255,255,255,.15);opacity:0;animation:fadeA 1s 1.2s forwards;transform:rotate(8deg);transform-origin:top}
+@keyframes fadeA{to{opacity:1}}
+/* ヒーロー下部テキスト */
+.hero-btm{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.5);font-family:var(--en);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;opacity:0;animation:fadeA 1s 1.4s forwards}
+.hero-btm::after{content:'';display:block;width:1px;height:40px;background:rgba(255,255,255,.3)}
+/* 年号 右下 */
+.hero-yr{position:absolute;bottom:48px;right:48px;font-family:var(--en);font-size:.58rem;color:rgba(255,255,255,.4);letter-spacing:.14em;writing-mode:vertical-rl;opacity:0;animation:fadeA 1s 1.3s forwards}
 
-/* ── STATEMENT ─────────────────────────── */
-.statement{padding:120px 72px;background:var(--warm)}
-.stmt-inner{max-width:1200px;margin:0 auto}
-.stmt-en{font-family:var(--en);font-size:.6rem;letter-spacing:.3em;color:var(--gl);text-transform:uppercase;margin-bottom:20px}
-.stmt-ttl{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:800;color:var(--gd);line-height:1.45;letter-spacing:.03em;margin-bottom:0}
-.stmt-ttl .reveal{display:inline-block;overflow:hidden;vertical-align:bottom}
-.stmt-ttl .reveal span{display:inline-block;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)}
-.stmt-ttl .reveal.vis span{transform:translateY(0)}
-.stmt-body{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px;align-items:start}
-.stmt-txt{font-size:.9rem;color:var(--tm);line-height:2.2}
-.stmt-img{position:relative;overflow:hidden;border-radius:3px}
-.stmt-img img{aspect-ratio:3/2;object-fit:cover;transition:transform .8s ease}
-.stmt-img:hover img{transform:scale(1.04)}
-.stmt-caption{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,.5));color:rgba(255,255,255,.8);font-family:var(--en);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase}
+/* ── MARQUEE ── */
+.mq{overflow:hidden;background:var(--gd);padding:14px 0;border-bottom:none}
+.mq-track{display:flex;white-space:nowrap;animation:mq 26s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+.mqi{display:inline-flex;align-items:center;gap:24px;padding:0 24px;font-family:var(--en);font-size:.64rem;letter-spacing:.2em;color:rgba(255,255,255,.5);text-transform:uppercase}
+.mqi::after{content:'';width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.25)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── FEATURES ─────────────────────────── */
-.feat{background:var(--cream);padding:100px 72px}
-.feat-inner{max-width:1200px;margin:0 auto}
-.feat-hd{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:72px}
-.lbl{font-family:var(--en);font-size:.58rem;letter-spacing:.28em;color:var(--gl);text-transform:uppercase;margin-bottom:10px}
-.ttl{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;color:var(--gd);line-height:1.45}
-.desc{font-size:.86rem;color:var(--tm);line-height:2.1}
-.feat-items{display:flex;flex-direction:column;gap:2px}
-.feat-item{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:32px;padding:36px 40px;background:#fff;transition:background .3s,transform .3s}
-.feat-item:hover{background:var(--gd);transform:translateX(6px)}
-.feat-item:hover .fi-num,.feat-item:hover .fi-ttl,.feat-item:hover .fi-txt{color:rgba(255,255,255,.8)}
-.feat-item:hover .fi-ttl{color:#fff}
-.feat-item:hover .fi-arrow{color:rgba(255,255,255,.5)}
-.fi-num{font-family:var(--en);font-size:1.8rem;font-weight:700;color:var(--gp);line-height:1;transition:color .3s}
-.fi-ttl{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gd);margin-bottom:6px;transition:color .3s}
-.fi-txt{font-size:.78rem;color:var(--tm);line-height:1.9;transition:color .3s}
-.fi-arrow{font-size:.9rem;color:var(--gp);transition:color .3s,transform .3s}
-.feat-item:hover .fi-arrow{transform:translateX(4px)}
+/* ── SECTION ── */
+.sec{padding:120px 80px}
+.inner{max-width:1100px;margin:0 auto}
 
-/* ── SPLIT PHOTO ─────────────────────────── */
-.split{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
-.split-img{overflow:hidden}
-.split-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
-.split-img:hover img{transform:scale(1.04)}
-.split-cnt{background:var(--gd);color:#fff;padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
-.sp-lbl{font-family:var(--en);font-size:.58rem;letter-spacing:.3em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:16px}
-.sp-ttl{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:800;line-height:1.55;margin-bottom:24px}
-.sp-txt{font-size:.86rem;color:rgba(255,255,255,.68);line-height:2.2;margin-bottom:36px}
-.badge-rec{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:8px 16px;border-radius:40px;font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:20px;width:fit-content}
-.dot-live{width:6px;height:6px;background:#7bc67e;border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+/* ── INTRO ── */
+.intro{padding:140px 80px;background:var(--white)}
+.intro-in{max-width:1000px;margin:0 auto}
+.intro-num{font-family:var(--en);font-size:8rem;font-weight:700;color:var(--gp);line-height:1;margin-bottom:-20px;letter-spacing:-.02em}
+.intro-ttl{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:800;color:var(--td);line-height:1.5;letter-spacing:.04em;margin-bottom:56px}
+.intro-ttl span{color:var(--gm)}
+.intro-body{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.intro-txt{font-size:.9rem;color:var(--tm);line-height:2.3}
+.intro-img{position:relative}
+.intro-img img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.intro-img::before{content:'Philosophy';position:absolute;top:-20px;right:0;font-family:var(--en);font-size:.55rem;letter-spacing:.22em;color:var(--tl);text-transform:uppercase}
+.intro-rule{margin-top:80px;border:none;border-top:1px solid rgba(0,0,0,.07)}
+.intro-link{display:inline-flex;align-items:center;gap:10px;margin-top:36px;font-family:var(--en);font-size:.7rem;letter-spacing:.14em;color:var(--gm);text-transform:uppercase;transition:gap .2s}
+.intro-link:hover{gap:16px}
+.intro-link::after{content:'→'}
 
-/* ── DAY ─────────────────────────── */
-.day{padding:100px 72px;background:var(--warm)}
-.day-inner{max-width:1200px;margin:0 auto}
-.day-hd{margin-bottom:64px}
-.day-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--gp)}
-.d-step{padding:40px 32px;border-right:1px solid var(--gp);position:relative;transition:background .3s}
-.d-step:hover{background:var(--gd)}
-.d-step:hover .d-time,.d-step:hover .d-ev,.d-step:hover .d-tx{color:rgba(255,255,255,.8)}
-.d-step:hover .d-ev{color:#fff}
-.d-time{font-family:var(--en);font-size:1.6rem;font-weight:700;color:var(--gd);margin-bottom:4px;transition:color .3s}
-.d-ev{font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--td);margin-bottom:10px;transition:color .3s}
-.d-tx{font-size:.75rem;color:var(--tl);line-height:1.9;transition:color .3s}
-.d-line{position:absolute;top:40px;left:0;width:2px;height:40px;background:var(--gl)}
+/* ── FEATURES ── */
+.feat{background:var(--off);padding:120px 80px}
+.feat-in{max-width:1100px;margin:0 auto}
+.feat-num{font-family:var(--en);font-size:7rem;font-weight:700;color:rgba(90,144,80,.12);line-height:1;margin-bottom:-16px}
+.feat-ttl-sec{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--td);line-height:1.5;margin-bottom:64px}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.feat-card{background:var(--white);padding:48px 36px;position:relative;overflow:hidden;transition:background .4s}
+.feat-card::before{content:attr(data-num);position:absolute;top:24px;right:24px;font-family:var(--en);font-size:3.5rem;font-weight:700;color:rgba(90,144,80,.1);line-height:1;transition:color .4s}
+.feat-card:hover{background:var(--gd)}
+.feat-card:hover::before{color:rgba(255,255,255,.08)}
+.feat-card:hover .fc-ttl,.feat-card:hover .fc-tx{color:rgba(255,255,255,.8)}
+.feat-card:hover .fc-ttl{color:#fff}
+.fc-lbl{font-family:var(--en);font-size:.55rem;letter-spacing:.24em;color:var(--gl);text-transform:uppercase;margin-bottom:16px;transition:color .4s}
+.feat-card:hover .fc-lbl{color:rgba(255,255,255,.4)}
+.fc-ttl{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--td);margin-bottom:14px;transition:color .4s}
+.fc-tx{font-size:.8rem;color:var(--tm);line-height:2;transition:color .4s}
 
-/* ── GALLERY ─────────────────────────── */
-.gallery{display:grid;grid-template-columns:1.3fr 1fr .9fr;grid-template-rows:280px 280px;gap:3px}
-.gal-cell{overflow:hidden;position:relative}
-.gal-cell:first-child{grid-row:1/3}
-.gal-cell img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
-.gal-cell:hover img{transform:scale(1.06)}
-.gal-cap{position:absolute;bottom:16px;left:16px;font-family:var(--en);font-size:.55rem;letter-spacing:.2em;color:rgba(255,255,255,.75);text-transform:uppercase;background:rgba(0,0,0,.25);padding:4px 10px;border-radius:20px}
+/* ── IMAGE GRID ── */
+.img-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:300px 300px;gap:2px}
+.ig{overflow:hidden;position:relative}
+.ig:first-child{grid-row:1/3}
+.ig img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.ig:hover img{transform:scale(1.06)}
+.ig-cap{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;background:linear-gradient(0deg,rgba(0,0,0,.45),transparent);font-family:var(--en);font-size:.54rem;letter-spacing:.2em;color:rgba(255,255,255,.75);text-transform:uppercase}
 
-/* ── NEWS ─────────────────────────── */
-.news{background:var(--cream);padding:100px 72px}
-.news-inner{max-width:1200px;margin:0 auto}
-.news-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
-.more{font-family:var(--en);font-size:.68rem;letter-spacing:.1em;color:var(--gl);display:flex;align-items:center;gap:6px;transition:gap .2s}
-.more:hover{gap:10px}
+/* ── DAY ── */
+.day{background:var(--white);padding:120px 80px}
+.day-in{max-width:1100px;margin:0 auto}
+.day-hd{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid rgba(0,0,0,.06)}
+.day-num{font-family:var(--en);font-size:6.5rem;font-weight:700;color:var(--gp);line-height:1;margin-bottom:-10px}
+.day-ttl-sec{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--td);line-height:1.5}
+.day-desc{font-size:.87rem;color:var(--tm);line-height:2.2}
+.day-steps{display:grid;grid-template-columns:repeat(4,1fr)}
+.d-step{padding:40px 28px;border-right:1px solid rgba(0,0,0,.06);position:relative;transition:background .3s}
+.d-step:last-child{border-right:none}
+.d-step:hover{background:var(--off)}
+.d-step::before{content:'';position:absolute;top:0;left:28px;width:2px;height:36px;background:var(--gl)}
+.d-t{font-family:var(--en);font-size:1.5rem;font-weight:700;color:var(--gd);margin-bottom:6px;letter-spacing:-.01em}
+.d-ev{font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--td);margin-bottom:10px}
+.d-dx{font-size:.75rem;color:var(--tl);line-height:1.9}
+
+/* ── STORY (SPLIT) ── */
+.story{display:grid;grid-template-columns:1fr 1fr;min-height:640px}
+.story-img{overflow:hidden;position:relative}
+.story-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.story-img:hover img{transform:scale(1.04)}
+.story-img::after{content:'For Teachers';position:absolute;bottom:28px;left:28px;font-family:var(--en);font-size:.54rem;letter-spacing:.2em;color:rgba(255,255,255,.6);text-transform:uppercase;background:rgba(0,0,0,.2);padding:4px 10px;border-radius:20px}
+.story-cnt{background:var(--gd);color:#fff;padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+.s-lbl{font-family:var(--en);font-size:.55rem;letter-spacing:.28em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:16px}
+.s-ttl{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:800;line-height:1.6;margin-bottom:28px}
+.s-tx{font-size:.86rem;color:rgba(255,255,255,.65);line-height:2.3;margin-bottom:36px}
+.s-badge{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;color:rgba(255,255,255,.6);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:8px 16px;border-radius:40px;margin-bottom:24px;width:fit-content}
+.dot-g{width:6px;height:6px;background:#7bc67e;border-radius:50%;animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+.s-link{display:inline-flex;align-items:center;gap:10px;font-family:var(--en);font-size:.68rem;letter-spacing:.14em;color:rgba(255,255,255,.55);text-transform:uppercase;transition:color .2s,gap .2s}
+.s-link:hover{color:#fff;gap:16px}
+.s-link::after{content:'→'}
+
+/* ── NEWS ── */
+.news{background:var(--off);padding:120px 80px}
+.news-in{max-width:1100px;margin:0 auto}
+.news-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid rgba(0,0,0,.06)}
+.news-num{font-family:var(--en);font-size:6rem;font-weight:700;color:rgba(90,144,80,.12);line-height:1;margin-bottom:-8px}
+.news-ttl-sec{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:var(--td)}
+.more-lnk{font-family:var(--en);font-size:.66rem;letter-spacing:.14em;color:var(--gm);text-transform:uppercase;display:flex;align-items:center;gap:8px;transition:gap .2s}
+.more-lnk:hover{gap:14px}
+.more-lnk::after{content:'→'}
 .n-list{list-style:none}
-.n-row{display:grid;grid-template-columns:110px 80px 1fr 24px;gap:20px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(26,58,26,.08);cursor:pointer;transition:background .2s}
-.n-row:hover{padding-left:8px;background:var(--gp)}
-.n-date{font-family:var(--en);font-size:.7rem;color:var(--tl);letter-spacing:.05em}
-.n-tag{display:inline-block;padding:2px 10px;border:1px solid rgba(74,140,63,.3);border-radius:20px;font-size:.6rem;color:var(--gl)}
-.n-tx{font-size:.82rem;color:var(--td);transition:color .2s}
+.n-row{display:grid;grid-template-columns:100px 80px 1fr 20px;gap:20px;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(0,0,0,.05);cursor:pointer;transition:background .2s,padding-left .2s}
+.n-row:hover{background:var(--white);padding-left:24px}
+.n-date{font-family:var(--en);font-size:.68rem;color:var(--tl);letter-spacing:.04em}
+.n-tag{display:inline-block;padding:3px 10px;border:1px solid rgba(90,144,80,.3);border-radius:20px;font-size:.6rem;color:var(--gl)}
+.n-tx{font-size:.84rem;color:var(--td)}
 .n-row:hover .n-tx{color:var(--gd)}
-.n-ic{font-size:.7rem;color:var(--gp);transition:transform .2s,color .2s}
-.n-row:hover .n-ic{transform:translateX(3px);color:var(--gl)}
+.n-arr{font-size:.65rem;color:var(--gp);transition:transform .2s,color .2s}
+.n-row:hover .n-arr{transform:translateX(4px);color:var(--gl)}
 
-/* ── CTA ─────────────────────────── */
-.cta-sec{padding:0;position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center;justify-content:center}
-.cta-bg{position:absolute;inset:0;width:100%;height:110%;object-fit:cover;transform:translateY(0);will-change:transform}
-.cta-ov{position:absolute;inset:0;background:rgba(15,35,15,.65)}
-.cta-in{position:relative;text-align:center;color:#fff;padding:80px 40px;max-width:760px}
-.c-lbl{font-family:var(--en);font-size:.58rem;letter-spacing:.3em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:16px}
-.c-ttl{font-family:var(--serif);font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.5;margin-bottom:20px}
-.c-tx{font-size:.86rem;color:rgba(255,255,255,.7);line-height:2;margin-bottom:40px}
+/* ── CTA ── */
+.cta-sec{position:relative;overflow:hidden;min-height:540px;display:flex;align-items:center;justify-content:center}
+.cta-img{position:absolute;inset:0;width:100%;height:110%;object-fit:cover;will-change:transform}
+.cta-ov{position:absolute;inset:0;background:rgba(10,25,10,.62)}
+/* 斜め破線 */
+.cta-deco{position:absolute;top:10%;left:15%;width:1px;height:80%;border-left:1px dashed rgba(255,255,255,.12);transform:rotate(-6deg)}
+.cta-deco2{position:absolute;top:5%;right:20%;width:1px;height:90%;border-left:1px dashed rgba(255,255,255,.1);transform:rotate(4deg)}
+.cta-in{position:relative;text-align:center;color:#fff;padding:60px 40px;max-width:700px}
+.c-lbl{font-family:var(--en);font-size:.56rem;letter-spacing:.3em;color:rgba(255,255,255,.38);text-transform:uppercase;margin-bottom:18px}
+.c-ttl{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.55;letter-spacing:.04em;margin-bottom:18px}
+.c-tx{font-size:.86rem;color:rgba(255,255,255,.65);line-height:2.2;margin-bottom:44px}
 .c-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-w{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--gd);font-weight:700;font-size:.78rem;padding:14px 26px;border-radius:40px;letter-spacing:.05em;transition:transform .25s,box-shadow .25s}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.2)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,.45);color:#fff;font-size:.78rem;padding:14px 26px;border-radius:40px;letter-spacing:.05em;transition:background .2s}
+.btn-o:hover{background:rgba(255,255,255,.1)}
 
-/* ── FOOTER ─────────────────────────── */
-footer{background:var(--gd);color:rgba(255,255,255,.5);padding:72px 72px 40px}
-.ft-top{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
-.ft-logo{font-family:var(--serif);font-size:1.1rem;color:#fff;margin-bottom:14px}
-.ft-addr{font-size:.72rem;line-height:2.2;border-left:2px solid rgba(255,255,255,.1);padding-left:16px;margin-top:16px}
-.ft-nav h4{font-family:var(--en);font-size:.55rem;letter-spacing:.2em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-bottom:16px}
+/* ── FOOTER ── */
+footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
+.ft-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:64px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ft-logo{font-family:var(--serif);font-size:1.15rem;color:#fff;margin-bottom:6px}
+.ft-logo-en{font-family:var(--en);font-size:.5rem;letter-spacing:.2em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-bottom:18px}
+.ft-addr{font-size:.72rem;line-height:2.1;padding-left:16px;border-left:1px solid rgba(255,255,255,.1)}
+.ft-nav h4{font-family:var(--en);font-size:.52rem;letter-spacing:.2em;color:rgba(255,255,255,.25);text-transform:uppercase;margin-bottom:18px}
 .ft-nav ul{list-style:none}
-.ft-nav li{margin-bottom:10px}
-.ft-nav a{font-size:.75rem;color:rgba(255,255,255,.42);transition:color .2s,padding-left .2s}
-.ft-nav a:hover{color:rgba(255,255,255,.9);padding-left:4px}
-.ft-btm{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-family:var(--en);font-size:.6rem}
+.ft-nav li+li{margin-top:10px}
+.ft-nav a{font-size:.74rem;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:6px;transition:color .2s,gap .2s}
+.ft-nav a:hover{color:rgba(255,255,255,.9);gap:10px}
+.ft-nav a::before{content:'';width:12px;height:1px;background:rgba(255,255,255,.2)}
+.ft-btm{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-family:var(--en);font-size:.58rem}
+.ft-cr a{color:rgba(255,255,255,.4);transition:color .2s}
+.ft-cr a:hover{color:rgba(255,255,255,.8)}
 
-/* ── SCROLL ANIMATIONS ─────────────────────────── */
-.fu{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+/* ── ANIMATIONS ── */
+.fu{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .fu.vis{opacity:1;transform:translateY(0)}
 .fu[data-d="1"]{transition-delay:.1s}
 .fu[data-d="2"]{transition-delay:.2s}
 .fu[data-d="3"]{transition-delay:.3s}
 .fu[data-d="4"]{transition-delay:.4s}
+/* 大きなテキストリビール */
+.reveal-wrap{overflow:hidden;display:inline-block;vertical-align:bottom}
+.reveal-inner{display:block;transform:translateY(105%);transition:transform .95s cubic-bezier(.16,1,.3,1)}
+.reveal-wrap.vis .reveal-inner{transform:translateY(0)}
+.reveal-wrap[data-d="1"] .reveal-inner{transition-delay:.1s}
+.reveal-wrap[data-d="2"] .reveal-inner{transition-delay:.22s}
+.reveal-wrap[data-d="3"] .reveal-inner{transition-delay:.34s}
 
-/* ── RESPONSIVE ─────────────────────────── */
+/* ── RESPONSIVE ── */
 @media(max-width:960px){
   .hd{padding:0 24px}
-  .hdnav{display:none}
-  .hero-cnt{padding:0 28px}
-  .hero-num,.hero-scroll{right:24px}
-  .statement{padding:80px 28px}
-  .stmt-body{grid-template-columns:1fr;gap:36px}
-  .feat{padding:80px 28px}
-  .feat-hd{grid-template-columns:1fr;gap:20px}
-  .feat-item{grid-template-columns:40px 1fr auto;gap:16px;padding:24px 20px}
-  .split{grid-template-columns:1fr}
-  .split-img{min-height:320px}
-  .split-cnt{padding:56px 32px}
-  .day{padding:80px 28px}
-  .day-steps{grid-template-columns:1fr 1fr;border-left:none}
-  .d-step{border:none;border-bottom:1px solid var(--gp)}
-  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
-  .gal-cell:first-child{grid-row:auto}
-  .news{padding:80px 28px}
-  .n-row{grid-template-columns:80px 1fr 20px;gap:12px}
+  .sec,.intro,.feat,.day,.news{padding:80px 28px}
+  .hero-vert{left:28px}
+  .hero-vert-ttl{font-size:clamp(1.6rem,4vh,2.4rem)}
+  .intro-body{grid-template-columns:1fr;gap:36px}
+  .feat-grid{grid-template-columns:1fr;gap:2px}
+  .img-grid{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
+  .ig:first-child{grid-row:auto}
+  .day-hd{grid-template-columns:1fr;gap:20px}
+  .day-steps{grid-template-columns:1fr 1fr;gap:0}
+  .d-step{border-bottom:1px solid rgba(0,0,0,.06)}
+  .story{grid-template-columns:1fr}
+  .story-img{min-height:300px}
+  .story-cnt{padding:56px 28px}
+  .n-row{grid-template-columns:80px 1fr 16px;gap:12px}
   .n-tag{display:none}
+  .news{padding:80px 28px}
   footer{padding:56px 28px 32px}
-  .ft-top{grid-template-columns:1fr;gap:36px}
+  .ft-top{grid-template-columns:1fr;gap:32px}
   .ft-btm{flex-direction:column;gap:10px;text-align:center}
+  .float-cta{bottom:20px;right:20px;padding:12px 18px;font-size:.68rem}
 }
+
+/* ── JAPANESE FONT SUPPORT (for icon fallback) ── */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body>
+
+<!-- FLOATING CTA -->
+<a href="#admission" class="float-cta">
+  <i class="fa-solid fa-calendar-check"></i>入園のご相談
+</a>
 
 <!-- HEADER -->
 <header class="hd" id="hd">
   <a href="#" class="logo">
-    <div class="logo-ic"><i class="fa-solid fa-seedling"></i></div>
-    <div class="logo-tx">みどりが丘幼稚園<small>MIDORIGAOKA KINDERGARTEN</small></div>
+    <div class="logo-ic">みどり</div>
+    <span class="logo-tx">みどりが丘幼稚園</span>
   </a>
-  <nav class="hdnav">
-    <a href="#about">園について</a>
-    <a href="#features">保育の特徴</a>
-    <a href="#day">一日の流れ</a>
-    <a href="#news">お知らせ</a>
-    <a href="#recruit">採用情報</a>
-    <a href="#admission" class="nav-cta">入園のご相談</a>
-  </nav>
+  <div class="hd-menu" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO (縦書き) -->
 <section class="hero" id="top">
-  <img id="heroBg" class="hero-bg"
-    src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1800&q=80"
-    alt="子どもたちの笑顔"/>
+  <img id="heroBg" class="hero-img hero-img" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1800&q=80" alt="子どもたちの笑顔" loading="eager"/>
   <div class="hero-ov"></div>
-  <div class="hero-cnt">
-    <div class="hero-kicker"><span></span>Midorigaoka Kindergarten · Since 1985</div>
-    <h1 class="hero-ttl">
-      <span class="line">子どもの「なんで？」を、</span>
-      <span class="line">いちばん大切にする場所。</span>
-    </h1>
-    <p class="hero-sub">自然の中で、子どもは自分で考える力を育てていきます。<br>みどりが丘幼稚園は、その「小さな発見」に寄り添います。</p>
-    <div class="hero-btns">
-      <a href="#admission" class="btn-w"><i class="fa-solid fa-calendar-check"></i>入園相談・資料請求</a>
-      <a href="#about" class="btn-o"><i class="fa-regular fa-circle-play"></i>園の紹介を見る</a>
-    </div>
+  <div class="hero-deco"></div>
+  <div class="hero-deco2"></div>
+  <div class="hero-vert">
+    <h1 class="hero-vert-ttl">子どもの「なんで？」を、いちばん大切にする場所。</h1>
+    <p class="hero-vert-sub">Midorigaoka Kindergarten · Since 1985</p>
   </div>
-  <div class="hero-num">01 / Hero</div>
-  <div class="hero-scroll">SCROLL<i class="fa-solid fa-chevron-down"></i></div>
+  <div class="hero-yr">2026 · MIDORIGAOKA</div>
+  <div class="hero-btm">Scroll Down</div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Kindergarten<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Natural Learning<span class="marquee-dot"></span></span>
-    <span class="marquee-item">みどりが丘幼稚園<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Since 1985<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Play · Discover · Grow<span class="marquee-dot"></span></span>
-    <span class="marquee-item">○○県○○市<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Kindergarten<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Natural Learning<span class="marquee-dot"></span></span>
-    <span class="marquee-item">みどりが丘幼稚園<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Since 1985<span class="marquee-dot"></span></span>
-    <span class="marquee-item">Play · Discover · Grow<span class="marquee-dot"></span></span>
-    <span class="marquee-item">○○県○○市<span class="marquee-dot"></span></span>
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mqi">みどりが丘幼稚園</span>
+    <span class="mqi">Natural Learning</span>
+    <span class="mqi">Play · Discover · Grow</span>
+    <span class="mqi">Since 1985</span>
+    <span class="mqi">○○県○○市</span>
+    <span class="mqi">入園のご相談随時受付中</span>
+    <span class="mqi">みどりが丘幼稚園</span>
+    <span class="mqi">Natural Learning</span>
+    <span class="mqi">Play · Discover · Grow</span>
+    <span class="mqi">Since 1985</span>
+    <span class="mqi">○○県○○市</span>
+    <span class="mqi">入園のご相談随時受付中</span>
   </div>
 </div>
 
-<!-- STATEMENT / ABOUT -->
-<section class="statement" id="about">
-  <div class="stmt-inner">
-    <p class="stmt-en fu">Our Philosophy</p>
-    <h2 class="stmt-ttl">
-      <span class="reveal"><span>「できた」より、</span></span>
-      <span class="reveal"><span>「やってみた」を</span></span><br>
-      <span class="reveal"><span>たくさん積み重ねてほしい。</span></span>
+<!-- INTRO / PHILOSOPHY -->
+<section class="intro" id="about">
+  <div class="intro-in">
+    <div class="intro-num fu">01</div>
+    <h2 class="intro-ttl">
+      <span class="reveal-wrap"><span class="reveal-inner">「できた」より、</span></span>
+      <span class="reveal-wrap" data-d="1"><span class="reveal-inner">「やってみた」を</span></span><br>
+      <span class="reveal-wrap" data-d="2"><span class="reveal-inner">た<span style="color:var(--gm)">くさん</span>積み重ねてほしい。</span></span>
     </h2>
-    <div class="stmt-body">
-      <div class="fu" data-d="1">
-        <p class="stmt-txt">みどりが丘幼稚園が大切にしているのは、「正しい答え」よりも「自分で動いてみる体験」です。<br><br>
-        子どもは失敗しながら育ちます。泥だらけになって、転んで、泣いて、また立ち上がる。その繰り返しが、生きていく力になると私たちは信じています。<br><br>
-        豊かな自然環境の中で、子どもが子どもらしく過ごせる幼稚園でありたい。それが、私たちの原点です。</p>
-        <br>
-        <a href="#features" class="btn-o" style="display:inline-flex;align-items:center;gap:8px;color:var(--gd);border-color:var(--gd);margin-top:16px">保育の特徴を見る <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="intro-body">
+      <div>
+        <p class="intro-txt fu">みどりが丘幼稚園が大切にしているのは、「正しい答え」よりも「自分で動いてみる体験」です。<br><br>子どもは失敗しながら育ちます。泥だらけになって、転んで、泣いて、また立ち上がる。その繰り返しが、生きていく力になると私たちは信じています。<br><br>豊かな自然環境の中で、子どもが子どもらしく過ごせる幼稚園でありたい。それが、私たちの原点です。</p>
+        <a href="#features" class="intro-link fu" data-d="1">保育の特徴を見る</a>
       </div>
-      <div class="stmt-img fu" data-d="2">
+      <div class="intro-img fu" data-d="2">
         <img src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?w=800&q=80" alt="子どもと自然"/>
-        <span class="stmt-caption">Garden · Natural Play</span>
       </div>
     </div>
+    <hr class="intro-rule fu" data-d="3"/>
   </div>
 </section>
 
 <!-- FEATURES -->
 <section class="feat" id="features">
-  <div class="feat-inner">
-    <div class="feat-hd">
-      <div class="fu">
-        <p class="lbl">Features</p>
-        <h2 class="ttl">みどりが丘の<br>3つの保育の特徴</h2>
+  <div class="feat-in">
+    <div class="feat-num fu">02</div>
+    <h2 class="feat-ttl-sec fu" data-d="1">
+      <span class="reveal-wrap"><span class="reveal-inner">みどりが丘の</span></span><br>
+      <span class="reveal-wrap" data-d="1"><span class="reveal-inner">3つの保育の特徴</span></span>
+    </h2>
+    <div class="feat-grid">
+      <div class="feat-card fu" data-num="01">
+        <p class="fc-lbl">Nature</p>
+        <h3 class="fc-ttl">毎日、外に出る</h3>
+        <p class="fc-tx">天気に関わらず、できるかぎり外で過ごします。土を触り、虫を観察し、空の変化を感じることが、最良の教科書です。</p>
       </div>
-      <p class="desc fu" data-d="1">イラストやプリントに頼らない、体験中心の保育をめざしています。子どもが「自分で考える」ことを大切にした環境を整えています。</p>
-    </div>
-    <div class="feat-items">
-      <div class="feat-item fu">
-        <div class="fi-num">01</div>
-        <div>
-          <div class="fi-ttl">毎日、外に出る</div>
-          <div class="fi-txt">天気に関わらず、できるかぎり外で過ごします。土を触り、虫を観察し、空の変化を感じることが、最良の教科書です。</div>
-        </div>
-        <i class="fa-solid fa-arrow-right fi-arrow"></i>
+      <div class="feat-card fu" data-d="1" data-num="02">
+        <p class="fc-lbl">Play</p>
+        <h3 class="fc-ttl">「やりたい」から始まる保育</h3>
+        <p class="fc-tx">プログラム先行型の保育ではなく、子どもの「やりたい！」という気持ちから活動が生まれる保育を大切にしています。</p>
       </div>
-      <div class="feat-item fu" data-d="1">
-        <div class="fi-num">02</div>
-        <div>
-          <div class="fi-ttl">「やりたい」から始まる保育</div>
-          <div class="fi-txt">プログラム先行型の保育ではなく、子どもの「やりたい！」という気持ちから活動が生まれる保育を大切にしています。</div>
-        </div>
-        <i class="fa-solid fa-arrow-right fi-arrow"></i>
-      </div>
-      <div class="feat-item fu" data-d="2">
-        <div class="fi-num">03</div>
-        <div>
-          <div class="fi-ttl">一人ひとりを見る、少人数制</div>
-          <div class="fi-txt">少人数クラス制を採用し、担任が一人ひとりの成長としっかり向き合います。「うちの子を見てもらえている」安心感を大切に。</div>
-        </div>
-        <i class="fa-solid fa-arrow-right fi-arrow"></i>
+      <div class="feat-card fu" data-d="2" data-num="03">
+        <p class="fc-lbl">Small Group</p>
+        <h3 class="fc-ttl">一人ひとりを見る、少人数制</h3>
+        <p class="fc-tx">少人数クラス制を採用し、担任が一人ひとりの成長としっかり向き合います。「うちの子を見てもらえている」安心感を大切に。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<div class="gallery">
-  <div class="gal-cell"><img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=900&q=80" alt="園庭"/><span class="gal-cap">Garden</span></div>
-  <div class="gal-cell"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&q=80" alt="図書"/><span class="gal-cap">Library</span></div>
-  <div class="gal-cell"><img src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?w=600&q=80" alt="自然"/><span class="gal-cap">Nature</span></div>
-  <div class="gal-cell"><img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=600&q=80" alt="遊び"/><span class="gal-cap">Play</span></div>
-  <div class="gal-cell"><img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80" alt="教室"/><span class="gal-cap">Class</span></div>
+<!-- IMAGE GRID -->
+<div class="img-grid">
+  <div class="ig"><img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=900&q=80" alt="園庭" loading="lazy"/><span class="ig-cap">Garden</span></div>
+  <div class="ig"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&q=80" alt="図書" loading="lazy"/><span class="ig-cap">Library</span></div>
+  <div class="ig"><img src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?w=600&q=80" alt="自然" loading="lazy"/><span class="ig-cap">Nature</span></div>
+  <div class="ig"><img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=600&q=80" alt="遊び" loading="lazy"/><span class="ig-cap">Play</span></div>
+  <div class="ig"><img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80" alt="教室" loading="lazy"/><span class="ig-cap">Classroom</span></div>
 </div>
 
 <!-- DAY -->
 <section class="day" id="day">
-  <div class="day-inner">
-    <div class="day-hd fu">
-      <p class="lbl">A Day in Life</p>
-      <h2 class="ttl">一日の流れ</h2>
+  <div class="day-in">
+    <div class="day-hd">
+      <div>
+        <div class="day-num fu">03</div>
+        <h2 class="day-ttl-sec fu" data-d="1">一日の流れ</h2>
+      </div>
+      <p class="day-desc fu" data-d="2">規則正しいスケジュールの中に、子どもが「選べる時間」をたっぷり確保しています。</p>
     </div>
     <div class="day-steps">
-      <div class="d-step fu"><div class="d-line"></div><div class="d-time">9:00</div><div class="d-ev">登園・朝の会</div><div class="d-tx">バスまたは徒歩・車でのお送りが可能です。</div></div>
-      <div class="d-step fu" data-d="1"><div class="d-line"></div><div class="d-time">10:00</div><div class="d-ev">外遊び・自由活動</div><div class="d-tx">広い園庭で思いきり体を動かします。</div></div>
-      <div class="d-step fu" data-d="2"><div class="d-line"></div><div class="d-time">12:00</div><div class="d-ev">お弁当・給食</div><div class="d-tx">週2回お弁当、週3回は給食を提供。</div></div>
-      <div class="d-step fu" data-d="3"><div class="d-line"></div><div class="d-time">14:00</div><div class="d-ev">帰りの会・降園</div><div class="d-tx">延長保育は18:00まで対応します。</div></div>
+      <div class="d-step fu"><div class="d-t">9:00</div><div class="d-ev">登園・朝の会</div><div class="d-dx">バスまたは徒歩・車でのお送りが可能です。</div></div>
+      <div class="d-step fu" data-d="1"><div class="d-t">10:00</div><div class="d-ev">外遊び・自由活動</div><div class="d-dx">広い園庭で思いきり体を動かします。</div></div>
+      <div class="d-step fu" data-d="2"><div class="d-t">12:00</div><div class="d-ev">お弁当・給食</div><div class="d-dx">週2回お弁当、週3回は給食を提供。</div></div>
+      <div class="d-step fu" data-d="3"><div class="d-t">14:00</div><div class="d-ev">帰りの会・降園</div><div class="d-dx">延長保育は18:00まで対応します。</div></div>
     </div>
   </div>
 </section>
 
-<!-- SPLIT: TEACHER/RECRUIT -->
-<div class="split" id="recruit">
-  <div class="split-img">
-    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&q=80" alt="先生"/>
+<!-- STORY / TEACHER -->
+<div class="story" id="recruit">
+  <div class="story-img">
+    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&q=80" alt="先生" loading="lazy"/>
   </div>
-  <div class="split-cnt">
-    <div class="badge-rec"><span class="dot-live"></span>先生を募集しています（2026年4月〜）</div>
-    <p class="sp-lbl">For Teachers</p>
-    <h2 class="sp-ttl">子どもと一緒に、<br>本気で遊べる先生を<br>探しています。</h2>
-    <p class="sp-txt">マニュアル通りの保育よりも、子どもの「今」に向き合える先生のほうが、うちの園には合っています。経験より、情熱を大切にしたい。<br><br>育休・産休の実績あり。正規・パートともに募集中です。</p>
-    <a href="#" class="btn-o">採用情報を見る <i class="fa-solid fa-arrow-right"></i></a>
+  <div class="story-cnt">
+    <div class="s-badge"><span class="dot-g"></span>先生を募集しています（2026年4月〜）</div>
+    <p class="s-lbl">For Teachers</p>
+    <h2 class="s-ttl">子どもと一緒に、<br>本気で遊べる先生を<br>探しています。</h2>
+    <p class="s-tx">マニュアル通りの保育よりも、子どもの「今」に向き合える先生のほうが、うちの園には合っています。経験より、情熱を大切にしたい。<br><br>育休・産休の実績あり。正規・パートともに募集中です。</p>
+    <a href="#" class="s-link">採用情報を見る</a>
   </div>
 </div>
 
 <!-- NEWS -->
 <section class="news" id="news">
-  <div class="news-inner">
+  <div class="news-in">
     <div class="news-hd fu">
-      <div><p class="lbl">News</p><h2 class="ttl">お知らせ</h2></div>
-      <a href="#" class="more">すべて見る <i class="fa-solid fa-arrow-right"></i></a>
+      <div>
+        <div class="news-num">04</div>
+        <h2 class="news-ttl-sec">お知らせ</h2>
+      </div>
+      <a href="#" class="more-lnk">すべて見る</a>
     </div>
     <ul class="n-list fu" data-d="1">
-      <li class="n-row"><span class="n-date">2026.04.01</span><span class="n-tag">入園情報</span><span class="n-tx">2027年度入園説明会の日程が決まりました</span><i class="fa-solid fa-arrow-right n-ic"></i></li>
-      <li class="n-row"><span class="n-date">2026.03.15</span><span class="n-tag">イベント</span><span class="n-tx">春の園庭開放を開催します（要予約）</span><i class="fa-solid fa-arrow-right n-ic"></i></li>
-      <li class="n-row"><span class="n-date">2026.02.28</span><span class="n-tag">採用</span><span class="n-tx">2026年度 保育士・幼稚園教諭の募集を開始しました</span><i class="fa-solid fa-arrow-right n-ic"></i></li>
-      <li class="n-row"><span class="n-date">2026.02.10</span><span class="n-tag">お知らせ</span><span class="n-tx">延長保育の時間を18:30まで延長しました</span><i class="fa-solid fa-arrow-right n-ic"></i></li>
+      <li class="n-row"><span class="n-date">2026.04.01</span><span class="n-tag">入園情報</span><span class="n-tx">2027年度入園説明会の日程が決まりました</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
+      <li class="n-row"><span class="n-date">2026.03.15</span><span class="n-tag">イベント</span><span class="n-tx">春の園庭開放を開催します（要予約）</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
+      <li class="n-row"><span class="n-date">2026.02.28</span><span class="n-tag">採用</span><span class="n-tx">2026年度 保育士・幼稚園教諭の募集を開始しました</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
+      <li class="n-row"><span class="n-date">2026.02.10</span><span class="n-tag">お知らせ</span><span class="n-tx">延長保育の時間を18:30まで延長しました</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
     </ul>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-sec" id="admission">
-  <img id="ctaBg" class="cta-bg" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1600&q=80" alt=""/>
+  <img id="ctaBg" class="cta-img" src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1600&q=80" alt="" loading="lazy"/>
   <div class="cta-ov"></div>
+  <div class="cta-deco"></div>
+  <div class="cta-deco2"></div>
   <div class="cta-in">
     <p class="c-lbl fu">Admission</p>
     <h2 class="c-ttl fu" data-d="1">見学・入園のご相談は<br>いつでもお気軽に。</h2>
@@ -410,8 +426,8 @@ footer{background:var(--gd);color:rgba(255,255,255,.5);padding:72px 72px 40px}
   <div class="ft-top">
     <div>
       <p class="ft-logo">みどりが丘幼稚園</p>
-      <p style="font-family:var(--en);font-size:.55rem;letter-spacing:.18em;color:rgba(255,255,255,.28);text-transform:uppercase;margin-bottom:4px">MIDORIGAOKA KINDERGARTEN</p>
-      <div class="ft-addr">〒000-0000<br>○○県○○市みどりが丘1-2-3<br>TEL: 00-0000-0000<br>受付 平日 8:30〜17:30</div>
+      <p class="ft-logo-en">MIDORIGAOKA KINDERGARTEN</p>
+      <p class="ft-addr">〒000-0000<br>○○県○○市みどりが丘1-2-3<br>TEL: 00-0000-0000<br>受付 平日 8:30〜17:30</p>
     </div>
     <nav class="ft-nav">
       <h4>Navigation</h4>
@@ -436,50 +452,44 @@ footer{background:var(--gd);color:rgba(255,255,255,.5);padding:72px 72px 40px}
   </div>
   <div class="ft-btm">
     <span>©2026 MIDORIGAOKA KINDERGARTEN. ALL RIGHTS RESERVED.</span>
-    <span>Design &amp; Code: <a href="https://web-tsukuru.jp/portfolio_cw" style="color:rgba(255,255,255,.5);transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.9)'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Webとしくみをつくる（渥美絵里）</a></span>
+    <span class="ft-cr">Design &amp; Code: <a href="https://web-tsukuru.jp/portfolio_cw">Webとしくみをつくる（渥美絵里）</a></span>
   </div>
 </footer>
 
 <script>
-// ── Header scroll ──
+// Header scroll
 const hd = document.getElementById('hd');
-window.addEventListener('scroll', () => {
-  hd.classList.toggle('scrolled', window.scrollY > 60);
-}, {passive:true});
+window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 60), {passive:true});
 
-// ── Hero image zoom on load ──
-const heroBg = document.getElementById('heroBg');
-heroBg.addEventListener('load', () => heroBg.classList.add('loaded'));
-if(heroBg.complete) heroBg.classList.add('loaded');
+// Hero zoom
+const h = document.getElementById('heroBg');
+setTimeout(() => h.classList.add('z'), 100);
 
-// ── Scroll reveal ──
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+// Scroll reveal (fu)
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
 }, {threshold:.1});
 document.querySelectorAll('.fu').forEach(el => obs.observe(el));
 
-// ── Text reveal for stmt-ttl ──
-const revObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.querySelectorAll('.reveal').forEach((r,i) => {
-        setTimeout(() => r.classList.add('vis'), i * 120);
-      });
+// Text reveal (reveal-wrap)
+const revObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.reveal-wrap').forEach(w => w.classList.add('vis'));
       revObs.unobserve(e.target);
-    }
-  });
-}, {threshold:.2});
-document.querySelectorAll('.stmt-ttl').forEach(el => revObs.observe(el));
+    }});
+}, {threshold:.15});
+document.querySelectorAll('.intro-ttl, .feat-ttl-sec, .day-ttl-sec').forEach(el => revObs.observe(el));
 
-// ── Parallax on CTA ──
+// Parallax CTA
 const ctaBg = document.getElementById('ctaBg');
-function parallax() {
-  const rect = ctaBg.parentElement.getBoundingClientRect();
-  const pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-  ctaBg.style.transform = `translateY(${(pct - .5) * -60}px)`;
+function parax(){
+  const r = ctaBg.parentElement.getBoundingClientRect();
+  const pct = (innerHeight - r.top) / (innerHeight + r.height);
+  ctaBg.style.transform = `translateY(${(pct-.5)*-70}px)`;
 }
-window.addEventListener('scroll', parallax, {passive:true});
-parallax();
+window.addEventListener('scroll', parax, {passive:true});
+parax();
 </script>
 </body>
 </html>
