@@ -36,11 +36,11 @@
     link(root + "index.html#problem", "課題"),
     link(root + "index.html#solution", "解決策"),
     link(root + "index.html#flow", "流れ"),
-    link("/design.html", "デザイン"),
+    link(root + "design.html", "デザイン"),
     link(root + "service.html", "料金", isService),
     link(root + "index.html#qa", "Q&A"),
     link(root + "blog/index.html", "ブログ", isBlog),
-    link("/works.html", "実績", isWorks),
+    link(root + "works.html", "実績", isWorks),
     link(
       root + "saiyou-shindan.html",
       '<i class="fa-solid fa-clipboard-check"></i> 無料診断テスト',
