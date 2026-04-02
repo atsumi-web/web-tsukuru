@@ -357,3 +357,29 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 .mc-btn{display:inline-flex;align-items:center;justify-content:flex-start;gap:16px;background:var(--gl);color:#fff;font-family:var(--serif);font-weight:400;font-size:18px;line-height:18px;letter-spacing:.1em;padding:22px 32px;border-radius:50px;text-decoration:none;transition:transform .3s, box-shadow .3s;box-shadow:0 8px 24px rgba(90,144,80,.1)}
 .mc-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(90,144,80,.2)}
 .mc-btn-dot{width:4px;height:4px;background:#fff;border-radius:50%;margin-left:auto}
+
+/* ── MOBILE OPTIMIZATION (スマホ対応) ── */
+@media (max-width: 768px) {
+  /* ヒーロータイトルの配置補正 */
+  .s-vert { left: 8vw; bottom: 8%; }
+  .s-vert h1 { font-size: clamp(2rem, 3.8vh, 2.6rem); line-height: 1.8; letter-spacing: 0.12em; }
+  .s-vert p { margin-top: 10px; font-size: 0.6rem; }
+  
+  /* スクロールテキスト（想い）を画面内に収める */
+  .s-text { left: 8vw; width: 84%; top: 5%; }
+  .s-text p { font-size: 16px; line-height: 2.2; margin-bottom: 8vh; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+  
+  /* スマホでのスクロール補助インジケータ（ごちゃつき防止で隠す） */
+  .s-btm, .s-yr { display: none; }
+  
+  /* メニューパネルを全画面に */
+  .menu-panel { width: 100%; }
+  .menu-cols { padding: 100px 32px 60px; gap: 40px; }
+  .menu-close-btn { top: 24px; right: 24px; transform: scale(0.85); }
+  
+  /* SPECIALコンテンツのカード間隔調整 */
+  .mc-card { padding-bottom: 32px; margin-bottom: 32px; gap: 16px; grid-template-columns: 80px 1fr 10px; }
+  .mc-img { width: 80px; height: 90px; }
+  .mc-info h4, .mc-info .serif-title { font-size: 16px; }
+  .mc-btn { width: 100%; justify-content: center; }
+}
