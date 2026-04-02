@@ -73,6 +73,7 @@
             <li><strong>【役割分担の極致】</strong> クリエイティブ（AI連携ディレクション等）は人間が、実装・最適化・パス管理はAntigravityが100%分業する。</li>
             <li><strong>【脱・ストックフォト】</strong> プレースホルダーに頼らず、「AI専用アクター（例: 佐藤健太/整備）」のプロンプトを固定してシーンを展開し、別人が並ぶのを防ぐ。</li>
             <li><strong>【アーキテクチャの勝利】</strong> <code>shared-nav.js</code> にヘッダー/フッターだけでなく、「FaviconとOGP」も集約し、全ページのパス切れを防ぐ。</li>
+            <li><strong>【スマホ実装の三原則（Premium美学）】</strong> ①小手先の <code>&lt;br&gt;</code> 隠しをやめ、<code>.pc-only</code> <code>.sp-only</code> で「テキストブロックごと分離」し別々の美しい改行リズムを組む。②横並びの <code>flex</code> に固執せず、スマホでは <code>grid</code> や縦積みで画像とテキストを解放する。③巨大な <code>border-radius</code>（アーチ等）はスマホでは尖ってしまうため必ずpx数を再調整する。</li>
             <li><strong>【段階的デプロイの隔離】</strong> <code>noindex</code> を付けたままテストアップし、トラブル検知とSEOリスク（コピーサイト判定）を分離する。</li>
             <li><strong>【トラブルからの瞬時リカバリー】</strong> Terminal等の文字化け事故（Mojibake）が起きたらパニックにならず、<code>git checkout</code> で秒速タイムリープ復旧する。</li>
         </ul>
@@ -181,7 +182,10 @@
                 <div class="step-body">
                     <ul>
                         <li>Antigravityに全ページのtitle・meta・OGPを一括設定させる</li>
-                        <li><strong>スマホ表示（SP）の改行最適化：</strong> <code>style.css</code> に <code>.pc-only</code>, <code>.sp-only</code> クラスを必ず定義し、キャッチコピー等の <code>&lt;br&gt;</code> タグを <code>&lt;br class="pc-only"&gt;</code> に置換してスマホでの不自然な折り返しを排除する。</li>
+                        <li><strong>SP文字組みと余白の「ハイエンド調整」：</strong> フォントサイズを下げるだけでなく、行間（<code>line-height: 2.1</code> 以上）や文字間隔（<code>letter-spacing: 0.12em</code>）、文字色を少し抜く（<code>#333, #555</code>）調整を行い、高級誌のような抜け感を演出する。</li>
+                        <li><strong>SP改行の完全制御：</strong> <code>&lt;br class="pc-only"&gt;</code> といった小手先のタグ非表示は保守性が悪いため、見出し等は必ず <strong><code>.pc-only</code> と <code>.sp-only</code> の2つの独立ブロックにHTMLごと分離</strong>し、スマホの横幅（約15文字）に合わせた美しい独自改行テキストを用意する。</li>
+                        <li><strong>窮屈なFlex・Gridの解放（レイアウト破壊防止）：</strong> PCで横に並べたカード領域やリスト（ニュース等）は、スマホでは必ず <code>flex-direction: column</code> で縦積みにするか、スマホ専用の <code>grid</code> を使って「上部に日付・下部に画像とテキスト」のように再設計し、文字の圧迫を防ぐ。</li>
+                        <li><strong>ネイティブ・スワイプの適用：</strong> 横スクロールが必要な領域（Collaboration等）はJSによるドラッグではなく、<code>overflow-x: auto; scroll-snap-type: x mandatory;</code> を用いてOSネイティブの吸い付くような操作感に仕上げる。</li>
                         <li>Go Live で全ページのリンク動作を確認（404がないか）</li>
                         <li>PC・スマホ（DevTools）で全ページの表示崩れを確認</li>
                         <li>PageSpeed Insights：本番デプロイ後に計測して90点以上を目指す</li>
