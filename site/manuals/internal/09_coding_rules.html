@@ -696,12 +696,16 @@ body .voice-grid .card .visual { margin: 0; }</pre>
                 </ol>
             </div>
 
-            <h2>事例5：カード内h3の改行でカード高さが揃わない</h2>
+            <h2>事例5：過去の遺物「br表示制御」によるレイアウト崩壊</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">過去の誤った手法</span>
+                <p>過去は <code>&lt;br class="br-sp-only"&gt;</code> や <code>&lt;br class="pc-only"&gt;</code> で無理やり改行位置を調整していましたが、カード内でこれを使うと高さが揃わなくなり、PC/SPで1文字だけ改行される「泣き別れ現象」の温床でした。</p>
+            </div>
             <div class="rule-box good">
-                <span class="badge badge-good">ルール：br-sp-only の使い分け</span>
+                <span class="badge badge-good">最新の【ハイエンド基準】：br制御を完全禁止</span>
                 <ul style="margin-left: 20px;">
-                    <li>✅ セクション <code>&lt;h2&gt;</code>：<strong>残してOK</strong>（リズム調整）</li>
-                    <li>❌ カード内 <code>&lt;h3&gt;</code>：<strong>必ず削除</strong>（高さが揃わなくなる）</li>
+                    <li>❌ <strong>すべてのbr表示制御タグ（.sp-only-br等）の使用を禁止</strong>します。</li>
+                    <li>✅ <strong>解決策：</strong> 見出しや文章をPCとスマホで最適化したい場合は、必ず <strong><code>&lt;h2 class="pc-only"&gt;</code> と <code>&lt;h2 class="sp-only"&gt;</code> の別ブロックとして完全に分離（HTMLごと用意）</strong> してください。</li>
                 </ul>
             </div>
 
