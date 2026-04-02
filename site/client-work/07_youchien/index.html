@@ -581,8 +581,8 @@ function updateScrolly() {
   const textY  = startY + (endY - startY) * tProg;
   sText.style.transform = `translateY(${textY}px)`;
 
-  // Photo2スライドアップ: テキストの最後から2行目が消えかかる絶妙なタイミング(0.35)で出現開始
-  const p2Start = 0.35, p2End = 0.75;
+  // Photo2スライドアップ: テキスト全体の進行(tEnd=0.60)に合わせ、最後尾が消えかかる絶妙なタイミング(0.55)で出現開始
+  const p2Start = 0.55, p2End = 0.95;
   const p2P = Math.max(0, Math.min(1, (prog - p2Start) / (p2End - p2Start)));
   const p2E = 1 - Math.pow(1 - p2P, 3);
   sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
