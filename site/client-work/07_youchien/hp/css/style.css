@@ -40,6 +40,7 @@ img{display:block;width:100%}
 .scrolly-pin{position:sticky;top:0;height:100vh;overflow:hidden;background:#5c8a50}
 /* スライドショー */
 .s-slides{position:absolute;inset:0;z-index:1;display:none}
+.s-slides::after{content:'';position:absolute;inset:0;background:rgba(30,61,26,.3);z-index:1;pointer-events:none}
 .s-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s cubic-bezier(.4,0,.2,1)}
 .s-slide.active{opacity:1}
 /* Deco lines */
