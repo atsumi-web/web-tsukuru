@@ -372,6 +372,11 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
   .s-text { left: 8vw; width: 84%; top: 10%; }
   .s-text p { font-size: 15px; line-height: 2.2; margin-bottom: 8vh; text-shadow: 0 2px 16px rgba(0,0,0,0.6); font-weight: 600; }
   
+  /* 動画モーダルの背景を暗くして動画を目立たせる（参考サイト準拠） */
+  .v-modal { background: rgba(10,15,10,0.85); backdrop-filter: blur(16px); }
+  .v-modal-body { width: 92%; border-radius: 16px; }
+  .v-modal-close { top: 24px; right: 20px; font-size: 2.4rem; color: rgba(255,255,255,0.7); }
+  
   /* スマホでのスクロール補助インジケータ（ごちゃつき防止で隠す） */
   .s-btm, .s-yr { display: none; }
   
