@@ -365,9 +365,8 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
   .s-vert h1 { font-size: clamp(2rem, 3.5vh, 2.6rem); line-height: 1.8; letter-spacing: 0.12em; text-shadow: 0 4px 16px rgba(0,0,0,0.4); }
   .s-vert p { margin-top: 12px; font-size: 0.6rem; opacity: 0.8; }
   
-  /* スマホ特有のX字破線による「顔の切断」を防ぐため、2本の線を右側に寄せて並行に落とす */
-  .s-deco1 { left: auto; right: 26%; transform: rotate(16deg); border-width: 2px; }
-  .s-deco2 { left: auto; right: 8%; transform: rotate(14deg); border-width: 2px; }
+  /* スマホ特有のX字破線は非表示にして見やすくする（ご要望によるスッキリ化） */
+  .s-deco1, .s-deco2 { display: none; }
 
   /* スクロールテキスト（想い）を画面内に収める */
   .s-text { left: 8vw; width: 84%; top: 10%; }
