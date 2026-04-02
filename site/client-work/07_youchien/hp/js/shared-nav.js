@@ -112,7 +112,7 @@
         <h3 class="mc-ttl">SPECIAL</h3>
         <div class="mc-cards">
           <a href="#" class="mc-card">
-            <div class="mc-img"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80" alt=""></div>
+            <div class="mc-img"><img src="${rootPath}images/Whisk_20ac29d5b0e0fdb91b7418daa9ea11d7dr.jpeg" alt=""></div>
             <div class="mc-info">
               <h4 class="serif-title">A Piece of Nature.</h4>
               <p>その庭には、わたしがいた。</p>
@@ -120,7 +120,7 @@
             <div class="mc-dot"></div>
           </a>
           <a href="#" class="mc-card arch">
-            <div class="mc-img"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&q=80" alt=""></div>
+            <div class="mc-img"><img src="${rootPath}images/Whisk_c6b2f51fd8054c9b34f428aa04eeeddfdr.jpeg" alt=""></div>
             <div class="mc-info">
               <h4>はぐくみ</h4>
               <p>想いを紡ぐしごと。</p>
