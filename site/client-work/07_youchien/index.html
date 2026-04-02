@@ -571,12 +571,12 @@ function updateScrolly() {
   const liftPx = vertUp * (window.innerHeight * 1.1);
   sVert.style.transform = `translateY(-${liftPx}px)`;
 
-  // テキスト上昇: スクロール直後(0.00)から超速で追従させ、「間」を完全になくす
-  const tStart = 0.00, tEnd = 0.40;
+  // テキスト上昇: 見出しが少し上に逃げた後(0.05)に追いかけるように出現させ、間隔（車間距離）を確保する
+  const tStart = 0.05, tEnd = 0.45;
   const tProg = Math.max(0, Math.min(1, (prog - tStart) / (tEnd - tStart)));
   const tH = sText.offsetHeight;
-  // 画面の端から即座に出現し、見出しの後をすぐ追いかける
-  const startY = window.innerHeight * 0.95;
+  // 画面の少し下(1.05)からスタートさせることで、見出しとの間に美しい余白を保つ
+  const startY = window.innerHeight * 1.05;
   const endY   = -tH - 60;
   const textY  = startY + (endY - startY) * tProg;
   sText.style.transform = `translateY(${textY}px)`;
