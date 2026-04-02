@@ -56,7 +56,7 @@
   </div>
 </div>
 
-<!-- MARQUEE -->
+<!-- [一時非表示中] MARQUEE 帯アニメーション（必要になったらコメントを外せば1秒で復活します）
 <div class="mq" aria-hidden="true">
   <div class="mq-track">
     <span class="mqi">みどりが丘幼稚園</span>
@@ -73,139 +73,428 @@
     <span class="mqi">入園のご相談随時受付中</span>
   </div>
 </div>
+-->
 
 <!-- 未完成の下層セクションを一時的に非表示（案件受注後に構築） -->
-<div id="draft-sections" style="display:none;">
+<!-- 完全フルコピー版ワイヤーフレーム（Type-G Premium） -->
+<div id="draft-sections">
 
-<!-- INTRO / PHILOSOPHY -->
-<section class="intro" id="about">
-  <div class="intro-in">
-    <div class="intro-num fu">01</div>
-    <h2 class="intro-ttl">
-      <span class="reveal-wrap"><span class="reveal-inner">「できた」より、</span></span>
-      <span class="reveal-wrap" data-d="1"><span class="reveal-inner">「やってみた」を</span></span><br>
-      <span class="reveal-wrap" data-d="2"><span class="reveal-inner">た<span style="color:var(--gm)">くさん</span>積み重ねてほしい。</span></span>
-    </h2>
-    <div class="intro-body">
-      <div>
-        <p class="intro-txt fu">みどりが丘幼稚園が大切にしているのは、「正しい答え」よりも「自分で動いてみる体験」です。<br><br>子どもは失敗しながら育ちます。泥だらけになって、転んで、泣いて、また立ち上がる。その繰り返しが、生きていく力になると私たちは信じています。<br><br>豊かな自然環境の中で、子どもが子どもらしく過ごせる幼稚園でありたい。それが、私たちの原点です。</p>
-        <a href="#features" class="intro-link fu" data-d="1">保育の特徴を見る</a>
+<!-- BLOCK 1: Intro Text & Floating Right Video -->
+<section class="ky-intro sec-padding">
+  <div class="inner ky-intro-in">
+    <div class="ky-intro-txt fu">
+      <!-- PC版見出し -->
+      <h2 class="pull-bracket pc-only">「こどもらしく」という枠を外して、<br>一人ひとりの、ありのままの色に、<br>そっと寄り添えるように。</h2>
+      <!-- スマホ版見出し（スマホの横幅に合わせた改行） -->
+      <h2 class="pull-bracket sp-only">「こどもらしく」という<br>枠を外して、<br>一人ひとりの、<br>ありのままの色に、<br>そっと寄り添えるように。</h2>
+      <div class="ky-intro-desc">
+        <p>幼児期は、人格の基礎となる最も大切な時期です。</p>
+        <p>大人の「こうあるべき」を押し付けるのではなく、</p>
+        <p>その子が持つ無限の可能性と好奇心を、</p>
+        <p><span class="pull-inline">「</span>そのまま」の形で伸ばしていく環境を目指しています。</p>
       </div>
-      <div class="intro-img fu" data-d="2">
-        <img src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?w=800&q=80" alt="子どもと自然"/>
-      </div>
+      <a href="#" class="ky-intro-link">教育理念について <span class="dot-o"></span></a>
     </div>
-    <hr class="intro-rule fu" data-d="3"/>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="feat" id="features">
-  <div class="feat-in">
-    <div class="feat-num fu">02</div>
-    <h2 class="feat-ttl-sec fu" data-d="1">
-      <span class="reveal-wrap"><span class="reveal-inner">みどりが丘の</span></span><br>
-      <span class="reveal-wrap" data-d="1"><span class="reveal-inner">3つの保育の特徴</span></span>
-    </h2>
-    <div class="feat-grid">
-      <div class="feat-card fu" data-num="01">
-        <p class="fc-lbl">Nature</p>
-        <h3 class="fc-ttl">毎日、外に出る</h3>
-        <p class="fc-tx">天気に関わらず、できるかぎり外で過ごします。土を触り、虫を観察し、空の変化を感じることが、最良の教科書です。</p>
+    <div class="ky-intro-img fu" data-d="1">
+      <div class="organic-deco" style="position: absolute; inset: 0; z-index: 2; pointer-events: none;">
+        <img src="images/organic-deco.svg" alt="" style="width: 100%; height: 100%; object-fit: fill; pointer-events: none;">
       </div>
-      <div class="feat-card fu" data-d="1" data-num="02">
-        <p class="fc-lbl">Play</p>
-        <h3 class="fc-ttl">「やりたい」から始まる保育</h3>
-        <p class="fc-tx">プログラム先行型の保育ではなく、子どもの「やりたい！」という気持ちから活動が生まれる保育を大切にしています。</p>
-      </div>
-      <div class="feat-card fu" data-d="2" data-num="03">
-        <p class="fc-lbl">Small Group</p>
-        <h3 class="fc-ttl">一人ひとりを見る、少人数制</h3>
-        <p class="fc-tx">少人数クラス制を採用し、担任が一人ひとりの成長としっかり向き合います。「うちの子を見てもらえている」安心感を大切に。</p>
+      <div class="ky-video-mask" id="introVideoMask">
+        <img src="images/kindy_sq.png" alt="無垢材の積み木で遊ぶ手元" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
     </div>
   </div>
 </section>
 
-<!-- IMAGE GRID -->
-<div class="img-grid">
-  <div class="ig"><img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=900&q=80" alt="園庭" loading="lazy"/><span class="ig-cap">Garden</span></div>
-  <div class="ig"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&q=80" alt="図書" loading="lazy"/><span class="ig-cap">Library</span></div>
-  <div class="ig"><img src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?w=600&q=80" alt="自然" loading="lazy"/><span class="ig-cap">Nature</span></div>
-  <div class="ig"><img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=600&q=80" alt="遊び" loading="lazy"/><span class="ig-cap">Play</span></div>
-  <div class="ig"><img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80" alt="教室" loading="lazy"/><span class="ig-cap">Classroom</span></div>
-</div>
-
-<!-- DAY -->
-<section class="day" id="day">
-  <div class="day-in">
-    <div class="day-hd">
-      <div>
-        <div class="day-num fu">03</div>
-        <h2 class="day-ttl-sec fu" data-d="1">一日の流れ</h2>
+<!-- BLOCK 2: Story (A Piece of Me. 完璧な3カラムアシンメトリー) -->
+<section class="ky-piece sec-padding">
+  <div class="inner ky-piece-in">
+    <!-- Left: Text -->
+    <div class="ky-piece-left fu">
+      <h2 class="piece-en">A Piece of Kids.</h2>
+      <h3 class="piece-ja">その瞬間に、成長があった。</h3>
+      <div class="piece-desc">
+        <p>環境が変わったら、こころが動いた。<br>みどりが丘幼稚園で過ごす<br>子どもたちの、そんなお話を、ひとつずつ。</p>
       </div>
-      <p class="day-desc fu" data-d="2">規則正しいスケジュールの中に、子どもが「選べる時間」をたっぷり確保しています。</p>
+      <a href="#" class="ky-intro-link">園の日常を読む <span class="dot-o"></span></a>
     </div>
-    <div class="day-steps">
-      <div class="d-step fu"><div class="d-t">9:00</div><div class="d-ev">登園・朝の会</div><div class="d-dx">バスまたは徒歩・車でのお送りが可能です。</div></div>
-      <div class="d-step fu" data-d="1"><div class="d-t">10:00</div><div class="d-ev">外遊び・自由活動</div><div class="d-dx">広い園庭で思いきり体を動かします。</div></div>
-      <div class="d-step fu" data-d="2"><div class="d-t">12:00</div><div class="d-ev">お弁当・給食</div><div class="d-dx">週2回お弁当、週3回は給食を提供。</div></div>
-      <div class="d-step fu" data-d="3"><div class="d-t">14:00</div><div class="d-ev">帰りの会・降園</div><div class="d-dx">延長保育は18:00まで対応します。</div></div>
+
+    <!-- Center: Massive Image -->
+    <div class="ky-piece-img fu" data-d="1">
+      <img src="images/kindy_hero.png" alt="幼稚園の様子" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Right: Vertical Text -->
+    <div class="ky-piece-right fu" data-d="2">
+      <p class="piece-vert-sub">01 FIRST TRY</p>
+      <!-- PC版見出し -->
+      <h3 class="piece-vert-ttl pc-only">先生に頼らず<br>「自分でやる！」と言いながら、<br>毎日少しずつ、成長していく背中。</h3>
+      <!-- スマホ版見出し -->
+      <h3 class="piece-vert-ttl sp-only">先生に頼らず<br>「自分でやる！」と言いながら、<br>毎日少しずつ、成長していく背中。</h3>
     </div>
   </div>
 </section>
 
-<!-- STORY / TEACHER -->
-<div class="story" id="recruit">
-  <div class="story-img">
-    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&q=80" alt="先生" loading="lazy"/>
-  </div>
-  <div class="story-cnt">
-    <div class="s-badge"><span class="dot-g"></span>先生を募集しています（2026年4月〜）</div>
-    <p class="s-lbl">For Teachers</p>
-    <h2 class="s-ttl">子どもと一緒に、<br>本気で遊べる先生を<br>探しています。</h2>
-    <p class="s-tx">マニュアル通りの保育よりも、子どもの「今」に向き合える先生のほうが、うちの園には合っています。経験より、情熱を大切にしたい。<br><br>育休・産休の実績あり。正規・パートともに募集中です。</p>
-    <a href="#" class="s-link">採用情報を見る</a>
-  </div>
-</div>
-
-<!-- NEWS -->
-<section class="news" id="news">
-  <div class="news-in">
-    <div class="news-hd fu">
-      <div>
-        <div class="news-num">04</div>
-        <h2 class="news-ttl-sec">お知らせ</h2>
+<!-- BLOCK 3: Statement & Service Cards -->
+<section class="ky-services sec-padding">
+  <div class="inner">
+    <!-- PC版 -->
+    <h2 class="ky-statement fu pc-only">みどりが丘幼稚園は、子どもの「なんで？」という声を起点に、<br>すべての人が自分らしくいられる社会の実装を目指す場所です。</h2>
+    <!-- スマホ版 -->
+    <h2 class="ky-statement fu sp-only">みどりが丘幼稚園は、<br>子どもの「なんで？」という<br>声を起点に、<br>すべての人が自分らしくいられる<br>社会の実装を目指す場所です。</h2>
+    
+    <div class="ky-svc-grid">
+      <!-- Card 1 -->
+      <div class="ky-svc-card fu" data-d="1">
+        <div class="ky-svc-img-wrap shape-blue">
+          <img src="images/kindy_svc_parent_1775160618205.png" alt="保護者" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.95; pointer-events: none;">
+          <div class="ky-svc-vert">FOR PARENTS</div>
+        </div>
+        <div class="ky-svc-tx">
+          <h3>自然の中で子育てを<br>楽しみたい保護者さまへ</h3>
+          <p>都市部では体験できない「本物の土」や「木」に触れることで、子どもたちの感性を磨きます。毎日の小さな発見をサポートし、ご家族の生活とこころにフィットする体験を手がけます。</p>
+          <a href="#" class="ky-intro-link">見学に申し込む <span class="dot-o"></span></a>
+        </div>
       </div>
-      <a href="#" class="more-lnk">すべて見る</a>
+
+      <!-- Card 2 -->
+      <div class="ky-svc-card fu" data-d="2">
+        <div class="ky-svc-img-wrap shape-orange">
+          <img src="images/kindy_svc_comm_1775160638276.png" alt="地域" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.95; pointer-events: none;">
+          <div class="ky-svc-vert">FOR COMMUNITY</div>
+        </div>
+        <div class="ky-svc-tx">
+          <h3>遊びの可能性を<br>広げたい地域の皆さまへ</h3>
+          <p>絵本の読み聞かせや、畑づくりなど、現場で得た知見と“本物志向”のデザイン手法、インクルーシブなカリキュラムの提供など、地域拡張のサポートを提供します。</p>
+          <a href="#" class="ky-intro-link">地域連携について <span class="dot-o" style="background:#4b82a0;"></span></a>
+        </div>
+      </div>
     </div>
-    <ul class="n-list fu" data-d="1">
-      <li class="n-row"><span class="n-date">2026.04.01</span><span class="n-tag">入園情報</span><span class="n-tx">2027年度入園説明会の日程が決まりました</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
-      <li class="n-row"><span class="n-date">2026.03.15</span><span class="n-tag">イベント</span><span class="n-tx">春の園庭開放を開催します（要予約）</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
-      <li class="n-row"><span class="n-date">2026.02.28</span><span class="n-tag">採用</span><span class="n-tx">2026年度 保育士・幼稚園教諭の募集を開始しました</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
-      <li class="n-row"><span class="n-date">2026.02.10</span><span class="n-tag">お知らせ</span><span class="n-tx">延長保育の時間を18:30まで延長しました</span><i class="fa-solid fa-arrow-right n-arr"></i></li>
-    </ul>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-sec" id="admission">
-  <img id="ctaBg" class="cta-img" src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1600&q=80" alt="" loading="lazy"/>
-  <div class="cta-ov"></div>
-  <div class="cta-deco"></div>
-  <div class="cta-deco2"></div>
-  <div class="cta-in">
-    <p class="c-lbl fu">Admission</p>
-    <h2 class="c-ttl fu" data-d="1">見学・入園のご相談は<br>いつでもお気軽に。</h2>
-    <p class="c-tx fu" data-d="2">園の雰囲気を肌で感じていただくために、随時見学を受け付けています。<br>資料請求のみのお問い合わせも大歓迎です。</p>
-    <div class="c-btns fu" data-d="3">
-      <a href="#" class="btn-w"><i class="fa-solid fa-calendar-check"></i>見学・相談を申し込む</a>
-      <a href="#" class="btn-o"><i class="fa-solid fa-file-pdf"></i>資料請求</a>
+<!-- BLOCK 4: Story (Arch Shape) -->
+<section class="ky-story sec-padding">
+  <div class="inner ky-story-in">
+    <!-- Left: Arch Image -->
+    <div class="ky-story-img-wrap fu">
+      <!-- アーチ内側の破線デコレーション -->
+      <div class="arch-deco"></div>
+      <img src="images/kindy_teacher_story.png" alt="土遊びをする子どもと先生" class="arch-img" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.95;">
+    </div>
+
+    <!-- Right: Text Content -->
+    <div class="ky-story-tx fu" data-d="1">
+      <!-- 縦書きポエム -->
+      <div class="story-poem">
+        <p>子どもたちの声が響く園庭で、<br>ひとりの先生が、<br>園児の目線にしゃがみこんでいます。<br>泥だらけの手を優しく握りながら、<br>できた！の瞬間を、ていねいに。<br>これは、未来を育む人<br>たちの小さな物語です。</p>
+      </div>
+      
+      <!-- タイトルとリンク -->
+      <div class="story-titles">
+        <h2 class="story-ttl">先生たち</h2>
+        <p class="story-sub">こころを育むしごと。</p>
+        <a href="#" class="ky-intro-link">もっと見る <span class="dot-o"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 5: Collaborations (Slide & Pause Slider) -->
+<section class="ky-collab sec-padding">
+  <div class="inner ky-collab-in">
+    <!-- Header -->
+    <div class="collab-head fu">
+      <h2 class="collab-ttl">コラボレーション</h2>
+      <a href="#" class="ky-intro-link">もっと見る <span class="dot-o"></span></a>
+    </div>
+
+    <!-- Slider Area -->
+    <div class="collab-view fu" data-d="1">
+      <div class="collab-track" id="collabTrack">
+        <!-- Card 1 -->
+        <div class="collab-card">
+          <div class="collab-img-wrap"><img src="images/kindy_collab_farm_1775160656445.png" style="width:100%; height:100%; object-fit:cover;"></div>
+          <p class="collab-sub">Collaboration #01 : Local Farm</p>
+          <h3 class="collab-name">自然農園 × みどりが丘</h3>
+          <p class="collab-desc">土に触れる食育プログラム</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="collab-card">
+          <div class="collab-img-wrap"><img src="images/kindy_collab_art_1775160682547.png" style="width:100%; height:100%; object-fit:cover;"></div>
+          <p class="collab-sub">Collaboration #02 : Art Studio</p>
+          <h3 class="collab-name">図工室 × みどりが丘</h3>
+          <p class="collab-desc">本物の絵の具で描く体験</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="collab-card">
+          <div class="collab-img-wrap"><img src="images/kindy_collab_music_1775160698749.png" style="width:100%; height:100%; object-fit:cover;"></div>
+          <p class="collab-sub">Collaboration #03 : Music Hall</p>
+          <h3 class="collab-name">音楽会 × みどりが丘</h3>
+          <p class="collab-desc">木の楽器に触れる時間</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="collab-card">
+           <div class="collab-img-wrap"><img src="images/kindy_sq.png" style="width:100%; height:100%; object-fit:cover;"></div>
+           <p class="collab-sub">Collaboration #04 : Sports</p>
+           <h3 class="collab-name">地域クラブ × みどりが丘</h3>
+           <p class="collab-desc">芝生の上で走る体験</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="collab-card">
+           <div class="collab-img-wrap"><img src="images/kindy_f_book_1775160717235.png" style="width:100%; height:100%; object-fit:cover;"></div>
+           <p class="collab-sub">Collaboration #05 : Library</p>
+           <h3 class="collab-name">図書館 × みどりが丘</h3>
+           <p class="collab-desc">毎月新しい絵本と出会う</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 6: Flow / Steps (Horizontal Scroller) -->
+<section class="ky-flow sec-padding">
+  <div class="inner ky-flow-in">
+    <!-- Header -->
+    <div class="flow-head fu">
+      <h2 class="ky-sec-ttl">入園までの流れ<br><span>Admission Flow</span></h2>
+    </div>
+
+    <!-- Layout Wrapper -->
+    <div class="flow-wrap fu" data-d="1">
+      
+      <!-- Fixed Left Pagination -->
+      <div class="flow-pagination">
+        <div class="flow-idx active" data-idx="1">#1</div>
+        <div class="flow-idx" data-idx="2">#2</div>
+        <div class="flow-idx" data-idx="3">#3</div>
+        <div class="flow-idx" data-idx="4">#4</div>
+      </div>
+
+      <!-- Horizontal Slider -->
+      <div class="flow-slider" id="flowSlider">
+        <!-- Card 1 -->
+        <div class="flow-card" data-idx="1">
+          <div class="flow-c-top"># 1</div>
+          <h3 class="flow-c-ttl">園の見学会・説明会に参加する</h3>
+          <div class="flow-c-bot">
+            <div class="fc-icon"><img src="images/kindy_f_shoes_1775160745613.png" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
+            <div class="fc-tx">
+              <p>みどりが丘幼稚園では、毎月見学会を実施しています。実際に子どもたちが過ごす環境や、先生たちの雰囲気を感じていただくため、まずはフォームよりお申し込みください。</p>
+              <a href="#" class="ky-intro-link">見学会の予約へ <span class="dot-o" style="background:#e27d53;"></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="flow-card" data-idx="2">
+          <div class="flow-c-top"># 2</div>
+          <h3 class="flow-c-ttl">入園願書を受け取る</h3>
+          <div class="flow-c-bot">
+             <div class="fc-icon"><img src="images/kindy_f_book_1775160717235.png" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
+             <div class="fc-tx">
+                <p>見学会の際、または指定の期間内に窓口にて「入園願書」および「募集要項」を配布いたします。ご家庭でお子様と一緒に、必要事項をご記入ください。</p>
+                <a href="#" class="ky-intro-link">募集要項を見る <span class="dot-o" style="background:#e27d53;"></span></a>
+             </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="flow-card" data-idx="3">
+          <div class="flow-c-top"># 3</div>
+          <h3 class="flow-c-ttl">面接・体験入園を実施する</h3>
+          <div class="flow-c-bot">
+             <div class="fc-icon"><img src="images/kindy_sq.png" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
+             <div class="fc-tx">
+                <p>お子様の普段の様子を知るための簡単な面接と、保護者様へのヒアリングを行います。リラックスした雰囲気でお話を聞かせていただきます。</p>
+             </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="flow-card" data-idx="4">
+          <div class="flow-c-top"># 4</div>
+          <h3 class="flow-c-ttl">入園手続き・ご入園</h3>
+          <div class="flow-c-bot">
+             <div class="fc-icon"><img src="images/kindy_hero.png" style="width:100%; height:100%; object-fit:cover; border-radius:4px;"></div>
+             <div class="fc-tx">
+                <p>面接後、入園書類の提出や制服・学用品の準備を経て、入園手続きは完了です。いよいよみどりが丘幼稚園での毎日の大冒険がスタートします！</p>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 7: News -->
+<section class="ky-news sec-padding">
+  <div class="inner ky-news-in">
+    <!-- 左カラム：見出しとリンク -->
+    <div class="ky-news-left fu">
+      <h2 class="ky-sec-ttl">お知らせ</h2>
+      <a href="javascript:void(0);" id="newsToggleBtn" class="ky-intro-link">一覧で見る <span class="dot-o"></span></a>
+    </div>
+
+    <!-- 右カラム：記事リスト -->
+    <div class="ky-news-right fu" data-d="1">
+      
+      <!-- カテゴリフィルターバー -->
+      <div class="ky-news-filter">
+        <div class="news-count">全 5 記事</div>
+        
+        <!-- カテゴリードロップダウン（カスタムUI） -->
+        <div class="news-cat-dropdown" id="newsCatDropdown">
+          <!-- 閉じた状態のボタン -->
+          <button class="cat-toggle" id="catToggleBtn">
+            <span>Category</span>
+            <span class="cat-icon">✢</span>
+          </button>
+          
+          <!-- 開いた状態のメニュー（絶対配置で重なる） -->
+          <div class="cat-menu-wrap">
+            <div class="cat-menu-head" id="catCloseBtn">
+              <span>Category</span>
+              <span class="cat-icon">- -</span>
+            </div>
+            <ul class="cat-menu">
+              <li><a href="javascript:void(0);">All</a></li>
+              <li><a href="javascript:void(0);">News release</a></li>
+              <li><a href="javascript:void(0);">Information</a></li>
+              <li><a href="javascript:void(0);">Event</a></li>
+              <li><a href="javascript:void(0);">Idea</a></li>
+              <li><a href="javascript:void(0);">Other</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <ul class="ky-news-list is-collapsed">
+        
+        <!-- 記事1 -->
+        <li class="ky-news-item">
+          <a href="#">
+            <div class="news-meta">
+              <span class="news-date">2026 &nbsp;04 &nbsp;02</span>
+              <span class="news-badge">NEW</span>
+            </div>
+            <div class="news-thumb">
+              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="news-body">
+              <h3 class="news-ttl">令和8年度 入園説明会の追加日程について<br>（ご好評につき第3回を開催します）</h3>
+              <span class="news-cat">Information</span>
+            </div>
+            <div class="news-arrow">・</div>
+          </a>
+        </li>
+
+        <!-- 記事2 -->
+        <li class="ky-news-item">
+          <a href="#">
+            <div class="news-meta">
+              <span class="news-date">2026 &nbsp;03 &nbsp;05</span>
+            </div>
+            <div class="news-thumb">
+              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: hue-rotate(30deg);">
+            </div>
+            <div class="news-body">
+              <h3 class="news-ttl">「森の音楽会」開催のお知らせ。地域の皆さまもぜひご参加ください。</h3>
+              <span class="news-cat">Event</span>
+            </div>
+            <div class="news-arrow">・</div>
+          </a>
+        </li>
+
+        <!-- 記事3 -->
+        <li class="ky-news-item">
+          <a href="#">
+            <div class="news-meta">
+              <span class="news-date">2026 &nbsp;02 &nbsp;26</span>
+            </div>
+            <div class="news-thumb">
+              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: hue-rotate(60deg);">
+            </div>
+            <div class="news-body">
+              <h3 class="news-ttl">園だより『みどりの風』3月号を更新しました。</h3>
+              <span class="news-cat">News release</span>
+            </div>
+            <div class="news-arrow">・</div>
+          </a>
+        </li>
+
+        <!-- 記事4 -->
+        <li class="ky-news-item">
+          <a href="#">
+            <div class="news-meta">
+              <span class="news-date">2025 &nbsp;12 &nbsp;26</span>
+            </div>
+            <div class="news-thumb">
+              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: brightness(1.2);">
+            </div>
+            <div class="news-body">
+              <h3 class="news-ttl">冬休みの園庭開放・預かり保育スケジュール改定のお知らせ</h3>
+              <span class="news-cat">Information</span>
+            </div>
+            <div class="news-arrow">・</div>
+          </a>
+        </li>
+
+        <!-- 記事5 -->
+        <li class="ky-news-item">
+          <a href="#">
+            <div class="news-meta">
+              <span class="news-date">2025 &nbsp;11 &nbsp;14</span>
+            </div>
+            <div class="news-thumb">
+              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: sepia(0.5);">
+            </div>
+            <div class="news-body">
+              <h3 class="news-ttl">新しい遊具「風の砦」が完成しました！</h3>
+              <span class="news-cat">News release</span>
+            </div>
+            <div class="news-arrow">・</div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 8: Bottom CTA & Small gallery -->
+<section class="ky-cta-sec sec-padding" style="background:#fff;">
+  <div class="inner ky-cta-in">
+    <div class="ky-mini-gallery fu">
+      <img src="images/kindy_sq.png" style="width:100%; height:100%; object-fit:cover;">
+      <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover;">
+      <img src="images/kindy_f_book_1775160717235.png" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+    
+    <div class="ky-cta-box fu" data-d="1">
+      <div class="ky-cta-left">
+        <img src="images/kindy_building_1775160767495.png" style="width:100%; height:100%; object-fit:cover; aspect-ratio:3/4;">
+      </div>
+      <div class="ky-cta-right">
+        <h2>Admissions</h2>
+        <p>入園のご相談・見学は随時受け付けております。<br>園の雰囲気を直接感じにいらしてください。</p>
+        <a href="#" class="ky-btn">CONTACT US →</a>
+      </div>
     </div>
   </div>
 </section>
 
 </div> <!-- /#draft-sections -->
+
+<!-- FINAL VISION (Reveal Effect) -->
+<section class="ky-final-vision">
+  <div class="ky-final-content fu" data-d="1">
+    <!-- PC版 -->
+    <h2 class="ky-final-copy pc-only">すべてのこどもに、あふれる笑顔を。</h2>
+    <!-- スマホ版 -->
+    <h2 class="ky-final-copy sp-only">すべてのこどもに、<br>あふれる笑顔を。</h2>
+  </div>
+</section>
 
 <!-- Custom Cursor element -->
 <div class="play-btn" id="customPlayBtn">PLAY<br>MOVIE</div>
@@ -271,16 +560,18 @@ function updateScrolly() {
   sText.style.transform = `translateY(${textY}px)`;
 
   // Photo2スライドアップ: テキスト最後尾が消えかかる絶妙なタイミング(0.55)で出現し、少し早めに(0.85)上がりきる
-  const p2Start = 0.55, p2End = 0.85;
-  const p2P = Math.max(0, Math.min(1, (prog - p2Start) / (p2End - p2Start)));
-  const p2E = 1 - Math.pow(1 - p2P, 3);
-  sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
+  if (sPhoto2) {
+    const p2Start = 0.55, p2End = 0.85;
+    const p2P = Math.max(0, Math.min(1, (prog - p2Start) / (p2End - p2Start)));
+    const p2E = 1 - Math.pow(1 - p2P, 3);
+    sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
 
-  // 斜めカットの解除（全面表示化）
-  const cStart = 0.85, cEnd = 0.95;
-  const cP = Math.max(0, Math.min(1, (prog - cStart) / (cEnd - cStart)));
-  const clipY = 12 * (1 - cP); // vhの代わりに%を使うことでリサイズバグを防止
-  sPhoto2.style.clipPath = `polygon(0 ${clipY}%, 100% 0, 100% 100%, 0 100%)`;
+    // 斜めカットの解除（全面表示化）
+    const cStart = 0.85, cEnd = 0.95;
+    const cP = Math.max(0, Math.min(1, (prog - cStart) / (cEnd - cStart)));
+    const clipY = 12 * (1 - cP); // vhの代わりに%を使うことでリサイズバグを防止
+    sPhoto2.style.clipPath = `polygon(0 ${clipY}%, 100% 0, 100% 100%, 0 100%)`;
+  }
 }
 
 window.addEventListener('scroll', updateScrolly, {passive:true});
@@ -305,6 +596,7 @@ document.querySelectorAll('.intro-ttl, .feat-ttl-sec, .day-ttl-sec').forEach(el 
 // Parallax CTA
 const ctaBg = document.getElementById('ctaBg');
 function parax(){
+  if (!ctaBg) return;
   const r = ctaBg.parentElement.getBoundingClientRect();
   const pct = (innerHeight - r.top) / (innerHeight + r.height);
   ctaBg.style.transform = `translateY(${(pct-.5)*-70}px)`;
@@ -320,19 +612,36 @@ const vVideo = document.getElementById('vVideo');
 // AI生成動画に差し替え（クリックで立ち上がる本編動画）
 const demoVideoUrl = "images/Two_children_playing_202604021155.mp4";
 
-sPhoto2.addEventListener('mouseenter', () => customPlayBtn.classList.add('show'));
-sPhoto2.addEventListener('mouseleave', () => customPlayBtn.classList.remove('show'));
-sPhoto2.addEventListener('mousemove', (e) => {
-  customPlayBtn.style.left = e.clientX + 'px';
-  customPlayBtn.style.top = e.clientY + 'px';
-});
+const introVideoMask = document.getElementById('introVideoMask');
+if(introVideoMask) {
+  introVideoMask.addEventListener('mouseenter', () => customPlayBtn.classList.add('show'));
+  introVideoMask.addEventListener('mouseleave', () => customPlayBtn.classList.remove('show'));
+  introVideoMask.addEventListener('mousemove', (e) => {
+    customPlayBtn.style.left = e.clientX + 'px';
+    customPlayBtn.style.top = e.clientY + 'px';
+  });
+  introVideoMask.addEventListener('click', () => {
+    vVideo.src = demoVideoUrl;
+    vModal.classList.add('show');
+    customPlayBtn.classList.remove('show');
+    vVideo.play().catch(e=>console.log('Autoplay prevented:', e));
+  });
+}
 
-sPhoto2.addEventListener('click', () => {
-  vVideo.src = demoVideoUrl;
-  vModal.classList.add('show');
-  customPlayBtn.classList.remove('show');
-  vVideo.play().catch(e=>console.log('Autoplay prevented:', e));
-});
+if(sPhoto2) {
+  sPhoto2.addEventListener('mouseenter', () => customPlayBtn.classList.add('show'));
+  sPhoto2.addEventListener('mouseleave', () => customPlayBtn.classList.remove('show'));
+  sPhoto2.addEventListener('mousemove', (e) => {
+    customPlayBtn.style.left = e.clientX + 'px';
+    customPlayBtn.style.top = e.clientY + 'px';
+  });
+  sPhoto2.addEventListener('click', () => {
+    vVideo.src = demoVideoUrl;
+    vModal.classList.add('show');
+    customPlayBtn.classList.remove('show');
+    vVideo.play().catch(e=>console.log('Autoplay prevented:', e));
+  });
+}
 
 vModalClose.addEventListener('click', () => {
   vModal.classList.remove('show');
@@ -340,6 +649,137 @@ vModalClose.addEventListener('click', () => {
   vVideo.currentTime = 0;
   vVideo.src = '';
 });
+
+// --- Slide & Pause Carousel (Collaboration) ---
+const collabTrack = document.getElementById('collabTrack');
+if(collabTrack) {
+  let scrollPos = 0;
+  const cards = collabTrack.querySelectorAll('.collab-card');
+  const totalCards = cards.length;
+  
+  if (totalCards > 0) {
+    collabTrack.innerHTML += collabTrack.innerHTML; 
+    
+    setInterval(() => {
+      const realWidth = cards[0].offsetWidth;
+      const gap = parseFloat(window.getComputedStyle(collabTrack).gap) || 40;
+      const stepWidth = realWidth + gap;
+
+      scrollPos += stepWidth;
+      collabTrack.style.transition = 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)';
+      collabTrack.style.transform = `translateX(-${scrollPos}px)`;
+      
+      if(scrollPos >= stepWidth * totalCards) {
+        setTimeout(() => {
+          collabTrack.style.transition = 'none';
+          scrollPos = 0;
+          collabTrack.style.transform = `translateX(0)`;
+        }, 800);
+      }
+    }, 3500);
+  }
+}
+
+// --- Flow Slider (Drag to Scroll & Pagination Sync) ---
+const flowSlider = document.getElementById('flowSlider');
+if(flowSlider) {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  flowSlider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    // CSSのスナップ機能がONだとJSスクロールと喧嘩してガタつくので、ドラッグ中はOFFにする
+    flowSlider.style.scrollSnapType = 'none';
+    flowSlider.classList.add('is-dragging'); // リンク誤爆防止クラス付与
+    
+    startX = e.pageX - flowSlider.offsetLeft;
+    scrollLeft = flowSlider.scrollLeft;
+  });
+  
+  flowSlider.addEventListener('mouseleave', () => { 
+    isDown = false; 
+    flowSlider.style.scrollSnapType = 'x mandatory';
+    flowSlider.classList.remove('is-dragging');
+  });
+  
+  flowSlider.addEventListener('mouseup', () => { 
+    isDown = false; 
+    flowSlider.style.scrollSnapType = 'x mandatory';
+    flowSlider.classList.remove('is-dragging');
+  });
+  
+  flowSlider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - flowSlider.offsetLeft;
+    const walk = (x - startX) * 2; // スクロール速度
+    flowSlider.scrollLeft = scrollLeft - walk;
+  });
+
+  // 交差監視（現在見えているカードに合わせて左の数字をハイライト）
+  const steps = document.querySelectorAll('.flow-card');
+  const dots = document.querySelectorAll('.flow-idx');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        const idx = entry.target.dataset.idx;
+        dots.forEach(d => {
+          d.classList.remove('active');
+          d.style.background = 'transparent';
+          d.style.color = 'var(--gl)';
+        });
+        const dot = document.querySelector(`.flow-idx[data-idx="${idx}"]`);
+        if(dot) {
+          dot.classList.add('active');
+          dot.style.background = '#e8e9ea'; /* 非常に薄いグレー丸 */
+          dot.style.color = '#333';
+        }
+      }
+    });
+  }, { root: flowSlider, threshold: 0.5 });
+  
+  steps.forEach(step => observer.observe(step));
+}
+
+// --- News Show More Toggle ---
+const newsToggleBtn = document.getElementById('newsToggleBtn');
+const newsList = document.querySelector('.ky-news-list');
+if (newsToggleBtn && newsList) {
+  newsToggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    // is-collapsed クラスを付け外しして4件目以降の表示/非表示を切り替え
+    newsList.classList.toggle('is-collapsed');
+    
+    // ボタンのテキストを切り替え
+    if (newsList.classList.contains('is-collapsed')) {
+      newsToggleBtn.innerHTML = '一覧で見る <span class="dot-o"></span>';
+    } else {
+      newsToggleBtn.innerHTML = '閉じる <span class="dot-o"></span>';
+    }
+  });
+}
+
+// --- Category Dropdown Toggle ---
+const catDropdown = document.getElementById('newsCatDropdown');
+const catToggleBtn = document.getElementById('catToggleBtn');
+const catCloseBtn = document.getElementById('catCloseBtn');
+if (catDropdown && catToggleBtn && catCloseBtn) {
+  catToggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    catDropdown.classList.add('is-open');
+  });
+  catCloseBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    catDropdown.classList.remove('is-open');
+  });
+  // 外側クリックで閉じる
+  document.addEventListener('click', (e) => {
+    if (!catDropdown.contains(e.target)) {
+      catDropdown.classList.remove('is-open');
+    }
+  });
+}
 </script>
 </body>
 </html>

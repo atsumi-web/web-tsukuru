@@ -20,8 +20,8 @@
 
   // 2. Define Components HTML
   const headerHTML = `
-<!-- HEADER -->
-<header class="hd" id="hd">
+<!-- HEADER BASE (GREEN LOGO) -->
+<header class="hd hd-base" id="hd-base">
   <a href="#" class="logo">
     <div class="logo-ic">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,10 +32,29 @@
     </div>
     <div class="logo-text">midorigaoka</div>
   </a>
-  <div class="hd-menu" aria-label="メニュー">
+  <div class="hd-menu hd-menu-base" aria-label="メニュー">
     <span></span><span></span><span></span>
   </div>
-</header>`;
+</header>
+
+<!-- HEADER LAYER (WHITE LOGO DYNAMIC CLIP) -->
+<div id="hd-white-layer" style="position: fixed; inset: 0; pointer-events: none; z-index: 1000; clip-path: inset(100% 0 0 0);">
+  <header class="hd" style="background: transparent;">
+    <a href="#" class="logo">
+      <div class="logo-ic">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 6 L40 26 L8 26 Z" />
+          <circle cx="16" cy="38" r="8" />
+          <rect x="28" y="30" width="16" height="16" rx="2" />
+        </svg>
+      </div>
+      <div class="logo-text">midorigaoka</div>
+    </a>
+    <div class="hd-menu" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+</div>`;
 
   const footerHTML = `
 <!-- FOOTER -->
@@ -166,6 +185,39 @@
       hdMenuBtn.addEventListener('click', openMenu);
       menuCloseBtn.addEventListener('click', closeMenu);
       menuBackdrop.addEventListener('click', closeMenu);
+    }
+    
+    // Dynamic Logo Masking Logic (Green/White Split)
+    // Dark sections that require a white logo:
+    const darkSections = document.querySelectorAll('.scrolly, .cta-sec, footer');
+    const whiteLayer = document.getElementById('hd-white-layer');
+
+    if (whiteLayer && darkSections.length > 0) {
+      const updateLogoClip = () => {
+        let activeDarkRect = null;
+        const windowHeight = window.innerHeight;
+        
+        for(let sec of darkSections) {
+          const rect = sec.getBoundingClientRect();
+          // Check if dark section overlaps top screen area (0 ~ 150px)
+          if(rect.top < 150 && rect.bottom > 0) {
+            activeDarkRect = rect;
+            break;
+          }
+        }
+        
+        if(activeDarkRect) {
+          let clipTop = Math.max(0, activeDarkRect.top);
+          let clipBottom = Math.max(0, windowHeight - activeDarkRect.bottom);
+          whiteLayer.style.clipPath = `inset(${clipTop}px 0 ${clipBottom}px 0)`;
+        } else {
+          whiteLayer.style.clipPath = `inset(100% 0 0 0)`; // Hide completely
+        }
+      };
+
+      window.addEventListener('scroll', updateLogoClip, {passive: true});
+      window.addEventListener('resize', updateLogoClip);
+      updateLogoClip();
     }
   };
 

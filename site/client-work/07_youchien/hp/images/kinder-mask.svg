@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 100">
+  <g fill="black" stroke="black" stroke-linejoin="round" stroke-linecap="round">
+    <!-- 煙突 (うしろ) -->
+    <rect x="60" y="10" width="12" height="30" stroke-width="4" />
+    <rect x="58" y="8" width="16" height="6" stroke-width="4" />
+    
+    <!-- 左の建物 -->
+    <rect x="10" y="60" width="40" height="30" stroke-width="2"/>
+    <path d="M 5 60 L 50 60" stroke-width="8"/>
+    
+    <!-- 右の建物 -->
+    <rect x="110" y="60" width="40" height="30" stroke-width="2"/>
+    <path d="M 110 60 L 155 60" stroke-width="8"/>
+
+    <!-- 中央のメイン園舎 -->
+    <rect x="45" y="45" width="70" height="45" stroke-width="2"/>
+    <!-- メインの三角屋根（ひさし付き） -->
+    <path d="M 35 45 L 80 15 L 125 45 Z" stroke-width="8"/>
+  </g>
+</svg>
