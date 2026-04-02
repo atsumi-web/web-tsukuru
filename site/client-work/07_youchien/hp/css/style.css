@@ -329,8 +329,8 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 }
 .mc-ttl{font-family:'Cormorant Infant',var(--serif);font-size:16px;font-weight:600;letter-spacing:.2em;color:var(--tl);margin-bottom:60px;text-transform:uppercase}
 
-.mc-list{list-style:none;display:flex;flex-direction:column;gap:56px}
-@media(max-width:768px){ .mc-list{gap:32px;} }
+.mc-list{list-style:none;display:flex;flex-direction:column;gap:40px}
+@media(max-width:768px){ .mc-list{gap:28px;} }
 .mc-list a{font-family:var(--serif);font-size:18px;line-height:18px;font-weight:400;color:var(--td);letter-spacing:.15em;display:flex;align-items:center;gap:16px;transition:color .3s, transform .3s}
 .mc-list a::before{content:'';display:block;width:0;height:1px;background:var(--gl);transition:width .3s}
 .mc-list a:hover{color:var(--gl);transform:translateX(8px)}
