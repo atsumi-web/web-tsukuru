@@ -24,15 +24,17 @@
   <div class="scrolly-pin" id="scrollyPin">
     <!-- 進捗バー -->
     <div class="s-prog"><div class="s-prog-fill" id="sPF"></div></div>
-    <!-- ヒーロー背景動画（AI生成） -->
+    <!-- ヒーロースライドショー（静止画3枚クロスフェード） -->
     <div class="s-slides" id="sSlides" style="display:block;">
-      <video class="s-slide active" src="images/Two_children_playing_202604021155.mp4" autoplay loop muted playsinline style="object-fit:cover; pointer-events:none;"></video>
+      <img class="s-slide active" src="images/Whisk_20ac29d5b0e0fdb91b7418daa9ea11d7dr.jpeg" alt="" loading="eager"/>
+      <img class="s-slide" src="images/Whisk_c2d09534486674c99314c449ea557795dr.jpeg" alt="" loading="eager"/>
+      <img class="s-slide" src="images/Whisk_c6b2f51fd8054c9b34f428aa04eeeddfdr.jpeg" alt="" loading="lazy"/>
     </div>
     <div class="s-deco1"></div>
     <div class="s-deco2"></div>
     <!-- 縦書き初期タイトル -->
     <div class="s-vert" id="sVert">
-      <h1>子どもの「なんで？」を、<br>いちばん大切にする場所。</h1>
+      <h1>子どもの「なんで？」を、<br>大切に育む場所。</h1>
       <p>Midorigaoka Kindergarten · Since 1985</p>
     </div>
     <!-- スクロールテキスト -->
@@ -303,8 +305,8 @@ const customPlayBtn = document.getElementById('customPlayBtn');
 const vModal = document.getElementById('vModal');
 const vModalClose = document.getElementById('vModalClose');
 const vVideo = document.getElementById('vVideo');
-// サンプルMP4動画 (後でお客様の実際の動画URLに差し替え可能)
-const demoVideoUrl = "https://www.w3schools.com/html/mov_bbb.mp4";
+// AI生成動画に差し替え（クリックで立ち上がる本編動画）
+const demoVideoUrl = "images/Two_children_playing_202604021155.mp4";
 
 sPhoto2.addEventListener('mouseenter', () => customPlayBtn.classList.add('show'));
 sPhoto2.addEventListener('mouseleave', () => customPlayBtn.classList.remove('show'));
