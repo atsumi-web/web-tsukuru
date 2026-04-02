@@ -581,11 +581,18 @@ function updateScrolly() {
   const textY  = startY + (endY - startY) * tProg;
   sText.style.transform = `translateY(${textY}px)`;
 
-  // Photo2スライドアップ: テキスト全体の進行(tEnd=0.60)に合わせ、最後尾が消えかかる絶妙なタイミング(0.55)で出現開始
-  const p2Start = 0.55, p2End = 0.95;
+  // Photo2スライドアップ: テキスト最後尾が消えかかる絶妙なタイミング(0.55)で出現し、少し早めに(0.85)上がりきる
+  const p2Start = 0.55, p2End = 0.85;
   const p2P = Math.max(0, Math.min(1, (prog - p2Start) / (p2End - p2Start)));
   const p2E = 1 - Math.pow(1 - p2P, 3);
   sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
+
+  // 斜めカットの解除（全面表示化）:
+  // 上がりきった後(0.85〜0.95)で左上の切り込み(12vh)を0へ戻し、動画が全画面に広がる瞬間を作る
+  const cStart = 0.85, cEnd = 0.95;
+  const cP = Math.max(0, Math.min(1, (prog - cStart) / (cEnd - cStart)));
+  const clipY = 12 * (1 - cP); // 12vhから0vhへ
+  sPhoto2.style.clipPath = `polygon(0 ${clipY}vh, 100% 0, 100% 100%, 0 100%)`;
 }
 
 window.addEventListener('scroll', updateScrolly, {passive:true});
