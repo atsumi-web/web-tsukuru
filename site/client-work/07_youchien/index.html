@@ -69,10 +69,17 @@ img{display:block;width:100%}
 .s-photo2{position:absolute;inset:0;z-index:6;transform:translateY(100%);will-change:transform;clip-path:polygon(0 12vh, 100% 0, 100% 100%, 0 100%)}
 .s-photo2 img{width:100%;height:100%;object-fit:cover}
 .s-photo2-ov{position:absolute;inset:0;background:rgba(8,22,8,.42)}
-/* PLAY MOVIE button */
-.play-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;width:100px;height:100px;border-radius:50%;border:1px solid rgba(255,255,255,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,.85);font-family:var(--en);font-size:.6rem;letter-spacing:.12em;text-align:center;line-height:1.5;cursor:pointer;backdrop-filter:blur(2px);transition:background .3s,border-color .3s}
-.play-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.8)}
+/* PLAY MOVIE Custom Cursor */
+.play-btn{position:fixed;top:0;left:0;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.35);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:var(--en);font-size:.6rem;letter-spacing:.12em;text-align:center;line-height:1.5;pointer-events:none;z-index:9999;opacity:0;transform:translate(-50%,-50%) scale(0.5);transition:opacity .3s ease,transform .3s ease}
+.play-btn.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .play-btn::before{content:'▶';font-size:.9rem;margin-bottom:6px;display:block}
+/* Video Modal */
+.v-modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.v-modal.show{opacity:1;pointer-events:auto}
+.v-modal-close{position:absolute;top:40px;right:40px;color:#fff;font-size:3rem;font-weight:200;line-height:1;cursor:pointer;z-index:10;width:50px;height:50px;display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.v-modal-close:hover{transform:rotate(90deg)}
+.v-modal-body{width:80%;max-width:1000px;aspect-ratio:16/9;background:#000}
+.v-modal-body iframe{width:100%;height:100%;display:block;border:none}
 /* Scroll indicator */
 .s-btm{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.42);font-family:var(--en);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;z-index:3;opacity:0;animation:fadeA 1s 1.6s forwards}
 .s-btm::after{content:'';display:block;width:1px;height:32px;background:rgba(255,255,255,.25)}
@@ -344,10 +351,9 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
       <p>みどりが丘幼稚園は、その「小さな発見」に、いつもそっと寄り添います。</p>
     </div>
     <!-- Photo 2（スライドアップ）-->
-    <div class="s-photo2" id="sPhoto2">
+    <div class="s-photo2" id="sPhoto2" style="cursor:none;">
       <img src="https://images.unsplash.com/photo-1440581572325-0bea30afa8a2?w=1800&q=80" alt="" loading="eager"/>
       <div class="s-photo2-ov"></div>
-      <div class="play-btn">PLAY<br>MOVIE</div>
     </div>
     <div class="s-yr">2026 · MIDORIGAOKA</div>
     <div class="s-btm">Scroll Down</div>
@@ -623,6 +629,42 @@ function parax(){
 }
 window.addEventListener('scroll', parax, {passive:true});
 parax();
+
+// --- Custom Cursor & Video Modal ---
+const customPlayBtn = document.getElementById('customPlayBtn');
+const vModal = document.getElementById('vModal');
+const vModalClose = document.getElementById('vModalClose');
+const vIframe = document.getElementById('vIframe');
+const demoVideoUrl = "https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1&mute=1";
+
+sPhoto2.addEventListener('mouseenter', () => customPlayBtn.classList.add('show'));
+sPhoto2.addEventListener('mouseleave', () => customPlayBtn.classList.remove('show'));
+sPhoto2.addEventListener('mousemove', (e) => {
+  customPlayBtn.style.left = e.clientX + 'px';
+  customPlayBtn.style.top = e.clientY + 'px';
+});
+
+sPhoto2.addEventListener('click', () => {
+  vIframe.src = demoVideoUrl;
+  vModal.classList.add('show');
+  customPlayBtn.classList.remove('show');
+});
+
+vModalClose.addEventListener('click', () => {
+  vModal.classList.remove('show');
+  vIframe.src = '';
+});
 </script>
+
+<!-- Custom Cursor element -->
+<div class="play-btn" id="customPlayBtn">PLAY<br>MOVIE</div>
+
+<!-- Video Modal -->
+<div class="v-modal" id="vModal">
+  <div class="v-modal-close" id="vModalClose">×</div>
+  <div class="v-modal-body">
+    <iframe id="vIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
 </body>
 </html>
