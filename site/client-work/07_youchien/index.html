@@ -79,7 +79,7 @@ img{display:block;width:100%}
 .v-modal-close{position:absolute;top:40px;right:40px;color:#fff;font-size:3rem;font-weight:200;line-height:1;cursor:pointer;z-index:10;width:50px;height:50px;display:flex;align-items:center;justify-content:center;transition:transform .3s}
 .v-modal-close:hover{transform:rotate(90deg)}
 .v-modal-body{width:80%;max-width:1000px;aspect-ratio:16/9;background:transparent;border-radius:24px;overflow:hidden;box-shadow:0 15px 45px rgba(0,0,0,.15)}
-.v-modal-body iframe{width:100%;height:100%;display:block;border:none}
+.v-modal-body video{width:100%;height:100%;display:block;border:none;border-radius:inherit;outline:none;background:#000}
 /* Scroll indicator */
 .s-btm{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.42);font-family:var(--en);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;z-index:3;opacity:0;animation:fadeA 1s 1.6s forwards}
 .s-btm::after{content:'';display:block;width:1px;height:32px;background:rgba(255,255,255,.25)}
@@ -548,7 +548,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 <div class="v-modal" id="vModal">
   <div class="v-modal-close" id="vModalClose">×</div>
   <div class="v-modal-body">
-    <iframe id="vIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <video id="vVideo" controls playsinline></video>
   </div>
 </div>
 
@@ -645,8 +645,9 @@ parax();
 const customPlayBtn = document.getElementById('customPlayBtn');
 const vModal = document.getElementById('vModal');
 const vModalClose = document.getElementById('vModalClose');
-const vIframe = document.getElementById('vIframe');
-const demoVideoUrl = "https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1&mute=1";
+const vVideo = document.getElementById('vVideo');
+// サンプルMP4動画 (後でお客様の実際の動画URLに差し替え可能)
+const demoVideoUrl = "https://www.w3schools.com/html/mov_bbb.mp4";
 
 sPhoto2.addEventListener('mouseenter', () => customPlayBtn.classList.add('show'));
 sPhoto2.addEventListener('mouseleave', () => customPlayBtn.classList.remove('show'));
@@ -656,14 +657,17 @@ sPhoto2.addEventListener('mousemove', (e) => {
 });
 
 sPhoto2.addEventListener('click', () => {
-  vIframe.src = demoVideoUrl;
+  vVideo.src = demoVideoUrl;
   vModal.classList.add('show');
   customPlayBtn.classList.remove('show');
+  vVideo.play().catch(e=>console.log('Autoplay prevented:', e));
 });
 
 vModalClose.addEventListener('click', () => {
   vModal.classList.remove('show');
-  vIframe.src = '';
+  vVideo.pause();
+  vVideo.currentTime = 0;
+  vVideo.src = '';
 });
 </script>
 </body>
