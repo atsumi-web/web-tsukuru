@@ -314,20 +314,20 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 
 /* CLOSEボタン */
 .menu-close-btn{position:absolute;top:56px;right:64px;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;z-index:10}
-.mcb-lines{width:48px;height:48px;position:relative}
+.mcb-lines{width:56px;height:56px;position:relative}
 .mcb-lines::before,.mcb-lines::after{content:'';position:absolute;top:50%;left:0;width:100%;height:1px;background:var(--td);transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .mcb-lines::before{transform:rotate(90deg)}
 .mcb-lines::after{transform:rotate(0deg)}
 .menu-close-btn:hover .mcb-lines::before{transform:rotate(180deg)}
 .menu-close-btn:hover .mcb-lines::after{transform:rotate(90deg)}
-.menu-close-btn span{font-family:var(--en);font-size:.5rem;letter-spacing:.25em;color:var(--tl)}
+.menu-close-btn span{font-family:var(--en);font-size:11px;letter-spacing:.3em;color:var(--tl)}
 
 /* コンテンツ2カラム */
 .menu-cols{width:100%;padding:25vh 80px 80px 100px;display:grid;grid-template-columns:1fr 1.3fr;gap:60px}
 @media(max-width:768px){
   .menu-cols{grid-template-columns:1fr;padding:120px 40px 60px;height:auto}
 }
-.mc-ttl{font-family:'Cormorant Infant',var(--serif);font-size:14px;font-weight:600;letter-spacing:.2em;color:var(--tl);margin-bottom:60px;text-transform:uppercase}
+.mc-ttl{font-family:'Cormorant Infant',var(--serif);font-size:16px;font-weight:600;letter-spacing:.2em;color:var(--tl);margin-bottom:60px;text-transform:uppercase}
 
 .mc-list{list-style:none;display:flex;flex-direction:column;gap:56px}
 @media(max-width:768px){ .mc-list{gap:32px;} }
