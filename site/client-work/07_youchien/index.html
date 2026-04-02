@@ -571,8 +571,8 @@ function updateScrolly() {
   const liftPx = vertUp * (window.innerHeight * 1.1);
   sVert.style.transform = `translateY(-${liftPx}px)`;
 
-  // テキスト上昇: 見出しが消えきる少し前(0.08)から出現させ、間の長さを解消
-  const tStart = 0.08, tEnd = 0.65;
+  // テキスト上昇: スクロール直後(0.00)から超速で追従させ、「間」を完全になくす
+  const tStart = 0.00, tEnd = 0.45;
   const tProg = Math.max(0, Math.min(1, (prog - tStart) / (tEnd - tStart)));
   const tH = sText.offsetHeight;
   // 開始位置を画面ジャスト(1.0)にし、最初の「空回り」期間を削除
