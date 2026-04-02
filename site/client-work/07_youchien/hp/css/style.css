@@ -37,7 +37,7 @@ img{display:block;width:100%}
 
 /* ── HERO SCROLLY ── */
 .scrolly{position:relative;height:800vh}
-.scrolly-pin{position:sticky;top:0;height:100vh;overflow:hidden;background:#5c8a50}
+.scrolly-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#5c8a50}
 /* スライドショー */
 .s-slides{position:absolute;inset:0;z-index:1;display:none}
 .s-slides::after{content:'';position:absolute;inset:0;background:rgba(30,61,26,.3);z-index:1;pointer-events:none}
