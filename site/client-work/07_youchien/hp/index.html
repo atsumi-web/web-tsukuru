@@ -235,27 +235,36 @@ const sText    = document.getElementById('sText');
 const sPhoto2  = document.getElementById('sPhoto2');
 const sPF      = document.getElementById('sPF');
 
+// --- Window Dimensions Cache (Prevent mobile scroll jitter) ---
+let winW = window.innerWidth;
+let winH = window.innerHeight;
+window.addEventListener('resize', () => {
+  if (window.innerWidth !== winW) {
+    winW = window.innerWidth;
+    winH = window.innerHeight;
+  }
+});
+
 function updateScrolly() {
   if (!scrolly) return;
   const top  = scrolly.getBoundingClientRect().top;
-  const totH = scrolly.offsetHeight - innerHeight;
+  const totH = scrolly.offsetHeight - winH;
   const prog = Math.max(0, Math.min(1, -top / totH));
 
   // 進捗バー
   sPF.style.width = (prog * 100) + '%';
 
-  // 縦書きタイトル: 上昇速度をほんの少し緩め(0.25まで)、テキストと交差させる
+  // 縦書きタイトル
   const vertUp = Math.min(1, prog / 0.25);
   sVert.style.opacity = 1;
-  const liftPx = vertUp * (window.innerHeight * 1.1);
+  const liftPx = vertUp * (winH * 1.1);
   sVert.style.transform = `translateY(-${liftPx}px)`;
 
-  // テキスト上昇: 見出しとの「車間距離」を十分に広げるため、意図的に遅れて追従開始
+  // テキスト上昇
   const tStart = 0.10, tEnd = 0.60;
   const tProg = Math.max(0, Math.min(1, (prog - tStart) / (tEnd - tStart)));
   const tH = sText.offsetHeight;
-  // 画面のはるか下(1.25)に沈静させ、十分な余白が生まれてから姿を現すようにする
-  const startY = window.innerHeight * 1.25;
+  const startY = winH * 1.25;
   const endY   = -tH - 60;
   const textY  = startY + (endY - startY) * tProg;
   sText.style.transform = `translateY(${textY}px)`;
@@ -266,12 +275,11 @@ function updateScrolly() {
   const p2E = 1 - Math.pow(1 - p2P, 3);
   sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
 
-  // 斜めカットの解除（全面表示化）:
-  // 上がりきった後(0.85〜0.95)で左上の切り込み(12vh)を0へ戻し、動画が全画面に広がる瞬間を作る
+  // 斜めカットの解除（全面表示化）
   const cStart = 0.85, cEnd = 0.95;
   const cP = Math.max(0, Math.min(1, (prog - cStart) / (cEnd - cStart)));
-  const clipY = 12 * (1 - cP); // 12vhから0vhへ
-  sPhoto2.style.clipPath = `polygon(0 ${clipY}vh, 100% 0, 100% 100%, 0 100%)`;
+  const clipY = 12 * (1 - cP); // vhの代わりに%を使うことでリサイズバグを防止
+  sPhoto2.style.clipPath = `polygon(0 ${clipY}%, 100% 0, 100% 100%, 0 100%)`;
 }
 
 window.addEventListener('scroll', updateScrolly, {passive:true});
