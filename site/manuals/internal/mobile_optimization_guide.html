@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -74,15 +74,26 @@
                 <li><strong>デスクトップ</strong>: <code>text-5xl</code> ~ <code>text-7xl</code> (意図した迫力を維持)</li>
             </ul>
 
-            <h3>改行・禁則処理</h3>
+            <h3>改行・禁則処理の「ハイエンド（Kiyasuku）基準」</h3>
+            <p><strong>【重要】単価50万円〜のハイエンド案件では、小手先の <code>&lt;br&gt;</code> 隠しは使用禁止とする。</strong></p>
             <ul>
-                <li><strong>NG</strong>: <code>keep-all</code> / <code>whitespace-nowrap</code> （本文・引用文）
-                    <ul><li>スマホ幅で「と」「が」などが1文字だけ改行されて浮く原因になるため<strong>使用厳禁</strong>。</li></ul>
+                <li><strong>NG</strong>: <code>&lt;br class="md:hidden"&gt;</code> や <code>&lt;br class="pc-only"&gt;</code>
+                    <ul><li>PCとスマホでは最適な1行の文字数が全く違うため、brタグの表示/非表示だけでごまかすと「て、」「に、」のように1文字だけが改行されるダサい「泣き別れ」が発生する。保守性も最悪。</li></ul>
                 </li>
-                <li><strong>OK</strong>: <code>br.md:hidden</code> （見出し）
-                    <ul><li>見出しなど、意図した位置で切りたい場合のみ使用。</li></ul>
+                <li><strong>OK</strong>: 見出しブロック（HTML）の完全分離
+                    <ul><li><code>&lt;h2 class="pc-only"&gt;</code> と <code>&lt;h2 class="sp-only"&gt;</code> を作り、PC用とスマホ用で「それぞれ最も美しい位置で改行された別の文章ブロック」を用意する。これが最高級のレスポンシブ文字組み。</li></ul>
                 </li>
             </ul>
+
+            <h3>エディトリアル（高級誌）タイポグラフィの標準値</h3>
+            <div style="background:#f8fafc; border-left:4px solid #C5A059; padding:15px; margin: 20px 0;">
+                <p>スマホ画面での圧迫感を取り除き、ハイエンドな「抜け感」を演出するための3原則：</p>
+                <ul>
+                    <li><strong>行間 (Line Height):</strong> <code>2.1</code> 〜 <code>2.4</code>（通常の1.6では詰まりすぎる）</li>
+                    <li><strong>文字間 (Letter Spacing):</strong> <code>0.1em</code> 〜 <code>0.15em</code>（空気をはらませる）</li>
+                    <li><strong>文字色 (Text Color):</strong> 完全な黒 <code>#000</code> は避け、<code>#333</code> や <code>#555</code> に落とす</li>
+                </ul>
+            </div>
 
             <h2>3. レイアウト順序（Voiceセクション等）</h2>
             <p>「誰が発言しているか」を直感的に伝える順序。</p>

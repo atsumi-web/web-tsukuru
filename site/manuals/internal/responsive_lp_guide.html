@@ -225,6 +225,16 @@
                 <p><strong>ルール:</strong> 大→小で余白を縮小。重要要素（タイトル下、CTA前）は余白を確保。下部余白は必ず40px以上。</p>
             </div>
 
+            <h3>【ハイエンド美学】エディトリアル・スペーシング</h3>
+            <div class="rule-box" style="border-color: #C5A059;">
+                <p>単価50万円〜のハイエンド案件（高級感・洗練さを重視する場合）では、計算された「大きな余白」と「文字の抜け感」が命になります。</p>
+                <ul>
+                    <li><strong>Line Height（行間）:</strong> <code>2.1</code> 〜 <code>2.4</code> （※通常の1.6だと窮屈に見える）</li>
+                    <li><strong>Letter Spacing（文字間）:</strong> <code>0.12em</code> 等の広め設定</li>
+                    <li><strong>文字色:</strong> 真っ黒（#000）を避け、<code>#333</code> や <code>#555</code> で圧迫感を消す</li>
+                </ul>
+            </div>
+
             <h2>3. FOUC（一瞬の崩れ）対策</h2>
 
             <h3>Critical CSS（HTML内）に含めるもの</h3>
@@ -253,7 +263,7 @@
                 <code>&lt;link rel="stylesheet" href="css/optional.css" media="print" onload="this.media='all'" /&gt;</code>
             </div>
 
-            <h2>4. レスポンシブカードレイアウト</h2>
+            <h2>4. レスポンシブカードレイアウト構成</h2>
 
             <h3>グリッドテンプレート標準</h3>
             <div class="rule-box">
@@ -267,6 +277,16 @@
                 <code>@media (max-width: 1200px) { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }</code>
                 
                 <p style="margin-top:15px;"><strong>ルール:</strong> 3→2→1の段階的縮小。1列時はmax-widthで幅制限。</p>
+            </div>
+
+            <h3>【厳禁】モバイルでの「Flex圧迫」と解決策</h3>
+            <div class="rule-box bad" style="border-color: #dc3545; background: #fff5f5;">
+                <p>PC時の <code>display: flex</code> と <code>width: 130px</code> 等の固定数値をモバイルに持ち越すと、テキスト領域が極端に数ピクセルに押し込まれ、「1細2行」のような崩壊を起こします。</p>
+                <p style="margin-top:10px;"><strong>解決策（解放プロトコル）:</strong></p>
+                <ul>
+                    <li>カードレイアウトはモバイルで <strong><code>flex-direction: column</code>（縦積み）</strong> にして画像をフル幅バナー化する。</li>
+                    <li>ニュース等のリストはスマホ専用の <strong><code>display: grid</code></strong>（上段にメタ情報、下段に画像とテキスト）で再設計する。</li>
+                </ul>
             </div>
 
             <h2>5. ヘッダーメニュー設計</h2>
