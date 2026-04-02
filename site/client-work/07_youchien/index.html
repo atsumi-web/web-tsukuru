@@ -541,6 +541,17 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
   </div>
 </footer>
 
+<!-- Custom Cursor element -->
+<div class="play-btn" id="customPlayBtn">PLAY<br>MOVIE</div>
+
+<!-- Video Modal -->
+<div class="v-modal" id="vModal">
+  <div class="v-modal-close" id="vModalClose">×</div>
+  <div class="v-modal-body">
+    <iframe id="vIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
+
 <script>
 // Header
 const hd = document.getElementById('hd');
@@ -655,16 +666,5 @@ vModalClose.addEventListener('click', () => {
   vIframe.src = '';
 });
 </script>
-
-<!-- Custom Cursor element -->
-<div class="play-btn" id="customPlayBtn">PLAY<br>MOVIE</div>
-
-<!-- Video Modal -->
-<div class="v-modal" id="vModal">
-  <div class="v-modal-close" id="vModalClose">×</div>
-  <div class="v-modal-body">
-    <iframe id="vIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
-  </div>
-</div>
 </body>
 </html>
