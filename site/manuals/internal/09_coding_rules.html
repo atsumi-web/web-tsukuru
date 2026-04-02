@@ -862,7 +862,11 @@ top: calc(100% - 260px);</pre>
             </div>
             <div class="rule-box good">
                 <span class="badge badge-good">OK：見出しブロックごとPC用とSP用で分離する</span>
-                <p>スマホでは物理的に「15文字前後」しか1行に入らない。無理に一本化せず、<code>&lt;h2 class="pc-only"&gt;</code> と <code>&lt;h2 class="sp-only"&gt;</code> のテキストブロックごと完全に分離し、スマホの幅に合わせて計算された完璧な改行リズムを持つ独自テキストを出力する。</p>
+                <p>スマホでは物理的に「15文字前後」しか1行に入らないため、<code>&lt;h2 class="pc-only"&gt;</code> と <code>&lt;h2 class="sp-only"&gt;</code> のブロックごと完全に分離し、スマホの幅に合わせた最適な改行リズムで表示する。</p>
+                <div style="margin-top:15px; padding:15px; background:rgba(255,255,255,0.5); border-radius:4px;">
+                    <span style="font-size:0.9em; display:block; margin-bottom:5px;"><strong>📖 詳細はメインマニュアルへ集約：</strong></span>
+                    <a href="mobile_optimization_guide.html#typography" style="color:#28a745; font-weight:bold; text-decoration:none;"><i class="fa-solid fa-link"></i> モバイル最適化ガイド（タイポグラフィ基準・エディトリアル文字組み）</a>
+                </div>
             </div>
 
             <h2>事例15：スマホで見るとテキストが縦長によじれて極端に読みにくい（2026-04-03）</h2>
