@@ -327,7 +327,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 @media(max-width:768px){
   .menu-cols{grid-template-columns:1fr;padding:120px 40px 60px;height:auto}
 }
-.mc-ttl{font-family:var(--en);font-size:.55rem;font-weight:400;letter-spacing:.25em;color:var(--tm);margin-bottom:80px}
+.mc-ttl{font-family:'Cormorant Infant',var(--serif);font-size:14px;font-weight:600;letter-spacing:.2em;color:var(--tl);margin-bottom:60px;text-transform:uppercase}
 
 .mc-list{list-style:none;display:flex;flex-direction:column;gap:56px}
 @media(max-width:768px){ .mc-list{gap:32px;} }
