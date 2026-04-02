@@ -80,6 +80,60 @@
   入園のご相談
 </a>`;
 
+  const menuOverlayHTML = `
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <div class="menu-panel">
+    <div class="menu-border"></div>
+    <div class="menu-close-btn" id="menuCloseBtn">
+      <div class="mcb-lines"></div>
+      <span>CLOSE</span>
+    </div>
+    
+    <div class="menu-cols">
+      <!-- CONTENTS Column -->
+      <div class="menu-col menu-col-left">
+        <h3 class="mc-ttl">CONTENTS</h3>
+        <ul class="mc-list">
+          <li><a href="#">私たちについて</a></li>
+          <li><a href="#">私たちの目指す未来</a></li>
+          <li><a href="#">みどりが丘のあゆみ</a></li>
+          <li><a href="#">コラボレーション</a></li>
+          <li><a href="#">お知らせ</a></li>
+          <li><a href="#">保護者のお客さまへ</a></li>
+          <li><a href="#">園の案内</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </div>
+      
+      <!-- SPECIAL Column -->
+      <div class="menu-col menu-col-right">
+        <h3 class="mc-ttl">SPECIAL</h3>
+        <div class="mc-cards">
+          <a href="#" class="mc-card">
+            <div class="mc-img"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80" alt=""></div>
+            <div class="mc-info">
+              <h4 class="serif-title">A Piece of Nature.</h4>
+              <p>その庭には、わたしがいた。</p>
+            </div>
+            <div class="mc-dot"></div>
+          </a>
+          <a href="#" class="mc-card arch">
+            <div class="mc-img"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400&q=80" alt=""></div>
+            <div class="mc-info">
+              <h4>はぐくみ</h4>
+              <p>想いを紡ぐしごと。</p>
+            </div>
+            <div class="mc-dot"></div>
+          </a>
+        </div>
+        <a href="#" class="mc-btn"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>資料を請求する<span class="mc-btn-dot"></span></a>
+      </div>
+    </div>
+  </div>
+</div>`;
+
   // 3. Inject Components into DOM when parsing allows
   const injectComponents = () => {
     // Insert Header at the beginning of body
@@ -90,6 +144,8 @@
     document.body.insertAdjacentHTML('beforeend', footerHTML);
     // Insert CTA
     document.body.insertAdjacentHTML('beforeend', ctaHTML);
+    // Insert Menu Overlay
+    document.body.insertAdjacentHTML('beforeend', menuOverlayHTML);
 
     // Re-bind Header Scroll Event since we recreated DOM
     const hd = document.getElementById('hd');
@@ -97,7 +153,20 @@
       window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 60), {passive:true});
     }
 
-    // Re-bind Mobile Menu Logic if any (currently CSS based hover, but good placeholder)
+    // Initialize Menu Logic
+    const hdMenuBtn = document.querySelector('.hd-menu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuCloseBtn = document.getElementById('menuCloseBtn');
+    const menuBackdrop = document.getElementById('menuBackdrop');
+
+    if (hdMenuBtn && menuOverlay && menuCloseBtn && menuBackdrop) {
+      const openMenu = () => menuOverlay.classList.add('show');
+      const closeMenu = () => menuOverlay.classList.remove('show');
+      
+      hdMenuBtn.addEventListener('click', openMenu);
+      menuCloseBtn.addEventListener('click', closeMenu);
+      menuBackdrop.addEventListener('click', closeMenu);
+    }
   };
 
   // Run injection
