@@ -565,8 +565,8 @@ function updateScrolly() {
   // 進捗バー
   sPF.style.width = (prog * 100) + '%';
 
-  // 縦書きタイトル: スクロール直後から上昇開始
-  const vertUp = Math.min(1, prog / 0.15);
+  // 縦書きタイトル: 上昇速度をほんの少し緩め(0.25まで)、テキストと交差させる
+  const vertUp = Math.min(1, prog / 0.25);
   sVert.style.opacity = 1;
   const liftPx = vertUp * (window.innerHeight * 1.1);
   sVert.style.transform = `translateY(-${liftPx}px)`;
