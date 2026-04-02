@@ -572,11 +572,11 @@ function updateScrolly() {
   sVert.style.transform = `translateY(-${liftPx}px)`;
 
   // テキスト上昇: スクロール直後(0.00)から超速で追従させ、「間」を完全になくす
-  const tStart = 0.00, tEnd = 0.45;
+  const tStart = 0.00, tEnd = 0.40;
   const tProg = Math.max(0, Math.min(1, (prog - tStart) / (tEnd - tStart)));
   const tH = sText.offsetHeight;
-  // 開始位置を画面ジャスト(1.0)にし、最初の「空回り」期間を削除
-  const startY = window.innerHeight;
+  // 初期状態ですでに10%ほど見切れており、スクロールした瞬間即座に文字が読めるようにする
+  const startY = window.innerHeight * 0.90;
   const endY   = -tH - 60;
   const textY  = startY + (endY - startY) * tProg;
   sText.style.transform = `translateY(${textY}px)`;
