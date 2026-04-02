@@ -349,7 +349,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:80px 80px 44px}
 
 .mc-info h4{font-family:'Cormorant Infant',var(--serif);font-size:18px;line-height:18px;font-weight:400;color:var(--td);margin-bottom:8px;letter-spacing:.05em}
 .mc-info .serif-title{font-family:'Cormorant Infant',var(--serif);font-size:18px;line-height:18px;font-weight:400;letter-spacing:.02em;font-style:normal}
-.mc-info p{font-size:.55rem;color:var(--tl);letter-spacing:.1em}
+.mc-info p{font-size:12px;color:var(--tl);letter-spacing:.1em;margin-top:6px;line-height:1.4}
 .mc-dot{width:4px;height:4px;background:var(--tl);border-radius:50%;transition:all .3s}
 
 /* CTA Button */
