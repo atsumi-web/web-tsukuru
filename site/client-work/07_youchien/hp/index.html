@@ -564,13 +564,13 @@ function updateScrolly() {
 
   // Photo2スライドアップ: テキスト最後尾が消えかかる絶妙なタイミング(0.55)で出現し、少し早めに(0.85)上がりきる
   if (sPhoto2) {
-    const p2Start = 0.55, p2End = 0.85;
+    const p2Start = 0.55, p2End = 0.95;
     const p2P = Math.max(0, Math.min(1, (prog - p2Start) / (p2End - p2Start)));
-    const p2E = 1 - Math.pow(1 - p2P, 3);
+    const p2E = p2P; // 定速（リニア）のスクロール追従
     sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
 
     // 斜めカットの解除（全面表示化）
-    const cStart = 0.85, cEnd = 0.95;
+    const cStart = 0.70, cEnd = 0.95;
     const cP = Math.max(0, Math.min(1, (prog - cStart) / (cEnd - cStart)));
     const clipY = 12 * (1 - cP); // vhの代わりに%を使うことでリサイズバグを防止
     sPhoto2.style.clipPath = `polygon(0 ${clipY}%, 100% 0, 100% 100%, 0 100%)`;
