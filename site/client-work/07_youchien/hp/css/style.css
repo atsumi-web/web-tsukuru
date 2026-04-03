@@ -223,7 +223,7 @@ img{display:block;width:100%}
 /* Left Text */
 .ky-piece-left { padding-top: 40px; }
 .piece-en { font-family: var(--en); font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.05em; color: var(--tm); margin-bottom: 30px; text-transform: uppercase; }
-.piece-ja { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; letter-spacing: 0.15em; line-height: 1.8; color: var(--tm); margin-bottom: 30px; }
+.piece-ja { font-family: var(--serif); font-size: clamp(1.6rem, 2vw, 2.2rem); font-weight: 500; letter-spacing: 0.15em; line-height: 1.8; color: var(--tm); margin-bottom: 30px; }
 .piece-desc p { font-family: var(--serif); font-size: 14.5px; font-weight: 500; line-height: 2.2; letter-spacing: 0.1em; color: var(--tm); margin-bottom: 2em; opacity: 0.9; }
 
 /* Center Image */
