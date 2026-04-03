@@ -1233,9 +1233,9 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
   display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
   padding: 40px 48px;
-  transition: transform 0.8s cubic-bezier(0.2,1,0.2,1);
+  transition: padding-bottom 0.8s cubic-bezier(0.2,1,0.2,1);
 }
-.mz-ns-link:hover .mz-ns-tx { transform: translateY(-8px); }
+.mz-ns-link:hover .mz-ns-tx { padding-bottom: 48px; }
 .mz-ns-en { font-family: 'Cormorant Infant', serif; font-size: clamp(24px, 3vw, 36px); letter-spacing: 0.15em; display: block; margin-bottom: 8px; opacity: 1; color: #fff; }
 .mz-ns-ja { font-family: var(--serif); font-size: clamp(14px, 1.2vw, 16px); letter-spacing: 0.2em; color: rgba(255,255,255,0.85); display: block; }
 
