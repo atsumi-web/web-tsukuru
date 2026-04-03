@@ -241,7 +241,7 @@
           entry.target.classList.add('vis');
         }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
 
     document.querySelectorAll('.fu').forEach(el => observer.observe(el));
   };

@@ -24,13 +24,13 @@ img{display:block;width:100%}
 /* --- Global Animation (.fu -> .vis) --- */
 .fu {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(80px);
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-.fu[data-d="1"] { transition-delay: 0.2s; }
-.fu[data-d="2"] { transition-delay: 0.4s; }
-.fu[data-d="3"] { transition-delay: 0.6s; }
+.fu[data-d="1"] { transition-delay: 0.25s; }
+.fu[data-d="2"] { transition-delay: 0.5s; }
+.fu[data-d="3"] { transition-delay: 0.75s; }
 .fu.vis {
   opacity: 1;
   transform: translateY(0);
