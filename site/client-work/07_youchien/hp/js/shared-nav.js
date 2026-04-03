@@ -233,4 +233,23 @@
     injectComponents();
   }
 
+  // 4. Global Animation Observer (.fu -> .vis fade up)
+  const initAnimationObserver = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('vis');
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+
+    document.querySelectorAll('.fu').forEach(el => observer.observe(el));
+  };
+  
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimationObserver);
+  } else {
+    initAnimationObserver();
+  }
+
 })();
