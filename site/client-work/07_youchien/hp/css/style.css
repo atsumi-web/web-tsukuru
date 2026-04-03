@@ -1215,10 +1215,16 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 /* Positioning Modifiers */
 .ky-pos-tl { top: -10%; left: -15%; right: auto; bottom: auto; --ky-rot: rotate(180deg); --ky-drop-start: translateY(40px); }
 .ky-pos-br { bottom: -10%; right: -15%; top: auto; left: auto; --ky-rot: rotate(0deg); --ky-drop-start: translateY(40px); } /* rotate 0 -> local Y is down, so +40px drops it DOWN. Wait, rotate(0) translateY(40px) = shifts down. Target is 0. So it starts down and moves UP to 0. If we want it to drop from above, we need translateY(-40px). Let's use -40px. */
-.ky-pos-tl { top: -10%; left: -15%; right: auto; bottom: auto; --ky-rot: rotate(180deg); --ky-drop-start: translateY(40px); } /* rotate 180 -> local Y is up. translateY(40) = shifts local down = visual UP. Start UP, end 0. Drops down. */
+.ky-pos-tl { top: -10%; left: -15%; right: auto; bottom: auto; --ky-rot: rotate(180deg); --ky-drop-start: translateY(40px); } 
 .ky-pos-br { bottom: -10%; right: -15%; top: auto; left: auto; --ky-rot: rotate(0deg); --ky-drop-start: translateY(-40px); }
-.ky-pos-tr { top: -10%; right: -15%; bottom: auto; left: auto; --ky-rot: rotate(270deg); --ky-drop-start: translateX(-40px); } /* Drop from above: rotate 270 means X is vertical. */
+.ky-pos-tr { top: -10%; right: -15%; bottom: auto; left: auto; --ky-rot: rotate(270deg); --ky-drop-start: translateX(-40px); } 
 .ky-pos-bl { bottom: -10%; left: -15%; top: auto; right: auto; --ky-rot: rotate(90deg); --ky-drop-start: translateX(40px); }
+
+/* "Out" positioning (less overlap with frame) */
+.ky-pos-tl-out { top: -28%; left: -28%; right: auto; bottom: auto; --ky-rot: rotate(180deg); --ky-drop-start: translateY(40px); }
+.ky-pos-br-out { bottom: -28%; right: -28%; top: auto; left: auto; --ky-rot: rotate(0deg); --ky-drop-start: translateY(-40px); }
+.ky-pos-tr-out { top: -28%; right: -28%; bottom: auto; left: auto; --ky-rot: rotate(270deg); --ky-drop-start: translateX(-40px); }
+.ky-pos-bl-out { bottom: -28%; left: -28%; top: auto; right: auto; --ky-rot: rotate(90deg); --ky-drop-start: translateX(40px); }
 .ky-adm-blob-img {
   width: 100%;
   height: 100%;
