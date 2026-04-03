@@ -934,6 +934,25 @@ top: calc(100% - 260px);</pre>
                 <p style="margin-top: 10px;">「<code>docs/project_brief.md</code> を読んで作業してください」とAntigravityに伝えるだけで即スタートできる。</p>
 
 
+            <h2>事例12：スクロール連動アニメーションの中間が重く（遅く）感じる（2026-04-03）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p>ページをスクロールした際、連動して動くアニメーション（スライドアップ等）の入りと終わりはシュッと早いのに、中間部分でブレーキがかかったように粘り気があり、何度もスクロールしないと進まない。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と解決策</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因：</strong> スクロール進捗（scroll progress）に直接連動させているのに、さらにCSSアニメ用の<strong>イージング数式（ease-out cubic など）を二重に掛けてしまった</strong>ため。ユーザーの物理的な指の慣性と、数式のブレーキが喧嘩して中間地点でスタックする。</li>
+                    <li><strong>解決策：</strong> スクロール量に直接連動させるアニメーションでは、数式を外して<strong>完全な等速（直列リニア： p2E = p2P）で追従</strong>させる。</li>
+                    <li><strong>ルール：</strong> 時間軸のアニメーション（Hover等）にはイージングをかける。スクロール軸（物理軸）のアニメーションは『Linear（リニア）』を絶対の基準とする。</li>
+                </ul>
+                <pre style="background: #f6f8fa; padding: 15px; border-radius: 4px; overflow-x: auto;">/* NG: スクロール量に対してイージング（3乗）を掛ける */
+const p2E = 1 - Math.pow(1 - p2P, 3);
+
+/* OK: スクロール量に等速（直接）で追従させる */
+const p2E = p2P;</pre>
+            </div>
+
         </main>
 
         <footer>
