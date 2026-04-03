@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 @import url('blob-components.css');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -753,7 +753,7 @@ img{display:block;width:100%}
 .ky-cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1080px; margin: 0 auto; }
 .ky-cta-right h2 { font-family: var(--en); font-size: 3rem; font-weight: 300; letter-spacing: 0.05em; color: var(--td); margin-bottom: 24px; text-transform: uppercase; }
 .ky-cta-right p { font-size: 13px; line-height: 2.2; color: var(--tm); margin-bottom: 40px; }
-.ky-btn { display: inline-flex; border-bottom: 1px solid var(--td); padding-bottom: 8px; font-family: var(--en); font-size: 0.8rem; letter-spacing: 0.15em; color: var(--td); transition: color 0.3s, border-color 0.3s; }
+.ky-btn { display: inline-flex; border-bottom: 1px solid var(--td); padding-bottom: 8px; font-family: var(--serif); font-size: 18px; font-weight: 500; letter-spacing: 0.15em; color: var(--td); transition: color 0.3s, border-color 0.3s; }
 .ky-btn:hover { color: var(--gl); border-color: var(--gl); }
 
 /* -----------------------------------
@@ -1231,7 +1231,8 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   color: var(--tm);
 }
 .ky-adm-desc {
-  font-size: 14px;
+  font-family: var(--serif);
+  font-size: 15px;
   line-height: 2.2;
   letter-spacing: 0.1em;
   margin-bottom: 40px;
