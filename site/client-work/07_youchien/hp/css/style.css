@@ -527,10 +527,14 @@ img{display:block;width:100%}
 /* 繧ｫ繝ｼ繝我ｸ矩Κ・壹い繧､繧ｳ繝ｳ・九ユ繧ｭ繧ｹ繝・*/
 .flow-c-bot {
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 20px;
 }
 .fc-icon {
-  width: 60px;
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 8px;
+  overflow: hidden;
   flex-shrink: 0;
 }
 .fc-tx p {
@@ -1165,3 +1169,72 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   .mz-ns-link { height: 50vh; }
 }
 
+/* ==================================
+   ADMISSIONS CTA (Organic Blob)
+================================== */
+.ky-admissions-cta {
+  background: var(--dg);
+  padding: 100px 0;
+  overflow: hidden;
+}
+.ky-admissions-in {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 8vh;
+  padding: 0 40px;
+}
+.ky-adm-img-box {
+  width: 50%;
+  position: relative;
+  aspect-ratio: 1/1;
+}
+/* CSSで作る「手書き風の有機的な枠」 */
+.ky-adm-blob-frame {
+  position: absolute;
+  inset: -15px;
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  pointer-events: none;
+  z-index: 2;
+  transform: rotate(-5deg);
+}
+.ky-adm-blob-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  z-index: 1;
+  position: relative;
+}
+.ky-adm-tx-box {
+  width: 50%;
+  color: var(--gl);
+}
+.ky-adm-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+.ky-adm-ttl {
+  font-family: 'Outfit', sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+  font-weight: 300;
+  color: #fff;
+}
+.ky-adm-desc {
+  font-size: 14px;
+  line-height: 2.2;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+@media (max-width: 900px) {
+  .ky-admissions-in { flex-direction: column; text-align: center; gap: 60px; }
+  .ky-adm-img-box, .ky-adm-tx-box { width: 100%; }
+}

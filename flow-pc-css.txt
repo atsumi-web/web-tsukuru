@@ -1,0 +1,46 @@
+﻿  padding-bottom: 40px; 
+  cursor: grab;
+  /* 郢ｧ・ｹ郢ｧ・ｯ郢晢ｽｭ郢晢ｽｼ郢晢ｽｫ郢晁・繝ｻ鬮ｱ讚・ｽ｡・ｨ驕会ｽｺ */
+  scrollbar-width: none;
+  /* 隴√・・ｭ驤ｴ竏郁ｬ壽ｧｭ・・ｹ晞亂縺・ｹ昴・縺・ｹ晄じ繝ｩ郢晢ｽｩ郢昴・縺堤ｸｺ・ｮ鬮ｦ・ｲ雎・ｽ｢ */
+  user-select: none;
+  -webkit-user-select: none;
+}
+.flow-slider::-webkit-scrollbar { display: none; }
+.flow-slider:active { cursor: grabbing; }
+
+/* 陷繝ｻﾎ夐囎竏ｫ・ｴ・ｽ邵ｺ・ｮ郢ｧ・ｴ郢晢ｽｼ郢ｧ・ｹ郢晏現繝ｩ郢晢ｽｩ郢昴・縺定ｬ夂ｬｬ・ｭ・｢ */
+.flow-slider * {
+  -webkit-user-drag: none;
+}
+/* JS邵ｺ・ｧ郢晏ｳｨﾎ帷ｹ昴・縺定叉・ｭ邵ｺ・ｯ郢晢ｽｪ郢晢ｽｳ郢ｧ・ｯ髫ｱ・､霎ｷ繝ｻ・帝ｫｦ・ｲ邵ｺ闊娯螺郢ｧ竏堋竏昴・鬩幢ｽｨ邵ｺ・ｮ郢ｧ・ｫ郢晢ｽｼ郢晏ｳｨ笆｡邵ｺ莉｣縺醍ｹ晢ｽｪ郢昴・縺題ｾ滂ｽ｡陷会ｽｹ陋ｹ繝ｻ*/
+.flow-slider.is-dragging .flow-card {
+  pointer-events: none;
+}
+
+/* 陷ｷ繝ｻ縺咲ｹ晢ｽｼ郢昴・*/
+.flow-card {
+  flex: 0 0 calc(100% - 40px); /* 騾包ｽｻ鬮ｱ・｢陝ｷ繝ｻﾂｰ郢ｧ迚呻ｽｰ莉｣・闖ｴ蜥丞項郢ｧ蜻茨ｽｮ荵昶・ */
+  max-width: 450px;
+  scroll-snap-align: start;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  padding: 10px 40px 0;
+}
+
+/* 郢ｧ・ｫ郢晢ｽｼ郢晄・・ｸ莨∃壹・螟ょ・陷ｿ・ｷ郢晢ｽｻ郢ｧ・ｿ郢ｧ・､郢晏現ﾎ・*/
+.flow-c-top {
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--gl);
+  margin-bottom: 30px;
+}
+.flow-c-ttl {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--tm);
+  margin-bottom: 50px;
+}
+

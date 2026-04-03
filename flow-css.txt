@@ -1,0 +1,61 @@
+﻿  .flow-wrap { flex-direction: column; gap: 16px; }
+  .flow-pagination { width: 100%; flex-direction: row; justify-content: flex-start; padding-top: 0; overflow-x: auto; gap: 12px; padding-bottom: 10px; scrollbar-width: none; }
+  .flow-pagination::-webkit-scrollbar { display: none; }
+  .flow-slider { padding-bottom: 20px; }
+  .flow-card { padding: 20px 24px 0; max-width: 88vw; }
+  .flow-c-top { margin-bottom: 16px; }
+  .flow-c-ttl { font-size: 17px; margin-bottom: 24px; line-height: 1.6; letter-spacing: 0.1em; color: #333; }
+  .flow-c-bot { flex-direction: column; gap: 20px; }
+  /* 郢ｧ・ｹ郢晄ｧｭ繝ｻ霑壼現縲堤ｸｺ・ｯ騾包ｽｻ陷剃ｸ奇ｽ定ｮ難ｽｪ邵ｺ・ｫ陟弱・・･繝ｻ蛹ｻ繝ｰ郢晉ｿｫ繝ｻ霑･・ｶ邵ｺ・ｫ繝ｻ陋ｾ・ｭ繝ｻ笳狗ｹｧ繝ｻ*/
+  .fc-icon { width: 100%; aspect-ratio: 3/2; overflow: hidden; border-radius: 2px; }
+  .fc-tx p { margin-bottom: 24px; font-size: 13.5px; line-height: 2.1; letter-spacing: 0.08em; color: #555; }
+
+  /* BLOCK 7: News */
+  .ky-news-in { flex-direction: column; gap: 40px; padding: 0 24px; }
+  .ky-news-left { width: 100%; flex-direction: row; align-items: center; justify-content: space-between; padding-bottom: 0; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  
+  /* 郢昜ｹ斟礼ｹ晢ｽｼ郢ｧ・ｹ髫ｪ蛟・ｽｺ荵斟懃ｹｧ・ｹ郢晏現繝ｻ郢ｧ・ｹ郢晄ｧｭ繝ｻ陝・ｉ逡賎rid驍ｨ繝ｻ竏ｩ繝ｻ蝓溷ｾ玖脂蛟･・定叉ﾂ騾｡・ｪ闕ｳ鄙ｫﾂ竏ｫ蛻､陷剃ｸ岩・郢昴・縺冗ｹｧ・ｹ郢晏現・堤ｸｺ譏ｴ繝ｻ闕ｳ荵昶・隶難ｽｪ闕ｳ・ｦ邵ｺ・ｳ繝ｻ繝ｻ*/
+  .ky-news-item a {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 12px 20px;
+    padding: 24px 0;
+    align-items: flex-start;
+  }
+  .news-meta {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .news-badge {
+    position: static;
+    margin-left: 16px;
+  }
+  .news-thumb {
+    grid-column: 1;
+    width: 80px;
+    margin: 0;
+  }
+  .news-body {
+    grid-column: 2;
+    padding-right: 0;
+  }
+  .news-ttl {
+    font-size: 14.5px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .news-arrow {
+    display: none; /* 郢ｧ・ｹ郢晄ｧｭ繝ｻ邵ｺ・ｧ邵ｺ・ｯ騾ｵ竏ｫ謇慕ｸｺ蜉ｱ窶ｻ郢ｧ・ｹ郢昴・縺冗ｹ晢ｽｪ髫穂ｹ昶雷郢ｧ繝ｻ*/
+  }
+
+  /* BLOCK 8: CTA */
+  .ky-cta-in { grid-template-columns: 1fr; gap: 40px; padding: 0 24px; }
+  .ky-cta-right h2 { font-size: 24px; line-height: 1.6; }
+  .ky-mini-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+}
+
+/* 隨渉隨渉 SUBPAGE: PHILOSOPHY 隨渉隨渉 */
+.ph-hero-ov { position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; pointer-events: none; }
+.ph-hero-text { position: absolute; left: 18%; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; text-orientation: mixed; z-index: 4; will-change: transform, opacity; }
