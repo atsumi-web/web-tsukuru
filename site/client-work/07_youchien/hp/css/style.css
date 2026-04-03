@@ -96,60 +96,60 @@ img{display:block;width:100%}
 .s-slides::after{content:'';position:absolute;inset:0;background:rgba(30,61,26,.3);z-index:1;pointer-events:none}
 .s-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s cubic-bezier(.4,0,.2,1)}
 .s-slide.active{opacity:1}
-/* Deco lines + Fluttering Leaf */
-.s-deco1{position:absolute;top:-20%;left:35%;width:6px;height:140%;background:url('../images/crayon-line.svg') repeat-y center;background-size:100% auto;z-index:2;transform:rotate(12deg);transform-origin:center;pointer-events:none;clip-path:polygon(-1000% 100%, 1000% 100%, 1000% 100%, -1000% 100%);animation:growUp 7s 1s cubic-bezier(.4,0,.2,1) forwards}
-.s-deco2{position:absolute;top:-40%;right:5%;width:6px;height:140%;background:url('../images/crayon-line.svg') repeat-y center;background-size:100% auto;z-index:2;transform:rotate(-65deg);transform-origin:center;pointer-events:none;clip-path:polygon(-1000% 0, 1000% 0, 1000% 0, -1000% 0);animation:growDown 8s 5s cubic-bezier(.4,0,.2,1) forwards}
+/* Fluttering Leaves (No lines) */
+.s-deco1, .s-deco2 {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+.s-deco1 { left: 25%; }
+.s-deco2 { right: 20%; top: 5%; }
 
 .s-deco1::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: -50px;
   left: -12px;
-  width: 30px;
-  height: 40px;
+  width: 35px;
+  height: 45px;
   background: url('../images/leaf.svg') no-repeat center;
   background-size: contain;
   opacity: 0;
-  animation: leafFall 12s 3s ease-in-out infinite;
+  animation: leafFall 16s 2s ease-in-out infinite;
 }
 
 .s-deco2::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: -50px;
   left: -12px;
-  width: 30px;
-  height: 40px;
+  width: 35px;
+  height: 45px;
   background: url('../images/leaf.svg') no-repeat center;
   background-size: contain;
   opacity: 0;
-  animation: leafFall2 14s 7s ease-in-out infinite;
-}
-@keyframes growUp {
-  from { clip-path: polygon(-1000% 100%, 1000% 100%, 1000% 100%, -1000% 100%); }
-  to { clip-path: polygon(-1000% -20%, 1000% -20%, 1000% 120%, -1000% 120%); }
-}
-@keyframes growDown {
-  from { clip-path: polygon(-1000% 0, 1000% 0, 1000% 0, -1000% 0); }
-  to { clip-path: polygon(-1000% -20%, 1000% -20%, 1000% 120%, -1000% 120%); }
+  animation: leafFall2 20s 8s ease-in-out infinite;
 }
 
 @keyframes leafFall {
-  0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.8; transform: translateY(10vh) rotate(20deg) translateX(10px); }
-  35% { transform: translateY(40vh) rotate(-30deg) translateX(-10px); }
-  65% { transform: translateY(80vh) rotate(40deg) translateX(15px); }
-  90% { opacity: 0.8; transform: translateY(120vh) rotate(-20deg) translateX(-5px); }
-  100% { opacity: 0; transform: translateY(130vh) rotate(0deg); }
+  0% { transform: translateY(-5vh) rotate(0deg) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; transform: translateY(15vh) rotate(30deg) translateX(20px); }
+  35% { transform: translateY(45vh) rotate(-30deg) translateX(-20px); }
+  65% { transform: translateY(85vh) rotate(45deg) translateX(30px); }
+  90% { opacity: 0.8; transform: translateY(115vh) rotate(-20deg) translateX(-10px); }
+  100% { opacity: 0; transform: translateY(130vh) rotate(0deg) translateX(0); }
 }
 
 @keyframes leafFall2 {
-  0% { transform: translateY(-50px) rotate(-15deg); opacity: 0; }
-  10% { opacity: 0.6; transform: translateY(10vh) rotate(10deg) translateX(-8px); }
-  45% { transform: translateY(50vh) rotate(-20deg) translateX(12px); }
-  75% { transform: translateY(90vh) rotate(30deg) translateX(-15px); }
-  90% { opacity: 0.6; transform: translateY(120vh) rotate(-10deg) translateX(5px); }
-  100% { opacity: 0; transform: translateY(130vh) rotate(0deg); }
+  0% { transform: translateY(-5vh) rotate(-15deg) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; transform: translateY(15vh) rotate(15deg) translateX(-20px); }
+  45% { transform: translateY(55vh) rotate(-20deg) translateX(25px); }
+  75% { transform: translateY(95vh) rotate(35deg) translateX(-30px); }
+  90% { opacity: 0.6; transform: translateY(115vh) rotate(-10deg) translateX(10px); }
+  100% { opacity: 0; transform: translateY(130vh) rotate(0deg) translateX(0); }
 }
 /* Vertical initial title */
 .s-vert{position:absolute;left:260px;bottom:14%;color:#fff;writing-mode:vertical-rl;text-orientation:mixed;z-index:4;will-change:transform,opacity}
