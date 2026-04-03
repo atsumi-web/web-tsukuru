@@ -233,17 +233,31 @@
     injectComponents();
   }
 
-  // 4. Global Animation Observer (.fu -> .vis fade up)
+  // 4. Global Animation Observer (.fu & text reveals)
   const initAnimationObserver = () => {
-    const observer = new IntersectionObserver((entries) => {
+    // Standard fade-up (.fu -> .vis)
+    const fuObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting) {
           entry.target.classList.add('vis');
+          fuObserver.unobserve(entry.target);
         }
       });
     }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
 
-    document.querySelectorAll('.fu').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fu').forEach(el => fuObserver.observe(el));
+
+    // Staggered text reveal (.reveal-wrap -> .vis)
+    const revObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.querySelectorAll('.reveal-wrap').forEach(w => w.classList.add('vis'));
+          revObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.intro-ttl, .feat-ttl-sec, .day-ttl-sec').forEach(el => revObserver.observe(el));
   };
   
   if(document.readyState === 'loading') {

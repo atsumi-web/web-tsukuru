@@ -581,22 +581,6 @@ function updateScrolly() {
 window.addEventListener('scroll', updateScrolly, {passive:true});
 updateScrolly();
 
-// Scroll reveal (fu)
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
-}, {threshold:.1});
-document.querySelectorAll('.fu').forEach(el => obs.observe(el));
-
-// Text reveal (reveal-wrap)
-const revObs = new IntersectionObserver(es => {
-  es.forEach(e => {
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.reveal-wrap').forEach(w => w.classList.add('vis'));
-      revObs.unobserve(e.target);
-    }});
-}, {threshold:.15});
-document.querySelectorAll('.intro-ttl, .feat-ttl-sec, .day-ttl-sec').forEach(el => revObs.observe(el));
-
 // Parallax CTA
 const ctaBg = document.getElementById('ctaBg');
 function parax(){
