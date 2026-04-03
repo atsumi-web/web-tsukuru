@@ -178,16 +178,21 @@
     }
 
     // Initialize Menu Logic
-    const hdMenuBtn = document.querySelector('.hd-menu');
+    const hdMenuBtns = document.querySelectorAll('.hd-menu');
     const menuOverlay = document.getElementById('menuOverlay');
     const menuCloseBtn = document.getElementById('menuCloseBtn');
     const menuBackdrop = document.getElementById('menuBackdrop');
 
-    if (hdMenuBtn && menuOverlay && menuCloseBtn && menuBackdrop) {
+    if (hdMenuBtns.length > 0 && menuOverlay && menuCloseBtn && menuBackdrop) {
       const openMenu = () => menuOverlay.classList.add('show');
       const closeMenu = () => menuOverlay.classList.remove('show');
       
-      hdMenuBtn.addEventListener('click', openMenu);
+      hdMenuBtns.forEach(btn => {
+        btn.addEventListener('click', openMenu);
+        // Sync hover states across both green/white navigation instances
+        btn.addEventListener('mouseenter', () => hdMenuBtns.forEach(b => b.classList.add('is-hover')));
+        btn.addEventListener('mouseleave', () => hdMenuBtns.forEach(b => b.classList.remove('is-hover')));
+      });
       menuCloseBtn.addEventListener('click', closeMenu);
       menuBackdrop.addEventListener('click', closeMenu);
     }

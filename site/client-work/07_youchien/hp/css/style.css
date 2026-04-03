@@ -40,10 +40,10 @@ img{display:block;width:100%}
 .hd-menu span:nth-child(2){width:36px; top:30px; left:18px; transform:rotate(15deg)}
 .hd-menu span:nth-child(3){width:48px; top:40px; left:14px; transform:rotate(15deg)}
 /* 驛｢譎擾ｽｸ蜷ｶﾎ｣驛｢譎｢・ｽ・ｼ髫ｴ蠑ｱ・・ｫ企豪・ｸ・ｺ鬯伜∞・ｽ・｡隰疲ｸ呻ｽｾ驛｢・ｧ陋ｹ・ｻ繝ｻ・･髫ｰ・ｨ繝ｻ・ｴ髯具ｽｻ陷会ｽｱ隨倥・・ｹ・ｧ闕ｵ譏ｴ・・Δ譎・ｽｺ蛟･ﾎ暮Δ・ｧ繝ｻ・ｯ */
-.hd-menu:hover span{transform:rotate(0deg);left:16px;width:32px}
-.hd-menu:hover span:nth-child(1){top:22px}
-.hd-menu:hover span:nth-child(2){top:30px}
-.hd-menu:hover span:nth-child(3){top:38px}
+.hd-menu:hover span, .hd-menu.is-hover span {transform:rotate(0deg);left:16px;width:32px}
+.hd-menu:hover span:nth-child(1), .hd-menu.is-hover span:nth-child(1) {top:22px}
+.hd-menu:hover span:nth-child(2), .hd-menu.is-hover span:nth-child(2) {top:30px}
+.hd-menu:hover span:nth-child(3), .hd-menu.is-hover span:nth-child(3) {top:38px}
 
 /* 髫ｨ貂可髫ｨ貂可 FLOATING CTA 髫ｨ貂可髫ｨ貂可 */
 .float-cta{position:fixed;bottom:36px;right:36px;z-index:998;background:var(--gd);color:#fff;font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:14px 22px;border-radius:50px;display:flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(26,61,26,.3);transition:transform .25s,box-shadow .25s;animation:floatIn .8s 1.2s both}
