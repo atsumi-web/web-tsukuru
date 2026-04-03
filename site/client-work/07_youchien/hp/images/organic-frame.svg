@@ -1,0 +1,9 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- A very elegant, pencil-thin, slightly imperfect loop that acts as a frame -->
+  <path d="M 230 45 
+           C 350 30, 470 120, 460 250 
+           C 450 390, 310 470, 180 440 
+           C 40 400, 20 220, 80 120 
+           C 120 60, 200 45, 260 50" 
+        stroke="#1b3228" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
