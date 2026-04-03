@@ -126,7 +126,7 @@ img{display:block;width:100%}
   animation: leafFall 16s 2s ease-in-out infinite;
 }
 .s-deco2::after {
-  transform: scale(0.65);
+  transform: scale(0.85);
   animation: leafFall2 20s 8s ease-in-out infinite;
 }
 .s-deco3::after {
@@ -134,7 +134,7 @@ img{display:block;width:100%}
   animation: leafFall3 14s 5s ease-in-out infinite;
 }
 .s-deco4::after {
-  transform: scale(0.5);
+  transform: scale(0.75);
   animation: leafFall4 18s 0s ease-in-out infinite;
 }
 
@@ -148,12 +148,12 @@ img{display:block;width:100%}
 }
 
 @keyframes leafFall2 {
-  0% { transform: scale(0.65) translateY(-5vh) rotate(-15deg) translateX(0); opacity: 0; }
-  10% { opacity: 0.6; transform: scale(0.65) translateY(15vh) rotate(15deg) translateX(-20px); }
-  45% { transform: scale(0.65) translateY(55vh) rotate(-20deg) translateX(25px); }
-  75% { transform: scale(0.65) translateY(95vh) rotate(35deg) translateX(-30px); }
-  90% { opacity: 0.6; transform: scale(0.65) translateY(115vh) rotate(-10deg) translateX(10px); }
-  100% { opacity: 0; transform: scale(0.65) translateY(130vh) rotate(0deg) translateX(0); }
+  0% { transform: scale(0.85) translateY(-5vh) rotate(-15deg) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; transform: scale(0.85) translateY(15vh) rotate(15deg) translateX(-20px); }
+  45% { transform: scale(0.85) translateY(55vh) rotate(-20deg) translateX(25px); }
+  75% { transform: scale(0.85) translateY(95vh) rotate(35deg) translateX(-30px); }
+  90% { opacity: 0.6; transform: scale(0.85) translateY(115vh) rotate(-10deg) translateX(10px); }
+  100% { opacity: 0; transform: scale(0.85) translateY(130vh) rotate(0deg) translateX(0); }
 }
 
 @keyframes leafFall3 {
@@ -165,11 +165,11 @@ img{display:block;width:100%}
 }
 
 @keyframes leafFall4 {
-  0% { transform: scale(0.5) translateY(-5vh) rotate(-30deg) translateX(0); opacity: 0; }
-  20% { opacity: 0.4; transform: scale(0.5) translateY(30vh) rotate(20deg) translateX(-10px); }
-  60% { transform: scale(0.5) translateY(80vh) rotate(-15deg) translateX(15px); }
-  90% { opacity: 0.4; transform: scale(0.5) translateY(115vh) rotate(25deg) translateX(-5px); }
-  100% { opacity: 0; transform: scale(0.5) translateY(130vh) rotate(0deg) translateX(0); }
+  0% { transform: scale(0.75) translateY(-5vh) rotate(-30deg) translateX(0); opacity: 0; }
+  20% { opacity: 0.4; transform: scale(0.75) translateY(30vh) rotate(20deg) translateX(-10px); }
+  60% { transform: scale(0.75) translateY(80vh) rotate(-15deg) translateX(15px); }
+  90% { opacity: 0.4; transform: scale(0.75) translateY(115vh) rotate(25deg) translateX(-5px); }
+  100% { opacity: 0; transform: scale(0.75) translateY(130vh) rotate(0deg) translateX(0); }
 }
 /* Vertical initial title */
 .s-vert{position:absolute;left:260px;bottom:14%;color:#fff;writing-mode:vertical-rl;text-orientation:mixed;z-index:4;will-change:transform,opacity}
