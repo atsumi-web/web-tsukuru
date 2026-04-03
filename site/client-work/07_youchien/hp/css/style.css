@@ -1170,10 +1170,10 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 }
 
 /* ==================================
-   ADMISSIONS CTA (Organic Blob)
+   ADMISSIONS CTA (Organic Blob Sketch)
 ================================== */
 .ky-admissions-cta {
-  background: var(--dg);
+  background: #fafaf8;
   padding: 100px 0;
   overflow: hidden;
 }
@@ -1190,15 +1190,13 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   position: relative;
   aspect-ratio: 1/1;
 }
-/* CSSで作る「手書き風の有機的な枠」 */
-.ky-adm-blob-frame {
+.ky-adm-blob-frame-svg {
   position: absolute;
-  inset: -15px;
-  border: 1px solid rgba(255,255,255,0.7);
-  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  inset: -20px;
   pointer-events: none;
   z-index: 2;
-  transform: rotate(-5deg);
+  /* Flip and slightly rotate to look distinct from the hero block */
+  transform: scaleX(-1) rotate(6deg);
 }
 .ky-adm-blob-img {
   width: 100%;
@@ -1210,7 +1208,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 }
 .ky-adm-tx-box {
   width: 50%;
-  color: var(--gl);
+  color: var(--tm);
 }
 .ky-adm-eyebrow {
   font-family: 'Outfit', sans-serif;
@@ -1218,6 +1216,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   letter-spacing: 0.2em;
   opacity: 0.7;
   margin-bottom: 20px;
+  color: var(--dg);
 }
 .ky-adm-ttl {
   font-family: 'Outfit', sans-serif;
@@ -1225,7 +1224,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   letter-spacing: 0.1em;
   margin-bottom: 30px;
   font-weight: 300;
-  color: #fff;
+  color: var(--tm);
 }
 .ky-adm-desc {
   font-size: 14px;
@@ -1236,5 +1235,6 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 }
 @media (max-width: 900px) {
   .ky-admissions-in { flex-direction: column; text-align: center; gap: 60px; }
-  .ky-adm-img-box, .ky-adm-tx-box { width: 100%; }
+  .ky-adm-img-box, .ky-adm-tx-box { width: 100%; max-width: 400px; margin: 0 auto; }
 }
+
