@@ -222,13 +222,14 @@ img{display:block;width:100%}
 
 /* Left Text */
 .ky-piece-left { padding-top: 40px; }
-.piece-en { font-family: var(--serif); font-size: clamp(3rem, 5vw, 4.4rem); font-style: italic; font-weight: 500; line-height: 1.1; letter-spacing: 0.05em; color: var(--tm); margin-bottom: 40px; }
-.piece-ja { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; letter-spacing: 0.15em; line-height: 1.8; color: var(--tm); margin-bottom: 50px; }
-.piece-desc p { font-family: var(--serif); font-size: 13px; font-weight: 500; line-height: 2.4; letter-spacing: 0.1em; color: var(--tm); margin-bottom: 1.5em; }
+.piece-en { font-family: var(--en); font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.05em; color: var(--tm); margin-bottom: 30px; text-transform: uppercase; }
+.piece-ja { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; letter-spacing: 0.15em; line-height: 1.8; color: var(--tm); margin-bottom: 30px; }
+.piece-desc p { font-family: var(--serif); font-size: 14.5px; font-weight: 500; line-height: 2.2; letter-spacing: 0.1em; color: var(--tm); margin-bottom: 2em; opacity: 0.9; }
 
 /* Center Image */
 .ky-piece-img { width: 100%; display: flex; justify-content: center; }
-.ky-piece-img .wire-img { width: 100%; aspect-ratio: 1/1; max-width: 600px; background: #e8e8e8; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.ky-piece-img img { width: 100%; aspect-ratio: 1/1; max-width: 500px; object-fit: cover; background: #e8e8e8; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; box-shadow: 0 20px 40px rgba(0,0,0,0.05); transition: border-radius 0.5s ease; }
+.ky-piece-img img:hover { border-radius: 50% 60% 40% 50% / 40% 70% 60% 50%; }
 
 /* Right Vertical Text */
 .ky-piece-right { 
