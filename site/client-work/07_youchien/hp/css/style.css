@@ -1192,15 +1192,13 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 }
 .ky-adm-blob-frame-svg {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 5%;
-  left: -8%;
-  border: 1.5px solid var(--dg);
-  border-radius: 50% 40% 60% 30% / 40% 50% 60% 50%;
+  width: 220%;
+  height: 220%;
+  top: -70%;
+  left: -20%;
   pointer-events: none;
   z-index: 2;
-  transform: rotate(-10deg);
+  transform: rotate(15deg);
 }
 .ky-adm-blob-img {
   width: 100%;
