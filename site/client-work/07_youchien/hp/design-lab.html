@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organic Blob & Deco Library</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    body { background: #fafaf8; padding: 60px 20px; font-family: 'Noto Sans JP', sans-serif; }
+    .lab-container { max-width: 1400px; margin: 0 auto; }
+    .lab-header { text-align: center; margin-bottom: 80px; }
+    .lab-header h1 { font-family: 'Outfit', sans-serif; font-size: 40px; color: var(--gd); margin-bottom: 10px; }
+    .lab-header p { color: var(--tm); font-size: 15px; }
+    
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 60px;
+    }
+    
+    .lab-card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .lab-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gd);
+      margin-bottom: 30px;
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+    }
+    
+    .lab-preview {
+      width: 250px;
+      margin-bottom: 30px;
+    }
+    .lab-preview.is-wide { width: 300px; }
+    .lab-preview.is-tall { width: 200px; }
+    
+    .lab-code {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 11px;
+      width: 100%;
+      color: #333;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="lab-container">
+  <div class="lab-header">
+    <h1>Organic Frame & Decoration Library</h1>
+    <p>下層ページ用「画像の形（Blob）」＋「ボタニカル線画（SVG）」の見本帳です。<br>使いたいパターンのHTMLをそのままコピーしてご利用ください。</p>
+  </div>
+
+  <div class="lab-grid">
+    
+    <!-- P1 -->
+    <div class="lab-card">
+      <div class="lab-card-title">01: The Standard<br><span style="font-size:12px; font-weight:normal; color:#666;">Admissions標準の王道レイアウト。左下を覆うように葉が這います。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-1"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-1" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-1&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-1&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P2 -->
+    <div class="lab-card">
+      <div class="lab-card-title">02: Hero Reverse<br><span style="font-size:12px; font-weight:normal; color:#666;">トップヒーロー画像の反転形。右下に植物が集まります。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-2"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-2" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-2&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-2&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P3 -->
+    <div class="lab-card">
+      <div class="lab-card-title">03: Soft Oval<br><span style="font-size:12px; font-weight:normal; color:#666;">柔らかい正円に近い形。右下から曲線が柔らかく包みます。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-3"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-3" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-3&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-3&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P4 -->
+    <div class="lab-card">
+      <div class="lab-card-title">04: Sharp Corner Hug<br><span style="font-size:12px; font-weight:normal; color:#666;">鋭利な角丸を持つモダン形。つる草が左上角に被さります。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-4"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-4" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-4&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-4&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P5 -->
+    <div class="lab-card">
+      <div class="lab-card-title">05: Leaf Rain<br><span style="font-size:12px; font-weight:normal; color:#666;">均等な丸み。上部からしだれ柳のように線が降り注ぎます。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-5"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-5" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-5&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-5&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P6 -->
+    <div class="lab-card">
+      <div class="lab-card-title">06: Minimal Drop<br><span style="font-size:12px; font-weight:normal; color:#666;">主張を抑えたい時に。ごく小さな葉が少しだけフチに触れます。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-6"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-6" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-6&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-6&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P7 -->
+    <div class="lab-card">
+      <div class="lab-card-title">07: Wide Stretch (3:2横長)<br><span style="font-size:12px; font-weight:normal; color:#666;">横長写真用。クラスに「is-wide」を付与します。</span></div>
+      <div class="lab-preview is-wide">
+        <div class="ky-blob-wrap is-wide">
+          <div class="ky-blob-deco kb-dec-7"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-7" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap is-wide&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-7&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-7&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P8 -->
+    <div class="lab-card">
+      <div class="lab-card-title">08: Tall Portrait (3:4縦長)<br><span style="font-size:12px; font-weight:normal; color:#666;">スマホや人物写真用。クラスに「is-tall」を付与します。</span></div>
+      <div class="lab-preview is-tall">
+        <div class="ky-blob-wrap is-tall">
+          <div class="ky-blob-deco kb-dec-8"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-8" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap is-tall&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-8&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-8&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P9 -->
+    <div class="lab-card">
+      <div class="lab-card-title">09: Diagonal Shift<br><span style="font-size:12px; font-weight:normal; color:#666;">版ズレを極端にしたモダンな雑誌風レイアウト。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-9"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-9" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-9&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-9&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+    <!-- P10 -->
+    <div class="lab-card">
+      <div class="lab-card-title">10: Custom Accent<br><span style="font-size:12px; font-weight:normal; color:#666;">上部から右側へ巻き込むようなスタイリッシュな配置。</span></div>
+      <div class="lab-preview">
+        <div class="ky-blob-wrap">
+          <div class="ky-blob-deco kb-dec-10"><img src="images/organic-remix.svg" alt=""></div>
+          <img src="images/kindy_building_1775160767495.png" class="ky-blob-img kb-img-10" alt="">
+        </div>
+      </div>
+      <div class="lab-code">&lt;div class=&quot;ky-blob-wrap&quot;&gt;
+  &lt;div class=&quot;ky-blob-deco kb-dec-10&quot;&gt;&lt;img src=&quot;images/organic-remix.svg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+  &lt;img src=&quot;画像のパス&quot; class=&quot;ky-blob-img kb-img-10&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
