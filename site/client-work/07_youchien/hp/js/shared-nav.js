@@ -166,6 +166,12 @@
     // Insert Menu Overlay
     document.body.insertAdjacentHTML('beforeend', menuOverlayHTML);
 
+    // -- Left Vertical Nav Indicator (Kiyasuku Style) --
+    let pageName = document.title.split('|')[0].trim();
+    if(pageName === 'みどりが丘幼稚園' || pageName === 'ホーム') pageName = 'トップページ';
+    const leftNavHTML = `<div class="left-vert-nav"><span>${pageName}</span></div>`;
+    document.body.insertAdjacentHTML('beforeend', leftNavHTML);
+
     // Re-bind Header Scroll Event since we recreated DOM
     const hd = document.getElementById('hd');
     if (hd) {
