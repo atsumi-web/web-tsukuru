@@ -1201,7 +1201,13 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   left: -15%;
   pointer-events: none;
   z-index: 2;
-  transform: rotate(180deg);
+  transform: rotate(180deg) translateY(40px);
+  opacity: 0;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, opacity 1s ease 0.3s;
+}
+.ky-adm-img-box.is-active .ky-adm-blob-frame-svg {
+  transform: rotate(180deg) translateY(0);
+  opacity: 1;
 }
 .ky-adm-blob-img {
   width: 100%;
