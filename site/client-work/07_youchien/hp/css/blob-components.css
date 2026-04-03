@@ -1,72 +1,51 @@
 ﻿/* ========================================================
-   ORGANIC BLOB & DECORATION COMPONENT LIBRARY (10 Variants)
+   ORGANIC PREMIUM SET LIBRARY (Using True SVG Masks)
    ======================================================== */
 
-.ky-blob-wrap {
+.ky-premium-wrap {
   width: 100%;
   position: relative;
   aspect-ratio: 1/1;
   display: block;
 }
-.ky-blob-wrap.is-wide { aspect-ratio: 3/2; }
-.ky-blob-wrap.is-tall { aspect-ratio: 3/4; }
 
-.ky-blob-img {
+.ky-premium-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   position: relative;
   z-index: 1;
+  -webkit-mask-image: url('../images/organic-mask.svg');
+  mask-image: url('../images/organic-mask.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
-.ky-blob-deco {
+.ky-premium-deco {
   position: absolute;
+  inset: 0;
   pointer-events: none;
   z-index: 2;
 }
-.ky-blob-deco img {
+.ky-premium-deco img {
   width: 100%;
   height: 100%;
   object-fit: fill;
   pointer-events: none;
 }
 
-/* PATTERN 1: The Standard (Admissions Base) */
-.kb-img-1 { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-.kb-dec-1 { width: 130%; height: 130%; top: -15%; left: -20%; }
+/* 1: Standard (Top Page Style) */
+/* No added classes needed */
 
-/* PATTERN 2: Hero Reverse */
-.kb-img-2 { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-.kb-dec-2 { inset: 0; transform: scaleY(-1); }
+/* 2: Horizontal Mirror (Faces right) */
+/* Apply .kp-flip-h to BOTH the -img and the -deco */
+.kp-flip-h { transform: scaleX(-1); }
 
-/* PATTERN 3: Soft Oval (Gentle curve from bottom right) */
-.kb-img-3 { border-radius: 50% 50% 50% 50% / 45% 55% 45% 55%; }
-.kb-dec-3 { width: 110%; height: 110%; bottom: -5%; right: -5%; transform: scale(-1, -1); top: auto; left: auto; }
+/* 3: Vertical Mirror (Hangs upside down) */
+.kp-flip-v { transform: scaleY(-1); }
 
-/* PATTERN 4: Sharp Corner Hug (Hugs the upper left tight corner) */
-.kb-img-4 { border-radius: 20% 80% 30% 70% / 20% 60% 40% 80%; }
-.kb-dec-4 { width: 100%; height: 100%; top: -3%; left: -3%; transform: rotate(180deg); }
+/* 4: Diagonal Mirror (Upside down facing right) */
+.kp-flip-d { transform: scale(-1, -1); }
 
-/* PATTERN 5: Leaf Rain (Hangs from the top like weeping willow) */
-.kb-img-5 { border-radius: 60% 40% 60% 40% / 60% 40% 60% 40%; }
-.kb-dec-5 { width: 120%; height: 120%; top: -15%; left: 10%; transform: scale(1, -1) rotate(45deg); }
-
-/* PATTERN 6: Minimal Drop (Only touching one side nicely) */
-.kb-img-6 { border-radius: 70% 30% 50% 50% / 60% 40% 60% 40%; }
-.kb-dec-6 { width: 100%; height: 100%; top: 5%; right: -15%; left: auto; transform: scale(-1, 1); }
-
-/* PATTERN 7: Wide Stretch (For is-wide cards) */
-.kb-img-7 { border-radius: 50% 50% 40% 60% / 50% 50% 60% 50%; }
-.kb-dec-7 { width: 105%; height: 120%; top: -10%; left: -5%; transform: rotate(-5deg); }
-
-/* PATTERN 8: Tall Portrait (For is-tall portraits) */
-.kb-img-8 { border-radius: 40% 60% 50% 50% / 60% 50% 50% 40%; }
-.kb-dec-8 { width: 120%; height: 100%; top: 5%; left: -10%; transform: rotate(5deg); }
-
-/* PATTERN 9: Diagonal Shift (Offset print magazine style) */
-.kb-img-9 { border-radius: 40% 60% 70% 30% / 50% 50% 50% 50%; }
-.kb-dec-9 { width: 100%; height: 100%; top: 12%; left: 12%; transform: scaleX(-1); }
-
-/* PATTERN 10: Custom Accent */
-.kb-img-10 { border-radius: 45% 55% 35% 65% / 55% 45% 65% 35%; }
-.kb-dec-10 { width: 115%; height: 115%; top: -5%; left: 10%; transform: scaleY(-1) rotate(-15deg); }
