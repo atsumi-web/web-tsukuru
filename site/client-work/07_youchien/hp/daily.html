@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>園の1日 | みどりが丘幼稚園 - 子どもの「なんで？」を育てる場所</title>
+<meta name="description" content="みどりが丘幼稚園での「園の1日」と「四季を感じる行事」をご紹介します。何気ない日常の中に、無数のストーリーが隠れています。"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css?v=2.6">
+<script src="js/shared-nav.js" data-root-path="./" defer></script>
+<style>
+/* ── AIRY EDITORIAL HERO ── */
+.ky-daily-hero { display: flex; height: 100vh; align-items: center; justify-content: space-between; background: #fff; }
+.ky-dh-text { width: 45%; padding-left: 15%; }
+.mz-head-en { font-family: 'Cormorant Infant', serif; font-size: 20px; letter-spacing: 0.2em; color: var(--tl); display: block; margin-bottom: 24px; }
+.ky-dh-ttl { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 56px); letter-spacing: 0.15em; line-height: 1.8; color: var(--td); font-weight: 400; }
+.ky-dh-img { width: 45%; height: 75vh; border-radius: 300px 0 0 300px; overflow: hidden; }
+.ky-dh-img img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05); }
+
+/* ── STICKY SPLIT TIMELINE ── */
+.ky-timeline { padding: 120px 0 240px; background: #fff; position: relative; }
+.ky-tl-container { display: flex; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+.ky-tl-left { width: 30%; position: relative; }
+.ky-tl-sticky { position: sticky; top: 30vh; display: flex; flex-direction: column; gap: 40px; align-items: flex-start; }
+.ky-tl-time { font-family: 'Cormorant Infant', serif; font-size: clamp(80px, 8vw, 140px); line-height: 0.9; font-weight: 400; font-style: italic; letter-spacing: 0.02em; color: var(--td); transition: all 0.6s cubic-bezier(0.2,1,0.2,1); opacity: 0.7; }
+.ky-tl-time.fade { opacity: 0; transform: translateY(-24px); filter: blur(4px); }
+.ky-tl-line { width: 1px; height: 35vh; background: rgba(0,0,0,0.05); margin-left: clamp(40px, 4vw, 70px); position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); mask-image: linear-gradient(to bottom, black 70%, transparent 100%); }
+.ky-tl-line-fill { position: absolute; top: 0; left: 0; width: 100%; background: var(--td); height: 0%; transform-origin: top; }
+
+.ky-tl-right { width: 70%; padding-left: 8vw; }
+.ky-tl-item { margin-bottom: 240px; }
+.ky-tl-item:last-child { margin-bottom: 0; }
+.ky-tl-img { width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 64px; border-radius: 8px; }
+.ky-tl-img img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05); transition: transform 1.2s; }
+.ky-tl-item.vis .ky-tl-img img { transform: scale(1.05); }
+
+.ky-tl-tx h3 { font-family: var(--serif); font-size: 32px; letter-spacing: 0.15em; line-height: 1.8; margin-bottom: 32px; color: var(--td); font-weight: 400; }
+.ky-tl-tx p { font-family: var(--serif); font-size: 15px; line-height: 2.6; letter-spacing: 0.1em; color: var(--tm); }
+
+/* ── MOSAIC GRID GALLERY ── */
+.mz-gallery-sec { background: #fdfcfa; padding: 160px 0 240px; }
+.mz-head { text-align: center; margin-bottom: 120px; }
+.mz-head-ja { font-family: var(--serif); font-size: 14px; letter-spacing: 0.2em; color: var(--tl); margin-top: 16px; }
+
+.mz-gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.mz-g-item { position: relative; overflow: hidden; display: flex; align-items: flex-end; }
+.mz-g-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.2,1,0.2,1); filter: brightness(0.9); }
+.mz-g-item:hover img { transform: scale(1.05); filter: brightness(0.7); }
+.mz-g-tx { position: relative; z-index: 2; padding: 32px; color: #fff; opacity: 0; transform: translateY(10px); transition: all 0.5s ease; }
+.mz-g-item:hover .mz-g-tx { opacity: 1; transform: translateY(0); }
+.mz-g-tx-en { font-family: 'Cormorant Infant', serif; font-size: 14px; letter-spacing: 0.2em; display: block; margin-bottom: 8px; opacity: 0.8; }
+.mz-g-tx-ja { font-family: var(--serif); font-size: 18px; letter-spacing: 0.2em; font-weight: 400; }
+
+.mz-g-1 { grid-column: 1 / 7; grid-row: 1 / 3; aspect-ratio: 4/5; border-radius: 200px 0 0 0; }
+.mz-g-2 { grid-column: 7 / 13; grid-row: 1 / 2; aspect-ratio: 16/9; border-radius: 0 200px 0 0; }
+.mz-g-3 { grid-column: 7 / 10; grid-row: 2 / 3; aspect-ratio: 1/1; }
+.mz-g-4 { grid-column: 10 / 13; grid-row: 2 / 3; aspect-ratio: 1/1; border-radius: 0 0 200px 0; }
+
+/* ── SPLIT CTA ── */
+.mz-next-split { display: flex; height: 60vh; width: 100vw; margin-left: calc(50% - 50vw); }
+.mz-ns-link { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; text-decoration: none; }
+.mz-ns-bg { position: absolute; inset: 0; z-index: 1; transition: transform 1.2s cubic-bezier(0.2,1,0.2,1); }
+.mz-ns-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65) contrast(1.1); transition: filter 0.8s ease; display: block; }
+.mz-ns-link:hover .mz-ns-bg { transform: scale(1.05); }
+.mz-ns-link:hover .mz-ns-bg img { filter: brightness(0.4) contrast(1.1); }
+.mz-ns-tx { position: relative; z-index: 2; text-align: center; color: #fff !important; }
+.mz-ns-en { font-family: 'Cormorant Infant', serif; font-size: clamp(24px, 3vw, 36px); letter-spacing: 0.2em; display: block; margin-bottom: 24px; opacity: 0.9; }
+.mz-ns-ja { font-family: var(--serif); font-size: clamp(15px, 1.5vw, 18px); letter-spacing: 0.2em; color: #fff; display: block; }
+
+/* ── MOBILE FULL-BLEED & OVERLAY TIMELINE ── */
+@media (max-width: 960px) {
+  /* Hero */
+  .ky-daily-hero { flex-direction: column; justify-content: center; height: auto; padding-top: 140px; gap: 64px; }
+  .ky-dh-text { width: 100%; padding: 0 24px; }
+  .ky-dh-ttl { font-size: 32px; white-space: normal; }
+  .ky-dh-img { width: 100%; height: 70vh; border-radius: 0; }
+  
+  /* Timeline */
+  .ky-timeline { padding: 80px 0 160px; position: relative; }
+  .ky-tl-container { flex-direction: column; padding: 0; position: relative; }
+  
+  /* Make the line visible on mobile too! */
+  .ky-tl-left { display: block; position: absolute; left: 16px; top: 80px; bottom: 160px; width: 1px; z-index: 5; }
+  .ky-tl-sticky { position: absolute; top: 0; left: 0; width: 1px; height: 100%; padding: 0; margin: 0; }
+  .ky-tl-time { display: none; } /* Hide clock */
+  .ky-tl-line { width: 1px; height: 100%; margin: 0; background: rgba(0,0,0,0.05); overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, black 90%, transparent 100%); }
+
+  .ky-tl-right { width: 100%; padding-left: 0; }
+  .ky-tl-item { margin-top: 56px; margin-bottom: 140px; position: relative; padding-left: 0; }
+  .ky-tl-item:last-child { margin-bottom: 0; }
+  .ky-tl-img { border-radius: 0; margin-bottom: 24px; aspect-ratio: 4/5; width: 100vw; margin-left: calc(50% - 50vw); }
+  .ky-tl-item::before { 
+    content: attr(data-time); position: absolute; top: -45px; left: 32px; z-index: 10;
+    font-family: 'Cormorant Infant', serif; font-style: italic; font-size: 72px; font-weight: 400; background: transparent; color: var(--td); opacity: 0.95; line-height: 1; text-shadow: 0 4px 16px rgba(255,255,255,0.8);
+  }
+  .ky-tl-tx { padding: 0 24px 0 40px; position: relative; z-index: 2; }
+  .ky-tl-tx h3 { font-size: 22px; line-height: 1.6; margin-bottom: 16px; }
+  
+  /* Gallery */
+  .mz-gallery-sec { padding: 120px 0 160px; }
+  .mz-gallery { display: flex; flex-direction: column; padding: 0; gap: 0; }
+  .mz-g-item { border-radius: 0 !important; aspect-ratio: 1/1 !important; }
+  .mz-g-tx { opacity: 1; transform: none; background: linear-gradient(transparent, rgba(0,0,0,0.6)); width: 100%; padding: 40px 24px 24px; }
+  .mz-g-item img { filter: brightness(0.85); }
+  
+  /* CTA */
+  .mz-next-split { flex-direction: column; height: 100vh; margin-top: 80px; }
+  .mz-ns-link { height: 50vh; }
+}
+</style>
+</head>
+<body>
+
+<!-- AIRY HERO -->
+<section class="ky-daily-hero">
+  <div class="ky-dh-text fu">
+    <span class="mz-head-en">A DAY IN THE LIFE</span>
+    <h1 class="ky-dh-ttl">日常という、<br>大冒険。</h1>
+  </div>
+  <div class="ky-dh-img fu" data-d="1">
+    <img src="images/kindy_daily_hero.png" alt="Hero Daily">
+  </div>
+</section>
+
+<!-- STICKY TIMELINE -->
+<section class="ky-timeline" id="kyTimeline">
+  <div class="ky-tl-container">
+    <div class="ky-tl-left">
+      <div class="ky-tl-sticky">
+        <span class="ky-tl-time" id="timeDisplay">08:30</span>
+        <div class="ky-tl-line"><div class="ky-tl-line-fill" id="tlLineFill"></div></div>
+      </div>
+    </div>
+    
+    <div class="ky-tl-right">
+      <!-- 08:30 -->
+      <div class="ky-tl-item fu" data-time="08:30">
+        <div class="ky-tl-img"><img src="images/kindy_daily_1.png" alt="登園"></div>
+        <div class="ky-tl-tx">
+          <h3>木の香る園舎で、<br>おはようございます。</h3>
+          <p>大きな窓から朝日が差し込む、無垢の木が敷き詰められた教室。先生とお友達に元気にご挨拶をしたら、今日の大冒険が始まります。それぞれのペースで、好きなあそびを見つけていきます。</p>
+        </div>
+      </div>
+
+      <!-- 10:00 -->
+      <div class="ky-tl-item fu" data-time="10:00">
+        <div class="ky-tl-img"><img src="images/kindy_daily_2.png" alt="泥んこ遊び"></div>
+        <div class="ky-tl-tx">
+          <h3>服の汚れは、<br>大発見の勲章です。</h3>
+          <p>天気の良い日は、みんなで広大な園庭へ。泥や水、落ち葉を全身で感じながら遊びます。「ダメ」と言われない環境が、子どもたちの尽きない好奇心と創造力を育てています。</p>
+        </div>
+      </div>
+
+      <!-- 12:00 -->
+      <div class="ky-tl-item fu" data-time="12:00">
+        <div class="ky-tl-img"><img src="images/kindy_daily_3.png" alt="お昼ごはん"></div>
+        <div class="ky-tl-tx">
+          <h3>みんなで囲む、<br>あたたかい食卓。</h3>
+          <p>園内の厨房で作られた、地元の無農薬野菜をたっぷり使った給食。自分たちで配膳をし、食を通じて命のありがたさを学びます。食べるペースも子どもたちそれぞれの個性を尊重しています。</p>
+        </div>
+      </div>
+
+      <!-- 13:00 -->
+      <div class="ky-tl-item fu" data-time="13:00">
+        <div class="ky-tl-img"><img src="images/kindy_daily_4.png" alt="お昼寝"></div>
+        <div class="ky-tl-tx">
+          <h3>心地よい静寂の中で、<br>夢を見る。</h3>
+          <p>いっぱい遊んでお腹も満たされた後は、お昼寝の時間。柔らかな光が差し込む静かなお部屋で、先生のトントンに包まれながら深い眠りへ。心身の健やかな成長を支える、大切なひとときです。</p>
+        </div>
+      </div>
+
+      <!-- 14:00 (The Ending) -->
+      <div class="ky-tl-item fu" data-time="14:00">
+        <div class="ky-tl-img"><img src="images/kindy_daily_bye.png" alt="お迎え"></div>
+        <div class="ky-tl-tx">
+          <h3>「また明日ね」が、<br>待ち遠しい。</h3>
+          <p>夕暮れの柔らかい光の中、お迎えの時間。今日あった大冒険を自慢げに話しながら、お母さんと手を繋いで帰る後ろ姿。「また明日もいっぱい遊ぼう」という言葉が、私たちの何よりのエネルギーです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOSAIC GRID GALLERY -->
+<section class="mz-gallery-sec">
+  <div class="mz-head fu">
+    <h2 class="mz-head-en" style="font-size:32px;">Seasons</h2>
+    <p class="mz-head-ja">行事というより、季節の手ざわり</p>
+  </div>
+  
+  <div class="mz-gallery fu" data-d="1">
+    <div class="mz-g-item mz-g-1">
+      <img src="images/kindy_grid_1.png" alt="春">
+      <div class="mz-g-tx">
+        <span class="mz-g-tx-en">Spring</span>
+        <h3 class="mz-g-tx-ja">桜吹雪と入園の日</h3>
+      </div>
+    </div>
+    <div class="mz-g-item mz-g-2">
+      <img src="images/kindy_grid_2.png" alt="夏">
+      <div class="mz-g-tx">
+        <span class="mz-g-tx-en">Summer</span>
+        <h3 class="mz-g-tx-ja">太陽と水しぶき</h3>
+      </div>
+    </div>
+    <div class="mz-g-item mz-g-3">
+      <img src="images/kindy_grid_3.png" alt="秋">
+      <div class="mz-g-tx">
+        <span class="mz-g-tx-en">Autumn</span>
+        <h3 class="mz-g-tx-ja">落ち葉のじゅうたん</h3>
+      </div>
+    </div>
+    <div class="mz-g-item mz-g-4">
+      <img src="images/kindy_grid_4.png" alt="冬">
+      <div class="mz-g-tx">
+        <span class="mz-g-tx-en">Winter</span>
+        <h3 class="mz-g-tx-ja">白い息と冬の匂い</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT SCREEN CTA -->
+<section class="mz-next-split">
+  <a href="about.html" class="mz-ns-link fu">
+    <div class="mz-ns-bg"><img src="images/kindy_magazine_hero.png" alt="教育理念"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Philosophy</span>
+      <h3 class="mz-ns-ja">教育理念に戻る</h3>
+    </div>
+  </a>
+  <a href="admissions.html" class="mz-ns-link fu" data-d="1">
+    <div class="mz-ns-bg"><img src="images/kindy_adm_sticky.png" alt="入園のご案内"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Admissions</span>
+      <h3 class="mz-ns-ja">入園のご案内</h3>
+    </div>
+  </a>
+</section>
+
+<script>
+// Sticky Time Tracker & Progress Line
+const timeDisplay = document.getElementById('timeDisplay');
+const timeItems = document.querySelectorAll('.ky-tl-item');
+const kyTimeline = document.getElementById('kyTimeline');
+const tlLineFill = document.getElementById('tlLineFill');
+let currentTime = '';
+
+const tlObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const newTime = entry.target.getAttribute('data-time');
+      if (newTime !== currentTime) {
+        // Fade out
+        timeDisplay.classList.add('fade');
+        setTimeout(() => {
+          timeDisplay.innerText = newTime;
+          timeDisplay.style.transform = 'translateY(20px)';
+          requestAnimationFrame(() => {
+            timeDisplay.classList.remove('fade');
+            timeDisplay.style.transform = 'translateY(0)';
+          });
+        }, 150);
+        currentTime = newTime;
+      }
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px' });
+
+timeItems.forEach(el => tlObs.observe(el));
+
+// Scroll Progress Line
+window.addEventListener('scroll', () => {
+  if(!kyTimeline || !tlLineFill) return;
+  const rect = kyTimeline.getBoundingClientRect();
+  const start = window.innerHeight * 0.5;
+  const end = rect.height - window.innerHeight;
+  let prog = (start - rect.top) / end;
+  prog = Math.max(0, Math.min(1, prog));
+  tlLineFill.style.height = `${prog * 100}%`;
+}, {passive:true});
+
+// Standard Scroll Reveal
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
+}, {threshold:.1});
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

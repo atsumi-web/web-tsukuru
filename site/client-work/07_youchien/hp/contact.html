@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>お問い合わせ・見学申込 | みどりが丘幼稚園</title>
+<meta name="description" content="みどりが丘幼稚園への入園相談、見学のお申し込みはこちらからお願いいたします。"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css?v=2.7">
+<script src="js/shared-nav.js" data-root-path="./" defer></script>
+<style>
+/* ── UNIVERSAL MAGAZINE LAYOUT RULES ── */
+.sec-padding { padding: 180px 40px; }
+.mz-head-en { font-family: 'Cormorant Infant', serif; font-size: 20px; letter-spacing: 0.2em; color: var(--tl); display: block; margin-bottom: 8px; }
+.mz-head-ja { font-family: var(--serif); font-size: 32px; letter-spacing: 0.15em; color: var(--td); font-weight: 400; }
+
+/* HERO WITH IMAGE */
+.ky-form-hero { height: 80vh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; }
+.ky-form-hero-bg { position: absolute; inset: 0; z-index: 1; }
+.ky-form-hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.05) contrast(0.95); opacity: 0; animation: fadeBg 2s ease 0.2s forwards; }
+.ky-form-hero::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.7) 100%); pointer-events: none; }
+@keyframes fadeBg { to { opacity: 1; } }
+
+.ky-form-hero-tx { position: relative; z-index: 4; text-align: center; }
+.ky-form-hero-tx .mz-head-en { font-size: 24px; margin-bottom: 24px; opacity: 0; animation: fadeUp 1s .8s forwards; color: var(--td); }
+.ky-form-hero-tx .mz-head-ja { font-size: clamp(36px, 4vw, 56px); margin-bottom: 20px; opacity: 0; animation: fadeUp 1s .9s forwards; color: var(--td); }
+.ky-form-hero-tx p { font-family: var(--serif); font-size: 16px; letter-spacing: 0.05em; color: var(--tm); opacity: 0; animation: fadeUp 1s 1s forwards; margin-top: 40px; }
+.ky-hero-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 15vh; background: rgba(0,0,0,0.15); animation: dropLine 1.5s 0s forwards; transform-origin: top; z-index: 4; }
+@keyframes dropLine { 0% { transform: scaleY(0) translateX(-50%); } 100% { transform: scaleY(1) translateX(-50%); } }
+@keyframes fadeUp { 0% { opacity: 0; transform: translateY(20px); filter: blur(4px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
+
+/* PREMIUM FORM UI */
+.ky-form-sec { padding: 100px 40px 180px; background: #fff; }
+.ky-form-container { max-width: 800px; margin: 0 auto; }
+.ky-form-group { margin-bottom: 60px; position: relative; }
+.ky-form-label { display: block; font-family: var(--serif); font-size: 16px; letter-spacing: 0.1em; color: var(--td); margin-bottom: 16px; }
+.ky-form-label span { color: #d00; font-size: 12px; margin-left: 8px; font-family: sans-serif; }
+
+/* Input Base */
+.ky-input, .ky-textarea { width: 100%; border: none; border-bottom: 1px solid rgba(0,0,0,0.2); background: transparent; padding: 20px 0; font-family: var(--serif); font-size: 18px; color: var(--td); transition: border-color 0.4s ease; outline: none; border-radius: 0; appearance: none; -webkit-appearance: none; }
+.ky-textarea { resize: vertical; min-height: 120px; line-height: 1.8; }
+.ky-input::placeholder, .ky-textarea::placeholder { color: rgba(0,0,0,0.2); font-size: 15px; }
+
+/* Hover & Focus Interaction */
+.ky-input:hover, .ky-textarea:hover { border-color: rgba(0,0,0,0.4); }
+.ky-input:focus, .ky-textarea:focus { border-color: var(--td); }
+.ky-input-focus-line { position: absolute; bottom: 0; left: 0; height: 1px; width: 0; background: var(--td); transition: width 0.4s cubic-bezier(0.2,1,0.2,1); }
+.ky-input:focus ~ .ky-input-focus-line, .ky-textarea:focus ~ .ky-input-focus-line { width: 100%; }
+
+/* Custom Radio/Checkbox */
+.ky-radio-group { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 24px; }
+.ky-radio-label { display: flex; align-items: center; gap: 12px; cursor: pointer; font-family: var(--serif); font-size: 16px; color: var(--tm); transition: color 0.3s; }
+.ky-radio-label input { display: none; }
+.ky-radio-box { width: 24px; height: 24px; border: 1px solid rgba(0,0,0,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; position: relative; }
+.ky-radio-box::after { content: ''; width: 12px; height: 12px; background: var(--td); border-radius: 50%; transform: scale(0); transition: transform 0.3s cubic-bezier(0.2,1,0.2,1); }
+.ky-radio-label:hover .ky-radio-box { border-color: rgba(0,0,0,0.5); }
+.ky-radio-label input:checked + .ky-radio-box { border-color: var(--td); }
+.ky-radio-label input:checked + .ky-radio-box::after { transform: scale(1); }
+.ky-radio-label input:checked ~ span { color: var(--td); }
+
+/* Submit Button */
+.ky-submit-wrap { text-align: center; margin-top: 80px; }
+.ky-submit-btn { display: inline-flex; align-items: center; justify-content: center; padding: 24px 80px; background: var(--td); color: #fff; border: none; font-family: 'Outfit', var(--serif); font-size: 16px; letter-spacing: 0.1em; cursor: pointer; transition: all 0.4s ease; border-radius: 4px; overflow: hidden; position: relative; }
+.ky-submit-btn::before { content: ''; position: absolute; inset: 0; background: #fff; transform: scaleY(0); transform-origin: bottom; transition: transform 0.4s cubic-bezier(0.2,1,0.2,1); z-index: 1; }
+.ky-submit-btn:hover::before { transform: scaleY(1); }
+.ky-submit-btn span { position: relative; z-index: 2; transition: color 0.4s; }
+.ky-submit-btn:hover span { color: var(--td); }
+
+@media(max-width: 960px){
+  .sec-padding { padding: 120px 24px; }
+  .ky-hero-line { height: 10vh; }
+  .ky-form-sec { padding: 40px 24px 120px; }
+  .ky-form-group { margin-bottom: 40px; }
+  .ky-input, .ky-textarea { font-size: 16px; padding: 16px 0; }
+  .ky-radio-group { gap: 16px; flex-direction: column; }
+  .ky-submit-btn { width: 100%; padding: 20px 0; }
+}
+</style>
+</head>
+<body>
+
+<section class="ky-form-hero">
+  <div class="ky-form-hero-bg"><img src="images/kindy_contact_hero.png?v=2" alt=""></div>
+  <div class="ky-hero-line"></div>
+  <div class="ky-form-hero-tx">
+    <span class="mz-head-en">CONTACT</span>
+    <h1 class="mz-head-ja">お問い合わせ・見学申込</h1>
+    <p>園見学、入園に関するご相談など、<br>お気軽にお問い合わせください。</p>
+  </div>
+</section>
+
+<section class="ky-form-sec">
+  <div class="ky-form-container fu">
+    <form action="#">
+      
+      <div class="ky-form-group fu">
+        <label class="ky-form-label">お問い合わせの種類 <span>必須</span></label>
+        <div class="ky-radio-group">
+          <label class="ky-radio-label">
+            <input type="radio" name="inquiry_type" checked>
+            <div class="ky-radio-box"></div>
+            <span>園見学・説明会のお申し込み</span>
+          </label>
+          <label class="ky-radio-label">
+            <input type="radio" name="inquiry_type">
+            <div class="ky-radio-box"></div>
+            <span>資料請求</span>
+          </label>
+          <label class="ky-radio-label">
+            <input type="radio" name="inquiry_type">
+            <div class="ky-radio-box"></div>
+            <span>その他のお問い合わせ</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="ky-form-group fu">
+        <label class="ky-form-label" for="parent_name">保護者のお名前 <span>必須</span></label>
+        <div style="position:relative;">
+          <input type="text" id="parent_name" class="ky-input" placeholder="例：山田 太郎">
+          <div class="ky-input-focus-line"></div>
+        </div>
+      </div>
+      
+      <div class="ky-form-group fu">
+        <label class="ky-form-label" for="child_year">お子様の年齢・生年月日</label>
+        <div style="position:relative;">
+          <input type="text" id="child_year" class="ky-input" placeholder="例：2023年4月生まれ">
+          <div class="ky-input-focus-line"></div>
+        </div>
+      </div>
+
+      <div class="ky-form-group fu">
+        <label class="ky-form-label" for="phone">お電話番号 <span>必須</span></label>
+        <div style="position:relative;">
+          <input type="tel" id="phone" class="ky-input" placeholder="例：090-0000-0000">
+          <div class="ky-input-focus-line"></div>
+        </div>
+      </div>
+
+      <div class="ky-form-group fu">
+        <label class="ky-form-label" for="email">メールアドレス <span>必須</span></label>
+        <div style="position:relative;">
+          <input type="email" id="email" class="ky-input" placeholder="例：info@example.com">
+          <div class="ky-input-focus-line"></div>
+        </div>
+      </div>
+
+      <div class="ky-form-group fu">
+        <label class="ky-form-label" for="message">お問い合わせ内容 <span>必須</span></label>
+        <div style="position:relative;">
+          <textarea id="message" class="ky-textarea" placeholder="ご質問やご相談、見学希望日時などをご記入ください。"></textarea>
+          <div class="ky-input-focus-line"></div>
+        </div>
+      </div>
+      
+      <div class="ky-submit-wrap fu">
+        <button type="submit" class="ky-submit-btn">
+          <span>送信する</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- SPLIT CTA -->
+<section class="mz-next-split">
+  <a href="facilities.html" class="mz-ns-link fu">
+    <div class="mz-ns-bg"><img src="images/kindy_fac_hero.png" alt="施設案内"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Facilities</span>
+      <h3 class="mz-ns-ja">施設案内を見る</h3>
+    </div>
+  </a>
+  <a href="about.html" class="mz-ns-link fu" data-d="1">
+    <div class="mz-ns-bg"><img src="images/kindy_magazine_hero.png" alt="教育理念"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Philosophy</span>
+      <h3 class="mz-ns-ja">教育理念に戻る</h3>
+    </div>
+  </a>
+</section>
+
+<script>
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
+}, {threshold:.1});
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

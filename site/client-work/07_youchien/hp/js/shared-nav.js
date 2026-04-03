@@ -68,21 +68,21 @@
     <nav class="ft-nav">
       <h4>Navigation</h4>
       <ul>
-        <li><a href="#">園について</a></li>
-        <li><a href="#">保育の特徴</a></li>
-        <li><a href="#">一日の流れ</a></li>
-        <li><a href="#">お知らせ</a></li>
+        <li><a href="about.html">教育理念</a></li>
+        <li><a href="daily.html">園の1日</a></li>
+        <li><a href="admissions.html">入園のご案内</a></li>
+        <li><a href="news.html">お知らせ</a></li>
         <li><a href="#">採用情報</a></li>
-        <li><a href="#">入園のご相談</a></li>
+        <li><a href="contact.html">入園のご相談</a></li>
       </ul>
     </nav>
     <nav class="ft-nav">
       <h4>Information</h4>
       <ul>
         <li><a href="#">プライバシーポリシー</a></li>
-        <li><a href="#">アクセス</a></li>
-        <li><a href="#">よくある質問</a></li>
-        <li><a href="#">施設案内</a></li>
+        <li><a href="facilities.html">アクセス</a></li>
+        <li><a href="admissions.html">よくある質問</a></li>
+        <li><a href="facilities.html">施設案内</a></li>
       </ul>
     </nav>
   </div>
@@ -94,9 +94,9 @@
 
   const ctaHTML = `
 <!-- FLOATING CTA -->
-<a href="#admission" class="float-cta">
+<a href="admissions.html" class="float-cta">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-  入園のご相談
+  入園のご案内
 </a>`;
 
   const menuOverlayHTML = `
@@ -115,14 +115,14 @@
       <div class="menu-col menu-col-left">
         <h3 class="mc-ttl">CONTENTS</h3>
         <ul class="mc-list">
-          <li><a href="#">私たちについて</a></li>
-          <li><a href="#">私たちの目指す未来</a></li>
-          <li><a href="#">みどりが丘のあゆみ</a></li>
-          <li><a href="#">コラボレーション</a></li>
-          <li><a href="#">お知らせ</a></li>
+          <li><a href="index.html">トップページ</a></li>
+          <li><a href="about.html">教育理念</a></li>
+          <li><a href="daily.html">園の1日</a></li>
+          <li><a href="admissions.html">入園のご案内</a></li>
+          <li><a href="facilities.html">施設と機能</a></li>
+          <li><a href="news.html">お知らせ</a></li>
           <li><a href="#">保護者のお客さまへ</a></li>
-          <li><a href="#">園の案内</a></li>
-          <li><a href="#">お問い合わせ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
         </ul>
       </div>
       
