@@ -1,0 +1,48 @@
+﻿.float-cta i{font-size:.85rem}
+@keyframes floatIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ==== LEFT VERTICAL NAV ==== */
+.left-vert-nav {
+  position: fixed;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--serif);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--td);
+  z-index: 990;
+  pointer-events: none;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.left-vert-nav::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: var(--td);
+  opacity: 0.3;
+}
+.left-vert-nav::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: var(--td);
+  opacity: 0.3;
+}
+/* For dark pages, color must be white */
+html[data-dark-theme="true"] .left-vert-nav { color: #fff; }
+html[data-dark-theme="true"] .left-vert-nav::before, html[data-dark-theme="true"] .left-vert-nav::after { background: #fff; }
+
+/* 笏笏 HERO SCROLLY 笏笏 */
+.scrolly{position:relative;height:800vh}
+.scrolly-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#5c8a50}
+/* 繧ｹ繝ｩ繧､繝峨す繝ｧ繝ｼ */
+.s-slides{position:absolute;inset:0;z-index:1;display:none}
+.s-slides::after{content:'';position:absolute;inset:0;background:rgba(30,61,26,.3);z-index:1;pointer-events:none}

@@ -114,14 +114,13 @@
       <!-- CONTENTS Column -->
       <div class="menu-col menu-col-left">
         <h3 class="mc-ttl">CONTENTS</h3>
-        <ul class="mc-list">
-          <li><a href="index.html">トップページ</a></li>
+        <ul class="mc-list" style="margin-left: 0;">
           <li><a href="about.html">教育理念</a></li>
           <li><a href="daily.html">園の1日</a></li>
-          <li><a href="admissions.html">入園のご案内</a></li>
-          <li><a href="facilities.html">施設と機能</a></li>
+          <li><a href="facilities.html">施設と環境</a></li>
           <li><a href="news.html">お知らせ</a></li>
-          <li><a href="#">保護者のお客さまへ</a></li>
+          <li><a href="admissions.html">入園のご案内</a></li>
+          <li style="margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.08);"><a href="recruit.html">採用について</a></li>
           <li><a href="contact.html">お問い合わせ</a></li>
         </ul>
       </div>
@@ -130,16 +129,16 @@
       <div class="menu-col menu-col-right">
         <h3 class="mc-ttl">SPECIAL</h3>
         <div class="mc-cards">
-          <a href="#" class="mc-card">
-            <div class="mc-img"><img src="${rootPath}images/Whisk_20ac29d5b0e0fdb91b7418daa9ea11d7dr.jpeg" alt=""></div>
+          <a href="daily.html" class="mc-card">
+            <div class="mc-img"><img src="${rootPath}images/kindy_daily_hero.png" alt="" onerror="this.src='${rootPath}images/Whisk_20ac29d5b0e0fdb91b7418daa9ea11d7dr.jpeg'"></div>
             <div class="mc-info">
               <h4 class="serif-title">A Piece of Nature.</h4>
-              <p>その庭には、わたしがいた。</p>
+              <p>園の１日を見る</p>
             </div>
             <div class="mc-dot"></div>
           </a>
-          <a href="#" class="mc-card arch">
-            <div class="mc-img"><img src="${rootPath}images/Whisk_c6b2f51fd8054c9b34f428aa04eeeddfdr.jpeg" alt=""></div>
+          <a href="recruit.html" class="mc-card arch">
+            <div class="mc-img"><img src="${rootPath}images/kindy_magazine_hero.png" alt="" onerror="this.src='${rootPath}images/Whisk_c6b2f51fd8054c9b34f428aa04eeeddfdr.jpeg'"></div>
             <div class="mc-info">
               <h4>はぐくみ</h4>
               <p>想いを紡ぐしごと。</p>
@@ -147,7 +146,7 @@
             <div class="mc-dot"></div>
           </a>
         </div>
-        <a href="#" class="mc-btn"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>資料を請求する<span class="mc-btn-dot"></span></a>
+        <a href="contact.html" class="mc-btn"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>お問い合わせ<span class="mc-btn-dot"></span></a>
       </div>
     </div>
   </div>

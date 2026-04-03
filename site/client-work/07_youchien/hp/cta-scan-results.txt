@@ -1,0 +1,8 @@
+about.html          : ky-ph-cta (2 Cards Style)
+admissions.html     : mz-next-split (Big Split Style)
+contact.html        : mz-next-split (Big Split Style)
+daily.html          : mz-next-split (Big Split Style)
+facilities.html     : mz-next-split (Big Split Style)
+index.html          : ky-cta-sec (Index Style)
+news.html           : mz-next-split (Big Split Style)
+recruit.html        : NONE
