@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css?v=2.9">
+<link rel="stylesheet" href="css/style.css?v=2.10">
 <script src="js/shared-nav.js?v=2.6" data-root-path="./" defer></script>
 <style>
 /* ── MAGAZINE LAYOUT OVERRIDES ── */
@@ -196,34 +196,23 @@
   </div>
 </section>
 
-<!-- BOTTOM CTA -->
-<section class="ky-ph-cta sec-padding" style="background:#f8f9fa;">
-  <div class="inner">
-    <div class="ky-svc-grid" style="align-items: stretch;">
-      <!-- 園の1日へ -->
-      <div class="ky-svc-card fu" data-d="1" style="border:none; padding: 0; background:#fff; overflow: hidden; display: flex; flex-direction: column;">
-        <div class="ky-svc-img-wrap" style="width:100%; margin: 0;">
-          <img src="images/Whisk_c2d09534486674c99314c449ea557795dr.jpeg" style="width: 100%; aspect-ratio: 4/3; object-fit: cover;">
-        </div>
-        <div class="ky-svc-tx" style="text-align: center; padding: 40px;">
-          <h3 style="margin-bottom: 20px;">園の1日を見る</h3>
-          <p style="margin-bottom: 30px; text-align: center;">子どもたちが過ごす日常の風景。</p>
-          <a href="#" class="ky-intro-link" style="justify-content: center;">A Day in the Life <span class="dot-o"></span></a>
-        </div>
-      </div>
-      <!-- 入園案内へ -->
-      <div class="ky-svc-card fu" data-d="2" style="border:none; padding: 0; background:#fff; overflow: hidden; display: flex; flex-direction: column;">
-        <div class="ky-svc-img-wrap" style="width:100%; margin: 0;">
-          <img src="images/kindy_building_1775160767495.png" style="width: 100%; aspect-ratio: 4/3; object-fit: cover;">
-        </div>
-        <div class="ky-svc-tx" style="text-align: center; padding: 40px;">
-          <h3 style="margin-bottom: 20px;">入園のご案内</h3>
-          <p style="margin-bottom: 30px; text-align: center;">募集要項と入園までのフロー。</p>
-          <a href="#" class="ky-intro-link" style="justify-content: center; color:#e27d53;">Admissions <span class="dot-o" style="background:#e27d53;"></span></a>
-        </div>
-      </div>
+
+<!-- SPLIT SCREEN CTA -->
+<section class="mz-next-split">
+  <a href="daily.html" class="mz-ns-link fu">
+    <div class="mz-ns-bg"><img src="images/kindy_daily_hero.png" alt="園の1日"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">A Day in the Life</span>
+      <h3 class="mz-ns-ja">園の1日を見る</h3>
     </div>
-  </div>
+  </a>
+  <a href="admissions.html" class="mz-ns-link fu" data-d="1">
+    <div class="mz-ns-bg"><img src="images/kindy_adm_sticky.png" alt="入園のご案内"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Admissions</span>
+      <h3 class="mz-ns-ja">入園のご案内</h3>
+    </div>
+  </a>
 </section>
 
 <script>
