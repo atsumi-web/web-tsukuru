@@ -179,7 +179,7 @@ img{display:block;width:100%}
 
 /* 隨渉隨渉 WIREFRAME STRUCTURE (KIYASUKU COPY) 隨渉隨渉 */
 .sec-padding { padding: 180px 40px; }
-.inner { max-width: 1000px; margin: 0 auto; width: 100%; position: relative; }
+.inner { max-width: 1080px; margin: 0 auto; width: 100%; position: relative; }
 .wire-img { background: #eee; display: flex; align-items: center; justify-content: center; font-family: var(--en); font-size: 0.8rem; letter-spacing: 0.1em; color: rgba(0,0,0,0.3); }
 
 /* Common Titles */
@@ -750,7 +750,7 @@ img{display:block;width:100%}
 .ky-cta-sec { background: #fff; }
 .ky-cta-in { display: flex; flex-direction: column; gap: 80px; }
 .ky-mini-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; opacity: 0.8; }
-.ky-cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 900px; margin: 0 auto; }
+.ky-cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1080px; margin: 0 auto; }
 .ky-cta-right h2 { font-family: var(--en); font-size: 3rem; font-weight: 300; letter-spacing: 0.05em; color: var(--td); margin-bottom: 24px; text-transform: uppercase; }
 .ky-cta-right p { font-size: 13px; line-height: 2.2; color: var(--tm); margin-bottom: 40px; }
 .ky-btn { display: inline-flex; border-bottom: 1px solid var(--td); padding-bottom: 8px; font-family: var(--en); font-size: 0.8rem; letter-spacing: 0.15em; color: var(--td); transition: color 0.3s, border-color 0.3s; }
@@ -815,7 +815,7 @@ img{display:block;width:100%}
 
 /* 隨渉隨渉 FOOTER 隨渉隨渉 */
 footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
-.ft-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:64px;padding-bottom:80px;border-bottom:1px solid rgba(255,255,255,.15)}
+.ft-top{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:64px;padding-bottom:80px;border-bottom:1px solid rgba(255,255,255,.15)}
 .ft-logo{font-family:var(--serif);font-size:1.3rem;color:#fff;margin-bottom:6px;letter-spacing:.1em}
 .ft-logo-en{font-family:var(--en);font-size:.5rem;letter-spacing:.25em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:24px}
 .ft-addr{font-size:.72rem;line-height:2.4;padding-left:16px;border-left:1px solid rgba(255,255,255,.15);letter-spacing:.05em}
@@ -825,7 +825,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 .ft-nav a{font-size:.74rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:12px;transition:color .3s,gap .3s;letter-spacing:.05em}
 .ft-nav a:hover{color:rgba(255,255,255,1);gap:16px}
 .ft-nav a::before{content:'';width:16px;height:1px;background:rgba(255,255,255,.3)}
-.ft-btm{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:32px;font-family:var(--en);font-size:.58rem;letter-spacing:.15em;color:rgba(255,255,255,.3)}
+.ft-btm{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:32px;font-family:var(--en);font-size:.58rem;letter-spacing:.15em;color:rgba(255,255,255,.3)}
 .ft-cr a{color:rgba(255,255,255,.3);transition:color .3s;text-decoration:none}
 .ft-cr a:hover{color:rgba(255,255,255,.8)}
 
@@ -1092,7 +1092,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 /* Pillars Section */
 .ky-ph-pillars { background: #fff; }
 .ph-head { margin-bottom: 80px; }
-.ph-pillar { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; max-width: 1000px; margin: 0 auto 100px; }
+.ph-pillar { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; max-width: 1080px; margin: 0 auto 100px; }
 .ph-pillar:last-child { margin-bottom: 0; }
 .ph-pillar.reverse { grid-template-areas: "tx img"; direction: rtl; }
 .ph-pillar.reverse > * { direction: ltr; }
@@ -1108,7 +1108,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 
 /* Director Section */
 .ph-director { background: #fdfcfa; border-bottom: 1px solid rgba(0,0,0,0.05); }
-.ph-dir-in { display: grid; grid-template-columns: 35% 1fr; gap: 80px; max-width: 1000px; padding-top: 40px; }
+.ph-dir-in { display: grid; grid-template-columns: 35% 1fr; gap: 80px; max-width: 1080px; padding-top: 40px; }
 .ph-dir-left { position: relative; }
 .ph-dir-img-wrap img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; filter: contrast(1.1) brightness(0.95); }
 .ph-dir-caption { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
