@@ -1438,36 +1438,55 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
     display: none !important;
   }
 
+  /* --- モバイル初期ヘッダーの余白調整 --- */
+  .hd {
+    padding: 20px 24px;
+    align-items: center; /* 中央揃えを強制 */
+  }
+
   /* --- スクロール時のヘッダーピル（ダイナミックアイランド風） --- */
   .hd.sc {
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    padding: 10px 20px;
-    border-radius: 50px;
+    top: 15px;
+    left: 20px;
+    right: 20px;
+    padding: 8px 18px;
+    border-radius: 40px;
+    height: 56px; /* 高さをスリムに固定 */
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  /* 背景はベースレイヤーにのみ適用（ホワイトレイヤーは背後が透けるようにするため） */
+  
+  /* 背景はベースレイヤーにのみ適用 */
   .hd-base.sc {
-    background: rgba(30, 61, 26, 0.95); /* 深緑の半透明 */
+    background: rgba(30, 61, 26, 0.85); /* 深緑の半透明 */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
   }
   
   /* ロゴを極小化＆横並びにする */
   .hd.sc .logo {
     flex-direction: row;
-    gap: 12px;
+    gap: 10px;
+    margin-top: 0;
   }
-  .hd.sc .logo-ic { width: 32px; height: 32px; }
-  .hd.sc .logo-ic svg { width: 28px; height: 28px; }
-  .hd.sc .logo-text { font-size: 0.75rem; letter-spacing: 0.1em; transition: font-size 0.3s; }
+  .hd.sc .logo-ic { width: 30px; height: 30px; }
+  .hd.sc .logo-ic svg { width: 24px; height: 24px; }
+  .hd.sc .logo-text { font-size: 0.65rem; margin: 0; line-height: 1; letter-spacing: 0.1em; }
   
-  /* ハンバーガーメニューも縮小 */
-  .hd.sc .hd-menu { width: 44px; height: 44px; transform: scale(0.75); transform-origin: right center; }
+  /* ハンバーガーメニューを超コンパクトに再定義（scaleではなく実寸変更） */
+  .hd.sc .hd-menu { width: 32px; height: 32px; transform: none; margin-right: -4px; }
+  .hd.sc .hd-menu span { height: 2px; }
+  .hd.sc .hd-menu span:nth-child(1) { width: 14px; top: 9px; left: 10px; transform: rotate(0deg); }
+  .hd.sc .hd-menu span:nth-child(2) { width: 20px; top: 15px; left: 4px; transform: rotate(0deg); }
+  .hd.sc .hd-menu span:nth-child(3) { width: 26px; top: 21px; left: -2px; transform: rotate(0deg); }
+  
+  /* ホバー時（モバイルではタップ時）の動きも再定義 */
+  .hd.sc .hd-menu:hover span, .hd.sc .hd-menu.is-hover span { left: 4px; width: 20px; }
+  .hd.sc .hd-menu:hover span:nth-child(1), .hd.sc .hd-menu.is-hover span:nth-child(1) { top: 9px; }
+  .hd.sc .hd-menu:hover span:nth-child(2), .hd.sc .hd-menu.is-hover span:nth-child(2) { top: 15px; }
+  .hd.sc .hd-menu:hover span:nth-child(3), .hd.sc .hd-menu.is-hover span:nth-child(3) { top: 21px; }
 
-  /* ベースレイヤーのピル内は深緑背景なので、すべて白色で強制上書き（可視性確保） */
+  /* ベースレイヤーのピル内は深緑背景なので、すべて白色で強制上書き */
   .hd-base.sc .logo-ic svg path, 
   .hd-base.sc .logo-ic svg circle, 
   .hd-base.sc .logo-ic svg rect { fill: #fff; }
