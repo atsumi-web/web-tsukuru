@@ -22,7 +22,7 @@
   const headerHTML = `
 <!-- HEADER BASE (GREEN LOGO) -->
 <header class="hd hd-base" id="hd-base">
-  <a href="#" class="logo">
+  <a href="${rootPath}index.html" class="logo">
     <div class="logo-ic">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M24 6 L40 26 L8 26 Z" />
@@ -40,7 +40,7 @@
 <!-- HEADER LAYER (WHITE LOGO DYNAMIC CLIP) -->
 <div id="hd-white-layer" style="position: fixed; inset: 0; pointer-events: none; z-index: 1000; clip-path: inset(100% 0 0 0);">
   <header class="hd" style="background: transparent;">
-    <a href="#" class="logo">
+    <a href="${rootPath}index.html" class="logo">
       <div class="logo-ic">
         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M24 6 L40 26 L8 26 Z" />
