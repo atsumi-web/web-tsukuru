@@ -171,6 +171,10 @@
     const leftNavHTML = `<div class="left-vert-nav"><span>${pageName}</span></div>`;
     document.body.insertAdjacentHTML('beforeend', leftNavHTML);
 
+    // -- Back to Top Button --
+    const bttHTML = `<div id="backToTop" class="ky-btt"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></div>`;
+    document.body.insertAdjacentHTML('beforeend', bttHTML);
+
     // Re-bind Header Scroll Event since we recreated DOM
     const hdElements = document.querySelectorAll('.hd');
     if (hdElements.length > 0) {
@@ -178,6 +182,18 @@
         const isScrolled = window.scrollY > 60;
         hdElements.forEach(hd => hd.classList.toggle('sc', isScrolled));
       }, {passive:true});
+    }
+
+    // Back to Top Logic
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) backToTopBtn.classList.add('show');
+        else backToTopBtn.classList.remove('show');
+      }, {passive:true});
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
 
     // Initialize Menu Logic
