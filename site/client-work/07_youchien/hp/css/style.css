@@ -1358,3 +1358,73 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 
 /* GLOBAL SECTION HEADINGS */
 .mz-head { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+/* ============================================================
+   WORLD-VIEW IMAGE TONE SYSTEM
+   みどりが丘幼稚園 ── 統一トーン設計
+   
+   コンセプト：「木・緑・土・温かな自然」
+   手法：
+     brightness(0.83〜0.88)  … 少し落ち着かせ、自然光の深みを出す
+     saturate(0.85〜0.88)    … AI的な過剰彩度を抑え、柔らかくリアルに
+     sepia(0.06〜0.08)       … 微量のセピアで "フィルム感・温かみ" を統一
+   ============================================================ */
+
+/* イントロ：ブロブ画像 */
+.ky-video-mask img {
+  filter: brightness(0.85) saturate(0.86) sepia(0.07);
+}
+
+/* A Piece of Me：中央大判画像 */
+.ky-piece-img img {
+  filter: brightness(0.85) saturate(0.87) sepia(0.06);
+}
+
+/* サービスカード：保護者・地域 */
+.ky-svc-img-wrap img {
+  filter: brightness(0.85) saturate(0.87) sepia(0.07);
+}
+
+/* ストーリー：アーチ画像 */
+.ky-story-img-wrap .arch-img img {
+  filter: brightness(0.86) saturate(0.87) sepia(0.06);
+}
+
+/* 豊かな体験カード（スライダー） */
+.collab-img-wrap img {
+  filter: brightness(0.82) saturate(0.85) sepia(0.08);
+  transition: filter 0.5s ease;
+}
+.collab-img-wrap:hover img {
+  filter: brightness(0.88) saturate(0.90) sepia(0.05);
+}
+
+/* 入園フロー：ステップカードアイコン */
+.fc-icon img {
+  filter: brightness(0.85) saturate(0.86) sepia(0.07);
+}
+
+/* ニュース：サムネイル */
+.news-thumb img {
+  filter: brightness(0.85) saturate(0.86) sepia(0.06);
+}
+
+/* Daily：ヒーロー画像 */
+.ky-dh-img img {
+  filter: brightness(0.86) saturate(0.87) sepia(0.06);
+}
+
+/* Daily：タイムライン各画像 */
+.ky-tl-img img {
+  filter: brightness(0.84) saturate(0.86) sepia(0.07);
+}
+
+/* About：Pillar 画像 */
+.ph-pillar-img img {
+  filter: brightness(0.86) saturate(0.87) sepia(0.06);
+}
+
+/* About：ディレクター画像 */
+.ph-dir-img-wrap img {
+  filter: brightness(0.87) saturate(0.87) sepia(0.05);
+}
