@@ -20,7 +20,7 @@
 /* HERO WITH IMAGE */
 .ky-form-hero { height: 80vh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; }
 .ky-form-hero-bg { position: absolute; inset: 0; z-index: 1; }
-.ky-form-hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.05) contrast(0.95); opacity: 0; animation: fadeBg 2s ease 0.2s forwards; }
+.ky-form-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; filter: brightness(1.05) contrast(0.95); opacity: 0; animation: fadeBg 2s ease 0.2s forwards; }
 .ky-form-hero::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.7) 100%); pointer-events: none; }
 @keyframes fadeBg { to { opacity: 1; } }
 
