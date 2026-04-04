@@ -78,12 +78,15 @@
   .ky-tl-line { width: 1px; height: 100%; margin: 0; background: rgba(0,0,0,0.05); overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, black 90%, transparent 100%); }
 
   .ky-tl-right { width: 100%; padding-left: 0; }
-  .ky-tl-item { margin-top: 56px; margin-bottom: 140px; position: relative; padding-left: 0; }
+  .ky-tl-item { margin-top: 0; margin-bottom: 140px; position: relative; padding-top: 100px; padding-left: 0; }
   .ky-tl-item:last-child { margin-bottom: 0; }
-  .ky-tl-img { border-radius: 0; margin-bottom: 24px; aspect-ratio: 4/5; width: 100vw; margin-left: calc(50% - 50vw); }
+  .ky-tl-img { border-radius: 0; margin-bottom: 32px; aspect-ratio: 4/5; width: 100vw; margin-left: calc(50% - 50vw); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
   .ky-tl-item::before { 
-    content: attr(data-time); position: absolute; top: -45px; left: 32px; z-index: 10;
-    font-family: 'Cormorant Infant', serif; font-style: italic; font-size: 72px; font-weight: 400; background: transparent; color: var(--td); opacity: 0.95; line-height: 1; text-shadow: 0 4px 16px rgba(255,255,255,0.8);
+    content: attr(data-time); position: absolute; top: 0; left: 48px; z-index: 10;
+    font-family: 'Cormorant Infant', serif; font-style: italic; font-size: 64px; font-weight: 400; color: var(--td); line-height: 1; text-shadow: none; letter-spacing: 0.02em;
+  }
+  .ky-tl-item::after { 
+    content: ''; position: absolute; top: 30px; left: 13px; width: 7px; height: 7px; border-radius: 50%; background: var(--td); z-index: 10;
   }
   .ky-tl-tx { padding: 0 24px 0 40px; position: relative; z-index: 2; }
   .ky-tl-tx h3 { font-size: 22px; line-height: 1.6; margin-bottom: 16px; }
