@@ -552,21 +552,21 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge"><i class="fa-solid fa-rocket"></i> 100件チャレンジ</div>
+  <div class="hero-badge"><i class="fa-solid fa-gem"></i> プロトタイプ先行型 Ver2.0</div>
   <h1>CW 応募マニュアル</h1>
-  <p class="hero-sub">クラウドワークスで案件を「探す → 判断 → 送る」を高速化する手順書</p>
+  <p class="hero-sub">高単価案件に対して「実像プロトタイプ」を先行提示し、圧倒的受注率を叩き出す最強手順</p>
   <div class="stats-row">
     <div class="stat-box">
-      <span class="stat-num">5</span>
-      <div class="stat-lbl">1日の目標件数</div>
+      <span class="stat-num">30<span style="font-size:0.5em">万〜</span></span>
+      <div class="stat-lbl">狙う予算帯</div>
     </div>
     <div class="stat-box">
-      <span class="stat-num">20</span>
-      <div class="stat-lbl">稼働日数</div>
+      <span class="stat-num">2<span style="font-size:0.5em">日</span></span>
+      <div class="stat-lbl">デモ提出速度</div>
     </div>
     <div class="stat-box">
-      <span class="stat-num">100</span>
-      <div class="stat-lbl">総応募目標</div>
+      <span class="stat-num">ZERO</span>
+      <div class="stat-lbl">クライアントのリスク</div>
     </div>
   </div>
 </section>
@@ -930,13 +930,14 @@
     </div>
     <div class="prompt-body" id="prompt-text">以下の案件を見てください。
 
-1. この案件に応募すべきか判断してください（YES/NO＋理由を簡単に）
-2. YESの場合はベーステンプレをもとに、案件に合わせた応募文を作成してください
+1. この案件に「プロトタイプ先行提案」の軸で応募すべきか、または「通常応募」の軸で応募すべきか判断してください。地雷案件ならスキップしてください。
+2. 応募する場合は、適切なテンプレをもとに、案件に合わせた応募文を作成してください。
 
 【メッセージ生成ルール：高単価向けトーン】
+・過去の実績よりも「これからあなたのために何が作れるか」を重視
 ・エゴ（実力証明や自己アピール）を出さず謙虚に
 ・相手の不安や状況に寄り添い、判断を手助けするフラットなスタンス
-・回りくどい言い訳や劇的な表現を避け、短く誠実に
+・回りくどい言い訳を避け、短く誠実に
 
 【案件詳細】
 （ここに案件ページの文章をそのままペースト）</div>
@@ -967,55 +968,57 @@
   <div class="sec-head">
     <div class="sec-num">04</div>
     <div>
-      <h2>ベーステンプレ（Antigravityが参照する元文章）</h2>
+      <h2>応募文テンプレート（Ver 2.0）</h2>
+      <p>「高単価・プロトタイプ先行型」と「通常応募型」の2パターンの元文章です</p>
     </div>
+  </div>
+
+  <div class="tmpl-box" style="margin-bottom: 24px; border-color: rgba(217,119,6,0.3);">
+    <div class="tmpl-head">
+      <span style="color:#d97706;"><i class="fa-solid fa-star"></i> 本命・プロトタイプ先行提案用（30万円〜の案件向け）</span>
+      <button class="copy-btn" onclick="copyPrompt(this)" data-target="premium-tmpl">
+        <i class="fa-solid fa-copy"></i> コピー
+      </button>
+    </div>
+    <div class="tmpl-body" id="premium-tmpl">はじめまして。Webクリエイターの渥美絵里と申します。
+今回の〇〇制作のご要望を拝見し、私のデザインテイストとスキルが非常にマッチすると感じ応募いたしました。
+
+とはいえ、過去の実績や文面だけでは「実際のスマホ操作感」や「御社のイメージ通りになるか？」をご判断いただくのは難しいかと存じます。
+
+そこでご提案なのですが、もしよろしければ「ご希望のイメージ詳細（参考サイトや色味など）」をいくつか教えていただけないでしょうか？
+ヒアリングさせていただけましたら、【2〜3日以内に、御社専用のトップページ（試作デザイン）を無料で作成】してお見せいたします。
+
+▼ 私が制作できる品質のサンプル（デモサイトの実物）
+https://web-tsukuru.jp/works_youchien.html
+※スマホの美しさと、下部固定バー等の「コンバージョンUI設計」に特化しています。
+
+このサンプルのようなクオリティで、まずは御社専用のトップページをフルスクラッチ（手組み）で制作いたします。そのデモをスマホ等で見ていただき、もし気に入っていただければ、そのまま正式にご発注いただくという流れでいかがでしょうか？（イメージと違えばお断りいただいてもちろんです）
+
+完全にリスクゼロでご検討いただけますので、ぜひ一度詳細をお伺いできないでしょうか？
+ご連絡を心よりお待ちしております。</div>
   </div>
 
   <div class="tmpl-box">
     <div class="tmpl-head">
-      <span>BASE TEMPLATE</span>
+      <span>BASE TEMPLATE : 通常応募用（改修・小規模案件向け）</span>
       <button class="copy-btn" onclick="copyPrompt(this)" data-target="base-tmpl">
         <i class="fa-solid fa-copy"></i> コピー
       </button>
     </div>
-    <div class="tmpl-body" id="base-tmpl">はじめまして。Web制作フリーランスの「渥美絵里」と申します。
+    <div class="tmpl-body" id="base-tmpl">はじめまして。Web制作フリーランスの渥美絵里と申します。
 この度、「[案件名]」を拝見し、ぜひお力になりたいと思い応募いたしました。
 
 【ポートフォリオ】
-https://web-tsukuru.jp/portfolio_cw
+https://web-tsukuru.jp/portfolio_cw.html
 
-【制作スタイルについて】
-HTML / CSS / JavaScriptによるフルスクラッチ実装のため、WordPressは使用しません。
-AIコーディングツール（Antigravity）を活用しながら、コードの細部・レスポンシブは人の目で仕上げる「速いけど雑じゃない」スタイルで制作しています。
+【制作スタイル・強み】
+HTML/CSS/JavaScriptによるフルスクラッチ実装を得意としており、スマホでの「使いやすさと美しさ（UI/UX）」の設計に絶対の自信があります。
 
-【公開・サーバーについて】
-Git × GitHubで開発・管理しています。
-公開方法はご要望に合わせて対応します。
-・Cloudflare Pages（無料・サーバー不要）
-・お持ちのレンタルサーバーへファイルをアップロード
-どちらの方法でも静的サイト構成のため、サーバー保守費は発生しません。
-掲載しているLP・サイトはすべてこの構成で公開・運用しています。
-
-【SEO・AI検索対応について】
-静的サイト構成・意味のある見出し設計により、Google検索・AI検索（LLMO/GEO）への表示を意識した実装が可能です。
-
-【主な制作実績・対応業務】
-・LP・Webサイト制作（HTML/CSS/JS フルスクラッチ）
-・Instagram フィード投稿・Reel動画制作
-・チラシ・名刺・LINEリッチメニューデザイン
-
-【使用ツール】
-・HTML / CSS / JavaScript
-・Canva / Figma
-・Git / GitHub / Cloudflare Pages
-・Antigravity（AIコーディング）
-・Wisk（AI画像生成）/ FLOW（AI動画生成）/ Adobe Firefly
+最新のAIツールを活用してデザイン・コーディングを高速化しつつ、細部は人の目で完璧に仕上げる「速さと高品質」を両立したスタイルで制作しております。（静的サイト構築のため表示速度やSEOにも強く、サーバー保守費も不要にできます）
 
 【稼働】
-フリーランスのため、平日・土日問わず対応可。返信は基本当日中。
-
-まずは現状やご要望をお聞かせください。
-よろしくお願いいたします。</div>
+フリーランスのため、平日・土日問わず柔軟に対応可能です。返信は基本当日中に行います。
+まずは現状やご要望をお聞かせください。よろしくお願いいたします。</div>
   </div>
 
   <div class="div"></div>
