@@ -174,7 +174,7 @@ img{display:block;width:100%}
 }
 /* Vertical initial title */
 .s-vert{position:absolute;left:260px;bottom:14%;color:#fff;writing-mode:vertical-rl;text-orientation:mixed;z-index:4;will-change:transform,opacity}
-.s-vert h1{font-family:var(--serif);font-size:clamp(2.6rem,4.8vh,3.4rem);font-weight:500;line-height:2.2;letter-spacing:.14em;opacity:0;animation:softFadeIn 1.8s 1.2s ease-out forwards}
+.s-vert h1{font-family:var(--serif);font-size:clamp(2.6rem,4.8vh,3.4rem);font-weight:400;line-height:2.2;letter-spacing:.14em;opacity:0;animation:softFadeIn 1.8s 1.2s ease-out forwards}
 .s-vert p{font-family:var(--en);font-size:.75rem;letter-spacing:.2em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-top:14px;opacity:0;animation:softFadeIn 1.8s 1.8s ease-out forwards}
 @keyframes softFadeIn{from{opacity:0}to{opacity:1}}
 /* Scrolling text layer */
@@ -1170,7 +1170,7 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 /* 髫ｨ貂可髫ｨ貂可 SUBPAGE: PHILOSOPHY 髫ｨ貂可髫ｨ貂可 */
 .ph-hero-ov { position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; pointer-events: none; }
 .ph-hero-text { position: absolute; left: 12%; top: 40%; transform: translateY(-50%); writing-mode: vertical-rl; text-orientation: mixed; z-index: 4; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
-.ph-hero-ttl { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 500; line-height: 2; letter-spacing: 0.15em; color: #fff; text-shadow: 0 4px 20px rgba(0,0,0,0.5); text-indent: -0.5em; }
+.ph-hero-ttl { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 400; line-height: 2; letter-spacing: 0.15em; color: #fff; text-shadow: 0 4px 20px rgba(0,0,0,0.5); text-indent: -0.5em; }
 .ph-hero-sub { font-family: var(--en); font-size: 0.75rem; letter-spacing: 0.25em; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-left: 24px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 .ph-s-text { left: 18%; width: 50%; }
 
