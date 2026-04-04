@@ -1428,3 +1428,13 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 .ph-dir-img-wrap img {
   filter: brightness(0.87) saturate(0.87) sepia(0.05);
 }
+
+/* ============================================================
+   MOBILE OVERRIDES
+   ============================================================ */
+@media (max-width: 900px) {
+  /* モバイル環境では左端の縦書きテキスト（ナビゲーション等）を非表示にして本文との被りを防ぐ */
+  .left-vert-nav {
+    display: none !important;
+  }
+}
