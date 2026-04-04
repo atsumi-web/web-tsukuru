@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>制作実績：みどりが丘幼稚園（プレミアム・プロトタイプ） | 渥美絵里</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --accent: #4f46e5;
+    --td: #0f172a;
+    --tm: #475569;
+    --serif: 'Shippori Mincho', serif;
+  }
+  body {
+    margin: 0; padding: 0; background: var(--bg);
+    font-family: 'Noto Sans JP', sans-serif; color: var(--td); line-height: 1.8;
+  }
+  .header {
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 24px; text-align: center;
+  }
+  .header h1 {
+    font-size: 1.2rem; margin: 0; letter-spacing: 0.1em;
+  }
+  .container {
+    max-width: 800px; margin: 60px auto; padding: 0 24px;
+  }
+  .mockup {
+    width: 100%; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(0,0,0,0.08); margin-bottom: 40px; display: block;
+    background: #1a3d1a; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5);
+  }
+  /* In reality, we will load an image here, but as a fallback: */
+  .mockup-img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+  
+  .title-block { margin-bottom: 40px; }
+  .title-block .tag {
+    display: inline-block; font-size: 0.7rem; color: var(--accent); border: 1px solid var(--accent); padding: 4px 12px; border-radius: 20px; font-weight: bold; margin-bottom: 12px; letter-spacing: 0.1em;
+  }
+  .title-block h2 {
+    font-family: var(--serif); font-size: 2rem; margin: 0 0 16px 0; color: #0f172a; line-height: 1.4;
+  }
+  .title-block p {
+    font-size: 0.95rem; color: var(--tm); margin: 0;
+  }
+
+  .content-block {
+    background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-bottom: 60px;
+  }
+  .point { margin-bottom: 32px; }
+  .point:last-child { margin-bottom: 0; }
+  .point h3 {
+    font-size: 1.1rem; color: #0f172a; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px;
+  }
+  .point h3 i { color: var(--accent); }
+  .point p {
+    font-size: 0.9rem; color: var(--tm); margin: 0;
+  }
+
+  .cta-area {
+    text-align: center; border-top: 1px solid var(--border); padding-top: 60px; margin-top: 40px; padding-bottom: 80px;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    background: var(--accent); color: #fff; font-size: 1.1rem; font-weight: bold; padding: 20px 48px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 8px 30px rgba(79,70,229,0.3); transition: all 0.3s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-4px); box-shadow: 0 12px 40px rgba(79,70,229,0.4);
+  }
+  .cta-desc {
+    font-size: 0.85rem; color: var(--tm); margin-top: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .content-block { padding: 24px; }
+    .title-block h2 { font-size: 1.5rem; }
+    .cta-btn { padding: 16px 32px; font-size: 1rem; width: 100%; box-sizing: border-box; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>ERI ATSUMI — PORTFOLIO</h1>
+</header>
+
+<div class="container">
+  
+  <!-- Image Placeholder (will be replaced by actual image) -->
+  <div class="mockup">
+    <img class="mockup-img" src="cw_portfolio/lp/07_youchien_top.png" alt="幼稚園サイト" onerror="this.style.display='none'; this.parentNode.innerHTML='※ここに幼稚園トップページのスクショを入れます'"/>
+  </div>
+
+  <div class="title-block">
+    <span class="tag">PROTOTYPE</span>
+    <h2>みどりが丘幼稚園<br>（プレミアム教育機関向けデモ）</h2>
+    <p>大切なお子様を預ける先を探している、安心感と質の高さを求める保護者様に向けた、ハイエンドな幼稚園・教育機関用のプロトタイプサイトです。</p>
+  </div>
+
+  <div class="content-block">
+    <div class="point">
+      <h3><i class="fa-solid fa-gem"></i> 雑誌のような洗練された空気感</h3>
+      <p>情報をただ詰め込むのではなく、「美しい写真」と「ゆとりある余白」を贅沢に活かし、他園にはない高級感と安心感を表現しました。クリニックや高級サロンなど、質の高さが求められる業種にもそのまま応用可能です。</p>
+    </div>
+    
+    <div class="point">
+      <h3><i class="fa-solid fa-mobile-screen"></i> スマホでの体験（UX）を最優先</h3>
+      <p>モバイル閲覧時に写真の魅力を邪魔しないよう、画面最下部に「入園・お問い合わせ」の固定ダブ（Bottom Bar）を配置。デザインの美観を一切損ねずに、予約や問い合わせ（コンバージョン）を引き上げる独自のUI設計を施しています。</p>
+    </div>
+    
+    <div class="point">
+      <h3><i class="fa-solid fa-pen-nib"></i> 世界観を壊さないタイポグラフィ</h3>
+      <p>上品な明朝体と洗練された欧文フォント（Cormorant Infant / Outfit等）を組み合わせることで、ただのWebサイトではなく「ブランドブック」のような温もりと格式のあるイメージを確立させています。</p>
+    </div>
+  </div>
+
+  <div class="cta-area">
+    <a href="client-work/07_youchien/hp/index.html" target="_blank" class="cta-btn">
+      実際のデモサイトを動かしてみる <i class="fa-solid fa-arrow-right"></i>
+    </a>
+    <p class="cta-desc">※新しいタブで開きます。実際のスマホ端末での動作もぜひご確認ください。</p>
+    <div style="margin-top: 32px">
+      <a href="portfolio_cw.html" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;"><i class="fa-solid fa-arrow-left"></i> ポートフォリオ一覧へ戻る</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
