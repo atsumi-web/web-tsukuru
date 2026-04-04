@@ -1461,7 +1461,11 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   /* --- モバイル初期ヘッダーの余白調整 --- */
   .hd {
     padding: 20px 24px;
-    align-items: center; /* 中央揃えを強制 */
+    align-items: center;
+  }
+  /* ここで全ての中身にトランジションを追加してカクつきを防止 */
+  .hd, .hd-base, .logo, .logo-ic, .logo-ic svg, .logo-text, .hd-menu, .hd-menu span {
+    transition: all 0.45s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   /* --- スクロール時のヘッダーピル（ダイナミックアイランド風） --- */
