@@ -52,6 +52,7 @@
     <div class="s-photo2" id="sPhoto2" style="cursor:none;">
       <video src="images/Boy_squatting_looking_202604021152.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
       <div class="s-photo2-ov"></div>
+      <div class="mobile-play-btn">PLAY<br>MOVIE</div>
     </div>
     <div class="s-yr">2026 · MIDORIGAOKA</div>
     <div class="s-btm">Scroll Down</div>
@@ -571,10 +572,14 @@ function updateScrolly() {
     sPhoto2.style.transform = `translateY(${(1 - p2E) * 100}%)`;
 
     // 斜めカットの解除（全面表示化）
-    const cStart = 0.70, cEnd = 0.95;
-    const cP = Math.max(0, Math.min(1, (prog - cStart) / (cEnd - cStart)));
-    const clipY = 12 * (1 - cP); // vhの代わりに%を使うことでリサイズバグを防止
-    sPhoto2.style.clipPath = `polygon(0 ${clipY}%, 100% 0, 100% 100%, 0 100%)`;
+    // ※モバイル(横幅900px以下)ではクリップパスのアニメーションが極めて重く（違和感やカクつきの原因になる）なるため、
+    // CSS側で無効化し、JS側の計算もスキップしてパフォーマンスを向上させます。
+    if (window.innerWidth > 900) {
+      const cStart = 0.70, cEnd = 0.95;
+      const cP = Math.max(0, Math.min(1, (prog - cStart) / (cEnd - cStart)));
+      const clipY = 12 * (1 - cP); // vhの代わりに%を使うことでリサイズバグを防止
+      sPhoto2.style.clipPath = `polygon(0 ${clipY}%, 100% 0, 100% 100%, 0 100%)`;
+    }
   }
 }
 
