@@ -19,6 +19,13 @@
 .sec-padding { padding: 240px 40px; }
 @media (max-width: 960px) { .sec-padding { padding: 160px 24px; } }
 
+/* Br Break Logic */
+.sp-br { display: none; }
+@media (max-width: 900px) {
+  .pc-br { display: none; }
+  .sp-br { display: inline; }
+}
+
 /* Hero */
 .scrolly { height: 100svh; }
 .scrolly-pin { background: #1a1f18; position: relative !important; height: 100%; }
@@ -136,13 +143,13 @@
       <p class="mz-promise-sub">OUR PROMISE</p>
       <h2 class="mz-promise-ttl">あせらず、<br>くらべず、<br>そのままを。</h2>
       <p class="mz-promise-p">
-        大人にとっての「効率」は、<br>
-        子どもにとっての「大発見の機会」を<br>
+        大人にとっての<br class="sp-br">「効率」は、<br class="pc-br">
+        子どもにとっての<br class="sp-br">「大発見の機会」を<br class="pc-br">
         奪う行為です。<br><br>
-        ダンゴムシを３０分眺める子に、<br>
-        「早くしなさい」とは声をかけません。<br>
-        その子が自分なりの答えを見つけるまで、<br>
-        私たちはじっと風の中で待ち続けます。
+        ダンゴムシを<br class="sp-br">３０分眺める子に、<br class="pc-br">
+        「早くしなさい」とは<br class="sp-br">声をかけません。<br class="pc-br">
+        その子が自分なりの<br class="sp-br">答えを見つけるまで、<br class="pc-br">
+        私たちはじっと風の中で<br class="sp-br">待ち続けます。
       </p>
     </div>
   </div>
