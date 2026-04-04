@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="css/style.css?v=2.21">
 <script src="js/shared-nav.js?v=2.6" data-root-path="./" defer></script>
 <style>
+@media (max-width: 900px) {
+  .scrolly-pin .ph-hero-ttl span { margin-left: 0 !important; display: inline-block; }
+}
 /* ── MAGAZINE LAYOUT OVERRIDES ── */
 .sec-padding { padding: 240px 40px; }
 @media (max-width: 960px) { .sec-padding { padding: 160px 24px; } }
@@ -22,7 +25,24 @@
 .scrolly-pin .ph-hero-text { left: auto; right: 8%; top: 20vh; transform: none; }
 .scrolly-pin .ph-hero-ttl { font-size: clamp(1.8rem, 2.8vw, 3.2rem); }
 @media (max-width: 900px) {
-  .scrolly-pin .ph-hero-text { right: auto; left: 8%; top: 16vh; }
+  .scrolly-pin .ph-hero-text { 
+    writing-mode: horizontal-tb; 
+    top: auto; 
+    bottom: 12%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 90%; 
+    text-align: center; 
+    position: absolute;
+  }
+  .scrolly-pin .ph-hero-ttl {
+    text-indent: 0;
+  }
+  .scrolly-pin .ph-hero-sub {
+    margin-left: 0;
+    margin-top: 12px;
+    display: block;
+  }
 }
 
 /* Magazine Section: Promise */
