@@ -1355,3 +1355,6 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 
 
 
+
+/* GLOBAL SECTION HEADINGS */
+.mz-head { display: flex; flex-direction: column; align-items: center; text-align: center; }
