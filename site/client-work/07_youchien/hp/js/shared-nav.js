@@ -172,9 +172,12 @@
     document.body.insertAdjacentHTML('beforeend', leftNavHTML);
 
     // Re-bind Header Scroll Event since we recreated DOM
-    const hd = document.getElementById('hd');
-    if (hd) {
-      window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 60), {passive:true});
+    const hdElements = document.querySelectorAll('.hd');
+    if (hdElements.length > 0) {
+      window.addEventListener('scroll', () => {
+        const isScrolled = window.scrollY > 60;
+        hdElements.forEach(hd => hd.classList.toggle('sc', isScrolled));
+      }, {passive:true});
     }
 
     // Initialize Menu Logic

@@ -1437,4 +1437,40 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   .left-vert-nav {
     display: none !important;
   }
+
+  /* --- スクロール時のヘッダーピル（ダイナミックアイランド風） --- */
+  .hd.sc {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  /* 背景はベースレイヤーにのみ適用（ホワイトレイヤーは背後が透けるようにするため） */
+  .hd-base.sc {
+    background: rgba(30, 61, 26, 0.95); /* 深緑の半透明 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  
+  /* ロゴを極小化＆横並びにする */
+  .hd.sc .logo {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .hd.sc .logo-ic { width: 32px; height: 32px; }
+  .hd.sc .logo-ic svg { width: 28px; height: 28px; }
+  .hd.sc .logo-text { font-size: 0.75rem; letter-spacing: 0.1em; transition: font-size 0.3s; }
+  
+  /* ハンバーガーメニューも縮小 */
+  .hd.sc .hd-menu { width: 44px; height: 44px; transform: scale(0.75); transform-origin: right center; }
+
+  /* ベースレイヤーのピル内は深緑背景なので、すべて白色で強制上書き（可視性確保） */
+  .hd-base.sc .logo-ic svg path, 
+  .hd-base.sc .logo-ic svg circle, 
+  .hd-base.sc .logo-ic svg rect { fill: #fff; }
+  .hd-base.sc .logo-text { color: #fff; }
+  .hd-base.sc .hd-menu span { background: #fff; }
 }
