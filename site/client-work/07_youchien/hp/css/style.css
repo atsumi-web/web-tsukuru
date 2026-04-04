@@ -1591,27 +1591,51 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
 }
 
 @media (max-width: 960px) {
+  /* トップに戻るボタンは、下部固定バーの上に避ける */
   .ky-btt {
-    bottom: 24px;
-    right: 24px;
+    bottom: 80px;
+    right: 16px;
     width: 44px;
     height: 44px;
   }
-  /* モバイル版は少しスリム・コンパクトにする */
+  
+  /* 案2：スマホ用 アプリ風「下部固定バー（Bottom Bar）」 */
+  .float-cta-group {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* バー上部に影をつけて浮遊感を抑制 */
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  }
   .float-cta {
-    padding: 20px 10px !important;
-    border-radius: 10px 0 0 10px !important;
-    font-size: 0.72rem !important;
-    letter-spacing: 0.1em !important;
-    transform: translateX(4px) !important;
-    animation: none !important;
+    transform: none !important;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    padding: 18px 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border-bottom: none;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.08em !important;
+    flex: 1; /* 50%ずつ均等分割 */
+    justify-content: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .float-cta:last-child {
+    border-right: none;
   }
   .float-cta:hover {
-    transform: translateX(0) !important;
+    transform: none !important; /* スマホなので無効化 */
   }
   .float-cta svg {
-    margin-bottom: 8px;
-    width: 13px !important;
-    height: 13px !important;
+    margin-bottom: 0;
+    margin-right: 6px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 }
