@@ -1550,11 +1550,42 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
   box-shadow: 0 14px 32px rgba(0,0,0,0.2);
 }
 
+/* ── FLOAT CTA (OVERRIDE FOR VERTICAL DESKTOP) ── */
+@media (min-width: 961px) {
+  .float-cta {
+    top: 50%;
+    bottom: auto;
+    right: 0;
+    transform: translateY(-50%) translateX(4px);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    padding: 32px 14px;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -4px 0 24px rgba(26,61,26,0.15);
+    letter-spacing: 0.15em;
+  }
+  .float-cta:hover {
+    transform: translateY(-50%) translateX(0);
+    box-shadow: -8px 0 32px rgba(26,61,26,0.25);
+  }
+  /* アイコンが縦書き時に横を向いてしまうのを補正 */
+  .float-cta svg {
+    margin-bottom: 12px;
+    margin-right: 0 !important;
+  }
+}
+
 @media (max-width: 960px) {
   .ky-btt {
     bottom: 24px;
     right: 24px;
     width: 48px;
     height: 48px;
+  }
+  /* モバイル時はそのまま下部に固定されるが、トップに戻るボタンと被らないようにCTAを左・中央寄りにするか、上にずらす */
+  .float-cta {
+    bottom: 24px !important;
+    right: auto !important;
+    left: 24px; /* モバイルでは左下に配置 */
   }
 }
