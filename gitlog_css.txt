@@ -1,0 +1,287 @@
+commit 9913fe5b13b6652cc6d8ebbb03c38d716f4f43a4
+Author: atsumi-web <atsumiwebstudio@gmail.com>
+Date:   Sat Apr 4 12:32:33 2026 +0900
+
+    fix(mobile): Android等でのスクロール時の違和感（カクつき）を解消＆Play MOVIEボタンを追加
+
+diff --git a/site/client-work/07_youchien/hp/css/style.css b/site/client-work/07_youchien/hp/css/style.css
+index 44e4f77..74a3ad7 100644
+--- a/site/client-work/07_youchien/hp/css/style.css
++++ b/site/client-work/07_youchien/hp/css/style.css
+@@ -183,12 +183,32 @@ img{display:block;width:100%}
+ .s-text p:last-child{margin-bottom:0}
+ /* Photo 2 (slides up) */
+ .s-photo2{position:absolute;inset:0;z-index:6;transform:translateY(100%);will-change:transform;clip-path:polygon(0 12vh, 100% 0, 100% 100%, 0 100%)}
++@media (max-width: 900px) { .s-photo2 { clip-path: none !important; } }
+ .s-photo2 img{width:100%;height:100%;object-fit:cover}
+ .s-photo2-ov{position:absolute;inset:0;background:rgba(8,22,8,.42)}
+ /* PLAY MOVIE Custom Cursor */
+ .play-btn{position:fixed;top:0;left:0;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.35);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:var(--en);font-size:.6rem;letter-spacing:.12em;text-align:center;line-height:1.5;pointer-events:none;z-index:9999;opacity:0;transform:translate(-50%,-50%) scale(0.5);transition:opacity .3s ease,transform .3s ease}
+ .play-btn.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+ .play-btn::before{content:'▶';font-size:.9rem;margin-bottom:6px;display:block}
++
++/* Mobile permanent play button (No-cursor environments) */
++.mobile-play-btn { display: none; }
++@media (max-width: 900px) {
++  .mobile-play-btn {
++    display: flex; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
++    width: 70px; height: 70px; border-radius: 50%; background: rgba(255, 255, 255, 0.4);
++    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
++    flex-direction: column; align-items: center; justify-content: center;
++    color: #fff; font-family: var(--en); font-size: 0.5rem; letter-spacing: 0.1em;
++    text-align: center; line-height: 1.4; z-index: 10; pointer-events: none;
++    animation: fadeInPulse 2s infinite alternate;
++  }
++  .mobile-play-btn::before { content: '▶'; font-size: 0.8rem; margin-bottom: 2px; display: block; }
++}
++@keyframes fadeInPulse {
++  from { opacity: 0.7; transform: translate(-50%, -50%) scale(0.95); }
++  to { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
++}
+ /* Video Modal */
+ .v-modal{position:fixed;inset:0;background:rgba(0,0,0,.2);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+ .v-modal.show{opacity:1;pointer-events:auto}
+
+commit aa938c550be5d6c734acc39e0c1928187fb7b5f4
+Author: atsumi-web <atsumiwebstudio@gmail.com>
+Date:   Sat Apr 4 12:25:03 2026 +0900
+
+    style: モバイルヘッダーピル（ダイナミックアイランド）の高さと余白を最適化、メニューをスリム化
+
+diff --git a/site/client-work/07_youchien/hp/css/style.css b/site/client-work/07_youchien/hp/css/style.css
+index 2ddf67f..44e4f77 100644
+--- a/site/client-work/07_youchien/hp/css/style.css
++++ b/site/client-work/07_youchien/hp/css/style.css
+@@ -1438,36 +1438,55 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
+     display: none !important;
+   }
+ 
++  /* --- モバイル初期ヘッダーの余白調整 --- */
++  .hd {
++    padding: 20px 24px;
++    align-items: center; /* 中央揃えを強制 */
++  }
++
+   /* --- スクロール時のヘッダーピル（ダイナミックアイランド風） --- */
+   .hd.sc {
+-    top: 10px;
+-    left: 10px;
+-    right: 10px;
+-    padding: 10px 20px;
+-    border-radius: 50px;
++    top: 15px;
++    left: 20px;
++    right: 20px;
++    padding: 8px 18px;
++    border-radius: 40px;
++    height: 56px; /* 高さをスリムに固定 */
+     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+   }
+-  /* 背景はベースレイヤーにのみ適用（ホワイトレイヤーは背後が透けるようにするため） */
++  
++  /* 背景はベースレイヤーにのみ適用 */
+   .hd-base.sc {
+-    background: rgba(30, 61, 26, 0.95); /* 深緑の半透明 */
++    background: rgba(30, 61, 26, 0.85); /* 深緑の半透明 */
+     backdrop-filter: blur(12px);
+     -webkit-backdrop-filter: blur(12px);
+-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
++    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+   }
+   
+   /* ロゴを極小化＆横並びにする */
+   .hd.sc .logo {
+     flex-direction: row;
+-    gap: 12px;
++    gap: 10px;
++    margin-top: 0;
+   }
+-  .hd.sc .logo-ic { width: 32px; height: 32px; }
+-  .hd.sc .logo-ic svg { width: 28px; height: 28px; }
+-  .hd.sc .logo-text { font-size: 0.75rem; letter-spacing: 0.1em; transition: font-size 0.3s; }
++  .hd.sc .logo-ic { width: 30px; height: 30px; }
++  .hd.sc .logo-ic svg { width: 24px; height: 24px; }
++  .hd.sc .logo-text { font-size: 0.65rem; margin: 0; line-height: 1; letter-spacing: 0.1em; }
++  
++  /* ハンバーガーメニューを超コンパクトに再定義（scaleではなく実寸変更） */
++  .hd.sc .hd-menu { width: 32px; height: 32px; transform: none; margin-right: -4px; }
++  .hd.sc .hd-menu span { height: 2px; }
++  .hd.sc .hd-menu span:nth-child(1) { width: 14px; top: 9px; left: 10px; transform: rotate(0deg); }
++  .hd.sc .hd-menu span:nth-child(2) { width: 20px; top: 15px; left: 4px; transform: rotate(0deg); }
++  .hd.sc .hd-menu span:nth-child(3) { width: 26px; top: 21px; left: -2px; transform: rotate(0deg); }
+   
+-  /* ハンバーガーメニューも縮小 */
+-  .hd.sc .hd-menu { width: 44px; height: 44px; transform: scale(0.75); transform-origin: right center; }
++  /* ホバー時（モバイルではタップ時）の動きも再定義 */
++  .hd.sc .hd-menu:hover span, .hd.sc .hd-menu.is-hover span { left: 4px; width: 20px; }
++  .hd.sc .hd-menu:hover span:nth-child(1), .hd.sc .hd-menu.is-hover span:nth-child(1) { top: 9px; }
++  .hd.sc .hd-menu:hover span:nth-child(2), .hd.sc .hd-menu.is-hover span:nth-child(2) { top: 15px; }
++  .hd.sc .hd-menu:hover span:nth-child(3), .hd.sc .hd-menu.is-hover span:nth-child(3) { top: 21px; }
+ 
+-  /* ベースレイヤーのピル内は深緑背景なので、すべて白色で強制上書き（可視性確保） */
++  /* ベースレイヤーのピル内は深緑背景なので、すべて白色で強制上書き */
+   .hd-base.sc .logo-ic svg path, 
+   .hd-base.sc .logo-ic svg circle, 
+   .hd-base.sc .logo-ic svg rect { fill: #fff; }
+
+commit e471f597d13bade98d273109dbd45431ba577511
+Author: atsumi-web <atsumiwebstudio@gmail.com>
+Date:   Sat Apr 4 12:06:03 2026 +0900
+
+    feat(nav): モバイル向け「ダイナミック・アイランド（ピル）型」のスクロール追従ヘッダーを実装
+
+diff --git a/site/client-work/07_youchien/hp/css/style.css b/site/client-work/07_youchien/hp/css/style.css
+index 8e54e08..2ddf67f 100644
+--- a/site/client-work/07_youchien/hp/css/style.css
++++ b/site/client-work/07_youchien/hp/css/style.css
+@@ -1437,4 +1437,40 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
+   .left-vert-nav {
+     display: none !important;
+   }
++
++  /* --- スクロール時のヘッダーピル（ダイナミックアイランド風） --- */
++  .hd.sc {
++    top: 10px;
++    left: 10px;
++    right: 10px;
++    padding: 10px 20px;
++    border-radius: 50px;
++    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
++  }
++  /* 背景はベースレイヤーにのみ適用（ホワイトレイヤーは背後が透けるようにするため） */
++  .hd-base.sc {
++    background: rgba(30, 61, 26, 0.95); /* 深緑の半透明 */
++    backdrop-filter: blur(12px);
++    -webkit-backdrop-filter: blur(12px);
++    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
++  }
++  
++  /* ロゴを極小化＆横並びにする */
++  .hd.sc .logo {
++    flex-direction: row;
++    gap: 12px;
++  }
++  .hd.sc .logo-ic { width: 32px; height: 32px; }
++  .hd.sc .logo-ic svg { width: 28px; height: 28px; }
++  .hd.sc .logo-text { font-size: 0.75rem; letter-spacing: 0.1em; transition: font-size 0.3s; }
++  
++  /* ハンバーガーメニューも縮小 */
++  .hd.sc .hd-menu { width: 44px; height: 44px; transform: scale(0.75); transform-origin: right center; }
++
++  /* ベースレイヤーのピル内は深緑背景なので、すべて白色で強制上書き（可視性確保） */
++  .hd-base.sc .logo-ic svg path, 
++  .hd-base.sc .logo-ic svg circle, 
++  .hd-base.sc .logo-ic svg rect { fill: #fff; }
++  .hd-base.sc .logo-text { color: #fff; }
++  .hd-base.sc .hd-menu span { background: #fff; }
+ }
+
+commit 70110c579551b64bf6c9c8f6f38fd2d3e3178f08
+Author: atsumi-web <atsumiwebstudio@gmail.com>
+Date:   Sat Apr 4 11:57:46 2026 +0900
+
+    style: モバイル版で本文と被る左端の縦テキスト(.left-vert-nav)を非表示に修正
+
+diff --git a/site/client-work/07_youchien/hp/css/style.css b/site/client-work/07_youchien/hp/css/style.css
+index eafad02..8e54e08 100644
+--- a/site/client-work/07_youchien/hp/css/style.css
++++ b/site/client-work/07_youchien/hp/css/style.css
+@@ -1428,3 +1428,13 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
+ .ph-dir-img-wrap img {
+   filter: brightness(0.87) saturate(0.87) sepia(0.05);
+ }
++
++/* ============================================================
++   MOBILE OVERRIDES
++   ============================================================ */
++@media (max-width: 900px) {
++  /* モバイル環境では左端の縦書きテキスト（ナビゲーション等）を非表示にして本文との被りを防ぐ */
++  .left-vert-nav {
++    display: none !important;
++  }
++}
+
+commit ccf86192d7c75aa08ea6154eecca409884f2aaa7
+Author: atsumi-web <atsumiwebstudio@gmail.com>
+Date:   Sat Apr 4 11:04:48 2026 +0900
+
+    世界観トーン統一：全セクション画像にフィルム調フィルターを適用（brightness/saturate/sepia）
+
+diff --git a/site/client-work/07_youchien/hp/css/style.css b/site/client-work/07_youchien/hp/css/style.css
+index d9728db..eafad02 100644
+--- a/site/client-work/07_youchien/hp/css/style.css
++++ b/site/client-work/07_youchien/hp/css/style.css
+@@ -1358,3 +1358,73 @@ footer{background:var(--gd);color:rgba(255,255,255,.45);padding:100px 80px 44px}
+ 
+ /* GLOBAL SECTION HEADINGS */
+ .mz-head { display: flex; flex-direction: column; align-items: center; text-align: center; }
++
++/* ============================================================
++   WORLD-VIEW IMAGE TONE SYSTEM
++   みどりが丘幼稚園 ── 統一トーン設計
++   
++   コンセプト：「木・緑・土・温かな自然」
++   手法：
++     brightness(0.83〜0.88)  … 少し落ち着かせ、自然光の深みを出す
++     saturate(0.85〜0.88)    … AI的な過剰彩度を抑え、柔らかくリアルに
++     sepia(0.06〜0.08)       … 微量のセピアで "フィルム感・温かみ" を統一
++   ============================================================ */
++
++/* イントロ：ブロブ画像 */
++.ky-video-mask img {
++  filter: brightness(0.85) saturate(0.86) sepia(0.07);
++}
++
++/* A Piece of Me：中央大判画像 */
++.ky-piece-img img {
++  filter: brightness(0.85) saturate(0.87) sepia(0.06);
++}
++
++/* サービスカード：保護者・地域 */
++.ky-svc-img-wrap img {
++  filter: brightness(0.85) saturate(0.87) sepia(0.07);
++}
++
++/* ストーリー：アーチ画像 */
++.ky-story-img-wrap .arch-img img {
++  filter: brightness(0.86) saturate(0.87) sepia(0.06);
++}
++
++/* 豊かな体験カード（スライダー） */
++.collab-img-wrap img {
++  filter: brightness(0.82) saturate(0.85) sepia(0.08);
++  transition: filter 0.5s ease;
++}
++.collab-img-wrap:hover img {
++  filter: brightness(0.88) saturate(0.90) sepia(0.05);
++}
++
++/* 入園フロー：ステップカードアイコン */
++.fc-icon img {
++  filter: brightness(0.85) saturate(0.86) sepia(0.07);
++}
++
++/* ニュース：サムネイル */
++.news-thumb img {
++  filter: brightness(0.85) saturate(0.86) sepia(0.06);
++}
++
++/* Daily：ヒーロー画像 */
++.ky-dh-img img {
++  filter: brightness(0.86) saturate(0.87) sepia(0.06);
++}
++
++/* Daily：タイムライン各画像 */
++.ky-tl-img img {
++  filter: brightness(0.84) saturate(0.86) sepia(0.07);
++}
++
++/* About：Pillar 画像 */
++.ph-pillar-img img {
++  filter: brightness(0.86) saturate(0.87) sepia(0.06);
++}
++
++/* About：ディレクター画像 */
++.ph-dir-img-wrap img {
++  filter: brightness(0.87) saturate(0.87) sepia(0.05);
++}

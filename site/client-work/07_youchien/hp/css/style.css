@@ -12,7 +12,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: var(--sans);
+  font-family: var(--serif);
   background: var(--white);
   color: var(--td);
   line-height: 1.7;
