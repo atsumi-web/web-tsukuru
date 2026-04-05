@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【堀田建設様】採用ページ連携における技術要件・作業依頼書</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background: #f9f9fb;
+      padding: 40px 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 1.4rem;
+      color: #1e293b;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 10px 15px;
+      border-left: 4px solid #2563eb;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    p {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    .box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 25px;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #dc2626;
+    }
+    .info {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 12px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #f1f5f9;
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>【堀田建設様】採用ページ連携における技術要件・作業依頼書</h1>
+    <p>Web担当者様</p>
+    <p>平素より堀田建設様のコーポレートサイト保守・運用にご尽力いただきありがとうございます。<br>
+    この度、堀田建設様（社長・専務決裁）の採用戦略アップデートに伴い、採用導線を新設の「採用特化型LP」へ一元化することとなりました。</p>
+    <p>つきましては、コーポレートサイト側からのスムーズな連携のため、以下の技術的な作業と仕様のすり合わせをお願いしたく、資料を取りまとめました。</p>
+
+    <h2>1. 目的と変更の概要</h2>
+    <div class="box">
+      <ul>
+        <li><strong>目的：</strong> 最新の求職者ニーズ（スマホ中心・離脱防止・LINE連携）に合わせた導線の一本化と、GA4等を用いた厳密なアクセス解析網の再構築。</li>
+        <li><strong>概要：</strong> コーポレートサイト（www.hottacon.co.jp）内にある既存の採用関連ページへのアクセスを、すべて新設の採用LP（サブドメイン）へ統合させます。</li>
+      </ul>
+    </div>
+
+    <h2>2. 御社（Webご担当者様）へのお願い事項</h2>
+    <p>コーポレートサイトのシステム（WordPress等）側で、以下の2点の作業をお願いいたします。</p>
+    
+    <div class="box">
+      <strong>作業①：メニューリンクの張り替え</strong>
+      <p>グローバルナビゲーション、フッターメニュー、トップページ内のバナー等に設定されている「採用情報」のリンク先を、すべて新しいLPのURLへ変更をお願いします。</p>
+      <ul>
+        <li>変更前： <code>https://www.hottacon.co.jp/recruit/</code></li>
+        <li>変更後： <code>https://recruit.hottacon.co.jp/</code> （※LPのURL）</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <strong>作業②：既存ページからの301リダイレクト設定</strong>
+      <p>検索エンジン（Google等）経由で直接古いページにアクセスしたユーザーの離脱・404エラーを防ぐため、以下のディレクトリ配下へのアクセスを、新しいLPへ自動転送（301リダイレクト）するようサーバー側（.htaccess等）での設定をお願いします。</p>
+      <ul>
+        <li>対象ディレクトリ： <code>https://www.hottacon.co.jp/recruit/ 以下すべて</code></li>
+        <li>転送先： <code>https://recruit.hottacon.co.jp/</code></li>
+      </ul>
+      <p class="info">※一時的なキャンペーンではなく恒久的な変更となりますため、302ではなく「301リダイレクト」にてお願いいたします。</p>
+    </div>
+
+    <h2>3. 責任分界点（保守範囲）について</h2>
+    <p>今後の保守・管理において、システムの干渉や責任の所在が不明確にならないよう、堀田建設様合意のもと、以下の通り管轄を明確に分割いたします。</p>
+    
+    <table>
+      <tr>
+        <th>管轄領域</th>
+        <th>担当</th>
+        <th>内容</th>
+      </tr>
+      <tr>
+        <td><strong>コーポレートサイト（本体）</strong></td>
+        <td>御社</td>
+        <td>既存システムの保守、サーバーインフラ維持、上記リダイレクト・リンク設定。</td>
+      </tr>
+      <tr>
+        <td><strong>採用特化型LP（コンテンツ部）</strong></td>
+        <td>渥美（私）</td>
+        <td>LPの内容更新、表示崩れ対応、お問い合わせフォームの障害対応、GA4/UTMによるアクセス解析と改善。</td>
+      </tr>
+    </table>
+
+    <p>※採用LP本体のコンテンツに関しましては、<strong>すべて私（渥美）の方で責任を持って一次対応・改修を行います</strong>。<br>
+    <span style="font-size: 0.9em; color: #475569;">（※当方のLPはWordPress等の動的CMSシステムに依存せず、純粋な静的コード（HTML/CSS/JS）にてフルスクラッチ構築しております。そのため、システムアップデートに伴う不具合やセキュリティ脆弱性等の「システム保守リスク」は発生いたしません。御社側に保守工数等のご負担をおかけすることは一切ございませんのでご安心ください）</span></p>
+
+    <h2>4. 打ち合わせでの確認事項</h2>
+    <p>本件につきまして、上記作業の「具体的な実施スケジュール」や、御社システム仕様上における設定の懸念点などがございましたら、お打ち合わせのお時間にてすり合わせをさせていただけますと幸いです。</p>
+
+    <p style="margin-top: 40px; text-align: right;">
+      Web制作・採用マーケティング担当<br>
+      渥美 絵里
+    </p>
+  </div>
+</body>
+</html>
