@@ -122,7 +122,7 @@
     <!-- ========================================== -->
     <!-- ヒーローセクション -->
     <!-- ========================================== -->
-    <section id="hero" class="relative min-h-screen flex flex-col w-full overflow-hidden">
+    <section id="hero" class="relative flex flex-col w-full lg:min-h-screen bg-[#071933]">
         
         <style>
             /* パターン1専用：背景クロスフェードスライダー（4枚仕様・32秒周期） */
@@ -151,18 +151,22 @@
             }
         </style>
 
-        <!-- フル背景：クロスフェード（4枚稼働） -->
-        <div class="absolute inset-0 bg-[#020b1f] z-0 overflow-hidden">
-            <img src="images/bg_pattern1.webp" class="bg-slide" alt="Slide 1">
-            <img src="images/bg_pattern2.webp" class="bg-slide" alt="Slide 2">
-            <img src="images/bg_pattern3.webp" class="bg-slide" alt="Slide 3">
-            <img src="images/bg_pattern4.webp" class="bg-slide" alt="Slide 4">
+        <!-- 背景ラッパー（スマホは100svh、PCはフルハイト） -->
+        <div class="absolute inset-x-0 top-0 w-full h-[100svh] lg:h-full z-0 overflow-hidden">
+            <!-- フル背景：クロスフェード（4枚稼働） -->
+            <div class="absolute inset-0 bg-[#020b1f] overflow-hidden">
+                <img src="images/bg_pattern1.webp" class="bg-slide" alt="Slide 1">
+                <img src="images/bg_pattern2.webp" class="bg-slide" alt="Slide 2">
+                <img src="images/bg_pattern3.webp" class="bg-slide" alt="Slide 3">
+                <img src="images/bg_pattern4.webp" class="bg-slide" alt="Slide 4">
+            </div>
+            
+            <!-- 文字の読みやすさを確保するグラデーションオーバーレイ -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a1a3a]/50 via-transparent to-[#0a1a3a]/80 pointer-events-none"></div>
         </div>
-        
-        <!-- 文字の読みやすさを確保するグラデーションオーバーレイ -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0a1a3a]/50 via-transparent to-[#0a1a3a]/80 z-0 pointer-events-none"></div>
-        <!-- メインキャッチコピー（中山配置） -->
-        <div class="relative z-10 flex-1 flex flex-col justify-center items-center text-center w-full px-4 pt-16">
+
+        <!-- メインキャッチコピー（スマホはファーストビュー占有、PCは上部中央） -->
+        <div class="relative z-10 w-full min-h-[100svh] lg:min-h-0 flex-1 flex flex-col justify-center items-center text-center px-4 pt-16">
                         <!-- 圧倒的なオーラを放つ英語コピー -->
             <div class="text-sm md:text-base lg:text-lg font-bold text-yellow-400 tracking-[0.3em] mb-8 md:mb-12 font-['Inter'] uppercase anim-up drop-shadow-md">
                 NEXT STAGE FOR YOUR BUSINESS
@@ -181,13 +185,12 @@
             </div>
         </div>
 
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 3つのメリットカード（モバイルは直下配置、PCはヒーローに重ねる） -->
-    <!-- ========================================== -->
-    <section class="relative z-20 w-full px-4 md:px-10 pb-12 pt-8 lg:pt-0 lg:-mt-40 xl:-mt-48 bg-[#071933] lg:bg-transparent -translate-y-1 lg:translate-y-0">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-4 max-w-7xl mx-auto h-auto anim-up d-300">
+        <!-- ========================================== -->
+        <!-- 3つのメリットカード -->
+        <!-- PCではヒーロー背景の最下部に同居、スマホではヒーローの直下に配置（スクロールで出現） -->
+        <!-- ========================================== -->
+        <div class="relative z-20 w-full px-4 md:px-10 pb-12 pt-16 lg:pt-0 bg-[#071933] lg:bg-transparent">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-4 max-w-7xl mx-auto h-auto anim-up d-300">
                 
                 <!-- カード1 -->
                 <div class="relative overflow-hidden group hover:shadow-2xl transition duration-500 cursor-default h-64 md:h-72">
@@ -236,13 +239,15 @@
                 </div>
 
         </div>
+            </div>
+        </div>
     </section>
 
     
     <!-- ========================================== -->
     <!-- 実績数字ストリップ -->
     <!-- ========================================== -->
-    <div class="bg-[#071933] text-white py-12 px-6 border-b border-white/5">
+    <div class="bg-[#071933] text-white py-12 px-6 border-b border-t lg:border-t-0 border-white/5 relative z-30">
         <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 md:gap-8 text-center">
             <div class="anim-up">
                 <div class="text-4xl md:text-5xl font-extrabold text-yellow-400">20<span class="text-2xl">年</span></div>
