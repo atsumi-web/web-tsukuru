@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- デモサイト用インデックス拒否設定（本番移行時に外します） -->
+    <meta name="robots" content="noindex, nofollow">
     <title>協力業者募集 | ビルメンテナンス・清掃業 【株式会社 希望の星】</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -88,28 +90,28 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
-        <!-- モバイルドロワー -->
-        <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 w-full bg-[#0a1a3a]/95 backdrop-blur-xl border-b border-white/10 shadow-2xl pb-8">
-            <div class="flex flex-col px-6">
-                <a href="#voice" class="text-white/90 hover:text-white font-bold py-4 border-b border-white/10 flex justify-between items-center transition">
+        <!-- モバイルドロワー（全画面仕様） -->
+        <div id="mobile-menu" class="hidden lg:hidden fixed top-16 left-0 w-full h-[calc(100svh-64px)] bg-[#0a1a3a]/98 backdrop-blur-2xl border-t border-white/10 shadow-2xl overflow-y-auto z-40">
+            <div class="flex flex-col px-6 py-6 pb-32">
+                <a href="#voice" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
                     <span>パートナーの声</span>
-                    <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
-                <a href="#jobs" class="text-white/90 hover:text-white font-bold py-4 border-b border-white/10 flex justify-between items-center transition">
+                <a href="#jobs" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
                     <span>案件紹介</span>
-                    <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
-                <a href="#conditions" class="text-white/90 hover:text-white font-bold py-4 border-b border-white/10 flex justify-between items-center transition">
+                <a href="#conditions" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
                     <span>募集要項</span>
-                    <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
-                <a href="#company" class="text-white/90 hover:text-white font-bold py-4 border-b border-white/10 flex justify-between items-center transition">
+                <a href="#company" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
                     <span>会社概要</span>
-                    <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
                 
-                <div class="text-center mt-8">
-                    <a href="#contact" class="inline-flex items-center justify-center w-full bg-yellow-500 text-[#071933] font-bold text-base px-6 py-4 rounded-full shadow-[0_4px_15px_rgba(234,179,8,0.4)] hover:bg-yellow-400 transition">
+                <div class="text-center mt-12">
+                    <a href="#contact" class="inline-flex items-center justify-center w-full bg-yellow-500 text-[#071933] font-bold text-base px-6 py-4 rounded-full shadow-[0_4px_15px_rgba(234,179,8,0.4)] hover:bg-yellow-400 transition transform active:scale-95">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         無料で相談・エントリー
                     </a>
@@ -179,8 +181,9 @@
 
 
             <div class="anim-up d-200 mt-4 md:mt-0 w-full sm:w-auto px-2 md:px-0">
-                <a href="#contact" class="btn-pulse inline-flex items-center justify-center w-full sm:w-auto bg-[#1e4b9b]/90 backdrop-blur-md text-white font-bold text-sm md:text-lg px-6 md:px-10 py-5 md:py-4 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:bg-[#15346b] transition duration-300 border border-white/20">
-                    募集条件を見る（オンライン無料相談）
+                <a href="#contact" class="btn-pulse flex flex-col md:flex-row items-center justify-center w-full sm:w-auto bg-[#1e4b9b]/90 backdrop-blur-md text-white font-bold text-base md:text-lg px-6 md:px-10 py-3.5 md:py-4 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:bg-[#15346b] transition duration-300 border border-white/20 leading-tight">
+                    <span>募集条件を見る</span>
+                    <span class="text-xs md:text-lg md:ml-1 mt-1 md:mt-0 font-normal md:font-bold opacity-90 md:opacity-100">（オンライン無料相談）</span>
                 </a>
             </div>
         </div>
