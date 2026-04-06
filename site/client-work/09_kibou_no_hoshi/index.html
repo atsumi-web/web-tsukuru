@@ -58,6 +58,10 @@
             70% { box-shadow: 0 0 0 15px rgba(250, 204, 21, 0); }
             100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
         }
+        
+        /* スクロールバー非表示 */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .btn-pulse { animation: softPulse 2s infinite; }
 
     </style>
@@ -319,9 +323,9 @@
                 <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">こんな案件があります</h2>
                 <p class="text-gray-500 text-sm">首都圏全域で多様な施設の案件をご紹介しています。</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-5 anim-up d-100">
-                <div class="border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
-                    <div class="h-32 md:h-40 w-full overflow-hidden relative">
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0 hide-scrollbar anim-up d-100 -mx-6 px-6 md:mx-0 md:px-0">
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
                         <img src="images/job1.png" alt="オフィスビル" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -332,8 +336,8 @@
                         <p class="text-xs text-gray-500 leading-relaxed">日常清掃・定期清掃・設備点検。都内を中心に多数稼働中。</p>
                     </div>
                 </div>
-                <div class="border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
-                    <div class="h-32 md:h-40 w-full overflow-hidden relative">
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
                         <img src="images/job2.png" alt="医療施設・老人ホーム" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -344,8 +348,8 @@
                         <p class="text-xs text-gray-500 leading-relaxed">高頻度の日常清掃。感染対策対応のニーズが高い施設。</p>
                     </div>
                 </div>
-                <div class="border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
-                    <div class="h-32 md:h-40 w-full overflow-hidden relative">
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
                         <img src="images/job3.png" alt="商業施設・SC" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -356,8 +360,8 @@
                         <p class="text-xs text-gray-500 leading-relaxed">早朝・深夜の清掃対応。大型モール〜路面店まで対応。</p>
                     </div>
                 </div>
-                <div class="border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
-                    <div class="h-32 md:h-40 w-full overflow-hidden relative">
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
                         <img src="images/job4.png" alt="マンション共用部" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -368,8 +372,8 @@
                         <p class="text-xs text-gray-500 leading-relaxed">エントランス・廊下・駐車場等の定期巡回清掃。</p>
                     </div>
                 </div>
-                <div class="border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
-                    <div class="h-32 md:h-40 w-full overflow-hidden relative">
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
                         <img src="images/job5.png" alt="設備管理・法定点検" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -380,8 +384,8 @@
                         <p class="text-xs text-gray-500 leading-relaxed">空調・給排水・消防・電気設備の保守点検。有資格者歓迎。</p>
                     </div>
                 </div>
-                <div class="border border-blue-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-blue-50 flex flex-col">
-                    <div class="h-32 md:h-40 w-full overflow-hidden relative">
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-blue-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-blue-50 flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
                         <img src="images/job6.png" alt="得意分野、ご相談ください" class="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-5 flex-1 flex flex-col">
@@ -669,6 +673,43 @@
                 a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
             });
         }
+    </script>
+    <script>
+        // PCブラウザでの検証時、マウスドラッグで横スクロールを可能にするユーティリティ
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliders = document.querySelectorAll('.overflow-x-auto');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            sliders.forEach(slider => {
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('cursor-grabbing');
+                    // snap-mandatory がドラッグと競合しないよう一時解除
+                    slider.style.scrollSnapType = 'none';
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('cursor-grabbing');
+                    slider.style.scrollSnapType = '';
+                });
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('cursor-grabbing');
+                    slider.style.scrollSnapType = '';
+                });
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // スクロール速度
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+            });
+        });
     </script>
 </body>
 </html>
