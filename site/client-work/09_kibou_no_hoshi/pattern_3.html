@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【B2B パターン3】エディトリアル・箱重なり | 希望の星</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+        body { font-family: 'Inter', 'Zen Kaku Gothic New', sans-serif; letter-spacing: 0.05em; }
+        
+        @keyframes kenBurns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        .animate-ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes revealBlock {
+            from { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); opacity: 0; }
+            to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+        }
+        .anim-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .anim-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .anim-reveal { animation: revealBlock 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform-origin: bottom; }
+        .d-100 { animation-delay: 0.1s; }
+        .d-200 { animation-delay: 0.2s; }
+        .d-300 { animation-delay: 0.3s; }
+        .d-400 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased overflow-x-hidden">
+    <section id="pattern-3" class="relative h-screen min-h-[800px] flex flex-col w-full items-end justify-center">
+        <!-- フル背景画像 -->
+        <div class="absolute inset-0 w-full h-full md:w-[80%] overflow-hidden z-0">
+            <img src="images/bg_pattern3.webp" class="w-full h-full object-cover animate-ken-burns origin-right" alt="Worker">
+            <div class="absolute inset-0 bg-black/20"></div>
+        </div>
+
+        <!-- 重ねる巨大ボックス（エディトリアル） -->
+        <div class="relative z-10 bg-[#071933] text-white w-full md:w-[60%] lg:w-[50%] p-10 md:p-16 lg:p-20 shadow-2xl anim-reveal mt-auto md:mt-0 md:absolute md:left-10 md:bottom-20 lg:left-20">
+            <div class="w-12 h-1 bg-yellow-500 mb-8 anim-left d-200"></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-snug mb-6 anim-up d-100">
+                「案件探し」は、<br>もう終わりにしませんか？
+            </h1>
+            <p class="text-blue-100 mb-10 text-base md:text-lg leading-relaxed anim-up d-200 font-light">
+                日本唯一のコンサル企業と組む、安定のパートナー契約。<br>私たちは、現場で手を動かす「人」を一番の財産だと考えています。
+            </p>
+            
+            <div class="space-y-4 mb-10 anim-up d-300">
+                <div class="bg-white/5 border border-white/10 p-4 flex items-center">
+                    <span class="text-yellow-400 font-bold text-xl mr-4 flex-shrink-0">✓</span>
+                    <p class="text-sm">直請け中心の案件が豊富。<strong class="text-white">安定した案件供給。</strong></p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-4 flex items-center">
+                    <span class="text-yellow-400 font-bold text-xl mr-4 flex-shrink-0">✓</span>
+                    <p class="text-sm">買いたたき無し。<strong class="text-white">適正単価・早期支払い。</strong></p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-4 flex items-center">
+                    <span class="text-yellow-400 font-bold text-xl mr-4 flex-shrink-0">✓</span>
+                    <p class="text-sm">現場でのトラブルにも対応。<strong class="text-white">24時間サポート。</strong></p>
+                </div>
+            </div>
+
+            <div class="anim-up d-400">
+                <a href="#contact" class="block text-center bg-transparent border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-[#071933] font-bold py-4 px-8 transition-colors duration-300">
+                    無料相談・条件一覧について詳しく見る
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

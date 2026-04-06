@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【B2B パターン2】クリーン・ミニマリズム | 希望の星</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+        body { font-family: 'Inter', 'Zen Kaku Gothic New', sans-serif; letter-spacing: 0.05em; }
+        
+        @keyframes kenBurns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        .animate-ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .anim-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .d-100 { animation-delay: 0.1s; }
+        .d-200 { animation-delay: 0.2s; }
+        .d-300 { animation-delay: 0.3s; }
+        .d-400 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-slate-50 antialiased overflow-x-hidden">
+    <section id="pattern-2" class="relative h-screen min-h-[800px] flex flex-col md:flex-row w-full bg-slate-50">
+        <!-- 左半分：コンテンツ -->
+        <div class="w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center px-8 md:px-16 lg:px-24 pt-24 md:pt-0 z-10 bg-slate-50">
+            <div class="font-bold text-gray-400 tracking-widest text-sm mb-16 anim-left">KIBOU NO HOSHI INC.</div>
+            
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-6 anim-left d-100 tracking-tight">
+                「案件探し」は、<br>もう終わりにしませんか？
+            </h1>
+            <p class="text-lg text-gray-600 mb-10 font-medium anim-left d-200 leading-relaxed">
+                日本唯一のコンサル企業と組む、安定のパートナー契約。現場のプロを大切にするためのインフラが整っています。
+            </p>
+
+            <ul class="space-y-6 mb-12 anim-left d-300 border-l-2 border-blue-600 pl-6">
+                <li class="flex flex-col">
+                    <span class="font-bold text-gray-900 text-lg">毎月の安定した案件供給</span>
+                    <span class="text-gray-500 text-sm">直請け中心で仕事が途切れません。</span>
+                </li>
+                <li class="flex flex-col">
+                    <span class="font-bold text-gray-900 text-lg">適正単価・早期支払い</span>
+                    <span class="text-gray-500 text-sm">買いたたき無し。資金繰りも安心。</span>
+                </li>
+                <li class="flex flex-col">
+                    <span class="font-bold text-gray-900 text-lg">24時間サポート体制</span>
+                    <span class="text-gray-500 text-sm">本部が緊急コールセンターでカバー。</span>
+                </li>
+            </ul>
+
+            <div class="anim-left d-400">
+                <a href="#contact" class="inline-flex justify-center items-center bg-blue-700 text-white font-bold px-10 py-4 rounded-md shadow-lg hover:bg-blue-800 transition transform hover:-translate-y-1">
+                    まずは条件を確認する ▶︎
+                </a>
+            </div>
+        </div>
+        <!-- 右半分：画像 -->
+        <div class="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden bg-gray-200">
+            <img src="images/bg_pattern2.webp" class="w-full h-full object-cover animate-ken-burns origin-top-left" alt="Clean Lobby">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-50 to-transparent w-8 md:w-24"></div>
+        </div>
+    </section>
+</body>
+</html>
