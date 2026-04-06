@@ -1,0 +1,16 @@
+FOUND "茨城" in \site\templates\democycle\company.html [Line 9]:
+  > <meta name="description" content="株式会社アーバンモビリティの会社概要と、全国の拠点一覧（東京・茨城・沖縄・福岡他）をご紹介いたします。">
+FOUND "drpedal" in \site\templates\democycle\css\style.css [Line 1150]:
+  > .role-box.drpedal { border-top: 4px solid var(--black); }
+FOUND "dr-pedal" in \site\templates\democycle\index.html [Line 15]:
+  > <meta property="og:url" content="https://www.dr-pedal.com/">
+FOUND "dr-pedal" in \site\templates\democycle\index.html [Line 16]:
+  > <meta property="og:image" content="https://www.dr-pedal.com/images/ai_b2b_rental_scene.webp">
+FOUND "drpedal" in \site\templates\democycle\js\shared-nav.js [Line 14]:
+  > // Since it's inside `04_drpedal/hp/`, we assume root relative paths if deployed statically.
+FOUND "drpedal" in \site\templates\democycle\service\b2b-rental.html [Line 312]:
+  > <div class="role-box drpedal reveal">
+FOUND "drpedal" in \site\templates\democycle\service\b2b-repair.html [Line 141]:
+  > <div class="role-box drpedal reveal">
+FOUND "drpedal" in \site\templates\democycle\service\b2c-repair.html [Line 113]:
+  > <a href="https://drpedal99.jp/" target="_blank" class="btn-primary" style="padding:16px 32px; background:#fff; color:#E33A3A; border:2px solid #E33A3A; box-shadow:none;">
