@@ -86,8 +86,11 @@
                 <a href="#contact" class="bg-yellow-500 text-[#0a1a3a] px-6 py-2 rounded-full font-bold text-sm hover:bg-yellow-400 transition shadow-[0_4px_15px_rgba(234,179,8,0.4)] transform hover:-translate-y-0.5">応募・ご相談</a>
             </nav>
             <!-- モバイルメニューボタン -->
-            <button id="menu-btn" class="lg:hidden text-white p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <button id="menu-btn" class="lg:hidden text-white p-2 focus:outline-none">
+                <!-- ハンバーガーアイコン -->
+                <svg id="icon-menu" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <!-- 閉じる（×）アイコン -->
+                <svg id="icon-close" class="hidden w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
         <!-- モバイルドロワー（全画面仕様） -->
@@ -737,16 +740,38 @@
 </script>
 
 <script>
-        // モバイルメニュー開閉
+        // モバイルメニュー開閉とアイコンのトグル
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+
         if (menuBtn && mobileMenu) {
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            // メニュー内のリンクをクリックしたら閉じる
+            const toggleMenu = () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                // アイコンの切り替え
+                if (iconMenu && iconClose) {
+                    if (isHidden) {
+                        iconMenu.classList.remove('hidden');
+                        iconClose.classList.add('hidden');
+                    } else {
+                        iconMenu.classList.add('hidden');
+                        iconClose.classList.remove('hidden');
+                    }
+                }
+            };
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // メニュー内のリンクをクリックしたら確実に閉じる
             mobileMenu.querySelectorAll('a').forEach(a => {
-                a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+                a.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    if (iconMenu && iconClose) {
+                        iconMenu.classList.remove('hidden');
+                        iconClose.classList.add('hidden');
+                    }
+                });
             });
         }
     </script>
