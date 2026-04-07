@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ふわわ ロゴデザイン提案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 20px;
+            background-color: #faf7f5;
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            color: #594a4e;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 60px;
+            color: #8c7a75;
+        }
+        .logo-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .logo-card {
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .logo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(230, 184, 162, 0.2);
+        }
+        .concept {
+            font-size: 0.9rem;
+            color: #a4938f;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+        .concept strong {
+            display: block;
+            color: #594a4e;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ロゴデザイン提案ボード（ベクターデータ版）</h1>
+
+    <div class="logo-grid">
+
+        <!-- 案A: やわらかな雲と優しさ（Fuwawaの由来） -->
+        <div class="logo-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 120" width="350" height="120">
+                <defs>
+                    <linearGradient id="gradA1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#fae7db"/>
+                        <stop offset="100%" stop-color="#e6b8a2"/>
+                    </linearGradient>
+                </defs>
+                <!-- ロゴマーク -->
+                <circle cx="50" cy="65" r="30" fill="url(#gradA1)" opacity="0.8"/>
+                <circle cx="80" cy="50" r="22" fill="#e6b8a2" opacity="0.5"/>
+                <circle cx="85" cy="75" r="18" fill="#f8e5d6" opacity="0.9"/>
+                <!-- 文字 -->
+                <text x="130" y="70" font-family="'Kiwi Maru', serif" font-size="44" font-weight="500" fill="#6d5c58" letter-spacing="4">ふわわ</text>
+                <text x="135" y="95" font-family="'Zen Kaku Gothic New', sans-serif" font-size="11" font-weight="400" fill="#bcaaa4" letter-spacing="2">とちぎの不登校を考える会</text>
+            </svg>
+            <div class="concept">
+                <strong>案A：やわらかな雲（Fuwawa）</strong>
+                重なり合う柔らかな丸みで「親・子・地域」の繋がりと、ふわっと心が軽くなる優しさを表現しました。最も親しみやすく温かいデザインです。
+            </div>
+        </div>
+
+        <!-- 案B: 芽吹きと成長（オーガニック） -->
+        <div class="logo-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 120" width="350" height="120">
+                <!-- ロゴマーク -->
+                <path d="M 50 80 C 30 80 30 40 50 30 C 70 40 70 80 50 80 Z" fill="none" stroke="#e6b8a2" stroke-width="3"/>
+                <path d="M 50 80 C 65 70 80 60 70 40 C 60 50 50 60 50 80 Z" fill="#fae7db" opacity="0.8"/>
+                <circle cx="50" cy="70" r="4" fill="#d3bca8"/>
+                <!-- 文字 -->
+                <text x="120" y="75" font-family="'Shippori Mincho', serif" font-size="46" font-weight="500" fill="#594a4e" letter-spacing="6">ふわわ</text>
+                <text x="125" y="95" font-family="'Zen Kaku Gothic New', sans-serif" font-size="10" font-weight="400" fill="#a4938f" letter-spacing="3">TOCHIGI FUTOUKOU PARENTS</text>
+            </svg>
+            <div class="concept">
+                <strong>案B：芽吹き（オーガニックな成長）</strong>
+                重なり合う2枚の葉と種をモチーフにし、「子供が自分のペースで芽吹くのを待つ」というメッセージを込めた、洗練されたボタニカルデザインです。
+            </div>
+        </div>
+
+        <!-- 案C: 包み込む手（抱擁） -->
+        <div class="logo-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 120" width="350" height="120">
+                <!-- ロゴマーク -->
+                <path d="M 40 40 C 80 20 100 60 80 90" fill="none" stroke="#e6b8a2" stroke-width="6" stroke-linecap="round"/>
+                <path d="M 90 60 C 60 80 40 50 60 30" fill="none" stroke="#f8e5d6" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="65" cy="55" r="8" fill="#d3bca8"/>
+                <!-- 文字 -->
+                <text x="130" y="70" font-family="'Kiwi Maru', serif" font-size="42" font-weight="500" fill="#6d5c58" letter-spacing="5">ふわわ</text>
+                <text x="135" y="95" font-family="'Zen Kaku Gothic New', sans-serif" font-size="11" font-weight="400" fill="#bcaaa4" letter-spacing="2">とちぎの不登校を考える会</text>
+            </svg>
+            <div class="concept">
+                <strong>案C：重なる温もり（包み込む手）</strong>
+                2つの柔らかい曲線が「互いを認め合い、包み込む」姿を抽象化しています。カウンセリングや支援団体の絶対的な安心感を象徴するマークです。
+            </div>
+        </div>
+
+        <!-- 案D: ホッと一息つくティーカップ（湯気＝ふわわ） -->
+        <div class="logo-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 120" width="350" height="120">
+                <!-- ロゴマーク -->
+                <path d="M 40 55 Q 40 90 60 90 Q 80 90 80 55 Z" fill="#fae7db"/>
+                <path d="M 75 60 C 92 60 92 80 75 75" fill="none" stroke="#fae7db" stroke-width="6" stroke-linecap="round"/>
+                <path d="M 50 45 Q 55 35 50 25 T 55 10" fill="none" stroke="#e6b8a2" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 65 50 Q 70 40 65 30 T 70 15" fill="none" stroke="#d3bca8" stroke-width="3" stroke-linecap="round"/>
+                <!-- 文字 -->
+                <text x="130" y="70" font-family="'Kiwi Maru', serif" font-size="44" font-weight="500" fill="#6d5c58" letter-spacing="4">ふわわ</text>
+                <text x="135" y="95" font-family="'Zen Kaku Gothic New', sans-serif" font-size="11" font-weight="400" fill="#bcaaa4" letter-spacing="2">とちぎの不登校を考える会</text>
+            </svg>
+            <div class="concept">
+                <strong>案D：ホッとする場所（カップと湯気）</strong>
+                温かい飲み物から立ち昇る「ふわわ」とした湯気をモチーフにしました。肩の力を抜いて、親御さん同士が安心しておしゃべり・相談できる温かいコミュニティであることを表しています。
+            </div>
+        </div>
+
+        <!-- 案E: 親子の笑顔（笑顔の連鎖） -->
+        <div class="logo-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 120" width="350" height="120">
+                <!-- ロゴマーク: 親 -->
+                <circle cx="55" cy="55" r="25" fill="#fae7db"/>
+                <path d="M 42 60 Q 55 72 68 60" fill="none" stroke="#e6b8a2" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="48" cy="50" r="3" fill="#a4938f"/>
+                <circle cx="62" cy="50" r="3" fill="#a4938f"/>
+                <!-- ロゴマーク: 子 -->
+                <circle cx="85" cy="68" r="16" fill="#f8e5d6"/>
+                <path d="M 77 71 Q 85 79 93 71" fill="none" stroke="#e6b8a2" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="80" cy="64" r="2.5" fill="#a4938f"/>
+                <circle cx="90" cy="64" r="2.5" fill="#a4938f"/>
+                <!-- 文字 -->
+                <text x="130" y="70" font-family="'Kiwi Maru', serif" font-size="44" font-weight="500" fill="#6d5c58" letter-spacing="4">ふわわ</text>
+                <text x="135" y="95" font-family="'Zen Kaku Gothic New', sans-serif" font-size="11" font-weight="400" fill="#bcaaa4" letter-spacing="2">とちぎの不登校を考える会</text>
+            </svg>
+            <div class="concept">
+                <strong>案E：笑顔の連鎖（親と子）</strong>
+                大小2つの笑顔が寄り添う様子をデザインしました。「まずは親が笑顔になることで、子どもも笑顔を取り戻していく」という、会が目指すポジティブな連鎖と支え合いを直感的に伝えます。
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

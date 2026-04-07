@@ -1,0 +1,978 @@
+@charset "UTF-8";
+
+/* ========================================================
+   Fuwawa 2.0 Base Styles - Masterpiece / Emotional & Ethereal
+   ======================================================== */
+
+:root {
+    --color-main: #fdf8f5; /* 極めて柔らかいアイボリーピンク */
+    --color-accent: #e6b8a2; /* 温かいピンクブラウン */
+    --color-text: #6b5b5c; /* 優しく少し赤みのあるダークブラウン */
+    --color-light-brown: #a4847c;
+    --color-bg: #fffcf9; /* メイン背景色（温かい白） */
+    --font-base: 'Zen Kaku Gothic New', sans-serif;
+    --font-heading: 'Kiwi Maru', serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.05em;
+    word-break: break-all;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ==================
+   Utility Classes
+   ================== */
+.sp-only {
+    display: none;
+}
+
+.pc-only {
+    display: block;
+}
+
+/* ==================
+   Typography
+   ================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    margin: 0 0 20px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.sec-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sec-en {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    letter-spacing: 0.3em;
+    margin-bottom: 10px;
+}
+
+.sec-title {
+    font-size: 2.2rem;
+    color: var(--color-text);
+}
+
+.sec-desc {
+    font-size: 1rem;
+    color: var(--color-light-brown);
+}
+
+/* ==================
+   Header
+   ================== */
+.header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    padding: 20px 0;
+}
+
+.header-inner {
+    padding: 0 5%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    transition: transform 0.3s;
+}
+
+.logo-sub {
+    font-size: 0.8rem;
+    font-family: var(--font-base);
+    color: var(--color-text);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-top: 5px;
+    display: block;
+}
+
+.logo-main {
+    font-size: 1.8rem;
+    font-family: var(--font-heading);
+    color: var(--color-text);
+}
+
+/* モバイル向けの特別調整 (ヘッダーの中央配置化) */
+@media (max-width: 768px) {
+    .header {
+        padding: 24vh 0 0 0; /* さらに下へ落とし、背中のど真ん中へドスッと配置 */
+    }
+    .header-inner {
+        justify-content: center; /* 完全な中央揃えでシンメトリーな美しさを出す */
+    }
+    .logo {
+        transform: scale(1.15); /* スマホ画面でパッと目に入るように存在感をアップ */
+    }
+}
+
+/* ==================
+   Cinematic Background Overlay
+   ================== */
+.fv-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/hero_cinematic.png');
+    background-size: cover;
+    background-position: 40% center; /* 画像が見えなくなったため、位置を中央付近に戻して微調整 */
+    z-index: 0;
+    animation: slowZoom 30s ease-in-out infinite alternate;
+}
+
+.fv-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* PCでは横方向のフェード、スマホでは下方向への完全フェードに切り替えるためのベース */
+    background: linear-gradient(to right, rgba(253, 248, 245, 0.95) 0%, rgba(253, 248, 245, 0) 100%);
+    z-index: 1;
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+
+@keyframes slowZoomMobile {
+    0% { transform: scale(1.4); }
+    100% { transform: scale(1.55); }
+}
+
+/* ==================
+   FV (First View)
+   ================== */
+.fv {
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 120px; /* 波の分 */
+    overflow: hidden;
+}
+
+.fv-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 左側に寄せる */
+    padding-left: 5%; /* 左からの余白 */
+    min-height: calc(100vh - 220px);
+    position: relative;
+    z-index: 10;
+}
+
+.fv-text {
+    /* flex: 1 is removed to let it size organically */
+    z-index: 10;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed; 
+    height: 650px; /* Increase height to prevent wrapping */
+    display: block; /* Remove flexbox to let vertical flow naturally */
+    margin: 0 auto; /* Center it */
+}
+
+.fv-title {
+    color: var(--color-text);
+    margin: 0;
+    letter-spacing: 0.25em; /* Slightly tighter */
+    line-height: 2; /* Space between lines */
+    display: inline-block; /* Help block layout */
+}
+
+.fv-title-large {
+    font-size: 3.5rem;
+}
+
+.fv-title-small {
+    font-size: 1.6rem;
+    color: var(--color-light-brown);
+    font-family: var(--font-base);
+    margin-right: 40px; 
+    margin-top: 150px; /* 位置を再度下げる（100px -> 150px） */
+    display: inline-block;
+}
+
+.fv-keywords {
+    font-size: 1rem; /* 少し大きく */
+    font-weight: 500; /* 太くして視認性を高める */
+    color: var(--color-text); /* 薄いピンクから、ハッキリした濃いブラウンへ変更 */
+    letter-spacing: 0.15em; /* 字間を少し詰めて単語として読みやすく */
+    border-right: 1px solid var(--color-light-brown); /* 線も少し濃く */
+    padding-right: 15px;
+    margin: 0;
+    margin-right: 60px;
+    margin-top: 350px; /* さらに下げる（220px -> 350px） */
+    display: inline-block;
+}
+
+/* Removed fv-image rules */
+
+/* ==================
+   装飾の波（SVG）
+   ================== */
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    left: 0;
+    z-index: 10;
+}
+
+.wave svg {
+    width: 100%;
+    height: 100%;
+    display: block; /* SVG特有の隙間（切れ目）を完全排除 */
+}
+
+.wave-top {
+    bottom: -2px; /* 切れ目を確実に隠すため少し下へ延長 */
+    fill: var(--color-bg);
+}
+
+.wave-reverse {
+    top: -1px;
+    fill: var(--color-bg);
+}
+
+.wave-top-contact {
+    top: -1px;
+    fill: var(--color-bg); /* 上のセクション（.profile）の背景色と完全に一致させる */
+    transform: rotate(180deg);
+}
+
+/* ==================
+   Glassmorphism Base
+   ================== */
+.glass-box {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 40px;
+    box-shadow: 0 15px 50px rgba(230, 184, 162, 0.15);
+}
+
+/* ==================
+   Empathy (共感セクション)
+   ================== */
+.empathy-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.empathy-catch {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    line-height: 1.8;
+    margin-bottom: 15px;
+    letter-spacing: 0.1em;
+}
+
+.empathy-p {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+.empathy-box {
+    padding: 50px;
+    margin-bottom: 60px;
+}
+
+.empathy-box p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    line-height: 2;
+}
+
+.empathy-lead {
+    text-align: left;
+    display: inline-block;
+    color: var(--color-text);
+    line-height: 2.2;
+}
+
+/* ==================
+   About (活動内容)
+   ================== */
+.about {
+    background-color: var(--color-main);
+    padding-top: 120px;
+}
+
+.activity-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 100px; /* ゆったりとした縦の間隔 */
+    margin-top: 40px;
+}
+
+.activity-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    justify-content: space-between;
+}
+
+.activity-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.activity-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.activity-img img {
+    max-width: 100%;
+    width: 400px;
+    mix-blend-mode: multiply; /* 白背景を透明化して溶け込ませる */
+    filter: contrast(1.05); /* ぼやけないように調整 */
+}
+
+.activity-text {
+    flex: 1;
+    padding: 60px 40px;
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s, box-shadow 0.4s;
+    text-align: left;
+}
+
+.activity-text:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(230, 184, 162, 0.25);
+}
+
+.step-num-bg {
+    position: absolute;
+    top: -40px;
+    right: 30px;
+    font-size: 10rem;
+    font-weight: 300;
+    font-family: var(--font-heading);
+    color: rgba(230, 184, 162, 0.12); /* より透かしっぽく */
+    line-height: 1;
+    z-index: -1; 
+    pointer-events: none;
+    letter-spacing: -0.05em;
+}
+
+.activity-row.reverse .step-num-bg {
+    right: auto;
+    left: 30px; /* 逆向きの時は番号を逆に配置 */
+}
+
+.activity-text h4 {
+    font-size: 1.3rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    border-bottom: 1px dotted var(--color-accent);
+    padding-bottom: 15px;
+    word-break: keep-all; 
+    line-height: 1.6;
+}
+
+.activity-text p {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* ==================
+   Message 
+   ================== */
+.message {
+    position: relative;
+    background-image: url('../images/message_bg.png'); /* 柔らかな専用イメージ画像を背景に指定 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* パララックス風の奥行きを出す */
+}
+
+.message::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(253, 248, 245, 0.4); /* 背景色と同じ色で薄くベールをかけ、すりガラスを引き立たせる */
+    z-index: 0;
+}
+
+.message .container {
+    position: relative;
+    z-index: 1;
+}
+
+.message-box {
+    padding: 60px 50px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.message-title {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.message-text {
+    line-height: 2.2;
+    margin-bottom: 20px;
+}
+
+.message-divider {
+    border: none;
+    border-top: 1px solid rgba(230, 184, 162, 0.3);
+    margin: 40px 0;
+}
+
+.message-highlight {
+    background: rgba(253, 248, 245, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    font-family: var(--font-heading);
+    text-align: center;
+    margin: 40px 0;
+    color: var(--color-text);
+    font-size: 1.2rem;
+    line-height: 2;
+    border: 1px solid rgba(230, 184, 162, 0.2);
+}
+
+.message-end {
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ==================
+   Profile
+   ================== */
+.profile-inner {
+    display: flex;
+    gap: 50px;
+    padding: 50px;
+}
+
+.profile-image {
+    flex: 0 0 250px;
+}
+
+.profile-image img {
+    border-radius: 40% 60% 70% 30% / 50% 50% 50% 50%;
+    width: 100%;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.profile-job {
+    font-size: 1rem;
+    color: var(--color-light-brown);
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 45px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(230, 184, 162, 0.3);
+}
+
+.timeline li {
+    display: flex;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline .year {
+    flex: 0 0 80px;
+    font-family: var(--font-heading);
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    padding-top: 2px;
+}
+
+.timeline .event {
+    flex: 1;
+    font-size: 0.95rem;
+    background: rgba(253, 248, 245, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    line-height: 1.8;
+}
+
+.timeline .event::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 15px;
+    border-style: solid;
+    border-width: 6px 15px 6px 0;
+    border-color: transparent rgba(253, 248, 245, 0.7) transparent transparent;
+}
+
+/* ==================
+   Contact & Services
+   ================== */
+.contact {
+    background-color: var(--color-accent);
+    color: white;
+    padding-top: 150px;
+}
+
+.title-white {
+    color: white;
+}
+
+.contact .sec-en {
+    color: rgba(255,255,255,0.7);
+}
+
+.service-image-header {
+    max-width: 840px;
+    margin: 0 auto 60px;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.service-image-header img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.8; /* 画像を透過させて主張を和らげ、背景と馴染ませる */
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.service-image-header:hover img {
+    transform: scale(1.03); /* カーソルを合わせた時にゆっくりとズームする癒しの効果 */
+}
+
+.services-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.service-item {
+    background: rgba(255,255,255,0.15);
+    padding: 40px;
+    border-radius: 30px;
+    flex: 1;
+    max-width: 400px;
+    text-align: left;
+    backdrop-filter: blur(10px);
+}
+
+.service-item h4 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 15px;
+}
+
+.service-item p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.8;
+}
+
+.contact-box {
+    background: white;
+    color: var(--color-text);
+    padding: 60px;
+    border-radius: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.contact-box h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.contact-address {
+    font-size: 0.95rem;
+    color: var(--color-light-brown);
+    margin-bottom: 40px;
+}
+
+.contact-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.contact-qr {
+    text-align: center;
+}
+
+.contact-qr img {
+    border-radius: 15px;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.qr-text {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-light-brown);
+    line-height: 1.5;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.4s;
+    width: 100%;
+    min-width: 250px;
+    text-align: center;
+    white-space: nowrap; /* テキストの意図しない改行を防ぐ */
+}
+
+.btn-primary {
+    background: var(--color-accent);
+    color: white;
+    box-shadow: 0 10px 20px rgba(230, 184, 162, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(230, 184, 162, 0.6);
+}
+
+.btn-ghost {
+    background: white;
+    color: var(--color-text);
+    border: 2px solid #e2e8f0;
+}
+
+.btn-ghost:hover {
+    background: var(--color-main);
+    border-color: var(--color-main);
+    transform: translateY(-3px);
+}
+
+/* ==================
+   Footer
+   ================== */
+.footer {
+    background: #594a4e;
+    color: white;
+    padding: 80px 0 50px;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: white;
+    letter-spacing: 0.1em;
+}
+
+.footer-copy {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+}
+
+/* ==================
+   Animations
+   ================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================
+   Responsive (SP)
+   ================== */
+@media (max-width: 768px) {
+    .sp-only { display: block; }
+    .pc-only { display: none; }
+    
+    .section { padding: 60px 0; }
+    .sec-title { font-size: 1.8rem; }
+    
+    .logo-sub { color: #ffffff; }
+    
+    .fv {
+        min-height: auto;
+        padding-bottom: 60px;
+    }
+
+    .fv-bg {
+        height: 65vh;
+        background-size: auto 180%; /* 高さを基準に大きくズーム */
+        background-position: center 45%; /* お子さんも見えるようY軸を調整（元の35%から少し下部を映す） */
+        -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+        transform-origin: center center;
+        animation: slowZoom 30s ease-in-out infinite alternate; /* 要素全体の過度な拡大を防ぎ、マスク位置を保持 */
+    }
+
+    .fv-inner {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 53vh; /* 画像が消えゆくあたりからテキストを開始 */
+        min-height: auto;
+        z-index: 10;
+        position: relative;
+    }
+    
+    .fv-overlay {
+        display: none; /* マスクを使用するため、従来のフェード用オーバーレイはスマホでは不要 */
+    }
+
+    .vertical-text {
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        
+        /* グラスモーフィズムを解除して、背景色の上に直接テキストを美しく乗せる */
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+        width: 100%;
+    }
+    
+    .fv-title-small { margin-top: 0; margin-right: 0; margin-bottom: 15px; display: block; font-size: 1.1rem; }
+    .fv-title-large { font-size: 1.8rem; line-height: 1.6; }
+    .fv-keywords { margin-top: 0; border-right: none; padding-right: 0; margin-right: 0; font-size: 0.85rem; line-height: 1.8; color: var(--color-light-brown); }
+    
+    .fv-image img { max-width: 300px; }
+    
+    .activity-row, .activity-row.reverse {
+        flex-direction: column; /* スマホでは全て縦積み */
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .activity-img img {
+        max-width: 300px;
+    }
+    
+    .activity-text {
+        padding: 40px 25px;
+        text-align: center; /* スマホでは中央寄せに戻す（文字数が少ないため） */
+    }
+    
+    .activity-text p {
+        text-align: left; /* 段落は左寄せを維持 */
+    }
+    
+    .step-num-bg {
+        font-size: 8rem;
+        top: -30px;
+        right: 0 !important;
+        left: 0 !important; /* 中央に透かし */
+        text-align: center;
+    }
+    
+    .message-box, .profile-inner, .empathy-box { 
+        padding: 50px 20px; /* 上下余白を増やしてゆったりと */
+        border-radius: 30px;
+    }
+    
+    .message-text {
+        font-size: 0.95rem; /* 少しだけ小さくして上品に */
+        line-height: 2.4; /* 行間を広げて空気感を持たせる */
+        margin-bottom: 40px; /* 段落ごとの間隔を大きくとる */
+    }
+    
+    .message-divider {
+        margin: 50px 0; /* 区切り線の上下余白を拡大 */
+    }
+    
+    .message-highlight {
+        margin: 50px 0;
+        padding: 40px 20px;
+        font-size: 1.05rem; /* サイズを少し抑えて行の圧迫感を減らす */
+        line-height: 2.2;
+    }
+    
+    .profile-inner {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .profile-image {
+        flex: none;
+        width: 160px; /* 画像が大きすぎて圧迫感が出ないよう、スマホでは大幅に縮小 */
+        margin: 0 auto; /* 中央寄せ */
+    }
+    
+    .timeline::before { left: 40px; }
+    .timeline .year { flex: 0 0 70px; font-size: 0.85rem; }
+    .timeline .event { padding: 15px; font-size: 0.9rem; }
+    
+    .service-image-header {
+        margin: 0 15px 40px;
+        border-radius: 20px;
+    }
+    
+    .services-wrap { flex-direction: column; }
+    .contact-box { padding: 50px 25px; }
+    
+    .contact-actions {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* ==================
+   Back to Top Button
+   ================== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(253, 248, 245, 0.95);
+    color: var(--color-text);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(230, 184, 162, 0.3);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.back-to-top.is-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background-color: var(--color-accent);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(230, 184, 162, 0.5);
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}

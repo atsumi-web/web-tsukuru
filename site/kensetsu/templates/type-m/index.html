@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- デモサイト用インデックス拒否設定（本番移行時に外します） -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>協力業者募集 | ビルメンテナンス・清掃業 【株式会社 ビルドクリーン】</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+        
+        body { 
+            font-family: 'Inter', 'Zen Kaku Gothic New', sans-serif; 
+            letter-spacing: 0.05em; /* 全体的に少し字間を空けて高級感を出す */
+        }
+        
+        /* 共通アニメーション */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes revealBlock {
+            from { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); opacity: 0; }
+            to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+        }
+        @keyframes kenBurns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        .animate-ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
+
+        .anim-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .anim-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .anim-reveal { animation: revealBlock 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform-origin: bottom; }
+        
+        /* ディレイ（遅延） */
+        .d-100 { animation-delay: 0.1s; }
+        .d-200 { animation-delay: 0.2s; }
+        .d-300 { animation-delay: 0.3s; }
+        .d-400 { animation-delay: 0.4s; }
+        .d-500 { animation-delay: 0.5s; }
+
+        /* パターン1: Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        /* ボタンのパルス光 */
+        @keyframes softPulse {
+            0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(250, 204, 21, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+        }
+        
+        /* スクロールバー非表示 */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .btn-pulse { animation: softPulse 2s infinite; }
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- ========================================== -->
+    <!-- グローバルナビゲーション（スクロール追従・Glassmorphism） -->
+    <!-- ========================================== -->
+    <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-[#0a1a3a]/80 backdrop-blur-md border-b border-white/10">
+        <div class="w-full px-6 md:px-12 xl:px-20 h-16 flex justify-between items-center">
+            <a href="#" class="font-bold text-white tracking-widest text-xl drop-shadow-md hover:text-gray-200 transition">株式会社 ビルドクリーン</a>
+            
+            <!-- PC ナビ -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#voice" class="text-sm font-bold text-white/90 hover:text-white tracking-wide transition">パートナーの声</a>
+                <a href="#jobs" class="text-sm font-bold text-white/90 hover:text-white tracking-wide transition">案件紹介</a>
+                <a href="#conditions" class="text-sm font-bold text-white/90 hover:text-white tracking-wide transition">募集要項</a>
+                <a href="#company" class="text-sm font-bold text-white/90 hover:text-white tracking-wide transition">会社概要</a>
+                <a href="#contact" class="bg-yellow-500 text-[#0a1a3a] px-6 py-2 rounded-full font-bold text-sm hover:bg-yellow-400 transition shadow-[0_4px_15px_rgba(234,179,8,0.4)] transform hover:-translate-y-0.5">応募・ご相談</a>
+            </nav>
+            <!-- モバイルメニューボタン -->
+            <button id="menu-btn" class="lg:hidden text-white p-2 focus:outline-none">
+                <!-- ハンバーガーアイコン -->
+                <svg id="icon-menu" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <!-- 閉じる（×）アイコン -->
+                <svg id="icon-close" class="hidden w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <!-- モバイルドロワー（全画面仕様） -->
+        <div id="mobile-menu" class="hidden lg:hidden fixed top-16 left-0 w-full h-[calc(100svh-64px)] bg-[#0a1a3a]/95 backdrop-blur-md border-t border-white/10 shadow-2xl overflow-y-auto z-40">
+            <div class="flex flex-col px-6 py-6 pb-32">
+                <a href="#voice" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
+                    <span>パートナーの声</span>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="#jobs" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
+                    <span>案件紹介</span>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="#conditions" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
+                    <span>募集要項</span>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="#company" class="text-white/90 hover:text-white font-bold py-6 text-lg border-b border-white/10 flex justify-between items-center transition">
+                    <span>会社概要</span>
+                    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                
+                <div class="text-center mt-12">
+                    <a href="#contact" class="inline-flex items-center justify-center w-full bg-yellow-500 text-[#071933] font-bold text-base px-6 py-4 rounded-full shadow-[0_4px_15px_rgba(234,179,8,0.4)] hover:bg-yellow-400 transition transform active:scale-95">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        無料で相談・エントリー
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+    <!-- ========================================== -->
+    <!-- ヒーローセクション -->
+    <!-- ========================================== -->
+    <section id="hero" class="relative flex flex-col w-full lg:min-h-screen bg-[#071933]">
+        
+        <style>
+            /* パターン1専用：背景クロスフェードスライダー（4枚仕様・32秒周期） */
+            .bg-slide {
+                position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+                opacity: 0;
+                animation: bgCrossfade 32s ease-in-out infinite;
+                transform-origin: center;
+            }
+            .bg-slide:nth-child(1) { animation-delay: 0s; }
+            .bg-slide:nth-child(2) { animation-delay: 8s; }
+            .bg-slide:nth-child(3) { animation-delay: 16s; }
+            .bg-slide:nth-child(4) { animation-delay: 24s; }
+
+            @keyframes bgCrossfade {
+                0% { opacity: 0; transform: scale(1); }
+                8% { opacity: 1; transform: scale(1.02); }  /* ふわっと出現 */
+                25% { opacity: 1; transform: scale(1.05); } /* 次の画像が出現開始するタイミング */
+                33% { opacity: 0; transform: scale(1.08); }  /* 完全に見えなくなる */
+                100% { opacity: 0; transform: scale(1.1); }
+            }
+            
+            /* 日本管財風の斜めカットオーバーレイ */
+            .diagonal-overlay {
+                clip-path: polygon(0 45%, 100% 75%, 100% 100%, 0 100%);
+            }
+        </style>
+
+        <!-- 背景ラッパー（スマホは100svh、PCはフルハイト） -->
+        <div class="absolute inset-x-0 top-0 w-full h-[100svh] lg:h-full z-0 overflow-hidden">
+            <!-- フル背景：クロスフェード（4枚稼働） -->
+            <div class="absolute inset-0 bg-[#020b1f] overflow-hidden">
+                <img src="images/bg_pattern1.webp" class="bg-slide" alt="Slide 1">
+                <img src="images/bg_pattern2.webp" class="bg-slide" alt="Slide 2">
+                <img src="images/bg_pattern3.webp" class="bg-slide" alt="Slide 3">
+                <img src="images/bg_pattern4.webp" class="bg-slide" alt="Slide 4">
+            </div>
+            
+            <!-- 文字の読みやすさを確保するグラデーションオーバーレイ -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a1a3a]/50 via-transparent to-[#0a1a3a]/80 pointer-events-none"></div>
+        </div>
+
+        <!-- メインキャッチコピー（スマホはファーストビュー占有、PCは上部中央） -->
+        <div class="relative z-10 w-full min-h-[100svh] lg:min-h-0 flex-1 flex flex-col justify-center items-center text-center px-4 pt-16">
+                        <!-- 圧倒的なオーラを放つ英語コピー -->
+            <div class="text-sm md:text-base lg:text-lg font-bold text-yellow-400 tracking-[0.3em] mb-8 md:mb-12 font-['Inter'] uppercase anim-up drop-shadow-md">
+                NEXT STAGE FOR YOUR BUSINESS
+            </div>
+            <!-- 日本語タグライン -->
+            <h1 class="font-extrabold mb-8 text-white tracking-widest drop-shadow-xl anim-up d-100" style="text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                <span class="block text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 md:mb-8 leading-tight">単なる「発注先」ではなく</span>
+                <span class="block text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight whitespace-nowrap">共に成長する「パートナー」へ</span>
+            </h1>
+
+
+            <div class="anim-up d-200 mt-4 md:mt-0 w-full sm:w-auto px-2 md:px-0">
+                <a href="#contact" class="btn-pulse flex flex-col md:flex-row items-center justify-center w-full sm:w-auto bg-[#1e4b9b]/90 backdrop-blur-md text-white font-bold text-base md:text-lg px-6 md:px-10 py-3.5 md:py-4 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:bg-[#15346b] transition duration-300 border border-white/20 leading-tight">
+                    <span>募集条件を見る</span>
+                    <span class="text-xs md:text-lg md:ml-1 mt-1 md:mt-0 font-normal md:font-bold opacity-90 md:opacity-100">（オンライン無料相談）</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 3つのメリットカード -->
+        <!-- PCではヒーロー背景の最下部に同居、スマホではヒーローの直下に配置（スクロールで出現） -->
+        <!-- ========================================== -->
+        <div class="relative z-20 w-full px-4 md:px-10 pb-12 pt-16 lg:pt-0 bg-[#071933] lg:bg-transparent">
+            <!-- 3つの理由 見出し -->
+            <div class="max-w-7xl mx-auto mb-6 md:mb-8 text-center lg:text-left anim-up d-200">
+                <h2 class="text-white text-xl md:text-2xl font-bold tracking-widest flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4">
+                    <span class="text-yellow-400 text-sm md:text-base font-['Inter'] uppercase tracking-[0.2em] px-3 py-1 bg-white/10 rounded-full inline-block w-max mx-auto lg:mx-0 backdrop-blur-sm border border-white/10">3 Reasons</span>
+                    <span>ビルドクリーンが選ばれる3つの理由</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-4 max-w-7xl mx-auto h-auto anim-up d-300">
+                
+                <!-- カード1 -->
+                <div class="relative overflow-hidden group hover:shadow-2xl transition duration-500 cursor-default h-64 md:h-72">
+                    <div class="absolute inset-0 bg-[url('images/card1.png')] bg-cover bg-center transform group-hover:scale-110 transition duration-700"></div>
+                    
+                    <!-- 日本管財風「斜めカット」オーバーレイ -->
+                    <div class="absolute inset-x-0 bottom-0 h-full bg-[#031533]/85 backdrop-blur-[2px] diagonal-overlay group-hover:bg-[#1e4b9b]/90 transition duration-500"></div>
+                    
+                    <div class="relative z-10 p-6 md:p-8 flex flex-col justify-end h-full">
+                        <div class="text-white font-bold text-lg md:text-xl mb-2 flex items-center gap-3">
+                            <span class="text-[#00d4ff] text-2xl font-bold">01</span>
+                            安定した案件供給
+                        </div>
+                        <p class="text-xs md:text-sm text-blue-50 font-light leading-relaxed">直請け中心の案件が豊富。現場が途切れる不安から解放され、計画的な成長を描けます。</p>
+                    </div>
+                </div>
+
+                <!-- カード2 -->
+                <div class="relative overflow-hidden group hover:shadow-2xl transition duration-500 cursor-default h-64 md:h-72">
+                    <div class="absolute inset-0 bg-[url('images/card2.png')] bg-cover bg-center transform group-hover:scale-110 transition duration-700"></div>
+                    
+                    <div class="absolute inset-x-0 bottom-0 h-full bg-[#031533]/85 backdrop-blur-[2px] diagonal-overlay group-hover:bg-[#1e4b9b]/90 transition duration-500"></div>
+                    
+                    <div class="relative z-10 p-6 md:p-8 flex flex-col justify-end h-full">
+                        <div class="text-white font-bold text-lg md:text-xl mb-2 flex items-center gap-3">
+                            <span class="text-[#00d4ff] text-2xl font-bold">02</span>
+                            適正単価・早期支払
+                        </div>
+                        <p class="text-xs md:text-sm text-blue-50 font-light leading-relaxed">理不尽な買いたたき無し。資金繰りも安心の支払いサイクルで健全な経営をサポートします。</p>
+                    </div>
+                </div>
+
+                <!-- カード3 -->
+                <div class="relative overflow-hidden group hover:shadow-2xl transition duration-500 cursor-default h-64 md:h-72">
+                    <div class="absolute inset-0 bg-[url('images/card3.png')] bg-cover bg-center transform group-hover:scale-110 transition duration-700"></div>
+                    
+                    <div class="absolute inset-x-0 bottom-0 h-full bg-[#031533]/85 backdrop-blur-[2px] diagonal-overlay group-hover:bg-[#1e4b9b]/90 transition duration-500"></div>
+                    
+                    <div class="relative z-10 p-6 md:p-8 flex flex-col justify-end h-full">
+                        <div class="text-white font-bold text-lg md:text-xl mb-2 flex items-center gap-3">
+                            <span class="text-[#00d4ff] text-2xl font-bold">03</span>
+                            24時間サポート
+                        </div>
+                        <p class="text-xs md:text-sm text-blue-50 font-light leading-relaxed">現場での急なトラブルにも、当社の緊急コールセンターが24時間体制でフルサポート。</p>
+                    </div>
+                </div>
+
+        </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- ========================================== -->
+    <!-- 実績数字ストリップ -->
+    <!-- ========================================== -->
+    <div class="bg-[#071933] text-white py-12 px-6 border-b border-t lg:border-t-0 border-white/5 relative z-30">
+        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 md:gap-8 text-center">
+            <div class="anim-up">
+                <div class="text-4xl md:text-5xl font-extrabold text-yellow-400">20<span class="text-2xl">年</span></div>
+                <div class="text-xs md:text-sm text-blue-300 mt-2 leading-snug">首都圈に根ざした<br>信頼と実績</div>
+            </div>
+            <div class="anim-up d-100">
+                <div class="text-4xl md:text-5xl font-extrabold text-yellow-400">150<span class="text-2xl">+</span></div>
+                <div class="text-xs md:text-sm text-blue-300 mt-2 leading-snug">累計対応施設数<br>(オフィス・商業施設・医療施設等)</div>
+            </div>
+            <div class="anim-up d-200">
+                <div class="text-4xl md:text-5xl font-extrabold text-yellow-400">4</div>
+                <div class="text-xs md:text-sm text-blue-300 mt-2 leading-snug">対応都県<br>東京・千葉・神奈川・埼玉</div>
+            </div>
+            <div class="anim-up d-300">
+                <div class="text-4xl md:text-5xl font-extrabold text-yellow-400">24h</div>
+                <div class="text-xs md:text-sm text-blue-300 mt-2 leading-snug">365日緊急対応<br>土日祝・夜間割増なし</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- パートナーの声 -->
+    <!-- ========================================== -->
+    <section id="voice" class="py-16 lg:py-24 px-6 md:px-12 bg-slate-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-14 anim-up">
+                <span class="inline-block text-blue-800 font-bold tracking-widest text-sm mb-2 uppercase border-b-2 border-yellow-500 pb-1">Partner Voice</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">実際にパートナーになった方の声</h2>
+                <p class="text-gray-500 text-sm">同じ立場の方が、どのように変わったか。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Voice 1 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm anim-up flex flex-col">
+                    <div class="h-56 w-full relative">
+                        <img src="images/voice-tanaka.png" alt="田中 様" class="w-full h-full object-cover object-top">
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <div class="p-6 md:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center gap-1 text-yellow-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-1">「独立してすぐは営業に追われて現場に集中できませんでした。ビルドクリーンさんとパートナーを組んでから、毎月安定して案件が入るようになり、売上が1.5倍以上に。あのとき思い切って連絡してよかったです。」</p>
+                        <div class="border-t border-slate-100 pt-4">
+                            <div class="font-bold text-gray-900 text-sm">田中 様</div>
+                            <div class="text-blue-700 text-xs mt-1">清掃業・個人事業主 ／ 千葉県</div>
+                            <div class="text-gray-400 text-xs mt-1">独立2年目でご参加</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Voice 2 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm anim-up d-100 flex flex-col">
+                    <div class="h-56 w-full relative">
+                        <img src="images/voice-yamada.png" alt="山田 様" class="w-full h-full object-cover object-top">
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <div class="p-6 md:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center gap-1 text-yellow-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-1">「複数社と取引していますが、支払いが一番きちんとしているのがビルドクリーンさんです。遅延もなく、単価の交渉にも真摯に対応してくれる。長く付き合える相手だと確信しています。」</p>
+                        <div class="border-t border-slate-100 pt-4">
+                            <div class="font-bold text-gray-900 text-sm">山田 様</div>
+                            <div class="text-blue-700 text-xs mt-1">設備管理業・法人（3名）／ 東京都</div>
+                            <div class="text-gray-400 text-xs mt-1">業務拡大を機にご参加</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Voice 3 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm anim-up d-200 flex flex-col">
+                    <div class="h-56 w-full relative">
+                        <img src="images/voice-matsumoto.png" alt="松本 様" class="w-full h-full object-cover object-top">
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <div class="p-6 md:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center gap-1 text-yellow-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-1">「もともとリフォーム業でしたが、ビルメンテナンスへの参入を相談したところ、丁寧にサポートしてもらえました。未経験分野への参入も親身に一緒に考えてくれる姿勢に感謝しています。」</p>
+                        <div class="border-t border-slate-100 pt-4">
+                            <div class="font-bold text-gray-900 text-sm">松本 様</div>
+                            <div class="text-blue-700 text-xs mt-1">リフォーム業から参入 ／ 埼玉県</div>
+                            <div class="text-gray-400 text-xs mt-1">異業種からご参加</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-gray-400 text-xs mt-8">※掲載にあたりお名前・詳細は一部変更しております</p>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- こんな案件があります -->
+    <!-- ========================================== -->
+    <section id="jobs" class="py-16 lg:py-24 px-6 md:px-12 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-14 anim-up">
+                <span class="inline-block text-blue-800 font-bold tracking-widest text-sm mb-2 uppercase border-b-2 border-yellow-500 pb-1">Job Types</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">こんな案件があります</h2>
+                <p class="text-gray-500 text-sm">首都圏全域で多様な施設の案件をご紹介しています。</p>
+            </div>
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0 hide-scrollbar anim-up d-100 -mx-6 px-6 md:mx-0 md:px-0">
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
+                        <img src="images/job1.png" alt="オフィスビル" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-2">
+                           <div class="text-xl">🏢</div>
+                           <h3 class="font-bold text-gray-900">オフィスビル</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">日常清掃・定期清掃・設備点検。都内を中心に多数稼働中。</p>
+                    </div>
+                </div>
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
+                        <img src="images/job2.png" alt="医療施設・老人ホーム" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-2">
+                           <div class="text-xl">🏥</div>
+                           <h3 class="font-bold text-gray-900">医療施設・老人ホーム</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">高頻度の日常清掃。感染対策対応のニーズが高い施設。</p>
+                    </div>
+                </div>
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
+                        <img src="images/job3.png" alt="商業施設・SC" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-2">
+                           <div class="text-xl">🛍️</div>
+                           <h3 class="font-bold text-gray-900">商業施設・SC</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">早朝・深夜の清掃対応。大型モール〜路面店まで対応。</p>
+                    </div>
+                </div>
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
+                        <img src="images/job4.png" alt="マンション共用部" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-2">
+                           <div class="text-xl">🏠</div>
+                           <h3 class="font-bold text-gray-900">マンション共用部</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">エントランス・廊下・駐車場等の定期巡回清掃。</p>
+                    </div>
+                </div>
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-slate-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-white flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
+                        <img src="images/job5.png" alt="設備管理・法定点検" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-2">
+                           <div class="text-xl">⚙️</div>
+                           <h3 class="font-bold text-gray-900">設備管理・法定点検</h3>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">空調・給排水・消防・電気設備の保守点検。有資格者歓迎。</p>
+                    </div>
+                </div>
+                <div class="flex-none w-[85%] max-w-[280px] md:max-w-none md:w-auto snap-start md:snap-align-none border border-blue-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition group bg-blue-50 flex flex-col">
+                    <div class="h-44 md:h-40 w-full overflow-hidden relative">
+                        <img src="images/job6.png" alt="得意分野、ご相談ください" class="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-2">
+                           <div class="text-xl">💬</div>
+                           <h3 class="font-bold text-blue-900">得意分野、ご相談ください</h3>
+                        </div>
+                        <p class="text-xs text-blue-600 leading-relaxed">上記以外の業種・スキルでも対応可能な案件がある場合があります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================================== -->
+    <!-- 協力業者募集（CTA・詳細） -->
+    <!-- ========================================== -->
+    <section id="conditions" class="py-24 px-6 md:px-12 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-12 anim-up">
+                <span class="inline-block text-blue-800 font-bold tracking-widest text-sm mb-2 uppercase border-b-2 border-yellow-500 pb-1">Recruitment</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">協力業者募集</h2>
+                <p class="text-gray-600 font-medium tracking-wider">ビル総合管理 設備</p>
+            </div>
+            
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-8 md:p-12 shadow-sm anim-up d-100">
+                <h3 class="text-xl font-bold text-[#0a1a3a] mb-6 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">✓</span>
+                    こんな方はぜひご相談ください
+                </h3>
+                <ul class="space-y-4 text-gray-700 font-medium mb-10 pl-2 md:pl-11 border-l-4 border-blue-50">
+                    <li class="flex items-start"><span class="text-yellow-500 mr-2">■</span>業務拡大をお考えの方</li>
+                    <li class="flex items-start"><span class="text-yellow-500 mr-2">■</span>独立したばかりの方</li>
+                    <li class="flex items-start"><span class="text-yellow-500 mr-2">■</span>業務提携をお考えの方 etc...</li>
+                </ul>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    清掃、設備、建物管理関係等の同業者の方はもちろん、業務提携等により、<strong class="text-blue-800 border-b border-blue-200 pb-1">双方にメリット・共存共栄が見込める異業種の方</strong>もお気軽にお問い合わせください。
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-10">
+                    また、<strong class="text-gray-900 border-b border-gray-300 pb-1">「異業種から参入を希望されている方」「新規に独立・起業をお考えの方」「事業譲渡・事業売却（M&A）をお考えの方」</strong>もお気軽にご相談ください。
+                </p>
+
+                <div class="text-center mt-12 pt-10 border-t border-slate-200">
+                    <p class="text-sm text-gray-500 mb-4">協力業者の応募・ご相談はこちらから</p>
+                    <a href="#contact" class="inline-flex items-center justify-center w-full md:w-auto bg-yellow-500 text-[#0a1a3a] font-bold text-base md:text-lg px-2 sm:px-6 md:px-12 py-5 rounded-full shadow-[0_4px_15px_rgba(234,179,8,0.4)] hover:bg-yellow-400 hover:shadow-[0_6px_20px_rgba(234,179,8,0.5)] transition duration-300 transform hover:-translate-y-1">
+                        <span class="whitespace-nowrap">無料相談・エントリーへ進む</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 応募の流れ -->
+    <!-- ========================================== -->
+    <section id="flow" class="py-16 lg:py-20 px-6 md:px-12 bg-[#071933]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 anim-up">
+                <span class="inline-block text-yellow-400 font-bold tracking-widest text-sm mb-2 uppercase border-b-2 border-yellow-500 pb-1">Application Flow</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">ご応募の流れ</h2>
+                <p class="text-blue-200 text-sm">お問合せから業務開始まで、<br class="block md:hidden">最短２週間を目安にご案内しております。</p>
+            </div>
+            <div class="relative">
+                <!-- ライン -->
+                <div class="absolute left-[19px] md:left-1/2 top-4 bottom-4 w-0.5 bg-white/10 md:-translate-x-1/2 z-0"></div>
+                <div class="space-y-10 md:space-y-8">
+                    <!-- Step 1 -->
+                    <div class="relative z-10 grid grid-cols-[40px_1fr] md:grid-cols-[1fr_40px_1fr] gap-x-4 md:gap-x-10 items-start md:items-center anim-up">
+                        <div class="col-start-1 md:col-start-2 w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-[#071933] font-bold text-lg mx-auto shadow-lg shadow-yellow-500/30">1</div>
+                        <div class="col-start-2 md:col-start-1 md:row-start-1 md:text-right pt-1 md:pt-0">
+                            <div class="inline-block bg-yellow-500 text-[#071933] font-extrabold text-xs px-3 py-1 rounded-full mb-2">STEP 01</div>
+                            <h3 class="text-white font-bold text-lg">お問合せ・エントリー</h3>
+                            <p class="text-blue-300 text-sm mt-1">ページ下部のボタンよりお気軽にご連絡ください。<br class="block md:hidden">フォーム記入は5分で完了します。</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative z-10 grid grid-cols-[40px_1fr] md:grid-cols-[1fr_40px_1fr] gap-x-4 md:gap-x-10 items-start md:items-center anim-up d-100">
+                        <div class="col-start-1 md:col-start-2 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto">2</div>
+                        <div class="col-start-2 md:col-start-3 md:row-start-1 pt-1 md:pt-0">
+                            <div class="inline-block bg-blue-600/30 text-blue-300 font-extrabold text-xs px-3 py-1 rounded-full mb-2">STEP 02</div>
+                            <h3 class="text-white font-bold text-lg">担当者よりご連絡・ヒアリング</h3>
+                            <p class="text-blue-300 text-sm mt-1">通常2営業日以内に担当者よりご連絡します。<br class="block md:hidden">現在の状況や希望条件等をお聞きします。</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative z-10 grid grid-cols-[40px_1fr] md:grid-cols-[1fr_40px_1fr] gap-x-4 md:gap-x-10 items-start md:items-center anim-up d-200">
+                        <div class="col-start-1 md:col-start-2 w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-[#071933] font-bold text-lg mx-auto">3</div>
+                        <div class="col-start-2 md:col-start-1 md:row-start-1 md:text-right pt-1 md:pt-0">
+                            <div class="inline-block bg-yellow-500 text-[#071933] font-extrabold text-xs px-3 py-1 rounded-full mb-2">STEP 03</div>
+                            <h3 class="text-white font-bold text-lg">面談・条件のすり合わせ</h3>
+                            <p class="text-blue-300 text-sm mt-1">対面またはZoomにて面談を実施。<br class="block md:hidden">業務内容・単価・エリアなど、具体的な条件を確認します。</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="relative z-10 grid grid-cols-[40px_1fr] md:grid-cols-[1fr_40px_1fr] gap-x-4 md:gap-x-10 items-start md:items-center anim-up d-300">
+                        <div class="col-start-1 md:col-start-2 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto">4</div>
+                        <div class="col-start-2 md:col-start-3 md:row-start-1 pt-1 md:pt-0">
+                            <div class="inline-block bg-blue-600/30 text-blue-300 font-extrabold text-xs px-3 py-1 rounded-full mb-2">STEP 04</div>
+                            <h3 class="text-white font-bold text-lg">業務委託契約の締結</h3>
+                            <p class="text-blue-300 text-sm mt-1">双方合意の内容を書面化し、正式な契約を締結します。</p>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="relative z-10 grid grid-cols-[40px_1fr] md:grid-cols-[1fr_40px_1fr] gap-x-4 md:gap-x-10 items-start md:items-center anim-up d-400">
+                        <div class="col-start-1 md:col-start-2 w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-[#071933] font-bold text-lg mx-auto">5</div>
+                        <div class="col-start-2 md:col-start-1 md:row-start-1 md:text-right pt-1 md:pt-0">
+                            <div class="inline-block bg-yellow-500 text-[#071933] font-extrabold text-xs px-3 py-1 rounded-full mb-2">STEP 05</div>
+                            <h3 class="text-white font-bold text-lg">案件マッチング・業務開始</h3>
+                            <p class="text-blue-300 text-sm mt-1">契約後は当社より積極的に案件をご紹介。<br class="block md:hidden">安定した業務環境をぜひご活用ください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10 md:mt-16 px-2 md:px-0">
+                <a href="#contact" class="inline-flex items-center justify-center w-full md:w-auto bg-yellow-500 text-[#071933] font-bold text-base md:text-lg px-2 sm:px-6 md:px-12 py-5 rounded-full shadow-[0_4px_20px_rgba(234,179,8,0.4)] hover:bg-yellow-400 transition transform hover:-translate-y-1">
+                    <span class="whitespace-nowrap">まずはお問合せする（無料）</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 会社概要（Company Profile） -->
+    <!-- ========================================== -->
+    <section id="company" class="py-16 lg:py-24 px-6 md:px-12 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+            <div class="text-center mb-12 anim-up w-full">
+                <span class="inline-block text-blue-800 font-bold tracking-widest text-sm mb-2 uppercase border-b-2 border-yellow-500 pb-1">Company Profile</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">会社概要</h2>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm anim-up d-100 w-full lg:w-11/12 mx-auto">
+                <table class="w-full text-left border-collapse text-sm md:text-base">
+                    <tbody>
+                        <tr class="border-b border-slate-200">
+                            <th class="w-1/3 bg-slate-100 p-4 md:p-6 text-gray-900 font-bold">商号</th>
+                            <td class="p-4 md:p-6 text-gray-800 font-medium">株式会社 ビルドクリーン</td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="w-1/3 bg-slate-100 p-4 md:p-6 text-gray-900 font-bold">代表</th>
+                            <td class="p-4 md:p-6 text-gray-800 font-medium">代表取締役 山田 太郎　佐藤 健</td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="w-1/3 bg-slate-100 p-4 md:p-6 text-gray-900 font-bold">住所</th>
+                            <td class="p-4 md:p-6 text-gray-800 font-medium">〒150-0013<br>東京都港区青南1-2-3　品川ビル2F</td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="w-1/3 bg-slate-100 p-4 md:p-6 text-gray-900 font-bold">TEL / FAX</th>
+                            <td class="p-4 md:p-6 text-gray-800 font-medium">
+                                <span class="inline-block mr-4">TEL: 03-0000-0000</span><br class="md:hidden">
+                                <span class="inline-block">FAX: 03-0000-0000</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="w-1/3 bg-slate-100 p-4 md:p-6 text-gray-900 font-bold">事業案内</th>
+                            <td class="p-4 md:p-6 text-gray-800 font-medium">
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>建物総合管理会社</li>
+                                    <li>ビルメンテナンス・清掃業専門コンサルティング</li>
+                                    <li>M&A</li>
+                                    <li>ビルメンテナンス・清掃業専門独立起業支援</li>
+                                    <li>業績改善（拡大）等トータル的なコンサルティング</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="w-1/3 bg-slate-100 p-4 md:p-6 text-gray-900 font-bold">加入保険</th>
+                            <td class="p-4 md:p-6 text-gray-800 font-medium">損害保険ジャパン　賠償責任保険</td>
+                        </tr>
+                        <tr>
+                            <th class="w-1/3 bg-slate-100 p-4 md:p-6 text-gray-900 font-bold">関連会社</th>
+                            <td class="p-4 md:p-6 text-gray-800 font-medium">有料老人ホーム紹介センター</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- よくある質問（FAQ） -->
+    <!-- ========================================== -->
+    <section id="faq" class="py-16 lg:py-24 px-6 md:px-12 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12 anim-up">
+                <span class="inline-block text-blue-800 font-bold tracking-widest text-sm mb-2 uppercase border-b-2 border-yellow-500 pb-1">FAQ</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">よくある質問</h2>
+            </div>
+            <div class="space-y-4 anim-up d-100">
+                <!-- Q1 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-900 list-none">
+                        <span><span class="text-yellow-500 mr-3">Q.</span>個人事業主でも応募できますか？</span>
+                        <svg class="w-5 h-5 text-gray-400 transform group-open:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
+                        <span class="text-blue-700 font-bold">A.</span> はい、可能です。個人事業主の方から法人まで、規模は問いません。まずはお気軽にお問合せいただき、現在の状況や希望をお聞かせていただきます。
+                    </div>
+                </details>
+                <!-- Q2 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-900 list-none">
+                        <span><span class="text-yellow-500 mr-3">Q.</span>現在他社の仕事を受けていますが応募できますか？</span>
+                        <svg class="w-5 h-5 text-gray-400 transform group-open:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
+                        <span class="text-blue-700 font-bold">A.</span> もちろんです。当社との協力は副業・自社案件のサポートなど、柔軟な形での連携も歓迎しております。まずは現在の状況をお聞かせいただくだけで構いません。
+                    </div>
+                </details>
+                <!-- Q3 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-900 list-none">
+                        <span><span class="text-yellow-500 mr-3">Q.</span>報酬の支払いサイクルはどのようになりますか？</span>
+                        <svg class="w-5 h-5 text-gray-400 transform group-open:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
+                        <span class="text-blue-700 font-bold">A.</span> 基本的に「当月末締め・翌月20日払い」を標準としております。資金繰りにご心配なくお仕事いただけるよう、早期払いの相談にも応じております。
+                    </div>
+                </details>
+                <!-- Q4 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-900 list-none">
+                        <span><span class="text-yellow-500 mr-3">Q.</span>対応エリア外でも応募できますか？</span>
+                        <svg class="w-5 h-5 text-gray-400 transform group-open:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
+                        <span class="text-blue-700 font-bold">A.</span> 現在の主な案件は首都圈（東京都・千葉県・神奈川県・埼玉県）ですが、実力・得意分野によってはエリア外もご相談可能です。まずはお気軽にお問合せください。
+                    </div>
+                </details>
+                <!-- Q5 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-gray-900 list-none">
+                        <span><span class="text-yellow-500 mr-3">Q.</span>ビルメンテナンス以外の業種でも応募できますか？</span>
+                        <svg class="w-5 h-5 text-gray-400 transform group-open:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
+                        <span class="text-blue-700 font-bold">A.</span> はい。当社では異業種からの参入や業務提携も歓迎しております。双方にメリットがあり、共存共栄できる関係を大切にしています。実績不問で、まずはお気軽にご相談ください。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- フッター CTA & フッター -->
+    <!-- ========================================== -->
+    <footer id="contact" class="bg-[#0a1a3a] text-white pt-16 lg:pt-24 pb-12 lg:pb-16 px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">新しいステージへ、<br class="block md:hidden">共に進もう。</h2>
+            <p class="text-blue-100 mb-10 leading-relaxed max-w-2xl mx-auto">
+                単なる「下請け」ではなく、共に成長する「パートナー」として。<br>
+                皆様のビジネスの新しい可能性について、<br class="block md:hidden">ぜひ一度お話ししませんか？
+            </p>
+            <a href="mailto:info@example.com" class="inline-flex flex-col items-center justify-center bg-yellow-500 text-[#0a1a3a] font-bold px-2 sm:px-4 md:px-12 py-5 rounded-lg shadow-xl hover:bg-yellow-400 transition w-full md:w-auto transform hover:-translate-y-1">
+                <span class="text-lg md:text-xl mb-1 flex items-center whitespace-nowrap">
+                    <svg class="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> 
+                    無料相談・フォームへ進む
+                </span>
+                <span class="text-xs opacity-70 font-normal">24時間受付中</span>
+            </a>
+            <div class="mt-8 text-blue-200 flex flex-col md:flex-row items-center justify-center">
+                <span>お電話でのご相談:</span> 
+                <strong class="text-2xl mt-1 md:mt-0 md:ml-3 tracking-wider text-white">03-0000-0000</strong>
+            </div>
+        </div>
+        
+        <div class="border-t border-white/10 pt-8 mt-8 text-center text-sm text-blue-300">
+            &copy; 2026 BUILD CLEAN INC. All Rights Reserved.
+        </div>
+    </footer>
+</main>
+
+<!-- ========================================== -->
+<!-- スクロール追従 フローティング要素 -->
+<!-- ========================================== -->
+
+<!-- トップへ戻るボタン -->
+<a href="#" id="scrollTopBtn" class="fixed right-4 sm:right-6 bottom-24 lg:bottom-10 w-12 h-12 bg-[#0a1a3a]/80 hover:bg-[#0a1a3a] backdrop-blur border border-white/20 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-40 transform translate-y-4">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+</a>
+
+<!-- スマホ用 フローティングCTA -->
+<div id="floatingCta" class="fixed bottom-0 inset-x-0 z-50 transform translate-y-full transition-transform duration-500 bg-[#0a1a3a]/95 backdrop-blur-md border-t border-white/10 px-4 py-3 lg:hidden shadow-[0_-10px_20px_rgba(0,0,0,0.15)] flex justify-center items-center">
+    <a href="#contact" class="flex w-full max-w-sm items-center justify-center bg-yellow-500 text-[#071933] font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-[0_4px_15px_rgba(234,179,8,0.4)] hover:bg-yellow-400 transition transform active:scale-95">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        無料相談・フォームへ進む
+    </a>
+</div>
+
+<script>
+    // スクロール追従要素の制御
+    document.addEventListener('DOMContentLoaded', () => {
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        const floatingCta = document.getElementById('floatingCta');
+        const footer = document.getElementById('contact');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // トップへ戻るボタン：500px以上で表示
+            if (scrollY > 500) {
+                scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+                scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
+
+            // フローティングCTA：300px以上スクロールで表示、フッターが見えた場合は隠す
+            const footerTop = footer ? footer.getBoundingClientRect().top : 99999;
+            const windowHeight = window.innerHeight;
+            
+            if (scrollY > 300 && footerTop > windowHeight - 50) {
+                floatingCta.classList.remove('translate-y-full');
+            } else {
+                floatingCta.classList.add('translate-y-full');
+            }
+        });
+    });
+</script>
+
+<script>
+        // モバイルメニュー開閉とアイコンのトグル
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+
+        if (menuBtn && mobileMenu) {
+            const toggleMenu = () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                // アイコンの切り替え
+                if (iconMenu && iconClose) {
+                    if (isHidden) {
+                        iconMenu.classList.remove('hidden');
+                        iconClose.classList.add('hidden');
+                    } else {
+                        iconMenu.classList.add('hidden');
+                        iconClose.classList.remove('hidden');
+                    }
+                }
+            };
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // メニュー内のリンクをクリックしたら確実に閉じる
+            mobileMenu.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    if (iconMenu && iconClose) {
+                        iconMenu.classList.remove('hidden');
+                        iconClose.classList.add('hidden');
+                    }
+                });
+            });
+        }
+    </script>
+    <script>
+        // PCブラウザでの検証時、マウスドラッグで横スクロールを可能にするユーティリティ
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliders = document.querySelectorAll('.overflow-x-auto');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            sliders.forEach(slider => {
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('cursor-grabbing');
+                    // snap-mandatory がドラッグと競合しないよう一時解除
+                    slider.style.scrollSnapType = 'none';
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('cursor-grabbing');
+                    slider.style.scrollSnapType = '';
+                });
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('cursor-grabbing');
+                    slider.style.scrollSnapType = '';
+                });
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // スクロール速度
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
