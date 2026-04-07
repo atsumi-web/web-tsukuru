@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow">
+  <title>月額パートナーサポート（Web顧問） | Webとしくみをつくる</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-body: #fdfdfd;
+      --border: #e5e5e5;
+      --text-main: #111111; 
+      --text-muted: #555555;
+      --text-light: #999999;
+      --accent: #002d78; /* Navy */
+      --accent-gold: #c5a059;
+      
+      --font-jp-sans: 'Noto Sans JP', sans-serif;
+      --font-jp-serif: 'Shippori Mincho', serif;
+      --font-en: 'IBM Plex Sans', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-jp-sans);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 2.0;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      padding: 60px 20px;
+    }
+    
+    .document-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 80px 80px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.03);
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px 15px; }
+      .document-container { padding: 50px 30px; }
+    }
+
+    .eyebrow {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .title {
+      font-family: var(--font-jp-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      line-height: 1.4;
+    }
+    .lead-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    h2 i { color: var(--accent-gold); font-size: 1.1rem; }
+
+    /* Cards */
+    .menu-list { display: flex; flex-direction: column; gap: 30px; margin-bottom: 50px; }
+    .menu-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 35px 40px;
+      border-radius: 8px;
+    }
+    .menu-card.recommended {
+      border: 2px solid var(--accent-gold);
+      position: relative;
+      background: #fffcf8;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    }
+    .menu-card.premium {
+      border: 2px solid var(--accent);
+    }
+    
+    .badge-rec {
+      position: absolute;
+      top: -15px;
+      left: 30px;
+      background: var(--accent-gold);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 5px 15px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .menu-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #d0d0d0;
+    }
+    .menu-title { font-weight: 700; font-size: 1.15rem; color: #222; }
+    .menu-price { font-family: var(--font-en); font-size: 1.4rem; font-weight: 600; letter-spacing: 0.05em; }
+    .menu-price span { font-size: 0.8rem; font-family: var(--font-jp-sans); color: var(--text-light); font-weight: 400;}
+    
+    .menu-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
+    .menu-desc strong { color: #333; display: block; margin-bottom: 10px; font-size: 1rem;}
+    
+    .feature-list { list-style: none; margin-top: 15px; }
+    .feature-list li {
+      position: relative; padding-left: 20px; margin-bottom: 8px;
+    }
+    .feature-list li::before {
+      content: '✔';
+      position: absolute; left: 0; color: var(--text-light); font-size: 0.8rem; top: 2px;
+    }
+    .feature-list.gold li::before { color: var(--accent-gold); }
+    .feature-list.navy li::before { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .menu-card { padding: 25px; }
+      .menu-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .badge-rec { left: 15px; }
+    }
+
+    /* Footer / CTA */
+    .doc-footer {
+      margin-top: 80px; padding: 40px; background: #f4f6f9; border-radius: 8px; text-align: center;
+    }
+    .doc-footer h3 { font-size: 1.1rem; margin-bottom: 15px; }
+    .doc-footer p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px; }
+    .btn-line {
+      display: inline-block; padding: 12px 30px; background: #06C755; color: #fff; text-decoration: none; border-radius: 30px; font-weight: 600;
+    }
+
+    /* Portal Navigation Footer */
+    .portal-nav {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .portal-nav-title {
+      font-family: var(--font-en);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .portal-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 25px;
+      background: #f8f8f8;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .portal-link:hover { background: #f0f0f0; }
+    .portal-link i { color: var(--text-light); }
+  </style>
+</head>
+<body>
+
+  <div class="document-container">
+    <span class="eyebrow">Client Only</span>
+    <h1 class="title">月額パートナーサポート<br><span style="font-size:0.6em; color:#777; font-family:var(--font-jp-sans); font-weight:500;">（Web顧問プラン）</span></h1>
+    
+    <div class="lead-text">
+      当プランは、「Web担当者が社内にいない」「LPを毎月少しずつ改善して育てていきたい」という企業様に向けて、当方が<strong>【御社のWeb専属スタッフ】</strong>として定額で伴走するサービスです。<br><br>
+      都度の面倒なお見積りや稟議の手間を省き、「ここ少し直しておいて！」とLINE等でご指示いただくだけで、スピーディーかつ優先的にサイトのアップデートに対応いたします。（※完全な任意オプションであり、いつでもご解約が可能です）
+    </div>
+
+    <h2><i class="fa-solid fa-crown"></i> 用途に合わせた3つの顧問プラン</h2>
+    <div class="menu-list">
+      
+      <!-- 梅 -->
+      <div class="menu-card">
+        <div class="menu-header">
+          <div class="menu-title">【梅】ライトプラン</div>
+          <div class="menu-price">15,000円 <span>（税抜） / 月額</span></div>
+        </div>
+        <div class="menu-desc">
+          <strong>サイトの鮮度と安全を維持したい企業様へ</strong>
+          <p>月内のちょっとした変更や、トラブル時の相談窓口として最低限のサポートをカバーするプランです。</p>
+          <ul class="feature-list">
+            <li>稼働上限の目安：月1回〜2回程度の軽微な更新（テキストや画像の差し替え）</li>
+            <li>トラブル時の優先リカバリー対応</li>
+            <li>※新しいセクションの追加等は別途スポット料金となります。</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 竹 -->
+      <div class="menu-card recommended">
+        <div class="badge-rec">一番人気のおすすめプラン</div>
+        <div class="menu-header">
+          <div class="menu-title" style="color: var(--accent-gold);">【竹】スタンダードプラン</div>
+          <div class="menu-price">30,000円 <span>（税抜） / 月額</span></div>
+        </div>
+        <div class="menu-desc">
+          <strong>採用ブログを動かし、採用力を日々強化したい企業様へ</strong>
+          <p>「記事を書く時間がない」という課題を解決します。お客様からスマホで送られた「箇条書きの原稿や粗いスマホ写真」を、当方がプロの目線で美しいブログ記事・実績記事に編集して代行公開します。</p>
+          <ul class="feature-list gold">
+            <li>稼働上限の目安：月3〜4回程度の更新（ブログ記事の代行作成等）</li>
+            <li>月に1回、サイトの簡易アクセスレポートのご提示</li>
+            <li>月に1回（30分程度）のオンライン戦略ミーティングの実施</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 松 -->
+      <div class="menu-card premium">
+        <div class="badge-rec" style="background:var(--accent);">丸投げ運用</div>
+        <div class="menu-header">
+          <div class="menu-title" style="color: var(--accent);">【松】プレミアムプラン</div>
+          <div class="menu-price">50,000円〜 <span>（税抜） / 月額</span></div>
+        </div>
+        <div class="menu-desc">
+          <strong>Web戦略から改善まで、完全にまるごと丸投げしたい企業様へ</strong>
+          <p>「ここの数字やボタン配置を変えたら、もっと応募が増えるのでは？」といった自発的なA/Bテストの提案や、毎月の新しいコンテンツ（社員インタビューエリア等）の追加実装を含みます。完全な「御社のWeb戦略部門」として機能します。</p>
+          <ul class="feature-list navy">
+            <li>稼働上限の目安：最優先対応 ＋ 月1回のセクション追加・デザイン改修込み</li>
+            <li>アクセス解析に基づく積極的な改善（PDCA）のご提案</li>
+            <li>無制限の戦略チャットサポート</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 戻るボタン -->
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="support-menu.html" style="color: var(--text-light); text-decoration: underline; font-size: 0.95rem;">← スポット対応料金表（各種単発メニュー）に戻る</a>
+    </div>
+
+    <div class="doc-footer">
+      <h3>自社に合ったプランをご案内します！</h3>
+      <p>「自社の更新頻度ならどのプランが良い？」「まずはライトプランで試したい」など、<br>ご要望に合わせて柔軟に対応いたします。いつでもお気軽にご相談ください。</p>
+    </div>
+
+    <!-- Portal Navigation -->
+    <div class="portal-nav">
+      <div class="portal-nav-title">Client Portal Menu</div>
+      <a href="support-menu.html" class="portal-link">
+        スポット対応料金表（各種単発アップデートメニュー） <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="advisor-menu.html" class="portal-link" style="background: var(--accent); color: #fff;">
+        月額パートナーサポート（Web顧問プラン・SLA一覧） <i class="fa-solid fa-check"></i>
+      </a>
+      <a href="faq.html" class="portal-link">
+        ご依頼ガイド・よくある質問 <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

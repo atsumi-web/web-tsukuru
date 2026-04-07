@@ -60,6 +60,14 @@ a {
   align-items: center;
   mix-blend-mode: difference;
   color: #fff;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-header.scrolled {
+  padding: 15px 60px;
+  background-color: var(--pk-green);
+  mix-blend-mode: normal;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 .logo-text {
@@ -730,6 +738,14 @@ a {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .site-header {
+    padding: 24px 6%;
+  }
+
+  .site-header.scrolled {
+    padding: 15px 6%;
+  }
+
   .hero-title { font-size: 18vw; }
   .hero-sub { font-size: 3vw; }
   

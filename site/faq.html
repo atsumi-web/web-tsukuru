@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow">
+  <title>ご依頼ガイドとよくある質問 | Webとしくみをつくる</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-body: #fdfdfd;
+      --border: #e5e5e5;
+      --text-main: #111111; 
+      --text-muted: #555555;
+      --text-light: #999999;
+      --accent: #222222;
+      
+      --font-jp-sans: 'Noto Sans JP', sans-serif;
+      --font-jp-serif: 'Shippori Mincho', serif;
+      --font-en: 'IBM Plex Sans', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-jp-sans);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 2.0;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      padding: 60px 20px;
+    }
+    
+    .document-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 80px 80px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.03);
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px 15px; }
+      .document-container { padding: 50px 30px; }
+    }
+
+    .eyebrow {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .title {
+      font-family: var(--font-jp-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      line-height: 1.4;
+    }
+    .lead-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    h2 i { color: var(--text-light); font-size: 1.1rem; }
+
+    /* FAQ List */
+    .faq-list { display: flex; flex-direction: column; gap: 30px; margin-bottom: 60px; }
+    .faq-item {
+      background: #fafafa;
+      border-radius: 8px;
+      padding: 30px 35px;
+      border-left: 4px solid var(--accent);
+    }
+    .faq-q {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .faq-q::before {
+      content: 'Q.';
+      font-family: var(--font-en); font-size: 1.2rem; color: var(--text-light); line-height: 1.1;
+    }
+    .faq-a {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.8;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .faq-a::before {
+      content: 'A.';
+      font-family: var(--font-en); font-size: 1.2rem; color: var(--text-main); font-weight: 600; line-height: 1.1;
+    }
+
+    .code-template {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin-top: 15px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #333;
+      position: relative;
+    }
+    .code-template::before {
+      content: 'コピーして使えます';
+      position: absolute; top: -10px; right: 10px; background: var(--text-main); color: #fff; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-family: var(--font-jp-sans);
+    }
+
+    /* Warning Box */
+    .warning-box {
+      border: 2px solid #e0c885;
+      background: #fffdf8;
+      padding: 35px 40px;
+      border-radius: 8px;
+      margin-bottom: 80px;
+    }
+    .warning-title {
+      color: #b59b58; font-weight: 700; font-size: 1.1rem; margin-bottom: 15px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .warning-title i { font-size: 1.3rem; }
+
+    @media (max-width: 600px) {
+      .faq-item { padding: 20px; }
+      .warning-box { padding: 25px; }
+    }
+
+    /* Portal Navigation Footer */
+    .portal-nav {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .portal-nav-title {
+      font-family: var(--font-en);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .portal-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 25px;
+      background: #f8f8f8;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .portal-link:hover { background: #f0f0f0; }
+    .portal-link i { color: var(--text-light); }
+  </style>
+</head>
+<body>
+
+  <div class="document-container">
+    <span class="eyebrow">Client Only</span>
+    <h1 class="title">ご依頼ガイドとよくある質問</h1>
+    
+    <div class="lead-text">
+      運用フェーズにおける各種ルールの確認や、変更をご依頼いただく際のフォーマットなどをまとめております。ご不明な点がありましたら、いつでも担当者までご連絡ください。
+    </div>
+
+    <h2><i class="fa-solid fa-file-invoice"></i> ご依頼と料金に関するQ&A</h2>
+    <div class="faq-list">
+      
+      <div class="faq-item">
+        <div class="faq-q">スポット対応と月額プランは、後から途中で切り替え可能ですか？</div>
+        <div class="faq-a">
+          <div>はい、いつでも切り替え可能です。<br>月額プランは任意更新制となっておりますので、月末までにLINE等のチャットでお知らせいただければ、違約金などは一切かからずに翌月から休止・解約（スポット対応への切り替え）が可能です。</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">LINEでテキストの修正を依頼する際、どのように伝えればよいですか？</div>
+        <div class="faq-a">
+          <div style="width: 100%;">以下のテンプレートをコピー＆ペーストしてご送付いただくと、認識のズレがなく最もスピーディーに対応可能です。
+            <div class="code-template">
+■ 変更したい場所：<br>
+（例：トップページの実績紹介エリア）<br><br>
+■ 現在の文章：<br>
+（例：〇〇をサポート）<br><br>
+■ 変更後の文章：<br>
+（例：〇〇と△△をサポート）<br><br>
+■ 希望納期：<br>
+（例：今週金曜まで）
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Webサイト（データ）はどこに公開・納品されますか？</div>
+        <div class="faq-a">
+          <div>原則として<strong>「お客様がすでにお持ちの自社サーバー（Xサーバー等）」</strong>へ直接アップロードし、すべてのデータを完全譲渡する形で納品いたします。<br>
+          弊社の管理するサーバーにお客様のサイトを囲い込む（人質にする）ようなことは一切いたしません。納品後は、会社の公式ホームページと同じように「完全に自社が所有する独立したWeb資産」として安心・安全に運用いただけます。（※もし自社サーバーをお持ちでない場合は、新規取得の無料サポートも行いますのでご相談ください）</div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2><i class="fa-solid fa-server"></i> 御社のWebインフラ覚書（ステータス）</h2>
+    <div class="warning-box" style="border-color: var(--accent); background: #fafbfc;">
+      <div class="warning-title" style="color: var(--accent);"><i class="fa-solid fa-clipboard-check"></i> ドメイン等 年間維持費のリマインド</div>
+      
+      <div style="background: #ffffff; padding: 25px; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 25px;">
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <!-- ドメイン -->
+          <div style="border-bottom: 1px dashed #eee; padding-bottom: 10px;">
+            <div style="font-size: 0.85rem; color: #777; font-weight: 600; margin-bottom: 2px;">ご利用のドメイン</div>
+            <div style="font-family: var(--font-en); font-size: 1.15rem; font-weight: 600;">【ex: 会社名.com】</div>
+          </div>
+          <!-- ドメイン管理会社 -->
+          <div style="border-bottom: 1px dashed #eee; padding-bottom: 10px;">
+            <div style="font-size: 0.85rem; color: #777; font-weight: 600; margin-bottom: 2px;">ドメイン管理会社</div>
+            <div style="font-weight: 600;">【ex: お名前.com】</div>
+          </div>
+          <!-- ドメイン更新月 -->
+          <div style="border-bottom: 1px dashed #eee; padding-bottom: 10px;">
+            <div style="font-size: 0.85rem; color: #777; font-weight: 600; margin-bottom: 2px;">次回の更新月</div>
+            <div style="color: #d9534f; font-weight: bold; font-size: 1.2rem;">【ex: 毎年10月】</div>
+          </div>
+          <!-- サーバー -->
+          <div style="border-bottom: 1px dashed #eee; padding-bottom: 10px; margin-top: 5px;">
+            <div style="font-size: 0.85rem; color: #777; font-weight: 600; margin-bottom: 2px;">ご利用のサーバー（データの置き場所）</div>
+            <div style="font-weight: 600;">【ex: ご契約中のXサーバー等】</div>
+          </div>
+          <!-- サーバー更新月 -->
+          <div>
+            <div style="font-size: 0.85rem; color: #777; font-weight: 600; margin-bottom: 2px;">サーバーの更新手続き</div>
+            <div style="font-weight: 600;">【ex: クレジットカードにて自動更新中】</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;">
+        当サービスでは、システムに依存しない<strong>「買い切り型の静的Webサイト」</strong>としてお客様のサーバーへ直接納品いたしますので、弊社へお支払いいただく<strong>「月額の保守管理手数料」等は一切発生いたしません（完全無料）。</strong><br><br>
+        ただし、お客様ご自身で契約・所有されている上記のインフラ（ドメインやサーバー等）の更新料金につきましては、時期が来ますと「Xドメイン」や「お名前.com」等の管理会社から直接お客様宛に更新案内（メール）が届きます。<br><br>
+        万が一こちらの更新手続きを放置されてしまいますと、権利が消失しWebサイトが閲覧できなくなってしまいます。上記の<strong>【次回の更新月】がお近づきになりましたら、見落とさず確実に更新の決済手続き</strong>をお願いいたします。<br><br>
+        
+        <span style="display:inline-block; margin-top: 5px; padding: 18px 20px; background: #f4f5f7; border-left: 3px solid var(--accent); border-radius: 4px; font-size: 0.9rem; color: #444;">
+          <i class="fa-solid fa-circle-info" style="color: var(--accent); margin-right: 5px;"></i>
+          <strong>IT手続きがご不安な企業様へ</strong><br>
+          「サーバーやドメインの契約方法が分からない」という場合には、初回の取得や設定手続きを当方で無料サポートいたします。ただし、資産保全（当方に万が一のことがあっても御社のサイトが絶対に消滅しないための安全措置）の観点から、ご決済用のお支払い情報（クレジットカード等）のみ、御社ご自身のものを直接ご登録いただいております。
+        </span>
+      </div>
+    </div>
+
+    <!-- Portal Navigation -->
+    <div class="portal-nav">
+      <div class="portal-nav-title">Client Portal Menu</div>
+      <a href="support-menu.html" class="portal-link">
+        スポット対応料金表（各種単発アップデートメニュー） <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="advisor-menu.html" class="portal-link">
+        月額パートナーサポート（Web顧問プラン・SLA一覧） <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="faq.html" class="portal-link" style="background: var(--accent); color: #fff;">
+        ご依頼ガイド・よくある質問 <i class="fa-solid fa-check"></i>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

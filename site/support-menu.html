@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow">
+  <title>Client Support Menu | Webとしくみをつくる</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <style>
+    /* ========================================================
+       EDITORIAL & ARCHITECTURAL MINIMALISM
+    ======================================================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-body: #fdfdfd;
+      --border: #e5e5e5;
+      --text-main: #111111; 
+      --text-muted: #555555;
+      --text-light: #999999;
+      --accent: #222222;
+      
+      --font-jp-sans: 'Noto Sans JP', sans-serif;
+      --font-jp-serif: 'Shippori Mincho', serif;
+      --font-en: 'IBM Plex Sans', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-jp-sans);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 2.0;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      padding: 60px 20px;
+    }
+    
+    .document-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 80px 80px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.03);
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px 15px; }
+      .document-container { padding: 50px 30px; }
+    }
+
+    /* Typography */
+    .eyebrow {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .title {
+      font-family: var(--font-jp-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      line-height: 1.4;
+    }
+    .lead-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    h2 i { color: var(--text-light); font-size: 1.1rem; }
+
+    /* Pricing Cards */
+    .menu-list { display: flex; flex-direction: column; gap: 30px; margin-bottom: 60px; }
+    
+    .menu-card {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      padding: 35px 40px;
+      border-radius: 8px;
+    }
+    .menu-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #d0d0d0;
+    }
+    .menu-title { font-weight: 700; font-size: 1.15rem; color: var(--accent); }
+    .menu-price { font-family: var(--font-en); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.05em; }
+    .menu-price span { font-size: 0.8rem; font-family: var(--font-jp-sans); color: var(--text-light); font-weight: 400;}
+    
+    .menu-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
+    
+    @media (max-width: 600px) {
+      .menu-card { padding: 25px; }
+      .menu-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+
+    /* Flow Steps */
+    .flow-grid { display: flex; flex-direction: column; gap: 20px; }
+    .flow-step {
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .step-num {
+      font-family: var(--font-en); font-weight: 600; font-size: 0.9rem;
+      background: var(--accent); color: #fff; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center; border-radius: 50%;
+      flex-shrink: 0; margin-top: 3px;
+    }
+    .step-content h3 { font-size: 1.05rem; margin-bottom: 8px; font-weight: 600; }
+    .step-content p { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* Footer / CTA */
+    .doc-footer {
+      margin-top: 80px; padding: 40px; background: #f4f6f9; border-radius: 8px; text-align: center;
+    }
+    .doc-footer h3 { font-size: 1.1rem; margin-bottom: 15px; }
+    .doc-footer p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; }
+
+    /* Portal Navigation Footer */
+    .portal-nav {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .portal-nav-title {
+      font-family: var(--font-en);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .portal-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 25px;
+      background: #f8f8f8;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .portal-link:hover { background: #f0f0f0; }
+    .portal-link i { color: var(--text-light); }
+  </style>
+</head>
+<body>
+
+  <div class="document-container">
+    <span class="eyebrow">Client Only</span>
+    <h1 class="title">運用・メンテナンスに関するご案内</h1>
+    
+    <div class="lead-text">
+      この度はWebサイトのご納品、誠におめでとうございます。<br>
+      当サービスでは、独自のクラウドインフラ構築により<strong>「月額の保守管理費用は完全不要（0円）」</strong>で安全に運用していただけます。<br><br>
+      一方で、長くサイトを運用される中では、「テキストを一部変更したい」「新しくページを追加したい」といったアップデートが必要になる事も多々ございます。<br>
+      そのような際は、ご契約いただいた全てのお客様を対象とした<strong>「スポット対応メニュー」</strong>にて、作業ボリュームに応じた実費だけの適正価格で迅速に対応させていただきます。
+    </div>
+
+    <h2><i class="fa-solid fa-tags"></i> スポット対応 料金の目安</h2>
+    <div class="menu-list">
+      
+      <!-- Option 1 -->
+      <div class="menu-card">
+        <div class="menu-header">
+          <div class="menu-title">① 軽微な更新</div>
+          <div class="menu-price">5,000円〜 <span>（税抜） / 1回</span></div>
+        </div>
+        <div class="menu-desc">
+          <strong>テキストの一部変更、写真や画像の差し替え等</strong><br>
+          ご自身でご用意いただいた新しい文章や写真等の素材をお送りいただくだけで、当方が美しくサイト上に反映いたします。「他社のように少し文字を変えるだけで1万円」といった高額な請求は絶対にございません。（1〜3箇所の小規模な変更を想定）
+        </div>
+      </div>
+
+      <!-- Option 2 -->
+      <div class="menu-card">
+        <div class="menu-header">
+          <div class="menu-title">② 中規模の更新</div>
+          <div class="menu-price">20,000円〜 <span>（税抜） / 1セクション</span></div>
+        </div>
+        <div class="menu-desc">
+          <strong>新しいセクション・項目の追加</strong><br>
+          「自社の新しい強みを追加したい」「社員インタビューエリアを作りたい」など、LP内に新しくまとまったブロックをデザイン・コーディングして追加する場合です。ボリュームに応じて事前にお見積もり額をご提示します。
+        </div>
+      </div>
+
+      <!-- Option 3 -->
+      <div class="menu-card">
+        <div class="menu-header">
+          <div class="menu-title">③ 新規下層ページの作成</div>
+          <div class="menu-price">50,000円〜 <span>（税抜） / 1ページ</span></div>
+        </div>
+        <div class="menu-desc">
+          <strong>サイト内の独立した新規ページの作成</strong><br>
+          「会社概要ページを別に切り出したい」「簡易的なお知らせ一覧ページを作りたい」など、現在のLPにぶら下がる下層ページを新設する場合です。ゼロからのデザイン構築を含みます。<br>
+          <span style="font-size: 0.85em; color: var(--text-light); display: block; margin-top: 8px;">※ まったく別の職種の「採用LP」を一から新設する場合は別契約（30万円〜）となります。</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 月額顧問への導線 -->
+    <h2 style="margin-top: 60px;"><i class="fa-solid fa-rotate"></i> 定期的な伴走運用をご希望の場合（任意契約）</h2>
+    <div class="menu-list" style="margin-bottom: 20px;">
+      <div class="menu-card" style="border: 2px solid var(--accent); background: #ffffff; box-shadow: 0 10px 40px rgba(0,0,0,0.04);">
+        <div class="menu-header" style="border-bottom: 1px solid var(--border);">
+          <div class="menu-title">月額パートナーサポート（Web顧問）</div>
+          <div class="menu-price">15,000円〜 <span>（税抜） / 月額</span></div>
+        </div>
+        <div class="menu-desc">
+          「毎月かならずお知らせやブログを更新したい」「LPの数字を見ながら育てていきたい」といった、活発なサイト運用を希望する企業様向けに、当方が【御社のWeb専属スタッフ】として定額で伴走するプランです。<br><br>
+          稼働ボリュームに合わせた「3つの顧問プラン（ライト・スタンダード・プレミアム）」をご用意しております。<br><br>
+          <a href="advisor-menu.html" style="display: inline-block; margin-top: 5px; padding: 12px 25px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.95rem; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">顧問プランの詳細と稼働範囲を見る <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 80px;"><i class="fa-regular fa-paper-plane"></i> ご依頼のながれ</h2>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>いつでもお気軽にご連絡</h3>
+          <p>LINEまたはご指定のチャットツールより「〇〇の箇所の文章を差し替えたいです」などとお気軽にお声がけください。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>お見積もりとスケジュールの提示</h3>
+          <p>お送りいただいたご要望を確認次第、すぐに適正な対応費用と、作業の完了予定日をご提示いたします。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>作業完了・ご確認</h3>
+          <p>料金と日程にご納得いただけましたら作業を実施いたします（軽微な修正であれば即日〜翌日中にはキレイに反映可能です！）。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-footer" style="margin-top: 60px;">
+      <h3>まずはご相談ください！</h3>
+      <p>「自分たちで直せるか不安」「こんな些細な修正、いくらくらいになる？」といった小さなご相談もいつでも無料で受け付けております。<br>Web周りでの「かかりつけ医」として、運用に関することなら何でもお任せくださいませ。</p>
+    </div>
+
+    <!-- Portal Navigation -->
+    <div class="portal-nav">
+      <div class="portal-nav-title">Client Portal Menu</div>
+      <a href="support-menu.html" class="portal-link" style="background: var(--accent); color: #fff;">
+        スポット対応料金表（各種単発アップデートメニュー） <i class="fa-solid fa-check"></i>
+      </a>
+      <a href="advisor-menu.html" class="portal-link">
+        月額パートナーサポート（Web顧問プラン・SLA一覧） <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="faq.html" class="portal-link">
+        ご依頼ガイド・よくある質問 <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
