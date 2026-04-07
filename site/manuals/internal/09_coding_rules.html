@@ -884,6 +884,20 @@ top: calc(100% - 260px);</pre>
                 </ul>
             </div>
 
+            <h2>事例16：公開すべきではないダミーや社内資料がGoogleに拾われてしまう（2026-04-07）</h2>
+            <div class="rule-box bad">
+                <span class="badge badge-bad">症状</span>
+                <p>制作途中のデモサイト、クライアント専用の確認用URL（採用司令室など）、クラウドワークス用の提案資料などがそのままインターネット上に公開され、Google検索にインデックスされることにより、SEOの評価分散やクライアント情報の漏洩リスクが発生する。</p>
+            </div>
+            <div class="rule-box good">
+                <span class="badge badge-good">原因と大原則（デフォルトnoindexルール）</span>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>原因：</strong> HTMLファイルの <code>&lt;head&gt;</code> に <code>noindex</code> タグを意図的に入れ忘れていたため。</li>
+                    <li><strong>【絶対ルール】デフォルトnoindexの原則：</strong> 新しくHTMLファイルを作成・複製する際は、<strong>「トップページ」や「SEO集客用のブログ記事」など、明確に検索エンジンに拾わせたい【特例】を除き、すべてのHTMLの <code>&lt;head&gt;</code> 直下に例外なく <code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code> を配置する。</strong></li>
+                    <li><strong>備考：</strong> 営業時のデモンストレーション用や内部管理用（<code>site/templates/</code>、<code>site/client-work/</code>等の内部URL）は全てSEO的鎖国状態（noindex）を基本とする。</li>
+                </ul>
+            </div>
+
             <hr style="margin: 50px 0; border: 0; border-top: 2px dashed #ccc;">
 
             <div class="highlight-box" style="background: #f0f4ff; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 30px;">
