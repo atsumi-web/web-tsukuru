@@ -1,0 +1,26 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <g fill="none" stroke="#ffffff" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Wavy dash crossing the middle -->
+    <g transform="translate(0, -30) rotate(-10, 50, 50)">
+      <path d="M 0 80 Q 25 50, 45 60 T 80 85" stroke-dasharray="1 1.5" />
+    </g>
+    
+    <!-- Long stalk crossing from left to right (rotated right stalk) -->
+    <g transform="translate(-60, 20) rotate(-70, 75, 95)">
+      <path d="M 75 95 Q 70 65, 85 45 C 75 35, 80 25, 85 45 C 90 25, 95 35, 85 45" />
+      <path d="M 85 45 Q 75 15, 80 0" />
+    </g>
+
+    <!-- Center plant growing from bottom-left corner -->
+    <g transform="translate(-30, 0)">
+      <path d="M 40 95 Q 35 75, 50 65 C 55 60, 45 50, 50 65 C 60 60, 50 75, 50 65" />
+    </g>
+
+    <!-- Small leaf hovering at top-right -->
+    <g transform="translate(50, -60) rotate(45, 10, 95)">
+      <path d="M 10 95 Q 15 80, 25 75 C 30 65, 35 85, 25 75 C 15 85, 20 65, 25 75" />
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+/* ========================================================
+   ORGANIC PREMIUM SET LIBRARY (Using True SVG Masks)
+   ======================================================== */
+
+.ky-premium-wrap {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 1/1;
+  display: block;
+}
+
+.ky-premium-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  -webkit-mask-image: url('../images/organic-mask.svg');
+  mask-image: url('../images/organic-mask.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.ky-premium-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.ky-premium-deco img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+/* 1: Standard (Top Page Style) */
+/* No added classes needed */
+
+/* 2: Horizontal Mirror (Faces right) */
+/* Apply .kp-flip-h to BOTH the -img and the -deco */
+.kp-flip-h { transform: scaleX(-1); }
+
+/* 3: Vertical Mirror (Hangs upside down) */
+.kp-flip-v { transform: scaleY(-1); }
+
+/* 4: Diagonal Mirror (Upside down facing right) */
+.kp-flip-d { transform: scale(-1, -1); }
+

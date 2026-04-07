@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>教育理念 | みどりが丘幼稚園 - 子どもの「なんで？」を育てる場所</title>
+<meta name="description" content="みどりが丘幼稚園の教育理念（私たちについて）ページです。「こどもらしく」という枠を外し、ありのままの色に寄り添う教育を実践しています。"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css?v=2.24">
+<script src="js/shared-nav.js?v=2.6" data-root-path="./" defer></script>
+<style>
+@media (max-width: 900px) {
+  .scrolly-pin .ph-hero-ttl span { margin-left: 0 !important; display: inline-block; }
+}
+/* ── MAGAZINE LAYOUT OVERRIDES ── */
+.sec-padding { padding: 240px 40px; }
+@media (max-width: 960px) { .sec-padding { padding: 160px 24px; } }
+
+/* Hero */
+.scrolly { height: 100svh; }
+.scrolly-pin { background: #1a1f18; position: relative !important; height: 100%; }
+.scrolly-pin .ph-hero-text { left: auto; right: 8%; top: 20vh; transform: none; }
+.scrolly-pin .ph-hero-ttl { font-size: clamp(1.8rem, 2.8vw, 3.2rem); }
+@media (max-width: 900px) {
+  .scrolly-pin .ph-hero-text { 
+    writing-mode: horizontal-tb; 
+    top: auto; 
+    bottom: 12%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 90%; 
+    text-align: center; 
+    position: absolute;
+  }
+  .scrolly-pin .ph-hero-ttl {
+    text-indent: 0;
+  }
+  .scrolly-pin .ph-hero-sub {
+    margin-left: 0;
+    margin-top: 12px;
+    display: block;
+  }
+}
+
+/* Magazine Section: Promise */
+.mz-promise { background: #fff; position: relative; }
+.mz-promise-in { display: flex; flex-direction: row-reverse; justify-content: center; align-items: flex-start; max-width: 1200px; margin: 0 auto; gap: 80px; padding: 0 40px; }
+.mz-promise-img { width: 55%; margin-top: 100px; z-index: 1; }
+.mz-promise-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: sepia(0.05) contrast(1.05); }
+.mz-promise-tx { padding-top: 20px; z-index: 2; writing-mode: vertical-rl; text-orientation: mixed; height: 600px; }
+.mz-promise-ttl { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 400; letter-spacing: 0.25em; line-height: 2.4; color: var(--td); }
+.mz-promise-sub { font-family: var(--en); font-size: 11px; letter-spacing: 0.3em; margin-top: 40px; color: var(--tl); }
+.mz-promise-p { font-family: var(--serif); font-size: 15px; line-height: 3; letter-spacing: 0.15em; color: var(--tm); margin-right: 60px; }
+
+/* Pillars: Z-Layout */
+.mz-pillars { background: #fdfcfa; }
+.mz-head { text-align: center; margin-bottom: 160px; }
+.mz-head-en { font-family: 'Cormorant Infant', serif; font-size: 32px; letter-spacing: 0.15em; color: var(--td); }
+.mz-head-ja { font-family: var(--serif); font-size: 14px; letter-spacing: 0.2em; color: var(--tl); margin-top: 16px; }
+
+.mz-p-item { display: grid; grid-template-columns: 1fr 1fr; align-items: center; max-width: 1100px; margin: 0 auto 200px; gap: 80px; }
+.mz-p-item:last-child { margin-bottom: 0; }
+.mz-p-item.reverse { direction: rtl; }
+.mz-p-item.reverse > * { direction: ltr; }
+
+/* Organic shapes & offset text */
+.mz-p-item:nth-child(2) .mz-p-img { width: 85%; margin-left: auto; border-radius: 200px 200px 0 0; overflow: hidden; }
+.mz-p-item:nth-child(3) .mz-p-img { width: 90%; aspect-ratio: 1/1; border-radius: 50%; overflow: hidden; margin-right: auto; }
+.mz-p-item:nth-child(4) .mz-p-img { width: 100%; -webkit-mask-image: url('images/organic-mask.svg'); -webkit-mask-size: cover; mask-image: url('images/organic-mask.svg'); mask-size: cover; }
+
+.mz-p-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+.mz-p-tx { padding: 40px; }
+.mz-p-item.reverse .mz-p-tx { padding-right: 80px; }
+.mz-p-num { font-family: var(--en); font-size: 11px; letter-spacing: 0.2em; color: var(--gl); display: block; margin-bottom: 24px; }
+.mz-p-ttl { font-family: var(--serif); font-size: 28px; line-height: 1.8; letter-spacing: 0.15em; color: var(--td); margin-bottom: 32px; font-weight: 400; }
+.mz-p-desc { font-family: var(--serif); font-size: 14px; line-height: 2.6; letter-spacing: 0.1em; color: var(--tm); }
+
+/* History: Minimal Line */
+.mz-history { background: #fff; padding-bottom: 240px; }
+.mz-hx-in { max-width: 800px; margin: 0 auto; padding-left: 20px; border-left: 1px solid rgba(0,0,0,0.06); position: relative; }
+.mz-hx-item { padding-left: 80px; padding-bottom: 120px; position: relative; }
+.mz-hx-dot { position: absolute; left: -3.5px; top: 16px; width: 6px; height: 6px; background: var(--td); border-radius: 50%; opacity: 0.3; }
+.mz-hx-year { font-family: var(--en); font-size: 18px; letter-spacing: 0.2em; color: var(--td); position: absolute; left: 24px; top: 10px; }
+.mz-hx-tx { font-family: var(--serif); font-size: 22px; line-height: 2; letter-spacing: 0.15em; color: var(--td); font-weight: 400; }
+.mz-hx-sub { font-size: 13px; line-height: 2.4; letter-spacing: 0.1em; color: var(--tl); margin-top: 16px; display: block; }
+
+@media (max-width: 960px) {
+  .mz-promise-in { flex-direction: column; align-items: center; padding: 0; gap: 0; }
+  .mz-promise-img { width: 100%; margin-top: 0; }
+  .mz-promise-img img { aspect-ratio: 4/5; }
+  .mz-promise-tx { writing-mode: horizontal-tb; height: auto; position: relative; top: -60px; background: #fff; padding: 40px 24px; margin: 0 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); }
+  .mz-promise-sub { margin-bottom: 24px; margin-top: 0; }
+  .mz-promise-p { margin-right: 0; margin-top: 32px; font-size: 14.5px; line-height: 2.4; }
+  
+  .mz-p-item, .mz-p-item.reverse { grid-template-columns: 1fr; gap: 40px; margin-bottom: 120px; direction: ltr; }
+  .mz-p-img { width: 100% !important; margin: 0 !important; border-radius: 0 !important; -webkit-mask-image: none !important; mask-image: none !important; }
+  .mz-p-tx { padding: 0 16px !important; }
+  .mz-p-ttl { font-size: 24px; }
+  
+  .mz-hx-item { padding-left: 0; padding-bottom: 80px; }
+  .mz-hx-dot { display: none; }
+  .mz-hx-in { border-left: none; padding-left: 0; }
+  .mz-hx-year { position: static; display: block; margin-bottom: 16px; font-size: 16px; }
+  .mz-hx-tx { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO SCROLLY -->
+<div class="scrolly" id="scrolly">
+  <div class="scrolly-pin" id="scrollyPin">
+    <div class="s-prog"><div class="s-prog-fill" id="sPF"></div></div>
+    
+    <div class="s-slides" id="sSlides" style="display:block;">
+      <img class="s-slide active" src="images/kindy_teacher_story.png" loading="eager" id="phHeroImg"/>
+    </div>
+    
+    <div class="ph-hero-text fu">
+      <h1 class="ph-hero-ttl"><span style="margin-left:-0.5em">「</span>こどもらしく」<br>という枠を外す。</h1>
+      <span class="ph-hero-sub">PHILOSOPHY</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAGAZINE PROMISE -->
+<section class="mz-promise sec-padding">
+  <div class="mz-promise-in">
+    <div class="mz-promise-img fu">
+      <img src="images/kindy_magazine_hero.png" alt="Director">
+    </div>
+    <div class="mz-promise-tx fu" data-d="1">
+      <p class="mz-promise-sub">OUR PROMISE</p>
+      <h2 class="mz-promise-ttl">あせらず、<br>くらべず、<br>そのままを。</h2>
+      <p class="mz-promise-p">
+        大人にとっての<br>
+        「効率」は、<br>
+        子どもにとっての<br>
+        「大発見の機会」を<br>
+        奪う行為です。<br><br>
+        ダンゴムシを<br>
+        ３０分眺める子に、<br>
+        「早くしなさい」とは<br>
+        声をかけません。<br><br>
+        その子が自分なりの<br>
+        答えを見つけるまで、<br>
+        私たちはじっと風の中で<br>
+        待ち続けます。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS Z-LAYOUT -->
+<section class="mz-pillars sec-padding">
+  <div class="inner">
+    <div class="mz-head fu">
+      <h2 class="mz-head-en">3 Pillars</h2>
+      <p class="mz-head-ja">大切にしていること</p>
+    </div>
+
+    <div class="mz-p-item fu">
+      <div class="mz-p-img"><img src="images/kindy_mag_pillar_1.png"></div>
+      <div class="mz-p-tx">
+        <span class="mz-p-num">01</span>
+        <h3 class="mz-p-ttl">本物の泥と風。</h3>
+        <p class="mz-p-desc">スーパーの綺麗な野菜しか知らないのと、自分の背丈ほどある泥だらけの大根を引っこ抜くことの違い。園専属の農園で、図鑑では得られない「生きた命の匂い」を感じます。</p>
+      </div>
+    </div>
+
+    <div class="mz-p-item reverse fu">
+      <div class="mz-p-img"><img src="images/kindy_mag_pillar_2.png"></div>
+      <div class="mz-p-tx">
+        <span class="mz-p-num">02</span>
+        <h3 class="mz-p-ttl">答えは、<br>教えません。</h3>
+        <p class="mz-p-desc">「お空はなんで青いの？」 その問いに、正解は与えません。画用紙に絵の具を塗りながら一緒に考える。自分で辿り着いた発見だけが、一生の自信へと変わります。</p>
+      </div>
+    </div>
+
+    <div class="mz-p-item fu">
+      <div class="mz-p-img"><img src="images/kindy_mag_pillar_3.png"></div>
+      <div class="mz-p-tx">
+        <span class="mz-p-num">03</span>
+        <h3 class="mz-p-ttl">輪に入らない<br>自由も認める。</h3>
+        <p class="mz-p-desc">「今日は見ているだけがいい」という日があって良いのです。無理に集団行動を強いるのではなく、まずは「一人でいられる安心感」を作ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MINIMAL HISTORY -->
+<section class="mz-history sec-padding">
+  <div class="mz-head fu">
+    <h2 class="mz-head-en">Our History</h2>
+    <p class="mz-head-ja">みどりが丘のあゆみ</p>
+  </div>
+  
+  <div class="mz-hx-in">
+    <div class="mz-hx-item fu" data-d="1">
+      <div class="mz-hx-dot"></div>
+      <div class="mz-hx-year">1985</div>
+      <div class="mz-hx-tx">小さな木造園舎から。<span class="mz-hx-sub">自然に囲まれた泥んこ遊びの方針が、口コミで地域へ広がりました。</span></div>
+    </div>
+    
+    <div class="mz-hx-item fu" data-d="2">
+      <div class="mz-hx-dot"></div>
+      <div class="mz-hx-year">2005</div>
+      <div class="mz-hx-tx">光と風が抜ける新園舎。<span class="mz-hx-sub">裸足で駆け回れる無垢材の環境を整備。今のデザインのベースに。</span></div>
+    </div>
+    
+    <div class="mz-hx-item fu" data-d="3">
+      <div class="mz-hx-dot"></div>
+      <div class="mz-hx-year">2018</div>
+      <div class="mz-hx-tx">地域の「森のアトリエ」。<span class="mz-hx-sub">近隣農園やアーティストと連携し、園を飛び出す食育・芸術教育を開始。</span></div>
+    </div>
+    
+    <div class="mz-hx-item fu" data-d="4">
+      <div class="mz-hx-dot"></div>
+      <div class="mz-hx-year">2026</div>
+      <div class="mz-hx-tx" style="color:var(--gl);">これからも、<br>一人ひとりの「なんで？」と共に。</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SPLIT SCREEN CTA -->
+<section class="mz-next-split">
+  <a href="daily.html" class="mz-ns-link fu">
+    <div class="mz-ns-bg"><img src="images/kindy_daily_hero.png" alt="園の1日"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">A Day in the Life</span>
+      <h3 class="mz-ns-ja">園の1日を見る</h3>
+    </div>
+  </a>
+  <a href="admissions.html" class="mz-ns-link fu" data-d="1">
+    <div class="mz-ns-bg"><img src="images/kindy_adm_sticky.png" alt="入園のご案内"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Admissions</span>
+      <h3 class="mz-ns-ja">入園のご案内</h3>
+    </div>
+  </a>
+</section>
+
+<script>
+// SCROLLY HERO
+const scrolly  = document.getElementById('scrolly');
+const sVert    = document.getElementById('sVert');
+const phHeroImg = document.getElementById('phHeroImg');
+
+function updateScrolly() {
+  if (!scrolly || !sVert) return;
+  const top  = scrolly.getBoundingClientRect().top;
+  const totH = scrolly.offsetHeight - window.innerHeight;
+  const prog = Math.max(0, Math.min(1, -top / totH));
+
+  // Parallax
+  if (phHeroImg) {
+    const scale = 1 + (prog * 0.15); // Slight zoom
+    phHeroImg.style.transform = `scale(${scale})`;
+  }
+
+  // Fade title out early
+  const vertUp = Math.min(1, prog / 0.5);
+  sVert.style.transform = `translateY(-${vertUp * 30}vh)`;
+  sVert.style.opacity = 1 - vertUp;
+}
+window.addEventListener('scroll', updateScrolly, {passive:true});
+updateScrolly();
+
+// Scroll reveal
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
+}, {threshold:.1});
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

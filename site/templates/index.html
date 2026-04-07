@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <!-- SEO完全鎖国 -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Templates Dashboard | 内部管理用</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            en: ['"Outfit"', 'sans-serif']
+          },
+          colors: {
+            accent: '#4f46e5',
+            navy: '#1e1b4b',
+            gold: '#d97706',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #f8fafc; }
+    .hero-bg {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% -20%, rgba(165,180,252,0.3), transparent 60%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border-radius: 999px;
+      padding: 4px 12px;
+    }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(79, 70, 229, 0.25);
+      border-color: #a5b4fc;
+    }
+  </style>
+</head>
+<body class="text-slate-800 font-sans antialiased pb-20">
+
+  <!-- ヘッダー -->
+  <div class="hero-bg text-white py-16 px-6 text-center">
+    <div class="badge bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 mb-6 uppercase">
+      <i class="fa-solid fa-lock"></i> INTERNAL ONLY (NOINDEX)
+    </div>
+    <h1 class="text-3xl md:text-5xl font-black mb-4 tracking-tight leading-tight">
+      Templates <span class="text-amber-400">Dashboard</span>
+    </h1>
+    <p class="text-indigo-100/80 text-sm md:text-base max-w-2xl mx-auto font-medium">
+      サイト内（site/templates/）に格納されているすべてのテンプレート資産を一覧管理するためのダッシュボードです。<br>
+      このページは検索エンジンにはインデックスされません。
+    </p>
+  </div>
+
+  <!-- コンテンツ -->
+  <div class="max-w-7xl mx-auto px-6 mt-12">
+    
+    <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-200">
+      <h2 class="text-xl font-bold flex items-center gap-3">
+        <i class="fa-solid fa-folder-tree text-accent"></i>
+        <span>テンプレート・コレクション</span>
+      </h2>
+      <div class="text-sm text-slate-500 font-en">Total: 10 Templates</div>
+    </div>
+
+    <!-- グリッド -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="template-grid">
+      <!-- JavaScriptで自動生成 -->
+    </div>
+
+  </div>
+
+  <footer class="mt-24 text-center text-sm text-slate-400 font-en">
+    &copy; 2026 Web-Tsukuru Agency / Templates Management
+  </footer>
+
+  <script>
+    const templates = [
+      { id: 'type-a-kensetsu', name: 'Type-A (Kensetsu)', category: '建設業・標準採用LP', thumb: '../portfolio_captures/03_lp_templates/type_a.png', desc: '王道の建設採用LP。' },
+      { id: 'type-b-kensetsu', name: 'Type-B (Kensetsu)', category: '建設業・スタイリッシュ', thumb: '../portfolio_captures/03_lp_templates/type_b.png', desc: '黒・イエロー基調のダイナミックなデザイン。' },
+      { id: 'type-c-kensetsu', name: 'Type-C (Kensetsu)', category: '建設業・クリーン', thumb: '../portfolio_captures/03_lp_templates/type_c.png', desc: '白・青基調の誠実・爽やかなデザイン。' },
+      { id: 'type-e-kensetsu', name: 'Type-E (Kensetsu)', category: '建設業', thumb: '../portfolio_captures/03_lp_templates/type_e.png', desc: '建設業向けの清潔感あるデザイン。' },
+      { id: 'type-f-medical', name: 'Type-F (Medical)', category: '接骨院・ヘルスケア', thumb: '../portfolio_captures/03_lp_templates/type_f.png', desc: '接骨院（Type-Fベース・緑と金）のデザイン。今後の建設転用に対応可。' },
+      { id: 'type-g-youchien', name: 'Type-G (Youchien)', category: '幼稚園・こども園', thumb: '../portfolio_captures/03_lp_templates/type_g.png', desc: '幼稚園やこども園向けの温かみと高級感のあるレイアウト。' },
+      { id: 'type-h-cafe', name: 'Type-H (Cafe)', category: '飲食・カフェ', thumb: '../portfolio_captures/03_lp_templates/type_h.png', desc: 'カフェ・飲食店向けのデザインベース（元sample01）。' },
+      { id: 'type-i-mobility', name: 'Type-I (Mobility)', category: 'モビリティ', thumb: '../portfolio_captures/03_lp_templates/type_i.png', desc: 'アーバンモビリティ用のデザイン（旧Democycle）。' },
+      { id: 'type-l-counselor', name: 'Type-L (Counselor)', category: 'カウンセラー', thumb: '../portfolio_captures/03_lp_templates/type_l.png', desc: '柔らかく温かみのあるエモーショナルデザイン。ピンクベージュベース。' },
+      { id: 'type-m-seiso', name: 'Type-M (Seiso)', category: '清掃業', thumb: '../portfolio_captures/03_lp_templates/type_m.png', desc: '手堅い信頼感と重厚感のある清掃業向けデザイン。青・紺ベース。' }
+    ];
+
+    const grid = document.getElementById('template-grid');
+    const placeholder = 'https://placehold.co/600x400/f1f5f9/94a3b8?text=No+Image';
+
+    templates.forEach(t => {
+      const imgSrc = t.thumb ? t.thumb : placeholder;
+      
+      const card = document.createElement('div');
+      card.className = "bg-white rounded-2xl border border-slate-200 overflow-hidden card-hover flex flex-col group relative";
+      
+      card.innerHTML = `
+        <a href="${t.id}/index.html" target="_blank" class="block relative aspect-[16/10] overflow-hidden bg-slate-100 border-b border-slate-100">
+          <img src="${imgSrc}" onerror="this.src='${placeholder}'" alt="${t.name}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors duration-300"></div>
+          <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-slate-800 text-xs font-bold px-2 py-1 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+            <i class="fa-solid fa-arrow-up-right-from-square mr-1 text-accent"></i> 開く
+          </div>
+        </a>
+        <div class="p-5 flex-1 flex flex-col">
+          <div class="text-xs font-bold text-accent mb-2 font-en tracking-wider">${t.category}</div>
+          <h3 class="text-lg font-black text-slate-800 mb-2 leading-tight">
+            <a href="${t.id}/index.html" target="_blank" class="hover:text-accent transition-colors">${t.name}</a>
+          </h3>
+          <p class="text-sm text-slate-500 mb-4 line-clamp-2 leading-relaxed flex-1">${t.desc}</p>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="text-[0.65rem] font-bold text-slate-400">フォルダ名:</span>
+              <code class="text-[0.75rem] px-2 py-1 bg-slate-100 text-slate-600 rounded font-mono">${t.id}</code>
+            </div>
+            <a href="${t.id}/index.html" target="_blank" class="w-8 h-8 flex items-center justify-center rounded-full bg-indigo-50 text-accent hover:bg-accent hover:text-white transition-colors">
+              <i class="fa-solid fa-play text-xs pl-0.5"></i>
+            </a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

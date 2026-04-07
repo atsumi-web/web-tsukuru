@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <title>CTA Decoration Test</title>
+    <link rel="stylesheet" href="css/style.css?v=2.21">
+    <style>
+      body { background: #fafaf8; padding: 50px; font-family: sans-serif; display: flex; flex-wrap: wrap; gap: 50px; justify-content: center; }
+      .test-card { width: 300px; text-align: center; }
+      .ky-adm-img-box {
+        width: 100%;
+        position: relative;
+        aspect-ratio: 1/1;
+        margin: 0 auto 20px;
+      }
+      .ky-adm-blob-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        z-index: 1;
+        position: relative;
+      }
+      .test-deco {
+        position: absolute;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .test-label { font-weight: bold; font-size: 20px; margin-bottom: 10px; color: #1b3228;}
+    </style>
+</head>
+<body>
+
+  <!-- TYPE A -->
+  <div class="test-card">
+    <div class="test-label">Pattern A<br><small>左右反転 ＋ 斜めズレ</small></div>
+    <div class="ky-adm-img-box">
+      <div class="test-deco" style="width: 100%; height: 100%; top: 15%; left: -15%; transform: scaleX(-1);">
+        <img src="images/organic-deco-green.svg" style="width: 100%; height: 100%; object-fit: fill;">
+      </div>
+      <img src="images/kindy_building_1775160767495.png" class="ky-adm-blob-img">
+    </div>
+  </div>
+
+  <!-- TYPE B -->
+  <div class="test-card">
+    <div class="test-label">Pattern B<br><small>180度回転 (大きいループを左上へ)</small></div>
+    <div class="ky-adm-img-box">
+      <div class="test-deco" style="width: 100%; height: 100%; top: -10%; left: -10%; transform: rotate(180deg);">
+        <img src="images/organic-deco-green.svg" style="width: 100%; height: 100%; object-fit: fill;">
+      </div>
+      <img src="images/kindy_building_1775160767495.png" class="ky-adm-blob-img">
+    </div>
+  </div>
+
+  <!-- TYPE C -->
+  <div class="test-card">
+    <div class="test-label">Pattern C<br><small>大きくして少し回転</small></div>
+    <div class="ky-adm-img-box">
+      <div class="test-deco" style="width: 120%; height: 120%; top: -5%; left: -15%; transform: scaleX(-1) rotate(20deg);">
+        <img src="images/organic-deco-green.svg" style="width: 100%; height: 100%; object-fit: fill;">
+      </div>
+      <img src="images/kindy_building_1775160767495.png" class="ky-adm-blob-img">
+    </div>
+  </div>
+
+  <!-- TYPE D -->
+  <div class="test-card">
+    <div class="test-label">Pattern D<br><small>さらに巨大化 (大胆なはみ出し)</small></div>
+    <div class="ky-adm-img-box">
+      <div class="test-deco" style="width: 140%; height: 140%; top: -15%; left: -30%; transform: rotate(45deg);">
+        <img src="images/organic-deco-green.svg" style="width: 100%; height: 100%; object-fit: fill;">
+      </div>
+      <img src="images/kindy_building_1775160767495.png" class="ky-adm-blob-img">
+    </div>
+  </div>
+
+  <!-- TYPE E -->
+  <div class="test-card">
+    <div class="test-label">Pattern E<br><small>上下反転 ＋ 少し右下へ</small></div>
+    <div class="ky-adm-img-box">
+      <div class="test-deco" style="width: 110%; height: 110%; top: 10%; left: 0; transform: scaleY(-1);">
+        <img src="images/organic-deco-green.svg" style="width: 100%; height: 100%; object-fit: fill;">
+      </div>
+      <img src="images/kindy_building_1775160767495.png" class="ky-adm-blob-img">
+    </div>
+  </div>
+
+</body>
+</html>

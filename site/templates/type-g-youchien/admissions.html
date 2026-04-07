@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>入園のご案内 | みどりが丘幼稚園</title>
+<meta name="description" content="入園までの流れ、募集要項、よくあるご質問（FAQ）をご案内します。"/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css?v=2.21">
+<script src="js/shared-nav.js?v=2.6" data-root-path="./" defer></script>
+<style>
+/* ── UNIVERSAL MAGAZINE LAYOUT RULES ── */
+.sec-padding { padding: 180px 40px; }
+.mz-head-en { font-family: 'Cormorant Infant', serif; font-size: 20px; letter-spacing: 0.2em; color: var(--tl); display: block; margin-bottom: 8px; }
+.mz-head-ja { font-family: var(--serif); font-size: 32px; letter-spacing: 0.15em; color: var(--td); font-weight: 400; }
+
+/* ── HERO WITH IMAGE ── */
+.ky-adm-hero { height: 80vh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; }
+.ky-adm-hero-bg { position: absolute; inset: 0; z-index: 1; }
+.ky-adm-hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.05) contrast(0.95); opacity: 0; animation: fadeBg 2s ease 0.2s forwards; }
+.ky-adm-hero::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.7) 100%); pointer-events: none; }
+@keyframes fadeBg { to { opacity: 1; } }
+
+.ky-adm-hero-tx { position: relative; z-index: 4; text-align: center; }
+.ky-adm-hero-tx .mz-head-en { font-size: 24px; margin-bottom: 24px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.2,1,0.2,1) 0.8s forwards; color: var(--td); }
+.ky-adm-hero-tx .mz-head-ja { font-size: clamp(36px, 4vw, 56px); margin-bottom: 60px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.2,1,0.2,1) 0.9s forwards; color: var(--td); }
+.ky-hero-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 15vh; background: rgba(0,0,0,0.15); animation: dropLine 1.5s cubic-bezier(0.2,1,0.2,1) 0s forwards; transform-origin: top; z-index: 4; }
+@keyframes dropLine { 0% { transform: scaleY(0) translateX(-50%); } 100% { transform: scaleY(1) translateX(-50%); } }
+@keyframes fadeUp { 0% { opacity: 0; transform: translateY(20px); filter: blur(4px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
+
+/* ── ADMISSION FLOW (Sticky Split Layout) ── */
+.ky-flow-sec { background: #fdfcfa; position: relative; }
+.ky-flow-split { max-width: 1200px; margin: 100px auto 0; display: flex; gap: 80px; align-items: flex-start; }
+.ky-flow-left { flex: 1; position: relative; z-index: 2; }
+.ky-flow-right { width: 45%; position: relative; z-index: 1; }
+.ky-flow-sticky { position: sticky; top: 20vh; height: 65vh; border-radius: 4px; overflow: hidden; }
+.ky-flow-sticky img { width: 100%; height: 100%; object-fit: cover; }
+
+.ky-step { position: relative; padding: 24px 0 100px 64px; border-left: 1px solid rgba(0,0,0,0.06); transition: border-color 0.4s ease; }
+.ky-step:last-child { border-left: 1px solid transparent; padding-bottom: 0; }
+.ky-step::before { content: ''; position: absolute; left: -5px; top: 32px; width: 10px; height: 10px; background: #fdfcfa; border: 1px solid var(--td); border-radius: 50%; box-sizing: border-box; transition: background 0.4s ease; z-index: 3; }
+.ky-step.highlight::before { background: var(--td); }
+.ky-step:hover { border-color: rgba(0,0,0,0.2); }
+.ky-step:hover::before { background: var(--td); }
+
+/* Editorial Watermark Number */
+.ky-step-bg { position: absolute; top: -50px; left: -10px; font-family: 'Cormorant Infant', serif; font-style: italic; font-size: clamp(120px, 10vw, 160px); font-weight: 300; line-height: 1; color: var(--td); opacity: 0; transform: translateX(-20px); transition: all 0.8s cubic-bezier(0.2,1,0.2,1); pointer-events: none; z-index: 1; }
+.ky-step:hover .ky-step-bg { opacity: 0.05; transform: translateX(10px); }
+
+.ky-step-num { font-family: 'Outfit'; font-size: 14px; letter-spacing: 0.2em; color: var(--tl); display: block; margin-bottom: 12px; }
+.ky-step-ttl { font-family: var(--serif); font-size: 24px; letter-spacing: 0.1em; color: var(--td); margin-bottom: 20px; transition: color 0.4s; position: relative; z-index: 10; }
+.ky-step-desc { font-family: var(--serif); font-size: 15px; line-height: 2.2; letter-spacing: 0.05em; color: var(--tm); position: relative; z-index: 10; }
+
+/* ── PREMIUM TABLE (Micro-typography & Hover) ── */
+.ky-req-sec { background: #fff; }
+.ky-table-container { max-width: 1000px; margin: 100px auto 0; }
+.ky-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.ky-table tr { transition: background 0.4s ease; }
+.ky-table tr:hover { background: #fdfcfa; }
+.ky-table th, .ky-table td { padding: 48px 32px; border-bottom: 1px solid rgba(0,0,0,0.04); text-align: left; vertical-align: top; }
+.ky-table tr:first-child th, .ky-table tr:first-child td { border-top: 1px solid rgba(0,0,0,0.04); }
+.ky-table th { width: 32%; }
+.ky-table .micro-en { font-family: 'Outfit'; font-size: 11px; letter-spacing: 0.15em; color: rgba(0,0,0,0.3); text-transform: uppercase; display: block; margin-bottom: 6px; }
+.ky-table .ja-label { font-family: var(--serif); font-size: 18px; letter-spacing: 0.1em; color: var(--td); font-weight: 400; }
+.ky-table td { width: 68%; font-family: var(--serif); font-size: 16px; line-height: 2.2; letter-spacing: 0.05em; color: var(--tm); }
+
+/* ── SMOOTH ACCORDION (Organic Color Transitions) ── */
+.ky-faq-sec { background: #fdfcfa; transition: background 0.6s ease; }
+.ky-faq-container { max-width: 840px; margin: 100px auto 0; }
+.ky-faq-item { border-bottom: 1px solid rgba(0,0,0,0.05); transition: background 0.6s ease, transform 0.6s ease, box-shadow 0.6s ease; }
+.ky-faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.05); }
+.ky-faq-item:hover { background: rgba(255,255,255,0.4); }
+.ky-faq-item.open { background: #fff; border-color: transparent; border-top-color: transparent !important; transform: scale(1.01); box-shadow: 0 20px 40px rgba(0,0,0,0.03); z-index: 10; position: relative; margin: 16px 0; border-radius: 8px; }
+.ky-faq-item.open + .ky-faq-item { border-top-color: transparent; }
+
+.ky-faq-head { padding: 48px 32px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; position: relative; transition: padding 0.4s ease; }
+.ky-faq-item.open .ky-faq-head { padding-bottom: 16px; }
+.ky-faq-head h3 { font-family: var(--serif); font-size: 18px; line-height: 1.6; letter-spacing: 0.05em; color: var(--td); font-weight: 400; padding-right: 40px; transition: transform 0.4s ease; }
+.ky-faq-item.open .ky-faq-head h3 { transform: translateX(8px); }
+
+.ky-faq-icon { width: 20px; height: 20px; position: relative; opacity: 0.5; transition: opacity 0.4s; }
+.ky-faq-head:hover .ky-faq-icon { opacity: 1; }
+.ky-faq-item.open .ky-faq-icon { opacity: 1; }
+.ky-faq-icon::before, .ky-faq-icon::after { content: ''; position: absolute; background: var(--td); transition: transform 0.6s cubic-bezier(0.2,1,0.2,1); }
+.ky-faq-icon::before { top: 9px; left: 0; width: 20px; height: 1px; }
+.ky-faq-icon::after { top: 0; left: 9px; width: 1px; height: 20px; }
+.ky-faq-item.open .ky-faq-icon::after { transform: rotate(90deg); }
+.ky-faq-item.open .ky-faq-icon::before { transform: rotate(180deg); }
+
+.ky-faq-body { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.2,1,0.2,1); }
+.ky-faq-body-inner { padding: 0 40px 48px 40px; font-family: var(--serif); font-size: 15px; line-height: 2.2; letter-spacing: 0.05em; color: var(--tm); opacity: 0; transform: translateY(10px); transition: all 0.6s cubic-bezier(0.2,1,0.2,1); }
+.ky-faq-item.open .ky-faq-body-inner { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+
+/* ── MOBILE ADJUSTMENTS ── */
+@media (max-width: 960px) {
+  .sec-padding { padding: 120px 24px; }
+  .ky-hero-line { height: 10vh; }
+  
+  .ky-flow-split { flex-direction: column-reverse; padding: 0; gap: 40px; margin-top: 60px; }
+  .ky-flow-right { width: 100vw; margin-left: -24px; }
+  .ky-flow-sticky { position: relative; top: 0; height: 50vh; border-radius: 0; }
+  
+  .ky-step { padding: 24px 0 80px 40px; }
+  .ky-step-bg { font-size: 100px; top: -20px; left: -10px; opacity: 0.05; }
+  
+  .ky-table th, .ky-table td { display: block; width: 100%; padding: 24px 0; }
+  .ky-table th { padding-bottom: 8px; border-bottom: none; display: block; }
+  .ky-table .micro-en { margin-bottom: 4px; display: block; }
+  .ky-table tr:first-child th { border-top: none; }
+  .ky-table tr { border-top: 1px solid rgba(0,0,0,0.06); }
+  .ky-table tr:last-child { border-bottom: 1px solid rgba(0,0,0,0.06); }
+  
+  .ky-faq-head { padding: 32px 16px; }
+  .ky-faq-head h3 { font-size: 16px; padding-right: 24px; }
+  .ky-faq-body-inner { padding: 0 16px 32px 16px; }
+  
+  </style>
+</head>
+<body>
+
+<!-- HERO WITH BACKGROUND IMAGE -->
+<section class="ky-adm-hero">
+  <div class="ky-adm-hero-bg"><img src="images/kindy_adm_hero.png" alt=""></div>
+  <div class="ky-adm-hero-tx">
+    <span class="mz-head-en">ADMISSIONS</span>
+    <h1 class="mz-head-ja">入園のご案内</h1>
+  </div>
+</section>
+
+<!-- ADMISSION FLOW WITH STICKY IMAGE -->
+<section class="ky-flow-sec sec-padding">
+  <div class="mz-head fu">
+    <span class="mz-head-en">Flow</span>
+    <h2 class="mz-head-ja">入園までの流れ</h2>
+  </div>
+  
+  <div class="ky-flow-split">
+    <div class="ky-flow-left">
+      <div class="ky-step fu">
+        <span class="ky-step-bg">01</span>
+        <span class="ky-step-num">STEP 01</span>
+        <h3 class="ky-step-ttl">園見学・説明会</h3>
+        <p class="ky-step-desc">毎年9月上旬より、未就園児のお子様とその保護者様を対象とした園見学および入園説明会を実施しております。実際の保育の様子や、園舎の温もりを直接ご体感ください。</p>
+      </div>
+      <div class="ky-step fu">
+        <span class="ky-step-bg">02</span>
+        <span class="ky-step-num">STEP 02</span>
+        <h3 class="ky-step-ttl">願書配布</h3>
+        <p class="ky-step-desc">10月15日より、園事務局にて入園願書の配布を開始いたします（平日9:00〜16:00）。※郵送をご希望の場合は、お問い合わせフォームよりご請求ください。</p>
+      </div>
+      <div class="ky-step fu">
+        <span class="ky-step-bg">03</span>
+        <span class="ky-step-num">STEP 03</span>
+        <h3 class="ky-step-ttl">願書受付・親子面接</h3>
+        <p class="ky-step-desc">11月1日 午前9時より願書の受付を行います。ご提出後、順次、簡単な親子面接を行わせていただきます。お子様の日常の様子や、ご家庭での教育方針などについて和やかにお話しする場となります。</p>
+      </div>
+      <div class="ky-step highlight fu">
+        <span class="ky-step-bg">04</span>
+        <span class="ky-step-num">STEP 04</span>
+        <h3 class="ky-step-ttl">入園手続き・制服採寸</h3>
+        <p class="ky-step-desc">面接後、数日以内に入園許可書を郵送いたします。同封されているご案内に従い、入園金のお納めと制服の採寸手続きを進めさせていただきます。</p>
+      </div>
+    </div>
+    <div class="ky-flow-right fu" data-d="1">
+      <div class="ky-flow-sticky">
+        <img src="images/kindy_adm_sticky.png" alt="ご相談の様子">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS TABLE -->
+<section id="requirements" class="ky-req-sec sec-padding">
+  <div class="mz-head fu">
+    <span class="mz-head-en">Requirements</span>
+    <h2 class="mz-head-ja">募集要項</h2>
+  </div>
+  
+  <div class="ky-table-container fu">
+    <table class="ky-table">
+      <tbody>
+        <tr>
+          <th>
+            <span class="micro-en">Age & Capacity</span>
+            <span class="ja-label">募集年齢・定員</span>
+          </th>
+          <td>
+            満3歳児（プレ保育）：15名<br>
+            3歳児（年少）：60名<br>
+            4歳児（年中）：若干名<br>
+            5歳児（年長）：若干名
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="micro-en">Operating Hours</span>
+            <span class="ja-label">保育時間</span>
+          </th>
+          <td>
+            月・火・木・金：午前9:00〜午後2:00<br>
+            水：午前9:00〜午前11:30<br>
+            ※早朝および延長預かり保育（午後6時まで）も実施しております。
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="micro-en">Initial Cost</span>
+            <span class="ja-label">入園にかかる費用</span>
+          </th>
+          <td>
+            入園料：60,000円<br>
+            施設設備費：30,000円<br>
+            制服・教材費等：約35,000円
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="micro-en">Monthly Fees</span>
+            <span class="ja-label">毎月の費用</span>
+          </th>
+          <td>
+            保育料：25,700円（※幼児教育無償化により保護者様負担0円）<br>
+            給食費：5,000円（月額）<br>
+            絵本代・バス維持費等：約3,000円
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="micro-en">Lunch Program</span>
+            <span class="ja-label">昼食について</span>
+          </th>
+          <td>月・火・木は自園調理の完全給食となります。金曜日は各家庭でのお弁当をご持参ください。（水曜日は午前保育のため昼食はありません）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ ACCORDION -->
+<section class="ky-faq-sec sec-padding">
+  <div class="mz-head fu">
+    <span class="mz-head-en">FAQ</span>
+    <h2 class="mz-head-ja">よくあるご質問</h2>
+  </div>
+  
+  <div class="ky-faq-container">
+    <div class="ky-faq-item fu">
+      <div class="ky-faq-head">
+        <h3>オムツがまだ外れていないのですが、入園できますか？</h3>
+        <div class="ky-faq-icon"></div>
+      </div>
+      <div class="ky-faq-body">
+        <div class="ky-faq-body-inner">
+          ご入園時にオムツが外れていなくても大丈夫です。ご家庭と園で連携を取りながら、お子様のペースに合わせて焦らずトイレトレーニングを進めていきます。トレーニング用のパンツを多めにご持参ください。
+        </div>
+      </div>
+    </div>
+    
+    <div class="ky-faq-item fu">
+      <div class="ky-faq-head">
+        <h3>食物アレルギーがある場合、給食の対応はしてもらえますか？</h3>
+        <div class="ky-faq-icon"></div>
+      </div>
+      <div class="ky-faq-body">
+        <div class="ky-faq-body-inner">
+          はい、対応しております。入園前に医師の診断書等をご提出いただき、園長、担任、給食担当者と面談を行わせていただきます。症状に応じて代替給食の提供や、アレルゲンの除去を行います。
+        </div>
+      </div>
+    </div>
+    
+    <div class="ky-faq-item fu">
+      <div class="ky-faq-head">
+        <h3>両親ともにフルタイムで働いていますが、お迎えが夕方以降になっても大丈夫でしょうか？</h3>
+        <div class="ky-faq-icon"></div>
+      </div>
+      <div class="ky-faq-body">
+        <div class="ky-faq-body-inner">
+          共働きのご家庭を支援するため、早朝は午前7時30分から、夕方は午後6時までの「預かり保育（延長保育）」を実施しております。夏休みや冬休みなどの長期休暇中もお預かり可能です。
+        </div>
+      </div>
+    </div>
+
+    <div class="ky-faq-item fu">
+      <div class="ky-faq-head">
+        <h3>見学会の日程が合わないのですが、個別に見学することは可能ですか？</h3>
+        <div class="ky-faq-icon"></div>
+      </div>
+      <div class="ky-faq-body">
+        <div class="ky-faq-body-inner">
+          個別見学も随時受け付けております。保育の妨げにならないお時間を調整させていただきますので、事前にお電話またはお問い合わせフォームよりご連絡をお願いいたします。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT CTA -->
+<section class="mz-next-split">
+  <a href="about.html" class="mz-ns-link fu">
+    <div class="mz-ns-bg"><img src="images/kindy_magazine_hero.png" alt="教育理念"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Philosophy</span>
+      <h3 class="mz-ns-ja">教育理念に戻る</h3>
+    </div>
+  </a>
+  <a href="daily.html" class="mz-ns-link fu" data-d="1">
+    <div class="mz-ns-bg"><img src="images/kindy_daily_hero.png" alt="園の1日"></div>
+    <div class="mz-ns-tx">
+      <span class="mz-ns-en">Daily Life</span>
+      <h3 class="mz-ns-ja">園の1日を見る</h3>
+    </div>
+  </a>
+</section>
+
+<script>
+// FAQ Accordion Logic
+document.querySelectorAll('.ky-faq-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const item = head.parentElement;
+    const body = head.nextElementSibling;
+    
+    // Check if opening or closing
+    if (item.classList.contains('open')) {
+      item.classList.remove('open');
+      body.style.maxHeight = '0px';
+    } else {
+      // Close all others first
+      document.querySelectorAll('.ky-faq-item').forEach(otherItem => {
+        otherItem.classList.remove('open');
+        otherItem.querySelector('.ky-faq-body').style.maxHeight = '0px';
+      });
+      
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
+});
+
+// Intersect Reveal
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
+}, {threshold:.1});
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

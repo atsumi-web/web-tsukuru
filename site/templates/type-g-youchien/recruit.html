@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<title>採用情報 | みどりが丘幼稚園 - 子どもの「なんで？」を育てる場所</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;500;600&family=Shippori+Mincho:wght@400;500;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=2.21">
+<style>
+/* 採用ページ特有の神レベルスタイル（キヤスク・ストーリー風） */
+.re-hero { background: var(--white); padding: 180px 40px 120px; position: relative; overflow: hidden; }
+.re-massive-bg { position: absolute; left: 10%; top: 10%; font-family: var(--serif); font-size: 15vw; color: rgba(0,0,0,0.02); writing-mode: vertical-rl; pointer-events: none; white-space: nowrap; line-height:1; }
+
+.re-intro { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; }
+.re-intro span { font-family: var(--en); font-size: 0.8rem; letter-spacing: 0.25em; color: var(--tl); margin-bottom: 24px; text-transform: uppercase; }
+.re-intro h1 { font-family: var(--serif); font-size: clamp(32px, 4vw, 44px); letter-spacing: 0.15em; color: var(--td); line-height: 1.8; text-align: center; margin-bottom: 40px; }
+.re-intro-p { font-size: 15px; line-height: 2.4; letter-spacing: 0.08em; color: var(--tm); text-align: center; }
+
+/* キヤスク スプリットレイアウト */
+.re-split-sec { padding: 120px 40px; background: #fff; }
+.re-split-in { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; }
+.re-split-left { position: relative; }
+.re-split-img { width: 100%; aspect-ratio: 4/5; background: #eee; overflow: hidden; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.re-split-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9) contrast(1.05) saturate(0.9) sepia(0.05); }
+
+.re-split-right { display: flex; flex-direction: column; justify-content: center; padding-right: 40px; }
+.re-quote-mark { font-family: var(--serif); font-size: 140px; color: var(--gd); opacity: 0.1; line-height: 0.5; margin-bottom: 20px; text-indent: -10px; }
+.re-split-ttl { font-family: var(--serif); font-size: 28px; font-weight: 500; line-height: 1.8; letter-spacing: 0.12em; color: var(--td); margin-bottom: 32px; }
+.re-split-desc { font-size: 14px; line-height: 2.4; letter-spacing: 0.08em; color: var(--tm); margin-bottom: 40px; text-align: justify; }
+.re-teacher { display: flex; align-items: center; gap: 16px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 24px; }
+.re-teacher-name { font-family: var(--serif); font-size: 16px; color: var(--td); font-weight: 500; letter-spacing: 0.1em; }
+.re-teacher-role { font-size: 12px; color: var(--tl); letter-spacing: 0.05em; }
+
+/* 募集要項・待遇（極細線のテーブル） */
+.re-req-sec { padding: 120px 40px; background: var(--white); }
+.re-req-in { max-width: 900px; margin: 0 auto; }
+.re-req-table { width: 100%; border-collapse: collapse; margin-bottom: 80px; }
+.re-req-table th, .re-req-table td { border-bottom: 1px solid rgba(0,0,0,0.06); padding: 32px 24px; vertical-align: top; }
+.re-req-table th { width: 25%; font-family: var(--serif); font-size: 15px; color: var(--tm); letter-spacing: 0.1em; font-weight: 500; }
+.re-req-table td { font-size: 14px; line-height: 2.2; color: var(--td); letter-spacing: 0.05em; }
+.re-req-table tr:first-child th, .re-req-table tr:first-child td { border-top: 1px solid rgba(0,0,0,0.06); }
+
+@media(max-width: 960px){
+  .pc-br { display: none; }
+  .sp-br { display: block; }
+  .re-hero { padding: 200px 24px 60px; }
+  .re-massive-bg { writing-mode: horizontal-tb; left: 0; top: 15%; width: 100%; text-align: center; font-size: 22vw; opacity: 0.03; line-height: 1.2; letter-spacing: 0.05em; }
+  
+  .re-intro h1 { font-size: 23px; line-height: 1.6; margin-bottom: 32px; letter-spacing: 0.08em; }
+  .re-intro-p { font-size: 14.5px; }
+  
+  .re-split-sec { padding: 80px 24px; }
+  .re-split-in { grid-template-columns: 1fr; gap: 40px; }
+  .re-split-right { padding-right: 0; }
+  
+  .re-split-ttl { font-size: 21px; letter-spacing: 0.1em; }
+  .re-split-desc { font-size: 14.5px; text-align: left; }
+  
+  .re-req-sec { padding: 80px 24px; }
+  .re-req-table th, .re-req-table td { display: block; width: 100%; padding: 16px 0; border: none; }
+  .re-req-table tr { border-bottom: 1px solid rgba(0,0,0,0.06); display: block; padding: 16px 0; }
+  .re-req-table th { padding-bottom: 4px; color: var(--gd); }
+}
+</style>
+</head>
+<body>
+
+<section class="re-hero">
+  <div class="re-massive-bg">先生も、<br class="pc-br">育つ。</div>
+  <div class="re-intro fu">
+    <span>RECRUIT</span>
+    <h1>「先生にならなきゃ」<br class="sp-br">を、<br class="pc-br">手放そう。</h1>
+    <p class="re-intro-p">
+      子どもたちの「なんで？」に<br class="sp-br">答えられなくても大丈夫。<br>
+      <span class="sp-br"><br></span>
+      私たちに必要なのは、<br class="sp-br">正解を教える先生ではなく、<br>
+      <span class="sp-br"><br></span>
+      いっしょに泥だらけになって<br class="sp-br">面白がれる「大人」です。<br><br>
+      みどりが丘で、あなた自身も<br class="sp-br">育っていきませんか。
+    </p>
+  </div>
+</section>
+
+<section class="re-split-sec">
+  <div class="re-split-in">
+    <div class="re-split-left fu">
+      <div class="re-split-img">
+        <img src="images/kindy_recruit_teacher.png" alt="Teacher">
+      </div>
+    </div>
+    <div class="re-split-right fu" data-d="1">
+      <div class="re-quote-mark">“</div>
+      <h2 class="re-split-ttl">失敗したっていい。<br>私も毎日、迷っています。</h2>
+      <p class="re-split-desc">
+        新人の頃は「完璧な先生」を目指して、毎日カリキュラムに追われていました。でも、ある日園長から「大人が完璧だと、子どもが失敗できなくなるよ」と言われたんです。<br><br>
+        それからは、分からないことは「先生も分からないや、一緒に図鑑で調べよう！」と言えるようになりました。肩の力が抜けて、本当に子どもたちと向き合えるようになった気がします。
+      </p>
+      <div class="re-teacher">
+        <div>
+          <div class="re-teacher-name">鈴木 さくら</div>
+          <div class="re-teacher-role">入職3年目 / 4歳児ひまわり組 担任</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="re-req-sec">
+  <div class="re-req-in fu">
+    <h2 class="mz-head-en" style="text-align:center; margin-bottom:60px;">GUIDELINES</h2>
+    <table class="re-req-table">
+      <tr>
+        <th>募集職種</th>
+        <td>幼稚園教諭（正社員・パート）</td>
+      </tr>
+      <tr>
+        <th>応募資格</th>
+        <td>幼稚園教諭免許状（取得見込み可）<br>※未経験・ブランクのある方も歓迎します。</td>
+      </tr>
+      <tr>
+        <th>給与・待遇</th>
+        <td>月給 220,000円〜（経験を考慮します）<br>昇給年1回、賞与年2回、交通費全額支給</td>
+      </tr>
+      <tr>
+        <th>休日・休暇</th>
+        <td>完全週休2日制（土日祝）、夏季・冬季休暇、慶弔休暇、アニバーサリー休暇</td>
+      </tr>
+    </table>
+    <div style="text-align:center;">
+      <a href="contact.html" class="ky-btn" onclick="localStorage.setItem('inquiry_type','recruit');">採用エントリー・見学はこちら</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer will be injected by shared-nav.js -->
+<script src="js/shared-nav.js?v=2.6" data-root-path="./"></script>
+<script>
+  // Simple scroll animation trigger
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

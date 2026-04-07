@@ -1,0 +1,26 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#1b3228" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main gracefully curving stem on the left side -->
+    <path d="M 80 180 Q 20 120, 50 30" />
+    
+    <!-- Left Leaf 1 (Bottom) -->
+    <path d="M 50 150 C 20 140, 10 120, 30 110 C 45 120, 50 135, 50 150" />
+    
+    <!-- Right Leaf 1 (Middle-Bottom) -->
+    <path d="M 65 165 C 90 170, 100 190, 85 200 C 70 190, 60 175, 65 165" />
+    
+    <!-- Left Leaf 2 (Middle-Top) -->
+    <path d="M 33 80 C 5 70, 0 45, 20 35 C 35 45, 40 65, 33 80" />
+    
+    <!-- Right Leaf 2 (Top) -->
+    <path d="M 40 100 C 65 105, 80 85, 65 70 C 50 80, 45 95, 40 100" />
+
+    <!-- Top Flower Profile/Bud -->
+    <path d="M 50 30 C 35 15, 40 0, 55 5 C 70 0, 75 15, 50 30" />
+    <path d="M 50 20 Q 55 10, 55 5" />
+    
+    <!-- Extra small branch filling whitespace -->
+    <path d="M 80 180 Q 120 185, 140 160" stroke-dasharray="2 3" />
+    <circle cx="140" cy="160" r="2" fill="#1b3228" />
+  </g>
+</svg>
