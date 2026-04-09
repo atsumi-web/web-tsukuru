@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>園長ブログ | みどりが丘幼稚園</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+    <!-- みどりが丘幼稚園のベースCSSと共通ナビゲーション -->
+    <link rel="stylesheet" href="css/style.css?v=2.24">
+    <script src="js/shared-nav.js?v=2.6" data-root-path="./" defer></script>
+    <style>
+        .blog-wrapper { padding-top: 140px; padding-bottom: 100px; background-color: #f7f9f8; min-height: 100vh; }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px 30px;
+            margin-top: 50px;
+        }
+        .blog-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block; 
+            color: inherit;
+            text-decoration: none;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);    
+        }
+        .blog-thumb {
+            width: 100%;
+            aspect-ratio: 4/3; /* 写真を綺麗な比率で切り抜く */
+            object-fit: cover;
+        }
+        .blog-content {
+            padding: 24px;
+        }
+        .blog-date {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 10px;
+            display: block;
+            letter-spacing: 0.05em;
+        }
+        .blog-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 0;
+            /* タイトルが長すぎても2行で点々(...)になる魔法のCSS */
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+    <!-- 画面端に配置する葉っぱやオーガニックな装飾 -->
+    <img src="images/organic-deco-green.svg" style="position:fixed; top:-5%; right:-5%; width:400px; opacity:0.1; z-index:0; pointer-events:none;" alt="">
+    <img src="images/leaf.svg" style="position:fixed; bottom:10%; left:5%; width:100px; opacity:0.05; z-index:0; pointer-events:none; transform:rotate(-30deg);" alt="">
+
+    <div class="blog-wrapper" style="position:relative; z-index:1;">
+        <div class="inner">
+            <!-- 園長ブログのタイトル領域（美しいグラデーション文字と装飾） -->
+            <div style="text-align: center; padding-top: 20px; padding-bottom: 30px;">
+                <p style="font-family:'Outfit', sans-serif; font-weight:700; color:#879b76; letter-spacing:0.1em; margin-bottom:5px;">DIARY</p>
+                <h1 style="font-family: 'Shippori Mincho', serif; font-size: 2.8rem; color: #333; margin-bottom: 15px;">園の日常（ブログ）</h1>
+                <p style="color: #666; font-size: 0.95rem; display:inline-block; border-bottom: 2px solid #879b76; padding-bottom:10px;">子どもたちのかけがえのない「今日」をお届けします。</p>
+            </div>
+            
+            <!-- 戻るボタン -->
+            <div style="margin-top: 10px; text-align: center;">
+                <a href="index.html" class="ky-btn" style="background:transparent; color:#879b76; border:1px solid #879b76; padding:8px 30px; font-size:0.9rem;">
+                    トップページへ
+                </a>
+            </div>
+
+            <!-- ブログ一覧のカードが入る枠 -->
+            <div id="blog-list" class="blog-grid">
+                <p style="grid-column: 1 / -1; text-align: center; color: #999; padding: 40px;" class="animate-pulse">microCMSからブログ記事を取得しています...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ブログを取得するJavaScript
+        async function fetchMicroCMSBlog() {
+            const API_KEY = '3jvYPTuQbm111BYM8UzxVk8vvLcYilhCA6TR';
+            // 【重要】お知らせの news ではなく、先ほど作成した blog エンドポイントを指定！
+            const API_URL = 'https://youchien-test.microcms.io/api/v1/blog?orders=-publishedAt&limit=9';
+            
+            try {
+                const response = await fetch(API_URL, {
+                    headers: { 'X-MICROCMS-API-KEY': API_KEY }
+                });
+                if (!response.ok) throw new Error('通信エラー');
+                const data = await response.json();
+                
+                const listContainer = document.getElementById('blog-list');
+                listContainer.innerHTML = ''; // ローディング文字を消す
+                
+                data.contents.forEach(post => {
+                    // 日付変換機能
+                    const date = new Date(post.publishedAt || post.createdAt);
+                    const dateString = `${date.getFullYear()} . ${String(date.getMonth() + 1).padStart(2, '0')} . ${String(date.getDate()).padStart(2, '0')}`;
+                    
+                    // 【超重要】画像が設定されていない場合は、灰色のダミー画像を表示してデザイン崩れを防ぐ
+                    const imageUrl = post.thumbnail ? post.thumbnail.url : 'https://placehold.jp/ebebeb/a3a3a3/400x300.png?text=No%20Image';
+
+                    // クリックした時のリンク先：ブログ詳細ページへ
+                    const linkUrl = `blog_detail_test.html?id=${post.id}`;
+
+                    // HTMLの組み立て
+                    const cardHtml = `
+                        <a href="${linkUrl}" class="blog-card">
+                            <img src="${imageUrl}" alt="${post.title}" class="blog-thumb">
+                            <div class="blog-content">
+                                <span class="blog-date">${dateString}</span>
+                                <h3 class="blog-title">${post.title}</h3>
+                            </div>
+                        </a>
+                    `;
+                    listContainer.insertAdjacentHTML('beforeend', cardHtml);
+                });
+
+            } catch(error) {
+                console.error(error);
+                document.getElementById('blog-list').innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: red;">記事の取得に失敗しました</p>';
+            }
+        }
+        fetchMicroCMSBlog();
+    </script>
+</body>
+</html>

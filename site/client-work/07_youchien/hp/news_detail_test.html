@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>お知らせ詳細 | みどりが丘幼稚園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;800&family=Outfit:wght@300;400;600;700&family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css?v=2.24">
+<style>
+    /* 詳細ページのレイアウト補正 */
+    .news-detail-wrapper {
+        padding-top: 140px; /* ナビゲーション被り防止 */
+        padding-bottom: 100px;
+        background-color: #fcfcfc;
+    }
+    .news-detail-box {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 60px 50px;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    }
+    /* microCMSのリッチエディタから来るHTMLタグを綺麗に見せるためのCSS */
+    .cms-content h2 { 
+        font-family: 'Shippori Mincho', serif;
+        font-size: 1.6rem; font-weight: bold; color: #333;
+        margin-top: 3rem; margin-bottom: 1.5rem; 
+        border-bottom: 1px solid #ddd; padding-bottom: 0.8rem; 
+    }
+    .cms-content h3 {
+        font-size: 1.2rem; font-weight: bold; color: #555;
+        margin-top: 2rem; margin-bottom: 1rem;
+    }
+    .cms-content p { margin-bottom: 1.5rem; line-height: 2.0; color: #444; font-size: 0.95rem; }
+    .cms-content a { color: #879b76; text-decoration: underline; }
+    .cms-content ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8; color: #444; }
+    .cms-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 2rem 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+        .news-detail-box { padding: 40px 20px; }
+        .cms-content h2 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+    
+    <div class="news-detail-wrapper">
+        <div class="inner">
+            <div class="news-detail-box">
+                <!-- 戻るボタン -->
+                <div style="margin-bottom: 40px;">
+                    <a href="index.html" style="display:inline-flex; align-items:center; color:#879b76; font-size:0.9rem; font-weight:bold; letter-spacing:0.05em;">
+                        ← トップページへ戻る
+                    </a>
+                </div>
+
+                <!-- ここに通信した「記事の詳細」が自動で作られます -->
+                <div id="detail-container">
+                    <p style="text-align:center; color:#999; padding: 40px;">記事の詳細を読み込み中...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ★重要: URLから「?id=xxxx」の部分（記事のID）を抜き出す魔法
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        // えりさんのAPIキー設定
+        const API_KEY = '3jvYPTuQbm111BYM8UzxVk8vvLcYilhCA6TR';
+        
+        // えりさん専用のAPI URL（末尾に抜き出した articleId をくっつけて、「この記事だけ頂戴！」と指定する）
+        const API_URL = `https://youchien-test.microcms.io/api/v1/news/${articleId}`;
+
+        async function fetchDetail() {
+            // もしURLにIDがなかったらエラーにする
+            if (!articleId) {
+                document.getElementById('detail-container').innerHTML = '<p class="text-red-500 font-bold">記事が見つかりません。一覧からクリックしてください。</p>';
+                return;
+            }
+
+            try {
+                // 通信開始
+                const response = await fetch(API_URL, {
+                    headers: { 'X-MICROCMS-API-KEY': API_KEY }
+                });
+                
+                if (!response.ok) throw new Error('通信エラー');
+                
+                // 1件分のデータを取得
+                const post = await response.json();
+                
+                // 日付とカテゴリーの準備
+                const date = new Date(post.publishedAt || post.createdAt);
+                const dateString = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+                const categoryName = post.category ? post.category.name : 'お知らせ';
+
+                // HTMLの組み立て（デザインをindex.htmlの雰囲気に合わせる）
+                const html = `
+                    <div style="border-bottom: 1px solid #eee; padding-bottom: 30px; margin-bottom: 40px;">
+                        <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                            <span style="font-size:0.75rem; font-weight:bold; color:#fff; background:#879b76; padding: 4px 12px; border-radius: 20px; letter-spacing:0.05em;">${categoryName}</span>
+                            <span style="font-size:0.85rem; color:#777; font-weight:500; font-family:'Outfit', sans-serif; letter-spacing:0.05em;">${dateString}</span>
+                        </div>
+                        <h1 style="font-size: 1.8rem; font-weight: bold; color: #333; line-height: 1.5; font-family: 'Shippori Mincho', serif;">${post.title}</h1>
+                    </div>
+                    
+                    <!-- 【魔法ゾーン】ここにmicroCMSから来た本文のHTMLタグがドンッとそのまま流し込まれます -->
+                    <div class="cms-content">
+                        ${post.content}
+                    </div>
+                `;
+
+                // 画面に表示
+                document.getElementById('detail-container').innerHTML = html;
+
+            } catch (error) {
+                document.getElementById('detail-container').innerHTML = '<p class="text-red-500">記事の読み込みに失敗しました。</p>';
+            }
+        }
+
+        fetchDetail();
+    </script>
+</body>
+</html>

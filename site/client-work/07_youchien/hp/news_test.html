@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静的サイトCMS連携テスト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f7f9f8] p-10 font-sans">
+
+    <div class="max-w-2xl mx-auto mb-8">
+        <h1 class="text-xl font-bold text-gray-600 border-l-4 border-emerald-500 pl-3">
+            【検証用】静的HTML × ヘッドレステスト
+        </h1>
+        <p class="text-sm text-gray-500 mt-2">
+            これは普通の静的なHTMLファイルです。しかし、ページを開いた瞬間に裏側で外部のサーバーと通信を行い、最新の「3件」の記事データを引っぱってきて画面に表示します。
+        </p>
+    </div>
+
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+        <h2 class="text-2xl font-bold text-[#1a4731] mb-6 border-b-2 border-emerald-500 pb-2">新着のお知らせ</h2>
+        
+        <!-- 【重要】ここの中身は空っぽの状態で作っておきます -->
+        <!-- 下記の「JavaScript」が外部から情報を取ってきて、ここに自動で文字を打ち込んでくれます -->
+        <ul id="news-list" class="space-y-4">
+            <li class="text-gray-400 text-sm animate-pulse">最新のお知らせを通信して読み込み中...</li>
+        </ul>
+
+    </div>
+
+    <script>
+        /* =========================================================
+           microCMS連携用の専用スクリプト
+        ========================================================= */
+        // 1. エンドポイント（サービスIDとAPIのパス）
+        const API_URL = 'https://youchien-test.microcms.io/api/v1/news?orders=-publishedAt&limit=3';
+        
+        // 2. APIキー（えりさん専用の鍵に変更済みです！）
+        const API_KEY = '3jvYPTuQbm111BYM8UzxVk8vvLcYilhCA6TR';
+
+        async function fetchNews() {
+            try {
+                // headersにAPIキーをセットして通信します
+                const response = await fetch(API_URL, {
+                    headers: { 'X-MICROCMS-API-KEY': API_KEY }
+                });
+
+                if (!response.ok) {
+                    throw new Error('APIキーが間違っているか、通信エラーです');
+                }
+
+                const data = await response.json();
+                const newsList = document.getElementById('news-list');
+                newsList.innerHTML = ''; 
+
+                // microCMSから取得した配列データ(data.contents)を回す
+                data.contents.forEach((post) => {
+                    
+                    // 日付のフォーマット（2026-04-09T...をきれいに直す）
+                    const date = new Date(post.publishedAt || post.createdAt);
+                    const dateString = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+
+                    // カテゴリーがある場合はその名前、なければ「お知らせ」とする
+                    const categoryName = post.category ? post.category.name : 'お知らせ';
+
+                    // HTMLの組み立て（クリックしたら「?id=記事ID」をつけて詳細ページへ飛ぶように変更！）
+                    const listItem = `
+                        <a href="news_detail_test.html?id=${post.id}" class="block border-b border-gray-100 pb-4 group cursor-pointer hover:bg-emerald-50 transition p-3 rounded">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-1">
+                                <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-1 rounded w-fit">${categoryName}</span>
+                                <span class="text-sm text-gray-500 font-bold">${dateString}</span>
+                            </div>
+                            <h3 class="text-md font-bold text-gray-800 group-hover:text-emerald-700 transition line-clamp-1">
+                                ${post.title}
+                            </h3>
+                        </a>
+                    `;
+                    newsList.insertAdjacentHTML('beforeend', listItem);
+                });
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('news-list').innerHTML = '<li class="text-red-500">APIキーを入力するか、通信設定を確認してください。</li>';
+            }
+        }
+
+        fetchNews();
+    </script>
+</body>
+</html>

@@ -352,94 +352,11 @@
         </div>
       </div>
 
-      <ul class="ky-news-list is-collapsed">
-        
-        <!-- 記事1 -->
-        <li class="ky-news-item">
-          <a href="news.html">
-            <div class="news-meta">
-              <span class="news-date">2026 &nbsp;04 &nbsp;02</span>
-              <span class="news-badge">NEW</span>
-            </div>
-            <div class="news-thumb">
-              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <div class="news-body">
-              <h3 class="news-ttl">令和8年度 入園説明会の追加日程について<br>（ご好評につき第3回を開催します）</h3>
-              <span class="news-cat">Information</span>
-            </div>
-            <div class="news-arrow">・</div>
-          </a>
+      <ul class="ky-news-list is-collapsed" id="dynamic-news-list">
+        <!-- JSでmicroCMSから取得したデータがここに入ります -->
+        <li style="padding: 40px; text-align: center; color: #888;">
+          <p class="animate-pulse">最新のお知らせを読み込み中...</p>
         </li>
-
-        <!-- 記事2 -->
-        <li class="ky-news-item">
-          <a href="news.html">
-            <div class="news-meta">
-              <span class="news-date">2026 &nbsp;03 &nbsp;05</span>
-            </div>
-            <div class="news-thumb">
-              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: hue-rotate(30deg);">
-            </div>
-            <div class="news-body">
-              <h3 class="news-ttl">「森の音楽会」開催のお知らせ。地域の皆さまもぜひご参加ください。</h3>
-              <span class="news-cat">Event</span>
-            </div>
-            <div class="news-arrow">・</div>
-          </a>
-        </li>
-
-        <!-- 記事3 -->
-        <li class="ky-news-item">
-          <a href="news.html">
-            <div class="news-meta">
-              <span class="news-date">2026 &nbsp;02 &nbsp;26</span>
-            </div>
-            <div class="news-thumb">
-              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: hue-rotate(60deg);">
-            </div>
-            <div class="news-body">
-              <h3 class="news-ttl">園だより『みどりの風』3月号を更新しました。</h3>
-              <span class="news-cat">News release</span>
-            </div>
-            <div class="news-arrow">・</div>
-          </a>
-        </li>
-
-        <!-- 記事4 -->
-        <li class="ky-news-item">
-          <a href="news.html">
-            <div class="news-meta">
-              <span class="news-date">2025 &nbsp;12 &nbsp;26</span>
-            </div>
-            <div class="news-thumb">
-              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: brightness(1.2);">
-            </div>
-            <div class="news-body">
-              <h3 class="news-ttl">冬休みの園庭開放・預かり保育スケジュール改定のお知らせ</h3>
-              <span class="news-cat">Information</span>
-            </div>
-            <div class="news-arrow">・</div>
-          </a>
-        </li>
-
-        <!-- 記事5 -->
-        <li class="ky-news-item">
-          <a href="news.html">
-            <div class="news-meta">
-              <span class="news-date">2025 &nbsp;11 &nbsp;14</span>
-            </div>
-            <div class="news-thumb">
-              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; filter: sepia(0.5);">
-            </div>
-            <div class="news-body">
-              <h3 class="news-ttl">新しい遊具「風の砦」が完成しました！</h3>
-              <span class="news-cat">News release</span>
-            </div>
-            <div class="news-arrow">・</div>
-          </a>
-        </li>
-
       </ul>
     </div>
   </div>
@@ -759,6 +676,76 @@ if (catDropdown && catToggleBtn && catCloseBtn) {
     }
   });
 }
+
+// =========================================================
+// microCMS連携: トップページお知らせ自動取得スクリプト
+// =========================================================
+async function fetchMicroCMSNews() {
+  const API_KEY = '3jvYPTuQbm111BYM8UzxVk8vvLcYilhCA6TR';
+  const API_URL = 'https://youchien-test.microcms.io/api/v1/news?orders=-publishedAt&limit=5';
+  
+  try {
+    const response = await fetch(API_URL, {
+      headers: { 'X-MICROCMS-API-KEY': API_KEY }
+    });
+    if (!response.ok) throw new Error('通信エラー');
+    const data = await response.json();
+    
+    // 合計件数の更新（既存UIの「全 5 記事」と書かれている場所を書き換える）
+    const countEl = document.querySelector('.news-count');
+    if (countEl) {
+      countEl.innerText = `全 ${data.totalCount} 記事`;
+    }
+
+    const newsList = document.getElementById('dynamic-news-list');
+    if (!newsList) return;
+    newsList.innerHTML = ''; 
+    
+    data.contents.forEach((post, index) => {
+      // 既存デザイン通りの日付フォーマット（年、月、日の間にスペースを入れる）
+      const date = new Date(post.publishedAt || post.createdAt);
+      const dateString = `${date.getFullYear()} &nbsp;${String(date.getMonth() + 1).padStart(2, '0')} &nbsp;${String(date.getDate()).padStart(2, '0')}`;
+      
+      const categoryName = post.category ? post.category.name : 'お知らせ';
+      
+      // サムネイル画像のフィルター制御（既存の静的デザインを再現）
+      let filterStyle = '';
+      if (index === 1) filterStyle = 'filter: hue-rotate(30deg);';
+      else if (index === 2) filterStyle = 'filter: hue-rotate(60deg);';
+      else if (index === 3) filterStyle = 'filter: brightness(1.2);';
+      else if (index >= 4) filterStyle = 'filter: sepia(0.5);';
+
+      // NEWバッジの制御（最新の1件目だけ表示）
+      const badgeHtml = index === 0 ? '<span class="news-badge">NEW</span>' : '';
+
+      // HTMLの組み立て（既存のCSSクラス構造を100%維持）
+      const listItem = `
+        <li class="ky-news-item">
+          <a href="news_detail_test.html?id=${post.id}">
+            <div class="news-meta">
+              <span class="news-date">${dateString}</span>
+              ${badgeHtml}
+            </div>
+            <div class="news-thumb">
+              <img src="images/kindy_news_leaf_1775160785224.png" style="width:100%; height:100%; object-fit:cover; ${filterStyle}">
+            </div>
+            <div class="news-body">
+              <h3 class="news-ttl">${post.title}</h3>
+              <span class="news-cat">${categoryName}</span>
+            </div>
+            <div class="news-arrow">・</div>
+          </a>
+        </li>
+      `;
+      newsList.insertAdjacentHTML('beforeend', listItem);
+    });
+
+  } catch(error) {
+    console.error('microCMSの取得に失敗しました', error);
+  }
+}
+fetchMicroCMSNews();
+
 </script>
 </body>
 </html>
