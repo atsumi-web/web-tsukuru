@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最速WordPress化＆仮公開マニュアル | Webとしくみをつくる</title>
+  <style>
+    :root {
+      --primary: #2d3748;
+      --accent: #3182ce;
+      --bg: #f7fafc;
+      --text: #4a5568;
+      --white: #ffffff;
+    }
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.8;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 28px;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 15px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    h2 {
+      color: var(--primary);
+      font-size: 22px;
+      margin-top: 50px;
+      padding-left: 15px;
+      border-left: 5px solid var(--accent);
+    }
+    h3 {
+      color: var(--primary);
+      font-size: 18px;
+      margin-top: 30px;
+    }
+    p, li {
+      font-size: 16px;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .step-box {
+      background: #ebf8ff;
+      border: 1px solid #bee3f8;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .warning-box {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-left: 5px solid #f56565;
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+    .warning-box strong {
+      color: #c53030;
+    }
+    pre {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 14px;
+    }
+    code {
+      background: #edf2f7;
+      color: #e53e3e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .checkpoint {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🚀 静的HTMLからWordPressへの完全移行＆仮公開マニュアル</h1>
+  
+  <p>本資料は、完成した静的なHTMLサイトをオリジナルのWordPressテーマに変換し、クライアント確認用のデモ環境へデプロイするまでの、<strong>「Webとしくみをつくる」最速構築フロー</strong>です。</p>
+
+  <!-- STEP 1 -->
+  <h2>STEP1：テーマ構造の解体とPHP化</h2>
+  <p>完成した静的HTMLをWordPress専用のPHPファイル群に解体・分配します。</p>
+  
+  <div class="step-box">
+    <span class="checkpoint">必須ファイル構成</span>
+    <p>Localで作成したテーマフォルダ（例: <code>youchien-theme</code>）内に以下を用意します。</p>
+    <ul>
+      <li><strong><code>style.css</code></strong>：テーマ情報（Theme Nameなど）を記載する宣誓書。</li>
+      <li><strong><code>functions.php</code></strong>：タイトルタグの自動出力やアイキャッチ画像を有効化する設定書。</li>
+      <li><strong><code>index.php</code></strong>：専用ページが無い場合に表示される予備の画面。</li>
+      <li><strong><code>header.php</code></strong>：トップページ上部（ナビゲーションまで）を共通化したもの。</li>
+      <li><strong><code>footer.php</code></strong>：トップページ下部（フッター以降）を共通化したもの。</li>
+      <li><strong><code>front-page.php</code></strong>：トップページのメインコンテンツ。</li>
+    </ul>
+  </div>
+
+  <div class="warning-box">
+    <strong>⚠️ パスの書き換えルール（絶対パスの徹底）</strong>
+    <p>WordPressは階層が複雑なため、画像やCSSのパスはすべて「絶対パス」に書き換える必要があります。<br>
+    <code>./css/style.css</code><br>
+    ↓変更<br>
+    <code>&lt;?php echo get_template_directory_uri(); ?&gt;/assets/css/style.css</code></p>
+  </div>
+
+  <!-- STEP 2 -->
+  <h2>STEP2：お知らせ機能の動的化（WP_Query）</h2>
+  <p>外部JavaScript（microCMS等）での連携を破棄し、WordPress本体の投稿機能と連動させます。</p>
+  
+  <pre><code>&lt;?php
+// お知らせの最新5件を取得する設定
+$args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 5
+);
+$news_query = new WP_Query($args);
+
+// 記事が存在する場合のループ処理
+if ( $news_query->have_posts() ) :
+    while ( $news_query->have_posts() ) : $news_query->the_post();
+?&gt;
+        &lt;!-- ここに1件ずつのデザインを記述 --&gt;
+        &lt;a href="&lt;?php the_permalink(); ?&gt;"&gt;&lt;?php the_title(); ?&gt;&lt;/a&gt;
+&lt;?php
+    endwhile;
+    wp_reset_postdata(); // 必須：データをリセット
+else :
+?&gt;
+        &lt;p&gt;お知らせがありません。&lt;/p&gt;
+&lt;?php endif; ?&gt;</code></pre>
+
+  <!-- STEP 3 -->
+  <h2>STEP3：作業環境（LocalWP）の絶対ルールと切り替え</h2>
+  <p>HTML制作の「Live Server」から、プロのWordPress開発環境へのパラダイムシフトです。</p>
+
+  <ul>
+    <li><strong>① もう「Go Live」は使わない</strong><br>
+      <code>.php</code>ファイルはGo Liveでは正常に動きません。必ず緑色の<strong>「Local」アプリ</strong>の『Start site』を押してエンジンをかけ、『Open site』からブラウザを開いてリロードで確認します。
+    </li>
+    <li><strong>② Antigravity（VSCode）の「引き出し」を切り替える</strong><br>
+      作業時は巨大な <code>web-tsukuru</code> フォルダを開くのではなく、「ファイル ＞ フォルダーを開く」から必ず<strong>「該当のテーマフォルダ単体のみ」</strong>（例: <code>\wp-content\themes\youchien-theme</code>）を指定して開き直します。<br>
+      ※ファイルの保存場所を移動させるわけではなく、VSCodeのカメラをズームインさせるイメージです。
+    </li>
+  </ul>
+
+  <!-- STEP 4 -->
+  <h2>STEP4：即日公開（InstaWPでのデモ提出）</h2>
+  <p>ローカル環境のサイトを、クライアント確認用の仮サーバー（48時間限定）にアップロードします。</p>
+
+  <ol>
+    <li><strong>データのエクスポート</strong>：ローカル環境（Local）に『All-in-One WP Migration』をインストールし、エクスポート機能で <code>.wpress</code> ファイルをダウンロードする。</li>
+    <li><strong>クラウド環境の構築</strong>：<a href="https://instawp.com/" target="_blank">InstaWP</a> で新規の空のWordPressを数秒で構築する。</li>
+    <li><strong>データのインポート</strong>：InstaWPで作ったサイトの管理画面を開き、『All-in-One WP Migration』から先ほどの <code>.wpress</code> ファイルをインポートする。これだけで完全移管完了。</li>
+  </ol>
+
+  <!-- STEP 5 -->
+  <h2>💡 困ったときのトラブルシューティング事典</h2>
+  
+  <div class="step-box">
+    <strong>Q. 投稿したお知らせがトップページに出てこない！</strong><br>
+    A. 投稿ステータスが「下書き（Draft）」になっていませんか？必ず「青い公開（Publish）ボタン」を押してください。<br>
+    A. InstaWPなどのサーバーの場合、上部の黒いバーにある『Purge Cache』を押してキャッシュをクリアしてください。
+  </div>
+
+  <div class="step-box">
+    <strong>Q. いつも通りVSCodeで探しても html ファイルが見つからない！</strong><br>
+    A. WordPressのテーマフォルダの中に <code>.html</code> は一生存在しません。全ては <code>.php</code> に合体変換されています。デザインを直す時は、VSCodeで <code>front-page.php</code> などを直接開いて中のHTMLタグを編集してください。
+  </div>
+
+  <div class="step-box">
+    <strong>Q. 記事をクリックしたら、変な簡素な画面になってしまった！</strong><br>
+    A. お知らせの詳細ページ用コード（<code>single.php</code>）がまだ未作成のため、万能予備ファイルの <code>index.php</code> がむき出しで表示されています。トップページだけ見せるデモ段階では、リンクの遷移先を一時的に <code>href="#!"</code> 等で無効化しておくのが鉄則です。
+  </div>
+
+</div>
+
+</body>
+</html>
