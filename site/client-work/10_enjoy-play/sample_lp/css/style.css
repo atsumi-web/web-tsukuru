@@ -1,0 +1,250 @@
+/* ==========================================
+   CSS SKELETON FOR FEMININE OSTEOPATHIC LP
+   Target: 20-40s Women
+   Color Palette: Orange, Coral, Warm Sand
+========================================== */
+
+:root {
+  /* Colors */
+  --c-primary: #f26d5b;     /* コーラルオレンジ系（メイン） */
+  --c-primary-light: #fef0ef; /* 薄いオレンジ背景 */
+  --c-secondary: #e59572;   /* 落ち着いたくすみオレンジ */
+  --c-accent: #e8bd78;      /* ゴールド・イエロー系アクセント */
+  --c-text: #4a4a4a;        /* 女性らしい柔らかなダークグレー */
+  --c-text-light: #7a7a7a;
+  --c-bg: #fffbf9;          /* 真っ白より少し温かみのある背景 */
+  --c-border: #f0e6e1;
+  
+  /* Fonts */
+  --f-base: 'Noto Sans JP', sans-serif;
+  --f-en: 'Outfit', sans-serif;
+  
+  /* Geometry */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --max-w: 800px; /* スマホ特化ベースだが、PCでも見やすい幅 */
+}
+
+/* Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--f-base);
+  color: var(--c-text);
+  background-color: var(--c-bg);
+  line-height: 1.8;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+}
+
+img { max-width: 100%; height: auto; }
+.section-container { max-width: var(--max-w); margin: 0 auto; padding: 60px 20px; }
+
+/* Typography */
+.highlight { 
+  color: var(--c-primary); 
+  font-weight: 700; 
+  background: linear-gradient(transparent 60%, rgba(242, 109, 91, 0.2) 0);
+}
+.section-title {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+  position: fixed;
+  top: 0; width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid var(--c-border);
+  z-index: 100;
+}
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+}
+.header-logo .logo-sub { font-size: 0.65rem; color: var(--c-text-light); display: block; }
+.header-logo .logo-main { font-size: 1.1rem; font-weight: 700; color: var(--c-primary); letter-spacing: 0.1em; }
+.header-cta {
+  background: var(--c-primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  padding: 8px 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(242, 109, 91, 0.3);
+  transition: transform 0.2s;
+}
+.header-cta:hover { transform: translateY(-2px); }
+.cta-sub { display: block; font-size: 0.6rem; font-weight: 700; line-height: 1; margin-bottom: 2px;}
+.cta-main { display: block; font-size: 0.85rem; font-weight: 700; }
+
+/* ==================== HERO ==================== */
+.hero {
+  padding-top: 80px; /* offset header */
+  background: linear-gradient(135deg, #fffbf9, var(--c-primary-light));
+  text-align: center;
+  padding-bottom: 50px;
+}
+.hero-content {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 40px 20px 0;
+}
+.hero-badge {
+  display: inline-block;
+  background: #fff;
+  color: var(--c-primary);
+  border: 1px solid var(--c-primary);
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.hero-title {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color: #222;
+}
+.hero-title span:first-child { font-size: 1.2rem; font-weight: normal; color: var(--c-text-light); }
+.hero-desc {
+  font-size: 0.95rem;
+  color: var(--c-text);
+  margin-bottom: 30px;
+}
+
+/* Offer Box */
+.hero-offer {
+  background: #fff;
+  border: 3px solid var(--c-primary);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(242, 109, 91, 0.15);
+}
+.offer-title { font-weight: 700; color: var(--c-primary); margin-bottom: 10px; font-size: 1.1rem; }
+.offer-price { font-weight: 700; font-size: 1.2rem; }
+.price-num { font-size: 2.8rem; color: #d32f2f; line-height: 1; margin: 0 4px; font-family: var(--f-en); }
+.price-yen { font-size: 1rem; color: #d32f2f; }
+
+/* ==================== EMPATHY ==================== */
+.empathy { background: #fff; }
+.empathy-grid {
+  display: grid;
+  gap: 16px;
+}
+.empathy-card {
+  background: var(--c-primary-light);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.empathy-icon { font-size: 2rem; }
+.empathy-card p { font-weight: 500; font-size: 0.95rem; }
+.empathy-conclusion {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 1.1rem;
+  color: var(--c-primary);
+  font-weight: 700;
+  border-top: 1px dashed var(--c-border);
+  padding-top: 24px;
+}
+
+/* ==================== SOLUTION ==================== */
+.solution { background: var(--c-primary-light); }
+.feature-list { display: flex; flex-direction: column; gap: 24px; }
+.feature-item {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+}
+.feature-num {
+  position: absolute;
+  top: -15px; left: 24px;
+  background: var(--c-primary);
+  color: #fff;
+  font-family: var(--f-en);
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.feature-text h3 { font-size: 1.15rem; color: var(--c-primary); margin-bottom: 12px; margin-top: 8px;}
+.feature-text p { font-size: 0.9rem; color: var(--c-text-light); }
+
+/* ==================== REVIEWS ==================== */
+.reviews { background: #fff; }
+.review-grid { display: grid; gap: 20px; }
+.review-card {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+.review-head { display: flex; justify-content: space-between; margin-bottom: 12px; }
+.review-name { font-weight: 700; margin-right: 8px; }
+.review-meta { font-size: 0.8rem; color: var(--c-text-light); }
+.review-stars { color: var(--c-accent); font-size: 1.1rem; }
+.review-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.review-body { font-size: 0.9rem; color: var(--c-text-light); }
+
+/* ==================== CTA ==================== */
+.cta-section { background: var(--c-bg); border-top: 4px solid var(--c-primary); }
+.cta-box {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(242, 109, 91, 0.15);
+}
+.cta-box h2 { font-size: 1.3rem; margin-bottom: 8px; }
+.cta-price-box {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  font-weight: 700;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  margin: 20px 0 32px;
+  font-size: 1.2rem;
+}
+.cta-price-box span { font-size: 2.2rem; font-family: var(--f-en); }
+
+/* Form */
+.demo-form { text-align: left; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; }
+.form-group input, .form-group select {
+  width: 100%; padding: 12px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  font-family: inherit; font-size: 1rem;
+}
+.submit-btn {
+  width: 100%;
+  background: var(--c-primary); color: #fff;
+  border: none; padding: 16px;
+  font-size: 1.2rem; font-weight: 700;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(242, 109, 91, 0.3);
+  margin-top: 10px;
+}
+.form-note { text-align: center; font-size: 0.75rem; color: var(--c-text-light); margin-top: 12px; }
+
+/* ==================== FOOTER ==================== */
+.footer { background: var(--c-text); color: #fff; text-align: center; padding: 24px; font-size: 0.8rem; }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>次世代Web開発手法について | 渥美 絵里</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+        body { 
+            font-family: 'Inter', 'Zen Kaku Gothic New', sans-serif; 
+            letter-spacing: 0.05em;
+            background-color: #f0f4f8; 
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased pt-10 pb-20 px-4 md:px-0">
+
+    <div class="max-w-4xl mx-auto glass-card rounded-2xl overflow-hidden">
+        
+        <!-- ヘッダー -->
+        <header class="bg-slate-800 text-white px-8 md:px-16 py-12 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-transparent"></div>
+            <div class="relative z-10">
+                <div class="text-blue-300 font-bold tracking-widest text-sm mb-4">MODERN DEVELOPMENT METHODOLOGY</div>
+                <h1 class="text-2xl md:text-3xl font-bold leading-relaxed mb-6">
+                    当方の『次世代Web制作メソッド』について<br>
+                    <span class="text-lg md:text-xl font-normal opacity-90">〜 なぜ「圧倒的なスピード」と「高品質」が両立するのか 〜</span>
+                </h1>
+                <div class="text-right mt-8">
+                    <p class="font-bold text-lg">Webディレクター 渥美 絵里</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <div class="px-8 md:px-16 py-12 space-y-12">
+
+            <!-- 導入 -->
+            <section>
+                <p class="leading-loose text-gray-700">
+                    現在のWeb制作は、「人間が手作業で一行ずつコードを打ち込む時代」から、「人間が設計と戦略に集中し、AIなどの高度なインフラが一瞬で構築する時代」へとシフトしています。<br>
+                    お客様に最高のクオリティを最短で届けるため、私が採用している<span class="font-bold bg-yellow-100 px-1 rounded">3つの最強の武器（仕組み）</span>をご紹介いたします。
+                </p>
+            </section>
+
+            <!-- 1. バイブコーディング -->
+            <section class="flex flex-col md:flex-row bg-white border border-blue-100 rounded-xl overflow-hidden shadow-sm">
+                <div class="bg-blue-600 text-white p-6 md:w-1/3 flex flex-col justify-center">
+                    <span class="text-blue-200 font-bold text-sm mb-1">Method 01</span>
+                    <h3 class="font-bold text-xl mb-2">バイブコーディング<br><span class="text-sm font-normal">by Antigravity</span></h3>
+                </div>
+                <div class="p-6 md:w-2/3">
+                    <h4 class="font-bold text-blue-800 mb-2">Google最新鋭AIを「専属プログラマー」として指揮</h4>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        「幼稚園の魅力やデザイン、保護者への導線づくり」といった<span class="font-bold bg-yellow-100 px-1 rounded">人間の温かさと思考が必要な部分</span>に私が100%集中します。<br>
+                        その上で、作業ミスが起きやすく時間のかかるプログラミング構築工程は、Googleが開発した天才AIシステム「Antigravity」にディレクション（指示・指揮）を出して超高速で作らせています。だからこそ、通常の制作会社では不可能なスピードと品質を両立できます。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 2. セキュリティ（静的化とmicroCMS） -->
+            <section class="flex flex-col md:flex-row bg-white border border-emerald-100 rounded-xl overflow-hidden shadow-sm">
+                <div class="bg-emerald-600 text-white p-6 md:w-1/3 flex flex-col justify-center">
+                    <span class="text-emerald-200 font-bold text-sm mb-1">Method 02</span>
+                    <h3 class="font-bold text-xl mb-2">静的サイト化 ＋ <br>microCMS</h3>
+                </div>
+                <div class="p-6 md:w-2/3">
+                    <h4 class="font-bold text-emerald-800 mb-2">トヨタ自動車も採用する「保守ゼロ＆ハッキングゼロ」構造</h4>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        現在ハッキング被害率が最も高い古いシステム（WordPress等）を完全に排除します。データベースを持たない強固な「静的サイト」としてお客様のサーバーへ納品するため、<span class="font-bold bg-yellow-100 px-1 rounded">泥棒が侵入する裏口が物理的に存在しません</span>。<br>
+                        日常のお知らせ更新は、大企業も採用する「microCMS」を連携させ、幼稚園の先生方が<span class="font-bold bg-yellow-100 px-1 rounded">アメブロやLINEと同じ感覚でスマホから安全・簡単</span>に更新できる仕組みをご提供します。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. GitHub -->
+            <section class="flex flex-col md:flex-row bg-white border border-purple-100 rounded-xl overflow-hidden shadow-sm">
+                <div class="bg-purple-600 text-white p-6 md:w-1/3 flex flex-col justify-center">
+                    <span class="text-purple-200 font-bold text-sm mb-1">Method 03</span>
+                    <h3 class="font-bold text-xl mb-2">GitHub<br><span class="text-sm font-normal">（ギットハブ）</span></h3>
+                </div>
+                <div class="p-6 md:w-2/3">
+                    <h4 class="font-bold text-purple-800 mb-2">絶対にデータが消えない「クラウド上のタイムマシン」</h4>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        制作したサイトのソースコード（資産）は、世界中のプロエンジニアが標準利用しているソースコード専用のクラウド金庫「GitHub」で私が厳重に一元管理します。<br>
+                        この金庫は<span class="font-bold bg-yellow-100 px-1 rounded">過去の全変更履歴を記録するタイムマシン機能</span>を備えているため、万が一お客様のサーバーでデータがうっかり消えてしまっても、私の方でいつでも確実・瞬時に過去の状態へ巻き戻して復元することができます。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 結論 -->
+            <section class="mt-8 bg-slate-50 border-l-4 border-slate-600 p-6 rounded-r-lg">
+                <p class="text-gray-800 font-bold text-center">
+                    「最新のAI技術」と「絶対に崩れない堅牢なインフラ」を駆使し、<br>
+                    お客様のビジネスに【最速・最高・最強のWebサイト】をお届けします。
+                </p>
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+</html>
