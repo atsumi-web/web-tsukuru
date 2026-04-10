@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress環境での構築へ向けたご提案 | 渥美 絵里</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+        body { 
+            font-family: 'Inter', 'Zen Kaku Gothic New', sans-serif; 
+            letter-spacing: 0.05em;
+            background-color: #f7f9f8; 
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased pt-10 pb-20 px-4 md:px-0">
+
+    <div class="max-w-4xl mx-auto glass-card rounded-2xl overflow-hidden">
+        
+        <!-- ヘッダー -->
+        <header class="bg-[#1a4731] text-white px-8 md:px-16 py-12 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/50 to-transparent"></div>
+            <div class="relative z-10">
+                <div class="text-yellow-300 font-bold tracking-widest text-sm mb-4">SYSTEM INTEGRATION PROPOSAL</div>
+                <h1 class="text-2xl md:text-3xl font-bold leading-relaxed mb-6">
+                    WordPress環境での構築へ向けたシステム統合のご提案
+                </h1>
+                <div class="text-right mt-8">
+                    <p class="font-bold text-lg">Webディレクター 渥美 絵里</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <div class="px-8 md:px-16 py-12 space-y-12">
+
+            <!-- 導入 -->
+            <section>
+                <p class="leading-loose text-gray-700">
+                    本日のキックオフミーティング、誠にありがとうございました。<br>
+                    ミーティングを通じて、本プロジェクトの最終システム要件が**「WordPress」**であることが明確となりました。<br><br>
+                    私がこれまでに提案・構築した「デザインの成果（表現力や操作性）」を一切損なうことなく、GCLIP様が管理運用しやすいWordPress環境へとシームレスに統合するための開発プランをご提案いたします。
+                </p>
+            </section>
+
+            <!-- 2つのプラン -->
+            <section>
+                <h2 class="text-xl font-bold text-[#1a4731] border-b-2 border-emerald-500 pb-3 mb-6 flex items-center">
+                    GCLIP様の体制に合わせた2つのアプローチ
+                </h2>
+                <p class="text-gray-700 mb-8">
+                    GCLIP様社内の開発リソースや今後の保守体制に合わせ、私にどこまでの範囲をお任せいただけるかの2つのプランをご用意しました。
+                </p>
+
+                <div class="space-y-6">
+                    <!-- プランA -->
+                    <div class="flex flex-col md:flex-row bg-white border-2 border-emerald-500 rounded-xl overflow-hidden relative shadow-md">
+                        <div class="absolute top-0 right-0 bg-emerald-500 text-white font-bold text-xs px-3 py-1 rounded-bl-lg">当方の推奨</div>
+                        <div class="bg-emerald-50 p-6 md:w-1/3 flex flex-col justify-center border-r border-emerald-100">
+                            <span class="text-emerald-700 font-bold mb-1">PLAN A</span>
+                            <h3 class="font-bold text-lg text-emerald-900">オリジナルテーマ<br>完全開発プラン</h3>
+                        </div>
+                        <div class="p-6 md:w-2/3">
+                            <h4 class="font-bold text-gray-900 mb-3">当方でWordPress組み込み（システム化）まで一括対応</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                デモでお見せした静的HTMLデザインをベースに、幼稚園専用のオリジナルWordPressテーマ（PHP）を一から当方で開発・納品いたします。
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2 bg-gray-50 p-4 rounded-lg">
+                                <li class="flex items-start"><strong class="text-emerald-600 mr-2">✔</strong> 市販の汎用テーマを使わないため、WPであっても表示が圧倒的に速い。</li>
+                                <li class="flex items-start"><strong class="text-emerald-600 mr-2">✔</strong> デザイン・アニメーションの妥協が一切なく、デモの魅力を完全再現。</li>
+                                <li class="flex items-start"><strong class="text-emerald-600 mr-2">✔</strong> お知らせ等の投稿機能も管理画面に綺麗に整備いたします。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- プランB -->
+                    <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-gray-100 p-6 md:w-1/3 flex flex-col justify-center border-r border-gray-200">
+                            <span class="text-gray-500 font-bold mb-1">PLAN B</span>
+                            <h3 class="font-bold text-lg text-gray-800">フロントエンド<br>（静的HTML）完結納品</h3>
+                        </div>
+                        <div class="p-6 md:w-2/3">
+                            <h4 class="font-bold text-gray-900 mb-3">貴社エンジニアがシステムへの組み込みを担当</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                私の担当範囲を「デザイン・HTML/CSS/JSコーディング」までとし、そのソースコード一式を納品いたします。WordPressへのオリジナルテーマ化（PHP化）はGCLIP様側のエンジニアチームに行っていただくプランです。
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2 bg-gray-50 p-4 rounded-lg">
+                                <li class="flex items-start"><strong class="text-gray-400 mr-2">✔</strong> 貴社の使い慣れたプラグインやセキュリティ構成をそのまま導入可能。</li>
+                                <li class="flex items-start"><strong class="text-gray-400 mr-2">✔</strong> 納品後のシステムの保守管理（属人化の防止）が貴社内で完結しやすい。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 当方のスタンス -->
+            <section class="mt-12 bg-[#1a4731]/5 border-l-4 border-[#1a4731] p-6 rounded-r-lg">
+                <p class="text-gray-800 leading-relaxed font-medium">
+                    デモでご提案した洗練されたデザインと快適な操作性を寸分違わず再現するため、当方としては私が責任を持ってシステムの中身まで構築する<strong class="text-[#1a4731]">【プランA】</strong>を強く推奨いたします。<br><br>
+                    しかし、GCLIP様側の今後の保守フローやエンジニアリソースのご都合もあるかと存じます。どちらのプランでも私は柔軟に対応可能ですので、社内でお打ち合わせいただき、最適な方向性をご指示いただけますと幸いです。<br><br>
+                    WordPress環境においても「魅力的な幼稚園サイト」を構築できるよう尽力いたします。引き続き、よろしくお願いいたします！
+                </p>
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+</html>
