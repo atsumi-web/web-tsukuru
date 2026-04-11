@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【技術調査レポート】Windows Server 2019上のIISにおけるWeb構築の是非</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+
+        .document-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .date-author {
+            text-align: right;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            border-left: 5px solid #2980b9;
+            padding-left: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: #fff8c4;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+
+        .references {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .references ol {
+            padding-left: 20px;
+        }
+
+        .references li {
+            margin-bottom: 5px;
+            word-break: break-all;
+        }
+
+        /* 印刷用のスタイル（A4サイズ縦を想定） */
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .document-container {
+                box-shadow: none;
+                padding: 0;
+                width: 100%;
+                max-width: none;
+            }
+            .highlight {
+                background-color: transparent;
+                border-bottom: 2px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="document-container">
+        
+        <div class="header">
+            <h1>【技術調査レポート】<br>Windows Server 2019上のIISにおけるWebサーバー構築の是非と推奨環境について</h1>
+        </div>
+
+        <p>本資料は、Windows Server 2019上のIIS（Internet Information Services）環境を利用してCMS（WordPressなど）およびWebサイトを構築・運用する場合の技術的なメリット・デメリット、および中長期的な安全運用に向けた代替構成について評価・調査した結果をまとめたものです。</p>
+
+        <h2>1. IIS ＋ WordPressのメリット</h2>
+        <p>IIS環境でWebシステムを運用する場合、以下の点がメリットとして挙げられます。</p>
+        <ul>
+            <li><strong>Microsoftエコシステムとの統合:</strong> 既存のWindows Server環境やActive Directory、SQL ServerなどのMicrosoft製品との親和性が高いです。</li>
+            <li><strong>IISマネージャーによる管理:</strong> GUIベースの管理ツールであり、ウェブサイトの設定等を直感的に行えます。</li>
+            <li><strong>Windows認証の利用:</strong> 企業内部ネットワーク環境においては、Windows認証を利用したアクセス制限が可能な場合があります。</li>
+        </ul>
+        <p style="font-size: 14px; color: #666; margin-top: 5px; padding: 10px; background-color: #f0f0f0; border-radius: 4px;">※補足：これらのメリットは<strong>「大規模な企業（社員数千人レベル）が社内専用のシステム（イントラネット等）を構築する場合」</strong>にシステム管理側で大きく活きる仕様であり、今回のような外部の一般ユーザー向け公開用Webサイトにおいては、これらの機能的恩恵はほぼありません。</p>
+
+        <h2>2. IIS ＋ WordPress の課題・致命的なデメリット</h2>
+        <p>一方で、IISでWordPress（PHPを使用する動的システム）を運用する際には、以下の重大な運用リスクが指摘されています。</p>
+
+        <h3><span class="highlight">【重要】PHPサポートの公式終了</span></h3>
+        <p>WordPressはPHP言語で動作しますが、<strong>Microsoftは「PHP 8.0以降のWindows版PHPの公式サポート」をすでに終了しています。</strong>現在WordPressを安全に稼働させるためにはPHP 8.3以上が推奨されていますが、公式のサポート（セキュリティパッチや緊急時のバグ修正）がない状態で非公式ビルドを使用し続けることは、システムを未知の脆弱性に晒し続けることを意味し、長期運用において極めて高いセキュリティリスクとなります。</p>
+
+        <h3>パフォーマンス（動作速度）の低下</h3>
+        <p>一般的に、WordPressはLinux系のサーバー（ApacheまたはNginx）で最適に動作するように設計されています。IIS環境では、PHPの実行構造の違いによりパフォーマンスが劣り、ページ表示速度の低下を招くケースが多数報告されています。</p>
+
+        <h3>パーマリンク（URL設定）と互換性の問題</h3>
+        <p>WordPressは通常「.htaccess」ファイルを使用してURL構造を制御しますが、IISではこのファイルが使用できないため「web.config」という別の複雑なファイルを代用する必要があります。これにより主流なプラグインが予期せぬエラーを起こすなど、設定と構造の複雑化によるトラブルシュートが非常に困難になります。</p>
+
+        <h2>3. 結論と代替のソリューション提案</h2>
+        <p>Windows Server 2019で動的システム（WordPressなど）を運用することは、PHPのサポート終了やセキュリティ・パフォーマンスの観点から推奨されません。<br>
+        トラブルを防ぎ、サーバー保守の手間を最小限にするための解決策として、以下のいずれかの方法を強く推奨いたします。</p>
+
+        <ul>
+            <li><strong>推奨A：専用のLinuxベースのサーバー（エックスサーバー等）の利用</strong><br>
+            御社が現在運用されているように、管理のしやすさからWordPressなどの動的CMS環境を利用される場合は、Web運用に最適化されたLinuxベースのサーバー環境（エックスサーバー等）を別途用意して構築を行うことが、安定性とセキュリティの観点から最も無難で確実な選択です。</li>
+
+            <li><strong>推奨B：静的サイト（HTML出力）＋ ヘッドレスCMS構成の採用（※現在のWindowsサーバーを活用する場合）</strong><br>
+            もし幼稚園側のご意向で現在のWindowsサーバーをどうしても継続利用する必要がある場合は、「PHP」や「データベース」等の環境構築を行わず、極めて安全な静的ファイル（HTML/CSS等）のみをそのまま配置して運用する方法を推奨します。</li>
+
+            <li style="margin-top: 20px;"><strong>【非推奨】プランC：Windowsサーバー内に仮想Linux環境（Docker / WSL2等）を構築してWordPressを運用</strong><br>
+            様々な事情により「どうしても既存のWindows環境内でWordPressを稼働させたい」場合の、技術的な最終手段です。サーバー内部に仮想的にLinux環境を作り出し、その中でWordPressを動かします。技術的には可能ですが、インフラ構築の難易度が非常に跳ね上がり、システム構成も複雑化するため、<strong>サーバー管理者（運用保守担当者）様にかかる日常の管理負担や、エラー発生時の復旧コストが極めて大きくなってしまう</strong>点に強い注意が必要です。</li>
+        </ul>
+
+        <div class="references">
+            <strong>【調査における参考文献】</strong>
+            <ol>
+                <li>Microsoft will not support PHP 8.0 for Windows in 'any capacity'</li>
+                <li>Requirements | WordPress.org (公式の推奨要件)</li>
+                <li>Microsoft not going to officially support PHP 8 and beyond? : r/PHP - Reddit</li>
+                <li>Microsoft ending support for PHP from PHP 8 onwards - Stack Overflow</li>
+                <li>The Complete Guide to Running WordPress on Windows/IIS | Soupbowl</li>
+            </ol>
+        </div>
+
+    </div>
+
+</body>
+</html>
